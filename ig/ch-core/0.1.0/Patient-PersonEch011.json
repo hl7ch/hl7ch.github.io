@@ -1,0 +1,140 @@
+{
+  "resourceType": "Patient",
+  "id": "PersonEch011",
+  "meta": {
+    "profile": [
+      "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+    ]
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n            Example according to eCH-011\n\n            3.3.2 nameData – Namensangaben\n            <ul>\n                <li>Amtlicher Name (zwingend) – officialName, siehe Kapitel 3.3.2.1</li>\n                <li>Amtliche Vornamen (zwingend) – firstName, siehe Kapitel 3.3.2.2</li>\n                <li>Ledigname (optional) – originalName, siehe Kapitel 3.3.2.3</li>\n                <li>Allianzname (optional) – allianceName, siehe Kapitel 3.3.2.4</li>\n                <li>Aliasname (optional) – aliasName, siehe Kapitel 3.3.2.5</li>\n                <li>Andere amtliche Name (optional) – otherName, siehe Kapitel 3.3.2.6</li>\n                <li>Rufname (optional) – callName, siehe Kapitel 3.3.2.7</li>\n                <li>\n                    entweder\n            Name im ausländischen Pass (optional) - nameOnForeignPassport, siehe Kapitel 3.3.2.8\n            oder\n            Name gemäss Deklaration (optional) – declaredForeignName, siehe Kapitel 3.3.2.9\n                </li>\n            </ul>\n\n            Zusätzlich Beispiel für Zustelladresse falls es nicht die Adresse des Patienten direkt ist mit Angaben von eCH-0010\n        </div>"
+  },
+  "name": [
+    {
+      "use": "official",
+      "family": "Amtlicher Name",
+      "_family": {
+        "extension": [
+          {
+            "url": "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name",
+            "valueCode": "officialName"
+          }
+        ]
+      },
+      "given": [
+        "Amtliche Vornamen (zwingend)"
+      ],
+      "_given": [
+        {
+          "extension": [
+            {
+              "url": "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-firstname",
+              "valueCode": "officalFirstName"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "Allianzname",
+      "_family": {
+        "extension": [
+          {
+            "url": "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name",
+            "valueCode": "allianceName"
+          }
+        ]
+      }
+    },
+    {
+      "use": "maiden",
+      "family": "Ledigname (optional) – originalName",
+      "_family": {
+        "extension": [
+          {
+            "url": "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name",
+            "valueCode": "originalName"
+          }
+        ]
+      }
+    },
+    {
+      "family": "Alias name",
+      "_family": {
+        "extension": [
+          {
+            "url": "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name",
+            "valueCode": "aliasName"
+          }
+        ]
+      }
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-03-20",
+  "contact": [
+    {
+      "relationship": [
+        {
+          "coding": [
+            {
+              "system": "http://fhir.ch/ig/ch-core/CodeSystem/ech-11",
+              "code": "contactData"
+            }
+          ]
+        }
+      ],
+      "name": {
+        "family": "Dalkiliç",
+        "given": [
+          "Fabio Nicola"
+        ]
+      },
+      "address": {
+        "line": [
+          "addressLine1 sollte für personifizierte Adressangaben verwendet werden (z.B. c/o- Adresse).",
+          "addressLine2 solle für unpersonifizierte Adressangaben verwendet werden (z.B. Zu- satzangaben zur Lokalisation, z.B. Chalet Edelweiss).",
+          "Strassenbezeichnungen in Postadressen. Es kann sich dabei auch um den Namen einer Lokalität, eines Weilers etc. handeln. No. 10 Wohung 5"
+        ],
+        "_line": [
+          {
+            "extension": [
+              {
+                "url": "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-10-line",
+                "valueCode": "addressLine1"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-10-line",
+                "valueCode": "addressLine2"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-10-line",
+                "valueCode": "street"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                "valueString": "10"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-unitID",
+                "valueString": "5"
+              }
+            ]
+          }
+        ],
+        "city": "Ort",
+        "postalCode": "PLZ",
+        "country": "CH"
+      }
+    }
+  ]
+}

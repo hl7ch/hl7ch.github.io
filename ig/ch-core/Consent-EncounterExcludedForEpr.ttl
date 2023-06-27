@@ -1,0 +1,80 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Consent/EncounterExcludedForEpr> a fhir:Consent;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "EncounterExcludedForEpr"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-epr-consent";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-epr-consent>
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Consent</b><a name=\"EncounterExcludedForEpr\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Consent &quot;EncounterExcludedForEpr&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-core-epr-consent.html\">CH Core EPR-Consent</a></p></div><p><b>status</b>: active</p><p><b>scope</b>: Privacy Consent <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.0.0/CodeSystem-consentscope.html\">Consent Scope Codes</a>#patient-privacy)</span></p><p><b>category</b>: information disclosure <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.0.0/CodeSystem-v3-ActCode.html\">ActCode</a>#IDSCL)</span></p><p><b>patient</b>: <a href=\"Patient-ElisabethBroennimannByBFH.html\">Patient/ElisabethBroennimannByBFH: Elisabeth Broennimann</a> &quot; BRÖNNIMANN-BERTHOLET&quot;</p><p><b>dateTime</b>: 2020-12-28</p><p><b>organization</b>: <span>: Stammgemeinschaft XYZ</span></p><h3>Policies</h3><table class=\"grid\"><tr><td>-</td><td><b>Authority</b></td></tr><tr><td>*</td><td><a href=\"https://www.admin.ch/opc/de/classified-compilation/20111795/index.html\">https://www.admin.ch/opc/de/classified-compilation/20111795/index.html</a></td></tr></table><p><b>policyRule</b>: CH EPR Consent <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.0.0/CodeSystem-consentpolicycodes.html\">Consent PolicyRule Codes</a>#ch-epr)</span></p><blockquote><p><b>provision</b></p><p><b>type</b>: deny</p><h3>Data</h3><table class=\"grid\"><tr><td>-</td><td><b>Meaning</b></td><td><b>Reference</b></td></tr><tr><td>*</td><td>instance</td><td><a href=\"Encounter-EncounterAccidentBroennimann.html\">Encounter/EncounterAccidentBroennimann</a></td></tr></table></blockquote></div>"
+  ]; # 
+  fhir:Consent.status [ fhir:value "active"]; # 
+  fhir:Consent.scope [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/consentscope" ];
+       fhir:Coding.code [ fhir:value "patient-privacy" ];
+       fhir:Coding.display [ fhir:value "Privacy Consent" ]
+     ]
+  ]; # 
+  fhir:Consent.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
+       fhir:Coding.code [ fhir:value "IDSCL" ];
+       fhir:Coding.display [ fhir:value "information disclosure" ]
+     ]
+  ]; # 
+  fhir:Consent.patient [
+     fhir:link <http://fhir.ch/ig/ch-core/Patient/ElisabethBroennimannByBFH>;
+     fhir:Reference.reference [ fhir:value "Patient/ElisabethBroennimannByBFH" ];
+     fhir:Reference.display [ fhir:value "Elisabeth Broennimann" ]
+  ]; # 
+  fhir:Consent.dateTime [ fhir:value "2020-12-28"^^xsd:date]; # 
+  fhir:Consent.organization [
+     fhir:index 0;
+     fhir:Reference.display [ fhir:value "Stammgemeinschaft XYZ" ]
+  ]; # 
+  fhir:Consent.policy [
+     fhir:index 0;
+     fhir:Consent.policy.authority [ fhir:value "https://www.admin.ch/opc/de/classified-compilation/20111795/index.html" ]
+  ]; # 
+  fhir:Consent.policyRule [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/consentpolicycodes" ];
+       fhir:Coding.code [ fhir:value "ch-epr" ]
+     ]
+  ]; # 
+  fhir:Consent.provision [
+     fhir:Consent.provision.type [ fhir:value "deny" ];
+     fhir:Consent.provision.data [
+       fhir:index 0;
+       fhir:Consent.provision.data.meaning [ fhir:value "instance" ];
+       fhir:Consent.provision.data.reference [
+         fhir:link <http://fhir.ch/ig/ch-core/Encounter/EncounterAccidentBroennimann>;
+         fhir:Reference.reference [ fhir:value "Encounter/EncounterAccidentBroennimann" ];
+         fhir:Reference.type [ fhir:value "Encounter" ]
+       ]
+     ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Consent/EncounterExcludedForEpr.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

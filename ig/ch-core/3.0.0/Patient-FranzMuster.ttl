@@ -1,0 +1,97 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Patient/FranzMuster> a fhir:Patient;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "FranzMuster"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient>
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\"><b>Franz Muster </b> male, DoB: 1995-01-27 ( Medical record number: 012/08.111111)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Known Marital status of Patient\">Marital Status:</td><td colspan=\"3\"><span title=\"Codes: {http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus 6}\">in eingetragener Partnerschaft</span></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Languages spoken\">Language:</td><td colspan=\"3\"><span title=\"Codes: {urn:ietf:bcp:47 de-CH}\">Deutsch (Schweiz)</span> (preferred)</td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The registered place of birth of the patient. A sytem may use the address.text if they don't store the birthPlace address in discrete elements.\"><a href=\"http://hl7.org/fhir/R4/extension-patient-birthplace.html\">Birth Place:</a></td><td colspan=\"3\"><ul><li>Paris Frankreich </li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The place of origin of the patient.\"><a href=\"StructureDefinition-ch-core-patient-ech-11-placeoforigin.html\">Place of Origin according to eCH-0011:</a></td><td colspan=\"3\"><ul><li>Köniz BE </li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The patient's professed religious affiliations.\"><a href=\"http://hl7.org/fhir/R4/extension-patient-religion.html\">religion:</a></td><td colspan=\"3\"><ul><li><span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation 1077}\">Protestant</span></li></ul></td></tr></table></div>"
+  ]; # 
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/patient-birthPlace" ];
+     fhir:Extension.valueAddress [
+       fhir:Address.city [ fhir:value "Paris" ];
+       fhir:Address.country [ fhir:value "Frankreich" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-ech-11-placeoforigin" ];
+     fhir:Extension.valueAddress [
+       fhir:Address.city [ fhir:value "Köniz" ];
+       fhir:Address.state [ fhir:value "BE" ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/patient-religion" ];
+     fhir:Extension.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation" ];
+         fhir:Coding.code [ fhir:value "1077" ];
+         fhir:Coding.display [ fhir:value "Protestant" ]
+       ]
+     ]
+  ]; # 
+  fhir:Patient.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0203" ];
+         fhir:Coding.code [ fhir:value "MR" ]
+       ]
+     ];
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.30.999999.1" ];
+     fhir:Identifier.value [ fhir:value "012/08.111111" ]
+  ]; # 
+  fhir:Patient.name [
+     fhir:index 0;
+     fhir:HumanName.family [ fhir:value "Muster" ];
+     fhir:HumanName.given [
+       fhir:value "Franz";
+       fhir:index 0
+     ]
+  ]; # 
+  fhir:Patient.gender [ fhir:value "male"]; # 
+  fhir:Patient.birthDate [ fhir:value "1995-01-27"^^xsd:date]; # 
+  fhir:Patient.maritalStatus [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus" ];
+       fhir:Coding.code [ fhir:value "6" ];
+       fhir:Coding.display [ fhir:value "in eingetragener Partnerschaft" ]
+     ]
+  ]; # 
+  fhir:Patient.communication [
+     fhir:index 0;
+     fhir:Patient.communication.language [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:ietf:bcp:47" ];
+         fhir:Coding.code [ fhir:value "de-CH" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "Deutsch (Schweiz)" ]
+     ];
+     fhir:Patient.communication.preferred [ fhir:value "true"^^xsd:boolean ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Patient/FranzMuster.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

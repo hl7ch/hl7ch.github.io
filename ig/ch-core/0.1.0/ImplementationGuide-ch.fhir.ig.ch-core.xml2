@@ -1,0 +1,1631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ImplementationGuide xmlns="http://hl7.org/fhir">
+  <id value="ch.fhir.ig.ch-core"/>
+  <text>
+    <status value="additional"/><div xmlns="http://www.w3.org/1999/xhtml">
+      ImplementationGuide for CH.Core
+
+      <hr/>
+      <h2>CH_Core</h2>
+      <p>The official URL for this implementation guide is:</p>
+      <pre>http://fhir.ch/ig/ch-core/ImplementationGuide/CH-Core</pre>
+    </div>
+  </text>
+  <url value="http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core"/>
+  <version value="0.1.0"/>
+  <name value="CH_Core"/>
+  <title value="CH Core (R4)"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2020-02-14T00:00:00+01:00"/>
+  <publisher value="HL7 Switzerland"/>
+  <contact>
+    <name value="HL7 Switzerland"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.hl7.ch/"/>
+    </telecom>
+  </contact>
+  <description value="Implementationguide CH-CORE"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="CH"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="CC-BY-SA-4.0"/>
+  <packageId value="ch.fhir.ig.ch-core"/>
+  <license value="CC-BY-SA-4.0"/>
+  <fhirVersion value="4.0.1"/>
+  <dependsOn id="cheprterm">
+    <uri value="http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term"/>
+    <packageId value="ch.fhir.ig.ch-epr-term"/>
+    <version value="2.0.1"/>
+  </dependsOn>
+  <definition>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="STU Ballot"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="copyrightyear"/>
+      </extension>
+      <extension url="value">
+        <valueString value="2020+"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="urn:oid:2.16.840.1.113883.6.316"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="urn:oid:2.16.756.5.30.1.127.3.10.10"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="autoload-resources"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-qa"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/qa"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-temp"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/pages"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-output"/>
+      </extension>
+      <extension url="value">
+        <valueString value="output"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-suppressed-warnings"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/ignoreWarnings.txt"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="template-html"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="template-md"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page-md.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-contact"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-context"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-copyright"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-jurisdiction"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-license"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-publisher"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="active-tables"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <grouping>
+      <name value="CH:Core"/>
+    </grouping>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Bundle-1-ZuweisungZurRadiologischenDiagnostik-FHIR.html"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/1-ZuweisungZurRadiologischenDiagnostik-FHIR"/>
+      </reference>
+      <name value="1-ZuweisungZurRadiologischenDiagnostik-FHIR"/>
+      <description value="Example for EPR-Bundle"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-document-epr"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Bundle-CdaContainingOriginalRepresentationAsPdfA.html"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/CdaContainingOriginalRepresentationAsPdfA"/>
+      </reference>
+      <name value="CdaContainingOriginalRepresentationAsPdfA"/>
+      <description value="Example for EPR-Bundle"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-document-epr"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Composition-ZuweisungZurRadiologischenDiagnostik.html"/>
+      </extension>
+      <reference>
+        <reference value="Composition/ZuweisungZurRadiologischenDiagnostik"/>
+      </reference>
+      <name value="ZuweisungZurRadiologischenDiagnostik"/>
+      <description value="Example for EPR-Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-composition-epr"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Coverage"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Coverage-CoverageBroennimann.html"/>
+      </extension>
+      <reference>
+        <reference value="Coverage/CoverageBroennimann"/>
+      </reference>
+      <name value="CoverageBroennimann"/>
+      <description value="Example for Coverage"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-coverage"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="DocumentReference-Docu.html"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/Docu"/>
+      </reference>
+      <name value="Docu"/>
+      <description value="Example for DocumentReference"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-documentreference"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Encounter"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Encounter-EncounterAmbulantBroennimann.html"/>
+      </extension>
+      <reference>
+        <reference value="Encounter/EncounterAmbulantBroennimann"/>
+      </reference>
+      <name value="EncounterAmbulantBroennimann"/>
+      <description value="Example for Encounter"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Organization-GruppenpraxisCH.html"/>
+      </extension>
+      <reference>
+        <reference value="Organization/GruppenpraxisCH"/>
+      </reference>
+      <name value="GruppenpraxisCH"/>
+      <description value="Example for EPR-Organization"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization-epr"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Organization-Radiologieinstitut.html"/>
+      </extension>
+      <reference>
+        <reference value="Organization/Radiologieinstitut"/>
+      </reference>
+      <name value="Radiologieinstitut"/>
+      <description value="Example for EPR-Organization"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization-epr"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Organization-SpitalSeeblick.html"/>
+      </extension>
+      <reference>
+        <reference value="Organization/SpitalSeeblick"/>
+      </reference>
+      <name value="SpitalSeeblick"/>
+      <description value="Example for Organization"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Patient-ElisabethBroennimannByBFH.html"/>
+      </extension>
+      <reference>
+        <reference value="Patient/ElisabethBroennimannByBFH"/>
+      </reference>
+      <name value="ElisabethBroennimannByBFH"/>
+      <description value="Example for Patient"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Patient-FranzMuster.html"/>
+      </extension>
+      <reference>
+        <reference value="Patient/FranzMuster"/>
+      </reference>
+      <name value="FranzMuster"/>
+      <description value="Example for Patient"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Patient-MaxMuster.html"/>
+      </extension>
+      <reference>
+        <reference value="Patient/MaxMuster"/>
+      </reference>
+      <name value="MaxMuster"/>
+      <description value="Example for EPR-Patient"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-composition-patient-epr"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Patient-PersonEch011.html"/>
+      </extension>
+      <reference>
+        <reference value="Patient/PersonEch011"/>
+      </reference>
+      <name value="PersonEch011"/>
+      <description value="Example for Patient"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Patient-UpiEprTestKrcmarevic.html"/>
+      </extension>
+      <reference>
+        <reference value="Patient/UpiEprTestKrcmarevic"/>
+      </reference>
+      <name value="UpiEprTestKrcmarevic"/>
+      <description value="Example for Patient"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Practitioner-AgparMarc.html"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/AgparMarc"/>
+      </reference>
+      <name value="AgparMarc"/>
+      <description value="Example for Practitioner"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Practitioner-AllzeitBereit.html"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/AllzeitBereit"/>
+      </reference>
+      <name value="AllzeitBereit"/>
+      <description value="Example for EPR-Practitioner"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner-epr"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Practitioner-HanspeterWengerByBFH.html"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/HanspeterWengerByBFH"/>
+      </reference>
+      <name value="HanspeterWengerByBFH"/>
+      <description value="Example for Practitioner"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Person"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Person-SchreibKraft.html"/>
+      </extension>
+      <reference>
+        <reference value="Person/SchreibKraft"/>
+      </reference>
+      <name value="SchreibKraft"/>
+      <description value="Example for Person"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="PractitionerRole"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="PractitionerRole-HPWengerRole.html"/>
+      </extension>
+      <reference>
+        <reference value="PractitionerRole/HPWengerRole"/>
+      </reference>
+      <name value="HPWengerRole"/>
+      <description value="Example for PractitionerRole"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-bfs-medstats-17-admitsource.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/bfs-medstats-17-admitsource"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 17 1.2.V02 - Aufenthaltsort vor dem Eintritt / S&#xE9;jour avant l&#x2019;admission / Luogo di soggiorno prima dell&#x2019;ammissione"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Unmittelbarer Aufenthaltsort vor dem Eintritt. Wo befand sich BFS der Patient / die Patientin?"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-bfs-medstats-18-admittype.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/bfs-medstats-18-admittype"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 18 1.2.V03 - Eintrittsart / Mode d&#x2019;admission / Genere di ricovero"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Beschreibung der Umsta&#x308;nde des Eintritts. Wie wurde der BFS Patient / die Patientin aufgenommen?"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-bfs-medstats-19-admitrole.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/bfs-medstats-19-admitrole"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 19 1.2.V04 - Einweisende Instanz / D&#xE9;cision d&#x2019;envoi / Istanza ricoverante"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Wer hat die Initiative fu&#x308;r die Klinikeinweisung ergriffen?"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-bfs-medstats-20-encounterclass.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/bfs-medstats-20-encounterclass"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 20 1.3.V01 - Behandlungsart / Type de prise en charge / Genere di trattamento"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Angabe der Behandlungsart"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-bfs-medstats-21-encountertype.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/bfs-medstats-21-encountertype"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 21 1.3.V02 - Klasse / Classe / Classe"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Im Rahmen des Spitalaufenthaltes belegte Liegeklasse, nicht BFS die Versicherungskategorie. Bei Wechsel der Klasse ist die im Wesentlichen beanspruchte Klasse anzugeben."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-bfs-medstats-27-dischargedecision.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/bfs-medstats-27-dischargedecision"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 27 1.5.V02 - Entscheid fu&#x308;r Austritt / D&#xE9;cision de sortie / D&#xE9;cisione dell&#x2019;uscita"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Wer hat den Klinikaustritt veranlasst?"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-bfs-medstats-28-dischargedestination.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/bfs-medstats-28-dischargedestination"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 28 1.5.V03 - Aufenthalt nach Austritt / S&#xE9;jour apre&#x300;s la sortie / Destinazione dopo l&#x2019;uscita"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Wohin wurde der Patient entlassen?"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-bfs-medstats-29-dischargeencounter.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/bfs-medstats-29-dischargeencounter"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 29 1.5.V04 - Behandlung nach Austritt / Prise en charge apre&#x300;s la sortie / Trattamento dopo l&#x2019;uscita"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Behandlung, Pflege, Rehabilitation nach dem Spitalaufenthalt. Es geht darum, den Behandlungserfolg resp. den Abha&#x308;ngigkeitsgrad bei Austritt anzugeben. Nur die am besten zutreffende Kategorie auswa&#x308;hlen."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-ech-10.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/ech-10"/>
+      </reference>
+      <name value="eCH-010 Types"/>
+      <description value="eCH-010 defines different Types for a postal adresse"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-ech-11-maritalstatus.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/ech-11-maritalstatus"/>
+      </reference>
+      <name value="eCH-011 MaritalStatus"/>
+      <description value="eCH-011 defines different maritalStatus Types. See [maritalData - Zivilstandsangaben eCH-11](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html) and/or [BFS Amtlicher Katalog der Merkmale](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-ech-11.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/ech-11"/>
+      </reference>
+      <name value="eCH-011 Types"/>
+      <description value="eCH-011 defines different Types like Names, contactAdress etc. They are further described from the [BFS](https://www.bfs.admin.ch/bfs/de/home/register/personenregister/registerharmonisierung/nomenklaturen.assetdetail.349276.html) in &#39;Amtlicher Katalog der Merkmale&#39; (Official catalogue of characteristics), Copyright BFS, Neucha&#x302;tel 2014, ISBN 978-3-303-00504-0"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-ech-11-religion.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/ech-11-religion"/>
+      </reference>
+      <name value="eCH-011 Religion"/>
+      <description value="eCH-011 defines different religion Types. See https://www.ech.ch/vechweb/page?p=dossier&amp;documentNumber=eCH-0011&amp;documentVersion=8.13.3.5  3.3.4.1 religion, BFS-711"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="CodeSystem-ech-11-sex.html"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/ech-11-sex"/>
+      </reference>
+      <name value="eCH-011 Sex"/>
+      <description value="eCH-011 defines different sex Types. See https://www.ech.ch/vechweb/page?p=dossier&amp;documentNumber=eCH-0011&amp;documentVersion=8.13.3.5  3.3.3.3 sex"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ConceptMap"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ConceptMap-bfs-encounter-class-to-fhir.html"/>
+      </extension>
+      <reference>
+        <reference value="ConceptMap/bfs-encounter-class-to-fhir"/>
+      </reference>
+      <name value="BFS Encounter Class to FHIR mapping"/>
+      <description value="BFS Encounter Class to FHIR mapping"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ConceptMap"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ConceptMap-documententry-confidentialitycode-to-fhir.html"/>
+      </extension>
+      <reference>
+        <reference value="ConceptMap/documententry-confidentialitycode-to-fhir"/>
+      </reference>
+      <name value="DocumentEntry.confidentialityCode to FHIR mapping"/>
+      <description value="DocumentEntry.confidentialityCode to FHIR mapping"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ConceptMap"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ConceptMap-maritalstatus-ech11-to-fhir.html"/>
+      </extension>
+      <reference>
+        <reference value="ConceptMap/maritalstatus-ech11-to-fhir"/>
+      </reference>
+      <name value="MaritalStatus eCH-011 to FHIR mapping"/>
+      <description value="MaritalStatus mapping form eCH-011 to FHIR. See [maritalData - Zivilstandsangaben eCH-11](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html) and/or [BFS Amtlicher Katalog der Merkmale](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ConceptMap"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ConceptMap-religion-ech11-to-fhir.html"/>
+      </extension>
+      <reference>
+        <reference value="ConceptMap/religion-ech11-to-fhir"/>
+      </reference>
+      <name value="Religion eCH-011 to FHIR mapping"/>
+      <description value="Religion eCH-011 to FHIR mapping"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ConceptMap"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ConceptMap-sex-ech11-to-fhir.html"/>
+      </extension>
+      <reference>
+        <reference value="ConceptMap/sex-ech11-to-fhir"/>
+      </reference>
+      <name value="Sex eCH-011 to FHIR mapping"/>
+      <description value="Sex eCH-011 to FHIR mapping"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="NamingSystem-ahvn13-navs13.html"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/ahvn13-navs13"/>
+      </reference>
+      <name value="ahvn13-navs13"/>
+      <description value="The AHVN13 / NAVS13 - (abbreviation for new thirteen-digit Social Security number) - is an administrative identifier for natural persons in Switzerland. It is issued, announced and administered by the [Central Compensation Office](https://www.zas.admin.ch/zas/de/home/partenaires-et-institutions-/navs13.html). It is available to all organisations and communities for which there is a legal basis."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="NamingSystem-ber.html"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/ber"/>
+      </reference>
+      <name value="ber"/>
+      <description value="The Business and Enterprise Register (BER) contains all enterprises and business in private and public law which are domiciled and exercise an economic activity in Switzerland.                       (in French, Registre des entreprises et des &#xE9;tablissements (REE))                       (in German, Betriebs- und Unternehmensregister (BUR))                       (in Italian, Registro delle imprese e degli stabilimenti (RIS))"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="NamingSystem-epr-spid.html"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/epr-spid"/>
+      </reference>
+      <name value="epr-spid"/>
+      <description value="EPR-SPID: The Central Compensation Office (ZAS; CCO) assigns and manages the new patient identification number according to the EPRA (EPR-SPID), which is only linked internally in the CCO with the AHV number. It maintains the UPI identification database (Unique Personal Identifier Database), which the EPR communities may access. The law regulates how the the EPR-SPID can be used. SR 816.111 states (Art. 10 para. 3 EPDV) that communities must ensure that the EPR-SPID number cannot be not stored in document repositories or document registries."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="NamingSystem-gln.html"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/gln"/>
+      </reference>
+      <name value="gln"/>
+      <description value="Each healthcare partner (natural or legal person) is referenced with a unique code of type GLN (former name: EAN code) of the [GS1](https://www.gs1.ch/de/home) system. See [refdata](https://www.refdata.ch/content/partner_d.aspx)"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="NamingSystem-uidb.html"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/uidb"/>
+      </reference>
+      <name value="uidb"/>
+      <description value="Unique IDentification Business (UIDB) number (in French, num&#xE9;ro d&#39;IDentification suisse des Enterprises (IDE)) (in German, Schweizer Unternehmens-IDentifikationsnummer (UID)) (in Italian, numero d&#39;IDentificazione svizzero delle Imprese (IDI))   Organizations Covered By System: All Companies/organizations registered in the public Swiss Registers such as the Swiss Register of Commerce, the Value Added Tax (VAT) register, the Social security agencies Registers, Cantons registers, etc., and publish in the UID Register."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="NamingSystem-zsr.html"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/zsr"/>
+      </reference>
+      <name value="zsr"/>
+      <description value="The ZSR number is issued to self-employed, natural or legal persons (organisations) who can and want to work at the expense of health insurance. See [Sasis](https://www.sasis.ch/de/779)"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-bfs-ms-admitrole.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-bfs-ms-admitrole"/>
+      </reference>
+      <name value="BFS Extension Medical Statistic: Admit Role for Encounter"/>
+      <description value="BFS Extension Admit Role for Encounter"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-bfs-ms-dischargedecision.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-bfs-ms-dischargedecision"/>
+      </reference>
+      <name value="BFS Extension Medical Statistic: Discharge D&#xE9;cision for Encounter"/>
+      <description value="BFS Extension Discharge D&#xE9;cision for Encounter"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-bfs-ms-dischargedestination.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-bfs-ms-dischargedestination"/>
+      </reference>
+      <name value="BFS Extension Medical Statistic: Discharge Destination for Encounter"/>
+      <description value="BFS Extension Discharge Destination for Encounter"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-ech-11-bfsnumber.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-ech-11-bfsnumber"/>
+      </reference>
+      <name value="BFS Number"/>
+      <description value="eCH-0011: Extension to define a BFS Number for a municipality or a country"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-ech-10-line.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-ech-10-line"/>
+      </reference>
+      <name value="Address line"/>
+      <description value="eCH-0010: Extension to define adress lines"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-ech-11-firstname.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-ech-11-firstname"/>
+      </reference>
+      <name value="FirstName"/>
+      <description value="eCH-0011: Extension to define first name type"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-ech-11-name.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-ech-11-name"/>
+      </reference>
+      <name value="Name"/>
+      <description value="eCH-0011: Extension to define first name type"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-epr-confidentialitycode.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-epr-confidentialitycode"/>
+      </reference>
+      <name value="EPR Confidentiality Code"/>
+      <description value="Extension to define the confidentiality code of the document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-epr-dataenterer.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-epr-dataenterer"/>
+      </reference>
+      <name value="EPR Data Enterer"/>
+      <description value="Extension to define the information about the person that entered data and the time of the data input"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-epr-informationrecipient.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-epr-informationrecipient"/>
+      </reference>
+      <name value="EPR Information Recipient"/>
+      <description value="Extension to define the information about the recipient"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-epr-sectionid.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-epr-sectionid"/>
+      </reference>
+      <name value="EPR Section ID"/>
+      <description value="Extension to define the section id"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-epr-setid.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-epr-setid"/>
+      </reference>
+      <name value="EPR Set ID"/>
+      <description value="Extension to define the set id of the document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-epr-time.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-epr-time"/>
+      </reference>
+      <name value="EPR Time"/>
+      <description value="Extension to define the timestamp of the authorship/data input"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-ext-epr-versionnumber.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-ext-epr-versionnumber"/>
+      </reference>
+      <name value="EPR Version Number"/>
+      <description value="Extension to define the version number of the document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-composition-epr.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-composition-epr"/>
+      </reference>
+      <name value="CH Core Composition Profile EPR"/>
+      <description value="Base definition for a composition in the context of the electronic patient record (EPR)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-composition.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-composition"/>
+      </reference>
+      <name value="CH Core Composition Profile"/>
+      <description value="Base definition for a composition with the CH Core profiles."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-coverage.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-coverage"/>
+      </reference>
+      <name value="CH Core Coverage Profile"/>
+      <description value="The Coverage referenced in the CH Core profiles."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-document-epr.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-document-epr"/>
+      </reference>
+      <name value="CH Core Document Profile EPR"/>
+      <description value="Base definition for a document in the context of the electronic patient record (EPR)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-document.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-document"/>
+      </reference>
+      <name value="CH Core Document Profile"/>
+      <description value="Base definition for a document with the CH Core profiles."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-documentreference-epr.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-documentreference-epr"/>
+      </reference>
+      <name value="CH Core DocumentReference Profile EPR"/>
+      <description value="Base definition for a document reference in the context of the electronic patient record (EPR)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-documentreference.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-documentreference"/>
+      </reference>
+      <name value="CH Core DocumentReference Profile"/>
+      <description value="Base definition for a document reference with the CH Core profiles."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-composition-patient-epr.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-composition-patient-epr"/>
+      </reference>
+      <name value="CH Core Composition Patient Profile EPR"/>
+      <description value="Core patient definition in the context of the electronic patient record (EPR).                          It is used to include the patient in an EPR document (referenced in Composition/DocumentReference)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-patient.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-patient"/>
+      </reference>
+      <name value="CH Core Patient Profile"/>
+      <description value="Core patient definition in the swiss context. Relevant are definitions by the eCH-0010 V7.0 data standard mailing address and eCH-0011 V8.1 data standard pesond data and CDA-CH V2 definitions. The CH Core Patient is based upon the core FHIR Patient Resource and designed to meet the applicable patient demographic data elements in Switzerland.  See also [BFS](https://www.bfs.admin.ch/bfs/de/home/register/personenregister/registerharmonisierung/nomenklaturen.html) for further information"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-encounter.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-encounter"/>
+      </reference>
+      <name value="CH Core Encounter Profile"/>
+      <description value="The Encounter referenced in the CH Core profiles."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-humanname.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-humanname"/>
+      </reference>
+      <name value="Human Name"/>
+      <description value="Name with extensions for ech-11"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-location.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-location"/>
+      </reference>
+      <name value="CH Core Location Profile"/>
+      <description value="Defines basic constraints and extensions on the Location resource for use with other CH Core resources"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-organization-epr.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-organization-epr"/>
+      </reference>
+      <name value="CH Core Organization Profile EPR"/>
+      <description value="Core organization definition in the context of the electronic patient record (EPR)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-organization.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-organization"/>
+      </reference>
+      <name value="CH Core Organization Profile"/>
+      <description value="Defines basic constraints and extensions on the Organization resource for use with other CH Core resources"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-address-ech-10.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-address-ech-10"/>
+      </reference>
+      <name value="CH Core Address Profile"/>
+      <description value="Postal address according to eCH-0010"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-address-ech-11-placeoforigin.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-address-ech-11-placeoforigin"/>
+      </reference>
+      <name value="Address for place of Origin"/>
+      <description value="Place of Origin for eCH-0011"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-address-ech-11-placeofbirth.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-address-ech-11-placeofbirth"/>
+      </reference>
+      <name value="Address for place of Birth"/>
+      <description value="PlaceOfBirth for ech-11"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-patient-ech-11-placeofbirth.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-patient-ech-11-placeofbirth"/>
+      </reference>
+      <name value="Birth Place according to eCH-0011"/>
+      <description value="The registered place of birth of the patient. A sytem may use the address.text if they don&#39;t store the birthPlace address in discrete elements."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-patient-ech-11-placeoforigin.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-patient-ech-11-placeoforigin"/>
+      </reference>
+      <name value="Place of Origin according to eCH-0011"/>
+      <description value="The place of origin of the patient. A sytem may use the address.text if they don&#39;t store the birthPlace address in discrete elements."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-patient-religion.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-patient-religion"/>
+      </reference>
+      <name value="Relgion of patient"/>
+      <description value="Religion of patient according to eCH-0011"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-practitioner-epr.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-practitioner-epr"/>
+      </reference>
+      <name value="CH Core Practitioner Profile EPR"/>
+      <description value="Core practitioner definition in the context of the electronic patient record (EPR)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-practitioner.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-practitioner"/>
+      </reference>
+      <name value="CH Core Practitioner Profile"/>
+      <description value="Core practitioner definition in the swiss context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-ch-core-practitionerrole.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-core-practitionerrole"/>
+      </reference>
+      <name value="CH Core Practitioner Role Profile"/>
+      <description value="Core PractitionerRole definition in the swiss context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-bfs-medstats-17-admitsource.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/bfs-medstats-17-admitsource"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 17 1.2.V02 - Aufenthaltsort vor dem Eintritt / S&#xE9;jour avant l&#x2019;admission / Luogo di soggiorno prima dell&#x2019;ammissione"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Unmittelbarer Aufenthaltsort vor dem Eintritt. Wo befand sich BFS der Patient / die Patientin?"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-bfs-medstats-18-admittype.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/bfs-medstats-18-admittype"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 18 1.2.V03 - Eintrittsart / Mode d&#x2019;admission / Genere di ricovero"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Beschreibung der Umsta&#x308;nde des Eintritts. Wie wurde der BFS Patient / die Patientin aufgenommen?"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-bfs-medstats-19-admitrole.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/bfs-medstats-19-admitrole"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 19 1.2.V04 - Einweisende Instanz / D&#xE9;cision d&#x2019;envoi / Istanza ricoverante"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Unmittelbarer Aufenthaltsort vor dem Eintritt. Wo befand sich BFS der Patient / die Patientin?"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-bfs-medstats-20-encounterclass.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/bfs-medstats-20-encounterclass"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 20 1.3.V01 - Behandlungsart / Type de prise en charge / Genere di trattamento"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Angabe der Behandlungsart"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-bfs-medstats-21-encountertype.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/bfs-medstats-21-encountertype"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 21 1.3.V02 - Klasse / Classe / Classe"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Im Rahmen des Spitalaufenthaltes belegte Liegeklasse, nicht BFS die Versicherungskategorie. Bei Wechsel der Klasse ist die im Wesentlichen beanspruchte Klasse anzugeben."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-bfs-medstats-27-dischargedecision.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/bfs-medstats-27-dischargedecision"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 27 1.5.V02 - Entscheid fu&#x308;r Austritt / D&#xE9;cision de sortie / D&#xE9;cisione dell&#x2019;uscita"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Wer hat den Klinikaustritt veranlasst?"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-bfs-medstats-28-dischargedestination.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/bfs-medstats-28-dischargedestination"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 28 1.5.V03 - Aufenthalt nach Austritt / S&#xE9;jour apre&#x300;s la sortie / Destinazione dopo l&#x2019;uscita"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Wohin wurde der Patient entlassen?"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-bfs-medstats-29-dischargeencounter.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/bfs-medstats-29-dischargeencounter"/>
+      </reference>
+      <name value="BFS Medizinische Statistik - 29 1.5.V04 - Behandlung nach Austritt / Prise en charge apre&#x300;s la sortie / Trattamento dopo l&#x2019;uscita"/>
+      <description value="BFS defines variables for medical statistic (german, french, italian) see [BFS](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.7066232.html). Behandlung, Pflege, Rehabilitation nach dem Spitalaufenthalt. Es geht darum, den Behandlungserfolg resp. den Abha&#x308;ngigkeitsgrad bei Austritt anzugeben. Nur die am besten zutreffende Kategorie auswa&#x308;hlen."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-ch-core-maritalstatus.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ch-core-maritalstatus"/>
+      </reference>
+      <name value="ChCoreMaritalStatus"/>
+      <description value="MaritalStatus combined by fhir and eCH-11. See [maritalData - Zivilstandsangaben eCH-11](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html) and/or [BFS Amtlicher Katalog der Merkmale](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-ch-core-religion.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ch-core-religion"/>
+      </reference>
+      <name value="ChCoreReligion"/>
+      <description value="Religion combined by fhir and eCH-11"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-ech-10-line.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ech-10-line"/>
+      </reference>
+      <name value="eCH-010 Address Line"/>
+      <description value="eCH-010 defines different address lines"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-ech-11-firstnamedatatype.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ech-11-firstnamedatatype"/>
+      </reference>
+      <name value="eCH-011 FirstNameDataTypes"/>
+      <description value="eCH-011 defines different nameData Types, this ValueSet is the subset for the firstnames"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-ech-11-namedatatype.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ech-11-namedatatype"/>
+      </reference>
+      <name value="eCH-011 NameDataTypes"/>
+      <description value="eCH-011 defines different nameData Types, this ValueSet is the subset for the family name"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-ech-11-maritalstatus.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ech-11-maritalstatus"/>
+      </reference>
+      <name value="eCH-011 MaritalStatus"/>
+      <description value="eCH-011 defines maritalStaus Types"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-ech-11-religion.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ech-11-religion"/>
+      </reference>
+      <name value="eCH-011 Religion"/>
+      <description value="eCH-011 defines these religion types"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-ech-11-sex.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ech-11-sex"/>
+      </reference>
+      <name value="eCH-011 Sex"/>
+      <description value="eCH-011 defines these sex types"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <page>
+      <nameUrl value="toc.html"/>
+      <title value="Table of Contents"/>
+      <generation value="html"/>
+      <page>
+        <nameUrl value="index.html"/>
+        <title value="Home"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="profiles.html"/>
+        <title value="Profiles"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="extensions.html"/>
+        <title value="Extensions"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="terminology.html"/>
+        <title value="Terminology"/>
+        <generation value="html"/>
+      </page>
+    </page>
+    <parameter>
+      <code value="generate-json"/>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code value="generate-xml"/>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code value="generate-turtle"/>
+      <value value="false"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="input/pages"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/capabilities"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/examples"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/extensions"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/models"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/operations"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/profiles"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/resources"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/vocabulary"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="template/config"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="input/images"/>
+    </parameter>
+    <parameter>
+      <code value="path-tx-cache"/>
+      <value value="input-cache/txcache"/>
+    </parameter>
+  </definition>
+</ImplementationGuide>

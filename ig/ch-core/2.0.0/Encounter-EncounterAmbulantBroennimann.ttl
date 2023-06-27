@@ -1,0 +1,108 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Encounter/EncounterAmbulantBroennimann> a fhir:Encounter;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "EncounterAmbulantBroennimann"];
+  fhir:Resource.meta [
+     fhir:Meta.source [ fhir:value "https://www.ti.bfh.ch/de/bachelor/medizininformatik.html" ];
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>identifier</b>: Visit number: 1234</p><p><b>status</b>: finished</p><p><b>class</b>: <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode AMB}\">ambulatory</span></p><p><b>priority</b>: <span title=\"Codes: {http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-18-admittype 2}\">angemeldet, geplant</span></p><p><b>subject</b>: <a href=\"Patient-ElisabethBroennimannByBFH.html\">Generated Summary: Elisabeth Brönnimann-Bertholet ; Phone: +41 32 321 61 11, elisabeth@broennimann.today; gender: female; birthDate: 1937-05-03; <span title=\"Codes: {http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus 2}, {http://terminology.hl7.org/CodeSystem/v3-MaritalStatus M}\">verheiratet</span></a></p><p><b>period</b>: 22 Apr 2019, 16:00:00 --&gt; 22 Apr 2019, 16:15:00</p><h3>Hospitalizations</h3><table class=\"grid\"><tr><td>-</td><td><b>Extension</b></td><td><b>AdmitSource</b></td><td><b>DischargeDisposition</b></td></tr><tr><td>*</td><td>, , </td><td><span title=\"Codes: {http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-17-admitsource 1}\">Zuhause</span></td><td><span title=\"Codes: {http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-29-dischargeencounter 1}\">geheilt/kein Behandlungsbedarf</span></td></tr></table></div>"
+  ];
+  fhir:Encounter.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0203" ];
+         fhir:Coding.code [ fhir:value "VN" ];
+         fhir:Coding.display [ fhir:value "Visit number" ]
+       ]
+     ];
+     fhir:Identifier.system [ fhir:value "http://www.ti.bfh.ch/example/fallnummerdomain" ];
+     fhir:Identifier.value [ fhir:value "1234" ]
+  ];
+  fhir:Encounter.status [ fhir:value "finished"];
+  fhir:Encounter.class [
+     fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
+     fhir:Coding.code [ fhir:value "AMB" ];
+     fhir:Coding.display [ fhir:value "ambulatory" ]
+  ];
+  fhir:Encounter.priority [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-18-admittype" ];
+       fhir:Coding.code [ fhir:value "2" ];
+       fhir:Coding.display [ fhir:value "angemeldet, geplant" ]
+     ]
+  ];
+  fhir:Encounter.subject [
+     fhir:link <http://fhir.ch/ig/ch-core/Patient/ElisabethBroennimannByBFH>;
+     fhir:Reference.reference [ fhir:value "Patient/ElisabethBroennimannByBFH" ]
+  ];
+  fhir:Encounter.period [
+     fhir:Period.start [ fhir:value "2019-04-22T16:00:00+02:00"^^xsd:dateTime ];
+     fhir:Period.end [ fhir:value "2019-04-22T16:15:00+02:00"^^xsd:dateTime ]
+  ];
+  fhir:Encounter.hospitalization [
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-bfs-ms-admitrole" ];
+       fhir:Extension.valueCoding [
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-19-admitrole" ];
+         fhir:Coding.code [ fhir:value "1" ];
+         fhir:Coding.display [ fhir:value "selbst, Angehörige" ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-bfs-ms-dischargedecision" ];
+       fhir:Extension.valueCoding [
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-27-dischargedecision" ];
+         fhir:Coding.code [ fhir:value "1" ];
+         fhir:Coding.display [ fhir:value "auf Initiative des Behandelnden" ]
+       ]
+     ], [
+       fhir:index 2;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-bfs-ms-dischargedestination" ];
+       fhir:Extension.valueCoding [
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-28-dischargedestination" ];
+         fhir:Coding.code [ fhir:value "1" ];
+         fhir:Coding.display [ fhir:value "Zuhause" ]
+       ]
+     ];
+     fhir:Encounter.hospitalization.admitSource [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-17-admitsource" ];
+         fhir:Coding.code [ fhir:value "1" ];
+         fhir:Coding.display [ fhir:value "Zuhause" ]
+       ]
+     ];
+     fhir:Encounter.hospitalization.dischargeDisposition [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-29-dischargeencounter" ];
+         fhir:Coding.code [ fhir:value "1" ];
+         fhir:Coding.display [ fhir:value "geheilt/kein Behandlungsbedarf" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Encounter/EncounterAmbulantBroennimann.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

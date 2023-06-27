@@ -1,0 +1,52 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/NamingSystem/zsr> a fhir:NamingSystem;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "zsr"]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "additional" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>\n        <b>name</b>: ZSR\n      </p>\n      <p>\n        <b>status</b>: ACTIVE\n      </p>\n      <p>\n        <b>kind</b>: IDENTIFIER\n      </p>\n      <p>\n        <b>date</b>: Dec 5, 2018\n      </p>\n      <p>\n        <b>publisher</b>: HL7 Switzerland on behalf of SASI\n      </p>\n      <p>\n        <b>contact</b>: \n      </p>\n      <p>\n        <b>responsible</b>: SASIS\n      </p>\n      <p>\n        <b>description</b>: The ZSR number is issued to self-employed, natural or legal persons (organisations) who can and want to work at the expense of health insurance. See [Sasis](https://www.sasis.ch/de/779)\n      </p>\n      <p>\n        <b>jurisdiction</b>: Switzerland \n        <span style=\"background: LightGoldenRodYellow\">(Details : {urn:iso:std:iso:3166 code 'CH' = 'Switzerland)</span>\n      </p>\n      <h3>UniqueIds</h3>\n      <table class=\"grid\">\n        <tr>\n          <td>-</td>\n          <td>\n            <b>Type</b>\n          </td>\n          <td>\n            <b>Value</b>\n          </td>\n          <td>\n            <b>Comment</b>\n          </td>\n        </tr>\n        <tr>\n          <td>*</td>\n          <td>OID</td>\n          <td>2.16.756.5.30.1.123.100.2.1.1</td>\n          <td>This is the official identifier</td>\n        </tr>\n      </table>\n    </div>"
+  ]; # 
+  fhir:NamingSystem.name [ fhir:value "ZSR"]; # 
+  fhir:NamingSystem.status [ fhir:value "active"]; # 
+  fhir:NamingSystem.kind [ fhir:value "identifier"]; # 
+  fhir:NamingSystem.date [ fhir:value "2018-12-05"^^xsd:date]; # 
+  fhir:NamingSystem.publisher [ fhir:value "HL7 Switzerland"]; # 
+  fhir:NamingSystem.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "HL7 Switzerland" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "https://www.hl7.ch/" ]
+     ]
+  ]; # 
+  fhir:NamingSystem.responsible [ fhir:value "SASIS"]; # 
+  fhir:NamingSystem.description [ fhir:value "The ZSR number is issued to self-employed, natural or legal persons (organisations) who can and want to work at the expense of health insurance. See [Sasis](https://www.sasis.ch/de/779)"]; # 
+  fhir:NamingSystem.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "CH" ]
+     ]
+  ]; # 
+  fhir:NamingSystem.uniqueId [
+     fhir:index 0;
+     fhir:NamingSystem.uniqueId.type [ fhir:value "oid" ];
+     fhir:NamingSystem.uniqueId.value [ fhir:value "2.16.756.5.30.1.123.100.2.1.1" ];
+     fhir:NamingSystem.uniqueId.comment [ fhir:value "This is the official identifier" ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/NamingSystem/zsr.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

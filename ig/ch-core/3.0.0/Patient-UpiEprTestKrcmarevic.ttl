@@ -1,0 +1,126 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Patient/UpiEprTestKrcmarevic> a fhir:Patient;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "UpiEprTestKrcmarevic"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient>
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "additional" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n            <div>\n                <ul>\n                    <li><b>EPR-SPID</b>: 7560521127080</li>\n                    <li><b>Date of Birth</b>: 20.03.1982</li>\n                    <li><b>First Name</b>: Claude-Hélène Marguerite</li>\n                    <li><b>Official Name</b>: Krcmarevic</li>\n                    <li><b>Original Name</b>: Scheuble</li>\n                    <li><b>Sex</b>: 2 (Needs transformation to HL7 ValueSet, see <a href=\"ConceptMap-sex-ech11-to-fhir.html\">ConceptMap Sex eCH-011 to FHIR mapping</a>)</li>\n                    <li><b>Mother</b></li>\n                        <ul>\n                            <li><b>First Name</b>: Hui Xue</li>\n                            <li><b>Last Name</b>: Dalkiliç</li>\n                        </ul>\n                    <li><b>Father</b></li>\n                        <ul>    \n                            <li><b>First Name</b>: Fabio Nicola</li>\n                            <li><b>Last Name</b>: Dalkiliç</li>\n                        </ul>\n                    <li><b>Nationality</b>: Switzerland (8100)</li>\n                    <li><b>Country of Birth</b>: Switzerland (8100)</li>\n                    <li><b>Place of Birth</b>: Zürich (261)</li>\n                </ul>\n            </div>\n            <div>\n                Base test data for Projectathon from UPI, see <a href=\"https://docs.google.com/spreadsheets/d/1yWPhTI7DDgYDMXPVFGRmdb50c8TuUnQp9fECM3iGTBo/edit#gid=0\">Google Doc for more examples.</a> \n            </div>\n        </div>"
+  ]; # 
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/patient-citizenship" ];
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "code" ];
+       fhir:Extension.valueCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+           fhir:Coding.code [ fhir:value "CH" ];
+           fhir:Coding.display [ fhir:value "Switzerland" ]
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/patient-birthPlace" ];
+     fhir:Extension.valueAddress [
+       fhir:Address.city [
+         fhir:value "Zürich";
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-7-municipalityid" ];
+           fhir:Extension.valueString [ fhir:value "261" ]
+         ]
+       ];
+       fhir:Address.country [
+         fhir:value "Switzerland";
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding" ];
+           fhir:Extension.valueCoding [
+             fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+             fhir:Coding.code [ fhir:value "CH" ]
+           ]
+         ]
+       ]
+     ]
+  ]; # 
+  fhir:Patient.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.30.1.127.3.10.3" ]; #  EPR-SPID 
+     fhir:Identifier.value [ fhir:value "761337611234567897" ]
+  ]; # 
+  fhir:Patient.name [
+     fhir:index 0;
+     fhir:HumanName.use [ fhir:value "official" ];
+     fhir:HumanName.family [ fhir:value "Krcmarevic" ];
+     fhir:HumanName.given [
+       fhir:value "Claude-Hélène Marguerite";
+       fhir:index 0
+     ]
+  ], [
+     fhir:index 1;
+     fhir:HumanName.use [ fhir:value "maiden" ];
+     fhir:HumanName.family [ fhir:value "Scheuble" ]
+  ]; # 
+  fhir:Patient.gender [ fhir:value "female"]; # 
+  fhir:Patient.birthDate [ fhir:value "1982-03-20"^^xsd:date]; # 
+  fhir:Patient.contact [
+     fhir:index 0;
+     fhir:Patient.contact.relationship [
+       fhir:index 0;
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-RoleCode" ];
+         fhir:Coding.code [ fhir:value "MTH" ];
+         fhir:Coding.display [ fhir:value "mother" ]
+       ]
+     ];
+     fhir:Patient.contact.name [
+       fhir:HumanName.family [ fhir:value "Dalkiliç" ];
+       fhir:HumanName.given [
+         fhir:value "Hui Xue";
+         fhir:index 0
+       ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Patient.contact.relationship [
+       fhir:index 0;
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-RoleCode" ];
+         fhir:Coding.code [ fhir:value "FTH" ];
+         fhir:Coding.display [ fhir:value "father" ]
+       ]
+     ];
+     fhir:Patient.contact.name [
+       fhir:HumanName.family [ fhir:value "Dalkiliç" ];
+       fhir:HumanName.given [
+         fhir:value "Fabio Nicola";
+         fhir:index 0
+       ]
+     ]
+  ] . #  http://build.fhir.org/valueset-parent-relationship-codes.html 
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Patient/UpiEprTestKrcmarevic.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
