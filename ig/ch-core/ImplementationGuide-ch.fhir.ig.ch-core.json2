@@ -2,22 +2,30 @@
   "resourceType" : "ImplementationGuide",
   "id" : "ch.fhir.ig.ch-core",
   "text" : {
-    "status" : "additional",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      FHIR implementation guide CH Core\n\n      <hr/>\n      <h2>CH Core</h2>\n      <p>The official URL for this FHIR implementation guide is:</p>\n      <pre>https://fhir.ch/ig/ch-core</pre>\n    </div>"
+    "status" : "extensions",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_Core</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core</pre><div><p>FHIR implementation guide CH Core</p>\n</div></div>"
   },
   "url" : "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core",
-  "version" : "3.0.0",
+  "version" : "4.0.0-ballot",
   "name" : "CH_Core",
   "title" : "CH Core (R4)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2022-12-21",
+  "date" : "2023-06-27",
   "publisher" : "HL7 Switzerland",
   "contact" : [{
     "name" : "HL7 Switzerland",
     "telecom" : [{
       "system" : "url",
       "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
     }]
   }],
   "description" : "FHIR implementation guide CH Core",
@@ -27,46 +35,63 @@
       "code" : "CH"
     }]
   }],
-  "copyright" : "CC-BY-SA-4.0",
+  "copyright" : "CC0-1.0",
   "packageId" : "ch.fhir.ig.ch-core",
-  "license" : "CC-BY-SA-4.0",
+  "license" : "CC0-1.0",
   "fhirVersion" : ["4.0.1"],
   "dependsOn" : [{
-    "id" : "hl7tx",
+    "id" : "hl7ext",
     "extension" : [{
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
+      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"
     }],
-    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
-    "packageId" : "hl7.terminology.r4",
-    "version" : "5.0.0"
+    "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+    "packageId" : "hl7.fhir.uv.extensions.r4",
+    "version" : "1.0.0"
   },
   {
-    "id" : "cheprterm",
+    "id" : "ch_fhir_ig_ch_epr_term",
     "uri" : "http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term",
     "packageId" : "ch.fhir.ig.ch-epr-term",
-    "version" : "2.0.x"
+    "version" : "2.0.9"
+  },
+  {
+    "id" : "hl7_terminology",
+    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
+    "packageId" : "hl7.terminology",
+    "version" : "5.1.0"
   }],
   "definition" : {
     "extension" : [{
       "extension" : [{
         "url" : "code",
-        "valueString" : "releaselabel"
+        "valueString" : "copyrightyear"
       },
       {
         "url" : "value",
-        "valueString" : "STU3"
+        "valueString" : "2020+"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "copyrightyear"
+        "valueString" : "releaselabel"
       },
       {
         "url" : "value",
-        "valueString" : "2020+"
+        "valueString" : "ballot"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "excludettl"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -89,6 +114,17 @@
       {
         "url" : "value",
         "valueString" : "urn:oid:2.16.756.5.30.1.127.3.10.10"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "allow-extensible-warnings"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -335,20 +371,13 @@
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
     {
-      "extension" : [{
-        "url" : "code",
-        "valueString" : "releaselabel"
-      },
-      {
-        "url" : "value",
-        "valueString" : "STU3"
-      }],
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
+      "valueCode" : "hl7.fhir.uv.tools#current"
     },
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "copyrightyear"
+        "valueCode" : "copyrightyear"
       },
       {
         "url" : "value",
@@ -359,7 +388,29 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "special-url"
+        "valueCode" : "releaselabel"
+      },
+      {
+        "url" : "value",
+        "valueString" : "ballot"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "excludettl"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
       },
       {
         "url" : "value",
@@ -370,7 +421,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "special-url"
+        "valueCode" : "special-url"
       },
       {
         "url" : "value",
@@ -381,7 +432,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "autoload-resources"
+        "valueCode" : "allow-extensible-warnings"
       },
       {
         "url" : "value",
@@ -392,7 +443,18 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-liquid"
+        "valueCode" : "autoload-resources"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-liquid"
       },
       {
         "url" : "value",
@@ -403,7 +465,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-liquid"
+        "valueCode" : "path-liquid"
       },
       {
         "url" : "value",
@@ -414,7 +476,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-qa"
+        "valueCode" : "path-qa"
       },
       {
         "url" : "value",
@@ -425,7 +487,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-temp"
+        "valueCode" : "path-temp"
       },
       {
         "url" : "value",
@@ -436,7 +498,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-output"
+        "valueCode" : "path-output"
       },
       {
         "url" : "value",
@@ -447,7 +509,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-suppressed-warnings"
+        "valueCode" : "path-suppressed-warnings"
       },
       {
         "url" : "value",
@@ -458,7 +520,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-history"
+        "valueCode" : "path-history"
       },
       {
         "url" : "value",
@@ -469,7 +531,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "template-html"
+        "valueCode" : "template-html"
       },
       {
         "url" : "value",
@@ -480,7 +542,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "template-md"
+        "valueCode" : "template-md"
       },
       {
         "url" : "value",
@@ -491,7 +553,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-contact"
+        "valueCode" : "apply-contact"
       },
       {
         "url" : "value",
@@ -502,7 +564,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-context"
+        "valueCode" : "apply-context"
       },
       {
         "url" : "value",
@@ -513,7 +575,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-copyright"
+        "valueCode" : "apply-copyright"
       },
       {
         "url" : "value",
@@ -524,7 +586,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-jurisdiction"
+        "valueCode" : "apply-jurisdiction"
       },
       {
         "url" : "value",
@@ -535,7 +597,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-license"
+        "valueCode" : "apply-license"
       },
       {
         "url" : "value",
@@ -546,7 +608,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-publisher"
+        "valueCode" : "apply-publisher"
       },
       {
         "url" : "value",
@@ -557,7 +619,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-version"
+        "valueCode" : "apply-version"
       },
       {
         "url" : "value",
@@ -568,7 +630,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "active-tables"
+        "valueCode" : "active-tables"
       },
       {
         "url" : "value",
@@ -579,7 +641,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "fmm-definition"
+        "valueCode" : "fmm-definition"
       },
       {
         "url" : "value",
@@ -590,7 +652,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "propagate-status"
+        "valueCode" : "propagate-status"
       },
       {
         "url" : "value",
@@ -601,7 +663,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "excludelogbinaryformat"
+        "valueCode" : "excludelogbinaryformat"
       },
       {
         "url" : "value",
@@ -612,256 +674,49 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "tabbed-snapshots"
+        "valueCode" : "tabbed-snapshots"
       },
       {
         "url" : "value",
         "valueString" : "true"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-    }],
-    "grouping" : [{
-      "name" : "CH:Core"
     }],
     "resource" : [{
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Bundle"
+        "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
-        "reference" : "Bundle/CdaContainingOriginalRepresentationAsPdfA"
+        "reference" : "StructureDefinition/ch-core-address-ech-11-placeofbirth"
       },
-      "name" : "Transfer note for radiological diagnostics",
-      "description" : "Document EPR containing original representation as PDF-A (fullUrls of entries with 'urn:uuid:')",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-document-epr"
+      "name" : "Address for Place of Birth",
+      "description" : "PlaceOfBirth for ech-11",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Bundle"
+        "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
-        "reference" : "Bundle/1-ZuweisungZurRadiologischenDiagnostik-FHIR"
+        "reference" : "StructureDefinition/ch-core-address-ech-11-placeoforigin"
       },
-      "name" : "Zuweisung zur radiologischen Diagnostik",
-      "description" : "Document EPR (fullUrls of entries with 'http')",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-document-epr"
+      "name" : "Address for Place of Origin",
+      "description" : "Place of Origin for eCH-0011",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
+        "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "Composition/ZuweisungZurRadiologischenDiagnostik"
+        "reference" : "StructureDefinition/ch-ext-ech-10-linetype"
       },
-      "name" : "Zuweisung zur radiologischen Diagnostik",
-      "description" : "Composition EPR with the information about the transfer in different sections",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-composition-epr"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Consent"
-      }],
-      "reference" : {
-        "reference" : "Consent/PatientHasEpr"
-      },
-      "name" : "Consent for Swiss EPR",
-      "description" : "Consent that Patient has a Swiss EPR",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-epr-consent"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Consent"
-      }],
-      "reference" : {
-        "reference" : "Consent/EncounterExcludedForEpr"
-      },
-      "name" : "Consent for Swiss EPR with Encounter exclusions",
-      "description" : "Consent that Patient has a Swiss EPR but exclude it for a specific Encounter",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-epr-consent"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Coverage"
-      }],
-      "reference" : {
-        "reference" : "Coverage/CoverageBroennimann"
-      },
-      "name" : "Coverage Broennimann",
-      "description" : "Coverage with Mrs. Broenimann as beneficiary and the health insurance Sanitas as issuer of the policy (represented as contained resource)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-coverage"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "DocumentReference"
-      }],
-      "reference" : {
-        "reference" : "DocumentReference/Docu"
-      },
-      "name" : "DocumentReference to a PDF",
-      "description" : "DocumentReference with metadata about the document and the referenced document (PDF) as Base64 attachment",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-documentreference"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Encounter"
-      }],
-      "reference" : {
-        "reference" : "Encounter/EncounterAmbulantBroennimann"
-      },
-      "name" : "Encounter Ambulant Broennimann",
-      "description" : "Ambulant Encounter of Mrs. Broennimann, representing the visit number (Fallnummer) and the BFS variables",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Encounter"
-      }],
-      "reference" : {
-        "reference" : "Encounter/EncounterAccidentBroennimann"
-      },
-      "name" : "Encounter Accident Broennimann",
-      "description" : "Inpatient Encounter of Mrs. Broennimann which is flagged as an accident",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Organization"
-      }],
-      "reference" : {
-        "reference" : "Organization/GruppenpraxisCH"
-      },
-      "name" : "Gruppenpraxis CH",
-      "description" : "Organization EPR with GLN, different contact details (e.g. phone, email) and address",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization-epr"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Organization"
-      }],
-      "reference" : {
-        "reference" : "Organization/Radiologieinstitut"
-      },
-      "name" : "Radiologieinstitut",
-      "description" : "Organization EPR with specified healthcare facility type (Diagnostic institution)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization-epr"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Organization"
-      }],
-      "reference" : {
-        "reference" : "Organization/SpitalSeeblick"
-      },
-      "name" : "Spital Seeblick",
-      "description" : "Organization with specified healthcare facility type (Hospital)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Organization"
-      }],
-      "reference" : {
-        "reference" : "Organization/PhysiotherapieCH"
-      },
-      "name" : "Physiotherapie CH",
-      "description" : "Organization with GLN ending on 0",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
-      }],
-      "reference" : {
-        "reference" : "Patient/ElisabethBroennimannByBFH"
-      },
-      "name" : "Elisabeth Broennimann by BFH",
-      "description" : "Patient with contact details, marital status (eCH & FHIR) and reference to the general practitioner (GP)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
-      }],
-      "reference" : {
-        "reference" : "Patient/FranzMuster"
-      },
-      "name" : "Franz Muster",
-      "description" : "Patient with place of birth, place of origin (Heimatort), religion, local PID and language of correspondence",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
-      }],
-      "reference" : {
-        "reference" : "Patient/MaxMuster"
-      },
-      "name" : "Max Muster",
-      "description" : "Patient EPR with eCH-011 family & and given name and reference to the organization that is the custodian of the patient record",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-epr"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
-      }],
-      "reference" : {
-        "reference" : "Patient/MarvinMuster"
-      },
-      "name" : "Marvin Muster",
-      "description" : "Patient with AHVN13/NAVS13 as identifier",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
-      }],
-      "reference" : {
-        "reference" : "Patient/ManuelaMuster"
-      },
-      "name" : "Manuela Muster",
-      "description" : "Patient with EPR-SPID ending on 0",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
-      }],
-      "reference" : {
-        "reference" : "Patient/PersonEch011"
-      },
-      "name" : "Person eCH-011",
-      "description" : "Patient eCH-011 with names, marital status and separation type, delivery address if it is not the address of the patient (detailed explanation in narrative)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
-      }],
-      "reference" : {
-        "reference" : "Patient/UpiEprTestKrcmarevic"
-      },
-      "name" : "UPI EPR Test Krcmarevic",
-      "description" : "Test Patient from UPI for Swiss EPR Projectathon",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+      "name" : "Address Line Type",
+      "description" : "eCH-0010: Extension to define line types for addresses",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
@@ -878,62 +733,386 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ahvn13"
+      },
+      "name" : "AHVN13 / NAVS13",
+      "description" : "The AHVN13 / NAVS13 - (abbreviation for new thirteen-digit Social Security number) - is an administrative identifier for natural persons in Switzerland. It is issued, announced and administered by the [Central Compensation Office](https://www.zas.admin.ch/zas/de/home/partenaires-et-institutions-/navs13.html). It is available to all organisations and communities for which there is a legal basis. The AHVN13 / NAVS13 shall not contain point characters for separation.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-ahvn13-identifier"
+      },
+      "name" : "AHVN13 / NAVS13 Identifier",
+      "description" : "Identifier holding a 13 digit social security number. The number shall have exactly 13 digits and shall not contain point characters for separation.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Practitioner"
       }],
       "reference" : {
         "reference" : "Practitioner/AllzeitBereit"
       },
       "name" : "Allzeit Bereit",
-      "description" : "Practitioner EPR with name with prefixes (salutation, academic title, legal status) and suffix ('Facharzt für Allgemeine Medizin')",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner-epr"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Practitioner"
-      }],
-      "reference" : {
-        "reference" : "Practitioner/HanspeterWengerByBFH"
-      },
-      "name" : "Hanspeter Wenger by BFH",
-      "description" : "Practitioner with GLN and ZSR, name with prefixes, gender and birth date",
+      "description" : "Practitioner EPR with name with prefixes (salutation, academic title, legal status) and suffix (‘Facharzt für Allgemeine Medizin’)",
       "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Practitioner"
+        "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "Practitioner/SchreibKraft"
+        "reference" : "StructureDefinition/ch-ext-author"
       },
-      "name" : "Schreib Kraft",
-      "description" : "Practitioner (physician assistants) with local identifier (neither GLN nor ZSR)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"
+      "name" : "Author of the content",
+      "description" : "Extension to reference the person (and her/his organization) who is responsible for the content \n    (e.g. an author of an eMedication document or a recorder of an immunization). \n    This extension is used to differentiate on entry level between the author of the content (represented with this extension) and \n    the author of the medical decision or the performer of an event (represented e.g. with Resource.performer/informationSource).",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "PractitionerRole"
+        "valueString" : "NamingSystem"
       }],
       "reference" : {
-        "reference" : "PractitionerRole/SchreibKraft"
+        "reference" : "NamingSystem/ber"
       },
-      "name" : "Schreib Kraft @ Gruppenpraxis CH",
-      "description" : "PractitionerRole with referenced practitioner and organization",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"
+      "name" : "BER",
+      "description" : "The Business and Enterprise Register (BER) contains all enterprises and business in private and public law which are domiciled and exercise an economic activity in Switzerland.                       French: (REE) Registre des entreprises et des établissements.                        German: (BUR) Betriebs- und Unternehmensregister,                       Italian: (RIS) Registro delle imprese e degli stabilimenti.",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "PractitionerRole"
+        "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "PractitionerRole/HPWengerRole"
+        "reference" : "StructureDefinition/ch-ext-bfs-ms-admitrole"
       },
-      "name" : "Hanspeter Wenger @ Spital Seeblick",
-      "description" : "PractitionerRole EPR with profession (role) and specialisation",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole-epr"
+      "name" : "BFS Extension Medical Statistic: Admit Role for Encounter",
+      "description" : "BFS Extension Admit Role for Encounter",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-ext-bfs-ms-dischargedestination"
+      },
+      "name" : "BFS Extension Medical Statistic: Discharge Destination for Encounter",
+      "description" : "BFS Extension Discharge Destination for Encounter",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-ext-bfs-ms-dischargedecision"
+      },
+      "name" : "BFS Extension Medical Statistic: Discharge Décision for Encounter",
+      "description" : "BFS Extension Discharge Décision for Encounter",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-address"
+      },
+      "name" : "CH Core Address",
+      "description" : "address incorporating eCH-0010 postal address extensions",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-composition"
+      },
+      "name" : "CH Core Composition",
+      "description" : "Base definition for a composition with the CH Core profiles.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-composition-epr"
+      },
+      "name" : "CH Core Composition EPR",
+      "description" : "Base definition for a composition in the context of the electronic patient record (EPR).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-contactpoint-ech-46-email"
+      },
+      "name" : "CH Core ContactPoint eCH-0046 Email",
+      "description" : "E-mail address as contact point of a person or organization according to eCH-0046",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-contactpoint-ech-46-internet"
+      },
+      "name" : "CH Core ContactPoint eCH-0046 Internet",
+      "description" : "Internet address as contact point of a person or organization according to eCH-0046",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-contactpoint-ech-46-phone"
+      },
+      "name" : "CH Core ContactPoint eCH-0046 Phone",
+      "description" : "Phone number as contact point of a person or organization according to eCH-0046",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-coverage"
+      },
+      "name" : "CH Core Coverage",
+      "description" : "The Coverage referenced in the CH Core profiles.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-document"
+      },
+      "name" : "CH Core Document",
+      "description" : "Base definition for a document with the CH Core profiles.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-document-epr"
+      },
+      "name" : "CH Core Document EPR",
+      "description" : "Base definition for a document in the context of the electronic patient record (EPR).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-documentreference"
+      },
+      "name" : "CH Core DocumentReference",
+      "description" : "Base definition for a document reference with the CH Core profiles.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-documentreference-epr"
+      },
+      "name" : "CH Core DocumentReference EPR",
+      "description" : "Base definition for a document reference in the context of the electronic patient record (EPR).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-encounter"
+      },
+      "name" : "CH Core Encounter",
+      "description" : "The Encounter referenced in the CH Core profiles.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-epr-consent"
+      },
+      "name" : "CH Core EPR-Consent",
+      "description" : "Base profile for a consent profile to document that a patient has an Electronic Patient Record (EPR) in Switzerland. The actual consent conditions are held within the EPR, this consent is the documentation in an organization that the patient has stated he has an EPR and this needs to be verified at the time of document publishing or reading. In addition a patient can request that specific information will not be published from the organization to the EPR. This can be documented with one or more references to encounters to exclude the consent for these.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-location"
+      },
+      "name" : "CH Core Location",
+      "description" : "Defines basic constraints and extensions on the Location resource for use with other CH Core resources",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-organization"
+      },
+      "name" : "CH Core Organization",
+      "description" : "Defines basic constraints and extensions on the Organization resource for use with other CH Core resources",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-organization-epr"
+      },
+      "name" : "CH Core Organization EPR",
+      "description" : "Core organization definition in the context of the electronic patient record (EPR).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-patient"
+      },
+      "name" : "CH Core Patient",
+      "description" : "Core patient definition in the swiss context. Relevant are definitions by the eCH-0010 V7.0 data standard mailing address and eCH-0011 V8.1 data standard pesond data.\nThe CH Core Patient is based upon the core FHIR Patient Resource and designed to meet the applicable patient demographic data elements in Switzerland. \nSee also [BFS](https://www.bfs.admin.ch/bfs/de/home/register/personenregister/registerharmonisierung/nomenklaturen.html) for further information",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-patient-epr"
+      },
+      "name" : "CH Core Patient EPR",
+      "description" : "Core patient definition in the context of the electronic patient record (EPR). \n                        It is used to include the patient in an EPR document (referenced in Composition/DocumentReference).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-address-ech-10"
+      },
+      "name" : "CH Core Postal Address",
+      "description" : "Postal address according to eCH-0010",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-practitioner"
+      },
+      "name" : "CH Core Practitioner",
+      "description" : "Core practitioner definition in the swiss context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-practitioner-epr"
+      },
+      "name" : "CH Core Practitioner EPR",
+      "description" : "Core practitioner definition in the context of the electronic patient record (EPR).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-practitionerrole"
+      },
+      "name" : "CH Core PractitionerRole",
+      "description" : "Core PractitionerRole definition in the swiss context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-practitionerrole-epr"
+      },
+      "name" : "CH Core PractitionerRole EPR",
+      "description" : "Core PractitionerRole definition in the swiss context of the electronic patient record (EPR).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-core-forum-datenaustausch-tariff"
+      },
+      "name" : "ch-core-forum-datenaustausch-tariff",
+      "description" : "Identification for Forum Datenaustausch tariff types. \n\nThe detailed tariff list is avaible at this [url](https://www.forum-datenaustausch.ch/de/referenzdaten/)\n\nNaming Convention for fore each tariff type is:\n\nhttp://forum-datenaustausch.ch/tariff/[A-Z0-9]{3}",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
@@ -1040,31 +1219,7 @@
         "reference" : "CodeSystem/ech-10"
       },
       "name" : "eCH-010 Types",
-      "description" : "eCH-010 defines different Types for a postal adresse",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CodeSystem"
-      }],
-      "reference" : {
-        "reference" : "CodeSystem/ech-11-maritalstatus"
-      },
-      "name" : "eCH-011 MaritalStatus",
-      "description" : "eCH-011 defines different maritalStatus Types. See [maritalData - Zivilstandsangaben eCH-11](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html) and/or [BFS Amtlicher Katalog der Merkmale](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html).",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CodeSystem"
-      }],
-      "reference" : {
-        "reference" : "CodeSystem/ech-11-maritaldata-separation"
-      },
-      "name" : "eCH-011 MaritalData Separation",
-      "description" : "eCH-011 defines different maritalData separation zypes. See [maritalData - Zivilstandsangaben eCH-11](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html) and/or [BFS Amtlicher Katalog der Merkmale](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html).",
+      "description" : "eCH-010 defines different Types for a postal address",
       "exampleBoolean" : false
     },
     {
@@ -1085,10 +1240,70 @@
         "valueString" : "CodeSystem"
       }],
       "reference" : {
+        "reference" : "CodeSystem/ech-11-maritaldata-separation"
+      },
+      "name" : "eCH-011 MaritalData Separation",
+      "description" : "eCH-011 defines different maritalData separation zypes. See [maritalData - Zivilstandsangaben eCH-11](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html) and/or [BFS Amtlicher Katalog der Merkmale](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/ech-11-maritalstatus"
+      },
+      "name" : "eCH-011 MaritalStatus",
+      "description" : "eCH-011 defines different maritalStatus Types. See [maritalData - Zivilstandsangaben eCH-11](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html) and/or [BFS Amtlicher Katalog der Merkmale](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/publikationen.assetdetail.349276.html).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
         "reference" : "CodeSystem/ech-11-sex"
       },
       "name" : "eCH-011 Sex",
       "description" : "eCH-011 defines different sex Types. See https://www.ech.ch/vechweb/page?p=dossier&documentNumber=eCH-0011&documentVersion=8.13.3.5  3.3.3.3 sex",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/ech-46-emailcategory"
+      },
+      "name" : "eCH-0046 Email Category",
+      "description" : "eCH-0046 defines different types for e-mail categories. See https://www.ech.ch/de/ech/ech-0046/5.0 4.3.1 emailCategory",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/ech-46-internetcategory"
+      },
+      "name" : "eCH-0046 Internet Category",
+      "description" : "eCH-0046 defines different types for internet categories. See https://www.ech.ch/de/ech/ech-0046/5.0 4.5.1 internetCategory",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/ech-46-phonecategory"
+      },
+      "name" : "eCH-0046 Phone Category",
+      "description" : "eCH-0046 defines different types for phone categories. See https://www.ech.ch/de/ech/ech-0046/5.0 4.4.1 phoneNumberCategory",
       "exampleBoolean" : false
     },
     {
@@ -1121,6 +1336,42 @@
         "valueString" : "ConceptMap"
       }],
       "reference" : {
+        "reference" : "ConceptMap/ech-46-emailcategory-to-fhir"
+      },
+      "name" : "eCH-0046 Email Category to FHIR Mapping",
+      "description" : "ConceptMap to show the mapping from eCH-0046 e-mail category to FHIR",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ConceptMap"
+      }],
+      "reference" : {
+        "reference" : "ConceptMap/ech-46-internetcategory-to-fhir"
+      },
+      "name" : "eCH-0046 Internet Category to FHIR Mapping",
+      "description" : "ConceptMap to show the mapping from eCH-0046 internet category to FHIR",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ConceptMap"
+      }],
+      "reference" : {
+        "reference" : "ConceptMap/ech-46-phonecategory-to-fhir"
+      },
+      "name" : "eCH-0046 Phone Category to FHIR Mapping",
+      "description" : "ConceptMap to show the mapping from eCH-0046 phone category to FHIR",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ConceptMap"
+      }],
+      "reference" : {
         "reference" : "ConceptMap/maritalstatus-ech11-to-fhir"
       },
       "name" : "MaritalStatus eCH-011 to FHIR mapping",
@@ -1142,122 +1393,50 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "NamingSystem"
+        "valueString" : "Consent"
       }],
       "reference" : {
-        "reference" : "NamingSystem/ahvn13"
+        "reference" : "Consent/PatientHasEpr"
       },
-      "name" : "AHVN13 / NAVS13",
-      "description" : "The AHVN13 / NAVS13 - (abbreviation for new thirteen-digit Social Security number) - is an administrative identifier for natural persons in Switzerland. It is issued, announced and administered by the [Central Compensation Office](https://www.zas.admin.ch/zas/de/home/partenaires-et-institutions-/navs13.html). It is available to all organisations and communities for which there is a legal basis. The AHVN13 / NAVS13 shall not contain point characters for separation.",
-      "exampleBoolean" : false
+      "name" : "Consent for Swiss EPR",
+      "description" : "Consent that Patient has a Swiss EPR",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-epr-consent"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "NamingSystem"
+        "valueString" : "Consent"
       }],
       "reference" : {
-        "reference" : "NamingSystem/ber"
+        "reference" : "Consent/EncounterExcludedForEpr"
       },
-      "name" : "BER",
-      "description" : "The Business and Enterprise Register (BER) contains all enterprises and business in private and public law which are domiciled and exercise an economic activity in Switzerland.                       (in French, Registre des entreprises et des établissements (REE))                       (in German, Betriebs- und Unternehmensregister (BUR))                       (in Italian, Registro delle imprese e degli stabilimenti (RIS))",
-      "exampleBoolean" : false
+      "name" : "Consent for Swiss EPR with Encounter exclusions",
+      "description" : "Consent that Patient has a Swiss EPR but exclude it for a specific Encounter",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-epr-consent"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "NamingSystem"
+        "valueString" : "Coverage"
       }],
       "reference" : {
-        "reference" : "NamingSystem/epr-spid"
+        "reference" : "Coverage/CoverageBroennimann"
       },
-      "name" : "EPR-SPID",
-      "description" : "EPR-SPID: The Central Compensation Office (ZAS; CCO) assigns and manages the new patient identification number according to the EPRA (EPR-SPID), which is only linked internally in the CCO with the AHV number. It maintains the UPI identification database (Unique Personal Identifier Database), which the EPR communities may access. The law regulates how the the EPR-SPID can be used. SR 816.111 states (Art. 10 para. 3 EPDV) that communities must ensure that the EPR-SPID number cannot be not stored in document repositories or document registries.",
-      "exampleBoolean" : false
+      "name" : "Coverage Broennimann",
+      "description" : "Coverage with Mrs. Broenimann as beneficiary and the health insurance Sanitas as issuer of the policy (represented as contained resource)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-coverage"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "NamingSystem"
+        "valueString" : "DocumentReference"
       }],
       "reference" : {
-        "reference" : "NamingSystem/gln"
+        "reference" : "DocumentReference/Docu"
       },
-      "name" : "GLN",
-      "description" : "Each healthcare partner (natural or legal person) is referenced with a unique code of type GLN (former name: EAN code) of the [GS1](https://www.gs1.ch/de/home) system. See [refdata](https://www.refdata.ch/content/partner_d.aspx)",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "NamingSystem"
-      }],
-      "reference" : {
-        "reference" : "NamingSystem/uidb"
-      },
-      "name" : "UIDB",
-      "description" : "Unique IDentification Business (UIDB) number (in French, numéro d'IDentification suisse des Enterprises (IDE)) (in German, Schweizer Unternehmens-IDentifikationsnummer (UID)) (in Italian, numero d'IDentificazione svizzero delle Imprese (IDI))   Organizations Covered By System: All Companies/organizations registered in the public Swiss Registers such as the Swiss Register of Commerce, the Value Added Tax (VAT) register, the Social security agencies Registers, Cantons registers, etc., and publish in the UID Register.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "NamingSystem"
-      }],
-      "reference" : {
-        "reference" : "NamingSystem/zsr"
-      },
-      "name" : "ZSR",
-      "description" : "The ZSR number is issued to self-employed, natural or legal persons (organisations) who can and want to work at the expense of health insurance. See [Sasis](https://www.sasis.ch/de/779)",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-ext-accident"
-      },
-      "name" : "If an encounter is caused by an accident",
-      "description" : "Extension to define an encounter that is caused by an accident and at which time the accident happened",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-ext-bfs-ms-admitrole"
-      },
-      "name" : "BFS Extension Medical Statistic: Admit Role for Encounter",
-      "description" : "BFS Extension Admit Role for Encounter",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-ext-bfs-ms-dischargedecision"
-      },
-      "name" : "BFS Extension Medical Statistic: Discharge Décision for Encounter",
-      "description" : "BFS Extension Discharge Décision for Encounter",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-ext-bfs-ms-dischargedestination"
-      },
-      "name" : "BFS Extension Medical Statistic: Discharge Destination for Encounter",
-      "description" : "BFS Extension Discharge Destination for Encounter",
-      "exampleBoolean" : false
+      "name" : "DocumentReference to a PDF",
+      "description" : "DocumentReference with metadata about the document and the referenced document (PDF) as Base64 attachment",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-documentreference"
     },
     {
       "extension" : [{
@@ -1277,10 +1456,10 @@
         "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-ext-ech-10-linetype"
+        "reference" : "StructureDefinition/ch-ext-ech-46-emailcategory"
       },
-      "name" : "Address Line Type",
-      "description" : "eCH-0010: Extension to define line types for addresses",
+      "name" : "eCH-0046 Email Category",
+      "description" : "Extension to define the e-mail category according to eCH-0046",
       "exampleBoolean" : false
     },
     {
@@ -1289,10 +1468,10 @@
         "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-ext-ech-11-firstname"
+        "reference" : "StructureDefinition/ch-ext-ech-46-internetcategory"
       },
-      "name" : "First Name",
-      "description" : "eCH-0011: Extension to define first name type",
+      "name" : "eCH-0046 Internet Category",
+      "description" : "Extension to define the internet category according to eCH-0046",
       "exampleBoolean" : false
     },
     {
@@ -1301,23 +1480,47 @@
         "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-ext-ech-11-name"
+        "reference" : "StructureDefinition/ch-ext-ech-46-phonecategory"
       },
-      "name" : "Name",
-      "description" : "eCH-0011: Extension to define name type",
+      "name" : "eCH-0046 Phone Category",
+      "description" : "Extension to define the phone category according to eCH-0046",
       "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "Patient"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-ext-ech-11-maritaldata-separation"
+        "reference" : "Patient/ElisabethBroennimannByBFH"
       },
-      "name" : "Marital Data - Separation Type",
-      "description" : "eCH-0011: Extension to define the separation type. For married but separated persons and for persons in a registered partnership but living separately.",
-      "exampleBoolean" : false
+      "name" : "Elisabeth Broennimann by BFH",
+      "description" : "Patient with insurance card number as identifier, contact details, marital status (eCH & FHIR) and reference to the general practitioner (GP)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Encounter"
+      }],
+      "reference" : {
+        "reference" : "Encounter/EncounterAccidentBroennimann"
+      },
+      "name" : "Encounter Accident Broennimann",
+      "description" : "Inpatient Encounter of Mrs. Broennimann which is flagged as an accident",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Encounter"
+      }],
+      "reference" : {
+        "reference" : "Encounter/EncounterAmbulantBroennimann"
+      },
+      "name" : "Encounter Ambulant Broennimann",
+      "description" : "Ambulant Encounter of Mrs. Broennimann, representing the visit number (Fallnummer) and the BFS variables",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter"
     },
     {
       "extension" : [{
@@ -1352,7 +1555,7 @@
         "reference" : "StructureDefinition/ch-ext-epr-dataenterer"
       },
       "name" : "EPR Data Enterer",
-      "description" : "Extension to define the information about the person and organisation that entered data and the time of the data input, equivalent to the dataEnterer from a CDA document",
+      "description" : "Extension to define the information about the person and organisation that entered data and the time of the data input",
       "exampleBoolean" : false
     },
     {
@@ -1364,19 +1567,7 @@
         "reference" : "StructureDefinition/ch-ext-epr-informationrecipient"
       },
       "name" : "EPR Information Recipient",
-      "description" : "Extension for a recipient of this document (corresponds to the addressee of a letter - person or organization), equivalent to CDA informationRecipient",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-ext-epr-sectionid"
-      },
-      "name" : "EPR Section ID",
-      "description" : "Extension to define a section identifier. A CDA section has an optional identifier. With this extension the CDA section identifier can be added to the section of the FHIR composition.",
+      "description" : "Extension for a recipient of this document (corresponds to the addressee of a letter - person or organization)",
       "exampleBoolean" : false
     },
     {
@@ -1388,259 +1579,19 @@
         "reference" : "StructureDefinition/ch-ext-epr-time"
       },
       "name" : "EPR Time",
-      "description" : "CDA documents have the ability to add additional timestamps for the author or other elements. This extensions allows to add CDA timestamps to the respective FHIR elements.",
+      "description" : "Additional timestamp for the author or other elements.",
       "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "NamingSystem"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-ext-epr-versionnumber"
+        "reference" : "NamingSystem/epr-spid"
       },
-      "name" : "EPR Version Number",
-      "description" : "A CDA document can have a versionNumber element. This element MUST contain the value 1 for the very first version of that document. For later versions, the version number MUST be increased by 1 each. With this extension the versionNumber can be specified for a FHIR Composition",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-ext-author"
-      },
-      "name" : "Author of the content",
-      "description" : "Extension to reference the person (and her/his organization) who is responsible for the content      (e.g. an author of an eMedication document or a recorder of an immunization).      This extension is used to differentiate on entry level between the author of the content (represented with this extension) and      the author of the medical decision or the performer of an event (represented e.g. with Resource.performer/informationSource).",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-composition-epr"
-      },
-      "name" : "CH Core Composition EPR",
-      "description" : "Base definition for a composition in the context of the electronic patient record (EPR).",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-composition"
-      },
-      "name" : "CH Core Composition",
-      "description" : "Base definition for a composition with the CH Core profiles.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-coverage"
-      },
-      "name" : "CH Core Coverage",
-      "description" : "The Coverage referenced in the CH Core profiles.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-document-epr"
-      },
-      "name" : "CH Core Document EPR",
-      "description" : "Base definition for a document in the context of the electronic patient record (EPR).",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-document"
-      },
-      "name" : "CH Core Document",
-      "description" : "Base definition for a document with the CH Core profiles.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-documentreference-epr"
-      },
-      "name" : "CH Core DocumentReference EPR",
-      "description" : "Base definition for a document reference in the context of the electronic patient record (EPR).",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-documentreference"
-      },
-      "name" : "CH Core DocumentReference",
-      "description" : "Base definition for a document reference with the CH Core profiles.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-patient-epr"
-      },
-      "name" : "CH Core Patient EPR",
-      "description" : "Core patient definition in the context of the electronic patient record (EPR).                          It is used to include the patient in an EPR document (referenced in Composition/DocumentReference).",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-epr-consent"
-      },
-      "name" : "CH Core EPR-Consent",
-      "description" : "Base profile for a consent profile to document that a patient has an Electronic Patient Record (EPR) in Switzerland. The actual consent conditions are held within the EPR, this consent is the documentation in an organization that the patient has stated he has an EPR and this needs to be verified at the time of document publishing or reading. In addition a patient can request that specific information will not be published from the organization to the EPR. This can be documented with one or more references to encounters to exclude the consent for these.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-patient"
-      },
-      "name" : "CH Core Patient",
-      "description" : "Core patient definition in the swiss context. Relevant are definitions by the eCH-0010 V7.0 data standard mailing address and eCH-0011 V8.1 data standard pesond data and CDA-CH V2 definitions. The CH Core Patient is based upon the core FHIR Patient Resource and designed to meet the applicable patient demographic data elements in Switzerland.  See also [BFS](https://www.bfs.admin.ch/bfs/de/home/register/personenregister/registerharmonisierung/nomenklaturen.html) for further information",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-encounter"
-      },
-      "name" : "CH Core Encounter",
-      "description" : "The Encounter referenced in the CH Core profiles.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-humanname"
-      },
-      "name" : "Human Name",
-      "description" : "Name with extensions for ech-11",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-location"
-      },
-      "name" : "CH Core Location",
-      "description" : "Defines basic constraints and extensions on the Location resource for use with other CH Core resources",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-organization-epr"
-      },
-      "name" : "CH Core Organization EPR",
-      "description" : "Core organization definition in the context of the electronic patient record (EPR).",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-organization"
-      },
-      "name" : "CH Core Organization",
-      "description" : "Defines basic constraints and extensions on the Organization resource for use with other CH Core resources",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-address"
-      },
-      "name" : "CH Core Address",
-      "description" : "address incorporating eCH-0010 postal address extensions",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-address-ech-10"
-      },
-      "name" : "CH Core Postal Address",
-      "description" : "Postal address according to eCH-0010",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-address-ech-11-placeoforigin"
-      },
-      "name" : "Address for Place of Origin",
-      "description" : "Place of Origin for eCH-0011",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-address-ech-11-placeofbirth"
-      },
-      "name" : "Address for Place of Birth",
-      "description" : "PlaceOfBirth for ech-11",
+      "name" : "EPR-SPID",
+      "description" : "EPR-SPID: The Central Compensation Office (ZAS; CCO) assigns and manages the new patient identification number according to the EPRA (EPR-SPID), which is only linked internally in the CCO with the AHV number. It maintains the UPI identification database (Unique Personal Identifier Database), which the EPR communities may access. The law regulates how the the EPR-SPID can be used. SR 816.111 states (Art. 10 para. 3 EPDV) that communities must ensure that the EPR-SPID number cannot be not stored in document repositories or document registries.",
       "exampleBoolean" : false
     },
     {
@@ -1658,6 +1609,42 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-ext-ech-11-firstname"
+      },
+      "name" : "First Name",
+      "description" : "eCH-0011: Extension to define first name type",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Patient"
+      }],
+      "reference" : {
+        "reference" : "Patient/FranzMuster"
+      },
+      "name" : "Franz Muster",
+      "description" : "Patient with place of birth, place of origin (Heimatort), religion, local PID and language of correspondence",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/gln"
+      },
+      "name" : "GLN",
+      "description" : "Each healthcare partner (natural or legal person) is referenced with a unique code of type GLN (former name: EAN code) of the [GS1](https://www.gs1.ch/de/home) system. See [refdata](https://www.refdata.ch/content/partner_d.aspx)",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
@@ -1670,14 +1657,158 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/GruppenpraxisCH"
+      },
+      "name" : "Gruppenpraxis CH",
+      "description" : "Organization EPR with GLN, different contact details (e.g. phone, email) and address",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PractitionerRole"
+      }],
+      "reference" : {
+        "reference" : "PractitionerRole/HPWengerRole"
+      },
+      "name" : "Hanspeter Wenger @ Spital Seeblick",
+      "description" : "PractitionerRole EPR with profession (role) and specialisation",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole-epr"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Practitioner"
+      }],
+      "reference" : {
+        "reference" : "Practitioner/HanspeterWengerByBFH"
+      },
+      "name" : "Hanspeter Wenger by BFH",
+      "description" : "Practitioner with GLN and ZSR, name with prefixes, gender and birth date",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-core-ahvn13-identifier"
+        "reference" : "StructureDefinition/ch-core-humanname"
       },
-      "name" : "AHVN13 / NAVS13 Identifier",
-      "description" : "Identifier holding a 13 digit social security number. The number shall have exactly 13 digits and shall not contain point characters for separation.",
+      "name" : "Human Name",
+      "description" : "Name with extensions for ech-11",
       "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-ext-accident"
+      },
+      "name" : "If an encounter is caused by an accident",
+      "description" : "Extension to define an encounter that is caused by an accident and at which time the accident happened",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-veka-identifier"
+      },
+      "name" : "Insurance Card Number (Identifier)",
+      "description" : "Identifier in 20-digit format. The number shall have exactly 20 digits and start with 756.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Patient"
+      }],
+      "reference" : {
+        "reference" : "Patient/ManuelaMuster"
+      },
+      "name" : "Manuela Muster",
+      "description" : "Patient with EPR-SPID ending on 0",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-ext-ech-11-maritaldata-separation"
+      },
+      "name" : "Marital Data - Separation Type",
+      "description" : "eCH-0011: Extension to define the separation type. For married but separated persons and for persons in a registered partnership but living separately.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Patient"
+      }],
+      "reference" : {
+        "reference" : "Patient/MarvinMuster"
+      },
+      "name" : "Marvin Muster",
+      "description" : "Patient with AHVN13/NAVS13 as identifier",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Patient"
+      }],
+      "reference" : {
+        "reference" : "Patient/MaxMuster"
+      },
+      "name" : "Max Muster",
+      "description" : "Patient EPR with eCH-0011 family & and given name, eCH-0046 contact points and reference to the organization that is the custodian of the patient record",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-ext-ech-11-name"
+      },
+      "name" : "Name",
+      "description" : "eCH-0011: Extension to define name type",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Patient"
+      }],
+      "reference" : {
+        "reference" : "Patient/PersonEch011"
+      },
+      "name" : "Person eCH-011",
+      "description" : "Patient eCH-011 with names, marital status and separation type, delivery address if it is not the address of the patient (detailed explanation in narrative)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/PhysiotherapieCH"
+      },
+      "name" : "Physiotherapie CH",
+      "description" : "Organization with GLN ending on 0",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
     },
     {
       "extension" : [{
@@ -1706,50 +1837,86 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "Organization"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-core-practitioner-epr"
+        "reference" : "Organization/Radiologieinstitut"
       },
-      "name" : "CH Core Practitioner EPR",
-      "description" : "Core practitioner definition in the context of the electronic patient record (EPR).",
+      "name" : "Radiologieinstitut",
+      "description" : "Organization EPR with specified healthcare facility type (Diagnostic institution)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Practitioner"
+      }],
+      "reference" : {
+        "reference" : "Practitioner/SchreibKraft"
+      },
+      "name" : "Schreib Kraft",
+      "description" : "Practitioner (physician assistants) with local identifier (neither GLN nor ZSR)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PractitionerRole"
+      }],
+      "reference" : {
+        "reference" : "PractitionerRole/SchreibKraftAtGruppenpraxisCH"
+      },
+      "name" : "Schreib Kraft @ Gruppenpraxis CH",
+      "description" : "PractitionerRole with referenced practitioner and organization",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/SpitalSeeblick"
+      },
+      "name" : "Spital Seeblick",
+      "description" : "Organization with specified healthcare facility type (Hospital)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/CdaContainingOriginalRepresentationAsPdfA"
+      },
+      "name" : "Transfer note for radiological diagnostics",
+      "description" : "Document EPR containing original representation as PDF-A (fullUrls of entries with ‘urn:uuid:’)",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/uidb"
+      },
+      "name" : "UIDB",
+      "description" : "Unique IDentification Business (UIDB) number (in French, numéro d'IDentification suisse des Enterprises (IDE)) (in German, Schweizer Unternehmens-IDentifikationsnummer (UID)) (in Italian, numero d'IDentificazione svizzero delle Imprese (IDI))   Organizations Covered By System: All Companies/organizations registered in the public Swiss Registers such as the Swiss Register of Commerce, the Value Added Tax (VAT) register, the Social security agencies Registers, Cantons registers, etc., and publish in the UID Register.",
       "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "Patient"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-core-practitioner"
+        "reference" : "Patient/UpiEprTestKrcmarevic"
       },
-      "name" : "CH Core Practitioner",
-      "description" : "Core practitioner definition in the swiss context.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-practitionerrole"
-      },
-      "name" : "CH Core PractitionerRole",
-      "description" : "Core PractitionerRole definition in the swiss context.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-core-practitionerrole-epr"
-      },
-      "name" : "CH Core PractitionerRole EPR",
-      "description" : "Core PractitionerRole definition in the swiss context of the electronic patient record (EPR).",
-      "exampleBoolean" : false
+      "name" : "UPI EPR Test Krcmarevic",
+      "description" : "Test Patient from UPI for Swiss EPR Projectathon",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
     },
     {
       "extension" : [{
@@ -1901,10 +2068,10 @@
         "valueString" : "ValueSet"
       }],
       "reference" : {
-        "reference" : "ValueSet/ech-11-namedatatype"
+        "reference" : "ValueSet/ech-11-maritaldata-separation"
       },
-      "name" : "eCH-011 NameDataTypes",
-      "description" : "eCH-011 defines different nameData Types, this ValueSet is the subset for the family name",
+      "name" : "eCH-011 MaritalData Separation",
+      "description" : "eCH-011 defines maritalData separation types",
       "exampleBoolean" : false
     },
     {
@@ -1925,10 +2092,10 @@
         "valueString" : "ValueSet"
       }],
       "reference" : {
-        "reference" : "ValueSet/ech-11-maritaldata-separation"
+        "reference" : "ValueSet/ech-11-namedatatype"
       },
-      "name" : "eCH-011 MaritalData Separation",
-      "description" : "eCH-011 defines maritalData separation types",
+      "name" : "eCH-011 NameDataTypes",
+      "description" : "eCH-011 defines different nameData Types, this ValueSet is the subset for the family name",
       "exampleBoolean" : false
     },
     {
@@ -1942,6 +2109,78 @@
       "name" : "eCH-011 Sex",
       "description" : "eCH-011 defines these sex types",
       "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/ech-46-emailcategory"
+      },
+      "name" : "eCH-0046 Email Category",
+      "description" : "eCH-0046 defines these types of e-mail categories",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/ech-46-internetcategory"
+      },
+      "name" : "eCH-0046 Internet Category",
+      "description" : "eCH-0046 defines these types of internet categories",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/ech-46-phonecategory"
+      },
+      "name" : "eCH-0046 Phone Category",
+      "description" : "eCH-0046 defines these types of phone categories",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/zsr"
+      },
+      "name" : "ZSR",
+      "description" : "The ZSR number is issued to self-employed, natural or legal persons (organisations) who can and want to work at the expense of health insurance.                        See [Sasis](https://www.sasis.ch/de/779).                       German: ZSR (Zahlstellenregister),                       French: RCC (Registre des codes-créanciers),                       Italian: RCC (Registro dei codici creditori).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/ZuweisungZurRadiologischenDiagnostik"
+      },
+      "name" : "Zuweisung zur radiologischen Diagnostik",
+      "description" : "Composition EPR with the information about the transfer in different sections",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-composition"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/1-ZuweisungZurRadiologischenDiagnostik-FHIR"
+      },
+      "name" : "Zuweisung zur radiologischen Diagnostik",
+      "description" : "Document EPR (fullUrls of entries with ‘http’)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-document"
     }],
     "page" : {
       "extension" : [{
@@ -1967,7 +2206,7 @@
         }],
         "nameUrl" : "profiles.html",
         "title" : "Profiles",
-        "generation" : "html"
+        "generation" : "markdown"
       },
       {
         "extension" : [{
@@ -1976,7 +2215,7 @@
         }],
         "nameUrl" : "extensions.html",
         "title" : "Extensions",
-        "generation" : "html"
+        "generation" : "markdown"
       },
       {
         "extension" : [{
@@ -1995,22 +2234,9 @@
         "nameUrl" : "changelog.html",
         "title" : "Change Log",
         "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "changes-stu2.html"
-        }],
-        "nameUrl" : "changes-stu2.html",
-        "title" : "Changes STU2",
-        "generation" : "markdown"
       }]
     },
     "parameter" : [{
-      "code" : "path-pages",
-      "value" : "input/pages"
-    },
-    {
       "code" : "path-resource",
       "value" : "input/capabilities"
     },
