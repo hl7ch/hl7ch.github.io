@@ -1,0 +1,52 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ObservationDefinition/observation-vitamin-d> a fhir:ObservationDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "observation-vitamin-d"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/LabObservationDefinition"^^xsd:anyURI ;
+       fhir:link <http://hl7.org/fhir/uv/order-catalog/StructureDefinition/LabObservationDefinition>
+     ] )
+  ] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "additional" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><p><b>Additional Narrative in French language | Vue narrative en français :</b></p><p>Analyse de biologie médicale : dosage vitamine D dans sérum sanguin</p><p>Catégorie : laboratoire</p><p>Identification : 14635-7 |25-hydroxyvitamin D3 [Moles/volume] in Serum or Plasma| (http://loinc.org)</p><p>Types de résultat autorisés : quantitatif, textuel</p><p>Résultat multiples : non</p><p>intitulé préféré sur compte rendu : Vitamine D</p><p>Unité de mesure : pmol/L (http://unitsofmeasure.org)</p></div>"
+  ] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/observation-category"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "laboratory" ] ;
+       fhir:display [ fhir:v "Laboratory" ]
+     ] )
+  ] ) ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:14635-7 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "14635-7" ] ;
+       fhir:display [ fhir:v "25-hydroxyvitamin D3 [Moles/volume] in Serum or Plasma" ]
+     ] )
+  ] ; # 
+  fhir:permittedDataType ( [ fhir:v "Quantity"] [ fhir:v "string"] ) ; # 
+  fhir:multipleResultsAllowed [ fhir:v "false"^^xsd:boolean] ; # 
+  fhir:preferredReportName [ fhir:v "Vitamine D"] ; # 
+  fhir:quantitativeDetails [
+     fhir:unit [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://unitsofmeasure.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "pmol/L" ]
+       ] )
+     ] ;
+     fhir:decimalPrecision [ fhir:v "0"^^xsd:integer ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

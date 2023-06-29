@@ -1,0 +1,80 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/6-histopath> a fhir:ServiceRequest ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "6-histopath"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: ServiceRequest</b><a name=\"6-histopath\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource ServiceRequest &quot;6-histopath&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-orf/2.0.0-ballot/StructureDefinition-ch-orf-servicerequest.html\">CH ORF ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier: 123</p><p><b>status</b>: active</p><p><b>intent</b>: original-order</p><p><b>category</b>: Anforderung von histopathologischen Untersuchungen <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (ch-lab-order-servicerequest-categories#RequestForHistopathExam)</span></p><p><b>priority</b>: urgent</p><p><b>code</b>: Pathology study <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#11526-1)</span></p><p><b>subject</b>: <a href=\"Patient-KlebsiellaKeller.html\">Patient/KlebsiellaKeller</a> &quot; KLEBSIELLA&quot;</p><p><b>requester</b>: <a href=\"PractitionerRole-MarcMustermannArztpraxis.html\">PractitionerRole/MarcMustermannArztpraxis</a></p><p><b>reasonCode</b>: Suspicion Melanoma Skin <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#1163403006 &quot;Pigmented nevus (morphologic abnormality)&quot;)</span></p><p><b>insurance</b>: <a href=\"Coverage-HealthInsuranceCard.html\">Coverage/HealthInsuranceCard</a></p><p><b>specimen</b>: <a href=\"Specimen-Skin.html\">Specimen/Skin: Skin specimen</a></p></div>"
+  ] ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PLAC" ] ;
+         fhir:display [ fhir:v "Placer Identifier" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "123" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:intent [ fhir:v "original-order"] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-lab-order/CodeSystem/ch-lab-order-servicerequest-categories"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "RequestForHistopathExam" ] ;
+       fhir:display [ fhir:v "Anforderung von histopathologischen Untersuchungen" ]
+     ] )
+  ] ) ; # 
+  fhir:priority [ fhir:v "urgent"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:11526-1 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "11526-1" ] ;
+       fhir:display [ fhir:v "Pathology study" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/KlebsiellaKeller> ;
+     fhir:reference [ fhir:v "Patient/KlebsiellaKeller" ]
+  ] ; # 
+  fhir:requester [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/MarcMustermannArztpraxis> ;
+     fhir:reference [ fhir:v "PractitionerRole/MarcMustermannArztpraxis" ]
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       a sct:1163403006 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1163403006" ] ;
+       fhir:display [ fhir:v "Pigmented nevus (morphologic abnormality)" ]
+     ] ) ;
+     fhir:text [ fhir:v "Suspicion Melanoma Skin" ]
+  ] ) ; # 
+  fhir:insurance ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Coverage/HealthInsuranceCard> ;
+     fhir:reference [ fhir:v "Coverage/HealthInsuranceCard" ]
+  ] ) ; # 
+  fhir:specimen ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Skin> ;
+     fhir:reference [ fhir:v "Specimen/Skin" ] ;
+     fhir:display [ fhir:v "Skin specimen" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

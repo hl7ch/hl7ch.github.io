@@ -31,10 +31,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -62,7 +62,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Order (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - STU 1
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
 
 
             </span>
@@ -131,15 +135,26 @@
   </li>
 
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-      Questionnaire
-      <b class="caret"></b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Questionnaire<b class="caret">
+      </b>
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="Questionnaire-0-generic.html">Generisches Formular</a>
+        <a href="Questionnaire-LabOrder-form.html">Specification</a>
       </li>
       <li>
+        <a href="https://laborprojektgruppe.ch/questionnaire/">Form</a> <!-- questionnaire-form.html -->
+      </li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+      Questionnaire Case Studies
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+            <li>
         <a href="Questionnaire-1-tvt.html">Tiefe Venenthrombose</a>
       </li>
       <li>
@@ -153,6 +168,9 @@
       </li>
       <li>
         <a href="Questionnaire-5-biol-monit.html">Biologisches Monitoring</a>
+      </li>
+      <li>
+        <a href="Questionnaire-6-histopath.html">Histopathologische Untersuchung</a>
       </li>
     </ul>
   </li>
@@ -198,7 +216,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v1.0.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v2.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
   <h2>Artifacts Summary</h2>
   
   
@@ -210,22 +228,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
    <p>Contents:</p>
    <ul>
       <li>
-         <a href="#1">Structures: Questionnaires</a>
+         <a href="#1">Structures: Resource Profiles</a>
       </li>
       <li>
-         <a href="#2">Structures: Resource Profiles</a>
+         <a href="#2">Terminology: Value Sets</a>
       </li>
       <li>
-         <a href="#3">Terminology: Value Sets</a>
+         <a href="#3">Terminology: Code Systems</a>
       </li>
       <li>
-         <a href="#4">Terminology: Code Systems</a>
-      </li>
-      <li>
-         <a href="#5">Example: Example Instances</a>
-      </li>
-      <li>
-         <a href="#6">Other</a>
+         <a href="#4">Example: Example Instances</a>
       </li>
    </ul>
 </div>
@@ -234,70 +246,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
      xmlns:f="http://hl7.org/fhir">
    <p>This page provides a list of the FHIR artifacts defined as part of this implementation guide.</p>
    <a name="1"> </a>
-   <h3>Structures: Questionnaires </h3>
-   <p>
-    <p>These define forms used by systems conforming to this implementation guide to capture or expose data to end users</p>
-</p>
-   <p>
-      <table class="grid">
-         <col style="width:20%"/>
-         <tbody>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Questionnaire-0-generic.html" title="Questionnaire/0-generic">questionnaire 0-generic</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire due to suspected deep vein thrombosis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Questionnaire-1-tvt.html" title="Questionnaire/1-tvt">questionnaire 1-tvt</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire due to suspected deep vein thrombosis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Questionnaire-2-pertussis.html" title="Questionnaire/2-pertussis">questionnaire 2-pertussis</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire for Pertussis Investigation</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Questionnaire-3-gyn.html" title="Questionnaire/3-gyn">questionnaire 3-gyn</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire for gynaecological check-up</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Questionnaire-4-sepsis.html" title="Questionnaire/4-sepsis">questionnaire 4-sepsis</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire for Sepsis Investigation</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Questionnaire-5-biol-monit.html"
-                     title="Questionnaire/5-biol-monit">questionnaire 5-biol-monit</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire for toxicological Monitoring</p>
-</td>
-            </tr>
-         </tbody>
-      </table>
-   </p>
-   <a name="2"> </a>
    <h3>Structures: Resource Profiles </h3>
    <p>
-    <p>These define constraints on FHIR resources for systems conforming to this implementation guide</p>
+    <p>These define constraints on FHIR resources for systems conforming to this implementation guide.</p>
 </p>
    <p>
       <table class="grid">
@@ -314,6 +265,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </tr>
             <tr>
                <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-lab-order-diagnosis-condition.html"
+                     title="StructureDefinition/ch-lab-order-diagnosis-condition">CH LAB-Order Diagnosis Condition</a>
+               </td>
+               <td>
+<p>Definition for the Diagnosis Condition resource in the context of CH LAB-Order.</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
                   <a href="StructureDefinition-ch-lab-order-document.html"
                      title="StructureDefinition/ch-lab-order-document">CH LAB-ORDER Document Profile</a>
                </td>
@@ -323,25 +283,61 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </tr>
             <tr>
                <td style="column-width:30%">
-                  <a href="StructureDefinition-ch-lab-order-servicerequest.html"
-                     title="StructureDefinition/ch-lab-order-servicerequest">CH LAB-Order ServiceRequest</a>
+                  <a href="StructureDefinition-ch-lab-order-SR-container.html"
+                     title="StructureDefinition/ch-lab-order-SR-container">CH LAB-Order-SR Container</a>
                </td>
                <td>
-<p>Definition for ServiceRequest in the context of CH LAB-Order</p>
+<p>Definition for ServiceRequest Container in the context of CH LAB-Order</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-lab-order-SR-singletest.html"
+                     title="StructureDefinition/ch-lab-order-SR-singletest">CH LAB-Order-SR Labtest</a>
+               </td>
+               <td>
+<p>Definition of a ServiceRequests of a single LabTest in the context of CH LAB-Order</p>
 </td>
             </tr>
          </tbody>
       </table>
    </p>
-   <a name="3"> </a>
+   <a name="2"> </a>
    <h3>Terminology: Value Sets </h3>
    <p>
-    <p>These define sets of codes used by systems conforming to this implementation guide</p>
+    <p>These define sets of codes used by systems conforming to this implementation guide.</p>
 </p>
    <p>
       <table class="grid">
          <col style="width:20%"/>
          <tbody>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ValueSet-reasons-for-order.html"
+                     title="ValueSet/reasons-for-order">All Valid Reasons for Ordering a Lab Service</a>
+               </td>
+               <td>
+<p>Broadest value set that may be referenced by ObservationDefinition.validCodedValueSet</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ValueSet-top-2000-lab-observations-si.html"
+                     title="ValueSet/top-2000-lab-observations-si">Die 2000 am häufgigsten verordneten Labor-Tests</a>
+               </td>
+               <td>
+<p>SI version of the user-favorite LOINC Top 2000+ Lab Observations list (2012-07-01)</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ValueSet-normal-contexts-vitamin-d.html"
+                     title="ValueSet/normal-contexts-vitamin-d">Kontexte für die Erstattung des Vitamin-D-Tests</a>
+               </td>
+               <td>
+<p>Diese Valueset listet die Standardantworten auf die Frage “Verordnungskontext für den Vitamin-D-Test” auf, die eine Erstattung dieses Tests erlauben.</p>
+</td>
+            </tr>
             <tr>
                <td style="column-width:30%">
                   <a href="ValueSet-ch-lab-order-labSpecialties.html"
@@ -353,11 +349,265 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </tr>
             <tr>
                <td style="column-width:30%">
+                  <a href="ValueSet-report-codes.html" title="ValueSet/report-codes">LOINC Diagnostic Report Codes</a>
+               </td>
+               <td>
+<p>This value set includes LOINC codes that relate to Diagnostic Observations.</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ValueSet-MicrobiolProcedures.html"
+                     title="ValueSet/MicrobiolProcedures">MicrobiolProcedures</a>
+               </td>
+               <td>
+<p>Valueset Snomed CT Codes of Microbiological Procedures</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
                   <a href="ValueSet-ServiceRequest.categories.html"
                      title="ValueSet/ServiceRequest.categories">Service Request Categories for Questionnaires</a>
                </td>
                <td>
 <p>ch-lab-order Service Request Categories</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ValueSet-clinical-focus-vitamin-d.html"
+                     title="ValueSet/clinical-focus-vitamin-d">Vitamin D all possible clinical contexts for test</a>
+               </td>
+               <td>
+<p>Broadest value set that may be referenced by ObservationDefinition.validCodedValueSet</p>
+</td>
+            </tr>
+         </tbody>
+      </table>
+   </p>
+   <a name="3"> </a>
+   <h3>Terminology: Code Systems </h3>
+   <p>
+    <p>These define new code systems used by systems conforming to this implementation guide.</p>
+</p>
+   <p>
+      <table class="grid">
+         <col style="width:20%"/>
+         <tbody>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="CodeSystem-ServiceRequest.categories.html"
+                     title="CodeSystem/ServiceRequest.categories">Service Request Categories for Questionnaires</a>
+               </td>
+               <td>
+<p>ch-lab-order defines 10 different Kinds of Service Request</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="CodeSystem-Specimen.processing.procedure.html"
+                     title="CodeSystem/Specimen.processing.procedure">Service Request Processing Procedure</a>
+               </td>
+               <td>
+<p>ch-lab-order defines 2 different Kinds of Processing Procedures, replaced by http://hl7.org/fhir/ValueSet/handling-condition</p>
+</td>
+            </tr>
+         </tbody>
+      </table>
+   </p>
+   <a name="4"> </a>
+   <h3>Example: Example Instances </h3>
+   <p>
+    <p>These are example instances that show what data produced and consumed by systems conforming with this implementation guide might look like.</p>
+</p>
+   <p>
+      <table class="grid">
+         <col style="width:20%"/>
+         <tbody>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Composition-1-tvt.html" title="Composition/1-tvt">1-tvt</a>
+               </td>
+               <td>
+<p>Composition: Storyboard for suspected deep Vein Thrombosis</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Composition-2-pertussis.html" title="Composition/2-pertussis">2-pertussis</a>
+               </td>
+               <td>
+<p>Composition: Storyboard for Pertussis Investigation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Composition-3-gyn.html" title="Composition/3-gyn">3-gyn</a>
+               </td>
+               <td>
+<p>Composition: Storyboard for Preventive Gynaecological Check-up</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Composition-4-sepsis.html" title="Composition/4-sepsis">4-sepsis</a>
+               </td>
+               <td>
+<p>Composition: Storyboard for Sepsis Investigation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Composition-5-biol-monit.html" title="Composition/5-biol-monit">5-biol-monit</a>
+               </td>
+               <td>
+<p>Composition: Storyboard for Toxicological Monitoring</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Composition-6-histopath.html" title="Composition/6-histopath">6-histopath</a>
+               </td>
+               <td>
+<p>Composition: Storyboard for suspected Melanoma of skin</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Organization-Arztpraxis.html" title="Organization/Arztpraxis">Arztpraxis</a>
+               </td>
+               <td>
+<p>Practice, refers to 2-pertussis and 3-gyn</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Patient-BeatBorer.html" title="Patient/BeatBorer">Beat Borer</a>
+               </td>
+               <td>
+<p>Example for CH-Core-Patient</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Specimen-Blood.html" title="Specimen/Blood">Blood Sample</a>
+               </td>
+               <td>
+<p>Example for Specimen for Haematological Examination</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Specimen-Blood-bactec-plus.html"
+                     title="Specimen/Blood-bactec-plus">Blood Sample Bacteriology</a>
+               </td>
+               <td>
+<p>Example for Specimen for bacteriological Examination</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Specimen-Blood-coag.html" title="Specimen/Blood-coag">Blood Sample Coagulation</a>
+               </td>
+               <td>
+<p>Example for Specimen for haemostatic Examination</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Composition-Gantenbein-Catalog-Header.html"
+                     title="Composition/Gantenbein-Catalog-Header">Catalog Header of Labor Gantenbein</a>
+               </td>
+               <td>
+<p>Example of a Lab header</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Composition-Pipette-Catalog-Header.html"
+                     title="Composition/Pipette-Catalog-Header">Catalog Header of Labor Pipette</a>
+               </td>
+               <td>
+<p>Example of a Lab header</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Composition-Schildknecht-Catalog-Header.html"
+                     title="Composition/Schildknecht-Catalog-Header">Catalog Header of Labor Schildknecht</a>
+               </td>
+               <td>
+<p>Example of a Lab header</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Specimen-Lsac.html" title="Specimen/Lsac">Cerebrospinal Fluid Sample</a>
+               </td>
+               <td>
+<p>Example for Specimen of Cerebrospinal Fluid</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Specimen-Cervix-swab.html" title="Specimen/Cervix-swab">Cervix-swab Sample</a>
+               </td>
+               <td>
+<p>Example for Specimen of Cervix Swab</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-SR-Container.html"
+                     title="ServiceRequest/SR-Container">ChLabOrderSRContainer containing 2 References on other Containers</a>
+               </td>
+               <td>
+<p>Service Request example as container for 2 other containers, CreaClearance and Electrolytes</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-CreaClearance.html"
+                     title="ServiceRequest/CreaClearance">ChLabOrderSRContainer containing the Creatinin Clearance Panel</a>
+               </td>
+               <td>
+<p>Example for Service Request for Creatinine-Clearance Container</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="PlanDefinition-chloride-serum.html"
+                     title="PlanDefinition/chloride-serum">chloride-serum</a>
+               </td>
+               <td>
+<p>Lab Service of Pipette Lab for Serum Chloride</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Coverage-CoverageFranzMuster.html"
+                     title="Coverage/CoverageFranzMuster">CoverageFranzMuster</a>
+               </td>
+               <td>
+<p>Example for Insurance Coverage</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="PlanDefinition-creatinine-clearance.html"
+                     title="PlanDefinition/creatinine-clearance">creatinine-clearance</a>
+               </td>
+               <td>
+<p>This 24-hour urine creatinine clearance panel is reusing the procedures from the          serum creatinine test as well as the procedure from the 24h urine creatinine panel.</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="PlanDefinition-creatinine-serum.html"
+                     title="PlanDefinition/creatinine-serum">creatinine-serum</a>
+               </td>
+               <td>
+<p>Lab Service of Pipette Lab for Serum Creatinine</p>
 </td>
             </tr>
             <tr>
@@ -379,48 +629,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       		The code defines a document’s type (e.g. discharge report, laboratory report). Each document type should be assigned to precisely one document class.</p>
 </td>
             </tr>
-         </tbody>
-      </table>
-   </p>
-   <a name="4"> </a>
-   <h3>Terminology: Code Systems </h3>
-   <p>
-    <p>These define new code systems used by systems conforming to this implementation guide</p>
-</p>
-   <p>
-      <table class="grid">
-         <col style="width:20%"/>
-         <tbody>
             <tr>
                <td style="column-width:30%">
-                  <a href="CodeSystem-ServiceRequest.categories.html"
-                     title="CodeSystem/ServiceRequest.categories">Service Request Categories for Questionnaires</a>
+                  <a href="Patient-EmilKummer.html" title="Patient/EmilKummer">Emil Kummer</a>
                </td>
                <td>
-<p>ch-lab-order defines 10 different Kinds of Service Request</p>
+<p>CH-Core-Patient, refers to 2-pertussis</p>
 </td>
             </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="CodeSystem-Specimen.processing.procedure.html"
-                     title="CodeSystem/Specimen.processing.procedure">Service Request Processing Procedure</a>
-               </td>
-               <td>
-<p>ch-lab-order defines 2 different Kinds of Processing Procedures</p>
-</td>
-            </tr>
-         </tbody>
-      </table>
-   </p>
-   <a name="5"> </a>
-   <h3>Example: Example Instances </h3>
-   <p>
-    <p>These are example instances that show what data produced and consumed by systems conforming with this implementation guide might look like</p>
-</p>
-   <p>
-      <table class="grid">
-         <col style="width:20%"/>
-         <tbody>
             <tr>
                <td style="column-width:30%">
                   <a href="Practitioner-EvaErlenmeyer.html"
@@ -437,6 +653,31 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                </td>
                <td>
 <p>PractitionerRole, Specialist for Laboratory Medicine, refers to all story boards</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ChargeItemDefinition-example-lab-billing-vitamind-focus.html"
+                     title="ChargeItemDefinition/example-lab-billing-vitamind-focus">example-lab-billing-vitamind-focus</a>
+               </td>
+               <td>
+<p>Limitationen. Nur einmal verrechenbar im Falle einer separaten Bestimmung der beiden Formen von 25-HydroxyVitamin-D (25-OH-D3 und 25-OH-D2)</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Patient-FranzMuster.html" title="Patient/FranzMuster">FranzMuster</a>
+               </td>
+               <td>
+<p>Example for CH-Core-Patient, used in coverage</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Patient-HansGuggindieluft.html" title="Patient/HansGuggindieluft">Hans Guggindieluft</a>
+               </td>
+               <td>
+<p>CH-Core-Patient, refers to 1-tvt</p>
 </td>
             </tr>
             <tr>
@@ -458,6 +699,278 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </tr>
             <tr>
                <td style="column-width:30%">
+                  <a href="Coverage-HealthInsuranceCard.html"
+                     title="Coverage/HealthInsuranceCard">HealthInsuranceCard</a>
+               </td>
+               <td>
+<p>Example for Insurance</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-input-observation-context-for-vitamin-d.html"
+                     title="ObservationDefinition/input-observation-context-for-vitamin-d">input-observation-context-for-vitamin-d</a>
+               </td>
+               <td>
+<p>Context des Vitamin-D Befundes</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-input-observation-reason-for-ordering.html"
+                     title="ObservationDefinition/input-observation-reason-for-ordering">input-observation-reason-for-ordering</a>
+               </td>
+               <td>
+<p>For which reason is the test ordered</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Organization-Kantonsspital.html"
+                     title="Organization/Kantonsspital">Kantonsspital</a>
+               </td>
+               <td>
+<p>Example for Hospital</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Patient-KlebsiellaKeller.html" title="Patient/KlebsiellaKeller">Klebsiella Keller</a>
+               </td>
+               <td>
+<p>CH-Core-Patient, refers to 4-sepsis</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Organization-LaborGantenbein.html"
+                     title="Organization/LaborGantenbein">Labor Gantenbein</a>
+               </td>
+               <td>
+<p>Laboratory Organization, refers to all Storyboards</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Organization-LaborPipette.html" title="Organization/LaborPipette">Labor Pipette</a>
+               </td>
+               <td>
+<p>Laboratory Organization, refers to all Storyboards</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Organization-LaborSchildknecht.html"
+                     title="Organization/LaborSchildknecht">Labor Schildknecht</a>
+               </td>
+               <td>
+<p>Laboratory Organization, refers to all Storyboards</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Composition-LabOrder.html" title="Composition/LabOrder">LabOrder</a>
+               </td>
+               <td>
+<p>Composition for multiple SR</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-6-histopath.html"
+                     title="ServiceRequest/6-histopath">laborder 0-generic</a>
+               </td>
+               <td>
+<p>Example for Service Request due to suspected melanoma of skin</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-1-tvt.html" title="ServiceRequest/1-tvt">laborder 1-tvt</a>
+               </td>
+               <td>
+<p>Example for Service Request due to suspected deep vein thrombosis</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-2-pertussis.html"
+                     title="ServiceRequest/2-pertussis">laborder 2-pertussis</a>
+               </td>
+               <td>
+<p>Example for Service Request for Pertussis Investigation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-3-gyn.html" title="ServiceRequest/3-gyn">laborder 3-gyn</a>
+               </td>
+               <td>
+<p>Example for Service Request for preventive gynaecological check-up</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-4-sepsis.html" title="ServiceRequest/4-sepsis">laborder 4-sepsis</a>
+               </td>
+               <td>
+<p>Example for Service Request for Sepsis Investigation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-5-biol-monit.html"
+                     title="ServiceRequest/5-biol-monit">laborder 5-biol-monit</a>
+               </td>
+               <td>
+<p>Example for Service Request for toxicological Monitoring</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-LabOrder-potassium.html"
+                     title="ServiceRequest/LabOrder-potassium">LabOrder Service Request for Clinical Chemistry Tests</a>
+               </td>
+               <td>
+<p>Example for Service Request of Potassium [Moles/volume] in Serum or Plasma</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-LabOrder-chloride.html"
+                     title="ServiceRequest/LabOrder-chloride">LabOrder Service Request for Clinical Chemistry Tests</a>
+               </td>
+               <td>
+<p>Example for Service Request of Chloride [Moles/volume] in Serum or Plasma</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-LabOrder-sodium.html"
+                     title="ServiceRequest/LabOrder-sodium">LabOrder Service Request for Clinical Chemistry Tests</a>
+               </td>
+               <td>
+<p>Example for Service Request of Sodium [Moles/volume] in Serum or Plasma</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-LabOrder-u24-creatinine.html"
+                     title="ServiceRequest/LabOrder-u24-creatinine">LabOrder Service Request for Clinical Chemistry Tests</a>
+               </td>
+               <td>
+<p>Example for Service Request of Creatinine [Moles/volume] in Serum or Plasma</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-LabOrder-creatinine-clearance.html"
+                     title="ServiceRequest/LabOrder-creatinine-clearance">LabOrder Service Request for Creatinine clearance</a>
+               </td>
+               <td>
+<p>Example for Service Request of Creatinine [Moles/volume] and 24h Urin Creatinen</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-LabOrder-container-example.html"
+                     title="ServiceRequest/LabOrder-container-example">LabOrder Service Request for Electrolytes in Serum</a>
+               </td>
+               <td>
+<p>Example for Service Request as container for multiple Service Requests</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-LabOrder-electrolytes.html"
+                     title="ServiceRequest/LabOrder-electrolytes">LabOrder Service Request for Electrolytes in Serum</a>
+               </td>
+               <td>
+<p>Example for Service Request as container for multiple Service Requests</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-LabOrder-creatinine.html"
+                     title="ServiceRequest/LabOrder-creatinine">LabOrder Service Request for Serum Creatinine</a>
+               </td>
+               <td>
+<p>Example for Service Request of Creatinine [Moles/volume] in Serum or Plasma</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-SR-Chloride.html"
+                     title="ServiceRequest/SR-Chloride">LabOrder Service Request for single Test: Chloride</a>
+               </td>
+               <td>
+<p>Example for Service Request of Chloride in Serum</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-SR-Creatinine-Serum.html"
+                     title="ServiceRequest/SR-Creatinine-Serum">LabOrder Service Request for single Test: Creatinine-Serum</a>
+               </td>
+               <td>
+<p>Example for Service Request</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-SR-Creatinine-24h-Urine.html"
+                     title="ServiceRequest/SR-Creatinine-24h-Urine">LabOrder Service Request for single Test: Creatinine24 h Urine</a>
+               </td>
+               <td>
+<p>Example for Service Request</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-SR-Potassium.html"
+                     title="ServiceRequest/SR-Potassium">LabOrder Service Request for single Test: Potassium</a>
+               </td>
+               <td>
+<p>Example for Service Request of Potassium in Serum</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-SR-Sodium.html" title="ServiceRequest/SR-Sodium">LabOrder Service Request for single Test: Sodium</a>
+               </td>
+               <td>
+<p>Example for Service Request of Sodium in Serum</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-SR-Electrolytes.html"
+                     title="ServiceRequest/SR-Electrolytes">LabOrder Service Request Serum Electrolyte Panel</a>
+               </td>
+               <td>
+<p>ChLabOrderSRContainer containing the Serum Electrolyte Panel</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ServiceRequest-LabOrder-generic.html"
+                     title="ServiceRequest/LabOrder-generic">LabOrder Service Request some single test</a>
+               </td>
+               <td>
+<p>Example for Service Request single test</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-LabOrder-form.html"
+                     title="Questionnaire/LabOrder-form">LabOrder-form</a>
+               </td>
+               <td>
+<p>assembled from LabOrder-form-modular</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
                   <a href="Practitioner-MarcMustermann.html"
                      title="Practitioner/MarcMustermann">Marc Mustermann</a>
                </td>
@@ -472,6 +985,113 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                </td>
                <td>
 <p>PractitionerRole, refers to 1-tvt</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Patient-MarinaRubella.html" title="Patient/MarinaRubella">Marina Rubella</a>
+               </td>
+               <td>
+<p>CH-Core-Patient, refers to 3-gyn</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-observation-blood-hemoglobin.html"
+                     title="ObservationDefinition/observation-blood-hemoglobin">observation-blood-hemoglobin</a>
+               </td>
+               <td>
+<p>Hemoglobin blood [Moles/volume]</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-observation-collection-duration.html"
+                     title="ObservationDefinition/observation-collection-duration">observation-collection-duration</a>
+               </td>
+               <td>
+<p>Collection duration [h] of specimen</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-observation-collection-volume.html"
+                     title="ObservationDefinition/observation-collection-volume">observation-collection-volume</a>
+               </td>
+               <td>
+<p>Collection volume [mL] of specimen</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-observation-creatinine-serum.html"
+                     title="ObservationDefinition/observation-creatinine-serum">observation-creatinine-serum</a>
+               </td>
+               <td>
+<p>Kreatinin [Masse/Volumen] im Serum oder Plasma</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-observation-serum-chloride.html"
+                     title="ObservationDefinition/observation-serum-chloride">observation-serum-chloride</a>
+               </td>
+               <td>
+<p>Chlorid im Blut Befund</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-observation-serum-potassium.html"
+                     title="ObservationDefinition/observation-serum-potassium">observation-serum-potassium</a>
+               </td>
+               <td>
+<p>Kalium im Blut [Moles/volume]</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-observation-serum-sodium.html"
+                     title="ObservationDefinition/observation-serum-sodium">observation-serum-sodium</a>
+               </td>
+               <td>
+<p>Natrium im Blut [Moles/volume]</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-observation-urine24h-creatinine.html"
+                     title="ObservationDefinition/observation-urine24h-creatinine">observation-urine24h-creatinine</a>
+               </td>
+               <td>
+<p>Mass of creatinine collected during 24h</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ObservationDefinition-observation-vitamin-d.html"
+                     title="ObservationDefinition/observation-vitamin-d">observation-vitamin-d</a>
+               </td>
+               <td>
+<p>Vitamin-D</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="PlanDefinition-panel-blood-electrolyte.html"
+                     title="PlanDefinition/panel-blood-electrolyte">panel-blood-electrolyte</a>
+               </td>
+               <td>
+<p>LabService of Pipette Lab for Electrolyte Panel</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="PlanDefinition-panel-urine24h-creatinine.html"
+                     title="PlanDefinition/panel-urine24h-creatinine">panel-urine24h-creatinine</a>
+               </td>
+               <td>
+<p>Creatinine [Mass/time] 24 hour urine panel - 24 hour Urine</p>
 </td>
             </tr>
             <tr>
@@ -528,11 +1148,332 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </tr>
             <tr>
                <td style="column-width:30%">
+                  <a href="PlanDefinition-potassium-serum.html"
+                     title="PlanDefinition/potassium-serum">potassium-serum</a>
+               </td>
+               <td>
+<p>Lab Service for Serum Potassium</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Organization-Gruppenpraxis.html"
+                     title="Organization/Gruppenpraxis">Praxis Seeblick</a>
+               </td>
+               <td>
+<p>Example for group practice</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
                   <a href="Organization-PraxisSeeblick.html"
                      title="Organization/PraxisSeeblick">Praxis Seeblick</a>
                </td>
                <td>
 <p>Example for practice</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Condition-ProblemItem-renal-failure.html"
+                     title="Condition/ProblemItem-renal-failure">ProblemItem-renal-failure</a>
+               </td>
+               <td>
+<p>Problem or Diagnosis from problem list</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-blood-electrolyte.html"
+                     title="ActivityDefinition/procedure-blood-electrolyte">procedure-blood-electrolyte</a>
+               </td>
+               <td>
+<p>Na, K, Cl level measurements on serum or plasma</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-chloride-serum.html"
+                     title="ActivityDefinition/procedure-chloride-serum">procedure-chloride-serum</a>
+               </td>
+               <td>
+<p>Service Serum Chloride</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-creatinine-serum.html"
+                     title="ActivityDefinition/procedure-creatinine-serum">procedure-creatinine-serum</a>
+               </td>
+               <td>
+<p>creatinine measurements on serum specimen obtained from venous or capillary blood</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-crp.html"
+                     title="ActivityDefinition/procedure-crp">procedure-crp</a>
+               </td>
+               <td>
+<p>Service CRP</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-crp-highsens.html"
+                     title="ActivityDefinition/procedure-crp-highsens">procedure-crp-highsens</a>
+               </td>
+               <td>
+<p>Service CRP</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-crp-highsens-SI.html"
+                     title="ActivityDefinition/procedure-crp-highsens-SI">procedure-crp-highsens-SI</a>
+               </td>
+               <td>
+<p>Service CRP</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-crp-SI.html"
+                     title="ActivityDefinition/procedure-crp-SI">procedure-crp-SI</a>
+               </td>
+               <td>
+<p>Service CRP</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-hemoglobin-panel.html"
+                     title="ActivityDefinition/procedure-hemoglobin-panel">procedure-hemoglobin-panel</a>
+               </td>
+               <td>
+<p>Service Hemoglobin Panel</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-potassium-serum.html"
+                     title="ActivityDefinition/procedure-potassium-serum">procedure-potassium-serum</a>
+               </td>
+               <td>
+<p>Service Serum Kalium</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-sodium-serum.html"
+                     title="ActivityDefinition/procedure-sodium-serum">procedure-sodium-serum</a>
+               </td>
+               <td>
+<p>Service Serum Natrium</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-urine24h-creatinine.html"
+                     title="ActivityDefinition/procedure-urine24h-creatinine">procedure-urine24h-creatinine</a>
+               </td>
+               <td>
+<p>creatinine measurements on 24-hour urine specimen</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-urine24h-creatinine-clearance.html"
+                     title="ActivityDefinition/procedure-urine24h-creatinine-clearance">procedure-urine24h-creatinine-clearance</a>
+               </td>
+               <td>
+<p>Procedures conveying the creatinine renal clearance in 24h urine observation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ActivityDefinition-procedure-vitamin-d-serum.html"
+                     title="ActivityDefinition/procedure-vitamin-d-serum">procedure-vitamin-d-serum</a>
+               </td>
+               <td>
+<p>Procédure de dosage de la vitamine D dans le sang</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-1-tvt.html" title="Questionnaire/1-tvt">questionnaire 1-tvt</a>
+               </td>
+               <td>
+<p>Example for Laboratory Order Questionnaire due to suspected deep vein thrombosis</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-2-pertussis.html" title="Questionnaire/2-pertussis">questionnaire 2-pertussis</a>
+               </td>
+               <td>
+<p>Example for Laboratory Order Questionnaire for Pertussis Investigation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-3-gyn.html" title="Questionnaire/3-gyn">questionnaire 3-gyn</a>
+               </td>
+               <td>
+<p>Example for Laboratory Order Questionnaire for gynaecological check-up</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-4-sepsis.html" title="Questionnaire/4-sepsis">questionnaire 4-sepsis</a>
+               </td>
+               <td>
+<p>Example for Laboratory Order Questionnaire for Sepsis Investigation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-5-biol-monit.html"
+                     title="Questionnaire/5-biol-monit">questionnaire 5-biol-monit</a>
+               </td>
+               <td>
+<p>Example for Laboratory Order Questionnaire for toxicological Monitoring</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-6-histopath.html" title="Questionnaire/6-histopath">questionnaire 6-histopath</a>
+               </td>
+               <td>
+<p>Example for Questionnaire of Histopathology Examination</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="QuestionnaireResponse-1-tvt.html"
+                     title="QuestionnaireResponse/1-tvt">questionnaire response 1-tvt</a>
+               </td>
+               <td>
+<p>Example for Questionnaire Response due to suspected deep vein thrombosis</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="QuestionnaireResponse-2-pertussis.html"
+                     title="QuestionnaireResponse/2-pertussis">questionnaire response 2-pertussis</a>
+               </td>
+               <td>
+<p>Example Laboratory Order Questionnaire Response for Pertussis Investigation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="QuestionnaireResponse-3-gyn.html"
+                     title="QuestionnaireResponse/3-gyn">questionnaire response 3-gyn</a>
+               </td>
+               <td>
+<p>Example for Laboratory Order Questionnaire response for preventive gynecological check-up</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="QuestionnaireResponse-4-sepsis.html"
+                     title="QuestionnaireResponse/4-sepsis">questionnaire response 4-sepsis</a>
+               </td>
+               <td>
+<p>Example for Laboratory Order Questionnaire response for Sepsis Investigation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="QuestionnaireResponse-5-biol-monit.html"
+                     title="QuestionnaireResponse/5-biol-monit">questionnaire response 5-biol-monit</a>
+               </td>
+               <td>
+<p>Example for Laboratory Order Questionnaire response for toxicological Monitoring</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="QuestionnaireResponse-LabOrder-qr.html"
+                     title="QuestionnaireResponse/LabOrder-qr">questionnaire response LabOrder</a>
+               </td>
+               <td>
+<p>Example for Laboratory Order Questionnaire Response</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-questionnaire-sdc-profile-example-cap.html"
+                     title="Questionnaire/questionnaire-sdc-profile-example-cap">questionnaire-sdc-profile-example-cap</a>
+               </td>
+               <td>
+<p>Pathology Service of Lab</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="QuestionnaireResponse-6-histopath.html"
+                     title="QuestionnaireResponse/6-histopath">QuestionnaireResponse 6-histopath (modular version)</a>
+               </td>
+               <td>
+<p>Example for QuestionnaireResponse of Histopathology Examination</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Bundle-1-tvt.html" title="Bundle/1-tvt">Referral 1-tvt</a>
+               </td>
+               <td>
+<p>Example Bundle for referral/order due to suspected deep vein thrombosis</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Bundle-2-pertussis.html" title="Bundle/2-pertussis">Referral 2-pertussis</a>
+               </td>
+               <td>
+<p>Example Bundle for referral/order for Pertussis investigation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Bundle-6-histopath.html" title="Bundle/6-histopath">Referral 6-histopath</a>
+               </td>
+               <td>
+<p>Example Bundle for referral/order due to suspected deep vein thrombosis</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Bundle-LabOrder.html" title="Bundle/LabOrder">Referral LabOrder</a>
+               </td>
+               <td>
+<p>Example Bundle for referral/order due to suspected deep vein thrombosis</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Bundle-3-gyn.html" title="Bundle/3-gyn">Referreal 3-gyn</a>
+               </td>
+               <td>
+<p>Example Bundle for referral/order for preventive gynaecological check-up</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Bundle-4-sepsis.html" title="Bundle/4-sepsis">Referreal 4-sepsis</a>
+               </td>
+               <td>
+<p>Example Bundle for referral/order for Sepsis Investigation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Bundle-5-biol-monit.html" title="Bundle/5-biol-monit">Referreal 5-biol-monit</a>
+               </td>
+               <td>
+<p>Example Bundle for referral/order for toxicological Monitoring</p>
 </td>
             </tr>
             <tr>
@@ -563,380 +1504,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </tr>
             <tr>
                <td style="column-width:30%">
-                  <a href="Practitioner-WoodyWorkdoc.html" title="Practitioner/WoodyWorkdoc">Woody Worksdoc</a>
+                  <a href="Specimen-Serum-capillary.html" title="Specimen/Serum-capillary">Serum Sample</a>
                </td>
                <td>
-<p>Works doctor, works at SpeiserRails, refers to 5-biol-monit</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="PractitionerRole-WoodyWorkdocSpeiserRails.html"
-                     title="PractitionerRole/WoodyWorkdocSpeiserRails">Woody Worksdoc Speiser Rails</a>
-               </td>
-               <td>
-<p>PractitionerRole, refers to 5-biol-monit</p>
-</td>
-            </tr>
-         </tbody>
-      </table>
-   </p>
-   <a name="6"> </a>
-   <h3>Other </h3>
-   <p>
-    <p>These are resources that are used within this implementation guide that do not fit into one of the other categories</p>
-</p>
-   <p>
-      <table class="grid">
-         <col style="width:20%"/>
-         <tbody>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Composition-0-generic.html" title="Composition/0-generic">0-generic</a>
-               </td>
-               <td>
-<p>Composition: Storyboard for suspected deep Vein Thrombosis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="QuestionnaireResponse-0-generic.html"
-                     title="QuestionnaireResponse/0-generic">questionnaire response 0-generic</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire Response due to suspected deep vein thrombosis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="ServiceRequest-0-generic.html" title="ServiceRequest/0-generic">laborder 0-generic</a>
-               </td>
-               <td>
-<p>Example for Service Request due to suspected deep vein thrombosis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Bundle-0-generic.html" title="Bundle/0-generic">Referral 0-generic</a>
-               </td>
-               <td>
-<p>Example Bundle for referral/order due to suspected deep vein thrombosis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Composition-1-tvt.html" title="Composition/1-tvt">1-tvt</a>
-               </td>
-               <td>
-<p>Composition: Storyboard for suspected deep Vein Thrombosis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="QuestionnaireResponse-1-tvt.html"
-                     title="QuestionnaireResponse/1-tvt">questionnaire response 1-tvt</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire Response due to suspected deep vein thrombosis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="ServiceRequest-1-tvt.html" title="ServiceRequest/1-tvt">laborder 1-tvt</a>
-               </td>
-               <td>
-<p>Example for Service Request due to suspected deep vein thrombosis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Bundle-1-tvt.html" title="Bundle/1-tvt">Referral 1-tvt</a>
-               </td>
-               <td>
-<p>Example Bundle for referral/order due to suspected deep vein thrombosis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Composition-2-pertussis.html" title="Composition/2-pertussis">2-pertussis</a>
-               </td>
-               <td>
-<p>Composition: Storyboard for Pertussis Investigation</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="QuestionnaireResponse-2-pertussis.html"
-                     title="QuestionnaireResponse/2-pertussis">questionnaire response 2-pertussis</a>
-               </td>
-               <td>
-<p>Example Laboratory Order Questionnaire Response for Pertussis Investigation</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="ServiceRequest-2-pertussis.html"
-                     title="ServiceRequest/2-pertussis">laborder 2-pertussis</a>
-               </td>
-               <td>
-<p>Example for Service Request for Pertussis Investigation</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Bundle-2-pertussis.html" title="Bundle/2-pertussis">Referral 2-pertussis</a>
-               </td>
-               <td>
-<p>Example Bundle for referral/order for Pertussis investigation</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Composition-3-gyn.html" title="Composition/3-gyn">3-gyn</a>
-               </td>
-               <td>
-<p>Composition: Storyboard for Preventive Gynaecological Check-up</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="QuestionnaireResponse-3-gyn.html"
-                     title="QuestionnaireResponse/3-gyn">questionnaire response 3-gyn</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire response for preventive gynecological check-up</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="ServiceRequest-3-gyn.html" title="ServiceRequest/3-gyn">laborder 3-gyn</a>
-               </td>
-               <td>
-<p>Example for Service Request for preventive gynaecological check-up</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Bundle-3-gyn.html" title="Bundle/3-gyn">Referreal 3-gyn</a>
-               </td>
-               <td>
-<p>Example Bundle for referral/order for preventive gynaecological check-up</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Composition-4-sepsis.html" title="Composition/4-sepsis">4-sepsis</a>
-               </td>
-               <td>
-<p>Composition: Storyboard for Sepsis Investigation</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="QuestionnaireResponse-4-sepsis.html"
-                     title="QuestionnaireResponse/4-sepsis">questionnaire response 4-sepsis</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire response for Sepsis Investigation</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="ServiceRequest-4-sepsis.html" title="ServiceRequest/4-sepsis">laborder 4-sepsis</a>
-               </td>
-               <td>
-<p>Example for Service Request for Sepsis Investigation</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Bundle-4-sepsis.html" title="Bundle/4-sepsis">Referreal 4-sepsis</a>
-               </td>
-               <td>
-<p>Example Bundle for referral/order for Sepsis Investigation</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Composition-5-biol-monit.html" title="Composition/5-biol-monit">5-biol-monit</a>
-               </td>
-               <td>
-<p>Composition: Storyboard for Toxicological Monitoring</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="QuestionnaireResponse-5-biol-monit.html"
-                     title="QuestionnaireResponse/5-biol-monit">questionnaire response 5-biol-monit</a>
-               </td>
-               <td>
-<p>Example for Laboratory Order Questionnaire response for toxicological Monitoring</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="ServiceRequest-5-biol-monit.html"
-                     title="ServiceRequest/5-biol-monit">laborder 5-biol-monit</a>
-               </td>
-               <td>
-<p>Example for Service Request for toxicological Monitoring</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Bundle-5-biol-monit.html" title="Bundle/5-biol-monit">Referreal 5-biol-monit</a>
-               </td>
-               <td>
-<p>Example Bundle for referral/order for toxicological Monitoring</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Organization-Arztpraxis.html" title="Organization/Arztpraxis">Arztpraxis</a>
-               </td>
-               <td>
-<p>Practice, refers to 2-pertussis and 3-gyn</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Patient-BeatBorer.html" title="Patient/BeatBorer">Beat Borer</a>
-               </td>
-               <td>
-<p>Example for CH-Core-Patient</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Specimen-Blood.html" title="Specimen/Blood">Blood Sample</a>
-               </td>
-               <td>
-<p>Example for Specimen for Haematological Examination</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Specimen-Blood-bactec-plus.html"
-                     title="Specimen/Blood-bactec-plus">Blood Sample Bacteriology</a>
-               </td>
-               <td>
-<p>Example for Specimen for bacteriological Examination</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Specimen-Blood-coag.html" title="Specimen/Blood-coag">Blood Sample Coagulation</a>
-               </td>
-               <td>
-<p>Example for Specimen for haemostatic Examination</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Specimen-Cervix-swab.html" title="Specimen/Cervix-swab">Cervix-swab Sample</a>
-               </td>
-               <td>
-<p>Example for Specimen of Cervix Swab</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Coverage-CoverageFranzMuster.html"
-                     title="Coverage/CoverageFranzMuster">CoverageFranzMuster</a>
-               </td>
-               <td>
-<p>Example for Insurance Coverage</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Patient-EmilKummer.html" title="Patient/EmilKummer">Emil Kummer</a>
-               </td>
-               <td>
-<p>CH-Core-Patient, refers to 2-pertussis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Patient-FranzMuster.html" title="Patient/FranzMuster">FranzMuster</a>
-               </td>
-               <td>
-<p>Example for CH-Core-Patient, used in coverage</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Organization-Gruppenpraxis.html"
-                     title="Organization/Gruppenpraxis">Praxis Seeblick</a>
-               </td>
-               <td>
-<p>Example for group practice</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Patient-HansGuggindieluft.html" title="Patient/HansGuggindieluft">Hans Guggindieluft</a>
-               </td>
-               <td>
-<p>CH-Core-Patient, refers to 1-tvt</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Coverage-HealthInsuranceCard.html"
-                     title="Coverage/HealthInsuranceCard">HealthInsuranceCard</a>
-               </td>
-               <td>
-<p>Example for Insurance</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Organization-Kantonsspital.html"
-                     title="Organization/Kantonsspital">Kantonsspital</a>
-               </td>
-               <td>
-<p>Example for Hospital</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Patient-KlebsiellaKeller.html" title="Patient/KlebsiellaKeller">Klebsiella Keller</a>
-               </td>
-               <td>
-<p>CH-Core-Patient, refers to 4-sepsis</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="ServiceRequest-Lab.html" title="ServiceRequest/Lab">laborder lab</a>
-               </td>
-               <td>
-<p>Example for generic Service Request</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Organization-LaborPipette.html" title="Organization/LaborPipette">Labor Pipette</a>
-               </td>
-               <td>
-<p>Laboratory Organization, refers to all Storyboards</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Specimen-Lsac.html" title="Specimen/Lsac">Cerebrospinal Fluid Sample</a>
-               </td>
-               <td>
-<p>Example for Specimen of Cerebrospinal Fluid</p>
-</td>
-            </tr>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="Patient-MarinaRubella.html" title="Patient/MarinaRubella">Marina Rubella</a>
-               </td>
-               <td>
-<p>CH-Core-Patient, refers to 3-gyn</p>
+<p>Example for Specimen of Serum from capillary blood</p>
 </td>
             </tr>
             <tr>
@@ -944,7 +1515,78 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   <a href="Specimen-Serum.html" title="Specimen/Serum">Serum Sample</a>
                </td>
                <td>
+<p>Example for Specimen of Serum from venous blood</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Specimen-Skin.html" title="Specimen/Skin">Serum Sample</a>
+               </td>
+               <td>
 <p>Example for Specimen of Serum</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="SpecimenDefinition-single-test-serum-capillary.html"
+                     title="SpecimenDefinition/single-test-serum-capillary">single-test-serum-capillary</a>
+               </td>
+               <td>
+<p>Single Test Capillary blood</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="SpecimenDefinition-single-test-serum-capillary-fasting.html"
+                     title="SpecimenDefinition/single-test-serum-capillary-fasting">single-test-serum-capillary-fasting</a>
+               </td>
+               <td>
+<p>Capillary Blood, 12 h fasting</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="SpecimenDefinition-single-test-serum-venous.html"
+                     title="SpecimenDefinition/single-test-serum-venous">single-test-serum-venous</a>
+               </td>
+               <td>
+<p>Single Test Venous blood</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="SpecimenDefinition-single-test-serum-venous-fasting.html"
+                     title="SpecimenDefinition/single-test-serum-venous-fasting">single-test-serum-venous-fasting</a>
+               </td>
+               <td>
+<p>Venous Blood, 12 h fasting</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="PlanDefinition-sodium-serum.html"
+                     title="PlanDefinition/sodium-serum">sodium-serum</a>
+               </td>
+               <td>
+<p>Lab Service of Pipette Lab for Serum Sodium</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="SpecimenDefinition-specimen-blood-EDTA.html"
+                     title="SpecimenDefinition/specimen-blood-EDTA">specimen-blood-EDTA</a>
+               </td>
+               <td>
+<p>Blood EDTA</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="SpecimenDefinition-specimen-serum-plasma.html"
+                     title="SpecimenDefinition/specimen-serum-plasma">specimen-serum-plasma</a>
+               </td>
+               <td>
+<p>Serum Plasma</p>
 </td>
             </tr>
             <tr>
@@ -973,10 +1615,71 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </tr>
             <tr>
                <td style="column-width:30%">
-                  <a href="Specimen-Urin.html" title="Specimen/Urin">Urin Sample</a>
+                  <a href="Specimen-Urine-24h.html" title="Specimen/Urine-24h">Urin 24h Sample</a>
+               </td>
+               <td>
+<p>Example for Specimen of 24h Urine</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Specimen-Urine.html" title="Specimen/Urine">Urine Sample</a>
                </td>
                <td>
 <p>Example for Specimen of Urin</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="SpecimenDefinition-urine-24h.html"
+                     title="SpecimenDefinition/urine-24h">urine-24h</a>
+               </td>
+               <td>
+<p>24 Stunden Urin</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="SpecimenDefinition-Urine-MS.html"
+                     title="SpecimenDefinition/Urine-MS">Urine-MS</a>
+               </td>
+               <td>
+<p>Urin Mittelstrahl</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="SpecimenDefinition-Urine-Spot.html"
+                     title="SpecimenDefinition/Urine-Spot">Urine-Spot</a>
+               </td>
+               <td>
+<p>Urin Spot</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="PlanDefinition-vitamind-serum.html"
+                     title="PlanDefinition/vitamind-serum">vitamind-serum</a>
+               </td>
+               <td>
+<p>Vitamine D dosée sur échantillon de sérum</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="PractitionerRole-WoodyWorkdocSpeiserRails.html"
+                     title="PractitionerRole/WoodyWorkdocSpeiserRails">Woody Workdoc Speiser Rails</a>
+               </td>
+               <td>
+<p>PractitionerRole, refers to 5-biol-monit</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Practitioner-WoodyWorkdoc.html" title="Practitioner/WoodyWorkdoc">Woody Worksdoc</a>
+               </td>
+               <td>
+<p>Works doctor, works at SpeiserRails, refers to 5-biol-monit</p>
 </td>
             </tr>
          </tbody>
@@ -1006,15 +1709,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Feb 22, 2022 12:47+0100">2022-02-22</span>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 23:17+0200">2023-06-29</span>
           <br/>
-          <span style="color: var(--footer-highlight-text-color)"></span>
+          <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
                  <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%231.0.0%20/artifacts.html&amp;entry%2E247644557=Artifacts%20Summary">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%232.0.0-ballot%20/artifacts.html&amp;entry%2E247644557=Artifacts%20Summary">Propose a change</a>
 
           </span>
         </p>

@@ -1,0 +1,149 @@
+{
+  "resourceType" : "PlanDefinition",
+  "id" : "vitamind-serum",
+  "meta" : {
+    "profile" : ["http://hl7.org/fhir/uv/order-catalog/StructureDefinition/LabServiceDefinition"]
+  },
+  "language" : "de-CH",
+  "text" : {
+    "status" : "additional",
+    "div" : "<div xml:lang=\"de-CH\" xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"de-CH\"><p><b>Zusätzliche Informationen in deutscher Sprache | Informationen in deutscher Sprache:</b></p><p>Monoparametrischer medizinischer Biologietest :</p><p>Konzentration von 25-(OH)-vitamine D (D2 + D3)</p><p>Beschreibung : Vitamine D Konzentration in Serum-Probe</p><p>verschreibbar : ja</p><p>Laufzeit : 120 Minuten</p></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/CatalogReference",
+    "valueReference" : {
+      "reference" : "Composition/Pipette-Catalog-Header"
+    }
+  },
+  {
+    "url" : "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/ServiceBillingCode",
+    "valueReference" : {
+      "reference" : "ChargeItemDefinition/example-lab-billing-vitamind-focus"
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "textualSummary",
+      "valueMarkdown" : "Reimbursement is subject to the patient condition in conjunction with the reason for ordering"
+    },
+    {
+      "url" : "reimbursabilitySummary",
+      "valueCode" : "conditional"
+    }],
+    "url" : "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/BillingSummary"
+  },
+  {
+    "url" : "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/ScheduleSummary",
+    "valueString" : "Set up: Mon-Sat (Day shift or Night shift), Sun (Day shift); Report available: 1 day"
+  },
+  {
+    "url" : "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/LimitationSummary",
+    "valueString" : "No specific limitation for this test"
+  }],
+  "url" : "http://hl7.org/fhir/uv/order-catalog/PlanDefinition/example-lab-service-vitamind-serum",
+  "version" : "2.0.0-ballot",
+  "name" : "VitaminDMeasurement",
+  "title" : "Dosage de la vitamine D dans le sang",
+  "_title" : {
+    "extension" : [{
+      "extension" : [{
+        "url" : "lang",
+        "valueCode" : "de-CH"
+      },
+      {
+        "url" : "content",
+        "valueString" : "Dosage de la 25-(OH)-vitamine D (D2 + D3)"
+      }],
+      "url" : "http://hl7.org/fhir/StructureDefinition/translation"
+    }]
+  },
+  "type" : {
+    "coding" : [{
+      "system" : "http://hl7.org/fhir/uv/order-catalog/CodeSystem/laboratory-service-definition-type",
+      "code" : "test",
+      "display" : "unitary measurement performed on an in vitro biologic specimen"
+    }]
+  },
+  "status" : "draft",
+  "experimental" : true,
+  "date" : "2020-02-19T20:00:00+02:00",
+  "publisher" : "HL7 Switzerland",
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch"
+    }]
+  },
+  {
+    "name" : "Marcel Hanselmann",
+    "telecom" : [{
+      "system" : "email",
+      "value" : "laborprojektgruppe@gmail.com",
+      "use" : "work"
+    }]
+  }],
+  "description" : "Vitamine D dosée sur échantillon de sérum",
+  "useContext" : [{
+    "code" : {
+      "system" : "http://terminology.hl7.org/CodeSystem/usage-context-type",
+      "code" : "task"
+    },
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code" : "LABOE"
+      }]
+    }
+  }],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
+  "copyright" : "CC0-1.0",
+  "topic" : [{
+    "coding" : [{
+      "system" : "http://loinc.org",
+      "code" : "18719-5",
+      "display" : "Chemistry studies (set)"
+    }]
+  },
+  {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "166312007",
+      "display" : "Blood chemistry"
+    }]
+  }],
+  "action" : [{
+    "extension" : [{
+      "extension" : [{
+        "extension" : [{
+          "url" : "Material",
+          "valueReference" : {
+            "reference" : "SpecimenDefinition/single-test-serum-capillary",
+            "display" : "example-specimen-capillary-serum-single-test"
+          }
+        }],
+        "url" : "ExclusiveGroup"
+      }],
+      "url" : "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/SpecimenRequested"
+    }],
+    "code" : [{
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "14635-7",
+        "display" : "25-hydroxyvitamin D3 [Moles/volume] in Serum or Plasma"
+      }]
+    }],
+    "timingDuration" : {
+      "value" : 120,
+      "unit" : "minutes",
+      "system" : "http://unitsofmeasure.org",
+      "code" : "mn"
+    },
+    "definitionCanonical" : "http://fhir.ch/ig/ch-lab-order/example-lab-procedure-vitamind-serum"
+  }]
+}

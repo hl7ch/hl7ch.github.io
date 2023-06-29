@@ -31,10 +31,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -62,7 +62,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Order (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - STU 1
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
 
 
             </span>
@@ -131,15 +135,26 @@
   </li>
 
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-      Questionnaire
-      <b class="caret"></b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Questionnaire<b class="caret">
+      </b>
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="Questionnaire-0-generic.html">Generisches Formular</a>
+        <a href="Questionnaire-LabOrder-form.html">Specification</a>
       </li>
       <li>
+        <a href="https://laborprojektgruppe.ch/questionnaire/">Form</a> <!-- questionnaire-form.html -->
+      </li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+      Questionnaire Case Studies
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+            <li>
         <a href="Questionnaire-1-tvt.html">Tiefe Venenthrombose</a>
       </li>
       <li>
@@ -153,6 +168,9 @@
       </li>
       <li>
         <a href="Questionnaire-5-biol-monit.html">Biologisches Monitoring</a>
+      </li>
+      <li>
+        <a href="Questionnaire-6-histopath.html">Histopathologische Untersuchung</a>
       </li>
     </ul>
   </li>
@@ -198,9 +216,10 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v1.0.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v2.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
   <h2>Changelog</h2>
   
+
 
 
 
@@ -216,56 +235,45 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div>
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
+<!-- markdownlint-disable MD001 MD041 -->
+
 <p>All significant changes to this FHIR implementation guide will be documented on this page.</p>
 
-<h3 id="stu-1-ballot">STU 1 Ballot</h3>
+<h3 id="stu-2-ballot">STU 2 Ballot</h3>
 
-<h4 id="open-issues-for-stu-2">Open Issues for STU 2</h4>
+<h4 id="open-issues-for-stu-3">Open Issues for STU 3</h4>
 
 <ul>
-  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/132">Issue #132</a> Try to build a Questionnaire with a general part an 6 specific parts</li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/260">Issue #260</a> Using Laboratory Catalogue: Most of the issues below are based on this issue.</li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/253">Issue #253</a> shift license to CC0 1.0 Universal (CC0 1.0)</li>
   <li><a href="https://github.com/hl7ch/ch-lab-order/issues/128">Issue #128</a> Mapping reasonCode und reasonReference from Q to SR</li>
   <li><a href="https://github.com/hl7ch/ch-lab-order/issues/127">Issue #127</a> Mapping Questionnaire code to Service Request code</li>
-  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/88">Issue #88</a> look at #128; preanalytical notes which belong to specimen</li>
-  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/87">Issue #87</a> Relations between Specimens and Tests</li>
-  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/80">Issue #80</a> User should be able to select analyses or analyse panels from a Catalog. The applies to Specimens</li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/88">Issue #88</a> The pre-analytical conditions and any limitations are specified in the laboratory catalogue. These include, for example, the fasting of the patient, the type of sample container, the storage period and temperature of the sample, the reasons for rejection, etc. In addition, the costs of Vitamim D determination are only covered by health insurance in certain situations, e.g. rickets, osteoporosis, etc.</li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/87">Issue #87</a> Relations between Specimens and Tests. Refer to <a href="https://github.com/hl7ch/ch-lab-order/issues/72">Issue #72</a></li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/80">Issue #80</a> User should be able to select analyses or analyse panels from a Laboratory Catalog. The applies to Specimens</li>
   <li><a href="https://github.com/hl7ch/ch-lab-order/issues/79">Issue #79</a> Pick desired Analyses and Specimens from am Catalog</li>
-  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/78">Issue #78</a> Test to be performed is missing in ServiceRequest.code: Has to be performed by mapping</li>
-  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/77">Issue #77</a> Pathology Order: Add example</li>
-  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/72">Issue #72</a> Relation between Tests and Specimens my be needed</li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/72">Issue #72</a> Relation between Tests and Specimens my be needed. The relation should be established by a test-specific PlanDefinition as extension specimenRequested, which points to the test-specific SpecimenDefinition. The test-specific PlanDefinition and SpecimenDefinitin should be provided by a LabCatalog/Compendium. So the Lab Organization can independently define their tests with all the needed preanalytic conditions.</li>
 </ul>
 
 <h4 id="follow-up-of-changes-in-ch-orf">Follow up of changes in CH-orf</h4>
 
 <ul>
-  <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/31">ORF Issue #31</a>: The values for the readonly fields order.title, order.type, order.category are now defined fix in the composition and shonw no more in the questionnaire.</li>
-  <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/50">ORF Issue #50</a>: Change references of the ch-orf-copyreceiver from ‘CH Core Organization Profile, CH Core Patient Profil’ to ‘CH Core Practitioner Role Profile, CH Core Patient Profile RelatedPerson’ and update the Questionnaire accordingly.</li>
-  <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/53">ORF Issue #53</a> (Feedback 1): The patient in the order defined as required (<a href="http://build.fhir.org/ig/hl7ch/ch-orf/Questionnaire-order-referral-form.html">Questionnaire</a>, <a href="http://build.fhir.org/ig/hl7ch/ch-orf/StructureDefinition-ch-orf-composition.html">CH ORF Composition Profile</a></li>
-  <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/57">ORF Issue #57</a>:Added ‘GLN’ to organization (<a href="http://build.fhir.org/ig/hl7ch/ch-orf/Questionnaire-order-referral-form.html">Questionnaire</a>).</li>
-  <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/60">ORF Issue #60</a> and <a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/63">Issue #63</a>:   Added patients marital status to the <a href="http://build.fhir.org/ig/hl7ch/ch-orf/Questionnaire-order-referral-form.html">Questionnaire</a> and the examples (e.g. <a href="http://build.fhir.org/ig/hl7ch/ch-orf/Bundle-bundle-order-referral-form.html">Bundle Order-Referral-Form</a>).</li>
-  <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/64">ORF Issue #64</a>: Add patients language of correspondance to the <a href="http://build.fhir.org/ig/hl7ch/ch-orf/Questionnaire-order-referral-form.html">Questionnaire</a> and the examples (e.g. <a href="http://build.fhir.org/ig/hl7ch/ch-orf/Bundle-bundle-order-referral-form.html">Bundle Order-Referral-Form</a>).
-    <ul>
-      <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/65">ORF Issue #65</a>: Added ‘ZSR’ as Practitioner.identifier to the <a href="http://build.fhir.org/ig/hl7ch/ch-orf/Questionnaire-order-referral-form.html">Questionnaire</a> and the examples (e.g. <a href="http://build.fhir.org/ig/hl7ch/ch-orf/Bundle-bundle-order-referral-form.html">Bundle Order-Referral-Form</a></li>
-    </ul>
-  </li>
-  <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/80">ORF Issue #80</a>: Expansion of the <a href="http://build.fhir.org/ig/hl7ch/ch-orf/Questionnaire-order-referral-form.html">questionnaire</a> field ‘coverage.self’. Differentiation between <a href="http://build.fhir.org/ig/hl7ch/ch-orf/Coverage-CoverageSelfPatient.html">patient himself</a> or <a href="http://build.fhir.org/ig/hl7ch/ch-orf/Coverage-CoverageSelfRelatedPerson.html">related person</a> as self-payer.</li>
-  <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/84">ORF Issue #84</a>: Copy receiver is ment to receive a copy from the order and all evolving results thereof.</li>
-  <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/91">ORF Issue #91</a>: Change source of the codes for <a href="http://build.fhir.org/ig/hl7ch/ch-orf/ValueSet-ch-orf-vs-desiredaccommodation.html">desired accommodation</a>.</li>
-  <li><a href="https://github.com/hl7chhttp://build.fhir.org/ig/hl7ch/ch-orf/issues/101">ORF Issue #101</a> Cardinality for Questionnaire and QR in Composition set to 0..1. For details see home.</li>
-</ul>
-
-<h4 id="missed-links-fixed-after-publisher-update">Missed Links, fixed after Publisher Update</h4>
-
-<ul>
-  <li>Issues #90 .. #94</li>
+  <li><a href="http://build.fhir.org/ig/hl7ch/ch-orf/changelog.html">Change Log CH-ORF</a>:</li>
 </ul>
 
 <h4 id="changed--updated">Changed / Updated</h4>
 
 <ul>
-  <li>Issue #89: Use of SNOMED CT, LOINC in Analyses, Specimens, Specialties etc. is changed in 0-generic-of-ChOrf-Questionnaire</li>
-  <li>Issue #86: Add Term ‘Nachverordnung’ in ChLabOrderServiceRequestCategories codesystem</li>
-  <li>Issue #85: Remove SR of Vital Monitoring Devices; should be realized under a separate IG</li>
+  <li>
+    <p><a href="https://github.com/hl7ch/ch-lab-order/issues/132">Issue #132</a> Try to build a Questionnaire with a general part and 6 specific parts: <a href="http://build.fhir.org/ig/hl7ch/ch-lab-order/Questionnaire-LabOrder-form.html">Questionnaire Specification</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/hl7ch/ch-lab-order/issues/78">Issue #78</a> Test to be performed is missing in ServiceRequest.code</p>
+  </li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/77">Issue #77</a> Pathology Order: Case Study and Instance is added: Case study 6: Suspected Melanoma, order for histopathology examination</li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/89">Issue #89</a>: Case Study 0-generic has been deleted.</li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/86">Issue #86</a>: Add Term ‘Nachverordnung’ in <a href="https://fhir.ch/ig/ch-lab-order/CodeSystem-ServiceRequest.categories.html">ChLabOrderServiceRequestCategories codesystem</a></li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/85">Issue #85</a>: Remove SR of Vital Monitoring Devices; should be realized under a separate IG</li>
   <li>
     <table>
       <tbody>
@@ -295,14 +303,6 @@ correct assignment of the patient identification number. In principle, several i
 
 <h4 id="issues-resolved-without-amendment">Issues resolved without amendment</h4>
 
-<ul>
-  <li>Issue #70: In Composition.entry:ServiceRequest Reference is LAB-Order</li>
-  <li>Issue #68: resolved</li>
-  <li>Issue #67: Download link for npm package: added</li>
-  <li>Issue #66: resolved</li>
-  <li>Issue #63: link for navigation and a page to the different questionnaires: On toc.html all questionnaires are under 10 Artifacts Summary, and the different Questionnaires are linked under their names, e.g. 10.2 questionnaire 1-tvt</li>
-</ul>
-
 
 
 
@@ -328,15 +328,15 @@ correct assignment of the patient identification number. In principle, several i
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Feb 22, 2022 12:47+0100">2022-02-22</span>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 23:17+0200">2023-06-29</span>
           <br/>
-          <span style="color: var(--footer-highlight-text-color)"></span>
+          <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
                  <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%231.0.0%20/changelog.html&amp;entry%2E247644557=Changelog">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%232.0.0-ballot%20/changelog.html&amp;entry%2E247644557=Changelog">Propose a change</a>
 
           </span>
         </p>

@@ -1,0 +1,100 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ActivityDefinition/procedure-vitamin-d-serum> a fhir:ActivityDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "procedure-vitamin-d-serum"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/LabProcedureDefinition"^^xsd:anyURI ;
+       fhir:link <http://hl7.org/fhir/uv/order-catalog/StructureDefinition/LabProcedureDefinition>
+     ] )
+  ] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "additional" ] ;
+     fhir:div "<div xml:lang=\"de-CH\" xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"de-CH\"><p><b>Additional Narrative in French language | Vue narrative en français :</b></p><p>Procédure de dosage de la vitamine D dans le sang</p><p>Elément clinique pertinent requis en entrée : ObservationDefinition/input-observation-context-for-vitamin-d</p><p>Résultat en sortie : ObservationDefinition/example-observation-vitamin-d</p></div>"
+  ] ; # 
+  fhir:url [ fhir:v "http://fhir.ch/ig/ch-lab-order/lab-compendium/ValueSet/procedure-vitamin-d-serum"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "2.0.0-ballot"] ; # 
+  fhir:name [ fhir:v "VitaminDProcedure"] ; # 
+  fhir:title [ fhir:v "Procédure - dosage vitamine D - sang"] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:experimental [ fhir:v "true"^^xsd:boolean] ; # 
+  fhir:date [ fhir:v "2020-02-19T14:00:00+02:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "HL7 Switzerland"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "HL7 Switzerland" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.hl7.ch" ]
+     ] )
+  ] [
+     fhir:name [ fhir:v "Marcel Hanselmann" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "email" ] ;
+       fhir:value [ fhir:v "laborprojektgruppe@gmail.com" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Procédure de dosage de la vitamine D dans le sang"] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "CH" ]
+     ] )
+  ] ) ; # 
+  fhir:copyright [ fhir:v "CC0-1.0"] ; # 
+  fhir:effectivePeriod [
+     fhir:start [ fhir:v "2020-04-01"^^xsd:date ] ;
+     fhir:end [ fhir:v "2022-12-25"^^xsd:date ]
+  ] ; # 
+  fhir:topic ( [
+     fhir:coding ( [
+       a loinc:18719-5 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "18719-5" ] ;
+       fhir:display [ fhir:v "Chemistry studies (set)" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       a sct:275711006 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "275711006" ] ;
+       fhir:display [ fhir:v "Serum chemistry test (procedure)" ]
+     ] )
+  ] ) ; # 
+  fhir:kind [ fhir:v "ServiceRequest"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:14635-7 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "14635-7" ] ;
+       fhir:display [ fhir:v "25-hydroxyvitamin D3 [Moles/volume] in Serum or Plasma" ]
+     ] )
+  ] ; # 
+  fhir:priority [ fhir:v "routine"] ; # 
+  fhir:timing [
+     a fhir:Duration ;
+     fhir:value [ fhir:v "120"^^xsd:decimal ] ;
+     fhir:unit [ fhir:v "minutes" ] ;
+     fhir:system [ fhir:v "http://unitsofmeasure.org"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "mn" ]
+  ] ; # 
+  fhir:observationRequirement ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/ObservationDefinition/input-observation-context-for-vitamin-d> ;
+     fhir:reference [ fhir:v "ObservationDefinition/input-observation-context-for-vitamin-d" ]
+  ] ) ; # 
+  fhir:observationResultRequirement ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/ObservationDefinition/example-observation-vitamin-d> ;
+     fhir:reference [ fhir:v "ObservationDefinition/example-observation-vitamin-d" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

@@ -31,10 +31,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -62,7 +62,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Order (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - STU 1
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
 
 
             </span>
@@ -131,15 +135,26 @@
   </li>
 
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-      Questionnaire
-      <b class="caret"></b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Questionnaire<b class="caret">
+      </b>
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="Questionnaire-0-generic.html">Generisches Formular</a>
+        <a href="Questionnaire-LabOrder-form.html">Specification</a>
       </li>
       <li>
+        <a href="https://laborprojektgruppe.ch/questionnaire/">Form</a> <!-- questionnaire-form.html -->
+      </li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+      Questionnaire Case Studies
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+            <li>
         <a href="Questionnaire-1-tvt.html">Tiefe Venenthrombose</a>
       </li>
       <li>
@@ -153,6 +168,9 @@
       </li>
       <li>
         <a href="Questionnaire-5-biol-monit.html">Biologisches Monitoring</a>
+      </li>
+      <li>
+        <a href="Questionnaire-6-histopath.html">Histopathologische Untersuchung</a>
       </li>
     </ul>
   </li>
@@ -198,7 +216,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v1.0.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v2.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
   <h2>Case Studies in French</h2>
   
 
@@ -212,9 +230,18 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
 
+
     <p><!-- white space is critical inside of capture --></p>
-<div>
-<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#etude-de-cas-1--suspicion-de-thrombose-veineuse-profonde" id="markdown-toc-etude-de-cas-1--suspicion-de-thrombose-veineuse-profonde">Etude de cas 1 : Suspicion de thrombose veineuse profonde</a></li>
+  <li><a href="#etude-des-cas-2-suspicion-de-coqueluche" id="markdown-toc-etude-des-cas-2-suspicion-de-coqueluche">Etude des cas 2: Suspicion de coqueluche</a></li>
+  <li><a href="#etude-des-cas-3-contrôle-annuel-gynécologique" id="markdown-toc-etude-des-cas-3-contrôle-annuel-gynécologique">Etude des cas 3: Contrôle annuel gynécologique</a></li>
+  <li><a href="#etude-des-cas-4-septicémie-suspectée" id="markdown-toc-etude-des-cas-4-septicémie-suspectée">Etude des cas 4: Septicémie suspectée</a></li>
+  <li><a href="#etude-des-cas-5-commande-collective-surveillance-biologique-de-la-suva" id="markdown-toc-etude-des-cas-5-commande-collective-surveillance-biologique-de-la-suva">Etude des cas 5: Commande collective “Surveillance biologique de la SUVA”</a></li>
+  <li><a href="#étude-de-cas-n-6--suspicion-de-mélanome-demande-dexamen-histopathologique" id="markdown-toc-étude-de-cas-n-6--suspicion-de-mélanome-demande-dexamen-histopathologique">Étude de cas n° 6 : suspicion de mélanome, demande d’examen histopathologique</a></li>
+</ul>
+
 </div>
 <h3 id="etude-de-cas-1--suspicion-de-thrombose-veineuse-profonde">Etude de cas 1 : Suspicion de thrombose veineuse profonde</h3>
 
@@ -230,13 +257,83 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 Les résultats du laboratoire expéditeur arrivent électroniquement chez le médecin généraliste le soir même et sont également inscrits sur la fiche de laboratoire du patient. En utilisant le présent format d’échange, ce processus peut être entièrement automatisé. Après une demande téléphonique du médecin du laboratoire d’envoi en raison d’un résultat limite pour les D-dimères, l’information est donnée qu’une thrombose veineuse profonde ne peut être exclue dans cette situation au moyen des D-dimères et le patient est donc rappelé le lendemain pour qu’une échographie des jambes soit effectuée.</p>
 
 <p>Exemple FHIR correspondant qui répond à cette spécification :
-<a href="https://github.com/hl7ch/ch-lab-order/tree/master/input/examples/bundle/1-tvt.xml">1-tvt.xml</a></p>
+<a href="https://github.com/hl7ch/ch-lab-order/tree/master/input/examples/bundle/1-tvt.xml">1-tvt.xml</a>
+<a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-1-tvt.json.html">1-tvt.json</a></p>
 
 <p>Comme il s’agit d’une thrombose veineuse primaire de la jambe, le Dr Eva Erlenmeier du laboratoire Pipette envoie un retour d’information au Dr Mustermann, lui recommandant d’effectuer un dépistage de la thrombophilie, qui comprend les analyses suivantes :
 Quick, aPTT, fibrinogène, antithrombine (funct.), temps de thrombine I 2,5 NIH/ml, résistance APC, D-dimères, protéine C, (méthode aPTT), protéine S antigène.
 Les analyses peuvent être effectuées directement à partir des échantillons des tubes de citrate envoyés.</p>
 
-<p>TODO  WEITERE 4 ETUDES DES CAS</p>
+<h3 id="etude-des-cas-2-suspicion-de-coqueluche">Etude des cas 2: Suspicion de coqueluche</h3>
+
+<p>Une mère se rend chez le médecin de famille Peter Presto du cabinet de groupe d’Olten avec son fils de 6 ans Emil Kummer, né le 5 mai 2014, car l’enfant tousse de plus en plus depuis quinze jours, avec des quintes de toux avec crampes, et a de la fièvre. La réceptionniste du médecin mesure la fièvre, prélève un échantillon de Sang au bout du doigt du fils, détermine la CRP et prépare un frottis sanguin. Le médecin soupçonne une infection virale, mais veut exclure la coqueluche, bien que l’enfant ait été vacciné contre cette maladie. Comme il est pressé par le temps en raison d’une urgence, il ne veut pas faire lui-même le prélèvement de gorge nécessaire, mais demande à la mère d’accompagner l’enfant au laboratoire voisin pour que le prélèvement soit effectué en toute tranquillité.
+Il prépare un ordre de laboratoire pour effectuer une PCR coquelucheuse sur l’écouvillon de gorge de l’enfant et donne l’ordre à la mère. La mère elle-même n’est pas sûre d’avoir été vaccinée contre la coqueluche. Par conséquent, le médecin de famille Peter Presto lui administre immédiatement le vaccin contre la coqueluche et recommande de faire de même pour le père et les grands-parents de l’enfant. Entre-temps, l’AMP a examiné au microscope le frottis sanguin du fils et trouve beaucoup de lymphocytes réactifs, ce qui lui semble suspect. Elle a des doutes et interroge le médecin, qui donne l’ordre de remettre les frottis sanguins de l’enfant à la mère et de les faire examiner de plus près au laboratoire.
+La mère arrive au laboratoire avec son fils, où l’ordre du médecin est d’abord d’établir l’identité du fils. Ensuite, un écouvillon pharyngé et une ponction veineuse cubitale droite sont prélevés sur l’enfant dans la salle de prélèvement sanguin du laboratoire et transmis au laboratoire avec les frottis sanguins et l’ordonnance d’examen du médecin.</p>
+
+<p>Questionnaire FHIR correspondant qui répond à cette spécification :</p>
+
+<p><a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-2-pertussis.xml.html">2-pertussis.xml</a>
+<a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-2-pertussis.json.html">2-pertussis.json</a></p>
+
+<h3 id="etude-des-cas-3-contrôle-annuel-gynécologique">Etude des cas 3: Contrôle annuel gynécologique</h3>
+
+<p>L’assistant du médecin du service de gynécologie du cabinet de groupe d’Olten, le Dr Peter Pap, prépare les consultations du lendemain. Comme le cabinet ne dispose que d’un laboratoire minimal, certains patients sont envoyés à la clinique externe du laboratoire Pipette voisin avant le rendez-vous, dont la jeune patiente Mme Marina Rubella, née le 8. 8. 1992. Dans son logiciel de cabinet, l’AMP prescrit les analyses standard convenues avec le laboratoire pour le contrôle gynécologique de 3 ans de la patiente Rubella. Ceci inclut également la prise de sang pour le sérologue pour d’éventuelles prescriptions de suivi.
+Le laboratoire transmet les résultats au cabinet au plus tard 90 minutes après la prise de sang. Le Dr Pap prescrit les ordonnances suivantes lors de la consultation :</p>
+
+<ul>
+  <li>Cytologie cervicale gynécologique : Frottis cervical - si indiqué, la détection et le typage du HPV (virus du papillome humain) doivent également être effectués.
+ Matériel de prélèvement selon les instructions du laboratoire.
+ L’examen cytologique est réalisé dans le laboratoire Pipette. Le laboratoire Pipette ne réalise pas lui-même le typage.</li>
+  <li>Bilan urinaire partiel (test Combur9) : effectué par l’AMP au cabinet : les paramètres suivants sont examinés : pH, leucocytes, érythrocytes, nitrites, protéines, glucose, cétones, urobilinogène, bilirubine (examens semi-quantitatifs, les résultats sont probablement saisis manuellement dans le système du laboratoire du cabinet).</li>
+  <li>Bactériologie urinaire : matériel de prélèvement selon les instructions du laboratoire.
+Bactérie générale, y compris les champignons à la pipette du laboratoire.
+La transmission de l’ordonnance est déclenchée par l’AMP (heure de prélèvement).</li>
+  <li>Ordre complémentaire “Dépistage avant grossesse” : Tous les tests peuvent être réalisés à partir du matériel (sérum, sang EDTA) prélevé au préalable en ambulatoire (anticorps anti-hépatite Bc, VIH 1+2 (Ak+p24), IgG rubéole, test de dépistage lues/syphilis).</li>
+  <li>Mammographie : Commande pour l’Institut de radiologie Dr Curie.</li>
+</ul>
+
+<p>Questionnaire FHIR correspondant qui répond à cette spécification :
+<a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-3-gyn.xml.html">3-gyn.xml</a>
+<a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-3-gyn.json.html">3-gyn.json</a></p>
+
+<h3 id="etude-des-cas-4-septicémie-suspectée">Etude des cas 4: Septicémie suspectée</h3>
+
+<p>La patiente Klebsiella Keller, né le 12. 12. 1975, se trouve depuis quelque temps à l’Hôpital cantonal. La nuit dernière, son état général s’est massivement détérioré. En raison d’une suspicion de septicémie, le médecin-chef responsable, le Dr Hans Hauser, ordonne un prélèvement de sang dans la matinée pour une hémoculture. 30 minutes plus tard, une autre hémoculture aérobie et une anaérobie sont prélevées, ainsi qu’un échantillon d’urine.
+Les cinq échantillons sont ensuite traités dans la pipette du laboratoire externe. Là, les germes sont détectés dans tous les matériaux, puis identifiés par spectrométrie de masse. Les agents pathogènes “Klebsiella pneumoniae” et “Escherichia coli” ont été détectés dans les quatre flacons d’hémoculture, et la bactérie “Streptococcus mitis” a également été détectée dans un flacon d’aérobiose. Le germe identifié dans l’échantillon d’urine n’est normalement pas pathogène.
+Un antibiogramme est réalisé pour les trois pathogènes détectés dans le sang. Celui-ci montre que les deux substances actives “amoxicilline+acide clavulanique” et “ceftriaxone” sont efficaces contre les trois germes. Le microbiologiste informe régulièrement le Dr Hans Hauser des différents résultats partiels.</p>
+
+<p>Questionnaire FHIR correspondant à cette spécification:
+<a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-4-sepsis.xml.html">4-sepsis.xml</a>
+<a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-4-sepsis.json.html">4-sepsis.json</a></p>
+
+<h3 id="etude-des-cas-5-commande-collective-surveillance-biologique-de-la-suva">Etude des cas 5: Commande collective “Surveillance biologique de la SUVA”</h3>
+
+<p>Les entreprises qui travaillent avec des substances dangereuses pour la santé et dans lesquelles les employés sont exposés à des risques particuliers sont soumises à un dépistage de la santé au travail par la SUVA. La surveillance biologique est l’une des possibilités de contrôle. Elle permet d’évaluer l’exposition des travailleurs à des agents chimiques en déterminant les agents ou les métabolites dans le matériel biologique (par exemple l’urine).
+L’AMV (Prévention Médicale du Travail) de la SUVA envoie au laboratoire une liste mensuelle avec les informations suivantes par entreprise (ordre collectif) :</p>
+
+<ul>
+  <li>Établissement (nom, adresse, numéro d’établissement).</li>
+  <li>Nombre de salariés pour le suivi biologique</li>
+  <li>Examens à effectuer (p.ex. arsenic, plomb, mercure, acide mandélique).
+Les entreprises reçoivent de l’AMV une liste comprenant des étiquettes avec les employés concernés. Nous prenons ici le document d’un employé Beat Borer, né le 6. 6. 1986. Le laboratoire imprime les bons de commande avec le numéro de l’entreprise et envoie le nombre nécessaire de gobelets à urine et de bons de commande aux entreprises. Dans l’entreprise, les formulaires de commande et les gobelets à urine sont étiquetés avec les étiquettes fournies par l’AMV et remis aux employés. Les échantillons, y compris le bon de commande, sont envoyés de l’entreprise au laboratoire.</li>
+</ul>
+
+<p>[Surveillance biologique SUVA]<a href="https://www.suva.ch/de-CH/material/Factsheets/biologisches-monitoring-und-biologische-arbeitsstofftoleranzwerte">https://www.suva.ch/de-CH/material/Factsheets/biologisches-monitoring-und-biologische-arbeitsstofftoleranzwerte</a></p>
+
+<p>Questionnaire FHIR correspondant à cette spécification:
+<a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-5-biol-monit.xml.html">5-biol-monit.xml</a>
+<a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-5-biol-monit.json.html">5-biol-monit.json</a></p>
+
+<h3 id="étude-de-cas-n-6--suspicion-de-mélanome-demande-dexamen-histopathologique">Étude de cas n° 6 : suspicion de mélanome, demande d’examen histopathologique</h3>
+
+<p>Une patiente de 45 ans s’est présentée pour un examen régulier de la peau et cette lésion a été observée : Naevus de jonction composé d’une zone séborrhéique à l’extrémité supérieure et d’un réseau atypique constitué de nombreux points, structures, etc. distincts, suggérant une implication mélanocytaire. Excision. Joindre les images dermatoscopiques // TODO Spécimen : Ellipse cutanée de 29 x 11 x 5 mm Site corporel : Dos paralombaire gauche</p>
+
+<p>L’échantillon de peau, le formulaire de commande et l’image dermatoscopique sont envoyés au laboratoire.</p>
+
+<p>Questionnaire FHIR correspondant à cette spécification:
+<a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-6-histopath-mod.xml.html">6-histopath-mod.xml</a>
+<a href="https://fhir.ch/ig/ch-lab-order/Questionnaire-6-histopath-mod.json.html">6-histopath-mod.json</a></p>
+
 
 
 
@@ -262,15 +359,15 @@ Les analyses peuvent être effectuées directement à partir des échantillons d
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Feb 22, 2022 12:47+0100">2022-02-22</span>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 23:17+0200">2023-06-29</span>
           <br/>
-          <span style="color: var(--footer-highlight-text-color)"></span>
+          <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
                  <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%231.0.0%20/casestudies-french.html&amp;entry%2E247644557=Case%20Studies%20in%20French">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%232.0.0-ballot%20/casestudies-french.html&amp;entry%2E247644557=Case%20Studies%20in%20French">Propose a change</a>
 
           </span>
         </p>

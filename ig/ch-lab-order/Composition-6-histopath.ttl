@@ -1,0 +1,125 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Composition/6-histopath> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "6-histopath"] ; # 
+  fhir:meta [
+     fhir:versionId [ fhir:v "1" ] ;
+     fhir:lastUpdated [ fhir:v "2022-10-20T17:04:38.520+00:00"^^xsd:dateTime ] ;
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-composition"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-composition>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "additional" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div>Laboratory Order</div><div><h3>Case study 6: Suspected Melanoma, order for histopathology examination</h3><p>A 45-year-old female patient came for her regular skin check and this lesion was noted: Junctions nevi consisting of seborrheic area top end and atypical network constructed of many seperate dots, structures , etc , suggesting melanocytic involvement. Excision. Attachement of dermatoscopic images // TODO Specimen: 29 x 11 x 5 mm skin ellipse Body Site: Back paralumbar left</p><p>The skin sample, including the order form and the dermatoscopic image are sent to the laboratory.</p><p>Matching FHIR questionnaire that meets this specification: <a href=\"https://fhir.ch/ig/ch-lab-order/Questionnaire-6-histopath-mod.xml.html\">6-histopath.xml</a> <a href=\"https://fhir.ch/ig/ch-lab-order/Questionnaire-6-histopath-mod.json.html\">6-histopath.json</a></p></div></div>"
+  ] ; # 
+  fhir:extension ( [
+     fhir:extension ( [
+       fhir:url [ fhir:v "enterer"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:Reference ;
+         fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/MarcMustermannArztpraxis> ;
+         fhir:reference [ fhir:v "PractitionerRole/MarcMustermannArztpraxis" ]
+       ]
+     ] ) ;
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-dataenterer"^^xsd:anyURI ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-urgentnoficationcontactforthisdocument"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/EvaErlenmeyerLaborPipette> ;
+       fhir:reference [ fhir:v "PractitionerRole/EvaErlenmeyerLaborPipette" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-urgentnoficationcontactfortheresponsetothisdocument"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/MarcMustermannArztpraxis> ;
+       fhir:reference [ fhir:v "PractitionerRole/MarcMustermannArztpraxis" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/EvaErlenmeyerLaborPipette> ;
+       fhir:reference [ fhir:v "PractitionerRole/EvaErlenmeyerLaborPipette" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/PeterPrestoGruppenpraxis> ;
+       fhir:reference [ fhir:v "PractitionerRole/PeterPrestoGruppenpraxis" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/KlebsiellaKeller> ;
+       fhir:reference [ fhir:v "Patient/KlebsiellaKeller" ]
+     ]
+  ] ) ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a sct:721966001 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "721966001" ] ;
+       fhir:display [ fhir:v "Pathology order (record artifact)" ]
+     ] )
+  ] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       a sct:721963009 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "721963009" ] ;
+       fhir:display [ fhir:v "Order (record artifact)" ]
+     ] )
+  ] ) ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/KlebsiellaKeller> ;
+     fhir:reference [ fhir:v "Patient/KlebsiellaKeller" ]
+  ] ; # 
+  fhir:date [ fhir:v "2019-03-31T11:46:09+02:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/MarcMustermannArztpraxis> ;
+     fhir:reference [ fhir:v "PractitionerRole/MarcMustermannArztpraxis" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Pathologieauftrag"] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Order-Referral-Form 6-histopath" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:93037-0 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "93037-0" ] ;
+         fhir:display [ fhir:v "Portable medical order form" ]
+       ] )
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\">Order-Referral-Form 6-histopath</div>"
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/Questionnaire/6-histopath> ;
+       fhir:reference [ fhir:v "Questionnaire/6-histopath" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/QuestionnaireResponse/6-histopath> ;
+       fhir:reference [ fhir:v "QuestionnaireResponse/6-histopath" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/ServiceRequest/6-histopath> ;
+       fhir:reference [ fhir:v "ServiceRequest/6-histopath" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

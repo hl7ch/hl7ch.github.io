@@ -31,10 +31,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -62,7 +62,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Order (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - STU 1
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
 
 
             </span>
@@ -131,15 +135,26 @@
   </li>
 
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-      Questionnaire
-      <b class="caret"></b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Questionnaire<b class="caret">
+      </b>
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="Questionnaire-0-generic.html">Generisches Formular</a>
+        <a href="Questionnaire-LabOrder-form.html">Specification</a>
       </li>
       <li>
+        <a href="https://laborprojektgruppe.ch/questionnaire/">Form</a> <!-- questionnaire-form.html -->
+      </li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+      Questionnaire Case Studies
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+            <li>
         <a href="Questionnaire-1-tvt.html">Tiefe Venenthrombose</a>
       </li>
       <li>
@@ -153,6 +168,9 @@
       </li>
       <li>
         <a href="Questionnaire-5-biol-monit.html">Biologisches Monitoring</a>
+      </li>
+      <li>
+        <a href="Questionnaire-6-histopath.html">Histopathologische Untersuchung</a>
       </li>
     </ul>
   </li>
@@ -198,9 +216,10 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v1.0.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v2.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
   <h2>Use Cases in German</h2>
   
+
 
 
 
@@ -251,7 +270,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li>Subject:Verweis auf den Patienten</li>
       <li>Collection: Angaben zur Entnahme, Entnahme-Zeitpunkt, Menge, Methode, Entnahmestelle (z.B. rechter Arm), Nüchternperiode</li>
       <li>Behälter, Gefäss: Identifier, Type</li>
-      <li>und anderes mehr</li>
+      <li>und Other mehr</li>
     </ul>
   </li>
   <li>Angaben zum angeforderten Service
@@ -259,7 +278,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li>Servicerequest.category ist RequestForLabExam</li>
       <li>Fragestellung, Untersuchungsgrund (ServiceRequest.reasonCode, ServiceRequest.reasonReference)</li>
       <li>Kostenträger (Krankenkasse, Unfallversicherung usw.)</li>
-      <li>und anderes mehr</li>
+      <li>und Other mehr</li>
     </ul>
   </li>
 </ul>
@@ -271,21 +290,17 @@ Beispielformular für Mikrobiologie, Hämatologie und Klinische Chemie: <a href=
 
 <h3 id="use-case-2-laborverordnung-ohne-verwendung-von-questionnaire-und-questionnaireresponse">Use Case 2: Laborverordnung ohne Verwendung von Questionnaire und QuestionnaireResponse</h3>
 
-<p>Bei der Inhouse Laborverordnung (Verordnung aus den KIS ins Laborsystem innerhalb desselben Spitals) spielen eigene Laborverordnungssysteme mit angebundenem CDS eine wesentliche Rolle, sodass die Möglichkeit bestehen muss, Laborverordnungen ohne Questionnaire abzubilden. Um mehrere Analysen für dieselbe Probe verordnet werden können, sollen mehrere Service Requests mittels ‘Request Pattern’ dargestellt werden können.
-TODO Beispielformular ohne Q/QR</p>
+<p>Bei der Inhouse Laborverordnung (Verordnung aus den KIS ins Laborsystem innerhalb desselben Spitals) spielen eigene Laborverordnungssysteme mit angebundenem CDS eine wesentliche Rolle, sodass die Möglichkeit bestehen muss, Laborverordnungen ohne Questionnaire abzubilden. Um mehrere Analysen für dieselbe Probe verordnet werden können, sollen mehrere Service Requests mittels ‘Request Pattern’ dargestellt werden können.</p>
 
-<p><a href="http://hl7.org/fhir/2020May/request.html#requisitionid">http://hl7.org/fhir/2020May/request.html#requisitionid</a></p>
+<p>TODO <a href="http://hl7.org/fhir/2020May/request.html#requisitionid">Beispielformular ohne Q/QR</a></p>
 
 <h3 id="use-case-3-anfordern-von-zusätzlichen-untersuchungen-der-gleichen-probe">Use Case 3: Anfordern von zusätzlichen Untersuchungen der gleichen Probe</h3>
 
 <p>Nicht selten führen Resultate von Laboruntersuchungen dazu, dass noch weitere Test mit der gleichen Probe gewünscht werden. So kann im Beispiel 1-tvt eine venöse Thrombophilie vermutet werden, sodass weitere Laboruntersuchungen hereditäre Ursachen, wie Faktor-V-Leiden-Mutaion, Prothrombin-Genmutation, Antithrombinmangel usw. auffinden können.</p>
 
 <ul>
-  <li>Angaben zum angeforderten Service
-    <ul>
-      <li>Im ValueSet Servicerequest.category wird RequestForAdditionalExam angewählt</li>
-    </ul>
-  </li>
+  <li>Angaben zum angeforderten Service</li>
+  <li>Im ValueSet Servicerequest.category wird RequestForAdditionalExam angewählt</li>
 </ul>
 
 <h3 id="use-case-4-anfordern-von-vorhandenen-laborresultaten-und-bildern">Use Case 4: Anfordern von vorhandenen Laborresultaten und Bildern</h3>
@@ -293,14 +308,11 @@ TODO Beispielformular ohne Q/QR</p>
 <p>Manchmal möchte der Arzt auch Aufschluss über frühere Laboruntersuchungen, z.B. um den Verlauf von Prostata-spezifische Antigen (PSA) zu beurteilen.</p>
 
 <ul>
-  <li>Angaben zum angeforderten Service
-    <ul>
-      <li>Servicerequest.category ist RequestForPrecedentReport beziehungsweise RequestForPrecedentReportAndImages</li>
-    </ul>
-  </li>
+  <li>Angaben zum angeforderten Service</li>
+  <li>Servicerequest.category ist RequestForPrecedentReport beziehungsweise RequestForPrecedentReportAndImages</li>
 </ul>
 
-<p>Beispielformular mit ServiceRequestCategory RequestForPrecedentReport</p>
+<p>TODO Beispielformular mit ServiceRequestCategory RequestForPrecedentReport</p>
 
 <h3 id="use-case-5-sammelauftrag-für-toxikologische-untersuchungen-biologisches-monitoring">Use Case 5: Sammelauftrag für toxikologische Untersuchungen (biologisches Monitoring)</h3>
 
@@ -309,12 +321,9 @@ TODO Beispielformular ohne Q/QR</p>
 <p>Beispiele dazu sind:</p>
 
 <ul>
-  <li>Arbeitsmedizin: Bestellung von Laboruntersuchungen zu einer Arbeitergruppe
-    <ul>
-      <li>ServiceRequest.subject referenziet auf eine Gruppe</li>
-      <li>ServiceRequest.specimen referenziert auf mehrere Proben (0 .. *)</li>
-    </ul>
-  </li>
+  <li>Arbeitsmedizin: Bestellung von Laboruntersuchungen zu einer Arbeitergruppe</li>
+  <li>ServiceRequest.subject referenziet auf eine Gruppe</li>
+  <li>ServiceRequest.specimen referenziert auf mehrere Proben (0 .. *)</li>
   <li>Lebensmittelindustrie: Untersuchung zu Mitarbeiterhygiene (z.B. Salmonellen-Kontaminierung)</li>
   <li>Polizeiliche Untersuchungen</li>
 </ul>
@@ -378,13 +387,9 @@ bei Blutgas-Analysen, wo die dem Patienten zum Zeitpunkt der Probeentnahme verab
 <p>Labore bieten häufig die Möglichkeit an, Vitalfunktionen mit entsprechenden Medizingeräten zu überwachen, wie z.B. die 24 Stunden Blutdrucküberwachung, EKG Langzeitüberwachung, oder schlafmedizinisches Monitoring. Dazu wird das Medizingerät entweder dem Auftraggeber zugeschickt, oder der Patient holt es sich selber im Labor ab. Es wurde versucht, diese Verordnungen über die ServiceRequest.catogories abzubilden:</p>
 
 <ul>
-  <li>ServiceRequest.category RequestForMonit24hBP, RequestForMonit24hECG, RequestForMonit7dECG, RequestForMonitPO, RequestForMonitPG</li>
+  <li>Das Vorgehen, diesen use case im vorliegenden Implementation guide aufzunehmen, erscheint aber unbefriedigend, da solche Monitoring Untersuchungen von Vitaldaten ausserhalb der eigentlichen Labordomäne fallen, und da uns FHIR spezifischere Resourcen zur Verfügung stellt: Die Resource <a href="https://hl7.org/fhir/R4B/devicerequest.html#DeviceRequest">Device Request</a> bietet sich hier an, wobei das benötigte Gerät in der <a href="https://hl7.org/fhir/R4B/devicedefinition.html">DeviceDefinition</a> Resource referenziert wird. Der dazugeörige Use Case kann analog der Laborverordnung als Bundle mit einer Composition, welche an Stelle des Service Request den <a href="https://hl7.org/fhir/R4B/devicerequest.html#DeviceRequest">Device Request</a> enthält, implementiert werden. Es ist somit sinnvoller, die Anforderung von Monitoring-Untersuchungen in einem eigenen Implementation Guide abzuhandeln.
+Aufgrund obiger Überlegungen wurden die entsprechenden ServiceRequestCategories für das Monitoring im ValueSet des Implementation Guide auskommentiert.</li>
 </ul>
-
-<p>Dieses Vorgehen erscheint aber unbefriedigend, da solche Monitoring Untersuchungen von Vitaldaten ausserhalb der eigentlichen Labordomäne fallen, und da uns FHIR spezifischere Resourcen zur Verfügung stellt:
-Die Resource DeviceRequest bietet sich hier an, wobei das benötigte Gerät in der DeviceDefinition Resource referenziert wird.
-Der dazugeörige Use Case kann analog der Laborverordnung als Bundle mit einer Composition, welche an Stelle des Service Request den Device Request enthält, implementiert werden. Es ist somit sinnvoller, die Anforderung von Monitoring-Untersuchungen in einem eigenen Implementation Guide abzuhandeln.
-Aufgrund obiger Überlegungen wurden die entsprechenden ServiceRequestCategories für das Monitoring im ValueSet des Implementation Guide auskommentiert.</p>
 
 <h3 id="use-case-10-laborverordnung-aus-dem-labor-katalog">Use Case 10: Laborverordnung aus dem Labor-Katalog</h3>
 
@@ -393,9 +398,8 @@ Aufgrund obiger Überlegungen wurden die entsprechenden ServiceRequestCategories
 <p>Die Labore stellen dazu ihren Kunden einen Katalog von derjenigen Laboruntersuchungen zu Verfügung, welche sie zur Verfügung stellen können. Dabei kann es sich um Einzeluntersuchungen handeln, wie zum Beispiel Natriumkonzentration im Serum, oder um eine Kollektion von Untersuchungen, wie zum Beispiel Na, K und Cl im Serum handeln. Häufig in Form eines Laborhandbuches machen sie die Vorgaben zu Transport-Temperatur, minimale Probenmenge, Art des Transportgefässes usw. zugänglich.</p>
 
 <p>Es wird dazu verschiedene Typen von Katalogeinträgen (CatalogEntries) geben: Einzel-Analysen, Mehrfach-Analysen (panels), Proben-Gefässe, präanalytische Vorbedingungen.
-Der einzelne Datensatz einer Laboruntersuchung oder einer Probe lässt sich als mittels der Resource CatalogEntry abbilden. Eine Composition mit einem Profile for Catalog ist dann das Dokument, das den Katalog darstellt und repräsentiert die Gesamtheit der enthaltenen CatalogEntries. Dabei ist wichtig, dass der Catalog immer den aktuellen Gegebenheiten des Labors entspricht, und beispielsweise sofort neue Laboruntersuchungen oder veränderte Vorgaben der Präanalytik aufnehmen kann.</p>
-
-<p>[StructureDefinition:Catalog] <a href="http://hl7.org/fhir/catalog.html">http://hl7.org/fhir/catalog.html</a></p>
+Der einzelne Datensatz einer Laboruntersuchung oder einer Probe lässt sich als mittels der Resource CatalogEntry abbilden. Eine Composition mit einem Profile for Catalog ist dann das Dokument, das den Katalog darstellt und repräsentiert die Gesamtheit der enthaltenen CatalogEntries. Dabei ist wichtig, dass der Catalog immer den aktuellen Gegebenheiten des Labors entspricht, und beispielsweise sofort neue Laboruntersuchungen oder veränderte Vorgaben der Präanalytik aufnehmen kann.
+<a href="http://hl7.org/fhir/catalog.html">StructureDefinition:Catalog</a></p>
 
 
 
@@ -422,15 +426,15 @@ Der einzelne Datensatz einer Laboruntersuchung oder einer Probe lässt sich als 
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Feb 22, 2022 12:47+0100">2022-02-22</span>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 23:17+0200">2023-06-29</span>
           <br/>
-          <span style="color: var(--footer-highlight-text-color)"></span>
+          <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
                  <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%231.0.0%20/usecases-german.html&amp;entry%2E247644557=Use%20Cases%20in%20German">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%232.0.0-ballot%20/usecases-german.html&amp;entry%2E247644557=Use%20Cases%20in%20German">Propose a change</a>
 
           </span>
         </p>
