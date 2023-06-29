@@ -1,0 +1,339 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Questionnaire/referral-min> a fhir:Questionnaire;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "referral-min"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-questionnaire";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-questionnaire>
+     ], [
+       fhir:value "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire";
+       fhir:index 1;
+       fhir:link <http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire>
+     ], [
+       fhir:value "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extract";
+       fhir:index 2;
+       fhir:link <http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extract>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n            <pre>radio button für geschlecht horizontal, required Element, textbox für untersuchung, Checkboxen mit optional Textangaben, Angabe von mehreren Beilagen</pre>\n        </div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-targetStructureMap" ];
+     fhir:Extension.valueCanonical [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureMap/map-orf";
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureMap/map-orf>
+     ]
+  ];
+  fhir:Questionnaire.url [ fhir:value "http://fhir.ch/ig/ch-orf/Questionnaire/referral-min"];
+  fhir:Questionnaire.version [ fhir:value "0.9.1"];
+  fhir:Questionnaire.name [ fhir:value "ORFReferralMinimial"];
+  fhir:Questionnaire.title [ fhir:value "ORF Referral Minimial"];
+  fhir:Questionnaire.status [ fhir:value "draft"];
+  fhir:Questionnaire.experimental [ fhir:value "true"^^xsd:boolean];
+  fhir:Questionnaire.subjectType [
+     fhir:value "Patient";
+     fhir:index 0
+  ];
+  fhir:Questionnaire.date [ fhir:value "2019-03-28T00:00:00+01:00"^^xsd:dateTime];
+  fhir:Questionnaire.publisher [ fhir:value "ahdis"];
+  fhir:Questionnaire.item [
+     fhir:index 0;
+     fhir:Questionnaire.item.linkId [ fhir:value "order" ];
+     fhir:Questionnaire.item.text [ fhir:value "Auftrag" ];
+     fhir:Questionnaire.item.type [ fhir:value "group" ];
+     fhir:Questionnaire.item.item [
+       fhir:index 0;
+       fhir:Questionnaire.item.linkId [ fhir:value "order.number" ];
+       fhir:Questionnaire.item.text [ fhir:value "Auftrags-Nummer" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ];
+       fhir:Questionnaire.item.required [ fhir:value "true"^^xsd:boolean ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Questionnaire.item.linkId [ fhir:value "patient" ];
+     fhir:Questionnaire.item.definition [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient" ];
+     fhir:Questionnaire.item.text [ fhir:value "Patient" ];
+     fhir:Questionnaire.item.type [ fhir:value "group" ];
+     fhir:Questionnaire.item.item [
+       fhir:index 0;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.lastname" ];
+       fhir:Questionnaire.item.definition [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name" ];
+       fhir:Questionnaire.item.code [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-orf/CodeSystem/minimaldataset" ];
+         fhir:Coding.code [ fhir:value "Patient.name.family" ]
+       ];
+       fhir:Questionnaire.item.text [ fhir:value "Name" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ];
+       fhir:Questionnaire.item.required [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 1;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.firstname" ];
+       fhir:Questionnaire.item.definition [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name" ];
+       fhir:Questionnaire.item.code [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-orf/CodeSystem/minimaldataset" ];
+         fhir:Coding.code [ fhir:value "Patient.name.given" ]
+       ];
+       fhir:Questionnaire.item.text [ fhir:value "Vorname" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ];
+       fhir:Questionnaire.item.required [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 2;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.pid" ];
+       fhir:Questionnaire.item.text [ fhir:value "PID (sendendes System)" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 3;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.birthdate" ];
+       fhir:Questionnaire.item.text [ fhir:value "Geburtsdatum" ];
+       fhir:Questionnaire.item.type [ fhir:value "date" ];
+       fhir:Questionnaire.item.required [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation" ];
+         fhir:Extension.valueCode [ fhir:value "horizontal" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl" ];
+         fhir:Extension.valueCodeableConcept [
+           fhir:CodeableConcept.coding [
+             fhir:index 0;
+             fhir:Coding.system [ fhir:value "http://hl7.org/fhir/questionnaire-item-control" ];
+             fhir:Coding.code [ fhir:value "radio-button" ];
+             fhir:Coding.display [ fhir:value "Radio Button" ]
+           ];
+           fhir:CodeableConcept.text [ fhir:value "A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others." ]
+         ]
+       ];
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.sex" ];
+       fhir:Questionnaire.item.text [ fhir:value "Geschlecht" ];
+       fhir:Questionnaire.item.type [ fhir:value "choice" ];
+       fhir:Questionnaire.item.required [ fhir:value "true"^^xsd:boolean ];
+       fhir:Questionnaire.item.answerOption [
+         fhir:index 0;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           fhir:Coding.code [ fhir:value "F" ];
+           fhir:Coding.display [ fhir:value "Weiblich" ]
+         ];
+         fhir:Questionnaire.item.answerOption.initialSelected [ fhir:value "true"^^xsd:boolean ]
+       ], [
+         fhir:index 1;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           fhir:Coding.code [ fhir:value "M" ];
+           fhir:Coding.display [ fhir:value "Männlich" ]
+         ]
+       ]
+     ], [
+       fhir:index 5;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.zip" ];
+       fhir:Questionnaire.item.text [ fhir:value "PLZ" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ];
+       fhir:Questionnaire.item.required [ fhir:value "true"^^xsd:boolean ];
+       fhir:Questionnaire.item.maxLength [ fhir:value "6"^^xsd:integer ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Questionnaire.item.linkId [ fhir:value "examiniation" ];
+     fhir:Questionnaire.item.text [ fhir:value "Untersuch" ];
+     fhir:Questionnaire.item.type [ fhir:value "group" ];
+     fhir:Questionnaire.item.item [
+       fhir:index 0;
+       fhir:Questionnaire.item.linkId [ fhir:value "examiniation.reason" ];
+       fhir:Questionnaire.item.text [ fhir:value "Grund Überweisung" ];
+       fhir:Questionnaire.item.type [ fhir:value "text" ];
+       fhir:Questionnaire.item.required [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/questionnaire-choiceOrientation" ];
+         fhir:Extension.valueCode [ fhir:value "horizontal" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl" ];
+         fhir:Extension.valueCodeableConcept [
+           fhir:CodeableConcept.coding [
+             fhir:index 0;
+             fhir:Coding.system [ fhir:value "http://hl7.org/fhir/questionnaire-item-control" ];
+             fhir:Coding.code [ fhir:value "check-box" ]
+           ]
+         ]
+       ];
+       fhir:Questionnaire.item.linkId [ fhir:value "chemogramm" ];
+       fhir:Questionnaire.item.text [ fhir:value "Chemogramm" ];
+       fhir:Questionnaire.item.type [ fhir:value "open-choice" ];
+       fhir:Questionnaire.item.item [
+         fhir:index 0;
+         fhir:Questionnaire.item.linkId [ fhir:value "lab" ];
+         fhir:Questionnaire.item.text [ fhir:value "Laborwerte" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ];
+         fhir:Questionnaire.item.answerOption [
+           fhir:index 0;
+           fhir:Questionnaire.item.answerOption.valueCoding [
+             a loinc:27353-2;
+             fhir:Coding.system [ fhir:value "http://loinc.org" ];
+             fhir:Coding.code [ fhir:value "27353-2" ];
+             fhir:Coding.display [ fhir:value "Glucose" ]
+           ]
+         ], [
+           fhir:index 1;
+           fhir:Questionnaire.item.answerOption.valueCoding [
+             a loinc:33898-8;
+             fhir:Coding.system [ fhir:value "http://loinc.org" ];
+             fhir:Coding.code [ fhir:value "33898-8" ];
+             fhir:Coding.display [ fhir:value "Bilirubin" ]
+           ]
+         ], [
+           fhir:index 2;
+           fhir:Questionnaire.item.answerOption.valueCoding [
+             a loinc:3094-0;
+             fhir:Coding.system [ fhir:value "http://loinc.org" ];
+             fhir:Coding.code [ fhir:value "3094-0" ];
+             fhir:Coding.display [ fhir:value "Harnstoff" ]
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 2;
+       fhir:Questionnaire.item.linkId [ fhir:value "examiniation.attachments" ];
+       fhir:Questionnaire.item.text [ fhir:value "Beilage" ];
+       fhir:Questionnaire.item.type [ fhir:value "attachment" ];
+       fhir:Questionnaire.item.repeats [ fhir:value "true"^^xsd:boolean ]
+     ]
+  ], [
+     fhir:index 3;
+     fhir:Questionnaire.item.linkId [ fhir:value "receiver" ];
+     fhir:Questionnaire.item.text [ fhir:value "Receiver" ];
+     fhir:Questionnaire.item.type [ fhir:value "group" ];
+     fhir:Questionnaire.item.item [
+       fhir:index 0;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.lastname" ];
+       fhir:Questionnaire.item.text [ fhir:value "Name" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 1;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.firstname" ];
+       fhir:Questionnaire.item.text [ fhir:value "Vorname" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 2;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.organization" ];
+       fhir:Questionnaire.item.text [ fhir:value "Organisation" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 3;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.street" ];
+       fhir:Questionnaire.item.text [ fhir:value "Strasse" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 4;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.postfach" ];
+       fhir:Questionnaire.item.text [ fhir:value "Postfach" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 5;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.zip" ];
+       fhir:Questionnaire.item.text [ fhir:value "PLZ" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 6;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.city" ];
+       fhir:Questionnaire.item.text [ fhir:value "Ort" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ]
+  ], [
+     fhir:index 4;
+     fhir:Questionnaire.item.linkId [ fhir:value "orderer" ];
+     fhir:Questionnaire.item.text [ fhir:value "Sender" ];
+     fhir:Questionnaire.item.type [ fhir:value "group" ];
+     fhir:Questionnaire.item.item [
+       fhir:index 0;
+       fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender" ];
+       fhir:Questionnaire.item.text [ fhir:value "Sender" ];
+       fhir:Questionnaire.item.type [ fhir:value "group" ];
+       fhir:Questionnaire.item.item [
+         fhir:index 0;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.visum" ];
+         fhir:Questionnaire.item.text [ fhir:value "Visum" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 1;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.bereich" ];
+         fhir:Questionnaire.item.text [ fhir:value "Bereich" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 2;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.abt" ];
+         fhir:Questionnaire.item.text [ fhir:value "Bereich" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 3;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.lastname" ];
+         fhir:Questionnaire.item.text [ fhir:value "Name" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 4;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.firstname" ];
+         fhir:Questionnaire.item.text [ fhir:value "Vorname" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 5;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.organization" ];
+         fhir:Questionnaire.item.text [ fhir:value "Organisastion" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 6;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.tel" ];
+         fhir:Questionnaire.item.text [ fhir:value "Telefon" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 7;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.e-mail" ];
+         fhir:Questionnaire.item.text [ fhir:value "E-Mail" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 8;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.street" ];
+         fhir:Questionnaire.item.text [ fhir:value "Strasse" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 9;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.postfach" ];
+         fhir:Questionnaire.item.text [ fhir:value "Postfach" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 10;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.zip" ];
+         fhir:Questionnaire.item.text [ fhir:value "PLZ" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 11;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.sender.city" ];
+         fhir:Questionnaire.item.text [ fhir:value "Ort" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Questionnaire/referral-min.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

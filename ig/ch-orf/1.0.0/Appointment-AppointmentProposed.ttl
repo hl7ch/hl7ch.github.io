@@ -1,0 +1,44 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Appointment/AppointmentProposed> a fhir:Appointment;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "AppointmentProposed"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"AppointmentProposed\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-orf-appointment.html\">CH ORF Appointment</a></p></div><p><b>status</b>: proposed</p><p><b>patientInstruction</b>: Patient-oriented instructions</p><h3>Participants</h3><table class=\"grid\"><tr><td>-</td><td><b>Actor</b></td><td><b>Status</b></td></tr><tr><td>*</td><td><a href=\"Location-LocationOfAppointment.html\">Location/LocationOfAppointment</a> \"Appointment-Location\"</td><td>tentative</td></tr></table><p><b>requestedPeriod</b>: 2019-04-01T15:00:00Z --&gt; 2019-04-01T15:30:00Z</p></div>"
+  ];
+  fhir:Appointment.status [ fhir:value "proposed"];
+  fhir:Appointment.patientInstruction [ fhir:value "Patient-oriented instructions"];
+  fhir:Appointment.participant [
+     fhir:index 0;
+     fhir:Appointment.participant.actor [
+       fhir:link <http://fhir.ch/ig/ch-orf/Location/LocationOfAppointment>;
+       fhir:Reference.reference [ fhir:value "Location/LocationOfAppointment" ]
+     ];
+     fhir:Appointment.participant.status [ fhir:value "tentative" ]
+  ];
+  fhir:Appointment.requestedPeriod [
+     fhir:index 0;
+     fhir:Period.start [ fhir:value "2019-04-01T15:00:00.000+00:00"^^xsd:dateTime ];
+     fhir:Period.end [ fhir:value "2019-04-01T15:30:00.000+00:00"^^xsd:dateTime ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Appointment/AppointmentProposed.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

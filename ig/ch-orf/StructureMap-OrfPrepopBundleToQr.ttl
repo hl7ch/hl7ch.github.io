@@ -1,0 +1,181 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr> a fhir:StructureMap;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "OrfPrepopBundleToQr"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n         <pre>map &quot;http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr&quot; = &quot;OrfPrepopBundleToQr&quot;\n\n// ORF Prepop Bundle To QuestionnaireResonse to support prepopulation acccording SDC\n\nuses &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot; alias Bundle as source\nuses &quot;http://hl7.org/fhir/StructureDefinition/Parameters&quot; alias Parameters as source\nuses &quot;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&quot; alias QuestionnaireResponse as target\n\nimports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/OrfBundleToQr&quot;\n\ngroup OrfPrepopBundleToQr(source bundle : Bundle, target qr : QuestionnaireResponse) {\n  bundle.entry as entry then {\n    entry.resource : Parmameters as parameters then LaunchContextToQr(parameters, qr) &quot;OrfPrepopBundleToQr&quot;;\n  };\n}\n\ngroup LaunchContextToQr(source parameters : Parameters, target qr : QuestionnaireResponse) {\n  parameters.parameter as parameter then {\n    parameter.name where name = 'bundle' then {\n      parameter.resource as bundle then OrfBundleToQr(bundle, qr) &quot;lauchcontexttoqr&quot;;\n    } &quot;bundle&quot;;\n  } &quot;parameters&quot;;\n}\n\n</pre>\n      </div>"
+  ];
+  fhir:StructureMap.url [ fhir:value "http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr"];
+  fhir:StructureMap.version [ fhir:value "0.10.0"];
+  fhir:StructureMap.name [ fhir:value "OrfPrepopBundleToQr"];
+  fhir:StructureMap.status [ fhir:value "draft"];
+  fhir:StructureMap.date [ fhir:value "2021-06-15T14:23:15+02:00"^^xsd:dateTime];
+  fhir:StructureMap.publisher [ fhir:value "HL7 Switzerland"];
+  fhir:StructureMap.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "HL7 Switzerland" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "https://www.hl7.ch/" ]
+     ]
+  ];
+  fhir:StructureMap.description [ fhir:value "ORF Prepop Bundle To QuestionnaireResonse to support prepopulation acccording SDC"];
+  fhir:StructureMap.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "CH" ]
+     ]
+  ];
+  fhir:StructureMap.copyright [ fhir:value "CC-BY-SA-4.0"];
+  fhir:StructureMap.structure [
+     fhir:index 0;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Bundle";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Bundle>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Bundle" ]
+  ], [
+     fhir:index 1;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Parameters";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Parameters>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Parameters" ]
+  ], [
+     fhir:index 2;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "target" ];
+     fhir:StructureMap.structure.alias [ fhir:value "QuestionnaireResponse" ]
+  ];
+  fhir:StructureMap.import [
+     fhir:value "http://fhir.ch/ig/cda-fhir-maps/StructureMap/OrfBundleToQr";
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/cda-fhir-maps/StructureMap/OrfBundleToQr>
+  ];
+  fhir:StructureMap.group [
+     fhir:index 0;
+     fhir:StructureMap.group.name [ fhir:value "OrfPrepopBundleToQr" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "qr" ];
+       fhir:StructureMap.group.input.type [ fhir:value "QuestionnaireResponse" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "entry" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "entry" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "entry" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "OrfPrepopBundleToQr" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.type [ fhir:value "Parmameters" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "parameters" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "LaunchContextToQr" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "parameters";
+             fhir:index 0
+           ], [
+             fhir:value "qr";
+             fhir:index 1
+           ]
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:StructureMap.group.name [ fhir:value "LaunchContextToQr" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "parameters" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Parameters" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "qr" ];
+       fhir:StructureMap.group.input.type [ fhir:value "QuestionnaireResponse" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "parameters" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "parameters" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "parameter" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "parameter" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "bundle" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "parameter" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "name" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "name = 'bundle'" ]
+         ];
+         fhir:StructureMap.group.rule.rule [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.name [ fhir:value "lauchcontexttoqr" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "parameter" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "bundle" ]
+           ];
+           fhir:StructureMap.group.rule.dependent [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.dependent.name [ fhir:value "OrfBundleToQr" ];
+             fhir:StructureMap.group.rule.dependent.variable [
+               fhir:value "bundle";
+               fhir:index 0
+             ], [
+               fhir:value "qr";
+               fhir:index 1
+             ]
+           ]
+         ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

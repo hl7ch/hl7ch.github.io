@@ -1,0 +1,170 @@
+{
+  "resourceType": "StructureMap",
+  "id": "OrfPrepopBundleToQr",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n         <pre>map &quot;http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr&quot; = &quot;OrfPrepopBundleToQr&quot;\n\n// ORF Prepop Bundle To QuestionnaireResonse to support prepopulation acccording SDC\n\nuses &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot; alias Bundle as source\nuses &quot;http://hl7.org/fhir/StructureDefinition/Parameters&quot; alias Parameters as source\nuses &quot;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&quot; alias QuestionnaireResponse as target\n\nimports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/OrfBundleToQr&quot;\n\ngroup OrfPrepopBundleToQr(source bundle : Bundle, target qr : QuestionnaireResponse) {\n  bundle.entry as entry then {\n    entry.resource : Parmameters as parameters then LaunchContextToQr(parameters, qr) &quot;OrfPrepopBundleToQr&quot;;\n  };\n}\n\ngroup LaunchContextToQr(source parameters : Parameters, target qr : QuestionnaireResponse) {\n  parameters.parameter as parameter then {\n    parameter.name where name = 'bundle' then {\n      parameter.resource as bundle then OrfBundleToQr(bundle, qr) &quot;lauchcontexttoqr&quot;;\n    } &quot;bundle&quot;;\n  } &quot;parameters&quot;;\n}\n\n</pre>\n      </div>"
+  },
+  "url": "http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr",
+  "version": "0.10.0",
+  "name": "OrfPrepopBundleToQr",
+  "status": "draft",
+  "date": "2021-06-15T14:23:15+02:00",
+  "publisher": "HL7 Switzerland",
+  "contact": [
+    {
+      "name": "HL7 Switzerland",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.hl7.ch/"
+        }
+      ]
+    }
+  ],
+  "description": "ORF Prepop Bundle To QuestionnaireResonse to support prepopulation acccording SDC",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "CH"
+        }
+      ]
+    }
+  ],
+  "copyright": "CC-BY-SA-4.0",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Bundle",
+      "mode": "source",
+      "alias": "Bundle"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Parameters",
+      "mode": "source",
+      "alias": "Parameters"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+      "mode": "target",
+      "alias": "QuestionnaireResponse"
+    }
+  ],
+  "import": [
+    "http://fhir.ch/ig/cda-fhir-maps/StructureMap/OrfBundleToQr"
+  ],
+  "group": [
+    {
+      "name": "OrfPrepopBundleToQr",
+      "typeMode": "none",
+      "input": [
+        {
+          "name": "bundle",
+          "type": "Bundle",
+          "mode": "source"
+        },
+        {
+          "name": "qr",
+          "type": "QuestionnaireResponse",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "entry",
+          "source": [
+            {
+              "context": "bundle",
+              "element": "entry",
+              "variable": "entry"
+            }
+          ],
+          "rule": [
+            {
+              "name": "OrfPrepopBundleToQr",
+              "source": [
+                {
+                  "context": "entry",
+                  "type": "Parmameters",
+                  "element": "resource",
+                  "variable": "parameters"
+                }
+              ],
+              "dependent": [
+                {
+                  "name": "LaunchContextToQr",
+                  "variable": [
+                    "parameters",
+                    "qr"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LaunchContextToQr",
+      "typeMode": "none",
+      "input": [
+        {
+          "name": "parameters",
+          "type": "Parameters",
+          "mode": "source"
+        },
+        {
+          "name": "qr",
+          "type": "QuestionnaireResponse",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "parameters",
+          "source": [
+            {
+              "context": "parameters",
+              "element": "parameter",
+              "variable": "parameter"
+            }
+          ],
+          "rule": [
+            {
+              "name": "bundle",
+              "source": [
+                {
+                  "context": "parameter",
+                  "element": "name",
+                  "condition": "name = 'bundle'"
+                }
+              ],
+              "rule": [
+                {
+                  "name": "lauchcontexttoqr",
+                  "source": [
+                    {
+                      "context": "parameter",
+                      "element": "resource",
+                      "variable": "bundle"
+                    }
+                  ],
+                  "dependent": [
+                    {
+                      "name": "OrfBundleToQr",
+                      "variable": [
+                        "bundle",
+                        "qr"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

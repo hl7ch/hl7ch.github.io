@@ -1,0 +1,59 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Coverage/CoverageSelfPatient> a fhir:Coverage;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CoverageSelfPatient"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"CoverageSelfPatient\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-orf-coverage.html\">CH ORF Coverage</a></p></div><p><b>status</b>: active</p><p><b>type</b>: Self-payer <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-ch-orf-cs-coveragetype.html\">Coverage Type</a>#Self)</span></p><p><b>beneficiary</b>: <a href=\"Patient-ErikaMusterfrau.html\">Patient/ErikaMusterfrau</a> \" MUSTERFRAU\"</p><p><b>payor</b>: <a name=\"patient\"> </a></p><blockquote><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"patient\" </p></div><p><b>name</b>: Erika Musterfrau </p></blockquote></div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Patient;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "patient" ];
+     fhir:Patient.name [
+       fhir:index 0;
+       fhir:HumanName.family [ fhir:value "Musterfrau" ];
+       fhir:HumanName.given [
+         fhir:value "Erika";
+         fhir:index 0
+       ]
+     ]
+  ];
+  fhir:Coverage.status [ fhir:value "active"];
+  fhir:Coverage.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coveragetype" ];
+       fhir:Coding.code [ fhir:value "Self" ];
+       fhir:Coding.display [ fhir:value "Self-payer" ]
+     ]
+  ];
+  fhir:Coverage.beneficiary [
+     fhir:link <http://fhir.ch/ig/ch-orf/Patient/ErikaMusterfrau>;
+     fhir:Reference.reference [ fhir:value "Patient/ErikaMusterfrau" ]
+  ];
+  fhir:Coverage.payor [
+     fhir:index 0;
+     fhir:Reference.reference [ fhir:value "#patient" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Coverage/CoverageSelfPatient.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

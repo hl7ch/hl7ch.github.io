@@ -1,0 +1,48 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Encounter/EncounterMusterfrau> a fhir:Encounter;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "EncounterMusterfrau"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-encounter";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-encounter>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>CH ORF Desired Accommodation</b>: <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode SP}\">Semi-private</span></p><p><b>status</b>: planned</p><p><b>class</b>: <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode EMER}\">emergency</span></p><p><b>subject</b>: <a href=\"Patient-ErikaMusterfrau.html\">Generated Summary: Medical record number: 11.22.33.4567; Erika Musterfrau (OFFICIAL), Ledigname (MAIDEN); Phone: 079 979 79 79, erika@musterfrau.ch; gender: female; birthDate: 1970-03-14</a></p></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-desiredaccommodation" ];
+     fhir:Extension.valueCoding [
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
+       fhir:Coding.code [ fhir:value "SP" ];
+       fhir:Coding.display [ fhir:value "Semi-private" ]
+     ]
+  ];
+  fhir:Encounter.status [ fhir:value "planned"];
+  fhir:Encounter.class [
+     fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
+     fhir:Coding.code [ fhir:value "EMER" ];
+     fhir:Coding.display [ fhir:value "emergency" ]
+  ];
+  fhir:Encounter.subject [
+     fhir:link <http://fhir.ch/ig/ch-orf/Patient/ErikaMusterfrau>;
+     fhir:Reference.reference [ fhir:value "Patient/ErikaMusterfrau" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Encounter/EncounterMusterfrau.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

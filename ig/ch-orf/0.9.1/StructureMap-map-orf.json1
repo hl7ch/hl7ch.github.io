@@ -1,0 +1,66 @@
+{
+  "resourceType": "StructureMap",
+  "id": "map-orf",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: map-orf</p><p><b>url</b>: <a href=\"http://fhir.ch/ig/ch-orf/StructureMap/map-orf\">http://fhir.ch/ig/ch-orf/StructureMap/map-orf</a></p><p><b>version</b>: 0.9.1</p><p><b>name</b>: mapping orf questionnaireresponse to bundle</p><p><b>status</b>: draft</p><p><b>date</b>: 29.11.2019 15:17:45</p><blockquote><p><b>structure</b></p><p><b>url</b>: <a href=\"http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse\">http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse</a></p><p><b>mode</b>: source</p><p><b>alias</b>: QuestionnaireResponse</p></blockquote><blockquote><p><b>structure</b></p><p><b>url</b>: <a href=\"http://hl7.org/fhir/StructureDefinition/Patient\">http://hl7.org/fhir/StructureDefinition/Patient</a></p><p><b>mode</b>: target</p><p><b>alias</b>: Patient</p></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: QuestionnaireResponse</p><p><b>typeMode</b>: none</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: QuestionnaireResponse</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: Patient</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: SimpleAssignment</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td></tr><tr><td>*</td><td>src</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: gender</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>male</td></tr></table></blockquote></blockquote></blockquote></div>"
+  },
+  "url": "http://fhir.ch/ig/ch-orf/StructureMap/map-orf",
+  "version": "0.9.1",
+  "name": "mapping orf questionnaireresponse to bundle",
+  "status": "draft",
+  "date": "2019-11-29T15:17:45+01:00",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+      "mode": "source",
+      "alias": "QuestionnaireResponse"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Patient",
+      "mode": "target",
+      "alias": "Patient"
+    }
+  ],
+  "group": [
+    {
+      "name": "QuestionnaireResponse",
+      "typeMode": "none",
+      "input": [
+        {
+          "name": "src",
+          "type": "QuestionnaireResponse",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "Patient",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "SimpleAssignment",
+          "source": [
+            {
+              "context": "src"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "gender",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueString": "male"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

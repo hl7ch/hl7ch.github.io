@@ -1,0 +1,80 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/ServiceRequest/sr-order-referral-form> a fhir:ServiceRequest;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "sr-order-referral-form"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>CH ORF Requested Encounter Details</b>: <a href=\"Encounter-EncounterMusterfrau.html\">Generated Summary: status: planned; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode EMER}\">emergency</span></a></p><p><b>identifier</b>: Placer Identifier: 123, Filler Identifier: 456</p><p><b>status</b>: active</p><p><b>intent</b>: order</p><p><b>priority</b>: routine</p><p><b>subject</b>: <a href=\"Patient-ErikaMusterfrau.html\">Generated Summary: Medical record number: 11.22.33.4567; Erika Musterfrau (OFFICIAL), Ledigname (MAIDEN); Phone: 079 979 79 79, erika@musterfrau.ch; gender: female; birthDate: 1970-03-14</a></p><p><b>requester</b>: <a href=\"PractitionerRole-SabineMeierPraxisSeeblick.html\">Generated Summary: </a></p><p><b>insurance</b>: <a href=\"Coverage-CoverageMusterfrau.html\">Generated Summary: Insurance Card Number: 80756015090002647590; status: active; <span title=\"Codes: {http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coveragetype KVG}\">According to KVG</span></a></p><p><b>note</b>: Bemerkung/Kommentar</p></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-requestedencounterdetails" ];
+     fhir:Extension.valueReference [
+       fhir:link <http://fhir.ch/ig/ch-orf/Encounter/EncounterMusterfrau>;
+       fhir:Reference.reference [ fhir:value "Encounter/EncounterMusterfrau" ]
+     ]
+  ];
+  fhir:ServiceRequest.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0203" ];
+         fhir:Coding.code [ fhir:value "PLAC" ]
+       ]
+     ];
+     fhir:Identifier.system [ fhir:value "urn:oid:1.3.4.5.6.7" ];
+     fhir:Identifier.value [ fhir:value "123" ]
+  ], [
+     fhir:index 1;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0203" ];
+         fhir:Coding.code [ fhir:value "FILL" ]
+       ]
+     ];
+     fhir:Identifier.system [ fhir:value "urn:oid:7.8.9.10.11" ];
+     fhir:Identifier.value [ fhir:value "456" ]
+  ];
+  fhir:ServiceRequest.status [ fhir:value "active"];
+  fhir:ServiceRequest.intent [ fhir:value "order"];
+  fhir:ServiceRequest.priority [ fhir:value "routine"];
+  fhir:ServiceRequest.subject [
+     fhir:link <http://fhir.ch/ig/ch-orf/Patient/ErikaMusterfrau>;
+     fhir:Reference.reference [ fhir:value "Patient/ErikaMusterfrau" ]
+  ];
+  fhir:ServiceRequest.requester [
+     fhir:link <http://fhir.ch/ig/ch-orf/PractitionerRole/SabineMeierPraxisSeeblick>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/SabineMeierPraxisSeeblick" ]
+  ];
+  fhir:ServiceRequest.insurance [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-orf/Coverage/CoverageMusterfrau>;
+     fhir:Reference.reference [ fhir:value "Coverage/CoverageMusterfrau" ]
+  ];
+  fhir:ServiceRequest.note [
+     fhir:index 0;
+     fhir:Annotation.text [ fhir:value "Bemerkung/Kommentar" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/ServiceRequest/sr-order-referral-form.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

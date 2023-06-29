@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureMap xmlns="http://hl7.org/fhir">
+  <id value="OrfPrepopBundleToQr"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml">
+         <pre>map &quot;http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr&quot; = &quot;OrfPrepopBundleToQr&quot;
+
+// ORF Prepop Bundle To QuestionnaireResonse to support prepopulation acccording SDC
+
+uses &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot; alias Bundle as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Parameters&quot; alias Parameters as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse&quot; alias QuestionnaireResponse as target
+
+imports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/OrfBundleToQr&quot;
+
+group OrfPrepopBundleToQr(source bundle : Bundle, target qr : QuestionnaireResponse) {
+  bundle.entry as entry then {
+    entry.resource : Parmameters as parameters then LaunchContextToQr(parameters, qr) &quot;OrfPrepopBundleToQr&quot;;
+  };
+}
+
+group LaunchContextToQr(source parameters : Parameters, target qr : QuestionnaireResponse) {
+  parameters.parameter as parameter then {
+    parameter.name where name = 'bundle' then {
+      parameter.resource as bundle then OrfBundleToQr(bundle, qr) &quot;lauchcontexttoqr&quot;;
+    } &quot;bundle&quot;;
+  } &quot;parameters&quot;;
+}
+
+</pre>
+      </div>
+  </text>
+  <url value="http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr"/>
+  <version value="0.10.0"/>
+  <name value="OrfPrepopBundleToQr"/>
+  <status value="draft"/>
+  <date value="2021-06-15T14:23:15+02:00"/>
+  <publisher value="HL7 Switzerland"/>
+  <contact>
+    <name value="HL7 Switzerland"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.hl7.ch/"/>
+    </telecom>
+  </contact>
+  <description value="ORF Prepop Bundle To QuestionnaireResonse to support prepopulation acccording SDC"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="CH"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="CC-BY-SA-4.0"/>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    <mode value="source"/>
+    <alias value="Bundle"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Parameters"/>
+    <mode value="source"/>
+    <alias value="Parameters"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"/>
+    <mode value="target"/>
+    <alias value="QuestionnaireResponse"/>
+  </structure>
+  <import value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/OrfBundleToQr"/>
+  <group>
+    <name value="OrfPrepopBundleToQr"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="qr"/>
+      <type value="QuestionnaireResponse"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="entry"/>
+      <source>
+        <context value="bundle"/>
+        <element value="entry"/>
+        <variable value="entry"/>
+      </source>
+      <rule>
+        <name value="OrfPrepopBundleToQr"/>
+        <source>
+          <context value="entry"/>
+          <type value="Parmameters"/>
+          <element value="resource"/>
+          <variable value="parameters"/>
+        </source>
+        <dependent>
+          <name value="LaunchContextToQr"/>
+          <variable value="parameters"/>
+          <variable value="qr"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="LaunchContextToQr"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="parameters"/>
+      <type value="Parameters"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="qr"/>
+      <type value="QuestionnaireResponse"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="parameters"/>
+      <source>
+        <context value="parameters"/>
+        <element value="parameter"/>
+        <variable value="parameter"/>
+      </source>
+      <rule>
+        <name value="bundle"/>
+        <source>
+          <context value="parameter"/>
+          <element value="name"/>
+          <condition value="name = &#39;bundle&#39;"/>
+        </source>
+        <rule>
+          <name value="lauchcontexttoqr"/>
+          <source>
+            <context value="parameter"/>
+            <element value="resource"/>
+            <variable value="bundle"/>
+          </source>
+          <dependent>
+            <name value="OrfBundleToQr"/>
+            <variable value="bundle"/>
+            <variable value="qr"/>
+          </dependent>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+</StructureMap>

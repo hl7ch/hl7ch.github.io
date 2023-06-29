@@ -1,0 +1,74 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Composition/referral-min> a fhir:Composition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "referral-min"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-composition";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-composition>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n            Referral min\n        </div>"
+  ];
+  fhir:Composition.identifier [
+     fhir:Identifier.system [ fhir:value "http://test.fhir.ch/id/uuid" ];
+     fhir:Identifier.value [ fhir:value "26d3dff7-ab05-4737-a49c-5eccd33595f7" ]
+  ];
+  fhir:Composition.status [ fhir:value "final"];
+  fhir:Composition.type [
+     fhir:CodeableConcept.text [ fhir:value "Referral min" ]
+  ];
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-orf/Patient/FranzMuster>;
+     fhir:Reference.reference [ fhir:value "Patient/FranzMuster" ]
+  ];
+  fhir:Composition.date [ fhir:value "2019-03-31T11:46:09+02:00"^^xsd:dateTime];
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-orf/Practitioner/AgparMarc>;
+     fhir:Reference.reference [ fhir:value "Practitioner/AgparMarc" ]
+  ];
+  fhir:Composition.title [ fhir:value "Referral min"];
+  fhir:Composition.attester [
+     fhir:index 0;
+     fhir:Composition.attester.mode [ fhir:value "professional" ];
+     fhir:Composition.attester.time [ fhir:value "2010-03-12T11:46:09+02:00"^^xsd:dateTime ];
+     fhir:Composition.attester.party [
+       fhir:link <http://fhir.ch/ig/ch-orf/Practitioner/AgparMarc>;
+       fhir:Reference.reference [ fhir:value "Practitioner/AgparMarc" ]
+     ]
+  ];
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Composition.section.title [ fhir:value "Referral" ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/Questionnaire/referral-min>;
+       fhir:Reference.reference [ fhir:value "Questionnaire/referral-min" ]
+     ], [
+       fhir:index 1;
+       fhir:link <http://fhir.ch/ig/ch-orf/QuestionnaireResponse/referral-min>;
+       fhir:Reference.reference [ fhir:value "QuestionnaireResponse/referral-min" ]
+     ], [
+       fhir:index 2;
+       fhir:link <http://fhir.ch/ig/ch-orf/ServiceRequest/referral-min>;
+       fhir:Reference.reference [ fhir:value "ServiceRequest/referral-min" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Composition/referral-min.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

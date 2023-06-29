@@ -1,0 +1,612 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Questionnaire/lab-order-chemogram> a fhir:Questionnaire;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "lab-order-chemogram"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-questionnaire";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-questionnaire>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n            Lab Order Questionnarie Example for a Chemogram\n            <pre>todo copy text out of rendering</pre>\n        </div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-targetStructureMap" ];
+     fhir:Extension.valueCanonical [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureMap/map-orf";
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureMap/map-orf>
+     ]
+  ];
+  fhir:Questionnaire.url [ fhir:value "http://fhir.ch/ig/ch-orf/Questionnaire/lab-order-chemogram"];
+  fhir:Questionnaire.version [ fhir:value "0.9.1"];
+  fhir:Questionnaire.name [ fhir:value "LabOrderExample"];
+  fhir:Questionnaire.title [ fhir:value "Lab Order Example"];
+  fhir:Questionnaire.status [ fhir:value "draft"];
+  fhir:Questionnaire.experimental [ fhir:value "true"^^xsd:boolean];
+  fhir:Questionnaire.subjectType [
+     fhir:value "Patient";
+     fhir:index 0
+  ];
+  fhir:Questionnaire.date [ fhir:value "2018-04-12T00:00:00+02:00"^^xsd:dateTime];
+  fhir:Questionnaire.publisher [ fhir:value "ahdis"];
+  fhir:Questionnaire.item [
+     fhir:index 0;
+     fhir:Questionnaire.item.linkId [ fhir:value "info" ];
+     fhir:Questionnaire.item.text [ fhir:value "Lab Order Questionnarie Example for a Chemogram" ];
+     fhir:Questionnaire.item.type [ fhir:value "display" ]
+  ], [
+     fhir:index 1;
+     fhir:Questionnaire.item.linkId [ fhir:value "order" ];
+     fhir:Questionnaire.item.text [ fhir:value "Auftrag" ];
+     fhir:Questionnaire.item.type [ fhir:value "group" ];
+     fhir:Questionnaire.item.item [
+       fhir:index 0;
+       fhir:Questionnaire.item.linkId [ fhir:value "order.date" ];
+       fhir:Questionnaire.item.text [ fhir:value "Auftrags-Datum" ];
+       fhir:Questionnaire.item.type [ fhir:value "date" ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Questionnaire.item.linkId [ fhir:value "orderer" ];
+     fhir:Questionnaire.item.text [ fhir:value "Auftraggeber" ];
+     fhir:Questionnaire.item.type [ fhir:value "group" ];
+     fhir:Questionnaire.item.item [
+       fhir:index 0;
+       fhir:Questionnaire.item.linkId [ fhir:value "orderer.author" ];
+       fhir:Questionnaire.item.text [ fhir:value "Author" ];
+       fhir:Questionnaire.item.type [ fhir:value "group" ];
+       fhir:Questionnaire.item.item [
+         fhir:index 0;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.author.visum" ];
+         fhir:Questionnaire.item.text [ fhir:value "Visum" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 1;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.author.organization" ];
+         fhir:Questionnaire.item.text [ fhir:value "Organisation" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 2;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.author.lastname" ];
+         fhir:Questionnaire.item.text [ fhir:value "Name" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 3;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.author.firstname" ];
+         fhir:Questionnaire.item.text [ fhir:value "Vorname" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 4;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.author.tel" ];
+         fhir:Questionnaire.item.text [ fhir:value "Telefon" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 5;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.author.e-mail" ];
+         fhir:Questionnaire.item.text [ fhir:value "E-Mail" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 6;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.author.street" ];
+         fhir:Questionnaire.item.text [ fhir:value "Strasse" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 7;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.author.postfach" ];
+         fhir:Questionnaire.item.text [ fhir:value "Postfach" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 8;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.author.zip" ];
+         fhir:Questionnaire.item.text [ fhir:value "PLZ" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 9;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.author.city" ];
+         fhir:Questionnaire.item.text [ fhir:value "Ort" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer" ];
+       fhir:Questionnaire.item.text [ fhir:value "Erfasser" ];
+       fhir:Questionnaire.item.type [ fhir:value "group" ];
+       fhir:Questionnaire.item.item [
+         fhir:index 0;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer.visum" ];
+         fhir:Questionnaire.item.text [ fhir:value "Visum" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 1;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer.organization" ];
+         fhir:Questionnaire.item.text [ fhir:value "Organisation" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 2;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer.lastname" ];
+         fhir:Questionnaire.item.code [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value "http://tbd" ];
+           fhir:Coding.code [ fhir:value "datlname" ]
+         ];
+         fhir:Questionnaire.item.text [ fhir:value "Name" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 3;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer.firstname" ];
+         fhir:Questionnaire.item.definition [ fhir:value "http://ahdis.ch/fhir/StructureDefinition/QRFDataEntryPerson#Practitioner.name.first" ];
+         fhir:Questionnaire.item.text [ fhir:value "Vorname" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 4;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer.tel" ];
+         fhir:Questionnaire.item.text [ fhir:value "Telefon" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 5;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer.e-mail" ];
+         fhir:Questionnaire.item.text [ fhir:value "E-Mail" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 6;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer.street" ];
+         fhir:Questionnaire.item.text [ fhir:value "Strasse" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 7;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer.postfach" ];
+         fhir:Questionnaire.item.text [ fhir:value "Postfach" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 8;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer.zip" ];
+         fhir:Questionnaire.item.text [ fhir:value "PLZ" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 9;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.dataenterer.city" ];
+         fhir:Questionnaire.item.text [ fhir:value "Ort" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ]
+     ], [
+       fhir:index 2;
+       fhir:Questionnaire.item.linkId [ fhir:value "orderer.notcontactthisdoc" ];
+       fhir:Questionnaire.item.text [ fhir:value "Urgent Notification Contact for this document:" ];
+       fhir:Questionnaire.item.type [ fhir:value "group" ];
+       fhir:Questionnaire.item.item [
+         fhir:index 0;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactthisdoc.visum" ];
+         fhir:Questionnaire.item.text [ fhir:value "Visum" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 1;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactthisdoc.organization" ];
+         fhir:Questionnaire.item.text [ fhir:value "Organisation" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 2;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactthisdoc.lastname" ];
+         fhir:Questionnaire.item.text [ fhir:value "Name" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 3;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactthisdoc.firstname" ];
+         fhir:Questionnaire.item.text [ fhir:value "Vorname" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 4;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactthisdoc.tel" ];
+         fhir:Questionnaire.item.text [ fhir:value "Telefon" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 5;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactthisdoc.e-mail" ];
+         fhir:Questionnaire.item.text [ fhir:value "E-Mail" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 6;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactthisdoc.street" ];
+         fhir:Questionnaire.item.text [ fhir:value "Strasse" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 7;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactthisdoc.postfach" ];
+         fhir:Questionnaire.item.text [ fhir:value "Postfach" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 8;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactthisdoc.zip" ];
+         fhir:Questionnaire.item.text [ fhir:value "PLZ" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 9;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactthisdoc.city" ];
+         fhir:Questionnaire.item.text [ fhir:value "Ort" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ]
+     ], [
+       fhir:index 3;
+       fhir:Questionnaire.item.linkId [ fhir:value "orderer.notcontactresponsedoc" ];
+       fhir:Questionnaire.item.text [ fhir:value "Urgent Notification Contact for the response of this document:" ];
+       fhir:Questionnaire.item.type [ fhir:value "group" ];
+       fhir:Questionnaire.item.item [
+         fhir:index 0;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactresponsedoc.visum" ];
+         fhir:Questionnaire.item.text [ fhir:value "Visum" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 1;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactresponsedoc.organization" ];
+         fhir:Questionnaire.item.text [ fhir:value "Organisation" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 2;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactresponsedoc.lastname" ];
+         fhir:Questionnaire.item.text [ fhir:value "Name" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 3;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactresponsedoc.firstname" ];
+         fhir:Questionnaire.item.text [ fhir:value "Vorname" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 4;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactresponsedoc.tel" ];
+         fhir:Questionnaire.item.text [ fhir:value "Telefon" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 5;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactresponsedoc.e-mail" ];
+         fhir:Questionnaire.item.text [ fhir:value "E-Mail" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 6;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactresponsedoc.street" ];
+         fhir:Questionnaire.item.text [ fhir:value "Strasse" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 7;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactresponsedoc.postfach" ];
+         fhir:Questionnaire.item.text [ fhir:value "Postfach" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 8;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactresponsedoc.zip" ];
+         fhir:Questionnaire.item.text [ fhir:value "PLZ" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ], [
+         fhir:index 9;
+         fhir:Questionnaire.item.linkId [ fhir:value "orderer.notifcontactresponsedoc.city" ];
+         fhir:Questionnaire.item.text [ fhir:value "Ort" ];
+         fhir:Questionnaire.item.type [ fhir:value "string" ]
+       ]
+     ]
+  ], [
+     fhir:index 3;
+     fhir:Questionnaire.item.linkId [ fhir:value "receiver" ];
+     fhir:Questionnaire.item.text [ fhir:value "Receiver" ];
+     fhir:Questionnaire.item.type [ fhir:value "group" ];
+     fhir:Questionnaire.item.item [
+       fhir:index 0;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.visum" ];
+       fhir:Questionnaire.item.text [ fhir:value "Visum" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 1;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.bereich" ];
+       fhir:Questionnaire.item.text [ fhir:value "Bereich" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 2;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.abt" ];
+       fhir:Questionnaire.item.text [ fhir:value "Bereich" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 3;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.lastname" ];
+       fhir:Questionnaire.item.text [ fhir:value "Name" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 4;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.firstname" ];
+       fhir:Questionnaire.item.text [ fhir:value "Vorname" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 5;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.tel" ];
+       fhir:Questionnaire.item.text [ fhir:value "Telefon" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 6;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.e-mail" ];
+       fhir:Questionnaire.item.text [ fhir:value "E-Mail" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 7;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.cstreet" ];
+       fhir:Questionnaire.item.text [ fhir:value "Strasse" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 8;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.postfach" ];
+       fhir:Questionnaire.item.text [ fhir:value "Postfach" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 9;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.zip" ];
+       fhir:Questionnaire.item.text [ fhir:value "PLZ" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 10;
+       fhir:Questionnaire.item.linkId [ fhir:value "receiver.city" ];
+       fhir:Questionnaire.item.text [ fhir:value "Ort" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ]
+  ], [
+     fhir:index 4;
+     fhir:Questionnaire.item.linkId [ fhir:value "patient" ];
+     fhir:Questionnaire.item.text [ fhir:value "Patient" ];
+     fhir:Questionnaire.item.type [ fhir:value "group" ];
+     fhir:Questionnaire.item.item [
+       fhir:index 0;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.lastname" ];
+       fhir:Questionnaire.item.definition [ fhir:value "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given" ];
+       fhir:Questionnaire.item.text [ fhir:value "Name" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 1;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.firstname" ];
+       fhir:Questionnaire.item.definition [ fhir:value "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.first" ];
+       fhir:Questionnaire.item.text [ fhir:value "Vorname" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 2;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.pid" ];
+       fhir:Questionnaire.item.text [ fhir:value "PID (sendendes System)" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ]
+     ], [
+       fhir:index 3;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.birthdate" ];
+       fhir:Questionnaire.item.text [ fhir:value "Geburtsdatum" ];
+       fhir:Questionnaire.item.type [ fhir:value "date" ]
+     ], [
+       fhir:index 4;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.sex" ];
+       fhir:Questionnaire.item.text [ fhir:value "Geschlecht" ];
+       fhir:Questionnaire.item.type [ fhir:value "choice" ];
+       fhir:Questionnaire.item.answerOption [
+         fhir:index 0;
+         fhir:Questionnaire.item.answerOption.valueString [ fhir:value "M" ]
+       ], [
+         fhir:index 1;
+         fhir:Questionnaire.item.answerOption.valueString [ fhir:value "F" ]
+       ]
+     ], [
+       fhir:index 5;
+       fhir:Questionnaire.item.linkId [ fhir:value "patient.amborstat" ];
+       fhir:Questionnaire.item.text [ fhir:value "Amb/Stat" ];
+       fhir:Questionnaire.item.type [ fhir:value "choice" ];
+       fhir:Questionnaire.item.answerOption [
+         fhir:index 0;
+         fhir:Questionnaire.item.answerOption.valueString [ fhir:value "Amb" ]
+       ], [
+         fhir:index 1;
+         fhir:Questionnaire.item.answerOption.valueString [ fhir:value "Stat" ]
+       ]
+     ]
+  ], [
+     fhir:index 5;
+     fhir:Questionnaire.item.linkId [ fhir:value "chemogramm" ];
+     fhir:Questionnaire.item.text [ fhir:value "Chemogramm" ];
+     fhir:Questionnaire.item.type [ fhir:value "choice" ];
+     fhir:Questionnaire.item.item [
+       fhir:index 0;
+       fhir:Questionnaire.item.linkId [ fhir:value "lab" ];
+       fhir:Questionnaire.item.text [ fhir:value "Laborwerte" ];
+       fhir:Questionnaire.item.type [ fhir:value "string" ];
+       fhir:Questionnaire.item.answerOption [
+         fhir:index 0;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:27353-2;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "27353-2" ];
+           fhir:Coding.display [ fhir:value "Glucose" ]
+         ]
+       ], [
+         fhir:index 1;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:33898-8;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "33898-8" ];
+           fhir:Coding.display [ fhir:value "Bilirubin" ]
+         ]
+       ], [
+         fhir:index 2;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:3094-0;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "3094-0" ];
+           fhir:Coding.display [ fhir:value "Harnstoff" ]
+         ]
+       ], [
+         fhir:index 3;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:57332-9;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "57332-9" ];
+           fhir:Coding.display [ fhir:value "Harnsäure" ]
+         ]
+       ], [
+         fhir:index 4;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:2160-0;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "2160-0" ];
+           fhir:Coding.display [ fhir:value "Kreatinin" ]
+         ]
+       ], [
+         fhir:index 5;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:56776-8;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "56776-8" ];
+           fhir:Coding.display [ fhir:value "Amylase" ]
+         ]
+       ], [
+         fhir:index 6;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:2325-9;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "2325-9" ];
+           fhir:Coding.display [ fhir:value "GGT" ]
+         ]
+       ], [
+         fhir:index 7;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:1916-6;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "1916-6" ];
+           fhir:Coding.display [ fhir:value "GOT (ASAT)" ]
+         ]
+       ], [
+         fhir:index 8;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:76625-3;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "76625-3" ];
+           fhir:Coding.display [ fhir:value "GPT (ALAT)" ]
+         ]
+       ], [
+         fhir:index 9;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:53524-5;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "53524-5" ];
+           fhir:Coding.display [ fhir:value "AP" ]
+         ]
+       ], [
+         fhir:index 10;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:49129-0;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "49129-0" ];
+           fhir:Coding.display [ fhir:value "CK gesamt" ]
+         ]
+       ], [
+         fhir:index 11;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:2777-1;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "2777-1" ];
+           fhir:Coding.display [ fhir:value "Phosphat" ]
+         ]
+       ], [
+         fhir:index 12;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:2276-4;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "2276-4" ];
+           fhir:Coding.display [ fhir:value "Ferritin" ]
+         ]
+       ], [
+         fhir:index 13;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:16615-7;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "16615-7" ];
+           fhir:Coding.display [ fhir:value "Cholesterin" ]
+         ]
+       ], [
+         fhir:index 14;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:3043-7;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "3043-7" ];
+           fhir:Coding.display [ fhir:value "Triglyceride" ]
+         ]
+       ], [
+         fhir:index 15;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:2823-3;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "2823-3" ];
+           fhir:Coding.display [ fhir:value "K" ]
+         ]
+       ], [
+         fhir:index 16;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:2951-2;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "2951-2" ];
+           fhir:Coding.display [ fhir:value "Na" ]
+         ]
+       ], [
+         fhir:index 17;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:17863-2;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "17863-2" ];
+           fhir:Coding.display [ fhir:value "Ca" ]
+         ]
+       ], [
+         fhir:index 18;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:2572-6;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "2572-6" ];
+           fhir:Coding.display [ fhir:value "Lipase" ]
+         ]
+       ], [
+         fhir:index 19;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:2537-9;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "2537-9" ];
+           fhir:Coding.display [ fhir:value "LDH" ]
+         ]
+       ], [
+         fhir:index 20;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:27340-9;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "27340-9" ];
+           fhir:Coding.display [ fhir:value "HDL-Cholesterin" ]
+         ]
+       ], [
+         fhir:index 21;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:22748-8;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "22748-8" ];
+           fhir:Coding.display [ fhir:value "LDL-Cholesterin" ]
+         ]
+       ], [
+         fhir:index 22;
+         fhir:Questionnaire.item.answerOption.valueCoding [
+           a loinc:1751-7;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "1751-7" ];
+           fhir:Coding.display [ fhir:value "Albumin" ]
+         ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Questionnaire/lab-order-chemogram.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,63 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Coverage/CoverageMusterfrau> a fhir:Coverage;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CoverageMusterfrau"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>identifier</b>: Insurance Card Number: 80756015090002647590</p><p><b>status</b>: active</p><p><b>type</b>: <span title=\"Codes: {http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coveragetype KVG}\">According to KVG</span></p><p><b>beneficiary</b>: <a href=\"Patient-ErikaMusterfrau.html\">Generated Summary: Medical record number: 11.22.33.4567; Erika Musterfrau (OFFICIAL), Ledigname (MAIDEN); Phone: 079 979 79 79, erika@musterfrau.ch; gender: female; birthDate: 1970-03-14</a></p><p><b>payor</b>: <a name=\"sanitas\"> </a></p><blockquote><p><b>name</b>: Sanitas</p></blockquote></div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Organization;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "sanitas" ];
+     fhir:Organization.name [ fhir:value "Sanitas" ]
+  ];
+  fhir:Coverage.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coverageidentifiertype" ];
+         fhir:Coding.code [ fhir:value "VeKa" ]
+       ]
+     ];
+     fhir:Identifier.value [ fhir:value "80756015090002647590" ]
+  ];
+  fhir:Coverage.status [ fhir:value "active"];
+  fhir:Coverage.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coveragetype" ];
+       fhir:Coding.code [ fhir:value "KVG" ];
+       fhir:Coding.display [ fhir:value "According to KVG" ]
+     ]
+  ];
+  fhir:Coverage.beneficiary [
+     fhir:link <http://fhir.ch/ig/ch-orf/Patient/ErikaMusterfrau>;
+     fhir:Reference.reference [ fhir:value "Patient/ErikaMusterfrau" ]
+  ];
+  fhir:Coverage.payor [
+     fhir:index 0;
+     fhir:Reference.reference [ fhir:value "#sanitas" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Coverage/CoverageMusterfrau.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
