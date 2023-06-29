@@ -1,0 +1,51 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/Observation/CaveatRenalInsufficiencyCreatinine> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CaveatRenalInsufficiencyCreatinine"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinine-observation";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinine-observation>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p></p><p><b>code</b>: <span title=\"Codes: {http://loinc.org 77140-2}\">Creatinine [Moles/volume] in Serum, Plasma or Blood</span></p><p><b>subject</b>: <a href=\"Patient-SUfferer.html\">Generated Summary: Susanna Ufferer (OFFICIAL), Leidend (MAIDEN); Phone: +41 79 979 79 79, susanna@ufferer.ch; gender: female; birthDate: 1970-03-14</a></p><p><b>effective</b>: Apr 1, 2019, 12:10:00 PM</p><p><b>value</b>: 90 µmol/l</p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:77140-2;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "77140-2" ];
+       fhir:Coding.display [ fhir:value "Creatinine [Moles/volume] in Serum, Plasma or Blood" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-rad-order/Patient/SUfferer>;
+     fhir:Reference.reference [ fhir:value "Patient/SUfferer" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2019-04-01T10:10:00.000+00:00"^^xsd:dateTime];
+  fhir:Observation.valueQuantity [
+     fhir:Quantity.value [ fhir:value "90"^^xsd:decimal ];
+     fhir:Quantity.unit [ fhir:value "µmol/l" ];
+     fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+     fhir:Quantity.code [ fhir:value "umol/L" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/Observation/CaveatRenalInsufficiencyCreatinine.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

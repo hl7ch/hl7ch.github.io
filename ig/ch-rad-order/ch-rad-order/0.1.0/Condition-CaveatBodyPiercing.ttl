@@ -1,0 +1,62 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/Condition/CaveatBodyPiercing> a fhir:Condition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CaveatBodyPiercing"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>CH RAD-Order Caveat Type</b>: <span title=\"{http://snomed.info/sct 879862001}\">Body piercing (finding)</span></p><p><b>category</b>: <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>code</b>: <span title=\"Codes: {http://snomed.info/sct 879862001}\">Body piercing (finding)</span></p><p><b>subject</b>: <a href=\"Patient-SUfferer.html\">Generated Summary: Susanna Ufferer (OFFICIAL), Leidend (MAIDEN); Phone: +41 79 979 79 79, susanna@ufferer.ch; gender: female; birthDate: 1970-03-14</a></p></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-type" ];
+     fhir:Extension.valueCoding [
+       a sct:879862001;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "879862001" ];
+       fhir:Coding.display [ fhir:value "Body piercing (finding)" ]
+     ]
+  ];
+  fhir:Condition.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/condition-category" ];
+       fhir:Coding.code [ fhir:value "problem-list-item" ];
+       fhir:Coding.display [ fhir:value "Problem List Item" ]
+     ]
+  ];
+  fhir:Condition.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:879862001;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "879862001" ];
+       fhir:Coding.display [ fhir:value "Body piercing (finding)" ]
+     ]
+  ];
+  fhir:Condition.subject [
+     fhir:link <http://fhir.ch/ig/ch-rad-order/Patient/SUfferer>;
+     fhir:Reference.reference [ fhir:value "Patient/SUfferer" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/Condition/CaveatBodyPiercing.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,77 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/Condition/CaveatBloodCoagulation> a fhir:Condition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CaveatBloodCoagulation"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>CH RAD-Order Caveat Type</b>: <span title=\"{http://snomed.info/sct 64779008}\">Blood coagulation disorder (disorder)</span></p><p><b>category</b>: <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>code</b>: <span title=\"Codes: {http://snomed.info/sct 64779008}\">Blood coagulation disorder (disorder)</span></p><p><b>subject</b>: <a href=\"Patient-SUfferer.html\">Generated Summary: Susanna Ufferer (OFFICIAL), Leidend (MAIDEN); Phone: +41 79 979 79 79, susanna@ufferer.ch; gender: female; birthDate: 1970-03-14</a></p><blockquote><p><b>evidence</b></p><p><b>detail</b>: <a href=\"Observation-CaveatBloodCoagulationINR.html\">Generated Summary: <span title=\"Codes: {http://loinc.org 34714-6}\">INR in Blood by Coagulation assay</span>; effective: Apr 1, 2019, 12:10:00 PM; 2.3 INR</a></p></blockquote><blockquote><p><b>evidence</b></p><p><b>detail</b>: <a href=\"Observation-CaveatBloodCoagulationPlatelets.html\">Generated Summary: <span title=\"Codes: {http://loinc.org 26515-7}\">Platelets [#/volume] in Blood</span>; effective: Apr 1, 2019, 12:10:00 PM; 150000 10^3/&mu;l</a></p></blockquote></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-type" ];
+     fhir:Extension.valueCoding [
+       a sct:64779008;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "64779008" ];
+       fhir:Coding.display [ fhir:value "Blood coagulation disorder (disorder)" ]
+     ]
+  ];
+  fhir:Condition.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/condition-category" ];
+       fhir:Coding.code [ fhir:value "problem-list-item" ];
+       fhir:Coding.display [ fhir:value "Problem List Item" ]
+     ]
+  ];
+  fhir:Condition.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:64779008;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "64779008" ];
+       fhir:Coding.display [ fhir:value "Blood coagulation disorder (disorder)" ]
+     ]
+  ];
+  fhir:Condition.subject [
+     fhir:link <http://fhir.ch/ig/ch-rad-order/Patient/SUfferer>;
+     fhir:Reference.reference [ fhir:value "Patient/SUfferer" ]
+  ];
+  fhir:Condition.evidence [
+     fhir:index 0;
+     fhir:Condition.evidence.detail [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/Observation/CaveatBloodCoagulationINR>;
+       fhir:Reference.reference [ fhir:value "Observation/CaveatBloodCoagulationINR" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Condition.evidence.detail [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/Observation/CaveatBloodCoagulationPlatelets>;
+       fhir:Reference.reference [ fhir:value "Observation/CaveatBloodCoagulationPlatelets" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/Condition/CaveatBloodCoagulation.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

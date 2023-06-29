@@ -1,0 +1,86 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/Condition/CaveatRenalInsufficiency> a fhir:Condition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CaveatRenalInsufficiency"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"CaveatRenalInsufficiency\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-rad-order-caveat-condition.html\">CH RAD-Order Caveat Condition</a></p></div><p><b>CH RAD-Order Caveat Type</b>: Renal insufficiency (disorder) (Details: SNOMED CT code 723188008 = 'Renal insufficiency (disorder)', stated as 'Renal insufficiency (disorder)')</p><p><b>CH RAD-Order Caveat Type</b>: Present (qualifier value) (Details: SNOMED CT code 52101004 = 'Present', stated as 'Present (qualifier value)')</p><p><b>category</b>: Problem List Item <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.0.0/CodeSystem-condition-category.html\">Condition Category Codes</a>#problem-list-item)</span></p><p><b>code</b>: Renal insufficiency (disorder) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#723188008)</span></p><p><b>subject</b>: <a href=\"Patient-SUfferer.html\">Patient/SUfferer</a> \" UFFERER\"</p><blockquote><p><b>evidence</b></p><p><b>detail</b>: <a href=\"Observation-CaveatRenalInsufficiencyCreatinineClearance.html\">Observation/CaveatRenalInsufficiencyCreatinineClearance</a></p></blockquote><blockquote><p><b>evidence</b></p><p><b>detail</b>: <a href=\"Observation-CaveatRenalInsufficiencyCreatinine.html\">Observation/CaveatRenalInsufficiencyCreatinine</a></p></blockquote></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-type" ];
+     fhir:Extension.valueCoding [
+       a sct:723188008;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "723188008" ];
+       fhir:Coding.display [ fhir:value "Renal insufficiency (disorder)" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-qualifier-value" ];
+     fhir:Extension.valueCoding [
+       a sct:52101004;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "52101004" ];
+       fhir:Coding.display [ fhir:value "Present (qualifier value)" ]
+     ]
+  ];
+  fhir:Condition.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/condition-category" ];
+       fhir:Coding.code [ fhir:value "problem-list-item" ];
+       fhir:Coding.display [ fhir:value "Problem List Item" ]
+     ]
+  ];
+  fhir:Condition.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:723188008;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "723188008" ];
+       fhir:Coding.display [ fhir:value "Renal insufficiency (disorder)" ]
+     ]
+  ];
+  fhir:Condition.subject [
+     fhir:link <http://fhir.ch/ig/ch-rad-order/Patient/SUfferer>;
+     fhir:Reference.reference [ fhir:value "Patient/SUfferer" ]
+  ];
+  fhir:Condition.evidence [
+     fhir:index 0;
+     fhir:Condition.evidence.detail [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/Observation/CaveatRenalInsufficiencyCreatinineClearance>;
+       fhir:Reference.reference [ fhir:value "Observation/CaveatRenalInsufficiencyCreatinineClearance" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Condition.evidence.detail [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/Observation/CaveatRenalInsufficiencyCreatinine>;
+       fhir:Reference.reference [ fhir:value "Observation/CaveatRenalInsufficiencyCreatinine" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/Condition/CaveatRenalInsufficiency.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

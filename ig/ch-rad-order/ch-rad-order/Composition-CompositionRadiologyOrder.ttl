@@ -1,0 +1,113 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/Composition/CompositionRadiologyOrder> a fhir:Composition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CompositionRadiologyOrder"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "additional" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div>Radiology Order</div></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "enterer" ];
+       fhir:Extension.valueReference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/PractitionerRole/DAtaentererHappyDoctors>;
+         fhir:Reference.reference [ fhir:value "PractitionerRole/DAtaentererHappyDoctors" ]
+       ]
+     ];
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-dataenterer" ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver" ];
+     fhir:Extension.valueReference [
+       fhir:link <http://fhir.ch/ig/ch-rad-order/PractitionerRole/RadiologyDepartmentHappyHospital>;
+       fhir:Reference.reference [ fhir:value "PractitionerRole/RadiologyDepartmentHappyHospital" ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver" ];
+     fhir:Extension.valueReference [
+       fhir:link <http://fhir.ch/ig/ch-rad-order/Patient/SUffererCopyReceiver>;
+       fhir:Reference.reference [ fhir:value "Patient/SUffererCopyReceiver" ]
+     ]
+  ];
+  fhir:Composition.status [ fhir:value "final"];
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:oid:2.16.756.5.30.1.127.3.4" ];
+       fhir:Coding.code [ fhir:value "2161000195103" ];
+       fhir:Coding.display [ fhir:value "Imaging order (record artifact)" ]
+     ]
+  ];
+  fhir:Composition.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:721963009;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "721963009" ];
+       fhir:Coding.display [ fhir:value "Order (record artifact)" ]
+     ]
+  ];
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-rad-order/Patient/SUfferer>;
+     fhir:Reference.reference [ fhir:value "Patient/SUfferer" ]
+  ];
+  fhir:Composition.date [ fhir:value "2019-04-01T20:18:41.341+00:00"^^xsd:dateTime];
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-rad-order/PractitionerRole/ORderplacerHappyDoctors>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/ORderplacerHappyDoctors" ]
+  ];
+  fhir:Composition.title [ fhir:value "Radiologieauftrag"];
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Composition.section.title [ fhir:value "Order-Referral" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:93037-0;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "93037-0" ];
+         fhir:Coding.display [ fhir:value "Portable medical order form" ]
+       ]
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/Questionnaire/QuestionnaireRadiologyOrder>;
+       fhir:Reference.reference [ fhir:value "Questionnaire/QuestionnaireRadiologyOrder" ]
+     ], [
+       fhir:index 1;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/QuestionnaireResponse/QuestionnaireResponseRadiologyOrder>;
+       fhir:Reference.reference [ fhir:value "QuestionnaireResponse/QuestionnaireResponseRadiologyOrder" ]
+     ], [
+       fhir:index 2;
+       fhir:link <http://fhir.ch/ig/ch-rad-order/ServiceRequest/ServiceRequestRadiologyOrder>;
+       fhir:Reference.reference [ fhir:value "ServiceRequest/ServiceRequestRadiologyOrder" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/Composition/CompositionRadiologyOrder.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

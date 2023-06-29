@@ -1,0 +1,1433 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/ImplementationGuide/ch.fhir.ig.ch-rad-order> a fhir:ImplementationGuide;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "ch.fhir.ig.ch-rad-order"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_RAD_Order</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-rad-order/ImplementationGuide/ch.fhir.ig.ch-rad-order</pre><div><p>Implementation guide CH RAD-Order (R4)</p>\n</div></div>"
+  ];
+  fhir:ImplementationGuide.url [ fhir:value "http://fhir.ch/ig/ch-rad-order/ImplementationGuide/ch.fhir.ig.ch-rad-order"];
+  fhir:ImplementationGuide.version [ fhir:value "1.0.0"];
+  fhir:ImplementationGuide.name [ fhir:value "CH_RAD_Order"];
+  fhir:ImplementationGuide.title [ fhir:value "CH RAD-Order (R4)"];
+  fhir:ImplementationGuide.status [ fhir:value "active"];
+  fhir:ImplementationGuide.date [ fhir:value "2022-02-22"^^xsd:date];
+  fhir:ImplementationGuide.publisher [ fhir:value "HL7 Switzerland"];
+  fhir:ImplementationGuide.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "Juerg P. Bleuer" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "https://www.hl7.ch" ]
+     ]
+  ];
+  fhir:ImplementationGuide.description [ fhir:value "Implementation guide CH RAD-Order (R4)"];
+  fhir:ImplementationGuide.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "CH" ]
+     ]
+  ];
+  fhir:ImplementationGuide.copyright [ fhir:value "CC-BY-SA-4.0"];
+  fhir:ImplementationGuide.packageId [ fhir:value "ch.fhir.ig.ch-rad-order"];
+  fhir:ImplementationGuide.license [ fhir:value "CC-BY-SA-4.0"];
+  fhir:ImplementationGuide.fhirVersion [
+     fhir:value "4.0.1";
+     fhir:index 0
+  ];
+  fhir:ImplementationGuide.dependsOn [
+     fhir:index 0;
+     fhir:Element.id [ fhir:value "ch_fhir_ig_ch_core" ];
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core";
+       fhir:link <http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core>
+     ];
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ch.fhir.ig.ch-core" ];
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "2.0.0" ]
+  ], [
+     fhir:index 1;
+     fhir:Element.id [ fhir:value "ch_fhir_ig_ch_orf" ];
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://fhir.ch/ig/ch-orf/ImplementationGuide/ch.fhir.ig.ch-orf";
+       fhir:link <http://fhir.ch/ig/ch-orf/ImplementationGuide/ch.fhir.ig.ch-orf>
+     ];
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ch.fhir.ig.ch-orf" ];
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "1.0.0" ]
+  ];
+  fhir:ImplementationGuide.definition [
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "copyrightyear" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "2021+" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "releaselabel" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "STU 1" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 2;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-liquid" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template/liquid" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 3;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-liquid" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "input/liquid" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-qa" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "temp/qa" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 5;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-temp" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "temp/pages" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 6;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-output" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "output" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 7;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-suppressed-warnings" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "input/ignoreWarnings.txt" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 8;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-history" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "http://fhir.ch/ig/ch-rad-order/history.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 9;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "template-html" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template-page.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 10;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "template-md" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template-page-md.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 11;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-contact" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 12;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-context" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 13;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-copyright" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 14;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-jurisdiction" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 15;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-license" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 16;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-publisher" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 17;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-version" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 18;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "active-tables" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 19;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "fmm-definition" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "http://hl7.org/fhir/versions.html#maturity" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 20;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "propagate-status" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ];
+     fhir:ImplementationGuide.definition.resource [
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-bodyheight-observation>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-bodyheight-observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Body Height Observation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the Body Height Observation resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-bodyweight-observation>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-bodyweight-observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Body Weight Observation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the Body Weight Observation resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 2;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-caveat-condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Caveat Condition" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the Caveat Condition resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 3;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Composition" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the Composition resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinineclearance-observation>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-creatinineclearance-observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Creatinine Clearance Observation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the Creatinine Clearance Observation resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 5;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinine-observation>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-creatinine-observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Creatinine Observation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the Creatinine Observation resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 6;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-diagnosis-condition>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-diagnosis-condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Diagnosis Condition" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the Diagnosis Condition resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 7;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-document>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-document" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the Bundle (document) resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 8;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-INR-observation>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-INR-observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order INR Observation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the INR Observation resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 9;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-imagingstudy>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-imagingstudy" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order ImagingStudy" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the ImagingStudy resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 10;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-media>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-media" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Media" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the Media resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 11;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-platelets-observation>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-platelets-observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Platelets Observation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the Platelets Observation resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 12;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-servicerequest" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order ServiceRequest" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for the ServiceRequest resource in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 13;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-type>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-caveat-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Caveat Type" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to define the Type of Caveat in context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 14;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-order-detail-type>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-order-detail-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Order Detail Type" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to define the Type of Order Detail in context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 15;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-qualifier-value>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-rad-order-qualifier-value" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH RAD-Order Caveat Type" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to define the Type of Caveat in context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 16;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-caveat-condition>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-caveat-condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Condition" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Caveat Condition Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 17;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-caveat-device>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-caveat-device" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Device" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Caveat Device Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 18;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-caveat-type>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-caveat-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Type of Caveat" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Type of Caveat Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 19;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-guidance-for-action>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-guidance-for-action" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Guidance for Action" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Guidance for Action Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 20;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-imaging-focus>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-imaging-focus" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Imaging Focus" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Imaging Focus Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 21;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-imaging-region>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-imaging-region" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Imaging Region" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Imaging Region Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 22;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-laterality>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-laterality" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Laterality" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Laterality Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 23;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-maneuver-type>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-maneuver-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Maneuver Type" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Maneuver Type Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 24;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-modality-type>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-modality-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Modality Type" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Modality Type Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 25;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-order-detail-type>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-order-detail-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Type of Order Detail" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Type of Order Detail Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 26;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-caveat-qualifier-value>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-caveat-qualifier-value" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Qualifier Value" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Qualifier values in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 27;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-requested-service>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-requested-service" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Requested Service" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Requested Service Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 28;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-view-type>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-rad-order-view-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "View Type" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for View Type Value Set in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 29;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/CodeSystem/ch-rad-order-order-detail-type>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/ch-rad-order-order-detail-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Type of Order Detail" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Type of Order Detail Code System in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 30;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/CodeSystem/ch-rad-order-requested-service>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/ch-rad-order-requested-service" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Requested Service" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition for Requested Service Code System in the context of CH RAD-Order." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 31;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Appointment" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Appointment/AppointmentRadiography>;
+         fhir:Reference.reference [ fhir:value "Appointment/AppointmentRadiography" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Appointment Radiography" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Appointment" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 32;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Observation/BodyHeight>;
+         fhir:Reference.reference [ fhir:value "Observation/BodyHeight" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Body Height 176 cm" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Body Height Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-bodyheight-observation";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-bodyheight-observation>
+       ]
+     ], [
+       fhir:index 33;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Observation/BodyWeight>;
+         fhir:Reference.reference [ fhir:value "Observation/BodyWeight" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Body Weight 99 kg" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Body Weight Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-bodyweight-observation";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-bodyweight-observation>
+       ]
+     ], [
+       fhir:index 34;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Condition/CaveatBloodCoagulation>;
+         fhir:Reference.reference [ fhir:value "Condition/CaveatBloodCoagulation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Blood Coagulation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Caveat Condition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition>
+       ]
+     ], [
+       fhir:index 35;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Observation/CaveatBloodCoagulationINR>;
+         fhir:Reference.reference [ fhir:value "Observation/CaveatBloodCoagulationINR" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Blood Coagulation INR" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for INR Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-INR-observation";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-INR-observation>
+       ]
+     ], [
+       fhir:index 36;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Observation/CaveatBloodCoagulationPlatelets>;
+         fhir:Reference.reference [ fhir:value "Observation/CaveatBloodCoagulationPlatelets" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Blood Coagulation Platelets" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Platelets Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-platelets-observation";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-platelets-observation>
+       ]
+     ], [
+       fhir:index 37;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Condition/CaveatBodyPiercing>;
+         fhir:Reference.reference [ fhir:value "Condition/CaveatBodyPiercing" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Body Piercing" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Caveat Condition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition>
+       ]
+     ], [
+       fhir:index 38;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Condition/CaveatDeviceCardiacPacemaker>;
+         fhir:Reference.reference [ fhir:value "Condition/CaveatDeviceCardiacPacemaker" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Device Cardiac Pacemaker" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Caveat Condition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition>
+       ]
+     ], [
+       fhir:index 39;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Condition/CaveatDrugPrescriptionMetformin>;
+         fhir:Reference.reference [ fhir:value "Condition/CaveatDrugPrescriptionMetformin" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Drug Prescription Metformin" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Caveat Condition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition>
+       ]
+     ], [
+       fhir:index 40;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Condition/CaveatRenalInsufficiency>;
+         fhir:Reference.reference [ fhir:value "Condition/CaveatRenalInsufficiency" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Renal Insufficiency" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Caveat Condition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition>
+       ]
+     ], [
+       fhir:index 41;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Observation/CaveatRenalInsufficiencyCreatinine>;
+         fhir:Reference.reference [ fhir:value "Observation/CaveatRenalInsufficiencyCreatinine" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Renal Insufficiency Creatinine" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Creatinine Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinine-observation";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinine-observation>
+       ]
+     ], [
+       fhir:index 42;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Observation/CaveatRenalInsufficiencyCreatinineClearance>;
+         fhir:Reference.reference [ fhir:value "Observation/CaveatRenalInsufficiencyCreatinineClearance" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Caveat Renal Insufficiency Creatinine Clearance" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for CreatinineClearance Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinineclearance-observation";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinineclearance-observation>
+       ]
+     ], [
+       fhir:index 43;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Composition/CompositionRadiologyOrder>;
+         fhir:Reference.reference [ fhir:value "Composition/CompositionRadiologyOrder" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Composition Radiology Order" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition>
+       ]
+     ], [
+       fhir:index 44;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Coverage" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Coverage/CoverageKVG>;
+         fhir:Reference.reference [ fhir:value "Coverage/CoverageKVG" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Coverage KVG" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Coverage" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 45;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Practitioner/DAtaenterer>;
+         fhir:Reference.reference [ fhir:value "Practitioner/DAtaenterer" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Doris Ataenterer" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 46;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "PractitionerRole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/PractitionerRole/DAtaentererHappyDoctors>;
+         fhir:Reference.reference [ fhir:value "PractitionerRole/DAtaentererHappyDoctors" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Doris Ataenterer @ Happy Doctors" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for PractionerRole" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 47;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Bundle/DocumentRadiologyOrder>;
+         fhir:Reference.reference [ fhir:value "Bundle/DocumentRadiologyOrder" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Bundle Radiology Order" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-document";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-document>
+       ]
+     ], [
+       fhir:index 48;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Organization/HappyDoctors>;
+         fhir:Reference.reference [ fhir:value "Organization/HappyDoctors" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Praxis Happy Doctors" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Organization" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 49;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Organization/HappyHospital>;
+         fhir:Reference.reference [ fhir:value "Organization/HappyHospital" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Klinik Happy Hospital" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Organization" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 50;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Location" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Location/LocationRadiography>;
+         fhir:Reference.reference [ fhir:value "Location/LocationRadiography" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Location Radiography" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Location" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 51;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Media" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Media/MediaRx>;
+         fhir:Reference.reference [ fhir:value "Media/MediaRx" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Media Previous Rx" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Media" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-media";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-media>
+       ]
+     ], [
+       fhir:index 52;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Practitioner/ORderfiller>;
+         fhir:Reference.reference [ fhir:value "Practitioner/ORderfiller" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Otto Rderfiller" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 53;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "PractitionerRole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/PractitionerRole/ORderfillerHappyHospital>;
+         fhir:Reference.reference [ fhir:value "PractitionerRole/ORderfillerHappyHospital" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Otto Rderfiller @ Happy Hospital" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for PractionerRole" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 54;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Practitioner/ORderplacer>;
+         fhir:Reference.reference [ fhir:value "Practitioner/ORderplacer" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Ottilie Rderplacer" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 55;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "PractitionerRole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/PractitionerRole/ORderplacerHappyDoctors>;
+         fhir:Reference.reference [ fhir:value "PractitionerRole/ORderplacerHappyDoctors" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Ottilie Rderplacer @ Happy Doctors" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for PractionerRole" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 56;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Condition/PrimaryDiagnosis>;
+         fhir:Reference.reference [ fhir:value "Condition/PrimaryDiagnosis" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Primary Diagnosis" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Diagnosis Condition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-diagnosis-condition";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-diagnosis-condition>
+       ]
+     ], [
+       fhir:index 57;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Questionnaire" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Questionnaire/QuestionnaireRadiologyOrder>;
+         fhir:Reference.reference [ fhir:value "Questionnaire/QuestionnaireRadiologyOrder" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Questionnaire Radiology Order" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Questionnaire" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 58;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "QuestionnaireResponse" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/QuestionnaireResponse/QuestionnaireResponseRadiologyOrder>;
+         fhir:Reference.reference [ fhir:value "QuestionnaireResponse/QuestionnaireResponseRadiologyOrder" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "QuestionniaireResponse Radiology Order" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for QuestionnaireResponse" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 59;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "PractitionerRole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/PractitionerRole/RadiologyDepartmentHappyHospital>;
+         fhir:Reference.reference [ fhir:value "PractitionerRole/RadiologyDepartmentHappyHospital" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "RadiologyDepartment @ Happy Hospital" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for PractionerRole" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 60;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Patient/SUfferer>;
+         fhir:Reference.reference [ fhir:value "Patient/SUfferer" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Susanna Ufferer" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Patient" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 61;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Patient/SUffererCopyReceiver>;
+         fhir:Reference.reference [ fhir:value "Patient/SUffererCopyReceiver" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Susanna Ufferer Copy Receiver" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Patient" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "true"^^xsd:boolean ]
+     ], [
+       fhir:index 62;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Condition/SecondaryDiagnosis1>;
+         fhir:Reference.reference [ fhir:value "Condition/SecondaryDiagnosis1" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Secondary Diagnosis 1" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Diagnosis Condition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-diagnosis-condition";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-diagnosis-condition>
+       ]
+     ], [
+       fhir:index 63;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Condition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/Condition/SecondaryDiagnosis2>;
+         fhir:Reference.reference [ fhir:value "Condition/SecondaryDiagnosis2" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Secondary Diagnosis 2" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Diagnosis Condition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-diagnosis-condition";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-diagnosis-condition>
+       ]
+     ], [
+       fhir:index 64;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ServiceRequest" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/ServiceRequest/ServiceRequestRadiologyOrder>;
+         fhir:Reference.reference [ fhir:value "ServiceRequest/ServiceRequestRadiologyOrder" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "ServiceRequest Radiology Order" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for ServiceRequest" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest";
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest>
+       ]
+     ], [
+       fhir:index 65;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/CodeSystem/ch-rad-order-radlex>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/ch-rad-order-radlex" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "RadLex Extract" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "RadLex Extract" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 66;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureMap" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-rad-order/StructureMap/RadOrderQrToBundle>;
+         fhir:Reference.reference [ fhir:value "StructureMap/RadOrderQrToBundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "RadOrderQrToBundle" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Radiologoy QuestionnaireResponse to Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ];
+     fhir:ImplementationGuide.definition.page [
+       fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "toc.html" ];
+       fhir:ImplementationGuide.definition.page.title [ fhir:value "Table of Contents" ];
+       fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ];
+       fhir:ImplementationGuide.definition.page.page [
+         fhir:index 0;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "index.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Home" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ], [
+         fhir:index 1;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-english.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Use Cases" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 2;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-german.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Anwendungsfälle" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 3;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-french.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Cas d'application" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 4;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "questionnaire-form.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Questionnaire" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ], [
+         fhir:index 5;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "profiles.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Profiles" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ], [
+         fhir:index 6;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "extensions.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Extensions" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ], [
+         fhir:index 7;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "terminology.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Terminology" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ], [
+         fhir:index 8;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "changelog.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Changelog" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ]
+     ];
+     fhir:ImplementationGuide.definition.parameter [
+       fhir:index 0;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/capabilities" ]
+     ], [
+       fhir:index 1;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/examples" ]
+     ], [
+       fhir:index 2;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/extensions" ]
+     ], [
+       fhir:index 3;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/models" ]
+     ], [
+       fhir:index 4;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/operations" ]
+     ], [
+       fhir:index 5;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/profiles" ]
+     ], [
+       fhir:index 6;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/resources" ]
+     ], [
+       fhir:index 7;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/vocabulary" ]
+     ], [
+       fhir:index 8;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/maps" ]
+     ], [
+       fhir:index 9;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/testing" ]
+     ], [
+       fhir:index 10;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/history" ]
+     ], [
+       fhir:index 11;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "fsh-generated/resources" ]
+     ], [
+       fhir:index 12;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "template/config" ]
+     ], [
+       fhir:index 13;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/images" ]
+     ], [
+       fhir:index 14;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-tx-cache" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input-cache/txcache" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-rad-order/ImplementationGuide/ch.fhir.ig.ch-rad-order.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

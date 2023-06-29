@@ -1,0 +1,3168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="DocumentRadiologyOrder"/>
+  <meta>
+    <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-document"/>
+  </meta>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:uuid:26d3dff7-ab05-4737-a49c-5eccd33595f7"/>
+  </identifier>
+  <type value="document"/>
+  <timestamp value="2019-04-01T20:18:41.341+00:00"/>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Composition/CompositionRadiologyOrder"/>
+    <resource>
+      <Composition>
+        <id value="CompositionRadiologyOrder"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition"/>
+        </meta>
+        <text>
+          <status value="additional"/><div xmlns="http://www.w3.org/1999/xhtml"><div>Radiology Order</div></div>
+        </text>
+        <extension url="http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-dataenterer">
+          <extension url="enterer">
+            <valueReference>
+              <reference value="PractitionerRole/DAtaentererHappyDoctors"/>
+            </valueReference>
+          </extension>
+        </extension>
+        <extension url="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver">
+          <valueReference>
+            <reference value="PractitionerRole/RadiologyDepartmentHappyHospital"/>
+          </valueReference>
+        </extension>
+        <extension url="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver">
+          <valueReference>
+            <reference value="Patient/SUffererCopyReceiver"/>
+          </valueReference>
+        </extension>
+        <status value="final"/>
+        <type>
+          <coding>
+            <system value="urn:oid:2.16.756.5.30.1.127.3.4"/>
+            <code value="2161000195103"/>
+            <display value="Imaging order (record artifact)"/>
+          </coding>
+        </type>
+        <category>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="721963009"/>
+            <display value="Order (record artifact)"/>
+          </coding>
+        </category>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+        <date value="2019-04-01T20:18:41.341+00:00"/>
+        <author>
+          <reference value="PractitionerRole/ORderplacerHappyDoctors"/>
+        </author>
+        <title value="Anmeldung Radiologie"/>
+        <section>
+          <title value="Order-Referral"/>
+          <code>
+            <coding>
+              <system value="http://loinc.org"/>
+              <code value="93037-0"/>
+              <display value="Portable medical order form"/>
+            </coding>
+          </code>
+          <entry>
+            <reference value="Questionnaire/QuestionnaireRadiologyOrder"/>
+          </entry>
+          <entry>
+            <reference value="QuestionnaireResponse/QuestionnaireResponseRadiologyOrder"/>
+          </entry>
+          <entry>
+            <reference value="ServiceRequest/ServiceRequestRadiologyOrder"/>
+          </entry>
+        </section>
+      </Composition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Questionnaire/QuestionnaireRadiologyOrder"/>
+    <resource>
+      <Questionnaire>
+        <id value="QuestionnaireRadiologyOrder"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-questionnaire"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"/>
+          <profile value="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extract"/>
+        </meta>
+        <text>
+          <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>Target structure map</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureMap/RadOrderQrToBundle">http://fhir.ch/ig/ch-rad-order/StructureMap/RadOrderQrToBundle</a></p><p><b>Source structure map</b>: <a href="http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr">http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr</a></p><blockquote><p><b>Launch context resources</b></p><p><b>value</b>: Bundle</p><p><b>value</b>: Bundle</p><p><b>value</b>: The Bundle that is to be used to pre-populate the form</p></blockquote><p><b>url</b>: <code>http://fhir.ch/ig/ch-rad-order/Questionnaire/QuestionnaireRadiologyOrder</code></p><p><b>name</b>: QuestionnaireRadiologyOrder</p><p><b>title</b>: Questionnaire Radiology Order</p><p><b>derivedFrom</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-questionnaire">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-questionnaire</a></p><p><b>status</b>: active</p><p><b>subjectType</b>: Patient</p><p><b>date</b>: 2021-02-24</p><p><b>publisher</b>: HL7 Switzerland</p><blockquote><p><b>item</b></p><p><b>linkId</b>: order</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-document#Bundle">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-document#Bundle</a></p><p><b>text</b>: Auftrag</p><p><b>type</b>: group</p><p><b>required</b>: true</p><blockquote><p><b>item</b></p><p><b>linkId</b>: order.title</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.title">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.title</a></p><p><b>text</b>: Titel</p><p><b>type</b>: string</p><p><b>required</b>: true</p><p><b>readOnly</b>: true</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.type</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.type">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.type</a></p><p><b>text</b>: Typ</p><p><b>type</b>: choice</p><p><b>required</b>: true</p><p><b>readOnly</b>: true</p><p><b>answerValueSet</b>: <a href="http://fhir.ch/ig/ch-epr-term/ValueSet/DocumentEntry.typeCode">http://fhir.ch/ig/ch-epr-term/ValueSet/DocumentEntry.typeCode</a></p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.category</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.category">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.category</a></p><p><b>text</b>: Kategorie</p><p><b>type</b>: choice</p><p><b>required</b>: true</p><p><b>readOnly</b>: true</p><p><b>answerValueSet</b>: <a href="http://fhir.ch/ig/ch-epr-term/ValueSet/DocumentEntry.classCode">http://fhir.ch/ig/ch-epr-term/ValueSet/DocumentEntry.classCode</a></p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.placerOrderIdentifier</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:placerOrderIdentifier.value">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:placerOrderIdentifier.value</a></p><p><b>text</b>: Auftragsnummer des Auftraggebers</p><p><b>type</b>: string</p><p><b>required</b>: true</p></blockquote><blockquote><p><b>item</b></p><p><b>hidden</b>: true</p><p><b>linkId</b>: order.placerOrderIdentifierDomain</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:placerOrderIdentifier.system">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:placerOrderIdentifier.system</a></p><p><b>text</b>: Identifier Domain der Auftragsnummer des Auftraggebers</p><p><b>type</b>: string</p><p><b>required</b>: true</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.fillerOrderIdentifier</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:fillerOrderIdentifier.value">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:fillerOrderIdentifier.value</a></p><p><b>text</b>: Auftragsnummer des Auftragsempfängers</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>hidden</b>: true</p><p><b>linkId</b>: order.fillerOrderIdentifierDomain</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:fillerOrderIdentifier.system">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:fillerOrderIdentifier.system</a></p><p><b>text</b>: Identifier Domain der Auftragsnummer des Auftragsempfängers</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>hidden</b>: true</p><p><b>linkId</b>: order.precedentDocumentIdentifier</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:precedentDocument">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:precedentDocument</a></p><p><b>text</b>: Identifier des Vorgängerdokuments</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.notificationContactDocument</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:urgentNoficationContactForThisDocument">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:urgentNoficationContactForThisDocument</a></p><p><b>text</b>: Dringender Benachrichtigungskontakt für dieses Dokument</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.notificationContactDocumentResponse</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:urgentNoficationContactForTheResponseToThisDocument">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:urgentNoficationContactForTheResponseToThisDocument</a></p><p><b>text</b>: Dringender Benachrichtigungskontakt für die Antwort auf dieses Dokument</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.priority</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.priority">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.priority</a></p><p><b>text</b>: Auftragspriorität</p><p><b>type</b>: choice</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.subject">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.subject</a></p><p><b>text</b>: Patient</p><p><b>type</b>: group</p><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.familyName</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name.family">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name.family</a></p><p><b>text</b>: Name</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.maidenName</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name.family">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name.family</a></p><p><b>text</b>: Ledigname</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.givenName</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name.given">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name.given</a></p><p><b>text</b>: Vorname</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.localPid</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.identifier:LocalPid.value">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.identifier:LocalPid.value</a></p><p><b>text</b>: Lokale Patienten-ID</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>hidden</b>: true</p><p><b>linkId</b>: patient.localPidDomain</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.identifier:LocalPid.system">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.identifier:LocalPid.system</a></p><p><b>text</b>: Lokale Patienten-ID Domain</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.birthDate</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.birthDate">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.birthDate</a></p><p><b>text</b>: Geburtsdatum</p><p><b>type</b>: date</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.gender</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.gender">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.gender</a></p><p><b>text</b>: Geschlecht</p><p><b>type</b>: choice</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.phone</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.telecom.value">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.telecom.value</a></p><p><b>text</b>: Telefon</p><p><b>type</b>: string</p><p><b>repeats</b>: true</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.email</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.telecom.value">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.telecom.value</a></p><p><b>text</b>: E-Mail</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.streetAddressLine</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.line">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.line</a></p><p><b>text</b>: Strasse, Hausnummer, Postfach etc.</p><p><b>type</b>: string</p><p><b>repeats</b>: true</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.postalCode</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.postalCode">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.postalCode</a></p><p><b>text</b>: PLZ</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.city</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.city">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.city</a></p><p><b>text</b>: Ort</p><p><b>type</b>: string</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.country</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.country">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.country</a></p><p><b>text</b>: Land</p><p><b>type</b>: string</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: requestedEncounter</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.extension:requestedEncounterDetails">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.extension:requestedEncounterDetails</a></p><p><b>text</b>: Patientenaufnahme</p><p><b>type</b>: group</p><blockquote><p><b>item</b></p><p><b>linkId</b>: requestedEncounter.class</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-encounter#Encounter.class">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-encounter#Encounter.class</a></p><p><b>text</b>: Voraussichtlich: Ambulant / Stationär / Notfall</p><p><b>type</b>: choice</p><p><b>required</b>: true</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: requestedEncounter.desiredAccommodation</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-encounter#Encounter.extension:desiredAccommodation">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-encounter#Encounter.extension:desiredAccommodation</a></p><p><b>text</b>: Zimmerkategorie</p><p><b>type</b>: choice</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.insurance">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.insurance</a></p><p><b>text</b>: Kostenträger</p><p><b>type</b>: group</p><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage.beneficiary</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.beneficiary">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.beneficiary</a></p><p><b>text</b>: Begünstigter (Patient)</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage.kvg</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type</a></p><p><b>text</b>: Krankenkasse (nach KVG)</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage.uvg</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type</a></p><p><b>text</b>: Unfallversicherung (nach UVG)</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage.vvg</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type</a></p><p><b>text</b>: Zusatzversicherung (nach VVG)</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage.iv</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type</a></p><p><b>text</b>: Invalidenversicherung (IV)</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage.mv</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type</a></p><p><b>text</b>: Militärversicherung (MV)</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage.self</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type</a></p><p><b>text</b>: Selbstzahler</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage.other</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type</a></p><p><b>text</b>: Anderer Kostenträger</p><p><b>type</b>: group</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: sender</p><p><b>text</b>: Absender</p><p><b>type</b>: group</p><p><b>required</b>: true</p><blockquote><p><b>item</b></p><p><b>linkId</b>: sender.author</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.author">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.author</a></p><p><b>text</b>: Verantwortlicher</p><p><b>type</b>: group</p><p><b>required</b>: true</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: sender.dataenterer</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:dataEnterer">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:dataEnterer</a></p><p><b>text</b>: Erfasser</p><p><b>type</b>: group</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: receiver</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:receiver">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:receiver</a></p><p><b>text</b>: Empfänger</p><p><b>type</b>: group</p><blockquote><p><b>item</b></p><p><b>linkId</b>: receiver.practitioner</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.practitioner">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.practitioner</a></p><p><b>text</b>: Empfangende Person</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: receiver.organization</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.organization">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.organization</a></p><p><b>text</b>: Empfangende Organisation</p><p><b>type</b>: group</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: receiverCopies</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:copyReceiver">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:copyReceiver</a></p><p><b>text</b>: Kopieempfänger</p><p><b>type</b>: group</p><blockquote><p><b>item</b></p><p><b>linkId</b>: receiverCopy</p><p><b>text</b>: Kopieempfangende Organisation oder Person</p><p><b>type</b>: group</p><p><b>repeats</b>: true</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: appointment</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest#ServiceRequest.extension:locationAndTime">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest#ServiceRequest.extension:locationAndTime</a></p><p><b>text</b>: Ort und Zeit der Durchführung der angeforderten Leistung</p><p><b>type</b>: group</p><p><b>repeats</b>: true</p><blockquote><p><b>item</b></p><p><b>linkId</b>: appointment.location</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.participant.actor">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.participant.actor</a></p><p><b>text</b>: Ort der Durchführung</p><p><b>type</b>: group</p><p><b>required</b>: true</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: appointment.requestedPeriod</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.requestedPeriod">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.requestedPeriod</a></p><p><b>text</b>: Datum und Zeit, wann der Termin bevorzugt geplant werden soll</p><p><b>type</b>: group</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: appointment.status</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.status">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.status</a></p><p><b>text</b>: Status</p><p><b>type</b>: choice</p><p><b>required</b>: true</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: appointment.patientInstruction</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.patientInstruction">http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.patientInstruction</a></p><p><b>text</b>: Patienteninformation für diesen Termin</p><p><b>type</b>: string</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: requestedService</p><p><b>text</b>: Angeforderte Leistung</p><p><b>type</b>: group</p><p><b>required</b>: true</p><h3>Items</h3><table class="grid"><tr><td>-</td><td><b>LinkId</b></td><td><b>Definition</b></td><td><b>Text</b></td><td><b>Type</b></td><td><b>Required</b></td><td><b>AnswerValueSet</b></td></tr><tr><td>*</td><td>requestedService.service</td><td><a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.category.coding">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.category.coding</a></td><td>Leistung</td><td>choice</td><td>true</td><td><a href="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-requested-service">http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-requested-service</a></td></tr></table></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: reason</p><p><b>text</b>: Klinische Fragestellung</p><p><b>type</b>: group</p><h3>Items</h3><table class="grid"><tr><td>-</td><td><b>LinkId</b></td><td><b>Definition</b></td><td><b>Text</b></td><td><b>Type</b></td><td><b>Repeats</b></td></tr><tr><td>*</td><td>reason.question</td><td><a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.reasonCode.text">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.reasonCode.text</a></td><td>Fragestellung</td><td>string</td><td>true</td></tr></table></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: imagingService</p><p><b>text</b>: Bildgebendes Verfahren</p><p><b>type</b>: group</p><h3>Items</h3><table class="grid"><tr><td>-</td><td><b>LinkId</b></td><td><b>Definition</b></td><td><b>Text</b></td><td><b>Type</b></td><td><b>AnswerValueSet</b></td></tr><tr><td>*</td><td>imagingService.type</td><td><a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.code.coding:RdlxModType">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.code.coding:RdlxModType</a></td><td>Art</td><td>choice</td><td><a href="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-modality-type">http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-modality-type</a></td></tr></table></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: orderDetail</p><p><b>text</b>: Weitere Angaben zur Bildgebung</p><p><b>type</b>: group</p><blockquote><p><b>item</b></p><p><b>linkId</b>: orderDetail.imagingRegion</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:imagingRegion">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:imagingRegion</a></p><p><b>text</b>: Region</p><p><b>type</b>: choice</p><p><b>repeats</b>: true</p><p><b>answerValueSet</b>: <a href="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-imaging-region">http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-imaging-region</a></p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: orderDetail.imagingFocus</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.bodySite">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.bodySite</a></p><p><b>text</b>: Fokus</p><p><b>type</b>: choice</p><p><b>repeats</b>: true</p><p><b>answerValueSet</b>: <a href="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-imaging-focus">http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-imaging-focus</a></p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: orderDetail.laterality</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:laterality">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:laterality</a></p><p><b>text</b>: Seitenangabe</p><p><b>type</b>: choice</p><p><b>answerValueSet</b>: <a href="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-laterality">http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-laterality</a></p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: orderDetail.viewType</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:viewType">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:viewType</a></p><p><b>text</b>: Ansicht</p><p><b>type</b>: choice</p><p><b>repeats</b>: true</p><p><b>answerValueSet</b>: <a href="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-view-type">http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-view-type</a></p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: orderDetail.maneuverType</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:maneuverType">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:maneuverType</a></p><p><b>text</b>: Manöver</p><p><b>type</b>: choice</p><p><b>repeats</b>: true</p><p><b>answerValueSet</b>: <a href="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-maneuver-type">http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-maneuver-type</a></p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: orderDetail.guidanceForAction</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:guidanceForAction">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:guidanceForAction</a></p><p><b>text</b>: Handlungsanleitung</p><p><b>type</b>: choice</p><p><b>enableBehavior</b>: any</p><p><b>repeats</b>: true</p><p><b>answerValueSet</b>: <a href="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-guidance-for-action">http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-guidance-for-action</a></p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: desiredRadiologist</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.performer">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.performer</a></p><p><b>text</b>: Gewünschter Radiologe für die Befundung / für die Intervention</p><p><b>type</b>: group</p><h3>Items</h3><table class="grid"><tr><td>-</td><td><b>LinkId</b></td><td><b>Definition</b></td><td><b>Text</b></td><td><b>Type</b></td></tr><tr><td>*</td><td>desiredRadiologist.familyName</td><td><a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.family">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.family</a></td><td>Name</td><td>string</td></tr><tr><td>*</td><td>desiredRadiologist.givenName</td><td><a href="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.given">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.given</a></td><td>Vorname</td><td>string</td></tr></table></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: diagnosisList</p><p><b>text</b>: Diagnosen und Befunde</p><p><b>type</b>: group</p><h3>Items</h3><table class="grid"><tr><td>-</td><td><b>LinkId</b></td><td><b>Definition</b></td><td><b>Text</b></td><td><b>Type</b></td><td><b>Repeats</b></td></tr><tr><td>*</td><td>diagnosisList.primaryDiagnosis</td><td><a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.reasonReference">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.reasonReference</a></td><td>Hauptdiagnose</td><td>string</td><td>true</td></tr><tr><td>*</td><td>diagnosisList.secondaryDiagnosis</td><td><a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:diagnosis">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:diagnosis</a></td><td>Nebendiagnose</td><td>string</td><td>true</td></tr><tr><td>*</td><td>diagnosisList.bodyHeight</td><td><a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:bodyHeight">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:bodyHeight</a></td><td>Grösse (cm)</td><td>quantity</td><td>false</td></tr><tr><td>*</td><td>diagnosisList.bodyWeight</td><td><a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:bodyWeight">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:bodyWeight</a></td><td>Gewicht (kg)</td><td>quantity</td><td>false</td></tr></table></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:caveats">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:caveats</a></p><p><b>text</b>: Caveats</p><p><b>type</b>: group</p><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.bloodCoagulation</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code</a></p><p><b>text</b>: Beinträchtigte Blutgerinnung</p><p><b>type</b>: boolean</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.renalInsufficiency</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code</a></p><p><b>text</b>: Niereninsuffizienz</p><p><b>type</b>: boolean</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.claustrophobia</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code</a></p><p><b>text</b>: Klaustrophobie</p><p><b>type</b>: boolean</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.bodyPiercing</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code</a></p><p><b>text</b>: Körperpiercing</p><p><b>type</b>: boolean</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.device</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code</a></p><p><b>text</b>: Device (Herzschrittmacher, Herzklappenersatz, Insulinpumpe etc.)</p><p><b>type</b>: choice</p><p><b>repeats</b>: true</p><p><b>answerValueSet</b>: <a href="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-caveat-device">http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-caveat-device</a></p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.hyperthyroidism</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code</a></p><p><b>text</b>: Hyperthyreose</p><p><b>type</b>: boolean</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.diabetes</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code</a></p><p><b>text</b>: Diabetes mellitus</p><p><b>type</b>: boolean</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.gravida</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code</a></p><p><b>text</b>: Schwangerschaft</p><p><b>type</b>: boolean</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.contrastMediaAllergy</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code</a></p><p><b>text</b>: Kontrastmittelallergie</p><p><b>type</b>: boolean</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.drugPrescription</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code</a></p><p><b>text</b>: Relevante Medikamente, z.B. Metformin</p><p><b>type</b>: choice</p><p><b>repeats</b>: true</p><p><b>answerValueSet</b>: <a href="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-caveat-substance">http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-caveat-substance</a></p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: previousResults</p><p><b>definition</b>: <a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:previousImagingResults">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:previousImagingResults</a></p><p><b>text</b>: Vorherige Untersuchungsresultate</p><p><b>type</b>: group</p><blockquote><p><b>item</b></p><p><b>linkId</b>: previousResults.attachment</p><p><b>text</b>: Anhang</p><p><b>type</b>: group</p><p><b>repeats</b>: true</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: note</p><p><b>text</b>: Bemerkungen</p><p><b>type</b>: group</p><p><b>repeats</b>: true</p><h3>Items</h3><table class="grid"><tr><td>-</td><td><b>LinkId</b></td><td><b>Definition</b></td><td><b>Text</b></td><td><b>Type</b></td><td><b>Required</b></td></tr><tr><td>*</td><td>note.text</td><td><a href="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.note.text">http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.note.text</a></td><td>Kommentar</td><td>string</td><td>true</td></tr></table></blockquote></div>
+        </text>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-targetStructureMap">
+          <valueCanonical value="http://fhir.ch/ig/ch-rad-order/StructureMap/RadOrderQrToBundle"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-sourceStructureMap">
+          <valueCanonical value="http://fhir.ch/ig/ch-orf/StructureMap/OrfPrepopBundleToQr"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext">
+          <extension url="name">
+            <valueId value="Bundle"/>
+          </extension>
+          <extension url="type">
+            <valueCode value="Bundle"/>
+          </extension>
+          <extension url="description">
+            <valueString value="The Bundle that is to be used to pre-populate the form"/>
+          </extension>
+        </extension>
+        <url value="http://fhir.ch/ig/ch-rad-order/Questionnaire/QuestionnaireRadiologyOrder"/>
+        <name value="QuestionnaireRadiologyOrder"/>
+        <title value="Questionnaire Radiology Order"/>
+        <derivedFrom value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-questionnaire"/>
+        <status value="active"/>
+        <subjectType value="Patient"/>
+        <date value="2021-02-24"/>
+        <publisher value="HL7 Switzerland"/>
+        <item>
+          <linkId value="order"/>
+          <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-document#Bundle"/>
+          <text value="Auftrag"/>
+          <type value="group"/>
+          <required value="true"/>
+          <item>
+            <linkId value="order.title"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.title"/>
+            <text value="Titel"/>
+            <type value="string"/>
+            <required value="true"/>
+            <readOnly value="true"/>
+          </item>
+          <item>
+            <linkId value="order.type"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.type"/>
+            <text value="Typ"/>
+            <type value="choice"/>
+            <required value="true"/>
+            <readOnly value="true"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-epr-term/ValueSet/DocumentEntry.typeCode"/>
+          </item>
+          <item>
+            <linkId value="order.category"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.category"/>
+            <text value="Kategorie"/>
+            <type value="choice"/>
+            <required value="true"/>
+            <readOnly value="true"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-epr-term/ValueSet/DocumentEntry.classCode"/>
+          </item>
+          <item>
+            <linkId value="order.placerOrderIdentifier"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:placerOrderIdentifier.value"/>
+            <text value="Auftragsnummer des Auftraggebers"/>
+            <type value="string"/>
+            <required value="true"/>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
+              <valueBoolean value="true"/>
+            </extension>
+            <linkId value="order.placerOrderIdentifierDomain"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:placerOrderIdentifier.system"/>
+            <text value="Identifier Domain der Auftragsnummer des Auftraggebers"/>
+            <type value="string"/>
+            <required value="true"/>
+          </item>
+          <item>
+            <linkId value="order.fillerOrderIdentifier"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:fillerOrderIdentifier.value"/>
+            <text value="Auftragsnummer des Auftragsempf&#xE4;ngers"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
+              <valueBoolean value="true"/>
+            </extension>
+            <linkId value="order.fillerOrderIdentifierDomain"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.identifier:fillerOrderIdentifier.system"/>
+            <text value="Identifier Domain der Auftragsnummer des Auftragsempf&#xE4;ngers"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
+              <valueBoolean value="true"/>
+            </extension>
+            <linkId value="order.precedentDocumentIdentifier"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:precedentDocument"/>
+            <text value="Identifier des Vorg&#xE4;ngerdokuments"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <linkId value="order.notificationContactDocument"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:urgentNoficationContactForThisDocument"/>
+            <text value="Dringender Benachrichtigungskontakt f&#xFC;r dieses Dokument"/>
+            <type value="group"/>
+            <item>
+              <linkId value="order.notificationContactDocument.practitioner"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.practitioner"/>
+              <text value="Zu benachrichtigende Person"/>
+              <type value="group"/>
+              <item>
+                <linkId value="order.notificationContactDocument.practitioner.title"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.prefix"/>
+                <text value="Titel"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="order.notificationContactDocument.practitioner.familyName"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.family"/>
+                <text value="Name"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="order.notificationContactDocument.practitioner.givenName"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.given"/>
+                <text value="Vorname"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="order.notificationContactDocument.practitioner.phone"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.telecom.value"/>
+                <text value="Telefon"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="order.notificationContactDocument.practitioner.email"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.telecom.value"/>
+                <text value="E-Mail"/>
+                <type value="string"/>
+              </item>
+            </item>
+          </item>
+          <item>
+            <linkId value="order.notificationContactDocumentResponse"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:urgentNoficationContactForTheResponseToThisDocument"/>
+            <text value="Dringender Benachrichtigungskontakt f&#xFC;r die Antwort auf dieses Dokument"/>
+            <type value="group"/>
+            <item>
+              <linkId value="order.notificationContactDocumentResponse.practitioner"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.practitioner"/>
+              <text value="Zu benachrichtigende Person"/>
+              <type value="group"/>
+              <item>
+                <linkId value="order.notificationContactDocumentResponse.practitioner.title"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.prefix"/>
+                <text value="Titel"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="order.notificationContactDocumentResponse.practitioner.familyName"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.family"/>
+                <text value="Name"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="order.notificationContactDocumentResponse.practitioner.givenName"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.given"/>
+                <text value="Vorname"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="order.notificationContactDocumentResponse.practitioner.phone"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.telecom.value"/>
+                <text value="Telefon"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="order.notificationContactDocumentResponse.practitioner.email"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.telecom.value"/>
+                <text value="E-Mail"/>
+                <type value="string"/>
+              </item>
+            </item>
+          </item>
+          <item>
+            <linkId value="order.priority"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.priority"/>
+            <text value="Auftragspriorit&#xE4;t"/>
+            <type value="choice"/>
+            <answerOption>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/request-priority"/>
+                <code value="routine"/>
+                <display value="Die Anfrage hat normale Priorit&#xE4;t."/>
+              </valueCoding>
+              <initialSelected value="true"/>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/request-priority"/>
+                <code value="urgent"/>
+                <display value="Die Anfrage sollte dringend bearbeitet werden - h&#xF6;here Priorit&#xE4;t als normal."/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/request-priority"/>
+                <code value="asap"/>
+                <display value="Die Anfrage sollte so schnell wie m&#xF6;glich bearbeitet werden - h&#xF6;here Priorit&#xE4;t als dringend."/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/request-priority"/>
+                <code value="stat"/>
+                <display value="Die Anfrage sollte sofort bearbeitet werden - h&#xF6;chstm&#xF6;gliche Priorit&#xE4;t. Z.B. bei einem Notfall."/>
+              </valueCoding>
+            </answerOption>
+          </item>
+        </item>
+        <item>
+          <linkId value="patient"/>
+          <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.subject"/>
+          <text value="Patient"/>
+          <type value="group"/>
+          <item>
+            <linkId value="patient.familyName"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name.family"/>
+            <text value="Name"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <linkId value="patient.maidenName"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name.family"/>
+            <text value="Ledigname"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <linkId value="patient.givenName"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.name.given"/>
+            <text value="Vorname"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <linkId value="patient.localPid"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.identifier:LocalPid.value"/>
+            <text value="Lokale Patienten-ID"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-hidden">
+              <valueBoolean value="true"/>
+            </extension>
+            <linkId value="patient.localPidDomain"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.identifier:LocalPid.system"/>
+            <text value="Lokale Patienten-ID Domain"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <linkId value="patient.birthDate"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.birthDate"/>
+            <text value="Geburtsdatum"/>
+            <type value="date"/>
+          </item>
+          <item>
+            <linkId value="patient.gender"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.gender"/>
+            <text value="Geschlecht"/>
+            <type value="choice"/>
+            <answerOption>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/administrative-gender"/>
+                <code value="male"/>
+                <display value="M&#xE4;nnlich"/>
+              </valueCoding>
+              <initialSelected value="true"/>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/administrative-gender"/>
+                <code value="female"/>
+                <display value="Weiblich"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/administrative-gender"/>
+                <code value="other"/>
+                <display value="Anderes"/>
+              </valueCoding>
+            </answerOption>
+          </item>
+          <item>
+            <linkId value="patient.phone"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.telecom.value"/>
+            <text value="Telefon"/>
+            <type value="string"/>
+            <repeats value="true"/>
+          </item>
+          <item>
+            <linkId value="patient.email"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.telecom.value"/>
+            <text value="E-Mail"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <linkId value="patient.streetAddressLine"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.line"/>
+            <text value="Strasse, Hausnummer, Postfach etc."/>
+            <type value="string"/>
+            <repeats value="true"/>
+          </item>
+          <item>
+            <linkId value="patient.postalCode"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.postalCode"/>
+            <text value="PLZ"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <linkId value="patient.city"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.city"/>
+            <text value="Ort"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <linkId value="patient.country"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.address.country"/>
+            <text value="Land"/>
+            <type value="string"/>
+          </item>
+        </item>
+        <item>
+          <linkId value="requestedEncounter"/>
+          <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.extension:requestedEncounterDetails"/>
+          <text value="Patientenaufnahme"/>
+          <type value="group"/>
+          <item>
+            <linkId value="requestedEncounter.class"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-encounter#Encounter.class"/>
+            <text value="Voraussichtlich: Ambulant / Station&#xE4;r / Notfall"/>
+            <type value="choice"/>
+            <required value="true"/>
+            <answerOption>
+              <valueCoding>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+                <code value="AMB"/>
+                <display value="Ambulant"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+                <code value="IMP"/>
+                <display value="Station&#xE4;r"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+                <code value="EMER"/>
+                <display value="Notfall"/>
+              </valueCoding>
+            </answerOption>
+          </item>
+          <item>
+            <linkId value="requestedEncounter.desiredAccommodation"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-encounter#Encounter.extension:desiredAccommodation"/>
+            <text value="Zimmerkategorie"/>
+            <type value="choice"/>
+            <answerOption>
+              <valueCoding>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+                <code value="P"/>
+                <display value="Einerzimmer"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+                <code value="SP"/>
+                <display value="Zweierzimmer"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+                <code value="W"/>
+                <display value="Mehrbettzimmer"/>
+              </valueCoding>
+            </answerOption>
+          </item>
+        </item>
+        <item>
+          <linkId value="coverage"/>
+          <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.insurance"/>
+          <text value="Kostentr&#xE4;ger"/>
+          <type value="group"/>
+          <item>
+            <linkId value="coverage.beneficiary"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.beneficiary"/>
+            <text value="Beg&#xFC;nstigter (Patient)"/>
+            <type value="group"/>
+            <item>
+              <linkId value="coverage.beneficiary.ahvn13"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient#Patient.identifier:AHVN13"/>
+              <text value="AHV-Nr. des Patienten"/>
+              <type value="string"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="coverage.kvg"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type"/>
+            <text value="Krankenkasse (nach KVG)"/>
+            <type value="group"/>
+            <item>
+              <linkId value="coverage.kvg.name"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.payor"/>
+              <text value="Name der Versicherung"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="coverage.kvg.insuranceCardNumber"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.identifier"/>
+              <text value="Kennnummer der Versichertenkarte"/>
+              <type value="string"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="coverage.uvg"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type"/>
+            <text value="Unfallversicherung (nach UVG)"/>
+            <type value="group"/>
+            <item>
+              <linkId value="coverage.uvg.name"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.payor"/>
+              <text value="Name der Versicherung"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="coverage.uvg.claimNumber"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.identifier"/>
+              <text value="Schadennummer"/>
+              <type value="string"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="coverage.vvg"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type"/>
+            <text value="Zusatzversicherung (nach VVG)"/>
+            <type value="group"/>
+            <item>
+              <linkId value="coverage.vvg.name"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.payor"/>
+              <text value="Name der Versicherung"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="coverage.vvg.insuranceCardNumber"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.identifier"/>
+              <text value="Kennnummer der Versichertenkarte"/>
+              <type value="string"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="coverage.iv"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type"/>
+            <text value="Invalidenversicherung (IV)"/>
+            <type value="group"/>
+            <item>
+              <linkId value="coverage.iv.verfuegungsnummer"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.identifier"/>
+              <text value="IV-Verf&#xFC;gungsnummer"/>
+              <type value="string"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="coverage.mv"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type"/>
+            <text value="Milit&#xE4;rversicherung (MV)"/>
+            <type value="group"/>
+            <item>
+              <linkId value="coverage.mv.versichertennummer"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.identifier"/>
+              <text value="MV-Versichertennummer"/>
+              <type value="string"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="coverage.self"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type"/>
+            <text value="Selbstzahler"/>
+            <type value="group"/>
+            <item>
+              <linkId value="coverage.self.familyName"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.payor"/>
+              <text value="Name"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="coverage.self.givenName"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.payor"/>
+              <text value="Vorname"/>
+              <type value="string"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="coverage.other"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.type"/>
+            <text value="Anderer Kostentr&#xE4;ger"/>
+            <type value="group"/>
+            <item>
+              <linkId value="coverage.other.name"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.payor"/>
+              <text value="Name des Kostentr&#xE4;gers"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="coverage.other.id"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.identifier"/>
+              <text value="Beliebige ID"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="coverage.other.id.note"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage#Coverage.identifier.type.text"/>
+              <text value="Bemerkung zur ID"/>
+              <type value="string"/>
+            </item>
+          </item>
+        </item>
+        <item>
+          <linkId value="sender"/>
+          <text value="Absender"/>
+          <type value="group"/>
+          <required value="true"/>
+          <item>
+            <linkId value="sender.author"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.author"/>
+            <text value="Verantwortlicher"/>
+            <type value="group"/>
+            <required value="true"/>
+            <item>
+              <linkId value="sender.author.practitioner"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.practitioner"/>
+              <text value="Verantwortliche Person"/>
+              <type value="group"/>
+              <required value="true"/>
+              <item>
+                <linkId value="sender.author.practitioner.title"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.prefix"/>
+                <text value="Titel"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="sender.author.practitioner.familyName"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.family"/>
+                <text value="Name"/>
+                <type value="string"/>
+                <required value="true"/>
+              </item>
+              <item>
+                <linkId value="sender.author.practitioner.givenName"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.given"/>
+                <text value="Vorname"/>
+                <type value="string"/>
+                <required value="true"/>
+              </item>
+              <item>
+                <linkId value="sender.author.practitioner.gln"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.identifier:GLN.value"/>
+                <text value="GLN"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="sender.author.practitioner.phone"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.telecom.value"/>
+                <text value="Telefon"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="sender.author.practitioner.email"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.telecom.value"/>
+                <text value="E-Mail"/>
+                <type value="string"/>
+              </item>
+            </item>
+            <item>
+              <linkId value="sender.author.organization"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.organization"/>
+              <text value="Verantwortliche Organisation"/>
+              <type value="group"/>
+              <required value="true"/>
+              <item>
+                <linkId value="sender.author.organization.name"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.name"/>
+                <text value="Name der Organisation"/>
+                <type value="string"/>
+                <required value="true"/>
+              </item>
+              <item>
+                <linkId value="sender.author.organization.streetAddressLine"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.address.line"/>
+                <text value="Strasse, Hausnummer, Postfach etc."/>
+                <type value="string"/>
+                <repeats value="true"/>
+              </item>
+              <item>
+                <linkId value="sender.author.organization.postalCode"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.address.postalCode"/>
+                <text value="PLZ"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="sender.author.organization.city"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.address.city"/>
+                <text value="Ort"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="sender.author.organization.country"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.address.country"/>
+                <text value="Land"/>
+                <type value="string"/>
+              </item>
+            </item>
+          </item>
+          <item>
+            <linkId value="sender.dataenterer"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:dataEnterer"/>
+            <text value="Erfasser"/>
+            <type value="group"/>
+            <item>
+              <linkId value="sender.dataenterer.practitioner"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.practitioner"/>
+              <text value="Erfassende Person"/>
+              <type value="group"/>
+              <item>
+                <linkId value="sender.dataenterer.practitioner.familyName"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.family"/>
+                <text value="Name"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="sender.dataenterer.practitioner.givenName"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.given"/>
+                <text value="Vorname"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="sender.dataenterer.practitioner.phone"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.telecom.value"/>
+                <text value="Telefon"/>
+                <type value="string"/>
+              </item>
+              <item>
+                <linkId value="sender.dataenterer.practitioner.email"/>
+                <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.telecom.value"/>
+                <text value="E-Mail"/>
+                <type value="string"/>
+              </item>
+            </item>
+          </item>
+        </item>
+        <item>
+          <linkId value="receiver"/>
+          <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:receiver"/>
+          <text value="Empf&#xE4;nger"/>
+          <type value="group"/>
+          <item>
+            <linkId value="receiver.practitioner"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.practitioner"/>
+            <text value="Empfangende Person"/>
+            <type value="group"/>
+            <item>
+              <linkId value="receiver.practitioner.title"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.prefix"/>
+              <text value="Titel"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiver.practitioner.familyName"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.family"/>
+              <text value="Name"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiver.practitioner.givenName"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.given"/>
+              <text value="Vorname"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiver.practitioner.gln"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.identifier:GLN.value"/>
+              <text value="GLN"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiver.practitioner.phone"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.telecom.value"/>
+              <text value="Telefon"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiver.practitioner.email"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.telecom.value"/>
+              <text value="E-Mail"/>
+              <type value="string"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="receiver.organization"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole#PractitionerRole.organization"/>
+            <text value="Empfangende Organisation"/>
+            <type value="group"/>
+            <item>
+              <linkId value="receiver.organization.name"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.name"/>
+              <text value="Name der Organisation"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiver.organization.streetAddressLine"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.address.line"/>
+              <text value="Strasse, Hausnummer, Postfach etc."/>
+              <type value="string"/>
+              <repeats value="true"/>
+            </item>
+            <item>
+              <linkId value="receiver.organization.postalCode"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.address.postalCode"/>
+              <text value="PLZ"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiver.organization.city"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.address.city"/>
+              <text value="Ort"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiver.organization.country"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.address.country"/>
+              <text value="Land"/>
+              <type value="string"/>
+            </item>
+          </item>
+        </item>
+        <item>
+          <linkId value="receiverCopies"/>
+          <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-composition#Composition.extension:copyReceiver"/>
+          <text value="Kopieempf&#xE4;nger"/>
+          <type value="group"/>
+          <item>
+            <linkId value="receiverCopy"/>
+            <text value="Kopieempfangende Organisation oder Person"/>
+            <type value="group"/>
+            <repeats value="true"/>
+            <item>
+              <linkId value="receiverCopy.organization.name"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization#Organization.name"/>
+              <text value="Name der Organisation"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiverCopy.title"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-humanname#HumanName.prefix"/>
+              <text value="Titel"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiverCopy.familyName"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-humanname#HumanName.family"/>
+              <text value="Name"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiverCopy.givenName"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-humanname#HumanName.given"/>
+              <text value="Vorname"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiverCopy.phone"/>
+              <definition value="http://hl7.org/fhir/StructureDefinition/ContactPoint#ContactPoint.value"/>
+              <text value="Telefon"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiverCopy.email"/>
+              <definition value="http://hl7.org/fhir/StructureDefinition/ContactPoint#ContactPoint.value"/>
+              <text value="E-Mail"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiverCopy.streetAddressLine"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-address#Address.line"/>
+              <text value="Strasse, Hausnummer, Postfach etc."/>
+              <type value="string"/>
+              <repeats value="true"/>
+            </item>
+            <item>
+              <linkId value="receiverCopy.postalCode"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-address#Address.postalCode"/>
+              <text value="PLZ"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiverCopy.city"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-address#Address.city"/>
+              <text value="Ort"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="receiverCopy.country"/>
+              <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-address#Address.country"/>
+              <text value="Land"/>
+              <type value="string"/>
+            </item>
+          </item>
+        </item>
+        <item>
+          <linkId value="appointment"/>
+          <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest#ServiceRequest.extension:locationAndTime"/>
+          <text value="Ort und Zeit der Durchf&#xFC;hrung der angeforderten Leistung"/>
+          <type value="group"/>
+          <repeats value="true"/>
+          <item>
+            <linkId value="appointment.location"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.participant.actor"/>
+            <text value="Ort der Durchf&#xFC;hrung"/>
+            <type value="group"/>
+            <required value="true"/>
+            <item>
+              <linkId value="appointment.location.name"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-location#Location.name"/>
+              <text value="Name"/>
+              <type value="string"/>
+              <required value="true"/>
+            </item>
+            <item>
+              <linkId value="appointment.location.phone"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-location#Location.telecom.value"/>
+              <text value="Telefon"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="appointment.location.email"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-location#Location.telecom.value"/>
+              <text value="E-Mail"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="appointment.location.streetAddressLine"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-location#Location.address.line"/>
+              <text value="Strasse, Hausnummer, Postfach etc."/>
+              <type value="string"/>
+              <repeats value="true"/>
+            </item>
+            <item>
+              <linkId value="appointment.location.postalCode"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-location#Location.address.postalCode"/>
+              <text value="PLZ"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="appointment.location.city"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-location#Location.address.city"/>
+              <text value="Ort"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="appointment.location.country"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-location#Location.address.country"/>
+              <text value="Land"/>
+              <type value="string"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="appointment.requestedPeriod"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.requestedPeriod"/>
+            <text value="Datum und Zeit, wann der Termin bevorzugt geplant werden soll"/>
+            <type value="group"/>
+            <item>
+              <linkId value="appointment.requestedPeriod.start"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.requestedPeriod.start"/>
+              <text value="Von"/>
+              <type value="dateTime"/>
+            </item>
+            <item>
+              <linkId value="appointment.requestedPeriod.end"/>
+              <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.requestedPeriod.end"/>
+              <text value="Bis"/>
+              <type value="dateTime"/>
+            </item>
+          </item>
+          <item>
+            <linkId value="appointment.status"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.status"/>
+            <text value="Status"/>
+            <type value="choice"/>
+            <required value="true"/>
+            <answerOption>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/appointmentstatus"/>
+                <code value="proposed"/>
+                <display value="Wunsch des Patienten (vorgeschlagen)"/>
+              </valueCoding>
+              <initialSelected value="true"/>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/appointmentstatus"/>
+                <code value="pending"/>
+                <display value="Vom Patienten best&#xE4;tigt, aber vom Leistungserbringer noch nicht (ausstehend)"/>
+              </valueCoding>
+            </answerOption>
+            <answerOption>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/appointmentstatus"/>
+                <code value="booked"/>
+                <display value="Vom Patienten und Leistungserbringer best&#xE4;tigt (gebucht)"/>
+              </valueCoding>
+            </answerOption>
+          </item>
+          <item>
+            <linkId value="appointment.patientInstruction"/>
+            <definition value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment#Appointment.patientInstruction"/>
+            <text value="Patienteninformation f&#xFC;r diesen Termin"/>
+            <type value="string"/>
+          </item>
+        </item>
+        <item>
+          <linkId value="requestedService"/>
+          <text value="Angeforderte Leistung"/>
+          <type value="group"/>
+          <required value="true"/>
+          <item>
+            <linkId value="requestedService.service"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.category.coding"/>
+            <text value="Leistung"/>
+            <type value="choice"/>
+            <required value="true"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-requested-service"/>
+          </item>
+        </item>
+        <item>
+          <linkId value="reason"/>
+          <text value="Klinische Fragestellung"/>
+          <type value="group"/>
+          <item>
+            <linkId value="reason.question"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.reasonCode.text"/>
+            <text value="Fragestellung"/>
+            <type value="string"/>
+            <repeats value="true"/>
+          </item>
+        </item>
+        <item>
+          <linkId value="imagingService"/>
+          <text value="Bildgebendes Verfahren"/>
+          <type value="group"/>
+          <item>
+            <linkId value="imagingService.type"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.code.coding:RdlxModType"/>
+            <text value="Art"/>
+            <type value="choice"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-modality-type"/>
+          </item>
+        </item>
+        <item>
+          <linkId value="orderDetail"/>
+          <text value="Weitere Angaben zur Bildgebung"/>
+          <type value="group"/>
+          <item>
+            <linkId value="orderDetail.imagingRegion"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:imagingRegion"/>
+            <text value="Region"/>
+            <type value="choice"/>
+            <repeats value="true"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-imaging-region"/>
+          </item>
+          <item>
+            <linkId value="orderDetail.imagingFocus"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.bodySite"/>
+            <text value="Fokus"/>
+            <type value="choice"/>
+            <repeats value="true"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-imaging-focus"/>
+          </item>
+          <item>
+            <linkId value="orderDetail.laterality"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:laterality"/>
+            <text value="Seitenangabe"/>
+            <type value="choice"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-laterality"/>
+          </item>
+          <item>
+            <linkId value="orderDetail.viewType"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:viewType"/>
+            <text value="Ansicht"/>
+            <type value="choice"/>
+            <repeats value="true"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-view-type"/>
+          </item>
+          <item>
+            <linkId value="orderDetail.maneuverType"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:maneuverType"/>
+            <text value="Man&#xF6;ver"/>
+            <type value="choice"/>
+            <repeats value="true"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-maneuver-type"/>
+          </item>
+          <item>
+            <linkId value="orderDetail.guidanceForAction"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.orderDetail:guidanceForAction"/>
+            <text value="Handlungsanleitung"/>
+            <type value="choice"/>
+            <enableWhen>
+              <question value="requestedService.service"/>
+              <operator value="="/>
+              <answerCoding>
+                <system value="http://fhir.ch/ig/ch-rad-order/CodeSystem/ch-rad-order-requested-service"/>
+                <code value="RadIntervention"/>
+              </answerCoding>
+            </enableWhen>
+            <enableWhen>
+              <question value="requestedService.service"/>
+              <operator value="="/>
+              <answerCoding>
+                <system value="http://fhir.ch/ig/ch-rad-order/CodeSystem/ch-rad-order-requested-service"/>
+                <code value="ImagingRequestWithIntervention"/>
+              </answerCoding>
+            </enableWhen>
+            <enableBehavior value="any"/>
+            <repeats value="true"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-guidance-for-action"/>
+          </item>
+        </item>
+        <item>
+          <linkId value="desiredRadiologist"/>
+          <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.performer"/>
+          <text value="Gew&#xFC;nschter Radiologe f&#xFC;r die Befundung / f&#xFC;r die Intervention"/>
+          <type value="group"/>
+          <item>
+            <linkId value="desiredRadiologist.familyName"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.family"/>
+            <text value="Name"/>
+            <type value="string"/>
+          </item>
+          <item>
+            <linkId value="desiredRadiologist.givenName"/>
+            <definition value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner#Practitioner.name.given"/>
+            <text value="Vorname"/>
+            <type value="string"/>
+          </item>
+        </item>
+        <item>
+          <linkId value="diagnosisList"/>
+          <text value="Diagnosen und Befunde"/>
+          <type value="group"/>
+          <item>
+            <linkId value="diagnosisList.primaryDiagnosis"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.reasonReference"/>
+            <text value="Hauptdiagnose"/>
+            <type value="string"/>
+            <repeats value="true"/>
+          </item>
+          <item>
+            <linkId value="diagnosisList.secondaryDiagnosis"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:diagnosis"/>
+            <text value="Nebendiagnose"/>
+            <type value="string"/>
+            <repeats value="true"/>
+          </item>
+          <item>
+            <linkId value="diagnosisList.bodyHeight"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:bodyHeight"/>
+            <text value="Gr&#xF6;sse (cm)"/>
+            <type value="quantity"/>
+            <repeats value="false"/>
+          </item>
+          <item>
+            <linkId value="diagnosisList.bodyWeight"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:bodyWeight"/>
+            <text value="Gewicht (kg)"/>
+            <type value="quantity"/>
+            <repeats value="false"/>
+          </item>
+        </item>
+        <item>
+          <linkId value="caveat"/>
+          <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:caveats"/>
+          <text value="Caveats"/>
+          <type value="group"/>
+          <item>
+            <linkId value="caveat.bloodCoagulation"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code"/>
+            <text value="Beintr&#xE4;chtigte Blutgerinnung"/>
+            <type value="boolean"/>
+            <item>
+              <linkId value="caveat.bloodCoagulation.INR"/>
+              <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.evidence.detail"/>
+              <text value="INR"/>
+              <type value="group"/>
+              <enableWhen>
+                <question value="caveat.bloodCoagulation"/>
+                <operator value="="/>
+                <answerBoolean value="true"/>
+              </enableWhen>
+              <item>
+                <linkId value="caveat.bloodCoagulation.INR.quantity"/>
+                <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-INR-observation#Observation.valueQuantity"/>
+                <text value="Wert (INR)"/>
+                <type value="quantity"/>
+              </item>
+              <item>
+                <linkId value="caveat.bloodCoagulation.INR.dateTime"/>
+                <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-INR-observation#Observation.effectiveDateTime"/>
+                <text value="Zeitpunkt der Bestimmung"/>
+                <type value="dateTime"/>
+              </item>
+            </item>
+            <item>
+              <linkId value="caveat.bloodCoagulation.platelets"/>
+              <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.evidence.detail"/>
+              <text value="Thrombozyten"/>
+              <type value="group"/>
+              <enableWhen>
+                <question value="caveat.bloodCoagulation"/>
+                <operator value="="/>
+                <answerBoolean value="true"/>
+              </enableWhen>
+              <item>
+                <linkId value="caveat.bloodCoagulation.platelets.quantity"/>
+                <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-platelets-observation#Observation.valueQuantity"/>
+                <text value="Wert (10^3/&#xB5;l)"/>
+                <type value="quantity"/>
+              </item>
+              <item>
+                <linkId value="caveat.bloodCoagulation.platelets.dateTime"/>
+                <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-platelets-observation#Observation.effectiveDateTime"/>
+                <text value="Zeitpunkt der Bestimmung"/>
+                <type value="dateTime"/>
+              </item>
+            </item>
+          </item>
+          <item>
+            <linkId value="caveat.renalInsufficiency"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code"/>
+            <text value="Niereninsuffizienz"/>
+            <type value="boolean"/>
+            <item>
+              <linkId value="caveat.renalInsufficiency.creatinineClearance"/>
+              <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.evidence.detail"/>
+              <text value="Creatinin-Clearance"/>
+              <type value="group"/>
+              <enableWhen>
+                <question value="caveat.renalInsufficiency"/>
+                <operator value="="/>
+                <answerBoolean value="true"/>
+              </enableWhen>
+              <item>
+                <linkId value="caveat.renalInsufficiency.creatinineClearance.quantity"/>
+                <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinineclearance-observation#Observation.valueQuantity"/>
+                <text value="Wert (ml/min)"/>
+                <type value="quantity"/>
+              </item>
+              <item>
+                <linkId value="caveat.renalInsufficiency.creatinineClearance.dateTime"/>
+                <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinineclearance-observation#Observation.effectiveDateTime"/>
+                <text value="Zeitpunkt der Bestimmung"/>
+                <type value="dateTime"/>
+              </item>
+            </item>
+            <item>
+              <linkId value="caveat.renalInsufficiency.creatinine"/>
+              <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.evidence.detail"/>
+              <text value="Creatinin"/>
+              <type value="group"/>
+              <enableWhen>
+                <question value="caveat.renalInsufficiency"/>
+                <operator value="="/>
+                <answerBoolean value="true"/>
+              </enableWhen>
+              <item>
+                <linkId value="caveat.renalInsufficiency.creatinine.quantity"/>
+                <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinine-observation#Observation.valueQuantity"/>
+                <text value="Wert (&#xB5;mol/l)"/>
+                <type value="quantity"/>
+              </item>
+              <item>
+                <linkId value="caveat.renalInsufficiency.creatinine.dateTime"/>
+                <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinine-observation#Observation.effectiveDateTime"/>
+                <text value="Zeitpunkt der Bestimmung"/>
+                <type value="dateTime"/>
+              </item>
+            </item>
+          </item>
+          <item>
+            <linkId value="caveat.claustrophobia"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code"/>
+            <text value="Klaustrophobie"/>
+            <type value="boolean"/>
+          </item>
+          <item>
+            <linkId value="caveat.bodyPiercing"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code"/>
+            <text value="K&#xF6;rperpiercing"/>
+            <type value="boolean"/>
+          </item>
+          <item>
+            <linkId value="caveat.device"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code"/>
+            <text value="Device (Herzschrittmacher, Herzklappenersatz, Insulinpumpe etc.)"/>
+            <type value="choice"/>
+            <repeats value="true"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-caveat-device"/>
+          </item>
+          <item>
+            <linkId value="caveat.hyperthyroidism"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code"/>
+            <text value="Hyperthyreose"/>
+            <type value="boolean"/>
+          </item>
+          <item>
+            <linkId value="caveat.diabetes"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code"/>
+            <text value="Diabetes mellitus"/>
+            <type value="boolean"/>
+          </item>
+          <item>
+            <linkId value="caveat.gravida"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code"/>
+            <text value="Schwangerschaft"/>
+            <type value="boolean"/>
+          </item>
+          <item>
+            <linkId value="caveat.contrastMediaAllergy"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code"/>
+            <text value="Kontrastmittelallergie"/>
+            <type value="boolean"/>
+          </item>
+          <item>
+            <linkId value="caveat.drugPrescription"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition#Condition.code"/>
+            <text value="Relevante Medikamente, z.B. Metformin"/>
+            <type value="choice"/>
+            <repeats value="true"/>
+            <answerValueSet value="http://fhir.ch/ig/ch-rad-order/ValueSet/ch-rad-order-caveat-substance"/>
+          </item>
+        </item>
+        <item>
+          <linkId value="previousResults"/>
+          <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.supportingInfo:previousImagingResults"/>
+          <text value="Vorherige Untersuchungsresultate"/>
+          <type value="group"/>
+          <item>
+            <linkId value="previousResults.attachment"/>
+            <text value="Anhang"/>
+            <type value="group"/>
+            <repeats value="true"/>
+            <item>
+              <linkId value="previousResults.attachtment.title"/>
+              <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-media#Media.content.title"/>
+              <text value="Dateiname und -endung der angeh&#xE4;ngten Datei (z.B. &quot;shoulder_re_F_Muster_12021988.pdf&quot;)"/>
+              <type value="string"/>
+            </item>
+            <item>
+              <linkId value="previousResults.attachment.data"/>
+              <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-media#Media.content.data"/>
+              <text value="Daten"/>
+              <type value="string"/>
+            </item>
+          </item>
+        </item>
+        <item>
+          <linkId value="note"/>
+          <text value="Bemerkungen"/>
+          <type value="group"/>
+          <repeats value="true"/>
+          <item>
+            <linkId value="note.text"/>
+            <definition value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest#ServiceRequest.note.text"/>
+            <text value="Kommentar"/>
+            <type value="string"/>
+            <required value="true"/>
+          </item>
+        </item>
+      </Questionnaire>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/QuestionnaireResponse/QuestionnaireResponseRadiologyOrder"/>
+    <resource>
+      <QuestionnaireResponse>
+        <id value="QuestionnaireResponseRadiologyOrder"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-questionnaireresponse"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>questionnaire</b>: <a href="http://fhir.ch/ig/ch-rad-order/Questionnaire/QuestionnaireRadiologyOrder">http://fhir.ch/ig/ch-rad-order/Questionnaire/QuestionnaireRadiologyOrder</a></p><p><b>status</b>: completed</p><blockquote><p><b>item</b></p><p><b>linkId</b>: order</p><p><b>text</b>: Auftrag</p><blockquote><p><b>item</b></p><p><b>linkId</b>: order.title</p><p><b>text</b>: Titel</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.type</p><p><b>text</b>: Typ</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.category</p><p><b>text</b>: Kategorie</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.placerOrderIdentifier</p><p><b>text</b>: Auftragsnummer des Auftraggebers</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.placerOrderIdentifierDomain</p><p><b>text</b>: Identifier Domain der Auftragsnummer des Auftraggebers</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: order.priority</p><p><b>text</b>: Auftragspriorität</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient</p><p><b>text</b>: Patient</p><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.familyName</p><p><b>text</b>: Name</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.maidenName</p><p><b>text</b>: Ledigname</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.givenName</p><p><b>text</b>: Vorname</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.birthDate</p><p><b>text</b>: Geburtsdatum</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.gender</p><p><b>text</b>: Geschlecht</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.phone</p><p><b>text</b>: Telefon</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.email</p><p><b>text</b>: E-Mail</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.streetAddressLine</p><p><b>text</b>: Strasse, Hausnummer, Postfach etc.</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.postalCode</p><p><b>text</b>: PLZ</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.city</p><p><b>text</b>: Ort</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: patient.country</p><p><b>text</b>: Land</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage</p><p><b>text</b>: Kostenträger</p><blockquote><p><b>item</b></p><p><b>linkId</b>: coverage.kvg</p><p><b>text</b>: Krankenkasse (nach KVG)</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: sender</p><p><b>text</b>: Absender</p><blockquote><p><b>item</b></p><p><b>linkId</b>: sender.author</p><p><b>text</b>: Verantwortlicher</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: sender.dataenterer</p><p><b>text</b>: Erfasser</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: receiver</p><p><b>text</b>: Empfänger</p><blockquote><p><b>item</b></p><p><b>linkId</b>: receiver.organization</p><p><b>text</b>: Empfangende Organisation</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: receiverCopies</p><p><b>text</b>: Kopieempfänger</p><blockquote><p><b>item</b></p><p><b>linkId</b>: receiverCopy</p><p><b>text</b>: Kopieempfangende Organisation oder Person</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: appointment</p><p><b>text</b>: Ort und Zeit der Durchführung der angeforderten Leistung</p><blockquote><p><b>item</b></p><p><b>linkId</b>: appointment.location</p><p><b>text</b>: Ort der Durchführung</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: appointment.requestedPeriod</p><p><b>text</b>: Datum und Zeit, wann der Termin bevorzugt geplant werden soll</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: appointment.status</p><p><b>text</b>: Status</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: appointment.patientInstruction</p><p><b>text</b>: Patienteninformation für diesen Termin</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: requestedService</p><p><b>text</b>: Angeforderte Leistung</p><blockquote><p><b>item</b></p><p><b>linkId</b>: requestedService.service</p><p><b>text</b>: Leistung</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: reason</p><p><b>text</b>: Klinische Fragestellung</p><blockquote><p><b>item</b></p><p><b>linkId</b>: reason.question</p><p><b>text</b>: Fragestellung</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: imagingService</p><p><b>text</b>: Bildgebendes Verfahren</p><blockquote><p><b>item</b></p><p><b>linkId</b>: imagingService.type</p><p><b>text</b>: Art</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: orderDetail</p><p><b>text</b>: Weitere Angaben zur Bildgebung</p><blockquote><p><b>item</b></p><p><b>linkId</b>: orderDetail.imagingRegion</p><p><b>text</b>: Region</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: orderDetail.imagingFocus</p><p><b>text</b>: Fokus</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: desiredRadiologist</p><p><b>text</b>: Gewünschter Radiologe für die Befundung / für die Intervention</p><blockquote><p><b>item</b></p><p><b>linkId</b>: desiredRadiologist.familyName</p><p><b>text</b>: Name</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: desiredRadiologist.givenName</p><p><b>text</b>: Vorname</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: diagnosisList</p><p><b>text</b>: Diagnosen und Befunde</p><blockquote><p><b>item</b></p><p><b>linkId</b>: diagnosisList.primaryDiagnosis</p><p><b>text</b>: Hauptdiagnose</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: diagnosisList.secondaryDiagnosis</p><p><b>text</b>: Nebendiagnose</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: diagnosisList.bodyHeight</p><p><b>text</b>: Grösse (cm)</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: diagnosisList.bodyWeight</p><p><b>text</b>: Gewicht (kg)</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat</p><p><b>text</b>: Caveats</p><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.bloodCoagulation</p><p><b>text</b>: Beinträchtigte Blutgerinnung</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.renalInsufficiency</p><p><b>text</b>: Niereninsuffizienz</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.bodyPiercing</p><p><b>text</b>: Körperpiercing</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.device</p><p><b>text</b>: Device (Herzschrittmacher, Herzklappenersatz, Insulinpumpe etc.)</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: caveat.drugPrescription</p><p><b>text</b>: Relevante Medikamente, z.B. Metformin</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: previousResults</p><p><b>text</b>: Vorherige Untersuchungsresultate</p><blockquote><p><b>item</b></p><p><b>linkId</b>: previousResults.attachment</p><p><b>text</b>: Anhang</p></blockquote></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: note</p><p><b>text</b>: Bemerkungen</p><blockquote><p><b>item</b></p><p><b>linkId</b>: note.text</p><p><b>text</b>: Kommentar</p></blockquote></blockquote></div>
+        </text>
+        <questionnaire value="http://fhir.ch/ig/ch-rad-order/Questionnaire/QuestionnaireRadiologyOrder"/>
+        <status value="completed"/>
+        <item>
+          <linkId value="order"/>
+          <text value="Auftrag"/>
+          <item>
+            <linkId value="order.title"/>
+            <text value="Titel"/>
+            <answer>
+              <valueString value="Anmeldung Radiologie"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="order.type"/>
+            <text value="Typ"/>
+            <answer>
+              <valueCoding>
+                <system value="urn:oid:2.16.756.5.30.1.127.3.4"/>
+                <code value="2161000195103"/>
+                <display value="Imaging order (record artifact)"/>
+              </valueCoding>
+            </answer>
+          </item>
+          <item>
+            <linkId value="order.category"/>
+            <text value="Kategorie"/>
+            <answer>
+              <valueCoding>
+                <system value="http://snomed.info/sct"/>
+                <code value="721963009"/>
+                <display value="Order (record artifact)"/>
+              </valueCoding>
+            </answer>
+          </item>
+          <item>
+            <linkId value="order.placerOrderIdentifier"/>
+            <text value="Auftragsnummer des Auftraggebers"/>
+            <answer>
+              <valueString value="12345"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="order.placerOrderIdentifierDomain"/>
+            <text value="Identifier Domain der Auftragsnummer des Auftraggebers"/>
+            <answer>
+              <valueString value="urn:oid:1.3.4.5.6.7"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="order.priority"/>
+            <text value="Auftragspriorit&#xE4;t"/>
+            <answer>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/request-priority"/>
+                <code value="routine"/>
+                <display value="Die Anfrage hat normale Priorit&#xE4;t."/>
+              </valueCoding>
+            </answer>
+          </item>
+        </item>
+        <item>
+          <linkId value="patient"/>
+          <text value="Patient"/>
+          <item>
+            <linkId value="patient.familyName"/>
+            <text value="Name"/>
+            <answer>
+              <valueString value="Ufferer"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="patient.maidenName"/>
+            <text value="Ledigname"/>
+            <answer>
+              <valueString value="Leidend"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="patient.givenName"/>
+            <text value="Vorname"/>
+            <answer>
+              <valueString value="Susanna"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="patient.birthDate"/>
+            <text value="Geburtsdatum"/>
+            <answer>
+              <valueDate value="1970-03-14"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="patient.gender"/>
+            <text value="Geschlecht"/>
+            <answer>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/administrative-gender"/>
+                <code value="female"/>
+              </valueCoding>
+            </answer>
+          </item>
+          <item>
+            <linkId value="patient.phone"/>
+            <text value="Telefon"/>
+            <answer>
+              <valueString value="+41 79 979 79 79"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="patient.email"/>
+            <text value="E-Mail"/>
+            <answer>
+              <valueString value="susanna@ufferer.ch"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="patient.streetAddressLine"/>
+            <text value="Strasse, Hausnummer, Postfach etc."/>
+            <answer>
+              <valueString value="Musterweg"/>
+            </answer>
+            <answer>
+              <valueString value="6a"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="patient.postalCode"/>
+            <text value="PLZ"/>
+            <answer>
+              <valueString value="8000"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="patient.city"/>
+            <text value="Ort"/>
+            <answer>
+              <valueString value="Z&#xFC;rich"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="patient.country"/>
+            <text value="Land"/>
+            <answer>
+              <valueString value="Schweiz"/>
+            </answer>
+          </item>
+        </item>
+        <item>
+          <linkId value="coverage"/>
+          <text value="Kostentr&#xE4;ger"/>
+          <item>
+            <linkId value="coverage.kvg"/>
+            <text value="Krankenkasse (nach KVG)"/>
+            <item>
+              <linkId value="coverage.kvg.name"/>
+              <text value="Name der Versicherung"/>
+              <answer>
+                <valueString value="Sanitas"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="coverage.kvg.insuranceCardNumber"/>
+              <text value="Kennnummer der Versichertenkarte"/>
+              <answer>
+                <valueString value="80756015090002647590"/>
+              </answer>
+            </item>
+          </item>
+        </item>
+        <item>
+          <linkId value="sender"/>
+          <text value="Absender"/>
+          <item>
+            <linkId value="sender.author"/>
+            <text value="Verantwortlicher"/>
+            <item>
+              <linkId value="sender.author.practitioner"/>
+              <text value="Verantwortliche Person"/>
+              <item>
+                <linkId value="sender.author.practitioner.title"/>
+                <text value="Titel"/>
+                <answer>
+                  <valueString value="Dr. med."/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.author.practitioner.familyName"/>
+                <text value="Name"/>
+                <answer>
+                  <valueString value="Rderplacer"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.author.practitioner.givenName"/>
+                <text value="Vorname"/>
+                <answer>
+                  <valueString value="Ottilie"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.author.practitioner.gln"/>
+                <text value="GLN"/>
+                <answer>
+                  <valueString value="7601000034321"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.author.practitioner.phone"/>
+                <text value="Telefon"/>
+                <answer>
+                  <valueString value="+41 44 333 22 11"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.author.practitioner.email"/>
+                <text value="E-Mail"/>
+                <answer>
+                  <valueString value="o.rderplacer@happydoctors.ch"/>
+                </answer>
+              </item>
+            </item>
+            <item>
+              <linkId value="sender.author.organization"/>
+              <text value="Verantwortliche Organisation"/>
+              <item>
+                <linkId value="sender.author.organization.name"/>
+                <text value="Name der Organisation"/>
+                <answer>
+                  <valueString value="Praxis Happy Doctors"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.author.organization.streetAddressLine"/>
+                <text value="Strasse, Hausnummer, Postfach etc."/>
+                <answer>
+                  <valueString value="Kantonsstrasse 14"/>
+                </answer>
+                <answer>
+                  <valueString value="Postfach 14"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.author.organization.postalCode"/>
+                <text value="PLZ"/>
+                <answer>
+                  <valueString value="8000"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.author.organization.city"/>
+                <text value="Ort"/>
+                <answer>
+                  <valueString value="Z&#xFC;rich"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.author.organization.country"/>
+                <text value="Land"/>
+                <answer>
+                  <valueString value="Schweiz"/>
+                </answer>
+              </item>
+            </item>
+          </item>
+          <item>
+            <linkId value="sender.dataenterer"/>
+            <text value="Erfasser"/>
+            <item>
+              <linkId value="sender.dataenterer.practitioner"/>
+              <text value="Erfassende Person"/>
+              <item>
+                <linkId value="sender.dataenterer.practitioner.familyName"/>
+                <text value="Name"/>
+                <answer>
+                  <valueString value="Ataenterer"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.dataenterer.practitioner.givenName"/>
+                <text value="Vorname"/>
+                <answer>
+                  <valueString value="Doris"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.dataenterer.practitioner.phone"/>
+                <text value="Telefon"/>
+                <answer>
+                  <valueString value="+41 44 333 22 11"/>
+                </answer>
+              </item>
+              <item>
+                <linkId value="sender.dataenterer.practitioner.email"/>
+                <text value="E-Mail"/>
+                <answer>
+                  <valueString value="d.ataenterer@happydoctors.ch"/>
+                </answer>
+              </item>
+            </item>
+          </item>
+        </item>
+        <item>
+          <linkId value="receiver"/>
+          <text value="Empf&#xE4;nger"/>
+          <item>
+            <linkId value="receiver.organization"/>
+            <text value="Empfangende Organisation"/>
+            <item>
+              <linkId value="receiver.organization.name"/>
+              <text value="Name der Organisation"/>
+              <answer>
+                <valueString value="Klinik Happy Hospital"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiver.organization.streetAddressLine"/>
+              <text value="Strasse, Hausnummer, Postfach etc."/>
+              <answer>
+                <valueString value="Seestrasse 133"/>
+              </answer>
+              <answer>
+                <valueString value="Haus C"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiver.organization.postalCode"/>
+              <text value="PLZ"/>
+              <answer>
+                <valueString value="8000"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiver.organization.city"/>
+              <text value="Ort"/>
+              <answer>
+                <valueString value="Z&#xFC;rich"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiver.organization.country"/>
+              <text value="Land"/>
+              <answer>
+                <valueString value="Schweiz"/>
+              </answer>
+            </item>
+          </item>
+        </item>
+        <item>
+          <linkId value="receiverCopies"/>
+          <text value="Kopieempf&#xE4;nger"/>
+          <item>
+            <linkId value="receiverCopy"/>
+            <text value="Kopieempfangende Organisation oder Person"/>
+            <item>
+              <linkId value="receiverCopy.familyName"/>
+              <text value="Name"/>
+              <answer>
+                <valueString value="Ufferer"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiverCopy.givenName"/>
+              <text value="Vorname"/>
+              <answer>
+                <valueString value="Susanna"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiverCopy.phone"/>
+              <text value="Telefon"/>
+              <answer>
+                <valueString value="+41 79 979 79 79"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiverCopy.email"/>
+              <text value="E-Mail"/>
+              <answer>
+                <valueString value="susanna@ufferer.ch"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiverCopy.streetAddressLine"/>
+              <text value="Strasse, Hausnummer, Postfach etc."/>
+              <answer>
+                <valueString value="Musterweg"/>
+              </answer>
+              <answer>
+                <valueString value="6a"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiverCopy.postalCode"/>
+              <text value="PLZ"/>
+              <answer>
+                <valueString value="8000"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiverCopy.city"/>
+              <text value="Ort"/>
+              <answer>
+                <valueString value="Z&#xFC;rich"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="receiverCopy.country"/>
+              <text value="Land"/>
+              <answer>
+                <valueString value="Schweiz"/>
+              </answer>
+            </item>
+          </item>
+        </item>
+        <item>
+          <linkId value="appointment"/>
+          <text value="Ort und Zeit der Durchf&#xFC;hrung der angeforderten Leistung"/>
+          <item>
+            <linkId value="appointment.location"/>
+            <text value="Ort der Durchf&#xFC;hrung"/>
+            <item>
+              <linkId value="appointment.location.name"/>
+              <text value="Name"/>
+              <answer>
+                <valueString value="Radiologie"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="appointment.location.phone"/>
+              <text value="Telefon"/>
+              <answer>
+                <valueString value="+41 44 412 65 56"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="appointment.location.streetAddressLine"/>
+              <text value="Strasse, Hausnummer, Postfach etc."/>
+              <answer>
+                <valueString value="Seestrasse 133"/>
+              </answer>
+              <answer>
+                <valueString value="R&#xF6;ntgen"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="appointment.location.postalCode"/>
+              <text value="PLZ"/>
+              <answer>
+                <valueString value="8000"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="appointment.location.city"/>
+              <text value="Ort"/>
+              <answer>
+                <valueString value="Z&#xFC;rich"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="appointment.location.country"/>
+              <text value="Land"/>
+              <answer>
+                <valueString value="Schweiz"/>
+              </answer>
+            </item>
+          </item>
+          <item>
+            <linkId value="appointment.requestedPeriod"/>
+            <text value="Datum und Zeit, wann der Termin bevorzugt geplant werden soll"/>
+            <item>
+              <linkId value="appointment.requestedPeriod.start"/>
+              <text value="Von"/>
+              <answer>
+                <valueDateTime value="2019-04-01T15:00:00.000+00:00"/>
+              </answer>
+            </item>
+            <item>
+              <linkId value="appointment.requestedPeriod.end"/>
+              <text value="Bis"/>
+              <answer>
+                <valueDateTime value="2019-04-01T15:30:00.000+00:00"/>
+              </answer>
+            </item>
+          </item>
+          <item>
+            <linkId value="appointment.status"/>
+            <text value="Status"/>
+            <answer>
+              <valueCoding>
+                <system value="http://hl7.org/fhir/appointmentstatus"/>
+                <code value="proposed"/>
+              </valueCoding>
+            </answer>
+          </item>
+          <item>
+            <linkId value="appointment.patientInstruction"/>
+            <text value="Patienteninformation f&#xFC;r diesen Termin"/>
+            <answer>
+              <valueString value="Wunschtermin der Patientin"/>
+            </answer>
+          </item>
+        </item>
+        <item>
+          <linkId value="requestedService"/>
+          <text value="Angeforderte Leistung"/>
+          <item>
+            <linkId value="requestedService.service"/>
+            <text value="Leistung"/>
+            <answer>
+              <valueCoding>
+                <system value="http://fhir.ch/ig/ch-rad-order/CodeSystem/ch-rad-order-requested-service"/>
+                <code value="ImagingRequest"/>
+                <display value="Imaging Request"/>
+              </valueCoding>
+            </answer>
+          </item>
+        </item>
+        <item>
+          <linkId value="reason"/>
+          <text value="Klinische Fragestellung"/>
+          <item>
+            <linkId value="reason.question"/>
+            <text value="Fragestellung"/>
+            <answer>
+              <valueString value="Diagnostic Question"/>
+            </answer>
+          </item>
+        </item>
+        <item>
+          <linkId value="imagingService"/>
+          <text value="Bildgebendes Verfahren"/>
+          <item>
+            <linkId value="imagingService.type"/>
+            <text value="Art"/>
+            <answer>
+              <valueCoding>
+                <system value="http://www.radlex.org"/>
+                <code value="RID10345"/>
+                <display value="projection radiography"/>
+              </valueCoding>
+            </answer>
+          </item>
+        </item>
+        <item>
+          <linkId value="orderDetail"/>
+          <text value="Weitere Angaben zur Bildgebung"/>
+          <item>
+            <linkId value="orderDetail.imagingRegion"/>
+            <text value="Region"/>
+            <answer>
+              <valueCoding>
+                <system value="http://www.radlex.org"/>
+                <code value="RID1243"/>
+                <display value="Thorax"/>
+              </valueCoding>
+            </answer>
+          </item>
+          <item>
+            <linkId value="orderDetail.imagingFocus"/>
+            <text value="Fokus"/>
+            <answer>
+              <valueCoding>
+                <system value="http://www.radlex.org"/>
+                <code value="RID2468"/>
+                <display value="Chest wall"/>
+              </valueCoding>
+            </answer>
+          </item>
+        </item>
+        <item>
+          <linkId value="desiredRadiologist"/>
+          <text value="Gew&#xFC;nschter Radiologe f&#xFC;r die Befundung / f&#xFC;r die Intervention"/>
+          <item>
+            <linkId value="desiredRadiologist.familyName"/>
+            <text value="Name"/>
+            <answer>
+              <valueString value="Rderfiller"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="desiredRadiologist.givenName"/>
+            <text value="Vorname"/>
+            <answer>
+              <valueString value="Otto"/>
+            </answer>
+          </item>
+        </item>
+        <item>
+          <linkId value="diagnosisList"/>
+          <text value="Diagnosen und Befunde"/>
+          <item>
+            <linkId value="diagnosisList.primaryDiagnosis"/>
+            <text value="Hauptdiagnose"/>
+            <answer>
+              <valueString value="Primary Diagnosis"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="diagnosisList.secondaryDiagnosis"/>
+            <text value="Nebendiagnose"/>
+            <answer>
+              <valueString value="Secondary Diagnosis 1"/>
+            </answer>
+            <answer>
+              <valueString value="Secondary Diagnosis 2"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="diagnosisList.bodyHeight"/>
+            <text value="Gr&#xF6;sse (cm)"/>
+            <answer>
+              <valueQuantity>
+                <value value="176"/>
+                <unit value="cm"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="cm"/>
+              </valueQuantity>
+            </answer>
+          </item>
+          <item>
+            <linkId value="diagnosisList.bodyWeight"/>
+            <text value="Gewicht (kg)"/>
+            <answer>
+              <valueQuantity>
+                <value value="99"/>
+                <unit value="kg"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="kg"/>
+              </valueQuantity>
+            </answer>
+          </item>
+        </item>
+        <item>
+          <linkId value="caveat"/>
+          <text value="Caveats"/>
+          <item>
+            <linkId value="caveat.bloodCoagulation"/>
+            <text value="Beintr&#xE4;chtigte Blutgerinnung"/>
+            <answer>
+              <valueBoolean value="true"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="caveat.renalInsufficiency"/>
+            <text value="Niereninsuffizienz"/>
+            <answer>
+              <valueBoolean value="true"/>
+              <item>
+                <linkId value="caveat.renalInsufficiency.creatinineClearance"/>
+                <text value="Creatinin-Clearance"/>
+                <item>
+                  <linkId value="caveat.renalInsufficiency.creatinineClearance.quantity"/>
+                  <text value="Wert (ml/min)"/>
+                  <answer>
+                    <valueQuantity>
+                      <value value="55"/>
+                      <system value="http://unitsofmeasure.org"/>
+                      <code value="mL/min"/>
+                    </valueQuantity>
+                  </answer>
+                </item>
+                <item>
+                  <linkId value="caveat.renalInsufficiency.creatinineClearance.dateTime"/>
+                  <text value="Zeitpunkt der Bestimmung"/>
+                  <answer>
+                    <valueDateTime value="2019-04-01T10:10:00.000+00:00"/>
+                  </answer>
+                </item>
+              </item>
+              <item>
+                <linkId value="caveat.renalInsufficiency.creatinine"/>
+                <text value="Creatinin"/>
+                <item>
+                  <linkId value="caveat.renalInsufficiency.creatinine.quantity"/>
+                  <text value="Wert (&#xB5;mol/l)"/>
+                  <answer>
+                    <valueQuantity>
+                      <value value="90"/>
+                      <system value="http://unitsofmeasure.org"/>
+                      <code value="umol/L"/>
+                    </valueQuantity>
+                  </answer>
+                </item>
+                <item>
+                  <linkId value="caveat.renalInsufficiency.creatinine.dateTime"/>
+                  <text value="Zeitpunkt der Bestimmung"/>
+                  <answer>
+                    <valueDateTime value="2019-04-01T10:10:00.000+00:00"/>
+                  </answer>
+                </item>
+              </item>
+            </answer>
+          </item>
+          <item>
+            <linkId value="caveat.bodyPiercing"/>
+            <text value="K&#xF6;rperpiercing"/>
+            <answer>
+              <valueBoolean value="true"/>
+            </answer>
+          </item>
+          <item>
+            <linkId value="caveat.device"/>
+            <text value="Device (Herzschrittmacher, Herzklappenersatz, Insulinpumpe etc.)"/>
+            <answer>
+              <valueCoding>
+                <system value="http://snomed.info/sct"/>
+                <code value="441509002"/>
+                <display value="Cardiac pacemaker in situ"/>
+              </valueCoding>
+            </answer>
+          </item>
+          <item>
+            <linkId value="caveat.drugPrescription"/>
+            <text value="Relevante Medikamente, z.B. Metformin"/>
+            <answer>
+              <valueCoding>
+                <system value="http://snomed.info/sct"/>
+                <code value="372567009"/>
+                <display value="Metformin (substance)"/>
+              </valueCoding>
+            </answer>
+          </item>
+        </item>
+        <item>
+          <linkId value="previousResults"/>
+          <text value="Vorherige Untersuchungsresultate"/>
+          <item>
+            <linkId value="previousResults.attachment"/>
+            <text value="Anhang"/>
+            <item>
+              <linkId value="previousResults.attachtment.title"/>
+              <text value="Dateiname und -endung der angeh&#xE4;ngten Datei (z.B. &quot;shoulder_re_F_Muster_12021988.pdf&quot;)"/>
+              <answer>
+                <valueString value="xray_chest_S_Ufferer_20190401.dcm"/>
+              </answer>
+            </item>
+          </item>
+        </item>
+        <item>
+          <linkId value="note"/>
+          <text value="Bemerkungen"/>
+          <item>
+            <linkId value="note.text"/>
+            <text value="Kommentar"/>
+            <answer>
+              <valueString value="Bemerkung/Kommentar"/>
+            </answer>
+          </item>
+        </item>
+      </QuestionnaireResponse>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/ServiceRequest/ServiceRequestRadiologyOrder"/>
+    <resource>
+      <ServiceRequest>
+        <id value="ServiceRequestRadiologyOrder"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-servicerequest"/>
+        </meta>
+        <text>
+          <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>CH ORF Location and Time</b>: <a href="#Appointment_AppointmentRadiography">See above (Appointment/AppointmentRadiography)</a></p><p><b>identifier</b>: Placer Identifier: 12345</p><p><b>status</b>: active</p><p><b>intent</b>: order</p><p><b>category</b>: <span title="Codes: {http://fhir.ch/ig/ch-rad-order/CodeSystem/ch-rad-order-requested-service ImagingRequest}">Imaging Request</span></p><p><b>priority</b>: routine</p><p><b>code</b>: <span title="Codes: {http://www.radlex.org RID10345}">projection radiography</span></p><p><b>orderDetail</b>: <span title="Codes: {http://www.radlex.org RID1243}">Thorax</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p><p><b>requester</b>: <a href="#PractitionerRole_ORderplacerHappyDoctors">See above (PractitionerRole/ORderplacerHappyDoctors)</a></p><p><b>performer</b>: <a href="#PractitionerRole_ORderfillerHappyHospital">See above (PractitionerRole/ORderfillerHappyHospital)</a></p><p><b>reasonCode</b>: <span title="Codes: ">Diagnostic Question</span></p><p><b>reasonReference</b>: <a href="#Condition_PrimaryDiagnosis">See above (Condition/PrimaryDiagnosis)</a></p><p><b>insurance</b>: <a href="#Coverage_CoverageKVG">See above (Coverage/CoverageKVG)</a></p><p><b>supportingInfo</b>: </p><ul><li><a href="#Observation_BodyHeight">See above (Observation/BodyHeight)</a></li><li><a href="#Observation_BodyWeight">See above (Observation/BodyWeight)</a></li><li><a href="#Condition_SecondaryDiagnosis1">See above (Condition/SecondaryDiagnosis1)</a></li><li><a href="#Condition_SecondaryDiagnosis2">See above (Condition/SecondaryDiagnosis2)</a></li><li><a href="#Condition_CaveatBloodCoagulation">See above (Condition/CaveatBloodCoagulation)</a></li><li><a href="#Condition_CaveatRenalInsufficiency">See above (Condition/CaveatRenalInsufficiency)</a></li><li><a href="#Condition_CaveatBodyPiercing">See above (Condition/CaveatBodyPiercing)</a></li><li><a href="#Condition_CaveatDeviceCardiacPacemaker">See above (Condition/CaveatDeviceCardiacPacemaker)</a></li><li><a href="#Condition_CaveatDrugPrescriptionMetformin">See above (Condition/CaveatDrugPrescriptionMetformin)</a></li><li><a href="#Media_MediaRx">See above (Media/MediaRx)</a></li></ul><p><b>bodySite</b>: <span title="Codes: {http://www.radlex.org RID2468}">Chest wall</span></p><p><b>note</b>: Bemerkung/Kommentar</p></div>
+        </text>
+        <extension url="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-locationandtime">
+          <valueReference>
+            <reference value="Appointment/AppointmentRadiography"/>
+          </valueReference>
+        </extension>
+        <identifier>
+          <type>
+            <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+              <code value="PLAC"/>
+            </coding>
+          </type>
+          <system value="urn:oid:1.3.4.5.6.7"/>
+          <value value="12345"/>
+        </identifier>
+        <status value="active"/>
+        <intent value="order"/>
+        <category>
+          <coding>
+            <system value="http://fhir.ch/ig/ch-rad-order/CodeSystem/ch-rad-order-requested-service"/>
+            <code value="ImagingRequest"/>
+            <display value="Imaging Request"/>
+          </coding>
+        </category>
+        <priority value="routine"/>
+        <code>
+          <coding>
+            <system value="http://www.radlex.org"/>
+            <code value="RID10345"/>
+            <display value="projection radiography"/>
+          </coding>
+        </code>
+        <orderDetail>
+          <extension url="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-order-detail-type">
+            <valueCoding>
+              <system value="http://fhir.ch/ig/ch-rad-order/CodeSystem/ch-rad-order-order-detail-type"/>
+              <code value="imagingRegion"/>
+            </valueCoding>
+          </extension>
+          <coding>
+            <system value="http://www.radlex.org"/>
+            <code value="RID1243"/>
+            <display value="Thorax"/>
+          </coding>
+        </orderDetail>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+        <requester>
+          <reference value="PractitionerRole/ORderplacerHappyDoctors"/>
+        </requester>
+        <performer>
+          <reference value="PractitionerRole/ORderfillerHappyHospital"/>
+        </performer>
+        <reasonCode>
+          <text value="Diagnostic Question"/>
+        </reasonCode>
+        <reasonReference>
+          <reference value="Condition/PrimaryDiagnosis"/>
+        </reasonReference>
+        <insurance>
+          <reference value="Coverage/CoverageKVG"/>
+        </insurance>
+        <supportingInfo>
+          <reference value="Observation/BodyHeight"/>
+        </supportingInfo>
+        <supportingInfo>
+          <reference value="Observation/BodyWeight"/>
+        </supportingInfo>
+        <supportingInfo>
+          <reference value="Condition/SecondaryDiagnosis1"/>
+        </supportingInfo>
+        <supportingInfo>
+          <reference value="Condition/SecondaryDiagnosis2"/>
+        </supportingInfo>
+        <supportingInfo>
+          <reference value="Condition/CaveatBloodCoagulation"/>
+        </supportingInfo>
+        <supportingInfo>
+          <reference value="Condition/CaveatRenalInsufficiency"/>
+        </supportingInfo>
+        <supportingInfo>
+          <reference value="Condition/CaveatBodyPiercing"/>
+        </supportingInfo>
+        <supportingInfo>
+          <reference value="Condition/CaveatDeviceCardiacPacemaker"/>
+        </supportingInfo>
+        <supportingInfo>
+          <reference value="Condition/CaveatDrugPrescriptionMetformin"/>
+        </supportingInfo>
+        <supportingInfo>
+          <reference value="Media/MediaRx"/>
+        </supportingInfo>
+        <bodySite>
+          <coding>
+            <system value="http://www.radlex.org"/>
+            <code value="RID2468"/>
+            <display value="Chest wall"/>
+          </coding>
+        </bodySite>
+        <note>
+          <text value="Bemerkung/Kommentar"/>
+        </note>
+      </ServiceRequest>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Patient/SUfferer"/>
+    <resource>
+      <Patient>
+        <id value="SUfferer"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>name</b>: Susanna Ufferer (OFFICIAL), Leidend (MAIDEN)</p><p><b>telecom</b>: <a href="tel:+41799797979">+41 79 979 79 79</a>, <a href="mailto:susanna@ufferer.ch">susanna@ufferer.ch</a></p><p><b>gender</b>: female</p><p><b>birthDate</b>: 1970-03-14</p><p><b>address</b>: Musterweg 6a Zürich 8000 Schweiz (HOME)</p></div>
+        </text>
+        <name>
+          <use value="official"/>
+          <family value="Ufferer">
+            <extension url="http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name">
+              <valueCode value="officialName"/>
+            </extension>
+          </family>
+          <given value="Susanna">
+            <extension url="http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-firstname">
+              <valueCode value="officialFirstName"/>
+            </extension>
+          </given>
+        </name>
+        <name>
+          <use value="maiden"/>
+          <family value="Leidend">
+            <extension url="http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name">
+              <valueCode value="originalName"/>
+            </extension>
+          </family>
+        </name>
+        <telecom>
+          <system value="phone"/>
+          <value value="+41 79 979 79 79"/>
+        </telecom>
+        <telecom>
+          <system value="email"/>
+          <value value="susanna@ufferer.ch"/>
+        </telecom>
+        <gender value="female"/>
+        <birthDate value="1970-03-14"/>
+        <address>
+          <use value="home"/>
+          <line value="Musterweg"/>
+          <line value="6a"/>
+          <city value="Z&#xFC;rich"/>
+          <postalCode value="8000"/>
+          <country value="Schweiz"/>
+        </address>
+      </Patient>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Patient/SUffererCopyReceiver"/>
+    <resource>
+      <Patient>
+        <id value="SUffererCopyReceiver"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>name</b>: Susanna Ufferer </p><p><b>telecom</b>: <a href="tel:+41799797979">+41 79 979 79 79</a>, <a href="mailto:susanna@ufferer.ch">susanna@ufferer.ch</a></p><p><b>address</b>: Musterweg 6a Zürich 8000 Schweiz (HOME)</p></div>
+        </text>
+        <name>
+          <family value="Ufferer"/>
+          <given value="Susanna"/>
+        </name>
+        <telecom>
+          <system value="phone"/>
+          <value value="+41 79 979 79 79"/>
+        </telecom>
+        <telecom>
+          <system value="email"/>
+          <value value="susanna@ufferer.ch"/>
+        </telecom>
+        <address>
+          <use value="home"/>
+          <line value="Musterweg 6a"/>
+          <city value="Z&#xFC;rich"/>
+          <postalCode value="8000"/>
+          <country value="Schweiz"/>
+        </address>
+      </Patient>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/PractitionerRole/DAtaentererHappyDoctors"/>
+    <resource>
+      <PractitionerRole>
+        <id value="DAtaentererHappyDoctors"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>practitioner</b>: <a href="#Practitioner_DAtaenterer">See above (Practitioner/DAtaenterer)</a></p><p><b>organization</b>: <a href="#Organization_HappyDoctors">See above (Organization/HappyDoctors)</a></p></div>
+        </text>
+        <practitioner>
+          <reference value="Practitioner/DAtaenterer"/>
+        </practitioner>
+        <organization>
+          <reference value="Organization/HappyDoctors"/>
+        </organization>
+      </PractitionerRole>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Practitioner/DAtaenterer"/>
+    <resource>
+      <Practitioner>
+        <id value="DAtaenterer"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>name</b>: Doris Ataenterer </p><p><b>telecom</b>: <a href="tel:+41443332211">+41 44 333 22 11</a>, <a href="mailto:d.ataenterer@happydoctors.ch">d.ataenterer@happydoctors.ch</a></p></div>
+        </text>
+        <name>
+          <family value="Ataenterer"/>
+          <given value="Doris"/>
+        </name>
+        <telecom>
+          <system value="phone"/>
+          <value value="+41 44 333 22 11"/>
+        </telecom>
+        <telecom>
+          <system value="email"/>
+          <value value="d.ataenterer@happydoctors.ch"/>
+        </telecom>
+      </Practitioner>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/PractitionerRole/ORderplacerHappyDoctors"/>
+    <resource>
+      <PractitionerRole>
+        <id value="ORderplacerHappyDoctors"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>practitioner</b>: <a href="#Practitioner_ORderplacer">See above (Practitioner/ORderplacer)</a></p><p><b>organization</b>: <a href="#Organization_HappyDoctors">See above (Organization/HappyDoctors)</a></p></div>
+        </text>
+        <practitioner>
+          <reference value="Practitioner/ORderplacer"/>
+        </practitioner>
+        <organization>
+          <reference value="Organization/HappyDoctors"/>
+        </organization>
+      </PractitionerRole>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Practitioner/ORderplacer"/>
+    <resource>
+      <Practitioner>
+        <id value="ORderplacer"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 7601000034321</p><p><b>name</b>: Ottilie Rderplacer (OFFICIAL)</p><p><b>telecom</b>: <a href="tel:+41443332211">+41 44 333 22 11</a>, <a href="mailto:o.rderplacer@happydoctors.ch">o.rderplacer@happydoctors.ch</a></p></div>
+        </text>
+        <identifier>
+          <system value="urn:oid:2.51.1.3"/>
+          <value value="7601000034321"/>
+        </identifier>
+        <name>
+          <use value="official"/>
+          <family value="Rderplacer"/>
+          <given value="Ottilie"/>
+          <prefix value="Dr. med.">
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier">
+              <valueCode value="AC"/>
+            </extension>
+          </prefix>
+        </name>
+        <telecom>
+          <system value="phone"/>
+          <value value="+41 44 333 22 11"/>
+        </telecom>
+        <telecom>
+          <system value="email"/>
+          <value value="o.rderplacer@happydoctors.ch"/>
+        </telecom>
+      </Practitioner>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/PractitionerRole/RadiologyDepartmentHappyHospital"/>
+    <resource>
+      <PractitionerRole>
+        <id value="RadiologyDepartmentHappyHospital"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>organization</b>: <a href="#Organization_HappyHospital">See above (Organization/HappyHospital)</a></p></div>
+        </text>
+        <organization>
+          <reference value="Organization/HappyHospital"/>
+        </organization>
+      </PractitionerRole>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Organization/HappyDoctors"/>
+    <resource>
+      <Organization>
+        <id value="HappyDoctors"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>name</b>: Praxis Happy Docotors</p><p><b>address</b>: Kantonsstrasse 14 Postfach 14 Zürich 8000 Schweiz </p></div>
+        </text>
+        <name value="Praxis Happy Docotors"/>
+        <address>
+          <line value="Kantonsstrasse 14"/>
+          <line value="Postfach 14"/>
+          <city value="Z&#xFC;rich"/>
+          <postalCode value="8000"/>
+          <country value="Schweiz"/>
+        </address>
+      </Organization>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Organization/HappyHospital"/>
+    <resource>
+      <Organization>
+        <id value="HappyHospital"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>name</b>: Klinik Happy Hospital</p><p><b>address</b>: Seestrasse 133 Haus C Zürich 8000 Schweiz </p></div>
+        </text>
+        <name value="Klinik Happy Hospital"/>
+        <address>
+          <line value="Seestrasse 133"/>
+          <line value="Haus C"/>
+          <city value="Z&#xFC;rich"/>
+          <postalCode value="8000"/>
+          <country value="Schweiz"/>
+        </address>
+      </Organization>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/PractitionerRole/ORderfillerHappyHospital"/>
+    <resource>
+      <PractitionerRole>
+        <id value="ORderfillerHappyHospital"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>practitioner</b>: <a href="#Practitioner_ORderfiller">See above (Practitioner/ORderfiller)</a></p></div>
+        </text>
+        <practitioner>
+          <reference value="Practitioner/ORderfiller"/>
+        </practitioner>
+      </PractitionerRole>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Practitioner/ORderfiller"/>
+    <resource>
+      <Practitioner>
+        <id value="ORderfiller"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>name</b>: Otto Rderfiller (OFFICIAL)</p></div>
+        </text>
+        <name>
+          <use value="official"/>
+          <family value="Rderfiller"/>
+          <given value="Otto"/>
+        </name>
+      </Practitioner>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Condition/PrimaryDiagnosis"/>
+    <resource>
+      <Condition>
+        <id value="PrimaryDiagnosis"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-diagnosis-condition"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}">Problem List Item</span></p><p><b>code</b>: <span title="Codes: ">Primary Diagnosis</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p></div>
+        </text>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+            <code value="problem-list-item"/>
+            <display value="Problem List Item"/>
+          </coding>
+        </category>
+        <code>
+          <text value="Primary Diagnosis"/>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+      </Condition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Observation/BodyHeight"/>
+    <resource>
+      <Observation>
+        <id value="BodyHeight"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-bodyheight-observation"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/observation-category vital-signs}">Vital Signs</span></p><p><b>code</b>: <span title="Codes: {http://loinc.org 8302-2}">Body height</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p><p><b>effective</b>: Apr 1, 2019, 12:10:00 PM</p><p><b>value</b>: 176 cm</p></div>
+        </text>
+        <status value="final"/>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+            <code value="vital-signs"/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="8302-2"/>
+            <display value="Body height"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+        <effectiveDateTime value="2019-04-01T10:10:00.000+00:00"/>
+        <valueQuantity>
+          <value value="176"/>
+          <unit value="cm"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="cm"/>
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Observation/BodyWeight"/>
+    <resource>
+      <Observation>
+        <id value="BodyWeight"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-bodyweight-observation"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/observation-category vital-signs}">Vital Signs</span></p><p><b>code</b>: <span title="Codes: {http://loinc.org 29463-7}">Body weight</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p><p><b>effective</b>: Apr 1, 2019, 12:10:00 PM</p><p><b>value</b>: 99 kg</p></div>
+        </text>
+        <status value="final"/>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+            <code value="vital-signs"/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="29463-7"/>
+            <display value="Body weight"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+        <effectiveDateTime value="2019-04-01T10:10:00.000+00:00"/>
+        <valueQuantity>
+          <value value="99"/>
+          <unit value="kg"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="kg"/>
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Condition/SecondaryDiagnosis1"/>
+    <resource>
+      <Condition>
+        <id value="SecondaryDiagnosis1"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-diagnosis-condition"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}">Problem List Item</span></p><p><b>code</b>: <span title="Codes: ">Secondary Diagnosis 1</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p></div>
+        </text>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+            <code value="problem-list-item"/>
+            <display value="Problem List Item"/>
+          </coding>
+        </category>
+        <code>
+          <text value="Secondary Diagnosis 1"/>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+      </Condition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Condition/SecondaryDiagnosis2"/>
+    <resource>
+      <Condition>
+        <id value="SecondaryDiagnosis2"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-diagnosis-condition"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}">Problem List Item</span></p><p><b>code</b>: <span title="Codes: ">Secondary Diagnosis 2</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p></div>
+        </text>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+            <code value="problem-list-item"/>
+            <display value="Problem List Item"/>
+          </coding>
+        </category>
+        <code>
+          <text value="Secondary Diagnosis 2"/>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+      </Condition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Coverage/CoverageKVG"/>
+    <resource>
+      <Coverage>
+        <id value="CoverageKVG"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: Insurance Card Number: 80756015090002647590</p><p><b>status</b>: active</p><p><b>type</b>: <span title="Codes: {http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coveragetype KVG}">According to KVG</span></p><p><b>beneficiary</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p><p><b>payor</b>: <a name="Sanitas"> </a></p><blockquote><p><b>name</b>: Sanitas</p></blockquote></div>
+        </text>
+        <contained>
+          <Organization>
+            <id value="Sanitas"/>
+            <meta>
+              <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"/>
+            </meta>
+            <name value="Sanitas"/>
+          </Organization>
+        </contained>
+        <identifier>
+          <type>
+            <coding>
+              <system value="http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coverageidentifiertype"/>
+              <code value="VeKa"/>
+            </coding>
+          </type>
+          <value value="80756015090002647590"/>
+        </identifier>
+        <status value="active"/>
+        <type>
+          <coding>
+            <system value="http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coveragetype"/>
+            <code value="KVG"/>
+            <display value="According to KVG"/>
+          </coding>
+        </type>
+        <beneficiary>
+          <reference value="Patient/SUfferer"/>
+        </beneficiary>
+        <payor>
+          <reference value="#Sanitas"/>
+        </payor>
+      </Coverage>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Condition/CaveatBloodCoagulation"/>
+    <resource>
+      <Condition>
+        <id value="CaveatBloodCoagulation"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition"/>
+        </meta>
+        <text>
+          <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>CH RAD-Order Caveat Type</b>: <span title="{http://snomed.info/sct 64779008}">Blood coagulation disorder (disorder)</span></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}">Problem List Item</span></p><p><b>code</b>: <span title="Codes: {http://snomed.info/sct 64779008}">Blood coagulation disorder (disorder)</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p><blockquote><p><b>evidence</b></p><p><b>detail</b>: <a href="#Observation_CaveatBloodCoagulationINR">See above (Observation/CaveatBloodCoagulationINR)</a></p></blockquote><blockquote><p><b>evidence</b></p><p><b>detail</b>: <a href="#Observation_CaveatBloodCoagulationPlatelets">See above (Observation/CaveatBloodCoagulationPlatelets)</a></p></blockquote></div>
+        </text>
+        <extension url="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-type">
+          <valueCoding>
+            <system value="http://snomed.info/sct"/>
+            <code value="64779008"/>
+            <display value="Blood coagulation disorder (disorder)"/>
+          </valueCoding>
+        </extension>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+            <code value="problem-list-item"/>
+            <display value="Problem List Item"/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="64779008"/>
+            <display value="Blood coagulation disorder (disorder)"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+        <evidence>
+          <detail>
+            <reference value="Observation/CaveatBloodCoagulationINR"/>
+          </detail>
+        </evidence>
+        <evidence>
+          <detail>
+            <reference value="Observation/CaveatBloodCoagulationPlatelets"/>
+          </detail>
+        </evidence>
+      </Condition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Observation/CaveatBloodCoagulationINR"/>
+    <resource>
+      <Observation>
+        <id value="CaveatBloodCoagulationINR"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-INR-observation"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p></p><p><b>code</b>: <span title="Codes: {http://loinc.org 34714-6}">INR in Blood by Coagulation assay</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p><p><b>effective</b>: Apr 1, 2019, 12:10:00 PM</p><p><b>value</b>: 2.3 INR</p></div>
+        </text>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="34714-6"/>
+            <display value="INR in Blood by Coagulation assay"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+        <effectiveDateTime value="2019-04-01T10:10:00.000+00:00"/>
+        <valueQuantity>
+          <value value="2.3"/>
+          <unit value="INR"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="{INR}"/>
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Observation/CaveatBloodCoagulationPlatelets"/>
+    <resource>
+      <Observation>
+        <id value="CaveatBloodCoagulationPlatelets"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-platelets-observation"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p></p><p><b>code</b>: <span title="Codes: {http://loinc.org 26515-7}">Platelets [#/volume] in Blood</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p><p><b>effective</b>: Apr 1, 2019, 12:10:00 PM</p><p><b>value</b>: 150000 10^3/&mu;l</p></div>
+        </text>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="26515-7"/>
+            <display value="Platelets [#/volume] in Blood"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+        <effectiveDateTime value="2019-04-01T10:10:00.000+00:00"/>
+        <valueQuantity>
+          <value value="150000"/>
+          <unit value="10^3/&#x3BC;l"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="10*3/uL"/>
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Condition/CaveatBodyPiercing"/>
+    <resource>
+      <Condition>
+        <id value="CaveatBodyPiercing"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition"/>
+        </meta>
+        <text>
+          <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>CH RAD-Order Caveat Type</b>: <span title="{http://snomed.info/sct 879862001}">Body piercing (finding)</span></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}">Problem List Item</span></p><p><b>code</b>: <span title="Codes: {http://snomed.info/sct 879862001}">Body piercing (finding)</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p></div>
+        </text>
+        <extension url="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-type">
+          <valueCoding>
+            <system value="http://snomed.info/sct"/>
+            <code value="879862001"/>
+            <display value="Body piercing (finding)"/>
+          </valueCoding>
+        </extension>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+            <code value="problem-list-item"/>
+            <display value="Problem List Item"/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="879862001"/>
+            <display value="Body piercing (finding)"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+      </Condition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Condition/CaveatRenalInsufficiency"/>
+    <resource>
+      <Condition>
+        <id value="CaveatRenalInsufficiency"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition"/>
+        </meta>
+        <text>
+          <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>CH RAD-Order Caveat Type</b>: <span title="{http://snomed.info/sct 723188008}">Renal insufficiency (disorder)</span></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}">Problem List Item</span></p><p><b>code</b>: <span title="Codes: {http://snomed.info/sct 723188008}">Renal insufficiency (disorder)</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p><blockquote><p><b>evidence</b></p><p><b>detail</b>: <a href="#Observation_CaveatRenalInsufficiencyCreatinineClearance">See above (Observation/CaveatRenalInsufficiencyCreatinineClearance)</a></p></blockquote><blockquote><p><b>evidence</b></p><p><b>detail</b>: <a href="#Observation_CaveatRenalInsufficiencyCreatinine">See above (Observation/CaveatRenalInsufficiencyCreatinine)</a></p></blockquote></div>
+        </text>
+        <extension url="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-type">
+          <valueCoding>
+            <system value="http://snomed.info/sct"/>
+            <code value="723188008"/>
+            <display value="Renal insufficiency (disorder)"/>
+          </valueCoding>
+        </extension>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+            <code value="problem-list-item"/>
+            <display value="Problem List Item"/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="723188008"/>
+            <display value="Renal insufficiency (disorder)"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+        <evidence>
+          <detail>
+            <reference value="Observation/CaveatRenalInsufficiencyCreatinineClearance"/>
+          </detail>
+        </evidence>
+        <evidence>
+          <detail>
+            <reference value="Observation/CaveatRenalInsufficiencyCreatinine"/>
+          </detail>
+        </evidence>
+      </Condition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Observation/CaveatRenalInsufficiencyCreatinineClearance"/>
+    <resource>
+      <Observation>
+        <id value="CaveatRenalInsufficiencyCreatinineClearance"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinineclearance-observation"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p></p><p><b>code</b>: <span title="Codes: {http://loinc.org 33558-8}">Creatinine renal clearance in Urine and Serum or Plasma collected for unspecified duration</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p><p><b>effective</b>: Apr 1, 2019, 12:10:00 PM</p><p><b>value</b>: 55 ml/min</p></div>
+        </text>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="33558-8"/>
+            <display value="Creatinine renal clearance in Urine and Serum or Plasma collected for unspecified duration"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+        <effectiveDateTime value="2019-04-01T10:10:00.000+00:00"/>
+        <valueQuantity>
+          <value value="55"/>
+          <unit value="ml/min"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="mL/min"/>
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Observation/CaveatRenalInsufficiencyCreatinine"/>
+    <resource>
+      <Observation>
+        <id value="CaveatRenalInsufficiencyCreatinine"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-creatinine-observation"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p></p><p><b>code</b>: <span title="Codes: {http://loinc.org 77140-2}">Creatinine [Moles/volume] in Serum, Plasma or Blood</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p><p><b>effective</b>: Apr 1, 2019, 12:10:00 PM</p><p><b>value</b>: 90 µmol/l</p></div>
+        </text>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="77140-2"/>
+            <display value="Creatinine [Moles/volume] in Serum, Plasma or Blood"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+        <effectiveDateTime value="2019-04-01T10:10:00.000+00:00"/>
+        <valueQuantity>
+          <value value="90"/>
+          <unit value="&#xB5;mol/l"/>
+          <system value="http://unitsofmeasure.org"/>
+          <code value="umol/L"/>
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Condition/CaveatDrugPrescriptionMetformin"/>
+    <resource>
+      <Condition>
+        <id value="CaveatDrugPrescriptionMetformin"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition"/>
+        </meta>
+        <text>
+          <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>CH RAD-Order Caveat Type</b>: <span title="{http://snomed.info/sct 182817000}">Drug prescription (situation)</span></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}">Problem List Item</span></p><p><b>code</b>: <span title="Codes: {http://snomed.info/sct 372567009}">Metformin (substance)</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p></div>
+        </text>
+        <extension url="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-type">
+          <valueCoding>
+            <system value="http://snomed.info/sct"/>
+            <code value="182817000"/>
+            <display value="Drug prescription (situation)"/>
+          </valueCoding>
+        </extension>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+            <code value="problem-list-item"/>
+            <display value="Problem List Item"/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="372567009"/>
+            <display value="Metformin (substance)"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+      </Condition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Condition/CaveatDeviceCardiacPacemaker"/>
+    <resource>
+      <Condition>
+        <id value="CaveatDeviceCardiacPacemaker"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition"/>
+        </meta>
+        <text>
+          <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>CH RAD-Order Caveat Type</b>: <span title="{http://snomed.info/sct 397578001}">Device in situ (finding)</span></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}">Problem List Item</span></p><p><b>code</b>: <span title="Codes: {http://snomed.info/sct 441509002}">Cardiac pacemaker in situ</span></p><p><b>subject</b>: <a href="#Patient_SUfferer">See above (Patient/SUfferer)</a></p></div>
+        </text>
+        <extension url="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-type">
+          <valueCoding>
+            <system value="http://snomed.info/sct"/>
+            <code value="397578001"/>
+            <display value="Device in situ (finding)"/>
+          </valueCoding>
+        </extension>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+            <code value="problem-list-item"/>
+            <display value="Problem List Item"/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="441509002"/>
+            <display value="Cardiac pacemaker in situ"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/SUfferer"/>
+        </subject>
+      </Condition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Media/MediaRx"/>
+    <resource>
+      <Media>
+        <id value="MediaRx"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-media"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>status</b>: completed</p></div>
+        </text>
+        <status value="completed"/>
+        <content>
+          <contentType value="application/dicom"/>
+          <data value="RXhhbXBsZQ=="/>
+          <title value="xray_chest_S_Ufferer_20190401.dcm"/>
+        </content>
+      </Media>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Appointment/AppointmentRadiography"/>
+    <resource>
+      <Appointment>
+        <id value="AppointmentRadiography"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-appointment"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>status</b>: proposed</p><p><b>patientInstruction</b>: Wunschtermin der Patientin</p><h3>Participants</h3><table class="grid"><tr><td>-</td><td><b>Actor</b></td><td><b>Status</b></td></tr><tr><td>*</td><td><a href="#Location_LocationRadiography">See above (Location/LocationRadiography)</a></td><td>tentative</td></tr></table><p><b>requestedPeriod</b>: Apr 1, 2019, 5:00:00 PM --&gt; Apr 1, 2019, 5:30:00 PM</p></div>
+        </text>
+        <status value="proposed"/>
+        <patientInstruction value="Wunschtermin der Patientin"/>
+        <participant>
+          <actor>
+            <reference value="Location/LocationRadiography"/>
+          </actor>
+          <status value="tentative"/>
+        </participant>
+        <requestedPeriod>
+          <start value="2019-04-01T15:00:00.000+00:00"/>
+          <end value="2019-04-01T15:30:00.000+00:00"/>
+        </requestedPeriod>
+      </Appointment>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Location/LocationRadiography"/>
+    <resource>
+      <Location>
+        <id value="LocationRadiography"/>
+        <meta>
+          <profile value="http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-location"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>name</b>: Radiologie</p><p><b>telecom</b>: <a href="tel:+41444126556">+41 44 412 65 56</a></p><p><b>address</b>: Seestrasse 133 Röntgen Zürich 8000 Schweiz </p></div>
+        </text>
+        <name value="Radiologie"/>
+        <telecom>
+          <system value="phone"/>
+          <value value="+41 44 412 65 56"/>
+        </telecom>
+        <address>
+          <line value="Seestrasse 133"/>
+          <line value="R&#xF6;ntgen"/>
+          <city value="Z&#xFC;rich"/>
+          <postalCode value="8000"/>
+          <country value="Schweiz"/>
+        </address>
+      </Location>
+    </resource>
+  </entry>
+</Bundle>
