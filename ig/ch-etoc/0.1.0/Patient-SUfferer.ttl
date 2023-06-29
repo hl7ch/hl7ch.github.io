@@ -1,0 +1,86 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-etoc/Patient/SUfferer> a fhir:Patient;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "SUfferer"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>name</b>: Susanna Ufferer (OFFICIAL), Leidend (MAIDEN)</p><p><b>telecom</b>: <a href=\"tel:+41799797979\">+41 79 979 79 79</a>, <a href=\"mailto:susanna@ufferer.ch\">susanna@ufferer.ch</a></p><p><b>gender</b>: female</p><p><b>birthDate</b>: 1970-03-14</p><p><b>address</b>: Musterweg 6a Zürich 8000 Schweiz (HOME)</p></div>"
+  ];
+  fhir:Patient.name [
+     fhir:index 0;
+     fhir:HumanName.use [ fhir:value "official" ];
+     fhir:HumanName.family [
+       fhir:value "Ufferer";
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name" ];
+         fhir:Extension.valueCode [ fhir:value "officialName" ]
+       ]
+     ];
+     fhir:HumanName.given [
+       fhir:value "Susanna";
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-firstname" ];
+         fhir:Extension.valueCode [ fhir:value "officialFirstName" ]
+       ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:HumanName.use [ fhir:value "maiden" ];
+     fhir:HumanName.family [
+       fhir:value "Leidend";
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name" ];
+         fhir:Extension.valueCode [ fhir:value "originalName" ]
+       ]
+     ]
+  ];
+  fhir:Patient.telecom [
+     fhir:index 0;
+     fhir:ContactPoint.system [ fhir:value "phone" ];
+     fhir:ContactPoint.value [ fhir:value "+41 79 979 79 79" ]
+  ], [
+     fhir:index 1;
+     fhir:ContactPoint.system [ fhir:value "email" ];
+     fhir:ContactPoint.value [ fhir:value "susanna@ufferer.ch" ]
+  ];
+  fhir:Patient.gender [ fhir:value "female"];
+  fhir:Patient.birthDate [ fhir:value "1970-03-14"^^xsd:date];
+  fhir:Patient.address [
+     fhir:index 0;
+     fhir:Address.use [ fhir:value "home" ];
+     fhir:Address.line [
+       fhir:value "Musterweg";
+       fhir:index 0
+     ], [
+       fhir:value "6a";
+       fhir:index 1
+     ];
+     fhir:Address.city [ fhir:value "Zürich" ];
+     fhir:Address.postalCode [ fhir:value "8000" ];
+     fhir:Address.country [ fhir:value "Schweiz" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-etoc/Patient/SUfferer.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

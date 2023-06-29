@@ -1,0 +1,114 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-etoc/Composition/CompositionEtoc> a fhir:Composition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CompositionEtoc"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-etoc/StructureDefinition/ch-etoc-composition";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-etoc/StructureDefinition/ch-etoc-composition>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "additional" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div>Medical Referral</div></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "enterer" ];
+       fhir:Extension.valueReference [
+         fhir:link <http://fhir.ch/ig/ch-etoc/PractitionerRole/DAtaentererHappyDoctors>;
+         fhir:Reference.reference [ fhir:value "PractitionerRole/DAtaentererHappyDoctors" ]
+       ]
+     ];
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-dataenterer" ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver" ];
+     fhir:Extension.valueReference [
+       fhir:link <http://fhir.ch/ig/ch-etoc/PractitionerRole/MedicalDepartmentHappyHospital>;
+       fhir:Reference.reference [ fhir:value "PractitionerRole/MedicalDepartmentHappyHospital" ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver" ];
+     fhir:Extension.valueReference [
+       fhir:link <http://fhir.ch/ig/ch-etoc/Patient/SUffererCopyReceiver>;
+       fhir:Reference.reference [ fhir:value "Patient/SUffererCopyReceiver" ]
+     ]
+  ];
+  fhir:Composition.status [ fhir:value "final"];
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:419891008;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "419891008" ];
+       fhir:Coding.display [ fhir:value "Nicht näher bezeichnetes Dokument" ]
+     ]
+  ];
+  fhir:Composition.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:721927009;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "721927009" ];
+       fhir:Coding.display [ fhir:value "Zuweisungsschreiben" ]
+     ]
+  ];
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-etoc/Patient/SUfferer>;
+     fhir:Reference.reference [ fhir:value "Patient/SUfferer" ]
+  ];
+  fhir:Composition.date [ fhir:value "2019-04-01T20:18:41.341+00:00"^^xsd:dateTime];
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-etoc/PractitionerRole/ORderplacerHappyDoctors>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/ORderplacerHappyDoctors" ]
+  ];
+  fhir:Composition.title [ fhir:value "Anmeldung zur Abklärung / Hospitalisation"];
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Composition.section.title [ fhir:value "Order-Referral" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:93037-0;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "93037-0" ];
+         fhir:Coding.display [ fhir:value "Portable medical order form" ]
+       ]
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-etoc/Questionnaire/QuestionnaireEtoc>;
+       fhir:Reference.reference [ fhir:value "Questionnaire/QuestionnaireEtoc" ]
+     ], [
+       fhir:index 1;
+       fhir:link <http://fhir.ch/ig/ch-etoc/QuestionnaireResponse/QuestionnaireResponseEtoc>;
+       fhir:Reference.reference [ fhir:value "QuestionnaireResponse/QuestionnaireResponseEtoc" ]
+     ], [
+       fhir:index 2;
+       fhir:link <http://fhir.ch/ig/ch-etoc/ServiceRequest/ServiceRequestEtoc>;
+       fhir:Reference.reference [ fhir:value "ServiceRequest/ServiceRequestEtoc" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-etoc/Composition/CompositionEtoc.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
