@@ -1,0 +1,92 @@
+{
+  "resourceType": "OperationDefinition",
+  "id": "CH.PIXm",
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_PIXm</h2><p>OPERATION: CH_PIXm</p><p>The official URL for this operation definition is: </p><pre>http://fhir.ch/ig/ch-epr-mhealth/OperationDefinition/CH.PIXm</pre><div><p>Find patient matches using IHE-PIXm Profile</p>\n</div><p>URL: [base]/Patient/$ihe-pix</p><p>Input parameters Profile: <a href=\"StructureDefinition-ch-pixm-in-parameters.html\">CH PIXm IN Parameters</a></p><p>Output parameters Profile: <a href=\"StructureDefinition-ch-pixm-out-parameters.html\">CH PIXm OUT Parameters</a></p><p>Parameters</p><table class=\"grid\"><tr><td><b>Use</b></td><td><b>Name</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Documentation</b></td></tr><tr><td>IN</td><td>sourceIdentifier</td><td>1..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#string\">string</a><br/>(<a href=\"http://hl7.org/fhir/R4/search.html#token\">token</a>)</td><td/><td><div><p>The Patient identifier search parameter that will be used by the Patient Identifier Cross-reference Manager to find cross matching identifiers associated with the Patient Resource. See Section 3.83.4.1.2.1</p>\n</div></td></tr><tr><td>IN</td><td>targetSystem</td><td>1..2</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#string\">string</a><br/>(<a href=\"http://hl7.org/fhir/R4/search.html#uri\">uri</a>)</td><td/><td><div><p>The Assigning Authorities for the Patient Identity Domains from which the returned identifiers shall be selected. See Section 3.83.4.1.2.2.</p>\n</div></td></tr><tr><td>IN</td><td>_format</td><td>0..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#string\">string</a><br/>(<a href=\"http://hl7.org/fhir/R4/search.html#token\">token</a>)</td><td/><td><div><p>The requested format of the response from the mime-type value set. See ITI TF-2x: Appendix Z.6</p>\n</div></td></tr><tr><td>OUT</td><td>targetIdentifier</td><td>0..2</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#Identifier\">Identifier</a></td><td/><td><div><p>The identifier found. Constraints to include the assigning authority as specified in ITI TF-2x: Appendix E.3</p>\n</div></td></tr><tr><td>OUT</td><td>targetId</td><td>0..1</td><td><a href=\"http://hl7.org/fhir/R4/references.html#Reference\">Reference</a></td><td/><td><div><p>The URL of the Patient Resource</p>\n</div></td></tr></table></div>"
+  },
+  "url": "http://fhir.ch/ig/ch-epr-mhealth/OperationDefinition/CH.PIXm",
+  "version": "0.2.0",
+  "name": "CH_PIXm",
+  "title": "Find patient matches using IHE-PIXm Profile",
+  "status": "draft",
+  "kind": "operation",
+  "date": "2020-07-07",
+  "publisher": "eHealth Suisse",
+  "contact": [
+    {
+      "name": "eHealth Suisse",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.e-health-suisse.ch"
+        }
+      ]
+    }
+  ],
+  "description": "Find patient matches using IHE-PIXm Profile",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "CH"
+        }
+      ]
+    }
+  ],
+  "code": "ihe-pix",
+  "resource": [
+    "Patient"
+  ],
+  "system": false,
+  "type": true,
+  "instance": false,
+  "inputProfile": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-in-parameters",
+  "outputProfile": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-out-parameters",
+  "parameter": [
+    {
+      "name": "sourceIdentifier",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "documentation": "The Patient identifier search parameter that will be used by the Patient Identifier Cross-reference Manager to find cross matching identifiers associated with the Patient Resource. See Section 3.83.4.1.2.1",
+      "type": "string",
+      "searchType": "token"
+    },
+    {
+      "name": "targetSystem",
+      "use": "in",
+      "min": 1,
+      "max": "2",
+      "documentation": "The Assigning Authorities for the Patient Identity Domains from which the returned identifiers shall be selected. See Section 3.83.4.1.2.2.",
+      "type": "string",
+      "searchType": "uri"
+    },
+    {
+      "name": "_format",
+      "use": "in",
+      "min": 0,
+      "max": "1",
+      "documentation": "The requested format of the response from the mime-type value set. See ITI TF-2x: Appendix Z.6",
+      "type": "string",
+      "searchType": "token"
+    },
+    {
+      "name": "targetIdentifier",
+      "use": "out",
+      "min": 0,
+      "max": "2",
+      "documentation": "The identifier found. Constraints to include the assigning authority as specified in ITI TF-2x: Appendix E.3",
+      "type": "Identifier"
+    },
+    {
+      "name": "targetId",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "documentation": "The URL of the Patient Resource",
+      "type": "Reference"
+    }
+  ]
+}

@@ -1,0 +1,1246 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/ImplementationGuide/ch.fhir.ig.ch-epr-mhealth> a fhir:ImplementationGuide;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "ch.fhir.ig.ch-epr-mhealth"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "additional" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      Implementation Guide for the Mobile access to Health Documents (epr-mhealth) Profile for the Swiss EPR\n    </div>"
+  ];
+  fhir:ImplementationGuide.url [ fhir:value "http://fhir.ch/ig/ch-epr-mhealth/ImplementationGuide/ch.fhir.ig.ch-epr-mhealth"];
+  fhir:ImplementationGuide.version [ fhir:value "0.2.0"];
+  fhir:ImplementationGuide.name [ fhir:value "CHEprMhealth"];
+  fhir:ImplementationGuide.title [ fhir:value "CH EPR mHealth (R4)"];
+  fhir:ImplementationGuide.status [ fhir:value "active"];
+  fhir:ImplementationGuide.experimental [ fhir:value "false"^^xsd:boolean];
+  fhir:ImplementationGuide.date [ fhir:value "2021-06-16"^^xsd:date];
+  fhir:ImplementationGuide.publisher [ fhir:value "eHealth Suisse"];
+  fhir:ImplementationGuide.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "eHealth Suisse" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "https://www.e-health-suisse.ch" ]
+     ]
+  ];
+  fhir:ImplementationGuide.description [ fhir:value "Implementation Guide for the Mobile access to Health Documents (epr-mhealth) Profile for the Swiss EPR"];
+  fhir:ImplementationGuide.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "CH" ]
+     ]
+  ];
+  fhir:ImplementationGuide.copyright [ fhir:value "CC-BY-SA-4.0"];
+  fhir:ImplementationGuide.packageId [ fhir:value "ch.fhir.ig.ch-epr-mhealth"];
+  fhir:ImplementationGuide.license [ fhir:value "CC-BY-SA-4.0"];
+  fhir:ImplementationGuide.fhirVersion [
+     fhir:value "4.0.1";
+     fhir:index 0
+  ];
+  fhir:ImplementationGuide.dependsOn [
+     fhir:index 0;
+     fhir:Element.id [ fhir:value "chcore" ];
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core";
+       fhir:link <http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core>
+     ];
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ch.fhir.ig.ch-core" ];
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "2.0.0" ]
+  ], [
+     fhir:index 1;
+     fhir:Element.id [ fhir:value "ihemhdfhir" ];
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://ihe.net/fhir/ihe.mhd.fhir/ImplementationGuide/ihe.mhd.fhir";
+       fhir:link <http://ihe.net/fhir/ihe.mhd.fhir/ImplementationGuide/ihe.mhd.fhir>
+     ];
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ihe.mhd.fhir" ];
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "4.0.1" ]
+  ];
+  fhir:ImplementationGuide.definition [
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "releaselabel" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "DSTU 1 Informative Ballot" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "copyrightyear" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "2020+" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 2;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "special-url" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "http://ihe.net/fhir/" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 3;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-liquid" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template/liquid" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-liquid" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "input/liquid" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 5;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-qa" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "temp/qa" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 6;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-temp" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "temp/pages" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 7;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-output" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "output" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 8;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-suppressed-warnings" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "input/ignoreWarnings.txt" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 9;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-history" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "http://fhir.ch/ig/ch-epr-mhealth/history.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 10;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "template-html" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template-page.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 11;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "template-md" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template-page-md.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 12;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-contact" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 13;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-context" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 14;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-copyright" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 15;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-jurisdiction" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 16;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-license" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 17;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-publisher" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 18;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-version" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 19;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "active-tables" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ];
+     fhir:ImplementationGuide.definition.resource [
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Parameters" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Parameters/ParametersPIXmInput>;
+         fhir:Reference.reference [ fhir:value "Parameters/ParametersPIXmInput" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Parameters PIXm Query Input" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example Input Parameters Mobile Patient Identifier Corss-reference Query" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-in-parameters";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-in-parameters>
+       ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Parameters" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Parameters/ParametersPIXmOutput>;
+         fhir:Reference.reference [ fhir:value "Parameters/ParametersPIXmOutput" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Parameters PIXm Query Output" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example Output Parameters Mobile Patient Identifier Corss-reference Query" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-out-parameters";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-out-parameters>
+       ]
+     ], [
+       fhir:index 2;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Bundle/BundlePIXmFeed>;
+         fhir:Reference.reference [ fhir:value "Bundle/BundlePIXmFeed" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Bundle CH:PIXm Feed" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example Bundle for a CH:PIXm Feed" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-bundle";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-bundle>
+       ]
+     ], [
+       fhir:index 3;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Patient/PatientPIXmFeed>;
+         fhir:Reference.reference [ fhir:value "Patient/PatientPIXmFeed" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Patient CH:PIXm Feed" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example CH:PIXm patient feed" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-patient";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-patient>
+       ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Patient/FranzMusterNeedsAbsoluteUrl>;
+         fhir:Reference.reference [ fhir:value "Patient/FranzMusterNeedsAbsoluteUrl" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Franz Muster Needs Absolute Url" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example Patient" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-patient";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-patient>
+       ]
+     ], [
+       fhir:index 5;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Organization/GruppenpraxisCH>;
+         fhir:Reference.reference [ fhir:value "Organization/GruppenpraxisCH" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "GruppenpraxisCH" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example Organization" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-provider-organization";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-provider-organization>
+       ]
+     ], [
+       fhir:index 6;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Bundle/BundlePIXmResponse>;
+         fhir:Reference.reference [ fhir:value "Bundle/BundlePIXmResponse" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Bundle CH:PIXm Feed Response" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example Bundle for a CH:PIXm Feed Response" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-bundle-response";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-bundle-response>
+       ]
+     ], [
+       fhir:index 7;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Bundle/2-7-BundleProvideDocument>;
+         fhir:Reference.reference [ fhir:value "Bundle/2-7-BundleProvideDocument" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MHD Provide Document Bundle for MedicationCard" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "MHD Provide Document Bundle for MedicationCard" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-providedocumentbundle-comprehensive";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-providedocumentbundle-comprehensive>
+       ]
+     ], [
+       fhir:index 8;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "List" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/List/2-7-DocSubMedicationCard>;
+         fhir:Reference.reference [ fhir:value "List/2-7-DocSubMedicationCard" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "SubmissionSet (List) for MedicationCard" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example SubmissionSet for a MedicationCard" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-submissionset-comprehensive";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-submissionset-comprehensive>
+       ]
+     ], [
+       fhir:index 9;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/DocumentReference/2-7-DocRefMedicationCard>;
+         fhir:Reference.reference [ fhir:value "DocumentReference/2-7-DocRefMedicationCard" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "DocumentReference for MedicationCard" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example DocumentReference for a MedicationCard" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-documentreference-comprehensive";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-documentreference-comprehensive>
+       ]
+     ], [
+       fhir:index 10;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Bundle/2-7-BundleProvideDocument-Response>;
+         fhir:Reference.reference [ fhir:value "Bundle/2-7-BundleProvideDocument-Response" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MHD Provide Document Bundle Response for MedicationCard" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "MHD Provide Document Bundle Response for MedicationCard" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-providedocumentbundle-comprehensive-response";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-providedocumentbundle-comprehensive-response>
+       ]
+     ], [
+       fhir:index 11;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Bundle/Bundle-FindSubmissionSets>;
+         fhir:Reference.reference [ fhir:value "Bundle/Bundle-FindSubmissionSets" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MHD Find DocumentSubmissionSet (List)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "MHD Find Document SumbmissionSet- Bundle as Response" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-submissionset-comprehensive-bundle";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-submissionset-comprehensive-bundle>
+       ]
+     ], [
+       fhir:index 12;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/Bundle/Bundle-FindDocumentReferences>;
+         fhir:Reference.reference [ fhir:value "Bundle/Bundle-FindDocumentReferences" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MHD Find DocumentReferences" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "MHD Find DocumentReferences - Bundle as Response" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-documentreference-comprehensive-bundle";
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-documentreference-comprehensive-bundle>
+       ]
+     ], [
+       fhir:index 13;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-in-parameters>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-pixm-in-parameters" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH PIXm IN Parameters" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Identifier_Cross-Reference_for_Mobile_(PIXm)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 14;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-out-parameters>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-pixm-out-parameters" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH PIXm OUT Parameters" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Identifier_Cross-Reference_for_Mobile_(PIXm)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 15;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-bundle>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-pixm-bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH:PIXm Bundle Feed Message" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Feed / Update or Merge Patient resources. Patients must conform to the ch-pixm-patient profile" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 16;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-patient>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-pixm-patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EPR mHealth Patient Profile for CH:PIXm Mobile Patient Identity Feed" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "The patient demographics and identifier information which can be provided in the CH:PIXm Feed according to the EPR. If the patient is already registered in a community, the MPI-PID SHALL be provided as an identifier. The EPR-SPID as an identifier MAY be added. The birthname can be added with the  ISO 21090 qualifier extension." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 17;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-provider-organization>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-pixm-provider-organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EPR mHealth Provider Organization Profile for CH:PIXm" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Organization" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 18;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-bundle-response>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-pixm-bundle-response" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH:PIXm Bundle Message Response" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(CH:PIXm)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 19;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-messageheader-response>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-pixm-messageheader-response" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH:PIXm MessageHeader Feed Response" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(CH:PIXm)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 20;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-providedocumentbundle-comprehensive>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-mhd-providedocumentbundle-comprehensive" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH MHD Provide Document Bundle Comprehensive" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IHE MHD profile on Provide Document Bundle (ITI-65) transaction with Comprehensive Metadata for the Swiss EPR." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 21;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-submissionset-comprehensive>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-mhd-submissionset-comprehensive" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH MHD SubmissionSet Comprehensive" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CH MHD SubmissionSet Comprehensive" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 22;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-documentreference-comprehensive>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-mhd-documentreference-comprehensive" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH MHD DocumentReference Comprehensive" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CH MHD Profile on CH Core DocumentReference" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 23;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-providedocumentbundle-comprehensive-response>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-mhd-providedocumentbundle-comprehensive-response" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH MHD Provide Document Bundle Comphrensive Response" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IHE MHD profile on Response of Provide Document Bundle (ITI-65) transaction with Comprehensive Metadata." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 24;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-submissionset-comprehensive-bundle>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-mhd-submissionset-comprehensive-bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH MHD SubmissionSet Comprehensive Bundle" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CH MHD SubmissionSet Comprehensive Bundle response [ITI-66]" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 25;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-documentreference-comprehensive-bundle>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-mhd-documentreference-comprehensive-bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH MHD Find Document References Comprehensive Response message" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "A profile on the Find Document References Comprehensive Response message for ITI-68" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 26;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:complex-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-epr-mhealth-humanname>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-epr-mhealth-humanname" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EPR mHealth HumanName" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "The humanname WITHOUT the ISO 21090 qualifier https://www.hl7.org/fhir/extension-iso21090-en-qualifier.html BR" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 27;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:complex-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-epr-mhealth-birthname>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-epr-mhealth-birthname" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EPR mHealth BirthName" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "The birthname with the ISO 21090 qualifier https://www.hl7.org/fhir/extension-iso21090-en-qualifier.html BR" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 28;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-ext-author-authorrole>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ext-author-authorrole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH Extension Author AuthorRole" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension Author AuthorRole for SubmissionSet" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 29;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-ext-deletionstatus>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ext-deletionstatus" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH Extension Deletion Status" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension Deletion Status for DocumentReference" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 30;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/IHE.PIXm.Parameters>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/IHE.PIXm.Parameters" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IHE PIXm Parameters" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Identifier_Cross-Reference_for_Mobile_(PIXm)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 31;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/IHE.PMIR.Bundle>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/IHE.PMIR.Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IHE PMIR Bundle Message" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 32;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/IHE.PMIR.BundleHistory>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/IHE.PMIR.BundleHistory" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IHE PMIR Bundle History" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 33;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/IHE.PMIR.MessageHeader>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/IHE.PMIR.MessageHeader" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IHE PMIR MessageHeader" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 34;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/IHE.PMIR.Patient.Merge>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/IHE.PMIR.Patient.Merge" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IHE PMIR Patient Merge" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 35;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/IHE.PMIR.Patient.RelatedPerson>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/IHE.PMIR.Patient.RelatedPerson" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IHE PMIR Patient Related Person" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 36;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/IHE.PMIR.Subscription>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/IHE.PMIR.Subscription" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IHE PMIR Subscription" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 37;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/IHE.PMIR.Subscription.request>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/IHE.PMIR.Subscription.request" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IHE PMIR Subscription request" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 38;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "OperationDefinition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/OperationDefinition/CH.PIXm>;
+         fhir:Reference.reference [ fhir:value "OperationDefinition/CH.PIXm" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Find patient matches using IHE-PIXm Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Find patient matches using IHE-PIXm Profile" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 39;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.mHealth.App>;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/CH.mHealth.App" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "mHealth: App (client)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for mHealth App (client)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 40;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.PIXm.Consumer>;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/CH.PIXm.Consumer" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "PIXm Patient Identifier Cross-Reference Consumer (client)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for Actor PIXm Patient Identifier Cross-reference Consumer (client)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 41;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.PIXm.Source>;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/CH.PIXm.Source" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "PIXm Patient Identity Source (client)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for Actor CH:PIXm Patient Identity Source (client)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 42;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.MHD.DocumentSource>;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/CH.MHD.DocumentSource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MHD Document Source (client)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for Actor MHD Document Source (client)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 43;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.MHD.DocumentConsumer>;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/CH.MHD.DocumentConsumer" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MHD Document Consumer (client)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for Actor MHD Document Consumer (client)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 44;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.mHealth.API>;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/CH.mHealth.API" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "mHealth: API (server)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for mHealth API (server)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 45;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.PIXm.Manager>;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/CH.PIXm.Manager" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "PIXm Patient Identifier Cross-reference Manager (server)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for Actor CH:PIXm Patient Identifier Cross-reference Manager (server)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 46;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.MHD.DocumentRecipient>;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/CH.MHD.DocumentRecipient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MHD Document Recipient (server)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for Actor MHD Document Recipient (server)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 47;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CapabilityStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.MHD.DocumentResponder>;
+         fhir:Reference.reference [ fhir:value "CapabilityStatement/CH.MHD.DocumentResponder" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MHD Document Responder (server)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "CapabilityStatement for Actor MHD Document Responder (server)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 48;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/CodeSystem/ch-ehealth-codesystem-deletionstatus>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/ch-ehealth-codesystem-deletionstatus" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "ch-ehealth-codesystem-deletionstatus" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Additional metadata about deletion status on the DocumentReference" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 49;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/ValueSet/ch-ehealth-valueset-deletionstatus>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ch-ehealth-valueset-deletionstatus" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "ch-ehealth-valueset-deletionstatus" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Additional metadata about deletion status on the DocumentReference" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ];
+     fhir:ImplementationGuide.definition.page [
+       fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "toc.html" ];
+       fhir:ImplementationGuide.definition.page.title [ fhir:value "Table of Contents" ];
+       fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ];
+       fhir:ImplementationGuide.definition.page.page [
+         fhir:index 0;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "index.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Home" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 1;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "profiles.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Profiles" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ];
+         fhir:ImplementationGuide.definition.page.page [
+           fhir:index 0;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-iua.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Internet User Authorization (IUA)" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 1;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-ch-pixm.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Patient Identifier Cross-reference for Mobile (CH:PIXm)" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 2;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-mhd.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Mobile Access to Health Documents (MHD) with XDS on FHIR" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 3;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-restful-atna.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "RESTful ATNA" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ]
+       ], [
+         fhir:index 2;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "transactions.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Transactions" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ];
+         fhir:ImplementationGuide.definition.page.page [
+           fhir:index 0;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-71.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Get Access Token [ITI-71]" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 1;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-103.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Get Authorization Server Metadata [ITI-103]" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 2;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-83.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Mobile Patient Identifier Cross-reference Query [ITI-83]" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 3;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-93.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "CH:PIXm Mobile Patient Identity Feed [ITI-93]" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 4;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-65.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Provide Document Bundle [ITI-65]" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 5;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-66.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Find Document Lists [ITI-66]" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 6;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-67.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Find Document References [ITI-67]" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 7;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-68.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Retrieve Document [ITI-68]" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 8;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "iti-20.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Record Audit Event [ITI-20]" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ]
+       ], [
+         fhir:index 3;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "appendix.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Appendix" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ];
+         fhir:ImplementationGuide.definition.page.page [
+           fhir:index 0;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "extensions.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Extensions" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+         ], [
+           fhir:index 1;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "terminology.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Terminology" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+         ], [
+           fhir:index 2;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "capstatements.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Capability Statements" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+         ], [
+           fhir:index 3;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "operations.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Operations" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+         ], [
+           fhir:index 4;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "sequencediagrams.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Sequence Diagrams" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ], [
+           fhir:index 5;
+           fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "openissues.html" ];
+           fhir:ImplementationGuide.definition.page.title [ fhir:value "Open Issues" ];
+           fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+         ]
+       ]
+     ];
+     fhir:ImplementationGuide.definition.parameter [
+       fhir:index 0;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/pages" ]
+     ], [
+       fhir:index 1;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/capabilities" ]
+     ], [
+       fhir:index 2;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/examples" ]
+     ], [
+       fhir:index 3;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/extensions" ]
+     ], [
+       fhir:index 4;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/models" ]
+     ], [
+       fhir:index 5;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/operations" ]
+     ], [
+       fhir:index 6;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/profiles" ]
+     ], [
+       fhir:index 7;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/resources" ]
+     ], [
+       fhir:index 8;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/vocabulary" ]
+     ], [
+       fhir:index 9;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/maps" ]
+     ], [
+       fhir:index 10;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/testing" ]
+     ], [
+       fhir:index 11;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/history" ]
+     ], [
+       fhir:index 12;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "fsh-generated/resources" ]
+     ], [
+       fhir:index 13;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "template/config" ]
+     ], [
+       fhir:index 14;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/images" ]
+     ], [
+       fhir:index 15;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-tx-cache" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input-cache/txcache" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/ImplementationGuide/ch.fhir.ig.ch-epr-mhealth.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

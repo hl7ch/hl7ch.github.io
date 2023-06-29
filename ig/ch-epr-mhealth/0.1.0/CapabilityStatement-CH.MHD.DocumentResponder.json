@@ -1,0 +1,282 @@
+{
+  "resourceType": "CapabilityStatement",
+  "id": "CH.MHD.DocumentResponder",
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_MHD_DocumentResponder</h2><div><p>CapabilityStatement for Actor MHD Document Responder (server).</p>\n</div><table><tr><td>Mode</td><td>SERVER</td></tr><tr><td>Description</td><td>MHD server returns DocumentManifest Resources that match the search criteria provided by the Document Consumer [ITI-66].          MHD server returns DocumentReference Resources that match the search criteria provided by the Document Consumer [ITI-67].         MHD server serves the document to the Document Consumer [ITI-68].</td></tr><tr><td>Transaction</td><td></td></tr><tr><td>System History</td><td></td></tr><tr><td>System Search</td><td>y</td></tr></table><table><tr><th><b>Resource Type</b></th><th><b>Profile</b></th><th><b title=\"GET a resource (read interaction)\">Read</b></th><th><b title=\"GET all set of resources of the type (search interaction)\">Search</b></th><th><b title=\"PUT a new resource version (update interaction)\">Update</b></th><th><b title=\"POST a new resource (create interaction)\">Create</b></th></tr><tr><td>DocumentManifest</td><td><a href=\"http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-comprehensive-documentmanifest\">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-comprehensive-documentmanifest</a></td><td>y</td><td>y</td><td></td><td></td></tr><tr><td>DocumentReference</td><td><a href=\"http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-query-comprehensive-documentreference\">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-query-comprehensive-documentreference</a></td><td>y</td><td>y</td><td></td><td></td></tr><tr><td>Binary</td><td>y</td><td></td><td></td><td></td></tr></table></div>"
+  },
+  "url": "http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.MHD.DocumentResponder",
+  "version": "0.1.0",
+  "name": "CH_MHD_DocumentResponder",
+  "title": "MHD Document Responder (server)",
+  "status": "draft",
+  "date": "2020-07-08",
+  "publisher": "eHealth Suisse",
+  "contact": [
+    {
+      "name": "eHealth Suisse",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.e-health-suisse.ch"
+        }
+      ]
+    }
+  ],
+  "description": "CapabilityStatement for Actor MHD Document Responder (server).",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "CH"
+        }
+      ]
+    }
+  ],
+  "kind": "requirements",
+  "fhirVersion": "4.0.1",
+  "format": [
+    "application/fhir+xml",
+    "application/fhir+json"
+  ],
+  "rest": [
+    {
+      "mode": "server",
+      "documentation": "MHD server returns DocumentManifest Resources that match the search criteria provided by the Document Consumer [ITI-66].          MHD server returns DocumentReference Resources that match the search criteria provided by the Document Consumer [ITI-67].         MHD server serves the document to the Document Consumer [ITI-68].",
+      "security": {
+        "cors": false,
+        "description": "TLS SHALL be used"
+      },
+      "resource": [
+        {
+          "type": "DocumentManifest",
+          "profile": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-comprehensive-documentmanifest",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "search-type"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "type": "token",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "type": "date",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "patient",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "type": "reference",
+              "documentation": "The subject of the set of documents"
+            },
+            {
+              "name": "patient.identifier",
+              "definition": "http://hl7.org/fhir/SearchParameter/Patient-identifier",
+              "type": "token",
+              "documentation": "A patient identifier"
+            },
+            {
+              "name": "created",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentManifest-created",
+              "type": "date",
+              "documentation": "When this document manifest created"
+            },
+            {
+              "name": "author",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentManifest-author",
+              "type": "reference",
+              "documentation": "Who and/or what authored the DocumentManifest"
+            },
+            {
+              "name": "author.given",
+              "definition": "http://hl7.org/fhir/SearchParameter/individual-given",
+              "type": "string",
+              "documentation": "A portion of the given name"
+            },
+            {
+              "name": "author.family",
+              "definition": "http://hl7.org/fhir/SearchParameter/individual-family",
+              "type": "string",
+              "documentation": "A portion of the family name"
+            },
+            {
+              "name": "identifier",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-identifier",
+              "type": "token",
+              "documentation": "Unique Identifier for the set of documents"
+            },
+            {
+              "name": "status",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentManifest-status",
+              "type": "token",
+              "documentation": "current | superseded | entered-in-error"
+            },
+            {
+              "name": "type",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-type",
+              "type": "token",
+              "documentation": "Kind of document set"
+            },
+            {
+              "name": "source",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentManifest-source",
+              "type": "uri",
+              "documentation": "The source system/application/software"
+            }
+          ]
+        },
+        {
+          "type": "DocumentReference",
+          "profile": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-query-comprehensive-documentreference",
+          "interaction": [
+            {
+              "code": "read"
+            },
+            {
+              "code": "search-type"
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "_id",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-id",
+              "type": "token",
+              "documentation": "Logical id of this artifact"
+            },
+            {
+              "name": "_lastUpdated",
+              "definition": "http://hl7.org/fhir/SearchParameter/Resource-lastUpdated",
+              "type": "date",
+              "documentation": "When the resource version last changed"
+            },
+            {
+              "name": "patient",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+              "type": "reference",
+              "documentation": "Who/what is the subject of the document"
+            },
+            {
+              "name": "patient.identifier",
+              "definition": "http://hl7.org/fhir/SearchParameter/Patient-identifier",
+              "type": "token",
+              "documentation": "A patient identifier"
+            },
+            {
+              "name": "status",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-status",
+              "type": "token",
+              "documentation": "current | superseded | entered-in-error"
+            },
+            {
+              "name": "identifier",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-identifier",
+              "type": "token",
+              "documentation": "Master Version Specific Identifier"
+            },
+            {
+              "name": "date",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-date",
+              "type": "date",
+              "documentation": "When this document reference was created"
+            },
+            {
+              "name": "author",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-author",
+              "type": "reference",
+              "documentation": "Who and/or what authored the document"
+            },
+            {
+              "name": "author.given",
+              "definition": "http://hl7.org/fhir/SearchParameter/individual-given",
+              "type": "string",
+              "documentation": "A portion of the given name"
+            },
+            {
+              "name": "author.family",
+              "definition": "http://hl7.org/fhir/SearchParameter/individual-family",
+              "type": "string",
+              "documentation": "A portion of the family name"
+            },
+            {
+              "name": "category",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-category",
+              "type": "token",
+              "documentation": "Categorization of document"
+            },
+            {
+              "name": "type",
+              "definition": "http://hl7.org/fhir/SearchParameter/clinical-type",
+              "type": "token",
+              "documentation": "Kind of document (LOINC if possible)"
+            },
+            {
+              "name": "setting",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-setting",
+              "type": "token",
+              "documentation": "Additional details about where the content was created (e.g. clinical specialty)"
+            },
+            {
+              "name": "period",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-period",
+              "type": "date",
+              "documentation": "Time of service that is being documented"
+            },
+            {
+              "name": "facility",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-facility",
+              "type": "token",
+              "documentation": "Kind of facility where patient was seen"
+            },
+            {
+              "name": "event",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-event",
+              "type": "token",
+              "documentation": "Main clinical acts documented"
+            },
+            {
+              "name": "security-label",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-security-label",
+              "type": "token",
+              "documentation": "Document security-tags"
+            },
+            {
+              "name": "format",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-format",
+              "type": "token",
+              "documentation": "Format/content rules for the document"
+            },
+            {
+              "name": "related",
+              "definition": "http://hl7.org/fhir/SearchParameter/DocumentReference-related",
+              "type": "reference",
+              "documentation": "Related identifiers or resources"
+            }
+          ]
+        },
+        {
+          "type": "Binary",
+          "interaction": [
+            {
+              "code": "read"
+            }
+          ]
+        }
+      ],
+      "interaction": [
+        {
+          "code": "search-system"
+        }
+      ]
+    }
+  ]
+}

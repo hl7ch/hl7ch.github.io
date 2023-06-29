@@ -1,0 +1,110 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/OperationDefinition/IHE.PIXm.pix> a fhir:OperationDefinition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "IHE.PIXm.pix"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n            <h2> Mobile Patient Identifier Cross-Reference Query</h2>\n            <p> OPERATION: Find patient matches using IHE PIXm Profile</p>\n            <p> The official URL for this operation definition is: </p>\n            <pre> http://profiles.ihe.net/fhir/ihe.pixm.fhir/OperationDefinition/IHE_PIXm_pix</pre>\n            <div>\n                <p> A Master Patient Index (\n                    <a href=\"http://en.wikipedia.org/wiki/Enterprise_master_patient_index\">MPI</a>  ) is a service used to manage patient identification in a context where multiple patient\n           databases exist. Healthcare applications and middleware use the MPI to match patients\n           between the databases, and to store new patient details as they are encountered. MPIs\n           are highly specialized applications, often tailored extensively to the institution's particular\n           mix of patients. MPIs can also be run on a regional and national basis.\n                </p>\n\n                <p> This transaction is used by the Patient Identifier Cross-reference Consumer to solicit information about patients whose Patient Identifiers cross-match with Patient Identifiers provided in the query parameters of the request message. The request is received by the Patient Identifier Cross-reference Manager. The Patient Identifier Cross-reference Manager processes the request and returns a response in the form of zero or more Patient Identifiers for the matching patient.</p>\n\n            </div>\n            <p> URL: [base]/Patient/$ihe-pix</p>\n            <p> Parameters</p>\n            <table class=\"grid\">\n                <tr>\n                    <td>\n                        <b> Use</b>\n                    </td>\n                    <td>\n                        <b> Name</b>\n                    </td>\n                    <td>\n                        <b> Cardinality</b>\n                    </td>\n                    <td>\n                        <b> Type</b>\n                    </td>\n                    <td>\n                        <b> Binding</b>\n                    </td>\n                    <td>\n                        <b> Documentation</b>\n                    </td>\n                </tr>\n                <tr>\n                    <td> IN</td>\n                    <td> sourceIdentifier</td>\n                    <td> 1..1</td>\n                    <td>\n                        <a href=\"http://hl7.org/fhir/R4/search.html#token\">Token</a>\n                    </td>\n                    <td/>\n                    <td>\n                        <div>\n                            <p> The Patient identifier search parameter that will be used by the Patient Identifier Cross-reference Manager to find cross matching identifiers associated with the Patient Resource. See Section 3.83.4.1.2.1.</p>\n\n                        </div>\n                    </td>\n                </tr>\n                <tr>\n                    <td> IN</td>\n                    <td> targetSystem</td>\n                    <td> 0..1</td>\n                    <td>\n                        <a href=\"http://hl7.org/fhir/R4/search.html#uri\">uri</a>\n                    </td>\n                    <td/>\n                    <td>\n                        <div>\n                            <p> The target Patient Identifier Assigning Authority from which the returned identifiers should be selected. See Section 3.83.4.1.2.2.</p>\n\n                        </div>\n                    </td>\n                </tr>\n                <tr>\n                    <td> IN</td>\n                    <td> _format</td>\n                    <td> 0..1</td>\n                    <td>\n                        <a href=\"http://hl7.org/fhir/R4/http.html#mime-type\">mime-type</a>\n                    </td>\n                    <td/>\n                    <td>\n                        <div>\n                            <p> The requested format of the response. See ITI TF-2x: Appendix Z.6.</p>\n\n                        </div>\n                    </td>\n                </tr>\n                <tr>\n                    <td> OUT</td>\n                    <td> targetIdentifier</td>\n                    <td> 0..*</td>\n                    <td>\n                        <a href=\"http://hl7.org/fhir/R4/datatypes.html#Identifier\">Identifier</a>\n                    </td>\n                    <td/>\n                    <td>\n                        <div>\n                            <p> The identifier found. Constraints to include the assigning authority as specified in ITI TF-2x: Appendix E.3.</p>\n\n                        </div>\n                    </td>\n                </tr>\n                <tr>\n                    <td> OUT</td>\n                    <td> targetId</td>\n                    <td> 0..*</td>\n                    <td>\n                        <a href=\"http://hl7.org/fhir/R4/references.html#Reference\">Reference</a>\n                    </td>\n                    <td/>\n                    <td>\n                        <div>\n                            <p>  The URL of the Patient Resource.</p>\n\n                        </div>\n                    </td>\n                </tr>\n            </table>\n            <div>\n                <p> The response is a Parameters containing matching identifier, the Parameters Resource shall include one parameter element with name=&quot;targetIdentifier&quot;. For each matching Patient Resource, the Parameters resource shall include one parameter element with name=&quot;targetId&quot;. The values may be returned in any order..\n                </p>\n\n            </div>\n        </div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm" ];
+     fhir:Extension.valueInteger [ fhir:value "5"^^xsd:integer ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status" ];
+     fhir:Extension.valueCode [ fhir:value "trial-use" ]
+  ];
+  fhir:OperationDefinition.url [ fhir:value "http://profiles.ihe.net/fhir/ihe.pixm.fhir/OperationDefinition/IHE.PIXm.pix"];
+  fhir:OperationDefinition.version [ fhir:value "0.1.2"];
+  fhir:OperationDefinition.name [ fhir:value "IHE_PIXm_pix"];
+  fhir:OperationDefinition.title [ fhir:value "Find patient matches using IHE-PIXm Profile"];
+  fhir:OperationDefinition.status [ fhir:value "draft"];
+  fhir:OperationDefinition.kind [ fhir:value "operation"];
+  fhir:OperationDefinition.date [ fhir:value "2019-07-05"^^xsd:date];
+  fhir:OperationDefinition.publisher [ fhir:value "eHealth Suisse"];
+  fhir:OperationDefinition.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "eHealth Suisse" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "https://www.e-health-suisse.ch" ]
+     ]
+  ];
+  fhir:OperationDefinition.description [ fhir:value "A Master Patient Index ([MPI](http://en.wikipedia.org/wiki/Enterprise_master_patient_index)    ) is a service used to manage patient identification in a context where multiple patient    databases exist. Healthcare applications and middleware use the MPI to match patients    between the databases, and to store new patient details as they are encountered. MPIs    are highly specialized applications, often tailored extensively to the institution's particular    mix of patients. MPIs can also be run on a regional and national basis.   To ask an MPI to match a patient, clients use the \"$match\" operation, which    accepts a patient resource which may be only partially complete. The data provided is    interpreted as an MPI input and processed by an algorithm of some kind that uses the data    to determine the most appropriate matches in the patient set.  Note that different MPI    matching algorithms have different required inputs. The generic $match operation does    not specify any particular algorithm, nor a minimum set of information that must be provided    when asking for an MPI match operation to be performed, but many implementations will    have a set of minimum information, which may be declared in their definition of the $match    operation by specifying a profile on the resource parameter, indicating which properties    are required in the search.  The patient resource submitted to the operation does not    have to be complete, nor does it need to pass validation (i.e. mandatory fields don't    need to be populated), but it does have to be a valid instance, as it is used as the reference    data to match against."];
+  fhir:OperationDefinition.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "CH" ]
+     ]
+  ];
+  fhir:OperationDefinition.code [ fhir:value "match"];
+  fhir:OperationDefinition.comment [ fhir:value "The response from an \"mpi\" query is a bundle containing patient records, ordered    from most likely to least likely. If there are no patient matches, the MPI SHALL return    an empty search set with no error, but may include an operation outcome with further advice    regarding patient selection. All patient records SHALL have a search score from 0 to 1,    where 1 is the most certain match, along with an extension \"[match-grade](extension-match-grade   .html)\" that indicates the MPI's position on the match quality."];
+  fhir:OperationDefinition.resource [
+     fhir:value "Patient";
+     fhir:index 0
+  ];
+  fhir:OperationDefinition.system [ fhir:value "false"^^xsd:boolean];
+  fhir:OperationDefinition.type [ fhir:value "true"^^xsd:boolean];
+  fhir:OperationDefinition.instance [ fhir:value "false"^^xsd:boolean];
+  fhir:OperationDefinition.parameter [
+     fhir:index 0;
+     fhir:OperationDefinition.parameter.name [ fhir:value "sourceIdentifier" ];
+     fhir:OperationDefinition.parameter.use [ fhir:value "in" ];
+     fhir:OperationDefinition.parameter.min [ fhir:value "1"^^xsd:integer ];
+     fhir:OperationDefinition.parameter.max [ fhir:value "1" ];
+     fhir:OperationDefinition.parameter.documentation [ fhir:value "The Patient identifier search parameter that will be used by the Patient Identifier Cross-reference Manager to find cross matching identifiers associated with the Patient Resource. See Section 3.83.4.1.2.1." ];
+     fhir:OperationDefinition.parameter.type [ fhir:value "string" ];
+     fhir:OperationDefinition.parameter.searchType [ fhir:value "token" ]
+  ], [
+     fhir:index 1;
+     fhir:OperationDefinition.parameter.name [ fhir:value "targetSystem" ];
+     fhir:OperationDefinition.parameter.use [ fhir:value "in" ];
+     fhir:OperationDefinition.parameter.min [ fhir:value "0"^^xsd:integer ];
+     fhir:OperationDefinition.parameter.max [ fhir:value "1" ];
+     fhir:OperationDefinition.parameter.documentation [ fhir:value "The target Patient Identifier Assigning Authority from which the returned identifiers should be selected. See Section 3.83.4.1.2.2." ];
+     fhir:OperationDefinition.parameter.type [ fhir:value "string" ];
+     fhir:OperationDefinition.parameter.searchType [ fhir:value "uri" ]
+  ], [
+     fhir:index 2;
+     fhir:OperationDefinition.parameter.name [ fhir:value "_format" ];
+     fhir:OperationDefinition.parameter.use [ fhir:value "in" ];
+     fhir:OperationDefinition.parameter.min [ fhir:value "0"^^xsd:integer ];
+     fhir:OperationDefinition.parameter.max [ fhir:value "1" ];
+     fhir:OperationDefinition.parameter.documentation [ fhir:value "The requested format of the response. See ITI TF-2x: Appendix Z.6" ];
+     fhir:OperationDefinition.parameter.type [ fhir:value "string" ];
+     fhir:OperationDefinition.parameter.searchType [ fhir:value "token" ]
+  ], [
+     fhir:index 3;
+     fhir:OperationDefinition.parameter.name [ fhir:value "targetIdentifier" ];
+     fhir:OperationDefinition.parameter.use [ fhir:value "out" ];
+     fhir:OperationDefinition.parameter.min [ fhir:value "0"^^xsd:integer ];
+     fhir:OperationDefinition.parameter.max [ fhir:value "*" ];
+     fhir:OperationDefinition.parameter.documentation [ fhir:value "The identifier found. Constraints to include the assigning authority as specified in ITI TF-2x: Appendix E.3" ];
+     fhir:OperationDefinition.parameter.type [ fhir:value "Identifier" ]
+  ], [
+     fhir:index 4;
+     fhir:OperationDefinition.parameter.name [ fhir:value "targetId" ];
+     fhir:OperationDefinition.parameter.use [ fhir:value "out" ];
+     fhir:OperationDefinition.parameter.min [ fhir:value "0"^^xsd:integer ];
+     fhir:OperationDefinition.parameter.max [ fhir:value "*" ];
+     fhir:OperationDefinition.parameter.documentation [ fhir:value "The URL of the Patient Resource" ];
+     fhir:OperationDefinition.parameter.type [ fhir:value "Reference" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/OperationDefinition/IHE.PIXm.pix.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

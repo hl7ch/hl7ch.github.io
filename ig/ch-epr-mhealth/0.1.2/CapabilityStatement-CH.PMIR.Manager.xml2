@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CapabilityStatement xmlns="http://hl7.org/fhir">
+  <id value="CH.PMIR.Manager"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><h2>CH_PMIR_Manager</h2><div><p>CapabilityStatement for Actor PMIR Patient Identity Manager (server).</p>
+</div><table><tr><td>Mode</td><td>SERVER</td></tr><tr><td>Description</td><td><div><p>PMIR server resolves the local ID sent with the request to the MPI-PID and EPR-SPID [ITI-83].          PMIR server stores the patient data provided with the request and assigns it to or creates a master patient record and a MPI-PID [ITI-93].</p>
+</div></td></tr><tr><td>Transaction</td><td>y</td></tr><tr><td>System History</td><td></td></tr><tr><td>System Search</td><td></td></tr></table><table><tr><th><b>Resource Type</b></th><th><b>Profile</b></th><th><b title="GET a resource (read interaction)">Read</b></th><th><b title="GET all set of resources of the type (search interaction)">Search</b></th><th><b title="PUT a new resource version (update interaction)">Update</b></th><th><b title="POST a new resource (create interaction)">Create</b></th></tr><tr><td>Patient</td><td></td><td></td><td></td><td></td></tr></table></div>
+  </text>
+  <url value="http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.PMIR.Manager"/>
+  <version value="0.1.2"/>
+  <name value="CH_PMIR_Manager"/>
+  <title value="PMIR Patient Identity Manager (server)"/>
+  <status value="draft"/>
+  <date value="2020-07-07"/>
+  <publisher value="eHealth Suisse"/>
+  <contact>
+    <name value="eHealth Suisse"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.e-health-suisse.ch"/>
+    </telecom>
+  </contact>
+  <description value="CapabilityStatement for Actor PMIR Patient Identity Manager (server)."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="CH"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="CC-BY-SA-4.0"/>
+  <kind value="requirements"/>
+  <fhirVersion value="4.0.1"/>
+  <format value="application/fhir+xml"/>
+  <format value="application/fhir+json"/>
+  <rest>
+    <mode value="server"/>
+    <documentation value="PMIR server resolves the local ID sent with the request to the MPI-PID and EPR-SPID [ITI-83].          PMIR server stores the patient data provided with the request and assigns it to or creates a master patient record and a MPI-PID [ITI-93]."/>
+    <security>
+      <cors value="false"/>
+      <description value="TLS SHALL be used"/>
+    </security>
+    <resource>
+      <type value="Patient"/>
+      <operation>
+        <name value="$ihe-pix"/>
+        <definition value="http://fhir.ch/ig/ch-epr-mhealth/OperationDefinition/CH.PMIR"/>
+      </operation>
+    </resource>
+    <interaction>
+      <code value="transaction"/>
+      <documentation value="http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pmir-bundle"/>
+    </interaction>
+  </rest>
+</CapabilityStatement>

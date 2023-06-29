@@ -1,0 +1,1215 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "ch.fhir.ig.ch-epr-mhealth",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      Implementation Guide for the Mobile access to Health Documents (epr-mhealth) Profile for the Swiss EPR\n    </div>"
+  },
+  "url": "http://fhir.ch/ig/ch-epr-mhealth/ImplementationGuide/ch.fhir.ig.ch-epr-mhealth",
+  "version": "0.1.0",
+  "name": "CHEprMhealth",
+  "title": "CH EPR mHealth (R4)",
+  "status": "active",
+  "experimental": false,
+  "date": "2020-08-18",
+  "publisher": "eHealth Suisse",
+  "contact": [
+    {
+      "name": "eHealth Suisse",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.e-health-suisse.ch"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "CH"
+        }
+      ]
+    }
+  ],
+  "copyright": "CC-BY-SA-4.0",
+  "packageId": "ch.fhir.ig.ch-epr-mhealth",
+  "license": "CC-BY-SA-4.0",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "dependsOn": [
+    {
+      "id": "chcore",
+      "uri": "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core",
+      "packageId": "ch.fhir.ig.ch-core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cheprterm",
+      "uri": "http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term",
+      "packageId": "ch.fhir.ig.ch-epr-term",
+      "version": "2.0.4"
+    }
+  ],
+  "definition": {
+    "extension": [
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "releaselabel"
+          },
+          {
+            "url": "value",
+            "valueString": "Draft Standard for Trial Use"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "copyrightyear"
+          },
+          {
+            "url": "value",
+            "valueString": "2020+"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "path-qa"
+          },
+          {
+            "url": "value",
+            "valueString": "temp/qa"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "path-temp"
+          },
+          {
+            "url": "value",
+            "valueString": "temp/pages"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "path-output"
+          },
+          {
+            "url": "value",
+            "valueString": "output"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "path-suppressed-warnings"
+          },
+          {
+            "url": "value",
+            "valueString": "input/ignoreWarnings.txt"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "template-html"
+          },
+          {
+            "url": "value",
+            "valueString": "template-page.html"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "template-md"
+          },
+          {
+            "url": "value",
+            "valueString": "template-page-md.html"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-contact"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-context"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-copyright"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-jurisdiction"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-license"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-publisher"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-version"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "active-tables"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      }
+    ],
+    "resource": [
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Patient"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Patient-PatientPmirFeed.html"
+          }
+        ],
+        "reference": {
+          "reference": "Patient/PatientPmirFeed"
+        },
+        "name": "PatientPmirFeed",
+        "description": "Example PMIR patient feed",
+        "exampleCanonical": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pmir-patient"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Patient"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Patient-FranzMusterNeedsAbsoluteUrl.html"
+          }
+        ],
+        "reference": {
+          "reference": "Patient/FranzMusterNeedsAbsoluteUrl"
+        },
+        "name": "FranzMusterNeedsAbsoluteUrl",
+        "description": "Example Patient",
+        "exampleCanonical": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pmir-patient"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Organization"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Organization-GruppenpraxisCH.html"
+          }
+        ],
+        "reference": {
+          "reference": "Organization/GruppenpraxisCH"
+        },
+        "name": "GruppenpraxisCH",
+        "description": "Example Organization",
+        "exampleCanonical": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pmir-provider-organization"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Parameters"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Parameters-ParametersPmirCrossreferenceQuery.html"
+          }
+        ],
+        "reference": {
+          "reference": "Parameters/ParametersPmirCrossreferenceQuery"
+        },
+        "name": "ParametersPmirCrossreferenceQuery",
+        "description": "Example Response PMIR Mobile Patient Identifier Corss-reference Query"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Bundle"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Bundle-BundlePmirFeed.html"
+          }
+        ],
+        "reference": {
+          "reference": "Bundle/BundlePmirFeed"
+        },
+        "name": "BundlePmirFeed",
+        "description": "Example Bundle for a PMIR Feed",
+        "exampleCanonical": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pmir-bundle"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "DocumentReference"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "DocumentReference-2-7-DocRefMedicationCard.html"
+          }
+        ],
+        "reference": {
+          "reference": "DocumentReference/2-7-DocRefMedicationCard"
+        },
+        "name": "Document Reference for MedicationCard",
+        "description": "Example DocumentReference for a MedicationCard",
+        "exampleCanonical": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-query-comprehensive-documentreference"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "DocumentManifest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "DocumentManifest-2-7-DocManMedicationCard.html"
+          }
+        ],
+        "reference": {
+          "reference": "DocumentManifest/2-7-DocManMedicationCard"
+        },
+        "name": "DocumentManifest for MedicationCard",
+        "description": "Example DocumentManifest for a MedicationCard",
+        "exampleCanonical": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-comprehensive-documentmanifest"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Bundle"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Bundle-2-7-BundleProvideDocument.html"
+          }
+        ],
+        "reference": {
+          "reference": "Bundle/2-7-BundleProvideDocument"
+        },
+        "name": "MHD Provide Document Bundle for MedicationCard",
+        "description": "MHD Provide Document Bundle for MedicationCard",
+        "exampleCanonical": "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-providedocumentbundle-comprehensive"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:complex-type"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-epr-mhealth-birthname.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-epr-mhealth-birthname"
+        },
+        "name": "CH EPR mHealth BirthName",
+        "description": "The birthname with the ISO 21090 qualifier https://www.hl7.org/fhir/extension-iso21090-en-qualifier.html BR",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:complex-type"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-epr-mhealth-humanname.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-epr-mhealth-humanname"
+        },
+        "name": "CH EPR mHealth HumanName",
+        "description": "The humanname WITHOUT the ISO 21090 qualifier https://www.hl7.org/fhir/extension-iso21090-en-qualifier.html BR",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ext-author-authorrole.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ext-author-authorrole"
+        },
+        "name": "CH Extension Author AuthorRole",
+        "description": "Extension Author AuthorRole for DocumentManifest",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ext-deletionstatus.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ext-deletionstatus"
+        },
+        "name": "CH Extension Deletion Status",
+        "description": "Extension Deletion Status for DocumentReference",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-mhd-comprehensive-documentmanifest.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-mhd-comprehensive-documentmanifest"
+        },
+        "name": "CH MHD Comprehensive DocumentManifest (SubmissionSet)",
+        "description": "IHE MHD Profile on DocumentManifest for Comprehensive Metadata (SubmissionSet).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-mhd-provide-comprehensive-documentreference.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-mhd-provide-comprehensive-documentreference"
+        },
+        "name": "CH MHD Provide Comprehensive DocumentReference",
+        "description": "IHE MHD Profile on DocumentReference (DocumentEntry) when used in the Provide Transaction with Comprehensive (aka XDS-on-FHIR) Metadata.",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-mhd-providedocumentbundle-comprehensive.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-mhd-providedocumentbundle-comprehensive"
+        },
+        "name": "CH MHD Provide Comphrensive Document Bundle",
+        "description": "IHE MHD profile on Provide Document Bundle (ITI-65) transaction with Comprehensive Metadata.",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-mhd-query-comprehensive-documentreference.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-mhd-query-comprehensive-documentreference"
+        },
+        "name": "CH MHD Query Comprehensive DocumentReference",
+        "description": "IHE MHD Profile on DocumentReference (DocumentEntry) from a Query with Comprehensive Metadata (aka XDS-on-FHIR).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-pmir-bundle.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-pmir-bundle"
+        },
+        "name": "CH PMIR Bundle Message",
+        "description": "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-pmir-patient.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-pmir-patient"
+        },
+        "name": "CH EPR mHealth Patient Profile for IHE PMIR",
+        "description": "Patient",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-pmir-provider-organization.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-pmir-provider-organization"
+        },
+        "name": "CH EPR mHealth Provider Organization Profile for IHE PMIR",
+        "description": "Organization",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.PMIR.Bundle.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.PMIR.Bundle"
+        },
+        "name": "IHE PMIR Bundle Message",
+        "description": "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.PMIR.BundleHistory.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.PMIR.BundleHistory"
+        },
+        "name": "IHE PMIR Bundle History",
+        "description": "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.PMIR.MessageHeader.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.PMIR.MessageHeader"
+        },
+        "name": "IHE PMIR MessageHeader",
+        "description": "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.PMIR.Patient.Merge.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.PMIR.Patient.Merge"
+        },
+        "name": "IHE PMIR Patient Merge",
+        "description": "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.PMIR.Patient.RelatedPerson.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.PMIR.Patient.RelatedPerson"
+        },
+        "name": "IHE PMIR Patient Related Person",
+        "description": "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.PMIR.Subscription.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.PMIR.Subscription"
+        },
+        "name": "IHE PMIR Subscription",
+        "description": "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.PMIR.Subscription.request.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.PMIR.Subscription.request"
+        },
+        "name": "IHE PMIR Subscription request",
+        "description": "See https://wiki.ihe.net/index.php/Patient_Master_Identity_Registry_(PMIR)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.MHD.Comprehensive.DocumentManifest.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.MHD.Comprehensive.DocumentManifest"
+        },
+        "name": "Comprehensive DocumentManifest (SubmissionSet)",
+        "description": "IHE MHD Profile on DocumentManifest for Comprehensive Metadata (SubmissionSet).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.MHD.Comprehensive.List.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.MHD.Comprehensive.List"
+        },
+        "name": "Comprehensive List (Folder)",
+        "description": "IHE MHD Profile on List with Comprehensive Metadata (Folder).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.MHD.Minimal.DocumentManifest.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.MHD.Minimal.DocumentManifest"
+        },
+        "name": "Minimal DocumentManifest (SubmissionSet)",
+        "description": "IHE MHD Profile on DocumentManifest for Minimal Metadata (SubmissionSet).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.MHD.Minimal.List.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.MHD.Minimal.List"
+        },
+        "name": "Minimal List Folder",
+        "description": "IHE MHD Profile on List with Minimal Metadata (Folder).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.MHD.Provide.Comprehensive.DocumentReference.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.MHD.Provide.Comprehensive.DocumentReference"
+        },
+        "name": "Provide Comprehensive DocumentReference",
+        "description": "IHE MHD Profile on DocumentReference (DocumentEntry) when used in the Provide Transaction with Comprehensive (aka XDS-on-FHIR) Metadata.",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.MHD.Provide.Minimal.DocumentReference.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.MHD.Provide.Minimal.DocumentReference"
+        },
+        "name": "Provide Minimal DocumentReference",
+        "description": "IHE MHD Profile on DocumentReference (DocumentEntry) when used in the Provide Transaction with Minimal Metadata.",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.MHD.ProvideDocumentBundle.Comprehensive.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.MHD.ProvideDocumentBundle.Comprehensive"
+        },
+        "name": "Provide Comphrensive Document Bundle",
+        "description": "IHE MHD profile on Provide Document Bundle (ITI-65) transaction with Comprehensive Metadata.",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-IHE.MHD.Query.Comprehensive.DocumentReference.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/IHE.MHD.Query.Comprehensive.DocumentReference"
+        },
+        "name": "Query Comprehensive DocumentReference",
+        "description": "IHE MHD Profile on DocumentReference (DocumentEntry) from a Query with Comprehensive Metadata (aka XDS-on-FHIR).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "OperationDefinition"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "OperationDefinition-CH.PMIR.html"
+          }
+        ],
+        "reference": {
+          "reference": "OperationDefinition/CH.PMIR"
+        },
+        "name": "Find patient matches using IHE-PMIR Profile",
+        "description": "Find patient matches using IHE-PMIR Profile",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CapabilityStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CapabilityStatement-CH.MHD.DocumentConsumer.html"
+          }
+        ],
+        "reference": {
+          "reference": "CapabilityStatement/CH.MHD.DocumentConsumer"
+        },
+        "name": "MHD Document Consumer (client)",
+        "description": "CapabilityStatement for Actor MHD Document Consumer (client).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CapabilityStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CapabilityStatement-CH.MHD.DocumentRecipient.html"
+          }
+        ],
+        "reference": {
+          "reference": "CapabilityStatement/CH.MHD.DocumentRecipient"
+        },
+        "name": "MHD Document Recipient (server)",
+        "description": "CapabilityStatement for Actor MHD Document Recipient (server).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CapabilityStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CapabilityStatement-CH.MHD.DocumentResponder.html"
+          }
+        ],
+        "reference": {
+          "reference": "CapabilityStatement/CH.MHD.DocumentResponder"
+        },
+        "name": "MHD Document Responder (server)",
+        "description": "CapabilityStatement for Actor MHD Document Responder (server).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CapabilityStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CapabilityStatement-CH.MHD.DocumentSource.html"
+          }
+        ],
+        "reference": {
+          "reference": "CapabilityStatement/CH.MHD.DocumentSource"
+        },
+        "name": "MHD Document Source (client)",
+        "description": "CapabilityStatement for Actor MHD Document Source (client).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CapabilityStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CapabilityStatement-CH.mHealth.App.html"
+          }
+        ],
+        "reference": {
+          "reference": "CapabilityStatement/CH.mHealth.App"
+        },
+        "name": "mHealth: App (client)",
+        "description": "CapabilityStatement for mHealth App (client).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CapabilityStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CapabilityStatement-CH.mHealth.MobileAccessGateway.html"
+          }
+        ],
+        "reference": {
+          "reference": "CapabilityStatement/CH.mHealth.MobileAccessGateway"
+        },
+        "name": "mHealth: Mobile Access Gateway (server)",
+        "description": "CapabilityStatement for mHealth MobileAccessGateway (server).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CapabilityStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CapabilityStatement-CH.PMIR.Consumer.html"
+          }
+        ],
+        "reference": {
+          "reference": "CapabilityStatement/CH.PMIR.Consumer"
+        },
+        "name": "PMIR Patient Identifier Cross-Reference Consumer (client)",
+        "description": "CapabilityStatement for Actor PMIR Patient Identifier Cross-reference Consumer (client).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CapabilityStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CapabilityStatement-CH.PMIR.Manager.html"
+          }
+        ],
+        "reference": {
+          "reference": "CapabilityStatement/CH.PMIR.Manager"
+        },
+        "name": "PMIR Patient Identity Manager (server)",
+        "description": "CapabilityStatement for Actor PMIR Patient Identity Manager (server).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CapabilityStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CapabilityStatement-CH.PMIR.Source.html"
+          }
+        ],
+        "reference": {
+          "reference": "CapabilityStatement/CH.PMIR.Source"
+        },
+        "name": "PMIR Patient Identity Source (client)",
+        "description": "CapabilityStatement for Actor PMIR Patient Identity Source (client).",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CodeSystem"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CodeSystem-ch-ehealth-codesystem-deletionstatus.html"
+          }
+        ],
+        "reference": {
+          "reference": "CodeSystem/ch-ehealth-codesystem-deletionstatus"
+        },
+        "name": "ch-ehealth-codesystem-deletionstatus",
+        "description": "Additional metadata about deletion status on the DocumentReference",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-ch-ehealth-valueset-deletionstatus.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/ch-ehealth-valueset-deletionstatus"
+        },
+        "name": "ch-ehealth-valueset-deletionstatus",
+        "description": "Additional metadata about deletion status on the DocumentReference",
+        "exampleBoolean": false
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Home",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "iti-83.html",
+          "title": "Mobile Patient Identifier Cross-reference Query [ITI-83]",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "iti-93.html",
+          "title": "Mobile Patient Identity Feed [ITI-93]",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "iti-65.html",
+          "title": "Provide Document Bundle [ITI-65]",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "iti-66.html",
+          "title": "Find Document Manifest [ITI-66]",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "iti-67.html",
+          "title": "Find Document References [ITI-67]",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "iti-68.html",
+          "title": "Retrieve Document [ITI-68]",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "profiles.html",
+          "title": "Profiles",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "extensions.html",
+          "title": "Extensions",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "terminology.html",
+          "title": "Terminology",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "capstatements.html",
+          "title": "Capability Statements",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "operations.html",
+          "title": "Operations",
+          "generation": "html"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "path-pages",
+        "value": "input/pages"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/capabilities"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/examples"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/extensions"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/models"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/operations"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/profiles"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/resources"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/vocabulary"
+      },
+      {
+        "code": "path-pages",
+        "value": "template/config"
+      },
+      {
+        "code": "path-pages",
+        "value": "input/images"
+      },
+      {
+        "code": "path-tx-cache",
+        "value": "input-cache/txcache"
+      }
+    ]
+  }
+}

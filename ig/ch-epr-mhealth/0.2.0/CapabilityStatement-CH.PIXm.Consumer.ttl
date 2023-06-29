@@ -1,0 +1,78 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.PIXm.Consumer> a fhir:CapabilityStatement;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CH.PIXm.Consumer"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_PIXm_Consumer</h2><div><p>CapabilityStatement for Actor PIXm Patient Identifier Cross-reference Consumer (client).</p>\n</div><table><tr><td>Mode</td><td>CLIENT</td></tr><tr><td>Description</td><td><div><p>PIXm client queries the Patient Identifier Crossreference Manager for the MPI-PID and EPR-SPID [ITI-83].</p>\n</div></td></tr><tr><td>Transaction</td><td></td></tr><tr><td>System History</td><td></td></tr><tr><td>System Search</td><td></td></tr></table><table><tr><th><b>Resource Type</b></th><th><b>Profile</b></th><th><b title=\"GET a resource (read interaction)\">Read</b></th><th><b title=\"GET all set of resources of the type (search interaction)\">Search</b></th><th><b title=\"PUT a new resource version (update interaction)\">Update</b></th><th><b title=\"POST a new resource (create interaction)\">Create</b></th></tr><tr><td>Patient</td><td></td><td></td><td></td><td></td></tr></table></div>"
+  ];
+  fhir:CapabilityStatement.url [ fhir:value "http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.PIXm.Consumer"];
+  fhir:CapabilityStatement.version [ fhir:value "0.2.0"];
+  fhir:CapabilityStatement.name [ fhir:value "CH_PIXm_Consumer"];
+  fhir:CapabilityStatement.title [ fhir:value "PIXm Patient Identifier Cross-Reference Consumer (client)"];
+  fhir:CapabilityStatement.status [ fhir:value "draft"];
+  fhir:CapabilityStatement.date [ fhir:value "2020-07-07"^^xsd:date];
+  fhir:CapabilityStatement.publisher [ fhir:value "eHealth Suisse"];
+  fhir:CapabilityStatement.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "eHealth Suisse" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "https://www.e-health-suisse.ch" ]
+     ]
+  ];
+  fhir:CapabilityStatement.description [ fhir:value "CapabilityStatement for Actor PIXm Patient Identifier Cross-reference Consumer (client)."];
+  fhir:CapabilityStatement.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "CH" ]
+     ]
+  ];
+  fhir:CapabilityStatement.copyright [ fhir:value "CC-BY-SA-4.0"];
+  fhir:CapabilityStatement.kind [ fhir:value "requirements"];
+  fhir:CapabilityStatement.fhirVersion [ fhir:value "4.0.1"];
+  fhir:CapabilityStatement.format [
+     fhir:value "application/fhir+xml";
+     fhir:index 0
+  ], [
+     fhir:value "application/fhir+json";
+     fhir:index 1
+  ];
+  fhir:CapabilityStatement.rest [
+     fhir:index 0;
+     fhir:CapabilityStatement.rest.mode [ fhir:value "client" ];
+     fhir:CapabilityStatement.rest.documentation [ fhir:value "PIXm client queries the Patient Identifier Crossreference Manager for the MPI-PID and EPR-SPID [ITI-83]." ];
+     fhir:CapabilityStatement.rest.security [
+       fhir:CapabilityStatement.rest.security.cors [ fhir:value "false"^^xsd:boolean ];
+       fhir:CapabilityStatement.rest.security.description [ fhir:value "TLS SHALL be used together with IUA basic access token" ]
+     ];
+     fhir:CapabilityStatement.rest.resource [
+       fhir:index 0;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "Patient" ];
+       fhir:CapabilityStatement.rest.resource.operation [
+         fhir:index 0;
+         fhir:CapabilityStatement.rest.resource.operation.name [ fhir:value "$ihe-pix" ];
+         fhir:CapabilityStatement.rest.resource.operation.definition [
+           fhir:value "http://fhir.ch/ig/ch-epr-mhealth/OperationDefinition/CH.PIXm";
+           fhir:link <http://fhir.ch/ig/ch-epr-mhealth/OperationDefinition/CH.PIXm>
+         ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.PIXm.Consumer.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

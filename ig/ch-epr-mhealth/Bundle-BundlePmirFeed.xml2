@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="BundlePmirFeed"/>
+  <meta>
+    <profile value="http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pmir-bundle"/>
+  </meta>
+  <type value="message"/>
+  <entry>
+    <fullUrl value="http://example.com/fhir/MessageHeader/1"/>
+    <resource>
+      <MessageHeader>
+        <id value="1"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>event</b>: <a href="urn:ihe:iti:pmir:2019:patient-feed">urn:ihe:iti:pmir:2019:patient-feed</a></p><h3>Destinations</h3><table class="grid"><tr><td>-</td><td><b>Endpoint</b></td></tr><tr><td>*</td><td><a href="http://example.com/patientEndpoint">http://example.com/patientEndpoint</a></td></tr></table><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Endpoint</b></td></tr><tr><td>*</td><td><a href="http://example.com/patientSource">http://example.com/patientSource</a></td></tr></table><p><b>focus</b>: <a href="#Bundle_abc">See above (Bundle/abc)</a></p></div>
+        </text>
+        <eventUri value="urn:ihe:iti:pmir:2019:patient-feed"/>
+        <destination>
+          <endpoint value="http://example.com/patientEndpoint"/>
+        </destination>
+        <source>
+          <endpoint value="http://example.com/patientSource"/>
+        </source>
+        <focus>
+          <reference value="Bundle/abc"/>
+        </focus>
+      </MessageHeader>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://example.com/fhir/Bundle/abc"/>
+    <resource>
+      <Bundle>
+        <id value="abc"/>
+        <type value="history"/>
+        <entry>
+          <fullUrl value="http://example.com/fhir/Patient/PatientPmirFeed"/>
+          <resource>
+            <Patient>
+              <id value="PatientPmirFeed"/>
+              <text>
+                <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>id</b>: PatientPmirFeed</p><p><b>meta</b>: </p><p><b>identifier</b>: Medical record number = 8734</p><p><b>name</b>: Franz Muster , Muster </p><p><b>gender</b>: male</p><p><b>birthDate</b>: 1995-01-27</p></div>
+              </text>
+              <contained>
+                <Organization>
+                  <id value="org1"/>
+                  <identifier>
+                    <system value="urn:oid:2.51.1.3"/>
+                    <value value="7601000201041"/>
+                  </identifier>
+                  <address>
+                    <use value="work"/>
+                    <line value="Doktorgasse"/>
+                    <line value="2"/>
+                    <city value="Musterhausen"/>
+                    <postalCode value="8888"/>
+                    <country value="CH"/>
+                  </address>
+                </Organization>
+              </contained>
+              <identifier>
+                <type>
+                  <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+                    <code value="MR"/>
+                  </coding>
+                </type>
+                <system value="urn:oid:2.16.756.888888.3.1"/>
+                <value value="8734"/>
+              </identifier>
+              <name>
+                <family value="Muster"/>
+                <given value="Franz"/>
+              </name>
+              <name>
+                <family value="Muster">
+                  <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier">
+                    <valueCode value="BR"/>
+                  </extension>
+                </family>
+              </name>
+              <gender value="male"/>
+              <birthDate value="1995-01-27"/>
+              <managingOrganization>
+                <reference value="#org1"/>
+              </managingOrganization>
+            </Patient>
+          </resource>
+          <request>
+            <method value="POST"/>
+            <url value="Patient"/>
+          </request>
+          <response>
+            <status value="200"/>
+          </response>
+        </entry>
+      </Bundle>
+    </resource>
+  </entry>
+</Bundle>

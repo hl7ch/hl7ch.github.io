@@ -1,0 +1,83 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/Bundle/Bundle-FindDocumentManifests> a fhir:Bundle;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "Bundle-FindDocumentManifests"];
+  fhir:Resource.meta [
+     fhir:Meta.lastUpdated [ fhir:value "2020-10-14T07:56:23.916+00:00"^^xsd:dateTime ];
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-comprehensive-documentmanifest-bundle";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-mhd-comprehensive-documentmanifest-bundle>
+     ]
+  ];
+  fhir:Bundle.type [ fhir:value "searchset"];
+  fhir:Bundle.total [ fhir:value "1"^^xsd:nonNegativeInteger];
+  fhir:Bundle.link [
+     fhir:index 0;
+     fhir:Bundle.link.relation [ fhir:value "self" ];
+     fhir:Bundle.link.url [ fhir:value "http://example.com/DocumentManifest?patient.identifier=urn:oid:2.999|11111111&status=current" ]
+  ];
+  fhir:Bundle.entry [
+     fhir:index 0;
+     fhir:Bundle.entry.fullUrl [ fhir:value "urn:uuid:68a928c0-df48-4743-a291-bfb0609bbddc" ];
+     fhir:Bundle.entry.resource <urn:uuid:68a928c0-df48-4743-a291-bfb0609bbddc>
+  ] .
+
+<urn:uuid:68a928c0-df48-4743-a291-bfb0609bbddc> a fhir:DocumentManifest;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>CH Extension Author AuthorRole</b>: <span title=\"{urn:oid:2.16.756.5.30.1.127.3.10.6 HCP}\">Healthcare professional</span></p><p><b>masterIdentifier</b>: id: urn:oid:1.3.6.1.4.1.12559.11.13.2.6.2949</p><p><b>identifier</b>: id: urn:uuid:8c3e40b2-3cf9-4980-b4fb-cc84ba8a181a</p><p><b>status</b>: current</p><p><b>type</b>: <span title=\"Codes: {http://snomed.info/sct 71388002}\">Procedure (procedure)</span></p><p><b>subject</b>: <a href=\"http://example.org/Patient/FranzMusterNeedsAbsoluteUrl\">http://example.org/Patient/FranzMusterNeedsAbsoluteUrl</a></p><p><b>created</b>: Jun 29, 2020, 2:01:30 PM</p><p><b>source</b>: <a href=\"urn:oid:1.3.6.1.4.1.12559.11.13.2.5\">urn:oid:1.3.6.1.4.1.12559.11.13.2.5</a></p><p><b>content</b>: <a href=\"http://example.org/DocumentReference/50383ae5-49e5-4dea-b0e6-660cb9e7b91f\">http://example.org/DocumentReference/50383ae5-49e5-4dea-b0e6-660cb9e7b91f</a></p></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-ext-author-authorrole" ];
+     fhir:Extension.valueCoding [
+       fhir:Coding.system [ fhir:value "urn:oid:2.16.756.5.30.1.127.3.10.6" ];
+       fhir:Coding.code [ fhir:value "HCP" ];
+       fhir:Coding.display [ fhir:value "Healthcare professional" ]
+     ]
+  ];
+  fhir:DocumentManifest.masterIdentifier [
+     fhir:Identifier.value [ fhir:value "urn:oid:1.3.6.1.4.1.12559.11.13.2.6.2949" ]
+  ];
+  fhir:DocumentManifest.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+     fhir:Identifier.value [ fhir:value "urn:uuid:8c3e40b2-3cf9-4980-b4fb-cc84ba8a181a" ]
+  ];
+  fhir:DocumentManifest.status [ fhir:value "current"];
+  fhir:DocumentManifest.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:71388002;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "71388002" ];
+       fhir:Coding.display [ fhir:value "Procedure (procedure)" ]
+     ]
+  ];
+  fhir:DocumentManifest.subject [
+     fhir:link <http://example.org/Patient/FranzMusterNeedsAbsoluteUrl>;
+     fhir:Reference.reference [ fhir:value "http://example.org/Patient/FranzMusterNeedsAbsoluteUrl" ]
+  ];
+  fhir:DocumentManifest.created [ fhir:value "2020-06-29T12:01:30+00:00"^^xsd:dateTime];
+  fhir:DocumentManifest.source [ fhir:value "urn:oid:1.3.6.1.4.1.12559.11.13.2.5"];
+  fhir:DocumentManifest.content [
+     fhir:index 0;
+     fhir:link <http://example.org/DocumentReference/50383ae5-49e5-4dea-b0e6-660cb9e7b91f>;
+     fhir:Reference.reference [ fhir:value "http://example.org/DocumentReference/50383ae5-49e5-4dea-b0e6-660cb9e7b91f" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/Bundle/Bundle-FindDocumentManifests.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

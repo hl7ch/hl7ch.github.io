@@ -1,0 +1,50 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/Bundle/BundlePIXmResponse> a fhir:Bundle;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "BundlePIXmResponse"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-bundle-response";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-bundle-response>
+     ]
+  ];
+  fhir:Bundle.type [ fhir:value "message"];
+  fhir:Bundle.entry [
+     fhir:index 0;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://example.com/fhir/MessageHeader/1" ];
+     fhir:Bundle.entry.resource <http://example.com/fhir/MessageHeader/1>
+  ] .
+
+<http://example.com/fhir/MessageHeader/1> a fhir:MessageHeader;
+  fhir:Resource.id [ fhir:value "1"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>event</b>: <code>urn:ihe:iti:pmir:2019:patient-feed</code></p><h3>Destinations</h3><table class=\"grid\"><tr><td>-</td><td><b>Endpoint</b></td></tr><tr><td>*</td><td><a href=\"http://example.com/patientEndpoint\">http://example.com/patientEndpoint</a></td></tr></table><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Endpoint</b></td></tr><tr><td>*</td><td><a href=\"http://example.com/patientSource\">http://example.com/patientSource</a></td></tr></table><h3>Responses</h3><table class=\"grid\"><tr><td>-</td><td><b>Identifier</b></td><td><b>Code</b></td></tr><tr><td>*</td><td>1</td><td>ok</td></tr></table></div>"
+  ];
+  fhir:MessageHeader.eventUri [ fhir:value "urn:ihe:iti:pmir:2019:patient-feed"];
+  fhir:MessageHeader.destination [
+     fhir:index 0;
+     fhir:MessageHeader.destination.endpoint [ fhir:value "http://example.com/patientEndpoint" ]
+  ];
+  fhir:MessageHeader.source [
+     fhir:MessageHeader.source.endpoint [ fhir:value "http://example.com/patientSource" ]
+  ];
+  fhir:MessageHeader.response [
+     fhir:MessageHeader.response.identifier [ fhir:value "1" ];
+     fhir:MessageHeader.response.code [ fhir:value "ok" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/Bundle/BundlePIXmResponse.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
