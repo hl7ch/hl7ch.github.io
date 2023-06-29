@@ -1,0 +1,57 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Condition/8-8-Condition> a fhir:Condition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "8-8-Condition"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-pastillnesses";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-pastillnesses>
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Condition</b><a name=\"8-8-Condition\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Condition &quot;8-8-Condition&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-vacd-pastillnesses.html\">CH VACD Past Illness</a></p></div><p><b>clinicalStatus</b>: Resolved <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.0.0/CodeSystem-condition-clinical.html\">Condition Clinical Status Codes</a>#resolved)</span></p><p><b>code</b>: Measles (disorder) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#14189004)</span></p><p><b>subject</b>: <a href=\"Patient-3-2-Patient.html\">Patient/3-2-Patient</a> &quot; WEGMUELLER&quot;</p><p><b>onset</b>: 1966-11-30 00:00:00+0100</p><p><b>recordedDate</b>: 1999-04-01 00:00:00+0200</p><p><b>recorder</b>: <a href=\"PractitionerRole-6-4-PractitionerRole.html\">PractitionerRole/6-4-PractitionerRole</a></p></div>"
+  ]; # 
+  fhir:Condition.clinicalStatus [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/condition-clinical" ];
+       fhir:Coding.code [ fhir:value "resolved" ];
+       fhir:Coding.display [ fhir:value "Resolved" ]
+     ]
+  ]; # 
+  fhir:Condition.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:14189004;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "14189004" ];
+       fhir:Coding.display [ fhir:value "Measles (disorder)" ]
+     ]
+  ]; # 
+  fhir:Condition.subject [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Patient/3-2-Patient>;
+     fhir:Reference.reference [ fhir:value "Patient/3-2-Patient" ]
+  ]; # 
+  fhir:Condition.onsetDateTime [ fhir:value "1966-11-30T00:00:00+01:00"^^xsd:dateTime]; # 
+  fhir:Condition.recordedDate [ fhir:value "1999-04-01T00:00:00+02:00"^^xsd:dateTime]; # 
+  fhir:Condition.recorder [
+     fhir:link <http://fhir.ch/ig/ch-vacd/PractitionerRole/6-4-PractitionerRole>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/6-4-PractitionerRole" ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Condition/8-8-Condition.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

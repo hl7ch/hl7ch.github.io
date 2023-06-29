@@ -1,0 +1,65 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Observation/9-1-Observation> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "9-1-Observation"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-laboratory-serology";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-laboratory-serology>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-US\">There is an immunitzation protection against Hepatitis B.</div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:16935-9;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "16935-9" ];
+       fhir:Coding.display [ fhir:value "Hepatitis B virus surface Ab [Units/volume] in Serum" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Patient/3-1-Patient>;
+     fhir:Reference.reference [ fhir:value "Patient/3-1-Patient" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "1971-10"^^xsd:gYearMonth];
+  fhir:Observation.performer [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-vacd/PractitionerRole/6-1-PractitionerRole>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/6-1-PractitionerRole" ]
+  ];
+  fhir:Observation.valueQuantity [
+     fhir:Quantity.value [ fhir:value "99.0"^^xsd:decimal ];
+     fhir:Quantity.unit [ fhir:value "[iU]/L" ];
+     fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+     fhir:Quantity.code [ fhir:value "[iU]/L" ]
+  ];
+  fhir:Observation.interpretation [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation" ];
+       fhir:Coding.code [ fhir:value "POS" ];
+       fhir:Coding.display [ fhir:value "Positive" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Observation/9-1-Observation.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

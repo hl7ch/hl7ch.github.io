@@ -1,0 +1,106 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Composition/D-D6-HCP2-C2-Composition> a fhir:Composition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "D-D6-HCP2-C2-Composition"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-composition-immunization-administration";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-composition-immunization-administration>
+     ]
+  ]; # 
+  fhir:Resource.language [ fhir:value "en-US"]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-US\" lang=\"en-US\"><h3>Immunization Administration</h3><p><b>Id: </b>D-D6-HCP2-C2-Composition</p><p><b>Identifier: </b><span>urn:ietf:rfc:3986#urn:uuid:8557f5ed-decf-41ab-a907-22c538b541cc</span></p><p><b>Status: </b>Final</p><p><b>Code: </b><span>Immunization record (http://snomed.info/sct#41000179103)</span></p><p><b>Patient: </b><a href=\"Patient-TC-patient.html\">Patient/TC-patient</a> Wegmueller Monika</p><p><b>Date: </b>October 21, 2021</p><p><b>Authors:</b></p><table><tr><td><p><a href=\"Practitioner-TC-HCP2-C2.html\">Practitioner/TC-HCP2-C2</a> Gesund Meist</p><p><a href=\"Organization-TC-ORG2.html\">Organization/TC-ORG2</a> Praxis Dr. Gesund</p></td></tr></table><p><b>Confidentiality: </b>null<span> Normal (qualifier value) (http://snomed.info/sct#17621005)</span></p><p><b>Sections:</b></p><table><tr><td>Medical Problems</td></tr></table></div>"
+  ]; # 
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Element.id [ fhir:value "versionNumber" ];
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-versionnumber" ];
+     fhir:Extension.valueUnsignedInt [ fhir:value "1"^^xsd:nonNegativeInteger ]
+  ]; # 
+  fhir:Composition.identifier [
+     fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+     fhir:Identifier.value [ fhir:value "urn:uuid:8557f5ed-decf-41ab-a907-22c538b541cc" ]
+  ]; # 
+  fhir:Composition.status [ fhir:value "final"]; # 
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:41000179103;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "41000179103" ];
+       fhir:Coding.display [ fhir:value "Immunization record" ]
+     ]
+  ]; # 
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Patient/TC-patient>;
+     fhir:Reference.reference [ fhir:value "Patient/TC-patient" ]
+  ]; # 
+  fhir:Composition.date [ fhir:value "2021-10-21T10:00:00.390+02:00"^^xsd:dateTime]; # 
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-vacd/PractitionerRole/TC-HCP2-ORG2-ROLE-author>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/TC-HCP2-ORG2-ROLE-author" ]
+  ]; # 
+  fhir:Composition.title [ fhir:value "Immunization Administration"]; # 
+  fhir:Composition.confidentiality [
+     fhir:value "N";
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode" ];
+       fhir:Extension.valueCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:17621005;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "17621005" ];
+           fhir:Coding.display [ fhir:value "Normal (qualifier value)" ]
+         ]
+       ]
+     ]
+  ]; # 
+  fhir:Composition.custodian [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Organization/TC-ORG1>;
+     fhir:Reference.reference [ fhir:value "Organization/TC-ORG1" ]
+  ]; # 
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Element.id [ fhir:value "medicalproblems" ];
+     fhir:Composition.section.title [ fhir:value "Medical Problems" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:11450-4;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "11450-4" ];
+         fhir:Coding.display [ fhir:value "Problem list Reported" ]
+       ]
+     ];
+     fhir:Composition.section.text [
+       fhir:Narrative.status [ fhir:value "generated" ];
+       fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-US\" lang=\"en-US\"><p><b>Code: </b><span>Problem list Reported (http://loinc.org#11450-4)</span></p><p><b>Entries:</b></p><table><tr><td><a href=\"Condition-TCD03-EXPRISK2.html\">Condition/TCD03-EXPRISK2</a></td></tr></table></div>"
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/Condition/TCD03-EXPRISK2>;
+       fhir:Reference.reference [ fhir:value "Condition/TCD03-EXPRISK2" ]
+     ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Composition/D-D6-HCP2-C2-Composition.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

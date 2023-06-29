@@ -1,0 +1,54 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Condition/8-10-Condition> a fhir:Condition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "8-10-Condition"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-recommendation-other-observations";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-recommendation-other-observations>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"8-10-Condition\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-vacd-recommendation-other-observations.html\">CH VACD Recommendation Other Relevant Observations (Condition)</a></p></div><p><b>code</b>: Gestational age in days <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#49052-4)</span></p><p><b>subject</b>: <a href=\"Patient-3-2-Patient.html\">Patient/3-2-Patient</a></p><p><b>onset</b>: 266 day<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code d = 'd')</span></p><p><b>recordedDate</b>: 2009-03-31T00:00:00+02:00</p><p><b>recorder</b>: <a href=\"PractitionerRole-6-4-PractitionerRole.html\">PractitionerRole/6-4-PractitionerRole</a></p></div>"
+  ];
+  fhir:Condition.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:49052-4;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "49052-4" ];
+       fhir:Coding.display [ fhir:value "Gestational age in days" ]
+     ]
+  ];
+  fhir:Condition.subject [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Patient/3-2-Patient>;
+     fhir:Reference.reference [ fhir:value "Patient/3-2-Patient" ]
+  ];
+  fhir:Condition.onsetAge [
+     fhir:Quantity.value [ fhir:value "266"^^xsd:decimal ];
+     fhir:Quantity.unit [ fhir:value "day" ];
+     fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+     fhir:Quantity.code [ fhir:value "d" ]
+  ];
+  fhir:Condition.recordedDate [ fhir:value "2009-03-31T00:00:00+02:00"^^xsd:dateTime];
+  fhir:Condition.recorder [
+     fhir:link <http://fhir.ch/ig/ch-vacd/PractitionerRole/6-4-PractitionerRole>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/6-4-PractitionerRole" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Condition/8-10-Condition.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

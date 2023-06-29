@@ -1,0 +1,75 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Medication/TC-IMMUN-MEDIC-BOOSTRIX> a fhir:Medication;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "TC-IMMUN-MEDIC-BOOSTRIX"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-medication-for-immunization";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-medication-for-immunization>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"TC-IMMUN-MEDIC-BOOSTRIX\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-vacd-medication-for-immunization.html\">CH VACD Medication For Immunization Profile</a></p></div><p><b>identifier</b>: id: 7680006370012</p><p><b>code</b>: Immunologic substance (substance) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#106181007)</span></p><p><b>status</b>: active</p><p><b>manufacturer</b>: <a href=\"Organization-TC-ORG-GSK.html\">Organization/TC-ORG-GSK</a> \"GlaxoSmithKline AG\"</p><p><b>form</b>: Suspension for injection <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#385220007)</span></p><p><b>amount</b>: 0.5 milliliter<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code ml = 'ml')</span>/1 Syringe (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT code 733020007 = 'Syringe')</span></p><h3>Batches</h3><table class=\"grid\"><tr><td>-</td><td><b>LotNumber</b></td></tr><tr><td>*</td><td>AHAVB946A</td></tr></table></div>"
+  ];
+  fhir:Medication.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "urn:oid:2.51.1.1" ];
+     fhir:Identifier.value [ fhir:value "7680006370012" ]
+  ];
+  fhir:Medication.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:106181007;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "106181007" ];
+       fhir:Coding.display [ fhir:value "Immunologic substance (substance)" ]
+     ]
+  ];
+  fhir:Medication.status [ fhir:value "active"];
+  fhir:Medication.manufacturer [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Organization/TC-ORG-GSK>;
+     fhir:Reference.reference [ fhir:value "Organization/TC-ORG-GSK" ]
+  ];
+  fhir:Medication.form [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:385220007;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "385220007" ];
+       fhir:Coding.display [ fhir:value "Suspension for injection" ]
+     ]
+  ];
+  fhir:Medication.amount [
+     fhir:Ratio.numerator [
+       fhir:Quantity.value [ fhir:value "0.5"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "milliliter" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "ml" ]
+     ];
+     fhir:Ratio.denominator [
+       fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "Syringe (unit of presentation)" ];
+       fhir:Quantity.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Quantity.code [ fhir:value "733020007" ]
+     ]
+  ];
+  fhir:Medication.batch [
+     fhir:Medication.batch.lotNumber [ fhir:value "AHAVB946A" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Medication/TC-IMMUN-MEDIC-BOOSTRIX.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

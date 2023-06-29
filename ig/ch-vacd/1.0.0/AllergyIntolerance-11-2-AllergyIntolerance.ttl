@@ -1,0 +1,55 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/AllergyIntolerance/11-2-AllergyIntolerance> a fhir:AllergyIntolerance;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "11-2-AllergyIntolerance"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-allergyintolerances";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-allergyintolerances>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>clinicalStatus</b>: <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical active}\">Active</span></p><p><b>code</b>: <span title=\"Codes: {http://snomed.info/sct 24079001}\">Atopic dermatitis (disorder)</span></p><p><b>patient</b>: <a href=\"Patient-3-1-Patient.html\">Generated Summary: id: 123.71.332.115, id: 8077560000000000000000; Monika Wegmueller ; Phone: tel:+41.32.685.12.34; gender: female; birthDate: 1967-02-10</a></p><p><b>recordedDate</b>: Jul 11, 1996, 12:00:00 AM</p><p><b>recorder</b>: <a href=\"PractitionerRole-6-1-PractitionerRole.html\">Generated Summary: active</a></p></div>"
+  ];
+  fhir:AllergyIntolerance.clinicalStatus [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical" ];
+       fhir:Coding.code [ fhir:value "active" ]
+     ]
+  ];
+  fhir:AllergyIntolerance.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:24079001;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "24079001" ];
+       fhir:Coding.display [ fhir:value "Atopic dermatitis (disorder)" ]
+     ]
+  ];
+  fhir:AllergyIntolerance.patient [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Patient/3-1-Patient>;
+     fhir:Reference.reference [ fhir:value "Patient/3-1-Patient" ]
+  ];
+  fhir:AllergyIntolerance.recordedDate [ fhir:value "1996-07-11T00:00:00+02:00"^^xsd:dateTime];
+  fhir:AllergyIntolerance.recorder [
+     fhir:link <http://fhir.ch/ig/ch-vacd/PractitionerRole/6-1-PractitionerRole>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/6-1-PractitionerRole" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/AllergyIntolerance/11-2-AllergyIntolerance.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

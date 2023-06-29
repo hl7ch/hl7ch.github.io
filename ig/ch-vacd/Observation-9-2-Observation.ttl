@@ -1,0 +1,65 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Observation/9-2-Observation> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "9-2-Observation"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-laboratory-serology";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-laboratory-serology>
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b><a name=\"9-2-Observation\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation &quot;9-2-Observation&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-vacd-laboratory-serology.html\">CH VACD Laboratory And Serology</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Hepatitis B virus surface Ab [Units/volume] in Serum <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#16935-9)</span></p><p><b>subject</b>: <a href=\"Patient-3-2-Patient.html\">Patient/3-2-Patient</a> &quot; WEGMUELLER&quot;</p><p><b>effective</b>: 1971-10</p><p><b>performer</b>: <a href=\"PractitionerRole-6-4-PractitionerRole.html\">PractitionerRole/6-4-PractitionerRole</a></p><p><b>value</b>: 99 [iU]/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code [iU]/L = '[iU]/L')</span></p><p><b>interpretation</b>: Positive <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.0.0/CodeSystem-v3-ObservationInterpretation.html\">ObservationInterpretation</a>#POS)</span></p></div>"
+  ]; # 
+  fhir:Observation.status [ fhir:value "final"]; # 
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:16935-9;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "16935-9" ];
+       fhir:Coding.display [ fhir:value "Hepatitis B virus surface Ab [Units/volume] in Serum" ]
+     ]
+  ]; # 
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Patient/3-2-Patient>;
+     fhir:Reference.reference [ fhir:value "Patient/3-2-Patient" ]
+  ]; # 
+  fhir:Observation.effectiveDateTime [ fhir:value "1971-10"^^xsd:gYearMonth]; # 
+  fhir:Observation.performer [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-vacd/PractitionerRole/6-4-PractitionerRole>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/6-4-PractitionerRole" ]
+  ]; # 
+  fhir:Observation.valueQuantity [
+     fhir:Quantity.value [ fhir:value "99"^^xsd:decimal ];
+     fhir:Quantity.unit [ fhir:value "[iU]/L" ];
+     fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+     fhir:Quantity.code [ fhir:value "[iU]/L" ]
+  ]; # 
+  fhir:Observation.interpretation [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation" ];
+       fhir:Coding.code [ fhir:value "POS" ];
+       fhir:Coding.display [ fhir:value "Positive" ]
+     ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Observation/9-2-Observation.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

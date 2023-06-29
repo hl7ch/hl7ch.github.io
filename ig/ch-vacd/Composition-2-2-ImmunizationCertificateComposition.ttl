@@ -1,0 +1,209 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Composition/2-2-ImmunizationCertificateComposition> a fhir:Composition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "2-2-ImmunizationCertificateComposition"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-composition-immunization-certificate";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-composition-immunization-certificate>
+     ]
+  ];
+  fhir:Resource.language [ fhir:value "en-US"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-US\" lang=\"en-US\">This is the composition for all immunizations.</div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Element.id [ fhir:value "versionNumber" ];
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-versionnumber" ];
+     fhir:Extension.valueUnsignedInt [ fhir:value "1"^^xsd:nonNegativeInteger ]
+  ];
+  fhir:Composition.identifier [
+     fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+     fhir:Identifier.value [ fhir:value "urn:uuid:2ed082b2-7e3a-444e-8ff1-b3825b40fb0b" ]
+  ];
+  fhir:Composition.status [ fhir:value "final"];
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:41000179103;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "41000179103" ];
+       fhir:Coding.display [ fhir:value "Immunization record" ]
+     ]
+  ];
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Patient/3-1-Patient>;
+     fhir:Reference.reference [ fhir:value "Patient/3-1-Patient" ]
+  ];
+  fhir:Composition.date [ fhir:value "2021-06-01T00:00:00+02:00"^^xsd:dateTime];
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-vacd/PractitionerRole/6-1-PractitionerRole>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/6-1-PractitionerRole" ]
+  ];
+  fhir:Composition.title [ fhir:value "Immunization Administration"];
+  fhir:Composition.confidentiality [
+     fhir:value "N";
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode" ];
+       fhir:Extension.valueCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:17621005;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "17621005" ];
+           fhir:Coding.display [ fhir:value "Normal (qualifier value)" ]
+         ]
+       ]
+     ]
+  ];
+  fhir:Composition.custodian [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Organization/5-1-Organization>;
+     fhir:Reference.reference [ fhir:value "Organization/5-1-Organization" ]
+  ];
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Element.id [ fhir:value "originalRepresentation" ];
+     fhir:Composition.section.title [ fhir:value "Original representation" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:55108-5;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "55108-5" ];
+         fhir:Coding.display [ fhir:value "Clinical presentation" ]
+       ]
+     ];
+     fhir:Composition.section.text [
+       fhir:Narrative.status [ fhir:value "generated" ];
+       fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-US\" lang=\"en-US\">Representation of the original view.</div>"
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/Binary/originalRepresentation1>;
+       fhir:Reference.reference [ fhir:value "Binary/originalRepresentation1" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Element.id [ fhir:value "administration" ];
+     fhir:Composition.section.title [ fhir:value "Immunization Administration" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:11369-6;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "11369-6" ];
+         fhir:Coding.display [ fhir:value "Hx of Immunization" ]
+       ]
+     ];
+     fhir:Composition.section.text [
+       fhir:Narrative.status [ fhir:value "generated" ];
+       fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-US\" lang=\"en-US\">This is the section containing all immunization entries.</div>"
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/Immunization/7-2-Immunization>;
+       fhir:Reference.reference [ fhir:value "Immunization/7-2-Immunization" ]
+     ], [
+       fhir:index 1;
+       fhir:link <http://fhir.ch/ig/ch-vacd/Immunization/7-3-Immunization>;
+       fhir:Reference.reference [ fhir:value "Immunization/7-3-Immunization" ]
+     ], [
+       fhir:index 2;
+       fhir:link <http://fhir.ch/ig/ch-vacd/Immunization/7-4-Immunization>;
+       fhir:Reference.reference [ fhir:value "Immunization/7-4-Immunization" ]
+     ], [
+       fhir:index 3;
+       fhir:link <http://fhir.ch/ig/ch-vacd/Immunization/7-5-Immunization>;
+       fhir:Reference.reference [ fhir:value "Immunization/7-5-Immunization" ]
+     ], [
+       fhir:index 4;
+       fhir:link <http://fhir.ch/ig/ch-vacd/Immunization/7-6-Immunization>;
+       fhir:Reference.reference [ fhir:value "Immunization/7-6-Immunization" ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Element.id [ fhir:value "sectionIlnessesUndergondeForImmunization1" ];
+     fhir:Composition.section.title [ fhir:value "Undergone illnesses for immunization" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:11348-0;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "11348-0" ];
+         fhir:Coding.display [ fhir:value "Hx of Past illness" ]
+       ]
+     ];
+     fhir:Composition.section.text [
+       fhir:Narrative.status [ fhir:value "generated" ];
+       fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-US\" lang=\"en-US\">This is the section containing the undergone illnesses for immunization entries.</div>"
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/Condition/8-4-Condition>;
+       fhir:Reference.reference [ fhir:value "Condition/8-4-Condition" ]
+     ]
+  ], [
+     fhir:index 3;
+     fhir:Element.id [ fhir:value "allergies" ];
+     fhir:Composition.section.title [ fhir:value "Allergies" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:48765-2;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "48765-2" ];
+         fhir:Coding.display [ fhir:value "Allergies and adverse reactions Document" ]
+       ]
+     ];
+     fhir:Composition.section.text [
+       fhir:Narrative.status [ fhir:value "generated" ];
+       fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-US\">This is the section containing the allergy entries.</div>"
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/AllergyIntolerance/11-1-AllergyIntolerance>;
+       fhir:Reference.reference [ fhir:value "AllergyIntolerance/11-1-AllergyIntolerance" ]
+     ], [
+       fhir:index 1;
+       fhir:link <http://fhir.ch/ig/ch-vacd/AllergyIntolerance/11-2-AllergyIntolerance>;
+       fhir:Reference.reference [ fhir:value "AllergyIntolerance/11-2-AllergyIntolerance" ]
+     ]
+  ], [
+     fhir:index 4;
+     fhir:Element.id [ fhir:value "annotation" ];
+     fhir:Composition.section.title [ fhir:value "Comments" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:48767-8;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "48767-8" ];
+         fhir:Coding.display [ fhir:value "Annotation comment [Interpretation] Narrative" ]
+       ]
+     ];
+     fhir:Composition.section.text [
+       fhir:Narrative.status [ fhir:value "generated" ];
+       fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-US\">This is the section containing all immunization entries.</div>"
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/Composition/2-2-ImmunizationCertificateComposition.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

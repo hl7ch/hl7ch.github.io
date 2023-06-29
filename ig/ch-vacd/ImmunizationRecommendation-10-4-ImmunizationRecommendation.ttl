@@ -1,0 +1,92 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/ImmunizationRecommendation/10-4-ImmunizationRecommendation> a fhir:ImmunizationRecommendation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "10-4-ImmunizationRecommendation"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-immunization-recommendation";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-immunization-recommendation>
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: ImmunizationRecommendation</b><a name=\"10-4-ImmunizationRecommendation\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource ImmunizationRecommendation &quot;10-4-ImmunizationRecommendation&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-vacd-immunization-recommendation.html\">CH VACD Immunization Recommendations</a></p></div><p><b>identifier</b>: id: 1</p><p><b>patient</b>: <a href=\"Patient-3-2-Patient.html\">Patient/3-2-Patient</a> &quot; WEGMUELLER&quot;</p><p><b>date</b>: 2021-06-01 00:00:00+0200</p><blockquote><p><b>recommendation</b></p><p><b>vaccineCode</b>: Boostrix Polio <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-ch-vacd-swissmedic-cs.html\">Swiss Medic Authorized Vaccines Codesystem</a>#681)</span></p><p><b>targetDisease</b>: Acute poliomyelitis (disorder) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#398102009)</span></p><p><b>forecastStatus</b>: Due <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-ch-vacd-recommendation-forecast-status-cs.html\">Swiss Recommendation Forecast Status Codesystem</a>#due)</span></p><p><b>forecastReason</b>: Empfohlene Basisimpfungen <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-ch-vacd-recommendation-categories-cs.html\">Swiss Immunization Recommendation Categories Codesystem</a>#41501)</span></p><h3>DateCriterions</h3><table class=\"grid\"><tr><td>-</td><td><b>Code</b></td><td><b>Value</b></td></tr><tr><td>*</td><td>Date vaccine due <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#30980-7)</span></td><td>2021-06-01 00:00:00+0200</td></tr></table></blockquote></div>"
+  ]; # 
+  fhir:ImmunizationRecommendation.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.30.1.147.1.3.1" ];
+     fhir:Identifier.value [ fhir:value "1" ]
+  ]; # 
+  fhir:ImmunizationRecommendation.patient [
+     fhir:link <http://fhir.ch/ig/ch-vacd/Patient/3-2-Patient>;
+     fhir:Reference.reference [ fhir:value "Patient/3-2-Patient" ]
+  ]; # 
+  fhir:ImmunizationRecommendation.date [ fhir:value "2021-06-01T00:00:00+02:00"^^xsd:dateTime]; # 
+  fhir:ImmunizationRecommendation.recommendation [
+     fhir:index 0;
+     fhir:ImmunizationRecommendation.recommendation.vaccineCode [
+       fhir:index 0;
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-swissmedic-cs" ];
+         fhir:Coding.code [ fhir:value "681" ];
+         fhir:Coding.display [ fhir:value "Boostrix Polio" ]
+       ]
+     ];
+     fhir:ImmunizationRecommendation.recommendation.targetDisease [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a sct:398102009;
+         fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+         fhir:Coding.code [ fhir:value "398102009" ];
+         fhir:Coding.display [ fhir:value "Acute poliomyelitis (disorder)" ]
+       ]
+     ];
+     fhir:ImmunizationRecommendation.recommendation.forecastStatus [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-recommendation-forecast-status-cs" ];
+         fhir:Coding.code [ fhir:value "due" ];
+         fhir:Coding.display [ fhir:value "Due" ]
+       ]
+     ];
+     fhir:ImmunizationRecommendation.recommendation.forecastReason [
+       fhir:index 0;
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-recommendation-categories-cs" ];
+         fhir:Coding.code [ fhir:value "41501" ];
+         fhir:Coding.display [ fhir:value "Empfohlene Basisimpfungen" ]
+       ]
+     ];
+     fhir:ImmunizationRecommendation.recommendation.dateCriterion [
+       fhir:index 0;
+       fhir:ImmunizationRecommendation.recommendation.dateCriterion.code [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a loinc:30980-7;
+           fhir:Coding.system [ fhir:value "http://loinc.org" ];
+           fhir:Coding.code [ fhir:value "30980-7" ];
+           fhir:Coding.display [ fhir:value "Date vaccine due" ]
+         ]
+       ];
+       fhir:ImmunizationRecommendation.recommendation.dateCriterion.value [ fhir:value "2021-06-01T00:00:00+02:00"^^xsd:dateTime ]
+     ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/ImmunizationRecommendation/10-4-ImmunizationRecommendation.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
