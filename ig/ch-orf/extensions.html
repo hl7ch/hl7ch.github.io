@@ -31,18 +31,18 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
 
-    <style type="text/css">h2{--heading-prefix:"8"}
-    h3,h4,h5,h6{--heading-prefix:"8"}</style>
+    <style type="text/css">h2{--heading-prefix:"11"}
+    h3,h4,h5,h6{--heading-prefix:"11"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
@@ -62,7 +62,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ORF (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - STU 1
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
 
 
             </span>
@@ -120,6 +124,15 @@
       <li>
         <a href="questionnaire-form.html">Form</a>
       </li>
+      <li>
+        <a href="modular-form.html">Modular Form</a>
+      </li>
+      <li>
+        <a href="form-population.html">Form Population</a>
+      </li>
+      <li>
+        <a href="form-data-extraction.html">Form Data Extraction</a>
+      </li>
     </ul>
   </li>
   <li>
@@ -169,7 +182,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ORF (R4) (v1.0.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-orf/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ORF (R4) (v2.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-orf/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
   <h2>Extensions</h2>
   
   
@@ -181,21 +194,37 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </p>
 
     <div>
-     <li><a href="StructureDefinition-ch-orf-precedentdocument.html">CH ORF Precedent Document</a> <p>Identifier of the document which precedes this document in a thread.</p>
-</li>
- <li><a href="StructureDefinition-ch-orf-urgentnoficationcontactforthisdocument.html">CH ORF Urgent Notification Contact For This Documet</a> <p>An information recipient to notify for urgent matters (e.g. in a radiology service, the radiologist has to be called by phone right away at the time the doucment is received).</p>
-</li>
- <li><a href="StructureDefinition-ch-orf-urgentnoficationcontactfortheresponsetothisdocument.html">CH ORF Urgent Notification Contact For The Response To This Document</a> <p>An information recipient to notify for urgent matters about the response. (e.g. in a clinical setting, the referring doctor has to be called by phone right away at the time the images and reports arrive. The Urgent Notification Contact for the Response can be specified already in the request. At the time the response is written, this element shall be populated to the Urgent Notification Contact element in the response.)</p>
-</li>
- <li><a href="StructureDefinition-ch-orf-receiver.html">CH ORF Receiver</a> <p>Person/organization who receives the document</p>
+     <li><a href="StructureDefinition-ch-orf-antecedentepisodeofcare.html">CH ORF Episode of Care</a> <p>Documentation of the antecedent episode  of care e.g hospitalisation in case of care transfer between instituitons e.g. hospitals, rehab. clinics, retirement homes etc.</p>
 </li>
  <li><a href="StructureDefinition-ch-orf-copyreceiver.html">CH ORF Copy Receiver</a> <p>Receiver of the copy of this order and the results therefrom</p>
 </li>
- <li><a href="StructureDefinition-ch-orf-locationandtime.html">CH ORF Location and Time</a> <p>Location and Time of ServiceRequest Fulfillment.</p>
+ <li><a href="StructureDefinition-ch-orf-urgentnoficationcontactforthisdocument.html">CH ORF Urgent Notification Contact For This Documet</a> <p>An information recipient to notify for urgent matters (e.g. in a radiology service, the radiologist has to be called by phone right away at the time the doucment is received).</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-personorganization.html">ChOrfPersonOrganization</a> <p>Reference to Patient, Practitioner, PratictionerRole or RelatedPerson</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-personalrelation.html">ChOrfPersonalRelation</a> <p>Extension to define the personal relation between initator and patient</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-legalrelation.html">ChOrfLegalRelation</a> <p>Extension to define the legal relation between initator and patient</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-receiver.html">CH ORF Receiver</a> <p>Person/organization who receives the document</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-precedentdocument.html">CH ORF Precedent Document</a> <p>Identifier of the document which precedes this document in a thread.</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-desiredaccommodation.html">CH ORF Desired Accommodation</a> <p>Desired Accommodation during the Requested Encounter.</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-patientconsent.html">CH ORF Patient Consent</a> <p>Patient Consent to this Order</p>
 </li>
  <li><a href="StructureDefinition-ch-orf-requestedencounterdetails.html">CH ORF Requested Encounter Details</a> <p>Requested Encounter Details for ServiceRequest Fulfillment.</p>
 </li>
- <li><a href="StructureDefinition-ch-orf-desiredaccommodation.html">CH ORF Desired Accommodation</a> <p>Desired Accommodation during the Requested Encounter.</p>
+ <li><a href="StructureDefinition-ch-orf-initiator.html">CH ORF Initiator</a> <p>Initiator and his realtion to the patient</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-consentcode.html">CH ORF Consent Code</a> <p>Consent Code</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-urgentnoficationcontactfortheresponsetothisdocument.html">CH ORF Urgent Notification Contact For The Response To This Document</a> <p>An information recipient to notify for urgent matters about the response. (e.g. in a clinical setting, the referring doctor has to be called by phone right away at the time the images and reports arrive. The Urgent Notification Contact for the Response can be specified already in the request. At the time the response is written, this element shall be populated to the Urgent Notification Contact element in the response.)</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-locationandtime.html">CH ORF Location and Time</a> <p>Location and Time of ServiceRequest Fulfillment.</p>
+</li>
+ <li><a href="StructureDefinition-ch-orf-consentnote.html">CH ORF Consent Note</a> <p>Consent Note</p>
 </li>
 
     </div>
@@ -222,15 +251,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-orf#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Feb 22, 2022 11:05+0100">2022-02-22</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-orf#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 21:23+0200">2023-06-29</span>
           <br/>
-          <span style="color: var(--footer-highlight-text-color)"></span>
+          <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
                  <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeT-tq5cutjuiVEedqihlMZ56_4UJsdVH6aTGYHTmO34T1Z4g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-orf%231.0.0%20/extensions.html&amp;entry%2E247644557=Extensions">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeT-tq5cutjuiVEedqihlMZ56_4UJsdVH6aTGYHTmO34T1Z4g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-orf%232.0.0-ballot%20/extensions.html&amp;entry%2E247644557=Extensions">Propose a change</a>
 
           </span>
         </p>

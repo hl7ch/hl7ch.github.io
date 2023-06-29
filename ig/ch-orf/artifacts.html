@@ -31,18 +31,18 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
 
-    <style type="text/css">h2{--heading-prefix:"11"}
-    h3,h4,h5,h6{--heading-prefix:"11.0"}</style>
+    <style type="text/css">h2{--heading-prefix:"14"}
+    h3,h4,h5,h6{--heading-prefix:"14.0"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
@@ -62,7 +62,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ORF (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - STU 1
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
 
 
             </span>
@@ -120,6 +124,15 @@
       <li>
         <a href="questionnaire-form.html">Form</a>
       </li>
+      <li>
+        <a href="modular-form.html">Modular Form</a>
+      </li>
+      <li>
+        <a href="form-population.html">Form Population</a>
+      </li>
+      <li>
+        <a href="form-data-extraction.html">Form Data Extraction</a>
+      </li>
     </ul>
   </li>
   <li>
@@ -169,7 +182,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ORF (R4) (v1.0.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-orf/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ORF (R4) (v2.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-orf/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
   <h2>Artifacts Summary</h2>
   
   
@@ -181,22 +194,25 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
    <p>Contents:</p>
    <ul>
       <li>
-         <a href="#1">Structures: Resource Profiles</a>
+         <a href="#1">Structures: Questionnaires</a>
       </li>
       <li>
-         <a href="#2">Structures: Extension Definitions</a>
+         <a href="#2">Structures: Resource Profiles</a>
       </li>
       <li>
-         <a href="#3">Terminology: Value Sets</a>
+         <a href="#3">Structures: Extension Definitions</a>
       </li>
       <li>
-         <a href="#4">Terminology: Code Systems</a>
+         <a href="#4">Terminology: Value Sets</a>
       </li>
       <li>
-         <a href="#5">Terminology: Structure Maps</a>
+         <a href="#5">Terminology: Code Systems</a>
       </li>
       <li>
-         <a href="#6">Example: Example Instances</a>
+         <a href="#6">Terminology: Structure Maps</a>
+      </li>
+      <li>
+         <a href="#7">Example: Example Instances</a>
       </li>
    </ul>
 </div>
@@ -205,9 +221,138 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
      xmlns:f="http://hl7.org/fhir">
    <p>This page provides a list of the FHIR artifacts defined as part of this implementation guide.</p>
    <a name="1"> </a>
+   <h3>Structures: Questionnaires </h3>
+   <p>
+    <p>These define forms used by systems conforming to this implementation guide to capture or expose data to end users.</p>
+</p>
+   <p>
+      <table class="grid">
+         <col style="width:20%"/>
+         <tbody>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-familydoctor.html"
+                     title="Questionnaire/ch-orf-module-familydoctor">Module Questionnaire Familydoctor</a>
+               </td>
+               <td>
+<p>Subquestionnaire familyDoctor</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-address.html"
+                     title="Questionnaire/ch-orf-module-address">Module Questionnaire Address</a>
+               </td>
+               <td>
+<p>Subquestionnaire address</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-order.html"
+                     title="Questionnaire/ch-orf-module-order">Module Questionnaire Order</a>
+               </td>
+               <td>
+<p>Subquestionnaire order</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-receiver.html"
+                     title="Questionnaire/ch-orf-module-receiver">Module Questionnaire Receiver</a>
+               </td>
+               <td>
+<p>Subquestionnaire receiver</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-patient.html"
+                     title="Questionnaire/ch-orf-module-patient">Module Questionnaire Patient</a>
+               </td>
+               <td>
+<p>Subquestionnaire patient</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-requestedencounter.html"
+                     title="Questionnaire/ch-orf-module-requestedencounter">Module Questionnaire Requested Encounter</a>
+               </td>
+               <td>
+<p>Subquestionnaire requestedEncounter</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-coverage.html"
+                     title="Questionnaire/ch-orf-module-coverage">Module Questionnaire Coverage</a>
+               </td>
+               <td>
+<p>Subquestionnaire coverage</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-sender.html"
+                     title="Questionnaire/ch-orf-module-sender">Module Questionnaire Sender</a>
+               </td>
+               <td>
+<p>Subquestionnaire sender</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-receivercopy.html"
+                     title="Questionnaire/ch-orf-module-receivercopy">Module Questionnaire Receiver Copy</a>
+               </td>
+               <td>
+<p>Subquestionnaire receiverCopy</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-appointment.html"
+                     title="Questionnaire/ch-orf-module-appointment">Module Questionnaire Appointment</a>
+               </td>
+               <td>
+<p>Subquestionnaire appointment</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-practitioner-nametel.html"
+                     title="Questionnaire/ch-orf-module-practitioner-nametel">Module Questionnaire Practitioner Name Tel</a>
+               </td>
+               <td>
+<p>Subquestionnaire Practitioner with Name and Telecom</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-initiator.html"
+                     title="Questionnaire/ch-orf-module-initiator">Module Questionnaire Initiator</a>
+               </td>
+               <td>
+<p>Subquestionnaire initiator</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Questionnaire-ch-orf-module-consent.html"
+                     title="Questionnaire/ch-orf-module-consent">Module Questionnaire Consent</a>
+               </td>
+               <td>
+<p>Subquestionnaire consent</p>
+</td>
+            </tr>
+         </tbody>
+      </table>
+   </p>
+   <a name="2"> </a>
    <h3>Structures: Resource Profiles </h3>
    <p>
-    <p>These define constraints on FHIR resources for systems conforming to this implementation guide</p>
+    <p>These define constraints on FHIR resources for systems conforming to this implementation guide.</p>
 </p>
    <p>
       <table class="grid">
@@ -312,27 +457,37 @@ and where and when the service request is to be fulfilled.</p>
 These are, for example, the status of the encounter or the class and the desired accomodation during the encounter.</p>
 </td>
             </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-consent.html"
+                     title="StructureDefinition/ch-orf-consent">CH ORF Consent</a>
+               </td>
+               <td>
+<p>Profile to specify if the patient gave an informed consent to this order; in particulars for spitex 
+and  transfer to retirement home etc.</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-episodeofcare.html"
+                     title="StructureDefinition/ch-orf-episodeofcare">CH ORF Episode of Care</a>
+               </td>
+               <td>
+<p>Profile to document the antecedent episode of  care e.g hospitalisation in case of care transfer between instituitons e.g. hospitals, rehab. clinics, retirement homes etc.</p>
+</td>
+            </tr>
          </tbody>
       </table>
    </p>
-   <a name="2"> </a>
+   <a name="3"> </a>
    <h3>Structures: Extension Definitions </h3>
    <p>
-    <p>These define constraints on FHIR data types for systems conforming to this implementation guide</p>
+    <p>These define constraints on FHIR data types for systems conforming to this implementation guide.</p>
 </p>
    <p>
       <table class="grid">
          <col style="width:20%"/>
          <tbody>
-            <tr>
-               <td style="column-width:30%">
-                  <a href="StructureDefinition-ch-orf-precedentdocument.html"
-                     title="StructureDefinition/ch-orf-precedentdocument">CH ORF Precedent Document</a>
-               </td>
-               <td>
-<p>Identifier of the document which precedes this document in a thread.</p>
-</td>
-            </tr>
             <tr>
                <td style="column-width:30%">
                   <a href="StructureDefinition-ch-orf-urgentnoficationcontactforthisdocument.html"
@@ -396,13 +551,94 @@ These are, for example, the status of the encounter or the class and the desired
 <p>Desired Accommodation during the Requested Encounter.</p>
 </td>
             </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-antecedentepisodeofcare.html"
+                     title="StructureDefinition/ch-orf-antecedentepisodeofcare">CH ORF Episode of Care</a>
+               </td>
+               <td>
+<p>Documentation of the antecedent episode  of care e.g hospitalisation in case of care transfer between instituitons e.g. hospitals, rehab. clinics, retirement homes etc.</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-precedentdocument.html"
+                     title="StructureDefinition/ch-orf-precedentdocument">CH ORF Precedent Document</a>
+               </td>
+               <td>
+<p>Identifier of the document which precedes this document in a thread.</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-patientconsent.html"
+                     title="StructureDefinition/ch-orf-patientconsent">CH ORF Patient Consent</a>
+               </td>
+               <td>
+<p>Patient Consent to this Order</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-personalrelation.html"
+                     title="StructureDefinition/ch-orf-personalrelation">Extension to define the personal relation between initator and patient</a>
+               </td>
+               <td>
+<p>Extension to define the personal relation between initator and patient</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-personorganization.html"
+                     title="StructureDefinition/ch-orf-personorganization">Reference to Patient, Practitioner, PratictionerRole or RelatedPerson</a>
+               </td>
+               <td>
+<p>Reference to Patient, Practitioner, PratictionerRole or RelatedPerson</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-legalrelation.html"
+                     title="StructureDefinition/ch-orf-legalrelation">Extension to define the legal relation between initator and patient</a>
+               </td>
+               <td>
+<p>Extension to define the legal relation between initator and patient</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-consentcode.html"
+                     title="StructureDefinition/ch-orf-consentcode">CH ORF Consent Code</a>
+               </td>
+               <td>
+<p>Consent Code</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-consentnote.html"
+                     title="StructureDefinition/ch-orf-consentnote">CH ORF Consent Note</a>
+               </td>
+               <td>
+<p>Consent Note</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="StructureDefinition-ch-orf-initiator.html"
+                     title="StructureDefinition/ch-orf-initiator">CH ORF Initiator</a>
+               </td>
+               <td>
+<p>Initiator and his realtion to the patient</p>
+</td>
+            </tr>
          </tbody>
       </table>
    </p>
-   <a name="3"> </a>
+   <a name="4"> </a>
    <h3>Terminology: Value Sets </h3>
    <p>
-    <p>These define sets of codes used by systems conforming to this implementation guide</p>
+    <p>These define sets of codes used by systems conforming to this implementation guide.</p>
 </p>
    <p>
       <table class="grid">
@@ -453,13 +689,40 @@ These are, for example, the status of the encounter or the class and the desired
 <p>Value Set for CH ORF Desired Accomodation</p>
 </td>
             </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ValueSet-ch-orf-vs-personalrelation.html"
+                     title="ValueSet/ch-orf-vs-personalrelation">Personal Relation</a>
+               </td>
+               <td>
+<p>Value Set for Personal Relation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ValueSet-ch-orf-vs-legalrelation.html"
+                     title="ValueSet/ch-orf-vs-legalrelation">Legal Relation</a>
+               </td>
+               <td>
+<p>Value Set for Legal Relation</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="ValueSet-ch-orf-vs-consentstatus.html"
+                     title="ValueSet/ch-orf-vs-consentstatus">Consent Status</a>
+               </td>
+               <td>
+<p>Value Set for CH ORF Consent Status</p>
+</td>
+            </tr>
          </tbody>
       </table>
    </p>
-   <a name="4"> </a>
+   <a name="5"> </a>
    <h3>Terminology: Code Systems </h3>
    <p>
-    <p>These define new code systems used by systems conforming to this implementation guide</p>
+    <p>These define new code systems used by systems conforming to this implementation guide.</p>
 </p>
    <p>
       <table class="grid">
@@ -483,13 +746,22 @@ These are, for example, the status of the encounter or the class and the desired
 <p>Code System for CH ORF Coverage Identifier Type</p>
 </td>
             </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="CodeSystem-ch-orf-cs-consentstatus.html"
+                     title="CodeSystem/ch-orf-cs-consentstatus">Consent Status</a>
+               </td>
+               <td>
+<p>Value Set for CH ORF Consent Status</p>
+</td>
+            </tr>
          </tbody>
       </table>
    </p>
-   <a name="5"> </a>
+   <a name="6"> </a>
    <h3>Terminology: Structure Maps </h3>
    <p>
-    <p>These define transformations to convert between data structures used by systems conforming to this implementation guide</p>
+    <p>These define transformations to convert between data structures used by systems conforming to this implementation guide.</p>
 </p>
    <p>
       <table class="grid">
@@ -507,10 +779,10 @@ These are, for example, the status of the encounter or the class and the desired
          </tbody>
       </table>
    </p>
-   <a name="6"> </a>
+   <a name="7"> </a>
    <h3>Example: Example Instances </h3>
    <p>
-    <p>These are example instances that show what data produced and consumed by systems conforming with this implementation guide might look like</p>
+    <p>These are example instances that show what data produced and consumed by systems conforming with this implementation guide might look like.</p>
 </p>
    <p>
       <table class="grid">
@@ -527,7 +799,15 @@ These are, for example, the status of the encounter or the class and the desired
             </tr>
             <tr>
                <td style="column-width:30%">
-                  <a href="Bundle-radiology-order.html" title="Bundle/radiology-order">Radiology order</a>
+                  <a href="Composition-spitex-order.html" title="Composition/spitex-order">Composition Spitex-Order</a>
+               </td>
+               <td>
+<p>Example for Composition</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Bundle-radiology-order.html" title="Bundle/radiology-order">Radiology Order</a>
                </td>
                <td>
 <p>Example for Bundle</p>
@@ -536,7 +816,7 @@ These are, for example, the status of the encounter or the class and the desired
             <tr>
                <td style="column-width:30%">
                   <a href="Bundle-external-diagnostics-order.html"
-                     title="Bundle/external-diagnostics-order">Order external diagnostics</a>
+                     title="Bundle/external-diagnostics-order">Order External Diagnostics</a>
                </td>
                <td>
 <p>Example for Bundle</p>
@@ -553,6 +833,15 @@ These are, for example, the status of the encounter or the class and the desired
             </tr>
             <tr>
                <td style="column-width:30%">
+                  <a href="Questionnaire-sdc-modular-issue126.html"
+                     title="Questionnaire/sdc-modular-issue126">SDCModularQuestionnaireExampleForIssue126</a>
+               </td>
+               <td>
+<p>SDC Modular Questionnaire Example for Issue 126</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
                   <a href="Questionnaire-order-referral-form.html"
                      title="Questionnaire/order-referral-form">Questionnaire Order-Referral-Form</a>
                </td>
@@ -562,17 +851,17 @@ These are, for example, the status of the encounter or the class and the desired
             </tr>
             <tr>
                <td style="column-width:30%">
-                  <a href="QuestionnaireResponse-qr-order-referral-form.html"
-                     title="QuestionnaireResponse/qr-order-referral-form">QuestionnaireResponse Order-Referral-Form</a>
+                  <a href="Questionnaire-order-referral-form-modular.html"
+                     title="Questionnaire/order-referral-form-modular">Questionnaire Order-Referral-Form (Modular version)</a>
                </td>
                <td>
-<p>Example for QuestionnaireResponse</p>
+<p>Example for Questionnaire (Modular version)</p>
 </td>
             </tr>
             <tr>
                <td style="column-width:30%">
-                  <a href="QuestionnaireResponse-order-referral-form.html"
-                     title="QuestionnaireResponse/order-referral-form">QuestionnaireResponse Order-Referral-Form )</a>
+                  <a href="QuestionnaireResponse-qr-order-referral-form.html"
+                     title="QuestionnaireResponse/qr-order-referral-form">QuestionnaireResponse Medical Referral</a>
                </td>
                <td>
 <p>Example for QuestionnaireResponse</p>
@@ -581,7 +870,7 @@ These are, for example, the status of the encounter or the class and the desired
             <tr>
                <td style="column-width:30%">
                   <a href="QuestionnaireResponse-qr-radiology-order.html"
-                     title="QuestionnaireResponse/qr-radiology-order">QuestionnaireResponse Radiology order</a>
+                     title="QuestionnaireResponse/qr-radiology-order">QuestionnaireResponse Radiology Order</a>
                </td>
                <td>
 <p>Example for QuestionnaireResponse</p>
@@ -590,7 +879,7 @@ These are, for example, the status of the encounter or the class and the desired
             <tr>
                <td style="column-width:30%">
                   <a href="QuestionnaireResponse-qr-external-diagnostics-order.html"
-                     title="QuestionnaireResponse/qr-external-diagnostics-order">QuestionnaireResponse Order external diagnostics</a>
+                     title="QuestionnaireResponse/qr-external-diagnostics-order">QuestionnaireResponse External Diagnostics Order</a>
                </td>
                <td>
 <p>Example for QuestionnaireResponse</p>
@@ -615,8 +904,8 @@ These are, for example, the status of the encounter or the class and the desired
             </tr>
             <tr>
                <td style="column-width:30%">
-                  <a href="PractitionerRole-SabineMeierPraxisSeeblick.html"
-                     title="PractitionerRole/SabineMeierPraxisSeeblick">Sabine Meier @ Praxis Seeblick</a>
+                  <a href="PractitionerRole-NotificationContactSabineMeier.html"
+                     title="PractitionerRole/NotificationContactSabineMeier">Notification Contact Sabine Meier</a>
                </td>
                <td>
 <p>Example for PractitionerRole</p>
@@ -624,8 +913,8 @@ These are, for example, the status of the encounter or the class and the desired
             </tr>
             <tr>
                <td style="column-width:30%">
-                  <a href="PractitionerRole-NotificationContactSabineMeier.html"
-                     title="PractitionerRole/NotificationContactSabineMeier">Notification Contact Sabine Meier</a>
+                  <a href="PractitionerRole-SabineMeierPraxisSeeblick.html"
+                     title="PractitionerRole/SabineMeierPraxisSeeblick">Sabine Meier @ Praxis Seeblick</a>
                </td>
                <td>
 <p>Example for PractitionerRole</p>
@@ -644,6 +933,15 @@ These are, for example, the status of the encounter or the class and the desired
                <td style="column-width:30%">
                   <a href="PractitionerRole-HansRoentgenKantonsspital.html"
                      title="PractitionerRole/HansRoentgenKantonsspital">Hans Röntgen @ Kantonsspital</a>
+               </td>
+               <td>
+<p>Example for PractitionerRole</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="PractitionerRole-ChOrfPractitionerRoleSPitex.html"
+                     title="PractitionerRole/ChOrfPractitionerRoleSPitex">Spitex</a>
                </td>
                <td>
 <p>Example for PractitionerRole</p>
@@ -792,7 +1090,7 @@ These are, for example, the status of the encounter or the class and the desired
             <tr>
                <td style="column-width:30%">
                   <a href="Appointment-AppointmentPending.html"
-                     title="Appointment/AppointmentPending">Appointment pending</a>
+                     title="Appointment/AppointmentPending">Appointment Pending</a>
                </td>
                <td>
 <p>Example for Appointment with status=pending</p>
@@ -801,7 +1099,7 @@ These are, for example, the status of the encounter or the class and the desired
             <tr>
                <td style="column-width:30%">
                   <a href="Appointment-AppointmentBooked.html"
-                     title="Appointment/AppointmentBooked">Appointment booked</a>
+                     title="Appointment/AppointmentBooked">Appointment Booked</a>
                </td>
                <td>
 <p>Example for Appointment with status=booked</p>
@@ -810,7 +1108,7 @@ These are, for example, the status of the encounter or the class and the desired
             <tr>
                <td style="column-width:30%">
                   <a href="Appointment-AppointmentProposed.html"
-                     title="Appointment/AppointmentProposed">Appointment proposed</a>
+                     title="Appointment/AppointmentProposed">Appointment Proposed</a>
                </td>
                <td>
 <p>Example for Appointment with status=proposed</p>
@@ -823,6 +1121,86 @@ These are, for example, the status of the encounter or the class and the desired
                </td>
                <td>
 <p>Example for Location</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Patient-SUfferer.html" title="Patient/SUfferer">Susanna Ufferer</a>
+               </td>
+               <td>
+<p>Example for Patient</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="RelatedPerson-ChOrfRelatedPersonMUfferer.html"
+                     title="RelatedPerson/ChOrfRelatedPersonMUfferer">Max Ufferer</a>
+               </td>
+               <td>
+<p>Example for Related Person (Husband of Susanna Ufferer)</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="EpisodeOfCare-ChOrfEpisodeOfCareSUfferer.html"
+                     title="EpisodeOfCare/ChOrfEpisodeOfCareSUfferer">Eisode of Care</a>
+               </td>
+               <td>
+<p>Example for Discharge Date in EpisodeOfCare</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Consent-ChOrfConsentSUfferer.html"
+                     title="Consent/ChOrfConsentSUfferer">Consent</a>
+               </td>
+               <td>
+<p>Example for Consent</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Organization-OrganizationSpitalTrubschachen.html"
+                     title="Organization/OrganizationSpitalTrubschachen">Spital Trubschachen</a>
+               </td>
+               <td>
+<p>Example for Organization</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="PractitionerRole-ChOrfPractitionerRoleFAmily.html"
+                     title="PractitionerRole/ChOrfPractitionerRoleFAmily">Florence Amily @ Praxis Allzeitbereit</a>
+               </td>
+               <td>
+<p>Example for PractitionerRole</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Practitioner-ChOrfPractitionerSPitex.html"
+                     title="Practitioner/ChOrfPractitionerSPitex">Samuel Pitex</a>
+               </td>
+               <td>
+<p>Example for Practitioner</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Practitioner-ChCorePractitionerTRub.html"
+                     title="Practitioner/ChCorePractitionerTRub">Thomas Rub</a>
+               </td>
+               <td>
+<p>Example for Practitioner</p>
+</td>
+            </tr>
+            <tr>
+               <td style="column-width:30%">
+                  <a href="Practitioner-ChOrfPractitionerFAmily.html"
+                     title="Practitioner/ChOrfPractitionerFAmily">Florence Amily</a>
+               </td>
+               <td>
+<p>Example for Practitioner</p>
 </td>
             </tr>
          </tbody>
@@ -852,15 +1230,15 @@ These are, for example, the status of the encounter or the class and the desired
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-orf#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Feb 22, 2022 11:05+0100">2022-02-22</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-orf#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 21:23+0200">2023-06-29</span>
           <br/>
-          <span style="color: var(--footer-highlight-text-color)"></span>
+          <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
                  <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeT-tq5cutjuiVEedqihlMZ56_4UJsdVH6aTGYHTmO34T1Z4g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-orf%231.0.0%20/artifacts.html&amp;entry%2E247644557=Artifacts%20Summary">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeT-tq5cutjuiVEedqihlMZ56_4UJsdVH6aTGYHTmO34T1Z4g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-orf%232.0.0-ballot%20/artifacts.html&amp;entry%2E247644557=Artifacts%20Summary">Propose a change</a>
 
           </span>
         </p>

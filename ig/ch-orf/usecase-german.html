@@ -31,10 +31,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -62,7 +62,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ORF (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - STU 1
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
 
 
             </span>
@@ -120,6 +124,15 @@
       <li>
         <a href="questionnaire-form.html">Form</a>
       </li>
+      <li>
+        <a href="modular-form.html">Modular Form</a>
+      </li>
+      <li>
+        <a href="form-population.html">Form Population</a>
+      </li>
+      <li>
+        <a href="form-data-extraction.html">Form Data Extraction</a>
+      </li>
     </ul>
   </li>
   <li>
@@ -169,7 +182,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ORF (R4) (v1.0.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-orf/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ORF (R4) (v2.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-orf/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
   <h2>Anwendungsfälle</h2>
   
 
@@ -183,11 +196,129 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
 
+
     <p><!-- white space is critical inside of capture --></p>
-<div>
-<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#radiologie-auftrag" id="markdown-toc-radiologie-auftrag">Radiologie-Auftrag</a></li>
+  <li><a href="#auftrag-für-externe-diagnostik" id="markdown-toc-auftrag-für-externe-diagnostik">Auftrag für externe Diagnostik</a></li>
+  <li><a href="#anmeldung-heimpflege-zb-spitex" id="markdown-toc-anmeldung-heimpflege-zb-spitex">Anmeldung Heimpflege (z.B. Spitex)</a></li>
+  <li><a href="#entlassung-aus-stationärer-behandlung" id="markdown-toc-entlassung-aus-stationärer-behandlung">Entlassung aus stationärer Behandlung</a></li>
+  <li><a href="#appointments" id="markdown-toc-appointments">Appointments</a></li>
+</ul>
+
 </div>
-<p>TBD</p>
+<h3 id="radiologie-auftrag">Radiologie-Auftrag</h3>
+
+<ul>
+  <li><strong>Patientin:</strong> Frau S. Ufferer</li>
+  <li><strong>Auftraggeber:</strong>
+    <ul>
+      <li><strong>Verantwortliche Person:</strong> Dr. O. Rderplacer, Hausärztin in der Gruppenpraxis ‘Happy Doctors’</li>
+      <li><strong>Erfassende Person:</strong> D. Ataenterer, medizinische Praxisassistentin in der Gruppenpraxis ‘Happy Doctors’</li>
+    </ul>
+  </li>
+  <li><strong>Auftragsempfänger:</strong> Dr. O. Rderfiller, Radiologe am Institut für Radiologie des Spitals ‘Happy Hospital’</li>
+</ul>
+
+<p>Frau S. Ufferer hat am 15. März 2021 einen Termin bei ihrer Hausärztin Dr. O. Rderplacer in der Gruppenpraxis ‘Happy Doctors’. Die Patientin klagt über wiederkehrende Knieschmerzen. Aufgrund der Anamnese und der körperlichen Untersuchung beschliesst die Ärztin, eine Röntgenaufnahme anzuordnen, die im Institut für Radiologie des Spitals ‘Happy Hospital’ von Dr. O. Rderfiller durchgeführt werden soll.
+Die medizinische Praxisassistentin D. Ataenterer erfasst den Radiologie-Auftrag und schickt ihn an das Institut für Radiologie. Im Auftrag ist auch vermerkt, dass die Kopie dieses Auftrags (sowie alle daraus resultierenden Ergebnisse) der Patientin zugesandt werden soll.</p>
+
+<ul>
+  <li><strong>Radiologie-Auftrag:</strong> <a href="Bundle-radiology-order.xml.html">XML</a>, <a href="Bundle-radiology-order.json.html">JSON</a></li>
+</ul>
+
+<p><strong></strong></p>
+<p><img src="radiology-order.png" class="figure-img img-responsive img-rounded center-block" alt="" style="width:90%" /></p>
+<div style="clear:both;"></div>
+
+<hr />
+<h3 id="auftrag-für-externe-diagnostik">Auftrag für externe Diagnostik</h3>
+
+<ul>
+  <li><strong>Patientin:</strong> Frau S. Ufferer</li>
+  <li><strong>Auftraggeber:</strong>
+    <ul>
+      <li><strong>Verantwortliche Person:</strong> Dr. P. Lacer, diensthabendern Arzt im Ragionalspital</li>
+    </ul>
+  </li>
+  <li><strong>Auftragsempfänger:</strong> Dr. F. Iller, Radiologin am Universitätsspital</li>
+</ul>
+
+<p>Frau S. Ufferer verspürt am späten Abend des 30. März 2021 einen stechenden Schmerz im Unterbauch. Ihre Hausärztin der Gruppenpraxis ‘Happy Doctors’, welche Notdienst hat, überweist die Patientin an das Regionalspital.
+Der diensthabende Arzt im Regionalspital Dr. P. Lacer ordnet ein Thorax-CT an. Anhand des Thorax-CTs hat er den Verdacht auf ein Aortenaneurysma. Da in dieser Nachschicht kein Radiologie im Regionalspital Dienst hat, telefoniert Dr. P. Lacer mit der Radiologin Dr. F. Iller im Universitätsspital und schickt ihr den Auftrag für die externe Diagnostik. Wegen der Verdachtsdiagnose drängt die Zeit und die Radiologin will nach Erhalt des Auftrags mit den CT-Bildern dringend kontaktiert werden.
+Der Verdacht auf ein Aortenauneurysma bestätigt sich und Dr. F. Iller meldet dies sofort telefonisch an Dr. P. Lacer. Frau S. Ufferer wird deshalb als Notfall in die Thoraxchirurgie verlegt und sofort operiert.</p>
+
+<ul>
+  <li><strong>Auftrag für externe Diagnostik:</strong> <a href="Bundle-external-diagnostics-order.xml.html">XML</a>, <a href="Bundle-external-diagnostics-order.json.html">JSON</a></li>
+</ul>
+
+<p><strong></strong></p>
+<p><img src="external-diagnostics-order.png" class="figure-img img-responsive img-rounded center-block" alt="" style="width:90%" /></p>
+<div style="clear:both;"></div>
+
+<hr />
+<h3 id="anmeldung-heimpflege-zb-spitex">Anmeldung Heimpflege (z.B. Spitex)</h3>
+
+<ul>
+  <li><strong>Patientin:</strong> Frau S. Ufferer</li>
+  <li><strong>Auftraggeber:</strong>
+    <ul>
+      <li><strong>Verantwortliche Person:</strong> Dr. F. Amily, Hausärztin</li>
+    </ul>
+  </li>
+  <li><strong>Auftragsempfänger:</strong> Spitex</li>
+</ul>
+
+<p>Eine Anmeldung für die Heimpflege (od. auch einen anderen ambulanten Service, z.B. Mahlzeitendienst) kann in unterschiedlichen Situationen erfolgen:</p>
+
+<ul>
+  <li>
+    <p>Patient ist zuhause</p>
+  </li>
+  <li>
+    <p>Patient ist aktuell in einer stationären Einrichtung und wird bald nach Hause entlassen</p>
+  </li>
+  <li>
+    <p>Patient ist zuhause, wir jedoch in eine stationäre Einrichtung (z.B. Spital) eintreten und anschliessend von dieser (oder einem nachfolgenden stationären Aufenthalt (z. B. Rehab) nach Hause entlassen.</p>
+  </li>
+</ul>
+
+<p>Im Fall eines stationären Aufenthaltes vor der Heimpflege ist für die Planung der Heimpflege das Entlassungsdatum und ev. auch das Entrittsdatum wichtig; für ev. Nachfragen soll auch die Institution des stationären Aufenthaltes bekannt sein.</p>
+
+<p>Die Anmeldung für eine Heimpflege erfolgt oft auf Initiative dritter. Wesentlich ist auch, ob es sich beim Initianten um den gesetzlichen Vertreter handelt.</p>
+
+<p>Die Anmeldung für die Heimpflege geht oft - gerade bei stationären Patienten - nicht vom Hausarzt aus; dieser muss der Heimpflege jedoch bekannt sein.</p>
+
+<p>In der Praxis kann eine (provisorische) Anmeldung für eine Heimpflege notwendig werden, bevor das formale Einverständnis des Patienten vorliegt. Dies muss aus der Anmeldung hervorgehen</p>
+
+<p>Die obigen Angaben sind administrativer Art; CH ORF sieht dafür mit der Version 1.1 entsprechende Attribute vor. Betreffend Einverständnis des Patienten erlaubt das Formular eine differenzierte Darstellung der Situation als Freitext.</p>
+
+<p>Für die Erfassung weiterer medizinischen und pflegerischen Angaben wird auf <a href="http://fhir.ch/ig/ch-etoc/index.html">CH-eTOC</a> verweisen.</p>
+
+<hr />
+<h3 id="entlassung-aus-stationärer-behandlung">Entlassung aus stationärer Behandlung</h3>
+
+<p>Die Möglichkeit zusätzlicher Angaben für die Anmeldung zur Heimpflege (s. o.) deckt auch die administrativen Anforderungen an ein Entlassungsschreiben ab. Zusätzlich sind bei diesem Anwendungsfall weitere medizinische und pflegerische Angaben erforderlich. Dafür wird auf CH-eTOC <a href="http://fhir.ch/ig/ch-etoc/index.html">CH-eTOC</a>verweisen.</p>
+
+<hr />
+<h3 id="appointments">Appointments</h3>
+
+<p>Die Terminplanung ist aus verschiedenen Gründen nicht ganz einfach:</p>
+<ul>
+  <li>Die Patienten S. Ufferer kennt vielleicht die möglichen Termine nicht, weil sie beispielsweise auf ihre Tochter, die sie mit dem Auto zum Termin bringen wird, angewiesen ist.</li>
+  <li>Weder der Arzt noch die Patientin wissen, welche Termine in der Radiologie verfügbar sind.</li>
+  <li>Die verfügbaren Termine, die Transportmöglichkeiten etc. können sich im Laufe der Zeit ändern.</li>
+  <li>Eventuell hat die Patientin noch weitere Termine, die wiederum zu Terminkollisionen führen können.</li>
+  <li>Einige Gesundheitsdienstleister bieten ein Onlinetool für die Terminvergabe an, andere nicht.</li>
+  <li>Manche Gesundheitsfachpersonen bevorzugen es, sich telefonisch zu erkundigen und Termine für Überweisungen zu vereinbaren, während dem die Patienten bei ihnen vor Ort ist.</li>
+  <li>etc.</li>
+</ul>
+
+<p>Es ist nicht leicht, all diese Eventualitäten mit einer einfachen Applikation abzudecken. Daher ist eine umfassende Terminplanung für Überweisungen im Rahmen dieses Leitfadens nicht vorgesehen. Es ist jedoch möglich, Datum und Uhrzeit anzugeben und zu vermerken, ob der Termin fest zugesagt oder lediglich vorgeschlagen wurde. Des Weiteren besteht die Möglichkeit, bevorzugte Datums-/Zeitintervalle anzugeben.</p>
+
+<p>Einige Gesundheitsdienstleister bieten ihre Leistungen an mehr als einem Standort an, so kann es auch passieren, dass ein Auftrag/Verordnung zu mehr als einer Konsultation führt (z.B. Holter-EKG mit einem Termin für die Anbringung des Geräts zu Beginn und einem Termin für die Rückgabe am Ende). In CH ORF sind daher mehrere Termine (n Appointments) pro Leistungsauftrag (ServiceRequest) vorgesehen.</p>
+
 
 
 
@@ -213,15 +344,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-orf#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Feb 22, 2022 11:05+0100">2022-02-22</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-orf#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 21:23+0200">2023-06-29</span>
           <br/>
-          <span style="color: var(--footer-highlight-text-color)"></span>
+          <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
                  <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeT-tq5cutjuiVEedqihlMZ56_4UJsdVH6aTGYHTmO34T1Z4g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-orf%231.0.0%20/usecase-german.html&amp;entry%2E247644557=Anwendungsf%C3%A4lle">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeT-tq5cutjuiVEedqihlMZ56_4UJsdVH6aTGYHTmO34T1Z4g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-orf%232.0.0-ballot%20/usecase-german.html&amp;entry%2E247644557=Anwendungsf%C3%A4lle">Propose a change</a>
 
           </span>
         </p>

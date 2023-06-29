@@ -31,10 +31,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -62,7 +62,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ORF (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - STU 1
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
 
 
             </span>
@@ -120,6 +124,15 @@
       <li>
         <a href="questionnaire-form.html">Form</a>
       </li>
+      <li>
+        <a href="modular-form.html">Modular Form</a>
+      </li>
+      <li>
+        <a href="form-population.html">Form Population</a>
+      </li>
+      <li>
+        <a href="form-data-extraction.html">Form Data Extraction</a>
+      </li>
     </ul>
   </li>
   <li>
@@ -169,9 +182,10 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ORF (R4) (v1.0.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-orf/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ORF (R4) (v2.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-orf/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
   <h2>Use Cases</h2>
   
+
 
 
 
@@ -188,6 +202,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <ul id="markdown-toc">
   <li><a href="#radiology-order" id="markdown-toc-radiology-order">Radiology order</a></li>
   <li><a href="#order-external-diagnostics" id="markdown-toc-order-external-diagnostics">Order external diagnostics</a></li>
+  <li><a href="#registration-for-home-care-eg-spitex" id="markdown-toc-registration-for-home-care-eg-spitex">Registration for home care (e.g. Spitex)</a></li>
+  <li><a href="#discharge-from-inpatient-treatment" id="markdown-toc-discharge-from-inpatient-treatment">Discharge from inpatient treatment</a></li>
   <li><a href="#appointments" id="markdown-toc-appointments">Appointments</a></li>
 </ul>
 
@@ -242,22 +258,66 @@ The suspicion of an aortic aneurysm is confirmed and Dr. F. Iller immediately re
 <div style="clear:both;"></div>
 
 <hr />
+<h3 id="registration-for-home-care-eg-spitex">Registration for home care (e.g. Spitex)</h3>
+
+<ul>
+  <li><strong>Patient:</strong> Ms. S. Ufferer</li>
+  <li><strong>Customer:</strong>
+    <ul>
+      <li><strong>Responsible person:</strong> Dr. F. Amily, family physician</li>
+    </ul>
+  </li>
+  <li><strong>Order recipient:</strong> Spitex</li>
+</ul>
+
+<p>An application for home care (or also another outpatient service, e.g. meal service) can be made in different situations:</p>
+
+<ul>
+  <li>
+    <p>Patient is at home</p>
+  </li>
+  <li>
+    <p>Patient is currently in an inpatient facility and will be discharged home soon.</p>
+  </li>
+  <li>
+    <p>Patient is at home, but will enter an inpatient facility (e.g. hospital) and will be discharged from this (or a subsequent inpatient stay (e.g. rehab) to home.</p>
+  </li>
+</ul>
+
+<p>In the case of an inpatient stay before home care, the discharge date and possibly also the entry date are important for planning home care; the institution of the inpatient stay should also be known for necessary inquiries.</p>
+
+<p>The application for home care is often made on the initiative of a third party. It is important to know whether the initiator is the legal representative.</p>
+
+<p>The registration for home care is often - especially in the case of inpatients - not initiated by the family doctor; however, the family doctor must be known to the home care.</p>
+
+<p>In practice, a (provisional) registration for home care may be necessary before the patient’s formal consent has been obtained. This must be stated in the registration</p>
+
+<p>The above information is of an administrative nature; CH ORF provides with version 1.1. appropriate attributes. Regarding the patient’s consent, the form allows a differentiated representation of the situation as free text.</p>
+
+<p>For the entry of further medical and nursing information, please refer to <a href="http://fhir.ch/ig/ch-etoc/index.html">CH-eTOC</a>.</p>
+
+<hr />
+<h3 id="discharge-from-inpatient-treatment">Discharge from inpatient treatment</h3>
+
+<p>The additional information for the application for home care (see above) also covers the administrative requirements for discharge letters. In addition, further medical and nursing information is required for this use case. For this, please refer to CH-eTOC <a href="http://fhir.ch/ig/ch-etoc/index.html">CH-eTOC</a>.</p>
+
+<hr />
 <h3 id="appointments">Appointments</h3>
 
-<p>For various reasons, scheduling of the appointment is tricky:</p>
+<p>For various reasons, scheduling appointments is tricky:</p>
 <ul>
-  <li>Patient S. Ufferer does probably not know the possible dates, e.g. because he is dependent of his daughter who will bring him by car.</li>
-  <li>Neither the patient nor the doctor knows which slots are available in the radiology department.</li>
-  <li>Availability of slots and availability of transport etc. may change in time.</li>
-  <li>Eventually, the patient may need other appointments that in turn cause collisions.</li>
-  <li>Some services provide an online tool for scheduling appointments, others do not.</li>
-  <li>Some health professionals prefer to inquire and fix appointments for referrals by phone at the time the patient is while the patient is with them.</li>
+  <li>Patient S. Ufferer may not know the possible dates because, for example, she depends of her daughter, who will take her to the appointment by car.</li>
+  <li>Neither the doctor nor the patient knows what slots are available in the radiology department.</li>
+  <li>Available slots, availability of transportation etc. may change over time.</li>
+  <li>The patient may have other appointments, which in turn may cause scheduling conflicts.</li>
+  <li>Some healthcare providers offer an online tool for scheduling appointments, others do not.</li>
+  <li>Some healthcare professionals prefer to call and make appointments for referrals while the patient is onsite with them.</li>
   <li>Etc.</li>
 </ul>
 
-<p>It is not easy to cover all this in a slim application. For this reason, comprehensive scheduling of appointments for referrals is out of scope. It is however possibel to specify date and time with a note of whether it is agreed or proposed. Furthermore it is possible to indicate preferred date/time intervals.</p>
+<p>It is not easy to cover all these contingencies with a simple application. Therefore, comprehensive scheduling of appointments for referrals is out of scope in this implementation guide. However, it is possible to specify the date and time and to note whether the appointment is firmly agreed or merely proposed. Furthermore, it is possible to indicate preferred date/time intervals.</p>
 
-<p>Some service providers offer their services at more than one location; it may also be possible that an assignment/prescription results in more than one consultation (e.g. Holter ECG with appointment for the installation of the device at the beginning and return at the end). ORF therefore provides n appointments per service request.</p>
+<p>Some service providers offer their services at more than one location, so it can also happen that one assignment/prescription leads to more than one consultation (e.g. Holter ECG with an appointment for installation of the device at the beginning and an appointment for return at the end). In CH ORF, therefore, several appointments (n Appointments) are provided per service order (ServiceRequest).</p>
 
 
 
@@ -284,15 +344,15 @@ The suspicion of an aortic aneurysm is confirmed and Dr. F. Iller immediately re
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-orf#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Feb 22, 2022 11:05+0100">2022-02-22</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-orf#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 21:23+0200">2023-06-29</span>
           <br/>
-          <span style="color: var(--footer-highlight-text-color)"></span>
+          <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
                  <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeT-tq5cutjuiVEedqihlMZ56_4UJsdVH6aTGYHTmO34T1Z4g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-orf%231.0.0%20/usecase-english.html&amp;entry%2E247644557=Use%20Cases">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeT-tq5cutjuiVEedqihlMZ56_4UJsdVH6aTGYHTmO34T1Z4g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-orf%232.0.0-ballot%20/usecase-english.html&amp;entry%2E247644557=Use%20Cases">Propose a change</a>
 
           </span>
         </p>
