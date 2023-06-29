@@ -35,18 +35,18 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
 
-    <style type="text/css">h2{--heading-prefix:"17.13"}
-    h3,h4,h5,h6{--heading-prefix:"17.13"}</style>
+    <style type="text/css">h2{--heading-prefix:"17.2"}
+    h3,h4,h5,h6{--heading-prefix:"17.2"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
@@ -66,7 +66,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EMED (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.0.0 - STU3
+            <span style="display:inline-block;">4.0.0-ballot - ballot
 
 
 
@@ -94,16 +94,15 @@
             </button>
             <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
-  <!--<li>
-    <a href="toc.html">Table of Contents</a>
-  </li>-->
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
   <li>
     <a href="index.html">Home</a>
   </li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Documents<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Documents
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -127,8 +126,8 @@
     </ul>
   </li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -140,8 +139,8 @@
     </ul>
   </li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Guidance<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Guidance
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -192,7 +191,7 @@
           <div class="inner-wrapper">
 
 <div style="counter-reset: section 5" class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v3.0.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v4.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 4 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
   
 
 
@@ -230,17 +229,19 @@
 
 
 
+
   
-    
-      <li>
-        <a href="StructureDefinition-ch-emed-medication-medicationdispense-examples.html">Examples</a>
-      </li>
-    
+    <li>
+      <a href="StructureDefinition-ch-emed-medication-medicationdispense.profile.xml.html">XML</a>
+    </li>
   
 
 
-
-
+  
+    <li>
+      <a href="StructureDefinition-ch-emed-medication-medicationdispense.profile.json.html">JSON</a>
+    </li>
+  
 
 
 
@@ -256,7 +257,7 @@
         
           Active
           
-            as of 2022-12-21
+            as of 2023-06-29
           
         
       </td>
@@ -274,33 +275,13 @@
 
   <a name="script10.6"> </a><h3>Mappings for Mapping to NCPDP SCRIPT 10.6 (http://ncpdp.org/SCRIPT10_6)</h3><table class="grid">
  <tr><td colspan="3"><b>CHEMEDMedicationMedicationDispense</b></td></tr>
- <tr><td>Medication</td><td>NewRx/MedicationPrescribed
--or-
-RxFill/MedicationDispensed
--or-
-RxHistoryResponse/MedicationDispensed
--or-
-RxHistoryResponse/MedicationPrescribed</td> </tr>
- <tr><td>&nbsp;&nbsp;&nbsp;code</td><td>coding.code = //element(*,MedicationType)/DrugCoded/ProductCode
-
-coding.system = //element(*,MedicationType)/DrugCoded/ProductCodeQualifier
-
-coding.display = //element(*,MedicationType)/DrugDescription</td> </tr>
+ <tr><td>Medication</td><td>NewRx/MedicationPrescribed-or-RxFill/MedicationDispensed-or-RxHistoryResponse/MedicationDispensed-or-RxHistoryResponse/MedicationPrescribed</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;code</td><td>coding.code = //element(*,MedicationType)/DrugCoded/ProductCodecoding.system = //element(*,MedicationType)/DrugCoded/ProductCodeQualifiercoding.display = //element(*,MedicationType)/DrugDescription</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;manufacturer</td><td>no mapping</td> </tr>
- <tr><td>&nbsp;&nbsp;&nbsp;form</td><td>coding.code =  //element(*,DrugCodedType)/FormCode
-
-coding.system = //element(*,DrugCodedType)/FormSourceCode</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;form</td><td>coding.code =  //element(*,DrugCodedType)/FormCodecoding.system = //element(*,DrugCodedType)/FormSourceCode</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;ingredient</td><td></td> </tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item[x]</td><td>coding.code = //element(*,MedicationType)/DrugCoded/ProductCode
-
-coding.system = //element(*,MedicationType)/DrugCoded/ProductCodeQualifier
-
-coding.display = //element(*,MedicationType)/DrugDescription</td> </tr>
- <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item[x] (itemCodeableConcept)</td><td>coding.code = //element(*,MedicationType)/DrugCoded/ProductCode
-
-coding.system = //element(*,MedicationType)/DrugCoded/ProductCodeQualifier
-
-coding.display = //element(*,MedicationType)/DrugDescription</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item[x]</td><td>coding.code = //element(*,MedicationType)/DrugCoded/ProductCodecoding.system = //element(*,MedicationType)/DrugCoded/ProductCodeQualifiercoding.display = //element(*,MedicationType)/DrugDescription</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item[x] (itemCodeableConcept)</td><td>coding.code = //element(*,MedicationType)/DrugCoded/ProductCodecoding.system = //element(*,MedicationType)/DrugCoded/ProductCodeQualifiercoding.display = //element(*,MedicationType)/DrugDescription</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;batch</td><td>no mapping</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lotNumber</td><td>no mapping</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expirationDate</td><td>no mapping</td> </tr>
@@ -318,6 +299,14 @@ coding.display = //element(*,MedicationType)/DrugDescription</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extension</td><td>n/a</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coding</td><td>union(., ./translation)</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coding (GTIN)</td><td>union(., ./translation)</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id</td><td>n/a</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extension</td><td>n/a</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system</td><td>./codeSystem</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;version</td><td>./codeSystemVersion</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;code</td><td>./code</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display</td><td>CV.displayName</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;userSelected</td><td>CD.codingRationale</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coding (ATC)</td><td>union(., ./translation)</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id</td><td>n/a</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extension</td><td>n/a</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system</td><td>./codeSystem</td> </tr>
@@ -373,6 +362,12 @@ coding.display = //element(*,MedicationType)/DrugDescription</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;code</td><td>RXO-1.1-Requested Give Code.code / RXE-2.1-Give Code.code / RXD-2.1-Dispense/Give Code.code / RXG-4.1-Give Code.code /RXA-5.1-Administered Code.code / RXC-2.1 Component Code</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coding</td><td>C*E.1-8, C*E.10-22</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coding (GTIN)</td><td>C*E.1-8, C*E.10-22</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system</td><td>C*E.3</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;version</td><td>C*E.7</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;code</td><td>C*E.1</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display</td><td>C*E.2 - but note this is not well followed</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;userSelected</td><td>Sometimes implied by being first</td> </tr>
+ <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coding (ATC)</td><td>C*E.1-8, C*E.10-22</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system</td><td>C*E.3</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;version</td><td>C*E.7</td> </tr>
  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;code</td><td>C*E.1</td> </tr>
@@ -452,7 +447,7 @@ coding.display = //element(*,MedicationType)/DrugDescription</td> </tr>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 21, 2022 12:57+0100">2022-12-21</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#4.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 15:03+0200">2023-06-29</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -460,7 +455,7 @@ coding.display = //element(*,MedicationType)/DrugDescription</td> </tr>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%233.0.0%20/StructureDefinition-ch-emed-medication-medicationdispense-mappings.html&amp;entry%2E247644557=CH%20EMED%20Medication%20(MedicationDispense)%20-%20Mappings">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%234.0.0-ballot%20/StructureDefinition-ch-emed-medication-medicationdispense-mappings.html&amp;entry%2E247644557=CH%20EMED%20Medication%20(MedicationDispense)%20-%20Mappings">Propose a change</a>
 
           </span>
         </p>

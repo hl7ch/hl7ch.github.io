@@ -6,18 +6,26 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_EMED</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed</pre><div><p>Implementation Guide for the eMedication in Switzerland.</p>\n</div></div>"
   },
   "url" : "http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed",
-  "version" : "3.0.0",
+  "version" : "4.0.0-ballot",
   "name" : "CH_EMED",
   "title" : "CH EMED (R4)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2022-12-21",
+  "date" : "2023-06-29",
   "publisher" : "HL7 Switzerland",
   "contact" : [{
     "name" : "HL7 Switzerland",
     "telecom" : [{
       "system" : "url",
       "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
     }]
   }],
   "description" : "Implementation Guide for the eMedication in Switzerland.",
@@ -27,46 +35,69 @@
       "code" : "CH"
     }]
   }],
-  "copyright" : "CC-BY-SA-4.0",
+  "copyright" : "CC0-1.0",
   "packageId" : "ch.fhir.ig.ch-emed",
-  "license" : "CC-BY-SA-4.0",
+  "license" : "CC0-1.0",
   "fhirVersion" : ["4.0.1"],
   "dependsOn" : [{
-    "id" : "hl7tx",
+    "id" : "hl7ext",
     "extension" : [{
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
+      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"
     }],
-    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
-    "packageId" : "hl7.terminology.r4",
-    "version" : "5.0.0"
+    "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+    "packageId" : "hl7.fhir.uv.extensions.r4",
+    "version" : "1.0.0"
   },
   {
-    "id" : "chcore",
+    "id" : "ch_fhir_ig_ch_core",
     "uri" : "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core",
     "packageId" : "ch.fhir.ig.ch-core",
-    "version" : "3.0.0"
+    "version" : "4.0.0-ballot"
+  },
+  {
+    "id" : "ch_fhir_ig_ch_epr_term",
+    "uri" : "http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term",
+    "packageId" : "ch.fhir.ig.ch-epr-term",
+    "version" : "2.0.9"
+  },
+  {
+    "id" : "hl7_terminology",
+    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
+    "packageId" : "hl7.terminology",
+    "version" : "5.1.0"
   }],
   "definition" : {
     "extension" : [{
       "extension" : [{
         "url" : "code",
-        "valueString" : "releaselabel"
+        "valueString" : "copyrightyear"
       },
       {
         "url" : "value",
-        "valueString" : "STU3"
+        "valueString" : "2020+"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "copyrightyear"
+        "valueString" : "releaselabel"
       },
       {
         "url" : "value",
-        "valueString" : "2020+"
+        "valueString" : "ballot"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "excludettl"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -96,6 +127,17 @@
       "extension" : [{
         "url" : "code",
         "valueString" : "allow-extensible-warnings"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "display-warnings"
       },
       {
         "url" : "value",
@@ -346,20 +388,13 @@
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
     {
-      "extension" : [{
-        "url" : "code",
-        "valueString" : "releaselabel"
-      },
-      {
-        "url" : "value",
-        "valueString" : "STU3"
-      }],
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
+      "valueCode" : "hl7.fhir.uv.tools#current"
     },
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "copyrightyear"
+        "valueCode" : "copyrightyear"
       },
       {
         "url" : "value",
@@ -370,7 +405,29 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "special-url"
+        "valueCode" : "releaselabel"
+      },
+      {
+        "url" : "value",
+        "valueString" : "ballot"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "excludettl"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
       },
       {
         "url" : "value",
@@ -381,7 +438,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "special-url"
+        "valueCode" : "special-url"
       },
       {
         "url" : "value",
@@ -392,7 +449,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "allow-extensible-warnings"
+        "valueCode" : "allow-extensible-warnings"
       },
       {
         "url" : "value",
@@ -403,7 +460,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "autoload-resources"
+        "valueCode" : "display-warnings"
       },
       {
         "url" : "value",
@@ -414,7 +471,18 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-liquid"
+        "valueCode" : "autoload-resources"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-liquid"
       },
       {
         "url" : "value",
@@ -425,7 +493,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-liquid"
+        "valueCode" : "path-liquid"
       },
       {
         "url" : "value",
@@ -436,7 +504,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-qa"
+        "valueCode" : "path-qa"
       },
       {
         "url" : "value",
@@ -447,7 +515,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-temp"
+        "valueCode" : "path-temp"
       },
       {
         "url" : "value",
@@ -458,7 +526,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-output"
+        "valueCode" : "path-output"
       },
       {
         "url" : "value",
@@ -469,7 +537,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-suppressed-warnings"
+        "valueCode" : "path-suppressed-warnings"
       },
       {
         "url" : "value",
@@ -480,7 +548,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-history"
+        "valueCode" : "path-history"
       },
       {
         "url" : "value",
@@ -491,7 +559,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "template-html"
+        "valueCode" : "template-html"
       },
       {
         "url" : "value",
@@ -502,7 +570,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "template-md"
+        "valueCode" : "template-md"
       },
       {
         "url" : "value",
@@ -513,7 +581,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-contact"
+        "valueCode" : "apply-contact"
       },
       {
         "url" : "value",
@@ -524,7 +592,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-context"
+        "valueCode" : "apply-context"
       },
       {
         "url" : "value",
@@ -535,7 +603,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-copyright"
+        "valueCode" : "apply-copyright"
       },
       {
         "url" : "value",
@@ -546,7 +614,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-jurisdiction"
+        "valueCode" : "apply-jurisdiction"
       },
       {
         "url" : "value",
@@ -557,7 +625,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-license"
+        "valueCode" : "apply-license"
       },
       {
         "url" : "value",
@@ -568,7 +636,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-publisher"
+        "valueCode" : "apply-publisher"
       },
       {
         "url" : "value",
@@ -579,7 +647,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-version"
+        "valueCode" : "apply-version"
       },
       {
         "url" : "value",
@@ -590,7 +658,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "active-tables"
+        "valueCode" : "active-tables"
       },
       {
         "url" : "value",
@@ -601,7 +669,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "fmm-definition"
+        "valueCode" : "fmm-definition"
       },
       {
         "url" : "value",
@@ -612,7 +680,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "propagate-status"
+        "valueCode" : "propagate-status"
       },
       {
         "url" : "value",
@@ -623,7 +691,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "excludelogbinaryformat"
+        "valueCode" : "excludelogbinaryformat"
       },
       {
         "url" : "value",
@@ -634,38 +702,37 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "tabbed-snapshots"
+        "valueCode" : "tabbed-snapshots"
       },
       {
         "url" : "value",
         "valueString" : "true"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-    }],
-    "grouping" : [{
-      "name" : "CH-EMED"
     }],
     "resource" : [{
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Binary"
+        "valueString" : "Composition"
       }],
       "reference" : {
-        "reference" : "Binary/2-6-pdf"
+        "reference" : "Composition/1-1-Composition"
       },
-      "name" : "2-6 PDF as original representation of the Medication Prescription document",
-      "description" : "Example for Binary"
+      "name" : "1-1 Composition for Medication Treatment Plan document",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Binary"
+        "valueString" : "MedicationStatement"
       }],
       "reference" : {
-        "reference" : "Binary/2-7-pdf"
+        "reference" : "MedicationStatement/1-1-MedStatTriatec"
       },
-      "name" : "2-7 PDF as original representation of the Medication Card document",
-      "description" : "Example for Binary"
+      "name" : "1-1 Medication Statement with Medication Triatec",
+      "description" : "Example for MedicationStatement (MTP)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"
     },
     {
       "extension" : [{
@@ -682,6 +749,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/1-2-Composition"
+      },
+      "name" : "1-2 Composition for Medication Dispense document",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Bundle"
       }],
       "reference" : {
@@ -690,6 +769,54 @@
       "name" : "1-2 Medication Dispense document",
       "description" : "Example for Bundle",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationDispense"
+      }],
+      "reference" : {
+        "reference" : "MedicationDispense/2-4-MedDispBeloczok"
+      },
+      "name" : "1-2 Medication Dispense with Medication Beloc Zok",
+      "description" : "Example for MedicationDispense (DIS)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationDispense"
+      }],
+      "reference" : {
+        "reference" : "MedicationDispense/1-2-MedDispTriatec"
+      },
+      "name" : "1-2 Medication Dispense with Medication Triatec",
+      "description" : "Example for MedicationDispense (DIS)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/2-1-Composition"
+      },
+      "name" : "2-1 Composition for Medication List document",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationlist"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationDispense"
+      }],
+      "reference" : {
+        "reference" : "MedicationDispense/2-1-MedDispTriatec"
+      },
+      "name" : "2-1 Medication Dispense with Medication Triatec",
+      "description" : "Example for MedicationDispense (LIST)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense-list"
     },
     {
       "extension" : [{
@@ -706,6 +833,42 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      }],
+      "reference" : {
+        "reference" : "MedicationStatement/2-1-MedStatTriatec"
+      },
+      "name" : "2-1 Medication Statement with Medication Triatec",
+      "description" : "Example for MedicationStatement (LIST)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-list"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/2-2-Composition"
+      },
+      "name" : "2-2 Composition for Pharmaceutical Advice document",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-pharmaceuticaladvice"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Observation"
+      }],
+      "reference" : {
+        "reference" : "Observation/2-2-ObsPharmaceuticalAdvice"
+      },
+      "name" : "2-2 Observation for Pharmaceutical Advice document",
+      "description" : "Example for Observation (PADV)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Bundle"
       }],
       "reference" : {
@@ -714,6 +877,30 @@
       "name" : "2-2 Pharmaceutical Advice document",
       "description" : "Example for Bundle",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/2-3-Composition"
+      },
+      "name" : "2-3 Composition for Medication Treatment Plan document",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      }],
+      "reference" : {
+        "reference" : "MedicationStatement/2-3-MedStatBeloczok"
+      },
+      "name" : "2-3 Medication Statement with Medication Beloc Zok",
+      "description" : "Example for MedicationStatement (MTP)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"
     },
     {
       "extension" : [{
@@ -730,6 +917,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/2-4-Composition"
+      },
+      "name" : "2-4 Composition for Medication Dispense document",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Bundle"
       }],
       "reference" : {
@@ -738,6 +937,30 @@
       "name" : "2-4 Medication Dispense document",
       "description" : "Example for Bundle",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/2-5-Composition"
+      },
+      "name" : "2-5 Composition for Medication Treatment Plan document",
+      "description" : "Example for Composition with a person and a device as authors",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      }],
+      "reference" : {
+        "reference" : "MedicationStatement/2-5-MedStatNorvasc"
+      },
+      "name" : "2-5 Medication Statement with Medication Norvasc",
+      "description" : "Example for MedicationStatement (MTP)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"
     },
     {
       "extension" : [{
@@ -754,6 +977,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/2-6-Composition"
+      },
+      "name" : "2-6 Composition for Medication Prescription document",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationprescription"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Bundle"
       }],
       "reference" : {
@@ -762,6 +997,42 @@
       "name" : "2-6 Medication Prescription document",
       "description" : "Example for Bundle",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationprescription"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationRequest"
+      }],
+      "reference" : {
+        "reference" : "MedicationRequest/2-6-MedReqNorvasc"
+      },
+      "name" : "2-6 Medication Request with Medication Norvasc",
+      "description" : "Example for MedicationRequest (PRE)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Binary"
+      }],
+      "reference" : {
+        "reference" : "Binary/2-6-pdf"
+      },
+      "name" : "2-6 PDF as original representation of the Medication Prescription document",
+      "description" : "Example for Binary",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/2-7-Composition"
+      },
+      "name" : "2-7 Composition for Medication Card document",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationcard"
     },
     {
       "extension" : [{
@@ -785,366 +1056,7 @@
       },
       "name" : "2-7 Medication Card document (with references/fullUrls as UUIDs)",
       "description" : "Example for Bundle (with references/fullUrls as UUIDs)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationcard"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Bundle"
-      }],
-      "reference" : {
-        "reference" : "Bundle/PharmaceuticalAdvice-ChangeDosage"
-      },
-      "name" : "Pharmaceutical Advice document to change the dosage",
-      "description" : "Example for Bundle",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/1-1-MedicationTreatmentPlan"
-      },
-      "name" : "1-1 Composition for Medication Treatment Plan document",
-      "description" : "Example for Composition",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/1-2-MedicationDispense"
-      },
-      "name" : "1-2 Composition for Medication Dispense document",
-      "description" : "Example for Composition",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/2-1-MedicationList"
-      },
-      "name" : "2-1 Composition for Medication List document",
-      "description" : "Example for Composition",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationlist"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/2-2-PharmaceuticalAdvice"
-      },
-      "name" : "2-2 Composition for Pharmaceutical Advice document",
-      "description" : "Example for Composition",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-pharmaceuticaladvice"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/2-3-MedicationTreatmentPlan"
-      },
-      "name" : "2-3 Composition for Medication Treatment Plan document",
-      "description" : "Example for Composition",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/2-4-MedicationDispense"
-      },
-      "name" : "2-4 Composition for Medication Dispense document",
-      "description" : "Example for Composition",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/2-5-MedicationTreatmentPlan"
-      },
-      "name" : "2-5 Composition for Medication Treatment Plan document",
-      "description" : "Example for Composition",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/2-6-MedicationPrescription"
-      },
-      "name" : "2-6 Composition for Medication Prescription document",
-      "description" : "Example for Composition",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationprescription"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/2-7-MedicationCard"
-      },
-      "name" : "2-7 Composition for Medication Card document",
-      "description" : "Example for Composition",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationcard"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Device"
-      }],
-      "reference" : {
-        "reference" : "Device/Device"
-      },
-      "name" : "Device",
-      "description" : "Example for Device"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/1-1-Triatec"
-      },
-      "name" : "1-1 Medication Triatec",
-      "description" : "Example for Medication in MedicationStatement",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/1-2-Triatec"
-      },
-      "name" : "1-2 Medication Triatec",
-      "description" : "Example for Medication in MedicationDispense",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/2-3-Beloczok"
-      },
-      "name" : "2-3 Medication Beloc Zok",
-      "description" : "Example for Medication in MedicationStatement",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/2-4-Beloczok"
-      },
-      "name" : "2-4 Medication Beloc Zok",
-      "description" : "Example for Medication in MedicationDispense",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/2-5-Norvasc"
-      },
-      "name" : "2-5 Medication Norvasc",
-      "description" : "Example for Medication  in MedicationStatement",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/2-6-Norvasc"
-      },
-      "name" : "2-6 Medication Norvasc",
-      "description" : "Example for Medication in MedicationRequest",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/2-7-Beloczok"
-      },
-      "name" : "2-7 Medication Beloc Zok",
-      "description" : "Example for Medication in MedicationStatement",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/2-7-Norvasc"
-      },
-      "name" : "2-7 Medication Norvasc",
-      "description" : "Example for Medication in MedicationStatement",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/TriatecWithLocalCodes"
-      },
-      "name" : "Triatec with local codes",
-      "description" : "Example for Medication with local medication codes",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/MedicationWithTwoIngredients"
-      },
-      "name" : "Medication with 2 ingredients",
-      "description" : "Example for Medication with 2 ingredients",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Medication"
-      }],
-      "reference" : {
-        "reference" : "Medication/TriatecWithCodeNotFromVS"
-      },
-      "name" : "Triatec with code not from VS",
-      "description" : "Example for Medication with ingredient code, which is NOT included in the SCT-VS with extensible binding (to show the warning)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "MedicationDispense"
-      }],
-      "reference" : {
-        "reference" : "MedicationDispense/1-2-MedDispTriatec"
-      },
-      "name" : "1-2 Medication Dispense with Medication Triatec",
-      "description" : "Example for MedicationDispense (DIS)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "MedicationDispense"
-      }],
-      "reference" : {
-        "reference" : "MedicationDispense/2-1-MedDispTriatec"
-      },
-      "name" : "2-1 Medication Dispense with Medication Triatec",
-      "description" : "Example for MedicationDispense (LIST)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "MedicationDispense"
-      }],
-      "reference" : {
-        "reference" : "MedicationDispense/2-4-MedDispBeloczok"
-      },
-      "name" : "1-2 Medication Dispense with Medication Beloc Zok",
-      "description" : "Example for MedicationDispense (DIS)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "MedicationRequest"
-      }],
-      "reference" : {
-        "reference" : "MedicationRequest/2-6-MedReqNorvasc"
-      },
-      "name" : "2-6 Medication Request with Medication Norvasc",
-      "description" : "Example for MedicationRequest (PRE)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "MedicationStatement"
-      }],
-      "reference" : {
-        "reference" : "MedicationStatement/1-1-MedStatTriatec"
-      },
-      "name" : "1-1 Medication Statement with Medication Triatec",
-      "description" : "Example for MedicationStatement (MTP)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "MedicationStatement"
-      }],
-      "reference" : {
-        "reference" : "MedicationStatement/2-1-MedStatTriatec"
-      },
-      "name" : "2-1 Medication Statement with Medication Triatec",
-      "description" : "Example for MedicationStatement (LIST)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-list"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "MedicationStatement"
-      }],
-      "reference" : {
-        "reference" : "MedicationStatement/2-3-MedStatBeloczok"
-      },
-      "name" : "2-3 Medication Statement with Medication Beloc Zok",
-      "description" : "Example for MedicationStatement (MTP)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "MedicationStatement"
-      }],
-      "reference" : {
-        "reference" : "MedicationStatement/2-5-MedStatNorvasc"
-      },
-      "name" : "2-5 Medication Statement with Medication Norvasc",
-      "description" : "Example for MedicationStatement (MTP)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"
+      "exampleBoolean" : true
     },
     {
       "extension" : [{
@@ -1173,107 +1085,518 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "MedicationStatement"
+        "valueString" : "Binary"
       }],
       "reference" : {
-        "reference" : "MedicationStatement/NotRecommendedTimingCodes"
+        "reference" : "Binary/2-7-pdf"
       },
-      "name" : "Medication Statement with NOT recommended timing codes",
-      "description" : "Example for MedicationStatment with NOT recommended timing codes",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-card"
+      "name" : "2-7 PDF as original representation of the Medication Card document",
+      "description" : "Example for Binary",
+      "exampleBoolean" : true
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "MedicationStatement"
+        "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
-        "reference" : "MedicationStatement/AsNeededWithMaxDose"
+        "reference" : "StructureDefinition/ch-emed-dosage-medicationrequest"
       },
-      "name" : "Medication Statement with a medication in reserve and a maximum dosage",
-      "description" : "Example for MedicationStatment - Take Nitrostat 1 tablet as needed for chest pain, maximum 3 tablets in 15 minutes",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"
+      "name" : "CH EMED Dosage (MedicationRequest)",
+      "description" : "Definition of the dosage (used in MedicationRequest)",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Observation"
+        "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
-        "reference" : "Observation/2-2-PharmaceuticalAdvice"
+        "reference" : "StructureDefinition/ch-emed-dosage"
       },
-      "name" : "2-2 Observation for Pharmaceutical Advice document",
-      "description" : "Example for Observation (PADV)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"
+      "name" : "CH EMED Dosage (MedicationStatement / MedicationDispense)",
+      "description" : "Definition of the dosage (used in MedicationStatement / MedicationDispense)",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Organization"
+        "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
-        "reference" : "Organization/Custodian"
+        "reference" : "StructureDefinition/ch-emed-dosage-split"
       },
-      "name" : "Custodian",
-      "description" : "Example for Organization"
+      "name" : "CH EMED Dosage Split",
+      "description" : "Definition of the split dosage (used in MedicationStatement / MedicationDispense / MedicationRequest)",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Organization"
+        "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "Organization/Hausarzt"
+        "reference" : "StructureDefinition/ch-emed-ext-dispense"
       },
-      "name" : "Hausarzt",
-      "description" : "Example for Organization",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-organization"
+      "name" : "CH EMED Extension Dispense",
+      "description" : "Extension to reference an external MedicationDispense and the Medication Dispense document that contains it",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
+        "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "Patient/MonikaWegmueller"
+        "reference" : "StructureDefinition/ch-emed-ext-medicationrequest-changed"
       },
-      "name" : "Monika Wegmueller",
-      "description" : "Example for Patient"
+      "name" : "CH EMED Extension MedicationRequest Changed",
+      "description" : "Extension to represent the changed MedicationRequest",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
+        "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "Patient/MonikaWegmuellerRecipient"
+        "reference" : "StructureDefinition/ch-emed-ext-medicationstatement-changed"
       },
-      "name" : "Monika Wegmueller as Information Recipient",
-      "description" : "Example for Patient"
+      "name" : "CH EMED Extension MedicationStatement Changed",
+      "description" : "Extension to represent the changed MedicationStatement",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Practitioner"
+        "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "Practitioner/FamilienHausarzt"
+        "reference" : "StructureDefinition/ch-emed-ext-pharmaceuticaladvice"
       },
-      "name" : "Familien Hausarzt",
-      "description" : "Example for Practitioner",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitioner"
+      "name" : "CH EMED Extension Pharmaceutical Advice",
+      "description" : "Extension to reference an external Observation and the Pharmaceutical Advice document that contains it",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "PractitionerRole"
+        "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "PractitionerRole/FamilienHausarztAtHausarzt"
+        "reference" : "StructureDefinition/ch-emed-ext-prescription"
       },
-      "name" : "Familien Hausarzt @ Hausarzt",
-      "description" : "Example for PractitionerRole",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitionerrole"
+      "name" : "CH EMED Extension Prescription",
+      "description" : "Extension to reference an external MedicationRequest and the Medication Prescritpion document that contains it",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-ext-substitution"
+      },
+      "name" : "CH EMED Extension Substitution",
+      "description" : "This extension is used to indicate whether the medication can be substituted for this patient, i.e. whether it is allowed. \n                        (For a prescription, MedicationRequest.substitution is used to record whether a substitution is allowed or not. \n                        When dispensing, a performed substitution is recorded in MedicationDispense.substitution.)",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-ext-treatmentplan"
+      },
+      "name" : "CH EMED Extension Treatment Plan",
+      "description" : "Extension to reference an external MedicationStatement and the Medication Treatment Plan document that contains it",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-ext-treatmentreason"
+      },
+      "name" : "CH EMED Extension Treatment Reason",
+      "description" : "Extension to represent the treatment reason",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medication"
+      },
+      "name" : "CH EMED Medication",
+      "description" : "Definition of the medication",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medication-medicationdispense"
+      },
+      "name" : "CH EMED Medication (MedicationDispense)",
+      "description" : "Definition of the medication for the medication dispense",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-composition-medicationcard"
+      },
+      "name" : "CH EMED Medication Card Composition",
+      "description" : "Definition of the composition for the medication card document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-document-medicationcard"
+      },
+      "name" : "CH EMED Medication Card Document",
+      "description" : "Definition of the bundle for the medication card document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-composition-medicationdispense"
+      },
+      "name" : "CH EMED Medication Dispense Composition",
+      "description" : "Definition of the composition for the medication dispense document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-document-medicationdispense"
+      },
+      "name" : "CH EMED Medication Dispense Document",
+      "description" : "Definition of the bundle for the medication dispense document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-composition-medicationlist"
+      },
+      "name" : "CH EMED Medication List Composition",
+      "description" : "Definition of the composition for the medication list document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-document-medicationlist"
+      },
+      "name" : "CH EMED Medication List Document",
+      "description" : "Definition of the bundle for the medication list document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-composition-medicationprescription"
+      },
+      "name" : "CH EMED Medication Prescription Composition",
+      "description" : "Definition of the composition for the medication prescription document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-document-medicationprescription"
+      },
+      "name" : "CH EMED Medication Prescription Document",
+      "description" : "Definition of the bundle for the medication prescription document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-composition-medicationtreatmentplan"
+      },
+      "name" : "CH EMED Medication Treatment Plan Composition",
+      "description" : "Definition of the composition for the medication treatment plan document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-document-medicationtreatmentplan"
+      },
+      "name" : "CH EMED Medication Treatment Plan Document",
+      "description" : "Definition of the bundle for the medication treatment plan document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationdispense"
+      },
+      "name" : "CH EMED MedicationDispense (DIS)",
+      "description" : "Definition of the medication dispense for the medication dispense document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationdispense-list"
+      },
+      "name" : "CH EMED MedicationDispense (LIST)",
+      "description" : "Definition of the medication dispense for the medication list document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationrequest-list"
+      },
+      "name" : "CH EMED MedicationRequest (LIST)",
+      "description" : "Definition of the medication request for the medication list document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationrequest"
+      },
+      "name" : "CH EMED MedicationRequest (PRE)",
+      "description" : "Definition of the medication request for the medication prescription document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationrequest-changed"
+      },
+      "name" : "CH EMED MedicationRequest Changed",
+      "description" : "Definition of the changed medication request for the pharmaceutical advice document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationstatement"
+      },
+      "name" : "CH EMED MedicationStatement",
+      "description" : "Definition of the medication statement for the medication treatment plan document (and as basis medication statement)",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationstatement-card"
+      },
+      "name" : "CH EMED MedicationStatement (CARD)",
+      "description" : "Definition of the medication statement for the medication card document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationstatement-list"
+      },
+      "name" : "CH EMED MedicationStatement (LIST)",
+      "description" : "Definition of the medication statement for the medication list document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationstatement-changed"
+      },
+      "name" : "CH EMED MedicationStatement Changed",
+      "description" : "Definition of the changed medication statement for the pharmaceutical advice document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-observation-list"
+      },
+      "name" : "CH EMED Observation (LIST)",
+      "description" : "Definition of the observation for the medication list document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-observation"
+      },
+      "name" : "CH EMED Observation (PADV)",
+      "description" : "Definition of the observation for the pharmaceutical advice document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-organization"
+      },
+      "name" : "CH EMED Organization",
+      "description" : "Definition of the organization for the eMedication context",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-composition-pharmaceuticaladvice"
+      },
+      "name" : "CH EMED Pharmaceutical Advice Composition",
+      "description" : "Definition of the composition for the pharmaceutical advice document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-document-pharmaceuticaladvice"
+      },
+      "name" : "CH EMED Pharmaceutical Advice Document",
+      "description" : "Definition of the bundle for the pharmaceutical advice document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-practitioner"
+      },
+      "name" : "CH EMED Practitioner",
+      "description" : "Definition of the practitioner for the eMedication context",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-practitionerrole"
+      },
+      "name" : "CH EMED PractitionerRole",
+      "description" : "Definition of the practitioner role for the eMedication context",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-quantity"
+      },
+      "name" : "CH EMED Quantity with Units",
+      "description" : "A quantity with defined units",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-range"
+      },
+      "name" : "CH EMED Range with Units",
+      "description" : "A range with defined quantity/units",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-ratio"
+      },
+      "name" : "CH EMED Ratio with Units",
+      "description" : "A ratio with defined units",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
@@ -1302,13 +1625,14 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CodeSystem"
+        "valueString" : "Composition"
       }],
       "reference" : {
-        "reference" : "CodeSystem/v3-TimingEvent"
+        "reference" : "Composition/Comp-ChangeDosage"
       },
-      "name" : "v3-TimingEvent Supplement",
-      "description" : "Translations of concepts for v3-TimingEvent"
+      "name" : "Composition - Change Dosage",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-pharmaceuticaladvice"
     },
     {
       "extension" : [{
@@ -1319,447 +1643,260 @@
         "reference" : "CodeSystem/event-timing"
       },
       "name" : "event-timing Supplement",
-      "description" : "Translations of concepts for event-timing"
+      "description" : "Translations of concepts for event-timing",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "Device"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-composition-medicationcard"
+        "reference" : "Device/ExampleDevice"
       },
-      "name" : "CH EMED Medication Card Composition",
-      "description" : "Definition of the composition for the medication card document"
+      "name" : "Example Device",
+      "description" : "Example for Device",
+      "exampleBoolean" : true
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "Practitioner"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-composition-medicationdispense"
+        "reference" : "Practitioner/FamilienHausarzt"
       },
-      "name" : "CH EMED Medication Dispense Composition",
-      "description" : "Definition of the composition for the medication dispense document"
+      "name" : "Familien Hausarzt",
+      "description" : "Example for Practitioner",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitioner"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "PractitionerRole"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-composition-medicationlist"
+        "reference" : "PractitionerRole/FamilienHausarztAtHausarzt"
       },
-      "name" : "CH EMED Medication List Composition",
-      "description" : "Definition of the composition for the medication list document"
+      "name" : "Familien Hausarzt @ Hausarzt",
+      "description" : "Example for PractitionerRole",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitionerrole"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "Organization"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-composition-medicationprescription"
+        "reference" : "Organization/Hausarzt"
       },
-      "name" : "CH EMED Medication Prescription Composition",
-      "description" : "Definition of the composition for the medication prescription document"
+      "name" : "Hausarzt",
+      "description" : "Example for Organization",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-organization"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "MedicationDispense"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-composition-medicationtreatmentplan"
+        "reference" : "MedicationDispense/MedDispTriatec-WasNotSubstituted"
       },
-      "name" : "CH EMED Medication Treatment Plan Composition",
-      "description" : "Definition of the composition for the medication treatment plan document"
+      "name" : "Medication Dispense was not substituted",
+      "description" : "Example for MedicationDispense (DIS): was not substituted",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "MedicationDispense"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-composition-pharmaceuticaladvice"
+        "reference" : "MedicationDispense/MedDispTriatec-WasSubstituted"
       },
-      "name" : "CH EMED Pharmaceutical Advice Composition",
-      "description" : "Definition of the composition for the pharmaceutical advice document"
+      "name" : "Medication Dispense was substituted",
+      "description" : "Example for MedicationDispense (DIS): was substituted",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "MedicationRequest"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-document-medicationcard"
+        "reference" : "MedicationRequest/MedReq-ChangeMedication"
       },
-      "name" : "CH EMED Medication Card Document",
-      "description" : "Definition of the bundle for the medication card document"
+      "name" : "Medication Request - Changed Medication",
+      "description" : "Example for MedicationRequest - Referenced from Observation: PADV 'CHANGE'",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest-changed"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "MedicationRequest"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-document-medicationdispense"
+        "reference" : "MedicationRequest/MedReq-ComplexDosage"
       },
-      "name" : "CH EMED Medication Dispense Document",
-      "description" : "Definition of the bundle for the medication dispense document"
+      "name" : "Medication Request - Complex Dosage",
+      "description" : "Example for MedicationRequest - Complex Dosage (free text), in reserve, without timing",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "MedicationStatement"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-document-medicationlist"
+        "reference" : "MedicationStatement/AsNeededWithMaxDose"
       },
-      "name" : "CH EMED Medication List Document",
-      "description" : "Definition of the bundle for the medication list document"
+      "name" : "Medication Statement with a medication in reserve and a maximum dosage",
+      "description" : "Example for MedicationStatment - Take Nitrostat 1 tablet as needed for chest pain, maximum 3 tablets in 15 minutes",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "MedicationStatement"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-document-medicationprescription"
+        "reference" : "MedicationStatement/MedStatTriatec-ChangeDosage"
       },
-      "name" : "CH EMED Medication Prescription Document",
-      "description" : "Definition of the bundle for the medication prescription document"
+      "name" : "Medication Statement with changed dosage",
+      "description" : "Example for MedicationStatment - Referenced from Observation: PADV 'CHANGE'",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-changed"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "MedicationStatement"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-document-medicationtreatmentplan"
+        "reference" : "MedicationStatement/NotRecommendedTimingCodes"
       },
-      "name" : "CH EMED Medication Treatment Plan Document",
-      "description" : "Definition of the bundle for the medication treatment plan document"
+      "name" : "Medication Statement with NOT recommended timing codes",
+      "description" : "Example for MedicationStatment with NOT recommended timing codes",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-card"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
+        "valueString" : "Medication"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-document-pharmaceuticaladvice"
+        "reference" : "Medication/MedicationWithTwoIngredients"
       },
-      "name" : "CH EMED Pharmaceutical Advice Document",
-      "description" : "Definition of the bundle for the pharmaceutical advice document"
+      "name" : "Medication with 2 ingredients",
+      "description" : "Example for Medication with 2 ingredients",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
+        "valueString" : "Medication"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-dosage"
+        "reference" : "Medication/MedicationWithATC"
       },
-      "name" : "CH EMED Dosage (MedicationStatement / MedicationDispense)",
-      "description" : "Definition of the dosage (used in MedicationStatement / MedicationDispense)"
+      "name" : "Medication with ATC",
+      "description" : "Example for Non-Swiss Medication with ATC code",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
+        "valueString" : "Patient"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-dosage-split"
+        "reference" : "Patient/MonikaWegmueller"
       },
-      "name" : "CH EMED Dosage Split (MedicationStatement / MedicationDispense)",
-      "description" : "Definition of the split dosage  (used in MedicationStatement / MedicationDispense)"
+      "name" : "Monika Wegmueller",
+      "description" : "Example for Patient",
+      "exampleBoolean" : true
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
+        "valueString" : "Observation"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-dosage-medicationrequest"
+        "reference" : "Observation/Obs-ChangeDosage"
       },
-      "name" : "CH EMED Dosage (MedicationRequest)",
-      "description" : "Definition of the dosage (used in MedicationRequest)"
+      "name" : "Observation for Pharmaceutical Advice document",
+      "description" : "Example for Observation (PADV): CHANGE",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
+        "valueString" : "Observation"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-dosage-split-medicationrequest"
+        "reference" : "Observation/PharmaceuticalAdvice-ChangeDosage"
       },
-      "name" : "CH EMED Dosage Split (MedicationRequest)",
-      "description" : "Definition of the split dosage (used in MedicationRequest)"
+      "name" : "Observation for Pharmaceutical Advice document",
+      "description" : "Example for Observation (PADV): CHANGE with new MedicationStatement",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "Observation"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ext-dispense"
+        "reference" : "Observation/PharmaceuticalAdvice-ChangeMedicament"
       },
-      "name" : "CH EMED Extension Dispense",
-      "description" : "Extension to reference an external MedicationDispense and the Medication Dispense document that contains it"
+      "name" : "Observation for Pharmaceutical Advice document",
+      "description" : "Example for Observation (PADV): CHANGE with new MedicationRequest",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "Bundle"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ext-pharmaceuticaladvice"
+        "reference" : "Bundle/PharmaceuticalAdvice-ChangeDosage"
       },
-      "name" : "CH EMED Extension Pharmaceutical Advice",
-      "description" : "Extension to reference an external Observation and the Pharmaceutical Advice document that contains it"
+      "name" : "Pharmaceutical Advice document to change the dosage",
+      "description" : "Example for Bundle",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "Medication"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ext-prescription"
+        "reference" : "Medication/TriatecWithCodeNotFromVS"
       },
-      "name" : "CH EMED Extension Prescription",
-      "description" : "Extension to reference an external MedicationRequest and the Medication Prescritpion document that contains it"
+      "name" : "Triatec with code not from VS",
+      "description" : "Example for Medication with ingredient code, which is NOT included in the SCT-VS with extensible binding (to show the warning)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "Medication"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ext-substitution"
+        "reference" : "Medication/TriatecWithLocalCodes"
       },
-      "name" : "CH EMED Extension Substitution",
-      "description" : "This extension is used to indicate whether the medication can be substituted for this patient, i.e. whether it is allowed.                          (For a prescription, MedicationRequest.substitution is used to record whether a substitution is allowed or not.                          When dispensing, a performed substitution is recorded in MedicationDispense.substitution.)"
+      "name" : "Triatec with local codes",
+      "description" : "Example for Medication with local medication codes",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "CodeSystem"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ext-treatmentplan"
+        "reference" : "CodeSystem/v3-TimingEvent"
       },
-      "name" : "CH EMED Extension Treatment Plan",
-      "description" : "Extension to reference an external MedicationStatement and the Medication Treatment Plan document that contains it"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ext-treatmentreason"
-      },
-      "name" : "CH EMED Extension Treatment Reason",
-      "description" : "Extension to represent the treatment reason"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ext-medicationstatement-changed"
-      },
-      "name" : "CH EMED Extension MedicationStatement Changed",
-      "description" : "Extension to represent the changed MedicationStatement"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-medication-medicationdispense"
-      },
-      "name" : "CH EMED Medication (MedicationDispense)",
-      "description" : "Definition of the medication for the medication dispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-medication"
-      },
-      "name" : "CH EMED Medication",
-      "description" : "Definition of the medication"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-medicationdispense"
-      },
-      "name" : "CH EMED MedicationDispense (DIS)",
-      "description" : "Definition of the medication dispense for the medication dispense document"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-medicationdispense-list"
-      },
-      "name" : "CH EMED MedicationDispense (LIST)",
-      "description" : "Definition of the medication dispense for the medication list document"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-medicationrequest"
-      },
-      "name" : "CH EMED MedicationRequest (PRE)",
-      "description" : "Definition of the medication request for the medication prescription document"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-medicationrequest-list"
-      },
-      "name" : "CH EMED MedicationRequest (LIST)",
-      "description" : "Definition of the medication request for the medication list document"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-medicationstatement"
-      },
-      "name" : "CH EMED MedicationStatement",
-      "description" : "Definition of the medication statement for the medication treatment plan document (and as basis medication statement)"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-medicationstatement-card"
-      },
-      "name" : "CH EMED MedicationStatement (CARD)",
-      "description" : "Definition of the medication statement for the medication card document"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-medicationstatement-list"
-      },
-      "name" : "CH EMED MedicationStatement (LIST)",
-      "description" : "Definition of the medication statement for the medication list document"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-observation"
-      },
-      "name" : "CH EMED Observation (PADV)",
-      "description" : "Definition of the observation for the pharmaceutical advice document"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-observation-list"
-      },
-      "name" : "CH EMED Observation (LIST)",
-      "description" : "Definition of the observation for the medication list document"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-organization"
-      },
-      "name" : "CH EMED Organization",
-      "description" : "Definition of the organization for the eMedication context"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-practitioner"
-      },
-      "name" : "CH EMED Practitioner",
-      "description" : "Definition of the practitioner for the eMedication context"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-practitionerrole"
-      },
-      "name" : "CH EMED PractitionerRole",
-      "description" : "Definition of the practitioner role for the eMedication context"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-quantity"
-      },
-      "name" : "CH EMED Quantity with Units",
-      "description" : "A quantity with defined units"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-range"
-      },
-      "name" : "CH EMED Range with Units",
-      "description" : "A range with defined quantity/units"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ratio"
-      },
-      "name" : "CH EMED Ratio with Units",
-      "description" : "A ratio with defined units"
+      "name" : "v3-TimingEvent Supplement",
+      "description" : "Translations of concepts for v3-TimingEvent",
+      "exampleBoolean" : false
     },
     {
       "extension" : [{
@@ -1771,6 +1908,18 @@
       },
       "name" : "ActivePharmaceuticalIngredient",
       "description" : "ActivePharmaceuticalIngredient",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/ActSubstanceAdminSubstitutionCode"
+      },
+      "name" : "ActSubstanceAdminSubstitutionCode",
+      "description" : "ActSubstanceAdminSubstitutionCode",
       "exampleBoolean" : false
     },
     {
@@ -1944,7 +2093,7 @@
         }],
         "nameUrl" : "profiles.html",
         "title" : "Profiles",
-        "generation" : "html"
+        "generation" : "markdown"
       },
       {
         "extension" : [{
@@ -1953,7 +2102,7 @@
         }],
         "nameUrl" : "extensions.html",
         "title" : "Extensions",
-        "generation" : "html"
+        "generation" : "markdown"
       },
       {
         "extension" : [{
@@ -1975,10 +2124,6 @@
       }]
     },
     "parameter" : [{
-      "code" : "path-pages",
-      "value" : "input/pages"
-    },
-    {
       "code" : "path-resource",
       "value" : "input/capabilities"
     },

@@ -7,18 +7,26 @@
 </div></div>
   </text>
   <url value="http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed"/>
-  <version value="3.0.0"/>
+  <version value="4.0.0-ballot"/>
   <name value="CH_EMED"/>
   <title value="CH EMED (R4)"/>
   <status value="active"/>
   <experimental value="false"/>
-  <date value="2022-12-21"/>
+  <date value="2023-06-29"/>
   <publisher value="HL7 Switzerland"/>
   <contact>
     <name value="HL7 Switzerland"/>
     <telecom>
       <system value="url"/>
       <value value="https://www.hl7.ch/"/>
+    </telecom>
+  </contact>
+  <contact>
+    <name value="HL7 Switzerland"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.hl7.ch/"/>
+      <use value="work"/>
     </telecom>
   </contact>
   <description value="Implementation Guide for the eMedication in Switzerland."/>
@@ -28,38 +36,56 @@
       <code value="CH"/>
     </coding>
   </jurisdiction>
-  <copyright value="CC-BY-SA-4.0"/>
+  <copyright value="CC0-1.0"/>
   <packageId value="ch.fhir.ig.ch-emed"/>
-  <license value="CC-BY-SA-4.0"/>
+  <license value="CC0-1.0"/>
   <fhirVersion value="4.0.1"/>
-  <dependsOn id="hl7tx">
+  <dependsOn id="hl7ext">
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
-      <valueMarkdown value="Automatically added as a dependency - all IGs depend on HL7 Terminology"/>
+      <valueMarkdown value="Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"/>
     </extension>
-    <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
-    <packageId value="hl7.terminology.r4"/>
-    <version value="5.0.0"/>
+    <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
+    <packageId value="hl7.fhir.uv.extensions.r4"/>
+    <version value="1.0.0"/>
   </dependsOn>
-  <dependsOn id="chcore">
+  <dependsOn id="ch_fhir_ig_ch_core">
     <uri value="http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core"/>
     <packageId value="ch.fhir.ig.ch-core"/>
-    <version value="3.0.0"/>
+    <version value="4.0.0-ballot"/>
+  </dependsOn>
+  <dependsOn id="ch_fhir_ig_ch_epr_term">
+    <uri value="http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term"/>
+    <packageId value="ch.fhir.ig.ch-epr-term"/>
+    <version value="2.0.9"/>
+  </dependsOn>
+  <dependsOn id="hl7_terminology">
+    <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
+    <packageId value="hl7.terminology"/>
+    <version value="5.1.0"/>
   </dependsOn>
   <definition>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="releaselabel"/>
-      </extension>
-      <extension url="value">
-        <valueString value="STU3"/>
-      </extension>
-    </extension>
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
-      <extension url="code">
         <valueString value="copyrightyear"/>
       </extension>
       <extension url="value">
         <valueString value="2020+"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="ballot"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="excludettl"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -81,6 +107,14 @@
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
         <valueString value="allow-extensible-warnings"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="display-warnings"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -262,17 +296,12 @@
         <valueString value="true"/>
       </extension>
     </extension>
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
-      <extension url="code">
-        <valueString value="releaselabel"/>
-      </extension>
-      <extension url="value">
-        <valueString value="STU3"/>
-      </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency">
+      <valueCode value="hl7.fhir.uv.tools#current"/>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="copyrightyear"/>
+        <valueCode value="copyrightyear"/>
       </extension>
       <extension url="value">
         <valueString value="2020+"/>
@@ -280,7 +309,23 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="special-url"/>
+        <valueCode value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="ballot"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="excludettl"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="special-url"/>
       </extension>
       <extension url="value">
         <valueString value="urn:oid:0.4.0.127.0.16.1.1.2.1"/>
@@ -288,7 +333,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="special-url"/>
+        <valueCode value="special-url"/>
       </extension>
       <extension url="value">
         <valueString value="urn:oid:1.3.6.1.4.1.19376.1.9.2.1"/>
@@ -296,7 +341,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="allow-extensible-warnings"/>
+        <valueCode value="allow-extensible-warnings"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -304,7 +349,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="autoload-resources"/>
+        <valueCode value="display-warnings"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -312,7 +357,15 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="path-liquid"/>
+        <valueCode value="autoload-resources"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-liquid"/>
       </extension>
       <extension url="value">
         <valueString value="template/liquid"/>
@@ -320,7 +373,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="path-liquid"/>
+        <valueCode value="path-liquid"/>
       </extension>
       <extension url="value">
         <valueString value="input/liquid"/>
@@ -328,7 +381,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="path-qa"/>
+        <valueCode value="path-qa"/>
       </extension>
       <extension url="value">
         <valueString value="temp/qa"/>
@@ -336,7 +389,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="path-temp"/>
+        <valueCode value="path-temp"/>
       </extension>
       <extension url="value">
         <valueString value="temp/pages"/>
@@ -344,7 +397,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="path-output"/>
+        <valueCode value="path-output"/>
       </extension>
       <extension url="value">
         <valueString value="output"/>
@@ -352,7 +405,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="path-suppressed-warnings"/>
+        <valueCode value="path-suppressed-warnings"/>
       </extension>
       <extension url="value">
         <valueString value="input/ignoreWarnings.txt"/>
@@ -360,7 +413,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="path-history"/>
+        <valueCode value="path-history"/>
       </extension>
       <extension url="value">
         <valueString value="http://fhir.ch/ig/ch-emed/history.html"/>
@@ -368,7 +421,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="template-html"/>
+        <valueCode value="template-html"/>
       </extension>
       <extension url="value">
         <valueString value="template-page.html"/>
@@ -376,7 +429,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="template-md"/>
+        <valueCode value="template-md"/>
       </extension>
       <extension url="value">
         <valueString value="template-page-md.html"/>
@@ -384,7 +437,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="apply-contact"/>
+        <valueCode value="apply-contact"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -392,7 +445,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="apply-context"/>
+        <valueCode value="apply-context"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -400,7 +453,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="apply-copyright"/>
+        <valueCode value="apply-copyright"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -408,7 +461,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="apply-jurisdiction"/>
+        <valueCode value="apply-jurisdiction"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -416,7 +469,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="apply-license"/>
+        <valueCode value="apply-license"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -424,7 +477,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="apply-publisher"/>
+        <valueCode value="apply-publisher"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -432,7 +485,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="apply-version"/>
+        <valueCode value="apply-version"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -440,7 +493,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="active-tables"/>
+        <valueCode value="active-tables"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -448,7 +501,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="fmm-definition"/>
+        <valueCode value="fmm-definition"/>
       </extension>
       <extension url="value">
         <valueString value="http://hl7.org/fhir/versions.html#maturity"/>
@@ -456,7 +509,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="propagate-status"/>
+        <valueCode value="propagate-status"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -464,7 +517,7 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="excludelogbinaryformat"/>
+        <valueCode value="excludelogbinaryformat"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -472,34 +525,33 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="tabbed-snapshots"/>
+        <valueCode value="tabbed-snapshots"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
       </extension>
     </extension>
-    <grouping>
-      <name value="CH-EMED"/>
-    </grouping>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Binary"/>
+        <valueString value="Composition"/>
       </extension>
       <reference>
-        <reference value="Binary/2-6-pdf"/>
+        <reference value="Composition/1-1-Composition"/>
       </reference>
-      <name value="2-6 PDF as original representation of the Medication Prescription document"/>
-      <description value="Example for Binary"/>
+      <name value="1-1 Composition for Medication Treatment Plan document"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Binary"/>
+        <valueString value="MedicationStatement"/>
       </extension>
       <reference>
-        <reference value="Binary/2-7-pdf"/>
+        <reference value="MedicationStatement/1-1-MedStatTriatec"/>
       </reference>
-      <name value="2-7 PDF as original representation of the Medication Card document"/>
-      <description value="Example for Binary"/>
+      <name value="1-1 Medication Statement with Medication Triatec"/>
+      <description value="Example for MedicationStatement (MTP)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -514,6 +566,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <reference>
+        <reference value="Composition/1-2-Composition"/>
+      </reference>
+      <name value="1-2 Composition for Medication Dispense document"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="Bundle"/>
       </extension>
       <reference>
@@ -522,6 +585,50 @@
       <name value="1-2 Medication Dispense document"/>
       <description value="Example for Bundle"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationDispense"/>
+      </extension>
+      <reference>
+        <reference value="MedicationDispense/2-4-MedDispBeloczok"/>
+      </reference>
+      <name value="1-2 Medication Dispense with Medication Beloc Zok"/>
+      <description value="Example for MedicationDispense (DIS)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationDispense"/>
+      </extension>
+      <reference>
+        <reference value="MedicationDispense/1-2-MedDispTriatec"/>
+      </reference>
+      <name value="1-2 Medication Dispense with Medication Triatec"/>
+      <description value="Example for MedicationDispense (DIS)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <reference>
+        <reference value="Composition/2-1-Composition"/>
+      </reference>
+      <name value="2-1 Composition for Medication List document"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationlist"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationDispense"/>
+      </extension>
+      <reference>
+        <reference value="MedicationDispense/2-1-MedDispTriatec"/>
+      </reference>
+      <name value="2-1 Medication Dispense with Medication Triatec"/>
+      <description value="Example for MedicationDispense (LIST)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense-list"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -536,6 +643,39 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationStatement"/>
+      </extension>
+      <reference>
+        <reference value="MedicationStatement/2-1-MedStatTriatec"/>
+      </reference>
+      <name value="2-1 Medication Statement with Medication Triatec"/>
+      <description value="Example for MedicationStatement (LIST)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-list"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <reference>
+        <reference value="Composition/2-2-Composition"/>
+      </reference>
+      <name value="2-2 Composition for Pharmaceutical Advice document"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-pharmaceuticaladvice"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/2-2-ObsPharmaceuticalAdvice"/>
+      </reference>
+      <name value="2-2 Observation for Pharmaceutical Advice document"/>
+      <description value="Example for Observation (PADV)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="Bundle"/>
       </extension>
       <reference>
@@ -544,6 +684,28 @@
       <name value="2-2 Pharmaceutical Advice document"/>
       <description value="Example for Bundle"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <reference>
+        <reference value="Composition/2-3-Composition"/>
+      </reference>
+      <name value="2-3 Composition for Medication Treatment Plan document"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationStatement"/>
+      </extension>
+      <reference>
+        <reference value="MedicationStatement/2-3-MedStatBeloczok"/>
+      </reference>
+      <name value="2-3 Medication Statement with Medication Beloc Zok"/>
+      <description value="Example for MedicationStatement (MTP)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -558,6 +720,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <reference>
+        <reference value="Composition/2-4-Composition"/>
+      </reference>
+      <name value="2-4 Composition for Medication Dispense document"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="Bundle"/>
       </extension>
       <reference>
@@ -566,6 +739,28 @@
       <name value="2-4 Medication Dispense document"/>
       <description value="Example for Bundle"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <reference>
+        <reference value="Composition/2-5-Composition"/>
+      </reference>
+      <name value="2-5 Composition for Medication Treatment Plan document"/>
+      <description value="Example for Composition with a person and a device as authors"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationStatement"/>
+      </extension>
+      <reference>
+        <reference value="MedicationStatement/2-5-MedStatNorvasc"/>
+      </reference>
+      <name value="2-5 Medication Statement with Medication Norvasc"/>
+      <description value="Example for MedicationStatement (MTP)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -580,6 +775,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <reference>
+        <reference value="Composition/2-6-Composition"/>
+      </reference>
+      <name value="2-6 Composition for Medication Prescription document"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationprescription"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="Bundle"/>
       </extension>
       <reference>
@@ -588,6 +794,39 @@
       <name value="2-6 Medication Prescription document"/>
       <description value="Example for Bundle"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationprescription"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationRequest"/>
+      </extension>
+      <reference>
+        <reference value="MedicationRequest/2-6-MedReqNorvasc"/>
+      </reference>
+      <name value="2-6 Medication Request with Medication Norvasc"/>
+      <description value="Example for MedicationRequest (PRE)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Binary"/>
+      </extension>
+      <reference>
+        <reference value="Binary/2-6-pdf"/>
+      </reference>
+      <name value="2-6 PDF as original representation of the Medication Prescription document"/>
+      <description value="Example for Binary"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <reference>
+        <reference value="Composition/2-7-Composition"/>
+      </reference>
+      <name value="2-7 Composition for Medication Card document"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationcard"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -609,336 +848,7 @@
       </reference>
       <name value="2-7 Medication Card document (with references/fullUrls as UUIDs)"/>
       <description value="Example for Bundle (with references/fullUrls as UUIDs)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationcard"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Bundle"/>
-      </extension>
-      <reference>
-        <reference value="Bundle/PharmaceuticalAdvice-ChangeDosage"/>
-      </reference>
-      <name value="Pharmaceutical Advice document to change the dosage"/>
-      <description value="Example for Bundle"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Composition"/>
-      </extension>
-      <reference>
-        <reference value="Composition/1-1-MedicationTreatmentPlan"/>
-      </reference>
-      <name value="1-1 Composition for Medication Treatment Plan document"/>
-      <description value="Example for Composition"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Composition"/>
-      </extension>
-      <reference>
-        <reference value="Composition/1-2-MedicationDispense"/>
-      </reference>
-      <name value="1-2 Composition for Medication Dispense document"/>
-      <description value="Example for Composition"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Composition"/>
-      </extension>
-      <reference>
-        <reference value="Composition/2-1-MedicationList"/>
-      </reference>
-      <name value="2-1 Composition for Medication List document"/>
-      <description value="Example for Composition"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationlist"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Composition"/>
-      </extension>
-      <reference>
-        <reference value="Composition/2-2-PharmaceuticalAdvice"/>
-      </reference>
-      <name value="2-2 Composition for Pharmaceutical Advice document"/>
-      <description value="Example for Composition"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-pharmaceuticaladvice"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Composition"/>
-      </extension>
-      <reference>
-        <reference value="Composition/2-3-MedicationTreatmentPlan"/>
-      </reference>
-      <name value="2-3 Composition for Medication Treatment Plan document"/>
-      <description value="Example for Composition"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Composition"/>
-      </extension>
-      <reference>
-        <reference value="Composition/2-4-MedicationDispense"/>
-      </reference>
-      <name value="2-4 Composition for Medication Dispense document"/>
-      <description value="Example for Composition"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Composition"/>
-      </extension>
-      <reference>
-        <reference value="Composition/2-5-MedicationTreatmentPlan"/>
-      </reference>
-      <name value="2-5 Composition for Medication Treatment Plan document"/>
-      <description value="Example for Composition"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Composition"/>
-      </extension>
-      <reference>
-        <reference value="Composition/2-6-MedicationPrescription"/>
-      </reference>
-      <name value="2-6 Composition for Medication Prescription document"/>
-      <description value="Example for Composition"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationprescription"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Composition"/>
-      </extension>
-      <reference>
-        <reference value="Composition/2-7-MedicationCard"/>
-      </reference>
-      <name value="2-7 Composition for Medication Card document"/>
-      <description value="Example for Composition"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationcard"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Device"/>
-      </extension>
-      <reference>
-        <reference value="Device/Device"/>
-      </reference>
-      <name value="Device"/>
-      <description value="Example for Device"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/1-1-Triatec"/>
-      </reference>
-      <name value="1-1 Medication Triatec"/>
-      <description value="Example for Medication in MedicationStatement"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/1-2-Triatec"/>
-      </reference>
-      <name value="1-2 Medication Triatec"/>
-      <description value="Example for Medication in MedicationDispense"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/2-3-Beloczok"/>
-      </reference>
-      <name value="2-3 Medication Beloc Zok"/>
-      <description value="Example for Medication in MedicationStatement"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/2-4-Beloczok"/>
-      </reference>
-      <name value="2-4 Medication Beloc Zok"/>
-      <description value="Example for Medication in MedicationDispense"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/2-5-Norvasc"/>
-      </reference>
-      <name value="2-5 Medication Norvasc"/>
-      <description value="Example for Medication  in MedicationStatement"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/2-6-Norvasc"/>
-      </reference>
-      <name value="2-6 Medication Norvasc"/>
-      <description value="Example for Medication in MedicationRequest"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/2-7-Beloczok"/>
-      </reference>
-      <name value="2-7 Medication Beloc Zok"/>
-      <description value="Example for Medication in MedicationStatement"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/2-7-Norvasc"/>
-      </reference>
-      <name value="2-7 Medication Norvasc"/>
-      <description value="Example for Medication in MedicationStatement"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/TriatecWithLocalCodes"/>
-      </reference>
-      <name value="Triatec with local codes"/>
-      <description value="Example for Medication with local medication codes"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/MedicationWithTwoIngredients"/>
-      </reference>
-      <name value="Medication with 2 ingredients"/>
-      <description value="Example for Medication with 2 ingredients"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Medication"/>
-      </extension>
-      <reference>
-        <reference value="Medication/TriatecWithCodeNotFromVS"/>
-      </reference>
-      <name value="Triatec with code not from VS"/>
-      <description value="Example for Medication with ingredient code, which is NOT included in the SCT-VS with extensible binding (to show the warning)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="MedicationDispense"/>
-      </extension>
-      <reference>
-        <reference value="MedicationDispense/1-2-MedDispTriatec"/>
-      </reference>
-      <name value="1-2 Medication Dispense with Medication Triatec"/>
-      <description value="Example for MedicationDispense (DIS)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="MedicationDispense"/>
-      </extension>
-      <reference>
-        <reference value="MedicationDispense/2-1-MedDispTriatec"/>
-      </reference>
-      <name value="2-1 Medication Dispense with Medication Triatec"/>
-      <description value="Example for MedicationDispense (LIST)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="MedicationDispense"/>
-      </extension>
-      <reference>
-        <reference value="MedicationDispense/2-4-MedDispBeloczok"/>
-      </reference>
-      <name value="1-2 Medication Dispense with Medication Beloc Zok"/>
-      <description value="Example for MedicationDispense (DIS)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="MedicationRequest"/>
-      </extension>
-      <reference>
-        <reference value="MedicationRequest/2-6-MedReqNorvasc"/>
-      </reference>
-      <name value="2-6 Medication Request with Medication Norvasc"/>
-      <description value="Example for MedicationRequest (PRE)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="MedicationStatement"/>
-      </extension>
-      <reference>
-        <reference value="MedicationStatement/1-1-MedStatTriatec"/>
-      </reference>
-      <name value="1-1 Medication Statement with Medication Triatec"/>
-      <description value="Example for MedicationStatement (MTP)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="MedicationStatement"/>
-      </extension>
-      <reference>
-        <reference value="MedicationStatement/2-1-MedStatTriatec"/>
-      </reference>
-      <name value="2-1 Medication Statement with Medication Triatec"/>
-      <description value="Example for MedicationStatement (LIST)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-list"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="MedicationStatement"/>
-      </extension>
-      <reference>
-        <reference value="MedicationStatement/2-3-MedStatBeloczok"/>
-      </reference>
-      <name value="2-3 Medication Statement with Medication Beloc Zok"/>
-      <description value="Example for MedicationStatement (MTP)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="MedicationStatement"/>
-      </extension>
-      <reference>
-        <reference value="MedicationStatement/2-5-MedStatNorvasc"/>
-      </reference>
-      <name value="2-5 Medication Statement with Medication Norvasc"/>
-      <description value="Example for MedicationStatement (MTP)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"/>
+      <exampleBoolean value="true"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -964,99 +874,476 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="MedicationStatement"/>
+        <valueString value="Binary"/>
       </extension>
       <reference>
-        <reference value="MedicationStatement/NotRecommendedTimingCodes"/>
+        <reference value="Binary/2-7-pdf"/>
       </reference>
-      <name value="Medication Statement with NOT recommended timing codes"/>
-      <description value="Example for MedicationStatment with NOT recommended timing codes"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-card"/>
+      <name value="2-7 PDF as original representation of the Medication Card document"/>
+      <description value="Example for Binary"/>
+      <exampleBoolean value="true"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="MedicationStatement"/>
+        <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
-        <reference value="MedicationStatement/AsNeededWithMaxDose"/>
+        <reference value="StructureDefinition/ch-emed-dosage-medicationrequest"/>
       </reference>
-      <name value="Medication Statement with a medication in reserve and a maximum dosage"/>
-      <description value="Example for MedicationStatment - Take Nitrostat 1 tablet as needed for chest pain, maximum 3 tablets in 15 minutes"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"/>
+      <name value="CH EMED Dosage (MedicationRequest)"/>
+      <description value="Definition of the dosage (used in MedicationRequest)"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Observation"/>
+        <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
-        <reference value="Observation/2-2-PharmaceuticalAdvice"/>
+        <reference value="StructureDefinition/ch-emed-dosage"/>
       </reference>
-      <name value="2-2 Observation for Pharmaceutical Advice document"/>
-      <description value="Example for Observation (PADV)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"/>
+      <name value="CH EMED Dosage (MedicationStatement / MedicationDispense)"/>
+      <description value="Definition of the dosage (used in MedicationStatement / MedicationDispense)"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Organization"/>
+        <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
-        <reference value="Organization/Custodian"/>
+        <reference value="StructureDefinition/ch-emed-dosage-split"/>
       </reference>
-      <name value="Custodian"/>
-      <description value="Example for Organization"/>
+      <name value="CH EMED Dosage Split"/>
+      <description value="Definition of the split dosage (used in MedicationStatement / MedicationDispense / MedicationRequest)"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Organization"/>
+        <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
-        <reference value="Organization/Hausarzt"/>
+        <reference value="StructureDefinition/ch-emed-ext-dispense"/>
       </reference>
-      <name value="Hausarzt"/>
-      <description value="Example for Organization"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-organization"/>
+      <name value="CH EMED Extension Dispense"/>
+      <description value="Extension to reference an external MedicationDispense and the Medication Dispense document that contains it"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Patient"/>
+        <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
-        <reference value="Patient/MonikaWegmueller"/>
+        <reference value="StructureDefinition/ch-emed-ext-medicationrequest-changed"/>
       </reference>
-      <name value="Monika Wegmueller"/>
-      <description value="Example for Patient"/>
+      <name value="CH EMED Extension MedicationRequest Changed"/>
+      <description value="Extension to represent the changed MedicationRequest"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Patient"/>
+        <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
-        <reference value="Patient/MonikaWegmuellerRecipient"/>
+        <reference value="StructureDefinition/ch-emed-ext-medicationstatement-changed"/>
       </reference>
-      <name value="Monika Wegmueller as Information Recipient"/>
-      <description value="Example for Patient"/>
+      <name value="CH EMED Extension MedicationStatement Changed"/>
+      <description value="Extension to represent the changed MedicationStatement"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Practitioner"/>
+        <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
-        <reference value="Practitioner/FamilienHausarzt"/>
+        <reference value="StructureDefinition/ch-emed-ext-pharmaceuticaladvice"/>
       </reference>
-      <name value="Familien Hausarzt"/>
-      <description value="Example for Practitioner"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitioner"/>
+      <name value="CH EMED Extension Pharmaceutical Advice"/>
+      <description value="Extension to reference an external Observation and the Pharmaceutical Advice document that contains it"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="PractitionerRole"/>
+        <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
-        <reference value="PractitionerRole/FamilienHausarztAtHausarzt"/>
+        <reference value="StructureDefinition/ch-emed-ext-prescription"/>
       </reference>
-      <name value="Familien Hausarzt @ Hausarzt"/>
-      <description value="Example for PractitionerRole"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitionerrole"/>
+      <name value="CH EMED Extension Prescription"/>
+      <description value="Extension to reference an external MedicationRequest and the Medication Prescritpion document that contains it"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-ext-substitution"/>
+      </reference>
+      <name value="CH EMED Extension Substitution"/>
+      <description value="This extension is used to indicate whether the medication can be substituted for this patient, i.e. whether it is allowed. &#xA;                        (For a prescription, MedicationRequest.substitution is used to record whether a substitution is allowed or not. &#xA;                        When dispensing, a performed substitution is recorded in MedicationDispense.substitution.)"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-ext-treatmentplan"/>
+      </reference>
+      <name value="CH EMED Extension Treatment Plan"/>
+      <description value="Extension to reference an external MedicationStatement and the Medication Treatment Plan document that contains it"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-ext-treatmentreason"/>
+      </reference>
+      <name value="CH EMED Extension Treatment Reason"/>
+      <description value="Extension to represent the treatment reason"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medication"/>
+      </reference>
+      <name value="CH EMED Medication"/>
+      <description value="Definition of the medication"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medication-medicationdispense"/>
+      </reference>
+      <name value="CH EMED Medication (MedicationDispense)"/>
+      <description value="Definition of the medication for the medication dispense"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-composition-medicationcard"/>
+      </reference>
+      <name value="CH EMED Medication Card Composition"/>
+      <description value="Definition of the composition for the medication card document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-document-medicationcard"/>
+      </reference>
+      <name value="CH EMED Medication Card Document"/>
+      <description value="Definition of the bundle for the medication card document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-composition-medicationdispense"/>
+      </reference>
+      <name value="CH EMED Medication Dispense Composition"/>
+      <description value="Definition of the composition for the medication dispense document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-document-medicationdispense"/>
+      </reference>
+      <name value="CH EMED Medication Dispense Document"/>
+      <description value="Definition of the bundle for the medication dispense document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-composition-medicationlist"/>
+      </reference>
+      <name value="CH EMED Medication List Composition"/>
+      <description value="Definition of the composition for the medication list document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-document-medicationlist"/>
+      </reference>
+      <name value="CH EMED Medication List Document"/>
+      <description value="Definition of the bundle for the medication list document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-composition-medicationprescription"/>
+      </reference>
+      <name value="CH EMED Medication Prescription Composition"/>
+      <description value="Definition of the composition for the medication prescription document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-document-medicationprescription"/>
+      </reference>
+      <name value="CH EMED Medication Prescription Document"/>
+      <description value="Definition of the bundle for the medication prescription document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-composition-medicationtreatmentplan"/>
+      </reference>
+      <name value="CH EMED Medication Treatment Plan Composition"/>
+      <description value="Definition of the composition for the medication treatment plan document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-document-medicationtreatmentplan"/>
+      </reference>
+      <name value="CH EMED Medication Treatment Plan Document"/>
+      <description value="Definition of the bundle for the medication treatment plan document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationdispense"/>
+      </reference>
+      <name value="CH EMED MedicationDispense (DIS)"/>
+      <description value="Definition of the medication dispense for the medication dispense document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationdispense-list"/>
+      </reference>
+      <name value="CH EMED MedicationDispense (LIST)"/>
+      <description value="Definition of the medication dispense for the medication list document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationrequest-list"/>
+      </reference>
+      <name value="CH EMED MedicationRequest (LIST)"/>
+      <description value="Definition of the medication request for the medication list document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationrequest"/>
+      </reference>
+      <name value="CH EMED MedicationRequest (PRE)"/>
+      <description value="Definition of the medication request for the medication prescription document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationrequest-changed"/>
+      </reference>
+      <name value="CH EMED MedicationRequest Changed"/>
+      <description value="Definition of the changed medication request for the pharmaceutical advice document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationstatement"/>
+      </reference>
+      <name value="CH EMED MedicationStatement"/>
+      <description value="Definition of the medication statement for the medication treatment plan document (and as basis medication statement)"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationstatement-card"/>
+      </reference>
+      <name value="CH EMED MedicationStatement (CARD)"/>
+      <description value="Definition of the medication statement for the medication card document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationstatement-list"/>
+      </reference>
+      <name value="CH EMED MedicationStatement (LIST)"/>
+      <description value="Definition of the medication statement for the medication list document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationstatement-changed"/>
+      </reference>
+      <name value="CH EMED MedicationStatement Changed"/>
+      <description value="Definition of the changed medication statement for the pharmaceutical advice document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-observation-list"/>
+      </reference>
+      <name value="CH EMED Observation (LIST)"/>
+      <description value="Definition of the observation for the medication list document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-observation"/>
+      </reference>
+      <name value="CH EMED Observation (PADV)"/>
+      <description value="Definition of the observation for the pharmaceutical advice document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-organization"/>
+      </reference>
+      <name value="CH EMED Organization"/>
+      <description value="Definition of the organization for the eMedication context"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-composition-pharmaceuticaladvice"/>
+      </reference>
+      <name value="CH EMED Pharmaceutical Advice Composition"/>
+      <description value="Definition of the composition for the pharmaceutical advice document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-document-pharmaceuticaladvice"/>
+      </reference>
+      <name value="CH EMED Pharmaceutical Advice Document"/>
+      <description value="Definition of the bundle for the pharmaceutical advice document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-practitioner"/>
+      </reference>
+      <name value="CH EMED Practitioner"/>
+      <description value="Definition of the practitioner for the eMedication context"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-practitionerrole"/>
+      </reference>
+      <name value="CH EMED PractitionerRole"/>
+      <description value="Definition of the practitioner role for the eMedication context"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-quantity"/>
+      </reference>
+      <name value="CH EMED Quantity with Units"/>
+      <description value="A quantity with defined units"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-range"/>
+      </reference>
+      <name value="CH EMED Range with Units"/>
+      <description value="A range with defined quantity/units"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-ratio"/>
+      </reference>
+      <name value="CH EMED Ratio with Units"/>
+      <description value="A ratio with defined units"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -1082,13 +1369,14 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="CodeSystem"/>
+        <valueString value="Composition"/>
       </extension>
       <reference>
-        <reference value="CodeSystem/v3-TimingEvent"/>
+        <reference value="Composition/Comp-ChangeDosage"/>
       </reference>
-      <name value="v3-TimingEvent Supplement"/>
-      <description value="Translations of concepts for v3-TimingEvent"/>
+      <name value="Composition - Change Dosage"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-pharmaceuticaladvice"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -1099,406 +1387,238 @@
       </reference>
       <name value="event-timing Supplement"/>
       <description value="Translations of concepts for event-timing"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="Device"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-composition-medicationcard"/>
+        <reference value="Device/ExampleDevice"/>
       </reference>
-      <name value="CH EMED Medication Card Composition"/>
-      <description value="Definition of the composition for the medication card document"/>
+      <name value="Example Device"/>
+      <description value="Example for Device"/>
+      <exampleBoolean value="true"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="Practitioner"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-composition-medicationdispense"/>
+        <reference value="Practitioner/FamilienHausarzt"/>
       </reference>
-      <name value="CH EMED Medication Dispense Composition"/>
-      <description value="Definition of the composition for the medication dispense document"/>
+      <name value="Familien Hausarzt"/>
+      <description value="Example for Practitioner"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitioner"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="PractitionerRole"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-composition-medicationlist"/>
+        <reference value="PractitionerRole/FamilienHausarztAtHausarzt"/>
       </reference>
-      <name value="CH EMED Medication List Composition"/>
-      <description value="Definition of the composition for the medication list document"/>
+      <name value="Familien Hausarzt @ Hausarzt"/>
+      <description value="Example for PractitionerRole"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitionerrole"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="Organization"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-composition-medicationprescription"/>
+        <reference value="Organization/Hausarzt"/>
       </reference>
-      <name value="CH EMED Medication Prescription Composition"/>
-      <description value="Definition of the composition for the medication prescription document"/>
+      <name value="Hausarzt"/>
+      <description value="Example for Organization"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-organization"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="MedicationDispense"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-composition-medicationtreatmentplan"/>
+        <reference value="MedicationDispense/MedDispTriatec-WasNotSubstituted"/>
       </reference>
-      <name value="CH EMED Medication Treatment Plan Composition"/>
-      <description value="Definition of the composition for the medication treatment plan document"/>
+      <name value="Medication Dispense was not substituted"/>
+      <description value="Example for MedicationDispense (DIS): was not substituted"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="MedicationDispense"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-composition-pharmaceuticaladvice"/>
+        <reference value="MedicationDispense/MedDispTriatec-WasSubstituted"/>
       </reference>
-      <name value="CH EMED Pharmaceutical Advice Composition"/>
-      <description value="Definition of the composition for the pharmaceutical advice document"/>
+      <name value="Medication Dispense was substituted"/>
+      <description value="Example for MedicationDispense (DIS): was substituted"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="MedicationRequest"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-document-medicationcard"/>
+        <reference value="MedicationRequest/MedReq-ChangeMedication"/>
       </reference>
-      <name value="CH EMED Medication Card Document"/>
-      <description value="Definition of the bundle for the medication card document"/>
+      <name value="Medication Request - Changed Medication"/>
+      <description value="Example for MedicationRequest - Referenced from Observation: PADV 'CHANGE'"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest-changed"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="MedicationRequest"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-document-medicationdispense"/>
+        <reference value="MedicationRequest/MedReq-ComplexDosage"/>
       </reference>
-      <name value="CH EMED Medication Dispense Document"/>
-      <description value="Definition of the bundle for the medication dispense document"/>
+      <name value="Medication Request - Complex Dosage"/>
+      <description value="Example for MedicationRequest - Complex Dosage (free text), in reserve, without timing"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="MedicationStatement"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-document-medicationlist"/>
+        <reference value="MedicationStatement/AsNeededWithMaxDose"/>
       </reference>
-      <name value="CH EMED Medication List Document"/>
-      <description value="Definition of the bundle for the medication list document"/>
+      <name value="Medication Statement with a medication in reserve and a maximum dosage"/>
+      <description value="Example for MedicationStatment - Take Nitrostat 1 tablet as needed for chest pain, maximum 3 tablets in 15 minutes"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="MedicationStatement"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-document-medicationprescription"/>
+        <reference value="MedicationStatement/MedStatTriatec-ChangeDosage"/>
       </reference>
-      <name value="CH EMED Medication Prescription Document"/>
-      <description value="Definition of the bundle for the medication prescription document"/>
+      <name value="Medication Statement with changed dosage"/>
+      <description value="Example for MedicationStatment - Referenced from Observation: PADV 'CHANGE'"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-changed"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="MedicationStatement"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-document-medicationtreatmentplan"/>
+        <reference value="MedicationStatement/NotRecommendedTimingCodes"/>
       </reference>
-      <name value="CH EMED Medication Treatment Plan Document"/>
-      <description value="Definition of the bundle for the medication treatment plan document"/>
+      <name value="Medication Statement with NOT recommended timing codes"/>
+      <description value="Example for MedicationStatment with NOT recommended timing codes"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-card"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="Medication"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-document-pharmaceuticaladvice"/>
+        <reference value="Medication/MedicationWithTwoIngredients"/>
       </reference>
-      <name value="CH EMED Pharmaceutical Advice Document"/>
-      <description value="Definition of the bundle for the pharmaceutical advice document"/>
+      <name value="Medication with 2 ingredients"/>
+      <description value="Example for Medication with 2 ingredients"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:complex-type"/>
+        <valueString value="Medication"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-dosage"/>
+        <reference value="Medication/MedicationWithATC"/>
       </reference>
-      <name value="CH EMED Dosage (MedicationStatement / MedicationDispense)"/>
-      <description value="Definition of the dosage (used in MedicationStatement / MedicationDispense)"/>
+      <name value="Medication with ATC"/>
+      <description value="Example for Non-Swiss Medication with ATC code"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:complex-type"/>
+        <valueString value="Patient"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-dosage-split"/>
+        <reference value="Patient/MonikaWegmueller"/>
       </reference>
-      <name value="CH EMED Dosage Split (MedicationStatement / MedicationDispense)"/>
-      <description value="Definition of the split dosage  (used in MedicationStatement / MedicationDispense)"/>
+      <name value="Monika Wegmueller"/>
+      <description value="Example for Patient"/>
+      <exampleBoolean value="true"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:complex-type"/>
+        <valueString value="Observation"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-dosage-medicationrequest"/>
+        <reference value="Observation/Obs-ChangeDosage"/>
       </reference>
-      <name value="CH EMED Dosage (MedicationRequest)"/>
-      <description value="Definition of the dosage (used in MedicationRequest)"/>
+      <name value="Observation for Pharmaceutical Advice document"/>
+      <description value="Example for Observation (PADV): CHANGE"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:complex-type"/>
+        <valueString value="Observation"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-dosage-split-medicationrequest"/>
+        <reference value="Observation/PharmaceuticalAdvice-ChangeDosage"/>
       </reference>
-      <name value="CH EMED Dosage Split (MedicationRequest)"/>
-      <description value="Definition of the split dosage (used in MedicationRequest)"/>
+      <name value="Observation for Pharmaceutical Advice document"/>
+      <description value="Example for Observation (PADV): CHANGE with new MedicationStatement"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
+        <valueString value="Observation"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-ext-dispense"/>
+        <reference value="Observation/PharmaceuticalAdvice-ChangeMedicament"/>
       </reference>
-      <name value="CH EMED Extension Dispense"/>
-      <description value="Extension to reference an external MedicationDispense and the Medication Dispense document that contains it"/>
+      <name value="Observation for Pharmaceutical Advice document"/>
+      <description value="Example for Observation (PADV): CHANGE with new MedicationRequest"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
+        <valueString value="Bundle"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-ext-pharmaceuticaladvice"/>
+        <reference value="Bundle/PharmaceuticalAdvice-ChangeDosage"/>
       </reference>
-      <name value="CH EMED Extension Pharmaceutical Advice"/>
-      <description value="Extension to reference an external Observation and the Pharmaceutical Advice document that contains it"/>
+      <name value="Pharmaceutical Advice document to change the dosage"/>
+      <description value="Example for Bundle"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
+        <valueString value="Medication"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-ext-prescription"/>
+        <reference value="Medication/TriatecWithCodeNotFromVS"/>
       </reference>
-      <name value="CH EMED Extension Prescription"/>
-      <description value="Extension to reference an external MedicationRequest and the Medication Prescritpion document that contains it"/>
+      <name value="Triatec with code not from VS"/>
+      <description value="Example for Medication with ingredient code, which is NOT included in the SCT-VS with extensible binding (to show the warning)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
+        <valueString value="Medication"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-ext-substitution"/>
+        <reference value="Medication/TriatecWithLocalCodes"/>
       </reference>
-      <name value="CH EMED Extension Substitution"/>
-      <description value="This extension is used to indicate whether the medication can be substituted for this patient, i.e. whether it is allowed.                          (For a prescription, MedicationRequest.substitution is used to record whether a substitution is allowed or not.                          When dispensing, a performed substitution is recorded in MedicationDispense.substitution.)"/>
+      <name value="Triatec with local codes"/>
+      <description value="Example for Medication with local medication codes"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
+        <valueString value="CodeSystem"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/ch-emed-ext-treatmentplan"/>
+        <reference value="CodeSystem/v3-TimingEvent"/>
       </reference>
-      <name value="CH EMED Extension Treatment Plan"/>
-      <description value="Extension to reference an external MedicationStatement and the Medication Treatment Plan document that contains it"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-ext-treatmentreason"/>
-      </reference>
-      <name value="CH EMED Extension Treatment Reason"/>
-      <description value="Extension to represent the treatment reason"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-ext-medicationstatement-changed"/>
-      </reference>
-      <name value="CH EMED Extension MedicationStatement Changed"/>
-      <description value="Extension to represent the changed MedicationStatement"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-medication-medicationdispense"/>
-      </reference>
-      <name value="CH EMED Medication (MedicationDispense)"/>
-      <description value="Definition of the medication for the medication dispense"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-medication"/>
-      </reference>
-      <name value="CH EMED Medication"/>
-      <description value="Definition of the medication"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-medicationdispense"/>
-      </reference>
-      <name value="CH EMED MedicationDispense (DIS)"/>
-      <description value="Definition of the medication dispense for the medication dispense document"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-medicationdispense-list"/>
-      </reference>
-      <name value="CH EMED MedicationDispense (LIST)"/>
-      <description value="Definition of the medication dispense for the medication list document"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-medicationrequest"/>
-      </reference>
-      <name value="CH EMED MedicationRequest (PRE)"/>
-      <description value="Definition of the medication request for the medication prescription document"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-medicationrequest-list"/>
-      </reference>
-      <name value="CH EMED MedicationRequest (LIST)"/>
-      <description value="Definition of the medication request for the medication list document"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-medicationstatement"/>
-      </reference>
-      <name value="CH EMED MedicationStatement"/>
-      <description value="Definition of the medication statement for the medication treatment plan document (and as basis medication statement)"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-medicationstatement-card"/>
-      </reference>
-      <name value="CH EMED MedicationStatement (CARD)"/>
-      <description value="Definition of the medication statement for the medication card document"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-medicationstatement-list"/>
-      </reference>
-      <name value="CH EMED MedicationStatement (LIST)"/>
-      <description value="Definition of the medication statement for the medication list document"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-observation"/>
-      </reference>
-      <name value="CH EMED Observation (PADV)"/>
-      <description value="Definition of the observation for the pharmaceutical advice document"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-observation-list"/>
-      </reference>
-      <name value="CH EMED Observation (LIST)"/>
-      <description value="Definition of the observation for the medication list document"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-organization"/>
-      </reference>
-      <name value="CH EMED Organization"/>
-      <description value="Definition of the organization for the eMedication context"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-practitioner"/>
-      </reference>
-      <name value="CH EMED Practitioner"/>
-      <description value="Definition of the practitioner for the eMedication context"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-practitionerrole"/>
-      </reference>
-      <name value="CH EMED PractitionerRole"/>
-      <description value="Definition of the practitioner role for the eMedication context"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:complex-type"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-quantity"/>
-      </reference>
-      <name value="CH EMED Quantity with Units"/>
-      <description value="A quantity with defined units"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:complex-type"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-range"/>
-      </reference>
-      <name value="CH EMED Range with Units"/>
-      <description value="A range with defined quantity/units"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:complex-type"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/ch-emed-ratio"/>
-      </reference>
-      <name value="CH EMED Ratio with Units"/>
-      <description value="A ratio with defined units"/>
+      <name value="v3-TimingEvent Supplement"/>
+      <description value="Translations of concepts for v3-TimingEvent"/>
+      <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -1509,6 +1629,17 @@
       </reference>
       <name value="ActivePharmaceuticalIngredient"/>
       <description value="ActivePharmaceuticalIngredient"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ActSubstanceAdminSubstitutionCode"/>
+      </reference>
+      <name value="ActSubstanceAdminSubstitutionCode"/>
+      <description value="ActSubstanceAdminSubstitutionCode"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1664,7 +1795,7 @@
         </extension>
         <nameUrl value="profiles.html"/>
         <title value="Profiles"/>
-        <generation value="html"/>
+        <generation value="markdown"/>
       </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
@@ -1672,7 +1803,7 @@
         </extension>
         <nameUrl value="extensions.html"/>
         <title value="Extensions"/>
-        <generation value="html"/>
+        <generation value="markdown"/>
       </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
@@ -1691,10 +1822,6 @@
         <generation value="markdown"/>
       </page>
     </page>
-    <parameter>
-      <code value="path-pages"/>
-      <value value="input/pages"/>
-    </parameter>
     <parameter>
       <code value="path-resource"/>
       <value value="input/capabilities"/>

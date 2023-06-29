@@ -31,10 +31,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -62,7 +62,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EMED (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.0.0 - STU3
+            <span style="display:inline-block;">4.0.0-ballot - ballot
 
 
 
@@ -90,16 +90,15 @@
             </button>
             <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
-  <!--<li>
-    <a href="toc.html">Table of Contents</a>
-  </li>-->
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
   <li>
     <a href="index.html">Home</a>
   </li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Documents<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Documents
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -123,8 +122,8 @@
     </ul>
   </li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -136,8 +135,8 @@
     </ul>
   </li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Guidance<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Guidance
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -195,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v3.0.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v4.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 4 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
   <h2>Dosage</h2>
   
 
@@ -244,7 +243,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <p>A code for specifying the route of administration into or onto a patient’s body comes from the <a href="ValueSet-edqm-routeofadministration.html">ValueSet EDQM - RouteOfAdministration</a>.</p>
 
 <h4 id="patient-instruction">Patient Instruction</h4>
-<p>Instructions to the patient regarding the administration of the medication, e.g. taking with food. The instructions are in a patient understandable language.</p>
+<p>Instructions to the patient regarding the administration of the medication, e.g. taking with food. The instructions are in a patient understandable language. <br />
+Additionally, if no structured dosage instructions are provided or the dosage is complex, the dosage can be represented here using narrative text.</p>
 
 <div class="dragon">
     <p>
@@ -272,7 +272,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <th style="text-align: left">Dosage noon</th>
       <th style="text-align: left">Dosage evening</th>
       <th style="text-align: left">Dosage night</th>
+      <th style="text-align: left">Unit</th>
+      <th style="text-align: left">In reserve</th>
       <th style="text-align: left">Route of administration</th>
+      <th style="text-align: left">Start and/or end date</th>
+      <th style="text-align: left">Patient instruction</th>
     </tr>
   </thead>
   <tbody>
@@ -281,7 +285,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td style="text-align: left">0</td>
       <td style="text-align: left">1</td>
       <td style="text-align: left">0</td>
+      <td style="text-align: left">tablet</td>
+      <td style="text-align: left">as needed</td>
       <td style="text-align: left">oral</td>
+      <td style="text-align: left">04.02.2012 -</td>
+      <td style="text-align: left">Take with food</td>
     </tr>
   </tbody>
 </table>
@@ -300,6 +308,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"asNeededBoolean"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"route"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"coding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
@@ -323,51 +332,43 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </span><span class="p">]</span><span class="w">
 </span></code></pre></div></div>
 
-<p>See the full example: <a href="Bundle-2-5-MedicationTreatmentPlan.json.html">2-5 Medication Treatment Plan document</a></p>
-
 <h4 id="normal-dosing---narrative">Normal Dosing - Narrative</h4>
-<p>The narrative dosage instructions is represented in the <code class="highlighter-rouge">Dosage.text</code> element.</p>
+<p>The narrative dosage instructions is represented in the <code class="language-plaintext highlighter-rouge">Dosage.patientInstruction</code> element.</p>
 
-<p>Dosing example where no structured form (of the timing event) is provided:</p>
+<p>Dosing example where no structured form is provided:</p>
 
 <table class="table table-bordered">
-	<tbody>
-		<tr>
-			<th>Dosage morning</th>
-			<th>Dosage noon</th>
-			<th>Dosage evening</th>
-			<th>Dosage night</th>
-			<th>Route of administration</th>
-		</tr>
-		<tr>
-			<td colspan="4">Application 3-4 times a day, for a maximum of 14 days</td>
-			<td>Cutaneous use</td>
-		</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th style="text-align: left">Dosage morning</th>
+      <th style="text-align: left">Dosage noon</th>
+      <th style="text-align: left">Dosage evening</th>
+      <th style="text-align: left">Dosage night</th>
+      <th style="text-align: left">Unit</th>
+      <th style="text-align: left">In reserve</th>
+      <th style="text-align: left">Route of administration</th>
+      <th style="text-align: left">Start and/or end date</th>
+      <th style="text-align: left">Patient instruction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">Take 2 tablets daily as usual before dinner with a little water, reduce the dosage one week before surgery to 1 tablet daily.</td>
+    </tr>
+  </tbody>
 </table>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="nl">"dosage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Application 3-4 times a day, for a maximum of 14 days"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"patientInstruction"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Apply cherry-sized amount of the gel to the elbow and rub in gently. Use as long as the pain is present (max. 14 days)."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"timing"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"repeat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"boundsPeriod"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"start"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-01"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"end"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-14"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"asNeededBoolean"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"route"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"coding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:0.4.0.127.0.16.1.1.2.1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"20003000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"display"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Cutaneous use"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"patientInstruction"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Take 2 tablets daily as usual before dinner with a little water, reduce the dosage one week before surgery to 1 tablet daily."</span><span class="p">,</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span></code></pre></div></div>
@@ -376,31 +377,37 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <p>Dosing example with the structured form and supplemented by the narrative text:</p>
 
 <table class="table table-bordered">
-	<tbody>
-		<tr>
-			<th>Dosage morning</th>
-			<th>Dosage noon</th>
-			<th>Dosage evening</th>
-			<th>Dosage night</th>
-			<th>Route of administration</th>
-		</tr>
-		<tr>
-			<td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td rowspan="2">Cutaneous use</td>
-		</tr>
+  <thead>
     <tr>
-			<td colspan="4">Application as long as needed, but for a maximum of 14 days</td>
-		</tr>
-	</tbody>
+      <th style="text-align: left">Dosage morning</th>
+      <th style="text-align: left">Dosage noon</th>
+      <th style="text-align: left">Dosage evening</th>
+      <th style="text-align: left">Dosage night</th>
+      <th style="text-align: left">Unit</th>
+      <th style="text-align: left">In reserve</th>
+      <th style="text-align: left">Route of administration</th>
+      <th style="text-align: left">Start and/or end date</th>
+      <th style="text-align: left">Patient instruction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left">oral</td>
+      <td style="text-align: left">01.09.2022 - 14.09.2022</td>
+      <td style="text-align: left">Take one tablet in the morning and one in the evening on even days. On odd days, take half a tablet in the morning and half in the evening.</td>
+    </tr>
+  </tbody>
 </table>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="nl">"dosage"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Application as long as needed, but for a maximum of 14 days"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"patientInstruction"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Apply cherry-sized amount of the gel to the elbow and rub in gently. Use as long as the pain is present (max. 14 days)."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"patientInstruction"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Take one tablet in the morning and one in the evening on even days. On odd days, take half a tablet in the morning and half in the evening."</span><span class="p">,</span><span class="w">
       </span><span class="nl">"timing"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"repeat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"boundsPeriod"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -409,18 +416,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           </span><span class="p">},</span><span class="w">
           </span><span class="nl">"when"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"MORN"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"NOON"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"EVE"</span><span class="w">
           </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"asNeededBoolean"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"route"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"coding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:0.4.0.127.0.16.1.1.2.1"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"20003000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"display"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Cutaneous use"</span><span class="w">
+            </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"20053000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"display"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Oral use"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -429,8 +434,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </span></code></pre></div></div>
 
 <h3 id="split-dosing">Split Dosing</h3>
-<p>The split dosing differs from the normal dosing in that the dosage element is repeated. In contrast to normal dosing, where the dosage element can occur once, the <strong>dosage element</strong> can be repeated <strong>n times</strong> in split dosing. The order of the dosage instructions is defined by the required element <code class="highlighter-rouge">Dosage.sequence</code>. <br />
-The information, which is the same for all dosage elements (<code class="highlighter-rouge">text</code>, <code class="highlighter-rouge">patientInstruction</code>, <code class="highlighter-rouge">asNeeded</code>, <code class="highlighter-rouge">route</code>) is mapped in the first dosage element.</p>
+<p>The split dosing differs from the normal dosing in that the dosage element is repeated. In contrast to normal dosing, where the dosage element can occur once, the <strong>dosage element</strong> can be repeated <strong>n times</strong> in split dosing. The order of the dosage instructions is defined by the required element <code class="language-plaintext highlighter-rouge">Dosage.sequence</code>. <br />
+The information, which is the same for all dosage elements (<code class="language-plaintext highlighter-rouge">patientInstruction</code>, <code class="language-plaintext highlighter-rouge">timing.repeat.boundsPeriod</code>, <code class="language-plaintext highlighter-rouge">asNeeded</code>, <code class="language-plaintext highlighter-rouge">route</code>) is mapped in the first dosage element.</p>
 
 <p>Dosing example based on the use case step 2-3:</p>
 
@@ -441,7 +446,11 @@ The information, which is the same for all dosage elements (<code class="highlig
       <th style="text-align: left">Dosage noon</th>
       <th style="text-align: left">Dosage evening</th>
       <th style="text-align: left">Dosage night</th>
+      <th style="text-align: left">Unit</th>
+      <th style="text-align: left">In reserve</th>
       <th style="text-align: left">Route of administration</th>
+      <th style="text-align: left">Start and/or end date</th>
+      <th style="text-align: left">Patient instruction</th>
     </tr>
   </thead>
   <tbody>
@@ -450,7 +459,11 @@ The information, which is the same for all dosage elements (<code class="highlig
       <td style="text-align: left">0</td>
       <td style="text-align: left">0.5</td>
       <td style="text-align: left">0</td>
+      <td style="text-align: left">tablet</td>
+      <td style="text-align: left"> </td>
       <td style="text-align: left">oral</td>
+      <td style="text-align: left">04.02.2012 -</td>
+      <td style="text-align: left">Take with food</td>
     </tr>
   </tbody>
 </table>
@@ -512,8 +525,6 @@ The information, which is the same for all dosage elements (<code class="highlig
   </span><span class="p">]</span><span class="w">
 </span></code></pre></div></div>
 
-<p>See the full example: <a href="Bundle-2-3-MedicationTreatmentPlan.json.html">2-3 Medication Treatment Plan document</a></p>
-
 <h3 id="profiles">Profiles</h3>
 <p>Definition of the dosage (base dosage entry 1..1):</p>
 <ul>
@@ -523,8 +534,7 @@ The information, which is the same for all dosage elements (<code class="highlig
 
 <p>Definition of the split dosage (additional dosage entry 0..*):</p>
 <ul>
-  <li><a href="StructureDefinition-ch-emed-dosage-split.html">CH EMED Dosage Split (MedicationStatement / MedicationDispense)</a></li>
-  <li><a href="StructureDefinition-ch-emed-dosage-split-medicationrequest.html">CH EMED Dosage Split (MedicationRequest)</a></li>
+  <li><a href="StructureDefinition-ch-emed-dosage-split.html">CH EMED Dosage Split</a></li>
 </ul>
 
 
@@ -552,7 +562,7 @@ The information, which is the same for all dosage elements (<code class="highlig
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 21, 2022 12:57+0100">2022-12-21</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#4.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 15:03+0200">2023-06-29</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -560,7 +570,7 @@ The information, which is the same for all dosage elements (<code class="highlig
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%233.0.0%20/dosage.html&amp;entry%2E247644557=Dosage">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%234.0.0-ballot%20/dosage.html&amp;entry%2E247644557=Dosage">Propose a change</a>
 
           </span>
         </p>

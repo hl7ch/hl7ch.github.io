@@ -1,0 +1,91 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/Composition/2-4-Composition> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "2-4-Composition"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense>
+     ] )
+  ] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><p><b>Generated Narrative: Composition</b><a name=\"2-4-Composition\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Composition &quot;2-4-Composition&quot;  (Language &quot;de-CH&quot;) </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emed-composition-medicationdispense.html\">CH EMED Medication Dispense Composition</a></p></div><p><b>identifier</b>: id: urn:uuid:d8143fea-4778-11e6-beb8-9e71128cae77</p><p><b>status</b>: final</p><p><b>type</b>: Medication dispensed.extended Document <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC[??]</a>#60593-1; <a href=\"https://browser.ihtsdotools.org/\">SNOMED CT[??]</a>#294121000195110 &quot;Medication dispense document (record artifact)&quot;)</span></p><p><b>date</b>: 2012-02-04 14:00:00+0100</p><p><b>author</b>: <a href=\"PractitionerRole-FamilienHausarztAtHausarzt.html\">PractitionerRole/FamilienHausarztAtHausarzt</a></p><p><b>title</b>: Abgabe</p><p><b>confidentiality</b>: N</p></div>"
+  ] ; # 
+  fhir:identifier [
+     fhir:system [ fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "urn:uuid:d8143fea-4778-11e6-beb8-9e71128cae77" ]
+  ] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a loinc:60593-1 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:version [ fhir:v "http://snomed.info/sct/2011000195101" ] ;
+       fhir:code [ fhir:v "60593-1" ] ;
+       fhir:display [ fhir:v "Medication dispensed.extended Document" ]
+     ] [
+       a sct:294121000195110 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:version [ fhir:v "http://snomed.info/sct/2011000195101" ] ;
+       fhir:code [ fhir:v "294121000195110" ] ;
+       fhir:display [ fhir:v "Medication dispense document (record artifact)" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-emed/Patient/MonikaWegmueller> ;
+     fhir:reference [ fhir:v "Patient/MonikaWegmueller" ]
+  ] ; # 
+  fhir:date [ fhir:v "2012-02-04T14:00:00+01:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-emed/PractitionerRole/FamilienHausarztAtHausarzt> ;
+     fhir:reference [ fhir:v "PractitionerRole/FamilienHausarztAtHausarzt" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Abgabe"] ; # 
+  fhir:confidentiality [
+     fhir:v "N" ;
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a sct:17621005 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:version [ fhir:v "http://snomed.info/sct/2011000195101" ] ;
+           fhir:code [ fhir:v "17621005" ] ;
+           fhir:display [ fhir:v "Normal (qualifier value)" ]
+         ] )
+       ]
+     ] )
+  ] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Abgabe eines Medikaments" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:60590-7 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "60590-7" ] ;
+         fhir:display [ fhir:v "Medication dispensed.brief Document" ]
+       ] )
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><thead><tr><th>Präpartename</th><th>Wirkstoffname</th><th>Galenische Form</th><th>Dosis pro Einheit</th><th>Anzahl Packungen</th><th>Packungsgrösse</th><th>Dos.Morgen</th><th>Dos.Mittag</th><th>Dos.Abend</th><th>Dos.Nacht</th><th>Verabreichungsweg</th><th>Kommentar</th><th>Behandlungsrund</th><th>Datum/Zeit der Abgabe/ Anwendung</th><th>Identifikation des Empfängers</th></tr></thead><tbody><tr id=\"dis.1\"><td id=\"dis.1.brandedmedication\">Beloc Zok</td><td id=\"dis.1.ingredient\">Metoprolol</td><td id=\"dis.1.packageform\">Ret Tbl</td><td id=\"dis.1.dosequantity\">50 mg</td><td id=\"dis.1.nopackages\">1</td><td id=\"dis.1.packagesize\">30 Stk</td><td id=\"dis.1.dosagemorning\">1</td><td id=\"dis.1.dosagelunch\">0</td><td id=\"dis.1.dosageevening\">0.5</td><td id=\"dis.1.routecode\">oral</td><td id=\"dis.1.note\"/><td id=\"dis.1.datefromto\"/><td id=\"dis.1.reason\">Bluthochdruck</td><td id=\"dis.1.dipsensedate\"/><td id=\"dis.1.dipsenseto\"/></tr></tbody></table></div>"
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-emed/MedicationDispense/2-4-MedDispBeloczok> ;
+       fhir:reference [ fhir:v "MedicationDispense/2-4-MedDispBeloczok" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
