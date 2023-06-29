@@ -1,0 +1,80 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/Encounter/Encounter-44371210708> a fhir:Encounter;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "Encounter-44371210708"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"Encounter-44371210708\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-swissnoso-encounter.html\">Swissnoso Encounter</a></p></div><blockquote><p><b>Swissnoso Organizational Unit</b></p><p><b>value</b>: Medicina (Details: http://fhir.ch/ig/swissnoso/CodeSystem/ecdc-ward-specialty code MED = 'Medicine', stated as 'Medicina')</p><p><b>value</b>: Medicina interna, medicina generale (Details: http://fhir.ch/ig/swissnoso/CodeSystem/ecdc-patient-consultant-specialty code MEDGEN = 'General medicine', stated as 'Medicina interna, medicina generale')</p></blockquote><p><b>identifier</b>: Visit number: 44371210708</p><p><b>status</b>: finished</p><p><b>class</b>: inpatient encounter (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code IMP = 'inpatient encounter', stated as 'inpatient encounter')</p><p><b>subject</b>: <a href=\"Patient-GiuliaRossi.html\">Patient/GiuliaRossi</a></p><p><b>period</b>: 2021-07-08 --&gt; 2021-07-16</p><p><b>serviceProvider</b>: <a href=\"Organization-OspedaleSantaMaria.html\">Organization/OspedaleSantaMaria</a></p></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "unit" ];
+       fhir:Extension.valueCoding [
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/swissnoso/CodeSystem/ecdc-ward-specialty" ];
+         fhir:Coding.code [ fhir:value "MED" ];
+         fhir:Coding.display [ fhir:value "Medicina" ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:Extension.url [ fhir:value "specialty" ];
+       fhir:Extension.valueCoding [
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/swissnoso/CodeSystem/ecdc-patient-consultant-specialty" ];
+         fhir:Coding.code [ fhir:value "MEDGEN" ];
+         fhir:Coding.display [ fhir:value "Medicina interna, medicina generale" ]
+       ]
+     ];
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organizational-unit" ]
+  ];
+  fhir:Encounter.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0203" ];
+         fhir:Coding.code [ fhir:value "VN" ]
+       ]
+     ];
+     fhir:Identifier.system [ fhir:value "http://fhir.santamaria.ch/fid" ];
+     fhir:Identifier.value [ fhir:value "44371210708" ]
+  ];
+  fhir:Encounter.status [ fhir:value "finished"];
+  fhir:Encounter.class [
+     fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
+     fhir:Coding.code [ fhir:value "IMP" ];
+     fhir:Coding.display [ fhir:value "inpatient encounter" ]
+  ];
+  fhir:Encounter.subject [
+     fhir:link <http://fhir.ch/ig/swissnoso/Patient/GiuliaRossi>;
+     fhir:Reference.reference [ fhir:value "Patient/GiuliaRossi" ]
+  ];
+  fhir:Encounter.period [
+     fhir:Period.start [ fhir:value "2021-07-08"^^xsd:date ];
+     fhir:Period.end [ fhir:value "2021-07-16"^^xsd:date ]
+  ];
+  fhir:Encounter.serviceProvider [
+     fhir:link <http://fhir.ch/ig/swissnoso/Organization/OspedaleSantaMaria>;
+     fhir:Reference.reference [ fhir:value "Organization/OspedaleSantaMaria" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/Encounter/Encounter-44371210708.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

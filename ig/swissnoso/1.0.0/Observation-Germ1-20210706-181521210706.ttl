@@ -1,0 +1,95 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/Observation/Germ1-20210706-181521210706> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "Germ1-20210706-181521210706"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"Germ1-20210706-181521210706\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-swissnoso-observation-germ.html\">Swissnoso Observation Germ</a></p></div><p><b>partOf</b>: <a href=\"Procedure-Microbiology-20210706-181521210706.html\">Procedure/Microbiology-20210706-181521210706</a></p><p><b>status</b>: final</p><p><b>code</b>: Bacteria [Presence] in Urine <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#87829-8)</span></p><p><b>subject</b>: <a href=\"Patient-FridolinMueller.html\">Patient/FridolinMueller</a></p><p><b>encounter</b>: <a href=\"Encounter-Encounter-181521210706.html\">Encounter/Encounter-181521210706</a></p><p><b>effective</b>: 2021-07-06</p><blockquote><p><b>component</b></p><p><b>code</b>: Bacteria identified in Urine by Culture <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#630-4)</span></p><p><b>value</b>: Escherichia coli (organism) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#112283007)</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: Bacteria [#/volume] in Urine by Automated count <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#51480-2)</span></p><p><b>value</b>: &gt;=10E5 CFU/ml <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-swissnoso-bacterial-count-in-urine.html\">Swissnoso Bacterial Count in Urine</a>#2)</span></p></blockquote></div>"
+  ];
+  fhir:Observation.partOf [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/swissnoso/Procedure/Microbiology-20210706-181521210706>;
+     fhir:Reference.reference [ fhir:value "Procedure/Microbiology-20210706-181521210706" ]
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:87829-8;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "87829-8" ];
+       fhir:Coding.display [ fhir:value "Bacteria [Presence] in Urine" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/swissnoso/Patient/FridolinMueller>;
+     fhir:Reference.reference [ fhir:value "Patient/FridolinMueller" ]
+  ];
+  fhir:Observation.encounter [
+     fhir:link <http://fhir.ch/ig/swissnoso/Encounter/Encounter-181521210706>;
+     fhir:Reference.reference [ fhir:value "Encounter/Encounter-181521210706" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2021-07-06"^^xsd:date];
+  fhir:Observation.component [
+     fhir:index 0;
+     fhir:Observation.component.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:630-4;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "630-4" ];
+         fhir:Coding.display [ fhir:value "Bacteria identified in Urine by Culture" ]
+       ]
+     ];
+     fhir:Observation.component.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a sct:112283007;
+         fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+         fhir:Coding.code [ fhir:value "112283007" ];
+         fhir:Coding.display [ fhir:value "Escherichia coli (organism)" ]
+       ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Observation.component.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:51480-2;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "51480-2" ];
+         fhir:Coding.display [ fhir:value "Bacteria [#/volume] in Urine by Automated count" ]
+       ]
+     ];
+     fhir:Observation.component.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/swissnoso/CodeSystem/swissnoso-bacterial-count-in-urine" ];
+         fhir:Coding.code [ fhir:value "2" ];
+         fhir:Coding.display [ fhir:value ">=10E5 CFU/ml" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/Observation/Germ1-20210706-181521210706.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

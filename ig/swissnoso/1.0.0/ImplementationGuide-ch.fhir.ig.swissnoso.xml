@@ -1,0 +1,1498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ImplementationGuide xmlns="http://hl7.org/fhir">
+  <id value="ch.fhir.ig.swissnoso"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><h2>Swissnoso_IG</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/swissnoso/ImplementationGuide/ch.fhir.ig.swissnoso</pre><div><p>Implementation guide to specify the exchange format for data transmission to Swissnoso in the context of monitoring and prevention of healthcare-associated infections.</p>
+</div></div>
+  </text>
+  <url value="http://fhir.ch/ig/swissnoso/ImplementationGuide/ch.fhir.ig.swissnoso"/>
+  <version value="1.0.0"/>
+  <name value="Swissnoso_IG"/>
+  <title value="Swissnoso Implementation Guide (R4)"/>
+  <status value="active"/>
+  <date value="2022-06-14"/>
+  <publisher value="Swissnoso"/>
+  <contact>
+    <name value="Swissnoso"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.swissnoso.ch/"/>
+    </telecom>
+  </contact>
+  <description value="Implementation guide to specify the exchange format for data transmission to Swissnoso in the context of monitoring and prevention of healthcare-associated infections."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="CHE"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="CC-BY-SA-4.0"/>
+  <packageId value="ch.fhir.ig.swissnoso"/>
+  <license value="CC-BY-SA-4.0"/>
+  <fhirVersion value="4.0.1"/>
+  <dependsOn id="hl7tx">
+    <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
+    <packageId value="hl7.terminology.r4"/>
+    <version value="3.1.0"/>
+  </dependsOn>
+  <dependsOn id="ch_fhir_ig_ch_core">
+    <uri value="http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core"/>
+    <packageId value="ch.fhir.ig.ch-core"/>
+    <version value="2.0.0"/>
+  </dependsOn>
+  <definition>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="copyrightyear"/>
+      </extension>
+      <extension url="value">
+        <valueString value="2022+"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="STU 1"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-liquid"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-liquid"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-qa"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/qa"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-temp"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/pages"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-output"/>
+      </extension>
+      <extension url="value">
+        <valueString value="output"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-suppressed-warnings"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/ignoreWarnings.txt"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-history"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://fhir.ch/ig/swissnoso/history.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="template-html"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="template-md"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page-md.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-contact"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-context"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-copyright"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-jurisdiction"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-license"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-publisher"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="active-tables"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="fmm-definition"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://hl7.org/fhir/versions.html#maturity"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="propagate-status"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="excludelogbinaryformat"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-encounter"/>
+      </reference>
+      <name value="Swissnoso Encounter"/>
+      <description value="This profile constrains the Encounter resource to represent the characteristics of an encounter in the context of a report to Swissnoso."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-location"/>
+      </reference>
+      <name value="Swissnoso Location"/>
+      <description value="This profile constrains the Location resource to represent the characteristics of a location in the context of a report to Swissnoso."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-message-cauti-surveillance"/>
+      </reference>
+      <name value="Swissnoso Message CAUTI Surveillance"/>
+      <description value="This profile constrains the Bundle resource to represent the message in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-messageheader-cauti-surveillance"/>
+      </reference>
+      <name value="Swissnoso MessageHeader CAUTI Surveillance"/>
+      <description value="This profile constrains the MessageHeader resource to represent the first entry in the message in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-observation"/>
+      </reference>
+      <name value="Swissnoso Observation"/>
+      <description value="This profile constrains the Observation resource to represent the characteristics of a observation in the context of a report to Swissnoso."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-observation-angle-pain-or-tenderness"/>
+      </reference>
+      <name value="Swissnoso Observation Angle Pain or Tenderness"/>
+      <description value="This profile constrains the Observation resource to represent the presence/absence of the symptom costovertebral angle pain or tenderness in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-observation-dysuria"/>
+      </reference>
+      <name value="Swissnoso Observation Dysuria"/>
+      <description value="This profile constrains the Observation resource to represent the presence/absence of the symptom dysuria in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-observation-fever"/>
+      </reference>
+      <name value="Swissnoso Observation Fever"/>
+      <description value="This profile constrains the Observation resource to represent the presence/absence of the symptom fever in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-observation-germ"/>
+      </reference>
+      <name value="Swissnoso Observation Germ"/>
+      <description value="This profile constrains the Observation resource to represent the germ in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-observation-number-of-different-germs"/>
+      </reference>
+      <name value="Swissnoso Observation Number of Different Germs"/>
+      <description value="This profile constrains the Observation resource to represent the number of different swissnoso-germs in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-observation-suprapubic-tenderness"/>
+      </reference>
+      <name value="Swissnoso Observation Suprapubic Tenderness"/>
+      <description value="This profile constrains the Observation resource to represent the presence/absence of the symptom suprapubic tenderness in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-observation-symptoms"/>
+      </reference>
+      <name value="Swissnoso Observation Symptoms"/>
+      <description value="This profile constrains the Observation resource to represent the presence/absence of symptoms in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-observation-urinary-frequency"/>
+      </reference>
+      <name value="Swissnoso Observation Urinary Frequency"/>
+      <description value="This profile constrains the Observation resource to represent the presence/absence of the symptom urinary frequency in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-observation-urinary-urgency"/>
+      </reference>
+      <name value="Swissnoso Observation Urinary Urgency"/>
+      <description value="This profile constrains the Observation resource to represent the presence/absence of the symptom urinary urgency in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-organization"/>
+      </reference>
+      <name value="Swissnoso Organization"/>
+      <description value="This profile constrains the Organization resource to represent the characteristics of an organization in the context of a report to Swissnoso."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-patient"/>
+      </reference>
+      <name value="Swissnoso Patient"/>
+      <description value="This profile constrains the Patient resource to represent the characteristics of a patient in the context of a report to Swissnoso."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-procedure"/>
+      </reference>
+      <name value="Swissnoso Procedure"/>
+      <description value="This profile constrains the Procedure resource to represent the characteristics of a procedure in the context of a report to Swissnoso."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-procedure-insert-catheter"/>
+      </reference>
+      <name value="Swissnoso Procedure Insert Catheter"/>
+      <description value="This profile constrains the Procedure resource to represent the procedure of inserting a catheter in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-procedure-microbiology"/>
+      </reference>
+      <name value="Swissnoso Procedure Microbiology"/>
+      <description value="This profile constrains the Procedure resource to represent the microbiology in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-procedure-remove-catheter"/>
+      </reference>
+      <name value="Swissnoso Procedure Remove Catheter"/>
+      <description value="This profile constrains the Procedure resource to represent the procedure of removing a catheter in the context of the CAUTI Surveillance module."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-admission-date-monitored-unit"/>
+      </reference>
+      <name value="Swissnoso Admission Date Monitored Unit"/>
+      <description value="Extension defined by Swissnoso to describe the date of admission to the monitored organizational unit."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-discharge-date-monitored-unit"/>
+      </reference>
+      <name value="Swissnoso Discharge Date Monitored Unit"/>
+      <description value="Extension defined by Swissnoso to describe the date of discharge from the monitored organizational unit."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-organizational-unit"/>
+      </reference>
+      <name value="Swissnoso Organizational Unit"/>
+      <description value="Extension defined by Swissnoso to describe the organizational unit with its specialty."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-sequence-number"/>
+      </reference>
+      <name value="Swissnoso Sequence Number"/>
+      <description value="Extension defined by Swissnoso to be able to indicate the sequence number."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/swissnoso-transurethral-procedure"/>
+      </reference>
+      <name value="Swissnoso Transurethral Procedure"/>
+      <description value="Extension defined by Swissnoso to describe whether the procedure was performed as part of a transurethral procedure."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/swissnoso-bacterial-count-in-urine"/>
+      </reference>
+      <name value="Swissnoso Bacterial Count in Urine"/>
+      <description value="This value set includes the codes defined in the code system 'Swissnoso Bacterial Count in Urine'."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/swissnoso-clinical-symptom"/>
+      </reference>
+      <name value="Swissnoso Clinical Symptom"/>
+      <description value="This value set includes the codes defined in the code system 'Swissnoso Clinical Symptom'."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/swissnoso-germ"/>
+      </reference>
+      <name value="Swissnoso Germ"/>
+      <description value="This value set includes the SNOMED CT codes for representing the germ."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/swissnoso-indication"/>
+      </reference>
+      <name value="Swissnoso Indication"/>
+      <description value="This value set includes the codes defined in the code system 'Swissnoso Indication'."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/swissnoso-number-of-different-germs"/>
+      </reference>
+      <name value="Swissnoso Number of Different Germs"/>
+      <description value="This value set includes the codes defined in the code system 'Swissnoso Number of Different Germs'."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/swissnoso-organizational-unit"/>
+      </reference>
+      <name value="Swissnoso Organizational Unit"/>
+      <description value="This value set includes the ECDC 'Ward specialty' codes for representing the organization unit."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/swissnoso-procedure-location"/>
+      </reference>
+      <name value="Swissnoso Procedure Location"/>
+      <description value="This value set includes the codes defined in the code system 'Swissnoso Procedure Location'."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/swissnoso-specialty"/>
+      </reference>
+      <name value="Swissnoso Specialty"/>
+      <description value="This value set includes the ECDC 'Patient/consultant specialty' codes for representing the specialty."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/ecdc-patient-consultant-specialty"/>
+      </reference>
+      <name value="ECDC Patient-Consultant Specialty"/>
+      <description value="This code system contains specialty codes defined by the European Centre for Disease Prevention and Control (ECDC), &#xD;&#xA;used by Swissnoso in the context of monitoring and prevention of healthcare-associated infections. &#xD;&#xA;See original code system in [European Centre for Disease Prevention and Control. Point prevalence survey of healthcare-associated infections and antimicrobial &#xD;&#xA;use in European acute care hospitals – protocol version 5.3. Stockholm: ECDC; 2016.](https://www.ecdc.europa.eu/sites/default/files/media/en/publications/Publications/PPS-HAI-antimicrobial-use-EU-acute-care-hospitals-V5-3.pdf), page 40 f."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/ecdc-ward-specialty"/>
+      </reference>
+      <name value="ECDC Ward Specialty"/>
+      <description value="This code system contains specialty codes defined by the European Centre for Disease Prevention and Control (ECDC), &#xD;&#xA;used by Swissnoso in the context of monitoring and prevention of healthcare-associated infections. &#xD;&#xA;See original code system in [European Centre for Disease Prevention and Control. Point prevalence survey of healthcare-associated infections and antimicrobial &#xD;&#xA;use in European acute care hospitals – protocol version 5.3. Stockholm: ECDC; 2016.](https://www.ecdc.europa.eu/sites/default/files/media/en/publications/Publications/PPS-HAI-antimicrobial-use-EU-acute-care-hospitals-V5-3.pdf), page 40 f."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/swissnoso"/>
+      </reference>
+      <name value="Swissnoso"/>
+      <description value="This code system contains codes defined by Swissnoso &#xD;&#xA;for which no international codes (e.g. LOINC or SNOMED CT) could be found that accurately describe &#xD;&#xA;the meaning for the Swissnoso context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/swissnoso-bacterial-count-in-urine"/>
+      </reference>
+      <name value="Swissnoso Bacterial Count in Urine"/>
+      <description value="This code system contains codes defined by Swissnoso for representing the bacterial count in urine.&#xD;&#xA;The value ranges for this are based on the CAUTI definition of the National Healthcare Safety Network (NHSN), &#xD;&#xA;see the corresponding [NHSN manual](https://www.cdc.gov/nhsn/pdfs/pscmanual/7psccauticurrent.pdf)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/swissnoso-clinical-symptom"/>
+      </reference>
+      <name value="Swissnoso Clinical Symptom"/>
+      <description value="This code system contains codes defined by Swissnoso for representing the clinical symptom. &#xD;&#xA;The selection of the clinical symptoms are based on the CAUTI definition of the National Healthcare Safety Network (NHSN), &#xD;&#xA;see the corresponding [NHSN manual](https://www.cdc.gov/nhsn/pdfs/pscmanual/7psccauticurrent.pdf)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/swissnoso-indication"/>
+      </reference>
+      <name value="Swissnoso Indication"/>
+      <description value="This code system contains codes defined by Swissnoso for representing the indication."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/swissnoso-number-of-different-germs"/>
+      </reference>
+      <name value="Swissnoso Number of Different Germs"/>
+      <description value="This code system contains codes defined by Swissnoso for representing the number of different germs. &#xD;&#xA;The division of the numbers are based on the CAUTI definition of the National Healthcare Safety Network (NHSN), &#xD;&#xA;see the corresponding [NHSN manual](https://www.cdc.gov/nhsn/pdfs/pscmanual/7psccauticurrent.pdf)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/swissnoso-procedure-location"/>
+      </reference>
+      <name value="Swissnoso Procedure Location"/>
+      <description value="This code system contains codes defined by Swissnoso for representing the location where the procedure is performed."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <reference>
+        <reference value="Patient/AnnaMeier"/>
+      </reference>
+      <name value="Anna Meier"/>
+      <description value="Example of a Swissnoso patient (UC 14200)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Location"/>
+      </extension>
+      <reference>
+        <reference value="Location/BettenstationTannenwald"/>
+      </reference>
+      <name value="Bettenstation Tannenwald"/>
+      <description value="Example of a Swissnoso location"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Location"/>
+      </extension>
+      <reference>
+        <reference value="Location/DegenzaSantaMaria"/>
+      </reference>
+      <name value="Degenza Santa Maria"/>
+      <description value="Example of a Swissnoso location"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/Dysuria2-20210714-44371210708"/>
+      </reference>
+      <name value="Dysuria 2 (14.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-dysuria"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Encounter"/>
+      </extension>
+      <reference>
+        <reference value="Encounter/Encounter-102938210710"/>
+      </reference>
+      <name value="Encounter 102938210710"/>
+      <description value="Example of a Swissnoso encounter (UC 102938)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Encounter"/>
+      </extension>
+      <reference>
+        <reference value="Encounter/Encounter-14200210624"/>
+      </reference>
+      <name value="Encounter 14200210624"/>
+      <description value="Example of a Swissnoso encounter (UC 14200)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Encounter"/>
+      </extension>
+      <reference>
+        <reference value="Encounter/Encounter-181521210706"/>
+      </reference>
+      <name value="Encounter 181521210706"/>
+      <description value="Example of a Swissnoso encounter (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Encounter"/>
+      </extension>
+      <reference>
+        <reference value="Encounter/Encounter-44371210708"/>
+      </reference>
+      <name value="Encounter 44371210708"/>
+      <description value="Example of a Swissnoso encounter (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/Fever-20210706-181521210706"/>
+      </reference>
+      <name value="Fever (06.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <reference>
+        <reference value="Patient/FridolinMueller"/>
+      </reference>
+      <name value="Fridolin Müller"/>
+      <description value="Example of a Swissnoso patient (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/Germ1-20210706-181521210706"/>
+      </reference>
+      <name value="Germ 1 (06.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/Germ1-20210709-44371210708"/>
+      </reference>
+      <name value="Germ 1 (09.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/Germ1-20210714-44371210708"/>
+      </reference>
+      <name value="Germ 1 (14.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/Germ2-20210706-181521210706"/>
+      </reference>
+      <name value="Germ 2 (06.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <reference>
+        <reference value="Patient/GiuliaRossi"/>
+      </reference>
+      <name value="Giulia Rossi"/>
+      <description value="Example of a Swissnoso patient (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/HopitalBellevue"/>
+      </reference>
+      <name value="Hôpital Bellevue"/>
+      <description value="Example of a Swissnoso organization"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/InsertCatheter-20210701-14200210624"/>
+      </reference>
+      <name value="Insert Catheter (01.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 14200)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/InsertCatheter-20210708-44371210708"/>
+      </reference>
+      <name value="Insert Catheter (08.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/InsertCatheter-20210712-102938210710"/>
+      </reference>
+      <name value="Insert Catheter (12.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 102938)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/InsertCatheter1-20210706-181521210706"/>
+      </reference>
+      <name value="Insert Catheter 1 (06.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/InsertCatheter2-20210709-181521210706"/>
+      </reference>
+      <name value="Insert Catheter 2 (09.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <reference>
+        <reference value="Patient/JeanLucRichard"/>
+      </reference>
+      <name value="Jean-Luc Richard"/>
+      <description value="Example of a Swissnoso patient (UC 102938)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MessageHeader"/>
+      </extension>
+      <reference>
+        <reference value="MessageHeader/MessageHeaderUC102938"/>
+      </reference>
+      <name value="MessageHeader UC 102938"/>
+      <description value="Example of a Swissnoso message header (UC 102938)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MessageHeader"/>
+      </extension>
+      <reference>
+        <reference value="MessageHeader/MessageHeaderUC14200"/>
+      </reference>
+      <name value="MessageHeader UC 14200"/>
+      <description value="Example of a Swissnoso message header (UC 14200)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MessageHeader"/>
+      </extension>
+      <reference>
+        <reference value="MessageHeader/MessageHeaderUC181521"/>
+      </reference>
+      <name value="MessageHeader UC 181521"/>
+      <description value="Example of a Swissnoso message header (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MessageHeader"/>
+      </extension>
+      <reference>
+        <reference value="MessageHeader/MessageHeaderUC44371"/>
+      </reference>
+      <name value="MessageHeader UC 44371"/>
+      <description value="Example of a Swissnoso message header (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/MessageUC102938"/>
+      </reference>
+      <name value="Message UC 102938"/>
+      <description value="Example of a Swissnoso message (UC 102938)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/MessageUC14200"/>
+      </reference>
+      <name value="Message UC 14200"/>
+      <description value="Example of a Swissnoso message (UC 14200)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/MessageUC181521"/>
+      </reference>
+      <name value="Message UC 181521"/>
+      <description value="Example of a Swissnoso message (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/MessageUC44371"/>
+      </reference>
+      <name value="Message UC 44371"/>
+      <description value="Example of a Swissnoso message (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/Microbiology-20210706-181521210706"/>
+      </reference>
+      <name value="Microbiology (06.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-microbiology"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/Microbiology1-20210709-44371210708"/>
+      </reference>
+      <name value="Microbiology 1 (09.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-microbiology"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/Microbiology2-20210714-44371210708"/>
+      </reference>
+      <name value="Microbiology 2 (14.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-microbiology"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoAnglePainOrTenderness-20210706-181521210706"/>
+      </reference>
+      <name value="No Angle Pain or Tenderness (06.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-angle-pain-or-tenderness"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoAnglePainOrTenderness1-20210709-44371210708"/>
+      </reference>
+      <name value="No Angle Pain or Tenderness 1 (09.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-angle-pain-or-tenderness"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoAnglePainOrTenderness2-20210714-44371210708"/>
+      </reference>
+      <name value="No Angle Pain or Tenderness 2 (14.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-angle-pain-or-tenderness"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoDysuria-20210706-181521210706"/>
+      </reference>
+      <name value="No Dysuria (06.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-dysuria"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoDysuria1-20210709-44371210708"/>
+      </reference>
+      <name value="No Dysuria 1 (09.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-dysuria"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoFever1-20210709-44371210708"/>
+      </reference>
+      <name value="No Fever 1 (09.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoFever2-20210714-44371210708"/>
+      </reference>
+      <name value="No Fever 2 (14.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoUrinaryFrequency-20210706-181521210706"/>
+      </reference>
+      <name value="No Urinary Frequency (06.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-frequency"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoUrinaryFrequency1-20210709-44371210708"/>
+      </reference>
+      <name value="No Urinary Frequency 1 (09.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-frequency"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoUrinaryUrgency-20210706-181521210706"/>
+      </reference>
+      <name value="No Urinary Urgency (06.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-urgency"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NoUrinaryUrgency1-20210709-44371210708"/>
+      </reference>
+      <name value="No Urinary Urgency 1 (09.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-urgency"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Location"/>
+      </extension>
+      <reference>
+        <reference value="Location/NotfallstationTannenwald"/>
+      </reference>
+      <name value="Notfallstation Tannenwald"/>
+      <description value="Example of a Swissnoso location"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NumberOfDifferentGerms-20210706-181521210706"/>
+      </reference>
+      <name value="Number of Different Germs (06.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-number-of-different-germs"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NumberOfDifferentGerms-20210709-44371210708"/>
+      </reference>
+      <name value="Number of Different Germs (09.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-number-of-different-germs"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/NumberOfDifferentGerms-20210714-44371210708"/>
+      </reference>
+      <name value="Number of Different Germs (14.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-number-of-different-germs"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/OspedaleSantaMaria"/>
+      </reference>
+      <name value="Ospedale Santa Maria"/>
+      <description value="Example of a Swissnoso organization"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/RemoveCatheter-20210704-14200210624"/>
+      </reference>
+      <name value="Remove Catheter (04.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 14200)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/RemoveCatheter-20210709-44371210708"/>
+      </reference>
+      <name value="Remove Catheter (09.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/RemoveCatheter-20210716-102938210710"/>
+      </reference>
+      <name value="Remove Catheter (16.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 102938)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/RemoveCatheter1-20210709-181521210706"/>
+      </reference>
+      <name value="Remove Catheter 1 (09.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/RemoveCatheter2-20210710-181521210706"/>
+      </reference>
+      <name value="Remove Catheter 2 (10.07.2021)"/>
+      <description value="Example of a Swissnoso procedure (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/SpitalTannenwald"/>
+      </reference>
+      <name value="Spital Tannenwald"/>
+      <description value="Example of a Swissnoso organization"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/SuprapubicTenderness-20210706-181521210706"/>
+      </reference>
+      <name value="Suprapubic Tenderness (06.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-suprapubic-tenderness"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/SuprapubicTenderness1-20210709-44371210708"/>
+      </reference>
+      <name value="Suprapubic Tenderness 1 (09.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-suprapubic-tenderness"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/SuprapubicTenderness2-20210714-44371210708"/>
+      </reference>
+      <name value="Suprapubic Tenderness 2 (14.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-suprapubic-tenderness"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ConceptMap"/>
+      </extension>
+      <reference>
+        <reference value="ConceptMap/SwissnosoOrganizationalUnit-to-SwissnosoSpecialty"/>
+      </reference>
+      <name value="SwissnosoOrganizationalUnit-to-SwissnosoSpecialty"/>
+      <description value="Mapping to describe the relationships between organization units and specialty."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/Symptoms-20210706-181521210706"/>
+      </reference>
+      <name value="Symptoms (06.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 181521)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-symptoms"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/Symptoms1-20210709-44371210708"/>
+      </reference>
+      <name value="Symptoms 1 (09.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-symptoms"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/Symptoms2-20210714-44371210708"/>
+      </reference>
+      <name value="Symptoms 2 (14.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-symptoms"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Location"/>
+      </extension>
+      <reference>
+        <reference value="Location/UniteHospitaliereBellevue"/>
+      </reference>
+      <name value="Unité hospitalière Bellevue"/>
+      <description value="Example of a Swissnoso location"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/UrinaryFrequency2-20210714-44371210708"/>
+      </reference>
+      <name value="Urinary Frequency 2 (14.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-frequency"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/UrinaryUrgency2-20210714-44371210708"/>
+      </reference>
+      <name value="Urinary Urgency 2 (14.07.2021)"/>
+      <description value="Example of a Swissnoso observation (UC 44371)"/>
+      <exampleCanonical value="http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-urgency"/>
+    </resource>
+    <page>
+      <nameUrl value="toc.html"/>
+      <title value="Table of Contents"/>
+      <generation value="html"/>
+      <page>
+        <nameUrl value="index.html"/>
+        <title value="Home"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="usecases-de.html"/>
+        <title value="Anwendungsfälle"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="usecases-fr.html"/>
+        <title value="Cas d'application"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="usecases-it.html"/>
+        <title value="Casi concreti"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="message.html"/>
+        <title value="Message"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="profiles.html"/>
+        <title value="Profiles"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="extensions.html"/>
+        <title value="Extensions"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="terminology.html"/>
+        <title value="Terminology"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="changelog.html"/>
+        <title value="Change Log"/>
+        <generation value="markdown"/>
+      </page>
+    </page>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/capabilities"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/examples"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/extensions"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/models"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/operations"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/profiles"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/resources"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/vocabulary"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/maps"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/testing"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/history"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="fsh-generated/resources"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="template/config"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="input/images"/>
+    </parameter>
+    <parameter>
+      <code value="path-tx-cache"/>
+      <value value="input-cache/txcache"/>
+    </parameter>
+  </definition>
+</ImplementationGuide>

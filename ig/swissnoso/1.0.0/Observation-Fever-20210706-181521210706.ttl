@@ -1,0 +1,48 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/Observation/Fever-20210706-181521210706> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "Fever-20210706-181521210706"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"Fever-20210706-181521210706\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-swissnoso-observation-fever.html\">Swissnoso Observation Fever</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Fieber &gt;38.0°C (Ohr) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-swissnoso-clinical-symptom.html\">Swissnoso Clinical Symptom</a>#1)</span></p><p><b>subject</b>: <a href=\"Patient-FridolinMueller.html\">Patient/FridolinMueller</a></p><p><b>encounter</b>: <a href=\"Encounter-Encounter-181521210706.html\">Encounter/Encounter-181521210706</a></p><p><b>effective</b>: 2021-07-06</p><p><b>value</b>: true</p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/swissnoso/CodeSystem/swissnoso-clinical-symptom" ];
+       fhir:Coding.code [ fhir:value "1" ];
+       fhir:Coding.display [ fhir:value "Fieber >38.0°C (Ohr)" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/swissnoso/Patient/FridolinMueller>;
+     fhir:Reference.reference [ fhir:value "Patient/FridolinMueller" ]
+  ];
+  fhir:Observation.encounter [
+     fhir:link <http://fhir.ch/ig/swissnoso/Encounter/Encounter-181521210706>;
+     fhir:Reference.reference [ fhir:value "Encounter/Encounter-181521210706" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2021-07-06"^^xsd:date];
+  fhir:Observation.valueBoolean [ fhir:value "true"^^xsd:boolean] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/Observation/Fever-20210706-181521210706.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

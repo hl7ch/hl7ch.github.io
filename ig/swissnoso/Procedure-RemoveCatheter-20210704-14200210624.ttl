@@ -1,0 +1,54 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/Procedure/RemoveCatheter-20210704-14200210624> a fhir:Procedure;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "RemoveCatheter-20210704-14200210624"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"RemoveCatheter-20210704-14200210624\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-swissnoso-procedure-remove-catheter.html\">Swissnoso Procedure Remove Catheter</a></p></div><p><b>status</b>: completed</p><p><b>code</b>: Removal of urinary bladder catheter (procedure) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#43748006)</span></p><p><b>subject</b>: <a href=\"Patient-AnnaMeier.html\">Patient/AnnaMeier</a></p><p><b>encounter</b>: <a href=\"Encounter-Encounter-14200210624.html\">Encounter/Encounter-14200210624</a></p><p><b>performed</b>: 2021-07-04</p><p><b>reasonReference</b>: <a href=\"Procedure-InsertCatheter-20210701-14200210624.html\">Procedure/InsertCatheter-20210701-14200210624</a></p></div>"
+  ];
+  fhir:Procedure.status [ fhir:value "completed"];
+  fhir:Procedure.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:43748006;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "43748006" ];
+       fhir:Coding.display [ fhir:value "Removal of urinary bladder catheter (procedure)" ]
+     ]
+  ];
+  fhir:Procedure.subject [
+     fhir:link <http://fhir.ch/ig/swissnoso/Patient/AnnaMeier>;
+     fhir:Reference.reference [ fhir:value "Patient/AnnaMeier" ]
+  ];
+  fhir:Procedure.encounter [
+     fhir:link <http://fhir.ch/ig/swissnoso/Encounter/Encounter-14200210624>;
+     fhir:Reference.reference [ fhir:value "Encounter/Encounter-14200210624" ]
+  ];
+  fhir:Procedure.performedDateTime [ fhir:value "2021-07-04"^^xsd:date];
+  fhir:Procedure.reasonReference [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/swissnoso/Procedure/InsertCatheter-20210701-14200210624>;
+     fhir:Reference.reference [ fhir:value "Procedure/InsertCatheter-20210701-14200210624" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/Procedure/RemoveCatheter-20210704-14200210624.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

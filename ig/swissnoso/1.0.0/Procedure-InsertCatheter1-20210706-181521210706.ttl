@@ -1,0 +1,71 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/Procedure/InsertCatheter1-20210706-181521210706> a fhir:Procedure;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "InsertCatheter1-20210706-181521210706"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"InsertCatheter1-20210706-181521210706\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-swissnoso-procedure-insert-catheter.html\">Swissnoso Procedure Insert Catheter</a></p></div><p><b>Swissnoso Sequence Number</b>: 1</p><p><b>Swissnoso Transurethral Procedure</b>: false</p><p><b>status</b>: completed</p><p><b>code</b>: Catheterization of urinary bladder (procedure) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#410024004)</span></p><p><b>subject</b>: <a href=\"Patient-FridolinMueller.html\">Patient/FridolinMueller</a></p><p><b>encounter</b>: <a href=\"Encounter-Encounter-181521210706.html\">Encounter/Encounter-181521210706</a></p><p><b>performed</b>: 2021-07-06</p><p><b>location</b>: <a href=\"Location-NotfallstationTannenwald.html\">Location/NotfallstationTannenwald</a> \"Notfallstation Tannenwald\"</p><p><b>reasonCode</b>: Decubitalulzera plus Inkontinenz <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-swissnoso-indication.html\">Swissnoso Indication</a>#4)</span></p></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-sequence-number" ];
+     fhir:Extension.valuePositiveInt [ fhir:value "1"^^xsd:positiveInteger ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-transurethral-procedure" ];
+     fhir:Extension.valueBoolean [ fhir:value "false"^^xsd:boolean ]
+  ];
+  fhir:Procedure.status [ fhir:value "completed"];
+  fhir:Procedure.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:410024004;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "410024004" ];
+       fhir:Coding.display [ fhir:value "Catheterization of urinary bladder (procedure)" ]
+     ]
+  ];
+  fhir:Procedure.subject [
+     fhir:link <http://fhir.ch/ig/swissnoso/Patient/FridolinMueller>;
+     fhir:Reference.reference [ fhir:value "Patient/FridolinMueller" ]
+  ];
+  fhir:Procedure.encounter [
+     fhir:link <http://fhir.ch/ig/swissnoso/Encounter/Encounter-181521210706>;
+     fhir:Reference.reference [ fhir:value "Encounter/Encounter-181521210706" ]
+  ];
+  fhir:Procedure.performedDateTime [ fhir:value "2021-07-06"^^xsd:date];
+  fhir:Procedure.location [
+     fhir:link <http://fhir.ch/ig/swissnoso/Location/NotfallstationTannenwald>;
+     fhir:Reference.reference [ fhir:value "Location/NotfallstationTannenwald" ]
+  ];
+  fhir:Procedure.reasonCode [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/swissnoso/CodeSystem/swissnoso-indication" ];
+       fhir:Coding.code [ fhir:value "4" ];
+       fhir:Coding.display [ fhir:value "Decubitalulzera plus Inkontinenz" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/Procedure/InsertCatheter1-20210706-181521210706.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

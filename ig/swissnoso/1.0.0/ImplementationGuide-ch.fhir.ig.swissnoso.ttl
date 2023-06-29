@@ -1,0 +1,2129 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/ImplementationGuide/ch.fhir.ig.swissnoso> a fhir:ImplementationGuide;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "ch.fhir.ig.swissnoso"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Swissnoso_IG</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/swissnoso/ImplementationGuide/ch.fhir.ig.swissnoso</pre><div><p>Implementation guide to specify the exchange format for data transmission to Swissnoso in the context of monitoring and prevention of healthcare-associated infections.</p>\n</div></div>"
+  ];
+  fhir:ImplementationGuide.url [ fhir:value "http://fhir.ch/ig/swissnoso/ImplementationGuide/ch.fhir.ig.swissnoso"];
+  fhir:ImplementationGuide.version [ fhir:value "1.0.0"];
+  fhir:ImplementationGuide.name [ fhir:value "Swissnoso_IG"];
+  fhir:ImplementationGuide.title [ fhir:value "Swissnoso Implementation Guide (R4)"];
+  fhir:ImplementationGuide.status [ fhir:value "active"];
+  fhir:ImplementationGuide.date [ fhir:value "2022-06-14"^^xsd:date];
+  fhir:ImplementationGuide.publisher [ fhir:value "Swissnoso"];
+  fhir:ImplementationGuide.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "Swissnoso" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "https://www.swissnoso.ch/" ]
+     ]
+  ];
+  fhir:ImplementationGuide.description [ fhir:value "Implementation guide to specify the exchange format for data transmission to Swissnoso in the context of monitoring and prevention of healthcare-associated infections."];
+  fhir:ImplementationGuide.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "CHE" ]
+     ]
+  ];
+  fhir:ImplementationGuide.copyright [ fhir:value "CC-BY-SA-4.0"];
+  fhir:ImplementationGuide.packageId [ fhir:value "ch.fhir.ig.swissnoso"];
+  fhir:ImplementationGuide.license [ fhir:value "CC-BY-SA-4.0"];
+  fhir:ImplementationGuide.fhirVersion [
+     fhir:value "4.0.1";
+     fhir:index 0
+  ];
+  fhir:ImplementationGuide.dependsOn [
+     fhir:index 0;
+     fhir:Element.id [ fhir:value "hl7tx" ];
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://terminology.hl7.org/ImplementationGuide/hl7.terminology";
+       fhir:link <http://terminology.hl7.org/ImplementationGuide/hl7.terminology>
+     ];
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "hl7.terminology.r4" ];
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "3.1.0" ]
+  ], [
+     fhir:index 1;
+     fhir:Element.id [ fhir:value "ch_fhir_ig_ch_core" ];
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core";
+       fhir:link <http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core>
+     ];
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ch.fhir.ig.ch-core" ];
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "2.0.0" ]
+  ];
+  fhir:ImplementationGuide.definition [
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "copyrightyear" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "2022+" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "releaselabel" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "STU 1" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 2;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-liquid" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template/liquid" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 3;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-liquid" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "input/liquid" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-qa" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "temp/qa" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 5;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-temp" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "temp/pages" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 6;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-output" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "output" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 7;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-suppressed-warnings" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "input/ignoreWarnings.txt" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 8;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-history" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "http://fhir.ch/ig/swissnoso/history.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 9;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "template-html" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template-page.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 10;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "template-md" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template-page-md.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 11;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-contact" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 12;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-context" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 13;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-copyright" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 14;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-jurisdiction" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 15;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-license" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 16;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-publisher" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 17;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-version" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 18;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "active-tables" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 19;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "fmm-definition" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "http://hl7.org/fhir/versions.html#maturity" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 20;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "propagate-status" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 21;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "excludelogbinaryformat" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ];
+     fhir:ImplementationGuide.definition.resource [
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-encounter" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Encounter" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Encounter resource to represent the characteristics of an encounter in the context of a report to Swissnoso." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-location" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Location" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Location resource to represent the characteristics of a location in the context of a report to Swissnoso." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 2;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-message-cauti-surveillance" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Message CAUTI Surveillance" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Bundle resource to represent the message in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 3;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-messageheader-cauti-surveillance" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso MessageHeader CAUTI Surveillance" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the MessageHeader resource to represent the first entry in the message in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Observation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Observation resource to represent the characteristics of a observation in the context of a report to Swissnoso." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 5;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-angle-pain-or-tenderness>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-observation-angle-pain-or-tenderness" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Observation Angle Pain or Tenderness" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Observation resource to represent the presence/absence of the symptom costovertebral angle pain or tenderness in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 6;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-dysuria>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-observation-dysuria" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Observation Dysuria" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Observation resource to represent the presence/absence of the symptom dysuria in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 7;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-observation-fever" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Observation Fever" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Observation resource to represent the presence/absence of the symptom fever in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 8;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-observation-germ" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Observation Germ" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Observation resource to represent the germ in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 9;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-number-of-different-germs>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-observation-number-of-different-germs" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Observation Number of Different Germs" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Observation resource to represent the number of different swissnoso-germs in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 10;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-suprapubic-tenderness>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-observation-suprapubic-tenderness" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Observation Suprapubic Tenderness" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Observation resource to represent the presence/absence of the symptom suprapubic tenderness in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 11;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-symptoms>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-observation-symptoms" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Observation Symptoms" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Observation resource to represent the presence/absence of symptoms in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 12;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-frequency>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-observation-urinary-frequency" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Observation Urinary Frequency" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Observation resource to represent the presence/absence of the symptom urinary frequency in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 13;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-urgency>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-observation-urinary-urgency" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Observation Urinary Urgency" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Observation resource to represent the presence/absence of the symptom urinary urgency in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 14;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organization>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Organization" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Organization resource to represent the characteristics of an organization in the context of a report to Swissnoso." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 15;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Patient" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Patient resource to represent the characteristics of a patient in the context of a report to Swissnoso." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 16;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Procedure" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Procedure resource to represent the characteristics of a procedure in the context of a report to Swissnoso." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 17;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-procedure-insert-catheter" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Procedure Insert Catheter" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Procedure resource to represent the procedure of inserting a catheter in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 18;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-microbiology>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-procedure-microbiology" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Procedure Microbiology" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Procedure resource to represent the microbiology in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 19;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-procedure-remove-catheter" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Procedure Remove Catheter" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This profile constrains the Procedure resource to represent the procedure of removing a catheter in the context of the CAUTI Surveillance module." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 20;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-admission-date-monitored-unit>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-admission-date-monitored-unit" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Admission Date Monitored Unit" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension defined by Swissnoso to describe the date of admission to the monitored organizational unit." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 21;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-discharge-date-monitored-unit>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-discharge-date-monitored-unit" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Discharge Date Monitored Unit" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension defined by Swissnoso to describe the date of discharge from the monitored organizational unit." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 22;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organizational-unit>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-organizational-unit" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Organizational Unit" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension defined by Swissnoso to describe the organizational unit with its specialty." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 23;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-sequence-number>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-sequence-number" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Sequence Number" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension defined by Swissnoso to be able to indicate the sequence number." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 24;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-transurethral-procedure>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/swissnoso-transurethral-procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Transurethral Procedure" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension defined by Swissnoso to describe whether the procedure was performed as part of a transurethral procedure." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 25;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/ValueSet/swissnoso-bacterial-count-in-urine>;
+         fhir:Reference.reference [ fhir:value "ValueSet/swissnoso-bacterial-count-in-urine" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Bacterial Count in Urine" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This value set includes the codes defined in the code system 'Swissnoso Bacterial Count in Urine'." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 26;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/ValueSet/swissnoso-clinical-symptom>;
+         fhir:Reference.reference [ fhir:value "ValueSet/swissnoso-clinical-symptom" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Clinical Symptom" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This value set includes the codes defined in the code system 'Swissnoso Clinical Symptom'." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 27;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/ValueSet/swissnoso-germ>;
+         fhir:Reference.reference [ fhir:value "ValueSet/swissnoso-germ" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Germ" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This value set includes the SNOMED CT codes for representing the germ." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 28;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/ValueSet/swissnoso-indication>;
+         fhir:Reference.reference [ fhir:value "ValueSet/swissnoso-indication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Indication" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This value set includes the codes defined in the code system 'Swissnoso Indication'." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 29;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/ValueSet/swissnoso-number-of-different-germs>;
+         fhir:Reference.reference [ fhir:value "ValueSet/swissnoso-number-of-different-germs" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Number of Different Germs" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This value set includes the codes defined in the code system 'Swissnoso Number of Different Germs'." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 30;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/ValueSet/swissnoso-organizational-unit>;
+         fhir:Reference.reference [ fhir:value "ValueSet/swissnoso-organizational-unit" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Organizational Unit" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This value set includes the ECDC 'Ward specialty' codes for representing the organization unit." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 31;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/ValueSet/swissnoso-procedure-location>;
+         fhir:Reference.reference [ fhir:value "ValueSet/swissnoso-procedure-location" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Procedure Location" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This value set includes the codes defined in the code system 'Swissnoso Procedure Location'." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 32;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/ValueSet/swissnoso-specialty>;
+         fhir:Reference.reference [ fhir:value "ValueSet/swissnoso-specialty" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Specialty" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This value set includes the ECDC 'Patient/consultant specialty' codes for representing the specialty." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 33;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/CodeSystem/ecdc-patient-consultant-specialty>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/ecdc-patient-consultant-specialty" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "ECDC Patient-Consultant Specialty" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This code system contains specialty codes defined by the European Centre for Disease Prevention and Control (ECDC), \r\nused by Swissnoso in the context of monitoring and prevention of healthcare-associated infections. \r\nSee original code system in [European Centre for Disease Prevention and Control. Point prevalence survey of healthcare-associated infections and antimicrobial \r\nuse in European acute care hospitals – protocol version 5.3. Stockholm: ECDC; 2016.](https://www.ecdc.europa.eu/sites/default/files/media/en/publications/Publications/PPS-HAI-antimicrobial-use-EU-acute-care-hospitals-V5-3.pdf), page 40 f." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 34;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/CodeSystem/ecdc-ward-specialty>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/ecdc-ward-specialty" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "ECDC Ward Specialty" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This code system contains specialty codes defined by the European Centre for Disease Prevention and Control (ECDC), \r\nused by Swissnoso in the context of monitoring and prevention of healthcare-associated infections. \r\nSee original code system in [European Centre for Disease Prevention and Control. Point prevalence survey of healthcare-associated infections and antimicrobial \r\nuse in European acute care hospitals – protocol version 5.3. Stockholm: ECDC; 2016.](https://www.ecdc.europa.eu/sites/default/files/media/en/publications/Publications/PPS-HAI-antimicrobial-use-EU-acute-care-hospitals-V5-3.pdf), page 40 f." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 35;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/CodeSystem/swissnoso>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/swissnoso" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This code system contains codes defined by Swissnoso \r\nfor which no international codes (e.g. LOINC or SNOMED CT) could be found that accurately describe \r\nthe meaning for the Swissnoso context." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 36;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/CodeSystem/swissnoso-bacterial-count-in-urine>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/swissnoso-bacterial-count-in-urine" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Bacterial Count in Urine" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This code system contains codes defined by Swissnoso for representing the bacterial count in urine.\r\nThe value ranges for this are based on the CAUTI definition of the National Healthcare Safety Network (NHSN), \r\nsee the corresponding [NHSN manual](https://www.cdc.gov/nhsn/pdfs/pscmanual/7psccauticurrent.pdf)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 37;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/CodeSystem/swissnoso-clinical-symptom>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/swissnoso-clinical-symptom" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Clinical Symptom" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This code system contains codes defined by Swissnoso for representing the clinical symptom. \r\nThe selection of the clinical symptoms are based on the CAUTI definition of the National Healthcare Safety Network (NHSN), \r\nsee the corresponding [NHSN manual](https://www.cdc.gov/nhsn/pdfs/pscmanual/7psccauticurrent.pdf)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 38;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/CodeSystem/swissnoso-indication>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/swissnoso-indication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Indication" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This code system contains codes defined by Swissnoso for representing the indication." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 39;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/CodeSystem/swissnoso-number-of-different-germs>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/swissnoso-number-of-different-germs" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Number of Different Germs" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This code system contains codes defined by Swissnoso for representing the number of different germs. \r\nThe division of the numbers are based on the CAUTI definition of the National Healthcare Safety Network (NHSN), \r\nsee the corresponding [NHSN manual](https://www.cdc.gov/nhsn/pdfs/pscmanual/7psccauticurrent.pdf)." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 40;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/CodeSystem/swissnoso-procedure-location>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/swissnoso-procedure-location" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Swissnoso Procedure Location" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "This code system contains codes defined by Swissnoso for representing the location where the procedure is performed." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 41;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Patient/AnnaMeier>;
+         fhir:Reference.reference [ fhir:value "Patient/AnnaMeier" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Anna Meier" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso patient (UC 14200)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient>
+       ]
+     ], [
+       fhir:index 42;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Location" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Location/BettenstationTannenwald>;
+         fhir:Reference.reference [ fhir:value "Location/BettenstationTannenwald" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Bettenstation Tannenwald" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso location" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location>
+       ]
+     ], [
+       fhir:index 43;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Location" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Location/DegenzaSantaMaria>;
+         fhir:Reference.reference [ fhir:value "Location/DegenzaSantaMaria" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Degenza Santa Maria" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso location" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location>
+       ]
+     ], [
+       fhir:index 44;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/Dysuria2-20210714-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/Dysuria2-20210714-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Dysuria 2 (14.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-dysuria";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-dysuria>
+       ]
+     ], [
+       fhir:index 45;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Encounter" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Encounter/Encounter-102938210710>;
+         fhir:Reference.reference [ fhir:value "Encounter/Encounter-102938210710" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Encounter 102938210710" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso encounter (UC 102938)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter>
+       ]
+     ], [
+       fhir:index 46;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Encounter" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Encounter/Encounter-14200210624>;
+         fhir:Reference.reference [ fhir:value "Encounter/Encounter-14200210624" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Encounter 14200210624" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso encounter (UC 14200)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter>
+       ]
+     ], [
+       fhir:index 47;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Encounter" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Encounter/Encounter-181521210706>;
+         fhir:Reference.reference [ fhir:value "Encounter/Encounter-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Encounter 181521210706" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso encounter (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter>
+       ]
+     ], [
+       fhir:index 48;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Encounter" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Encounter/Encounter-44371210708>;
+         fhir:Reference.reference [ fhir:value "Encounter/Encounter-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Encounter 44371210708" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso encounter (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-encounter>
+       ]
+     ], [
+       fhir:index 49;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/Fever-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Observation/Fever-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Fever (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever>
+       ]
+     ], [
+       fhir:index 50;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Patient/FridolinMueller>;
+         fhir:Reference.reference [ fhir:value "Patient/FridolinMueller" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Fridolin Müller" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso patient (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient>
+       ]
+     ], [
+       fhir:index 51;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/Germ1-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Observation/Germ1-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Germ 1 (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ>
+       ]
+     ], [
+       fhir:index 52;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/Germ1-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/Germ1-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Germ 1 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ>
+       ]
+     ], [
+       fhir:index 53;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/Germ1-20210714-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/Germ1-20210714-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Germ 1 (14.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ>
+       ]
+     ], [
+       fhir:index 54;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/Germ2-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Observation/Germ2-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Germ 2 (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-germ>
+       ]
+     ], [
+       fhir:index 55;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Patient/GiuliaRossi>;
+         fhir:Reference.reference [ fhir:value "Patient/GiuliaRossi" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Giulia Rossi" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso patient (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient>
+       ]
+     ], [
+       fhir:index 56;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Organization/HopitalBellevue>;
+         fhir:Reference.reference [ fhir:value "Organization/HopitalBellevue" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Hôpital Bellevue" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso organization" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organization";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organization>
+       ]
+     ], [
+       fhir:index 57;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/InsertCatheter-20210701-14200210624>;
+         fhir:Reference.reference [ fhir:value "Procedure/InsertCatheter-20210701-14200210624" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Insert Catheter (01.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 14200)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter>
+       ]
+     ], [
+       fhir:index 58;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/InsertCatheter-20210708-44371210708>;
+         fhir:Reference.reference [ fhir:value "Procedure/InsertCatheter-20210708-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Insert Catheter (08.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter>
+       ]
+     ], [
+       fhir:index 59;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/InsertCatheter-20210712-102938210710>;
+         fhir:Reference.reference [ fhir:value "Procedure/InsertCatheter-20210712-102938210710" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Insert Catheter (12.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 102938)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter>
+       ]
+     ], [
+       fhir:index 60;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/InsertCatheter1-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Procedure/InsertCatheter1-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Insert Catheter 1 (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter>
+       ]
+     ], [
+       fhir:index 61;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/InsertCatheter2-20210709-181521210706>;
+         fhir:Reference.reference [ fhir:value "Procedure/InsertCatheter2-20210709-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Insert Catheter 2 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-insert-catheter>
+       ]
+     ], [
+       fhir:index 62;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Patient/JeanLucRichard>;
+         fhir:Reference.reference [ fhir:value "Patient/JeanLucRichard" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Jean-Luc Richard" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso patient (UC 102938)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-patient>
+       ]
+     ], [
+       fhir:index 63;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MessageHeader" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/MessageHeader/MessageHeaderUC102938>;
+         fhir:Reference.reference [ fhir:value "MessageHeader/MessageHeaderUC102938" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MessageHeader UC 102938" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso message header (UC 102938)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance>
+       ]
+     ], [
+       fhir:index 64;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MessageHeader" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/MessageHeader/MessageHeaderUC14200>;
+         fhir:Reference.reference [ fhir:value "MessageHeader/MessageHeaderUC14200" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MessageHeader UC 14200" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso message header (UC 14200)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance>
+       ]
+     ], [
+       fhir:index 65;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MessageHeader" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/MessageHeader/MessageHeaderUC181521>;
+         fhir:Reference.reference [ fhir:value "MessageHeader/MessageHeaderUC181521" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MessageHeader UC 181521" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso message header (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance>
+       ]
+     ], [
+       fhir:index 66;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MessageHeader" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/MessageHeader/MessageHeaderUC44371>;
+         fhir:Reference.reference [ fhir:value "MessageHeader/MessageHeaderUC44371" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "MessageHeader UC 44371" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso message header (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-messageheader-cauti-surveillance>
+       ]
+     ], [
+       fhir:index 67;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Bundle/MessageUC102938>;
+         fhir:Reference.reference [ fhir:value "Bundle/MessageUC102938" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Message UC 102938" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso message (UC 102938)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance>
+       ]
+     ], [
+       fhir:index 68;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Bundle/MessageUC14200>;
+         fhir:Reference.reference [ fhir:value "Bundle/MessageUC14200" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Message UC 14200" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso message (UC 14200)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance>
+       ]
+     ], [
+       fhir:index 69;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Bundle/MessageUC181521>;
+         fhir:Reference.reference [ fhir:value "Bundle/MessageUC181521" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Message UC 181521" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso message (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance>
+       ]
+     ], [
+       fhir:index 70;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Bundle/MessageUC44371>;
+         fhir:Reference.reference [ fhir:value "Bundle/MessageUC44371" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Message UC 44371" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso message (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-message-cauti-surveillance>
+       ]
+     ], [
+       fhir:index 71;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/Microbiology-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Procedure/Microbiology-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Microbiology (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-microbiology";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-microbiology>
+       ]
+     ], [
+       fhir:index 72;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/Microbiology1-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Procedure/Microbiology1-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Microbiology 1 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-microbiology";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-microbiology>
+       ]
+     ], [
+       fhir:index 73;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/Microbiology2-20210714-44371210708>;
+         fhir:Reference.reference [ fhir:value "Procedure/Microbiology2-20210714-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Microbiology 2 (14.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-microbiology";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-microbiology>
+       ]
+     ], [
+       fhir:index 74;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoAnglePainOrTenderness-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Observation/NoAnglePainOrTenderness-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Angle Pain or Tenderness (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-angle-pain-or-tenderness";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-angle-pain-or-tenderness>
+       ]
+     ], [
+       fhir:index 75;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoAnglePainOrTenderness1-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/NoAnglePainOrTenderness1-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Angle Pain or Tenderness 1 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-angle-pain-or-tenderness";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-angle-pain-or-tenderness>
+       ]
+     ], [
+       fhir:index 76;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoAnglePainOrTenderness2-20210714-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/NoAnglePainOrTenderness2-20210714-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Angle Pain or Tenderness 2 (14.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-angle-pain-or-tenderness";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-angle-pain-or-tenderness>
+       ]
+     ], [
+       fhir:index 77;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoDysuria-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Observation/NoDysuria-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Dysuria (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-dysuria";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-dysuria>
+       ]
+     ], [
+       fhir:index 78;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoDysuria1-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/NoDysuria1-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Dysuria 1 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-dysuria";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-dysuria>
+       ]
+     ], [
+       fhir:index 79;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoFever1-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/NoFever1-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Fever 1 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever>
+       ]
+     ], [
+       fhir:index 80;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoFever2-20210714-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/NoFever2-20210714-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Fever 2 (14.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-fever>
+       ]
+     ], [
+       fhir:index 81;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoUrinaryFrequency-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Observation/NoUrinaryFrequency-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Urinary Frequency (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-frequency";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-frequency>
+       ]
+     ], [
+       fhir:index 82;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoUrinaryFrequency1-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/NoUrinaryFrequency1-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Urinary Frequency 1 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-frequency";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-frequency>
+       ]
+     ], [
+       fhir:index 83;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoUrinaryUrgency-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Observation/NoUrinaryUrgency-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Urinary Urgency (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-urgency";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-urgency>
+       ]
+     ], [
+       fhir:index 84;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NoUrinaryUrgency1-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/NoUrinaryUrgency1-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "No Urinary Urgency 1 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-urgency";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-urgency>
+       ]
+     ], [
+       fhir:index 85;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Location" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Location/NotfallstationTannenwald>;
+         fhir:Reference.reference [ fhir:value "Location/NotfallstationTannenwald" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Notfallstation Tannenwald" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso location" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location>
+       ]
+     ], [
+       fhir:index 86;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NumberOfDifferentGerms-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Observation/NumberOfDifferentGerms-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Number of Different Germs (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-number-of-different-germs";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-number-of-different-germs>
+       ]
+     ], [
+       fhir:index 87;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NumberOfDifferentGerms-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/NumberOfDifferentGerms-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Number of Different Germs (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-number-of-different-germs";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-number-of-different-germs>
+       ]
+     ], [
+       fhir:index 88;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/NumberOfDifferentGerms-20210714-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/NumberOfDifferentGerms-20210714-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Number of Different Germs (14.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-number-of-different-germs";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-number-of-different-germs>
+       ]
+     ], [
+       fhir:index 89;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Organization/OspedaleSantaMaria>;
+         fhir:Reference.reference [ fhir:value "Organization/OspedaleSantaMaria" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Ospedale Santa Maria" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso organization" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organization";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organization>
+       ]
+     ], [
+       fhir:index 90;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/RemoveCatheter-20210704-14200210624>;
+         fhir:Reference.reference [ fhir:value "Procedure/RemoveCatheter-20210704-14200210624" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Remove Catheter (04.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 14200)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter>
+       ]
+     ], [
+       fhir:index 91;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/RemoveCatheter-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Procedure/RemoveCatheter-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Remove Catheter (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter>
+       ]
+     ], [
+       fhir:index 92;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/RemoveCatheter-20210716-102938210710>;
+         fhir:Reference.reference [ fhir:value "Procedure/RemoveCatheter-20210716-102938210710" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Remove Catheter (16.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 102938)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter>
+       ]
+     ], [
+       fhir:index 93;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/RemoveCatheter1-20210709-181521210706>;
+         fhir:Reference.reference [ fhir:value "Procedure/RemoveCatheter1-20210709-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Remove Catheter 1 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter>
+       ]
+     ], [
+       fhir:index 94;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Procedure/RemoveCatheter2-20210710-181521210706>;
+         fhir:Reference.reference [ fhir:value "Procedure/RemoveCatheter2-20210710-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Remove Catheter 2 (10.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso procedure (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-procedure-remove-catheter>
+       ]
+     ], [
+       fhir:index 95;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Organization/SpitalTannenwald>;
+         fhir:Reference.reference [ fhir:value "Organization/SpitalTannenwald" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Spital Tannenwald" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso organization" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organization";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-organization>
+       ]
+     ], [
+       fhir:index 96;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/SuprapubicTenderness-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Observation/SuprapubicTenderness-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Suprapubic Tenderness (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-suprapubic-tenderness";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-suprapubic-tenderness>
+       ]
+     ], [
+       fhir:index 97;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/SuprapubicTenderness1-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/SuprapubicTenderness1-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Suprapubic Tenderness 1 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-suprapubic-tenderness";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-suprapubic-tenderness>
+       ]
+     ], [
+       fhir:index 98;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/SuprapubicTenderness2-20210714-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/SuprapubicTenderness2-20210714-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Suprapubic Tenderness 2 (14.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-suprapubic-tenderness";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-suprapubic-tenderness>
+       ]
+     ], [
+       fhir:index 99;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ConceptMap" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/ConceptMap/SwissnosoOrganizationalUnit-to-SwissnosoSpecialty>;
+         fhir:Reference.reference [ fhir:value "ConceptMap/SwissnosoOrganizationalUnit-to-SwissnosoSpecialty" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "SwissnosoOrganizationalUnit-to-SwissnosoSpecialty" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Mapping to describe the relationships between organization units and specialty." ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 100;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/Symptoms-20210706-181521210706>;
+         fhir:Reference.reference [ fhir:value "Observation/Symptoms-20210706-181521210706" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Symptoms (06.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 181521)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-symptoms";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-symptoms>
+       ]
+     ], [
+       fhir:index 101;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/Symptoms1-20210709-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/Symptoms1-20210709-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Symptoms 1 (09.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-symptoms";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-symptoms>
+       ]
+     ], [
+       fhir:index 102;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/Symptoms2-20210714-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/Symptoms2-20210714-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Symptoms 2 (14.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-symptoms";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-symptoms>
+       ]
+     ], [
+       fhir:index 103;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Location" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Location/UniteHospitaliereBellevue>;
+         fhir:Reference.reference [ fhir:value "Location/UniteHospitaliereBellevue" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Unité hospitalière Bellevue" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso location" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-location>
+       ]
+     ], [
+       fhir:index 104;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/UrinaryFrequency2-20210714-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/UrinaryFrequency2-20210714-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Urinary Frequency 2 (14.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-frequency";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-frequency>
+       ]
+     ], [
+       fhir:index 105;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/swissnoso/Observation/UrinaryUrgency2-20210714-44371210708>;
+         fhir:Reference.reference [ fhir:value "Observation/UrinaryUrgency2-20210714-44371210708" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Urinary Urgency 2 (14.07.2021)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example of a Swissnoso observation (UC 44371)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-urgency";
+         fhir:link <http://fhir.ch/ig/swissnoso/StructureDefinition/swissnoso-observation-urinary-urgency>
+       ]
+     ];
+     fhir:ImplementationGuide.definition.page [
+       fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "toc.html" ];
+       fhir:ImplementationGuide.definition.page.title [ fhir:value "Table of Contents" ];
+       fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ];
+       fhir:ImplementationGuide.definition.page.page [
+         fhir:index 0;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "index.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Home" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 1;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecases-de.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Anwendungsfälle" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 2;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecases-fr.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Cas d'application" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 3;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecases-it.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Casi concreti" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 4;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "message.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Message" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 5;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "profiles.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Profiles" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 6;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "extensions.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Extensions" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 7;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "terminology.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Terminology" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 8;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "changelog.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Change Log" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ]
+     ];
+     fhir:ImplementationGuide.definition.parameter [
+       fhir:index 0;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/capabilities" ]
+     ], [
+       fhir:index 1;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/examples" ]
+     ], [
+       fhir:index 2;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/extensions" ]
+     ], [
+       fhir:index 3;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/models" ]
+     ], [
+       fhir:index 4;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/operations" ]
+     ], [
+       fhir:index 5;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/profiles" ]
+     ], [
+       fhir:index 6;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/resources" ]
+     ], [
+       fhir:index 7;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/vocabulary" ]
+     ], [
+       fhir:index 8;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/maps" ]
+     ], [
+       fhir:index 9;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/testing" ]
+     ], [
+       fhir:index 10;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/history" ]
+     ], [
+       fhir:index 11;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "fsh-generated/resources" ]
+     ], [
+       fhir:index 12;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "template/config" ]
+     ], [
+       fhir:index 13;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/images" ]
+     ], [
+       fhir:index 14;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-tx-cache" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input-cache/txcache" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/swissnoso/ImplementationGuide/ch.fhir.ig.swissnoso.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
