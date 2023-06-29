@@ -1,0 +1,54 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Observation/ICD-O-3-Morphology-20181202> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "ICD-O-3-Morphology-20181202"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-icdo3morphology";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-icdo3morphology>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"ICD-O-3-Morphology-20181202\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-observation-icdo3morphology.html\">CH CRL Observation ICD-O-3 Morphology</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Morphology.ICD-O-3 Cancer <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#59848-2)</span></p><p><b>subject</b>: <a href=\"Patient-RobertMeier.html\">Patient/RobertMeier</a> \" MEIER\"</p><p><b>effective</b>: 2018-12-02</p><p><b>value</b>: Muzinöses Adenokarzinom <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (International Classification of Diseases for Oncology, version 3.[3.2]#8480/3)</span></p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:59848-2;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "59848-2" ];
+       fhir:Coding.display [ fhir:value "Morphology.ICD-O-3 Cancer" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/RobertMeier>;
+     fhir:Reference.reference [ fhir:value "Patient/RobertMeier" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2018-12-02"^^xsd:date];
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/icd-o-3" ];
+       fhir:Coding.version [ fhir:value "3.2" ];
+       fhir:Coding.code [ fhir:value "8480/3" ];
+       fhir:Coding.display [ fhir:value "Muzinöses Adenokarzinom" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Observation/ICD-O-3-Morphology-20181202.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

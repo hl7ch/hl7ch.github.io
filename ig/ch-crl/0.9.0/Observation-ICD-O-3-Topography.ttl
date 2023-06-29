@@ -1,0 +1,54 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Observation/ICD-O-3-Topography> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "ICD-O-3-Topography"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-icdo3topography";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-icdo3topography>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"ICD-O-3-Topography\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-observation-icdo3topography.html\">CH CRL Observation ICD-O-3 Topography</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Primary site Cancer <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#21855-2)</span></p><p><b>subject</b>: <a href=\"Patient-FranzMinimum.html\">Patient/FranzMinimum</a> \" MINIMUM\"</p><p><b>effective</b>: 2018-12-15</p><p><b>value</b>: Pankreaskörper <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (International Classification of Diseases for Oncology, version 3.[3.2]#C25.1)</span></p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:21855-2;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "21855-2" ];
+       fhir:Coding.display [ fhir:value "Primary site Cancer" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/FranzMinimum>;
+     fhir:Reference.reference [ fhir:value "Patient/FranzMinimum" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2018-12-15"^^xsd:date];
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/icd-o-3" ];
+       fhir:Coding.version [ fhir:value "3.2" ];
+       fhir:Coding.code [ fhir:value "C25.1" ];
+       fhir:Coding.display [ fhir:value "Pankreaskörper" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Observation/ICD-O-3-Topography.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

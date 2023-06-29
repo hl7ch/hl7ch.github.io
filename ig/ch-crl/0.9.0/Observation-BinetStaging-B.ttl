@@ -1,0 +1,53 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Observation/BinetStaging-B> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "BinetStaging-B"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-binetstaging";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-binetstaging>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"BinetStaging-B\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-observation-binetstaging.html\">CH CRL Observation Binet Staging</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Binet staging classification for chronic lymphocytic leukemia (tumor staging) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#1149099005)</span></p><p><b>subject</b>: <a href=\"Patient-FranzMinimum.html\">Patient/FranzMinimum</a> \" MINIMUM\"</p><p><b>effective</b>: 2018-12-15</p><p><b>value</b>: Stage B <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-nkrs-binetstaging.html\">NKRS - Binet Staging</a>#B)</span></p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:1149099005;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "1149099005" ];
+       fhir:Coding.display [ fhir:value "Binet staging classification for chronic lymphocytic leukemia (tumor staging)" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/FranzMinimum>;
+     fhir:Reference.reference [ fhir:value "Patient/FranzMinimum" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2018-12-15"^^xsd:date];
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-crl/CodeSystem/nkrs-binetstaging" ];
+       fhir:Coding.code [ fhir:value "B" ];
+       fhir:Coding.display [ fhir:value "Stage B" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Observation/BinetStaging-B.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

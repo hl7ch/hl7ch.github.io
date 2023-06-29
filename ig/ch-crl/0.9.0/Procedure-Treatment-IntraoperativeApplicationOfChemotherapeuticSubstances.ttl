@@ -1,0 +1,84 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Procedure/Treatment-IntraoperativeApplicationOfChemotherapeuticSubstances> a fhir:Procedure;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "Treatment-IntraoperativeApplicationOfChemotherapeuticSubstances"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-procedure-treatment";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-procedure-treatment>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"Treatment-IntraoperativeApplicationOfChemotherapeuticSubstances\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-procedure-treatment.html\">CH CRL Procedure Treatment</a></p></div><p><b>CH CRL Procedure Treatment Goal</b>: Curative - procedure intent (qualifier value) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#373808002)</span></p><p><b>status</b>: in-progress</p><p><b>category</b>: First line treatment (procedure) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#708255002)</span></p><p><b>code</b>: Intraoperative Applikation von Chemotherapeutikum, sonstige <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (unknown#Z99.25.29)</span></p><p><b>subject</b>: <a href=\"Patient-FranzMinimum.html\">Patient/FranzMinimum</a> \" MINIMUM\"</p><p><b>performed</b>: 2018-12-15 --&gt; (ongoing)</p><h3>Performers</h3><table class=\"grid\"><tr><td>-</td><td><b>Actor</b></td><td><b>OnBehalfOf</b></td></tr><tr><td>*</td><td><a href=\"Organization-AbteilungMinimum.html\">Organization/AbteilungMinimum</a> \"Abteilung Minium\"</td><td><a href=\"Organization-SpitalMinimum.html\">Organization/SpitalMinimum</a> \"Spital Minium\"</td></tr></table><p><b>reasonReference</b>: <a href=\"Observation-ICD-10.html\">Observation/ICD-10</a></p></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-procedure-treatment-goal" ];
+     fhir:Extension.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a sct:373808002;
+         fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+         fhir:Coding.code [ fhir:value "373808002" ];
+         fhir:Coding.display [ fhir:value "Curative - procedure intent (qualifier value)" ]
+       ]
+     ]
+  ];
+  fhir:Procedure.status [ fhir:value "in-progress"];
+  fhir:Procedure.category [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:708255002;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "708255002" ];
+       fhir:Coding.display [ fhir:value "First line treatment (procedure)" ]
+     ]
+  ];
+  fhir:Procedure.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:oid:2.16.756.5.30.1.126.3.1" ];
+       fhir:Coding.code [ fhir:value "Z99.25.29" ];
+       fhir:Coding.display [ fhir:value "Intraoperative Applikation von Chemotherapeutikum, sonstige" ]
+     ]
+  ];
+  fhir:Procedure.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/FranzMinimum>;
+     fhir:Reference.reference [ fhir:value "Patient/FranzMinimum" ]
+  ];
+  fhir:Procedure.performedPeriod [
+     fhir:Period.start [ fhir:value "2018-12-15"^^xsd:date ]
+  ];
+  fhir:Procedure.performer [
+     fhir:index 0;
+     fhir:Procedure.performer.actor [
+       fhir:link <http://fhir.ch/ig/ch-crl/Organization/AbteilungMinimum>;
+       fhir:Reference.reference [ fhir:value "Organization/AbteilungMinimum" ]
+     ];
+     fhir:Procedure.performer.onBehalfOf [
+       fhir:link <http://fhir.ch/ig/ch-crl/Organization/SpitalMinimum>;
+       fhir:Reference.reference [ fhir:value "Organization/SpitalMinimum" ]
+     ]
+  ];
+  fhir:Procedure.reasonReference [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-crl/Observation/ICD-10>;
+     fhir:Reference.reference [ fhir:value "Observation/ICD-10" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Procedure/Treatment-IntraoperativeApplicationOfChemotherapeuticSubstances.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

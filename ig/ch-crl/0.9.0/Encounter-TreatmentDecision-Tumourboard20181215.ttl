@@ -1,0 +1,66 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Encounter/TreatmentDecision-Tumourboard20181215> a fhir:Encounter;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "TreatmentDecision-Tumourboard20181215"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-encounter-treatmentdecision";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-encounter-treatmentdecision>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"TreatmentDecision-Tumourboard20181215\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-encounter-treatmentdecision.html\">CH CRL Encounter Treatment Decision</a></p></div><p><b>status</b>: finished</p><p><b>class</b>: inpatient encounter (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code IMP = 'inpatient encounter', stated as 'inpatient encounter')</p><p><b>type</b>: Tumour board <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-nkrs-basisoffirsttreatmentcomplexdecision.html\">NKRS - Basis of First Treatment Complex Decision</a>#1)</span></p><p><b>serviceType</b>: Healthcare decision making (observable entity) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#405083000)</span></p><p><b>subject</b>: <a href=\"Patient-FranzMinimum.html\">Patient/FranzMinimum</a> \" MINIMUM\"</p><p><b>period</b>: 2018-12-15 --&gt; (ongoing)</p><p><b>reasonReference</b>: <a href=\"Observation-ICD-10.html\">Observation/ICD-10</a></p></div>"
+  ];
+  fhir:Encounter.status [ fhir:value "finished"];
+  fhir:Encounter.class [
+     fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
+     fhir:Coding.code [ fhir:value "IMP" ];
+     fhir:Coding.display [ fhir:value "inpatient encounter" ]
+  ];
+  fhir:Encounter.type [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-crl/CodeSystem/nkrs-basisoffirsttreatmentcomplexdecision" ];
+       fhir:Coding.code [ fhir:value "1" ];
+       fhir:Coding.display [ fhir:value "Tumour board" ]
+     ]
+  ];
+  fhir:Encounter.serviceType [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:405083000;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "405083000" ];
+       fhir:Coding.display [ fhir:value "Healthcare decision making (observable entity)" ]
+     ]
+  ];
+  fhir:Encounter.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/FranzMinimum>;
+     fhir:Reference.reference [ fhir:value "Patient/FranzMinimum" ]
+  ];
+  fhir:Encounter.period [
+     fhir:Period.start [ fhir:value "2018-12-15"^^xsd:date ]
+  ];
+  fhir:Encounter.reasonReference [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-crl/Observation/ICD-10>;
+     fhir:Reference.reference [ fhir:value "Observation/ICD-10" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Encounter/TreatmentDecision-Tumourboard20181215.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

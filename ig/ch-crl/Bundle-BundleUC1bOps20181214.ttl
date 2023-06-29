@@ -1,0 +1,433 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Bundle/BundleUC1bOps20181214> a fhir:Bundle;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "BundleUC1bOps20181214"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-bundle";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-bundle>
+     ]
+  ];
+  fhir:Bundle.identifier [
+     fhir:Identifier.system [ fhir:value "http://example.fhir" ];
+     fhir:Identifier.value [ fhir:value "1234" ]
+  ];
+  fhir:Bundle.type [ fhir:value "document"];
+  fhir:Bundle.timestamp [ fhir:value "2018-12-14T16:19:20.680+00:00"^^xsd:dateTime];
+  fhir:Bundle.entry [
+     fhir:index 0;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Composition/CompUC1bOps20181214" ];
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Composition/CompUC1bOps20181214>
+  ], [
+     fhir:index 1;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Organization/AbteilungOnko" ];
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Organization/AbteilungOnko>
+  ], [
+     fhir:index 2;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Procedure/DiagnosticMethod-Biopsy20181214" ];
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Procedure/DiagnosticMethod-Biopsy20181214>
+  ], [
+     fhir:index 3;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Procedure/DiagnosticMethod-Surgical20181214" ];
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Procedure/DiagnosticMethod-Surgical20181214>
+  ], [
+     fhir:index 4;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Patient/RobertMeier" ];
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Patient/RobertMeier>
+  ], [
+     fhir:index 5;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Organization/SpitalSeeblickHansEgli" ];
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Organization/SpitalSeeblickHansEgli>
+  ], [
+     fhir:index 6;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Observation/ICD-10-Kolon-final" ];
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Observation/ICD-10-Kolon-final>
+  ] .
+
+<http://test.fhir.ch/r4/Composition/CompUC1bOps20181214> a fhir:Composition;
+  fhir:Resource.id [ fhir:value "CompUC1bOps20181214"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-composition";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-composition>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"CompUC1bOps20181214\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-composition.html\">CH CRL Composition</a></p></div><p><b>status</b>: final</p><p><b>type</b>: Cancer event report <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#72134-0)</span></p><p><b>date</b>: 2018-12-14T13:00:00+02:00</p><p><b>author</b>: <a href=\"#Organization_AbteilungOnko\">See above (Organization/AbteilungOnko)</a></p><p><b>title</b>: Operationsbericht</p></div>"
+  ];
+  fhir:Composition.status [ fhir:value "final"];
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:72134-0;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "72134-0" ];
+       fhir:Coding.display [ fhir:value "Cancer event report" ]
+     ]
+  ];
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/RobertMeier>;
+     fhir:Reference.reference [ fhir:value "Patient/RobertMeier" ]
+  ];
+  fhir:Composition.date [ fhir:value "2018-12-14T13:00:00+02:00"^^xsd:dateTime];
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-crl/Organization/AbteilungOnko>;
+     fhir:Reference.reference [ fhir:value "Organization/AbteilungOnko" ]
+  ];
+  fhir:Composition.title [ fhir:value "Operationsbericht"];
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Composition.section.title [ fhir:value "Diagnosis" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:29308-4;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "29308-4" ];
+         fhir:Coding.display [ fhir:value "Diagnosis" ]
+       ]
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/Procedure/DiagnosticMethod-Biopsy20181214>;
+       fhir:Reference.reference [ fhir:value "Procedure/DiagnosticMethod-Biopsy20181214" ]
+     ], [
+       fhir:index 1;
+       fhir:link <http://fhir.ch/ig/ch-crl/Procedure/DiagnosticMethod-Surgical20181214>;
+       fhir:Reference.reference [ fhir:value "Procedure/DiagnosticMethod-Surgical20181214" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Composition.section.title [ fhir:value "Coding" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:95365-3;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "95365-3" ];
+         fhir:Coding.display [ fhir:value "Criteria used for case classification" ]
+       ]
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/Observation/ICD-10-Kolon-final>;
+       fhir:Reference.reference [ fhir:value "Observation/ICD-10-Kolon-final" ]
+     ]
+  ] .
+
+<http://test.fhir.ch/r4/Organization/AbteilungOnko> a fhir:Organization;
+  fhir:Resource.id [ fhir:value "AbteilungOnko"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-organization-department";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-organization-department>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"AbteilungOnko\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-organization-department.html\">CH CRL Organization Department</a></p></div><p><b>identifier</b>: id: 76010088</p><p><b>active</b>: true</p><p><b>type</b>: Clinical oncology <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#394592004)</span></p><p><b>name</b>: Abteilung Onkologie</p><p><b>telecom</b>: <a href=\"mailto:onko@spital.ch\">onko@spital.ch</a></p><p><b>address</b>: Bergstrasse 11 Zürich 8002 </p><p><b>partOf</b>: <a href=\"#Organization_SpitalSeeblickHansEgli\">See above (Organization/SpitalSeeblickHansEgli)</a></p></div>"
+  ];
+  fhir:Organization.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.45" ];
+     fhir:Identifier.value [ fhir:value "76010088" ]
+  ];
+  fhir:Organization.active [ fhir:value "true"^^xsd:boolean];
+  fhir:Organization.type [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:394592004;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "394592004" ];
+       fhir:Coding.display [ fhir:value "Clinical oncology" ]
+     ]
+  ];
+  fhir:Organization.name [ fhir:value "Abteilung Onkologie"];
+  fhir:Organization.telecom [
+     fhir:index 0;
+     fhir:ContactPoint.system [ fhir:value "email" ];
+     fhir:ContactPoint.value [ fhir:value "onko@spital.ch" ]
+  ];
+  fhir:Organization.address [
+     fhir:index 0;
+     fhir:Address.line [
+       fhir:value "Bergstrasse 11";
+       fhir:index 0
+     ];
+     fhir:Address.city [ fhir:value "Zürich" ];
+     fhir:Address.postalCode [ fhir:value "8002" ]
+  ];
+  fhir:Organization.partOf [
+     fhir:link <http://fhir.ch/ig/ch-crl/Organization/SpitalSeeblickHansEgli>;
+     fhir:Reference.reference [ fhir:value "Organization/SpitalSeeblickHansEgli" ]
+  ] .
+
+<http://test.fhir.ch/r4/Procedure/DiagnosticMethod-Biopsy20181214> a fhir:Procedure;
+  fhir:Resource.id [ fhir:value "DiagnosticMethod-Biopsy20181214"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-procedure-diagnosticmethod";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-procedure-diagnosticmethod>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"DiagnosticMethod-Biopsy20181214\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-procedure-diagnosticmethod.html\">CH CRL Procedure Diagnostic Method</a></p></div><p><b>status</b>: completed</p><p><b>category</b>: Diagnostic staging procedure PhenX <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#67183-4)</span></p><p><b>code</b>: Biopsy of primary tumour <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-nkrs-diagnosticmethodsused.html\">NKRS - Diagnostic Methods Used</a>#24)</span></p><p><b>subject</b>: <a href=\"#Patient_RobertMeier\">See above (Patient/RobertMeier)</a></p><p><b>performed</b>: 2018-12-14T13:00:00+02:00</p><h3>Performers</h3><table class=\"grid\"><tr><td>-</td><td><b>Actor</b></td><td><b>OnBehalfOf</b></td></tr><tr><td>*</td><td><a href=\"#Organization_AbteilungOnko\">See above (Organization/AbteilungOnko)</a></td><td><a href=\"#Organization_SpitalSeeblickHansEgli\">See above (Organization/SpitalSeeblickHansEgli)</a></td></tr></table><p><b>reasonReference</b>: <a href=\"#Observation_ICD-10-Kolon-final\">See above (Observation/ICD-10-Kolon-final)</a></p></div>"
+  ];
+  fhir:Procedure.status [ fhir:value "completed"];
+  fhir:Procedure.category [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:67183-4;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "67183-4" ];
+       fhir:Coding.display [ fhir:value "Diagnostic staging procedure PhenX" ]
+     ]
+  ];
+  fhir:Procedure.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-crl/CodeSystem/nkrs-diagnosticmethodsused" ];
+       fhir:Coding.code [ fhir:value "24" ];
+       fhir:Coding.display [ fhir:value "Biopsy of primary tumour" ]
+     ]
+  ];
+  fhir:Procedure.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/RobertMeier>;
+     fhir:Reference.reference [ fhir:value "Patient/RobertMeier" ]
+  ];
+  fhir:Procedure.performedDateTime [ fhir:value "2018-12-14T13:00:00+02:00"^^xsd:dateTime];
+  fhir:Procedure.performer [
+     fhir:index 0;
+     fhir:Procedure.performer.actor [
+       fhir:link <http://fhir.ch/ig/ch-crl/Organization/AbteilungOnko>;
+       fhir:Reference.reference [ fhir:value "Organization/AbteilungOnko" ]
+     ];
+     fhir:Procedure.performer.onBehalfOf [
+       fhir:link <http://fhir.ch/ig/ch-crl/Organization/SpitalSeeblickHansEgli>;
+       fhir:Reference.reference [ fhir:value "Organization/SpitalSeeblickHansEgli" ]
+     ]
+  ];
+  fhir:Procedure.reasonReference [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-crl/Observation/ICD-10-Kolon-final>;
+     fhir:Reference.reference [ fhir:value "Observation/ICD-10-Kolon-final" ]
+  ] .
+
+<http://test.fhir.ch/r4/Procedure/DiagnosticMethod-Surgical20181214> a fhir:Procedure;
+  fhir:Resource.id [ fhir:value "DiagnosticMethod-Surgical20181214"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-procedure-diagnosticmethod";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-procedure-diagnosticmethod>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"DiagnosticMethod-Surgical20181214\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-procedure-diagnosticmethod.html\">CH CRL Procedure Diagnostic Method</a></p></div><p><b>status</b>: completed</p><p><b>category</b>: Diagnostic staging procedure PhenX <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#67183-4)</span></p><p><b>code</b>: Surgical tissue from operation (e.g. neuroendocrine tumours) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-nkrs-diagnosticmethodsused.html\">NKRS - Diagnostic Methods Used</a>#26)</span></p><p><b>subject</b>: <a href=\"#Patient_RobertMeier\">See above (Patient/RobertMeier)</a></p><p><b>performed</b>: 2018-12-14T13:00:00+02:00</p><h3>Performers</h3><table class=\"grid\"><tr><td>-</td><td><b>Actor</b></td><td><b>OnBehalfOf</b></td></tr><tr><td>*</td><td><a href=\"#Organization_AbteilungOnko\">See above (Organization/AbteilungOnko)</a></td><td><a href=\"#Organization_SpitalSeeblickHansEgli\">See above (Organization/SpitalSeeblickHansEgli)</a></td></tr></table><p><b>reasonReference</b>: <a href=\"#Observation_ICD-10-Kolon-final\">See above (Observation/ICD-10-Kolon-final)</a></p></div>"
+  ];
+  fhir:Procedure.status [ fhir:value "completed"];
+  fhir:Procedure.category [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:67183-4;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "67183-4" ];
+       fhir:Coding.display [ fhir:value "Diagnostic staging procedure PhenX" ]
+     ]
+  ];
+  fhir:Procedure.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-crl/CodeSystem/nkrs-diagnosticmethodsused" ];
+       fhir:Coding.code [ fhir:value "26" ];
+       fhir:Coding.display [ fhir:value "Surgical tissue from operation (e.g. neuroendocrine tumours)" ]
+     ]
+  ];
+  fhir:Procedure.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/RobertMeier>;
+     fhir:Reference.reference [ fhir:value "Patient/RobertMeier" ]
+  ];
+  fhir:Procedure.performedDateTime [ fhir:value "2018-12-14T13:00:00+02:00"^^xsd:dateTime];
+  fhir:Procedure.performer [
+     fhir:index 0;
+     fhir:Procedure.performer.actor [
+       fhir:link <http://fhir.ch/ig/ch-crl/Organization/AbteilungOnko>;
+       fhir:Reference.reference [ fhir:value "Organization/AbteilungOnko" ]
+     ];
+     fhir:Procedure.performer.onBehalfOf [
+       fhir:link <http://fhir.ch/ig/ch-crl/Organization/SpitalSeeblickHansEgli>;
+       fhir:Reference.reference [ fhir:value "Organization/SpitalSeeblickHansEgli" ]
+     ]
+  ];
+  fhir:Procedure.reasonReference [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-crl/Observation/ICD-10-Kolon-final>;
+     fhir:Reference.reference [ fhir:value "Observation/ICD-10-Kolon-final" ]
+  ] .
+
+<http://test.fhir.ch/r4/Patient/RobertMeier> a fhir:Patient;
+  fhir:Resource.id [ fhir:value "RobertMeier"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-patient";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-patient>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"RobertMeier\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-patient.html\">CH CRL Patient</a></p></div><p><b>identifier</b>: id: 756.9217.0023.43</p><p><b>name</b>: Robert Meier </p><p><b>gender</b>: male</p><p><b>birthDate</b>: 1955-01-27</p><p><b>deceased</b>: false</p><p><b>address</b>: Winterthurerstrasse 13a Wallisellen ZH 8304 </p></div>"
+  ];
+  fhir:Patient.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.32" ];
+     fhir:Identifier.value [ fhir:value "756.9217.0023.43" ]
+  ];
+  fhir:Patient.name [
+     fhir:index 0;
+     fhir:HumanName.family [ fhir:value "Meier" ];
+     fhir:HumanName.given [
+       fhir:value "Robert";
+       fhir:index 0
+     ]
+  ];
+  fhir:Patient.gender [ fhir:value "male"];
+  fhir:Patient.birthDate [ fhir:value "1955-01-27"^^xsd:date];
+  fhir:Patient.deceasedBoolean [ fhir:value "false"^^xsd:boolean];
+  fhir:Patient.address [
+     fhir:index 0;
+     fhir:Address.line [
+       fhir:value "Winterthurerstrasse 13a";
+       fhir:index 0
+     ];
+     fhir:Address.city [ fhir:value "Wallisellen" ];
+     fhir:Address.state [ fhir:value "ZH" ];
+     fhir:Address.postalCode [ fhir:value "8304" ]
+  ] .
+
+<http://test.fhir.ch/r4/Organization/SpitalSeeblickHansEgli> a fhir:Organization;
+  fhir:Resource.id [ fhir:value "SpitalSeeblickHansEgli"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-organization";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-organization>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"SpitalSeeblickHansEgli\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-organization.html\">CH CRL Organization</a></p></div><p><b>identifier</b>: id: 76010088</p><p><b>active</b>: true</p><p><b>type</b>: Healthcare Provider <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.0.0/CodeSystem-organization-type.html\">Organization type</a>#prov)</span></p><p><b>name</b>: Spital Seeblick</p><p><b>telecom</b>: ph: 031 409 88 60, <a href=\"mailto:spital@spital.ch\">spital@spital.ch</a></p><p><b>address</b>: Seeblick 14 Zürich ZH 8005 </p><h3>Contacts</h3><table class=\"grid\"><tr><td>-</td><td><b>Extension</b></td><td><b>Name</b></td></tr><tr><td>*</td><td></td><td>Hans Egli </td></tr></table></div>"
+  ];
+  fhir:Organization.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.45" ];
+     fhir:Identifier.value [ fhir:value "76010088" ]
+  ];
+  fhir:Organization.active [ fhir:value "true"^^xsd:boolean];
+  fhir:Organization.type [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/organization-type" ];
+       fhir:Coding.code [ fhir:value "prov" ];
+       fhir:Coding.display [ fhir:value "Healthcare Provider" ]
+     ]
+  ];
+  fhir:Organization.name [ fhir:value "Spital Seeblick"];
+  fhir:Organization.telecom [
+     fhir:index 0;
+     fhir:ContactPoint.system [ fhir:value "phone" ];
+     fhir:ContactPoint.value [ fhir:value "031 409 88 60" ]
+  ], [
+     fhir:index 1;
+     fhir:ContactPoint.system [ fhir:value "email" ];
+     fhir:ContactPoint.value [ fhir:value "spital@spital.ch" ]
+  ];
+  fhir:Organization.address [
+     fhir:index 0;
+     fhir:Address.line [
+       fhir:value "Seeblick 14";
+       fhir:index 0
+     ];
+     fhir:Address.city [ fhir:value "Zürich" ];
+     fhir:Address.state [ fhir:value "ZH" ];
+     fhir:Address.postalCode [ fhir:value "8005" ]
+  ];
+  fhir:Organization.contact [
+     fhir:index 0;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-organization-contact-functionofcontactperson" ];
+       fhir:Extension.valueString [ fhir:value "Abteilungsarzt" ]
+     ];
+     fhir:Organization.contact.name [
+       fhir:HumanName.family [ fhir:value "Egli" ];
+       fhir:HumanName.given [
+         fhir:value "Hans";
+         fhir:index 0
+       ]
+     ]
+  ] .
+
+<http://test.fhir.ch/r4/Observation/ICD-10-Kolon-final> a fhir:Observation;
+  fhir:Resource.id [ fhir:value "ICD-10-Kolon-final"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-icd10";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-icd10>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"ICD-10-Kolon-final\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-observation-icd10.html\">CH CRL Observation ICD-10</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Primary diagnosis ICD code <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#86255-7)</span></p><p><b>subject</b>: <a href=\"#Patient_RobertMeier\">See above (Patient/RobertMeier)</a></p><p><b>effective</b>: 2018-12-02</p><p><b>value</b>: Bösartige Neubildung des Kolons <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (icd-10-gm[2019]#C18)</span></p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:86255-7;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "86255-7" ];
+       fhir:Coding.display [ fhir:value "Primary diagnosis ICD code" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/RobertMeier>;
+     fhir:Reference.reference [ fhir:value "Patient/RobertMeier" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2018-12-02"^^xsd:date];
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.de/CodeSystem/dimdi/icd-10-gm" ];
+       fhir:Coding.version [ fhir:value "2019" ];
+       fhir:Coding.code [ fhir:value "C18" ];
+       fhir:Coding.display [ fhir:value "Bösartige Neubildung des Kolons" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Bundle/BundleUC1bOps20181214.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

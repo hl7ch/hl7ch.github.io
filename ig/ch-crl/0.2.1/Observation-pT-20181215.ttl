@@ -1,0 +1,53 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Observation/pT-20181215> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "pT-20181215"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-pt";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-pt>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: pT-20181215</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>code</b>: Primary tumor.pathology Cancer <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '21899-0' = '21899-0', given as 'Primary tumor.pathology Cancer'})</span></p><p><b>subject</b>: <a href=\"Patient-RobertMeier.html\">Generated Summary: id: RobertMeier; 756.9217.0023.43; Robert Meier ; gender: male; birthDate: 1955-01-27; </a></p><p><b>effective</b>: 15.12.2018, 00:00:00</p><p><b>value</b>: pT3 <span style=\"background: LightGoldenRodYellow\">(Details : {http://fhir.ch/ig/ch-crl/CodeSystem/nkrs-pt code '3' = 'pT3', given as 'pT3'})</span></p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:21899-0;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "21899-0" ];
+       fhir:Coding.display [ fhir:value "Primary tumor.pathology Cancer" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/RobertMeier>;
+     fhir:Reference.reference [ fhir:value "Patient/RobertMeier" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2018-12-15"^^xsd:date];
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-crl/CodeSystem/nkrs-pt" ];
+       fhir:Coding.code [ fhir:value "3" ];
+       fhir:Coding.display [ fhir:value "pT3" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Observation/pT-20181215.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

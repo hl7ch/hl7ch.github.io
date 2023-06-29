@@ -1,0 +1,54 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Observation/ICD-10-Kolon-preliminary> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "ICD-10-Kolon-preliminary"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-icd10";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-observation-icd10>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"ICD-10-Kolon-preliminary\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-crl-observation-icd10.html\">CH CRL Observation ICD-10</a></p></div><p><b>status</b>: preliminary</p><p><b>code</b>: Primary diagnosis ICD code <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#86255-7)</span></p><p><b>subject</b>: <a href=\"Patient-RobertMeier.html\">Patient/RobertMeier</a> \" MEIER\"</p><p><b>effective</b>: 2018-12-01</p><p><b>value</b>: Bösartige Neubildung des Kolons <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (icd-10-gm[2019]#C18)</span></p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "preliminary"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:86255-7;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "86255-7" ];
+       fhir:Coding.display [ fhir:value "Primary diagnosis ICD code" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/RobertMeier>;
+     fhir:Reference.reference [ fhir:value "Patient/RobertMeier" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2018-12-01"^^xsd:date];
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.de/CodeSystem/dimdi/icd-10-gm" ];
+       fhir:Coding.version [ fhir:value "2019" ];
+       fhir:Coding.code [ fhir:value "C18" ];
+       fhir:Coding.display [ fhir:value "Bösartige Neubildung des Kolons" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Observation/ICD-10-Kolon-preliminary.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

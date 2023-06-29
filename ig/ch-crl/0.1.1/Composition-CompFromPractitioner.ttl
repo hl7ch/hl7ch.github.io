@@ -1,0 +1,63 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Composition/CompFromPractitioner> a fhir:Composition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CompFromPractitioner"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-composition";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-composition>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: CompFromPractitioner</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>type</b>: Cancer event report <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '72134-0' = 'Cancer event report', given as 'Cancer event report'})</span></p><p><b>date</b>: 15.12.2018 12:00:00</p><p><b>author</b>: <a href=\"Practitioner-EmmaMinimum.html\">Generated Summary: id: EmmaMinimum; Emma Minimum ; ph: 031 512 75 98, praxis@privatpraxis.ch; gender: female</a></p><p><b>title</b>: Report to the Cancer Registry</p></div>"
+  ];
+  fhir:Composition.status [ fhir:value "final"];
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:72134-0;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "72134-0" ];
+       fhir:Coding.display [ fhir:value "Cancer event report" ]
+     ]
+  ];
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/FranzMinimum>;
+     fhir:Reference.reference [ fhir:value "Patient/FranzMinimum" ]
+  ];
+  fhir:Composition.date [ fhir:value "2018-12-15T13:00:00+02:00"^^xsd:dateTime];
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-crl/Practitioner/EmmaMinimum>;
+     fhir:Reference.reference [ fhir:value "Practitioner/EmmaMinimum" ]
+  ];
+  fhir:Composition.title [ fhir:value "Report to the Cancer Registry"];
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/DocumentReference/DocuPractMinimum>;
+       fhir:Reference.reference [ fhir:value "DocumentReference/DocuPractMinimum" ]
+     ], [
+       fhir:index 1;
+       fhir:link <http://fhir.ch/ig/ch-crl/Communication/CommMinimum>;
+       fhir:Reference.reference [ fhir:value "Communication/CommMinimum" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Composition/CompFromPractitioner.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

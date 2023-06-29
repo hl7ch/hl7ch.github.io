@@ -1,0 +1,65 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Organization/AbteilungMinimum> a fhir:Organization;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "AbteilungMinimum"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-organization-department";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-organization-department>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: AbteilungMinimum</p><p><b>meta</b>: </p><p><b>identifier</b>: CHE-105.983.423</p><p><b>active</b>: true</p><p><b>type</b>: Clinical oncology <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '394592004' = 'Clinical oncology (qualifier value)', given as 'Clinical oncology'})</span></p><p><b>name</b>: Abteilung Minium</p><p><b>telecom</b>: abteilung@spital.ch</p><p><b>address</b>: Bahnhofstrasse 1 Zürich 8001 </p><p><b>partOf</b>: <a href=\"Organization-SpitalMinimum.html\">Generated Summary: id: SpitalMinimum; CHE-105.983.423; active; <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/organization-type prov}\">Healthcare Provider</span>; name: Spital Minium; ph: 031 512 75 98, spital@spital.ch</a></p></div>"
+  ];
+  fhir:Organization.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "https://www.uid.admin.ch" ];
+     fhir:Identifier.value [ fhir:value "CHE-105.983.423" ]
+  ];
+  fhir:Organization.active [ fhir:value "true"^^xsd:boolean];
+  fhir:Organization.type [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:394592004;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "394592004" ];
+       fhir:Coding.display [ fhir:value "Clinical oncology" ]
+     ]
+  ];
+  fhir:Organization.name [ fhir:value "Abteilung Minium"];
+  fhir:Organization.telecom [
+     fhir:index 0;
+     fhir:ContactPoint.system [ fhir:value "email" ];
+     fhir:ContactPoint.value [ fhir:value "abteilung@spital.ch" ]
+  ];
+  fhir:Organization.address [
+     fhir:index 0;
+     fhir:Address.line [
+       fhir:value "Bahnhofstrasse 1";
+       fhir:index 0
+     ];
+     fhir:Address.city [ fhir:value "Zürich" ];
+     fhir:Address.postalCode [ fhir:value "8001" ]
+  ];
+  fhir:Organization.partOf [
+     fhir:link <http://fhir.ch/ig/ch-crl/Organization/SpitalMinimum>;
+     fhir:Reference.reference [ fhir:value "Organization/SpitalMinimum" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Organization/AbteilungMinimum.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

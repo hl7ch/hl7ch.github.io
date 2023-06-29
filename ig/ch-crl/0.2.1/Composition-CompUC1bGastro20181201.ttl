@@ -1,0 +1,63 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Composition/CompUC1bGastro20181201> a fhir:Composition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CompUC1bGastro20181201"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-composition";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/StructureDefinition/ch-crl-composition>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: CompUC1bGastro20181201</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>type</b>: Cancer event report <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '72134-0' = 'Cancer event report', given as 'Cancer event report'})</span></p><p><b>date</b>: 01.12.2018, 12:00:00</p><p><b>author</b>: <a href=\"Organization-AbteilungGastro.html\">Generated Summary: id: AbteilungGastro; 76010088; active; <span title=\"Codes: {http://snomed.info/sct 394584008}\">Gastroenterology</span>; name: Abteilung Gastroenterologie; gastro@spital.ch</a></p><p><b>title</b>: Bericht Koloskopie</p></div>"
+  ];
+  fhir:Composition.status [ fhir:value "final"];
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:72134-0;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "72134-0" ];
+       fhir:Coding.display [ fhir:value "Cancer event report" ]
+     ]
+  ];
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-crl/Patient/RobertMeier>;
+     fhir:Reference.reference [ fhir:value "Patient/RobertMeier" ]
+  ];
+  fhir:Composition.date [ fhir:value "2018-12-01T13:00:00+02:00"^^xsd:dateTime];
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-crl/Organization/AbteilungGastro>;
+     fhir:Reference.reference [ fhir:value "Organization/AbteilungGastro" ]
+  ];
+  fhir:Composition.title [ fhir:value "Bericht Koloskopie"];
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-crl/Procedure/DiagnosticMethod-Endoscopy20181201>;
+       fhir:Reference.reference [ fhir:value "Procedure/DiagnosticMethod-Endoscopy20181201" ]
+     ], [
+       fhir:index 1;
+       fhir:link <http://fhir.ch/ig/ch-crl/Procedure/DiagnosticMethod-Biopsy20181201>;
+       fhir:Reference.reference [ fhir:value "Procedure/DiagnosticMethod-Biopsy20181201" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-crl/Composition/CompUC1bGastro20181201.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
