@@ -1,0 +1,1344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureMap xmlns="http://hl7.org/fhir">
+  <id value="FhirToCdaTypes"/>
+  <meta>
+    <versionId value="2"/>
+    <lastUpdated value="2021-11-03T11:16:56.175+01:00"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Resource "FhirToCdaTypes" Version "2" Updated "2021-11-03T11:16:56.175+01:00" </p></div><p><b>url</b>: <code>http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes</code></p><p><b>version</b>: 0.3.0</p><p><b>name</b>: FhirToCdaTypes</p><p><b>status</b>: draft</p><p><b>date</b>: 2022-02-11T11:14:39+01:00</p><p><b>publisher</b>: ahdis</p><p><b>contact</b>: ahdis: <a href="http://www.ahdis.ch/">http://www.ahdis.ch/</a></p><p><b>description</b>: Adapted from https://github.com/HL7/ccda-to-fhir/tree/master/mappings
+CDA:  http://build.fhir.org/ig/ahdis/cda-core-2.0/branches/master/index.html
+FHIR: http://hl7.org/fhir/r4/</p><p><b>copyright</b>: CC-BY-SA-4.0</p><blockquote><p><b>structure</b></p><p><b>url</b>: <a href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a></p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>structure</b></p><p><b>url</b>: <a href="https://build.fhir.org/ig/HL7/CDA-core-2.0//StructureDefinition-II.html">II: InstanceIdentifier (V3 Data Type)</a></p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: Any</p><p><b>typeMode</b>: none</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: extension</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>extension</td><td>extension</td><td>$this.url = 'http://hl7.org/fhir/StructureDefinition/iso21090-nullFlavor'</td></tr></table><h3>Targets</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>ContextType</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>tgt</td><td>variable</td><td>nullFlavor</td><td>nullFlavor</td></tr></table><blockquote><p><b>rule</b></p><p><b>name</b>: nullFlavor</p></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: IdentifierII</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: Identifier</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: II</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: idAsUuid</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>value</td><td>src.system.empty() and src.value.startsWith('urn:uuid:')</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: root</p><p><b>transform</b>: evaluate</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>value.substring(9).upper()</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: idAsUuid</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>value</td><td>src.system = 'urn:ietf:rfc:3986'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: root</p><p><b>transform</b>: evaluate</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>value.substring(9).upper()</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: system</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>value</td><td>src.system.startsWith('urn:oid:')</td></tr></table><blockquote><p><b>rule</b></p><p><b>name</b>: oidident</p></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: IntegerINT</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: integer</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: INT</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: integer</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: value</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: InstantTS</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><p><b>documentation</b>: group Identifier(source src : Identifier, target tgt : II) extends Any &lt;&lt;types&gt;&gt; {
+src.system as system then {
+src.value as value then {
+value.value as v where system.value = 'urn:ietf:rfc:3986' -&gt; tgt.root = cast(v, 'string') "noExtension";
+system.value as v where system.value != 'urn:ietf:rfc:3986' -&gt; tgt.root = v then {
+value.value as val -&gt; tgt.extension = cast(val, 'string') "extension";
+} "withExtension";
+} "rootValue";
+} "root";
+src.value as value -&gt; tgt.root = '123' "test";
+src -&gt; tgt.root = '123' "test";
+src.assigner as a then {
+a.display as display then {
+display.value as val -&gt; tgt.assigningAuthorityName = cast(val, 'string');
+} "display";
+} "assigner";
+src.extension as ext where ext.url = 'http://hl7.org/fhir/cdaStructureDefinition/extension-displayable' -&gt; tgt.displayable as displayable then {
+ext.value as v -&gt; displayable.value = cast(v, 'string');
+} "displayable";
+}</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: instant</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: TS</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: copy</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: value</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: DateTimeTS</p><p><b>extends</b>: InstantTS</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: dateTime</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: TS</p><p><b>mode</b>: target</p></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: DateTS</p><p><b>extends</b>: InstantTS</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: date</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: TS</p><p><b>mode</b>: target</p></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: CodeCS</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: code</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: CS</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: code</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>code</td><td>c</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: value</p><p><b>transform</b>: cast</p><blockquote><p><b>parameter</b></p><p><b>value</b>: c</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: string</p></blockquote></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: CodeCE</p><p><b>extends</b>: CodeCS</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: code</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: CE</p><p><b>mode</b>: target</p></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: CodeCD</p><p><b>extends</b>: CodeCS</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: code</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: CD</p><p><b>mode</b>: target</p></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: CodingCE</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: Coding</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: CE</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: code</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>code</td><td>code</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: code</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>code</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: system</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>system</td><td>system</td><td>$this.startsWith('http:')</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: codeSystem</p><p><b>transform</b>: translate</p><blockquote><p><b>parameter</b></p><p><b>value</b>: system</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: #uri2oid</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: code</p></blockquote></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: system</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>system</td><td>system</td><td>$this.startsWith('urn:oid:')</td></tr></table><blockquote><p><b>rule</b></p><p><b>name</b>: oidident</p></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: systemName1</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>system</td><td>system</td><td>$this.startsWith('http:')</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: codeSystemName</p><p><b>transform</b>: translate</p><blockquote><p><b>parameter</b></p><p><b>value</b>: system</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: #uri2system</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: code</p></blockquote></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: systemName2</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>system</td><td>system</td><td>$this.startsWith('urn:oid:')</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: codeSystemName</p><p><b>transform</b>: translate</p><blockquote><p><b>parameter</b></p><p><b>value</b>: system</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: #oid2system</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: code</p></blockquote></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: display</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>display</td><td>display</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: displayName</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>display</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: CodeableConceptCE</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: CodeableConcept</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: CE</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: text</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>text</td><td>text</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: orginialText</p><p><b>variable</b>: originalText</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: originalText</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>text</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: first</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>ListMode</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>coding</td><td>first</td><td>coding</td></tr></table><h3>Dependents</h3><table class="grid"><tr><td>-</td><td><b>Name</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>CodingCE</td><td>coding, tgt</td></tr></table></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: translation</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>ListMode</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>coding</td><td>not_first</td><td>coding</td></tr></table><h3>Targets</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>ContextType</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>tgt</td><td>variable</td><td>translation</td><td>translation</td></tr></table><h3>Dependents</h3><table class="grid"><tr><td>-</td><td><b>Name</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>CodingCE</td><td>coding, translation</td></tr></table></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: AddressAD</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><p><b>documentation</b>: group CECodeableConcept(source src : CE, target tgt : CodeableConcept) extends Any &lt;&lt;types&gt;&gt; {
+src.originalText -&gt; tgt.text;
+src -&gt; tgt.coding as coding then {
+src.code as code -&gt; coding.code = cast(code, 'string');
+src.codeSystem as system -&gt; coding.system = translate(system, 'http://hl7.org/fhir/ConceptMap/special-oid2uri', 'uri');
+src.displayName as display -&gt; coding.display = cast(display, 'string');
+} "code";
+src.translation as translation -&gt; tgt.coding as coding then {
+translation.code as code -&gt; coding.code = cast(code, 'string');
+translation.codeSystem as system -&gt; coding.system = translate(system, 'http://hl7.org/fhir/ConceptMap/special-oid2uri', 'uri');
+translation.displayName as display -&gt; coding.display = cast(display, 'string');
+} "translation";
+}
+group CSCodeableConcept(source src : CS, target tgt : CodeableConcept) extends CECodeableConcept &lt;&lt;types&gt;&gt; {
+}
+group CDCodeableConcept(source src : CD, target tgt : CodeableConcept) extends CECodeableConcept &lt;&lt;types&gt;&gt; {
+}</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: Address</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: AD</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: streetAddress</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>line</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: streetAddressLine</p><p><b>variable</b>: line</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: line</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: postalCode</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>postalCode</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: postalCode</p><p><b>variable</b>: postalCode</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: postalCode</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: nullFlavor</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>$this.postalCode.exists() = false</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: postalCode</p><p><b>variable</b>: postalCode</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: postalCode</p><p><b>contextType</b>: variable</p><p><b>element</b>: nullFlavor</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>NI</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: city</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>city</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: city</p><p><b>variable</b>: city</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: city</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: nullFlavor</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>$this.city.exists() = false</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: city</p><p><b>variable</b>: city</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: city</p><p><b>contextType</b>: variable</p><p><b>element</b>: nullFlavor</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>NI</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: state</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>state</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: state</p><p><b>variable</b>: state</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: state</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: district</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>district</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: county</p><p><b>variable</b>: county</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: county</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: country</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>country</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: country</p><p><b>variable</b>: country</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: country</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: nullFlavor</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>$this.country.exists() = false</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: country</p><p><b>variable</b>: country</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: country</p><p><b>contextType</b>: variable</p><p><b>element</b>: nullFlavor</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>NI</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: addressUse</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>c</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: translate</p><blockquote><p><b>parameter</b></p><p><b>value</b>: c</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: #addressUse</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: code</p></blockquote></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: ContactPointTEL</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: ContactPoint</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: TEL</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: value</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>value</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: value</p><p><b>transform</b>: evaluate</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>iif(%src.system = 'phone', 'tel:', '') + iif(%src.system = 'fax', 'fax:', '') + iif(%src.system = 'email', 'mailto:', '') + iif(%src.system = 'url', 'http:', '') + value</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: use</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>use</td><td>$this = 'home'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>HP</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: use</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>use</td><td>$this = 'work'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>WP</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: use</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>use</td><td>$this = 'old'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>BAD</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: use</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>use</td><td>$this = 'temp'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>TMP</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: use</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>use</td><td>$this = 'mobile'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>MC</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: HumanNameEN</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: HumanName</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: EN</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: family</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>family</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: family</p><p><b>variable</b>: family</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: family</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: given</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>given</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: given</p><p><b>variable</b>: given</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: given</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: prefix</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>prefix</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: prefix</p><p><b>variable</b>: prefix</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: prefix</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: suffix</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>suffix</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: suffix</p><p><b>variable</b>: suffix</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: suffix</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: QuantityPQ</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: Quantity</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: PQ</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: code</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>code</td><td>code</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: unit</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>code</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: value</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>value</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: value</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class="grid"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>value</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: RatioRTOPQPQ</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: Ratio</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: RTO_PQ_PQ</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: numerator</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>numerator</td><td>numerator</td></tr></table><h3>Targets</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>ContextType</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>tgt</td><td>variable</td><td>numerator</td><td>targetNumerator</td></tr></table><h3>Dependents</h3><table class="grid"><tr><td>-</td><td><b>Name</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>QuantityPQ</td><td>numerator, targetNumerator</td></tr></table></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: denominator</p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>denominator</td><td>denominator</td></tr></table><h3>Targets</h3><table class="grid"><tr><td>-</td><td><b>Context</b></td><td><b>ContextType</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>tgt</td><td>variable</td><td>denominator</td><td>targetDenominator</td></tr></table><h3>Dependents</h3><table class="grid"><tr><td>-</td><td><b>Name</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>QuantityPQ</td><td>denominator, targetDenominator</td></tr></table></blockquote></blockquote></div>
+  </text>
+  <contained>
+    <ConceptMap>
+      <id value="uri2oid"/>
+      <status value="draft"/>
+      <group>
+        <source value="http://hl7.org/fhir"/>
+        <target value="http://hl7.org/cda"/>
+        <element>
+          <code value="http://snomed.info/sct"/>
+          <target>
+            <code value="2.16.840.1.113883.6.96"/>
+            <equivalence value="equivalent"/>
+          </target>
+        </element>
+        <element>
+          <code value="http://loinc.org"/>
+          <target>
+            <code value="2.16.840.1.113883.6.1"/>
+            <equivalence value="equivalent"/>
+          </target>
+        </element>
+        <element>
+          <code value="http://hl7.org/fhir/sid/atc"/>
+          <target>
+            <code value="2.16.840.1.113883.6.73"/>
+            <equivalence value="equivalent"/>
+            <comment value="see issue #4"/>
+          </target>
+        </element>
+        <element>
+          <code value="http://www.whocc.no/atc"/>
+          <target>
+            <code value="2.16.840.1.113883.6.73"/>
+            <equivalence value="equivalent"/>
+          </target>
+        </element>
+        <element>
+          <code value="http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution"/>
+          <target>
+            <code value="2.16.840.1.113883.5.1070"/>
+            <equivalence value="equivalent"/>
+          </target>
+        </element>
+      </group>
+    </ConceptMap>
+  </contained>
+  <contained>
+    <ConceptMap>
+      <id value="uri2system"/>
+      <status value="draft"/>
+      <group>
+        <source value="http://hl7.org/fhir"/>
+        <target value="http://hl7.org/cda"/>
+        <element>
+          <code value="http://snomed.info/sct"/>
+          <target>
+            <code value="SNOMED CT"/>
+            <equivalence value="equivalent"/>
+          </target>
+        </element>
+        <element>
+          <code value="http://loinc.org"/>
+          <target>
+            <code value="LOINC"/>
+            <equivalence value="equivalent"/>
+          </target>
+        </element>
+        <element>
+          <code value="http://hl7.org/fhir/sid/atc"/>
+          <target>
+            <code value="ATC WHO"/>
+            <equivalence value="equivalent"/>
+            <comment value="see issue #4"/>
+          </target>
+        </element>
+        <element>
+          <code value="http://www.whocc.no/atc"/>
+          <target>
+            <code value="ATC WHO"/>
+            <equivalence value="equivalent"/>
+          </target>
+        </element>
+        <element>
+          <code value="http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution"/>
+          <target>
+            <code value="HL7 Substance Admin Substitution"/>
+            <equivalence value="equivalent"/>
+          </target>
+        </element>
+      </group>
+    </ConceptMap>
+  </contained>
+  <contained>
+    <ConceptMap>
+      <id value="oid2system"/>
+      <status value="draft"/>
+      <group>
+        <source value="http://hl7.org/fhir"/>
+        <target value="http://hl7.org/cda"/>
+        <element>
+          <code value="urn:oid:2.51.1.1"/>
+          <target>
+            <code value="GTIN"/>
+            <equivalence value="equivalent"/>
+          </target>
+        </element>
+        <element>
+          <code value="urn:oid:1.3.6.1.4.1.19376.1.9.2.1"/>
+          <target>
+            <code value="IHE Pharmaceutical Advice Status List"/>
+            <equivalence value="equivalent"/>
+          </target>
+        </element>
+      </group>
+    </ConceptMap>
+  </contained>
+  <contained>
+    <ConceptMap>
+      <id value="addressUse"/>
+      <status value="draft"/>
+      <group>
+        <source value="http://hl7.org/fhir/valueset-address-use.html"/>
+        <target value="http://terminology.hl7.org/ValueSet/v3-AddressUse"/>
+        <element>
+          <code value="home"/>
+          <target>
+            <code value="H"/>
+            <equivalence value="equivalent"/>
+            <comment value="home -&gt; home address"/>
+          </target>
+        </element>
+        <element>
+          <code value="work"/>
+          <target>
+            <code value="WP"/>
+            <equivalence value="equivalent"/>
+            <comment value="work -&gt; work place"/>
+          </target>
+        </element>
+        <element>
+          <code value="temp"/>
+          <target>
+            <code value="TMP"/>
+            <equivalence value="equivalent"/>
+            <comment value="Temporary -&gt; temporary address"/>
+          </target>
+        </element>
+        <element>
+          <code value="old"/>
+          <target>
+            <code value="OLD"/>
+            <equivalence value="equivalent"/>
+            <comment value="Old / Incorrect -&gt; no longer in use, could be also t:&quot;BAD&quot; for bad address"/>
+          </target>
+        </element>
+      </group>
+    </ConceptMap>
+  </contained>
+  <extension url="http://fhir.ch/reference">
+    <valueReference>
+      <reference value="#uri2oid"/>
+    </valueReference>
+  </extension>
+  <extension url="http://fhir.ch/reference">
+    <valueReference>
+      <reference value="#uri2system"/>
+    </valueReference>
+  </extension>
+  <extension url="http://fhir.ch/reference">
+    <valueReference>
+      <reference value="#oid2system"/>
+    </valueReference>
+  </extension>
+  <extension url="http://fhir.ch/reference">
+    <valueReference>
+      <reference value="#addressUse"/>
+    </valueReference>
+  </extension>
+  <url value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes"/>
+  <version value="0.3.0"/>
+  <name value="FhirToCdaTypes"/>
+  <status value="draft"/>
+  <date value="2022-02-11T11:14:39+01:00"/>
+  <publisher value="ahdis"/>
+  <contact>
+    <name value="ahdis"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.ahdis.ch/"/>
+    </telecom>
+  </contact>
+  <description value="Adapted from https://github.com/HL7/ccda-to-fhir/tree/master/mappings&#xD;&#xA;CDA:  http://build.fhir.org/ig/ahdis/cda-core-2.0/branches/master/index.html&#xD;&#xA;FHIR: http://hl7.org/fhir/r4/"/>
+  <copyright value="CC-BY-SA-4.0"/>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Identifier"/>
+    <mode value="source"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/II"/>
+    <mode value="target"/>
+  </structure>
+  <group>
+    <name value="Any"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="extension"/>
+      <source>
+        <context value="src"/>
+        <element value="extension"/>
+        <variable value="extension"/>
+        <condition value="$this.url = &#39;http://hl7.org/fhir/StructureDefinition/iso21090-nullFlavor&#39;"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="nullFlavor"/>
+        <variable value="nullFlavor"/>
+      </target>
+      <rule>
+        <name value="nullFlavor"/>
+        <source>
+          <context value="extension"/>
+          <element value="valueCode"/>
+          <variable value="valueCode"/>
+        </source>
+        <rule>
+          <name value="value"/>
+          <source>
+            <context value="valueCode"/>
+            <element value="value"/>
+            <variable value="v"/>
+          </source>
+          <target>
+            <context value="nullFlavor"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <transform value="cast"/>
+            <parameter>
+              <valueId value="v"/>
+            </parameter>
+            <parameter>
+              <valueString value="string"/>
+            </parameter>
+          </target>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="IdentifierII"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="Identifier"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="II"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="idAsUuid"/>
+      <source>
+        <context value="src"/>
+        <element value="value"/>
+        <variable value="value"/>
+        <condition value="src.system.empty() and src.value.startsWith(&#39;urn:uuid:&#39;)"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="root"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="value.substring(9).upper()"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="idAsUuid"/>
+      <source>
+        <context value="src"/>
+        <element value="value"/>
+        <variable value="value"/>
+        <condition value="src.system = &#39;urn:ietf:rfc:3986&#39;"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="root"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="value.substring(9).upper()"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="system"/>
+      <source>
+        <context value="src"/>
+        <element value="value"/>
+        <variable value="value"/>
+        <condition value="src.system.startsWith(&#39;urn:oid:&#39;)"/>
+      </source>
+      <rule>
+        <name value="oidident"/>
+        <source>
+          <context value="src"/>
+          <element value="system"/>
+          <variable value="system"/>
+        </source>
+        <target>
+          <context value="tgt"/>
+          <contextType value="variable"/>
+          <element value="root"/>
+          <transform value="evaluate"/>
+          <parameter>
+            <valueString value="system.substring(8)"/>
+          </parameter>
+        </target>
+        <target>
+          <context value="tgt"/>
+          <contextType value="variable"/>
+          <element value="extension"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="value"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="IntegerINT"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="integer"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="INT"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="integer"/>
+      <source>
+        <context value="src"/>
+        <element value="value"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="InstantTS"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <documentation value="group Identifier(source src : Identifier, target tgt : II) extends Any &lt;&lt;types&gt;&gt; {&#xD;&#xA;src.system as system then {&#xD;&#xA;src.value as value then {&#xD;&#xA;value.value as v where system.value = &#39;urn:ietf:rfc:3986&#39; -&gt; tgt.root = cast(v, &#39;string&#39;) &quot;noExtension&quot;;&#xD;&#xA;system.value as v where system.value != &#39;urn:ietf:rfc:3986&#39; -&gt; tgt.root = v then {&#xD;&#xA;value.value as val -&gt; tgt.extension = cast(val, &#39;string&#39;) &quot;extension&quot;;&#xD;&#xA;} &quot;withExtension&quot;;&#xD;&#xA;} &quot;rootValue&quot;;&#xD;&#xA;} &quot;root&quot;;&#xD;&#xA;src.value as value -&gt; tgt.root = &#39;123&#39; &quot;test&quot;;&#xD;&#xA;src -&gt; tgt.root = &#39;123&#39; &quot;test&quot;;&#xD;&#xA;src.assigner as a then {&#xD;&#xA;a.display as display then {&#xD;&#xA;display.value as val -&gt; tgt.assigningAuthorityName = cast(val, &#39;string&#39;);&#xD;&#xA;} &quot;display&quot;;&#xD;&#xA;} &quot;assigner&quot;;&#xD;&#xA;src.extension as ext where ext.url = &#39;http://hl7.org/fhir/cdaStructureDefinition/extension-displayable&#39; -&gt; tgt.displayable as displayable then {&#xD;&#xA;ext.value as v -&gt; displayable.value = cast(v, &#39;string&#39;);&#xD;&#xA;} &quot;displayable&quot;;&#xD;&#xA;}"/>
+    <input>
+      <name value="src"/>
+      <type value="instant"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="TS"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="copy"/>
+      <source>
+        <context value="src"/>
+        <element value="value"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="DateTimeTS"/>
+    <extends value="InstantTS"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="dateTime"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="TS"/>
+      <mode value="target"/>
+    </input>
+  </group>
+  <group>
+    <name value="DateTS"/>
+    <extends value="InstantTS"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="date"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="TS"/>
+      <mode value="target"/>
+    </input>
+  </group>
+  <group>
+    <name value="CodeCS"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="code"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="CS"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="code"/>
+      <source>
+        <context value="src"/>
+        <element value="code"/>
+        <variable value="c"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <transform value="cast"/>
+        <parameter>
+          <valueId value="c"/>
+        </parameter>
+        <parameter>
+          <valueString value="string"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="CodeCE"/>
+    <extends value="CodeCS"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="code"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="CE"/>
+      <mode value="target"/>
+    </input>
+  </group>
+  <group>
+    <name value="CodeCD"/>
+    <extends value="CodeCS"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="code"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="CD"/>
+      <mode value="target"/>
+    </input>
+  </group>
+  <group>
+    <name value="CodingCE"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="Coding"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="CE"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="code"/>
+      <source>
+        <context value="src"/>
+        <element value="code"/>
+        <variable value="code"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="code"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="code"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="system"/>
+      <source>
+        <context value="src"/>
+        <element value="system"/>
+        <variable value="system"/>
+        <condition value="$this.startsWith(&#39;http:&#39;)"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="codeSystem"/>
+        <transform value="translate"/>
+        <parameter>
+          <valueId value="system"/>
+        </parameter>
+        <parameter>
+          <valueString value="#uri2oid"/>
+        </parameter>
+        <parameter>
+          <valueString value="code"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="system"/>
+      <source>
+        <context value="src"/>
+        <element value="system"/>
+        <variable value="system"/>
+        <condition value="$this.startsWith(&#39;urn:oid:&#39;)"/>
+      </source>
+      <rule>
+        <name value="oidident"/>
+        <source>
+          <context value="src"/>
+          <element value="system"/>
+          <variable value="system"/>
+        </source>
+        <target>
+          <context value="tgt"/>
+          <contextType value="variable"/>
+          <element value="codeSystem"/>
+          <transform value="evaluate"/>
+          <parameter>
+            <valueString value="system.substring(8)"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+    <rule>
+      <name value="systemName1"/>
+      <source>
+        <context value="src"/>
+        <element value="system"/>
+        <variable value="system"/>
+        <condition value="$this.startsWith(&#39;http:&#39;)"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="codeSystemName"/>
+        <transform value="translate"/>
+        <parameter>
+          <valueId value="system"/>
+        </parameter>
+        <parameter>
+          <valueString value="#uri2system"/>
+        </parameter>
+        <parameter>
+          <valueString value="code"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="systemName2"/>
+      <source>
+        <context value="src"/>
+        <element value="system"/>
+        <variable value="system"/>
+        <condition value="$this.startsWith(&#39;urn:oid:&#39;)"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="codeSystemName"/>
+        <transform value="translate"/>
+        <parameter>
+          <valueId value="system"/>
+        </parameter>
+        <parameter>
+          <valueString value="#oid2system"/>
+        </parameter>
+        <parameter>
+          <valueString value="code"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="display"/>
+      <source>
+        <context value="src"/>
+        <element value="display"/>
+        <variable value="display"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="displayName"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="display"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="CodeableConceptCE"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="CodeableConcept"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="CE"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="text"/>
+      <source>
+        <context value="src"/>
+        <element value="text"/>
+        <variable value="text"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="orginialText"/>
+        <variable value="originalText"/>
+      </target>
+      <target>
+        <context value="originalText"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="text"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="first"/>
+      <source>
+        <context value="src"/>
+        <element value="coding"/>
+        <listMode value="first"/>
+        <variable value="coding"/>
+      </source>
+      <dependent>
+        <name value="CodingCE"/>
+        <variable value="coding"/>
+        <variable value="tgt"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="translation"/>
+      <source>
+        <context value="src"/>
+        <element value="coding"/>
+        <listMode value="not_first"/>
+        <variable value="coding"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="translation"/>
+        <variable value="translation"/>
+      </target>
+      <dependent>
+        <name value="CodingCE"/>
+        <variable value="coding"/>
+        <variable value="translation"/>
+      </dependent>
+    </rule>
+  </group>
+  <group>
+    <name value="AddressAD"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <documentation value="group CECodeableConcept(source src : CE, target tgt : CodeableConcept) extends Any &lt;&lt;types&gt;&gt; {&#xD;&#xA;src.originalText -&gt; tgt.text;&#xD;&#xA;src -&gt; tgt.coding as coding then {&#xD;&#xA;src.code as code -&gt; coding.code = cast(code, &#39;string&#39;);&#xD;&#xA;src.codeSystem as system -&gt; coding.system = translate(system, &#39;http://hl7.org/fhir/ConceptMap/special-oid2uri&#39;, &#39;uri&#39;);&#xD;&#xA;src.displayName as display -&gt; coding.display = cast(display, &#39;string&#39;);&#xD;&#xA;} &quot;code&quot;;&#xD;&#xA;src.translation as translation -&gt; tgt.coding as coding then {&#xD;&#xA;translation.code as code -&gt; coding.code = cast(code, &#39;string&#39;);&#xD;&#xA;translation.codeSystem as system -&gt; coding.system = translate(system, &#39;http://hl7.org/fhir/ConceptMap/special-oid2uri&#39;, &#39;uri&#39;);&#xD;&#xA;translation.displayName as display -&gt; coding.display = cast(display, &#39;string&#39;);&#xD;&#xA;} &quot;translation&quot;;&#xD;&#xA;}&#xD;&#xA;group CSCodeableConcept(source src : CS, target tgt : CodeableConcept) extends CECodeableConcept &lt;&lt;types&gt;&gt; {&#xD;&#xA;}&#xD;&#xA;group CDCodeableConcept(source src : CD, target tgt : CodeableConcept) extends CECodeableConcept &lt;&lt;types&gt;&gt; {&#xD;&#xA;}"/>
+    <input>
+      <name value="src"/>
+      <type value="Address"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="AD"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="streetAddress"/>
+      <source>
+        <context value="src"/>
+        <element value="line"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="streetAddressLine"/>
+        <variable value="line"/>
+      </target>
+      <target>
+        <context value="line"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="postalCode"/>
+      <source>
+        <context value="src"/>
+        <element value="postalCode"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="postalCode"/>
+        <variable value="postalCode"/>
+      </target>
+      <target>
+        <context value="postalCode"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="nullFlavor"/>
+      <source>
+        <context value="src"/>
+        <condition value="$this.postalCode.exists() = false"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="postalCode"/>
+        <variable value="postalCode"/>
+      </target>
+      <target>
+        <context value="postalCode"/>
+        <contextType value="variable"/>
+        <element value="nullFlavor"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="NI"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="city"/>
+      <source>
+        <context value="src"/>
+        <element value="city"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="city"/>
+        <variable value="city"/>
+      </target>
+      <target>
+        <context value="city"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="nullFlavor"/>
+      <source>
+        <context value="src"/>
+        <condition value="$this.city.exists() = false"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="city"/>
+        <variable value="city"/>
+      </target>
+      <target>
+        <context value="city"/>
+        <contextType value="variable"/>
+        <element value="nullFlavor"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="NI"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="state"/>
+      <source>
+        <context value="src"/>
+        <element value="state"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="state"/>
+        <variable value="state"/>
+      </target>
+      <target>
+        <context value="state"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="district"/>
+      <source>
+        <context value="src"/>
+        <element value="district"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="county"/>
+        <variable value="county"/>
+      </target>
+      <target>
+        <context value="county"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="country"/>
+      <source>
+        <context value="src"/>
+        <element value="country"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="country"/>
+        <variable value="country"/>
+      </target>
+      <target>
+        <context value="country"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="nullFlavor"/>
+      <source>
+        <context value="src"/>
+        <condition value="$this.country.exists() = false"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="country"/>
+        <variable value="country"/>
+      </target>
+      <target>
+        <context value="country"/>
+        <contextType value="variable"/>
+        <element value="nullFlavor"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="NI"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="addressUse"/>
+      <source>
+        <context value="src"/>
+        <element value="use"/>
+        <variable value="c"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="use"/>
+        <transform value="translate"/>
+        <parameter>
+          <valueId value="c"/>
+        </parameter>
+        <parameter>
+          <valueString value="#addressUse"/>
+        </parameter>
+        <parameter>
+          <valueString value="code"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="ContactPointTEL"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="ContactPoint"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="TEL"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="value"/>
+      <source>
+        <context value="src"/>
+        <element value="value"/>
+        <variable value="value"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="iif(%src.system = &#39;phone&#39;, &#39;tel:&#39;, &#39;&#39;) + iif(%src.system = &#39;fax&#39;, &#39;fax:&#39;, &#39;&#39;) + iif(%src.system = &#39;email&#39;, &#39;mailto:&#39;, &#39;&#39;) + iif(%src.system = &#39;url&#39;, &#39;http:&#39;, &#39;&#39;) + value"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="use"/>
+      <source>
+        <context value="src"/>
+        <element value="use"/>
+        <variable value="use"/>
+        <condition value="$this = &#39;home&#39;"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="use"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="HP"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="use"/>
+      <source>
+        <context value="src"/>
+        <element value="use"/>
+        <variable value="use"/>
+        <condition value="$this = &#39;work&#39;"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="use"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="WP"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="use"/>
+      <source>
+        <context value="src"/>
+        <element value="use"/>
+        <variable value="use"/>
+        <condition value="$this = &#39;old&#39;"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="use"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="BAD"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="use"/>
+      <source>
+        <context value="src"/>
+        <element value="use"/>
+        <variable value="use"/>
+        <condition value="$this = &#39;temp&#39;"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="use"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="TMP"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="use"/>
+      <source>
+        <context value="src"/>
+        <element value="use"/>
+        <variable value="use"/>
+        <condition value="$this = &#39;mobile&#39;"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="use"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="MC"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="HumanNameEN"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="HumanName"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="EN"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="family"/>
+      <source>
+        <context value="src"/>
+        <element value="family"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="family"/>
+        <variable value="family"/>
+      </target>
+      <target>
+        <context value="family"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="given"/>
+      <source>
+        <context value="src"/>
+        <element value="given"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="given"/>
+        <variable value="given"/>
+      </target>
+      <target>
+        <context value="given"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="prefix"/>
+      <source>
+        <context value="src"/>
+        <element value="prefix"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="prefix"/>
+        <variable value="prefix"/>
+      </target>
+      <target>
+        <context value="prefix"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="suffix"/>
+      <source>
+        <context value="src"/>
+        <element value="suffix"/>
+        <variable value="v"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="suffix"/>
+        <variable value="suffix"/>
+      </target>
+      <target>
+        <context value="suffix"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="v"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="QuantityPQ"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="Quantity"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="PQ"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="code"/>
+      <source>
+        <context value="src"/>
+        <element value="code"/>
+        <variable value="code"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="unit"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="code"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="value"/>
+      <source>
+        <context value="src"/>
+        <element value="value"/>
+        <variable value="value"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="value"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="RatioRTOPQPQ"/>
+    <extends value="Any"/>
+    <typeMode value="types"/>
+    <input>
+      <name value="src"/>
+      <type value="Ratio"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="RTO_PQ_PQ"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="numerator"/>
+      <source>
+        <context value="src"/>
+        <element value="numerator"/>
+        <variable value="numerator"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="numerator"/>
+        <variable value="targetNumerator"/>
+      </target>
+      <dependent>
+        <name value="QuantityPQ"/>
+        <variable value="numerator"/>
+        <variable value="targetNumerator"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="denominator"/>
+      <source>
+        <context value="src"/>
+        <element value="denominator"/>
+        <variable value="denominator"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="denominator"/>
+        <variable value="targetDenominator"/>
+      </target>
+      <dependent>
+        <name value="QuantityPQ"/>
+        <variable value="denominator"/>
+        <variable value="targetDenominator"/>
+      </dependent>
+    </rule>
+  </group>
+</StructureMap>

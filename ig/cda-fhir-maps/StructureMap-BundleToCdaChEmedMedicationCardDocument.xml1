@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureMap xmlns="http://hl7.org/fhir">
+  <id value="BundleToCdaChEmedMedicationCardDocument"/>
+  <meta>
+    <versionId value="2"/>
+    <lastUpdated value="2021-11-04T13:27:15.417+01:00"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml">
+         <pre>map &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCdaChEmedMedicationCardDocument&quot; = &quot;BundleToCdaChEmedMedicationCardDocument&quot;
+
+// Medication Card document, 2.16.756.5.30.1.1.10.1.3
+// 2020-01-09 Oliver Egger, copyright ahdis ag, Apache License
+// CDA-CH-EMED:  https://art-decor.org/art-decor/decor-project--cdachemed-
+// FHIR CH-EMED: http://fhir.ch/ig/ch-emed/index.html
+
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument&quot; alias ClinicalDocument as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/AssignedAuthor&quot; alias AssignedAuthor as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/AssignedEntity&quot; alias AssignedEntity as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/Author&quot; alias Author as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/CustodianOrganization&quot; alias CustodianOrganization as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/IVL_TS&quot; alias IVL_TS as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS&quot; alias EIVL_TS as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/PatientRole&quot; alias PatientRole as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/RecordTarget&quot; alias RecordTarget as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/Section&quot; alias Section as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/SubstanceAdministration&quot; alias SubstanceAdministration as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS&quot; alias SXPR_TS as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/Supply&quot; alias Supply as target
+uses &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot; alias Bundle as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Composition&quot; alias Composition as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot; alias Patient as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot; alias Practitioner as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot; alias Organization as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/MedicationStatement&quot; alias MedicationStatement as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Dosage&quot; alias Dosage as source
+
+imports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes&quot;
+imports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCda&quot;
+imports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCdaCh&quot;
+imports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCdaChEmed&quot;
+
+// source: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationcard.html
+// target: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.1.3
+group BundleToCdaChEmedMedicationCardDocument(source bundle : Bundle, target cda : ClinicalDocument) {
+  bundle -&gt;  cda.recordTarget as recordTarget,  cda.author as author then BundleToClinicalDocumentEmedMedicationCardDocument(bundle, recordTarget, author, cda) &quot;bundle&quot;;
+}
+
+// source: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationcard.html
+// target: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.1.3
+group CompositionClinicalDocumentChEmedMedicationCardDocument(source bundle : Bundle, source composition : Composition, target cda : ClinicalDocument) {
+  composition.type -&gt;  cda.code as code,  code.codeSystem = '2.16.840.1.113883.6.1',  code.codeSystemName = 'LOINC',  code.code = '56445-0',  code.displayName = 'Medication summary' &quot;fixloinc&quot;;
+  composition.section as section where $this.code.coding.where((system = 'http://loinc.org') and (code = '10160-0')) -&gt; cda.component as component then {
+    section -&gt; component.contextConductionInd = true &quot;contextConductionInd&quot;;
+    section -&gt;  component.structuredBody as structuredBody,  structuredBody.component as component,  component.section as cdasection then SectionMedicationCardSectionContentModule(bundle, section, cdasection) &quot;cdasection&quot;;
+  } &quot;SectionMedicationCardSectionContentModule&quot;;
+  composition.section as section where $this.code.coding.where((system = 'http://loinc.org') and (code = '48767-8')) -&gt; cda.component as component then {
+    section -&gt; component.contextConductionInd = true &quot;contextConductionInd&quot;;
+    section -&gt;  component.structuredBody as structuredBody,  structuredBody.component as component,  component.section as cdasection then SectionCdaRemarksCoded(bundle, section, cdasection) &quot;cdasection&quot;;
+  } &quot;SectionRemarksCoded&quot;;
+  composition.section as section where $this.code.coding.where((system = 'http://loinc.org') and (code = '55108-5')) -&gt; cda.component as component then {
+    section -&gt; component.contextConductionInd = true &quot;contextConductionInd&quot;;
+    section -&gt;  component.structuredBody as structuredBody,  structuredBody.component as component,  component.section as cdasection then SectionCdaOriginalRepresentation(bundle, section, cdasection) &quot;cdasection&quot;;
+  } &quot;SectionCdaOriginalRepresentation&quot;;
+}
+
+// _________________________ Section Level Templates _________________________
+// source: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationcard.html
+// target: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.3.9
+group SectionMedicationCardSectionContentModule(source bundle : Bundle, source section : Section, target cdasection : CdaSection) extends SectionCdaSection {
+  section -&gt;  cdasection.templateId as templateId,  templateId.root = '2.16.756.5.30.1.1.10.3.9' &quot;CH-PHARM-MedicationCardSectionContentModule&quot;;
+  section -&gt;  cdasection.templateId as templateId,  templateId.root = '1.3.6.1.4.1.19376.1.9.1.2.5' &quot;IHE-PHARM-PML&quot;;
+  section where text.exists() = false -&gt; cdasection.text = '&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;span id=\&quot;refpdf\&quot;&gt;see pdf&lt;/span&gt;&lt;/div&gt;' &quot;Section&quot;;
+  bundle.entry as entry then {
+    entry.fullUrl where ($this in %section.entry.reference) and $this.startsWith('urn:uuid') then {
+      entry.resource as medicationStatement where $this.ofType(FHIR.MedicationStatement) -&gt;  cdasection.entry as entry,  entry.substanceAdministration as substanceAdministration then MedicationTreatmentPlanItemEntryContentModule(bundle, medicationStatement, substanceAdministration) &quot;MedicationStatement&quot;;
+    } &quot;fullUrlAsUuid&quot;;
+    entry.resource as medicationStatement where $this.ofType(FHIR.MedicationStatement) and (('MedicationStatement' + '/' + $this.id) in %section.entry.reference) -&gt;  cdasection.entry as entry,  entry.substanceAdministration as substanceAdministration then MedicationTreatmentPlanItemEntryContentModule(bundle, medicationStatement, substanceAdministration) &quot;MedicationStatement&quot;;
+  };
+}
+
+// _________________________ Header Level Templates _________________________
+// source: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationcard.html
+// target: 2.16.756.5.30.1.1.10.9.42
+group BundleToClinicalDocumentEmedMedicationCardDocument(source bundle : Bundle, target recordTarget : RecordTarget, target author : Author, target cda : ClinicalDocument) extends BundleToClinicalDocumentCh {
+  bundle -&gt;  cda.templateId as templateId,  templateId.root = '2.16.756.5.30.1.127.1.4' &quot;exchangeFormatAccordingToTheSwissEPR&quot;;
+  bundle -&gt;  cda.templateId as templateId,  templateId.root = '1.3.6.1.4.1.19376.1.5.3.1.1.1' &quot;IHE-PCC&quot;;
+  bundle -&gt;  cda.templateId as templateId,  templateId.root = '1.3.6.1.4.1.19376.1.9.1.1.5' &quot;IHE-PHARM-PML&quot;;
+  bundle -&gt;  cda.templateId as templateId,  templateId.root = '2.16.756.5.30.1.1.10.1.3' &quot;CDA-CH-EMED-MedicationCardDocument&quot;;
+  bundle.entry as entry then {
+    entry.resource as resource where $this.ofType(FHIR.Composition) then CompositionClinicalDocumentChEmedMedicationCardDocument(bundle, resource, cda);
+  };
+}
+
+</pre>
+      </div>
+  </text>
+  <url value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCdaChEmedMedicationCardDocument"/>
+  <version value="0.3.0"/>
+  <name value="BundleToCdaChEmedMedicationCardDocument"/>
+  <status value="draft"/>
+  <date value="2022-02-11T11:14:39+01:00"/>
+  <publisher value="ahdis"/>
+  <contact>
+    <name value="ahdis"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.ahdis.ch/"/>
+    </telecom>
+  </contact>
+  <description value="Medication Card document, 2.16.756.5.30.1.1.10.1.3&#xD;&#xA;2020-01-09 Oliver Egger, copyright ahdis ag, Apache License&#xD;&#xA;CDA-CH-EMED:  https://art-decor.org/art-decor/decor-project--cdachemed-&#xD;&#xA;FHIR CH-EMED: http://fhir.ch/ig/ch-emed/index.html"/>
+  <copyright value="CC-BY-SA-4.0"/>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument"/>
+    <mode value="target"/>
+    <alias value="ClinicalDocument"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/AssignedAuthor"/>
+    <mode value="target"/>
+    <alias value="AssignedAuthor"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/AssignedEntity"/>
+    <mode value="target"/>
+    <alias value="AssignedEntity"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/Author"/>
+    <mode value="target"/>
+    <alias value="Author"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/CustodianOrganization"/>
+    <mode value="target"/>
+    <alias value="CustodianOrganization"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/IVL_TS"/>
+    <mode value="target"/>
+    <alias value="IVL_TS"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS"/>
+    <mode value="target"/>
+    <alias value="EIVL_TS"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/PatientRole"/>
+    <mode value="target"/>
+    <alias value="PatientRole"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/RecordTarget"/>
+    <mode value="target"/>
+    <alias value="RecordTarget"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/Section"/>
+    <mode value="target"/>
+    <alias value="Section"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/SubstanceAdministration"/>
+    <mode value="target"/>
+    <alias value="SubstanceAdministration"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS"/>
+    <mode value="target"/>
+    <alias value="SXPR_TS"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/Supply"/>
+    <mode value="target"/>
+    <alias value="Supply"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    <mode value="source"/>
+    <alias value="Bundle"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Composition"/>
+    <mode value="source"/>
+    <alias value="Composition"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+    <mode value="source"/>
+    <alias value="Patient"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Practitioner"/>
+    <mode value="source"/>
+    <alias value="Practitioner"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Organization"/>
+    <mode value="source"/>
+    <alias value="Organization"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/MedicationStatement"/>
+    <mode value="source"/>
+    <alias value="MedicationStatement"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Dosage"/>
+    <mode value="source"/>
+    <alias value="Dosage"/>
+  </structure>
+  <import value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes"/>
+  <import value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCda"/>
+  <import value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCdaCh"/>
+  <import value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCdaChEmed"/>
+  <group>
+    <name value="BundleToCdaChEmedMedicationCardDocument"/>
+    <typeMode value="none"/>
+    <documentation value="source: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationcard.html&#xD;&#xA;target: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.1.3"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="cda"/>
+      <type value="ClinicalDocument"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="bundle"/>
+      <source>
+        <context value="bundle"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="recordTarget"/>
+        <variable value="recordTarget"/>
+      </target>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="author"/>
+        <variable value="author"/>
+      </target>
+      <dependent>
+        <name value="BundleToClinicalDocumentEmedMedicationCardDocument"/>
+        <variable value="bundle"/>
+        <variable value="recordTarget"/>
+        <variable value="author"/>
+        <variable value="cda"/>
+      </dependent>
+    </rule>
+  </group>
+  <group>
+    <name value="CompositionClinicalDocumentChEmedMedicationCardDocument"/>
+    <typeMode value="none"/>
+    <documentation value="source: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationcard.html&#xD;&#xA;target: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.1.3"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="composition"/>
+      <type value="Composition"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="cda"/>
+      <type value="ClinicalDocument"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="fixloinc"/>
+      <source>
+        <context value="composition"/>
+        <element value="type"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="code"/>
+        <variable value="code"/>
+      </target>
+      <target>
+        <context value="code"/>
+        <contextType value="variable"/>
+        <element value="codeSystem"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="2.16.840.1.113883.6.1"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="code"/>
+        <contextType value="variable"/>
+        <element value="codeSystemName"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="LOINC"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="code"/>
+        <contextType value="variable"/>
+        <element value="code"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="56445-0"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="code"/>
+        <contextType value="variable"/>
+        <element value="displayName"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="Medication summary"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="SectionMedicationCardSectionContentModule"/>
+      <source>
+        <context value="composition"/>
+        <element value="section"/>
+        <variable value="section"/>
+        <condition value="$this.code.coding.where((system = &#39;http://loinc.org&#39;) and (code = &#39;10160-0&#39;))"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="component"/>
+        <variable value="component"/>
+      </target>
+      <rule>
+        <name value="contextConductionInd"/>
+        <source>
+          <context value="section"/>
+        </source>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="contextConductionInd"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueBoolean value="true"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="cdasection"/>
+        <source>
+          <context value="section"/>
+        </source>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="structuredBody"/>
+          <variable value="structuredBody"/>
+        </target>
+        <target>
+          <context value="structuredBody"/>
+          <contextType value="variable"/>
+          <element value="component"/>
+          <variable value="component"/>
+        </target>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="section"/>
+          <variable value="cdasection"/>
+        </target>
+        <dependent>
+          <name value="SectionMedicationCardSectionContentModule"/>
+          <variable value="bundle"/>
+          <variable value="section"/>
+          <variable value="cdasection"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="SectionRemarksCoded"/>
+      <source>
+        <context value="composition"/>
+        <element value="section"/>
+        <variable value="section"/>
+        <condition value="$this.code.coding.where((system = &#39;http://loinc.org&#39;) and (code = &#39;48767-8&#39;))"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="component"/>
+        <variable value="component"/>
+      </target>
+      <rule>
+        <name value="contextConductionInd"/>
+        <source>
+          <context value="section"/>
+        </source>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="contextConductionInd"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueBoolean value="true"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="cdasection"/>
+        <source>
+          <context value="section"/>
+        </source>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="structuredBody"/>
+          <variable value="structuredBody"/>
+        </target>
+        <target>
+          <context value="structuredBody"/>
+          <contextType value="variable"/>
+          <element value="component"/>
+          <variable value="component"/>
+        </target>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="section"/>
+          <variable value="cdasection"/>
+        </target>
+        <dependent>
+          <name value="SectionCdaRemarksCoded"/>
+          <variable value="bundle"/>
+          <variable value="section"/>
+          <variable value="cdasection"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="SectionCdaOriginalRepresentation"/>
+      <source>
+        <context value="composition"/>
+        <element value="section"/>
+        <variable value="section"/>
+        <condition value="$this.code.coding.where((system = &#39;http://loinc.org&#39;) and (code = &#39;55108-5&#39;))"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="component"/>
+        <variable value="component"/>
+      </target>
+      <rule>
+        <name value="contextConductionInd"/>
+        <source>
+          <context value="section"/>
+        </source>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="contextConductionInd"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueBoolean value="true"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="cdasection"/>
+        <source>
+          <context value="section"/>
+        </source>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="structuredBody"/>
+          <variable value="structuredBody"/>
+        </target>
+        <target>
+          <context value="structuredBody"/>
+          <contextType value="variable"/>
+          <element value="component"/>
+          <variable value="component"/>
+        </target>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="section"/>
+          <variable value="cdasection"/>
+        </target>
+        <dependent>
+          <name value="SectionCdaOriginalRepresentation"/>
+          <variable value="bundle"/>
+          <variable value="section"/>
+          <variable value="cdasection"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="SectionMedicationCardSectionContentModule"/>
+    <extends value="SectionCdaSection"/>
+    <typeMode value="none"/>
+    <documentation value="_________________________ Section Level Templates _________________________&#xD;&#xA;source: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationcard.html&#xD;&#xA;target: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.3.9"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="section"/>
+      <type value="Section"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="cdasection"/>
+      <type value="CdaSection"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="CH-PHARM-MedicationCardSectionContentModule"/>
+      <source>
+        <context value="section"/>
+      </source>
+      <target>
+        <context value="cdasection"/>
+        <contextType value="variable"/>
+        <element value="templateId"/>
+        <variable value="templateId"/>
+      </target>
+      <target>
+        <context value="templateId"/>
+        <contextType value="variable"/>
+        <element value="root"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="2.16.756.5.30.1.1.10.3.9"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="IHE-PHARM-PML"/>
+      <source>
+        <context value="section"/>
+      </source>
+      <target>
+        <context value="cdasection"/>
+        <contextType value="variable"/>
+        <element value="templateId"/>
+        <variable value="templateId"/>
+      </target>
+      <target>
+        <context value="templateId"/>
+        <contextType value="variable"/>
+        <element value="root"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="1.3.6.1.4.1.19376.1.9.1.2.5"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="Section"/>
+      <source>
+        <context value="section"/>
+        <condition value="text.exists() = false"/>
+      </source>
+      <target>
+        <context value="cdasection"/>
+        <contextType value="variable"/>
+        <element value="text"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="&lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;span id=&quot;refpdf&quot;&gt;see pdf&lt;/span&gt;&lt;/div&gt;"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="entry"/>
+      <source>
+        <context value="bundle"/>
+        <element value="entry"/>
+        <variable value="entry"/>
+      </source>
+      <rule>
+        <name value="fullUrlAsUuid"/>
+        <source>
+          <context value="entry"/>
+          <element value="fullUrl"/>
+          <condition value="($this in %section.entry.reference) and $this.startsWith(&#39;urn:uuid&#39;)"/>
+        </source>
+        <rule>
+          <name value="MedicationStatement"/>
+          <source>
+            <context value="entry"/>
+            <element value="resource"/>
+            <variable value="medicationStatement"/>
+            <condition value="$this.ofType(FHIR.MedicationStatement)"/>
+          </source>
+          <target>
+            <context value="cdasection"/>
+            <contextType value="variable"/>
+            <element value="entry"/>
+            <variable value="entry"/>
+          </target>
+          <target>
+            <context value="entry"/>
+            <contextType value="variable"/>
+            <element value="substanceAdministration"/>
+            <variable value="substanceAdministration"/>
+          </target>
+          <dependent>
+            <name value="MedicationTreatmentPlanItemEntryContentModule"/>
+            <variable value="bundle"/>
+            <variable value="medicationStatement"/>
+            <variable value="substanceAdministration"/>
+          </dependent>
+        </rule>
+      </rule>
+      <rule>
+        <name value="MedicationStatement"/>
+        <source>
+          <context value="entry"/>
+          <element value="resource"/>
+          <variable value="medicationStatement"/>
+          <condition value="$this.ofType(FHIR.MedicationStatement) and ((&#39;MedicationStatement&#39; + &#39;/&#39; + $this.id) in %section.entry.reference)"/>
+        </source>
+        <target>
+          <context value="cdasection"/>
+          <contextType value="variable"/>
+          <element value="entry"/>
+          <variable value="entry"/>
+        </target>
+        <target>
+          <context value="entry"/>
+          <contextType value="variable"/>
+          <element value="substanceAdministration"/>
+          <variable value="substanceAdministration"/>
+        </target>
+        <dependent>
+          <name value="MedicationTreatmentPlanItemEntryContentModule"/>
+          <variable value="bundle"/>
+          <variable value="medicationStatement"/>
+          <variable value="substanceAdministration"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="BundleToClinicalDocumentEmedMedicationCardDocument"/>
+    <extends value="BundleToClinicalDocumentCh"/>
+    <typeMode value="none"/>
+    <documentation value="_________________________ Header Level Templates _________________________&#xD;&#xA;source: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationcard.html&#xD;&#xA;target: 2.16.756.5.30.1.1.10.9.42"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="recordTarget"/>
+      <type value="RecordTarget"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="author"/>
+      <type value="Author"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="cda"/>
+      <type value="ClinicalDocument"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="exchangeFormatAccordingToTheSwissEPR"/>
+      <source>
+        <context value="bundle"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="templateId"/>
+        <variable value="templateId"/>
+      </target>
+      <target>
+        <context value="templateId"/>
+        <contextType value="variable"/>
+        <element value="root"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="2.16.756.5.30.1.127.1.4"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="IHE-PCC"/>
+      <source>
+        <context value="bundle"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="templateId"/>
+        <variable value="templateId"/>
+      </target>
+      <target>
+        <context value="templateId"/>
+        <contextType value="variable"/>
+        <element value="root"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="1.3.6.1.4.1.19376.1.5.3.1.1.1"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="IHE-PHARM-PML"/>
+      <source>
+        <context value="bundle"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="templateId"/>
+        <variable value="templateId"/>
+      </target>
+      <target>
+        <context value="templateId"/>
+        <contextType value="variable"/>
+        <element value="root"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="1.3.6.1.4.1.19376.1.9.1.1.5"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="CDA-CH-EMED-MedicationCardDocument"/>
+      <source>
+        <context value="bundle"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="templateId"/>
+        <variable value="templateId"/>
+      </target>
+      <target>
+        <context value="templateId"/>
+        <contextType value="variable"/>
+        <element value="root"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="2.16.756.5.30.1.1.10.1.3"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="entry"/>
+      <source>
+        <context value="bundle"/>
+        <element value="entry"/>
+        <variable value="entry"/>
+      </source>
+      <rule>
+        <name value="resource"/>
+        <source>
+          <context value="entry"/>
+          <element value="resource"/>
+          <variable value="resource"/>
+          <condition value="$this.ofType(FHIR.Composition)"/>
+        </source>
+        <dependent>
+          <name value="CompositionClinicalDocumentChEmedMedicationCardDocument"/>
+          <variable value="bundle"/>
+          <variable value="resource"/>
+          <variable value="cda"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+</StructureMap>

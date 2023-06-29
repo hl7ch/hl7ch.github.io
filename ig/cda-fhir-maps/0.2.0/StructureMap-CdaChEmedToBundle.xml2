@@ -1,0 +1,4653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureMap xmlns="http://hl7.org/fhir">
+  <id value="CdaChEmedToBundle"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml">
+         <pre>map &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChEmedToBundle&quot; = &quot;CdaChEmedToBundle&quot;
+
+// Medication Entries
+// 2020-10-30 Oliver Egger, copyright ahdis ag, Apache License
+// CDA-CH-EMED:  https://art-decor.org/art-decor/decor-project--cdachemed-
+// FHIR CH-EMED: http://fhir.ch/ig/ch-emed/index.html
+
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument&quot; alias ClinicalDocument as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/AssignedAuthor&quot; alias AssignedAuthor as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/AssignedEntity&quot; alias AssignedEntity as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/Author&quot; alias Author as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/CustodianOrganization&quot; alias CustodianOrganization as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/IVL_TS&quot; alias IVL_TS as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS&quot; alias EIVL_TS as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/Observation&quot; alias Observation as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/PatientRole&quot; alias PatientRole as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/RecordTarget&quot; alias RecordTarget as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/Section&quot; alias Section as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/SubstanceAdministration&quot; alias SubstanceAdministration as source
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS&quot; alias SXPR_TS as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot; alias Bundle as target
+uses &quot;http://hl7.org/fhir/StructureDefinition/Composition&quot; alias Composition as produced
+uses &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot; alias Patient as produced
+uses &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot; alias Practitioner as produced
+uses &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot; alias Organization as produced
+uses &quot;http://hl7.org/fhir/StructureDefinition/MedicationStatement&quot; alias MedicationStatement as produced
+uses &quot;http://hl7.org/fhir/StructureDefinition/Dosage&quot; alias Dosage as produced
+uses &quot;http://hl7.org/fhir/StructureDefinition/Observation&quot; alias Observation as produced
+
+imports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaToFhirTypes&quot;
+imports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaToBundle&quot;
+imports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChToBundle&quot;
+
+// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.2
+// target: Annotation note (e.g. http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationstatement.html)
+group AnnotationComment(source section : Section, source act : Act, target note : Annotation) {
+  act.text as text then {
+    text.data as data -&gt; note.text = data &quot;level3&quot;;
+    text.reference as reference then {
+      reference.value as value -&gt; note.extension as ext then NarrativeLink(value, ext) &quot;narrativeLink&quot;;
+    };
+  };
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.33
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationdispense.html
+group ManufacturedMaterialEntryContentModuleDispense(source src : Supply, target medicationDispense : MedicationDispense, target medication : Medication) {
+  src -&gt;  medication.id = 'med',  medicationDispense.medication = create('Reference') as vt,  vt.reference = '#med' &quot;medication&quot;;
+  // quantity value (number of packages)
+  src.quantity as quantity -&gt; medicationDispense.quantity as medDispQuantity then {
+    // IHE-DIS: If the product-element contains package information, the unit attribute is not be present
+    quantity.value as value -&gt; medDispQuantity.value = value;
+    // IHE-DIS: If the product-element does not contain package information, the unit attribut is present and the value SHALL be out of the UCUM code system
+    quantity.unit as unit then {
+      unit -&gt; medDispQuantity.unit = unit &quot;unit&quot;;
+      unit -&gt; medDispQuantity.system = 'http://unitsofmeasure.org' &quot;ucum&quot;;
+      unit -&gt; medDispQuantity.code = unit &quot;code&quot;;
+    };
+  };
+  src.product as product then {
+    product.manufacturedProduct as manufacturedProduct then {
+      manufacturedProduct.manufacturedMaterial as manufacturedMaterial then {
+        manufacturedMaterial.name as name where asContent.exists() = false -&gt;  medication.code as fhircode,  fhircode.text = (%manufacturedMaterial.name.other) &quot;code&quot;;
+        manufacturedMaterial.asContent as asContent then {
+          asContent.containerPackagedMedicine as containerPackagedMedicine then {
+            containerPackagedMedicine.code as code -&gt; medication.code as fhircode share medcode then CECodeableConcept(code, fhircode);
+            containerPackagedMedicine.name as name -&gt; medication.code as fhircode share medcode then {
+              name -&gt; fhircode.text = (%name.other) &quot;text&quot;;
+            } &quot;text&quot;;
+            containerPackagedMedicine.formCode as formCode -&gt; medication.form as form then CECodeableConcept(formCode, form);
+            // Package size
+            containerPackagedMedicine.capacityQuantity as capacityQuantity -&gt;  medication.amount = create('Ratio') as ratio,  ratio.denominator = create('Quantity') as denominator,  denominator.value = '1',  denominator.unit = 'Package',  denominator.system = 'http://unitsofmeasure.org',  denominator.code = '{Package}',  ratio.numerator = create('Quantity') as quantity then EmedPQQuantity(capacityQuantity, quantity);
+          };
+        };
+        manufacturedMaterial.ingredient as ingredient -&gt; medication.ingredient as ing then {
+          ingredient.quantity as quantity -&gt; ing.strength = create('Ratio') as strength then EmedRTOPQPQRatio(quantity, strength) &quot;strength&quot;;
+          ingredient.ingredient as medingredient then {
+            medingredient.code as code -&gt;  ing.item = create('CodeableConcept') as ingcode,  ingcode.text = (%medingredient.name.other) then CECodeableConcept(code, ingcode) &quot;ingredientCode&quot;;
+          };
+        };
+      };
+    };
+    // dosage for normal dosing, as no sequences are present there
+    src.entryRelationship as entry then {
+      entry.substanceAdministration as substanceAdministration then {
+        substanceAdministration where $this.entryRelationship.sequenceNumber.exists() = false -&gt; medicationDispense.dosageInstruction as dosage then DosageInstructionsStartStopFrequency(substanceAdministration, dosage) &quot;dosage&quot;;
+      };
+    } &quot;entry&quot;;
+  };
+}
+
+group EmedPQQuantity(source src : PQ, target tgt : Quantity) {
+  src.value as value -&gt; tgt.value = value;
+  src.unit as unit -&gt; tgt.code = unit;
+  src.unit as unit -&gt; tgt.system = ('http://fhir.ch/ig/ch-emed/ValueSet/UnitCode'.resolve().compose.include.where(concept.where(code = %unit)).system);
+  src.unit as unit -&gt; tgt.unit = ('http://fhir.ch/ig/ch-emed/ValueSet/UnitCode'.resolve().compose.include.concept.where(code = %unit).display);
+}
+
+group EmedRTOPQPQRatio(source src : RTO_PQ_PQ, target tgt : Ratio) {
+  src.numerator as numerator -&gt; tgt.numerator as targetNumerator then EmedPQQuantity(numerator, targetNumerator);
+  src.denominator as denominator -&gt; tgt.denominator as targetDenominator then EmedPQQuantity(denominator, targetDenominator);
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.33
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationstatement.html
+group ManufacturedMaterialEntryContentModuleStatement(source src : SubstanceAdministration, target medicationStatement : MedicationStatement, target medication : Medication) {
+  src -&gt;  medication.id = 'med',  medicationStatement.medication = create('Reference') as vt,  vt.reference = '#med' &quot;medication&quot;;
+  src.consumable as consumable then {
+    consumable.manufacturedProduct as manufacturedProduct then {
+      manufacturedProduct.manufacturedMaterial as manufacturedMaterial then {
+        manufacturedMaterial.name as name where asContent.exists() = false -&gt;  medication.code as fhircode,  fhircode.text = (%manufacturedMaterial.name.other) &quot;code&quot;;
+        manufacturedMaterial.asContent as asContent then {
+          asContent.containerPackagedMedicine as containerPackagedMedicine then {
+            containerPackagedMedicine.code as code -&gt; medication.code as fhircode share medcode then CECodeableConcept(code, fhircode);
+            containerPackagedMedicine.name as name -&gt; medication.code as fhircode share medcode then {
+              name -&gt; fhircode.text = (%name.other) &quot;text&quot;;
+            } &quot;text&quot;;
+            containerPackagedMedicine.formCode as formCode -&gt; medication.form as form then CECodeableConcept(formCode, form);
+            // Package size
+            containerPackagedMedicine.capacityQuantity as capacityQuantity -&gt;  medication.amount = create('Ratio') as ratio,  ratio.denominator = create('Quantity') as denominator,  denominator.value = '1',  denominator.unit = 'Package',  denominator.system = 'http://unitsofmeasure.org',  denominator.code = '{Package}',  ratio.numerator = create('Quantity') as quantity then EmedPQQuantity(capacityQuantity, quantity);
+          };
+        };
+        manufacturedMaterial.ingredient as ingredient -&gt; medication.ingredient as ing then {
+          ingredient.quantity as quantity -&gt; ing.strength = create('Ratio') as strength then EmedRTOPQPQRatio(quantity, strength) &quot;strength&quot;;
+          ingredient.ingredient as medingredient then {
+            medingredient.code as code -&gt;  ing.item = create('CodeableConcept') as ingcode,  ingcode.text = (%medingredient.name.other) then CECodeableConcept(code, ingcode) &quot;ingredientCode&quot;;
+          };
+        };
+      };
+    };
+    // dosage for normal dosing, as no sequences are present there
+    src where $this.entryRelationship.sequenceNumber.exists() = false -&gt; medicationStatement.dosage as dosage then DosageInstructionsStartStopFrequency(src, dosage) &quot;dosage&quot;;
+  };
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.34
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationstatement.html
+group MedicationTreatmentPlanItemEntryContentModule(source section : Section, source src : SubstanceAdministration, source patient : Patient, target medicationStatement : MedicationStatement) {
+  // src.templateId as template then TemplateID(template, medicationStatement) &quot;templateId&quot;;
+  src.id -&gt; medicationStatement.identifier;
+  patient -&gt;  medicationStatement.subject = create('Reference') as reference,  reference.reference = ('urn:uuid:' + %patient.id) &quot;patient&quot;;
+  src -&gt; medicationStatement.status = 'completed' &quot;completed&quot;;
+  src.text as text then {
+    text.reference as reference then {
+      reference.value as value -&gt; medicationStatement.extension as ext then NarrativeLink(value, ext) &quot;narrativeLink&quot;;
+    };
+  };
+  src -&gt; medicationStatement.contained = create('Medication') as medication then ManufacturedMaterialEntryContentModuleStatement(src, medicationStatement, medication) &quot;medication&quot;;
+  src.entryRelationship as entry where typeCode = 'RSON' then {
+    entry.observation as observation -&gt; medicationStatement.reasonCode as reasonCode then TreatmentReasonEntryContentModule(section, observation, reasonCode) &quot;reasonCode&quot;;
+  } &quot;41&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and (substanceAdministration.templateId.root = '2.16.756.5.30.1.1.10.4.52')) -&gt; medicationStatement.dosage as dosage then DosageInstructionsNonStructuredEntryContentModule(section, entry, dosage) &quot;52&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and (sequenceNumber.value &gt;= 0)) -&gt; medicationStatement.dosage as dosage then DosageInstructionsEntryDosageChange(src, entry, dosage) &quot;36&quot;;
+  src.entryRelationship as entry where ((typeCode = 'REFR') and substanceAdministration.templateId.where(root = '1.3.6.1.4.1.19376.1.9.1.3.10').exists()) -&gt; medicationStatement.extension as ext then MTPReferenceEntryContentModule(entry, ext) &quot;MTPReferenceEntry&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and act.templateId.where(root = '2.16.756.5.30.1.1.10.4.2').exists()) then {
+    entry.act as act -&gt; medicationStatement.note as note then AnnotationComment(section, act, note) &quot;annotation&quot;;
+  } &quot;2&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and act.templateId.where(root = '1.3.6.1.4.1.19376.1.9.1.3.9.1').exists()) then {
+    entry.act as act -&gt; medicationStatement as medicationStatement then SubstitutionStatement(act, medicationStatement) &quot;substitution&quot;;
+  } &quot;1&quot;;
+}
+
+// source https://art-decor.org/art-decor/decor-templates--ch-pharm-?id=2.16.756.5.30.1.1.10.4.36
+// target: http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-dosage-structured-split
+// dosage for split dosing, with sequences
+group DosageInstructionsEntryDosageChange(source src : substanceAdministration, source entry : entryRelationship, target dosage : Dosage) {
+  entry.sequenceNumber as sequenceNumber then {
+    sequenceNumber.value as val -&gt; dosage.sequence = val;
+  };
+  src as src -&gt; dosage as dosage then EffectiveTimeStartEnd(src, dosage) &quot;effectiveTimeStartEnd&quot;;
+  entry.substanceAdministration as src -&gt; dosage as dosage then EffectiveTimeWhen(src, dosage) &quot;effectiveTimeWhen&quot;;
+  src.routeCode as routeCode -&gt; dosage.route as route then CECodeableConcept(routeCode, route);
+  entry.substanceAdministration as src -&gt; dosage as dosage then DoseQuantity(src, dosage) &quot;doseQuantity&quot;;
+}
+
+// effective time start &amp; end for dosage
+group EffectiveTimeStartEnd(source src : substanceAdministration, target dosage : Dosage) {
+  src.effectiveTime : IVL_TS as effectiveTime -&gt; dosage.timing as timing share sharetiming then {
+    effectiveTime -&gt; timing.repeat as repeat then {
+      effectiveTime -&gt; repeat.bounds = create('Period') as period then {
+        effectiveTime.low as low then {
+          low.value as lowDate -&gt; period.start = lowDate &quot;lowDate&quot;;
+        };
+        effectiveTime.high as high then {
+          high.value as highDate -&gt; period.end = highDate &quot;highDate&quot;;
+        };
+      } &quot;period&quot;;
+    } &quot;repeat&quot;;
+  } &quot;effectiveTime-IVL-TS&quot;;
+}
+
+// effective time when for dosage
+group EffectiveTimeWhen(source src : substanceAdministration, target dosage : Dosage) {
+  src.effectiveTime : EIVL_TS as effectiveTime -&gt; dosage.timing as timing share sharetiming then {
+    effectiveTime -&gt; timing.repeat as repeat then {
+      effectiveTime.event as event then {
+        event.code as code -&gt; repeat.when = code;
+      };
+    } &quot;repeat&quot;;
+  } &quot;effectiveTime-EIVL-TS&quot;;
+  src.effectiveTime : SXPR_TS as effectiveTime -&gt; dosage.timing as timing share sharetiming then {
+    effectiveTime -&gt; timing.repeat as repeat then {
+      effectiveTime.comp as comp then {
+        comp.event as event then {
+          event.code as code -&gt; repeat.when = code;
+        };
+      };
+    } &quot;repeat&quot;;
+  } &quot;effectiveTime-SXPR-TS&quot;;
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.41
+// target: reasonCode Coding (e.g. http://build.fhir.org/ig/hl7ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement)
+group TreatmentReasonEntryContentModule(source section : Section, source observation : Observation, target reasonCode : Coding) {
+  // extraxt text (Bluthochdruck) from id #mtpc.1.reason in section text &lt;td ID=&quot;mtpc.1.reason&quot;&gt;Bluthochdruck&lt;/td&gt;
+  observation.text as text then {
+    text.data as data -&gt; reasonCode.text = data &quot;level3&quot;;
+    text.reference as reference then {
+      reference.value as value -&gt; reasonCode.extension as ext then NarrativeLink(value, ext) &quot;narrativeLink&quot;;
+    };
+  };
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--ch-pharm-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.45
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-ext-treatmentplan.html
+group MTPReferenceEntryContentModule(source entryrelationship, target ext : Extension) {
+  entryrelationship -&gt; ext.url = 'http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-treatmentplan' &quot;url&quot;;
+  entryrelationship.substanceAdministration as substanceAdministration then {
+    substanceAdministration.id as id -&gt; ext.extension as ext then InnerExtensionId(id, ext) &quot;innerExtensionId&quot;;
+    substanceAdministration.reference as reference then {
+      reference.externalDocument as externalDocument then {
+        externalDocument.id as id -&gt; ext.extension as ext then InnerExtensionExternalDocumentId(id, ext) &quot;innerExtensionExternalDocumentId&quot;;
+      };
+    } &quot;substanceAdministration&quot;;
+  } &quot;id&quot;;
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--ch-pharm-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.52
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-dosage-nonstructured.html
+group DosageInstructionsNonStructuredEntryContentModule(source section : Section, source entry : Element, target dosage : Dosage) {
+  // see MedicationTreatmentPlanItemEntryContentModule
+  entry.substanceAdministration as observation then {
+    observation.text as text then {
+      text.data as data -&gt; dosage.text = data &quot;level3&quot;;
+      text.reference as reference then {
+        reference.value as value -&gt; dosage.extension as ext then NarrativeLink(value, ext) &quot;narrativeLink&quot;;
+      };
+    };
+  } &quot;observation&quot;;
+}
+
+// source: Substitution act Contains 1.3.6.1.4.1.19376.1.9.1.3.9.2 IHE Substitution Act Content Module
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationdispense.html
+group SubstitutionDispense(source act : Act, target medicationDispense : MedicationDispense) {
+  act -&gt; medicationDispense.substitution as substitution then {
+    act -&gt;  substitution.wasSubstituted as wasSubstituted,  wasSubstituted.value = 'true' &quot;wasSubstituted&quot;;
+    // act.code as code -&gt; substitution.type as type then CECodeableConcept(code, type) &quot;type&quot;;
+    act.code as actCode -&gt;  substitution.type as type,  type.coding as coding then {
+      actCode -&gt;  coding.system as systemCC,  systemCC.value = 'http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution' &quot;system&quot;;
+      actCode.code as code -&gt;  coding.code as codeCC,  codeCC.value = code;
+      actCode.displayName as display -&gt;  coding.display as displayCC,  displayCC.value = display &quot;display&quot;;
+    } &quot;allowedCC&quot;;
+  } &quot;substitution&quot;;
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.42
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationdispense.html
+group DispenseItemEntryContentModule(source section : Section, source src : Supply, source patient : Patient, target medicationDispense : MedicationDispense) {
+  // src.templateId as template then TemplateID(template, medicationDispense) &quot;templateId&quot;;
+  src.id -&gt; medicationDispense.identifier;
+  patient -&gt;  medicationDispense.subject = create('Reference') as reference,  reference.reference = ('urn:uuid:' + %patient.id) &quot;patient&quot;;
+  src -&gt; medicationDispense.status = 'completed' &quot;completed&quot;;
+  src.text as text then {
+    text.reference as reference then {
+      reference.value as value -&gt; medicationDispense.extension as ext then NarrativeLink(value, ext) &quot;narrativeLink&quot;;
+    };
+  };
+  src -&gt; medicationDispense.contained = create('Medication') as medication then ManufacturedMaterialEntryContentModuleDispense(src, medicationDispense, medication) &quot;medication&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and (substanceAdministration.templateId.root = '2.16.756.5.30.1.1.10.4.52')) -&gt; medicationDispense.dosageInstruction as dosage then DosageInstructionsNonStructuredEntryContentModule(section, entry, dosage) &quot;52&quot;;
+  src.entryRelationship as entryRelationship then {
+    entryRelationship.substanceAdministration as substanceAdministration then {
+      // dosage for split dosing, as sequences are present there
+      substanceAdministration.entryRelationship as entryRelationship where ((typeCode = 'COMP') and (sequenceNumber.value &gt;= 0)) -&gt; medicationDispense.dosageInstruction as dosage then DosageInstructionsEntryDosageChange(substanceAdministration, entryRelationship, dosage) &quot;36&quot;;
+    };
+  };
+  src.entryRelationship as entry where ((typeCode = 'REFR') and substanceAdministration.templateId.where(root = '1.3.6.1.4.1.19376.1.9.1.3.10').exists()) -&gt; medicationDispense.extension as ext then MTPReferenceEntryContentModule(entry, ext) &quot;MTPReferenceEntry&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and act.templateId.where(root = '2.16.756.5.30.1.1.10.4.2').exists()) then {
+    entry.act as act -&gt; medicationDispense.note as note then AnnotationComment(section, act, note) &quot;annotation&quot;;
+  } &quot;2&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and act.templateId.where(root = '1.3.6.1.4.1.19376.1.9.1.3.9.2').exists()) then {
+    entry.act as act -&gt; medicationDispense as medicationDispense then SubstitutionDispense(act, medicationDispense) &quot;substitution&quot;;
+  } &quot;2&quot;;
+}
+
+// dose quantity for dosage (application schema)
+group DoseQuantity(source src : substanceAdministration, target dosage : Dosage) {
+  src.doseQuantity as doseQuantity -&gt; dosage.doseAndRate as doseAndRate then {
+    doseQuantity.value as value -&gt; doseAndRate.dose = create('Quantity') as quantity then {
+      value -&gt; quantity.value = value &quot;value&quot;;
+      doseQuantity.unit as unit -&gt; quantity.code = unit;
+      doseQuantity.unit as unit -&gt; quantity.system = ('http://fhir.ch/ig/ch-emed/ValueSet/UnitCode'.resolve().compose.include.where(concept.where(code = %unit)).system);
+      doseQuantity.unit as unit -&gt; quantity.unit = ('http://fhir.ch/ig/ch-emed/ValueSet/UnitCode'.resolve().compose.include.concept.where(code = %unit).display);
+    } &quot;quantity&quot;;
+  };
+}
+
+// source: Substitution permission Contains 1.3.6.1.4.1.19376.1.9.1.3.9.1 IHE Substitution Permission Content Module (DYNAMIC)
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationrequest.html
+group SubstitutionRequest(source act : Act, target medicationRequest : MedicationRequest) {
+  act -&gt; medicationRequest.substitution as substitution then {
+    // act.code as code -&gt; substitution.allowed = create('CodeableConcept') as allowedCC then CECodeableConcept(code, allowedCC) &quot;allowedCC&quot;;
+    act.code as actCode -&gt;  substitution.allowed = create('CodeableConcept') as allowedCC,  allowedCC.coding as coding then {
+      actCode -&gt;  coding.system as systemCC,  systemCC.value = 'http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution' &quot;system&quot;;
+      actCode.code as code -&gt;  coding.code as codeCC,  codeCC.value = code;
+      actCode.displayName as display -&gt;  coding.display as displayCC,  displayCC.value = display &quot;display&quot;;
+    } &quot;allowedCC&quot;;
+  } &quot;substitutionRequest&quot;;
+}
+
+// source: Substitution permission Contains 1.3.6.1.4.1.19376.1.9.1.3.9.1 IHE Substitution Permission Content Module (DYNAMIC)
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationstatement.html
+group SubstitutionStatement(source act : Act, target medicationStatement : MedicationStatement) {
+  act -&gt; medicationStatement.extension as ext then {
+    act -&gt; ext.url = 'http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-substitution' then {
+      // act.code as code -&gt; ext.value = create('CodeableConcept') as valueCC then CECodeableConcept(code, valueCC) &quot;valueCC&quot;;
+      act.code as actCode -&gt;  ext.value = create('CodeableConcept') as valueCC,  valueCC.coding as coding then {
+        actCode -&gt;  coding.system as systemCC,  systemCC.value = 'http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution' &quot;system&quot;;
+        actCode.code as code -&gt;  coding.code as codeCC,  codeCC.value = code;
+        actCode.displayName as display -&gt;  coding.display as displayCC,  displayCC.value = display &quot;display&quot;;
+      } &quot;valueCC&quot;;
+    } &quot;substitutionExtension&quot;;
+  } &quot;substitutionStatement&quot;;
+}
+
+// Number of packages
+// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?id=2.16.756.5.30.1.1.10.4.38
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationrequest.html
+group PrescribedQuantity(source supply : Supply, target medicationRequest : MedicationRequest) {
+  supply.quantity as quantity -&gt;  medicationRequest.dispenseRequest as dispenseRequest,  dispenseRequest.quantity as quant then {
+    // IHE-PRE: If the product-element contains package information, the unit attribute is not be present
+    quantity.value as value -&gt; quant.value = value;
+    // IHE-PRE: If the product-element does not contain package information, the unit attribut is present and the value SHALL be out of the UCUM code system
+    quantity.unit as unit then {
+      unit -&gt; quant.unit = unit &quot;unit&quot;;
+      unit -&gt; quant.system = 'http://unitsofmeasure.org' &quot;ucum&quot;;
+      unit -&gt; quant.code = unit &quot;code&quot;;
+    };
+  };
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.33
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationrequest.html
+group ManufacturedMaterialEntryContentModuleRequest(source src : SubstanceAdministration, target medicationRequest : MedicationRequest, target medication : Medication) {
+  src -&gt;  medication.id = 'med',  medicationRequest.medication = create('Reference') as vt,  vt.reference = '#med' &quot;medication&quot;;
+  src.consumable as consumable then {
+    consumable.manufacturedProduct as manufacturedProduct then {
+      manufacturedProduct.manufacturedMaterial as manufacturedMaterial then {
+        manufacturedMaterial.name as name where asContent.exists() = false -&gt;  medication.code as fhircode,  fhircode.text = (%manufacturedMaterial.name.other) &quot;code&quot;;
+        manufacturedMaterial.asContent as asContent then {
+          asContent.containerPackagedMedicine as containerPackagedMedicine then {
+            containerPackagedMedicine.code as code -&gt; medication.code as fhircode share medcode then CECodeableConcept(code, fhircode);
+            containerPackagedMedicine.name as name -&gt; medication.code as fhircode share medcode then {
+              name -&gt; fhircode.text = (%name.other) &quot;text&quot;;
+            } &quot;text&quot;;
+            containerPackagedMedicine.formCode as formCode -&gt; medication.form as form then CECodeableConcept(formCode, form);
+            // Package size
+            containerPackagedMedicine.capacityQuantity as capacityQuantity -&gt;  medication.amount = create('Ratio') as ratio,  ratio.denominator = create('Quantity') as denominator,  denominator.value = '1',  denominator.unit = 'Package',  denominator.system = 'http://unitsofmeasure.org',  denominator.code = '{Package}',  ratio.numerator = create('Quantity') as quantity then EmedPQQuantity(capacityQuantity, quantity);
+          };
+        };
+        manufacturedMaterial.ingredient as ingredient -&gt; medication.ingredient as ing then {
+          ingredient.quantity as quantity -&gt; ing.strength = create('Ratio') as strength then EmedRTOPQPQRatio(quantity, strength) &quot;strength&quot;;
+          ingredient.ingredient as medingredient then {
+            medingredient.code as code -&gt;  ing.item = create('CodeableConcept') as ingcode,  ingcode.text = (%medingredient.name.other) then CECodeableConcept(code, ingcode) &quot;ingredientCode&quot;;
+          };
+        };
+      };
+    };
+    // dosage for normal dosing, as no sequences are present there
+    src where $this.entryRelationship.sequenceNumber.exists() = false -&gt; medicationRequest.dosageInstruction as dosage then DosageInstructionsStartStopFrequency(src, dosage) &quot;dosage&quot;;
+  };
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.43
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationrequest.html
+group PrescriptionItemEntryContentModule(source section : Section, source src : SubstanceAdministration, source patient : Patient, target medicationRequest : MedicationRequest) {
+  src.id -&gt; medicationRequest.identifier;
+  patient -&gt;  medicationRequest.subject = create('Reference') as reference,  reference.reference = ('urn:uuid:' + %patient.id) &quot;patient&quot;;
+  src -&gt; medicationRequest.status = 'completed' &quot;completed&quot;;
+  src -&gt; medicationRequest.intent = 'order' &quot;order&quot;;
+  src.text as text then {
+    text.reference as reference then {
+      reference.value as value -&gt; medicationRequest.extension as ext then NarrativeLink(value, ext) &quot;narrativeLink&quot;;
+    };
+  };
+  src -&gt; medicationRequest.contained = create('Medication') as medication then ManufacturedMaterialEntryContentModuleRequest(src, medicationRequest, medication) &quot;medication&quot;;
+  src.entryRelationship as entry where typeCode = 'RSON' then {
+    entry.observation as observation -&gt; medicationRequest.reasonCode as reasonCode then TreatmentReasonEntryContentModule(section, observation, reasonCode) &quot;reasonCode&quot;;
+  } &quot;41&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and (substanceAdministration.templateId.root = '2.16.756.5.30.1.1.10.4.52')) -&gt; medicationRequest.dosageInstruction as dosage then DosageInstructionsNonStructuredEntryContentModule(section, entry, dosage) &quot;52&quot;;
+  // dosage for split dosing, as sequences are present there
+  src.entryRelationship as entry where ((typeCode = 'COMP') and (sequenceNumber.value &gt;= 0)) -&gt; medicationRequest.dosageInstruction as dosage then DosageInstructionsEntryDosageChange(src, entry, dosage) &quot;36&quot;;
+  src.entryRelationship as entry where ((typeCode = 'REFR') and substanceAdministration.templateId.where(root = '1.3.6.1.4.1.19376.1.9.1.3.10').exists()) -&gt; medicationRequest.extension as ext then MTPReferenceEntryContentModule(entry, ext) &quot;MTPReferenceEntry&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and act.templateId.where(root = '2.16.756.5.30.1.1.10.4.2').exists()) then {
+    entry.act as act -&gt; medicationRequest.note as note then AnnotationComment(section, act, note) &quot;annotation&quot;;
+  } &quot;2&quot;;
+  src.repeatNumber as repeatNumber -&gt; medicationRequest.dispenseRequest as dispenseRequest then {
+    repeatNumber.value as val -&gt; dispenseRequest.numberOfRepeatsAllowed = val &quot;repeatNumber&quot;;
+  } &quot;repeats&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and supply.templateId.where(root = '1.3.6.1.4.1.19376.1.9.1.3.8').exists()) then {
+    entry.supply as supply -&gt; medicationRequest as medicationRequest then PrescribedQuantity(supply, medicationRequest) &quot;quantity&quot;;
+  } &quot;8&quot;;
+  src.entryRelationship as entry where ((typeCode = 'COMP') and act.templateId.where(root = '1.3.6.1.4.1.19376.1.9.1.3.9.1').exists()) then {
+    entry.act as act -&gt; medicationRequest as medicationRequest then SubstitutionRequest(act, medicationRequest) &quot;substitution&quot;;
+  } &quot;1&quot;;
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--ch-pharm-?id=2.16.756.5.30.1.1.10.4.35
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition/ch-emed-dosage-structured-normal
+// dosage for normal dosing, without sequences
+group DosageInstructionsStartStopFrequency(source src : SubstanceAdministration, target dosage : Dosage) {
+  src as src -&gt; dosage as dosage then EffectiveTimeStartEnd(src, dosage) &quot;effectiveTimeStartEnd&quot;;
+  src as src -&gt; dosage as dosage then EffectiveTimeWhen(src, dosage) &quot;effectiveTimeWhen&quot;;
+  src.routeCode as routeCode -&gt; dosage.route as route then CECodeableConcept(routeCode, route);
+  src as src -&gt; dosage as dosage then DoseQuantity(src, dosage) &quot;doseQuantity&quot;;
+}
+
+// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.44
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-observation.html
+group PharmaceuticalAdviceItemEntryContentModule(source section : Section, source src : Observation, source patient : Patient, target observation : Observation, target bundle : Bundle) {
+  src.id -&gt; observation.identifier;
+  patient -&gt;  observation.subject = create('Reference') as reference,  reference.reference = ('urn:uuid:' + %patient.id) &quot;patient&quot;;
+  src -&gt; observation.status = 'final' &quot;final&quot;;
+  src.effectiveTime as effectiveTime -&gt; observation.effective = create('dateTime') as value then TSDateTime(effectiveTime, value) &quot;value&quot;;
+  src.entryRelationship as entry where ((typeCode = 'REFR') and substanceAdministration.templateId.where(root = '1.3.6.1.4.1.19376.1.9.1.3.10').exists()) -&gt; observation.extension as ext then MTPReferenceEntryContentModule(entry, ext) &quot;MTPReferenceEntry&quot;;
+  src.entryRelationship as entry where ((typeCode = 'REFR') and substanceAdministration.templateId.where(root = '1.3.6.1.4.1.19376.1.9.1.3.7').exists()) -&gt;  bundle.entry as e,  e.id = uuid() as uuid,  e.fullUrl = append('urn:uuid:', uuid),  e.resource = create('MedicationStatement') as medicationstatement,  observation.extension as ext,  ext.url = 'http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-medicationstatement-changed',  ext.value = create('Reference') as reference,  reference.reference = append('urn:uuid:', uuid) then {
+    entry.substanceAdministration as substanceAdministration then MedicationTreatmentPlanItemEntryContentModule(section, substanceAdministration, patient, medicationstatement);
+  } &quot;cdaEntry&quot;;
+  src.text as text -&gt; observation.note as note then {
+    text.data as data -&gt; note.text = data &quot;level3observation&quot;;
+    text where (data.exists() = false) -&gt; note.text = (%section.text.substring(%section.text.indexOf(%src.text.reference.value.substring(1))).substring(%section.text.substring(%section.text.indexOf(%src.text.reference.value.substring(1))).indexOf('&gt;') + 1, %section.text.substring(%section.text.indexOf(%src.text.reference.value.substring(1))).indexOf('&lt;') - %section.text.substring(%section.text.indexOf(%src.text.reference.value.substring(1))).indexOf('&gt;') - 1)) &quot;idRef&quot;;
+    text.reference as reference then {
+      reference.value as value -&gt; note.extension as ext then NarrativeLink(value, ext) &quot;narrativeLink&quot;;
+    };
+  } &quot;note&quot;;
+  src.code -&gt; observation.code;
+}
+
+// _________________________ Template Type not specified   _________________________
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-ext-treatmentplan.html
+group InnerExtensionExternalDocumentId(source src, target ext : Extension) {
+  src -&gt; ext.url = 'externalDocumentId' &quot;url&quot;;
+  src -&gt; ext.value = create('Identifier') as id then II(src, id) &quot;value&quot;;
+}
+
+// target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-ext-treatmentplan.html
+group InnerExtensionId(source src, target ext : Extension) {
+  src -&gt; ext.url = 'id' &quot;url&quot;;
+  src -&gt; ext.value = create('Identifier') as id then II(src, id) &quot;value&quot;;
+}
+
+</pre>
+      </div>
+  </text>
+  <url value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChEmedToBundle"/>
+  <version value="0.2.0"/>
+  <name value="CdaChEmedToBundle"/>
+  <status value="draft"/>
+  <date value="2021-06-18T18:31:19+02:00"/>
+  <publisher value="ahdis"/>
+  <contact>
+    <name value="ahdis"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.ahdis.ch/"/>
+    </telecom>
+  </contact>
+  <description value="Medication Entries 2020-10-30 Oliver Egger, copyright ahdis ag, Apache License CDA-CH-EMED:  https://art-decor.org/art-decor/decor-project--cdachemed- FHIR CH-EMED: http://fhir.ch/ig/ch-emed/index.html"/>
+  <copyright value="CC-BY-SA-4.0"/>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument"/>
+    <mode value="source"/>
+    <alias value="ClinicalDocument"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/AssignedAuthor"/>
+    <mode value="source"/>
+    <alias value="AssignedAuthor"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/AssignedEntity"/>
+    <mode value="source"/>
+    <alias value="AssignedEntity"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/Author"/>
+    <mode value="source"/>
+    <alias value="Author"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/CustodianOrganization"/>
+    <mode value="source"/>
+    <alias value="CustodianOrganization"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/IVL_TS"/>
+    <mode value="source"/>
+    <alias value="IVL_TS"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS"/>
+    <mode value="source"/>
+    <alias value="EIVL_TS"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/Observation"/>
+    <mode value="source"/>
+    <alias value="Observation"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/PatientRole"/>
+    <mode value="source"/>
+    <alias value="PatientRole"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/RecordTarget"/>
+    <mode value="source"/>
+    <alias value="RecordTarget"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/Section"/>
+    <mode value="source"/>
+    <alias value="Section"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/SubstanceAdministration"/>
+    <mode value="source"/>
+    <alias value="SubstanceAdministration"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS"/>
+    <mode value="source"/>
+    <alias value="SXPR_TS"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    <mode value="target"/>
+    <alias value="Bundle"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Composition"/>
+    <mode value="produced"/>
+    <alias value="Composition"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+    <mode value="produced"/>
+    <alias value="Patient"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Practitioner"/>
+    <mode value="produced"/>
+    <alias value="Practitioner"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Organization"/>
+    <mode value="produced"/>
+    <alias value="Organization"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/MedicationStatement"/>
+    <mode value="produced"/>
+    <alias value="MedicationStatement"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Dosage"/>
+    <mode value="produced"/>
+    <alias value="Dosage"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Observation"/>
+    <mode value="produced"/>
+    <alias value="Observation"/>
+  </structure>
+  <import value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaToFhirTypes"/>
+  <import value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaToBundle"/>
+  <import value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChToBundle"/>
+  <group>
+    <name value="AnnotationComment"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.2 target: Annotation note (e.g. http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationstatement.html)"/>
+    <input>
+      <name value="section"/>
+      <type value="Section"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="act"/>
+      <type value="Act"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="note"/>
+      <type value="Annotation"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="text"/>
+      <source>
+        <context value="act"/>
+        <element value="text"/>
+        <variable value="text"/>
+      </source>
+      <rule>
+        <name value="level3"/>
+        <source>
+          <context value="text"/>
+          <element value="data"/>
+          <variable value="data"/>
+        </source>
+        <target>
+          <context value="note"/>
+          <contextType value="variable"/>
+          <element value="text"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="data"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="reference"/>
+        <source>
+          <context value="text"/>
+          <element value="reference"/>
+          <variable value="reference"/>
+        </source>
+        <rule>
+          <name value="narrativeLink"/>
+          <source>
+            <context value="reference"/>
+            <element value="value"/>
+            <variable value="value"/>
+          </source>
+          <target>
+            <context value="note"/>
+            <contextType value="variable"/>
+            <element value="extension"/>
+            <variable value="ext"/>
+          </target>
+          <dependent>
+            <name value="NarrativeLink"/>
+            <variable value="value"/>
+            <variable value="ext"/>
+          </dependent>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ManufacturedMaterialEntryContentModuleDispense"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.33 target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationdispense.html"/>
+    <input>
+      <name value="src"/>
+      <type value="Supply"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="medicationDispense"/>
+      <type value="MedicationDispense"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="medication"/>
+      <type value="Medication"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="medication"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="medication"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="med"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="medicationDispense"/>
+        <contextType value="variable"/>
+        <element value="medication"/>
+        <variable value="vt"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Reference"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="vt"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="#med"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="quantity"/>
+      <source>
+        <context value="src"/>
+        <element value="quantity"/>
+        <variable value="quantity"/>
+      </source>
+      <target>
+        <context value="medicationDispense"/>
+        <contextType value="variable"/>
+        <element value="quantity"/>
+        <variable value="medDispQuantity"/>
+      </target>
+      <rule>
+        <name value="value"/>
+        <source>
+          <context value="quantity"/>
+          <element value="value"/>
+          <variable value="value"/>
+        </source>
+        <target>
+          <context value="medDispQuantity"/>
+          <contextType value="variable"/>
+          <element value="value"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="value"/>
+          </parameter>
+        </target>
+        <documentation value="IHE-DIS: If the product-element contains package information, the unit attribute is not be present"/>
+      </rule>
+      <rule>
+        <name value="unit"/>
+        <source>
+          <context value="quantity"/>
+          <element value="unit"/>
+          <variable value="unit"/>
+        </source>
+        <rule>
+          <name value="unit"/>
+          <source>
+            <context value="unit"/>
+          </source>
+          <target>
+            <context value="medDispQuantity"/>
+            <contextType value="variable"/>
+            <element value="unit"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="unit"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="ucum"/>
+          <source>
+            <context value="unit"/>
+          </source>
+          <target>
+            <context value="medDispQuantity"/>
+            <contextType value="variable"/>
+            <element value="system"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueString value="http://unitsofmeasure.org"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="code"/>
+          <source>
+            <context value="unit"/>
+          </source>
+          <target>
+            <context value="medDispQuantity"/>
+            <contextType value="variable"/>
+            <element value="code"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="unit"/>
+            </parameter>
+          </target>
+        </rule>
+        <documentation value="IHE-DIS: If the product-element does not contain package information, the unit attribut is present and the value SHALL be out of the UCUM code system"/>
+      </rule>
+      <documentation value="quantity value (number of packages)"/>
+    </rule>
+    <rule>
+      <name value="product"/>
+      <source>
+        <context value="src"/>
+        <element value="product"/>
+        <variable value="product"/>
+      </source>
+      <rule>
+        <name value="manufacturedProduct"/>
+        <source>
+          <context value="product"/>
+          <element value="manufacturedProduct"/>
+          <variable value="manufacturedProduct"/>
+        </source>
+        <rule>
+          <name value="manufacturedMaterial"/>
+          <source>
+            <context value="manufacturedProduct"/>
+            <element value="manufacturedMaterial"/>
+            <variable value="manufacturedMaterial"/>
+          </source>
+          <rule>
+            <name value="medication.code"/>
+            <source>
+              <context value="manufacturedMaterial"/>
+              <element value="name"/>
+              <variable value="name"/>
+              <condition value="asContent.exists() = false"/>
+            </source>
+            <target>
+              <context value="medication"/>
+              <contextType value="variable"/>
+              <element value="code"/>
+              <variable value="fhircode"/>
+            </target>
+            <target>
+              <context value="fhircode"/>
+              <contextType value="variable"/>
+              <element value="text"/>
+              <transform value="evaluate"/>
+              <parameter>
+                <valueString value="%manufacturedMaterial.name.other"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="asContent"/>
+            <source>
+              <context value="manufacturedMaterial"/>
+              <element value="asContent"/>
+              <variable value="asContent"/>
+            </source>
+            <rule>
+              <name value="containerPackagedMedicine"/>
+              <source>
+                <context value="asContent"/>
+                <element value="containerPackagedMedicine"/>
+                <variable value="containerPackagedMedicine"/>
+              </source>
+              <rule>
+                <name value="medication.code"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="code"/>
+                  <variable value="code"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="code"/>
+                  <variable value="fhircode"/>
+                  <listMode value="share"/>
+                  <listRuleId value="medcode"/>
+                </target>
+                <dependent>
+                  <name value="CECodeableConcept"/>
+                  <variable value="code"/>
+                  <variable value="fhircode"/>
+                </dependent>
+              </rule>
+              <rule>
+                <name value="code.text"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="name"/>
+                  <variable value="name"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="code"/>
+                  <variable value="fhircode"/>
+                  <listMode value="share"/>
+                  <listRuleId value="medcode"/>
+                </target>
+                <rule>
+                  <name value="medication.code.text"/>
+                  <source>
+                    <context value="name"/>
+                  </source>
+                  <target>
+                    <context value="fhircode"/>
+                    <contextType value="variable"/>
+                    <element value="text"/>
+                    <transform value="evaluate"/>
+                    <parameter>
+                      <valueString value="%name.other"/>
+                    </parameter>
+                  </target>
+                </rule>
+              </rule>
+              <rule>
+                <name value="medication.formCode"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="formCode"/>
+                  <variable value="formCode"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="form"/>
+                  <variable value="form"/>
+                </target>
+                <dependent>
+                  <name value="CECodeableConcept"/>
+                  <variable value="formCode"/>
+                  <variable value="form"/>
+                </dependent>
+              </rule>
+              <rule>
+                <name value="capacityQuantity"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="capacityQuantity"/>
+                  <variable value="capacityQuantity"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="amount"/>
+                  <variable value="ratio"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="Ratio"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="ratio"/>
+                  <contextType value="variable"/>
+                  <element value="denominator"/>
+                  <variable value="denominator"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="Quantity"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="value"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="1"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="unit"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="Package"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="system"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="http://unitsofmeasure.org"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="code"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="{Package}"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="ratio"/>
+                  <contextType value="variable"/>
+                  <element value="numerator"/>
+                  <variable value="quantity"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="Quantity"/>
+                  </parameter>
+                </target>
+                <dependent>
+                  <name value="EmedPQQuantity"/>
+                  <variable value="capacityQuantity"/>
+                  <variable value="quantity"/>
+                </dependent>
+                <documentation value="Package size"/>
+              </rule>
+            </rule>
+          </rule>
+          <rule>
+            <name value="ingredient"/>
+            <source>
+              <context value="manufacturedMaterial"/>
+              <element value="ingredient"/>
+              <variable value="ingredient"/>
+            </source>
+            <target>
+              <context value="medication"/>
+              <contextType value="variable"/>
+              <element value="ingredient"/>
+              <variable value="ing"/>
+            </target>
+            <rule>
+              <name value="strength"/>
+              <source>
+                <context value="ingredient"/>
+                <element value="quantity"/>
+                <variable value="quantity"/>
+              </source>
+              <target>
+                <context value="ing"/>
+                <contextType value="variable"/>
+                <element value="strength"/>
+                <variable value="strength"/>
+                <transform value="create"/>
+                <parameter>
+                  <valueString value="Ratio"/>
+                </parameter>
+              </target>
+              <dependent>
+                <name value="EmedRTOPQPQRatio"/>
+                <variable value="quantity"/>
+                <variable value="strength"/>
+              </dependent>
+            </rule>
+            <rule>
+              <name value="ingredient.ingredient"/>
+              <source>
+                <context value="ingredient"/>
+                <element value="ingredient"/>
+                <variable value="medingredient"/>
+              </source>
+              <rule>
+                <name value="ingredientCode"/>
+                <source>
+                  <context value="medingredient"/>
+                  <element value="code"/>
+                  <variable value="code"/>
+                </source>
+                <target>
+                  <context value="ing"/>
+                  <contextType value="variable"/>
+                  <element value="item"/>
+                  <variable value="ingcode"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="CodeableConcept"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="ingcode"/>
+                  <contextType value="variable"/>
+                  <element value="text"/>
+                  <transform value="evaluate"/>
+                  <parameter>
+                    <valueString value="%medingredient.name.other"/>
+                  </parameter>
+                </target>
+                <dependent>
+                  <name value="CECodeableConcept"/>
+                  <variable value="code"/>
+                  <variable value="ingcode"/>
+                </dependent>
+              </rule>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="entry"/>
+        <source>
+          <context value="src"/>
+          <element value="entryRelationship"/>
+          <variable value="entry"/>
+        </source>
+        <rule>
+          <name value="substanceAdministration"/>
+          <source>
+            <context value="entry"/>
+            <element value="substanceAdministration"/>
+            <variable value="substanceAdministration"/>
+          </source>
+          <rule>
+            <name value="dosage"/>
+            <source>
+              <context value="substanceAdministration"/>
+              <condition value="$this.entryRelationship.sequenceNumber.exists() = false"/>
+            </source>
+            <target>
+              <context value="medicationDispense"/>
+              <contextType value="variable"/>
+              <element value="dosageInstruction"/>
+              <variable value="dosage"/>
+            </target>
+            <dependent>
+              <name value="DosageInstructionsStartStopFrequency"/>
+              <variable value="substanceAdministration"/>
+              <variable value="dosage"/>
+            </dependent>
+          </rule>
+        </rule>
+        <documentation value="dosage for normal dosing, as no sequences are present there"/>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="EmedPQQuantity"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="PQ"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="Quantity"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="value"/>
+      <source>
+        <context value="src"/>
+        <element value="value"/>
+        <variable value="value"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="value"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="unit"/>
+      <source>
+        <context value="src"/>
+        <element value="unit"/>
+        <variable value="unit"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="code"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="unit"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="unit"/>
+      <source>
+        <context value="src"/>
+        <element value="unit"/>
+        <variable value="unit"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="system"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="&#39;http://fhir.ch/ig/ch-emed/ValueSet/UnitCode&#39;.resolve().compose.include.where(concept.where(code = %unit)).system"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="unit"/>
+      <source>
+        <context value="src"/>
+        <element value="unit"/>
+        <variable value="unit"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="unit"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="&#39;http://fhir.ch/ig/ch-emed/ValueSet/UnitCode&#39;.resolve().compose.include.concept.where(code = %unit).display"/>
+        </parameter>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="EmedRTOPQPQRatio"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="RTO_PQ_PQ"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="Ratio"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="numerator"/>
+      <source>
+        <context value="src"/>
+        <element value="numerator"/>
+        <variable value="numerator"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="numerator"/>
+        <variable value="targetNumerator"/>
+      </target>
+      <dependent>
+        <name value="EmedPQQuantity"/>
+        <variable value="numerator"/>
+        <variable value="targetNumerator"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="denominator"/>
+      <source>
+        <context value="src"/>
+        <element value="denominator"/>
+        <variable value="denominator"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="denominator"/>
+        <variable value="targetDenominator"/>
+      </target>
+      <dependent>
+        <name value="EmedPQQuantity"/>
+        <variable value="denominator"/>
+        <variable value="targetDenominator"/>
+      </dependent>
+    </rule>
+  </group>
+  <group>
+    <name value="ManufacturedMaterialEntryContentModuleStatement"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.33 target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationstatement.html"/>
+    <input>
+      <name value="src"/>
+      <type value="SubstanceAdministration"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="medicationStatement"/>
+      <type value="MedicationStatement"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="medication"/>
+      <type value="Medication"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="medication"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="medication"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="med"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="medicationStatement"/>
+        <contextType value="variable"/>
+        <element value="medication"/>
+        <variable value="vt"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Reference"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="vt"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="#med"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="consumable"/>
+      <source>
+        <context value="src"/>
+        <element value="consumable"/>
+        <variable value="consumable"/>
+      </source>
+      <rule>
+        <name value="manufacturedProduct"/>
+        <source>
+          <context value="consumable"/>
+          <element value="manufacturedProduct"/>
+          <variable value="manufacturedProduct"/>
+        </source>
+        <rule>
+          <name value="manufacturedMaterial"/>
+          <source>
+            <context value="manufacturedProduct"/>
+            <element value="manufacturedMaterial"/>
+            <variable value="manufacturedMaterial"/>
+          </source>
+          <rule>
+            <name value="medication.code"/>
+            <source>
+              <context value="manufacturedMaterial"/>
+              <element value="name"/>
+              <variable value="name"/>
+              <condition value="asContent.exists() = false"/>
+            </source>
+            <target>
+              <context value="medication"/>
+              <contextType value="variable"/>
+              <element value="code"/>
+              <variable value="fhircode"/>
+            </target>
+            <target>
+              <context value="fhircode"/>
+              <contextType value="variable"/>
+              <element value="text"/>
+              <transform value="evaluate"/>
+              <parameter>
+                <valueString value="%manufacturedMaterial.name.other"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="asContent"/>
+            <source>
+              <context value="manufacturedMaterial"/>
+              <element value="asContent"/>
+              <variable value="asContent"/>
+            </source>
+            <rule>
+              <name value="containerPackagedMedicine"/>
+              <source>
+                <context value="asContent"/>
+                <element value="containerPackagedMedicine"/>
+                <variable value="containerPackagedMedicine"/>
+              </source>
+              <rule>
+                <name value="medication.code"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="code"/>
+                  <variable value="code"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="code"/>
+                  <variable value="fhircode"/>
+                  <listMode value="share"/>
+                  <listRuleId value="medcode"/>
+                </target>
+                <dependent>
+                  <name value="CECodeableConcept"/>
+                  <variable value="code"/>
+                  <variable value="fhircode"/>
+                </dependent>
+              </rule>
+              <rule>
+                <name value="code.text"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="name"/>
+                  <variable value="name"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="code"/>
+                  <variable value="fhircode"/>
+                  <listMode value="share"/>
+                  <listRuleId value="medcode"/>
+                </target>
+                <rule>
+                  <name value="medication.code.text"/>
+                  <source>
+                    <context value="name"/>
+                  </source>
+                  <target>
+                    <context value="fhircode"/>
+                    <contextType value="variable"/>
+                    <element value="text"/>
+                    <transform value="evaluate"/>
+                    <parameter>
+                      <valueString value="%name.other"/>
+                    </parameter>
+                  </target>
+                </rule>
+              </rule>
+              <rule>
+                <name value="medication.formCode"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="formCode"/>
+                  <variable value="formCode"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="form"/>
+                  <variable value="form"/>
+                </target>
+                <dependent>
+                  <name value="CECodeableConcept"/>
+                  <variable value="formCode"/>
+                  <variable value="form"/>
+                </dependent>
+              </rule>
+              <rule>
+                <name value="capacityQuantity"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="capacityQuantity"/>
+                  <variable value="capacityQuantity"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="amount"/>
+                  <variable value="ratio"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="Ratio"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="ratio"/>
+                  <contextType value="variable"/>
+                  <element value="denominator"/>
+                  <variable value="denominator"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="Quantity"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="value"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="1"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="unit"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="Package"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="system"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="http://unitsofmeasure.org"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="code"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="{Package}"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="ratio"/>
+                  <contextType value="variable"/>
+                  <element value="numerator"/>
+                  <variable value="quantity"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="Quantity"/>
+                  </parameter>
+                </target>
+                <dependent>
+                  <name value="EmedPQQuantity"/>
+                  <variable value="capacityQuantity"/>
+                  <variable value="quantity"/>
+                </dependent>
+                <documentation value="Package size"/>
+              </rule>
+            </rule>
+          </rule>
+          <rule>
+            <name value="ingredient"/>
+            <source>
+              <context value="manufacturedMaterial"/>
+              <element value="ingredient"/>
+              <variable value="ingredient"/>
+            </source>
+            <target>
+              <context value="medication"/>
+              <contextType value="variable"/>
+              <element value="ingredient"/>
+              <variable value="ing"/>
+            </target>
+            <rule>
+              <name value="strength"/>
+              <source>
+                <context value="ingredient"/>
+                <element value="quantity"/>
+                <variable value="quantity"/>
+              </source>
+              <target>
+                <context value="ing"/>
+                <contextType value="variable"/>
+                <element value="strength"/>
+                <variable value="strength"/>
+                <transform value="create"/>
+                <parameter>
+                  <valueString value="Ratio"/>
+                </parameter>
+              </target>
+              <dependent>
+                <name value="EmedRTOPQPQRatio"/>
+                <variable value="quantity"/>
+                <variable value="strength"/>
+              </dependent>
+            </rule>
+            <rule>
+              <name value="ingredient.ingredient"/>
+              <source>
+                <context value="ingredient"/>
+                <element value="ingredient"/>
+                <variable value="medingredient"/>
+              </source>
+              <rule>
+                <name value="ingredientCode"/>
+                <source>
+                  <context value="medingredient"/>
+                  <element value="code"/>
+                  <variable value="code"/>
+                </source>
+                <target>
+                  <context value="ing"/>
+                  <contextType value="variable"/>
+                  <element value="item"/>
+                  <variable value="ingcode"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="CodeableConcept"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="ingcode"/>
+                  <contextType value="variable"/>
+                  <element value="text"/>
+                  <transform value="evaluate"/>
+                  <parameter>
+                    <valueString value="%medingredient.name.other"/>
+                  </parameter>
+                </target>
+                <dependent>
+                  <name value="CECodeableConcept"/>
+                  <variable value="code"/>
+                  <variable value="ingcode"/>
+                </dependent>
+              </rule>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="dosage"/>
+        <source>
+          <context value="src"/>
+          <condition value="$this.entryRelationship.sequenceNumber.exists() = false"/>
+        </source>
+        <target>
+          <context value="medicationStatement"/>
+          <contextType value="variable"/>
+          <element value="dosage"/>
+          <variable value="dosage"/>
+        </target>
+        <dependent>
+          <name value="DosageInstructionsStartStopFrequency"/>
+          <variable value="src"/>
+          <variable value="dosage"/>
+        </dependent>
+        <documentation value="dosage for normal dosing, as no sequences are present there"/>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="MedicationTreatmentPlanItemEntryContentModule"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.34 target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationstatement.html"/>
+    <input>
+      <name value="section"/>
+      <type value="Section"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="src"/>
+      <type value="SubstanceAdministration"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="patient"/>
+      <type value="Patient"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="medicationStatement"/>
+      <type value="MedicationStatement"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="id"/>
+      <source>
+        <context value="src"/>
+        <element value="id"/>
+        <variable value="vvv"/>
+      </source>
+      <target>
+        <context value="medicationStatement"/>
+        <contextType value="variable"/>
+        <element value="identifier"/>
+        <variable value="vvv"/>
+        <transform value="create"/>
+      </target>
+      <documentation value="src.templateId as template then TemplateID(template, medicationStatement) &quot;templateId&quot;;"/>
+    </rule>
+    <rule>
+      <name value="patient"/>
+      <source>
+        <context value="patient"/>
+      </source>
+      <target>
+        <context value="medicationStatement"/>
+        <contextType value="variable"/>
+        <element value="subject"/>
+        <variable value="reference"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Reference"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="reference"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="&#39;urn:uuid:&#39; + %patient.id"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="completed"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="medicationStatement"/>
+        <contextType value="variable"/>
+        <element value="status"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="completed"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="text"/>
+      <source>
+        <context value="src"/>
+        <element value="text"/>
+        <variable value="text"/>
+      </source>
+      <rule>
+        <name value="reference"/>
+        <source>
+          <context value="text"/>
+          <element value="reference"/>
+          <variable value="reference"/>
+        </source>
+        <rule>
+          <name value="narrativeLink"/>
+          <source>
+            <context value="reference"/>
+            <element value="value"/>
+            <variable value="value"/>
+          </source>
+          <target>
+            <context value="medicationStatement"/>
+            <contextType value="variable"/>
+            <element value="extension"/>
+            <variable value="ext"/>
+          </target>
+          <dependent>
+            <name value="NarrativeLink"/>
+            <variable value="value"/>
+            <variable value="ext"/>
+          </dependent>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="medication"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="medicationStatement"/>
+        <contextType value="variable"/>
+        <element value="contained"/>
+        <variable value="medication"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Medication"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="ManufacturedMaterialEntryContentModuleStatement"/>
+        <variable value="src"/>
+        <variable value="medicationStatement"/>
+        <variable value="medication"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.41"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="typeCode = &#39;RSON&#39;"/>
+      </source>
+      <rule>
+        <name value="reasonCode"/>
+        <source>
+          <context value="entry"/>
+          <element value="observation"/>
+          <variable value="observation"/>
+        </source>
+        <target>
+          <context value="medicationStatement"/>
+          <contextType value="variable"/>
+          <element value="reasonCode"/>
+          <variable value="reasonCode"/>
+        </target>
+        <dependent>
+          <name value="TreatmentReasonEntryContentModule"/>
+          <variable value="section"/>
+          <variable value="observation"/>
+          <variable value="reasonCode"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.52"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and (substanceAdministration.templateId.root = &#39;2.16.756.5.30.1.1.10.4.52&#39;))"/>
+      </source>
+      <target>
+        <context value="medicationStatement"/>
+        <contextType value="variable"/>
+        <element value="dosage"/>
+        <variable value="dosage"/>
+      </target>
+      <dependent>
+        <name value="DosageInstructionsNonStructuredEntryContentModule"/>
+        <variable value="section"/>
+        <variable value="entry"/>
+        <variable value="dosage"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.36"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and (sequenceNumber.value &gt;= 0))"/>
+      </source>
+      <target>
+        <context value="medicationStatement"/>
+        <contextType value="variable"/>
+        <element value="dosage"/>
+        <variable value="dosage"/>
+      </target>
+      <dependent>
+        <name value="DosageInstructionsEntryDosageChange"/>
+        <variable value="src"/>
+        <variable value="entry"/>
+        <variable value="dosage"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="MTPReferenceEntry"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;REFR&#39;) and substanceAdministration.templateId.where(root = &#39;1.3.6.1.4.1.19376.1.9.1.3.10&#39;).exists())"/>
+      </source>
+      <target>
+        <context value="medicationStatement"/>
+        <contextType value="variable"/>
+        <element value="extension"/>
+        <variable value="ext"/>
+      </target>
+      <dependent>
+        <name value="MTPReferenceEntryContentModule"/>
+        <variable value="entry"/>
+        <variable value="ext"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.2"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and act.templateId.where(root = &#39;2.16.756.5.30.1.1.10.4.2&#39;).exists())"/>
+      </source>
+      <rule>
+        <name value="annotation"/>
+        <source>
+          <context value="entry"/>
+          <element value="act"/>
+          <variable value="act"/>
+        </source>
+        <target>
+          <context value="medicationStatement"/>
+          <contextType value="variable"/>
+          <element value="note"/>
+          <variable value="note"/>
+        </target>
+        <dependent>
+          <name value="AnnotationComment"/>
+          <variable value="section"/>
+          <variable value="act"/>
+          <variable value="note"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-1.3.6.1.4.1.19376.1.9.1.3.9.1"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and act.templateId.where(root = &#39;1.3.6.1.4.1.19376.1.9.1.3.9.1&#39;).exists())"/>
+      </source>
+      <rule>
+        <name value="substitution"/>
+        <source>
+          <context value="entry"/>
+          <element value="act"/>
+          <variable value="act"/>
+        </source>
+        <target>
+          <contextType value="variable"/>
+          <variable value="medicationStatement"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="medicationStatement"/>
+          </parameter>
+        </target>
+        <dependent>
+          <name value="SubstitutionStatement"/>
+          <variable value="act"/>
+          <variable value="medicationStatement"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="DosageInstructionsEntryDosageChange"/>
+    <typeMode value="none"/>
+    <documentation value="source https://art-decor.org/art-decor/decor-templates--ch-pharm-?id=2.16.756.5.30.1.1.10.4.36 target: http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-dosage-structured-split dosage for split dosing, with sequences"/>
+    <input>
+      <name value="src"/>
+      <type value="substanceAdministration"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="entry"/>
+      <type value="entryRelationship"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="dosage"/>
+      <type value="Dosage"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="sequenceNumber"/>
+      <source>
+        <context value="entry"/>
+        <element value="sequenceNumber"/>
+        <variable value="sequenceNumber"/>
+      </source>
+      <rule>
+        <name value="value"/>
+        <source>
+          <context value="sequenceNumber"/>
+          <element value="value"/>
+          <variable value="val"/>
+        </source>
+        <target>
+          <context value="dosage"/>
+          <contextType value="variable"/>
+          <element value="sequence"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="val"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+    <rule>
+      <name value="effectiveTimeStartEnd"/>
+      <source>
+        <context value="src"/>
+        <variable value="src"/>
+      </source>
+      <target>
+        <contextType value="variable"/>
+        <variable value="dosage"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="dosage"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="EffectiveTimeStartEnd"/>
+        <variable value="src"/>
+        <variable value="dosage"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="effectiveTimeWhen"/>
+      <source>
+        <context value="entry"/>
+        <element value="substanceAdministration"/>
+        <variable value="src"/>
+      </source>
+      <target>
+        <contextType value="variable"/>
+        <variable value="dosage"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="dosage"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="EffectiveTimeWhen"/>
+        <variable value="src"/>
+        <variable value="dosage"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="routeCode"/>
+      <source>
+        <context value="src"/>
+        <element value="routeCode"/>
+        <variable value="routeCode"/>
+      </source>
+      <target>
+        <context value="dosage"/>
+        <contextType value="variable"/>
+        <element value="route"/>
+        <variable value="route"/>
+      </target>
+      <dependent>
+        <name value="CECodeableConcept"/>
+        <variable value="routeCode"/>
+        <variable value="route"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="doseQuantity"/>
+      <source>
+        <context value="entry"/>
+        <element value="substanceAdministration"/>
+        <variable value="src"/>
+      </source>
+      <target>
+        <contextType value="variable"/>
+        <variable value="dosage"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="dosage"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="DoseQuantity"/>
+        <variable value="src"/>
+        <variable value="dosage"/>
+      </dependent>
+    </rule>
+  </group>
+  <group>
+    <name value="EffectiveTimeStartEnd"/>
+    <typeMode value="none"/>
+    <documentation value="effective time start &amp; end for dosage"/>
+    <input>
+      <name value="src"/>
+      <type value="substanceAdministration"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="dosage"/>
+      <type value="Dosage"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="effectiveTime-IVL-TS"/>
+      <source>
+        <context value="src"/>
+        <type value="IVL_TS"/>
+        <element value="effectiveTime"/>
+        <variable value="effectiveTime"/>
+      </source>
+      <target>
+        <context value="dosage"/>
+        <contextType value="variable"/>
+        <element value="timing"/>
+        <variable value="timing"/>
+        <listMode value="share"/>
+        <listRuleId value="sharetiming"/>
+      </target>
+      <rule>
+        <name value="repeat"/>
+        <source>
+          <context value="effectiveTime"/>
+        </source>
+        <target>
+          <context value="timing"/>
+          <contextType value="variable"/>
+          <element value="repeat"/>
+          <variable value="repeat"/>
+        </target>
+        <rule>
+          <name value="period"/>
+          <source>
+            <context value="effectiveTime"/>
+          </source>
+          <target>
+            <context value="repeat"/>
+            <contextType value="variable"/>
+            <element value="bounds"/>
+            <variable value="period"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="Period"/>
+            </parameter>
+          </target>
+          <rule>
+            <name value="low"/>
+            <source>
+              <context value="effectiveTime"/>
+              <element value="low"/>
+              <variable value="low"/>
+            </source>
+            <rule>
+              <name value="lowDate"/>
+              <source>
+                <context value="low"/>
+                <element value="value"/>
+                <variable value="lowDate"/>
+              </source>
+              <target>
+                <context value="period"/>
+                <contextType value="variable"/>
+                <element value="start"/>
+                <transform value="copy"/>
+                <parameter>
+                  <valueId value="lowDate"/>
+                </parameter>
+              </target>
+            </rule>
+          </rule>
+          <rule>
+            <name value="high"/>
+            <source>
+              <context value="effectiveTime"/>
+              <element value="high"/>
+              <variable value="high"/>
+            </source>
+            <rule>
+              <name value="highDate"/>
+              <source>
+                <context value="high"/>
+                <element value="value"/>
+                <variable value="highDate"/>
+              </source>
+              <target>
+                <context value="period"/>
+                <contextType value="variable"/>
+                <element value="end"/>
+                <transform value="copy"/>
+                <parameter>
+                  <valueId value="highDate"/>
+                </parameter>
+              </target>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="EffectiveTimeWhen"/>
+    <typeMode value="none"/>
+    <documentation value="effective time when for dosage"/>
+    <input>
+      <name value="src"/>
+      <type value="substanceAdministration"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="dosage"/>
+      <type value="Dosage"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="effectiveTime-EIVL-TS"/>
+      <source>
+        <context value="src"/>
+        <type value="EIVL_TS"/>
+        <element value="effectiveTime"/>
+        <variable value="effectiveTime"/>
+      </source>
+      <target>
+        <context value="dosage"/>
+        <contextType value="variable"/>
+        <element value="timing"/>
+        <variable value="timing"/>
+        <listMode value="share"/>
+        <listRuleId value="sharetiming"/>
+      </target>
+      <rule>
+        <name value="repeat"/>
+        <source>
+          <context value="effectiveTime"/>
+        </source>
+        <target>
+          <context value="timing"/>
+          <contextType value="variable"/>
+          <element value="repeat"/>
+          <variable value="repeat"/>
+        </target>
+        <rule>
+          <name value="event"/>
+          <source>
+            <context value="effectiveTime"/>
+            <element value="event"/>
+            <variable value="event"/>
+          </source>
+          <rule>
+            <name value="code"/>
+            <source>
+              <context value="event"/>
+              <element value="code"/>
+              <variable value="code"/>
+            </source>
+            <target>
+              <context value="repeat"/>
+              <contextType value="variable"/>
+              <element value="when"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="code"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="effectiveTime-SXPR-TS"/>
+      <source>
+        <context value="src"/>
+        <type value="SXPR_TS"/>
+        <element value="effectiveTime"/>
+        <variable value="effectiveTime"/>
+      </source>
+      <target>
+        <context value="dosage"/>
+        <contextType value="variable"/>
+        <element value="timing"/>
+        <variable value="timing"/>
+        <listMode value="share"/>
+        <listRuleId value="sharetiming"/>
+      </target>
+      <rule>
+        <name value="repeat"/>
+        <source>
+          <context value="effectiveTime"/>
+        </source>
+        <target>
+          <context value="timing"/>
+          <contextType value="variable"/>
+          <element value="repeat"/>
+          <variable value="repeat"/>
+        </target>
+        <rule>
+          <name value="comp"/>
+          <source>
+            <context value="effectiveTime"/>
+            <element value="comp"/>
+            <variable value="comp"/>
+          </source>
+          <rule>
+            <name value="event"/>
+            <source>
+              <context value="comp"/>
+              <element value="event"/>
+              <variable value="event"/>
+            </source>
+            <rule>
+              <name value="code"/>
+              <source>
+                <context value="event"/>
+                <element value="code"/>
+                <variable value="code"/>
+              </source>
+              <target>
+                <context value="repeat"/>
+                <contextType value="variable"/>
+                <element value="when"/>
+                <transform value="copy"/>
+                <parameter>
+                  <valueId value="code"/>
+                </parameter>
+              </target>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="TreatmentReasonEntryContentModule"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.41 target: reasonCode Coding (e.g. http://build.fhir.org/ig/hl7ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement)"/>
+    <input>
+      <name value="section"/>
+      <type value="Section"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="observation"/>
+      <type value="Observation"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="reasonCode"/>
+      <type value="Coding"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="text"/>
+      <source>
+        <context value="observation"/>
+        <element value="text"/>
+        <variable value="text"/>
+      </source>
+      <rule>
+        <name value="level3"/>
+        <source>
+          <context value="text"/>
+          <element value="data"/>
+          <variable value="data"/>
+        </source>
+        <target>
+          <context value="reasonCode"/>
+          <contextType value="variable"/>
+          <element value="text"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="data"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="reference"/>
+        <source>
+          <context value="text"/>
+          <element value="reference"/>
+          <variable value="reference"/>
+        </source>
+        <rule>
+          <name value="narrativeLink"/>
+          <source>
+            <context value="reference"/>
+            <element value="value"/>
+            <variable value="value"/>
+          </source>
+          <target>
+            <context value="reasonCode"/>
+            <contextType value="variable"/>
+            <element value="extension"/>
+            <variable value="ext"/>
+          </target>
+          <dependent>
+            <name value="NarrativeLink"/>
+            <variable value="value"/>
+            <variable value="ext"/>
+          </dependent>
+        </rule>
+      </rule>
+      <documentation value="extraxt text (Bluthochdruck) from id #mtpc.1.reason in section text &lt;td ID=&quot;mtpc.1.reason&quot;&gt;Bluthochdruck&lt;/td&gt;"/>
+    </rule>
+  </group>
+  <group>
+    <name value="MTPReferenceEntryContentModule"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--ch-pharm-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.45 target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-ext-treatmentplan.html"/>
+    <input>
+      <name value="entryrelationship"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="ext"/>
+      <type value="Extension"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="url"/>
+      <source>
+        <context value="entryrelationship"/>
+      </source>
+      <target>
+        <context value="ext"/>
+        <contextType value="variable"/>
+        <element value="url"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-treatmentplan"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="id"/>
+      <source>
+        <context value="entryrelationship"/>
+        <element value="substanceAdministration"/>
+        <variable value="substanceAdministration"/>
+      </source>
+      <rule>
+        <name value="innerExtensionId"/>
+        <source>
+          <context value="substanceAdministration"/>
+          <element value="id"/>
+          <variable value="id"/>
+        </source>
+        <target>
+          <context value="ext"/>
+          <contextType value="variable"/>
+          <element value="extension"/>
+          <variable value="ext"/>
+        </target>
+        <dependent>
+          <name value="InnerExtensionId"/>
+          <variable value="id"/>
+          <variable value="ext"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="substanceAdministration"/>
+        <source>
+          <context value="substanceAdministration"/>
+          <element value="reference"/>
+          <variable value="reference"/>
+        </source>
+        <rule>
+          <name value="externalDocument"/>
+          <source>
+            <context value="reference"/>
+            <element value="externalDocument"/>
+            <variable value="externalDocument"/>
+          </source>
+          <rule>
+            <name value="innerExtensionExternalDocumentId"/>
+            <source>
+              <context value="externalDocument"/>
+              <element value="id"/>
+              <variable value="id"/>
+            </source>
+            <target>
+              <context value="ext"/>
+              <contextType value="variable"/>
+              <element value="extension"/>
+              <variable value="ext"/>
+            </target>
+            <dependent>
+              <name value="InnerExtensionExternalDocumentId"/>
+              <variable value="id"/>
+              <variable value="ext"/>
+            </dependent>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="DosageInstructionsNonStructuredEntryContentModule"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--ch-pharm-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.52 target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-dosage-nonstructured.html"/>
+    <input>
+      <name value="section"/>
+      <type value="Section"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="entry"/>
+      <type value="Element"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="dosage"/>
+      <type value="Dosage"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="observation"/>
+      <source>
+        <context value="entry"/>
+        <element value="substanceAdministration"/>
+        <variable value="observation"/>
+      </source>
+      <rule>
+        <name value="text"/>
+        <source>
+          <context value="observation"/>
+          <element value="text"/>
+          <variable value="text"/>
+        </source>
+        <rule>
+          <name value="level3"/>
+          <source>
+            <context value="text"/>
+            <element value="data"/>
+            <variable value="data"/>
+          </source>
+          <target>
+            <context value="dosage"/>
+            <contextType value="variable"/>
+            <element value="text"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="data"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="reference"/>
+          <source>
+            <context value="text"/>
+            <element value="reference"/>
+            <variable value="reference"/>
+          </source>
+          <rule>
+            <name value="narrativeLink"/>
+            <source>
+              <context value="reference"/>
+              <element value="value"/>
+              <variable value="value"/>
+            </source>
+            <target>
+              <context value="dosage"/>
+              <contextType value="variable"/>
+              <element value="extension"/>
+              <variable value="ext"/>
+            </target>
+            <dependent>
+              <name value="NarrativeLink"/>
+              <variable value="value"/>
+              <variable value="ext"/>
+            </dependent>
+          </rule>
+        </rule>
+      </rule>
+      <documentation value="see MedicationTreatmentPlanItemEntryContentModule"/>
+    </rule>
+  </group>
+  <group>
+    <name value="SubstitutionDispense"/>
+    <typeMode value="none"/>
+    <documentation value="source: Substitution act Contains 1.3.6.1.4.1.19376.1.9.1.3.9.2 IHE Substitution Act Content Module target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationdispense.html"/>
+    <input>
+      <name value="act"/>
+      <type value="Act"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="medicationDispense"/>
+      <type value="MedicationDispense"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="substitution"/>
+      <source>
+        <context value="act"/>
+      </source>
+      <target>
+        <context value="medicationDispense"/>
+        <contextType value="variable"/>
+        <element value="substitution"/>
+        <variable value="substitution"/>
+      </target>
+      <rule>
+        <name value="wasSubstituted"/>
+        <source>
+          <context value="act"/>
+        </source>
+        <target>
+          <context value="substitution"/>
+          <contextType value="variable"/>
+          <element value="wasSubstituted"/>
+          <variable value="wasSubstituted"/>
+        </target>
+        <target>
+          <context value="wasSubstituted"/>
+          <contextType value="variable"/>
+          <element value="value"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="true"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="allowedCC"/>
+        <source>
+          <context value="act"/>
+          <element value="code"/>
+          <variable value="actCode"/>
+        </source>
+        <target>
+          <context value="substitution"/>
+          <contextType value="variable"/>
+          <element value="type"/>
+          <variable value="type"/>
+        </target>
+        <target>
+          <context value="type"/>
+          <contextType value="variable"/>
+          <element value="coding"/>
+          <variable value="coding"/>
+        </target>
+        <rule>
+          <name value="system"/>
+          <source>
+            <context value="actCode"/>
+          </source>
+          <target>
+            <context value="coding"/>
+            <contextType value="variable"/>
+            <element value="system"/>
+            <variable value="systemCC"/>
+          </target>
+          <target>
+            <context value="systemCC"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueString value="http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="code"/>
+          <source>
+            <context value="actCode"/>
+            <element value="code"/>
+            <variable value="code"/>
+          </source>
+          <target>
+            <context value="coding"/>
+            <contextType value="variable"/>
+            <element value="code"/>
+            <variable value="codeCC"/>
+          </target>
+          <target>
+            <context value="codeCC"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="code"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="display"/>
+          <source>
+            <context value="actCode"/>
+            <element value="displayName"/>
+            <variable value="display"/>
+          </source>
+          <target>
+            <context value="coding"/>
+            <contextType value="variable"/>
+            <element value="display"/>
+            <variable value="displayCC"/>
+          </target>
+          <target>
+            <context value="displayCC"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="display"/>
+            </parameter>
+          </target>
+        </rule>
+        <documentation value="act.code as code -&gt; substitution.type as type then CECodeableConcept(code, type) &quot;type&quot;;"/>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="DispenseItemEntryContentModule"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.42 target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationdispense.html"/>
+    <input>
+      <name value="section"/>
+      <type value="Section"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="src"/>
+      <type value="Supply"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="patient"/>
+      <type value="Patient"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="medicationDispense"/>
+      <type value="MedicationDispense"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="id"/>
+      <source>
+        <context value="src"/>
+        <element value="id"/>
+        <variable value="vvv"/>
+      </source>
+      <target>
+        <context value="medicationDispense"/>
+        <contextType value="variable"/>
+        <element value="identifier"/>
+        <variable value="vvv"/>
+        <transform value="create"/>
+      </target>
+      <documentation value="src.templateId as template then TemplateID(template, medicationDispense) &quot;templateId&quot;;"/>
+    </rule>
+    <rule>
+      <name value="patient"/>
+      <source>
+        <context value="patient"/>
+      </source>
+      <target>
+        <context value="medicationDispense"/>
+        <contextType value="variable"/>
+        <element value="subject"/>
+        <variable value="reference"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Reference"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="reference"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="&#39;urn:uuid:&#39; + %patient.id"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="completed"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="medicationDispense"/>
+        <contextType value="variable"/>
+        <element value="status"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="completed"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="text"/>
+      <source>
+        <context value="src"/>
+        <element value="text"/>
+        <variable value="text"/>
+      </source>
+      <rule>
+        <name value="reference"/>
+        <source>
+          <context value="text"/>
+          <element value="reference"/>
+          <variable value="reference"/>
+        </source>
+        <rule>
+          <name value="narrativeLink"/>
+          <source>
+            <context value="reference"/>
+            <element value="value"/>
+            <variable value="value"/>
+          </source>
+          <target>
+            <context value="medicationDispense"/>
+            <contextType value="variable"/>
+            <element value="extension"/>
+            <variable value="ext"/>
+          </target>
+          <dependent>
+            <name value="NarrativeLink"/>
+            <variable value="value"/>
+            <variable value="ext"/>
+          </dependent>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="medication"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="medicationDispense"/>
+        <contextType value="variable"/>
+        <element value="contained"/>
+        <variable value="medication"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Medication"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="ManufacturedMaterialEntryContentModuleDispense"/>
+        <variable value="src"/>
+        <variable value="medicationDispense"/>
+        <variable value="medication"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.52"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and (substanceAdministration.templateId.root = &#39;2.16.756.5.30.1.1.10.4.52&#39;))"/>
+      </source>
+      <target>
+        <context value="medicationDispense"/>
+        <contextType value="variable"/>
+        <element value="dosageInstruction"/>
+        <variable value="dosage"/>
+      </target>
+      <dependent>
+        <name value="DosageInstructionsNonStructuredEntryContentModule"/>
+        <variable value="section"/>
+        <variable value="entry"/>
+        <variable value="dosage"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="entryRelationship"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entryRelationship"/>
+      </source>
+      <rule>
+        <name value="substanceAdministration"/>
+        <source>
+          <context value="entryRelationship"/>
+          <element value="substanceAdministration"/>
+          <variable value="substanceAdministration"/>
+        </source>
+        <rule>
+          <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.36"/>
+          <source>
+            <context value="substanceAdministration"/>
+            <element value="entryRelationship"/>
+            <variable value="entryRelationship"/>
+            <condition value="((typeCode = &#39;COMP&#39;) and (sequenceNumber.value &gt;= 0))"/>
+          </source>
+          <target>
+            <context value="medicationDispense"/>
+            <contextType value="variable"/>
+            <element value="dosageInstruction"/>
+            <variable value="dosage"/>
+          </target>
+          <dependent>
+            <name value="DosageInstructionsEntryDosageChange"/>
+            <variable value="substanceAdministration"/>
+            <variable value="entryRelationship"/>
+            <variable value="dosage"/>
+          </dependent>
+          <documentation value="dosage for split dosing, as sequences are present there"/>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="MTPReferenceEntry"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;REFR&#39;) and substanceAdministration.templateId.where(root = &#39;1.3.6.1.4.1.19376.1.9.1.3.10&#39;).exists())"/>
+      </source>
+      <target>
+        <context value="medicationDispense"/>
+        <contextType value="variable"/>
+        <element value="extension"/>
+        <variable value="ext"/>
+      </target>
+      <dependent>
+        <name value="MTPReferenceEntryContentModule"/>
+        <variable value="entry"/>
+        <variable value="ext"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.2"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and act.templateId.where(root = &#39;2.16.756.5.30.1.1.10.4.2&#39;).exists())"/>
+      </source>
+      <rule>
+        <name value="annotation"/>
+        <source>
+          <context value="entry"/>
+          <element value="act"/>
+          <variable value="act"/>
+        </source>
+        <target>
+          <context value="medicationDispense"/>
+          <contextType value="variable"/>
+          <element value="note"/>
+          <variable value="note"/>
+        </target>
+        <dependent>
+          <name value="AnnotationComment"/>
+          <variable value="section"/>
+          <variable value="act"/>
+          <variable value="note"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-1.3.6.1.4.1.19376.1.9.1.3.9.2"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and act.templateId.where(root = &#39;1.3.6.1.4.1.19376.1.9.1.3.9.2&#39;).exists())"/>
+      </source>
+      <rule>
+        <name value="substitution"/>
+        <source>
+          <context value="entry"/>
+          <element value="act"/>
+          <variable value="act"/>
+        </source>
+        <target>
+          <contextType value="variable"/>
+          <variable value="medicationDispense"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="medicationDispense"/>
+          </parameter>
+        </target>
+        <dependent>
+          <name value="SubstitutionDispense"/>
+          <variable value="act"/>
+          <variable value="medicationDispense"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="DoseQuantity"/>
+    <typeMode value="none"/>
+    <documentation value="dose quantity for dosage (application schema)"/>
+    <input>
+      <name value="src"/>
+      <type value="substanceAdministration"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="dosage"/>
+      <type value="Dosage"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="doseQuantity"/>
+      <source>
+        <context value="src"/>
+        <element value="doseQuantity"/>
+        <variable value="doseQuantity"/>
+      </source>
+      <target>
+        <context value="dosage"/>
+        <contextType value="variable"/>
+        <element value="doseAndRate"/>
+        <variable value="doseAndRate"/>
+      </target>
+      <rule>
+        <name value="quantity"/>
+        <source>
+          <context value="doseQuantity"/>
+          <element value="value"/>
+          <variable value="value"/>
+        </source>
+        <target>
+          <context value="doseAndRate"/>
+          <contextType value="variable"/>
+          <element value="dose"/>
+          <variable value="quantity"/>
+          <transform value="create"/>
+          <parameter>
+            <valueString value="Quantity"/>
+          </parameter>
+        </target>
+        <rule>
+          <name value="value"/>
+          <source>
+            <context value="value"/>
+          </source>
+          <target>
+            <context value="quantity"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="value"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="unit"/>
+          <source>
+            <context value="doseQuantity"/>
+            <element value="unit"/>
+            <variable value="unit"/>
+          </source>
+          <target>
+            <context value="quantity"/>
+            <contextType value="variable"/>
+            <element value="code"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="unit"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="unit"/>
+          <source>
+            <context value="doseQuantity"/>
+            <element value="unit"/>
+            <variable value="unit"/>
+          </source>
+          <target>
+            <context value="quantity"/>
+            <contextType value="variable"/>
+            <element value="system"/>
+            <transform value="evaluate"/>
+            <parameter>
+              <valueString value="&#39;http://fhir.ch/ig/ch-emed/ValueSet/UnitCode&#39;.resolve().compose.include.where(concept.where(code = %unit)).system"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="unit"/>
+          <source>
+            <context value="doseQuantity"/>
+            <element value="unit"/>
+            <variable value="unit"/>
+          </source>
+          <target>
+            <context value="quantity"/>
+            <contextType value="variable"/>
+            <element value="unit"/>
+            <transform value="evaluate"/>
+            <parameter>
+              <valueString value="&#39;http://fhir.ch/ig/ch-emed/ValueSet/UnitCode&#39;.resolve().compose.include.concept.where(code = %unit).display"/>
+            </parameter>
+          </target>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="SubstitutionRequest"/>
+    <typeMode value="none"/>
+    <documentation value="source: Substitution permission Contains 1.3.6.1.4.1.19376.1.9.1.3.9.1 IHE Substitution Permission Content Module (DYNAMIC) target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationrequest.html"/>
+    <input>
+      <name value="act"/>
+      <type value="Act"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="medicationRequest"/>
+      <type value="MedicationRequest"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="substitutionRequest"/>
+      <source>
+        <context value="act"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="substitution"/>
+        <variable value="substitution"/>
+      </target>
+      <rule>
+        <name value="allowedCC"/>
+        <source>
+          <context value="act"/>
+          <element value="code"/>
+          <variable value="actCode"/>
+        </source>
+        <target>
+          <context value="substitution"/>
+          <contextType value="variable"/>
+          <element value="allowed"/>
+          <variable value="allowedCC"/>
+          <transform value="create"/>
+          <parameter>
+            <valueString value="CodeableConcept"/>
+          </parameter>
+        </target>
+        <target>
+          <context value="allowedCC"/>
+          <contextType value="variable"/>
+          <element value="coding"/>
+          <variable value="coding"/>
+        </target>
+        <rule>
+          <name value="system"/>
+          <source>
+            <context value="actCode"/>
+          </source>
+          <target>
+            <context value="coding"/>
+            <contextType value="variable"/>
+            <element value="system"/>
+            <variable value="systemCC"/>
+          </target>
+          <target>
+            <context value="systemCC"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueString value="http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="code"/>
+          <source>
+            <context value="actCode"/>
+            <element value="code"/>
+            <variable value="code"/>
+          </source>
+          <target>
+            <context value="coding"/>
+            <contextType value="variable"/>
+            <element value="code"/>
+            <variable value="codeCC"/>
+          </target>
+          <target>
+            <context value="codeCC"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="code"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="display"/>
+          <source>
+            <context value="actCode"/>
+            <element value="displayName"/>
+            <variable value="display"/>
+          </source>
+          <target>
+            <context value="coding"/>
+            <contextType value="variable"/>
+            <element value="display"/>
+            <variable value="displayCC"/>
+          </target>
+          <target>
+            <context value="displayCC"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="display"/>
+            </parameter>
+          </target>
+        </rule>
+        <documentation value="act.code as code -&gt; substitution.allowed = create(&#39;CodeableConcept&#39;) as allowedCC then CECodeableConcept(code, allowedCC) &quot;allowedCC&quot;;"/>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="SubstitutionStatement"/>
+    <typeMode value="none"/>
+    <documentation value="source: Substitution permission Contains 1.3.6.1.4.1.19376.1.9.1.3.9.1 IHE Substitution Permission Content Module (DYNAMIC) target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationstatement.html"/>
+    <input>
+      <name value="act"/>
+      <type value="Act"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="medicationStatement"/>
+      <type value="MedicationStatement"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="substitutionStatement"/>
+      <source>
+        <context value="act"/>
+      </source>
+      <target>
+        <context value="medicationStatement"/>
+        <contextType value="variable"/>
+        <element value="extension"/>
+        <variable value="ext"/>
+      </target>
+      <rule>
+        <name value="substitutionExtension"/>
+        <source>
+          <context value="act"/>
+        </source>
+        <target>
+          <context value="ext"/>
+          <contextType value="variable"/>
+          <element value="url"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-substitution"/>
+          </parameter>
+        </target>
+        <rule>
+          <name value="valueCC"/>
+          <source>
+            <context value="act"/>
+            <element value="code"/>
+            <variable value="actCode"/>
+          </source>
+          <target>
+            <context value="ext"/>
+            <contextType value="variable"/>
+            <element value="value"/>
+            <variable value="valueCC"/>
+            <transform value="create"/>
+            <parameter>
+              <valueString value="CodeableConcept"/>
+            </parameter>
+          </target>
+          <target>
+            <context value="valueCC"/>
+            <contextType value="variable"/>
+            <element value="coding"/>
+            <variable value="coding"/>
+          </target>
+          <rule>
+            <name value="system"/>
+            <source>
+              <context value="actCode"/>
+            </source>
+            <target>
+              <context value="coding"/>
+              <contextType value="variable"/>
+              <element value="system"/>
+              <variable value="systemCC"/>
+            </target>
+            <target>
+              <context value="systemCC"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="code"/>
+            <source>
+              <context value="actCode"/>
+              <element value="code"/>
+              <variable value="code"/>
+            </source>
+            <target>
+              <context value="coding"/>
+              <contextType value="variable"/>
+              <element value="code"/>
+              <variable value="codeCC"/>
+            </target>
+            <target>
+              <context value="codeCC"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="code"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="display"/>
+            <source>
+              <context value="actCode"/>
+              <element value="displayName"/>
+              <variable value="display"/>
+            </source>
+            <target>
+              <context value="coding"/>
+              <contextType value="variable"/>
+              <element value="display"/>
+              <variable value="displayCC"/>
+            </target>
+            <target>
+              <context value="displayCC"/>
+              <contextType value="variable"/>
+              <element value="value"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueId value="display"/>
+              </parameter>
+            </target>
+          </rule>
+          <documentation value="act.code as code -&gt; ext.value = create(&#39;CodeableConcept&#39;) as valueCC then CECodeableConcept(code, valueCC) &quot;valueCC&quot;;"/>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="PrescribedQuantity"/>
+    <typeMode value="none"/>
+    <documentation value="Number of packages source: https://art-decor.org/art-decor/decor-templates--cdachemed-?id=2.16.756.5.30.1.1.10.4.38 target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-medicationrequest.html"/>
+    <input>
+      <name value="supply"/>
+      <type value="Supply"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="medicationRequest"/>
+      <type value="MedicationRequest"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="quantity"/>
+      <source>
+        <context value="supply"/>
+        <element value="quantity"/>
+        <variable value="quantity"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="dispenseRequest"/>
+        <variable value="dispenseRequest"/>
+      </target>
+      <target>
+        <context value="dispenseRequest"/>
+        <contextType value="variable"/>
+        <element value="quantity"/>
+        <variable value="quant"/>
+      </target>
+      <rule>
+        <name value="value"/>
+        <source>
+          <context value="quantity"/>
+          <element value="value"/>
+          <variable value="value"/>
+        </source>
+        <target>
+          <context value="quant"/>
+          <contextType value="variable"/>
+          <element value="value"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="value"/>
+          </parameter>
+        </target>
+        <documentation value="IHE-PRE: If the product-element contains package information, the unit attribute is not be present"/>
+      </rule>
+      <rule>
+        <name value="unit"/>
+        <source>
+          <context value="quantity"/>
+          <element value="unit"/>
+          <variable value="unit"/>
+        </source>
+        <rule>
+          <name value="unit"/>
+          <source>
+            <context value="unit"/>
+          </source>
+          <target>
+            <context value="quant"/>
+            <contextType value="variable"/>
+            <element value="unit"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="unit"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="ucum"/>
+          <source>
+            <context value="unit"/>
+          </source>
+          <target>
+            <context value="quant"/>
+            <contextType value="variable"/>
+            <element value="system"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueString value="http://unitsofmeasure.org"/>
+            </parameter>
+          </target>
+        </rule>
+        <rule>
+          <name value="code"/>
+          <source>
+            <context value="unit"/>
+          </source>
+          <target>
+            <context value="quant"/>
+            <contextType value="variable"/>
+            <element value="code"/>
+            <transform value="copy"/>
+            <parameter>
+              <valueId value="unit"/>
+            </parameter>
+          </target>
+        </rule>
+        <documentation value="IHE-PRE: If the product-element does not contain package information, the unit attribut is present and the value SHALL be out of the UCUM code system"/>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="ManufacturedMaterialEntryContentModuleRequest"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.33 target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationrequest.html"/>
+    <input>
+      <name value="src"/>
+      <type value="SubstanceAdministration"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="medicationRequest"/>
+      <type value="MedicationRequest"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="medication"/>
+      <type value="Medication"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="medication"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="medication"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="med"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="medication"/>
+        <variable value="vt"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Reference"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="vt"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="#med"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="consumable"/>
+      <source>
+        <context value="src"/>
+        <element value="consumable"/>
+        <variable value="consumable"/>
+      </source>
+      <rule>
+        <name value="manufacturedProduct"/>
+        <source>
+          <context value="consumable"/>
+          <element value="manufacturedProduct"/>
+          <variable value="manufacturedProduct"/>
+        </source>
+        <rule>
+          <name value="manufacturedMaterial"/>
+          <source>
+            <context value="manufacturedProduct"/>
+            <element value="manufacturedMaterial"/>
+            <variable value="manufacturedMaterial"/>
+          </source>
+          <rule>
+            <name value="medication.code"/>
+            <source>
+              <context value="manufacturedMaterial"/>
+              <element value="name"/>
+              <variable value="name"/>
+              <condition value="asContent.exists() = false"/>
+            </source>
+            <target>
+              <context value="medication"/>
+              <contextType value="variable"/>
+              <element value="code"/>
+              <variable value="fhircode"/>
+            </target>
+            <target>
+              <context value="fhircode"/>
+              <contextType value="variable"/>
+              <element value="text"/>
+              <transform value="evaluate"/>
+              <parameter>
+                <valueString value="%manufacturedMaterial.name.other"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="asContent"/>
+            <source>
+              <context value="manufacturedMaterial"/>
+              <element value="asContent"/>
+              <variable value="asContent"/>
+            </source>
+            <rule>
+              <name value="containerPackagedMedicine"/>
+              <source>
+                <context value="asContent"/>
+                <element value="containerPackagedMedicine"/>
+                <variable value="containerPackagedMedicine"/>
+              </source>
+              <rule>
+                <name value="medication.code"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="code"/>
+                  <variable value="code"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="code"/>
+                  <variable value="fhircode"/>
+                  <listMode value="share"/>
+                  <listRuleId value="medcode"/>
+                </target>
+                <dependent>
+                  <name value="CECodeableConcept"/>
+                  <variable value="code"/>
+                  <variable value="fhircode"/>
+                </dependent>
+              </rule>
+              <rule>
+                <name value="code.text"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="name"/>
+                  <variable value="name"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="code"/>
+                  <variable value="fhircode"/>
+                  <listMode value="share"/>
+                  <listRuleId value="medcode"/>
+                </target>
+                <rule>
+                  <name value="medication.code.text"/>
+                  <source>
+                    <context value="name"/>
+                  </source>
+                  <target>
+                    <context value="fhircode"/>
+                    <contextType value="variable"/>
+                    <element value="text"/>
+                    <transform value="evaluate"/>
+                    <parameter>
+                      <valueString value="%name.other"/>
+                    </parameter>
+                  </target>
+                </rule>
+              </rule>
+              <rule>
+                <name value="medication.formCode"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="formCode"/>
+                  <variable value="formCode"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="form"/>
+                  <variable value="form"/>
+                </target>
+                <dependent>
+                  <name value="CECodeableConcept"/>
+                  <variable value="formCode"/>
+                  <variable value="form"/>
+                </dependent>
+              </rule>
+              <rule>
+                <name value="capacityQuantity"/>
+                <source>
+                  <context value="containerPackagedMedicine"/>
+                  <element value="capacityQuantity"/>
+                  <variable value="capacityQuantity"/>
+                </source>
+                <target>
+                  <context value="medication"/>
+                  <contextType value="variable"/>
+                  <element value="amount"/>
+                  <variable value="ratio"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="Ratio"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="ratio"/>
+                  <contextType value="variable"/>
+                  <element value="denominator"/>
+                  <variable value="denominator"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="Quantity"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="value"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="1"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="unit"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="Package"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="system"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="http://unitsofmeasure.org"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="denominator"/>
+                  <contextType value="variable"/>
+                  <element value="code"/>
+                  <transform value="copy"/>
+                  <parameter>
+                    <valueString value="{Package}"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="ratio"/>
+                  <contextType value="variable"/>
+                  <element value="numerator"/>
+                  <variable value="quantity"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="Quantity"/>
+                  </parameter>
+                </target>
+                <dependent>
+                  <name value="EmedPQQuantity"/>
+                  <variable value="capacityQuantity"/>
+                  <variable value="quantity"/>
+                </dependent>
+                <documentation value="Package size"/>
+              </rule>
+            </rule>
+          </rule>
+          <rule>
+            <name value="ingredient"/>
+            <source>
+              <context value="manufacturedMaterial"/>
+              <element value="ingredient"/>
+              <variable value="ingredient"/>
+            </source>
+            <target>
+              <context value="medication"/>
+              <contextType value="variable"/>
+              <element value="ingredient"/>
+              <variable value="ing"/>
+            </target>
+            <rule>
+              <name value="strength"/>
+              <source>
+                <context value="ingredient"/>
+                <element value="quantity"/>
+                <variable value="quantity"/>
+              </source>
+              <target>
+                <context value="ing"/>
+                <contextType value="variable"/>
+                <element value="strength"/>
+                <variable value="strength"/>
+                <transform value="create"/>
+                <parameter>
+                  <valueString value="Ratio"/>
+                </parameter>
+              </target>
+              <dependent>
+                <name value="EmedRTOPQPQRatio"/>
+                <variable value="quantity"/>
+                <variable value="strength"/>
+              </dependent>
+            </rule>
+            <rule>
+              <name value="ingredient.ingredient"/>
+              <source>
+                <context value="ingredient"/>
+                <element value="ingredient"/>
+                <variable value="medingredient"/>
+              </source>
+              <rule>
+                <name value="ingredientCode"/>
+                <source>
+                  <context value="medingredient"/>
+                  <element value="code"/>
+                  <variable value="code"/>
+                </source>
+                <target>
+                  <context value="ing"/>
+                  <contextType value="variable"/>
+                  <element value="item"/>
+                  <variable value="ingcode"/>
+                  <transform value="create"/>
+                  <parameter>
+                    <valueString value="CodeableConcept"/>
+                  </parameter>
+                </target>
+                <target>
+                  <context value="ingcode"/>
+                  <contextType value="variable"/>
+                  <element value="text"/>
+                  <transform value="evaluate"/>
+                  <parameter>
+                    <valueString value="%medingredient.name.other"/>
+                  </parameter>
+                </target>
+                <dependent>
+                  <name value="CECodeableConcept"/>
+                  <variable value="code"/>
+                  <variable value="ingcode"/>
+                </dependent>
+              </rule>
+            </rule>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="dosage"/>
+        <source>
+          <context value="src"/>
+          <condition value="$this.entryRelationship.sequenceNumber.exists() = false"/>
+        </source>
+        <target>
+          <context value="medicationRequest"/>
+          <contextType value="variable"/>
+          <element value="dosageInstruction"/>
+          <variable value="dosage"/>
+        </target>
+        <dependent>
+          <name value="DosageInstructionsStartStopFrequency"/>
+          <variable value="src"/>
+          <variable value="dosage"/>
+        </dependent>
+        <documentation value="dosage for normal dosing, as no sequences are present there"/>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="PrescriptionItemEntryContentModule"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.43 target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-medicationrequest.html"/>
+    <input>
+      <name value="section"/>
+      <type value="Section"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="src"/>
+      <type value="SubstanceAdministration"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="patient"/>
+      <type value="Patient"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="medicationRequest"/>
+      <type value="MedicationRequest"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="id"/>
+      <source>
+        <context value="src"/>
+        <element value="id"/>
+        <variable value="vvv"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="identifier"/>
+        <variable value="vvv"/>
+        <transform value="create"/>
+      </target>
+    </rule>
+    <rule>
+      <name value="patient"/>
+      <source>
+        <context value="patient"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="subject"/>
+        <variable value="reference"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Reference"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="reference"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="&#39;urn:uuid:&#39; + %patient.id"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="completed"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="status"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="completed"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="order"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="intent"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="order"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="text"/>
+      <source>
+        <context value="src"/>
+        <element value="text"/>
+        <variable value="text"/>
+      </source>
+      <rule>
+        <name value="reference"/>
+        <source>
+          <context value="text"/>
+          <element value="reference"/>
+          <variable value="reference"/>
+        </source>
+        <rule>
+          <name value="narrativeLink"/>
+          <source>
+            <context value="reference"/>
+            <element value="value"/>
+            <variable value="value"/>
+          </source>
+          <target>
+            <context value="medicationRequest"/>
+            <contextType value="variable"/>
+            <element value="extension"/>
+            <variable value="ext"/>
+          </target>
+          <dependent>
+            <name value="NarrativeLink"/>
+            <variable value="value"/>
+            <variable value="ext"/>
+          </dependent>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="medication"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="contained"/>
+        <variable value="medication"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Medication"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="ManufacturedMaterialEntryContentModuleRequest"/>
+        <variable value="src"/>
+        <variable value="medicationRequest"/>
+        <variable value="medication"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.41"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="typeCode = &#39;RSON&#39;"/>
+      </source>
+      <rule>
+        <name value="reasonCode"/>
+        <source>
+          <context value="entry"/>
+          <element value="observation"/>
+          <variable value="observation"/>
+        </source>
+        <target>
+          <context value="medicationRequest"/>
+          <contextType value="variable"/>
+          <element value="reasonCode"/>
+          <variable value="reasonCode"/>
+        </target>
+        <dependent>
+          <name value="TreatmentReasonEntryContentModule"/>
+          <variable value="section"/>
+          <variable value="observation"/>
+          <variable value="reasonCode"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.52"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and (substanceAdministration.templateId.root = &#39;2.16.756.5.30.1.1.10.4.52&#39;))"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="dosageInstruction"/>
+        <variable value="dosage"/>
+      </target>
+      <dependent>
+        <name value="DosageInstructionsNonStructuredEntryContentModule"/>
+        <variable value="section"/>
+        <variable value="entry"/>
+        <variable value="dosage"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.36"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and (sequenceNumber.value &gt;= 0))"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="dosageInstruction"/>
+        <variable value="dosage"/>
+      </target>
+      <dependent>
+        <name value="DosageInstructionsEntryDosageChange"/>
+        <variable value="src"/>
+        <variable value="entry"/>
+        <variable value="dosage"/>
+      </dependent>
+      <documentation value="dosage for split dosing, as sequences are present there"/>
+    </rule>
+    <rule>
+      <name value="MTPReferenceEntry"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;REFR&#39;) and substanceAdministration.templateId.where(root = &#39;1.3.6.1.4.1.19376.1.9.1.3.10&#39;).exists())"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="extension"/>
+        <variable value="ext"/>
+      </target>
+      <dependent>
+        <name value="MTPReferenceEntryContentModule"/>
+        <variable value="entry"/>
+        <variable value="ext"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-2.16.756.5.30.1.1.10.4.2"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and act.templateId.where(root = &#39;2.16.756.5.30.1.1.10.4.2&#39;).exists())"/>
+      </source>
+      <rule>
+        <name value="annotation"/>
+        <source>
+          <context value="entry"/>
+          <element value="act"/>
+          <variable value="act"/>
+        </source>
+        <target>
+          <context value="medicationRequest"/>
+          <contextType value="variable"/>
+          <element value="note"/>
+          <variable value="note"/>
+        </target>
+        <dependent>
+          <name value="AnnotationComment"/>
+          <variable value="section"/>
+          <variable value="act"/>
+          <variable value="note"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="repeats"/>
+      <source>
+        <context value="src"/>
+        <element value="repeatNumber"/>
+        <variable value="repeatNumber"/>
+      </source>
+      <target>
+        <context value="medicationRequest"/>
+        <contextType value="variable"/>
+        <element value="dispenseRequest"/>
+        <variable value="dispenseRequest"/>
+      </target>
+      <rule>
+        <name value="repeatNumber"/>
+        <source>
+          <context value="repeatNumber"/>
+          <element value="value"/>
+          <variable value="val"/>
+        </source>
+        <target>
+          <context value="dispenseRequest"/>
+          <contextType value="variable"/>
+          <element value="numberOfRepeatsAllowed"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="val"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-1.3.6.1.4.1.19376.1.9.1.3.8"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and supply.templateId.where(root = &#39;1.3.6.1.4.1.19376.1.9.1.3.8&#39;).exists())"/>
+      </source>
+      <rule>
+        <name value="quantity"/>
+        <source>
+          <context value="entry"/>
+          <element value="supply"/>
+          <variable value="supply"/>
+        </source>
+        <target>
+          <contextType value="variable"/>
+          <variable value="medicationRequest"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="medicationRequest"/>
+          </parameter>
+        </target>
+        <dependent>
+          <name value="PrescribedQuantity"/>
+          <variable value="supply"/>
+          <variable value="medicationRequest"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="entryRelationShip-1.3.6.1.4.1.19376.1.9.1.3.9.1"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;COMP&#39;) and act.templateId.where(root = &#39;1.3.6.1.4.1.19376.1.9.1.3.9.1&#39;).exists())"/>
+      </source>
+      <rule>
+        <name value="substitution"/>
+        <source>
+          <context value="entry"/>
+          <element value="act"/>
+          <variable value="act"/>
+        </source>
+        <target>
+          <contextType value="variable"/>
+          <variable value="medicationRequest"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="medicationRequest"/>
+          </parameter>
+        </target>
+        <dependent>
+          <name value="SubstitutionRequest"/>
+          <variable value="act"/>
+          <variable value="medicationRequest"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="DosageInstructionsStartStopFrequency"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--ch-pharm-?id=2.16.756.5.30.1.1.10.4.35 target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition/ch-emed-dosage-structured-normal dosage for normal dosing, without sequences"/>
+    <input>
+      <name value="src"/>
+      <type value="SubstanceAdministration"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="dosage"/>
+      <type value="Dosage"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="effectiveTimeStartEnd"/>
+      <source>
+        <context value="src"/>
+        <variable value="src"/>
+      </source>
+      <target>
+        <contextType value="variable"/>
+        <variable value="dosage"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="dosage"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="EffectiveTimeStartEnd"/>
+        <variable value="src"/>
+        <variable value="dosage"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="effectiveTimeWhen"/>
+      <source>
+        <context value="src"/>
+        <variable value="src"/>
+      </source>
+      <target>
+        <contextType value="variable"/>
+        <variable value="dosage"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="dosage"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="EffectiveTimeWhen"/>
+        <variable value="src"/>
+        <variable value="dosage"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="routeCode"/>
+      <source>
+        <context value="src"/>
+        <element value="routeCode"/>
+        <variable value="routeCode"/>
+      </source>
+      <target>
+        <context value="dosage"/>
+        <contextType value="variable"/>
+        <element value="route"/>
+        <variable value="route"/>
+      </target>
+      <dependent>
+        <name value="CECodeableConcept"/>
+        <variable value="routeCode"/>
+        <variable value="route"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="doseQuantity"/>
+      <source>
+        <context value="src"/>
+        <variable value="src"/>
+      </source>
+      <target>
+        <contextType value="variable"/>
+        <variable value="dosage"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="dosage"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="DoseQuantity"/>
+        <variable value="src"/>
+        <variable value="dosage"/>
+      </dependent>
+    </rule>
+  </group>
+  <group>
+    <name value="PharmaceuticalAdviceItemEntryContentModule"/>
+    <typeMode value="none"/>
+    <documentation value="source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.4.44 target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-observation.html"/>
+    <input>
+      <name value="section"/>
+      <type value="Section"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="src"/>
+      <type value="Observation"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="patient"/>
+      <type value="Patient"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="observation"/>
+      <type value="Observation"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="id"/>
+      <source>
+        <context value="src"/>
+        <element value="id"/>
+        <variable value="vvv"/>
+      </source>
+      <target>
+        <context value="observation"/>
+        <contextType value="variable"/>
+        <element value="identifier"/>
+        <variable value="vvv"/>
+        <transform value="create"/>
+      </target>
+    </rule>
+    <rule>
+      <name value="patient"/>
+      <source>
+        <context value="patient"/>
+      </source>
+      <target>
+        <context value="observation"/>
+        <contextType value="variable"/>
+        <element value="subject"/>
+        <variable value="reference"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Reference"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="reference"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="evaluate"/>
+        <parameter>
+          <valueString value="&#39;urn:uuid:&#39; + %patient.id"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="final"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="observation"/>
+        <contextType value="variable"/>
+        <element value="status"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="final"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="value"/>
+      <source>
+        <context value="src"/>
+        <element value="effectiveTime"/>
+        <variable value="effectiveTime"/>
+      </source>
+      <target>
+        <context value="observation"/>
+        <contextType value="variable"/>
+        <element value="effective"/>
+        <variable value="value"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="dateTime"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="TSDateTime"/>
+        <variable value="effectiveTime"/>
+        <variable value="value"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="MTPReferenceEntry"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;REFR&#39;) and substanceAdministration.templateId.where(root = &#39;1.3.6.1.4.1.19376.1.9.1.3.10&#39;).exists())"/>
+      </source>
+      <target>
+        <context value="observation"/>
+        <contextType value="variable"/>
+        <element value="extension"/>
+        <variable value="ext"/>
+      </target>
+      <dependent>
+        <name value="MTPReferenceEntryContentModule"/>
+        <variable value="entry"/>
+        <variable value="ext"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="cdaEntry"/>
+      <source>
+        <context value="src"/>
+        <element value="entryRelationship"/>
+        <variable value="entry"/>
+        <condition value="((typeCode = &#39;REFR&#39;) and substanceAdministration.templateId.where(root = &#39;1.3.6.1.4.1.19376.1.9.1.3.7&#39;).exists())"/>
+      </source>
+      <target>
+        <context value="bundle"/>
+        <contextType value="variable"/>
+        <element value="entry"/>
+        <variable value="e"/>
+      </target>
+      <target>
+        <context value="e"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <variable value="uuid"/>
+        <transform value="uuid"/>
+      </target>
+      <target>
+        <context value="e"/>
+        <contextType value="variable"/>
+        <element value="fullUrl"/>
+        <transform value="append"/>
+        <parameter>
+          <valueString value="urn:uuid:"/>
+        </parameter>
+        <parameter>
+          <valueId value="uuid"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="e"/>
+        <contextType value="variable"/>
+        <element value="resource"/>
+        <variable value="medicationstatement"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="MedicationStatement"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="observation"/>
+        <contextType value="variable"/>
+        <element value="extension"/>
+        <variable value="ext"/>
+      </target>
+      <target>
+        <context value="ext"/>
+        <contextType value="variable"/>
+        <element value="url"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-medicationstatement-changed"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="ext"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <variable value="reference"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Reference"/>
+        </parameter>
+      </target>
+      <target>
+        <context value="reference"/>
+        <contextType value="variable"/>
+        <element value="reference"/>
+        <transform value="append"/>
+        <parameter>
+          <valueString value="urn:uuid:"/>
+        </parameter>
+        <parameter>
+          <valueId value="uuid"/>
+        </parameter>
+      </target>
+      <rule>
+        <name value="substanceAdministration"/>
+        <source>
+          <context value="entry"/>
+          <element value="substanceAdministration"/>
+          <variable value="substanceAdministration"/>
+        </source>
+        <dependent>
+          <name value="MedicationTreatmentPlanItemEntryContentModule"/>
+          <variable value="section"/>
+          <variable value="substanceAdministration"/>
+          <variable value="patient"/>
+          <variable value="medicationstatement"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="note"/>
+      <source>
+        <context value="src"/>
+        <element value="text"/>
+        <variable value="text"/>
+      </source>
+      <target>
+        <context value="observation"/>
+        <contextType value="variable"/>
+        <element value="note"/>
+        <variable value="note"/>
+      </target>
+      <rule>
+        <name value="level3observation"/>
+        <source>
+          <context value="text"/>
+          <element value="data"/>
+          <variable value="data"/>
+        </source>
+        <target>
+          <context value="note"/>
+          <contextType value="variable"/>
+          <element value="text"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="data"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="idRef"/>
+        <source>
+          <context value="text"/>
+          <condition value="(data.exists() = false)"/>
+        </source>
+        <target>
+          <context value="note"/>
+          <contextType value="variable"/>
+          <element value="text"/>
+          <transform value="evaluate"/>
+          <parameter>
+            <valueString value="%section.text.substring(%section.text.indexOf(%src.text.reference.value.substring(1))).substring(%section.text.substring(%section.text.indexOf(%src.text.reference.value.substring(1))).indexOf(&#39;&gt;&#39;) + 1, %section.text.substring(%section.text.indexOf(%src.text.reference.value.substring(1))).indexOf(&#39;&lt;&#39;) - %section.text.substring(%section.text.indexOf(%src.text.reference.value.substring(1))).indexOf(&#39;&gt;&#39;) - 1)"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="reference"/>
+        <source>
+          <context value="text"/>
+          <element value="reference"/>
+          <variable value="reference"/>
+        </source>
+        <rule>
+          <name value="narrativeLink"/>
+          <source>
+            <context value="reference"/>
+            <element value="value"/>
+            <variable value="value"/>
+          </source>
+          <target>
+            <context value="note"/>
+            <contextType value="variable"/>
+            <element value="extension"/>
+            <variable value="ext"/>
+          </target>
+          <dependent>
+            <name value="NarrativeLink"/>
+            <variable value="value"/>
+            <variable value="ext"/>
+          </dependent>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="code"/>
+      <source>
+        <context value="src"/>
+        <element value="code"/>
+        <variable value="vvv"/>
+      </source>
+      <target>
+        <context value="observation"/>
+        <contextType value="variable"/>
+        <element value="code"/>
+        <variable value="vvv"/>
+        <transform value="create"/>
+      </target>
+    </rule>
+  </group>
+  <group>
+    <name value="InnerExtensionExternalDocumentId"/>
+    <typeMode value="none"/>
+    <documentation value="_________________________ Template Type not specified   _________________________ target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-ext-treatmentplan.html"/>
+    <input>
+      <name value="src"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="ext"/>
+      <type value="Extension"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="url"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="ext"/>
+        <contextType value="variable"/>
+        <element value="url"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="externalDocumentId"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="value"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="ext"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <variable value="id"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Identifier"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="II"/>
+        <variable value="src"/>
+        <variable value="id"/>
+      </dependent>
+    </rule>
+  </group>
+  <group>
+    <name value="InnerExtensionId"/>
+    <typeMode value="none"/>
+    <documentation value="target: http://build.fhir.org/ig/hl7ch/ch-emed/branches/master/StructureDefinition-ch-emed-ext-treatmentplan.html"/>
+    <input>
+      <name value="src"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="ext"/>
+      <type value="Extension"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="url"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="ext"/>
+        <contextType value="variable"/>
+        <element value="url"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="id"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="value"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="ext"/>
+        <contextType value="variable"/>
+        <element value="value"/>
+        <variable value="id"/>
+        <transform value="create"/>
+        <parameter>
+          <valueString value="Identifier"/>
+        </parameter>
+      </target>
+      <dependent>
+        <name value="II"/>
+        <variable value="src"/>
+        <variable value="id"/>
+      </dependent>
+    </rule>
+  </group>
+</StructureMap>

@@ -1,0 +1,2088 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCda> a fhir:StructureMap;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "BundleToCda"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n         <pre>map &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCda&quot; = &quot;BundleToCda&quot;\n\n// CDA document\n// 2020-01-16 Oliver Egger, copyright ahdis ag, Apache License\n// CDA:  http://build.fhir.org/ig/ahdis/cda-core-2.0/branches/master/index.html\n// FHIR: http://hl7.org/fhir/r4/\n\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument&quot; alias ClinicalDocument as target\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/Author&quot; alias Author as target\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/RecordTarget&quot; alias RecordTarget as target\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/Custodian&quot; alias Custodian as target\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/Organization&quot; alias CdaOrganization as target\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/LegalAuthenticator&quot; alias LegalAuthenticator as target\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/Section&quot; alias CdaSection as target\nuses &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot; alias Bundle as source\nuses &quot;http://hl7.org/fhir/StructureDefinition/Composition&quot; alias Composition as source\nuses &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot; alias Practitioner as source\nuses &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot; alias Patient as source\nuses &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot; alias Organization as source\nuses &quot;http://hl7.org/fhir/StructureDefinition/BackboneElement&quot; alias BackboneElement as source\n\nimports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes&quot;\n\ngroup BundleToCda(source bundle : Bundle, target cda : ClinicalDocument) {\n  bundle -&gt;  cda.recordTarget as recordTarget,  cda.author as author then BundleToClinicalDocument(bundle, recordTarget, author, cda) &quot;bundle&quot;;\n}\n\ngroup BundleToClinicalDocument(source bundle : Bundle, target recordTarget : RecordTarget, target author : Author, target cda : ClinicalDocument) {\n  bundle -&gt; cda.typeId as typeId then {\n    bundle -&gt; typeId.root = '2.16.840.1.113883.1.3' &quot;root&quot;;\n    bundle -&gt; typeId.extension = 'POCD_HD000040' &quot;extension&quot;;\n  } &quot;typeId&quot;;\n  bundle -&gt; cda.templateId as templateId then {\n    bundle -&gt; templateId.root = '2.16.840.1.113883.10.12.1' &quot;root&quot;;\n  } &quot;HL7CdaR2-2005&quot;;\n  bundle.identifier as identifier -&gt; cda.id as id then IdentifierII(identifier, id) &quot;id&quot;;\n  bundle.timestamp as timestamp -&gt; cda.effectiveTime as effectiveTime then InstantTS(timestamp, effectiveTime) &quot;effectiveTime&quot;;\n  bundle.entry as entry then {\n    entry.resource as resource where $this.ofType(FHIR.Composition) then CompositionClinicalDocument(bundle, resource, recordTarget, author, cda);\n  };\n}\n\n// _________________________ Section Level Templates _________________________\ngroup SectionCdaSection(source bundle : Bundle, source section : BackboneElement, target cdasection : CdaSection) {\n  section.extension as extension where $this.url = 'http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-sectionid' -&gt; cdasection.id as id then {\n    extension.valueIdentifier as valueIdentifier then IdentifierII(valueIdentifier, id) &quot;IdentifierII&quot;;\n  } &quot;valueIdentifier&quot;;\n  section.code as code then {\n    code.coding as coding where $this.system = 'http://loinc.org' -&gt; cdasection.code as cdacode then CodingCE(coding, cdacode) &quot;codingsection&quot;;\n  };\n  section.title as title -&gt;  cdasection.title as cdatitle,  cdatitle.data = title;\n  section.text as text then {\n    text.div as div -&gt; cdasection.text = div;\n  };\n}\n\n// _________________________ Entry Level Templates   ________________________\n// _________________________ Header Level Templates _________________________\ngroup CompositionClinicalDocument(source bundle : Bundle, source composition : Composition, target recordTarget : RecordTarget, target author : Author, target cda : ClinicalDocument) {\n  composition.type as type then {\n    type.coding as coding where $this.system = 'http://loinc.org' -&gt; cda.code as code share docCode then CodingCE(coding, code) &quot;code&quot;;\n  };\n  composition.title as title -&gt; cda.title as t then {\n    title -&gt; t.data = title &quot;titleInner&quot;;\n  };\n  composition.confidentiality as conf -&gt; cda.confidentialityCode as cdaconf then {\n    conf -&gt; cdaconf.code = conf &quot;conf&quot;;\n    conf -&gt; cdaconf.codeSystem = '2.16.840.1.113883.5.25' &quot;codeSystem&quot;;\n  } &quot;confidentialityCode&quot;;\n  composition.language as language -&gt;  cda.languageCode as languageCode,  languageCode.code = language &quot;languageCode&quot;;\n  bundle.entry as entry then {\n    entry.fullUrl where ($this in %composition.subject.reference) and $this.startsWith('urn:uuid') then {\n      entry.resource as patient then PatientRecordTarget(patient, bundle, recordTarget) &quot;patient&quot;;\n    } &quot;fullUrlAsUuid&quot;;\n    entry.resource as patient where ('Patient' + '/' + $this.id) in %composition.subject.reference then PatientRecordTarget(patient, bundle, recordTarget) &quot;patient&quot;;\n    entry.fullUrl where ($this in %composition.custodian.reference) and $this.startsWith('urn:uuid') then {\n      entry.resource as organization -&gt; cda.custodian as custodian then OrganizationCustodian(organization, custodian) &quot;custodian&quot;;\n    } &quot;fullUrlAsUuid&quot;;\n    entry.resource as organization where ('Organization' + '/' + $this.id) in %composition.custodian.reference -&gt; cda.custodian as custodian then OrganizationCustodian(organization, custodian) &quot;custodian&quot;;\n    entry.fullUrl where ($this in %composition.author.reference) and $this.startsWith('urn:uuid') then {\n      entry.resource as practitioner then PractitionerAuthor(bundle, composition, practitioner, author) &quot;author&quot;;\n    } &quot;fullUrlAsUuid&quot;;\n    entry.resource as practitioner where ('Practitioner' + '/' + $this.id) in %composition.author.reference then PractitionerAuthor(bundle, composition, practitioner, author) &quot;author&quot;;\n    entry.fullUrl where ($this in %composition.attester.party.reference) and $this.startsWith('urn:uuid') then {\n      entry.resource as practitioner -&gt; cda.legalAuthenticator as legalAuthenticator then PractitionerLegalAuthenticator(bundle, composition, practitioner, legalAuthenticator) &quot;legalAuthenticator&quot;;\n    } &quot;fullUrlAsUuid&quot;;\n    entry.resource as practitioner where ('Practitioner' + '/' + $this.id) in %composition.attester.party.reference -&gt; cda.legalAuthenticator as legalAuthenticator then PractitionerLegalAuthenticator(bundle, composition, practitioner, legalAuthenticator) &quot;legalAuthenticator&quot;;\n  } &quot;patient&quot;;\n  // source.date -&gt; tgt.effectiveTime &quot;effectiveTime&quot;;\n  composition.section as section where $this.code.exists() = false -&gt; cda.component as component then {\n    section -&gt; component.contextConductionInd = true &quot;contextConductionInd&quot;;\n    section -&gt;  component.structuredBody as structuredBody,  structuredBody.component as component,  component.section as cdasection then SectionCdaSection(bundle, section, cdasection) &quot;cdasection&quot;;\n  };\n}\n\ngroup PatientRecordTarget(source src : Patient, source bundle : Bundle, target tgt : RecordTarget) {\n  src -&gt; tgt.patientRole as patientRole then {\n    src.identifier as identifier -&gt; patientRole.id as id then IdentifierII(identifier, id);\n    src.address as address -&gt; patientRole.addr as ad then AddressAD(address, ad);\n    src -&gt; patientRole.patient as patient then {\n      src.name as humanname -&gt; patient.name as en then HumanNameEN(humanname, en);\n      src.birthDate as birthDate -&gt; patient.birthTime as birthTime then DateTS(birthDate, birthTime);\n      src.gender as v log $this -&gt; patient.administrativeGenderCode as adminGender then {\n        v -&gt; adminGender.code = translate(v, 'http://hl7.org/fhir/ConceptMap/cm-administrative-gender-v3', 'code') &quot;gender&quot;;\n        v -&gt; adminGender.codeSystem = '2.16.840.1.113883.5.1' &quot;codeSytem&quot;;\n        v -&gt; adminGender.codeSystemName = 'HL7 AdministrativeGender' &quot;codeSystemName&quot;;\n        v as v where $this = 'male' -&gt; adminGender.displayName = 'Male' &quot;male&quot;;\n        v as v where $this = 'female' -&gt; adminGender.displayName = 'Female' &quot;female&quot;;\n        v as v where $this = 'other' -&gt; adminGender.displayName = 'Undifferentiated' &quot;other&quot;;\n      };\n    } &quot;patient&quot;;\n    src.telecom as telecom -&gt; patientRole.telecom as tel then ContactPointTEL(telecom, tel);\n    src.managingOrganization as managingOrganization then {\n      bundle.entry as entry then {\n        entry.fullUrl where ($this in %managingOrganization.reference) and $this.startsWith('urn:uuid') -&gt; patientRole.providerOrganization as providerOrganization then Organization2CdaOrganization(organization, providerOrganization) &quot;providerOrganization&quot;;\n        entry.resource as organization where ('Organization' + '/' + $this.id) in %managingOrganization.reference -&gt; patientRole.providerOrganization as providerOrganization then Organization2CdaOrganization(organization, providerOrganization) &quot;providerOrganization&quot;;\n      };\n    };\n  } &quot;patientRole&quot;;\n}\n\ngroup PractitionerAuthor(source bundle : Bundle, source composition : Composition, source src : Practitioner, target tgt : Author) {\n  composition.author as srcauthor then {\n    srcauthor.extension as extensionTime where $this.url = 'http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time' then {\n      extensionTime.valueDateTime as valueDateTime -&gt; tgt.time as time then DateTimeTS(valueDateTime, time) &quot;DateTime&quot;;\n    } &quot;extensionTime&quot;;\n  } &quot;srcAuthor&quot;;\n  src -&gt; tgt.assignedAuthor as assignedAuthor then {\n    src.identifier as identifier -&gt; assignedAuthor.id as id then IdentifierII(identifier, id) &quot;id&quot;;\n    src.name as name -&gt;  assignedAuthor.assignedPerson as assignedPerson,  assignedPerson.name as en then HumanNameEN(name, en);\n    bundle.entry as entry then {\n      entry.fullUrl where ($this in %composition.author.reference) and $this.startsWith('urn:uuid') then {\n        entry.resource as organization -&gt; assignedAuthor.representedOrganization as cdaorganization then Organization2CdaOrganization(organization, cdaorganization) &quot;organization&quot;;\n      } &quot;fullUrlAsUuid&quot;;\n      entry.resource as organization where ('Organization' + '/' + $this.id) in %composition.author.reference -&gt; assignedAuthor.representedOrganization as cdaorganization then Organization2CdaOrganization(organization, cdaorganization) &quot;organization&quot;;\n    } &quot;patient&quot;;\n  } &quot;assignedAuthor&quot;;\n}\n\ngroup OrganizationCustodian(source src : Organization, target tgt : Custodian) {\n  src -&gt; tgt.assignedCustodian as assignedCustodian then {\n    src -&gt; assignedCustodian.representedCustodianOrganization as representedCustodianOrganization then Organization2CdaOrganization(src, representedCustodianOrganization) &quot;representedCustodianOrganization&quot;;\n  } &quot;assignedCustodian&quot;;\n}\n\ngroup Organization2CdaOrganization(source src : Organization, target tgt : CdaOrganization) {\n  src.identifier as identifier -&gt; tgt.id as id then IdentifierII(identifier, id) &quot;id&quot;;\n  src.name as name -&gt;  tgt.name as orgname,  orgname.other = name;\n  src.address as address -&gt; tgt.addr as ad then AddressAD(address, ad);\n  src.telecom as telecom -&gt; tgt.telecom as tel then ContactPointTEL(telecom, tel);\n}\n\ngroup PractitionerLegalAuthenticator(source bundle : Bundle, source composition : Composition, source src : Practitioner, target tgt : LegalAuthenticator) {\n  src -&gt;  tgt.templateId as templateId,  templateId.root = '2.16.756.5.30.1.1.10.2.5' &quot;templateId&quot;;\n  composition.attester as attester then {\n    attester.time as srcTime -&gt; tgt.time as time then InstantTS(srcTime, time) &quot;timestamp&quot;;\n  } &quot;time&quot;;\n  // src -&gt; tgt.signatureCode = 'S' &quot;S&quot;;\n  src -&gt;  tgt.signatureCode as signatureCode,  signatureCode.code = 'S' &quot;signature&quot;;\n  src -&gt; tgt.assignedEntity as assignedEntity then {\n    src.identifier as identifier -&gt; assignedEntity.id as id then IdentifierII(identifier, id);\n    src.name as name -&gt;  assignedEntity.assignedPerson as assignedPerson,  assignedPerson.name as en then HumanNameEN(name, en);\n  } &quot;assignedEntity&quot;;\n}\n\n</pre>\n      </div>"
+  ];
+  fhir:StructureMap.url [ fhir:value "http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCda"];
+  fhir:StructureMap.version [ fhir:value "0.1.0"];
+  fhir:StructureMap.name [ fhir:value "BundleToCda"];
+  fhir:StructureMap.status [ fhir:value "draft"];
+  fhir:StructureMap.date [ fhir:value "2020-12-09T15:16:13+01:00"^^xsd:dateTime];
+  fhir:StructureMap.publisher [ fhir:value "ahdis"];
+  fhir:StructureMap.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "ahdis" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "http://www.ahdis.ch/" ]
+     ]
+  ];
+  fhir:StructureMap.description [ fhir:value "CDA document 2020-01-16 Oliver Egger, copyright ahdis ag, Apache License CDA:  http://build.fhir.org/ig/ahdis/cda-core-2.0/branches/master/index.html FHIR: http://hl7.org/fhir/r4/"];
+  fhir:StructureMap.copyright [ fhir:value "CC-BY-SA-4.0"];
+  fhir:StructureMap.structure [
+     fhir:index 0;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "target" ];
+     fhir:StructureMap.structure.alias [ fhir:value "ClinicalDocument" ]
+  ], [
+     fhir:index 1;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/Author";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/Author>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "target" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Author" ]
+  ], [
+     fhir:index 2;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/RecordTarget";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/RecordTarget>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "target" ];
+     fhir:StructureMap.structure.alias [ fhir:value "RecordTarget" ]
+  ], [
+     fhir:index 3;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/Custodian";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/Custodian>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "target" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Custodian" ]
+  ], [
+     fhir:index 4;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/Organization";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/Organization>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "target" ];
+     fhir:StructureMap.structure.alias [ fhir:value "CdaOrganization" ]
+  ], [
+     fhir:index 5;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/LegalAuthenticator";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/LegalAuthenticator>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "target" ];
+     fhir:StructureMap.structure.alias [ fhir:value "LegalAuthenticator" ]
+  ], [
+     fhir:index 6;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/Section";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/Section>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "target" ];
+     fhir:StructureMap.structure.alias [ fhir:value "CdaSection" ]
+  ], [
+     fhir:index 7;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Bundle";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Bundle>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Bundle" ]
+  ], [
+     fhir:index 8;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Composition";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Composition>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Composition" ]
+  ], [
+     fhir:index 9;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Practitioner";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Practitioner>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Practitioner" ]
+  ], [
+     fhir:index 10;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Patient";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Patient>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Patient" ]
+  ], [
+     fhir:index 11;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Organization";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Organization>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Organization" ]
+  ], [
+     fhir:index 12;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/BackboneElement";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/BackboneElement>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "BackboneElement" ]
+  ];
+  fhir:StructureMap.import [
+     fhir:value "http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes";
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes>
+  ];
+  fhir:StructureMap.group [
+     fhir:index 0;
+     fhir:StructureMap.group.name [ fhir:value "BundleToCda" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "cda" ];
+       fhir:StructureMap.group.input.type [ fhir:value "ClinicalDocument" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "recordTarget" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "recordTarget" ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "author" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "author" ]
+       ];
+       fhir:StructureMap.group.rule.dependent [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.dependent.name [ fhir:value "BundleToClinicalDocument" ];
+         fhir:StructureMap.group.rule.dependent.variable [
+           fhir:value "bundle";
+           fhir:index 0
+         ], [
+           fhir:value "recordTarget";
+           fhir:index 1
+         ], [
+           fhir:value "author";
+           fhir:index 2
+         ], [
+           fhir:value "cda";
+           fhir:index 3
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:StructureMap.group.name [ fhir:value "BundleToClinicalDocument" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "recordTarget" ];
+       fhir:StructureMap.group.input.type [ fhir:value "RecordTarget" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.input.name [ fhir:value "author" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Author" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.input.name [ fhir:value "cda" ];
+       fhir:StructureMap.group.input.type [ fhir:value "ClinicalDocument" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "typeId" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "typeId" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "typeId" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "root" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "typeId" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "root" ];
+           fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+           fhir:StructureMap.group.rule.target.parameter [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "2.16.840.1.113883.1.3" ]
+           ]
+         ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.name [ fhir:value "extension" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "typeId" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "extension" ];
+           fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+           fhir:StructureMap.group.rule.target.parameter [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "POCD_HD000040" ]
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.rule.name [ fhir:value "HL7CdaR2-2005" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "templateId" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "templateId" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "root" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "templateId" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "root" ];
+           fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+           fhir:StructureMap.group.rule.target.parameter [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "2.16.840.1.113883.10.12.1" ]
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.rule.name [ fhir:value "id" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "identifier" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "identifier" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "id" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "id" ]
+       ];
+       fhir:StructureMap.group.rule.dependent [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.dependent.name [ fhir:value "IdentifierII" ];
+         fhir:StructureMap.group.rule.dependent.variable [
+           fhir:value "identifier";
+           fhir:index 0
+         ], [
+           fhir:value "id";
+           fhir:index 1
+         ]
+       ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.rule.name [ fhir:value "effectiveTime" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "timestamp" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "timestamp" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "effectiveTime" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "effectiveTime" ]
+       ];
+       fhir:StructureMap.group.rule.dependent [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.dependent.name [ fhir:value "InstantTS" ];
+         fhir:StructureMap.group.rule.dependent.variable [
+           fhir:value "timestamp";
+           fhir:index 0
+         ], [
+           fhir:value "effectiveTime";
+           fhir:index 1
+         ]
+       ]
+     ], [
+       fhir:index 4;
+       fhir:StructureMap.group.rule.name [ fhir:value "entry" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "entry" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "entry" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "resource" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "resource" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "$this.ofType(FHIR.Composition)" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "CompositionClinicalDocument" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "bundle";
+             fhir:index 0
+           ], [
+             fhir:value "resource";
+             fhir:index 1
+           ], [
+             fhir:value "recordTarget";
+             fhir:index 2
+           ], [
+             fhir:value "author";
+             fhir:index 3
+           ], [
+             fhir:value "cda";
+             fhir:index 4
+           ]
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:StructureMap.group.name [ fhir:value "SectionCdaSection" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.documentation [ fhir:value "_________________________ Section Level Templates _________________________" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "section" ];
+       fhir:StructureMap.group.input.type [ fhir:value "BackboneElement" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.input.name [ fhir:value "cdasection" ];
+       fhir:StructureMap.group.input.type [ fhir:value "CdaSection" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "valueIdentifier" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "section" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "extension" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "extension" ];
+         fhir:StructureMap.group.rule.source.condition [ fhir:value "$this.url = 'http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-sectionid'" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cdasection" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "id" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "id" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "IdentifierII" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "extension" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "valueIdentifier" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "valueIdentifier" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "IdentifierII" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "valueIdentifier";
+             fhir:index 0
+           ], [
+             fhir:value "id";
+             fhir:index 1
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.rule.name [ fhir:value "code" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "section" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "code" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "code" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "codingsection" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "code" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "coding" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "coding" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "$this.system = 'http://loinc.org'" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "cdasection" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "code" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "cdacode" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "CodingCE" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "coding";
+             fhir:index 0
+           ], [
+             fhir:value "cdacode";
+             fhir:index 1
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.rule.name [ fhir:value "title" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "section" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "title" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "title" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cdasection" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "title" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "cdatitle" ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cdatitle" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "data" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "title" ]
+         ]
+       ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.rule.name [ fhir:value "text" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "section" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "text" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "text" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "div" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "text" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "div" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "div" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "cdasection" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "text" ];
+           fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+           fhir:StructureMap.group.rule.target.parameter [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "div" ]
+           ]
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 3;
+     fhir:StructureMap.group.name [ fhir:value "CompositionClinicalDocument" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.documentation [ fhir:value "_________________________ Entry Level Templates   ________________________ _________________________ Header Level Templates _________________________" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "composition" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Composition" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.input.name [ fhir:value "recordTarget" ];
+       fhir:StructureMap.group.input.type [ fhir:value "RecordTarget" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.input.name [ fhir:value "author" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Author" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ], [
+       fhir:index 4;
+       fhir:StructureMap.group.input.name [ fhir:value "cda" ];
+       fhir:StructureMap.group.input.type [ fhir:value "ClinicalDocument" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "type" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "composition" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "type" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "type" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "code" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "type" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "coding" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "coding" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "$this.system = 'http://loinc.org'" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "code" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "code" ];
+           fhir:StructureMap.group.rule.target.listMode [
+             fhir:value "share";
+             fhir:index 0
+           ];
+           fhir:StructureMap.group.rule.target.listRuleId [ fhir:value "docCode" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "CodingCE" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "coding";
+             fhir:index 0
+           ], [
+             fhir:value "code";
+             fhir:index 1
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.rule.name [ fhir:value "title" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "composition" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "title" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "title" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "title" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "t" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "titleInner" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "title" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "t" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "data" ];
+           fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+           fhir:StructureMap.group.rule.target.parameter [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "title" ]
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.rule.name [ fhir:value "confidentialityCode" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "composition" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "confidentiality" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "conf" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "confidentialityCode" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "cdaconf" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "conf" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "conf" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "cdaconf" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "code" ];
+           fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+           fhir:StructureMap.group.rule.target.parameter [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "conf" ]
+           ]
+         ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.name [ fhir:value "codeSystem" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "conf" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "cdaconf" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "codeSystem" ];
+           fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+           fhir:StructureMap.group.rule.target.parameter [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "2.16.840.1.113883.5.25" ]
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.rule.name [ fhir:value "languageCode" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "composition" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "language" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "language" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "languageCode" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "languageCode" ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "languageCode" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "code" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "language" ]
+         ]
+       ]
+     ], [
+       fhir:index 4;
+       fhir:StructureMap.group.rule.name [ fhir:value "patient" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "entry" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "entry" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "fullUrlAsUuid" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "fullUrl" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "($this in %composition.subject.reference) and $this.startsWith('urn:uuid')" ]
+         ];
+         fhir:StructureMap.group.rule.rule [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.name [ fhir:value "patient" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "patient" ]
+           ];
+           fhir:StructureMap.group.rule.dependent [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.dependent.name [ fhir:value "PatientRecordTarget" ];
+             fhir:StructureMap.group.rule.dependent.variable [
+               fhir:value "patient";
+               fhir:index 0
+             ], [
+               fhir:value "bundle";
+               fhir:index 1
+             ], [
+               fhir:value "recordTarget";
+               fhir:index 2
+             ]
+           ]
+         ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.name [ fhir:value "patient" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "patient" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "('Patient' + '/' + $this.id) in %composition.subject.reference" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "PatientRecordTarget" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "patient";
+             fhir:index 0
+           ], [
+             fhir:value "bundle";
+             fhir:index 1
+           ], [
+             fhir:value "recordTarget";
+             fhir:index 2
+           ]
+         ]
+       ], [
+         fhir:index 2;
+         fhir:StructureMap.group.rule.name [ fhir:value "fullUrlAsUuid" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "fullUrl" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "($this in %composition.custodian.reference) and $this.startsWith('urn:uuid')" ]
+         ];
+         fhir:StructureMap.group.rule.rule [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.name [ fhir:value "custodian" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "organization" ]
+           ];
+           fhir:StructureMap.group.rule.target [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+             fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+             fhir:StructureMap.group.rule.target.element [ fhir:value "custodian" ];
+             fhir:StructureMap.group.rule.target.variable [ fhir:value "custodian" ]
+           ];
+           fhir:StructureMap.group.rule.dependent [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.dependent.name [ fhir:value "OrganizationCustodian" ];
+             fhir:StructureMap.group.rule.dependent.variable [
+               fhir:value "organization";
+               fhir:index 0
+             ], [
+               fhir:value "custodian";
+               fhir:index 1
+             ]
+           ]
+         ]
+       ], [
+         fhir:index 3;
+         fhir:StructureMap.group.rule.name [ fhir:value "custodian" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "organization" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "('Organization' + '/' + $this.id) in %composition.custodian.reference" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "custodian" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "custodian" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "OrganizationCustodian" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "organization";
+             fhir:index 0
+           ], [
+             fhir:value "custodian";
+             fhir:index 1
+           ]
+         ]
+       ], [
+         fhir:index 4;
+         fhir:StructureMap.group.rule.name [ fhir:value "fullUrlAsUuid" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "fullUrl" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "($this in %composition.author.reference) and $this.startsWith('urn:uuid')" ]
+         ];
+         fhir:StructureMap.group.rule.rule [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.name [ fhir:value "author" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "practitioner" ]
+           ];
+           fhir:StructureMap.group.rule.dependent [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.dependent.name [ fhir:value "PractitionerAuthor" ];
+             fhir:StructureMap.group.rule.dependent.variable [
+               fhir:value "bundle";
+               fhir:index 0
+             ], [
+               fhir:value "composition";
+               fhir:index 1
+             ], [
+               fhir:value "practitioner";
+               fhir:index 2
+             ], [
+               fhir:value "author";
+               fhir:index 3
+             ]
+           ]
+         ]
+       ], [
+         fhir:index 5;
+         fhir:StructureMap.group.rule.name [ fhir:value "author" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "practitioner" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "('Practitioner' + '/' + $this.id) in %composition.author.reference" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "PractitionerAuthor" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "bundle";
+             fhir:index 0
+           ], [
+             fhir:value "composition";
+             fhir:index 1
+           ], [
+             fhir:value "practitioner";
+             fhir:index 2
+           ], [
+             fhir:value "author";
+             fhir:index 3
+           ]
+         ]
+       ], [
+         fhir:index 6;
+         fhir:StructureMap.group.rule.name [ fhir:value "fullUrlAsUuid" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "fullUrl" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "($this in %composition.attester.party.reference) and $this.startsWith('urn:uuid')" ]
+         ];
+         fhir:StructureMap.group.rule.rule [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.name [ fhir:value "legalAuthenticator" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "practitioner" ]
+           ];
+           fhir:StructureMap.group.rule.target [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+             fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+             fhir:StructureMap.group.rule.target.element [ fhir:value "legalAuthenticator" ];
+             fhir:StructureMap.group.rule.target.variable [ fhir:value "legalAuthenticator" ]
+           ];
+           fhir:StructureMap.group.rule.dependent [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.dependent.name [ fhir:value "PractitionerLegalAuthenticator" ];
+             fhir:StructureMap.group.rule.dependent.variable [
+               fhir:value "bundle";
+               fhir:index 0
+             ], [
+               fhir:value "composition";
+               fhir:index 1
+             ], [
+               fhir:value "practitioner";
+               fhir:index 2
+             ], [
+               fhir:value "legalAuthenticator";
+               fhir:index 3
+             ]
+           ]
+         ]
+       ], [
+         fhir:index 7;
+         fhir:StructureMap.group.rule.name [ fhir:value "legalAuthenticator" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "practitioner" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "('Practitioner' + '/' + $this.id) in %composition.attester.party.reference" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "legalAuthenticator" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "legalAuthenticator" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "PractitionerLegalAuthenticator" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "bundle";
+             fhir:index 0
+           ], [
+             fhir:value "composition";
+             fhir:index 1
+           ], [
+             fhir:value "practitioner";
+             fhir:index 2
+           ], [
+             fhir:value "legalAuthenticator";
+             fhir:index 3
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 5;
+       fhir:StructureMap.group.rule.name [ fhir:value "section" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "composition" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "section" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "section" ];
+         fhir:StructureMap.group.rule.source.condition [ fhir:value "$this.code.exists() = false" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "component" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "component" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "contextConductionInd" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "section" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "component" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "contextConductionInd" ];
+           fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+           fhir:StructureMap.group.rule.target.parameter [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.parameter.valueBoolean [ fhir:value "true"^^xsd:boolean ]
+           ]
+         ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.name [ fhir:value "cdasection" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "section" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "component" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "structuredBody" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "structuredBody" ]
+         ], [
+           fhir:index 1;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "structuredBody" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "component" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "component" ]
+         ], [
+           fhir:index 2;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "component" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "section" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "cdasection" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "SectionCdaSection" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "bundle";
+             fhir:index 0
+           ], [
+             fhir:value "section";
+             fhir:index 1
+           ], [
+             fhir:value "cdasection";
+             fhir:index 2
+           ]
+         ]
+       ];
+       fhir:StructureMap.group.rule.documentation [ fhir:value "source.date -> tgt.effectiveTime \"effectiveTime\";" ]
+     ]
+  ], [
+     fhir:index 4;
+     fhir:StructureMap.group.name [ fhir:value "PatientRecordTarget" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "src" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Patient" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.input.name [ fhir:value "tgt" ];
+       fhir:StructureMap.group.input.type [ fhir:value "RecordTarget" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "patientRole" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "patientRole" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "patientRole" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "identifier" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "identifier" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "identifier" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "patientRole" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "id" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "id" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "IdentifierII" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "identifier";
+             fhir:index 0
+           ], [
+             fhir:value "id";
+             fhir:index 1
+           ]
+         ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.name [ fhir:value "address" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "address" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "address" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "patientRole" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "addr" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "ad" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "AddressAD" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "address";
+             fhir:index 0
+           ], [
+             fhir:value "ad";
+             fhir:index 1
+           ]
+         ]
+       ], [
+         fhir:index 2;
+         fhir:StructureMap.group.rule.name [ fhir:value "patient" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "src" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "patientRole" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "patient" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "patient" ]
+         ];
+         fhir:StructureMap.group.rule.rule [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.name [ fhir:value "name" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "name" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "humanname" ]
+           ];
+           fhir:StructureMap.group.rule.target [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.context [ fhir:value "patient" ];
+             fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+             fhir:StructureMap.group.rule.target.element [ fhir:value "name" ];
+             fhir:StructureMap.group.rule.target.variable [ fhir:value "en" ]
+           ];
+           fhir:StructureMap.group.rule.dependent [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.dependent.name [ fhir:value "HumanNameEN" ];
+             fhir:StructureMap.group.rule.dependent.variable [
+               fhir:value "humanname";
+               fhir:index 0
+             ], [
+               fhir:value "en";
+               fhir:index 1
+             ]
+           ]
+         ], [
+           fhir:index 1;
+           fhir:StructureMap.group.rule.name [ fhir:value "birthDate" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "birthDate" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "birthDate" ]
+           ];
+           fhir:StructureMap.group.rule.target [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.context [ fhir:value "patient" ];
+             fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+             fhir:StructureMap.group.rule.target.element [ fhir:value "birthTime" ];
+             fhir:StructureMap.group.rule.target.variable [ fhir:value "birthTime" ]
+           ];
+           fhir:StructureMap.group.rule.dependent [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.dependent.name [ fhir:value "DateTS" ];
+             fhir:StructureMap.group.rule.dependent.variable [
+               fhir:value "birthDate";
+               fhir:index 0
+             ], [
+               fhir:value "birthTime";
+               fhir:index 1
+             ]
+           ]
+         ], [
+           fhir:index 2;
+           fhir:StructureMap.group.rule.name [ fhir:value "gender" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "gender" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "v" ];
+             fhir:StructureMap.group.rule.source.logMessage [ fhir:value "$this" ]
+           ];
+           fhir:StructureMap.group.rule.target [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.context [ fhir:value "patient" ];
+             fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+             fhir:StructureMap.group.rule.target.element [ fhir:value "administrativeGenderCode" ];
+             fhir:StructureMap.group.rule.target.variable [ fhir:value "adminGender" ]
+           ];
+           fhir:StructureMap.group.rule.rule [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.name [ fhir:value "gender" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "v" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "adminGender" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "code" ];
+               fhir:StructureMap.group.rule.target.transform [ fhir:value "translate" ];
+               fhir:StructureMap.group.rule.target.parameter [
+                 fhir:index 0;
+                 fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "v" ]
+               ], [
+                 fhir:index 1;
+                 fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "http://hl7.org/fhir/ConceptMap/cm-administrative-gender-v3" ]
+               ], [
+                 fhir:index 2;
+                 fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "code" ]
+               ]
+             ]
+           ], [
+             fhir:index 1;
+             fhir:StructureMap.group.rule.name [ fhir:value "codeSytem" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "v" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "adminGender" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "codeSystem" ];
+               fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+               fhir:StructureMap.group.rule.target.parameter [
+                 fhir:index 0;
+                 fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "2.16.840.1.113883.5.1" ]
+               ]
+             ]
+           ], [
+             fhir:index 2;
+             fhir:StructureMap.group.rule.name [ fhir:value "codeSystemName" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "v" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "adminGender" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "codeSystemName" ];
+               fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+               fhir:StructureMap.group.rule.target.parameter [
+                 fhir:index 0;
+                 fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "HL7 AdministrativeGender" ]
+               ]
+             ]
+           ], [
+             fhir:index 3;
+             fhir:StructureMap.group.rule.name [ fhir:value "male" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "v" ];
+               fhir:StructureMap.group.rule.source.variable [ fhir:value "v" ];
+               fhir:StructureMap.group.rule.source.condition [ fhir:value "$this = 'male'" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "adminGender" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "displayName" ];
+               fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+               fhir:StructureMap.group.rule.target.parameter [
+                 fhir:index 0;
+                 fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "Male" ]
+               ]
+             ]
+           ], [
+             fhir:index 4;
+             fhir:StructureMap.group.rule.name [ fhir:value "female" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "v" ];
+               fhir:StructureMap.group.rule.source.variable [ fhir:value "v" ];
+               fhir:StructureMap.group.rule.source.condition [ fhir:value "$this = 'female'" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "adminGender" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "displayName" ];
+               fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+               fhir:StructureMap.group.rule.target.parameter [
+                 fhir:index 0;
+                 fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "Female" ]
+               ]
+             ]
+           ], [
+             fhir:index 5;
+             fhir:StructureMap.group.rule.name [ fhir:value "other" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "v" ];
+               fhir:StructureMap.group.rule.source.variable [ fhir:value "v" ];
+               fhir:StructureMap.group.rule.source.condition [ fhir:value "$this = 'other'" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "adminGender" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "displayName" ];
+               fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+               fhir:StructureMap.group.rule.target.parameter [
+                 fhir:index 0;
+                 fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "Undifferentiated" ]
+               ]
+             ]
+           ]
+         ]
+       ], [
+         fhir:index 3;
+         fhir:StructureMap.group.rule.name [ fhir:value "telecom" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "telecom" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "telecom" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "patientRole" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "telecom" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "tel" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "ContactPointTEL" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "telecom";
+             fhir:index 0
+           ], [
+             fhir:value "tel";
+             fhir:index 1
+           ]
+         ]
+       ], [
+         fhir:index 4;
+         fhir:StructureMap.group.rule.name [ fhir:value "managingOrganization" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "managingOrganization" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "managingOrganization" ]
+         ];
+         fhir:StructureMap.group.rule.rule [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.name [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "entry" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "entry" ]
+           ];
+           fhir:StructureMap.group.rule.rule [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.name [ fhir:value "providerOrganization" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+               fhir:StructureMap.group.rule.source.element [ fhir:value "fullUrl" ];
+               fhir:StructureMap.group.rule.source.condition [ fhir:value "($this in %managingOrganization.reference) and $this.startsWith('urn:uuid')" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "patientRole" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "providerOrganization" ];
+               fhir:StructureMap.group.rule.target.variable [ fhir:value "providerOrganization" ]
+             ];
+             fhir:StructureMap.group.rule.dependent [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.dependent.name [ fhir:value "Organization2CdaOrganization" ];
+               fhir:StructureMap.group.rule.dependent.variable [
+                 fhir:value "organization";
+                 fhir:index 0
+               ], [
+                 fhir:value "providerOrganization";
+                 fhir:index 1
+               ]
+             ]
+           ], [
+             fhir:index 1;
+             fhir:StructureMap.group.rule.name [ fhir:value "providerOrganization" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+               fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+               fhir:StructureMap.group.rule.source.variable [ fhir:value "organization" ];
+               fhir:StructureMap.group.rule.source.condition [ fhir:value "('Organization' + '/' + $this.id) in %managingOrganization.reference" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "patientRole" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "providerOrganization" ];
+               fhir:StructureMap.group.rule.target.variable [ fhir:value "providerOrganization" ]
+             ];
+             fhir:StructureMap.group.rule.dependent [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.dependent.name [ fhir:value "Organization2CdaOrganization" ];
+               fhir:StructureMap.group.rule.dependent.variable [
+                 fhir:value "organization";
+                 fhir:index 0
+               ], [
+                 fhir:value "providerOrganization";
+                 fhir:index 1
+               ]
+             ]
+           ]
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 5;
+     fhir:StructureMap.group.name [ fhir:value "PractitionerAuthor" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "composition" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Composition" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.input.name [ fhir:value "src" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Practitioner" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.input.name [ fhir:value "tgt" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Author" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "srcAuthor" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "composition" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "author" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "srcauthor" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "extensionTime" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "srcauthor" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "extension" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "extensionTime" ];
+           fhir:StructureMap.group.rule.source.condition [ fhir:value "$this.url = 'http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time'" ]
+         ];
+         fhir:StructureMap.group.rule.rule [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.name [ fhir:value "DateTime" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "extensionTime" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "valueDateTime" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "valueDateTime" ]
+           ];
+           fhir:StructureMap.group.rule.target [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+             fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+             fhir:StructureMap.group.rule.target.element [ fhir:value "time" ];
+             fhir:StructureMap.group.rule.target.variable [ fhir:value "time" ]
+           ];
+           fhir:StructureMap.group.rule.dependent [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.dependent.name [ fhir:value "DateTimeTS" ];
+             fhir:StructureMap.group.rule.dependent.variable [
+               fhir:value "valueDateTime";
+               fhir:index 0
+             ], [
+               fhir:value "time";
+               fhir:index 1
+             ]
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.rule.name [ fhir:value "assignedAuthor" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "assignedAuthor" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "assignedAuthor" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "id" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "identifier" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "identifier" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "assignedAuthor" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "id" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "id" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "IdentifierII" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "identifier";
+             fhir:index 0
+           ], [
+             fhir:value "id";
+             fhir:index 1
+           ]
+         ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.name [ fhir:value "name" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "name" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "name" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "assignedAuthor" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "assignedPerson" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "assignedPerson" ]
+         ], [
+           fhir:index 1;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "assignedPerson" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "name" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "en" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "HumanNameEN" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "name";
+             fhir:index 0
+           ], [
+             fhir:value "en";
+             fhir:index 1
+           ]
+         ]
+       ], [
+         fhir:index 2;
+         fhir:StructureMap.group.rule.name [ fhir:value "patient" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "bundle" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "entry" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "entry" ]
+         ];
+         fhir:StructureMap.group.rule.rule [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.name [ fhir:value "fullUrlAsUuid" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "fullUrl" ];
+             fhir:StructureMap.group.rule.source.condition [ fhir:value "($this in %composition.author.reference) and $this.startsWith('urn:uuid')" ]
+           ];
+           fhir:StructureMap.group.rule.rule [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.name [ fhir:value "organization" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+               fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+               fhir:StructureMap.group.rule.source.variable [ fhir:value "organization" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "assignedAuthor" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "representedOrganization" ];
+               fhir:StructureMap.group.rule.target.variable [ fhir:value "cdaorganization" ]
+             ];
+             fhir:StructureMap.group.rule.dependent [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.dependent.name [ fhir:value "Organization2CdaOrganization" ];
+               fhir:StructureMap.group.rule.dependent.variable [
+                 fhir:value "organization";
+                 fhir:index 0
+               ], [
+                 fhir:value "cdaorganization";
+                 fhir:index 1
+               ]
+             ]
+           ]
+         ], [
+           fhir:index 1;
+           fhir:StructureMap.group.rule.name [ fhir:value "organization" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "entry" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "resource" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "organization" ];
+             fhir:StructureMap.group.rule.source.condition [ fhir:value "('Organization' + '/' + $this.id) in %composition.author.reference" ]
+           ];
+           fhir:StructureMap.group.rule.target [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.target.context [ fhir:value "assignedAuthor" ];
+             fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+             fhir:StructureMap.group.rule.target.element [ fhir:value "representedOrganization" ];
+             fhir:StructureMap.group.rule.target.variable [ fhir:value "cdaorganization" ]
+           ];
+           fhir:StructureMap.group.rule.dependent [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.dependent.name [ fhir:value "Organization2CdaOrganization" ];
+             fhir:StructureMap.group.rule.dependent.variable [
+               fhir:value "organization";
+               fhir:index 0
+             ], [
+               fhir:value "cdaorganization";
+               fhir:index 1
+             ]
+           ]
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 6;
+     fhir:StructureMap.group.name [ fhir:value "OrganizationCustodian" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "src" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Organization" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "tgt" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Custodian" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "assignedCustodian" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "assignedCustodian" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "assignedCustodian" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "representedCustodianOrganization" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "src" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "assignedCustodian" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "representedCustodianOrganization" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "representedCustodianOrganization" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "Organization2CdaOrganization" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "src";
+             fhir:index 0
+           ], [
+             fhir:value "representedCustodianOrganization";
+             fhir:index 1
+           ]
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 7;
+     fhir:StructureMap.group.name [ fhir:value "Organization2CdaOrganization" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "src" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Organization" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "tgt" ];
+       fhir:StructureMap.group.input.type [ fhir:value "CdaOrganization" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "id" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "identifier" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "identifier" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "id" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "id" ]
+       ];
+       fhir:StructureMap.group.rule.dependent [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.dependent.name [ fhir:value "IdentifierII" ];
+         fhir:StructureMap.group.rule.dependent.variable [
+           fhir:value "identifier";
+           fhir:index 0
+         ], [
+           fhir:value "id";
+           fhir:index 1
+         ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.rule.name [ fhir:value "name" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "name" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "name" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "name" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "orgname" ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "orgname" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "other" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "name" ]
+         ]
+       ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.rule.name [ fhir:value "address" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "address" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "address" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "addr" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "ad" ]
+       ];
+       fhir:StructureMap.group.rule.dependent [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.dependent.name [ fhir:value "AddressAD" ];
+         fhir:StructureMap.group.rule.dependent.variable [
+           fhir:value "address";
+           fhir:index 0
+         ], [
+           fhir:value "ad";
+           fhir:index 1
+         ]
+       ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.rule.name [ fhir:value "telecom" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "telecom" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "telecom" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "telecom" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "tel" ]
+       ];
+       fhir:StructureMap.group.rule.dependent [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.dependent.name [ fhir:value "ContactPointTEL" ];
+         fhir:StructureMap.group.rule.dependent.variable [
+           fhir:value "telecom";
+           fhir:index 0
+         ], [
+           fhir:value "tel";
+           fhir:index 1
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 8;
+     fhir:StructureMap.group.name [ fhir:value "PractitionerLegalAuthenticator" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "composition" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Composition" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.input.name [ fhir:value "src" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Practitioner" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.input.name [ fhir:value "tgt" ];
+       fhir:StructureMap.group.input.type [ fhir:value "LegalAuthenticator" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "templateId" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "templateId" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "templateId" ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "templateId" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "root" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "2.16.756.5.30.1.1.10.2.5" ]
+         ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.rule.name [ fhir:value "time" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "composition" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "attester" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "attester" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "timestamp" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "attester" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "time" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "srcTime" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "time" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "time" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "InstantTS" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "srcTime";
+             fhir:index 0
+           ], [
+             fhir:value "time";
+             fhir:index 1
+           ]
+         ]
+       ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.rule.name [ fhir:value "signature" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "signatureCode" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "signatureCode" ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "signatureCode" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "code" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "copy" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "S" ]
+         ]
+       ];
+       fhir:StructureMap.group.rule.documentation [ fhir:value "src -> tgt.signatureCode = 'S' \"S\";" ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.rule.name [ fhir:value "assignedEntity" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "assignedEntity" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "assignedEntity" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "identifier" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "identifier" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "identifier" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "assignedEntity" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "id" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "id" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "IdentifierII" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "identifier";
+             fhir:index 0
+           ], [
+             fhir:value "id";
+             fhir:index 1
+           ]
+         ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.name [ fhir:value "name" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "name" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "name" ]
+         ];
+         fhir:StructureMap.group.rule.target [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "assignedEntity" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "assignedPerson" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "assignedPerson" ]
+         ], [
+           fhir:index 1;
+           fhir:StructureMap.group.rule.target.context [ fhir:value "assignedPerson" ];
+           fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+           fhir:StructureMap.group.rule.target.element [ fhir:value "name" ];
+           fhir:StructureMap.group.rule.target.variable [ fhir:value "en" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "HumanNameEN" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "name";
+             fhir:index 0
+           ], [
+             fhir:value "en";
+             fhir:index 1
+           ]
+         ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCda.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

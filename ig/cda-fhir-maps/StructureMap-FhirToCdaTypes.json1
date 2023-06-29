@@ -1,0 +1,1689 @@
+{
+  "resourceType": "StructureMap",
+  "id": "FhirToCdaTypes",
+  "meta": {
+    "versionId": "2",
+    "lastUpdated": "2021-11-03T11:16:56.175+01:00"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"FhirToCdaTypes\" Version \"2\" Updated \"2021-11-03T11:16:56.175+01:00\" </p></div><p><b>url</b>: <code>http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes</code></p><p><b>version</b>: 0.3.0</p><p><b>name</b>: FhirToCdaTypes</p><p><b>status</b>: draft</p><p><b>date</b>: 2022-02-11T11:14:39+01:00</p><p><b>publisher</b>: ahdis</p><p><b>contact</b>: ahdis: <a href=\"http://www.ahdis.ch/\">http://www.ahdis.ch/</a></p><p><b>description</b>: Adapted from https://github.com/HL7/ccda-to-fhir/tree/master/mappings\r\nCDA:  http://build.fhir.org/ig/ahdis/cda-core-2.0/branches/master/index.html\r\nFHIR: http://hl7.org/fhir/r4/</p><p><b>copyright</b>: CC-BY-SA-4.0</p><blockquote><p><b>structure</b></p><p><b>url</b>: <a href=\"http://hl7.org/fhir/R4/datatypes.html#Identifier\">Identifier</a></p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>structure</b></p><p><b>url</b>: <a href=\"https://build.fhir.org/ig/HL7/CDA-core-2.0//StructureDefinition-II.html\">II: InstanceIdentifier (V3 Data Type)</a></p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: Any</p><p><b>typeMode</b>: none</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: extension</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>extension</td><td>extension</td><td>$this.url = 'http://hl7.org/fhir/StructureDefinition/iso21090-nullFlavor'</td></tr></table><h3>Targets</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>ContextType</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>tgt</td><td>variable</td><td>nullFlavor</td><td>nullFlavor</td></tr></table><blockquote><p><b>rule</b></p><p><b>name</b>: nullFlavor</p></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: IdentifierII</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: Identifier</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: II</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: idAsUuid</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>value</td><td>src.system.empty() and src.value.startsWith('urn:uuid:')</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: root</p><p><b>transform</b>: evaluate</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>value.substring(9).upper()</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: idAsUuid</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>value</td><td>src.system = 'urn:ietf:rfc:3986'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: root</p><p><b>transform</b>: evaluate</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>value.substring(9).upper()</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: system</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>value</td><td>src.system.startsWith('urn:oid:')</td></tr></table><blockquote><p><b>rule</b></p><p><b>name</b>: oidident</p></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: IntegerINT</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: integer</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: INT</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: integer</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: value</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: InstantTS</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><p><b>documentation</b>: group Identifier(source src : Identifier, target tgt : II) extends Any &lt;&lt;types&gt;&gt; {\r\nsrc.system as system then {\r\nsrc.value as value then {\r\nvalue.value as v where system.value = 'urn:ietf:rfc:3986' -&gt; tgt.root = cast(v, 'string') \"noExtension\";\r\nsystem.value as v where system.value != 'urn:ietf:rfc:3986' -&gt; tgt.root = v then {\r\nvalue.value as val -&gt; tgt.extension = cast(val, 'string') \"extension\";\r\n} \"withExtension\";\r\n} \"rootValue\";\r\n} \"root\";\r\nsrc.value as value -&gt; tgt.root = '123' \"test\";\r\nsrc -&gt; tgt.root = '123' \"test\";\r\nsrc.assigner as a then {\r\na.display as display then {\r\ndisplay.value as val -&gt; tgt.assigningAuthorityName = cast(val, 'string');\r\n} \"display\";\r\n} \"assigner\";\r\nsrc.extension as ext where ext.url = 'http://hl7.org/fhir/cdaStructureDefinition/extension-displayable' -&gt; tgt.displayable as displayable then {\r\next.value as v -&gt; displayable.value = cast(v, 'string');\r\n} \"displayable\";\r\n}</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: instant</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: TS</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: copy</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: value</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: DateTimeTS</p><p><b>extends</b>: InstantTS</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: dateTime</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: TS</p><p><b>mode</b>: target</p></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: DateTS</p><p><b>extends</b>: InstantTS</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: date</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: TS</p><p><b>mode</b>: target</p></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: CodeCS</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: code</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: CS</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: code</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>code</td><td>c</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: value</p><p><b>transform</b>: cast</p><blockquote><p><b>parameter</b></p><p><b>value</b>: c</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: string</p></blockquote></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: CodeCE</p><p><b>extends</b>: CodeCS</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: code</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: CE</p><p><b>mode</b>: target</p></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: CodeCD</p><p><b>extends</b>: CodeCS</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: code</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: CD</p><p><b>mode</b>: target</p></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: CodingCE</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: Coding</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: CE</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: code</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>code</td><td>code</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: code</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>code</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: system</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>system</td><td>system</td><td>$this.startsWith('http:')</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: codeSystem</p><p><b>transform</b>: translate</p><blockquote><p><b>parameter</b></p><p><b>value</b>: system</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: #uri2oid</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: code</p></blockquote></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: system</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>system</td><td>system</td><td>$this.startsWith('urn:oid:')</td></tr></table><blockquote><p><b>rule</b></p><p><b>name</b>: oidident</p></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: systemName1</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>system</td><td>system</td><td>$this.startsWith('http:')</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: codeSystemName</p><p><b>transform</b>: translate</p><blockquote><p><b>parameter</b></p><p><b>value</b>: system</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: #uri2system</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: code</p></blockquote></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: systemName2</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>system</td><td>system</td><td>$this.startsWith('urn:oid:')</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: codeSystemName</p><p><b>transform</b>: translate</p><blockquote><p><b>parameter</b></p><p><b>value</b>: system</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: #oid2system</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: code</p></blockquote></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: display</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>display</td><td>display</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: displayName</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>display</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: CodeableConceptCE</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: CodeableConcept</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: CE</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: text</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>text</td><td>text</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: orginialText</p><p><b>variable</b>: originalText</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: originalText</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>text</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: first</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>ListMode</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>coding</td><td>first</td><td>coding</td></tr></table><h3>Dependents</h3><table class=\"grid\"><tr><td>-</td><td><b>Name</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>CodingCE</td><td>coding, tgt</td></tr></table></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: translation</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>ListMode</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>coding</td><td>not_first</td><td>coding</td></tr></table><h3>Targets</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>ContextType</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>tgt</td><td>variable</td><td>translation</td><td>translation</td></tr></table><h3>Dependents</h3><table class=\"grid\"><tr><td>-</td><td><b>Name</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>CodingCE</td><td>coding, translation</td></tr></table></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: AddressAD</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><p><b>documentation</b>: group CECodeableConcept(source src : CE, target tgt : CodeableConcept) extends Any &lt;&lt;types&gt;&gt; {\r\nsrc.originalText -&gt; tgt.text;\r\nsrc -&gt; tgt.coding as coding then {\r\nsrc.code as code -&gt; coding.code = cast(code, 'string');\r\nsrc.codeSystem as system -&gt; coding.system = translate(system, 'http://hl7.org/fhir/ConceptMap/special-oid2uri', 'uri');\r\nsrc.displayName as display -&gt; coding.display = cast(display, 'string');\r\n} \"code\";\r\nsrc.translation as translation -&gt; tgt.coding as coding then {\r\ntranslation.code as code -&gt; coding.code = cast(code, 'string');\r\ntranslation.codeSystem as system -&gt; coding.system = translate(system, 'http://hl7.org/fhir/ConceptMap/special-oid2uri', 'uri');\r\ntranslation.displayName as display -&gt; coding.display = cast(display, 'string');\r\n} \"translation\";\r\n}\r\ngroup CSCodeableConcept(source src : CS, target tgt : CodeableConcept) extends CECodeableConcept &lt;&lt;types&gt;&gt; {\r\n}\r\ngroup CDCodeableConcept(source src : CD, target tgt : CodeableConcept) extends CECodeableConcept &lt;&lt;types&gt;&gt; {\r\n}</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: Address</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: AD</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: streetAddress</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>line</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: streetAddressLine</p><p><b>variable</b>: line</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: line</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: postalCode</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>postalCode</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: postalCode</p><p><b>variable</b>: postalCode</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: postalCode</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: nullFlavor</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>$this.postalCode.exists() = false</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: postalCode</p><p><b>variable</b>: postalCode</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: postalCode</p><p><b>contextType</b>: variable</p><p><b>element</b>: nullFlavor</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>NI</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: city</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>city</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: city</p><p><b>variable</b>: city</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: city</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: nullFlavor</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>$this.city.exists() = false</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: city</p><p><b>variable</b>: city</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: city</p><p><b>contextType</b>: variable</p><p><b>element</b>: nullFlavor</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>NI</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: state</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>state</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: state</p><p><b>variable</b>: state</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: state</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: district</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>district</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: county</p><p><b>variable</b>: county</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: county</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: country</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>country</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: country</p><p><b>variable</b>: country</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: country</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: nullFlavor</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>$this.country.exists() = false</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: country</p><p><b>variable</b>: country</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: country</p><p><b>contextType</b>: variable</p><p><b>element</b>: nullFlavor</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>NI</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: addressUse</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>c</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: translate</p><blockquote><p><b>parameter</b></p><p><b>value</b>: c</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: #addressUse</p></blockquote><blockquote><p><b>parameter</b></p><p><b>value</b>: code</p></blockquote></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: ContactPointTEL</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: ContactPoint</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: TEL</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: value</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>value</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: value</p><p><b>transform</b>: evaluate</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>iif(%src.system = 'phone', 'tel:', '') + iif(%src.system = 'fax', 'fax:', '') + iif(%src.system = 'email', 'mailto:', '') + iif(%src.system = 'url', 'http:', '') + value</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: use</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>use</td><td>$this = 'home'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>HP</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: use</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>use</td><td>$this = 'work'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>WP</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: use</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>use</td><td>$this = 'old'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>BAD</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: use</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>use</td><td>$this = 'temp'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>TMP</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: use</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td><td><b>Condition</b></td></tr><tr><td>*</td><td>src</td><td>use</td><td>use</td><td>$this = 'mobile'</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: use</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>MC</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: HumanNameEN</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: HumanName</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: EN</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: family</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>family</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: family</p><p><b>variable</b>: family</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: family</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: given</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>given</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: given</p><p><b>variable</b>: given</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: given</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: prefix</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>prefix</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: prefix</p><p><b>variable</b>: prefix</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: prefix</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: suffix</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>suffix</td><td>v</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: suffix</p><p><b>variable</b>: suffix</p></blockquote><blockquote><p><b>target</b></p><p><b>context</b>: suffix</p><p><b>contextType</b>: variable</p><p><b>element</b>: data</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>v</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: QuantityPQ</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: Quantity</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: PQ</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: code</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>code</td><td>code</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: unit</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>code</td></tr></table></blockquote></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: value</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>value</td><td>value</td></tr></table><blockquote><p><b>target</b></p><p><b>context</b>: tgt</p><p><b>contextType</b>: variable</p><p><b>element</b>: value</p><p><b>transform</b>: copy</p><h3>Parameters</h3><table class=\"grid\"><tr><td>-</td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>value</td></tr></table></blockquote></blockquote></blockquote><blockquote><p><b>group</b></p><p><b>name</b>: RatioRTOPQPQ</p><p><b>extends</b>: Any</p><p><b>typeMode</b>: types</p><blockquote><p><b>input</b></p><p><b>name</b>: src</p><p><b>type</b>: Ratio</p><p><b>mode</b>: source</p></blockquote><blockquote><p><b>input</b></p><p><b>name</b>: tgt</p><p><b>type</b>: RTO_PQ_PQ</p><p><b>mode</b>: target</p></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: numerator</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>numerator</td><td>numerator</td></tr></table><h3>Targets</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>ContextType</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>tgt</td><td>variable</td><td>numerator</td><td>targetNumerator</td></tr></table><h3>Dependents</h3><table class=\"grid\"><tr><td>-</td><td><b>Name</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>QuantityPQ</td><td>numerator, targetNumerator</td></tr></table></blockquote><blockquote><p><b>rule</b></p><p><b>name</b>: denominator</p><h3>Sources</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>src</td><td>denominator</td><td>denominator</td></tr></table><h3>Targets</h3><table class=\"grid\"><tr><td>-</td><td><b>Context</b></td><td><b>ContextType</b></td><td><b>Element</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>tgt</td><td>variable</td><td>denominator</td><td>targetDenominator</td></tr></table><h3>Dependents</h3><table class=\"grid\"><tr><td>-</td><td><b>Name</b></td><td><b>Variable</b></td></tr><tr><td>*</td><td>QuantityPQ</td><td>denominator, targetDenominator</td></tr></table></blockquote></blockquote></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "ConceptMap",
+      "id": "uri2oid",
+      "status": "draft",
+      "group": [
+        {
+          "source": "http://hl7.org/fhir",
+          "target": "http://hl7.org/cda",
+          "element": [
+            {
+              "code": "http://snomed.info/sct",
+              "target": [
+                {
+                  "code": "2.16.840.1.113883.6.96",
+                  "equivalence": "equivalent"
+                }
+              ]
+            },
+            {
+              "code": "http://loinc.org",
+              "target": [
+                {
+                  "code": "2.16.840.1.113883.6.1",
+                  "equivalence": "equivalent"
+                }
+              ]
+            },
+            {
+              "code": "http://hl7.org/fhir/sid/atc",
+              "target": [
+                {
+                  "code": "2.16.840.1.113883.6.73",
+                  "equivalence": "equivalent",
+                  "comment": "see issue #4"
+                }
+              ]
+            },
+            {
+              "code": "http://www.whocc.no/atc",
+              "target": [
+                {
+                  "code": "2.16.840.1.113883.6.73",
+                  "equivalence": "equivalent"
+                }
+              ]
+            },
+            {
+              "code": "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
+              "target": [
+                {
+                  "code": "2.16.840.1.113883.5.1070",
+                  "equivalence": "equivalent"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resourceType": "ConceptMap",
+      "id": "uri2system",
+      "status": "draft",
+      "group": [
+        {
+          "source": "http://hl7.org/fhir",
+          "target": "http://hl7.org/cda",
+          "element": [
+            {
+              "code": "http://snomed.info/sct",
+              "target": [
+                {
+                  "code": "SNOMED CT",
+                  "equivalence": "equivalent"
+                }
+              ]
+            },
+            {
+              "code": "http://loinc.org",
+              "target": [
+                {
+                  "code": "LOINC",
+                  "equivalence": "equivalent"
+                }
+              ]
+            },
+            {
+              "code": "http://hl7.org/fhir/sid/atc",
+              "target": [
+                {
+                  "code": "ATC WHO",
+                  "equivalence": "equivalent",
+                  "comment": "see issue #4"
+                }
+              ]
+            },
+            {
+              "code": "http://www.whocc.no/atc",
+              "target": [
+                {
+                  "code": "ATC WHO",
+                  "equivalence": "equivalent"
+                }
+              ]
+            },
+            {
+              "code": "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
+              "target": [
+                {
+                  "code": "HL7 Substance Admin Substitution",
+                  "equivalence": "equivalent"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resourceType": "ConceptMap",
+      "id": "oid2system",
+      "status": "draft",
+      "group": [
+        {
+          "source": "http://hl7.org/fhir",
+          "target": "http://hl7.org/cda",
+          "element": [
+            {
+              "code": "urn:oid:2.51.1.1",
+              "target": [
+                {
+                  "code": "GTIN",
+                  "equivalence": "equivalent"
+                }
+              ]
+            },
+            {
+              "code": "urn:oid:1.3.6.1.4.1.19376.1.9.2.1",
+              "target": [
+                {
+                  "code": "IHE Pharmaceutical Advice Status List",
+                  "equivalence": "equivalent"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resourceType": "ConceptMap",
+      "id": "addressUse",
+      "status": "draft",
+      "group": [
+        {
+          "source": "http://hl7.org/fhir/valueset-address-use.html",
+          "target": "http://terminology.hl7.org/ValueSet/v3-AddressUse",
+          "element": [
+            {
+              "code": "home",
+              "target": [
+                {
+                  "code": "H",
+                  "equivalence": "equivalent",
+                  "comment": "home -> home address"
+                }
+              ]
+            },
+            {
+              "code": "work",
+              "target": [
+                {
+                  "code": "WP",
+                  "equivalence": "equivalent",
+                  "comment": "work -> work place"
+                }
+              ]
+            },
+            {
+              "code": "temp",
+              "target": [
+                {
+                  "code": "TMP",
+                  "equivalence": "equivalent",
+                  "comment": "Temporary -> temporary address"
+                }
+              ]
+            },
+            {
+              "code": "old",
+              "target": [
+                {
+                  "code": "OLD",
+                  "equivalence": "equivalent",
+                  "comment": "Old / Incorrect -> no longer in use, could be also t:\"BAD\" for bad address"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://fhir.ch/reference",
+      "valueReference": {
+        "reference": "#uri2oid"
+      }
+    },
+    {
+      "url": "http://fhir.ch/reference",
+      "valueReference": {
+        "reference": "#uri2system"
+      }
+    },
+    {
+      "url": "http://fhir.ch/reference",
+      "valueReference": {
+        "reference": "#oid2system"
+      }
+    },
+    {
+      "url": "http://fhir.ch/reference",
+      "valueReference": {
+        "reference": "#addressUse"
+      }
+    }
+  ],
+  "url": "http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes",
+  "version": "0.3.0",
+  "name": "FhirToCdaTypes",
+  "status": "draft",
+  "date": "2022-02-11T11:14:39+01:00",
+  "publisher": "ahdis",
+  "contact": [
+    {
+      "name": "ahdis",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.ahdis.ch/"
+        }
+      ]
+    }
+  ],
+  "description": "Adapted from https://github.com/HL7/ccda-to-fhir/tree/master/mappings\r\nCDA:  http://build.fhir.org/ig/ahdis/cda-core-2.0/branches/master/index.html\r\nFHIR: http://hl7.org/fhir/r4/",
+  "copyright": "CC-BY-SA-4.0",
+  "structure": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/Identifier",
+      "mode": "source"
+    },
+    {
+      "url": "http://hl7.org/fhir/cda/StructureDefinition/II",
+      "mode": "target"
+    }
+  ],
+  "group": [
+    {
+      "name": "Any",
+      "typeMode": "none",
+      "input": [
+        {
+          "name": "src",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "extension",
+          "source": [
+            {
+              "context": "src",
+              "element": "extension",
+              "variable": "extension",
+              "condition": "$this.url = 'http://hl7.org/fhir/StructureDefinition/iso21090-nullFlavor'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "nullFlavor",
+              "variable": "nullFlavor"
+            }
+          ],
+          "rule": [
+            {
+              "name": "nullFlavor",
+              "source": [
+                {
+                  "context": "extension",
+                  "element": "valueCode",
+                  "variable": "valueCode"
+                }
+              ],
+              "rule": [
+                {
+                  "name": "value",
+                  "source": [
+                    {
+                      "context": "valueCode",
+                      "element": "value",
+                      "variable": "v"
+                    }
+                  ],
+                  "target": [
+                    {
+                      "context": "nullFlavor",
+                      "contextType": "variable",
+                      "element": "value",
+                      "transform": "cast",
+                      "parameter": [
+                        {
+                          "valueId": "v"
+                        },
+                        {
+                          "valueString": "string"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IdentifierII",
+      "extends": "Any",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "Identifier",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "II",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "idAsUuid",
+          "source": [
+            {
+              "context": "src",
+              "element": "value",
+              "variable": "value",
+              "condition": "src.system.empty() and src.value.startsWith('urn:uuid:')"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "root",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "value.substring(9).upper()"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "idAsUuid",
+          "source": [
+            {
+              "context": "src",
+              "element": "value",
+              "variable": "value",
+              "condition": "src.system = 'urn:ietf:rfc:3986'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "root",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "value.substring(9).upper()"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "system",
+          "source": [
+            {
+              "context": "src",
+              "element": "value",
+              "variable": "value",
+              "condition": "src.system.startsWith('urn:oid:')"
+            }
+          ],
+          "rule": [
+            {
+              "name": "oidident",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "system",
+                  "variable": "system"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "contextType": "variable",
+                  "element": "root",
+                  "transform": "evaluate",
+                  "parameter": [
+                    {
+                      "valueString": "system.substring(8)"
+                    }
+                  ]
+                },
+                {
+                  "context": "tgt",
+                  "contextType": "variable",
+                  "element": "extension",
+                  "transform": "copy",
+                  "parameter": [
+                    {
+                      "valueId": "value"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IntegerINT",
+      "extends": "Any",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "integer",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "INT",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "integer",
+          "source": [
+            {
+              "context": "src",
+              "element": "value",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "value",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "InstantTS",
+      "extends": "Any",
+      "typeMode": "types",
+      "documentation": "group Identifier(source src : Identifier, target tgt : II) extends Any <<types>> {\r\nsrc.system as system then {\r\nsrc.value as value then {\r\nvalue.value as v where system.value = 'urn:ietf:rfc:3986' -> tgt.root = cast(v, 'string') \"noExtension\";\r\nsystem.value as v where system.value != 'urn:ietf:rfc:3986' -> tgt.root = v then {\r\nvalue.value as val -> tgt.extension = cast(val, 'string') \"extension\";\r\n} \"withExtension\";\r\n} \"rootValue\";\r\n} \"root\";\r\nsrc.value as value -> tgt.root = '123' \"test\";\r\nsrc -> tgt.root = '123' \"test\";\r\nsrc.assigner as a then {\r\na.display as display then {\r\ndisplay.value as val -> tgt.assigningAuthorityName = cast(val, 'string');\r\n} \"display\";\r\n} \"assigner\";\r\nsrc.extension as ext where ext.url = 'http://hl7.org/fhir/cdaStructureDefinition/extension-displayable' -> tgt.displayable as displayable then {\r\next.value as v -> displayable.value = cast(v, 'string');\r\n} \"displayable\";\r\n}",
+      "input": [
+        {
+          "name": "src",
+          "type": "instant",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "TS",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "copy",
+          "source": [
+            {
+              "context": "src",
+              "element": "value",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "value",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DateTimeTS",
+      "extends": "InstantTS",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "dateTime",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "TS",
+          "mode": "target"
+        }
+      ]
+    },
+    {
+      "name": "DateTS",
+      "extends": "InstantTS",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "date",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "TS",
+          "mode": "target"
+        }
+      ]
+    },
+    {
+      "name": "CodeCS",
+      "extends": "Any",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "code",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "CS",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "code",
+          "source": [
+            {
+              "context": "src",
+              "element": "code",
+              "variable": "c"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "value",
+              "transform": "cast",
+              "parameter": [
+                {
+                  "valueId": "c"
+                },
+                {
+                  "valueString": "string"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CodeCE",
+      "extends": "CodeCS",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "code",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "CE",
+          "mode": "target"
+        }
+      ]
+    },
+    {
+      "name": "CodeCD",
+      "extends": "CodeCS",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "code",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "CD",
+          "mode": "target"
+        }
+      ]
+    },
+    {
+      "name": "CodingCE",
+      "extends": "Any",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "Coding",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "CE",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "code",
+          "source": [
+            {
+              "context": "src",
+              "element": "code",
+              "variable": "code"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "code",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "system",
+          "source": [
+            {
+              "context": "src",
+              "element": "system",
+              "variable": "system",
+              "condition": "$this.startsWith('http:')"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "codeSystem",
+              "transform": "translate",
+              "parameter": [
+                {
+                  "valueId": "system"
+                },
+                {
+                  "valueString": "#uri2oid"
+                },
+                {
+                  "valueString": "code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "system",
+          "source": [
+            {
+              "context": "src",
+              "element": "system",
+              "variable": "system",
+              "condition": "$this.startsWith('urn:oid:')"
+            }
+          ],
+          "rule": [
+            {
+              "name": "oidident",
+              "source": [
+                {
+                  "context": "src",
+                  "element": "system",
+                  "variable": "system"
+                }
+              ],
+              "target": [
+                {
+                  "context": "tgt",
+                  "contextType": "variable",
+                  "element": "codeSystem",
+                  "transform": "evaluate",
+                  "parameter": [
+                    {
+                      "valueString": "system.substring(8)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "systemName1",
+          "source": [
+            {
+              "context": "src",
+              "element": "system",
+              "variable": "system",
+              "condition": "$this.startsWith('http:')"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "codeSystemName",
+              "transform": "translate",
+              "parameter": [
+                {
+                  "valueId": "system"
+                },
+                {
+                  "valueString": "#uri2system"
+                },
+                {
+                  "valueString": "code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "systemName2",
+          "source": [
+            {
+              "context": "src",
+              "element": "system",
+              "variable": "system",
+              "condition": "$this.startsWith('urn:oid:')"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "codeSystemName",
+              "transform": "translate",
+              "parameter": [
+                {
+                  "valueId": "system"
+                },
+                {
+                  "valueString": "#oid2system"
+                },
+                {
+                  "valueString": "code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "display",
+          "source": [
+            {
+              "context": "src",
+              "element": "display",
+              "variable": "display"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "displayName",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "display"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CodeableConceptCE",
+      "extends": "Any",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "CodeableConcept",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "CE",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "text",
+          "source": [
+            {
+              "context": "src",
+              "element": "text",
+              "variable": "text"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "orginialText",
+              "variable": "originalText"
+            },
+            {
+              "context": "originalText",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "first",
+          "source": [
+            {
+              "context": "src",
+              "element": "coding",
+              "listMode": "first",
+              "variable": "coding"
+            }
+          ],
+          "dependent": [
+            {
+              "name": "CodingCE",
+              "variable": [
+                "coding",
+                "tgt"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "translation",
+          "source": [
+            {
+              "context": "src",
+              "element": "coding",
+              "listMode": "not_first",
+              "variable": "coding"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "translation",
+              "variable": "translation"
+            }
+          ],
+          "dependent": [
+            {
+              "name": "CodingCE",
+              "variable": [
+                "coding",
+                "translation"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AddressAD",
+      "extends": "Any",
+      "typeMode": "types",
+      "documentation": "group CECodeableConcept(source src : CE, target tgt : CodeableConcept) extends Any <<types>> {\r\nsrc.originalText -> tgt.text;\r\nsrc -> tgt.coding as coding then {\r\nsrc.code as code -> coding.code = cast(code, 'string');\r\nsrc.codeSystem as system -> coding.system = translate(system, 'http://hl7.org/fhir/ConceptMap/special-oid2uri', 'uri');\r\nsrc.displayName as display -> coding.display = cast(display, 'string');\r\n} \"code\";\r\nsrc.translation as translation -> tgt.coding as coding then {\r\ntranslation.code as code -> coding.code = cast(code, 'string');\r\ntranslation.codeSystem as system -> coding.system = translate(system, 'http://hl7.org/fhir/ConceptMap/special-oid2uri', 'uri');\r\ntranslation.displayName as display -> coding.display = cast(display, 'string');\r\n} \"translation\";\r\n}\r\ngroup CSCodeableConcept(source src : CS, target tgt : CodeableConcept) extends CECodeableConcept <<types>> {\r\n}\r\ngroup CDCodeableConcept(source src : CD, target tgt : CodeableConcept) extends CECodeableConcept <<types>> {\r\n}",
+      "input": [
+        {
+          "name": "src",
+          "type": "Address",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "AD",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "streetAddress",
+          "source": [
+            {
+              "context": "src",
+              "element": "line",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "streetAddressLine",
+              "variable": "line"
+            },
+            {
+              "context": "line",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "postalCode",
+          "source": [
+            {
+              "context": "src",
+              "element": "postalCode",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "postalCode",
+              "variable": "postalCode"
+            },
+            {
+              "context": "postalCode",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "nullFlavor",
+          "source": [
+            {
+              "context": "src",
+              "condition": "$this.postalCode.exists() = false"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "postalCode",
+              "variable": "postalCode"
+            },
+            {
+              "context": "postalCode",
+              "contextType": "variable",
+              "element": "nullFlavor",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueString": "NI"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "city",
+          "source": [
+            {
+              "context": "src",
+              "element": "city",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "city",
+              "variable": "city"
+            },
+            {
+              "context": "city",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "nullFlavor",
+          "source": [
+            {
+              "context": "src",
+              "condition": "$this.city.exists() = false"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "city",
+              "variable": "city"
+            },
+            {
+              "context": "city",
+              "contextType": "variable",
+              "element": "nullFlavor",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueString": "NI"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "state",
+          "source": [
+            {
+              "context": "src",
+              "element": "state",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "state",
+              "variable": "state"
+            },
+            {
+              "context": "state",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "district",
+          "source": [
+            {
+              "context": "src",
+              "element": "district",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "county",
+              "variable": "county"
+            },
+            {
+              "context": "county",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "country",
+          "source": [
+            {
+              "context": "src",
+              "element": "country",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "country",
+              "variable": "country"
+            },
+            {
+              "context": "country",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "nullFlavor",
+          "source": [
+            {
+              "context": "src",
+              "condition": "$this.country.exists() = false"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "country",
+              "variable": "country"
+            },
+            {
+              "context": "country",
+              "contextType": "variable",
+              "element": "nullFlavor",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueString": "NI"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "addressUse",
+          "source": [
+            {
+              "context": "src",
+              "element": "use",
+              "variable": "c"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "use",
+              "transform": "translate",
+              "parameter": [
+                {
+                  "valueId": "c"
+                },
+                {
+                  "valueString": "#addressUse"
+                },
+                {
+                  "valueString": "code"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ContactPointTEL",
+      "extends": "Any",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "ContactPoint",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "TEL",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "value",
+          "source": [
+            {
+              "context": "src",
+              "element": "value",
+              "variable": "value"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "value",
+              "transform": "evaluate",
+              "parameter": [
+                {
+                  "valueString": "iif(%src.system = 'phone', 'tel:', '') + iif(%src.system = 'fax', 'fax:', '') + iif(%src.system = 'email', 'mailto:', '') + iif(%src.system = 'url', 'http:', '') + value"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "use",
+          "source": [
+            {
+              "context": "src",
+              "element": "use",
+              "variable": "use",
+              "condition": "$this = 'home'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "use",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueString": "HP"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "use",
+          "source": [
+            {
+              "context": "src",
+              "element": "use",
+              "variable": "use",
+              "condition": "$this = 'work'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "use",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueString": "WP"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "use",
+          "source": [
+            {
+              "context": "src",
+              "element": "use",
+              "variable": "use",
+              "condition": "$this = 'old'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "use",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueString": "BAD"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "use",
+          "source": [
+            {
+              "context": "src",
+              "element": "use",
+              "variable": "use",
+              "condition": "$this = 'temp'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "use",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueString": "TMP"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "use",
+          "source": [
+            {
+              "context": "src",
+              "element": "use",
+              "variable": "use",
+              "condition": "$this = 'mobile'"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "use",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueString": "MC"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HumanNameEN",
+      "extends": "Any",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "HumanName",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "EN",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "family",
+          "source": [
+            {
+              "context": "src",
+              "element": "family",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "family",
+              "variable": "family"
+            },
+            {
+              "context": "family",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "given",
+          "source": [
+            {
+              "context": "src",
+              "element": "given",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "given",
+              "variable": "given"
+            },
+            {
+              "context": "given",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "prefix",
+          "source": [
+            {
+              "context": "src",
+              "element": "prefix",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "prefix",
+              "variable": "prefix"
+            },
+            {
+              "context": "prefix",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "suffix",
+          "source": [
+            {
+              "context": "src",
+              "element": "suffix",
+              "variable": "v"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "suffix",
+              "variable": "suffix"
+            },
+            {
+              "context": "suffix",
+              "contextType": "variable",
+              "element": "data",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "v"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "QuantityPQ",
+      "extends": "Any",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "Quantity",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "PQ",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "code",
+          "source": [
+            {
+              "context": "src",
+              "element": "code",
+              "variable": "code"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "unit",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "source": [
+            {
+              "context": "src",
+              "element": "value",
+              "variable": "value"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "value",
+              "transform": "copy",
+              "parameter": [
+                {
+                  "valueId": "value"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RatioRTOPQPQ",
+      "extends": "Any",
+      "typeMode": "types",
+      "input": [
+        {
+          "name": "src",
+          "type": "Ratio",
+          "mode": "source"
+        },
+        {
+          "name": "tgt",
+          "type": "RTO_PQ_PQ",
+          "mode": "target"
+        }
+      ],
+      "rule": [
+        {
+          "name": "numerator",
+          "source": [
+            {
+              "context": "src",
+              "element": "numerator",
+              "variable": "numerator"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "numerator",
+              "variable": "targetNumerator"
+            }
+          ],
+          "dependent": [
+            {
+              "name": "QuantityPQ",
+              "variable": [
+                "numerator",
+                "targetNumerator"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "denominator",
+          "source": [
+            {
+              "context": "src",
+              "element": "denominator",
+              "variable": "denominator"
+            }
+          ],
+          "target": [
+            {
+              "context": "tgt",
+              "contextType": "variable",
+              "element": "denominator",
+              "variable": "targetDenominator"
+            }
+          ],
+          "dependent": [
+            {
+              "name": "QuantityPQ",
+              "variable": [
+                "denominator",
+                "targetDenominator"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

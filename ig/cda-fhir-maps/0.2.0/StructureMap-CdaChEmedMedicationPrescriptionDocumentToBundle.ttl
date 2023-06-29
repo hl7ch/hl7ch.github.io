@@ -1,0 +1,658 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChEmedMedicationPrescriptionDocumentToBundle> a fhir:StructureMap;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "CdaChEmedMedicationPrescriptionDocumentToBundle"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n         <pre>map &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChEmedMedicationPrescriptionDocumentToBundle&quot; = &quot;CdaChEmedMedicationPrescriptionDocumentToBundle&quot;\n\n// Medication Prescription document,	2.16.756.5.30.1.1.10.1.4\n// 2020-01-22 Michaela Ziegler, copyright ahdis ag, Apache License\n// CDA-CH-EMED:  https://art-decor.org/art-decor/decor-project--cdachemed-\n// FHIR CH-EMED: http://fhir.ch/ig/ch-emed/index.html, http://build.fhir.org/ig/hl7ch/ch-emed/index.html\n\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument&quot; alias ClinicalDocument as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/AssignedAuthor&quot; alias AssignedAuthor as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/AssignedEntity&quot; alias AssignedEntity as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/Author&quot; alias Author as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/CustodianOrganization&quot; alias CustodianOrganization as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/IVL_TS&quot; alias IVL_TS as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS&quot; alias EIVL_TS as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/Observation&quot; alias Observation as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/PatientRole&quot; alias PatientRole as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/RecordTarget&quot; alias RecordTarget as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/Section&quot; alias Section as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/SubstanceAdministration&quot; alias SubstanceAdministration as source\nuses &quot;http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS&quot; alias SXPR_TS as source\nuses &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot; alias Bundle as target\nuses &quot;http://hl7.org/fhir/StructureDefinition/Composition&quot; alias Composition as produced\nuses &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot; alias Patient as produced\nuses &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot; alias Practitioner as produced\nuses &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot; alias Organization as produced\nuses &quot;http://hl7.org/fhir/StructureDefinition/MedicationRequest&quot; alias MedicationRequest as produced\nuses &quot;http://hl7.org/fhir/StructureDefinition/Dosage&quot; alias Dosage as produced\n\nimports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaToFhirTypes&quot;\nimports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaToBundle&quot;\nimports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChToBundle&quot;\nimports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChEmedToBundle&quot;\n\n// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.1.4\n// target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationprescription.html\ngroup CdaChEmedMedicationPrescriptionDocumentToBundle(source cda : ClinicalDocument, target bundle : Bundle) {\n  cda -&gt;  bundle.entry as e,  e.resource = create('Composition') as composition,  composition.id = uuid() as uuid,  e.fullUrl = append('urn:uuid:', uuid),  bundle.entry as e2,  e2.resource = create('Patient') as patient,  patient.id = uuid() as uuid2,  e2.fullUrl = append('urn:uuid:', uuid2) then ClinicalDocumentChEmedMedicationPrescriptionDocumentToBundle(cda, patient, composition, bundle) &quot;ClinicalDocumentToBody&quot;;\n}\n\n// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.1.4\n// target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationprescription.html\ngroup ClinicalDocumentChEmedMedicationPrescriptionDocumentToBundle(source cda : ClinicalDocument, target patient : Patient, target composition : Composition, target bundle : Bundle) extends ClinicalDocumentToBundle {\n  cda then ClinicalDocumentCompositionCh(cda, composition, patient, bundle) &quot;composition&quot;;\n  cda.component as component then {\n    component.structuredBody as body then {\n      body.component as component then {\n        component.section as srcSection where (templateId.where(root = '2.16.756.5.30.1.1.10.3.10')) -&gt; composition.section as tgtSection then SectionPrescriptionSectionContentModule(cda, srcSection, patient, tgtSection, bundle);\n        component.section as srcSection where (templateId.where(root = '2.16.756.5.30.1.1.10.3.2')) -&gt; composition.section as tgtSection then ClinicalDocumentSection(cda, srcSection, patient, tgtSection, bundle);\n        component.section as srcSection where (templateId.where(root = '2.16.756.5.30.1.1.10.3.45')) -&gt; composition.section as tgtSection then SectionOriginalRepresentation(cda, srcSection, patient, tgtSection, bundle);\n      };\n    } &quot;body&quot;;\n  };\n}\n\n// _________________________ Section Level Templates _________________________\n// source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&amp;id=2.16.756.5.30.1.1.10.3.10\n// target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationprescription.html\ngroup SectionPrescriptionSectionContentModule(source cda : ClinicalDocument, source src : Section, source patient : Patient, target tgt, target bundle : Bundle) extends ClinicalDocumentSection {\n  src.entry as cdaEntry where (substanceAdministration.templateId.where(root = '2.16.756.5.30.1.1.10.4.43')) -&gt;  bundle.entry as e,  e.resource = create('MedicationRequest') as medicationrequest,  medicationrequest.id = uuid() as uuid,  e.fullUrl = append('urn:uuid:', uuid),  tgt.entry = create('Reference') as reference,  reference.reference = append('urn:uuid:', uuid) then {\n    cdaEntry.substanceAdministration as substanceAdministration then PrescriptionItemEntryContentModule(src, substanceAdministration, patient, medicationrequest);\n  } &quot;PrescriptionSectionContentModule&quot;;\n}\n\n</pre>\n      </div>"
+  ];
+  fhir:StructureMap.url [ fhir:value "http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChEmedMedicationPrescriptionDocumentToBundle"];
+  fhir:StructureMap.version [ fhir:value "0.2.0"];
+  fhir:StructureMap.name [ fhir:value "CdaChEmedMedicationPrescriptionDocumentToBundle"];
+  fhir:StructureMap.status [ fhir:value "draft"];
+  fhir:StructureMap.date [ fhir:value "2021-06-18T18:31:19+02:00"^^xsd:dateTime];
+  fhir:StructureMap.publisher [ fhir:value "ahdis"];
+  fhir:StructureMap.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "ahdis" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "http://www.ahdis.ch/" ]
+     ]
+  ];
+  fhir:StructureMap.description [ fhir:value "Medication Prescription document, 2.16.756.5.30.1.1.10.1.4 2020-01-22 Michaela Ziegler, copyright ahdis ag, Apache License CDA-CH-EMED:  https://art-decor.org/art-decor/decor-project--cdachemed- FHIR CH-EMED: http://fhir.ch/ig/ch-emed/index.html, http://build.fhir.org/ig/hl7ch/ch-emed/index.html"];
+  fhir:StructureMap.copyright [ fhir:value "CC-BY-SA-4.0"];
+  fhir:StructureMap.structure [
+     fhir:index 0;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "ClinicalDocument" ]
+  ], [
+     fhir:index 1;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/AssignedAuthor";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/AssignedAuthor>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "AssignedAuthor" ]
+  ], [
+     fhir:index 2;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/AssignedEntity";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/AssignedEntity>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "AssignedEntity" ]
+  ], [
+     fhir:index 3;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/Author";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/Author>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Author" ]
+  ], [
+     fhir:index 4;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/CustodianOrganization";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/CustodianOrganization>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "CustodianOrganization" ]
+  ], [
+     fhir:index 5;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/IVL_TS";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/IVL_TS>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "IVL_TS" ]
+  ], [
+     fhir:index 6;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "EIVL_TS" ]
+  ], [
+     fhir:index 7;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/Observation";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/Observation>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Observation" ]
+  ], [
+     fhir:index 8;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/PatientRole";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/PatientRole>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "PatientRole" ]
+  ], [
+     fhir:index 9;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/RecordTarget";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/RecordTarget>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "RecordTarget" ]
+  ], [
+     fhir:index 10;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/Section";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/Section>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Section" ]
+  ], [
+     fhir:index 11;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/SubstanceAdministration";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/SubstanceAdministration>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "SubstanceAdministration" ]
+  ], [
+     fhir:index 12;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS";
+       fhir:link <http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "source" ];
+     fhir:StructureMap.structure.alias [ fhir:value "SXPR_TS" ]
+  ], [
+     fhir:index 13;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Bundle";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Bundle>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "target" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Bundle" ]
+  ], [
+     fhir:index 14;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Composition";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Composition>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "produced" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Composition" ]
+  ], [
+     fhir:index 15;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Patient";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Patient>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "produced" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Patient" ]
+  ], [
+     fhir:index 16;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Practitioner";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Practitioner>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "produced" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Practitioner" ]
+  ], [
+     fhir:index 17;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Organization";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Organization>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "produced" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Organization" ]
+  ], [
+     fhir:index 18;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/MedicationRequest";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/MedicationRequest>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "produced" ];
+     fhir:StructureMap.structure.alias [ fhir:value "MedicationRequest" ]
+  ], [
+     fhir:index 19;
+     fhir:StructureMap.structure.url [
+       fhir:value "http://hl7.org/fhir/StructureDefinition/Dosage";
+       fhir:link <http://hl7.org/fhir/StructureDefinition/Dosage>
+     ];
+     fhir:StructureMap.structure.mode [ fhir:value "produced" ];
+     fhir:StructureMap.structure.alias [ fhir:value "Dosage" ]
+  ];
+  fhir:StructureMap.import [
+     fhir:value "http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaToFhirTypes";
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaToFhirTypes>
+  ], [
+     fhir:value "http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaToBundle";
+     fhir:index 1;
+     fhir:link <http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaToBundle>
+  ], [
+     fhir:value "http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChToBundle";
+     fhir:index 2;
+     fhir:link <http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChToBundle>
+  ], [
+     fhir:value "http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChEmedToBundle";
+     fhir:index 3;
+     fhir:link <http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChEmedToBundle>
+  ];
+  fhir:StructureMap.group [
+     fhir:index 0;
+     fhir:StructureMap.group.name [ fhir:value "CdaChEmedMedicationPrescriptionDocumentToBundle" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.documentation [ fhir:value "source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&id=2.16.756.5.30.1.1.10.1.4 target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationprescription.html" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "cda" ];
+       fhir:StructureMap.group.input.type [ fhir:value "ClinicalDocument" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "ClinicalDocumentToBody" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "cda" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "bundle" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "entry" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "e" ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "e" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "resource" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "composition" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "create" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "Composition" ]
+         ]
+       ], [
+         fhir:index 2;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "composition" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "id" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "uuid" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "uuid" ]
+       ], [
+         fhir:index 3;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "e" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "fullUrl" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "append" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "urn:uuid:" ]
+         ], [
+           fhir:index 1;
+           fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "uuid" ]
+         ]
+       ], [
+         fhir:index 4;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "bundle" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "entry" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "e2" ]
+       ], [
+         fhir:index 5;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "e2" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "resource" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "patient" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "create" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "Patient" ]
+         ]
+       ], [
+         fhir:index 6;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "patient" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "id" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "uuid2" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "uuid" ]
+       ], [
+         fhir:index 7;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "e2" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "fullUrl" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "append" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "urn:uuid:" ]
+         ], [
+           fhir:index 1;
+           fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "uuid2" ]
+         ]
+       ];
+       fhir:StructureMap.group.rule.dependent [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.dependent.name [ fhir:value "ClinicalDocumentChEmedMedicationPrescriptionDocumentToBundle" ];
+         fhir:StructureMap.group.rule.dependent.variable [
+           fhir:value "cda";
+           fhir:index 0
+         ], [
+           fhir:value "patient";
+           fhir:index 1
+         ], [
+           fhir:value "composition";
+           fhir:index 2
+         ], [
+           fhir:value "bundle";
+           fhir:index 3
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:StructureMap.group.name [ fhir:value "ClinicalDocumentChEmedMedicationPrescriptionDocumentToBundle" ];
+     fhir:StructureMap.group.extends [ fhir:value "ClinicalDocumentToBundle" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.documentation [ fhir:value "source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&id=2.16.756.5.30.1.1.10.1.4 target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationprescription.html" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "cda" ];
+       fhir:StructureMap.group.input.type [ fhir:value "ClinicalDocument" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "patient" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Patient" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.input.name [ fhir:value "composition" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Composition" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "composition" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "cda" ]
+       ];
+       fhir:StructureMap.group.rule.dependent [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.dependent.name [ fhir:value "ClinicalDocumentCompositionCh" ];
+         fhir:StructureMap.group.rule.dependent.variable [
+           fhir:value "cda";
+           fhir:index 0
+         ], [
+           fhir:value "composition";
+           fhir:index 1
+         ], [
+           fhir:value "patient";
+           fhir:index 2
+         ], [
+           fhir:value "bundle";
+           fhir:index 3
+         ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.rule.name [ fhir:value "component" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "cda" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "component" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "component" ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "body" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "component" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "structuredBody" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "body" ]
+         ];
+         fhir:StructureMap.group.rule.rule [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.name [ fhir:value "component" ];
+           fhir:StructureMap.group.rule.source [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.source.context [ fhir:value "body" ];
+             fhir:StructureMap.group.rule.source.element [ fhir:value "component" ];
+             fhir:StructureMap.group.rule.source.variable [ fhir:value "component" ]
+           ];
+           fhir:StructureMap.group.rule.rule [
+             fhir:index 0;
+             fhir:StructureMap.group.rule.name [ fhir:value "section" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "component" ];
+               fhir:StructureMap.group.rule.source.element [ fhir:value "section" ];
+               fhir:StructureMap.group.rule.source.variable [ fhir:value "srcSection" ];
+               fhir:StructureMap.group.rule.source.condition [ fhir:value "(templateId.where(root = '2.16.756.5.30.1.1.10.3.10'))" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "composition" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "section" ];
+               fhir:StructureMap.group.rule.target.variable [ fhir:value "tgtSection" ]
+             ];
+             fhir:StructureMap.group.rule.dependent [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.dependent.name [ fhir:value "SectionPrescriptionSectionContentModule" ];
+               fhir:StructureMap.group.rule.dependent.variable [
+                 fhir:value "cda";
+                 fhir:index 0
+               ], [
+                 fhir:value "srcSection";
+                 fhir:index 1
+               ], [
+                 fhir:value "patient";
+                 fhir:index 2
+               ], [
+                 fhir:value "tgtSection";
+                 fhir:index 3
+               ], [
+                 fhir:value "bundle";
+                 fhir:index 4
+               ]
+             ]
+           ], [
+             fhir:index 1;
+             fhir:StructureMap.group.rule.name [ fhir:value "section" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "component" ];
+               fhir:StructureMap.group.rule.source.element [ fhir:value "section" ];
+               fhir:StructureMap.group.rule.source.variable [ fhir:value "srcSection" ];
+               fhir:StructureMap.group.rule.source.condition [ fhir:value "(templateId.where(root = '2.16.756.5.30.1.1.10.3.2'))" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "composition" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "section" ];
+               fhir:StructureMap.group.rule.target.variable [ fhir:value "tgtSection" ]
+             ];
+             fhir:StructureMap.group.rule.dependent [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.dependent.name [ fhir:value "ClinicalDocumentSection" ];
+               fhir:StructureMap.group.rule.dependent.variable [
+                 fhir:value "cda";
+                 fhir:index 0
+               ], [
+                 fhir:value "srcSection";
+                 fhir:index 1
+               ], [
+                 fhir:value "patient";
+                 fhir:index 2
+               ], [
+                 fhir:value "tgtSection";
+                 fhir:index 3
+               ], [
+                 fhir:value "bundle";
+                 fhir:index 4
+               ]
+             ]
+           ], [
+             fhir:index 2;
+             fhir:StructureMap.group.rule.name [ fhir:value "section" ];
+             fhir:StructureMap.group.rule.source [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.source.context [ fhir:value "component" ];
+               fhir:StructureMap.group.rule.source.element [ fhir:value "section" ];
+               fhir:StructureMap.group.rule.source.variable [ fhir:value "srcSection" ];
+               fhir:StructureMap.group.rule.source.condition [ fhir:value "(templateId.where(root = '2.16.756.5.30.1.1.10.3.45'))" ]
+             ];
+             fhir:StructureMap.group.rule.target [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.target.context [ fhir:value "composition" ];
+               fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+               fhir:StructureMap.group.rule.target.element [ fhir:value "section" ];
+               fhir:StructureMap.group.rule.target.variable [ fhir:value "tgtSection" ]
+             ];
+             fhir:StructureMap.group.rule.dependent [
+               fhir:index 0;
+               fhir:StructureMap.group.rule.dependent.name [ fhir:value "SectionOriginalRepresentation" ];
+               fhir:StructureMap.group.rule.dependent.variable [
+                 fhir:value "cda";
+                 fhir:index 0
+               ], [
+                 fhir:value "srcSection";
+                 fhir:index 1
+               ], [
+                 fhir:value "patient";
+                 fhir:index 2
+               ], [
+                 fhir:value "tgtSection";
+                 fhir:index 3
+               ], [
+                 fhir:value "bundle";
+                 fhir:index 4
+               ]
+             ]
+           ]
+         ]
+       ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:StructureMap.group.name [ fhir:value "SectionPrescriptionSectionContentModule" ];
+     fhir:StructureMap.group.extends [ fhir:value "ClinicalDocumentSection" ];
+     fhir:StructureMap.group.typeMode [ fhir:value "none" ];
+     fhir:StructureMap.group.documentation [ fhir:value "_________________________ Section Level Templates _________________________ source: https://art-decor.org/art-decor/decor-templates--cdachemed-?section=templates&id=2.16.756.5.30.1.1.10.3.10 target: http://build.fhir.org/ig/hl7ch/ch-emed/StructureDefinition-ch-emed-composition-medicationprescription.html" ];
+     fhir:StructureMap.group.input [
+       fhir:index 0;
+       fhir:StructureMap.group.input.name [ fhir:value "cda" ];
+       fhir:StructureMap.group.input.type [ fhir:value "ClinicalDocument" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 1;
+       fhir:StructureMap.group.input.name [ fhir:value "src" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Section" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 2;
+       fhir:StructureMap.group.input.name [ fhir:value "patient" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Patient" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "source" ]
+     ], [
+       fhir:index 3;
+       fhir:StructureMap.group.input.name [ fhir:value "tgt" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ], [
+       fhir:index 4;
+       fhir:StructureMap.group.input.name [ fhir:value "bundle" ];
+       fhir:StructureMap.group.input.type [ fhir:value "Bundle" ];
+       fhir:StructureMap.group.input.mode [ fhir:value "target" ]
+     ];
+     fhir:StructureMap.group.rule [
+       fhir:index 0;
+       fhir:StructureMap.group.rule.name [ fhir:value "PrescriptionSectionContentModule" ];
+       fhir:StructureMap.group.rule.source [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.source.context [ fhir:value "src" ];
+         fhir:StructureMap.group.rule.source.element [ fhir:value "entry" ];
+         fhir:StructureMap.group.rule.source.variable [ fhir:value "cdaEntry" ];
+         fhir:StructureMap.group.rule.source.condition [ fhir:value "(substanceAdministration.templateId.where(root = '2.16.756.5.30.1.1.10.4.43'))" ]
+       ];
+       fhir:StructureMap.group.rule.target [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "bundle" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "entry" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "e" ]
+       ], [
+         fhir:index 1;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "e" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "resource" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "medicationrequest" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "create" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "MedicationRequest" ]
+         ]
+       ], [
+         fhir:index 2;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "medicationrequest" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "id" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "uuid" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "uuid" ]
+       ], [
+         fhir:index 3;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "e" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "fullUrl" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "append" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "urn:uuid:" ]
+         ], [
+           fhir:index 1;
+           fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "uuid" ]
+         ]
+       ], [
+         fhir:index 4;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "tgt" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "entry" ];
+         fhir:StructureMap.group.rule.target.variable [ fhir:value "reference" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "create" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "Reference" ]
+         ]
+       ], [
+         fhir:index 5;
+         fhir:StructureMap.group.rule.target.context [ fhir:value "reference" ];
+         fhir:StructureMap.group.rule.target.contextType [ fhir:value "variable" ];
+         fhir:StructureMap.group.rule.target.element [ fhir:value "reference" ];
+         fhir:StructureMap.group.rule.target.transform [ fhir:value "append" ];
+         fhir:StructureMap.group.rule.target.parameter [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.target.parameter.valueString [ fhir:value "urn:uuid:" ]
+         ], [
+           fhir:index 1;
+           fhir:StructureMap.group.rule.target.parameter.valueId [ fhir:value "uuid" ]
+         ]
+       ];
+       fhir:StructureMap.group.rule.rule [
+         fhir:index 0;
+         fhir:StructureMap.group.rule.name [ fhir:value "substanceAdministration" ];
+         fhir:StructureMap.group.rule.source [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.source.context [ fhir:value "cdaEntry" ];
+           fhir:StructureMap.group.rule.source.element [ fhir:value "substanceAdministration" ];
+           fhir:StructureMap.group.rule.source.variable [ fhir:value "substanceAdministration" ]
+         ];
+         fhir:StructureMap.group.rule.dependent [
+           fhir:index 0;
+           fhir:StructureMap.group.rule.dependent.name [ fhir:value "PrescriptionItemEntryContentModule" ];
+           fhir:StructureMap.group.rule.dependent.variable [
+             fhir:value "src";
+             fhir:index 0
+           ], [
+             fhir:value "substanceAdministration";
+             fhir:index 1
+           ], [
+             fhir:value "patient";
+             fhir:index 2
+           ], [
+             fhir:value "medicationrequest";
+             fhir:index 3
+           ]
+         ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/cda-fhir-maps/StructureMap/CdaChEmedMedicationPrescriptionDocumentToBundle.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

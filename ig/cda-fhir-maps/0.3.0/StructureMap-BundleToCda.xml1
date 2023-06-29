@@ -1,0 +1,1924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StructureMap xmlns="http://hl7.org/fhir">
+  <id value="BundleToCda"/>
+  <meta>
+    <versionId value="3"/>
+    <lastUpdated value="2022-01-11T22:14:50.980+01:00"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml">
+         <pre>map &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCda&quot; = &quot;BundleToCda&quot;
+
+
+// CDA document
+// 2020-01-16 Oliver Egger, copyright ahdis ag, Apache License
+// CDA:  http://build.fhir.org/ig/ahdis/cda-core-2.0/branches/master/index.html
+// FHIR: http://hl7.org/fhir/r4/
+
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument&quot; alias ClinicalDocument as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/Author&quot; alias Author as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/RecordTarget&quot; alias RecordTarget as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/Custodian&quot; alias Custodian as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/Organization&quot; alias CdaOrganization as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/LegalAuthenticator&quot; alias LegalAuthenticator as target
+uses &quot;http://hl7.org/fhir/cda/StructureDefinition/Section&quot; alias CdaSection as target
+uses &quot;http://hl7.org/fhir/StructureDefinition/Bundle&quot; alias Bundle as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Composition&quot; alias Composition as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Practitioner&quot; alias Practitioner as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Patient&quot; alias Patient as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/Organization&quot; alias Organization as source
+uses &quot;http://hl7.org/fhir/StructureDefinition/BackboneElement&quot; alias BackboneElement as source
+
+imports &quot;http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes&quot;
+
+group BundleToCda(source bundle : Bundle, target cda : ClinicalDocument) {
+  bundle -&gt;  cda.recordTarget as recordTarget,  cda.author as author then BundleToClinicalDocument(bundle, recordTarget, author, cda) &quot;bundle&quot;;
+}
+
+group BundleToClinicalDocument(source bundle : Bundle, target recordTarget : RecordTarget, target author : Author, target cda : ClinicalDocument) {
+  bundle -&gt; cda.typeId as typeId then {
+    bundle -&gt; typeId.root = '2.16.840.1.113883.1.3' &quot;root&quot;;
+    bundle -&gt; typeId.extension = 'POCD_HD000040' &quot;extension&quot;;
+  } &quot;typeId&quot;;
+  bundle.identifier as identifier -&gt; cda.id as id then IdentifierII(identifier, id) &quot;id&quot;;
+  bundle.timestamp as timestamp -&gt; cda.effectiveTime as effectiveTime then InstantTS(timestamp, effectiveTime) &quot;effectiveTime&quot;;
+  bundle.entry as entry then {
+    entry.resource as resource where $this.ofType(FHIR.Composition) then CompositionClinicalDocument(bundle, resource, recordTarget, author, cda);
+  };
+}
+
+// _________________________ Section Level Templates _________________________
+group SectionCdaSection(source bundle : Bundle, source section : BackboneElement, target cdasection : CdaSection) {
+  section.extension as extension where $this.url = 'http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-sectionid' -&gt; cdasection.id as id then {
+    extension.valueIdentifier as valueIdentifier then IdentifierII(valueIdentifier, id) &quot;IdentifierII&quot;;
+  } &quot;valueIdentifier&quot;;
+  section as section where $this.extension.where(url = 'http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-sectionid').exists() = false -&gt; cdasection.id as id then {
+    bundle.identifier as identifier -&gt; cdasection.id as id then IdentifierII(identifier, id) &quot;setId&quot;;
+  } &quot;sectionid&quot;;
+  section.code as code then {
+    code.coding as coding where $this.system = 'http://loinc.org' -&gt; cdasection.code as cdacode then CodingCE(coding, cdacode) &quot;codingsection&quot;;
+  };
+  section.title as title -&gt;  cdasection.title as cdatitle,  cdatitle.data = title;
+  section.text as text then {
+    text.div as div -&gt; cdasection.text = div;
+  };
+}
+
+// _________________________ Entry Level Templates   ________________________
+// _________________________ Header Level Templates _________________________
+group CompositionClinicalDocument(source bundle : Bundle, source composition : Composition, target recordTarget : RecordTarget, target author : Author, target cda : ClinicalDocument) {
+  composition.type as type then {
+    type.coding as coding where $this.system = 'http://loinc.org' -&gt; cda.code as code share docCode then CodingCE(coding, code) &quot;code&quot;;
+  };
+  composition.title as title -&gt; cda.title as t then {
+    title -&gt; t.data = title &quot;titleInner&quot;;
+  };
+  composition.confidentiality as conf -&gt; cda.confidentialityCode as cdaconf then {
+    conf -&gt; cdaconf.code = conf &quot;conf&quot;;
+    conf -&gt; cdaconf.codeSystem = '2.16.840.1.113883.5.25' &quot;codeSystem&quot;;
+  } &quot;confidentialityCode&quot;;
+  composition.language as language -&gt;  cda.languageCode as languageCode,  languageCode.code = language &quot;languageCode&quot;;
+  bundle.entry as entry then {
+    entry.fullUrl where ($this in %composition.subject.reference) and $this.startsWith('urn:uuid') then {
+      entry.resource : Patient as patient then PatientRecordTarget(patient, bundle, recordTarget) &quot;patient&quot;;
+    } &quot;uuid&quot;;
+    entry.resource as patient where ('Patient' + '/' + $this.id) in %composition.subject.reference then PatientRecordTarget(patient, bundle, recordTarget) &quot;patient&quot;;
+    entry.fullUrl where ($this in %composition.custodian.reference) and $this.startsWith('urn:uuid') then {
+      entry.resource : Organization as organization -&gt; cda.custodian as custodian then OrganizationCustodian(organization, custodian) &quot;custodian&quot;;
+    } &quot;uuid&quot;;
+    entry.resource as organization where ('Organization' + '/' + $this.id) in %composition.custodian.reference -&gt; cda.custodian as custodian then OrganizationCustodian(organization, custodian) &quot;custodian&quot;;
+    entry.fullUrl where ($this in %composition.author.reference) and $this.startsWith('urn:uuid') then {
+      entry.resource : Practitioner as practitioner then PractitionerAuthor(bundle, composition, practitioner, author) &quot;author&quot;;
+    } &quot;uuid&quot;;
+    entry.resource as practitioner where ('Practitioner' + '/' + $this.id) in %composition.author.reference then PractitionerAuthor(bundle, composition, practitioner, author) &quot;author&quot;;
+    entry.fullUrl where ($this in %composition.attester.party.reference) and $this.startsWith('urn:uuid') then {
+      entry.resource : Practitioner as practitioner -&gt; cda.legalAuthenticator as legalAuthenticator then PractitionerLegalAuthenticator(bundle, composition, practitioner, legalAuthenticator) &quot;legalAuthenticator&quot;;
+    } &quot;uuid&quot;;
+    entry.resource as practitioner where ('Practitioner' + '/' + $this.id) in %composition.attester.party.reference -&gt; cda.legalAuthenticator as legalAuthenticator then PractitionerLegalAuthenticator(bundle, composition, practitioner, legalAuthenticator) &quot;legalAuthenticator&quot;;
+  } &quot;patient&quot;;
+  // source.date -&gt; tgt.effectiveTime &quot;effectiveTime&quot;;
+  composition.section as section where $this.code.exists() = false -&gt; cda.component as component then {
+    section -&gt; component.contextConductionInd = true &quot;contextConductionInd&quot;;
+    section -&gt;  component.structuredBody as structuredBody,  structuredBody.component as component,  component.section as cdasection then SectionCdaSection(bundle, section, cdasection) &quot;cdasection&quot;;
+  };
+}
+
+group PatientRecordTarget(source src : Patient, source bundle : Bundle, target tgt : RecordTarget) {
+  src -&gt; tgt.patientRole as patientRole then {
+    src.identifier as identifier -&gt; patientRole.id as id then IdentifierII(identifier, id);
+    src.address as address -&gt; patientRole.addr as ad then AddressAD(address, ad);
+    src -&gt; patientRole.patient as patient then {
+      src.name as humanname -&gt; patient.name as en then HumanNameEN(humanname, en);
+      src.birthDate as birthDate -&gt; patient.birthTime as birthTime then DateTS(birthDate, birthTime);
+      src.gender as v log $this -&gt; patient.administrativeGenderCode as adminGender then {
+        v -&gt; adminGender.code = translate(v, 'http://hl7.org/fhir/ConceptMap/cm-administrative-gender-v3', 'code') &quot;gender&quot;;
+        v -&gt; adminGender.codeSystem = '2.16.840.1.113883.5.1' &quot;codeSytem&quot;;
+        v -&gt; adminGender.codeSystemName = 'HL7 AdministrativeGender' &quot;codeSystemName&quot;;
+        v as v where $this = 'male' -&gt; adminGender.displayName = 'Male' &quot;male&quot;;
+        v as v where $this = 'female' -&gt; adminGender.displayName = 'Female' &quot;female&quot;;
+        v as v where $this = 'other' -&gt; adminGender.displayName = 'Undifferentiated' &quot;other&quot;;
+      };
+    } &quot;patient&quot;;
+    src.telecom as telecom -&gt; patientRole.telecom as tel then ContactPointTEL(telecom, tel);
+    src.managingOrganization as managingOrganization then {
+      bundle.entry as entry then {
+        entry.fullUrl where ($this in %managingOrganization.reference) and $this.startsWith('urn:uuid') -&gt; patientRole.providerOrganization as providerOrganization then Organization2CdaOrganization(managingOrganization, providerOrganization) &quot;providerOrganization&quot;;
+        entry.resource as organization where ('Organization' + '/' + $this.id) in %managingOrganization.reference -&gt; patientRole.providerOrganization as providerOrganization then Organization2CdaOrganization(managingOrganization, providerOrganization) &quot;providerOrganization&quot;;
+      };
+    };
+  } &quot;patientRole&quot;;
+}
+
+group PractitionerAuthor(source bundle : Bundle, source composition : Composition, source src : Practitioner, target tgt : Author) {
+  composition.author as srcauthor then {
+    srcauthor.extension as extensionTime where $this.url = 'http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time' then {
+      extensionTime.valueDateTime as valueDateTime -&gt; tgt.time as time then DateTimeTS(valueDateTime, time) &quot;DateTime&quot;;
+    } &quot;extensionTime&quot;;
+  } &quot;srcAuthor&quot;;
+  bundle.timestamp as valueDateTime where composition.author.extension.where(url = 'http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time').empty() -&gt; tgt.time as time then DateTimeTS(valueDateTime, time) &quot;DateTimeBundle&quot;;
+  src -&gt; tgt.assignedAuthor as assignedAuthor then {
+    src.identifier as identifier -&gt; assignedAuthor.id as id then IdentifierII(identifier, id) &quot;id&quot;;
+    src.telecom first as telecom -&gt; assignedAuthor.telecom as tel then ContactPointTEL(telecom, tel);
+    src.address as address -&gt; assignedAuthor.addr as ad then AddressAD(address, ad);
+    src.name as name -&gt;  assignedAuthor.assignedPerson as assignedPerson,  assignedPerson.name as en then HumanNameEN(name, en);
+    bundle.entry as entry then {
+      entry.fullUrl where ($this in %composition.author.reference) and $this.startsWith('urn:uuid') then {
+        entry.resource : Organization as organization -&gt; assignedAuthor.representedOrganization as cdaorganization then Organization2CdaOrganization(organization, cdaorganization) &quot;organization&quot;;
+      } &quot;uuid&quot;;
+      entry.resource as organization where ('Organization' + '/' + $this.id) in %composition.author.reference -&gt; assignedAuthor.representedOrganization as cdaorganization then Organization2CdaOrganization(organization, cdaorganization) &quot;organization&quot;;
+    } &quot;patient&quot;;
+  } &quot;assignedAuthor&quot;;
+}
+
+group OrganizationCustodian(source src : Organization, target tgt : Custodian) {
+  src -&gt; tgt.assignedCustodian as assignedCustodian then {
+    src -&gt; assignedCustodian.representedCustodianOrganization as representedCustodianOrganization then Organization2CdaOrganizationCustodian(src, representedCustodianOrganization) &quot;representedCustodianOrganization&quot;;
+  } &quot;assignedCustodian&quot;;
+}
+
+group Organization2CdaOrganizationCustodian(source src : Organization, target tgt : CdaOrganization) {
+  src.identifier as identifier -&gt; tgt.id as id then IdentifierII(identifier, id) &quot;id&quot;;
+  src.name as name -&gt;  tgt.name as orgname,  orgname.other = name;
+  src.address as address -&gt; tgt.addr as ad then AddressAD(address, ad);
+  // target telecom is 0..1
+  src.telecom first as telecom -&gt; tgt.telecom as tel then ContactPointTEL(telecom, tel);
+}
+
+group Organization2CdaOrganization(source src : Organization, target tgt : CdaOrganization) {
+  src.identifier as identifier -&gt; tgt.id as id then IdentifierII(identifier, id) &quot;id&quot;;
+  src.name as name -&gt;  tgt.name as orgname,  orgname.other = name;
+  src.address as address -&gt; tgt.addr as ad then AddressAD(address, ad);
+  src.telecom as telecom -&gt; tgt.telecom as tel then ContactPointTEL(telecom, tel);
+}
+
+group PractitionerLegalAuthenticator(source bundle : Bundle, source composition : Composition, source src : Practitioner, target tgt : LegalAuthenticator) {
+  src -&gt;  tgt.templateId as templateId,  templateId.root = '2.16.756.5.30.1.1.10.2.5' &quot;templateId&quot;;
+  composition.attester as attester then {
+    attester.time as srcTime -&gt; tgt.time as time then InstantTS(srcTime, time) &quot;timestamp&quot;;
+  } &quot;time&quot;;
+  // src -&gt; tgt.signatureCode = 'S' &quot;S&quot;;
+  src -&gt;  tgt.signatureCode as signatureCode,  signatureCode.code = 'S' &quot;signature&quot;;
+  src -&gt; tgt.assignedEntity as assignedEntity then {
+    src.identifier as identifier -&gt; assignedEntity.id as id then IdentifierII(identifier, id);
+    src.name as name -&gt;  assignedEntity.assignedPerson as assignedPerson,  assignedPerson.name as en then HumanNameEN(name, en);
+  } &quot;assignedEntity&quot;;
+}
+
+</pre>
+      </div>
+  </text>
+  <url value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/BundleToCda"/>
+  <version value="0.3.0"/>
+  <name value="BundleToCda"/>
+  <status value="draft"/>
+  <date value="2022-02-11T11:14:39+01:00"/>
+  <publisher value="ahdis"/>
+  <contact>
+    <name value="ahdis"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.ahdis.ch/"/>
+    </telecom>
+  </contact>
+  <description value="&#xD;&#xA;CDA document&#xD;&#xA;2020-01-16 Oliver Egger, copyright ahdis ag, Apache License&#xD;&#xA;CDA:  http://build.fhir.org/ig/ahdis/cda-core-2.0/branches/master/index.html&#xD;&#xA;FHIR: http://hl7.org/fhir/r4/&#xD;&#xA;"/>
+  <copyright value="CC-BY-SA-4.0"/>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument"/>
+    <mode value="target"/>
+    <alias value="ClinicalDocument"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/Author"/>
+    <mode value="target"/>
+    <alias value="Author"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/RecordTarget"/>
+    <mode value="target"/>
+    <alias value="RecordTarget"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/Custodian"/>
+    <mode value="target"/>
+    <alias value="Custodian"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/Organization"/>
+    <mode value="target"/>
+    <alias value="CdaOrganization"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/LegalAuthenticator"/>
+    <mode value="target"/>
+    <alias value="LegalAuthenticator"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/cda/StructureDefinition/Section"/>
+    <mode value="target"/>
+    <alias value="CdaSection"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Bundle"/>
+    <mode value="source"/>
+    <alias value="Bundle"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Composition"/>
+    <mode value="source"/>
+    <alias value="Composition"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Practitioner"/>
+    <mode value="source"/>
+    <alias value="Practitioner"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+    <mode value="source"/>
+    <alias value="Patient"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/Organization"/>
+    <mode value="source"/>
+    <alias value="Organization"/>
+  </structure>
+  <structure>
+    <url value="http://hl7.org/fhir/StructureDefinition/BackboneElement"/>
+    <mode value="source"/>
+    <alias value="BackboneElement"/>
+  </structure>
+  <import value="http://fhir.ch/ig/cda-fhir-maps/StructureMap/FhirToCdaTypes"/>
+  <group>
+    <name value="BundleToCda"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="cda"/>
+      <type value="ClinicalDocument"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="bundle"/>
+      <source>
+        <context value="bundle"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="recordTarget"/>
+        <variable value="recordTarget"/>
+      </target>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="author"/>
+        <variable value="author"/>
+      </target>
+      <dependent>
+        <name value="BundleToClinicalDocument"/>
+        <variable value="bundle"/>
+        <variable value="recordTarget"/>
+        <variable value="author"/>
+        <variable value="cda"/>
+      </dependent>
+    </rule>
+  </group>
+  <group>
+    <name value="BundleToClinicalDocument"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="recordTarget"/>
+      <type value="RecordTarget"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="author"/>
+      <type value="Author"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="cda"/>
+      <type value="ClinicalDocument"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="typeId"/>
+      <source>
+        <context value="bundle"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="typeId"/>
+        <variable value="typeId"/>
+      </target>
+      <rule>
+        <name value="root"/>
+        <source>
+          <context value="bundle"/>
+        </source>
+        <target>
+          <context value="typeId"/>
+          <contextType value="variable"/>
+          <element value="root"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="2.16.840.1.113883.1.3"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="extension"/>
+        <source>
+          <context value="bundle"/>
+        </source>
+        <target>
+          <context value="typeId"/>
+          <contextType value="variable"/>
+          <element value="extension"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="POCD_HD000040"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+    <rule>
+      <name value="id"/>
+      <source>
+        <context value="bundle"/>
+        <element value="identifier"/>
+        <variable value="identifier"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <variable value="id"/>
+      </target>
+      <dependent>
+        <name value="IdentifierII"/>
+        <variable value="identifier"/>
+        <variable value="id"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="effectiveTime"/>
+      <source>
+        <context value="bundle"/>
+        <element value="timestamp"/>
+        <variable value="timestamp"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="effectiveTime"/>
+        <variable value="effectiveTime"/>
+      </target>
+      <dependent>
+        <name value="InstantTS"/>
+        <variable value="timestamp"/>
+        <variable value="effectiveTime"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="entry"/>
+      <source>
+        <context value="bundle"/>
+        <element value="entry"/>
+        <variable value="entry"/>
+      </source>
+      <rule>
+        <name value="resource"/>
+        <source>
+          <context value="entry"/>
+          <element value="resource"/>
+          <variable value="resource"/>
+          <condition value="$this.ofType(FHIR.Composition)"/>
+        </source>
+        <dependent>
+          <name value="CompositionClinicalDocument"/>
+          <variable value="bundle"/>
+          <variable value="resource"/>
+          <variable value="recordTarget"/>
+          <variable value="author"/>
+          <variable value="cda"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="SectionCdaSection"/>
+    <typeMode value="none"/>
+    <documentation value="_________________________ Section Level Templates _________________________"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="section"/>
+      <type value="BackboneElement"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="cdasection"/>
+      <type value="CdaSection"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="valueIdentifier"/>
+      <source>
+        <context value="section"/>
+        <element value="extension"/>
+        <variable value="extension"/>
+        <condition value="$this.url = &#39;http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-sectionid&#39;"/>
+      </source>
+      <target>
+        <context value="cdasection"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <variable value="id"/>
+      </target>
+      <rule>
+        <name value="IdentifierII"/>
+        <source>
+          <context value="extension"/>
+          <element value="valueIdentifier"/>
+          <variable value="valueIdentifier"/>
+        </source>
+        <dependent>
+          <name value="IdentifierII"/>
+          <variable value="valueIdentifier"/>
+          <variable value="id"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="sectionid"/>
+      <source>
+        <context value="section"/>
+        <variable value="section"/>
+        <condition value="$this.extension.where(url = &#39;http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-sectionid&#39;).exists() = false"/>
+      </source>
+      <target>
+        <context value="cdasection"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <variable value="id"/>
+      </target>
+      <rule>
+        <name value="setId"/>
+        <source>
+          <context value="bundle"/>
+          <element value="identifier"/>
+          <variable value="identifier"/>
+        </source>
+        <target>
+          <context value="cdasection"/>
+          <contextType value="variable"/>
+          <element value="id"/>
+          <variable value="id"/>
+        </target>
+        <dependent>
+          <name value="IdentifierII"/>
+          <variable value="identifier"/>
+          <variable value="id"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="code"/>
+      <source>
+        <context value="section"/>
+        <element value="code"/>
+        <variable value="code"/>
+      </source>
+      <rule>
+        <name value="codingsection"/>
+        <source>
+          <context value="code"/>
+          <element value="coding"/>
+          <variable value="coding"/>
+          <condition value="$this.system = &#39;http://loinc.org&#39;"/>
+        </source>
+        <target>
+          <context value="cdasection"/>
+          <contextType value="variable"/>
+          <element value="code"/>
+          <variable value="cdacode"/>
+        </target>
+        <dependent>
+          <name value="CodingCE"/>
+          <variable value="coding"/>
+          <variable value="cdacode"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="title"/>
+      <source>
+        <context value="section"/>
+        <element value="title"/>
+        <variable value="title"/>
+      </source>
+      <target>
+        <context value="cdasection"/>
+        <contextType value="variable"/>
+        <element value="title"/>
+        <variable value="cdatitle"/>
+      </target>
+      <target>
+        <context value="cdatitle"/>
+        <contextType value="variable"/>
+        <element value="data"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="title"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="text"/>
+      <source>
+        <context value="section"/>
+        <element value="text"/>
+        <variable value="text"/>
+      </source>
+      <rule>
+        <name value="div"/>
+        <source>
+          <context value="text"/>
+          <element value="div"/>
+          <variable value="div"/>
+        </source>
+        <target>
+          <context value="cdasection"/>
+          <contextType value="variable"/>
+          <element value="text"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="div"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="CompositionClinicalDocument"/>
+    <typeMode value="none"/>
+    <documentation value="_________________________ Entry Level Templates   ________________________&#xD;&#xA;_________________________ Header Level Templates _________________________"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="composition"/>
+      <type value="Composition"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="recordTarget"/>
+      <type value="RecordTarget"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="author"/>
+      <type value="Author"/>
+      <mode value="target"/>
+    </input>
+    <input>
+      <name value="cda"/>
+      <type value="ClinicalDocument"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="type"/>
+      <source>
+        <context value="composition"/>
+        <element value="type"/>
+        <variable value="type"/>
+      </source>
+      <rule>
+        <name value="code"/>
+        <source>
+          <context value="type"/>
+          <element value="coding"/>
+          <variable value="coding"/>
+          <condition value="$this.system = &#39;http://loinc.org&#39;"/>
+        </source>
+        <target>
+          <context value="cda"/>
+          <contextType value="variable"/>
+          <element value="code"/>
+          <variable value="code"/>
+          <listMode value="share"/>
+          <listRuleId value="docCode"/>
+        </target>
+        <dependent>
+          <name value="CodingCE"/>
+          <variable value="coding"/>
+          <variable value="code"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="title"/>
+      <source>
+        <context value="composition"/>
+        <element value="title"/>
+        <variable value="title"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="title"/>
+        <variable value="t"/>
+      </target>
+      <rule>
+        <name value="titleInner"/>
+        <source>
+          <context value="title"/>
+        </source>
+        <target>
+          <context value="t"/>
+          <contextType value="variable"/>
+          <element value="data"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="title"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+    <rule>
+      <name value="confidentialityCode"/>
+      <source>
+        <context value="composition"/>
+        <element value="confidentiality"/>
+        <variable value="conf"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="confidentialityCode"/>
+        <variable value="cdaconf"/>
+      </target>
+      <rule>
+        <name value="conf"/>
+        <source>
+          <context value="conf"/>
+        </source>
+        <target>
+          <context value="cdaconf"/>
+          <contextType value="variable"/>
+          <element value="code"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueId value="conf"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="codeSystem"/>
+        <source>
+          <context value="conf"/>
+        </source>
+        <target>
+          <context value="cdaconf"/>
+          <contextType value="variable"/>
+          <element value="codeSystem"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueString value="2.16.840.1.113883.5.25"/>
+          </parameter>
+        </target>
+      </rule>
+    </rule>
+    <rule>
+      <name value="languageCode"/>
+      <source>
+        <context value="composition"/>
+        <element value="language"/>
+        <variable value="language"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="languageCode"/>
+        <variable value="languageCode"/>
+      </target>
+      <target>
+        <context value="languageCode"/>
+        <contextType value="variable"/>
+        <element value="code"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="language"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="patient"/>
+      <source>
+        <context value="bundle"/>
+        <element value="entry"/>
+        <variable value="entry"/>
+      </source>
+      <rule>
+        <name value="uuid"/>
+        <source>
+          <context value="entry"/>
+          <element value="fullUrl"/>
+          <condition value="($this in %composition.subject.reference) and $this.startsWith(&#39;urn:uuid&#39;)"/>
+        </source>
+        <rule>
+          <name value="patient"/>
+          <source>
+            <context value="entry"/>
+            <type value="Patient"/>
+            <element value="resource"/>
+            <variable value="patient"/>
+          </source>
+          <dependent>
+            <name value="PatientRecordTarget"/>
+            <variable value="patient"/>
+            <variable value="bundle"/>
+            <variable value="recordTarget"/>
+          </dependent>
+        </rule>
+      </rule>
+      <rule>
+        <name value="patient"/>
+        <source>
+          <context value="entry"/>
+          <element value="resource"/>
+          <variable value="patient"/>
+          <condition value="(&#39;Patient&#39; + &#39;/&#39; + $this.id) in %composition.subject.reference"/>
+        </source>
+        <dependent>
+          <name value="PatientRecordTarget"/>
+          <variable value="patient"/>
+          <variable value="bundle"/>
+          <variable value="recordTarget"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="uuid"/>
+        <source>
+          <context value="entry"/>
+          <element value="fullUrl"/>
+          <condition value="($this in %composition.custodian.reference) and $this.startsWith(&#39;urn:uuid&#39;)"/>
+        </source>
+        <rule>
+          <name value="custodian"/>
+          <source>
+            <context value="entry"/>
+            <type value="Organization"/>
+            <element value="resource"/>
+            <variable value="organization"/>
+          </source>
+          <target>
+            <context value="cda"/>
+            <contextType value="variable"/>
+            <element value="custodian"/>
+            <variable value="custodian"/>
+          </target>
+          <dependent>
+            <name value="OrganizationCustodian"/>
+            <variable value="organization"/>
+            <variable value="custodian"/>
+          </dependent>
+        </rule>
+      </rule>
+      <rule>
+        <name value="custodian"/>
+        <source>
+          <context value="entry"/>
+          <element value="resource"/>
+          <variable value="organization"/>
+          <condition value="(&#39;Organization&#39; + &#39;/&#39; + $this.id) in %composition.custodian.reference"/>
+        </source>
+        <target>
+          <context value="cda"/>
+          <contextType value="variable"/>
+          <element value="custodian"/>
+          <variable value="custodian"/>
+        </target>
+        <dependent>
+          <name value="OrganizationCustodian"/>
+          <variable value="organization"/>
+          <variable value="custodian"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="uuid"/>
+        <source>
+          <context value="entry"/>
+          <element value="fullUrl"/>
+          <condition value="($this in %composition.author.reference) and $this.startsWith(&#39;urn:uuid&#39;)"/>
+        </source>
+        <rule>
+          <name value="author"/>
+          <source>
+            <context value="entry"/>
+            <type value="Practitioner"/>
+            <element value="resource"/>
+            <variable value="practitioner"/>
+          </source>
+          <dependent>
+            <name value="PractitionerAuthor"/>
+            <variable value="bundle"/>
+            <variable value="composition"/>
+            <variable value="practitioner"/>
+            <variable value="author"/>
+          </dependent>
+        </rule>
+      </rule>
+      <rule>
+        <name value="author"/>
+        <source>
+          <context value="entry"/>
+          <element value="resource"/>
+          <variable value="practitioner"/>
+          <condition value="(&#39;Practitioner&#39; + &#39;/&#39; + $this.id) in %composition.author.reference"/>
+        </source>
+        <dependent>
+          <name value="PractitionerAuthor"/>
+          <variable value="bundle"/>
+          <variable value="composition"/>
+          <variable value="practitioner"/>
+          <variable value="author"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="uuid"/>
+        <source>
+          <context value="entry"/>
+          <element value="fullUrl"/>
+          <condition value="($this in %composition.attester.party.reference) and $this.startsWith(&#39;urn:uuid&#39;)"/>
+        </source>
+        <rule>
+          <name value="legalAuthenticator"/>
+          <source>
+            <context value="entry"/>
+            <type value="Practitioner"/>
+            <element value="resource"/>
+            <variable value="practitioner"/>
+          </source>
+          <target>
+            <context value="cda"/>
+            <contextType value="variable"/>
+            <element value="legalAuthenticator"/>
+            <variable value="legalAuthenticator"/>
+          </target>
+          <dependent>
+            <name value="PractitionerLegalAuthenticator"/>
+            <variable value="bundle"/>
+            <variable value="composition"/>
+            <variable value="practitioner"/>
+            <variable value="legalAuthenticator"/>
+          </dependent>
+        </rule>
+      </rule>
+      <rule>
+        <name value="legalAuthenticator"/>
+        <source>
+          <context value="entry"/>
+          <element value="resource"/>
+          <variable value="practitioner"/>
+          <condition value="(&#39;Practitioner&#39; + &#39;/&#39; + $this.id) in %composition.attester.party.reference"/>
+        </source>
+        <target>
+          <context value="cda"/>
+          <contextType value="variable"/>
+          <element value="legalAuthenticator"/>
+          <variable value="legalAuthenticator"/>
+        </target>
+        <dependent>
+          <name value="PractitionerLegalAuthenticator"/>
+          <variable value="bundle"/>
+          <variable value="composition"/>
+          <variable value="practitioner"/>
+          <variable value="legalAuthenticator"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="section"/>
+      <source>
+        <context value="composition"/>
+        <element value="section"/>
+        <variable value="section"/>
+        <condition value="$this.code.exists() = false"/>
+      </source>
+      <target>
+        <context value="cda"/>
+        <contextType value="variable"/>
+        <element value="component"/>
+        <variable value="component"/>
+      </target>
+      <rule>
+        <name value="contextConductionInd"/>
+        <source>
+          <context value="section"/>
+        </source>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="contextConductionInd"/>
+          <transform value="copy"/>
+          <parameter>
+            <valueBoolean value="true"/>
+          </parameter>
+        </target>
+      </rule>
+      <rule>
+        <name value="cdasection"/>
+        <source>
+          <context value="section"/>
+        </source>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="structuredBody"/>
+          <variable value="structuredBody"/>
+        </target>
+        <target>
+          <context value="structuredBody"/>
+          <contextType value="variable"/>
+          <element value="component"/>
+          <variable value="component"/>
+        </target>
+        <target>
+          <context value="component"/>
+          <contextType value="variable"/>
+          <element value="section"/>
+          <variable value="cdasection"/>
+        </target>
+        <dependent>
+          <name value="SectionCdaSection"/>
+          <variable value="bundle"/>
+          <variable value="section"/>
+          <variable value="cdasection"/>
+        </dependent>
+      </rule>
+      <documentation value="source.date -&gt; tgt.effectiveTime &quot;effectiveTime&quot;;"/>
+    </rule>
+  </group>
+  <group>
+    <name value="PatientRecordTarget"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="Patient"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="RecordTarget"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="patientRole"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="patientRole"/>
+        <variable value="patientRole"/>
+      </target>
+      <rule>
+        <name value="identifier"/>
+        <source>
+          <context value="src"/>
+          <element value="identifier"/>
+          <variable value="identifier"/>
+        </source>
+        <target>
+          <context value="patientRole"/>
+          <contextType value="variable"/>
+          <element value="id"/>
+          <variable value="id"/>
+        </target>
+        <dependent>
+          <name value="IdentifierII"/>
+          <variable value="identifier"/>
+          <variable value="id"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="address"/>
+        <source>
+          <context value="src"/>
+          <element value="address"/>
+          <variable value="address"/>
+        </source>
+        <target>
+          <context value="patientRole"/>
+          <contextType value="variable"/>
+          <element value="addr"/>
+          <variable value="ad"/>
+        </target>
+        <dependent>
+          <name value="AddressAD"/>
+          <variable value="address"/>
+          <variable value="ad"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="patient"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="patientRole"/>
+          <contextType value="variable"/>
+          <element value="patient"/>
+          <variable value="patient"/>
+        </target>
+        <rule>
+          <name value="name"/>
+          <source>
+            <context value="src"/>
+            <element value="name"/>
+            <variable value="humanname"/>
+          </source>
+          <target>
+            <context value="patient"/>
+            <contextType value="variable"/>
+            <element value="name"/>
+            <variable value="en"/>
+          </target>
+          <dependent>
+            <name value="HumanNameEN"/>
+            <variable value="humanname"/>
+            <variable value="en"/>
+          </dependent>
+        </rule>
+        <rule>
+          <name value="birthDate"/>
+          <source>
+            <context value="src"/>
+            <element value="birthDate"/>
+            <variable value="birthDate"/>
+          </source>
+          <target>
+            <context value="patient"/>
+            <contextType value="variable"/>
+            <element value="birthTime"/>
+            <variable value="birthTime"/>
+          </target>
+          <dependent>
+            <name value="DateTS"/>
+            <variable value="birthDate"/>
+            <variable value="birthTime"/>
+          </dependent>
+        </rule>
+        <rule>
+          <name value="gender"/>
+          <source>
+            <context value="src"/>
+            <element value="gender"/>
+            <variable value="v"/>
+            <logMessage value="$this"/>
+          </source>
+          <target>
+            <context value="patient"/>
+            <contextType value="variable"/>
+            <element value="administrativeGenderCode"/>
+            <variable value="adminGender"/>
+          </target>
+          <rule>
+            <name value="gender"/>
+            <source>
+              <context value="v"/>
+            </source>
+            <target>
+              <context value="adminGender"/>
+              <contextType value="variable"/>
+              <element value="code"/>
+              <transform value="translate"/>
+              <parameter>
+                <valueId value="v"/>
+              </parameter>
+              <parameter>
+                <valueString value="http://hl7.org/fhir/ConceptMap/cm-administrative-gender-v3"/>
+              </parameter>
+              <parameter>
+                <valueString value="code"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="codeSytem"/>
+            <source>
+              <context value="v"/>
+            </source>
+            <target>
+              <context value="adminGender"/>
+              <contextType value="variable"/>
+              <element value="codeSystem"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="2.16.840.1.113883.5.1"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="codeSystemName"/>
+            <source>
+              <context value="v"/>
+            </source>
+            <target>
+              <context value="adminGender"/>
+              <contextType value="variable"/>
+              <element value="codeSystemName"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="HL7 AdministrativeGender"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="male"/>
+            <source>
+              <context value="v"/>
+              <variable value="v"/>
+              <condition value="$this = &#39;male&#39;"/>
+            </source>
+            <target>
+              <context value="adminGender"/>
+              <contextType value="variable"/>
+              <element value="displayName"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="Male"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="female"/>
+            <source>
+              <context value="v"/>
+              <variable value="v"/>
+              <condition value="$this = &#39;female&#39;"/>
+            </source>
+            <target>
+              <context value="adminGender"/>
+              <contextType value="variable"/>
+              <element value="displayName"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="Female"/>
+              </parameter>
+            </target>
+          </rule>
+          <rule>
+            <name value="other"/>
+            <source>
+              <context value="v"/>
+              <variable value="v"/>
+              <condition value="$this = &#39;other&#39;"/>
+            </source>
+            <target>
+              <context value="adminGender"/>
+              <contextType value="variable"/>
+              <element value="displayName"/>
+              <transform value="copy"/>
+              <parameter>
+                <valueString value="Undifferentiated"/>
+              </parameter>
+            </target>
+          </rule>
+        </rule>
+      </rule>
+      <rule>
+        <name value="telecom"/>
+        <source>
+          <context value="src"/>
+          <element value="telecom"/>
+          <variable value="telecom"/>
+        </source>
+        <target>
+          <context value="patientRole"/>
+          <contextType value="variable"/>
+          <element value="telecom"/>
+          <variable value="tel"/>
+        </target>
+        <dependent>
+          <name value="ContactPointTEL"/>
+          <variable value="telecom"/>
+          <variable value="tel"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="managingOrganization"/>
+        <source>
+          <context value="src"/>
+          <element value="managingOrganization"/>
+          <variable value="managingOrganization"/>
+        </source>
+        <rule>
+          <name value="entry"/>
+          <source>
+            <context value="bundle"/>
+            <element value="entry"/>
+            <variable value="entry"/>
+          </source>
+          <rule>
+            <name value="providerOrganization"/>
+            <source>
+              <context value="entry"/>
+              <element value="fullUrl"/>
+              <condition value="($this in %managingOrganization.reference) and $this.startsWith(&#39;urn:uuid&#39;)"/>
+            </source>
+            <target>
+              <context value="patientRole"/>
+              <contextType value="variable"/>
+              <element value="providerOrganization"/>
+              <variable value="providerOrganization"/>
+            </target>
+            <dependent>
+              <name value="Organization2CdaOrganization"/>
+              <variable value="managingOrganization"/>
+              <variable value="providerOrganization"/>
+            </dependent>
+          </rule>
+          <rule>
+            <name value="providerOrganization"/>
+            <source>
+              <context value="entry"/>
+              <element value="resource"/>
+              <variable value="organization"/>
+              <condition value="(&#39;Organization&#39; + &#39;/&#39; + $this.id) in %managingOrganization.reference"/>
+            </source>
+            <target>
+              <context value="patientRole"/>
+              <contextType value="variable"/>
+              <element value="providerOrganization"/>
+              <variable value="providerOrganization"/>
+            </target>
+            <dependent>
+              <name value="Organization2CdaOrganization"/>
+              <variable value="managingOrganization"/>
+              <variable value="providerOrganization"/>
+            </dependent>
+          </rule>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="PractitionerAuthor"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="composition"/>
+      <type value="Composition"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="src"/>
+      <type value="Practitioner"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="Author"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="srcAuthor"/>
+      <source>
+        <context value="composition"/>
+        <element value="author"/>
+        <variable value="srcauthor"/>
+      </source>
+      <rule>
+        <name value="extensionTime"/>
+        <source>
+          <context value="srcauthor"/>
+          <element value="extension"/>
+          <variable value="extensionTime"/>
+          <condition value="$this.url = &#39;http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time&#39;"/>
+        </source>
+        <rule>
+          <name value="DateTime"/>
+          <source>
+            <context value="extensionTime"/>
+            <element value="valueDateTime"/>
+            <variable value="valueDateTime"/>
+          </source>
+          <target>
+            <context value="tgt"/>
+            <contextType value="variable"/>
+            <element value="time"/>
+            <variable value="time"/>
+          </target>
+          <dependent>
+            <name value="DateTimeTS"/>
+            <variable value="valueDateTime"/>
+            <variable value="time"/>
+          </dependent>
+        </rule>
+      </rule>
+    </rule>
+    <rule>
+      <name value="DateTimeBundle"/>
+      <source>
+        <context value="bundle"/>
+        <element value="timestamp"/>
+        <variable value="valueDateTime"/>
+        <condition value="composition.author.extension.where(url = &#39;http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time&#39;).empty()"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="time"/>
+        <variable value="time"/>
+      </target>
+      <dependent>
+        <name value="DateTimeTS"/>
+        <variable value="valueDateTime"/>
+        <variable value="time"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="assignedAuthor"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="assignedAuthor"/>
+        <variable value="assignedAuthor"/>
+      </target>
+      <rule>
+        <name value="id"/>
+        <source>
+          <context value="src"/>
+          <element value="identifier"/>
+          <variable value="identifier"/>
+        </source>
+        <target>
+          <context value="assignedAuthor"/>
+          <contextType value="variable"/>
+          <element value="id"/>
+          <variable value="id"/>
+        </target>
+        <dependent>
+          <name value="IdentifierII"/>
+          <variable value="identifier"/>
+          <variable value="id"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="telecom"/>
+        <source>
+          <context value="src"/>
+          <element value="telecom"/>
+          <listMode value="first"/>
+          <variable value="telecom"/>
+        </source>
+        <target>
+          <context value="assignedAuthor"/>
+          <contextType value="variable"/>
+          <element value="telecom"/>
+          <variable value="tel"/>
+        </target>
+        <dependent>
+          <name value="ContactPointTEL"/>
+          <variable value="telecom"/>
+          <variable value="tel"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="address"/>
+        <source>
+          <context value="src"/>
+          <element value="address"/>
+          <variable value="address"/>
+        </source>
+        <target>
+          <context value="assignedAuthor"/>
+          <contextType value="variable"/>
+          <element value="addr"/>
+          <variable value="ad"/>
+        </target>
+        <dependent>
+          <name value="AddressAD"/>
+          <variable value="address"/>
+          <variable value="ad"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="name"/>
+        <source>
+          <context value="src"/>
+          <element value="name"/>
+          <variable value="name"/>
+        </source>
+        <target>
+          <context value="assignedAuthor"/>
+          <contextType value="variable"/>
+          <element value="assignedPerson"/>
+          <variable value="assignedPerson"/>
+        </target>
+        <target>
+          <context value="assignedPerson"/>
+          <contextType value="variable"/>
+          <element value="name"/>
+          <variable value="en"/>
+        </target>
+        <dependent>
+          <name value="HumanNameEN"/>
+          <variable value="name"/>
+          <variable value="en"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="patient"/>
+        <source>
+          <context value="bundle"/>
+          <element value="entry"/>
+          <variable value="entry"/>
+        </source>
+        <rule>
+          <name value="uuid"/>
+          <source>
+            <context value="entry"/>
+            <element value="fullUrl"/>
+            <condition value="($this in %composition.author.reference) and $this.startsWith(&#39;urn:uuid&#39;)"/>
+          </source>
+          <rule>
+            <name value="organization"/>
+            <source>
+              <context value="entry"/>
+              <type value="Organization"/>
+              <element value="resource"/>
+              <variable value="organization"/>
+            </source>
+            <target>
+              <context value="assignedAuthor"/>
+              <contextType value="variable"/>
+              <element value="representedOrganization"/>
+              <variable value="cdaorganization"/>
+            </target>
+            <dependent>
+              <name value="Organization2CdaOrganization"/>
+              <variable value="organization"/>
+              <variable value="cdaorganization"/>
+            </dependent>
+          </rule>
+        </rule>
+        <rule>
+          <name value="organization"/>
+          <source>
+            <context value="entry"/>
+            <element value="resource"/>
+            <variable value="organization"/>
+            <condition value="(&#39;Organization&#39; + &#39;/&#39; + $this.id) in %composition.author.reference"/>
+          </source>
+          <target>
+            <context value="assignedAuthor"/>
+            <contextType value="variable"/>
+            <element value="representedOrganization"/>
+            <variable value="cdaorganization"/>
+          </target>
+          <dependent>
+            <name value="Organization2CdaOrganization"/>
+            <variable value="organization"/>
+            <variable value="cdaorganization"/>
+          </dependent>
+        </rule>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="OrganizationCustodian"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="Organization"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="Custodian"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="assignedCustodian"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="assignedCustodian"/>
+        <variable value="assignedCustodian"/>
+      </target>
+      <rule>
+        <name value="representedCustodianOrganization"/>
+        <source>
+          <context value="src"/>
+        </source>
+        <target>
+          <context value="assignedCustodian"/>
+          <contextType value="variable"/>
+          <element value="representedCustodianOrganization"/>
+          <variable value="representedCustodianOrganization"/>
+        </target>
+        <dependent>
+          <name value="Organization2CdaOrganizationCustodian"/>
+          <variable value="src"/>
+          <variable value="representedCustodianOrganization"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+  <group>
+    <name value="Organization2CdaOrganizationCustodian"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="Organization"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="CdaOrganization"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="id"/>
+      <source>
+        <context value="src"/>
+        <element value="identifier"/>
+        <variable value="identifier"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <variable value="id"/>
+      </target>
+      <dependent>
+        <name value="IdentifierII"/>
+        <variable value="identifier"/>
+        <variable value="id"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="name"/>
+      <source>
+        <context value="src"/>
+        <element value="name"/>
+        <variable value="name"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="name"/>
+        <variable value="orgname"/>
+      </target>
+      <target>
+        <context value="orgname"/>
+        <contextType value="variable"/>
+        <element value="other"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="name"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="address"/>
+      <source>
+        <context value="src"/>
+        <element value="address"/>
+        <variable value="address"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="addr"/>
+        <variable value="ad"/>
+      </target>
+      <dependent>
+        <name value="AddressAD"/>
+        <variable value="address"/>
+        <variable value="ad"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="telecom"/>
+      <source>
+        <context value="src"/>
+        <element value="telecom"/>
+        <listMode value="first"/>
+        <variable value="telecom"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="telecom"/>
+        <variable value="tel"/>
+      </target>
+      <dependent>
+        <name value="ContactPointTEL"/>
+        <variable value="telecom"/>
+        <variable value="tel"/>
+      </dependent>
+      <documentation value="target telecom is 0..1"/>
+    </rule>
+  </group>
+  <group>
+    <name value="Organization2CdaOrganization"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="src"/>
+      <type value="Organization"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="CdaOrganization"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="id"/>
+      <source>
+        <context value="src"/>
+        <element value="identifier"/>
+        <variable value="identifier"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="id"/>
+        <variable value="id"/>
+      </target>
+      <dependent>
+        <name value="IdentifierII"/>
+        <variable value="identifier"/>
+        <variable value="id"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="name"/>
+      <source>
+        <context value="src"/>
+        <element value="name"/>
+        <variable value="name"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="name"/>
+        <variable value="orgname"/>
+      </target>
+      <target>
+        <context value="orgname"/>
+        <contextType value="variable"/>
+        <element value="other"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueId value="name"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="address"/>
+      <source>
+        <context value="src"/>
+        <element value="address"/>
+        <variable value="address"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="addr"/>
+        <variable value="ad"/>
+      </target>
+      <dependent>
+        <name value="AddressAD"/>
+        <variable value="address"/>
+        <variable value="ad"/>
+      </dependent>
+    </rule>
+    <rule>
+      <name value="telecom"/>
+      <source>
+        <context value="src"/>
+        <element value="telecom"/>
+        <variable value="telecom"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="telecom"/>
+        <variable value="tel"/>
+      </target>
+      <dependent>
+        <name value="ContactPointTEL"/>
+        <variable value="telecom"/>
+        <variable value="tel"/>
+      </dependent>
+    </rule>
+  </group>
+  <group>
+    <name value="PractitionerLegalAuthenticator"/>
+    <typeMode value="none"/>
+    <input>
+      <name value="bundle"/>
+      <type value="Bundle"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="composition"/>
+      <type value="Composition"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="src"/>
+      <type value="Practitioner"/>
+      <mode value="source"/>
+    </input>
+    <input>
+      <name value="tgt"/>
+      <type value="LegalAuthenticator"/>
+      <mode value="target"/>
+    </input>
+    <rule>
+      <name value="templateId"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="templateId"/>
+        <variable value="templateId"/>
+      </target>
+      <target>
+        <context value="templateId"/>
+        <contextType value="variable"/>
+        <element value="root"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="2.16.756.5.30.1.1.10.2.5"/>
+        </parameter>
+      </target>
+    </rule>
+    <rule>
+      <name value="time"/>
+      <source>
+        <context value="composition"/>
+        <element value="attester"/>
+        <variable value="attester"/>
+      </source>
+      <rule>
+        <name value="timestamp"/>
+        <source>
+          <context value="attester"/>
+          <element value="time"/>
+          <variable value="srcTime"/>
+        </source>
+        <target>
+          <context value="tgt"/>
+          <contextType value="variable"/>
+          <element value="time"/>
+          <variable value="time"/>
+        </target>
+        <dependent>
+          <name value="InstantTS"/>
+          <variable value="srcTime"/>
+          <variable value="time"/>
+        </dependent>
+      </rule>
+    </rule>
+    <rule>
+      <name value="signature"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="signatureCode"/>
+        <variable value="signatureCode"/>
+      </target>
+      <target>
+        <context value="signatureCode"/>
+        <contextType value="variable"/>
+        <element value="code"/>
+        <transform value="copy"/>
+        <parameter>
+          <valueString value="S"/>
+        </parameter>
+      </target>
+      <documentation value="src -&gt; tgt.signatureCode = &#39;S&#39; &quot;S&quot;;"/>
+    </rule>
+    <rule>
+      <name value="assignedEntity"/>
+      <source>
+        <context value="src"/>
+      </source>
+      <target>
+        <context value="tgt"/>
+        <contextType value="variable"/>
+        <element value="assignedEntity"/>
+        <variable value="assignedEntity"/>
+      </target>
+      <rule>
+        <name value="identifier"/>
+        <source>
+          <context value="src"/>
+          <element value="identifier"/>
+          <variable value="identifier"/>
+        </source>
+        <target>
+          <context value="assignedEntity"/>
+          <contextType value="variable"/>
+          <element value="id"/>
+          <variable value="id"/>
+        </target>
+        <dependent>
+          <name value="IdentifierII"/>
+          <variable value="identifier"/>
+          <variable value="id"/>
+        </dependent>
+      </rule>
+      <rule>
+        <name value="name"/>
+        <source>
+          <context value="src"/>
+          <element value="name"/>
+          <variable value="name"/>
+        </source>
+        <target>
+          <context value="assignedEntity"/>
+          <contextType value="variable"/>
+          <element value="assignedPerson"/>
+          <variable value="assignedPerson"/>
+        </target>
+        <target>
+          <context value="assignedPerson"/>
+          <contextType value="variable"/>
+          <element value="name"/>
+          <variable value="en"/>
+        </target>
+        <dependent>
+          <name value="HumanNameEN"/>
+          <variable value="name"/>
+          <variable value="en"/>
+        </dependent>
+      </rule>
+    </rule>
+  </group>
+</StructureMap>
