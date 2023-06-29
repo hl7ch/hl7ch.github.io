@@ -1,0 +1,96 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Specimen/Throat-swab> a fhir:Specimen;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "Throat-swab"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"Throat-swab\" </p></div><p><b>identifier</b>: id: 48736-15394-75465</p><p><b>accessionIdentifier</b>: id: 4e88a-bc987-dd888</p><p><b>status</b>: available</p><p><b>type</b>: Throat swab (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#258529004)</span></p><p><b>subject</b>: <a href=\"Patient-FranzMuster.html\">Patient/FranzMuster</a> \" MUSTER\"</p><p><b>receivedTime</b>: 2020-08-16T16:40:17Z</p><p><b>request</b>: <a href=\"ServiceRequest-Lab.html\">ServiceRequest/Lab</a></p><h3>Collections</h3><table class=\"grid\"><tr><td>-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>Method</b></td><td><b>BodySite</b></td></tr><tr><td>*</td><td><a href=\"Practitioner-MarcMustermann.html\">Practitioner/MarcMustermann</a> \" MUSTERMANN\"</td><td>2020-08-16T06:40:17Z</td><td>Oral swab (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#418932006)</span></td><td>Entire throat (surface region of neck) (body structure) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#264231000)</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td>-</td><td><b>Identifier</b></td><td><b>Description</b></td><td><b>Type</b></td></tr><tr><td>*</td><td>id: 4e88a-bc987-dd888-12345</td><td>ESwab 486C tubes Copan</td><td>General specimen container (physical object) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#706053007)</span></td></tr></table><p><b>note</b>: Some notes to Sample</p></div>"
+  ];
+  fhir:Specimen.identifier [
+     fhir:index 0;
+     fhir:Identifier.value [ fhir:value "48736-15394-75465" ]
+  ];
+  fhir:Specimen.accessionIdentifier [
+     fhir:Identifier.value [ fhir:value "4e88a-bc987-dd888" ]
+  ];
+  fhir:Specimen.status [ fhir:value "available"];
+  fhir:Specimen.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:258529004;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "258529004" ];
+       fhir:Coding.display [ fhir:value "Throat swab (specimen)" ]
+     ]
+  ];
+  fhir:Specimen.subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/FranzMuster>;
+     fhir:Reference.reference [ fhir:value "Patient/FranzMuster" ]
+  ];
+  fhir:Specimen.receivedTime [ fhir:value "2020-08-16T16:40:17Z"^^xsd:dateTime];
+  fhir:Specimen.request [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/ServiceRequest/Lab>;
+     fhir:Reference.reference [ fhir:value "ServiceRequest/Lab" ]
+  ];
+  fhir:Specimen.collection [
+     fhir:Specimen.collection.collector [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/Practitioner/MarcMustermann>;
+       fhir:Reference.reference [ fhir:value "Practitioner/MarcMustermann" ]
+     ];
+     fhir:Specimen.collection.collectedDateTime [ fhir:value "2020-08-16T06:40:17Z"^^xsd:dateTime ];
+     fhir:Specimen.collection.method [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a sct:418932006;
+         fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+         fhir:Coding.code [ fhir:value "418932006" ];
+         fhir:Coding.display [ fhir:value "Oral swab (specimen)" ]
+       ]
+     ];
+     fhir:Specimen.collection.bodySite [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a sct:264231000;
+         fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+         fhir:Coding.code [ fhir:value "264231000" ];
+         fhir:Coding.display [ fhir:value "Entire throat (surface region of neck) (body structure)" ]
+       ]
+     ]
+  ];
+  fhir:Specimen.container [
+     fhir:index 0;
+     fhir:Specimen.container.identifier [
+       fhir:index 0;
+       fhir:Identifier.value [ fhir:value "4e88a-bc987-dd888-12345" ]
+     ];
+     fhir:Specimen.container.description [ fhir:value "ESwab 486C tubes Copan" ];
+     fhir:Specimen.container.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a sct:706053007;
+         fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+         fhir:Coding.code [ fhir:value "706053007" ];
+         fhir:Coding.display [ fhir:value "General specimen container (physical object)" ]
+       ]
+     ]
+  ];
+  fhir:Specimen.note [
+     fhir:index 0;
+     fhir:Annotation.text [ fhir:value "Some notes to Sample" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Specimen/Throat-swab.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

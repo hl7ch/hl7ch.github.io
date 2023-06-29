@@ -1,0 +1,69 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Specimen/Blood> a fhir:Specimen;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "Blood"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"Blood\" </p></div><p><b>status</b>: available</p><p><b>type</b>: Blood sample <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#119297000)</span></p><p><b>subject</b>: <a href=\"Patient-BeatBorer.html\">Patient/BeatBorer</a> \" BORER\"</p><h3>Collections</h3><table class=\"grid\"><tr><td>-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>BodySite</b></td></tr><tr><td>*</td><td><a href=\"Practitioner-MarcMustermann.html\">Practitioner/MarcMustermann</a> \" MUSTERMANN\"</td><td>2015-08-16T06:40:17Z</td><td>Structure of superficial vein of left upper limb (body structure) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#721029009)</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td>-</td><td><b>Type</b></td></tr><tr><td>*</td><td>General specimen container (physical object) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#706053007)</span></td></tr></table><p><b>note</b>: Specimen is grossly lipemic</p></div>"
+  ];
+  fhir:Specimen.status [ fhir:value "available"];
+  fhir:Specimen.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:119297000;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "119297000" ];
+       fhir:Coding.display [ fhir:value "Blood sample" ]
+     ]
+  ];
+  fhir:Specimen.subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/BeatBorer>;
+     fhir:Reference.reference [ fhir:value "Patient/BeatBorer" ]
+  ];
+  fhir:Specimen.collection [
+     fhir:Specimen.collection.collector [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/Practitioner/MarcMustermann>;
+       fhir:Reference.reference [ fhir:value "Practitioner/MarcMustermann" ]
+     ];
+     fhir:Specimen.collection.collectedDateTime [ fhir:value "2015-08-16T06:40:17Z"^^xsd:dateTime ];
+     fhir:Specimen.collection.bodySite [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a sct:721029009;
+         fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+         fhir:Coding.code [ fhir:value "721029009" ];
+         fhir:Coding.display [ fhir:value "Structure of superficial vein of left upper limb (body structure)" ]
+       ]
+     ]
+  ];
+  fhir:Specimen.container [
+     fhir:index 0;
+     fhir:Specimen.container.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a sct:706053007;
+         fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+         fhir:Coding.code [ fhir:value "706053007" ];
+         fhir:Coding.display [ fhir:value "General specimen container (physical object)" ]
+       ]
+     ]
+  ];
+  fhir:Specimen.note [
+     fhir:index 0;
+     fhir:Annotation.text [ fhir:value "Specimen is grossly lipemic" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Specimen/Blood.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

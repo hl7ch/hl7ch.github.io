@@ -1,0 +1,113 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/2-pertussis> a fhir:ServiceRequest;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "2-pertussis"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"2-pertussis\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-orf/StructureDefinition-ch-orf-servicerequest.html\">CH ORF ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier: 123</p><p><b>status</b>: active</p><p><b>intent</b>: original-order</p><p><b>category</b>: Anforderung Laboruntersuchung <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (ch-lab-order-servicerequest-categories#RequestForLabExam)</span></p><p><b>priority</b>: urgent</p><p><b>code</b>: Hemoglobin and Hematocrit panel - Blood <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#24360-0; <a href=\"https://loinc.org/\">LOINC</a>#43113-0 \"Hemoglobin electrophoresis panel in Blood\"; <a href=\"https://loinc.org/\">LOINC</a>#57021-8 \"CBC W Auto Differential panel - Blood\")</span></p><p><b>subject</b>: <a href=\"Patient-EmilKummer.html\">Patient/EmilKummer</a> \" KUMMER\"</p><p><b>requester</b>: <a href=\"PractitionerRole-PeterPrestoGruppenpraxis.html\">PractitionerRole/PeterPrestoGruppenpraxis</a></p><p><b>reasonCode</b>: Pertussis suspected (situation) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#772146005)</span></p><p><b>insurance</b>: <a href=\"Coverage-HealthInsuranceCard.html\">Coverage/HealthInsuranceCard</a></p><p><b>specimen</b>: </p><ul><li><a href=\"Specimen-Throat-swab.html\">Specimen/Throat-swab</a></li><li><a href=\"Specimen-Blood.html\">Specimen/Blood</a></li><li><a href=\"Specimen-Serum.html\">Specimen/Serum</a></li></ul></div>"
+  ];
+  fhir:ServiceRequest.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0203" ];
+         fhir:Coding.code [ fhir:value "PLAC" ];
+         fhir:Coding.display [ fhir:value "Placer Identifier" ]
+       ]
+     ];
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.30" ];
+     fhir:Identifier.value [ fhir:value "123" ]
+  ];
+  fhir:ServiceRequest.status [ fhir:value "active"];
+  fhir:ServiceRequest.intent [ fhir:value "original-order"];
+  fhir:ServiceRequest.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-lab-order/CodeSystem/ch-lab-order-servicerequest-categories" ];
+       fhir:Coding.code [ fhir:value "RequestForLabExam" ];
+       fhir:Coding.display [ fhir:value "Anforderung Laboruntersuchung" ]
+     ]
+  ];
+  fhir:ServiceRequest.priority [ fhir:value "urgent"];
+  fhir:ServiceRequest.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:24360-0;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "24360-0" ];
+       fhir:Coding.display [ fhir:value "Hemoglobin and Hematocrit panel - Blood" ]
+     ], [
+       fhir:index 1;
+       a loinc:43113-0;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "43113-0" ];
+       fhir:Coding.display [ fhir:value "Hemoglobin electrophoresis panel in Blood" ]
+     ], [
+       fhir:index 2;
+       a loinc:57021-8;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "57021-8" ];
+       fhir:Coding.display [ fhir:value "CBC W Auto Differential panel - Blood" ]
+     ]
+  ];
+  fhir:ServiceRequest.subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/EmilKummer>;
+     fhir:Reference.reference [ fhir:value "Patient/EmilKummer" ]
+  ];
+  fhir:ServiceRequest.requester [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/PeterPrestoGruppenpraxis>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/PeterPrestoGruppenpraxis" ]
+  ];
+  fhir:ServiceRequest.reasonCode [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:772146005;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "772146005" ]
+     ];
+     fhir:CodeableConcept.text [ fhir:value "Pertussis suspected (situation)" ]
+  ];
+  fhir:ServiceRequest.insurance [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Coverage/HealthInsuranceCard>;
+     fhir:Reference.reference [ fhir:value "Coverage/HealthInsuranceCard" ]
+  ];
+  fhir:ServiceRequest.specimen [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Throat-swab>;
+     fhir:Reference.reference [ fhir:value "Specimen/Throat-swab" ]
+  ], [
+     fhir:index 1;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Blood>;
+     fhir:Reference.reference [ fhir:value "Specimen/Blood" ]
+  ], [
+     fhir:index 2;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Serum>;
+     fhir:Reference.reference [ fhir:value "Specimen/Serum" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/2-pertussis.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

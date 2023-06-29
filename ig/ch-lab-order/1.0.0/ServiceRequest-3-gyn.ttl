@@ -1,0 +1,123 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/3-gyn> a fhir:ServiceRequest;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "3-gyn"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"3-gyn\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-orf/StructureDefinition-ch-orf-servicerequest.html\">CH ORF ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier: 123</p><p><b>status</b>: active</p><p><b>intent</b>: original-order</p><p><b>category</b>: Anforderung Laboruntersuchung <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (ch-lab-order-servicerequest-categories#RequestForLabExam)</span></p><p><b>priority</b>: routine</p><p><b>code</b>: Pap smear tests - FPAR 2.0 set <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#86662-4; <a href=\"https://loinc.org/\">LOINC</a>#14503-7 \"Human papilloma virus 16+18 Ag [Presence] in Cervix\"; <a href=\"https://loinc.org/\">LOINC</a>#50556-0 \"Urinalysis dipstick panel - Urine by Automated test strip\"; <a href=\"https://loinc.org/\">LOINC</a>#24364-2 \"Obstetric 1996 Pnl Ser+Bld\")</span></p><p><b>subject</b>: <a href=\"Patient-MarinaRubella.html\">Patient/MarinaRubella</a> \" RUBELLA\"</p><p><b>requester</b>: <a href=\"PractitionerRole-PeterPapGruppenpraxis.html\">PractitionerRole/PeterPapGruppenpraxis</a></p><p><b>reasonCode</b>: Routine gynecologic examination (procedure) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#702601001)</span></p><p><b>insurance</b>: <a href=\"Coverage-HealthInsuranceCard.html\">Coverage/HealthInsuranceCard</a></p><p><b>specimen</b>: </p><ul><li><a href=\"Specimen-Cervix-swab.html\">Specimen/Cervix-swab</a></li><li><a href=\"Specimen-Blood.html\">Specimen/Blood</a></li><li><a href=\"Specimen-Serum.html\">Specimen/Serum</a></li><li><a href=\"Specimen-Urin.html\">Specimen/Urin</a></li></ul></div>"
+  ];
+  fhir:ServiceRequest.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0203" ];
+         fhir:Coding.code [ fhir:value "PLAC" ];
+         fhir:Coding.display [ fhir:value "Placer Identifier" ]
+       ]
+     ];
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.30" ];
+     fhir:Identifier.value [ fhir:value "123" ]
+  ];
+  fhir:ServiceRequest.status [ fhir:value "active"];
+  fhir:ServiceRequest.intent [ fhir:value "original-order"];
+  fhir:ServiceRequest.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-lab-order/CodeSystem/ch-lab-order-servicerequest-categories" ];
+       fhir:Coding.code [ fhir:value "RequestForLabExam" ];
+       fhir:Coding.display [ fhir:value "Anforderung Laboruntersuchung" ]
+     ]
+  ];
+  fhir:ServiceRequest.priority [ fhir:value "routine"];
+  fhir:ServiceRequest.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:86662-4;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "86662-4" ];
+       fhir:Coding.display [ fhir:value "Pap smear tests - FPAR 2.0 set" ]
+     ], [
+       fhir:index 1;
+       a loinc:14503-7;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "14503-7" ];
+       fhir:Coding.display [ fhir:value "Human papilloma virus 16+18 Ag [Presence] in Cervix" ]
+     ], [
+       fhir:index 2;
+       a loinc:50556-0;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "50556-0" ];
+       fhir:Coding.display [ fhir:value "Urinalysis dipstick panel - Urine by Automated test strip" ]
+     ], [
+       fhir:index 3;
+       a loinc:24364-2;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "24364-2" ];
+       fhir:Coding.display [ fhir:value "Obstetric 1996 Pnl Ser+Bld" ]
+     ]
+  ];
+  fhir:ServiceRequest.subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/MarinaRubella>;
+     fhir:Reference.reference [ fhir:value "Patient/MarinaRubella" ]
+  ];
+  fhir:ServiceRequest.requester [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/PeterPapGruppenpraxis>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/PeterPapGruppenpraxis" ]
+  ];
+  fhir:ServiceRequest.reasonCode [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:702601001;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "702601001" ]
+     ];
+     fhir:CodeableConcept.text [ fhir:value "Routine gynecologic examination (procedure)" ]
+  ];
+  fhir:ServiceRequest.insurance [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Coverage/HealthInsuranceCard>;
+     fhir:Reference.reference [ fhir:value "Coverage/HealthInsuranceCard" ]
+  ];
+  fhir:ServiceRequest.specimen [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Cervix-swab>;
+     fhir:Reference.reference [ fhir:value "Specimen/Cervix-swab" ]
+  ], [
+     fhir:index 1;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Blood>;
+     fhir:Reference.reference [ fhir:value "Specimen/Blood" ]
+  ], [
+     fhir:index 2;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Serum>;
+     fhir:Reference.reference [ fhir:value "Specimen/Serum" ]
+  ], [
+     fhir:index 3;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Urin>;
+     fhir:Reference.reference [ fhir:value "Specimen/Urin" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/3-gyn.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

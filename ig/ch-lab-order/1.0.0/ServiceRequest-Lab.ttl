@@ -1,0 +1,99 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/Lab> a fhir:ServiceRequest;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "Lab"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"Lab\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-orf/StructureDefinition-ch-orf-servicerequest.html\">CH ORF ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier: 123</p><p><b>status</b>: active</p><p><b>intent</b>: original-order</p><p><b>category</b>: Laboratory procedure (procedure) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#108252007)</span></p><p><b>priority</b>: urgent</p><p><b>subject</b>: <a href=\"Patient-HansGuggindieluft.html\">Patient/HansGuggindieluft</a> \" GUGGINDIELUFT\"</p><p><b>requester</b>: <a href=\"PractitionerRole-MarcMustermannArztpraxis.html\">PractitionerRole/MarcMustermannArztpraxis</a></p><p><b>performerType</b>: Laboratory medicine specialist (occupation) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#61246008)</span></p><p><b>performer</b>: <a href=\"PractitionerRole-EvaErlenmeyerLaborPipette.html\">PractitionerRole/EvaErlenmeyerLaborPipette</a></p><p><b>reasonCode</b>: Deep venous thrombosis of lower extremity <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#404223003)</span></p><p><b>insurance</b>: <a href=\"Coverage-HealthInsuranceCard.html\">Coverage/HealthInsuranceCard</a></p><p><b>specimen</b>: <a href=\"Specimen-Serum.html\">Specimen/Serum: Serum specimen</a></p></div>"
+  ];
+  fhir:ServiceRequest.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0203" ];
+         fhir:Coding.code [ fhir:value "PLAC" ];
+         fhir:Coding.display [ fhir:value "Placer Identifier" ]
+       ]
+     ];
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.30" ];
+     fhir:Identifier.value [ fhir:value "123" ]
+  ];
+  fhir:ServiceRequest.status [ fhir:value "active"];
+  fhir:ServiceRequest.intent [ fhir:value "original-order"];
+  fhir:ServiceRequest.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:108252007;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "108252007" ]
+     ];
+     fhir:CodeableConcept.text [ fhir:value "Laboratory procedure (procedure)" ]
+  ];
+  fhir:ServiceRequest.priority [ fhir:value "urgent"];
+  fhir:ServiceRequest.subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/HansGuggindieluft>;
+     fhir:Reference.reference [ fhir:value "Patient/HansGuggindieluft" ]
+  ];
+  fhir:ServiceRequest.requester [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/MarcMustermannArztpraxis>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/MarcMustermannArztpraxis" ]
+  ];
+  fhir:ServiceRequest.performerType [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:61246008;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "61246008" ]
+     ];
+     fhir:CodeableConcept.text [ fhir:value "Laboratory medicine specialist (occupation)" ]
+  ];
+  fhir:ServiceRequest.performer [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/EvaErlenmeyerLaborPipette>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/EvaErlenmeyerLaborPipette" ]
+  ];
+  fhir:ServiceRequest.reasonCode [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:404223003;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "404223003" ]
+     ];
+     fhir:CodeableConcept.text [ fhir:value "Deep venous thrombosis of lower extremity" ]
+  ];
+  fhir:ServiceRequest.insurance [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Coverage/HealthInsuranceCard>;
+     fhir:Reference.reference [ fhir:value "Coverage/HealthInsuranceCard" ]
+  ];
+  fhir:ServiceRequest.specimen [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Serum>;
+     fhir:Reference.reference [ fhir:value "Specimen/Serum" ];
+     fhir:Reference.display [ fhir:value "Serum specimen" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/Lab.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
