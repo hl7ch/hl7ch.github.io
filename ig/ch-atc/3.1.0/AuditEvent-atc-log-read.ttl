@@ -1,0 +1,84 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-atc/AuditEvent/atc-log-read> a fhir:AuditEvent;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "atc-log-read"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-atc/StructureDefinition/AccessAuditTrailEvent";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-atc/StructureDefinition/AccessAuditTrailEvent>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">Jakob Wieder-Gesund has viewed the audit trail 22.09.2020 10:47 </div>"
+  ];
+  fhir:AuditEvent.type [
+     fhir:Coding.system [ fhir:value "http://dicom.nema.org/resources/ontology/DCM" ];
+     fhir:Coding.code [ fhir:value "110106" ];
+     fhir:Coding.display [ fhir:value "Export" ]
+  ];
+  fhir:AuditEvent.subtype [
+     fhir:index 0;
+     fhir:Coding.system [ fhir:value "urn:oid:2.16.756.5.30.1.127.3.10.7" ];
+     fhir:Coding.code [ fhir:value "ATC_LOG_READ" ];
+     fhir:Coding.display [ fhir:value "Accessing the Patient Audit Record Repository" ]
+  ];
+  fhir:AuditEvent.action [ fhir:value "C"];
+  fhir:AuditEvent.recorded [ fhir:value "2020-09-22T08:47:00Z"^^xsd:dateTime];
+  fhir:AuditEvent.outcome [ fhir:value "0"];
+  fhir:AuditEvent.agent [
+     fhir:index 0;
+     fhir:AuditEvent.agent.role [
+       fhir:index 0;
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:2.16.756.5.30.1.127.3.10.6" ];
+         fhir:Coding.code [ fhir:value "PAT" ];
+         fhir:Coding.display [ fhir:value "Patient" ]
+       ]
+     ];
+     fhir:AuditEvent.agent.name [ fhir:value "Jakob Wieder-Gesund" ];
+     fhir:AuditEvent.agent.requestor [ fhir:value "true"^^xsd:boolean ]
+  ];
+  fhir:AuditEvent.source [
+     fhir:AuditEvent.source.observer [
+       fhir:Reference.identifier [
+         fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+         fhir:Identifier.value [ fhir:value "urn:oid:7.8.9.10.11" ]
+       ]
+     ]
+  ];
+  fhir:AuditEvent.entity [
+     fhir:index 0;
+     fhir:AuditEvent.entity.what [
+       fhir:Reference.identifier [
+         fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.30.1.127.3.10.3" ];
+         fhir:Identifier.value [ fhir:value "761337610469261945" ]
+       ]
+     ];
+     fhir:AuditEvent.entity.type [
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/audit-entity-type" ];
+       fhir:Coding.code [ fhir:value "1" ];
+       fhir:Coding.display [ fhir:value "Person" ]
+     ];
+     fhir:AuditEvent.entity.role [
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/object-role" ];
+       fhir:Coding.code [ fhir:value "1" ];
+       fhir:Coding.display [ fhir:value "Patient" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-atc/AuditEvent/atc-log-read.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

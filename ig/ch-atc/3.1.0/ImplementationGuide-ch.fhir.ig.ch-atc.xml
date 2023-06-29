@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ImplementationGuide xmlns="http://hl7.org/fhir">
+  <id value="ch.fhir.ig.ch-atc"/>
+  <text>
+    <status value="additional"/><div xmlns="http://www.w3.org/1999/xhtml">
+	Implementation Guide for CH ATC                         
+      <br/>
+      This profile CH ATC defines the audit trail consumption requirements which a community has to provide for a patients audit trail.                  
+      <br/>
+
+    </div>
+  </text>
+  <url value="http://fhir.ch/ig/ch-atc/ImplementationGuide/ch.fhir.ig.ch-atc"/>
+  <version value="3.1.0"/>
+  <name value="CH_ATC"/>
+  <title value="CH ATC (R4)"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2018-05-14T00:00:00+02:00"/>
+  <publisher value="eHealth Suisse"/>
+  <contact>
+    <name value="eHealth Suisse"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.e-health-suisse.ch/"/>
+    </telecom>
+  </contact>
+  <contact>
+    <name value="Oliver Egger"/>
+    <telecom>
+      <system value="email"/>
+      <value value="oliver.egger@ahdis.ch"/>
+    </telecom>
+  </contact>
+  <description value="Implementation Guide for CH ATC see Audit Trail Consumption"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="CH"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="CC-BY-SA-4.0"/>
+  <packageId value="ch.fhir.ig.ch-atc"/>
+  <license value="CC0-1.0"/>
+  <fhirVersion value="4.0.1"/>
+  <dependsOn id="cheprterm">
+    <uri value="http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term"/>
+    <packageId value="ch.fhir.ig.ch-epr-term"/>
+    <version value="current"/>
+  </dependsOn>
+  <definition>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="Draft"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="copyrightyear"/>
+      </extension>
+      <extension url="value">
+        <valueString value="2020+"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="autoload-resources"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-qa"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/qa"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-temp"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/pages"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-output"/>
+      </extension>
+      <extension url="value">
+        <valueString value="output"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="path-suppressed-warnings"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/ignoreWarnings.txt"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="template-html"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="template-md"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page-md.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-contact"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-context"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-copyright"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-jurisdiction"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-license"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-publisher"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="active-tables"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <grouping>
+      <name value="CH ATC"/>
+      <description value="This profile CH ATC defines the audit trail consumption requirements which a community has to provide for a patients audit trail."/>
+    </grouping>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="SearchParameter"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="SearchParameter-AuditEvent-entity-identifier.html"/>
+      </extension>
+      <reference>
+        <reference value="SearchParameter/AuditEvent-entity-identifier"/>
+      </reference>
+      <name value="Search Parameter AuditEvent entity.identifier"/>
+      <description value="Defines the IHE RESTFul ATNA Query Parameter entity.identifier for an AuditEvent"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-DocumentAuditEvent.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/DocumentAuditEvent"/>
+      </reference>
+      <name value="Profile on DocumentAuditEvent for CH ATC"/>
+      <description value="Profile on DocumentAuditEvent for CH ATC"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-PolicyAuditEvent.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/PolicyAuditEvent"/>
+      </reference>
+      <name value="Profile on PolicyAuditEvent for CH ATC"/>
+      <description value="Profile on PolicyAuditEvent for CH ATC"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-AccessAuditTrailEvent.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/AccessAuditTrailEvent"/>
+      </reference>
+      <name value="Profile on AccessAuditTrailEvent for CH ATC"/>
+      <description value="Profile on AccessAuditTrailEvent for CH ATC"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="StructureDefinition-CH-ATC.ITI-81.Response.html"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/CH-ATC.ITI-81.Response"/>
+      </reference>
+      <name value="Retrieve CH ATC ATNA Audit Event [ITI-81] Response"/>
+      <description value="Retrieve CH ATC ATNA Audit Event [ITI-81] Response"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-EprParticipant.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/EprParticipant"/>
+      </reference>
+      <name value="EPR Participant"/>
+      <description value="EPR Participant"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-DocumentAuditEventType.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/DocumentAuditEventType"/>
+      </reference>
+      <name value="DocumentAuditEventType"/>
+      <description value="DocumentAuditEventType"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-PolicyAuditEventType.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/PolicyAuditEventType"/>
+      </reference>
+      <name value="PolicyAuditEventType"/>
+      <description value="PolicyAuditEventType"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="ValueSet-AccessAuditTrailEventType.html"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/AccessAuditTrailEventType"/>
+      </reference>
+      <name value="AccessAuditTrailEventType"/>
+      <description value="AccessAuditTrailEventType"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="AuditEvent"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="AuditEvent-atc-doc-create-rep-pat.html"/>
+      </extension>
+      <reference>
+        <reference value="AuditEvent/atc-doc-create-rep-pat"/>
+      </reference>
+      <name value="CH ATC - Creation of a Document"/>
+      <description value="CH ATC - Creation of a Document for a patient by a representative of this patient"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-atc/StructureDefinition/DocumentAuditEvent"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="AuditEvent"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="AuditEvent-atc-doc-read-ass-hpc.html"/>
+      </extension>
+      <reference>
+        <reference value="AuditEvent/atc-doc-read-ass-hpc"/>
+      </reference>
+      <name value="CH ATC - Retrieveal of a Document"/>
+      <description value="CH ATC - Retrieveal of a Document from a patient by an assitant for a healthcrare professional"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-atc/StructureDefinition/DocumentAuditEvent"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="AuditEvent"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="AuditEvent-atc-pol-create-acc-right.html"/>
+      </extension>
+      <reference>
+        <reference value="AuditEvent/atc-pol-create-acc-right"/>
+      </reference>
+      <name value="CH ATC - Create Access Right for Healthcare professional"/>
+      <description value="CH ATC - Create Access Right for Healthcare professional"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-atc/StructureDefinition/PolicyAuditEvent"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="AuditEvent"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="AuditEvent-atc-pol-create-rep.html"/>
+      </extension>
+      <reference>
+        <reference value="AuditEvent/atc-pol-create-rep"/>
+      </reference>
+      <name value="CH ATC - Create Access Right for a representative"/>
+      <description value="CH ATC - Create Access Right a representative"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-atc/StructureDefinition/PolicyAuditEvent"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="AuditEvent"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="AuditEvent-atc-log-read.html"/>
+      </extension>
+      <reference>
+        <reference value="AuditEvent/atc-log-read"/>
+      </reference>
+      <name value="CH ATC - Access of Audit Trail Repository"/>
+      <description value="CH ATC - Access of Audit Trail Repository"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-atc/StructureDefinition/AccessAuditTrailEvent"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/implementationguide-page">
+        <valueUri value="Bundle-ch-atc-iti-81-response-sample.html"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/ch-atc-iti-81-response-sample"/>
+      </reference>
+      <name value="CH ATC -Reponse Audit Trail"/>
+      <description value="CH ATC -Reponse Audit Trail"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-atc/StructureDefinition/CH-ATC.ITI-81.Response"/>
+    </resource>
+    <page>
+      <nameUrl value="toc.html"/>
+      <title value="Table of Contents"/>
+      <generation value="html"/>
+      <page>
+        <nameUrl value="index.html"/>
+        <title value="Home"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <nameUrl value="profiles.html"/>
+        <title value="Profiles"/>
+        <generation value="html"/>
+      </page>
+      <page>
+        <nameUrl value="terminology.html"/>
+        <title value="Terminology"/>
+        <generation value="html"/>
+      </page>
+    </page>
+    <parameter>
+      <code value="generate-json"/>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code value="generate-xml"/>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code value="generate-turtle"/>
+      <value value="false"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="input/pages"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/capabilities"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/examples"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/extensions"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/models"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/operations"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/profiles"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/resources"/>
+    </parameter>
+    <parameter>
+      <code value="path-resource"/>
+      <value value="input/vocabulary"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="template/config"/>
+    </parameter>
+    <parameter>
+      <code value="path-pages"/>
+      <value value="input/images"/>
+    </parameter>
+    <parameter>
+      <code value="path-tx-cache"/>
+      <value value="input-cache/txcache"/>
+    </parameter>
+  </definition>
+</ImplementationGuide>
