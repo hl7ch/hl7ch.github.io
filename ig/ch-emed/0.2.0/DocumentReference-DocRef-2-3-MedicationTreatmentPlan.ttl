@@ -1,0 +1,83 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/DocumentReference/DocRef-2-3-MedicationTreatmentPlan> a fhir:DocumentReference;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "DocRef-2-3-MedicationTreatmentPlan"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-documentreference-epr";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-documentreference-epr>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>status</b>: current</p><p><b>type</b>: <span title=\"Codes: {http://snomed.info/sct 419891008}\">Record artifact (record artifact)</span></p><p><b>category</b>: <span title=\"Codes: {http://snomed.info/sct 419891008}\">Record artifact (record artifact)</span></p><p><b>subject</b>: <a href=\"Patient-MonikaWegmueller.html\">Generated Summary: Medical record number: 11111111; Monika Wegmüller ; gender: female; birthDate: 1943-05-15</a></p><p><b>date</b>: Feb 4, 2012, 2:00:00 PM</p><p><b>author</b>: <a href=\"Practitioner-FamilienHausarzt.html\">Generated Summary: id: 7601000234438; Familien Hausarzt </a></p><p><b>securityLabel</b>: <span title=\"Codes: {http://snomed.info/sct 17621005}\">Normal (qualifier value)</span></p><blockquote><p><b>content</b></p><h3>Attachments</h3><table class=\"grid\"><tr><td>-</td></tr><tr><td>*</td></tr></table><p><b>format</b>: <span title=\"{urn:oid:2.16.756.5.30.1.127.3.10.10 urn:che:epr:EPR_Unstructured_Document}\">Unstructured EPR document</span></p></blockquote></div>"
+  ];
+  fhir:DocumentReference.status [ fhir:value "current"];
+  fhir:DocumentReference.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:419891008;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "419891008" ];
+       fhir:Coding.display [ fhir:value "Record artifact (record artifact)" ]
+     ]
+  ];
+  fhir:DocumentReference.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:419891008;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "419891008" ];
+       fhir:Coding.display [ fhir:value "Record artifact (record artifact)" ]
+     ]
+  ];
+  fhir:DocumentReference.subject [
+     fhir:link <http://fhir.ch/ig/ch-emed/Patient/MonikaWegmueller>;
+     fhir:Reference.reference [ fhir:value "Patient/MonikaWegmueller" ]
+  ];
+  fhir:DocumentReference.date [ fhir:value "2012-02-04T14:00:00.000+01:00"^^xsd:dateTime];
+  fhir:DocumentReference.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-emed/Practitioner/FamilienHausarzt>;
+     fhir:Reference.reference [ fhir:value "Practitioner/FamilienHausarzt" ]
+  ];
+  fhir:DocumentReference.securityLabel [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:17621005;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "17621005" ];
+       fhir:Coding.display [ fhir:value "Normal (qualifier value)" ]
+     ]
+  ];
+  fhir:DocumentReference.content [
+     fhir:index 0;
+     fhir:DocumentReference.content.attachment [
+       fhir:Attachment.contentType [ fhir:value "application/pdf" ];
+       fhir:Attachment.language [ fhir:value "de-CH" ];
+       fhir:Attachment.url [ fhir:value "http://www.fhir.ch/examples/2-3-MedicationTreatmentPlan.pdf" ]
+     ];
+     fhir:DocumentReference.content.format [
+       fhir:Coding.system [ fhir:value "urn:oid:2.16.756.5.30.1.127.3.10.10" ];
+       fhir:Coding.code [ fhir:value "urn:che:epr:EPR_Unstructured_Document" ];
+       fhir:Coding.display [ fhir:value "Unstructured EPR document" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/DocumentReference/DocRef-2-3-MedicationTreatmentPlan.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

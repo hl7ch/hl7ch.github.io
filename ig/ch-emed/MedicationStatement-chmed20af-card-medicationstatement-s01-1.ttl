@@ -1,0 +1,136 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/MedicationStatement/chmed20af-card-medicationstatement-s01-1> a fhir:MedicationStatement;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "chmed20af-card-medicationstatement-s01-1"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medicationstatement";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medicationstatement>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">ROACCUTAN Kaps 10 mg 30 Stk gegen Akne	bei Bedarf ab 12.9.2016</div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Medication;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "cont1" ];
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medication";
+         fhir:index 0;
+         fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medication>
+       ]
+     ];
+     fhir:Medication.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:2.51.1.1" ];
+         fhir:Coding.code [ fhir:value "7680453070343" ];
+         fhir:Coding.display [ fhir:value "ROACCUTAN Kaps 10 mg 30 Stk" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "ROACCUTAN Kaps 10 mg 30 Stk" ]
+     ];
+     fhir:Medication.form [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "10210000" ];
+         fhir:Coding.display [ fhir:value "Capsule, hard" ]
+       ]
+     ];
+     fhir:Medication.ingredient [
+       fhir:index 0;
+       fhir:Medication.ingredient.itemCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:387208003;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "387208003" ];
+           fhir:Coding.display [ fhir:value "Isotretinoin (substance)" ]
+         ]
+       ];
+       fhir:Medication.ingredient.strength [
+         fhir:Ratio.numerator [
+           fhir:Quantity.value [ fhir:value "10"^^xsd:decimal ];
+           fhir:Quantity.unit [ fhir:value "mg" ]
+         ];
+         fhir:Ratio.denominator [
+           fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ]
+         ]
+       ]
+     ]
+  ];
+  fhir:MedicationStatement.status [ fhir:value "completed"];
+  fhir:MedicationStatement.medicationReference [
+     fhir:Reference.reference [ fhir:value "#cont1" ]
+  ];
+  fhir:MedicationStatement.subject [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Patient/chmed20af-card-patient-s01>;
+     fhir:Reference.reference [ fhir:value "Patient/chmed20af-card-patient-s01" ]
+  ];
+  fhir:MedicationStatement.informationSource [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Practitioner/chmed20af-practitioner-s01>;
+     fhir:Reference.reference [ fhir:value "Practitioner/chmed20af-practitioner-s01" ]
+  ];
+  fhir:MedicationStatement.reasonCode [
+     fhir:index 0;
+     fhir:CodeableConcept.text [ fhir:value "Akne" ]
+  ];
+  fhir:MedicationStatement.note [
+     fhir:index 0;
+     fhir:Annotation.text [ fhir:value "-" ]
+  ];
+  fhir:MedicationStatement.dosage [
+     fhir:index 0;
+     fhir:Dosage.text [ fhir:value "bei Bedarf" ]
+  ], [
+     fhir:index 1;
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2016-09-12"^^xsd:date ];
+           fhir:Period.end [ fhir:value "2020-09-12"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.when [
+           fhir:value "PCM";
+           fhir:index 0
+         ]
+       ]
+     ];
+     fhir:Dosage.asNeededBoolean [ fhir:value "true"^^xsd:boolean ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20053000" ];
+         fhir:Coding.display [ fhir:value "Oral use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "Stück" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "1" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/MedicationStatement/chmed20af-card-medicationstatement-s01-1.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,155 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/Composition/DifferentAuthors> a fhir:Composition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "DifferentAuthors"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationcard";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationcard>
+     ]
+  ];
+  fhir:Resource.language [ fhir:value "de-CH"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: DifferentAuthors</p><p><b>meta</b>: </p><p><b>language</b>: de-CH</p><p><b>identifier</b>: urn:uuid:6b6ed376-a7da-44cb-92d1-e75ce1ae73b0</p><p><b>status</b>: final</p><p><b>type</b>: Medication summary <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '56445-0' = 'Medication summary Document', given as 'Medication summary'}; {SNOMED CT code '721912009' = 'Medication summary document (record artifact)', given as 'Medication summary document (record artifact)'})</span></p><p><b>date</b>: Mar 4, 2020, 10:05:00 AM</p><p><b>author</b>: </p><ul><li><a href=\"Practitioner/AuthorDocument\">Practitioner/AuthorDocument</a></li><li><a href=\"Organization/AuthorDocumentOrganization\">Organization/AuthorDocumentOrganization</a></li></ul><p><b>title</b>: Medikationsplan</p><p><b>confidentiality</b>: N</p><p><b>custodian</b>: <a href=\"Organization-Custodian.html\">Generated Summary: id: Custodian; 7601000234438; name: Hausarzt</a></p></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-setid" ];
+     fhir:Extension.valueIdentifier [
+       fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+       fhir:Identifier.value [ fhir:value "urn:uuid:6b6ed376-a7da-44cb-92d1-e75ce1ae73b0" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-versionnumber" ];
+     fhir:Extension.valueUnsignedInt [ fhir:value "1"^^xsd:nonNegativeInteger ]
+  ], [
+     fhir:index 2;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-informationrecipient" ];
+     fhir:Extension.valueReference [
+       fhir:link <http://fhir.ch/ig/ch-emed/Patient/MonikaWegmuellerRecipient>;
+       fhir:Reference.reference [ fhir:value "Patient/MonikaWegmuellerRecipient" ]
+     ]
+  ];
+  fhir:Composition.identifier [
+     fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+     fhir:Identifier.value [ fhir:value "urn:uuid:6b6ed376-a7da-44cb-92d1-e75ce1ae73b0" ]
+  ];
+  fhir:Composition.status [ fhir:value "final"];
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:56445-0;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "56445-0" ];
+       fhir:Coding.display [ fhir:value "Medication summary" ]
+     ], [
+       fhir:index 1;
+       a sct:721912009;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "721912009" ];
+       fhir:Coding.display [ fhir:value "Medication summary document (record artifact)" ]
+     ]
+  ];
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-emed/Patient/MonikaWegmueller>;
+     fhir:Reference.reference [ fhir:value "Patient/MonikaWegmueller" ]
+  ];
+  fhir:Composition.date [ fhir:value "2020-03-04T10:05:00+01:00"^^xsd:dateTime];
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-emed/Practitioner/AuthorDocument>;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time" ];
+       fhir:Extension.valueDateTime [ fhir:value "2020-03-04T10:05:00+01:00"^^xsd:dateTime ]
+     ];
+     fhir:Reference.reference [ fhir:value "Practitioner/AuthorDocument" ]
+  ], [
+     fhir:index 1;
+     fhir:link <http://fhir.ch/ig/ch-emed/Organization/AuthorDocumentOrganization>;
+     fhir:Reference.reference [ fhir:value "Organization/AuthorDocumentOrganization" ]
+  ];
+  fhir:Composition.title [ fhir:value "Medikationsplan"];
+  fhir:Composition.confidentiality [
+     fhir:value "N";
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode" ];
+       fhir:Extension.valueCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:17621005;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "17621005" ];
+           fhir:Coding.display [ fhir:value "Normally accessible" ]
+         ]
+       ]
+     ]
+  ];
+  fhir:Composition.custodian [
+     fhir:link <http://fhir.ch/ig/ch-emed/Organization/Custodian>;
+     fhir:Reference.reference [ fhir:value "Organization/Custodian" ]
+  ];
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-sectionid" ];
+       fhir:Extension.valueIdentifier [
+         fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+         fhir:Identifier.value [ fhir:value "urn:uuid:5fb3eacf-be0d-42aa-9619-abf008c50051" ]
+       ]
+     ];
+     fhir:Composition.section.title [ fhir:value "Medikamentenliste" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:10160-0;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "10160-0" ];
+         fhir:Coding.display [ fhir:value "History of medication use" ]
+       ]
+     ];
+     fhir:Composition.section.author [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-emed/Practitioner/AuthorSection>;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time" ];
+         fhir:Extension.valueDateTime [ fhir:value "2020-03-04T11:05:00+01:00"^^xsd:dateTime ]
+       ];
+       fhir:Reference.reference [ fhir:value "Practitioner/AuthorSection" ]
+     ], [
+       fhir:index 1;
+       fhir:link <http://fhir.ch/ig/ch-emed/Organization/AuthorSectionOrganization>;
+       fhir:Reference.reference [ fhir:value "Organization/AuthorSectionOrganization" ]
+     ];
+     fhir:Composition.section.text [
+       fhir:Narrative.status [ fhir:value "generated" ];
+       fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n                <table>\n                    <thead>\n                        <tr>\n                            <th>Präpartename</th>\n                            <th>Wirkstoffname</th>\n                            <th>Galenische Form</th>\n                            <th>Dosis pro Einheit</th>\n                            <th>Dosierung</th>\n                            <th>Dos.Morgen</th>\n                            <th>Dos.Mittag</th>\n                            <th>Dos.Abend</th>\n                            <th>Dos.Nacht</th>\n                            <th>Verabreichungsweg</th>\n                            <th>Kommentar</th>\n                            <th>Anwendungsdauer</th>\n                            <th>Behandlungsgrund</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr id=\"mtpc.1\">\n                            <td id=\"mtpc.1.brandedmedication\">Beloc Zok</td>\n                            <td id=\"mtpc.1.ingredient\">Metoprolol</td>\n                            <td id=\"mtpc.1.packageform\"> Ret Tbl</td>\n                            <td id=\"mtpc.1.dosequantity\">2.5 mg</td>\n                            <td id=\"mtpc.1.dosageintakemode\">Morgens 1 und abends 1/2 Tablette nehmen</td>\n                            <td id=\"mtpc.1.dosagemorning\">1</td>\n                            <td id=\"mtpc.1.dosagelunch\">0</td>\n                            <td id=\"mtpc.1.dosageevening\">0.5</td>\n                            <td id=\"mtpc.1.dosagenight\">0</td>\n                            <td id=\"mtpc.1.routecode\">oral</td>\n                            <td id=\"mtpc.1.note\">-</td>\n                            <td id=\"mtpc.1.datefromto\"/>\n                            <td id=\"mtpc.1.reason\">Bluthochdruck</td>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>"
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-emed/MedicationStatement/MedStatBeloczok>;
+       fhir:Reference.reference [ fhir:value "MedicationStatement/MedStatBeloczok" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/Composition/DifferentAuthors.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

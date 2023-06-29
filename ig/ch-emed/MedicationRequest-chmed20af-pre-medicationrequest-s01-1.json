@@ -1,0 +1,130 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "chmed20af-pre-medicationrequest-s01-1",
+  "meta": {
+    "profile": [
+      "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-pre-medicationrequest"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">1 x ROACCUTAN Kaps 10 mg 30 Stk substitituion alllowed, 2x repeatable </div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Medication",
+      "id": "cont1",
+      "meta": {
+        "profile": [
+          "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-pre-medication"
+        ]
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "urn:oid:2.51.1.1",
+            "code": "7680453070343",
+            "display": "ROACCUTAN Kaps 10 mg 30 Stk"
+          }
+        ],
+        "text": "ROACCUTAN Kaps 10 mg 30 Stk"
+      },
+      "form": {
+        "coding": [
+          {
+            "system": "urn:oid:0.4.0.127.0.16.1.1.2.1",
+            "code": "10210000",
+            "display": "Capsule, hard"
+          }
+        ]
+      },
+      "ingredient": [
+        {
+          "itemCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "387208003",
+                "display": "Isotretinoin (substance)"
+              }
+            ]
+          },
+          "strength": {
+            "numerator": {
+              "value": 10,
+              "unit": "mg"
+            },
+            "denominator": {
+              "value": 1
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "status": "completed",
+  "intent": "order",
+  "medicationReference": {
+    "reference": "#cont1"
+  },
+  "subject": {
+    "reference": "Patient/chmed20af-card-patient-s01"
+  },
+  "note": [
+    {
+      "text": "-"
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "boundsPeriod": {
+            "start": "2016-09-12",
+            "end": "2020-09-12"
+          },
+          "when": [
+            "PCM"
+          ]
+        }
+      },
+      "asNeededBoolean": true,
+      "route": {
+        "coding": [
+          {
+            "system": "urn:oid:0.4.0.127.0.16.1.1.2.1",
+            "code": "20053000",
+            "display": "Oral use"
+          }
+        ]
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 1,
+            "unit": "Stk",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "numberOfRepeatsAllowed": 2,
+    "quantity": {
+      "value": 1
+    }
+  },
+  "substitution": {
+    "allowedCodeableConcept": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution",
+          "code": "E",
+          "display": "equivalent"
+        }
+      ]
+    }
+  }
+}

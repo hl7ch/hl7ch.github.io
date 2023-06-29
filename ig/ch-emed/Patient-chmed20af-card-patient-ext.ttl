@@ -1,0 +1,91 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/Patient/chmed20af-card-patient-ext> a fhir:Patient;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "chmed20af-card-patient-ext"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-patient";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-patient>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">Maxima, Matter, geb 1981-01-12 </div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-privatefield" ];
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "name" ];
+       fhir:Extension.valueString [ fhir:value "PrivateFieldNameSample" ]
+     ], [
+       fhir:index 1;
+       fhir:Extension.url [ fhir:value "value" ];
+       fhir:Extension.valueString [ fhir:value "PrivateFieldValueSample" ]
+     ]
+  ];
+  fhir:Patient.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0203" ];
+         fhir:Coding.code [ fhir:value "MR" ]
+       ]
+     ];
+     fhir:Identifier.system [ fhir:value "urn:oid:2.999" ];
+     fhir:Identifier.value [ fhir:value "12345678" ]
+  ];
+  fhir:Patient.name [
+     fhir:index 0;
+     fhir:HumanName.family [ fhir:value "Matter" ];
+     fhir:HumanName.given [
+       fhir:value "Maxima";
+       fhir:index 0
+     ]
+  ];
+  fhir:Patient.telecom [
+     fhir:index 0;
+     fhir:ContactPoint.system [ fhir:value "phone" ];
+     fhir:ContactPoint.value [ fhir:value "+41588512600" ];
+     fhir:ContactPoint.use [ fhir:value "home" ]
+  ];
+  fhir:Patient.gender [ fhir:value "female"];
+  fhir:Patient.birthDate [ fhir:value "1981-01-12"^^xsd:date];
+  fhir:Patient.address [
+     fhir:index 0;
+     fhir:Address.line [
+       fhir:value "Untermattweg 8";
+       fhir:index 0
+     ];
+     fhir:Address.city [ fhir:value "Bern" ];
+     fhir:Address.postalCode [ fhir:value "3027" ]
+  ];
+  fhir:Patient.communication [
+     fhir:index 0;
+     fhir:Patient.communication.language [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:ietf:bcp:47" ];
+         fhir:Coding.code [ fhir:value "de-CH" ];
+         fhir:Coding.display [ fhir:value "German (Region=Switzerland)" ]
+       ]
+     ];
+     fhir:Patient.communication.preferred [ fhir:value "true"^^xsd:boolean ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/Patient/chmed20af-card-patient-ext.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

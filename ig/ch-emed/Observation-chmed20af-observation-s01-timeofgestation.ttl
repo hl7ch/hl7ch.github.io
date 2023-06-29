@@ -1,0 +1,80 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/Observation/chmed20af-observation-s01-timeofgestation> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "chmed20af-observation-s01-timeofgestation"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-obs-timeofgestation";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-obs-timeofgestation>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">Time of gestation: week 30, days 5                                \n        </div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:445872007;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "445872007" ];
+       fhir:Coding.display [ fhir:value "Length of gestation at time of procedure" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Patient/chmed20af-card-patient-s01>;
+     fhir:Reference.reference [ fhir:value "Patient/chmed20af-card-patient-s01" ]
+  ];
+  fhir:Observation.component [
+     fhir:index 0;
+     fhir:Observation.component.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:49051-6;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "49051-6" ];
+         fhir:Coding.display [ fhir:value "Gestational age in weeks" ]
+       ]
+     ];
+     fhir:Observation.component.valueQuantity [
+       fhir:Quantity.value [ fhir:value "30"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "wk" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "wk" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Observation.component.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:49052-4;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "49052-4" ];
+         fhir:Coding.display [ fhir:value "Gestational age in days" ]
+       ]
+     ];
+     fhir:Observation.component.valueQuantity [
+       fhir:Quantity.value [ fhir:value "5"^^xsd:decimal ];
+       fhir:Quantity.unit [ fhir:value "d" ];
+       fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+       fhir:Quantity.code [ fhir:value "d" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/Observation/chmed20af-observation-s01-timeofgestation.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

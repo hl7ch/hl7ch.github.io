@@ -1,0 +1,187 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/MedicationRequest/2-6-MedReqNorvasc> a fhir:MedicationRequest;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "2-6-MedReqNorvasc"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><blockquote><p><b>CH EMED Extension Treatment Plan</b></p><h3>Urls</h3><table class=\"grid\"><tr><td>-</td></tr><tr><td>*</td></tr></table><p><b>value</b>: id: urn:uuid:5712fffe-20c6-11e6-b67b-9e71128cae77</p><h3>Urls</h3><table class=\"grid\"><tr><td>-</td></tr><tr><td>*</td></tr></table><p><b>value</b>: id: urn:uuid:5712fffe-20c6-11e6-b67b-9e71128cae77</p></blockquote><p><b>identifier</b>: id: urn:uuid:d41d72ba-2100-11e6-b67b-9e71128cae77</p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>medication</b>: <a name=\"med\"> </a></p><blockquote><p><b>code</b>: <span title=\"Codes: {urn:oid:2.51.1.1 7680500440334}\">NORVASC Tabl 10 mg</span></p><p><b>form</b>: <span title=\"Codes: {urn:oid:0.4.0.127.0.16.1.1.2.1 10219000}\">Tablet</span></p><p><b>amount</b>: 30 Tablet (unit of presentation)/1 Package</p><h3>Ingredients</h3><table class=\"grid\"><tr><td>-</td><td><b>Item[x]</b></td><td><b>Strength</b></td></tr><tr><td>*</td><td><span title=\"Codes: {http://snomed.info/sct 386864001}\">Amlodipine</span></td><td>10 milligram/1 Tablet (unit of presentation)</td></tr></table></blockquote><p><b>subject</b>: <a href=\"Patient-MonikaWegmueller.html\">Generated Summary: Medical record number: 11111111; Monika Wegmüller ; gender: female; birthDate: 1943-05-15</a></p><p><b>reasonCode</b>: <span title=\"Codes: \">-</span></p><p><b>note</b>: -</p><h3>DosageInstructions</h3><table class=\"grid\"><tr><td>-</td></tr><tr><td>*</td></tr><tr><td>*</td></tr></table><h3>DispenseRequests</h3><table class=\"grid\"><tr><td>-</td><td><b>NumberOfRepeatsAllowed</b></td><td><b>Quantity</b></td></tr><tr><td>*</td><td>2</td><td>1</td></tr></table><h3>Substitutions</h3><table class=\"grid\"><tr><td>-</td><td><b>Allowed[x]</b></td></tr><tr><td>*</td><td><span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution E}\">equivalent</span></td></tr></table></div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Medication;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "med" ];
+     fhir:Medication.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:2.51.1.1" ];
+         fhir:Coding.code [ fhir:value "7680500440334" ];
+         fhir:Coding.display [ fhir:value "NORVASC Tabl 10 mg" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "NORVASC Tabl 10 mg" ]
+     ];
+     fhir:Medication.form [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "10219000" ];
+         fhir:Coding.display [ fhir:value "Tablet" ]
+       ]
+     ];
+     fhir:Medication.amount [
+       fhir:Ratio.numerator [
+         fhir:Quantity.value [ fhir:value "30"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "Tablet (unit of presentation)" ];
+         fhir:Quantity.system [ fhir:value "http://snomed.info/sct" ];
+         fhir:Quantity.code [ fhir:value "732936001" ]
+       ];
+       fhir:Ratio.denominator [
+         fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "Package" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "{Package}" ]
+       ]
+     ];
+     fhir:Medication.ingredient [
+       fhir:index 0;
+       fhir:Medication.ingredient.itemCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:386864001;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "386864001" ];
+           fhir:Coding.display [ fhir:value "Amlodipine (substance)" ]
+         ];
+         fhir:CodeableConcept.text [ fhir:value "Amlodipine" ]
+       ];
+       fhir:Medication.ingredient.strength [
+         fhir:Ratio.numerator [
+           fhir:Quantity.value [ fhir:value "10"^^xsd:decimal ];
+           fhir:Quantity.unit [ fhir:value "milligram" ];
+           fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+           fhir:Quantity.code [ fhir:value "mg" ]
+         ];
+         fhir:Ratio.denominator [
+           fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ];
+           fhir:Quantity.unit [ fhir:value "Tablet (unit of presentation)" ];
+           fhir:Quantity.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Quantity.code [ fhir:value "732936001" ]
+         ]
+       ]
+     ]
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-treatmentplan" ];
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "id" ];
+       fhir:Extension.valueIdentifier [
+         fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+         fhir:Identifier.value [ fhir:value "urn:uuid:5712fffe-20c6-11e6-b67b-9e71128cae77" ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:Extension.url [ fhir:value "externalDocumentId" ];
+       fhir:Extension.valueIdentifier [
+         fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+         fhir:Identifier.value [ fhir:value "urn:uuid:5712fffe-20c6-11e6-b67b-9e71128cae77" ]
+       ]
+     ]
+  ];
+  fhir:MedicationRequest.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+     fhir:Identifier.value [ fhir:value "urn:uuid:d41d72ba-2100-11e6-b67b-9e71128cae77" ]
+  ];
+  fhir:MedicationRequest.status [ fhir:value "completed"];
+  fhir:MedicationRequest.intent [ fhir:value "order"];
+  fhir:MedicationRequest.medicationReference [
+     fhir:Reference.reference [ fhir:value "#med" ]
+  ];
+  fhir:MedicationRequest.subject [
+     fhir:link <http://fhir.ch/ig/ch-emed/Patient/MonikaWegmueller>;
+     fhir:Reference.reference [ fhir:value "Patient/MonikaWegmueller" ]
+  ];
+  fhir:MedicationRequest.reasonCode [
+     fhir:index 0;
+     fhir:CodeableConcept.text [ fhir:value "-" ]
+  ];
+  fhir:MedicationRequest.note [
+     fhir:index 0;
+     fhir:Annotation.text [ fhir:value "-" ]
+  ];
+  fhir:MedicationRequest.dosageInstruction [
+     fhir:index 0;
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2012-02-04"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.when [
+           fhir:value "MORN";
+           fhir:index 0
+         ], [
+           fhir:value "EVE";
+           fhir:index 1
+         ]
+       ]
+     ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20053000" ];
+         fhir:Coding.display [ fhir:value "Oral use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "Tablet (unit of presentation)" ];
+         fhir:Quantity.system [ fhir:value "http://snomed.info/sct" ];
+         fhir:Quantity.code [ fhir:value "732936001" ]
+       ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Dosage.text [ fhir:value "Morgens und abends je 1 Tablette nehmen" ]
+  ];
+  fhir:MedicationRequest.dispenseRequest [
+     fhir:MedicationRequest.dispenseRequest.numberOfRepeatsAllowed [ fhir:value "2"^^xsd:nonNegativeInteger ];
+     fhir:MedicationRequest.dispenseRequest.quantity [
+       fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ]
+     ]
+  ];
+  fhir:MedicationRequest.substitution [
+     fhir:MedicationRequest.substitution.allowedCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution" ];
+         fhir:Coding.code [ fhir:value "E" ];
+         fhir:Coding.display [ fhir:value "equivalent" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/MedicationRequest/2-6-MedReqNorvasc.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

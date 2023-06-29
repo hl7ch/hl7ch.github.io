@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dosage</title>
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="http://hl7.org/fhir"/>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="dist/css/bootstrap.css" rel="stylesheet"/>
+  <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+  <!-- Project extras -->
+  <link href="assets/css/project.css" rel="stylesheet"/>
+  <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+	<link href="assets/js/jquery-ui.css" rel="stylesheet"/>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
+  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+  <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+
+</head>
+<body>
+<div id="segment-header" class="segment">
+  <!-- segment-header -->
+  <div class="container">
+    <!-- container -->
+    <div id="hl7-status">
+      <b>eMediplan CHMED20AF Implementation Guide: Dosage</b>
+    </div>
+    <div id="hl7-nav">
+      <a id="logo" no-external="true" href="http://www.emediplan.ch"><img alt="logo fhir" src="assets/images/emediplan-logo.svg" height="72px" width="266px" /> </a>
+    </div>
+  </div>
+  <div class="container">
+    <!-- container -->
+  </div>
+</div>
+<!-- /segment-header -->
+
+<div id="segment-breadcrumb" class="segment">
+  <!-- segment-breadcrumb -->
+  <div class="container">
+    <!-- container -->
+    <ul class="breadcrumb">
+      <li><b><a href="index.html">Home</a></b></li>
+      <li><b><a href="intro.html">Introduction</a></b></li>
+      <li><b><a href="profiles.html">Profiles</a></b></li>
+      <li><b><a href="valuesets.html">Value Sets</a></b></li>
+      <li><b><a href="dosage.html">Dosage</a></b></li>
+      <li><b><a href="privatefields.html">Private Fields</a></b></li>
+      <li><b><a href="analyzer.html">Analyzer</a></b></li>
+    </ul>
+  </div>
+  <!-- /container -->
+  
+    <div id="segment-content" class="segment">
+      <div class="container">
+          <div class="row">
+              <div class="inner-wrapper">
+                <div class="col-12" >
+<!--ReleaseHeader--><p id="publish-box">Implementation Guide CHMED20AF - Local Development build (v0.3.0). See the <a href="http://chmed20af.emediplan.ch/fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+<!-- 
+This is the {% if {{site.build}} == "ci" %}
+    Continuous Integration Build
+   {% else %}
+    (release {{site.data.fhir.ig.version}})
+  {% endif %}
+  {% if {{site.build}} == "ballot" %} {{site.ballot}} Ballot {% endif %}
+  of the {{site.data.fhir.igName}} Implementation Guide,  based on <a href="{{ site.data.fhir.path }}index.html">FHIR Version {{ site.data.fhir.version }}</a>.  See the <a href="{{ site.historypath }}">Directory of published versions.</a>
+ -->
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+</div>
+<!-- /segment-breadcrumb -->
+
+ <div id="segment-content" class="segment">  <!-- segment-content -->
+ <div class="container">  <!-- container -->
+            <div class="row">
+             <div class="inner-wrapper">
+  <!-- CONTENT CONTENT -->
+
+                    <div class="col-12">
+                        <h1 id="dosage">Dosage</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The model of dosages between CHMED16A and the CHMED20AF FHIR version differ sligthly due to the FHIR dosage model.
+This has an effect on how to map the different attributes form CHMED16A to CHMED20AF.</p>
+
+<h2 id="posology-and-dosage">Posology and Dosage</h2>
+
+<ul>
+  <li>The CHMED16A model defines for a medication n Posology (the dosage information) and n Taking times (the intake timetable), taking times includes dosage.</li>
+  <li>In FHIR a MediationStatement can have n Dosages with one Timing (which can have repeating timing defintions).</li>
+</ul>
+
+<p>If their is a dosage change within the posology in CHMED16A different dosage elements have to be created in FHIR (CHMED20AF).</p>
+
+<h2 id="simplified-taking-times">Simplified taking times</h2>
+
+<p>CHMED16A defines a simplified version of taking times only doses to be taken (morning, midday, evening, night). If the doses
+are the same, the can be mapped as follows:</p>
+
+<p>1-0-1-0: extract from <a href="MedicationStatement-chmed20af-card-medicationstatement-s01-3.html">example</a></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="nt">&lt;dosage&gt;</span>
+		<span class="nt">&lt;timing&gt;</span>
+			<span class="nt">&lt;repeat&gt;</span>
+				<span class="nt">&lt;boundsPeriod&gt;</span>
+					 <span class="nt">&lt;start</span> <span class="na">value=</span><span class="s">"2016-02-10"</span> <span class="nt">/&gt;</span>
+				<span class="nt">&lt;/boundsPeriod&gt;</span>
+				<span class="nt">&lt;when</span> <span class="na">value=</span><span class="s">"PCM"</span> <span class="nt">/&gt;</span>
+				<span class="nt">&lt;when</span> <span class="na">value=</span><span class="s">"PCV"</span> <span class="nt">/&gt;</span>
+			<span class="nt">&lt;/repeat&gt;</span>
+		<span class="nt">&lt;/timing&gt;</span>
+		<span class="nt">&lt;route&gt;</span>
+			<span class="nt">&lt;coding&gt;</span>   
+				<span class="nt">&lt;system</span> <span class="na">value=</span><span class="s">"urn:oid:0.4.0.127.0.16.1.1.2.1"</span><span class="nt">/&gt;</span>   
+            	<span class="nt">&lt;code</span> <span class="na">value=</span><span class="s">"20053000"</span><span class="nt">/&gt;</span>   
+            	<span class="nt">&lt;display</span> <span class="na">value=</span><span class="s">"Oral use"</span><span class="nt">/&gt;</span>   
+			<span class="nt">&lt;/coding&gt;</span>
+		<span class="nt">&lt;/route&gt;</span>
+		<span class="nt">&lt;doseQuantity&gt;</span>
+			<span class="nt">&lt;value</span> <span class="na">value=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
+			<span class="nt">&lt;unit</span> <span class="na">value=</span><span class="s">"Stk"</span> <span class="nt">/&gt;</span>
+			<span class="nt">&lt;system</span> <span class="na">value=</span><span class="s">"http://unitsofmeasure.org"</span> <span class="nt">/&gt;</span>
+			<span class="nt">&lt;code</span> <span class="na">value=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
+		<span class="nt">&lt;/doseQuantity&gt;</span>
+	<span class="nt">&lt;/dosage&gt;</span>
+</code></pre></div></div>
+<p>See <a href="https://www.hl7.org/fhir/v3/TimingEvent/cs.html">TimingEvent</a>, the simplified version x-x-x-x is represented with PCM - PCD- PCV and HS coding values.</p>
+
+<p>For 1-0-0.5-0 two dosage elements have to be created, <a href="MedicationStatement-chmed20af-card-medicationstatement-s02-3.html">example</a></p>
+
+<h2 id="taking-times">Taking times</h2>
+<ul>
+  <li>The <a href="https://www.hl7.org/fhir/datatypes.html#Timing">Timing</a>) elements in FHIR differ in that the unit times can be specified not only in seconds but also in different units see <a href="https://www.hl7.org/fhir/valueset-units-of-time.html">UnitsOfTime</a>.</li>
+  <li>The offset (in seconds) of taking time after cycle start in CHMED16A has to represented with timeOfDay.</li>
+</ul>
+
+<p><a href="MedicationStatement-chmed20af-card-medicationstatement-tt-2-multiple-meronem.html">Example</a> for a dosage for a product 2 gr, 3 times daily, (08:00-12:00-18:00), iv, for 30 minutes every tuesday for three weeks</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="nt">&lt;dosage&gt;</span>
+		<span class="nt">&lt;timing&gt;</span>
+			<span class="nt">&lt;repeat&gt;</span>
+				<span class="nt">&lt;boundsPeriod&gt;</span>
+					<span class="nt">&lt;start</span> <span class="na">value=</span><span class="s">"2017-09-05"</span> <span class="nt">/&gt;</span> <span class="c">&lt;!-- DtFrom --&gt;</span>
+					<span class="nt">&lt;end</span> <span class="na">value=</span><span class="s">"2020-09-26"</span> <span class="nt">/&gt;</span> <span class="c">&lt;!-- DtTo, inclusive --&gt;</span>
+				<span class="nt">&lt;/boundsPeriod&gt;</span>
+
+				<span class="nt">&lt;duration</span> <span class="na">value=</span><span class="s">"1800"</span> <span class="nt">/&gt;</span> <span class="c">&lt;!-- DU --&gt;</span>
+				<span class="nt">&lt;durationUnit</span> <span class="na">value=</span><span class="s">"s"</span> <span class="nt">/&gt;</span> <span class="c">&lt;!-- DU --&gt;</span>
+
+				<span class="nt">&lt;frequency</span> <span class="na">value=</span><span class="s">"3"</span> <span class="nt">/&gt;</span>
+
+				<span class="nt">&lt;period</span> <span class="na">value=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>   <span class="c">&lt;!-- CyDu --&gt;</span>
+				<span class="nt">&lt;periodUnit</span> <span class="na">value=</span><span class="s">"wk"</span> <span class="nt">/&gt;</span> <span class="c">&lt;!-- CyDu --&gt;</span>
+
+				<span class="nt">&lt;dayOfWeek</span> <span class="na">value=</span><span class="s">"tue"</span> <span class="nt">/&gt;</span> <span class="c">&lt;!-- implied by date, optional --&gt;</span>
+
+				<span class="nt">&lt;timeOfDay</span> <span class="na">value=</span><span class="s">"08:00:00"</span> <span class="nt">/&gt;</span> <span class="c">&lt;!-- Off, but relative to timeOfDay --&gt;</span>
+				<span class="nt">&lt;timeOfDay</span> <span class="na">value=</span><span class="s">"12:00:00"</span> <span class="nt">/&gt;</span> <span class="c">&lt;!-- Off, but relative to timeOfDay --&gt;</span>
+				<span class="nt">&lt;timeOfDay</span> <span class="na">value=</span><span class="s">"18:00:00"</span> <span class="nt">/&gt;</span> <span class="c">&lt;!-- Off, but relative to timeOfDay --&gt;</span>
+			<span class="nt">&lt;/repeat&gt;</span>
+		<span class="nt">&lt;/timing&gt;</span>
+        <span class="nt">&lt;route&gt;</span>
+			<span class="nt">&lt;coding&gt;</span>
+				<span class="nt">&lt;system</span> <span class="na">value=</span><span class="s">"urn:oid:0.4.0.127.0.16.1.1.2.1"</span><span class="nt">/&gt;</span>   
+            	<span class="nt">&lt;code</span> <span class="na">value=</span><span class="s">"20045000"</span><span class="nt">/&gt;</span>   
+            	<span class="nt">&lt;display</span> <span class="na">value=</span><span class="s">"Intravenous use"</span><span class="nt">/&gt;</span>   
+			<span class="nt">&lt;/coding&gt;</span>
+		<span class="nt">&lt;/route&gt;</span>
+		<span class="nt">&lt;doseQuantity&gt;</span>
+			<span class="nt">&lt;value</span> <span class="na">value=</span><span class="s">"2"</span> <span class="nt">/&gt;</span>
+			<span class="nt">&lt;unit</span> <span class="na">value=</span><span class="s">"g"</span> <span class="nt">/&gt;</span>
+			<span class="nt">&lt;system</span> <span class="na">value=</span><span class="s">"http://unitsofmeasure.org"</span> <span class="nt">/&gt;</span>
+			<span class="nt">&lt;code</span> <span class="na">value=</span><span class="s">"g"</span> <span class="nt">/&gt;</span>
+		<span class="nt">&lt;/doseQuantity&gt;</span>
+    <span class="nt">&lt;/dosage&gt;</span> 
+</code></pre></div></div>
+
+<p>Like in simplified times, if the dosage changes, multiple dosage elements have to be defined: See example <a href="MedicationStatement-chmed20af-card-medicationstatement-tt-1-diffrates-mathbera.html">increasing dosage very hour</a>, <a href="MedicationStatement-chmed20af-card-medicationstatement-tt-4-spiricort.html">tapered dosing</a>.</p>
+
+<p>An <a href="StructureDefinition-chmed20af-dosequantityto.html">extension</a> has been defined to change the quantity from the starting quantity continously to the final quantity (example increase form 50ml to 200 ml):</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="nt">&lt;fhir:doseQuantity&gt;</span>
+	<span class="nt">&lt;fhir:extension</span> <span class="na">url=</span><span class="s">"http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-dosequantityto"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;fhir:valueQuantity&gt;</span>
+			<span class="nt">&lt;fhir:value</span> <span class="na">value=</span><span class="s">"200"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;fhir:unit</span> <span class="na">value=</span><span class="s">"ml"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;fhir:system</span> <span class="na">value=</span><span class="s">"http://unitsofmeasure.org"</span><span class="nt">/&gt;</span>
+			<span class="nt">&lt;fhir:code</span> <span class="na">value=</span><span class="s">"ml"</span><span class="nt">/&gt;</span>
+		<span class="nt">&lt;/fhir:valueQuantity&gt;</span>
+	<span class="nt">&lt;/fhir:extension&gt;</span>
+	<span class="nt">&lt;fhir:value</span> <span class="na">value=</span><span class="s">"50"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;fhir:unit</span> <span class="na">value=</span><span class="s">"ml"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;fhir:system</span> <span class="na">value=</span><span class="s">"http://unitsofmeasure.org"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;fhir:code</span> <span class="na">value=</span><span class="s">"ml"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/fhir:doseQuantity&gt;</span>
+
+</code></pre></div></div>
+
+
+                    </div>
+
+</div>
+
+    </div>  <!-- /inner-wrapper -->
+            </div>  <!-- /row -->
+        </div>  <!-- /container -->
+
+    </div>  <!-- /segment-content -->
+
+<div id="segment-footer" class="segment">  <!-- segment-footer -->
+  <div class="container">  <!-- container -->
+   <div class="inner-wrapper">
+    <p>
+        &copy; eMediplan 2017+. <a style="color: #ffffff" href="http://www.hl7.org/fhir">based on FHIR Release 4.</a>
+        <br/>
+        HL7&reg;, HEALTH LEVEL SEVEN&reg;, FHIR&reg; and the FHIR <img src="assets/ico/favicon.png"/>&reg; are trademarks owned by Health Level Seven International, registered with the United States Patent and Trademark Office.
+        </p>
+   </div>  <!-- /inner-wrapper -->
+  </div>  <!-- /container -->
+ </div>  <!-- /segment-footer -->
+  <!-- disqus thread -->
+  <!-- disqus -->
+  <!-- end disqus -->
+
+ <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+  <div class="container">  <!-- container -->
+  </div>  <!-- /container -->
+ </div>  <!-- /segment-post-footer -->
+
+      <!-- JS and analytics only. -->
+      <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/jquery-3.2.1.min.js"> </script>
+  <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script src="assets/js/jquery-ui.min.js"> </script>
+
+<script src="dist/js/bootstrap.min.js"> </script>
+<script src="assets/js/respond.min.js"> </script>
+
+<script src="assets/js/fhir.js"> </script>
+
+  <!-- Analytics Below
+================================================== -->
+
+</body>
+</html>

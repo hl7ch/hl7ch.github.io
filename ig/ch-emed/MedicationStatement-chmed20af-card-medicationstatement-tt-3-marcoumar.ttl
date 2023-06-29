@@ -1,0 +1,134 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/MedicationStatement/chmed20af-card-medicationstatement-tt-3-marcoumar> a fhir:MedicationStatement;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "chmed20af-card-medicationstatement-tt-3-marcoumar"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medicationstatement";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medicationstatement>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"> Marcumar-Therapie mit Clexane  MARCOUMAR Tabl 3 mg  (Prd-Nr. 7157)     Tag 1 (08:00)   1CLEXANE Inj Lös 40 mg/0.4ml  (Prd-Nr. 16607)Tag 3 (08:00)	                                        1Tag 4 und folgende  (08:00)                             1MARCOUMAR Tabl 3 mg  (Prd-Nr. 7157)     {            &quot;Id&quot;: &quot;7157&quot;,            &quot;IdType&quot;: 4,            &quot;Pos&quot;: [{                    &quot;DtFrom&quot;: &quot;2017-09-05&quot;,                    &quot;DtTo&quot;: &quot;2017-09-05&quot;,                    &quot;CyDu&quot;: 86400,                    &quot;InRes&quot;: 0,                    &quot;TT&quot;: [{                            &quot;Off&quot;: 28800,                            &quot;DoFrom&quot;: 3.0                        }                    ]                }            ], &quot;Unit&quot;: &quot;mg&quot;,            &quot;TkgRsn&quot;: &quot;Blutverdünnung&quot;,            &quot;Roa&quot;: &quot;PO&quot;,            &quot;Rep&quot;: 0,            &quot;Subs&quot;: 0,            &quot;NbPack&quot;: 1        } </div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Medication;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "cont1" ];
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medication";
+         fhir:index 0;
+         fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medication>
+       ]
+     ];
+     fhir:Medication.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:2.51.1.1" ];
+         fhir:Coding.code [ fhir:value "7680193950141" ];
+         fhir:Coding.display [ fhir:value "MARCOUMAR Tabl 3 mg" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "MARCOUMAR Tabl 3 mg" ]
+     ];
+     fhir:Medication.form [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "10219000" ];
+         fhir:Coding.display [ fhir:value "Tablet" ]
+       ]
+     ];
+     fhir:Medication.ingredient [
+       fhir:index 0;
+       fhir:Medication.ingredient.itemCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:59488002;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "59488002" ];
+           fhir:Coding.display [ fhir:value "Phenprocoumon (substance)" ]
+         ]
+       ];
+       fhir:Medication.ingredient.strength [
+         fhir:Ratio.numerator [
+           fhir:Quantity.value [ fhir:value "3"^^xsd:decimal ];
+           fhir:Quantity.unit [ fhir:value "mg" ]
+         ];
+         fhir:Ratio.denominator [
+           fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ]
+         ]
+       ]
+     ]
+  ];
+  fhir:MedicationStatement.status [ fhir:value "completed"];
+  fhir:MedicationStatement.medicationReference [
+     fhir:Reference.reference [ fhir:value "#cont1" ]
+  ];
+  fhir:MedicationStatement.subject [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Patient/chmed20af-card-patient-s01>;
+     fhir:Reference.reference [ fhir:value "Patient/chmed20af-card-patient-s01" ]
+  ];
+  fhir:MedicationStatement.informationSource [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Practitioner/chmed20af-practitioner-s01>;
+     fhir:Reference.reference [ fhir:value "Practitioner/chmed20af-practitioner-s01" ]
+  ];
+  fhir:MedicationStatement.reasonCode [
+     fhir:index 0;
+     fhir:CodeableConcept.text [ fhir:value "Blutverdünnung" ]
+  ];
+  fhir:MedicationStatement.dosage [
+     fhir:index 0;
+     fhir:Dosage.text [ fhir:value "Marcumar-Therapie" ]
+  ], [
+     fhir:index 1;
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2017-09-05"^^xsd:date ];
+           fhir:Period.end [ fhir:value "2017-09-05"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.count [ fhir:value "1"^^xsd:positiveInteger ];
+         fhir:Timing.repeat.duration [ fhir:value "1"^^xsd:decimal ];
+         fhir:Timing.repeat.durationUnit [ fhir:value "d" ];
+         fhir:Timing.repeat.timeOfDay [
+           fhir:value "08:00:00"^^xsd:time;
+           fhir:index 0
+         ]
+       ]
+     ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20053000" ];
+         fhir:Coding.display [ fhir:value "Oral use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "3"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "mg" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "mg" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/MedicationStatement/chmed20af-card-medicationstatement-tt-3-marcoumar.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

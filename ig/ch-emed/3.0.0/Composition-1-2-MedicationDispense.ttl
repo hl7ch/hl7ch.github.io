@@ -1,0 +1,113 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/Composition/1-2-MedicationDispense> a fhir:Composition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "1-2-MedicationDispense"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense>
+     ]
+  ]; # 
+  fhir:Resource.language [ fhir:value "de-CH"]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><p><b>Generated Narrative: Composition</b><a name=\"1-2-MedicationDispense\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Composition &quot;1-2-MedicationDispense&quot;  (Language &quot;de-CH&quot;) </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emed-composition-medicationdispense.html\">CH EMED Medication Dispense Composition</a></p></div><p><b>EPR Information Recipient</b>: <a href=\"Patient-MonikaWegmuellerRecipient.html\">Patient/MonikaWegmuellerRecipient</a> &quot; WEGMÜLLER&quot;</p><p><b>identifier</b>: id: urn:uuid:488bd23a-20c6-11e6-b67b-9e71128cae77</p><p><b>status</b>: final</p><p><b>type</b>: Medication dispensed.extended <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#60593-1; <a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#419891008 &quot;Record artifact (record artifact)&quot;)</span></p><p><b>date</b>: 2011-11-29 11:01:00+0100</p><p><b>author</b>: <a href=\"PractitionerRole-FamilienHausarztAtHausarzt.html\">PractitionerRole/FamilienHausarztAtHausarzt</a></p><p><b>title</b>: Abgabe</p><p><b>confidentiality</b>: N</p><p><b>custodian</b>: <a href=\"Organization-Custodian.html\">Organization/Custodian</a> &quot;Hausarzt&quot;</p></div>"
+  ]; # 
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-informationrecipient" ];
+     fhir:Extension.valueReference [
+       fhir:link <http://fhir.ch/ig/ch-emed/Patient/MonikaWegmuellerRecipient>;
+       fhir:Reference.reference [ fhir:value "Patient/MonikaWegmuellerRecipient" ]
+     ]
+  ]; # 
+  fhir:Composition.identifier [
+     fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ];
+     fhir:Identifier.value [ fhir:value "urn:uuid:488bd23a-20c6-11e6-b67b-9e71128cae77" ]
+  ]; # 
+  fhir:Composition.status [ fhir:value "final"]; # 
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:60593-1;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "60593-1" ];
+       fhir:Coding.display [ fhir:value "Medication dispensed.extended" ]
+     ], [
+       fhir:index 1;
+       a sct:419891008;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "419891008" ];
+       fhir:Coding.display [ fhir:value "Record artifact (record artifact)" ]
+     ]
+  ]; # 
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-emed/Patient/MonikaWegmueller>;
+     fhir:Reference.reference [ fhir:value "Patient/MonikaWegmueller" ]
+  ]; # 
+  fhir:Composition.date [ fhir:value "2011-11-29T11:01:00+01:00"^^xsd:dateTime]; # 
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-emed/PractitionerRole/FamilienHausarztAtHausarzt>;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/FamilienHausarztAtHausarzt" ]
+  ]; # 
+  fhir:Composition.title [ fhir:value "Abgabe"]; # 
+  fhir:Composition.confidentiality [
+     fhir:value "N";
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode" ];
+       fhir:Extension.valueCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:17621005;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "17621005" ];
+           fhir:Coding.display [ fhir:value "Normally accessible" ]
+         ]
+       ]
+     ]
+  ]; # 
+  fhir:Composition.custodian [
+     fhir:link <http://fhir.ch/ig/ch-emed/Organization/Custodian>;
+     fhir:Reference.reference [ fhir:value "Organization/Custodian" ]
+  ]; # 
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Composition.section.title [ fhir:value "Abgabe eines Medikaments" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:60590-7;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "60590-7" ];
+         fhir:Coding.display [ fhir:value "Medication dispensed.brief" ]
+       ]
+     ];
+     fhir:Composition.section.text [
+       fhir:Narrative.status [ fhir:value "generated" ];
+       fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n                <table>\n                    <thead>\n                        <tr>\n                            <th>Präpartename</th>\n                            <th>Wirkstoffname</th>\n                            <th>Galenische Form</th>\n                            <th>Dosis pro Einheit</th>\n                            <th>Anzahl Packungen</th>\n                            <th>Packungsgrösse</th>\n                            <th>Dos.Morgen</th>\n                            <th>Dos.Mittag</th>\n                            <th>Dos.Abend</th>\n                            <th>Dos.Nacht</th>\n                            <th>Verabreichungsweg</th>\n                            <th>Kommentar</th>\n                            <th>Behandlungsrund</th>\n                            <th>Datum/Zeit der Abgabe/ Anwendung</th>\n                            <th>Identifikation des Empfängers</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <tr id=\"dis.1\">\n                            <td id=\"dis.1.brandedmedication\">Triatec</td>\n                            <td id=\"dis.1.ingredient\">Ramipril</td>\n                            <td id=\"dis.1.dosequantity\">2.5 mg</td>\n                            <td id=\"dis.1.packageform\">Tbl</td>\n                            <td id=\"dis.1.nopackages\">1</td>\n                            <td id=\"dis.1.packagesize\">20</td>\n                            <td id=\"dis.1.dosagemorning\">0.5</td>\n                            <td id=\"dis.1.dosagelunch\">0</td>\n                            <td id=\"dis.1.dosageevening\">0</td>\n                            <td id=\"dis.1.dosagenight\">0</td>\n                            <td id=\"dis.1.routecode\">oral</td>\n                            <td id=\"dis.1.note\"/>\n                            <td id=\"dis.1.datefromto\"/>\n                            <td id=\"dis.1.reason\">Bluthochdruck</td>\n                            <td id=\"dis.1.dipsensedate\"/>\n                            <td id=\"dis.1.dipsenseto\"/>\n                        </tr>\n                    </tbody>\n                </table>\n            </div>"
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-emed/MedicationDispense/1-2-MedDispTriatec>;
+       fhir:Reference.reference [ fhir:value "MedicationDispense/1-2-MedDispTriatec" ]
+     ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/Composition/1-2-MedicationDispense.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

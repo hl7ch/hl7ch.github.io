@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Private Fields</title>
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="http://hl7.org/fhir"/>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="dist/css/bootstrap.css" rel="stylesheet"/>
+  <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+  <!-- Project extras -->
+  <link href="assets/css/project.css" rel="stylesheet"/>
+  <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+	<link href="assets/js/jquery-ui.css" rel="stylesheet"/>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
+  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+  <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+
+</head>
+<body>
+<div id="segment-header" class="segment">
+  <!-- segment-header -->
+  <div class="container">
+    <!-- container -->
+    <div id="hl7-status">
+      <b>eMediplan CHMED20AF Implementation Guide: Private Fields</b>
+    </div>
+    <div id="hl7-nav">
+      <a id="logo" no-external="true" href="http://www.emediplan.ch"><img alt="logo fhir" src="assets/images/emediplan-logo.svg" height="72px" width="266px" /> </a>
+    </div>
+  </div>
+  <div class="container">
+    <!-- container -->
+  </div>
+</div>
+<!-- /segment-header -->
+
+<div id="segment-breadcrumb" class="segment">
+  <!-- segment-breadcrumb -->
+  <div class="container">
+    <!-- container -->
+    <ul class="breadcrumb">
+      <li><b><a href="index.html">Home</a></b></li>
+      <li><b><a href="intro.html">Introduction</a></b></li>
+      <li><b><a href="profiles.html">Profiles</a></b></li>
+      <li><b><a href="valuesets.html">Value Sets</a></b></li>
+      <li><b><a href="dosage.html">Dosage</a></b></li>
+      <li><b><a href="privatefields.html">Private Fields</a></b></li>
+      <li><b><a href="analyzer.html">Analyzer</a></b></li>
+    </ul>
+  </div>
+  <!-- /container -->
+  
+    <div id="segment-content" class="segment">
+      <div class="container">
+          <div class="row">
+              <div class="inner-wrapper">
+                <div class="col-12" >
+<!--ReleaseHeader--><p id="publish-box">Implementation Guide CHMED20AF - Local Development build (v0.3.0). See the <a href="http://chmed20af.emediplan.ch/fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+<!-- 
+This is the {% if {{site.build}} == "ci" %}
+    Continuous Integration Build
+   {% else %}
+    (release {{site.data.fhir.ig.version}})
+  {% endif %}
+  {% if {{site.build}} == "ballot" %} {{site.ballot}} Ballot {% endif %}
+  of the {{site.data.fhir.igName}} Implementation Guide,  based on <a href="{{ site.data.fhir.path }}index.html">FHIR Version {{ site.data.fhir.version }}</a>.  See the <a href="{{ site.historypath }}">Directory of published versions.</a>
+ -->
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+</div>
+<!-- /segment-breadcrumb -->
+
+ <div id="segment-content" class="segment">  <!-- segment-content -->
+ <div class="container">  <!-- container -->
+            <div class="row">
+             <div class="inner-wrapper">
+  <!-- CONTENT CONTENT -->
+
+                    <div class="col-12">
+                        <h1 id="private-fields">Private Fields</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>CHMED16A has the concept of Private Fields which can be added to Patient, Medication and Medicament.
+The Private Fields can be represented in FHIR with <a href="http://hl7.org/fhir/extensibility.html#Extension">extensions</a> and
+can be added to Patient, Composition (CHMED16A: Medication), MedicationStatement (CHMED16A: Medicament)</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="nt">&lt;extension</span> <span class="na">url=</span><span class="s">"http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-privatefield"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;extension</span> <span class="na">url=</span><span class="s">"name"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;valueString</span> <span class="na">value=</span><span class="s">"PrivateFieldNameSample"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/extension&gt;</span>
+      <span class="nt">&lt;extension</span> <span class="na">url=</span><span class="s">"value"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;valueString</span> <span class="na">value=</span><span class="s">"PrivateFieldValueSample"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/extension&gt;</span>
+   <span class="nt">&lt;/extension&gt;</span>
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="nl">"extension"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-privatefield"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"extension"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"valueString"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"value"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"valueString"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"value"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The name of the field can be indicated with the extension name in attribute valueString, the value of the field with the extension value and attribute valueString. See sample for <a href="Patient-chmed20af-card-patient-ext.html">patient</a>.</p>
+
+<h2 id="caveat">Caveat</h2>
+
+<p>Currently in CHMED20AF their are no private fields explicitly defined. The conversion to the QR format considers extension definitions for Composition (equals to Medication in CHMED16A), Patient and MedicationStatement (equals to Medicament) with a canonical url starting with http://chmed20af.emediplan.ch/fhir/StructureDefinition/.</p>
+
+<p>In the future official defined extensions will be published here.</p>
+
+
+                    </div>
+
+</div>
+
+    </div>  <!-- /inner-wrapper -->
+            </div>  <!-- /row -->
+        </div>  <!-- /container -->
+
+    </div>  <!-- /segment-content -->
+
+<div id="segment-footer" class="segment">  <!-- segment-footer -->
+  <div class="container">  <!-- container -->
+   <div class="inner-wrapper">
+    <p>
+        &copy; eMediplan 2017+. <a style="color: #ffffff" href="http://www.hl7.org/fhir">based on FHIR Release 4.</a>
+        <br/>
+        HL7&reg;, HEALTH LEVEL SEVEN&reg;, FHIR&reg; and the FHIR <img src="assets/ico/favicon.png"/>&reg; are trademarks owned by Health Level Seven International, registered with the United States Patent and Trademark Office.
+        </p>
+   </div>  <!-- /inner-wrapper -->
+  </div>  <!-- /container -->
+ </div>  <!-- /segment-footer -->
+  <!-- disqus thread -->
+  <!-- disqus -->
+  <!-- end disqus -->
+
+ <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+  <div class="container">  <!-- container -->
+  </div>  <!-- /container -->
+ </div>  <!-- /segment-post-footer -->
+
+      <!-- JS and analytics only. -->
+      <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/jquery-3.2.1.min.js"> </script>
+  <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script src="assets/js/jquery-ui.min.js"> </script>
+
+<script src="dist/js/bootstrap.min.js"> </script>
+<script src="assets/js/respond.min.js"> </script>
+
+<script src="assets/js/fhir.js"> </script>
+
+  <!-- Analytics Below
+================================================== -->
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/MedicationStatement/chmed20af-card-medicationstatement-tt-4-spiricort> a fhir:MedicationStatement;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "chmed20af-card-medicationstatement-tt-4-spiricort"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medicationstatement";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medicationstatement>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">Spiricort ausdosieren \n         <br/>Spirocort Filmtabl 20 mg				Prd-Nr. 42239\n         <br/> Tag    Dosierung [mg]\n         <br/>1      40\n         <br/>2      40\n         <br/>3-9    30\n         <br/>10-16   25\n         <br/> &quot;Medicaments&quot;: [{			&quot;Id&quot;: &quot;42239&quot;,			&quot;IdType&quot;: 4,			&quot;Pos&quot;: [{					&quot;DtFrom&quot;: &quot;2017-09-05&quot;,					&quot;DtTo&quot;: &quot;2017-09-06&quot;,					&quot;CyDu&quot;: 86400,					&quot;InRes&quot;: 0,					&quot;TT&quot;: [{							&quot;Off&quot;: 25200,							&quot;DoFrom&quot;: 40.0						}					]				}, {					&quot;DtFrom&quot;: &quot;2017-09-07&quot;,					&quot;DtTo&quot;: &quot;2017-09-15&quot;,					&quot;CyDu&quot;: 86400,					&quot;InRes&quot;: 0,					&quot;TT&quot;: [{							&quot;Off&quot;: 25200,							&quot;DoFrom&quot;: 30.0						}					]				}, {					&quot;DtFrom&quot;: &quot;2017-09-16&quot;,					&quot;DtTo&quot;: &quot;2017-09-21&quot;,					&quot;CyDu&quot;: 86400,					&quot;InRes&quot;: 0,					&quot;TT&quot;: [{							&quot;Off&quot;: 25200,							&quot;DoFrom&quot;: 25.0						}					]				}			],			&quot;Unit&quot;: &quot;mg&quot;,			&quot;TkgRsn&quot;: &quot;Entzündung&quot;,			&quot;Roa&quot;: &quot;PO&quot;,			&quot;Rep&quot;: 0,			&quot;Subs&quot;: 0,			&quot;NbPack&quot;: 1		} \n      </div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Medication;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "cont1" ];
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medication";
+         fhir:index 0;
+         fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medication>
+       ]
+     ];
+     fhir:Medication.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:2.51.1.1" ];
+         fhir:Coding.code [ fhir:value "7680388400291" ];
+         fhir:Coding.display [ fhir:value "SPIRICORT Filmtabl 20 mg" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "SPIRICORT Filmtabl 20 mg" ]
+     ];
+     fhir:Medication.form [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "10221000" ];
+         fhir:Coding.display [ fhir:value "Film-coated tablet" ]
+       ]
+     ];
+     fhir:Medication.ingredient [
+       fhir:index 0;
+       fhir:Medication.ingredient.itemCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:116601002;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "116601002" ];
+           fhir:Coding.display [ fhir:value "Prednisolone (substance)" ]
+         ]
+       ];
+       fhir:Medication.ingredient.strength [
+         fhir:Ratio.numerator [
+           fhir:Quantity.value [ fhir:value "20"^^xsd:decimal ];
+           fhir:Quantity.unit [ fhir:value "mg" ]
+         ];
+         fhir:Ratio.denominator [
+           fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ]
+         ]
+       ]
+     ]
+  ];
+  fhir:MedicationStatement.status [ fhir:value "completed"];
+  fhir:MedicationStatement.medicationReference [
+     fhir:Reference.reference [ fhir:value "#cont1" ]
+  ];
+  fhir:MedicationStatement.subject [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Patient/chmed20af-card-patient-s01>;
+     fhir:Reference.reference [ fhir:value "Patient/chmed20af-card-patient-s01" ]
+  ];
+  fhir:MedicationStatement.informationSource [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Practitioner/chmed20af-practitioner-s01>;
+     fhir:Reference.reference [ fhir:value "Practitioner/chmed20af-practitioner-s01" ]
+  ];
+  fhir:MedicationStatement.reasonCode [
+     fhir:index 0;
+     fhir:CodeableConcept.text [ fhir:value "Blutverdünnung" ]
+  ];
+  fhir:MedicationStatement.dosage [
+     fhir:index 0;
+     fhir:Dosage.text [ fhir:value "ausschleichend" ]
+  ], [
+     fhir:index 1;
+     fhir:Dosage.sequence [ fhir:value "0"^^xsd:integer ];
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2017-09-05"^^xsd:date ];
+           fhir:Period.end [ fhir:value "2017-09-06"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.duration [ fhir:value "1"^^xsd:decimal ];
+         fhir:Timing.repeat.durationUnit [ fhir:value "d" ];
+         fhir:Timing.repeat.frequency [ fhir:value "1"^^xsd:positiveInteger ]
+       ]
+     ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20053000" ];
+         fhir:Coding.display [ fhir:value "Oral use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "40"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "mg" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "mg" ]
+       ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Dosage.sequence [ fhir:value "1"^^xsd:integer ];
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2017-09-07"^^xsd:date ];
+           fhir:Period.end [ fhir:value "2017-09-15"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.duration [ fhir:value "1"^^xsd:decimal ];
+         fhir:Timing.repeat.durationUnit [ fhir:value "d" ];
+         fhir:Timing.repeat.frequency [ fhir:value "1"^^xsd:positiveInteger ]
+       ]
+     ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20053000" ];
+         fhir:Coding.display [ fhir:value "Oral use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "30"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "mg" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "mg" ]
+       ]
+     ]
+  ], [
+     fhir:index 3;
+     fhir:Dosage.sequence [ fhir:value "3"^^xsd:integer ];
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2017-09-16"^^xsd:date ];
+           fhir:Period.end [ fhir:value "2017-09-21"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.duration [ fhir:value "1"^^xsd:decimal ];
+         fhir:Timing.repeat.durationUnit [ fhir:value "d" ];
+         fhir:Timing.repeat.frequency [ fhir:value "1"^^xsd:positiveInteger ]
+       ]
+     ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20053000" ];
+         fhir:Coding.display [ fhir:value "Oral use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "25"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "mg" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "mg" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/MedicationStatement/chmed20af-card-medicationstatement-tt-4-spiricort.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

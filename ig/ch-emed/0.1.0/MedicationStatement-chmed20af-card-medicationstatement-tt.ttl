@@ -1,0 +1,247 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/MedicationStatement/chmed20af-card-medicationstatement-tt> a fhir:MedicationStatement;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "chmed20af-card-medicationstatement-tt"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medicationstatement";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medicationstatement>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"> Dosage Sample </div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Medication;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "cont4" ];
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medication";
+         fhir:index 0;
+         fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medication>
+       ]
+     ];
+     fhir:Medication.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:2.51.1.1" ];
+         fhir:Coding.code [ fhir:value "7680543780176" ];
+         fhir:Coding.display [ fhir:value "MABTHERA Inf Konz 100 mg/10ml" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "MABTHERA Inf Konz 100 mg/10ml" ]
+     ];
+     fhir:Medication.form [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "11213000" ];
+         fhir:Coding.display [ fhir:value "Concentrate for solution for infusion" ]
+       ]
+     ];
+     fhir:Medication.ingredient [
+       fhir:index 0;
+       fhir:Medication.ingredient.itemCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:386919002;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "386919002" ];
+           fhir:Coding.display [ fhir:value "Rituximab (substance)" ]
+         ]
+       ];
+       fhir:Medication.ingredient.strength [
+         fhir:Ratio.numerator [
+           fhir:Quantity.value [ fhir:value "100"^^xsd:decimal ];
+           fhir:Quantity.unit [ fhir:value "mg" ]
+         ];
+         fhir:Ratio.denominator [
+           fhir:Quantity.value [ fhir:value "10"^^xsd:decimal ];
+           fhir:Quantity.unit [ fhir:value "ml" ]
+         ]
+       ]
+     ]
+  ];
+  fhir:MedicationStatement.status [ fhir:value "completed"];
+  fhir:MedicationStatement.medicationReference [
+     fhir:Reference.reference [ fhir:value "#cont4" ]
+  ];
+  fhir:MedicationStatement.subject [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Patient/chmed20af-card-patient-s01>;
+     fhir:Reference.reference [ fhir:value "Patient/chmed20af-card-patient-s01" ]
+  ];
+  fhir:MedicationStatement.informationSource [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Practitioner/chmed20af-practitioner-s01>;
+     fhir:Reference.reference [ fhir:value "Practitioner/chmed20af-practitioner-s01" ]
+  ];
+  fhir:MedicationStatement.reasonCode [
+     fhir:index 0;
+     fhir:CodeableConcept.text [ fhir:value "Krebsleiden" ]
+  ];
+  fhir:MedicationStatement.dosage [
+     fhir:index 0;
+     fhir:Dosage.text [ fhir:value "Dosage sample" ]
+  ], [
+     fhir:index 1;
+     fhir:Dosage.sequence [ fhir:value "1"^^xsd:integer ];
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.count [ fhir:value "1"^^xsd:positiveInteger ];
+         fhir:Timing.repeat.duration [ fhir:value "3600"^^xsd:decimal ];
+         fhir:Timing.repeat.durationUnit [ fhir:value "s" ];
+         fhir:Timing.repeat.timeOfDay [
+           fhir:value "08:00:00"^^xsd:time;
+           fhir:index 0
+         ]
+       ]
+     ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20045000" ];
+         fhir:Coding.display [ fhir:value "Intravenous use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "10"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "ml" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "ml" ]
+       ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Dosage.sequence [ fhir:value "2"^^xsd:integer ];
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2017-09-05"^^xsd:date ];
+           fhir:Period.end [ fhir:value "2020-09-26"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.duration [ fhir:value "1800"^^xsd:decimal ];
+         fhir:Timing.repeat.durationUnit [ fhir:value "s" ];
+         fhir:Timing.repeat.frequency [ fhir:value "3"^^xsd:positiveInteger ];
+         fhir:Timing.repeat.period [ fhir:value "1"^^xsd:decimal ];
+         fhir:Timing.repeat.periodUnit [ fhir:value "wk" ];
+         fhir:Timing.repeat.dayOfWeek [
+           fhir:value "tue";
+           fhir:index 0
+         ];
+         fhir:Timing.repeat.timeOfDay [
+           fhir:value "08:00:00"^^xsd:time;
+           fhir:index 0
+         ], [
+           fhir:value "12:00:00"^^xsd:time;
+           fhir:index 1
+         ], [
+           fhir:value "18:00:00"^^xsd:time;
+           fhir:index 2
+         ]
+       ]
+     ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20045000" ];
+         fhir:Coding.display [ fhir:value "Intravenous use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "2"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "g" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "g" ]
+       ]
+     ]
+  ], [
+     fhir:index 3;
+     fhir:Dosage.sequence [ fhir:value "3"^^xsd:integer ];
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2016-02-10"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.when [
+           fhir:value "PCM";
+           fhir:index 0
+         ], [
+           fhir:value "PCV";
+           fhir:index 1
+         ]
+       ]
+     ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20053000" ];
+         fhir:Coding.display [ fhir:value "Oral use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "Stk" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "1" ]
+       ]
+     ]
+  ], [
+     fhir:index 4;
+     fhir:Dosage.sequence [ fhir:value "4"^^xsd:integer ];
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2016-02-10"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.when [
+           fhir:value "PCM";
+           fhir:index 0
+         ], [
+           fhir:value "PCV";
+           fhir:index 1
+         ]
+       ]
+     ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20053000" ];
+         fhir:Coding.display [ fhir:value "Oral use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "Stk" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "1" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/MedicationStatement/chmed20af-card-medicationstatement-tt.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

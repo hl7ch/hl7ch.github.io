@@ -1,0 +1,89 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/Medication/TriatecWithLocalCodes> a fhir:Medication;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "TriatecWithLocalCodes"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense>
+     ], [
+       fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationrequest";
+       fhir:index 1;
+       fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationrequest>
+     ], [
+       fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement";
+       fhir:index 2;
+       fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>code</b>: <span title=\"Codes: {urn:oid:2.51.1.1 7680538751228}, {http://example.com/localcode Local Code}\">TRIATEC Tabl 2.5 mg</span></p><p><b>form</b>: <span title=\"Codes: {urn:oid:0.4.0.127.0.16.1.1.2.1 10219000}\">Tablet</span></p><p><b>amount</b>: 20/1</p><h3>Ingredients</h3><table class=\"grid\"><tr><td>-</td><td><b>Item[x]</b></td><td><b>Strength</b></td></tr><tr><td>*</td><td><span title=\"Codes: {http://example.com/localcode Local Code}\">Ramipril</span></td><td>2.5 mg/1 1</td></tr></table></div>"
+  ];
+  fhir:Medication.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:oid:2.51.1.1" ];
+       fhir:Coding.code [ fhir:value "7680538751228" ];
+       fhir:Coding.display [ fhir:value "TRIATEC Tabl 2.5 mg 20 Stk" ]
+     ], [
+       fhir:index 1;
+       fhir:Coding.system [ fhir:value "http://example.com/localcode" ];
+       fhir:Coding.code [ fhir:value "Local Code" ];
+       fhir:Coding.display [ fhir:value "Triatec" ]
+     ];
+     fhir:CodeableConcept.text [ fhir:value "TRIATEC Tabl 2.5 mg" ]
+  ];
+  fhir:Medication.form [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+       fhir:Coding.code [ fhir:value "10219000" ];
+       fhir:Coding.display [ fhir:value "Tablet" ]
+     ]
+  ];
+  fhir:Medication.amount [
+     fhir:Ratio.numerator [
+       fhir:Quantity.value [ fhir:value "20"^^xsd:decimal ]
+     ];
+     fhir:Ratio.denominator [
+       fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ]
+     ]
+  ];
+  fhir:Medication.ingredient [
+     fhir:index 0;
+     fhir:Medication.ingredient.itemCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://example.com/localcode" ];
+         fhir:Coding.code [ fhir:value "Local Code" ];
+         fhir:Coding.display [ fhir:value "Ramipril" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "Ramipril" ]
+     ];
+     fhir:Medication.ingredient.strength [
+       fhir:Ratio.numerator [
+         fhir:Quantity.value [ fhir:value "2.5"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "mg" ]
+       ];
+       fhir:Ratio.denominator [
+         fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "1" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/Medication/TriatecWithLocalCodes.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,416 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/Bundle/chmed20af-pre-bundle-s01> a fhir:Bundle;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "chmed20af-pre-bundle-s01"];
+  fhir:Resource.meta [
+     fhir:Meta.lastUpdated [ fhir:value "2019-05-29T15:32:26.603+02:00"^^xsd:dateTime ];
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-pre-bundle";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-pre-bundle>
+     ]
+  ];
+  fhir:Bundle.identifier [
+     fhir:Identifier.system [ fhir:value "http://emediplan.ch/chmed20af/id" ];
+     fhir:Identifier.value [ fhir:value "645bb0c3-ff7e-4123-bef5-3852a4784813" ]
+  ];
+  fhir:Bundle.type [ fhir:value "document"];
+  fhir:Bundle.timestamp [ fhir:value "2017-05-27T11:46:09+02:00"^^xsd:dateTime];
+  fhir:Bundle.entry [
+     fhir:index 0;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://localhost:8080/r4/Composition/5" ];
+     fhir:Bundle.entry.resource <http://localhost:8080/r4/Composition/5>
+  ], [
+     fhir:index 1;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://localhost:8080/r4/Patient/7" ];
+     fhir:Bundle.entry.resource <http://localhost:8080/r4/Patient/7>
+  ], [
+     fhir:index 2;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://localhost:8080/r4/Practitioner/9" ];
+     fhir:Bundle.entry.resource <http://localhost:8080/r4/Practitioner/9>
+  ], [
+     fhir:index 3;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://localhost:8080/r4/Organization/10" ];
+     fhir:Bundle.entry.resource <http://localhost:8080/r4/Organization/10>
+  ], [
+     fhir:index 4;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://localhost:8080/r4/MedicationRequest/10" ];
+     fhir:Bundle.entry.resource <http://localhost:8080/r4/MedicationRequest/10>
+  ] .
+
+<http://localhost:8080/r4/Composition/5> a fhir:Composition;
+  fhir:Resource.id [ fhir:value "5"];
+  fhir:Resource.meta [
+     fhir:Meta.versionId [ fhir:value "1" ];
+     fhir:Meta.lastUpdated [ fhir:value "2019-05-29T14:58:58.181+02:00"^^xsd:dateTime ];
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-pre-composition";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-pre-composition>
+     ]
+  ];
+  fhir:Resource.language [ fhir:value "de-CH"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\">Prescription </div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-setid" ];
+     fhir:Extension.valueIdentifier [
+       fhir:Identifier.system [ fhir:value "http://emediplan.ch/chmed20af/id" ];
+       fhir:Identifier.value [ fhir:value "645bb0c3-ff7e-4123-bef5-3852a4784813" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-versionnumber" ];
+     fhir:Extension.valueUnsignedInt [ fhir:value "1"^^xsd:nonNegativeInteger ]
+  ], [
+     fhir:index 2;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-informationrecipient" ];
+     fhir:Extension.valueReference [
+       fhir:link <http://chmed20af.emediplan.ch/fhir/Practitioner/9>;
+       fhir:Reference.reference [ fhir:value "Practitioner/9" ]
+     ]
+  ];
+  fhir:Composition.identifier [
+     fhir:Identifier.system [ fhir:value "http://emediplan.ch/chmed20af/id" ];
+     fhir:Identifier.value [ fhir:value "645bb0c3-ff7e-4123-bef5-3852a4784813" ]
+  ];
+  fhir:Composition.status [ fhir:value "final"];
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:761938008;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "761938008" ];
+       fhir:Coding.display [ fhir:value "Medical Prescription record (record artifact)" ]
+     ]
+  ];
+  fhir:Composition.subject [
+     fhir:link <http://localhost:8080/r4/Patient/7>;
+     fhir:Reference.reference [ fhir:value "http://localhost:8080/r4/Patient/7" ]
+  ];
+  fhir:Composition.date [ fhir:value "2017-05-27T11:46:09+02:00"^^xsd:dateTime];
+  fhir:Composition.author [
+     fhir:index 0;
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Practitioner/9>;
+     fhir:Reference.reference [ fhir:value "Practitioner/9" ]
+  ];
+  fhir:Composition.title [ fhir:value "Prescription"];
+  fhir:Composition.confidentiality [
+     fhir:value "N";
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode" ];
+       fhir:Extension.valueCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:17621005;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "17621005" ];
+           fhir:Coding.display [ fhir:value "Normally accessible" ]
+         ]
+       ]
+     ]
+  ];
+  fhir:Composition.custodian [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Organization/10>;
+     fhir:Reference.reference [ fhir:value "Organization/10" ]
+  ];
+  fhir:Composition.section [
+     fhir:index 0;
+     fhir:Composition.section.title [ fhir:value "Verordnung" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:57828-6;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "57828-6" ];
+         fhir:Coding.display [ fhir:value "PRESCRIPTIONS" ]
+       ]
+     ];
+     fhir:Composition.section.text [
+       fhir:Narrative.status [ fhir:value "additional" ];
+       fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"> Verordnung </div>"
+     ];
+     fhir:Composition.section.entry [
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/MedicationRequest/10>;
+       fhir:Reference.reference [ fhir:value "MedicationRequest/10" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Composition.section.title [ fhir:value "Bemerkungen" ];
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:48767-8;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "48767-8" ];
+         fhir:Coding.display [ fhir:value "Annotation comment" ]
+       ]
+     ];
+     fhir:Composition.section.text [
+       fhir:Narrative.status [ fhir:value "additional" ];
+       fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"> Bemerkung </div>"
+     ]
+  ] .
+
+<http://localhost:8080/r4/Patient/7> a fhir:Patient;
+  fhir:Resource.id [ fhir:value "7"];
+  fhir:Resource.meta [
+     fhir:Meta.versionId [ fhir:value "1" ];
+     fhir:Meta.lastUpdated [ fhir:value "2019-05-29T14:58:58.181+02:00"^^xsd:dateTime ];
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-patient";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-patient>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">Maxima, Matter, geb 1981-01-12 </div>"
+  ];
+  fhir:Patient.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v2-0203" ];
+         fhir:Coding.code [ fhir:value "MR" ]
+       ]
+     ];
+     fhir:Identifier.system [ fhir:value "urn:oid:2.999" ];
+     fhir:Identifier.value [ fhir:value "12345678" ]
+  ];
+  fhir:Patient.name [
+     fhir:index 0;
+     fhir:HumanName.family [ fhir:value "Matter" ];
+     fhir:HumanName.given [
+       fhir:value "Maxima";
+       fhir:index 0
+     ]
+  ];
+  fhir:Patient.telecom [
+     fhir:index 0;
+     fhir:ContactPoint.system [ fhir:value "phone" ];
+     fhir:ContactPoint.value [ fhir:value "+41588512600" ];
+     fhir:ContactPoint.use [ fhir:value "home" ]
+  ];
+  fhir:Patient.gender [ fhir:value "female"];
+  fhir:Patient.birthDate [ fhir:value "1981-01-12"^^xsd:date];
+  fhir:Patient.address [
+     fhir:index 0;
+     fhir:Address.line [
+       fhir:value "Untermattweg 8";
+       fhir:index 0
+     ];
+     fhir:Address.city [ fhir:value "Bern" ];
+     fhir:Address.postalCode [ fhir:value "3027" ]
+  ];
+  fhir:Patient.communication [
+     fhir:index 0;
+     fhir:Patient.communication.language [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:ietf:bcp:47" ];
+         fhir:Coding.code [ fhir:value "de-CH" ];
+         fhir:Coding.display [ fhir:value "German (Region=Switzerland)" ]
+       ]
+     ];
+     fhir:Patient.communication.preferred [ fhir:value "true"^^xsd:boolean ]
+  ] .
+
+<http://localhost:8080/r4/Practitioner/9> a fhir:Practitioner;
+  fhir:Resource.id [ fhir:value "9"];
+  fhir:Resource.meta [
+     fhir:Meta.versionId [ fhir:value "1" ];
+     fhir:Meta.lastUpdated [ fhir:value "2019-05-29T14:58:58.181+02:00"^^xsd:dateTime ];
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-practitioner";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-practitioner>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n                  <p>Thomas Wälti </p>\n               </div>"
+  ];
+  fhir:Practitioner.identifier [
+     fhir:index 0;
+     fhir:Identifier.use [ fhir:value "official" ];
+     fhir:Identifier.system [ fhir:value "urn:oid:2.51.1.3" ];
+     fhir:Identifier.value [ fhir:value "7601003178999" ]
+  ], [
+     fhir:index 1;
+     fhir:Identifier.use [ fhir:value "official" ];
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.30.1.123.100.2.1.1" ];
+     fhir:Identifier.value [ fhir:value "ZSR" ]
+  ];
+  fhir:Practitioner.name [
+     fhir:index 0;
+     fhir:HumanName.family [ fhir:value "Wälti" ];
+     fhir:HumanName.given [
+       fhir:value "Thomas";
+       fhir:index 0
+     ]
+  ] .
+
+<http://localhost:8080/r4/Organization/10> a fhir:Organization;
+  fhir:Resource.id [ fhir:value "10"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization-epr";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization-epr>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n                  <p>Hausarzt\n                  </p>\n               </div>"
+  ];
+  fhir:Organization.identifier [
+     fhir:index 0;
+     fhir:Identifier.use [ fhir:value "official" ];
+     fhir:Identifier.system [ fhir:value "urn:oid:2.51.1.3" ];
+     fhir:Identifier.value [ fhir:value "7601003178999" ]
+  ];
+  fhir:Organization.name [ fhir:value "Hausarzt"] .
+
+<http://localhost:8080/r4/MedicationRequest/10> a fhir:MedicationRequest;
+  fhir:Resource.id [ fhir:value "10"];
+  fhir:Resource.meta [
+     fhir:Meta.versionId [ fhir:value "1" ];
+     fhir:Meta.lastUpdated [ fhir:value "2019-05-29T14:58:58.181+02:00"^^xsd:dateTime ];
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-pre-medicationrequest";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-pre-medicationrequest>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">1 x ROACCUTAN Kaps 10 mg 30 Stk substitituion alllowed, 2x repeatable </div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Medication;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "cont1" ];
+     fhir:Medication.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:2.51.1.1" ];
+         fhir:Coding.code [ fhir:value "7680453070343" ];
+         fhir:Coding.display [ fhir:value "ROACCUTAN Kaps 10 mg 30 Stk" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "ROACCUTAN Kaps 10 mg 30 Stk" ]
+     ];
+     fhir:Medication.form [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "10210000" ];
+         fhir:Coding.display [ fhir:value "Capsule, hard" ]
+       ]
+     ];
+     fhir:Medication.ingredient [
+       fhir:index 0;
+       fhir:Medication.ingredient.itemCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:387208003;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "387208003" ];
+           fhir:Coding.display [ fhir:value "Isotretinoin (substance)" ]
+         ]
+       ];
+       fhir:Medication.ingredient.strength [
+         fhir:Ratio.numerator [
+           fhir:Quantity.value [ fhir:value "10"^^xsd:decimal ];
+           fhir:Quantity.unit [ fhir:value "mg" ]
+         ];
+         fhir:Ratio.denominator [
+           fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ]
+         ]
+       ]
+     ]
+  ];
+  fhir:MedicationRequest.status [ fhir:value "completed"];
+  fhir:MedicationRequest.intent [ fhir:value "order"];
+  fhir:MedicationRequest.medicationReference [
+     fhir:Reference.reference [ fhir:value "#cont1" ]
+  ];
+  fhir:MedicationRequest.subject [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Patient/7>;
+     fhir:Reference.reference [ fhir:value "Patient/7" ]
+  ];
+  fhir:MedicationRequest.note [
+     fhir:index 0;
+     fhir:Annotation.text [ fhir:value "-" ]
+  ];
+  fhir:MedicationRequest.dosageInstruction [
+     fhir:index 0;
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2016-09-12"^^xsd:date ];
+           fhir:Period.end [ fhir:value "2020-09-12"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.when [
+           fhir:value "PCM";
+           fhir:index 0
+         ]
+       ]
+     ];
+     fhir:Dosage.asNeededBoolean [ fhir:value "true"^^xsd:boolean ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20053000" ];
+         fhir:Coding.display [ fhir:value "Oral use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "Stk" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "1" ]
+       ]
+     ]
+  ];
+  fhir:MedicationRequest.dispenseRequest [
+     fhir:MedicationRequest.dispenseRequest.numberOfRepeatsAllowed [ fhir:value "2"^^xsd:nonNegativeInteger ];
+     fhir:MedicationRequest.dispenseRequest.quantity [
+       fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ]
+     ]
+  ];
+  fhir:MedicationRequest.substitution [
+     fhir:MedicationRequest.substitution.allowedCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-substanceAdminSubstitution" ];
+         fhir:Coding.code [ fhir:value "E" ];
+         fhir:Coding.display [ fhir:value "equivalent" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/Bundle/chmed20af-pre-bundle-s01.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

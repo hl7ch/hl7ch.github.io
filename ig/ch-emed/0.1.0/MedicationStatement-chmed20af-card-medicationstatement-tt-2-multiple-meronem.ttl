@@ -1,0 +1,146 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/MedicationStatement/chmed20af-card-medicationstatement-tt-2-multiple-meronem> a fhir:MedicationStatement;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "chmed20af-card-medicationstatement-tt-2-multiple-meronem"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medicationstatement";
+       fhir:index 0;
+       fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medicationstatement>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"> 2. MERONEM i.v. Trockensub 1 g 				Prd-Nr. 43582\n         <br/>\n Gabe von 2g 3x täglich (08:00-12:00-18:00), i.v. für 30 Minuten, jeden Dienstag während 3 Wochen.\n         <br/>\n 2 gr, 3 times daily, (08:00-12:00-18:00), iv, for 30 minutes every tuesday for three weeks \n         <br/>\n &quot;Pos&quot;: [{					&quot;DtFrom&quot;: &quot;2017-09-05&quot;,					&quot;DtTo&quot;: &quot;2017-09-26&quot;,					&quot;CyDu&quot;: 604800,					&quot;InRes&quot;: 0,					&quot;TT&quot;: [{							&quot;Off&quot;: 28800,							&quot;Du&quot;: 1800,							&quot;DoFrom&quot;: 2.0						}, {							&quot;Off&quot;: 43200,							&quot;Du&quot;: 1800,							&quot;DoFrom&quot;: 2.0						}, {							&quot;Off&quot;: 64800,							&quot;Du&quot;: 1800,							&quot;DoFrom&quot;: 2.0						}					]				}			],			&quot;Unit&quot;: &quot;STK&quot;,			&quot;TkgRsn&quot;: &quot;Infektion&quot;,			&quot;Roa&quot;: &quot;IV&quot;,			&quot;Rep&quot;: 0,			&quot;Subs&quot;: 0,			&quot;NbPack&quot;: 1 \n      </div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Medication;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "cont4" ];
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medication";
+         fhir:index 0;
+         fhir:link <http://chmed20af.emediplan.ch/fhir/StructureDefinition/chmed20af-card-medication>
+       ]
+     ];
+     fhir:Medication.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:2.51.1.1" ];
+         fhir:Coding.code [ fhir:value "7680531050328" ];
+         fhir:Coding.display [ fhir:value "MERONEM i.v. Trockensub 1 g" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "MERONEM i.v. Trockensub 1 g" ]
+     ];
+     fhir:Medication.form [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "11212000" ];
+         fhir:Coding.display [ fhir:value "Powder for solution for infusion" ]
+       ]
+     ];
+     fhir:Medication.ingredient [
+       fhir:index 0;
+       fhir:Medication.ingredient.itemCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:387540000;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "387540000" ];
+           fhir:Coding.display [ fhir:value "Meropenem (substance)" ]
+         ]
+       ];
+       fhir:Medication.ingredient.strength [
+         fhir:Ratio.numerator [
+           fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ];
+           fhir:Quantity.unit [ fhir:value "g" ]
+         ];
+         fhir:Ratio.denominator [
+           fhir:Quantity.value [ fhir:value "1"^^xsd:decimal ]
+         ]
+       ]
+     ]
+  ];
+  fhir:MedicationStatement.status [ fhir:value "completed"];
+  fhir:MedicationStatement.medicationReference [
+     fhir:Reference.reference [ fhir:value "#cont4" ]
+  ];
+  fhir:MedicationStatement.subject [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Patient/chmed20af-card-patient-s01>;
+     fhir:Reference.reference [ fhir:value "Patient/chmed20af-card-patient-s01" ]
+  ];
+  fhir:MedicationStatement.informationSource [
+     fhir:link <http://chmed20af.emediplan.ch/fhir/Practitioner/chmed20af-practitioner-s01>;
+     fhir:Reference.reference [ fhir:value "Practitioner/chmed20af-practitioner-s01" ]
+  ];
+  fhir:MedicationStatement.reasonCode [
+     fhir:index 0;
+     fhir:CodeableConcept.text [ fhir:value "Infektion" ]
+  ];
+  fhir:MedicationStatement.dosage [
+     fhir:index 0;
+     fhir:Dosage.text [ fhir:value "Gabe von 2g 3x täglich (08:00-12:00-18:00), i.v. für 30 Minuten, jeden Dienstag während 3 Wochen" ]
+  ], [
+     fhir:index 1;
+     fhir:Dosage.timing [
+       fhir:Timing.repeat [
+         fhir:Timing.repeat.boundsPeriod [
+           fhir:Period.start [ fhir:value "2017-09-05"^^xsd:date ];
+           fhir:Period.end [ fhir:value "2020-09-26"^^xsd:date ]
+         ];
+         fhir:Timing.repeat.duration [ fhir:value "1800"^^xsd:decimal ];
+         fhir:Timing.repeat.durationUnit [ fhir:value "s" ];
+         fhir:Timing.repeat.frequency [ fhir:value "3"^^xsd:positiveInteger ];
+         fhir:Timing.repeat.period [ fhir:value "1"^^xsd:decimal ];
+         fhir:Timing.repeat.periodUnit [ fhir:value "wk" ];
+         fhir:Timing.repeat.dayOfWeek [
+           fhir:value "tue";
+           fhir:index 0
+         ];
+         fhir:Timing.repeat.timeOfDay [
+           fhir:value "08:00:00"^^xsd:time;
+           fhir:index 0
+         ], [
+           fhir:value "12:00:00"^^xsd:time;
+           fhir:index 1
+         ], [
+           fhir:value "18:00:00"^^xsd:time;
+           fhir:index 2
+         ]
+       ]
+     ];
+     fhir:Dosage.route [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ];
+         fhir:Coding.code [ fhir:value "20045000" ];
+         fhir:Coding.display [ fhir:value "Intravenous use" ]
+       ]
+     ];
+     fhir:Dosage.doseAndRate [
+       fhir:index 0;
+       fhir:Dosage.doseAndRate.doseQuantity [
+         fhir:Quantity.value [ fhir:value "2"^^xsd:decimal ];
+         fhir:Quantity.unit [ fhir:value "g" ];
+         fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+         fhir:Quantity.code [ fhir:value "g" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://chmed20af.emediplan.ch/fhir/MedicationStatement/chmed20af-card-medicationstatement-tt-2-multiple-meronem.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

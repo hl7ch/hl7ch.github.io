@@ -1,0 +1,1898 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed> a fhir:ImplementationGuide;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "ch.fhir.ig.ch-emed"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_EMED</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed</pre><div><p>Implementation Guide for the eMedication in Switzerland.</p>\n</div></div>"
+  ];
+  fhir:ImplementationGuide.url [ fhir:value "http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed"];
+  fhir:ImplementationGuide.version [ fhir:value "0.2.0"];
+  fhir:ImplementationGuide.name [ fhir:value "CH_EMED"];
+  fhir:ImplementationGuide.title [ fhir:value "CH EMED (R4)"];
+  fhir:ImplementationGuide.status [ fhir:value "active"];
+  fhir:ImplementationGuide.experimental [ fhir:value "false"^^xsd:boolean];
+  fhir:ImplementationGuide.date [ fhir:value "2021-02-12"^^xsd:date];
+  fhir:ImplementationGuide.publisher [ fhir:value "eHealth Suisse"];
+  fhir:ImplementationGuide.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "eHealth Suisse" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "https://www.e-health-suisse.ch/startseite.html" ]
+     ]
+  ];
+  fhir:ImplementationGuide.description [ fhir:value "Implementation Guide for the eMedication in Switzerland."];
+  fhir:ImplementationGuide.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "CH" ]
+     ]
+  ];
+  fhir:ImplementationGuide.copyright [ fhir:value "CC-BY-SA-4.0"];
+  fhir:ImplementationGuide.packageId [ fhir:value "ch.fhir.ig.ch-emed"];
+  fhir:ImplementationGuide.license [ fhir:value "CC-BY-SA-4.0"];
+  fhir:ImplementationGuide.fhirVersion [
+     fhir:value "4.0.1";
+     fhir:index 0
+  ];
+  fhir:ImplementationGuide.dependsOn [
+     fhir:index 0;
+     fhir:Element.id [ fhir:value "chcore" ];
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core";
+       fhir:link <http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core>
+     ];
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ch.fhir.ig.ch-core" ];
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "1.2.0" ]
+  ];
+  fhir:ImplementationGuide.definition [
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "releaselabel" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "STU 1 Informative Ballot" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "copyrightyear" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "2021+" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 2;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "special-url" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "urn:oid:0.4.0.127.0.16.1.1.2.1" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 3;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "special-url" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "urn:oid:1.3.6.1.4.1.19376.1.9.2.1" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-liquid" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template/liquid" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 5;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-liquid" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "input/liquid" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 6;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-qa" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "temp/qa" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 7;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-temp" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "temp/pages" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 8;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-output" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "output" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 9;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-suppressed-warnings" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "input/ignoreWarnings.txt" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 10;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-history" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "http://fhir.ch/ig/ch-emed/history.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 11;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "template-html" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template-page.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 12;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "template-md" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template-page-md.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 13;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-contact" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 14;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-context" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 15;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-copyright" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 16;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-jurisdiction" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 17;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-license" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 18;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-publisher" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 19;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-version" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 20;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "active-tables" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ];
+     fhir:ImplementationGuide.definition.grouping [
+       fhir:index 0;
+       fhir:ImplementationGuide.definition.grouping.name [ fhir:value "CH-EMED" ]
+     ];
+     fhir:ImplementationGuide.definition.resource [
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Binary" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Binary/1-1-pdf>;
+         fhir:Reference.reference [ fhir:value "Binary/1-1-pdf" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-1 PDF as original representation of the Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Binary" ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Binary" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Binary/1-2-pdf>;
+         fhir:Reference.reference [ fhir:value "Binary/1-2-pdf" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-2 PDF as original representation of the Medication Dispense document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Binary" ]
+     ], [
+       fhir:index 2;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Binary" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Binary/2-1-pdf>;
+         fhir:Reference.reference [ fhir:value "Binary/2-1-pdf" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-1 PDF as original representation of the Medication List document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Binary" ]
+     ], [
+       fhir:index 3;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Binary" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Binary/2-2-pdf>;
+         fhir:Reference.reference [ fhir:value "Binary/2-2-pdf" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-2 PDF as original representation of the Pharmaceutical Advice document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Binary" ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Binary" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Binary/2-3-pdf>;
+         fhir:Reference.reference [ fhir:value "Binary/2-3-pdf" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-3 PDF as original representation of the Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Binary" ]
+     ], [
+       fhir:index 5;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Binary" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Binary/2-4-pdf>;
+         fhir:Reference.reference [ fhir:value "Binary/2-4-pdf" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-4 PDF as original representation of the Medication Dispense document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Binary" ]
+     ], [
+       fhir:index 6;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Binary" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Binary/2-5-pdf>;
+         fhir:Reference.reference [ fhir:value "Binary/2-5-pdf" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-5 PDF as original representation of the Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Binary" ]
+     ], [
+       fhir:index 7;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Binary" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Binary/2-6-pdf>;
+         fhir:Reference.reference [ fhir:value "Binary/2-6-pdf" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-6 PDF as original representation of the Medication Prescription document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Binary" ]
+     ], [
+       fhir:index 8;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Binary" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Binary/2-7-pdf>;
+         fhir:Reference.reference [ fhir:value "Binary/2-7-pdf" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-7 PDF as original representation of the Medication Card document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Binary" ]
+     ], [
+       fhir:index 9;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Bundle/1-1-MedicationTreatmentPlan>;
+         fhir:Reference.reference [ fhir:value "Bundle/1-1-MedicationTreatmentPlan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-1 Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationtreatmentplan";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationtreatmentplan>
+       ]
+     ], [
+       fhir:index 10;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Bundle/1-2-MedicationDispense>;
+         fhir:Reference.reference [ fhir:value "Bundle/1-2-MedicationDispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-2 Medication Dispense document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense>
+       ]
+     ], [
+       fhir:index 11;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Bundle/2-1-MedicationList>;
+         fhir:Reference.reference [ fhir:value "Bundle/2-1-MedicationList" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-1 Medication List document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationlist";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationlist>
+       ]
+     ], [
+       fhir:index 12;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Bundle/2-2-PharmaceuticalAdvice>;
+         fhir:Reference.reference [ fhir:value "Bundle/2-2-PharmaceuticalAdvice" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-2 Pharmaceutical Advice document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice>
+       ]
+     ], [
+       fhir:index 13;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Bundle/2-3-MedicationTreatmentPlan>;
+         fhir:Reference.reference [ fhir:value "Bundle/2-3-MedicationTreatmentPlan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-3 Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationtreatmentplan";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationtreatmentplan>
+       ]
+     ], [
+       fhir:index 14;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Bundle/2-4-MedicationDispense>;
+         fhir:Reference.reference [ fhir:value "Bundle/2-4-MedicationDispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-4 Medication Dispense document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense>
+       ]
+     ], [
+       fhir:index 15;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Bundle/2-5-MedicationTreatmentPlan>;
+         fhir:Reference.reference [ fhir:value "Bundle/2-5-MedicationTreatmentPlan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-5 Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationtreatmentplan";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationtreatmentplan>
+       ]
+     ], [
+       fhir:index 16;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Bundle/2-6-MedicationPrescription>;
+         fhir:Reference.reference [ fhir:value "Bundle/2-6-MedicationPrescription" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-6 Medication Prescription document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationprescription";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationprescription>
+       ]
+     ], [
+       fhir:index 17;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Bundle/2-7-MedicationCard>;
+         fhir:Reference.reference [ fhir:value "Bundle/2-7-MedicationCard" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-7 Medication Card document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationcard";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationcard>
+       ]
+     ], [
+       fhir:index 18;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Bundle/MedicationCard-DifferentAuthors>;
+         fhir:Reference.reference [ fhir:value "Bundle/MedicationCard-DifferentAuthors" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Medication Card document with different authors (document/section/entry)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationcard";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationcard>
+       ]
+     ], [
+       fhir:index 19;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Composition/1-1-MedicationTreatmentPlan>;
+         fhir:Reference.reference [ fhir:value "Composition/1-1-MedicationTreatmentPlan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-1 Composition for Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan>
+       ]
+     ], [
+       fhir:index 20;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Composition/1-2-MedicationDispense>;
+         fhir:Reference.reference [ fhir:value "Composition/1-2-MedicationDispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-2 Composition for Medication Dispense document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense>
+       ]
+     ], [
+       fhir:index 21;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Composition/2-1-MedicationList>;
+         fhir:Reference.reference [ fhir:value "Composition/2-1-MedicationList" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-1 Composition for Medication List document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationlist";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationlist>
+       ]
+     ], [
+       fhir:index 22;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Composition/2-2-PharmaceuticalAdvice>;
+         fhir:Reference.reference [ fhir:value "Composition/2-2-PharmaceuticalAdvice" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-2 Composition for Pharmaceutical Advice document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-pharmaceuticaladvice";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-pharmaceuticaladvice>
+       ]
+     ], [
+       fhir:index 23;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Composition/2-3-MedicationTreatmentPlan>;
+         fhir:Reference.reference [ fhir:value "Composition/2-3-MedicationTreatmentPlan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-3 Composition for Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan>
+       ]
+     ], [
+       fhir:index 24;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Composition/2-4-MedicationDispense>;
+         fhir:Reference.reference [ fhir:value "Composition/2-4-MedicationDispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-4 Composition for Medication Dispense document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense>
+       ]
+     ], [
+       fhir:index 25;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Composition/2-5-MedicationTreatmentPlan>;
+         fhir:Reference.reference [ fhir:value "Composition/2-5-MedicationTreatmentPlan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-5 Composition for Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan>
+       ]
+     ], [
+       fhir:index 26;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Composition/2-6-MedicationPrescription>;
+         fhir:Reference.reference [ fhir:value "Composition/2-6-MedicationPrescription" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-6 Composition for Medication Prescription document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationprescription";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationprescription>
+       ]
+     ], [
+       fhir:index 27;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Composition/2-7-MedicationCard>;
+         fhir:Reference.reference [ fhir:value "Composition/2-7-MedicationCard" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-7 Composition for Medication Card document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationcard";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationcard>
+       ]
+     ], [
+       fhir:index 28;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/DocumentReference/DocRef-1-1-MedicationTreatmentPlan>;
+         fhir:Reference.reference [ fhir:value "DocumentReference/DocRef-1-1-MedicationTreatmentPlan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-1 Document Reference for Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for DocumentReference" ]
+     ], [
+       fhir:index 29;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/DocumentReference/DocRef-1-2-MedicationDispense>;
+         fhir:Reference.reference [ fhir:value "DocumentReference/DocRef-1-2-MedicationDispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-2 Document Reference for Medication Dispense document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for DocumentReference" ]
+     ], [
+       fhir:index 30;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/DocumentReference/DocRef-2-1-MedicationList>;
+         fhir:Reference.reference [ fhir:value "DocumentReference/DocRef-2-1-MedicationList" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-1 Document Reference for Medication List document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for DocumentReference" ]
+     ], [
+       fhir:index 31;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/DocumentReference/DocRef-2-2-PharmaceuticalAdvice>;
+         fhir:Reference.reference [ fhir:value "DocumentReference/DocRef-2-2-PharmaceuticalAdvice" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-2 Document Reference for Pharmaceutical Advice document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for DocumentReference" ]
+     ], [
+       fhir:index 32;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/DocumentReference/DocRef-2-3-MedicationTreatmentPlan>;
+         fhir:Reference.reference [ fhir:value "DocumentReference/DocRef-2-3-MedicationTreatmentPlan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-3 Document Reference for Medication Treatment Plan document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for DocumentReference" ]
+     ], [
+       fhir:index 33;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "DocumentReference" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/DocumentReference/DocRef-2-7-MedicationCard>;
+         fhir:Reference.reference [ fhir:value "DocumentReference/DocRef-2-7-MedicationCard" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-7 Document Reference for Medication Card document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for DocumentReference" ]
+     ], [
+       fhir:index 34;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Medication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Medication/1-1-Triatec>;
+         fhir:Reference.reference [ fhir:value "Medication/1-1-Triatec" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-1 Medication Triatec" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Medication in MedicationStatement" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement>
+       ]
+     ], [
+       fhir:index 35;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Medication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Medication/1-2-Triatec>;
+         fhir:Reference.reference [ fhir:value "Medication/1-2-Triatec" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-2 Medication Triatec" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Medication in MedicationDispense" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense>
+       ]
+     ], [
+       fhir:index 36;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Medication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Medication/2-3-Beloczok>;
+         fhir:Reference.reference [ fhir:value "Medication/2-3-Beloczok" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-3 Medication Beloc Zok" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Medication in MedicationStatement" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement>
+       ]
+     ], [
+       fhir:index 37;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Medication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Medication/2-4-Beloczok>;
+         fhir:Reference.reference [ fhir:value "Medication/2-4-Beloczok" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-4 Medication Beloc Zok" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Medication in MedicationDispense" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense>
+       ]
+     ], [
+       fhir:index 38;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Medication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Medication/2-5-Norvasc>;
+         fhir:Reference.reference [ fhir:value "Medication/2-5-Norvasc" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-5 Medication Norvasc" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Medication in MedicationStatement" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement>
+       ]
+     ], [
+       fhir:index 39;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Medication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Medication/2-6-Norvasc>;
+         fhir:Reference.reference [ fhir:value "Medication/2-6-Norvasc" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-6 Medication Norvasc" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Medication in MedicationRequest" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationrequest";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationrequest>
+       ]
+     ], [
+       fhir:index 40;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Medication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Medication/2-7-Beloczok>;
+         fhir:Reference.reference [ fhir:value "Medication/2-7-Beloczok" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-7 Medication Beloc Zok" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Medication in MedicationStatement" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement>
+       ]
+     ], [
+       fhir:index 41;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Medication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Medication/2-7-Norvasc>;
+         fhir:Reference.reference [ fhir:value "Medication/2-7-Norvasc" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-7 Medication Norvasc" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Medication in MedicationStatement" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement>
+       ]
+     ], [
+       fhir:index 42;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Medication" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Medication/TriatecWithLocalCodes>;
+         fhir:Reference.reference [ fhir:value "Medication/TriatecWithLocalCodes" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Triatec with local Codes" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Medication with local Codes" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement>
+       ]
+     ], [
+       fhir:index 43;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MedicationDispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/MedicationDispense/1-2-MedDispTriatec>;
+         fhir:Reference.reference [ fhir:value "MedicationDispense/1-2-MedDispTriatec" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-2 Medication Dispense with Medication Triatec" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for MedicationDispense" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense>
+       ]
+     ], [
+       fhir:index 44;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MedicationDispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/MedicationDispense/2-4-MedDispBeloczok>;
+         fhir:Reference.reference [ fhir:value "MedicationDispense/2-4-MedDispBeloczok" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-2 Medication Dispense with Medication Beloc Zok" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for MedicationDispense" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense>
+       ]
+     ], [
+       fhir:index 45;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MedicationRequest" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/MedicationRequest/2-6-MedReqNorvasc>;
+         fhir:Reference.reference [ fhir:value "MedicationRequest/2-6-MedReqNorvasc" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-6 Medication Request with Medication Norvasc" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for MedicationRequest" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest>
+       ]
+     ], [
+       fhir:index 46;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MedicationStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/MedicationStatement/1-1-MedStatTriatec>;
+         fhir:Reference.reference [ fhir:value "MedicationStatement/1-1-MedStatTriatec" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1-1 Medication Statement with Medication Triatec" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for MedicationStatement" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-treatmentplan";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-treatmentplan>
+       ]
+     ], [
+       fhir:index 47;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MedicationStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/MedicationStatement/2-3-MedStatBeloczok>;
+         fhir:Reference.reference [ fhir:value "MedicationStatement/2-3-MedStatBeloczok" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-3 Medication Statement with Medication Beloc Zok" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for MedicationStatement" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-treatmentplan";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-treatmentplan>
+       ]
+     ], [
+       fhir:index 48;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MedicationStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/MedicationStatement/2-5-MedStatNorvasc>;
+         fhir:Reference.reference [ fhir:value "MedicationStatement/2-5-MedStatNorvasc" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-5 Medication Statement with Medication Norvasc" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for MedicationStatement" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-treatmentplan";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-treatmentplan>
+       ]
+     ], [
+       fhir:index 49;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MedicationStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/MedicationStatement/2-7-MedStatBeloczok>;
+         fhir:Reference.reference [ fhir:value "MedicationStatement/2-7-MedStatBeloczok" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-7 Medication Statement with Medication Beloc Zok" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for MedicationStatement" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-card";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-card>
+       ]
+     ], [
+       fhir:index 50;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "MedicationStatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/MedicationStatement/2-7-MedStatNorvasc>;
+         fhir:Reference.reference [ fhir:value "MedicationStatement/2-7-MedStatNorvasc" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-7 Medication Statement with Medication Norvasc" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for MedicationStatment" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-card";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-card>
+       ]
+     ], [
+       fhir:index 51;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Organization/Cara>;
+         fhir:Reference.reference [ fhir:value "Organization/Cara" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Cara" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Organization" ]
+     ], [
+       fhir:index 52;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Organization/Custodian>;
+         fhir:Reference.reference [ fhir:value "Organization/Custodian" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Custodian" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Organization" ]
+     ], [
+       fhir:index 53;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Organization/Hausarzt>;
+         fhir:Reference.reference [ fhir:value "Organization/Hausarzt" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Hausarzt" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Organization" ]
+     ], [
+       fhir:index 54;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Observation/2-2-PharmaceuticalAdvice>;
+         fhir:Reference.reference [ fhir:value "Observation/2-2-PharmaceuticalAdvice" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2-2 Observation for Pharmaceutical Advice document" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation";
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation>
+       ]
+     ], [
+       fhir:index 55;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Patient/MonikaWegmueller>;
+         fhir:Reference.reference [ fhir:value "Patient/MonikaWegmueller" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Monika Wegmueller" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Patient" ]
+     ], [
+       fhir:index 56;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Patient/MonikaWegmuellerRecipient>;
+         fhir:Reference.reference [ fhir:value "Patient/MonikaWegmuellerRecipient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Monika Wegmueller as Information Recipient" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Patient" ]
+     ], [
+       fhir:index 57;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/Practitioner/FamilienHausarzt>;
+         fhir:Reference.reference [ fhir:value "Practitioner/FamilienHausarzt" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Familien Hausarzt" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner" ]
+     ], [
+       fhir:index 58;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/CodeSystem/edqm-standardterms>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/edqm-standardterms" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EDQM - Standard Terms" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "EDQM - Standard Terms used in Swizerland (aggregations of codes of ValueSets RouteOfAdmministartion, Dose Form, see original codes system defined in https://standardterms.edqm.eu/#)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 59;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/CodeSystem/ihe-pharmaceuticaladvicestatuslist>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/ihe-pharmaceuticaladvicestatuslist" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IHE Pharmaceutical Advice Status List" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IHE Pharmaceutical Advice Status List" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 60;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationcard>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-composition-medicationcard" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Card Composition Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the composition for the medication card document" ]
+     ], [
+       fhir:index 61;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-composition-medicationdispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Dispense Composition Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the composition for the medication dispense document" ]
+     ], [
+       fhir:index 62;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationlist>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-composition-medicationlist" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication List Composition Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the composition for the medication list document" ]
+     ], [
+       fhir:index 63;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationprescription>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-composition-medicationprescription" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Prescription Composition Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the composition for the medication prescription document" ]
+     ], [
+       fhir:index 64;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationtreatmentplan>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-composition-medicationtreatmentplan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Treatment Plan Composition Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the composition for the medication treatment plan document" ]
+     ], [
+       fhir:index 65;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-pharmaceuticaladvice>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-composition-pharmaceuticaladvice" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Pharmaceutical Advice Composition Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the composition for the pharmaceutical advice document" ]
+     ], [
+       fhir:index 66;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationcard>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-document-medicationcard" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Card Document Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the bundle for the medication card document" ]
+     ], [
+       fhir:index 67;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-document-medicationdispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Dispense Document Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the bundle for the medication dispense document" ]
+     ], [
+       fhir:index 68;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationlist>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-document-medicationlist" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication List Document Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the bundle for the medication list document" ]
+     ], [
+       fhir:index 69;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationprescription>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-document-medicationprescription" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Prescription Document Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the bundle for the medication prescription document" ]
+     ], [
+       fhir:index 70;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationtreatmentplan>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-document-medicationtreatmentplan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Treatment Plan Document Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the bundle for the medication treatment plan document" ]
+     ], [
+       fhir:index 71;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-document-pharmaceuticaladvice" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Pharmaceutical Advice Document Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the bundle for the pharmaceutical advice document" ]
+     ], [
+       fhir:index 72;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:complex-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-dosage-nonstructured>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-dosage-nonstructured" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Dosage Non-Structured Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the non-structured dosage" ]
+     ], [
+       fhir:index 73;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:complex-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-dosage-structured-medicationrequest>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-dosage-structured-medicationrequest" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Dosage Structured Profile (MedicationRequest)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the structured dosage for the medication request" ]
+     ], [
+       fhir:index 74;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:complex-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-dosage-structured>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-dosage-structured" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Dosage Structured Profile (MedicationStatement / MedicationDispense)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the structured dosage for the medication statement and medication dispense" ]
+     ], [
+       fhir:index 75;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-documentauthor>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-ext-documentauthor" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Extension Document Author" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to represent the author of the original document in the medication statement (for the Medication Card document)" ]
+     ], [
+       fhir:index 76;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-dispense>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-ext-dispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Extension Dispense" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to reference the medication dispense" ]
+     ], [
+       fhir:index 77;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-dosagetype>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-ext-dosagetype" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Extension Dosage Type" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to represent the dosage type using a template ID as used in a CDA document" ]
+     ], [
+       fhir:index 78;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-pharmaceuticaladvice>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-ext-pharmaceuticaladvice" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Extension Pharmaceutical Advice" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to represent the reference to the Pharmaceutical Advice document" ]
+     ], [
+       fhir:index 79;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-prescription>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-ext-prescription" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Extension Prescription" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to represent the reference to the Medication Prescritpion document" ]
+     ], [
+       fhir:index 80;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-representedorganization>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-ext-representedorganization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Extension Represented Organization" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to represent the organization of the author" ]
+     ], [
+       fhir:index 81;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-substitution>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-ext-substitution" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Extension Substitution" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to represent the substitution of a medication" ]
+     ], [
+       fhir:index 82;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-treatmentplan>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-ext-treatmentplan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Extension Treatment Plan" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to represent the reference to the Medication Treatment Plan document" ]
+     ], [
+       fhir:index 83;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-treatmentreason>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-ext-treatmentreason" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Extension Treatment Reason" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to represent the treatment reason" ]
+     ], [
+       fhir:index 84;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-medication-medicationdispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Profile (MedicationDispense)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the medication for the medication dispense" ]
+     ], [
+       fhir:index 85;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationrequest>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-medication-medicationrequest" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Profile (MedicationRequest)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the medication for the medication request" ]
+     ], [
+       fhir:index 86;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationstatement>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-medication-medicationstatement" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Medication Profile (MedicationStatement)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the medication for the medication statement" ]
+     ], [
+       fhir:index 87;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationdispense>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-medicationdispense" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED MedicationDispense Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the medication dispense" ]
+     ], [
+       fhir:index 88;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-medicationrequest" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED MedicationRequest Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the medication request" ]
+     ], [
+       fhir:index 89;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-card>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-medicationstatement-card" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED MedicationStatement Profile (Medication Card document)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the medication statement for the Medication Card document" ]
+     ], [
+       fhir:index 90;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationstatement-treatmentplan>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-medicationstatement-treatmentplan" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED MedicationStatement Profile (Medication Treatment Plan document)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the medication statement for the Medication Treatment Plan document" ]
+     ], [
+       fhir:index 91;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-observation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Observation Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation" ]
+     ], [
+       fhir:index 92;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:complex-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-quantity>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-quantity" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Quantity with units" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "A quantity with defined units" ]
+     ], [
+       fhir:index 93;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:complex-type" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-range>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-emed-range" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMED Range with units" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "A quantity with defined units" ]
+     ], [
+       fhir:index 94;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/ValueSet/ActivePharmaceuticalIngredient>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ActivePharmaceuticalIngredient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "ActivePharmaceuticalIngredient" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "ActivePharmaceuticalIngredient" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 95;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/ValueSet/edqm-pharmaceuticaldoseform>;
+         fhir:Reference.reference [ fhir:value "ValueSet/edqm-pharmaceuticaldoseform" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EDQM - Pharmaceutical Dose Form" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Valueset RouteOuPharmaceutical Dose Form from EDQM, PDF, export 24.4.2018, see https://standardterms.edqm.eu/#" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 96;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/ValueSet/edqm-routeofadministration>;
+         fhir:Reference.reference [ fhir:value "ValueSet/edqm-routeofadministration" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "EDQM - RouteOfAdministration" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Valueset RouteOufAdministration from EQM, ROA, export 24.4.2018, see https://standardterms.edqm.eu/#" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 97;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/ValueSet/ihe-pharmaceuticaladvicestatuslist>;
+         fhir:Reference.reference [ fhir:value "ValueSet/ihe-pharmaceuticaladvicestatuslist" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IHE Pharmaceutical Advice Status List" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IHE Pharmaceutical Advice Status List" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 98;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-emed/ValueSet/UnitsOfPresentation>;
+         fhir:Reference.reference [ fhir:value "ValueSet/UnitsOfPresentation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "UnitsOfPresentation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "UnitsOfPresentation" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ];
+     fhir:ImplementationGuide.definition.page [
+       fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "toc.html" ];
+       fhir:ImplementationGuide.definition.page.title [ fhir:value "Table of Contents" ];
+       fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ];
+       fhir:ImplementationGuide.definition.page.page [
+         fhir:index 0;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "index.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Home" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 1;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "medication-treatment-plan-document.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Medication Treatment Plan document" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 2;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "medication-prescription-document.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Medication Prescription document" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 3;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "medication-dispense-document.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Medication Dispense document" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 4;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "pharmaceutical-advice-document.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Pharmaceutical Advice document" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 5;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "medication-list-document.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Medication List document" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 6;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "medication-card-document.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Medication Card document" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 7;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-german.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Anwendungsfälle" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 8;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-french.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Cas d’application" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 9;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "profiles.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Profiles" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ], [
+         fhir:index 10;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "extensions.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Extensions" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ], [
+         fhir:index 11;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "terminology.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Terminology" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ]
+     ];
+     fhir:ImplementationGuide.definition.parameter [
+       fhir:index 0;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/pages" ]
+     ], [
+       fhir:index 1;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/capabilities" ]
+     ], [
+       fhir:index 2;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/examples" ]
+     ], [
+       fhir:index 3;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/extensions" ]
+     ], [
+       fhir:index 4;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/models" ]
+     ], [
+       fhir:index 5;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/operations" ]
+     ], [
+       fhir:index 6;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/profiles" ]
+     ], [
+       fhir:index 7;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/resources" ]
+     ], [
+       fhir:index 8;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/vocabulary" ]
+     ], [
+       fhir:index 9;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/maps" ]
+     ], [
+       fhir:index 10;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/testing" ]
+     ], [
+       fhir:index 11;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/history" ]
+     ], [
+       fhir:index 12;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "fsh-generated/resources" ]
+     ], [
+       fhir:index 13;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "template/config" ]
+     ], [
+       fhir:index 14;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/images" ]
+     ], [
+       fhir:index 15;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-tx-cache" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input-cache/txcache" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
