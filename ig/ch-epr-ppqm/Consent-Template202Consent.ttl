@@ -1,0 +1,98 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-ppqm/Consent/Template202Consent> a fhir:Consent;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "Template202Consent"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmConsent";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmConsent>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "empty" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Template 202 - Access in emergency mode</p></div>"
+  ];
+  fhir:Consent.identifier [
+     fhir:index 0;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-epr-ppqm/CodeSystem/PpqmConsentIdentifierType" ];
+         fhir:Coding.code [ fhir:value "policySetId" ]
+       ]
+     ];
+     fhir:Identifier.value [ fhir:value "urn:uuid:bf6c1fb6-2eb9-49ad-b96b-1a4ac55fc7bd" ]
+  ], [
+     fhir:index 1;
+     fhir:Identifier.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "http://fhir.ch/ig/ch-epr-ppqm/CodeSystem/PpqmConsentIdentifierType" ];
+         fhir:Coding.code [ fhir:value "templateId" ]
+       ]
+     ];
+     fhir:Identifier.value [ fhir:value "202" ]
+  ];
+  fhir:Consent.status [ fhir:value "active"];
+  fhir:Consent.scope [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/consentscope" ];
+       fhir:Coding.code [ fhir:value "patient-privacy" ]
+     ]
+  ];
+  fhir:Consent.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
+       fhir:Coding.code [ fhir:value "INFA" ]
+     ]
+  ];
+  fhir:Consent.patient [
+     fhir:Reference.identifier [
+       fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.30.1.127.3.10.3" ];
+       fhir:Identifier.value [ fhir:value "123456789012345678" ]
+     ]
+  ];
+  fhir:Consent.policyRule [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.code [ fhir:value "urn:e-health-suisse:2015:policies:emergency-access-level:normal" ]
+     ]
+  ];
+  fhir:Consent.provision [
+     fhir:Consent.provision.actor [
+       fhir:index 0;
+       fhir:Consent.provision.actor.role [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           fhir:Coding.system [ fhir:value "urn:oid:2.16.756.5.30.1.127.3.10.6" ];
+           fhir:Coding.code [ fhir:value "HCP" ]
+         ]
+       ];
+       fhir:Consent.provision.actor.reference [
+         fhir:Reference.display [ fhir:value "all" ]
+       ]
+     ];
+     fhir:Consent.provision.purpose [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:oid:2.16.756.5.30.1.127.3.10.5" ];
+       fhir:Coding.code [ fhir:value "EMER" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-ppqm/Consent/Template202Consent.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
