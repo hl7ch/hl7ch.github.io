@@ -1,0 +1,65 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/ServiceRequest/1-AufbietendeOrganisation> a fhir:ServiceRequest;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "1-AufbietendeOrganisation"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-servicerequest";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-servicerequest>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: 1-AufbietendeOrganisation</p><p><b>meta</b>: </p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>subject</b>: <a href=\"Patient-1-PeterMuster.html\">Generated Summary: id: 1-PeterMuster; id: 7560123123499, Medical record number: 762354; Peter Muster (OFFICIAL); gender: male; birthDate: 1961-10-01</a></p><p><b>encounter</b>: <a href=\"Encounter-1-Einsatz.html\">Generated Summary: id: 1-Einsatz; id: S12345678; status: finished; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode EMER}\">emergency</span>; period: 2016-12-10 --&gt; (ongoing)</a></p><p><b>requester</b>: <a name=\"informant\"> </a></p><blockquote><p><b>id</b>: informant</p><p><b>meta</b>: </p><p><b>identifier</b>: id: 7601002156370</p><p><b>name</b>: SNZ</p></blockquote><p><b>insurance</b>: <a href=\"Coverage-1-CoveragePeterMuster.html\">Generated Summary: id: 1-CoveragePeterMuster; id: 80756003760012390001; status: active</a></p></div>"
+  ];
+  fhir:DomainResource.contained [
+     a fhir:Organization;
+     fhir:index 0;
+     fhir:Resource.id [ fhir:value "informant" ];
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-organization";
+         fhir:index 0;
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-organization>
+       ]
+     ];
+     fhir:Organization.identifier [
+       fhir:index 0;
+       fhir:Identifier.system [ fhir:value "urn:oid:2.51.1.3" ];
+       fhir:Identifier.value [ fhir:value "7601002156370" ]
+     ];
+     fhir:Organization.name [ fhir:value "SNZ" ]
+  ];
+  fhir:ServiceRequest.status [ fhir:value "completed"];
+  fhir:ServiceRequest.intent [ fhir:value "order"];
+  fhir:ServiceRequest.subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/1-PeterMuster>;
+     fhir:Reference.reference [ fhir:value "Patient/1-PeterMuster" ]
+  ];
+  fhir:ServiceRequest.encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/1-Einsatz>;
+     fhir:Reference.reference [ fhir:value "Encounter/1-Einsatz" ]
+  ];
+  fhir:ServiceRequest.requester [
+     fhir:Reference.reference [ fhir:value "#informant" ]
+  ];
+  fhir:ServiceRequest.insurance [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-ems/Coverage/1-CoveragePeterMuster>;
+     fhir:Reference.reference [ fhir:value "Coverage/1-CoveragePeterMuster" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/ServiceRequest/1-AufbietendeOrganisation.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

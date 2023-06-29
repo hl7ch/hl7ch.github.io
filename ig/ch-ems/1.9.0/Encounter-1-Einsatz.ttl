@@ -1,0 +1,124 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Encounter/1-Einsatz> a fhir:Encounter;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "1-Einsatz"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-encounter";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-encounter>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: 1-Einsatz</p><p><b>meta</b>: </p><p><b>identifier</b>: id: S12345678</p><p><b>status</b>: finished</p><p><b>class</b>: <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode EMER}\">emergency</span></p><p><b>subject</b>: <a href=\"Patient-1-PeterMuster.html\">Generated Summary: id: 1-PeterMuster; id: 7560123123499, Medical record number: 762354; Peter Muster (OFFICIAL); gender: male; birthDate: 1961-10-01</a></p><p><b>basedOn</b>: <a href=\"ServiceRequest-1-AufbietendeOrganisation.html\">Generated Summary: id: 1-AufbietendeOrganisation; status: completed; intent: order</a></p><blockquote><p><b>participant</b></p><p><b>individual</b>: <a href=\"Practitioner-1-TeamMemberPetraMuster.html\">Generated Summary: id: 1-TeamMemberPetraMuster; id: 7601003330434; Petra Muster </a></p></blockquote><blockquote><p><b>participant</b></p><p><b>individual</b>: <a href=\"Practitioner-1-TeamMemberHansBeispiel.html\">Generated Summary: id: 1-TeamMemberHansBeispiel; id: 7601000211804; Hans Beispiel </a></p></blockquote><blockquote><p><b>participant</b></p><p><b>individual</b>: <a href=\"Practitioner-1-TeamMemberHansNotarzt.html\">Generated Summary: id: 1-TeamMemberHansNotarzt; id: 7601000028105; Hans Notarzt </a></p></blockquote><p><b>period</b>: 2016-12-10 --&gt; (ongoing)</p><h3>Hospitalizations</h3><table class=\"grid\"><tr><td>-</td><td><b>Destination</b></td></tr><tr><td>*</td><td><a href=\"Location-1-Zielort.html\">Generated Summary: id: 1-Zielort; id: 7601002155939; name: Universitätsspital Zürich, Notfall</a></td></tr></table><h3>Locations</h3><table class=\"grid\"><tr><td>-</td><td><b>Location</b></td></tr><tr><td>*</td><td><a href=\"Location-1-Einsatzort.html\">Generated Summary: id: 1-Einsatzort; name: Waldrand</a></td></tr></table></div>"
+  ];
+  fhir:Encounter.identifier [
+     fhir:index 0;
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.30.1.9999999999.1" ];
+     fhir:Identifier.value [ fhir:value "S12345678" ]
+  ];
+  fhir:Encounter.status [ fhir:value "finished"];
+  fhir:Encounter.class [
+     fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ActCode" ];
+     fhir:Coding.code [ fhir:value "EMER" ];
+     fhir:Coding.display [ fhir:value "emergency" ]
+  ];
+  fhir:Encounter.subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/1-PeterMuster>;
+     fhir:Reference.reference [ fhir:value "Patient/1-PeterMuster" ]
+  ];
+  fhir:Encounter.basedOn [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-ems/ServiceRequest/1-AufbietendeOrganisation>;
+     fhir:Reference.reference [ fhir:value "ServiceRequest/1-AufbietendeOrganisation" ]
+  ];
+  fhir:Encounter.participant [
+     fhir:index 0;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole" ];
+       fhir:Extension.valueCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:133932002;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "133932002" ];
+           fhir:Coding.display [ fhir:value "Caregiver" ]
+         ]
+       ]
+     ];
+     fhir:Encounter.participant.individual [
+       fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-TeamMemberPetraMuster>;
+       fhir:Reference.reference [ fhir:value "Practitioner/1-TeamMemberPetraMuster" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole" ];
+       fhir:Extension.valueCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:133932002;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "133932002" ];
+           fhir:Coding.display [ fhir:value "Caregiver" ]
+         ]
+       ]
+     ];
+     fhir:Encounter.participant.individual [
+       fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-TeamMemberHansBeispiel>;
+       fhir:Reference.reference [ fhir:value "Practitioner/1-TeamMemberHansBeispiel" ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole" ];
+       fhir:Extension.valueCodeableConcept [
+         fhir:CodeableConcept.coding [
+           fhir:index 0;
+           a sct:309343006;
+           fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+           fhir:Coding.code [ fhir:value "309343006" ];
+           fhir:Coding.display [ fhir:value "Physician" ]
+         ]
+       ]
+     ];
+     fhir:Encounter.participant.individual [
+       fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-TeamMemberHansNotarzt>;
+       fhir:Reference.reference [ fhir:value "Practitioner/1-TeamMemberHansNotarzt" ]
+     ]
+  ];
+  fhir:Encounter.period [
+     fhir:Period.start [ fhir:value "2016-12-10"^^xsd:date ]
+  ];
+  fhir:Encounter.hospitalization [
+     fhir:Encounter.hospitalization.destination [
+       fhir:link <http://fhir.ch/ig/ch-ems/Location/1-Zielort>;
+       fhir:Reference.reference [ fhir:value "Location/1-Zielort" ]
+     ]
+  ];
+  fhir:Encounter.location [
+     fhir:index 0;
+     fhir:Encounter.location.location [
+       fhir:link <http://fhir.ch/ig/ch-ems/Location/1-Einsatzort>;
+       fhir:Reference.reference [ fhir:value "Location/1-Einsatzort" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Encounter/1-Einsatz.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

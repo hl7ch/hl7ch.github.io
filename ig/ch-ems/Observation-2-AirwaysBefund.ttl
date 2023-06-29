@@ -1,0 +1,58 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/2-AirwaysBefund> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "2-AirwaysBefund"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-airways";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-airways>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: 2-AirwaysBefund</p><p><b>meta</b>: </p><p></p><p><b>code</b>: <span title=\"Codes: {http://snomed.info/sct 301252002}\">Finding of respiratory obstruction</span></p><p><b>subject</b>: <a href=\"Patient-2-PatientUnbekannt.html\">Generated Summary: id: 2-PatientUnbekannt; Medical record number: MU43221; gender: male</a></p><p><b>encounter</b>: <a href=\"Encounter-2-Einsatz.html\">Generated Summary: id: 2-Einsatz; id: S12345678; status: finished; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode EMER}\">emergency</span>; period: 2016-12-10 --&gt; (ongoing)</a></p><p><b>effective</b>: Dec 10, 2016, 11:25:00 AM</p><p><b>value</b>: <span title=\"Codes: {http://snomed.info/sct 23875004}\">No pathologic finding</span></p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:301252002;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "301252002" ];
+       fhir:Coding.display [ fhir:value "Finding of respiratory obstruction" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/2-PatientUnbekannt>;
+     fhir:Reference.reference [ fhir:value "Patient/2-PatientUnbekannt" ]
+  ];
+  fhir:Observation.encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/2-Einsatz>;
+     fhir:Reference.reference [ fhir:value "Encounter/2-Einsatz" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2016-12-10T11:25:00.000+01:00"^^xsd:dateTime];
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:23875004;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "23875004" ];
+       fhir:Coding.display [ fhir:value "No pathologic finding" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/2-AirwaysBefund.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

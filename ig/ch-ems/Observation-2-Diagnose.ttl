@@ -1,0 +1,62 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/2-Diagnose> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "2-Diagnose"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-diagnosis";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-diagnosis>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: 2-Diagnose</p><p><b>meta</b>: </p><p></p><p><b>code</b>: <span title=\"Codes: {http://snomed.info/sct 2931005}\">probable diagnosis</span></p><p><b>subject</b>: <a href=\"Patient-2-PatientUnbekannt.html\">Generated Summary: id: 2-PatientUnbekannt; Medical record number: MU43221; gender: male</a></p><p><b>encounter</b>: <a href=\"Encounter-2-Einsatz.html\">Generated Summary: id: 2-Einsatz; id: S12345678; status: finished; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode EMER}\">emergency</span>; period: 2016-12-10 --&gt; (ongoing)</a></p><p><b>effective</b>: Dec 10, 2016, 11:25:00 AM</p><p><b>performer</b>: <a href=\"Practitioner-1-SaniPetraMuster.html\">Generated Summary: id: 1-SaniPetraMuster; id: 7601003330434; Petra Muster </a></p><p><b>value</b>: <span title=\"Codes: {http://fhir.de/CodeSystem/dimdi/icd-10-gm I63}\">Hirninfarkt</span></p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:2931005;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "2931005" ];
+       fhir:Coding.display [ fhir:value "probable diagnosis" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/2-PatientUnbekannt>;
+     fhir:Reference.reference [ fhir:value "Patient/2-PatientUnbekannt" ]
+  ];
+  fhir:Observation.encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/2-Einsatz>;
+     fhir:Reference.reference [ fhir:value "Encounter/2-Einsatz" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2016-12-10T11:25:00.000+01:00"^^xsd:dateTime];
+  fhir:Observation.performer [
+     fhir:index 0;
+     fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-SaniPetraMuster>;
+     fhir:Reference.reference [ fhir:value "Practitioner/1-SaniPetraMuster" ]
+  ];
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://fhir.de/CodeSystem/dimdi/icd-10-gm" ];
+       fhir:Coding.code [ fhir:value "I63" ];
+       fhir:Coding.display [ fhir:value "Hirninfarkt" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/2-Diagnose.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

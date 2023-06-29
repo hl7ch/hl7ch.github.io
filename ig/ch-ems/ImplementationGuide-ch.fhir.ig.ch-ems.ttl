@@ -1,0 +1,3061 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/ImplementationGuide/ch.fhir.ig.ch-ems> a fhir:ImplementationGuide;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "ch.fhir.ig.ch-ems"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "additional" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      Implementation Guide for the Emergency Medical Service protocol\n    </div>"
+  ];
+  fhir:ImplementationGuide.url [ fhir:value "http://fhir.ch/ig/ch-ems/ImplementationGuide/ch.fhir.ig.ch-ems"];
+  fhir:ImplementationGuide.version [ fhir:value "1.9.0"];
+  fhir:ImplementationGuide.name [ fhir:value "CH_EMS"];
+  fhir:ImplementationGuide.title [ fhir:value "CH EMS (R4)"];
+  fhir:ImplementationGuide.status [ fhir:value "active"];
+  fhir:ImplementationGuide.experimental [ fhir:value "false"^^xsd:boolean];
+  fhir:ImplementationGuide.date [ fhir:value "2020-08-25"^^xsd:date];
+  fhir:ImplementationGuide.publisher [ fhir:value "IVR Interverband für Rettungswesen"];
+  fhir:ImplementationGuide.contact [
+     fhir:index 0;
+     fhir:ContactDetail.name [ fhir:value "IVR Interverband für Rettungswesen" ];
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "https://www.ivr-ias.ch/" ]
+     ]
+  ];
+  fhir:ImplementationGuide.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "CH" ]
+     ]
+  ];
+  fhir:ImplementationGuide.copyright [ fhir:value "CC-BY-SA-4.0"];
+  fhir:ImplementationGuide.packageId [ fhir:value "ch.fhir.ig.ch-ems"];
+  fhir:ImplementationGuide.license [ fhir:value "CC-BY-SA-4.0"];
+  fhir:ImplementationGuide.fhirVersion [
+     fhir:value "4.0.1";
+     fhir:index 0
+  ];
+  fhir:ImplementationGuide.dependsOn [
+     fhir:index 0;
+     fhir:Element.id [ fhir:value "chcore" ];
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core";
+       fhir:link <http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core>
+     ];
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ch.fhir.ig.ch-core" ];
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "1.0.0" ]
+  ], [
+     fhir:index 1;
+     fhir:Element.id [ fhir:value "cheprterm" ];
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term";
+       fhir:link <http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term>
+     ];
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ch.fhir.ig.ch-epr-term" ];
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "2.0.4" ]
+  ];
+  fhir:ImplementationGuide.definition [
+     fhir:Element.extension [
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "releaselabel" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "Standard for Trial Use" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "copyrightyear" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "2020+" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 2;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "special-url" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "urn:oid:2.16.756.5.30.1.143.5.1" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 3;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-qa" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "temp/qa" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-temp" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "temp/pages" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 5;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-output" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "output" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 6;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "path-suppressed-warnings" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "input/ignoreWarnings.txt" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 7;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "template-html" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template-page.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 8;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "template-md" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "template-page-md.html" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 9;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-contact" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 10;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-context" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 11;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-copyright" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 12;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-jurisdiction" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 13;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-license" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 14;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-publisher" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 15;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "apply-version" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ], [
+       fhir:index 16;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "code" ];
+         fhir:Extension.valueString [ fhir:value "active-tables" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "value" ];
+         fhir:Extension.valueString [ fhir:value "true" ]
+       ];
+       fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter" ]
+     ];
+     fhir:ImplementationGuide.definition.resource [
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Bundle-1-Einsatzprotokoll.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Bundle/1-Einsatzprotokoll>;
+         fhir:Reference.reference [ fhir:value "Bundle/1-Einsatzprotokoll" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Einsatzprotokoll" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document>
+       ]
+     ], [
+       fhir:index 1;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Bundle-1b-Einsatzprotokoll.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Bundle/1b-Einsatzprotokoll>;
+         fhir:Reference.reference [ fhir:value "Bundle/1b-Einsatzprotokoll" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1b Einsatzprotokoll" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document>
+       ]
+     ], [
+       fhir:index 2;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Bundle-2-Einsatzprotokoll.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Bundle/2-Einsatzprotokoll>;
+         fhir:Reference.reference [ fhir:value "Bundle/2-Einsatzprotokoll" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 Einsatzprotokoll" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document>
+       ]
+     ], [
+       fhir:index 3;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Bundle" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Bundle-2b-Einsatzprotokoll.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Bundle/2b-Einsatzprotokoll>;
+         fhir:Reference.reference [ fhir:value "Bundle/2b-Einsatzprotokoll" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2b Einsatzprotokoll" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Bundle" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document>
+       ]
+     ], [
+       fhir:index 4;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Composition-1-Einsatzprotokoll.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Composition/1-Einsatzprotokoll>;
+         fhir:Reference.reference [ fhir:value "Composition/1-Einsatzprotokoll" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Einsatzprotokoll" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition>
+       ]
+     ], [
+       fhir:index 5;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Composition-1b-Einsatzprotokoll.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Composition/1b-Einsatzprotokoll>;
+         fhir:Reference.reference [ fhir:value "Composition/1b-Einsatzprotokoll" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1b Einsatzprotokoll" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition>
+       ]
+     ], [
+       fhir:index 6;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Composition-2-Einsatzprotokoll.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Composition/2-Einsatzprotokoll>;
+         fhir:Reference.reference [ fhir:value "Composition/2-Einsatzprotokoll" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 Einsatzprotokoll" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition>
+       ]
+     ], [
+       fhir:index 7;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Composition" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Composition-2b-Einsatzprotokoll.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Composition/2b-Einsatzprotokoll>;
+         fhir:Reference.reference [ fhir:value "Composition/2b-Einsatzprotokoll" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2b Einsatzprotokoll" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Composition" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition>
+       ]
+     ], [
+       fhir:index 8;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Coverage" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Coverage-1-CoveragePeterMuster.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Coverage/1-CoveragePeterMuster>;
+         fhir:Reference.reference [ fhir:value "Coverage/1-CoveragePeterMuster" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Coverage Peter Muster" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Coverage" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-coverage";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-coverage>
+       ]
+     ], [
+       fhir:index 9;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Encounter" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Encounter-1-Einsatz.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Encounter/1-Einsatz>;
+         fhir:Reference.reference [ fhir:value "Encounter/1-Einsatz" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Einsatz" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Encounter" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-encounter";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-encounter>
+       ]
+     ], [
+       fhir:index 10;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Encounter" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Encounter-2-Einsatz.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Encounter/2-Einsatz>;
+         fhir:Reference.reference [ fhir:value "Encounter/2-Einsatz" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 Einsatz" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Encounter" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-encounter";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-encounter>
+       ]
+     ], [
+       fhir:index 11;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Location" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Location-1-Einsatzort.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Location/1-Einsatzort>;
+         fhir:Reference.reference [ fhir:value "Location/1-Einsatzort" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Einsatzort" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Location (Coordinates)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-location";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-location>
+       ]
+     ], [
+       fhir:index 12;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Location" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Location-1-Zielort.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Location/1-Zielort>;
+         fhir:Reference.reference [ fhir:value "Location/1-Zielort" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Zielort" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Location" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-location";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-location>
+       ]
+     ], [
+       fhir:index 13;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Location" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Location-2-Einsatzort.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Location/2-Einsatzort>;
+         fhir:Reference.reference [ fhir:value "Location/2-Einsatzort" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 Einsatzort" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Location (Address)" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-location";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-location>
+       ]
+     ], [
+       fhir:index 14;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-Alarm.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Alarm>;
+         fhir:Reference.reference [ fhir:value "Observation/1-Alarm" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Alarm" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>
+       ]
+     ], [
+       fhir:index 15;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-Anamnese.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Anamnese>;
+         fhir:Reference.reference [ fhir:value "Observation/1-Anamnese" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Anamnese" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-anamnesisevent";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-anamnesisevent>
+       ]
+     ], [
+       fhir:index 16;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-ArrivalAtTarget.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-ArrivalAtTarget>;
+         fhir:Reference.reference [ fhir:value "Observation/1-ArrivalAtTarget" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Arrival at target" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>
+       ]
+     ], [
+       fhir:index 17;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-ArrivalOnScene.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-ArrivalOnScene>;
+         fhir:Reference.reference [ fhir:value "Observation/1-ArrivalOnScene" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Arrival on scene" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>
+       ]
+     ], [
+       fhir:index 18;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-ArrivalPatient.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-ArrivalPatient>;
+         fhir:Reference.reference [ fhir:value "Observation/1-ArrivalPatient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Arrival Patient" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>
+       ]
+     ], [
+       fhir:index 19;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-2-ArrivalPatient.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/2-ArrivalPatient>;
+         fhir:Reference.reference [ fhir:value "Observation/2-ArrivalPatient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 Arrival Patient" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>
+       ]
+     ], [
+       fhir:index 20;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-DepartureFromScene.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-DepartureFromScene>;
+         fhir:Reference.reference [ fhir:value "Observation/1-DepartureFromScene" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Departure from scene" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>
+       ]
+     ], [
+       fhir:index 21;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-Diagnose.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Diagnose>;
+         fhir:Reference.reference [ fhir:value "Observation/1-Diagnose" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Diagnose" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-diagnosis";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-diagnosis>
+       ]
+     ], [
+       fhir:index 22;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-2-Diagnose.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/2-Diagnose>;
+         fhir:Reference.reference [ fhir:value "Observation/2-Diagnose" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 Diagnose" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-diagnosis";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-diagnosis>
+       ]
+     ], [
+       fhir:index 23;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-Disposition.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Disposition>;
+         fhir:Reference.reference [ fhir:value "Observation/1-Disposition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Disposition" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>
+       ]
+     ], [
+       fhir:index 24;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-GCSBefund.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-GCSBefund>;
+         fhir:Reference.reference [ fhir:value "Observation/1-GCSBefund" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 GCS Befund" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs>
+       ]
+     ], [
+       fhir:index 25;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-2-GCSBefund.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/2-GCSBefund>;
+         fhir:Reference.reference [ fhir:value "Observation/2-GCSBefund" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 GCS Befund" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs>
+       ]
+     ], [
+       fhir:index 26;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-GCSUebergabe.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-GCSUebergabe>;
+         fhir:Reference.reference [ fhir:value "Observation/1-GCSUebergabe" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 GCS Uebergabe" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs>
+       ]
+     ], [
+       fhir:index 27;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-2-GCSUebergabe.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/2-GCSUebergabe>;
+         fhir:Reference.reference [ fhir:value "Observation/2-GCSUebergabe" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 GCS Uebergabe" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs>
+       ]
+     ], [
+       fhir:index 28;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-NACAUebergabe.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-NACAUebergabe>;
+         fhir:Reference.reference [ fhir:value "Observation/1-NACAUebergabe" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 NACA Uebergabe" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-naca";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-naca>
+       ]
+     ], [
+       fhir:index 29;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-Rollout.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Rollout>;
+         fhir:Reference.reference [ fhir:value "Observation/1-Rollout" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Rollout" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>
+       ]
+     ], [
+       fhir:index 30;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-Symptome.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Symptome>;
+         fhir:Reference.reference [ fhir:value "Observation/1-Symptome" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Symptom" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-anamnesissymptom";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-anamnesissymptom>
+       ]
+     ], [
+       fhir:index 31;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1-ZustandUebergabe.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-ZustandUebergabe>;
+         fhir:Reference.reference [ fhir:value "Observation/1-ZustandUebergabe" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Zustand Uebergabe" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-conditionchange";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-conditionchange>
+       ]
+     ], [
+       fhir:index 32;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1b-DepartureFromTarget.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1b-DepartureFromTarget>;
+         fhir:Reference.reference [ fhir:value "Observation/1b-DepartureFromTarget" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1b Departure from target" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>
+       ]
+     ], [
+       fhir:index 33;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-1b-OperationalReadiness.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1b-OperationalReadiness>;
+         fhir:Reference.reference [ fhir:value "Observation/1b-OperationalReadiness" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1b Operational readiness" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>
+       ]
+     ], [
+       fhir:index 34;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-2-AirwaysBefund.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/2-AirwaysBefund>;
+         fhir:Reference.reference [ fhir:value "Observation/2-AirwaysBefund" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 Airways Befund" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-airways";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-airways>
+       ]
+     ], [
+       fhir:index 35;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-2-AVPUBefund.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/2-AVPUBefund>;
+         fhir:Reference.reference [ fhir:value "Observation/2-AVPUBefund" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 AVPU Befund" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-avpu";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-avpu>
+       ]
+     ], [
+       fhir:index 36;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-CardiacArrestBefund.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/CardiacArrestBefund>;
+         fhir:Reference.reference [ fhir:value "Observation/CardiacArrestBefund" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Cardiac Arrest Befund" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-cardiacarrest";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-cardiacarrest>
+       ]
+     ], [
+       fhir:index 37;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-StatusPrioUebergabe.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/StatusPrioUebergabe>;
+         fhir:Reference.reference [ fhir:value "Observation/StatusPrioUebergabe" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Status Priorität Übergabe" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-statuspriority";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-statuspriority>
+       ]
+     ], [
+       fhir:index 38;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Observation" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Observation-StrokeBefund.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/StrokeBefund>;
+         fhir:Reference.reference [ fhir:value "Observation/StrokeBefund" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Stroke Befund" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Observation" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-stroke-fast";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-stroke-fast>
+       ]
+     ], [
+       fhir:index 39;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Organization-1-InformationRecipientUSZ.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Organization/1-InformationRecipientUSZ>;
+         fhir:Reference.reference [ fhir:value "Organization/1-InformationRecipientUSZ" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 USZ as information recipient" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Organization" ]
+     ], [
+       fhir:index 40;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Organization-1-Rettungsdienst.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Organization/1-Rettungsdienst>;
+         fhir:Reference.reference [ fhir:value "Organization/1-Rettungsdienst" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Rettungsdienst" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Organization" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-organization";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-organization>
+       ]
+     ], [
+       fhir:index 41;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Organization" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Organization-1-TeamRettungsdienst.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Organization/1-TeamRettungsdienst>;
+         fhir:Reference.reference [ fhir:value "Organization/1-TeamRettungsdienst" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Team Rettungsdienst" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Organization" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-organization";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-organization>
+       ]
+     ], [
+       fhir:index 42;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Patient-1-PeterMuster.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Patient/1-PeterMuster>;
+         fhir:Reference.reference [ fhir:value "Patient/1-PeterMuster" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Peter Muster" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Patient" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-patient";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-patient>
+       ]
+     ], [
+       fhir:index 43;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Patient" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Patient-2-PatientUnbekannt.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Patient/2-PatientUnbekannt>;
+         fhir:Reference.reference [ fhir:value "Patient/2-PatientUnbekannt" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 Patient unbekannt" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Patient" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-patient";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-patient>
+       ]
+     ], [
+       fhir:index 44;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Practitioner-1-TeamMemberHansBeispiel.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-TeamMemberHansBeispiel>;
+         fhir:Reference.reference [ fhir:value "Practitioner/1-TeamMemberHansBeispiel" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Teammitglied Hans Beispiel" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner with GLN" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner>
+       ]
+     ], [
+       fhir:index 45;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Practitioner-1-TeamMemberPetraMuster.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-TeamMemberPetraMuster>;
+         fhir:Reference.reference [ fhir:value "Practitioner/1-TeamMemberPetraMuster" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Teammitglied Petra Muster" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner with GLN" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner>
+       ]
+     ], [
+       fhir:index 46;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Practitioner-1-InformationRecipientSpezialarzt.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-InformationRecipientSpezialarzt>;
+         fhir:Reference.reference [ fhir:value "Practitioner/1-InformationRecipientSpezialarzt" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Spezialarzt as information recipient" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner" ]
+     ], [
+       fhir:index 47;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Practitioner-1-NotarztHansNotarzt.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-NotarztHansNotarzt>;
+         fhir:Reference.reference [ fhir:value "Practitioner/1-NotarztHansNotarzt" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Notarzt" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner with GLN" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner>
+       ]
+     ], [
+       fhir:index 48;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Practitioner-1-TeamMemberHansNotarzt.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-TeamMemberHansNotarzt>;
+         fhir:Reference.reference [ fhir:value "Practitioner/1-TeamMemberHansNotarzt" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Teammitglied Hans Notarzt" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner with GLN" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner>
+       ]
+     ], [
+       fhir:index 49;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Practitioner-1-SaniPetraMuster.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-SaniPetraMuster>;
+         fhir:Reference.reference [ fhir:value "Practitioner/1-SaniPetraMuster" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Rettungssanitaeterin" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner with GLN" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner>
+       ]
+     ], [
+       fhir:index 50;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Practitioner" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Practitioner-SaniInAusbildung.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/SaniInAusbildung>;
+         fhir:Reference.reference [ fhir:value "Practitioner/SaniInAusbildung" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Practitioner Rettungssanitaeter in Ausbildung" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Practitioner without GLN" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner>
+       ]
+     ], [
+       fhir:index 51;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "PractitionerRole" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "PractitionerRole-1-NotarztHansNotarzt.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/PractitionerRole/1-NotarztHansNotarzt>;
+         fhir:Reference.reference [ fhir:value "PractitionerRole/1-NotarztHansNotarzt" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 PractitionerRole Notarzt" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for PractitionerRole" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitionerrole";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitionerrole>
+       ]
+     ], [
+       fhir:index 52;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "PractitionerRole" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "PractitionerRole-1-SaniPetraMuster.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/PractitionerRole/1-SaniPetraMuster>;
+         fhir:Reference.reference [ fhir:value "PractitionerRole/1-SaniPetraMuster" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 PractitionerRole Rettungssanitaeterin" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for PractitionerRole" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitionerrole";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitionerrole>
+       ]
+     ], [
+       fhir:index 53;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "Procedure" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "Procedure-Vorbehandlung.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/Procedure/Vorbehandlung>;
+         fhir:Reference.reference [ fhir:value "Procedure/Vorbehandlung" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Vorbehandlung" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for Procedure" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-procedure";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-procedure>
+       ]
+     ], [
+       fhir:index 54;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ServiceRequest" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ServiceRequest-1-AufbietendeOrganisation.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ServiceRequest/1-AufbietendeOrganisation>;
+         fhir:Reference.reference [ fhir:value "ServiceRequest/1-AufbietendeOrganisation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "1 Aufbietende Organisation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for ServiceRequest" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-servicerequest";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-servicerequest>
+       ]
+     ], [
+       fhir:index 55;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ServiceRequest" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ServiceRequest-2-AufbietendeOrganisation.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ServiceRequest/2-AufbietendeOrganisation>;
+         fhir:Reference.reference [ fhir:value "ServiceRequest/2-AufbietendeOrganisation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "2 Aufbietende Organisation" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Example for ServiceRequest" ];
+       fhir:ImplementationGuide.definition.resource.exampleCanonical [
+         fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-servicerequest";
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-servicerequest>
+       ]
+     ], [
+       fhir:index 56;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-document.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-document" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Document Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the document for the use of the emergency medical service protocol" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 57;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-composition.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-composition" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Composition Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the composition for the use of the emergency medical service protocol" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 58;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-coverage.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-coverage>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-coverage" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Coverage Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the coverage" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 59;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-encounter.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-encounter>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-encounter" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Encounter Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the encounter" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 60;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-ext-laterality.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-laterality>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-ext-laterality" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Extension Laterality" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to define the side of the affected body region" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 61;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-ext-performer.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-performer>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-ext-performer" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Extension Performer" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to define the performer of the pretreatment" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 62;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-ext-personrole.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-personrole>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-ext-personrole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Extension Person Role" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to define the role of the involved participant" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 63;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-ext-teamrole.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-ext-teamrole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Extension Team Role" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Extension to define the role of the team member" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 64;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-location.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-location>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-location" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Location Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the location" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 65;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-airways.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-airways>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-airways" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile Airways" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation airways" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 66;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-anamnesisevent.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-anamnesisevent>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-anamnesisevent" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile Anamnesis Event" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation anamnesis event" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 67;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-anamnesissymptom.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-anamnesissymptom>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-anamnesissymptom" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile Anamnesis Symptom" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation anamnesis symptom" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 68;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-cardiacarrest.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-cardiacarrest>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-cardiacarrest" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile Cardiac Arrest" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation cardiac arrest" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 69;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-conditionchange.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-conditionchange>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-conditionchange" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile Condition Change" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation condition change" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 70;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-diagnosis.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-diagnosis>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-diagnosis" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile Diagnosis" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation diagnosis" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 71;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-gcs.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-gcs" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile GCS" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation glasgow coma scale" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 72;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-naca.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-naca>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-naca" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile NACA" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation injury severity (NACA)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 73;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-avpu.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-avpu>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-avpu" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile AVPU" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation level of responsiveness (AVPU)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 74;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-missiontimestatus.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-missiontimestatus" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile Mission Time Status" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation mission time status" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 75;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-statuspriority.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-statuspriority>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-statuspriority" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile Status Priority" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation status priority" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 76;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-observation-stroke-fast.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-stroke-fast>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-observation-stroke-fast" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Observation Profile Stroke/FAST" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the observation Stroke/FAST" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 77;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-organization.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-organization>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-organization" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Organization Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the organization" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 78;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-patient.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-patient>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Patient Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the patient" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 79;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-practitioner.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-practitioner" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Practitioner Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the practitioner" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 80;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-practitionerrole.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitionerrole>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-practitionerrole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Practitioner Role Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the practitioner role" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 81;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-procedure.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-procedure>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-procedure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Procedure Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the procedure" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 82;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "StructureDefinition-ch-ems-servicerequest.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-servicerequest>;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ch-ems-servicerequest" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "CH EMS Service Request Profile" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Definition of the service request" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 83;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "CodeSystem" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "CodeSystem-2.16.756.5.30.1.143.5.1.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/CodeSystem/2.16.756.5.30.1.143.5.1>;
+         fhir:Reference.reference [ fhir:value "CodeSystem/2.16.756.5.30.1.143.5.1" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR Code System" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR Code System" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 84;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-actRecovAid.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-actRecovAid>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-actRecovAid" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset Recovery Aid (.143.11.3)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "listet die Hilfsmittel auf, welche bei der Bergung und beim Transport des Patienten verwendet werden" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 85;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-actRespiOwner.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-actRespiOwner>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-actRespiOwner" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset owner (.143.11.6)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "listet Eigentümer von Hilfsmitteln auf" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 86;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-airway.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-airway>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-airway" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset airway (143.11.2)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "listet die Massnahmen auf, mit denen die Atemwege während dem Einsatz behandelt werden" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 87;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-allergy.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-allergy>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-allergy" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset allergy (.143.11.7)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset allergy (.143.11.7)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 88;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-ambulanceType.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-ambulanceType>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-ambulanceType" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR Valueset ambulance type (143.11.28)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR Valueset ambulance type (143.11.28)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 89;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-bedding.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-bedding>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-bedding" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset transport bedding (.143.11.17)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset transport bedding (.143.11.17)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 90;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-coldExposure.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-coldExposure>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-coldExposure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset cold exposure (.143.11.50)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset cold exposure (.143.11.50)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 91;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-deathManner.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-deathManner>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-deathManner" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset manner of death (.143.11.41)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset  manner of death  (.143.11.41)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 92;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-diagType.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-diagType>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-diagType" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset diagnosis type (.143.11.16)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset diagnosis type (.143.11.16)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 93;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-emergDoctSystem.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-emergDoctSystem>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-emergDoctSystem" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset mission Emergency doctor system (.143.11.12)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset mission Emergency doctor system (.143.11.12)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 94;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-event.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-event>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-event" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset event (.143.11.15)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset event (.143.11.15)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 95;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-eyeForm.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-eyeForm>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-eyeForm" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset eye Form (.143.11.43)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset  eye Form  (.143.11.43)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 96;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-findingsAirway.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-findingsAirway>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-findingsAirway" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset findings airway (.143.11.39)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset findings airway (.143.11.39)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 97;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-formation.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-formation>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-formation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset formation (.143.11.9)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset formation (.143.11.9)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 98;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-gcs-augenoeffnung.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-gcs-augenoeffnung>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-gcs-augenoeffnung" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset GCS Augenoeffnung (143.11.34)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset GCS Augenöffnung (143.11.34)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 99;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-gcsMotoric.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-gcsMotoric>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-gcsMotoric" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset GCS motorische Reaktion (.143.11.35)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset GCS motorische Reaktion (.143.11.35)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 100;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-gcsVerbal.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-gcsVerbal>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-gcsVerbal" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset GCS Verbale Kommunikation(.143.11.36)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset GCS Verbale Kommunikation(.143.11.36)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 101;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-heatExposure.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-heatExposure>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-heatExposure" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset heat exposure (.143.11.51)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset heat exposure (.143.11.51)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 102;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-hospitalPriority.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-hospitalPriority>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-hospitalPriority" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset priority hospital" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset priority hospital" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 103;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-idMedium.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-idMedium>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-idMedium" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset identification medium (.143.11.30)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset identification medium (.143.11.30)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 104;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-idSource.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-idSource>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-idSource" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset identification source (143.11.29)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset identification source (143.11.29)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 105;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-InfectPersPrecaution.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-InfectPersPrecaution>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-InfectPersPrecaution" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset infectiontransport precaution personnel" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset infectiontransport precaution personnel" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 106;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-intensity.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-intensity>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-intensity" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset intensity (.143.11.27)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset intensity (.143.11.27)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 107;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-location.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-location>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-location" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset location (.143.11.23)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset location (.143.11.23)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 108;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-locationType.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-locationType>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-locationType" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset location Type (.143.11.42)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset  location Type  (.143.11.42)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 109;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-missionTimeRole.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-missionTimeRole>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-missionTimeRole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset role mission time (.143.11.10)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset role mission time (.143.11.10)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 110;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-missionType.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-missionType>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-missionType" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset mission type (.143.11.11)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset mission type (.143.11.11)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 111;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-NACA.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-NACA>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-NACA" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset NACA" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset NACA" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 112;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-offender.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-offender>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-offender" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset offender (143.11.24)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset offender (143.11.24)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 113;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-patient.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-patient>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-patient" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset patient" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "valueset for patient observation demographics" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 114;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-personRole.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-personRole>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-personRole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset role (.143.11.21)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset role (.143.11.21)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 115;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-pressureMethod.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-pressureMethod>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-pressureMethod" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset blood pressure method (.143.11.47)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset blood pressure method (.143.11.47)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 116;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-preTreatment.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-preTreatment>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-preTreatment" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset pre-treatment (.143.11.14)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset pre-treatment (.143.11.14)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 117;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-preTreatType.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-preTreatType>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-preTreatType" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset pre-treatment type (.143.11.13)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset pre-treatment type (.143.11.13)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 118;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-procAirType.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-procAirType>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-procAirType" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset procedure airway type (.143.11.40)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset procedure airway type (.143.11.40)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 119;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-pulesResult.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-pulesResult>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-pulesResult" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset pulse result (.143.11.49)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset pulse result (.143.11.49)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 120;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-pulseMethod.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-pulseMethod>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-pulseMethod" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset pulse method (.143.11.48)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset pulse method (.143.11.48)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 121;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-respirationObservation.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-respirationObservation>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-respirationObservation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset Observation Respiration (.143.11.22)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset Observation Respiration (.143.11.22)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 122;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-result.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-result>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-result" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset result (.143.11.44)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset  result  (.143.11.44)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 123;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-sections.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-sections>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-sections" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset sections" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Values for sections codes" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 124;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-sex.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-sex>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-sex" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR Valueset sex (.143.11.31)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR Valueset sex (.143.11.31)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 125;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-size.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-size>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-size" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR Valueset size" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR Valueset size" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 126;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-symptom.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-symptom>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-symptom" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset symptom (.143.11.38)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset symptom (.143.11.38)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 127;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-teamRole.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-teamRole>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-teamRole" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset role team (.143.11.8)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset role team (.143.11.8)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 128;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-transDesinfection.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-transDesinfection>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-transDesinfection" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset unit desinfection" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset unit desinfection" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 129;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-transReason.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-transReason>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-transReason" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset transport reason (.143.11.32)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset transport reason (.143.11.32)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 130;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-urgency-adequate.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-urgency-adequate>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-urgency-adequate" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset urgency adequate (143.11.37)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset urgency adequate (143.11.37)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 131;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-urgency.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-urgency>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-urgency" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset urgency" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset urgency" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 132;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-valTxpe.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-valTxpe>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-valTxpe" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset valuables type (.143.11.33)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset valuables type (.143.11.33)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 133;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-ventilation.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-ventilation>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-ventilation" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset ventilation (.143.11.46)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset ventilation (.143.11.46)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 134;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-vigilanzAvpu.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-vigilanzAvpu>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-vigilanzAvpu" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR vigilanz (AVPU)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "eCH-0207: Vigilanz (AVPU)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 135;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-violenceForm.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-violenceForm>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-violenceForm" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset form of violence (143.11.25)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset form of violence (143.11.25)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 136;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-violenceResult.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-violenceResult>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-violenceResult" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset result of violence (.143.11.26)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset result of violence (.143.11.26)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 137;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-woundTreat.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-woundTreat>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-woundTreat" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset wound treatment (.143.11.45)" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "IVR valueset wound treatment (.143.11.45)" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 138;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-IVR-VS-ZUB.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-ZUB>;
+         fhir:Reference.reference [ fhir:value "ValueSet/IVR-VS-ZUB" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "IVR valueset status change" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Veränderung des Zustands des Patienten zwischen Eintreffen am Einsatzort bis zur Übergabe am Zielort" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 139;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ];
+         fhir:Extension.valueString [ fhir:value "ValueSet" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/implementationguide-page" ];
+         fhir:Extension.valueUri [ fhir:value "ValueSet-yes-no-unknown.html" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <http://fhir.ch/ig/ch-ems/ValueSet/yes-no-unknown>;
+         fhir:Reference.reference [ fhir:value "ValueSet/yes-no-unknown" ]
+       ];
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Yes/No/Unknown" ];
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "The SNOMED CT codes to answer yes/no/unknown" ];
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ];
+     fhir:ImplementationGuide.definition.page [
+       fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "toc.html" ];
+       fhir:ImplementationGuide.definition.page.title [ fhir:value "Table of Contents" ];
+       fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ];
+       fhir:ImplementationGuide.definition.page.page [
+         fhir:index 0;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "index.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Home" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 1;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "index-german.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Home (DE)" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 2;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "index-french.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Home (FR)" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 3;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "document.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Emergency Medical Service protocol" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 4;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-german.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Anwendungsfälle" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 5;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "usecase-french.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Cas d’application" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 6;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "profiles.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Profiles" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ], [
+         fhir:index 7;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "extensions.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Extensions" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ], [
+         fhir:index 8;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "terminology.html" ];
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Terminology" ];
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "html" ]
+       ]
+     ];
+     fhir:ImplementationGuide.definition.parameter [
+       fhir:index 0;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/pages" ]
+     ], [
+       fhir:index 1;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/capabilities" ]
+     ], [
+       fhir:index 2;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/examples" ]
+     ], [
+       fhir:index 3;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/extensions" ]
+     ], [
+       fhir:index 4;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/models" ]
+     ], [
+       fhir:index 5;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/operations" ]
+     ], [
+       fhir:index 6;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/profiles" ]
+     ], [
+       fhir:index 7;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/resources" ]
+     ], [
+       fhir:index 8;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-resource" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/vocabulary" ]
+     ], [
+       fhir:index 9;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "template/config" ]
+     ], [
+       fhir:index 10;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-pages" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input/images" ]
+     ], [
+       fhir:index 11;
+       fhir:ImplementationGuide.definition.parameter.code [ fhir:value "path-tx-cache" ];
+       fhir:ImplementationGuide.definition.parameter.value [ fhir:value "input-cache/txcache" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/ImplementationGuide/ch.fhir.ig.ch-ems.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

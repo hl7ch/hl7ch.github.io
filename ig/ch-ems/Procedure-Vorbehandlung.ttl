@@ -1,0 +1,56 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Procedure/Vorbehandlung> a fhir:Procedure;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "Vorbehandlung"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-procedure";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-procedure>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: Vorbehandlung</p><p><b>meta</b>: </p><p><b>status</b>: completed</p><p><b>code</b>: <span title=\"Codes: {http://snomed.info/sct 386308007}\">First aid</span></p><p><b>subject</b>: <a href=\"Patient-1-PeterMuster.html\">Generated Summary: id: 1-PeterMuster; id: 7560123123499, Medical record number: 762354; Peter Muster (OFFICIAL); gender: male; birthDate: 1961-10-01</a></p></div>"
+  ];
+  fhir:DomainResource.extension [
+     fhir:index 0;
+     fhir:Extension.url [ fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-performer" ];
+     fhir:Extension.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         fhir:Coding.system [ fhir:value "urn:oid:2.16.756.5.30.1.143.5.1" ];
+         fhir:Coding.code [ fhir:value "1000142" ];
+         fhir:Coding.display [ fhir:value "first responder" ]
+       ]
+     ]
+  ];
+  fhir:Procedure.status [ fhir:value "completed"];
+  fhir:Procedure.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:386308007;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "386308007" ];
+       fhir:Coding.display [ fhir:value "First aid" ]
+     ]
+  ];
+  fhir:Procedure.subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/1-PeterMuster>;
+     fhir:Reference.reference [ fhir:value "Patient/1-PeterMuster" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Procedure/Vorbehandlung.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

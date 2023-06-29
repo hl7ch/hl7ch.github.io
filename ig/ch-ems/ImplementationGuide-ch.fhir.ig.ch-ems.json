@@ -1,0 +1,2904 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "ch.fhir.ig.ch-ems",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      Implementation Guide for the Emergency Medical Service protocol\n    </div>"
+  },
+  "url": "http://fhir.ch/ig/ch-ems/ImplementationGuide/ch.fhir.ig.ch-ems",
+  "version": "1.9.0",
+  "name": "CH_EMS",
+  "title": "CH EMS (R4)",
+  "status": "active",
+  "experimental": false,
+  "date": "2020-08-25",
+  "publisher": "IVR Interverband für Rettungswesen",
+  "contact": [
+    {
+      "name": "IVR Interverband für Rettungswesen",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.ivr-ias.ch/"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "CH"
+        }
+      ]
+    }
+  ],
+  "copyright": "CC-BY-SA-4.0",
+  "packageId": "ch.fhir.ig.ch-ems",
+  "license": "CC-BY-SA-4.0",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "dependsOn": [
+    {
+      "id": "chcore",
+      "uri": "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core",
+      "packageId": "ch.fhir.ig.ch-core",
+      "version": "1.0.0"
+    },
+    {
+      "id": "cheprterm",
+      "uri": "http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term",
+      "packageId": "ch.fhir.ig.ch-epr-term",
+      "version": "2.0.4"
+    }
+  ],
+  "definition": {
+    "extension": [
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "releaselabel"
+          },
+          {
+            "url": "value",
+            "valueString": "Standard for Trial Use"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "copyrightyear"
+          },
+          {
+            "url": "value",
+            "valueString": "2020+"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "special-url"
+          },
+          {
+            "url": "value",
+            "valueString": "urn:oid:2.16.756.5.30.1.143.5.1"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "path-qa"
+          },
+          {
+            "url": "value",
+            "valueString": "temp/qa"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "path-temp"
+          },
+          {
+            "url": "value",
+            "valueString": "temp/pages"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "path-output"
+          },
+          {
+            "url": "value",
+            "valueString": "output"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "path-suppressed-warnings"
+          },
+          {
+            "url": "value",
+            "valueString": "input/ignoreWarnings.txt"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "template-html"
+          },
+          {
+            "url": "value",
+            "valueString": "template-page.html"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "template-md"
+          },
+          {
+            "url": "value",
+            "valueString": "template-page-md.html"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-contact"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-context"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-copyright"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-jurisdiction"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-license"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-publisher"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "apply-version"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension": [
+          {
+            "url": "code",
+            "valueString": "active-tables"
+          },
+          {
+            "url": "value",
+            "valueString": "true"
+          }
+        ],
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      }
+    ],
+    "resource": [
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Bundle"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Bundle-1-Einsatzprotokoll.html"
+          }
+        ],
+        "reference": {
+          "reference": "Bundle/1-Einsatzprotokoll"
+        },
+        "name": "1 Einsatzprotokoll",
+        "description": "Example for Bundle",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Bundle"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Bundle-1b-Einsatzprotokoll.html"
+          }
+        ],
+        "reference": {
+          "reference": "Bundle/1b-Einsatzprotokoll"
+        },
+        "name": "1b Einsatzprotokoll",
+        "description": "Example for Bundle",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Bundle"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Bundle-2-Einsatzprotokoll.html"
+          }
+        ],
+        "reference": {
+          "reference": "Bundle/2-Einsatzprotokoll"
+        },
+        "name": "2 Einsatzprotokoll",
+        "description": "Example for Bundle",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Bundle"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Bundle-2b-Einsatzprotokoll.html"
+          }
+        ],
+        "reference": {
+          "reference": "Bundle/2b-Einsatzprotokoll"
+        },
+        "name": "2b Einsatzprotokoll",
+        "description": "Example for Bundle",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-document"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Composition"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Composition-1-Einsatzprotokoll.html"
+          }
+        ],
+        "reference": {
+          "reference": "Composition/1-Einsatzprotokoll"
+        },
+        "name": "1 Einsatzprotokoll",
+        "description": "Example for Composition",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Composition"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Composition-1b-Einsatzprotokoll.html"
+          }
+        ],
+        "reference": {
+          "reference": "Composition/1b-Einsatzprotokoll"
+        },
+        "name": "1b Einsatzprotokoll",
+        "description": "Example for Composition",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Composition"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Composition-2-Einsatzprotokoll.html"
+          }
+        ],
+        "reference": {
+          "reference": "Composition/2-Einsatzprotokoll"
+        },
+        "name": "2 Einsatzprotokoll",
+        "description": "Example for Composition",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Composition"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Composition-2b-Einsatzprotokoll.html"
+          }
+        ],
+        "reference": {
+          "reference": "Composition/2b-Einsatzprotokoll"
+        },
+        "name": "2b Einsatzprotokoll",
+        "description": "Example for Composition",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-composition"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Coverage"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Coverage-1-CoveragePeterMuster.html"
+          }
+        ],
+        "reference": {
+          "reference": "Coverage/1-CoveragePeterMuster"
+        },
+        "name": "1 Coverage Peter Muster",
+        "description": "Example for Coverage",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-coverage"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Encounter"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Encounter-1-Einsatz.html"
+          }
+        ],
+        "reference": {
+          "reference": "Encounter/1-Einsatz"
+        },
+        "name": "1 Einsatz",
+        "description": "Example for Encounter",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-encounter"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Encounter"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Encounter-2-Einsatz.html"
+          }
+        ],
+        "reference": {
+          "reference": "Encounter/2-Einsatz"
+        },
+        "name": "2 Einsatz",
+        "description": "Example for Encounter",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-encounter"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Location"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Location-1-Einsatzort.html"
+          }
+        ],
+        "reference": {
+          "reference": "Location/1-Einsatzort"
+        },
+        "name": "1 Einsatzort",
+        "description": "Example for Location (Coordinates)",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-location"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Location"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Location-1-Zielort.html"
+          }
+        ],
+        "reference": {
+          "reference": "Location/1-Zielort"
+        },
+        "name": "1 Zielort",
+        "description": "Example for Location",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-location"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Location"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Location-2-Einsatzort.html"
+          }
+        ],
+        "reference": {
+          "reference": "Location/2-Einsatzort"
+        },
+        "name": "2 Einsatzort",
+        "description": "Example for Location (Address)",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-location"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-Alarm.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-Alarm"
+        },
+        "name": "1 Alarm",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-Anamnese.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-Anamnese"
+        },
+        "name": "1 Anamnese",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-anamnesisevent"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-ArrivalAtTarget.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-ArrivalAtTarget"
+        },
+        "name": "1 Arrival at target",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-ArrivalOnScene.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-ArrivalOnScene"
+        },
+        "name": "1 Arrival on scene",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-ArrivalPatient.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-ArrivalPatient"
+        },
+        "name": "1 Arrival Patient",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-2-ArrivalPatient.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/2-ArrivalPatient"
+        },
+        "name": "2 Arrival Patient",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-DepartureFromScene.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-DepartureFromScene"
+        },
+        "name": "1 Departure from scene",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-Diagnose.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-Diagnose"
+        },
+        "name": "1 Diagnose",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-diagnosis"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-2-Diagnose.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/2-Diagnose"
+        },
+        "name": "2 Diagnose",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-diagnosis"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-Disposition.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-Disposition"
+        },
+        "name": "1 Disposition",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-GCSBefund.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-GCSBefund"
+        },
+        "name": "1 GCS Befund",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-2-GCSBefund.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/2-GCSBefund"
+        },
+        "name": "2 GCS Befund",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-GCSUebergabe.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-GCSUebergabe"
+        },
+        "name": "1 GCS Uebergabe",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-2-GCSUebergabe.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/2-GCSUebergabe"
+        },
+        "name": "2 GCS Uebergabe",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-NACAUebergabe.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-NACAUebergabe"
+        },
+        "name": "1 NACA Uebergabe",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-naca"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-Rollout.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-Rollout"
+        },
+        "name": "1 Rollout",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-Symptome.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-Symptome"
+        },
+        "name": "1 Symptom",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-anamnesissymptom"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1-ZustandUebergabe.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1-ZustandUebergabe"
+        },
+        "name": "1 Zustand Uebergabe",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-conditionchange"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1b-DepartureFromTarget.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1b-DepartureFromTarget"
+        },
+        "name": "1b Departure from target",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-1b-OperationalReadiness.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/1b-OperationalReadiness"
+        },
+        "name": "1b Operational readiness",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-missiontimestatus"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-2-AirwaysBefund.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/2-AirwaysBefund"
+        },
+        "name": "2 Airways Befund",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-airways"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-2-AVPUBefund.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/2-AVPUBefund"
+        },
+        "name": "2 AVPU Befund",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-avpu"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-CardiacArrestBefund.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/CardiacArrestBefund"
+        },
+        "name": "Cardiac Arrest Befund",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-cardiacarrest"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-StatusPrioUebergabe.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/StatusPrioUebergabe"
+        },
+        "name": "Status Priorität Übergabe",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-statuspriority"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-StrokeBefund.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/StrokeBefund"
+        },
+        "name": "Stroke Befund",
+        "description": "Example for Observation",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-stroke-fast"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Organization"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Organization-1-InformationRecipientUSZ.html"
+          }
+        ],
+        "reference": {
+          "reference": "Organization/1-InformationRecipientUSZ"
+        },
+        "name": "1 USZ as information recipient",
+        "description": "Example for Organization"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Organization"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Organization-1-Rettungsdienst.html"
+          }
+        ],
+        "reference": {
+          "reference": "Organization/1-Rettungsdienst"
+        },
+        "name": "1 Rettungsdienst",
+        "description": "Example for Organization",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-organization"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Organization"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Organization-1-TeamRettungsdienst.html"
+          }
+        ],
+        "reference": {
+          "reference": "Organization/1-TeamRettungsdienst"
+        },
+        "name": "1 Team Rettungsdienst",
+        "description": "Example for Organization",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-organization"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Patient"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Patient-1-PeterMuster.html"
+          }
+        ],
+        "reference": {
+          "reference": "Patient/1-PeterMuster"
+        },
+        "name": "1 Peter Muster",
+        "description": "Example for Patient",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-patient"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Patient"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Patient-2-PatientUnbekannt.html"
+          }
+        ],
+        "reference": {
+          "reference": "Patient/2-PatientUnbekannt"
+        },
+        "name": "2 Patient unbekannt",
+        "description": "Example for Patient",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-patient"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Practitioner"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Practitioner-1-TeamMemberHansBeispiel.html"
+          }
+        ],
+        "reference": {
+          "reference": "Practitioner/1-TeamMemberHansBeispiel"
+        },
+        "name": "1 Teammitglied Hans Beispiel",
+        "description": "Example for Practitioner with GLN",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Practitioner"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Practitioner-1-TeamMemberPetraMuster.html"
+          }
+        ],
+        "reference": {
+          "reference": "Practitioner/1-TeamMemberPetraMuster"
+        },
+        "name": "1 Teammitglied Petra Muster",
+        "description": "Example for Practitioner with GLN",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Practitioner"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Practitioner-1-InformationRecipientSpezialarzt.html"
+          }
+        ],
+        "reference": {
+          "reference": "Practitioner/1-InformationRecipientSpezialarzt"
+        },
+        "name": "1 Spezialarzt as information recipient",
+        "description": "Example for Practitioner"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Practitioner"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Practitioner-1-NotarztHansNotarzt.html"
+          }
+        ],
+        "reference": {
+          "reference": "Practitioner/1-NotarztHansNotarzt"
+        },
+        "name": "1 Notarzt",
+        "description": "Example for Practitioner with GLN",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Practitioner"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Practitioner-1-TeamMemberHansNotarzt.html"
+          }
+        ],
+        "reference": {
+          "reference": "Practitioner/1-TeamMemberHansNotarzt"
+        },
+        "name": "1 Teammitglied Hans Notarzt",
+        "description": "Example for Practitioner with GLN",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Practitioner"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Practitioner-1-SaniPetraMuster.html"
+          }
+        ],
+        "reference": {
+          "reference": "Practitioner/1-SaniPetraMuster"
+        },
+        "name": "1 Rettungssanitaeterin",
+        "description": "Example for Practitioner with GLN",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Practitioner"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Practitioner-SaniInAusbildung.html"
+          }
+        ],
+        "reference": {
+          "reference": "Practitioner/SaniInAusbildung"
+        },
+        "name": "1 Practitioner Rettungssanitaeter in Ausbildung",
+        "description": "Example for Practitioner without GLN",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitioner"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "PractitionerRole"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "PractitionerRole-1-NotarztHansNotarzt.html"
+          }
+        ],
+        "reference": {
+          "reference": "PractitionerRole/1-NotarztHansNotarzt"
+        },
+        "name": "1 PractitionerRole Notarzt",
+        "description": "Example for PractitionerRole",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitionerrole"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "PractitionerRole"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "PractitionerRole-1-SaniPetraMuster.html"
+          }
+        ],
+        "reference": {
+          "reference": "PractitionerRole/1-SaniPetraMuster"
+        },
+        "name": "1 PractitionerRole Rettungssanitaeterin",
+        "description": "Example for PractitionerRole",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-practitionerrole"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Procedure"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Procedure-Vorbehandlung.html"
+          }
+        ],
+        "reference": {
+          "reference": "Procedure/Vorbehandlung"
+        },
+        "name": "Vorbehandlung",
+        "description": "Example for Procedure",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-procedure"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ServiceRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ServiceRequest-1-AufbietendeOrganisation.html"
+          }
+        ],
+        "reference": {
+          "reference": "ServiceRequest/1-AufbietendeOrganisation"
+        },
+        "name": "1 Aufbietende Organisation",
+        "description": "Example for ServiceRequest",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-servicerequest"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ServiceRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ServiceRequest-2-AufbietendeOrganisation.html"
+          }
+        ],
+        "reference": {
+          "reference": "ServiceRequest/2-AufbietendeOrganisation"
+        },
+        "name": "2 Aufbietende Organisation",
+        "description": "Example for ServiceRequest",
+        "exampleCanonical": "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-servicerequest"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-document.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-document"
+        },
+        "name": "CH EMS Document Profile",
+        "description": "Definition of the document for the use of the emergency medical service protocol",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-composition.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-composition"
+        },
+        "name": "CH EMS Composition Profile",
+        "description": "Definition of the composition for the use of the emergency medical service protocol",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-coverage.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-coverage"
+        },
+        "name": "CH EMS Coverage Profile",
+        "description": "Definition of the coverage",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-encounter.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-encounter"
+        },
+        "name": "CH EMS Encounter Profile",
+        "description": "Definition of the encounter",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-ext-laterality.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-ext-laterality"
+        },
+        "name": "CH EMS Extension Laterality",
+        "description": "Extension to define the side of the affected body region",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-ext-performer.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-ext-performer"
+        },
+        "name": "CH EMS Extension Performer",
+        "description": "Extension to define the performer of the pretreatment",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-ext-personrole.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-ext-personrole"
+        },
+        "name": "CH EMS Extension Person Role",
+        "description": "Extension to define the role of the involved participant",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-ext-teamrole.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-ext-teamrole"
+        },
+        "name": "CH EMS Extension Team Role",
+        "description": "Extension to define the role of the team member",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-location.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-location"
+        },
+        "name": "CH EMS Location Profile",
+        "description": "Definition of the location",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-airways.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-airways"
+        },
+        "name": "CH EMS Observation Profile Airways",
+        "description": "Definition of the observation airways",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-anamnesisevent.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-anamnesisevent"
+        },
+        "name": "CH EMS Observation Profile Anamnesis Event",
+        "description": "Definition of the observation anamnesis event",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-anamnesissymptom.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-anamnesissymptom"
+        },
+        "name": "CH EMS Observation Profile Anamnesis Symptom",
+        "description": "Definition of the observation anamnesis symptom",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-cardiacarrest.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-cardiacarrest"
+        },
+        "name": "CH EMS Observation Profile Cardiac Arrest",
+        "description": "Definition of the observation cardiac arrest",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-conditionchange.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-conditionchange"
+        },
+        "name": "CH EMS Observation Profile Condition Change",
+        "description": "Definition of the observation condition change",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-diagnosis.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-diagnosis"
+        },
+        "name": "CH EMS Observation Profile Diagnosis",
+        "description": "Definition of the observation diagnosis",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-gcs.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-gcs"
+        },
+        "name": "CH EMS Observation Profile GCS",
+        "description": "Definition of the observation glasgow coma scale",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-naca.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-naca"
+        },
+        "name": "CH EMS Observation Profile NACA",
+        "description": "Definition of the observation injury severity (NACA)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-avpu.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-avpu"
+        },
+        "name": "CH EMS Observation Profile AVPU",
+        "description": "Definition of the observation level of responsiveness (AVPU)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-missiontimestatus.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-missiontimestatus"
+        },
+        "name": "CH EMS Observation Profile Mission Time Status",
+        "description": "Definition of the observation mission time status",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-statuspriority.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-statuspriority"
+        },
+        "name": "CH EMS Observation Profile Status Priority",
+        "description": "Definition of the observation status priority",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-observation-stroke-fast.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-observation-stroke-fast"
+        },
+        "name": "CH EMS Observation Profile Stroke/FAST",
+        "description": "Definition of the observation Stroke/FAST",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-organization.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-organization"
+        },
+        "name": "CH EMS Organization Profile",
+        "description": "Definition of the organization",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-patient.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-patient"
+        },
+        "name": "CH EMS Patient Profile",
+        "description": "Definition of the patient",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-practitioner.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-practitioner"
+        },
+        "name": "CH EMS Practitioner Profile",
+        "description": "Definition of the practitioner",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-practitionerrole.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-practitionerrole"
+        },
+        "name": "CH EMS Practitioner Role Profile",
+        "description": "Definition of the practitioner role",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-procedure.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-procedure"
+        },
+        "name": "CH EMS Procedure Profile",
+        "description": "Definition of the procedure",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-ch-ems-servicerequest.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/ch-ems-servicerequest"
+        },
+        "name": "CH EMS Service Request Profile",
+        "description": "Definition of the service request",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CodeSystem"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CodeSystem-2.16.756.5.30.1.143.5.1.html"
+          }
+        ],
+        "reference": {
+          "reference": "CodeSystem/2.16.756.5.30.1.143.5.1"
+        },
+        "name": "IVR Code System",
+        "description": "IVR Code System",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-actRecovAid.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-actRecovAid"
+        },
+        "name": "IVR valueset Recovery Aid (.143.11.3)",
+        "description": "listet die Hilfsmittel auf, welche bei der Bergung und beim Transport des Patienten verwendet werden",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-actRespiOwner.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-actRespiOwner"
+        },
+        "name": "IVR valueset owner (.143.11.6)",
+        "description": "listet Eigentümer von Hilfsmitteln auf",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-airway.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-airway"
+        },
+        "name": "IVR valueset airway (143.11.2)",
+        "description": "listet die Massnahmen auf, mit denen die Atemwege während dem Einsatz behandelt werden",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-allergy.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-allergy"
+        },
+        "name": "IVR valueset allergy (.143.11.7)",
+        "description": "IVR valueset allergy (.143.11.7)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-ambulanceType.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-ambulanceType"
+        },
+        "name": "IVR Valueset ambulance type (143.11.28)",
+        "description": "IVR Valueset ambulance type (143.11.28)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-bedding.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-bedding"
+        },
+        "name": "IVR valueset transport bedding (.143.11.17)",
+        "description": "IVR valueset transport bedding (.143.11.17)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-coldExposure.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-coldExposure"
+        },
+        "name": "IVR valueset cold exposure (.143.11.50)",
+        "description": "IVR valueset cold exposure (.143.11.50)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-deathManner.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-deathManner"
+        },
+        "name": "IVR valueset manner of death (.143.11.41)",
+        "description": "IVR valueset  manner of death  (.143.11.41)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-diagType.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-diagType"
+        },
+        "name": "IVR valueset diagnosis type (.143.11.16)",
+        "description": "IVR valueset diagnosis type (.143.11.16)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-emergDoctSystem.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-emergDoctSystem"
+        },
+        "name": "IVR valueset mission Emergency doctor system (.143.11.12)",
+        "description": "IVR valueset mission Emergency doctor system (.143.11.12)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-event.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-event"
+        },
+        "name": "IVR valueset event (.143.11.15)",
+        "description": "IVR valueset event (.143.11.15)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-eyeForm.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-eyeForm"
+        },
+        "name": "IVR valueset eye Form (.143.11.43)",
+        "description": "IVR valueset  eye Form  (.143.11.43)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-findingsAirway.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-findingsAirway"
+        },
+        "name": "IVR valueset findings airway (.143.11.39)",
+        "description": "IVR valueset findings airway (.143.11.39)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-formation.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-formation"
+        },
+        "name": "IVR valueset formation (.143.11.9)",
+        "description": "IVR valueset formation (.143.11.9)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-gcs-augenoeffnung.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-gcs-augenoeffnung"
+        },
+        "name": "IVR valueset GCS Augenoeffnung (143.11.34)",
+        "description": "IVR valueset GCS Augenöffnung (143.11.34)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-gcsMotoric.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-gcsMotoric"
+        },
+        "name": "IVR valueset GCS motorische Reaktion (.143.11.35)",
+        "description": "IVR valueset GCS motorische Reaktion (.143.11.35)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-gcsVerbal.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-gcsVerbal"
+        },
+        "name": "IVR valueset GCS Verbale Kommunikation(.143.11.36)",
+        "description": "IVR valueset GCS Verbale Kommunikation(.143.11.36)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-heatExposure.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-heatExposure"
+        },
+        "name": "IVR valueset heat exposure (.143.11.51)",
+        "description": "IVR valueset heat exposure (.143.11.51)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-hospitalPriority.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-hospitalPriority"
+        },
+        "name": "IVR valueset priority hospital",
+        "description": "IVR valueset priority hospital",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-idMedium.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-idMedium"
+        },
+        "name": "IVR valueset identification medium (.143.11.30)",
+        "description": "IVR valueset identification medium (.143.11.30)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-idSource.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-idSource"
+        },
+        "name": "IVR valueset identification source (143.11.29)",
+        "description": "IVR valueset identification source (143.11.29)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-InfectPersPrecaution.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-InfectPersPrecaution"
+        },
+        "name": "IVR valueset infectiontransport precaution personnel",
+        "description": "IVR valueset infectiontransport precaution personnel",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-intensity.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-intensity"
+        },
+        "name": "IVR valueset intensity (.143.11.27)",
+        "description": "IVR valueset intensity (.143.11.27)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-location.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-location"
+        },
+        "name": "IVR valueset location (.143.11.23)",
+        "description": "IVR valueset location (.143.11.23)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-locationType.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-locationType"
+        },
+        "name": "IVR valueset location Type (.143.11.42)",
+        "description": "IVR valueset  location Type  (.143.11.42)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-missionTimeRole.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-missionTimeRole"
+        },
+        "name": "IVR valueset role mission time (.143.11.10)",
+        "description": "IVR valueset role mission time (.143.11.10)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-missionType.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-missionType"
+        },
+        "name": "IVR valueset mission type (.143.11.11)",
+        "description": "IVR valueset mission type (.143.11.11)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-NACA.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-NACA"
+        },
+        "name": "IVR valueset NACA",
+        "description": "IVR valueset NACA",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-offender.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-offender"
+        },
+        "name": "IVR valueset offender (143.11.24)",
+        "description": "IVR valueset offender (143.11.24)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-patient.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-patient"
+        },
+        "name": "IVR valueset patient",
+        "description": "valueset for patient observation demographics",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-personRole.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-personRole"
+        },
+        "name": "IVR valueset role (.143.11.21)",
+        "description": "IVR valueset role (.143.11.21)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-pressureMethod.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-pressureMethod"
+        },
+        "name": "IVR valueset blood pressure method (.143.11.47)",
+        "description": "IVR valueset blood pressure method (.143.11.47)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-preTreatment.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-preTreatment"
+        },
+        "name": "IVR valueset pre-treatment (.143.11.14)",
+        "description": "IVR valueset pre-treatment (.143.11.14)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-preTreatType.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-preTreatType"
+        },
+        "name": "IVR valueset pre-treatment type (.143.11.13)",
+        "description": "IVR valueset pre-treatment type (.143.11.13)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-procAirType.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-procAirType"
+        },
+        "name": "IVR valueset procedure airway type (.143.11.40)",
+        "description": "IVR valueset procedure airway type (.143.11.40)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-pulesResult.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-pulesResult"
+        },
+        "name": "IVR valueset pulse result (.143.11.49)",
+        "description": "IVR valueset pulse result (.143.11.49)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-pulseMethod.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-pulseMethod"
+        },
+        "name": "IVR valueset pulse method (.143.11.48)",
+        "description": "IVR valueset pulse method (.143.11.48)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-respirationObservation.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-respirationObservation"
+        },
+        "name": "IVR valueset Observation Respiration (.143.11.22)",
+        "description": "IVR valueset Observation Respiration (.143.11.22)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-result.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-result"
+        },
+        "name": "IVR valueset result (.143.11.44)",
+        "description": "IVR valueset  result  (.143.11.44)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-sections.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-sections"
+        },
+        "name": "IVR valueset sections",
+        "description": "Values for sections codes",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-sex.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-sex"
+        },
+        "name": "IVR Valueset sex (.143.11.31)",
+        "description": "IVR Valueset sex (.143.11.31)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-size.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-size"
+        },
+        "name": "IVR Valueset size",
+        "description": "IVR Valueset size",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-symptom.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-symptom"
+        },
+        "name": "IVR valueset symptom (.143.11.38)",
+        "description": "IVR valueset symptom (.143.11.38)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-teamRole.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-teamRole"
+        },
+        "name": "IVR valueset role team (.143.11.8)",
+        "description": "IVR valueset role team (.143.11.8)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-transDesinfection.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-transDesinfection"
+        },
+        "name": "IVR valueset unit desinfection",
+        "description": "IVR valueset unit desinfection",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-transReason.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-transReason"
+        },
+        "name": "IVR valueset transport reason (.143.11.32)",
+        "description": "IVR valueset transport reason (.143.11.32)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-urgency-adequate.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-urgency-adequate"
+        },
+        "name": "IVR valueset urgency adequate (143.11.37)",
+        "description": "IVR valueset urgency adequate (143.11.37)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-urgency.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-urgency"
+        },
+        "name": "IVR valueset urgency",
+        "description": "IVR valueset urgency",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-valTxpe.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-valTxpe"
+        },
+        "name": "IVR valueset valuables type (.143.11.33)",
+        "description": "IVR valueset valuables type (.143.11.33)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-ventilation.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-ventilation"
+        },
+        "name": "IVR valueset ventilation (.143.11.46)",
+        "description": "IVR valueset ventilation (.143.11.46)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-vigilanzAvpu.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-vigilanzAvpu"
+        },
+        "name": "IVR vigilanz (AVPU)",
+        "description": "eCH-0207: Vigilanz (AVPU)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-violenceForm.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-violenceForm"
+        },
+        "name": "IVR valueset form of violence (143.11.25)",
+        "description": "IVR valueset form of violence (143.11.25)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-violenceResult.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-violenceResult"
+        },
+        "name": "IVR valueset result of violence (.143.11.26)",
+        "description": "IVR valueset result of violence (.143.11.26)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-woundTreat.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-woundTreat"
+        },
+        "name": "IVR valueset wound treatment (.143.11.45)",
+        "description": "IVR valueset wound treatment (.143.11.45)",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-IVR-VS-ZUB.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/IVR-VS-ZUB"
+        },
+        "name": "IVR valueset status change",
+        "description": "Veränderung des Zustands des Patienten zwischen Eintreffen am Einsatzort bis zur Übergabe am Zielort",
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-yes-no-unknown.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/yes-no-unknown"
+        },
+        "name": "Yes/No/Unknown",
+        "description": "The SNOMED CT codes to answer yes/no/unknown",
+        "exampleBoolean": false
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Home",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "index-german.html",
+          "title": "Home (DE)",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "index-french.html",
+          "title": "Home (FR)",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "document.html",
+          "title": "Emergency Medical Service protocol",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "usecase-german.html",
+          "title": "Anwendungsfälle",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "usecase-french.html",
+          "title": "Cas d’application",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "profiles.html",
+          "title": "Profiles",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "extensions.html",
+          "title": "Extensions",
+          "generation": "html"
+        },
+        {
+          "nameUrl": "terminology.html",
+          "title": "Terminology",
+          "generation": "html"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "path-pages",
+        "value": "input/pages"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/capabilities"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/examples"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/extensions"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/models"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/operations"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/profiles"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/resources"
+      },
+      {
+        "code": "path-resource",
+        "value": "input/vocabulary"
+      },
+      {
+        "code": "path-pages",
+        "value": "template/config"
+      },
+      {
+        "code": "path-pages",
+        "value": "input/images"
+      },
+      {
+        "code": "path-tx-cache",
+        "value": "input-cache/txcache"
+      }
+    ]
+  }
+}

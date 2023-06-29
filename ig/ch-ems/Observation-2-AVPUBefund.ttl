@@ -1,0 +1,57 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/2-AVPUBefund> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "2-AVPUBefund"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-avpu";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-avpu>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: 2-AVPUBefund</p><p><b>meta</b>: </p><p></p><p><b>code</b>: <span title=\"Codes: {http://loinc.org 11454-6}\">Level of Responsiveness (AVPU)</span></p><p><b>subject</b>: <a href=\"Patient-2-PatientUnbekannt.html\">Generated Summary: id: 2-PatientUnbekannt; Medical record number: MU43221; gender: male</a></p><p><b>encounter</b>: <a href=\"Encounter-2-Einsatz.html\">Generated Summary: id: 2-Einsatz; id: S12345678; status: finished; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode EMER}\">emergency</span>; period: 2016-12-10 --&gt; (ongoing)</a></p><p><b>effective</b>: Dec 10, 2016, 11:25:00 AM</p><p><b>value</b>: <span title=\"Codes: {urn:oid:2.16.756.5.30.1.143.5.1 V}\">Reaktion nur bei lauter Ansprache</span></p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:11454-6;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "11454-6" ];
+       fhir:Coding.display [ fhir:value "Level of Responsiveness (AVPU)" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/2-PatientUnbekannt>;
+     fhir:Reference.reference [ fhir:value "Patient/2-PatientUnbekannt" ]
+  ];
+  fhir:Observation.encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/2-Einsatz>;
+     fhir:Reference.reference [ fhir:value "Encounter/2-Einsatz" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2016-12-10T11:25:00.000+01:00"^^xsd:dateTime];
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:oid:2.16.756.5.30.1.143.5.1" ];
+       fhir:Coding.code [ fhir:value "V" ];
+       fhir:Coding.display [ fhir:value "Reaktion nur bei lauter Ansprache" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/2-AVPUBefund.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

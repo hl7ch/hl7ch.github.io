@@ -1,0 +1,58 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/1-Symptome> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "1-Symptome"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-anamnesissymptom";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-anamnesissymptom>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: 1-Symptome</p><p><b>meta</b>: </p><p></p><p><b>code</b>: <span title=\"Codes: {http://snomed.info/sct 404684003}\">Clinical finding (finding)</span></p><p><b>subject</b>: <a href=\"Patient-1-PeterMuster.html\">Generated Summary: id: 1-PeterMuster; id: 7560123123499, Medical record number: 762354; Peter Muster (OFFICIAL); gender: male; birthDate: 1961-10-01</a></p><p><b>encounter</b>: <a href=\"Encounter-1-Einsatz.html\">Generated Summary: id: 1-Einsatz; id: S12345678; status: finished; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode EMER}\">emergency</span>; period: 2016-12-10 --&gt; (ongoing)</a></p><p><b>value</b>: <span title=\"Codes: {http://snomed.info/sct 162408000}\">Starke Schmerzen in der Brust und im linken Oberarm verspürt</span></p></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:404684003;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "404684003" ];
+       fhir:Coding.display [ fhir:value "Clinical finding (finding)" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/1-PeterMuster>;
+     fhir:Reference.reference [ fhir:value "Patient/1-PeterMuster" ]
+  ];
+  fhir:Observation.encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/1-Einsatz>;
+     fhir:Reference.reference [ fhir:value "Encounter/1-Einsatz" ]
+  ];
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:162408000;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "162408000" ];
+       fhir:Coding.display [ fhir:value "General symptom description (finding)" ]
+     ];
+     fhir:CodeableConcept.text [ fhir:value "Starke Schmerzen in der Brust und im linken Oberarm verspürt" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/1-Symptome.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,133 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/2-GCSUebergabe> a fhir:Observation;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "2-GCSUebergabe"];
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs";
+       fhir:index 0;
+       fhir:link <http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-observation-gcs>
+     ]
+  ];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><p><b>id</b>: 2-GCSUebergabe</p><p><b>meta</b>: </p><p></p><p><b>code</b>: <span title=\"Codes: {http://loinc.org 9269-2}\">Glasgow coma score total</span></p><p><b>subject</b>: <a href=\"Patient-2-PatientUnbekannt.html\">Generated Summary: id: 2-PatientUnbekannt; Medical record number: MU43221; gender: male</a></p><p><b>encounter</b>: <a href=\"Encounter-2-Einsatz.html\">Generated Summary: id: 2-Einsatz; id: S12345678; status: finished; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode EMER}\">emergency</span>; period: 2016-12-10 --&gt; (ongoing)</a></p><p><b>effective</b>: Dec 10, 2016, 12:03:00 PM</p><p><b>value</b>: 10 {score}</p><blockquote><p><b>component</b></p><p><b>code</b>: <span title=\"Codes: {http://loinc.org 9268-4}\">Glasgow coma score motor</span></p><p><b>value</b>: <span title=\"Codes: {http://loinc.org LA6564-4}\">3 (Flexion to pain)</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: <span title=\"Codes: {http://loinc.org 9270-0}\">Glasgow coma score verbal</span></p><p><b>value</b>: <span title=\"Codes: {http://loinc.org LA6560-2}\">4 (Confused)</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: <span title=\"Codes: {http://loinc.org 9267-6}\">Glasgow coma score eye opening</span></p><p><b>value</b>: <span title=\"Codes: {http://loinc.org LA6555-2}\">3 (Eye opening to verbal command)</span></p></blockquote></div>"
+  ];
+  fhir:Observation.status [ fhir:value "final"];
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:9269-2;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "9269-2" ];
+       fhir:Coding.display [ fhir:value "Glasgow coma score total" ]
+     ]
+  ];
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/2-PatientUnbekannt>;
+     fhir:Reference.reference [ fhir:value "Patient/2-PatientUnbekannt" ]
+  ];
+  fhir:Observation.encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/2-Einsatz>;
+     fhir:Reference.reference [ fhir:value "Encounter/2-Einsatz" ]
+  ];
+  fhir:Observation.effectiveDateTime [ fhir:value "2016-12-10T12:03:00.000+01:00"^^xsd:dateTime];
+  fhir:Observation.valueQuantity [
+     fhir:Quantity.value [ fhir:value "10"^^xsd:decimal ];
+     fhir:Quantity.system [ fhir:value "http://unitsofmeasure.org" ];
+     fhir:Quantity.code [ fhir:value "{score}" ]
+  ];
+  fhir:Observation.component [
+     fhir:index 0;
+     fhir:Observation.component.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:9268-4;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "9268-4" ];
+         fhir:Coding.display [ fhir:value "Glasgow coma score motor" ]
+       ]
+     ];
+     fhir:Observation.component.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:LA6564-4;
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/ordinalValue" ];
+           fhir:Extension.valueDecimal [ fhir:value "3"^^xsd:decimal ]
+         ];
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "LA6564-4" ];
+         fhir:Coding.display [ fhir:value "Flexion to pain" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "3 (Flexion to pain)" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:Observation.component.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:9270-0;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "9270-0" ];
+         fhir:Coding.display [ fhir:value "Glasgow coma score verbal" ]
+       ]
+     ];
+     fhir:Observation.component.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:LA6560-2;
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/ordinalValue" ];
+           fhir:Extension.valueDecimal [ fhir:value "4"^^xsd:decimal ]
+         ];
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "LA6560-2" ];
+         fhir:Coding.display [ fhir:value "Confused" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "4 (Confused)" ]
+     ]
+  ], [
+     fhir:index 2;
+     fhir:Observation.component.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:9267-6;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "9267-6" ];
+         fhir:Coding.display [ fhir:value "Glasgow coma score eye opening" ]
+       ]
+     ];
+     fhir:Observation.component.valueCodeableConcept [
+       fhir:CodeableConcept.coding [
+         fhir:index 0;
+         a loinc:LA6555-2;
+         fhir:Element.extension [
+           fhir:index 0;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/ordinalValue" ];
+           fhir:Extension.valueDecimal [ fhir:value "3"^^xsd:decimal ]
+         ];
+         fhir:Coding.system [ fhir:value "http://loinc.org" ];
+         fhir:Coding.code [ fhir:value "LA6555-2" ];
+         fhir:Coding.display [ fhir:value "Eye opening to verbal command" ]
+       ];
+       fhir:CodeableConcept.text [ fhir:value "3 (Eye opening to verbal command)" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/2-GCSUebergabe.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
