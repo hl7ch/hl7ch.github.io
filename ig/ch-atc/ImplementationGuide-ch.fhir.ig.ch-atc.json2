@@ -1,648 +1,944 @@
 {
-  "resourceType": "ImplementationGuide",
-  "id": "ch.fhir.ig.ch-atc",
-  "text": {
-    "status": "additional",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\tImplementation Guide for CH ATC                         \n      <br/>\n      This profile CH ATC defines the audit trail consumption requirements which a community has to provide for a patients audit trail.                  \n      <br/>\n\n    </div>"
+  "resourceType" : "ImplementationGuide",
+  "id" : "ch.fhir.ig.ch-atc",
+  "text" : {
+    "status" : "additional",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\tImplementation Guide for CH ATC                         \n      <br/>\n      This profile CH ATC defines the audit trail consumption requirements which a community has to provide for a patients audit trail.                  \n      <br/>\n\n    </div>"
   },
-  "url": "http://fhir.ch/ig/ch-atc/ImplementationGuide/ch.fhir.ig.ch-atc",
-  "version": "3.1.0",
-  "name": "CH_ATC",
-  "title": "CH ATC (R4)",
-  "status": "active",
-  "experimental": false,
-  "date": "2018-05-14T00:00:00+02:00",
-  "publisher": "eHealth Suisse",
-  "contact": [
-    {
-      "name": "eHealth Suisse",
-      "telecom": [
-        {
-          "system": "url",
-          "value": "https://www.e-health-suisse.ch/"
-        }
-      ]
+  "url" : "http://fhir.ch/ig/ch-atc/ImplementationGuide/ch.fhir.ig.ch-atc",
+  "version" : "3.2.0-ballot",
+  "name" : "CH_ATC",
+  "title" : "CH ATC (R4)",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2023-06-30",
+  "publisher" : "eHealth Suisse",
+  "contact" : [{
+    "name" : "eHealth Suisse",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.e-health-suisse.ch/"
+    }]
+  },
+  {
+    "name" : "Oliver Egger",
+    "telecom" : [{
+      "system" : "email",
+      "value" : "oliver.egger@ahdis.ch"
+    }]
+  }],
+  "description" : "Implementation Guide for CH ATC (Audit Trail Consumption)",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
+  "copyright" : "CC0-1.0",
+  "packageId" : "ch.fhir.ig.ch-atc",
+  "license" : "CC0-1.0",
+  "fhirVersion" : ["4.0.1"],
+  "dependsOn" : [{
+    "id" : "hl7ext",
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
+      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"
+    }],
+    "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+    "packageId" : "hl7.fhir.uv.extensions.r4",
+    "version" : "1.0.0"
+  },
+  {
+    "id" : "cheprterm",
+    "uri" : "http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term",
+    "packageId" : "ch.fhir.ig.ch-epr-term",
+    "version" : "2.0.x"
+  },
+  {
+    "id" : "hl7terminology",
+    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
+    "packageId" : "hl7.terminology",
+    "version" : "5.1.0"
+  },
+  {
+    "id" : "iheitibalp",
+    "uri" : "https://profiles.ihe.net/ITI/BALP/ImplementationGuide/ihe.iti.balp",
+    "packageId" : "ihe.iti.balp",
+    "version" : "1.1.1"
+  }],
+  "definition" : {
+    "extension" : [{
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "releaselabel"
+      },
+      {
+        "url" : "value",
+        "valueString" : "Draft"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
     {
-      "name": "Oliver Egger",
-      "telecom": [
-        {
-          "system": "email",
-          "value": "oliver.egger@ahdis.ch"
-        }
-      ]
-    }
-  ],
-  "description": "Implementation Guide for CH ATC see Audit Trail Consumption",
-  "jurisdiction": [
-    {
-      "coding": [
-        {
-          "system": "urn:iso:std:iso:3166",
-          "code": "CH"
-        }
-      ]
-    }
-  ],
-  "copyright": "CC-BY-SA-4.0",
-  "packageId": "ch.fhir.ig.ch-atc",
-  "license": "CC0-1.0",
-  "fhirVersion": [
-    "4.0.1"
-  ],
-  "dependsOn": [
-    {
-      "id": "cheprterm",
-      "uri": "http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term",
-      "packageId": "ch.fhir.ig.ch-epr-term",
-      "version": "current"
-    }
-  ],
-  "definition": {
-    "extension": [
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "releaselabel"
-          },
-          {
-            "url": "value",
-            "valueString": "Draft"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "copyrightyear"
       },
       {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "copyrightyear"
-          },
-          {
-            "url": "value",
-            "valueString": "2020+"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "autoload-resources"
-          },
-          {
-            "url": "value",
-            "valueString": "true"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "path-qa"
-          },
-          {
-            "url": "value",
-            "valueString": "temp/qa"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "path-temp"
-          },
-          {
-            "url": "value",
-            "valueString": "temp/pages"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "path-output"
-          },
-          {
-            "url": "value",
-            "valueString": "output"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "path-suppressed-warnings"
-          },
-          {
-            "url": "value",
-            "valueString": "input/ignoreWarnings.txt"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "template-html"
-          },
-          {
-            "url": "value",
-            "valueString": "template-page.html"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "template-md"
-          },
-          {
-            "url": "value",
-            "valueString": "template-page-md.html"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "apply-contact"
-          },
-          {
-            "url": "value",
-            "valueString": "true"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "apply-context"
-          },
-          {
-            "url": "value",
-            "valueString": "true"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "apply-copyright"
-          },
-          {
-            "url": "value",
-            "valueString": "true"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "apply-jurisdiction"
-          },
-          {
-            "url": "value",
-            "valueString": "true"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "apply-license"
-          },
-          {
-            "url": "value",
-            "valueString": "true"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "apply-publisher"
-          },
-          {
-            "url": "value",
-            "valueString": "true"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "apply-version"
-          },
-          {
-            "url": "value",
-            "valueString": "true"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension": [
-          {
-            "url": "code",
-            "valueString": "active-tables"
-          },
-          {
-            "url": "value",
-            "valueString": "true"
-          }
-        ],
-        "url": "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      }
-    ],
-    "grouping": [
-      {
-        "name": "CH ATC",
-        "description": "This profile CH ATC defines the audit trail consumption requirements which a community has to provide for a patients audit trail."
-      }
-    ],
-    "resource": [
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "SearchParameter"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "SearchParameter-AuditEvent-entity-identifier.html"
-          }
-        ],
-        "reference": {
-          "reference": "SearchParameter/AuditEvent-entity-identifier"
-        },
-        "name": "Search Parameter AuditEvent entity.identifier",
-        "description": "Defines the IHE RESTFul ATNA Query Parameter entity.identifier for an AuditEvent",
-        "exampleBoolean": false
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "StructureDefinition:resource"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "StructureDefinition-DocumentAuditEvent.html"
-          }
-        ],
-        "reference": {
-          "reference": "StructureDefinition/DocumentAuditEvent"
-        },
-        "name": "Profile on DocumentAuditEvent for CH ATC",
-        "description": "Profile on DocumentAuditEvent for CH ATC",
-        "exampleBoolean": false
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "StructureDefinition:resource"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "StructureDefinition-PolicyAuditEvent.html"
-          }
-        ],
-        "reference": {
-          "reference": "StructureDefinition/PolicyAuditEvent"
-        },
-        "name": "Profile on PolicyAuditEvent for CH ATC",
-        "description": "Profile on PolicyAuditEvent for CH ATC",
-        "exampleBoolean": false
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "StructureDefinition:resource"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "StructureDefinition-AccessAuditTrailEvent.html"
-          }
-        ],
-        "reference": {
-          "reference": "StructureDefinition/AccessAuditTrailEvent"
-        },
-        "name": "Profile on AccessAuditTrailEvent for CH ATC",
-        "description": "Profile on AccessAuditTrailEvent for CH ATC",
-        "exampleBoolean": false
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "StructureDefinition:resource"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "StructureDefinition-CH-ATC.ITI-81.Response.html"
-          }
-        ],
-        "reference": {
-          "reference": "StructureDefinition/CH-ATC.ITI-81.Response"
-        },
-        "name": "Retrieve CH ATC ATNA Audit Event [ITI-81] Response",
-        "description": "Retrieve CH ATC ATNA Audit Event [ITI-81] Response",
-        "exampleBoolean": false
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "ValueSet"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "ValueSet-EprParticipant.html"
-          }
-        ],
-        "reference": {
-          "reference": "ValueSet/EprParticipant"
-        },
-        "name": "EPR Participant",
-        "description": "EPR Participant",
-        "exampleBoolean": false
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "ValueSet"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "ValueSet-DocumentAuditEventType.html"
-          }
-        ],
-        "reference": {
-          "reference": "ValueSet/DocumentAuditEventType"
-        },
-        "name": "DocumentAuditEventType",
-        "description": "DocumentAuditEventType",
-        "exampleBoolean": false
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "ValueSet"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "ValueSet-PolicyAuditEventType.html"
-          }
-        ],
-        "reference": {
-          "reference": "ValueSet/PolicyAuditEventType"
-        },
-        "name": "PolicyAuditEventType",
-        "description": "PolicyAuditEventType",
-        "exampleBoolean": false
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "ValueSet"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "ValueSet-AccessAuditTrailEventType.html"
-          }
-        ],
-        "reference": {
-          "reference": "ValueSet/AccessAuditTrailEventType"
-        },
-        "name": "AccessAuditTrailEventType",
-        "description": "AccessAuditTrailEventType",
-        "exampleBoolean": false
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "AuditEvent"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "AuditEvent-atc-doc-create-rep-pat.html"
-          }
-        ],
-        "reference": {
-          "reference": "AuditEvent/atc-doc-create-rep-pat"
-        },
-        "name": "CH ATC - Creation of a Document",
-        "description": "CH ATC - Creation of a Document for a patient by a representative of this patient",
-        "exampleCanonical": "http://fhir.ch/ig/ch-atc/StructureDefinition/DocumentAuditEvent"
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "AuditEvent"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "AuditEvent-atc-doc-read-ass-hpc.html"
-          }
-        ],
-        "reference": {
-          "reference": "AuditEvent/atc-doc-read-ass-hpc"
-        },
-        "name": "CH ATC - Retrieveal of a Document",
-        "description": "CH ATC - Retrieveal of a Document from a patient by an assitant for a healthcrare professional",
-        "exampleCanonical": "http://fhir.ch/ig/ch-atc/StructureDefinition/DocumentAuditEvent"
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "AuditEvent"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "AuditEvent-atc-pol-create-acc-right.html"
-          }
-        ],
-        "reference": {
-          "reference": "AuditEvent/atc-pol-create-acc-right"
-        },
-        "name": "CH ATC - Create Access Right for Healthcare professional",
-        "description": "CH ATC - Create Access Right for Healthcare professional",
-        "exampleCanonical": "http://fhir.ch/ig/ch-atc/StructureDefinition/PolicyAuditEvent"
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "AuditEvent"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "AuditEvent-atc-pol-create-rep.html"
-          }
-        ],
-        "reference": {
-          "reference": "AuditEvent/atc-pol-create-rep"
-        },
-        "name": "CH ATC - Create Access Right for a representative",
-        "description": "CH ATC - Create Access Right a representative",
-        "exampleCanonical": "http://fhir.ch/ig/ch-atc/StructureDefinition/PolicyAuditEvent"
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "AuditEvent"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "AuditEvent-atc-log-read.html"
-          }
-        ],
-        "reference": {
-          "reference": "AuditEvent/atc-log-read"
-        },
-        "name": "CH ATC - Access of Audit Trail Repository",
-        "description": "CH ATC - Access of Audit Trail Repository",
-        "exampleCanonical": "http://fhir.ch/ig/ch-atc/StructureDefinition/AccessAuditTrailEvent"
-      },
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString": "Bundle"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-            "valueUri": "Bundle-ch-atc-iti-81-response-sample.html"
-          }
-        ],
-        "reference": {
-          "reference": "Bundle/ch-atc-iti-81-response-sample"
-        },
-        "name": "CH ATC -Reponse Audit Trail",
-        "description": "CH ATC -Reponse Audit Trail",
-        "exampleCanonical": "http://fhir.ch/ig/ch-atc/StructureDefinition/CH-ATC.ITI-81.Response"
-      }
-    ],
-    "page": {
-      "nameUrl": "toc.html",
-      "title": "Table of Contents",
-      "generation": "html",
-      "page": [
-        {
-          "nameUrl": "index.html",
-          "title": "Home",
-          "generation": "markdown"
-        },
-        {
-          "nameUrl": "profiles.html",
-          "title": "Profiles",
-          "generation": "html"
-        },
-        {
-          "nameUrl": "terminology.html",
-          "title": "Terminology",
-          "generation": "html"
-        }
-      ]
+        "url" : "value",
+        "valueString" : "2020+"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
-    "parameter": [
-      {
-        "code": "generate-json",
-        "value": "true"
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "autoload-resources"
       },
       {
-        "code": "generate-xml",
-        "value": "true"
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-liquid"
       },
       {
-        "code": "generate-turtle",
-        "value": "false"
+        "url" : "value",
+        "valueString" : "template/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-liquid"
       },
       {
-        "code": "path-pages",
-        "value": "input/pages"
+        "url" : "value",
+        "valueString" : "input/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-qa"
       },
       {
-        "code": "path-resource",
-        "value": "input/capabilities"
+        "url" : "value",
+        "valueString" : "temp/qa"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-temp"
       },
       {
-        "code": "path-resource",
-        "value": "input/examples"
+        "url" : "value",
+        "valueString" : "temp/pages"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-output"
       },
       {
-        "code": "path-resource",
-        "value": "input/extensions"
+        "url" : "value",
+        "valueString" : "output"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-suppressed-warnings"
       },
       {
-        "code": "path-resource",
-        "value": "input/models"
+        "url" : "value",
+        "valueString" : "input/ignoreWarnings.txt"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-history"
       },
       {
-        "code": "path-resource",
-        "value": "input/operations"
+        "url" : "value",
+        "valueString" : "http://fhir.ch/ig/ch-atc/history.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "template-html"
       },
       {
-        "code": "path-resource",
-        "value": "input/profiles"
+        "url" : "value",
+        "valueString" : "template-page.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "template-md"
       },
       {
-        "code": "path-resource",
-        "value": "input/resources"
+        "url" : "value",
+        "valueString" : "template-page-md.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-contact"
       },
       {
-        "code": "path-resource",
-        "value": "input/vocabulary"
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-context"
       },
       {
-        "code": "path-pages",
-        "value": "template/config"
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-copyright"
       },
       {
-        "code": "path-pages",
-        "value": "input/images"
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-jurisdiction"
       },
       {
-        "code": "path-tx-cache",
-        "value": "input-cache/txcache"
-      }
-    ]
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-license"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-publisher"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-version"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "active-tables"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "fmm-definition"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://hl7.org/fhir/versions.html#maturity"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "propagate-status"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "excludelogbinaryformat"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "tabbed-snapshots"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
+      "valueCode" : "hl7.fhir.uv.tools#current"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "releaselabel"
+      },
+      {
+        "url" : "value",
+        "valueString" : "Draft"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "copyrightyear"
+      },
+      {
+        "url" : "value",
+        "valueString" : "2020+"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "autoload-resources"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-qa"
+      },
+      {
+        "url" : "value",
+        "valueString" : "temp/qa"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-temp"
+      },
+      {
+        "url" : "value",
+        "valueString" : "temp/pages"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-output"
+      },
+      {
+        "url" : "value",
+        "valueString" : "output"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-suppressed-warnings"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/ignoreWarnings.txt"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-history"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://fhir.ch/ig/ch-atc/history.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "template-html"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template-page.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "template-md"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template-page-md.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-contact"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-context"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-copyright"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-jurisdiction"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-license"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-publisher"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-version"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "active-tables"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "fmm-definition"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://hl7.org/fhir/versions.html#maturity"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "propagate-status"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "excludelogbinaryformat"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "tabbed-snapshots"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    }],
+    "grouping" : [{
+      "name" : "CH ATC",
+      "description" : "This profile CH ATC defines the audit trail consumption requirements which a community has to provide for a patients audit trail."
+    }],
+    "resource" : [{
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "SearchParameter"
+      }],
+      "reference" : {
+        "reference" : "SearchParameter/AuditEvent-entity-identifier"
+      },
+      "name" : "Search Parameter AuditEvent entity.identifier",
+      "description" : "Defines the IHE RESTFul ATNA Query Parameter entity.identifier for an AuditEvent.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/DocumentAuditEvent"
+      },
+      "name" : "Profile on DocumentAuditEvent for CH ATC",
+      "description" : "This profile defines the content of the document audit events which a community has to provide for a patients audit trail.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/PolicyAuditEvent"
+      },
+      "name" : "Profile on PolicyAuditEvent for CH ATC",
+      "description" : "This profile defines the content of the policy audit events which a community has to provide for a patients audit trail.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/AccessAuditTrailEvent"
+      },
+      "name" : "Profile on AccessAuditTrailEvent for CH ATC",
+      "description" : "This profile defines the content of the access audit trail event which a community has to provide for a patients audit trail.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/HpdAuditEvent"
+      },
+      "name" : "Profile on HpdAuditEvent for CH ATC",
+      "description" : "This profile defines the content of the HPD audit events which a community has to provide for a patients audit trail.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/CH-ATC.ITI-81.Response"
+      },
+      "name" : "Retrieve CH ATC ATNA Audit Event [ITI-81] Response",
+      "description" : "This profile defines the response to the [ITI-81] query. The response is a search set including all audit events which a community has to provide for a patients audit trail.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/EprParticipant"
+      },
+      "name" : "EprParticipant",
+      "description" : "EprParticipant",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/DocumentAuditEventType"
+      },
+      "name" : "DocumentAuditEventType",
+      "description" : "DocumentAuditEventType",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/PolicyAuditEventType"
+      },
+      "name" : "PolicyAuditEventType",
+      "description" : "PolicyAuditEventType",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/AccessAuditTrailEventType"
+      },
+      "name" : "AccessAuditTrailEventType",
+      "description" : "AccessAuditTrailEventType",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/HpdAuditEventType"
+      },
+      "name" : "HpdAuditEventType",
+      "description" : "HpdAuditEventType",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/atc-doc-create-rep-pat"
+      },
+      "name" : "CH ATC - Creation of a Document",
+      "description" : "CH ATC - Creation of a Document for a patient by a representative of this patient",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-atc/StructureDefinition/DocumentAuditEvent"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/atc-doc-read-ass-hpc"
+      },
+      "name" : "CH ATC - Retrieveal of a Document",
+      "description" : "CH ATC - Retrieveal of a Document from a patient by an assitant for a healthcare professional",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-atc/StructureDefinition/DocumentAuditEvent"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/atc-pol-create-acc-right"
+      },
+      "name" : "CH ATC - Create Access Right for Healthcare professional",
+      "description" : "CH ATC - Create Access Right for Healthcare professional",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-atc/StructureDefinition/PolicyAuditEvent"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/atc-pol-create-rep"
+      },
+      "name" : "CH ATC - Create Access Right for a representative",
+      "description" : "CH ATC - Create Access Right a representative",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-atc/StructureDefinition/PolicyAuditEvent"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/atc-log-read"
+      },
+      "name" : "CH ATC - Access of Audit Trail Repository",
+      "description" : "CH ATC - Access of Audit Trail Repository",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-atc/StructureDefinition/AccessAuditTrailEvent"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/atc-doc-search"
+      },
+      "name" : "CH ATC - Audit Event for Document Search",
+      "description" : "CH ATC - Audit Event for Document Search",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-atc/StructureDefinition/DocumentAuditEvent"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/atc-hpd-group-entry-notify"
+      },
+      "name" : "CH ATC - Audit Event for Group Entry Audit Event Content Profile",
+      "description" : "CH ATC - AuditEvent of Healthcare professional which has been added to a group and patient has been notified",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-atc/StructureDefinition/HpdAuditEvent"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ch-atc-iti-81-response-sample"
+      },
+      "name" : "CH ATC -Reponse Audit Trail",
+      "description" : "CH ATC -Reponse Audit Trail",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-atc/StructureDefinition/CH-ATC.ITI-81.Response"
+    }],
+    "page" : {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+        "valueUrl" : "toc.html"
+      }],
+      "nameUrl" : "toc.html",
+      "title" : "Table of Contents",
+      "generation" : "html",
+      "page" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "index.html"
+        }],
+        "nameUrl" : "index.html",
+        "title" : "Home",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "profiles.html"
+        }],
+        "nameUrl" : "profiles.html",
+        "title" : "Profiles",
+        "generation" : "html"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "terminology.html"
+        }],
+        "nameUrl" : "terminology.html",
+        "title" : "Terminology",
+        "generation" : "html"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "changelog.html"
+        }],
+        "nameUrl" : "changelog.html",
+        "title" : "Change Log",
+        "generation" : "markdown"
+      }]
+    },
+    "parameter" : [{
+      "code" : "path-pages",
+      "value" : "input/pages"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/capabilities"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/examples"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/extensions"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/models"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/operations"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/profiles"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/resources"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/vocabulary"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/maps"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/testing"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/history"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "fsh-generated/resources"
+    },
+    {
+      "code" : "path-pages",
+      "value" : "template/config"
+    },
+    {
+      "code" : "path-pages",
+      "value" : "input/images"
+    },
+    {
+      "code" : "path-tx-cache",
+      "value" : "input-cache/txcache"
+    }]
   }
 }
