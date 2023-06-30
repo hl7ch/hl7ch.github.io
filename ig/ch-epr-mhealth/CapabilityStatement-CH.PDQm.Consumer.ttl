@@ -1,0 +1,114 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.PDQm.Consumer> a fhir:CapabilityStatement ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "CH.PDQm.Consumer"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_PDQm_Consumer</h2><div><p>CapabilityStatement for Client Actor in the IHE IT Infrastructure Technical Framework Supplement IHE PDQm.</p>\n</div><table><tr><td>Mode</td><td>CLIENT</td></tr><tr><td>Description</td><td><div><p>PDQm client will query for Patient resources matching a sub-set of the FHIR core Patient resource query parameters</p>\n</div></td></tr><tr><td>Transaction</td><td></td></tr><tr><td>System History</td><td></td></tr><tr><td>System Search</td><td>y</td></tr></table><table><tr><th><b>Resource Type</b></th><th><b>Profile</b></th><th><b title=\"GET a resource (read interaction)\">Read</b></th><th><b title=\"GET all set of resources of the type (search interaction)\">Search</b></th><th><b title=\"PUT a new resource version (update interaction)\">Update</b></th><th><b title=\"POST a new resource (create interaction)\">Create</b></th></tr><tr><td>Patient</td><td> </td><td>y</td><td>y</td><td></td><td></td></tr></table></div>"
+  ] ; # 
+  fhir:url [ fhir:v "http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.PDQm.Consumer"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "3.0.0-ballot"] ; # 
+  fhir:name [ fhir:v "CH_PDQm_Consumer"] ; # 
+  fhir:title [ fhir:v "PDQm Consumer (client)"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v "false"^^xsd:boolean] ; # 
+  fhir:date [ fhir:v "2023-04-25"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "eHealth Suisse"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "eHealth Suisse" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.e-health-suisse.ch" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "CapabilityStatement for Client Actor in the IHE IT Infrastructure Technical Framework Supplement IHE PDQm."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "CH" ]
+     ] )
+  ] ) ; # 
+  fhir:copyright [ fhir:v "CC0-1.0"] ; # 
+  fhir:kind [ fhir:v "requirements"] ; # 
+  fhir:fhirVersion [ fhir:v "4.0.1"] ; # 
+  fhir:format ( [ fhir:v "application/fhir+xml"] [ fhir:v "application/fhir+json"] ) ; # 
+  fhir:rest ( [
+     fhir:mode [ fhir:v "client" ] ;
+     fhir:documentation [ fhir:v "PDQm client will query for Patient resources matching a sub-set of the FHIR core Patient resource query parameters" ] ;
+     fhir:security [
+       fhir:description [ fhir:v "TLS SHALL be used together with IUA basic access token" ]
+     ] ;
+     fhir:resource ( [
+       fhir:type [ fhir:v "Patient" ] ;
+       fhir:interaction ( [
+         fhir:code [ fhir:v "read" ]
+       ] [
+         fhir:code [ fhir:v "search-type" ]
+       ] ) ;
+       fhir:searchParam ( [
+         fhir:name [ fhir:v "_id" ] ;
+         fhir:type [ fhir:v "token" ] ;
+         fhir:documentation [ fhir:v "Logical id of this artifact" ]
+       ] [
+         fhir:name [ fhir:v "active" ] ;
+         fhir:type [ fhir:v "token" ] ;
+         fhir:documentation [ fhir:v "Whether the patient record is active" ]
+       ] [
+         fhir:name [ fhir:v "address-city" ] ;
+         fhir:type [ fhir:v "string" ] ;
+         fhir:documentation [ fhir:v "A city specified in an address" ]
+       ] [
+         fhir:name [ fhir:v "address-country" ] ;
+         fhir:type [ fhir:v "string" ] ;
+         fhir:documentation [ fhir:v "A country specified in an address" ]
+       ] [
+         fhir:name [ fhir:v "address-postalcode" ] ;
+         fhir:type [ fhir:v "string" ] ;
+         fhir:documentation [ fhir:v "A postalCode specified in an address" ]
+       ] [
+         fhir:name [ fhir:v "address-state" ] ;
+         fhir:type [ fhir:v "string" ] ;
+         fhir:documentation [ fhir:v "A state specified in an address" ]
+       ] [
+         fhir:name [ fhir:v "birthdate" ] ;
+         fhir:type [ fhir:v "date" ] ;
+         fhir:documentation [ fhir:v "The patient's date of birth" ]
+       ] [
+         fhir:name [ fhir:v "family" ] ;
+         fhir:type [ fhir:v "string" ] ;
+         fhir:documentation [ fhir:v "A portion of the family name of the patient" ]
+       ] [
+         fhir:name [ fhir:v "gender" ] ;
+         fhir:type [ fhir:v "token" ] ;
+         fhir:documentation [ fhir:v "Gender of the patient" ]
+       ] [
+         fhir:name [ fhir:v "given" ] ;
+         fhir:type [ fhir:v "string" ] ;
+         fhir:documentation [ fhir:v "A portion of the given name of the patient" ]
+       ] [
+         fhir:name [ fhir:v "identifier" ] ;
+         fhir:type [ fhir:v "token" ] ;
+         fhir:documentation [ fhir:v "A patient identifier" ]
+       ] [
+         fhir:name [ fhir:v "telecom" ] ;
+         fhir:type [ fhir:v "token" ] ;
+         fhir:documentation [ fhir:v "The value in any kind of telecom details of the patient" ]
+       ] [
+         fhir:name [ fhir:v "_lastUpdated" ] ;
+         fhir:type [ fhir:v "date" ] ;
+         fhir:documentation [ fhir:v "When the resource version last changed" ]
+       ] )
+     ] ) ;
+     fhir:interaction ( [
+       fhir:code [ fhir:v "search-system" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

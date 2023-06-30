@@ -1,0 +1,170 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.mCSD.CareServicesSelectiveSupplier> a fhir:CapabilityStatement ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "CH.mCSD.CareServicesSelectiveSupplier"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_mCSD_Care_Services_Selective_Supplier</h2><div><p>CapabilityStatement for Server Actor in the IHE IT Infrastructure Technical Framework Supplement IHE mCSD.</p>\n</div><table><tr><td>Mode</td><td>SERVER</td></tr><tr><td>Description</td><td><div><p>IHE ITI mCSD ITI-90 endpoint</p>\n</div></td></tr><tr><td>Transaction</td><td></td></tr><tr><td>System History</td><td></td></tr><tr><td>System Search</td><td></td></tr></table><table><tr><th><b>Resource Type</b></th><th><b>Profile</b></th><th><b title=\"GET a resource (read interaction)\">Read</b></th><th><b title=\"GET all set of resources of the type (search interaction)\">Search</b></th><th><b title=\"PUT a new resource version (update interaction)\">Update</b></th><th><b title=\"POST a new resource (create interaction)\">Create</b></th></tr><tr><td>Organization</td><td><a href=\"http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Organization\">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Organization</a></td><td>y</td><td>y</td><td></td><td></td></tr><tr><td>Practitioner</td><td><a href=\"http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Practitioner\">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Practitioner</a></td><td>y</td><td>y</td><td></td><td></td></tr><tr><td>PractitionerRole</td><td><a href=\"http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.PractitionerRole\">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.PractitionerRole</a></td><td>y</td><td>y</td><td></td><td></td></tr></table></div>"
+  ] ; # 
+  fhir:url [ fhir:v "http://fhir.ch/ig/ch-epr-mhealth/CapabilityStatement/CH.mCSD.CareServicesSelectiveSupplier"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "3.0.0-ballot"] ; # 
+  fhir:name [ fhir:v "CH_mCSD_Care_Services_Selective_Supplier"] ; # 
+  fhir:title [ fhir:v "mCSD Care Services Selective Supplier (server)"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v "false"^^xsd:boolean] ; # 
+  fhir:date [ fhir:v "2023-05-09"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "eHealth Suisse"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "eHealth Suisse" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.e-health-suisse.ch" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "CapabilityStatement for Server Actor in the IHE IT Infrastructure Technical Framework Supplement IHE mCSD."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "CH" ]
+     ] )
+  ] ) ; # 
+  fhir:copyright [ fhir:v "CC0-1.0"] ; # 
+  fhir:kind [ fhir:v "requirements"] ; # 
+  fhir:fhirVersion [ fhir:v "4.0.1"] ; # 
+  fhir:format ( [ fhir:v "application/fhir+xml"] [ fhir:v "application/fhir+json"] ) ; # 
+  fhir:rest ( [
+     fhir:mode [ fhir:v "server" ] ;
+     fhir:documentation [ fhir:v "IHE ITI mCSD ITI-90 endpoint" ] ;
+     fhir:resource ( [
+       fhir:type [ fhir:v "Organization" ] ;
+       fhir:profile [
+         fhir:v "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Organization"^^xsd:anyURI ;
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Organization>
+       ] ;
+       fhir:interaction ( [
+         fhir:code [ fhir:v "read" ]
+       ] [
+         fhir:code [ fhir:v "search-type" ]
+       ] ) ;
+       fhir:versioning [ fhir:v "no-version" ] ;
+       fhir:searchInclude ( [ fhir:v "Organization.endpoint" ] ) ;
+       fhir:searchRevInclude ( [ fhir:v "Location:organization" ] [ fhir:v "OrganizationAffiliation:participating-organization" ] [ fhir:v "OrganizationAffiliation:primary-organization" ] ) ;
+       fhir:searchParam ( [
+         fhir:name [ fhir:v "active" ] ;
+         fhir:type [ fhir:v "token" ]
+       ] [
+         fhir:name [ fhir:v "identifier" ] ;
+         fhir:type [ fhir:v "token" ]
+       ] [
+         fhir:name [ fhir:v "name" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "name:contains" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "name:exact" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "partof" ] ;
+         fhir:type [ fhir:v "reference" ]
+       ] [
+         fhir:name [ fhir:v "type" ] ;
+         fhir:type [ fhir:v "token" ]
+       ] )
+     ] [
+       fhir:type [ fhir:v "Practitioner" ] ;
+       fhir:profile [
+         fhir:v "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Practitioner"^^xsd:anyURI ;
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Practitioner>
+       ] ;
+       fhir:interaction ( [
+         fhir:code [ fhir:v "read" ]
+       ] [
+         fhir:code [ fhir:v "search-type" ]
+       ] ) ;
+       fhir:versioning [ fhir:v "no-version" ] ;
+       fhir:searchParam ( [
+         fhir:name [ fhir:v "active" ] ;
+         fhir:type [ fhir:v "token" ]
+       ] [
+         fhir:name [ fhir:v "identifier" ] ;
+         fhir:type [ fhir:v "token" ]
+       ] [
+         fhir:name [ fhir:v "name" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "name:contains" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "name:exact" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "given" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "given:contains" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "given:exact" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "family" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "family:contains" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] [
+         fhir:name [ fhir:v "family:exact" ] ;
+         fhir:type [ fhir:v "string" ]
+       ] )
+     ] [
+       fhir:type [ fhir:v "PractitionerRole" ] ;
+       fhir:profile [
+         fhir:v "http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.PractitionerRole"^^xsd:anyURI ;
+         fhir:link <http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.PractitionerRole>
+       ] ;
+       fhir:interaction ( [
+         fhir:code [ fhir:v "read" ]
+       ] [
+         fhir:code [ fhir:v "search-type" ]
+       ] ) ;
+       fhir:versioning [ fhir:v "no-version" ] ;
+       fhir:searchInclude ( [ fhir:v "PractitionerRole:practitioner" ] ) ;
+       fhir:searchParam ( [
+         fhir:name [ fhir:v "active" ] ;
+         fhir:type [ fhir:v "token" ]
+       ] [
+         fhir:name [ fhir:v "location" ] ;
+         fhir:type [ fhir:v "reference" ]
+       ] [
+         fhir:name [ fhir:v "organization" ] ;
+         fhir:type [ fhir:v "reference" ]
+       ] [
+         fhir:name [ fhir:v "role" ] ;
+         fhir:type [ fhir:v "token" ]
+       ] [
+         fhir:name [ fhir:v "service" ] ;
+         fhir:type [ fhir:v "reference" ]
+       ] [
+         fhir:name [ fhir:v "specialty" ] ;
+         fhir:type [ fhir:v "token" ]
+       ] )
+     ] ) ;
+     fhir:searchParam ( [
+       fhir:name [ fhir:v "_id" ] ;
+       fhir:type [ fhir:v "token" ]
+     ] [
+       fhir:name [ fhir:v "_lastUpdated" ] ;
+       fhir:type [ fhir:v "token" ] ;
+       fhir:documentation [ fhir:v "The values for this shall support these prefixes: ge and le" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

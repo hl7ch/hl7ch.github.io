@@ -4,16 +4,16 @@
   <id value="ch.fhir.ig.ch-epr-mhealth"/>
   <text>
     <status value="additional"/><div xmlns="http://www.w3.org/1999/xhtml">
-      Implementation Guide for the Mobile access to Health Documents (epr-mhealth) Profile for the Swiss EPR
-    </div>
+            Implementation Guide for the Mobile access to Health Documents (epr-mhealth) Profile for the Swiss EPR
+        </div>
   </text>
   <url value="http://fhir.ch/ig/ch-epr-mhealth/ImplementationGuide/ch.fhir.ig.ch-epr-mhealth"/>
-  <version value="1.1.0"/>
+  <version value="3.0.0-ballot"/>
   <name value="CHEprMhealth"/>
   <title value="CH EPR mHealth (R4)"/>
   <status value="active"/>
   <experimental value="false"/>
-  <date value="2022-07-07"/>
+  <date value="2023-06-30"/>
   <publisher value="eHealth Suisse"/>
   <contact>
     <name value="eHealth Suisse"/>
@@ -29,34 +29,52 @@
       <code value="CH"/>
     </coding>
   </jurisdiction>
-  <copyright value="CC-BY-SA-4.0"/>
+  <copyright value="CC0-1.0"/>
   <packageId value="ch.fhir.ig.ch-epr-mhealth"/>
-  <license value="CC-BY-SA-4.0"/>
+  <license value="CC0-1.0"/>
   <fhirVersion value="4.0.1"/>
-  <dependsOn id="hl7tx">
-    <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
-    <packageId value="hl7.terminology.r4"/>
-    <version value="3.1.0"/>
+  <dependsOn id="hl7ext">
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
+      <valueMarkdown value="Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"/>
+    </extension>
+    <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
+    <packageId value="hl7.fhir.uv.extensions.r4"/>
+    <version value="1.0.0"/>
   </dependsOn>
-  <dependsOn id="chterm">
+  <dependsOn id="terminology">
+    <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
+    <packageId value="hl7.terminology"/>
+    <version value="5.1.0"/>
+  </dependsOn>
+  <dependsOn id="cheprterm">
     <uri value="http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term"/>
     <packageId value="ch.fhir.ig.ch-epr-term"/>
-    <version value="2.0.x"/>
+    <version value="2.0.9"/>
   </dependsOn>
   <dependsOn id="chcore">
     <uri value="http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core"/>
     <packageId value="ch.fhir.ig.ch-core"/>
-    <version value="2.1.0"/>
+    <version value="4.0.0-ballot"/>
   </dependsOn>
   <dependsOn id="ihepixmfhir">
-    <uri value="http://profiles.ihe.net/ITI/PIXm/ImplementationGuide/IHE.ITI.PIXm"/>
-    <packageId value="IHE.ITI.PIXm"/>
-    <version value="3.0.0"/>
+    <uri value="https://profiles.ihe.net/ITI/PIXm/ImplementationGuide/ihe.iti.pixm"/>
+    <packageId value="ihe.iti.pixm"/>
+    <version value="3.0.2"/>
+  </dependsOn>
+  <dependsOn id="ihepdqmfhir">
+    <uri value="https://profiles.ihe.net/ITI/PDQm/ImplementationGuide/ihe.iti.pdqm"/>
+    <packageId value="ihe.iti.pdqm"/>
+    <version value="2.4.0"/>
   </dependsOn>
   <dependsOn id="ihemhdfhir">
-    <uri value="http://profiles.ihe.net/ITI/MHD/ImplementationGuide/ihe.mhd.fhir"/>
-    <packageId value="ihe.mhd.fhir"/>
-    <version value="4.0.2"/>
+    <uri value="https://profiles.ihe.net/ITI/MHD/ImplementationGuide/ihe.iti.mhd"/>
+    <packageId value="ihe.iti.mhd"/>
+    <version value="4.2.0"/>
+  </dependsOn>
+  <dependsOn id="ihemcsdfhir">
+    <uri value="https://profiles.ihe.net/ITI/mCSD/ImplementationGuide/ihe.iti.mcsd"/>
+    <packageId value="ihe.iti.mcsd"/>
+    <version value="3.8.0"/>
   </dependsOn>
   <definition>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -64,7 +82,7 @@
         <valueString value="releaselabel"/>
       </extension>
       <extension url="value">
-        <valueString value="DSTU 2 Informative Ballot"/>
+        <valueString value="ballot"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -81,6 +99,14 @@
       </extension>
       <extension url="value">
         <valueString value="http://ihe.net/fhir/"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="autoload-resources"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -243,6 +269,217 @@
         <valueString value="true"/>
       </extension>
     </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="tabbed-snapshots"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency">
+      <valueCode value="hl7.fhir.uv.tools#current"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="releaselabel"/>
+      </extension>
+      <extension url="value">
+        <valueString value="ballot"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="copyrightyear"/>
+      </extension>
+      <extension url="value">
+        <valueString value="2020+"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://ihe.net/fhir/"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="autoload-resources"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-liquid"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-liquid"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/liquid"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-qa"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/qa"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-temp"/>
+      </extension>
+      <extension url="value">
+        <valueString value="temp/pages"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-output"/>
+      </extension>
+      <extension url="value">
+        <valueString value="output"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-suppressed-warnings"/>
+      </extension>
+      <extension url="value">
+        <valueString value="input/ignoreWarnings.txt"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="path-history"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://fhir.ch/ig/ch-epr-mhealth/history.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="template-html"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="template-md"/>
+      </extension>
+      <extension url="value">
+        <valueString value="template-page-md.html"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-contact"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-context"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-copyright"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-jurisdiction"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-license"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-publisher"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="active-tables"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="fmm-definition"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://hl7.org/fhir/versions.html#maturity"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="propagate-status"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="excludelogbinaryformat"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="tabbed-snapshots"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="Parameters"/>
@@ -311,6 +548,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/PDQm-Response"/>
+      </reference>
+      <name value="PDQm Demographics Query result"/>
+      <description value="PDQm Demographics Query result for Franz Muster, 27.1.1955"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-patient"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="List"/>
       </extension>
       <reference>
@@ -373,7 +621,84 @@
       </reference>
       <name value="Audit Event for Provide Bundle Transaction at Source"/>
       <description value="Audit Example for a Provide Bundle Transaction from source perspective"/>
-      <exampleCanonical value="http://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.ProvideBundle.Audit.Source"/>
+      <exampleCanonical value="https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.ProvideBundle.Audit.Source"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/DrPeterPan"/>
+      </reference>
+      <name value="mCSD Practitioner Dr. Peter Pan"/>
+      <description value="An exemple of CHmCSDPractitioner that contains the same information as Dr. Peter Pan in the Swiss examples (uid=CommunityA:00000003002,OU=HCProfessional,DC=HPD,O=BAG,C=ch)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Practitioner"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/SpitalX"/>
+      </reference>
+      <name value="mCSD Organization Spital X"/>
+      <description value="An exemple of CHmCSDOrganization that contains the same information as Spital X in the Swiss examples (uid=CommunityA:00000001000,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/SpitalXDept3"/>
+      </reference>
+      <name value="mCSD Organization Spital X Dept. 3"/>
+      <description value="An exemple of CHmCSDOrganization that contains the same information as Spital X, Dept. 3 in the Swiss examples (uid=CommunityA:00000001004,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/PraxisP"/>
+      </reference>
+      <name value="mCSD Organization Praxis P"/>
+      <description value="An exemple of CHmCSDOrganization that contains the same information as Praxis P in the Swiss examples (uid=CommunityA:00000001001,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.Organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="PractitionerRole"/>
+      </extension>
+      <reference>
+        <reference value="PractitionerRole/PeterPanSpitalXDept3"/>
+      </reference>
+      <name value="mCSD PractitionerRole Dr. Peter Pan at Spital X Dept. 3"/>
+      <description value="An exemple of CHmCSDPractitionerRole that contains the same information as Dr. Peter Pan - Spital X, Dept. 3 Relationship in the Swiss examples (CN=CommunityA:00000001004,OU=Relationship,DC=HPD,O=BAG,C=ch)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.PractitionerRole"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="PractitionerRole"/>
+      </extension>
+      <reference>
+        <reference value="PractitionerRole/PeterPanPraxisP"/>
+      </reference>
+      <name value="mCSD PractitionerRole Dr. Peter Pan at Praxis P"/>
+      <description value="An exemple of CHmCSDPractitionerRole that contains the same information as Dr. Peter Pan - Praxis P Relationship in the Swiss examples (CN=CommunityA:00000001001,OU=Relationship,DC=HPD,O=BAG,C=ch)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.PractitionerRole"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/FindMatchingCareServicesResponse"/>
+      </reference>
+      <name value="mCSD Find Matching Care Services Response Bundle"/>
+      <description value="An exemple of ITI-90 response Bundle in the profile CH mCSD"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/CH.mCSD.PractitionerRole"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -459,7 +784,7 @@
       <reference>
         <reference value="StructureDefinition/ch-mhd-providedocumentbundle-comprehensive-response"/>
       </reference>
-      <name value="CH MHD Provide Document Bundle Comphrensive Response"/>
+      <name value="CH MHD Provide Document Bundle Comprehensive Response"/>
       <description value="IHE MHD profile on Response of Provide Document Bundle (ITI-65) transaction with Comprehensive Metadata."/>
       <exampleBoolean value="false"/>
     </resource>
@@ -567,6 +892,28 @@
         <valueString value="CapabilityStatement"/>
       </extension>
       <reference>
+        <reference value="CapabilityStatement/CH.PDQm.Consumer"/>
+      </reference>
+      <name value="PDQm Consumer (client)"/>
+      <description value="CapabilityStatement for Client Actor in the IHE IT Infrastructure Technical Framework Supplement IHE PDQm."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/CH.PDQm.Supplier"/>
+      </reference>
+      <name value="PDQm Supplier (server)"/>
+      <description value="CapabilityStatement for Server Actor in the IHE IT Infrastructure Technical Framework Supplement IHE PDQm."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
         <reference value="CapabilityStatement/CH.PIXm.Consumer"/>
       </reference>
       <name value="PIXm Patient Identifier Cross-Reference Consumer (client)"/>
@@ -652,142 +999,276 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="CodeSystem"/>
+        <valueString value="CapabilityStatement"/>
       </extension>
       <reference>
-        <reference value="CodeSystem/ch-ehealth-codesystem-deletionstatus"/>
+        <reference value="CapabilityStatement/CH.mCSD.CareServicesSelectiveSupplier"/>
       </reference>
-      <name value="ch-ehealth-codesystem-deletionstatus"/>
-      <description value="Additional metadata about deletion status on the DocumentReference"/>
+      <name value="mCSD Care Services Selective Supplier (server)"/>
+      <description value="CapabilityStatement for Server Actor in the IHE IT Infrastructure Technical Framework Supplement IHE mCSD."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="ValueSet"/>
+        <valueString value="CapabilityStatement"/>
       </extension>
       <reference>
-        <reference value="ValueSet/ch-ehealth-valueset-deletionstatus"/>
+        <reference value="CapabilityStatement/CH.mCSD.CareServicesSelectiveConsumer"/>
       </reference>
-      <name value="ch-ehealth-valueset-deletionstatus"/>
-      <description value="Additional metadata about deletion status on the DocumentReference"/>
+      <name value="mCSD Care Services Selective Consumer (client)"/>
+      <description value="CapabilityStatement for Client Actor in the IHE IT Infrastructure Technical Framework Supplement IHE mCSD."/>
       <exampleBoolean value="false"/>
     </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/CH.mCSD.Practitioner"/>
+      </reference>
+      <name value="CH mCSD Practitioner"/>
+      <description value="CH mCSD profile on Practitioner"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/CH.mCSD.Organization"/>
+      </reference>
+      <name value="CH mCSD Organization"/>
+      <description value="CH mCSD profile on Organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/CH.mCSD.PractitionerRole"/>
+      </reference>
+      <name value="CH mCSD PractitionerRole"/>
+      <description value="CH mCSD profile on PractitionerRole"/>
+    </resource>
     <page>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+        <valueUrl value="toc.html"/>
+      </extension>
       <nameUrl value="toc.html"/>
       <title value="Table of Contents"/>
       <generation value="html"/>
       <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="index.html"/>
+        </extension>
         <nameUrl value="index.html"/>
         <title value="Home"/>
         <generation value="markdown"/>
       </page>
       <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="profiles.html"/>
+        </extension>
         <nameUrl value="profiles.html"/>
         <title value="Profiles"/>
         <generation value="markdown"/>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-iua.html"/>
+          </extension>
           <nameUrl value="iti-iua.html"/>
           <title value="Internet User Authorization (IUA)"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-pdqm.html"/>
+          </extension>
+          <nameUrl value="iti-pdqm.html"/>
+          <title value="Patient Demographics Query for Mobile (PDQm)"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-pixm.html"/>
+          </extension>
           <nameUrl value="iti-pixm.html"/>
           <title value="Patient Identifier Cross-referencing for mobile (PIXm)"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-mhd.html"/>
+          </extension>
           <nameUrl value="iti-mhd.html"/>
           <title value="Mobile Access to Health Documents (MHD) with XDS on FHIR"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-restful-atna.html"/>
+          </extension>
           <nameUrl value="iti-restful-atna.html"/>
           <title value="RESTful ATNA"/>
           <generation value="markdown"/>
         </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-mcsd.html"/>
+          </extension>
+          <nameUrl value="iti-mcsd.html"/>
+          <title value="Mobile Care Services Discovery (mCSD)"/>
+          <generation value="markdown"/>
+        </page>
       </page>
       <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="transactions.html"/>
+        </extension>
         <nameUrl value="transactions.html"/>
         <title value="Transactions"/>
         <generation value="markdown"/>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-71.html"/>
+          </extension>
           <nameUrl value="iti-71.html"/>
           <title value="Get Access Token [ITI-71]"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-103.html"/>
+          </extension>
           <nameUrl value="iti-103.html"/>
           <title value="Get Authorization Server Metadata [ITI-103]"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-78.html"/>
+          </extension>
+          <nameUrl value="iti-78.html"/>
+          <title value="Mobile Patient Demographics Query [ITI-78]"/>
+          <generation value="markdown"/>
+        </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-83.html"/>
+          </extension>
           <nameUrl value="iti-83.html"/>
           <title value="Mobile Patient Identifier Cross-reference Query [ITI-83]"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-104.html"/>
+          </extension>
           <nameUrl value="iti-104.html"/>
           <title value="Patient Identity Feed FHIR [ITI-104]"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-65.html"/>
+          </extension>
           <nameUrl value="iti-65.html"/>
           <title value="Provide Document Bundle [ITI-65]"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-66.html"/>
+          </extension>
           <nameUrl value="iti-66.html"/>
           <title value="Find Document Lists [ITI-66]"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-67.html"/>
+          </extension>
           <nameUrl value="iti-67.html"/>
           <title value="Find Document References [ITI-67]"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-68.html"/>
+          </extension>
           <nameUrl value="iti-68.html"/>
           <title value="Retrieve Document [ITI-68]"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-20.html"/>
+          </extension>
           <nameUrl value="iti-20.html"/>
           <title value="Record Audit Event [ITI-20]"/>
           <generation value="markdown"/>
         </page>
+        <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="iti-90.html"/>
+          </extension>
+          <nameUrl value="iti-90.html"/>
+          <title value="Find Matching Care Services [ITI-90]"/>
+          <generation value="markdown"/>
+        </page>
       </page>
       <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="appendix.html"/>
+        </extension>
         <nameUrl value="appendix.html"/>
         <title value="Appendix"/>
         <generation value="markdown"/>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="extensions.html"/>
+          </extension>
           <nameUrl value="extensions.html"/>
           <title value="Extensions"/>
           <generation value="html"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="terminology.html"/>
+          </extension>
           <nameUrl value="terminology.html"/>
           <title value="Terminology"/>
           <generation value="html"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="capstatements.html"/>
+          </extension>
           <nameUrl value="capstatements.html"/>
           <title value="Capability Statements"/>
           <generation value="html"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="operations.html"/>
+          </extension>
           <nameUrl value="operations.html"/>
           <title value="Operations"/>
           <generation value="html"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="sequencediagrams.html"/>
+          </extension>
           <nameUrl value="sequencediagrams.html"/>
           <title value="Sequence Diagrams"/>
           <generation value="markdown"/>
         </page>
         <page>
+          <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+            <valueUrl value="openissues.html"/>
+          </extension>
           <nameUrl value="openissues.html"/>
-          <title value="Open Issues"/>
+          <title value="Open Issues / Change Log"/>
           <generation value="markdown"/>
         </page>
       </page>
