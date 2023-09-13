@@ -1,0 +1,25 @@
+<?php
+function Redirect($url)
+{
+  header('Location: ' . $url, true, 302);
+  exit();
+}
+
+$accept = $_SERVER['HTTP_ACCEPT'];
+if (strpos($accept, 'application/json+fhir') !== false)
+  Redirect('http://fhir.ch/ig/ch-elm/1.0.0-trialuse/StructureDefinition-ch-elm-codeableconcept.json2');
+elseif (strpos($accept, 'application/fhir+json') !== false)
+  Redirect('http://fhir.ch/ig/ch-elm/1.0.0-trialuse/StructureDefinition-ch-elm-codeableconcept.json1');
+elseif (strpos($accept, 'json') !== false)
+  Redirect('http://fhir.ch/ig/ch-elm/1.0.0-trialuse/StructureDefinition-ch-elm-codeableconcept.json');
+elseif (strpos($accept, 'application/xml+fhir') !== false)
+  Redirect('http://fhir.ch/ig/ch-elm/1.0.0-trialuse/StructureDefinition-ch-elm-codeableconcept.xml2');
+elseif (strpos($accept, 'application/fhir+xml') !== false)
+  Redirect('http://fhir.ch/ig/ch-elm/1.0.0-trialuse/StructureDefinition-ch-elm-codeableconcept.xml1');
+elseif (strpos($accept, 'html') !== false)
+  Redirect('http://fhir.ch/ig/ch-elm/1.0.0-trialuse/StructureDefinition-ch-elm-codeableconcept.html');
+else 
+  Redirect('http://fhir.ch/ig/ch-elm/1.0.0-trialuse/StructureDefinition-ch-elm-codeableconcept.xml');
+?>
+    
+You should not be seeing this page. If you do, PHP has failed badly.
