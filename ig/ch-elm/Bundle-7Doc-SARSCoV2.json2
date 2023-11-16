@@ -1,0 +1,347 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "7Doc-SARSCoV2",
+  "meta" : {
+    "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document",
+    "http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"]
+  },
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:1901332d-6012-443f-9690-9291adb2aa34"
+  },
+  "type" : "document",
+  "timestamp" : "2023-09-12T08:30:00+02:00",
+  "entry" : [{
+    "fullUrl" : "http://test.fhir.ch/r4/Composition/7Comp-SARSCoV2",
+    "resource" : {
+      "resourceType" : "Composition",
+      "id" : "7Comp-SARSCoV2",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-composition"]
+      },
+      "language" : "fr-CH",
+      "identifier" : {
+        "system" : "urn:ietf:rfc:3986",
+        "value" : "urn:uuid:1901332d-6012-443f-9690-9291adb2aa34"
+      },
+      "status" : "final",
+      "type" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/2011000195101",
+          "code" : "4241000179101",
+          "display" : "Laborbericht"
+        },
+        {
+          "system" : "http://loinc.org",
+          "code" : "11502-2",
+          "display" : "Laboratory report"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/Pat-AntoineDupont"
+      },
+      "date" : "2023-09-12T08:30:00+02:00",
+      "author" : [{
+        "reference" : "Organization/1Org-Labor"
+      }],
+      "title" : "Rapport de laboratoire du 12.09.2023",
+      "section" : [{
+        "title" : "Résultats de l'analyse microbiologique",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "18725-2",
+            "display" : "Microbiology studies (set)"
+          }]
+        },
+        "entry" : [{
+          "reference" : "Observation/7Obs-SARSCoV2"
+        }]
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://test.fhir.ch/r4/DiagnosticReport/7DR-SARSCoV2",
+    "resource" : {
+      "resourceType" : "DiagnosticReport",
+      "id" : "7DR-SARSCoV2",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-diagnosticreport"]
+      },
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition",
+        "valueReference" : {
+          "reference" : "Composition/7Comp-SARSCoV2"
+        }
+      }],
+      "identifier" : [{
+        "system" : "urn:ietf:rfc:3986",
+        "value" : "urn:uuid:1901332d-6012-443f-9690-9291adb2aa34"
+      }],
+      "basedOn" : [{
+        "reference" : "ServiceRequest/7SR-Order"
+      }],
+      "status" : "final",
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "11502-2",
+          "display" : "Laboratory report"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/Pat-AntoineDupont"
+      },
+      "performer" : [{
+        "reference" : "Organization/1Org-Labor"
+      }],
+      "specimen" : [{
+        "reference" : "Specimen/7Spec-Specimen"
+      }],
+      "result" : [{
+        "reference" : "Observation/7Obs-SARSCoV2"
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://test.fhir.ch/r4/Patient/Pat-AntoineDupont",
+    "resource" : {
+      "resourceType" : "Patient",
+      "id" : "Pat-AntoineDupont",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-patient"]
+      },
+      "identifier" : [{
+        "system" : "urn:oid:2.16.756.5.32",
+        "value" : "7561234567866"
+      }],
+      "name" : [{
+        "family" : "Dupont",
+        "given" : ["Antoine"]
+      }],
+      "telecom" : [{
+        "system" : "phone",
+        "value" : "+41 76 222 55 22"
+      }],
+      "gender" : "female",
+      "birthDate" : "1981-02-07",
+      "address" : [{
+        "use" : "home",
+        "_line" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+            "valueString" : "Rue de la république"
+          },
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+            "valueString" : "10"
+          }]
+        }],
+        "city" : "Carouge",
+        "state" : "GE",
+        "postalCode" : "1227",
+        "country" : "CH",
+        "_country" : {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding",
+            "valueCoding" : {
+              "system" : "urn:iso:std:iso:3166",
+              "code" : "CH"
+            }
+          }]
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://test.fhir.ch/r4/Observation/7Obs-SARSCoV2",
+    "resource" : {
+      "resourceType" : "Observation",
+      "id" : "7Obs-SARSCoV2",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"]
+      },
+      "status" : "final",
+      "category" : [{
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code" : "laboratory",
+          "display" : "Laboratory"
+        }]
+      }],
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "94500-6",
+          "display" : "SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory specimen by NAA with probe detection"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/Pat-AntoineDupont"
+      },
+      "effectiveDateTime" : "2023-09-12T07:40:00+02:00",
+      "performer" : [{
+        "reference" : "Organization/1Org-Labor"
+      }],
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "10828004",
+          "display" : "Positive"
+        }]
+      },
+      "interpretation" : [{
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code" : "POS",
+          "display" : "Positive"
+        }]
+      }],
+      "specimen" : {
+        "reference" : "Specimen/7Spec-Specimen"
+      }
+    }
+  },
+  {
+    "fullUrl" : "http://test.fhir.ch/r4/Specimen/7Spec-Specimen",
+    "resource" : {
+      "resourceType" : "Specimen",
+      "id" : "7Spec-Specimen",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-specimen"]
+      },
+      "type" : {
+        "text" : "Material declared by Observation.code or non-mandatory"
+      },
+      "subject" : {
+        "reference" : "Patient/Pat-AntoineDupont"
+      },
+      "collection" : {
+        "collectedDateTime" : "2023-09-11"
+      }
+    }
+  },
+  {
+    "fullUrl" : "http://test.fhir.ch/r4/ServiceRequest/7SR-Order",
+    "resource" : {
+      "resourceType" : "ServiceRequest",
+      "id" : "7SR-Order",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-servicerequest-laboratory-order"]
+      },
+      "identifier" : [{
+        "system" : "http://fhir.lab.ch/order-identifier",
+        "value" : "28541215633"
+      }],
+      "status" : "completed",
+      "intent" : "order",
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "94500-6",
+          "display" : "SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory specimen by NAA with probe detection"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/Pat-AntoineDupont"
+      },
+      "requester" : {
+        "reference" : "PractitionerRole/PR-JeanneMoreau"
+      },
+      "specimen" : [{
+        "reference" : "Specimen/7Spec-Specimen"
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://test.fhir.ch/r4/Organization/1Org-Labor",
+    "resource" : {
+      "resourceType" : "Organization",
+      "id" : "1Org-Labor",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-organization-lab"]
+      },
+      "identifier" : [{
+        "system" : "urn:oid:2.51.1.3",
+        "value" : "7601002331470"
+      }],
+      "name" : "SanLab"
+    }
+  },
+  {
+    "fullUrl" : "http://test.fhir.ch/r4/PractitionerRole/PR-JeanneMoreau",
+    "resource" : {
+      "resourceType" : "PractitionerRole",
+      "id" : "PR-JeanneMoreau",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-practitionerrole-orderer"]
+      },
+      "practitioner" : {
+        "reference" : "Practitioner/Pract-JeanneMoreau"
+      },
+      "organization" : {
+        "reference" : "Organization/Org-JeanneMoreau"
+      }
+    }
+  },
+  {
+    "fullUrl" : "http://test.fhir.ch/r4/Practitioner/Pract-JeanneMoreau",
+    "resource" : {
+      "resourceType" : "Practitioner",
+      "id" : "Pract-JeanneMoreau",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-practitioner-orderer"]
+      },
+      "identifier" : [{
+        "system" : "urn:oid:2.51.1.3",
+        "value" : "7601000121219"
+      }],
+      "name" : [{
+        "family" : "Moreau",
+        "given" : ["Jeanne"]
+      }],
+      "telecom" : [{
+        "system" : "email",
+        "value" : "jm@hr-soleil.ch"
+      },
+      {
+        "system" : "phone",
+        "value" : "+41 79 111 88 99"
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://test.fhir.ch/r4/Organization/Org-JeanneMoreau",
+    "resource" : {
+      "resourceType" : "Organization",
+      "id" : "Org-JeanneMoreau",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-organization-orderer"]
+      },
+      "extension" : [{
+        "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-department",
+        "valueString" : "Médecine interne"
+      }],
+      "identifier" : [{
+        "system" : "urn:oid:2.51.1.3",
+        "value" : "7601000201041"
+      }],
+      "name" : "Hôpital régional soleil",
+      "address" : [{
+        "_line" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+            "valueString" : "Rue des alpes"
+          },
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+            "valueString" : "35"
+          }]
+        }],
+        "city" : "Genève",
+        "postalCode" : "1202"
+      }]
+    }
+  }]
+}

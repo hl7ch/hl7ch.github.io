@@ -5,14 +5,11 @@
   <meta>
     <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"/>
   </meta>
-  <text>
-    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative: DocumentReference</b><a name="1-DocumentReference"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Resource DocumentReference &quot;1-DocumentReference&quot; </p><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-PublishDocumentReference.html">DocumentReference for  Publish</a></p></div><p><b>identifier</b>: id: urn:uuid:1901332d-6012-443f-9690-9291adb2e19d</p><p><b>status</b>: current</p><blockquote><p><b>content</b></p><h3>Attachments</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Language</b></td><td><b>Url</b></td></tr><tr><td style="display: none">*</td><td>de-CH</td><td><code>#1Doc-NeisseriaGonorrhoeae</code></td></tr></table></blockquote><hr/><blockquote><hr/><hr/><div><h2>Analyseergebnisse der mikrobiologischen Untersuchung</h2></div></blockquote></div>
-  </text>
   <contained>
     <Bundle>
       <id value="1Doc-NeisseriaGonorrhoeae"/>
       <meta>
-        <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"/>
+        <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
         <profile value="http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"/>
       </meta>
       <identifier>
@@ -86,6 +83,10 @@
                 <reference value="Composition/1Comp-NeisseriaGonorrhoeae"/>
               </valueReference>
             </extension>
+            <identifier>
+              <system value="urn:ietf:rfc:3986"/>
+              <value value="urn:uuid:1901332d-6012-443f-9690-9291adb2e19d"/>
+            </identifier>
             <basedOn>
               <reference value="ServiceRequest/1SR-Order"/>
             </basedOn>
@@ -153,7 +154,7 @@
           <Observation>
             <id value="1Obs-NeisseriaGonorrhoeae"/>
             <meta>
-              <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"/>
+              <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-strict"/>
             </meta>
             <status value="final"/>
             <category>
@@ -206,7 +207,7 @@
               <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-specimen"/>
             </meta>
             <type>
-              <text value="Material declared by LOINC system axis"/>
+              <text value="Material declared by Observation.code or non-mandatory"/>
             </type>
             <subject>
               <reference value="Patient/1Pat-DM"/>
@@ -327,8 +328,17 @@
             </identifier>
             <name value="Kantonsspital ABC"/>
             <address>
-              <line value="Aortastrasse 22"/>
-              <line value="Postfach 18"/>
+              <line>
+                <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName">
+                  <valueString value="Aortastrasse"/>
+                </extension>
+                <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber">
+                  <valueString value="22"/>
+                </extension>
+                <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox">
+                  <valueString value="18"/>
+                </extension>
+              </line>
               <city value="Bern"/>
               <postalCode value="3000"/>
             </address>

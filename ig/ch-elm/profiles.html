@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Profiles - CH ELM (R4) v1.0.0-trialuse</title>
+    <title>Profiles - CH ELM (R4) v1.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -65,11 +65,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ELM (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0-trialuse - trial-use
+            <span style="display:inline-block;">1.0.0 - trial-use
 
 
 
-  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+  Switzerland
 
 
             </span>
@@ -138,6 +138,9 @@
     <a href="api.html">API</a>
   </li>
   <li>
+    <a href="CodeSystem-ch-elm-foph-business-rules.html">Business Rules</a>
+  </li>
+  <li>
     <a href="artifacts.html">Artifacts</a>
   </li>
 </ul>
@@ -172,7 +175,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.0.0-trialuse: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Profiles</h2>
   
 
@@ -211,7 +214,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </li>
 <li><a href="StructureDefinition-ch-elm-document.html">CH ELM Document: Laboratory Report</a> <p>This CH ELM base profile constrains the Bundle resource for the purpose of laboratory test reports.</p>
 </li>
+<li><a href="StructureDefinition-ch-elm-document-strict.html">CH ELM Document: Laboratory Report (strict)</a> <p>CH ELM profile for the Bundle resource with a stricter validation mechanism than the base profile via binding strength reinforcement for the leading code element and checking patient name requirements if possible.</p>
+</li>
 <li><a href="StructureDefinition-ch-elm-observation-results-laboratory.html">CH ELM Observation Results: Laboratory</a> <p>This CH ELM base profile constrains the Observation resource for the purpose of laboratory test reports.</p>
+</li>
+<li><a href="StructureDefinition-ch-elm-observation-results-laboratory-strict.html">CH ELM Observation Results: Laboratory (strict)</a> <p>CH ELM profile for the Observation resource with a stricter validation mechanism than the base profile via binding strength reinforcement for the leading code element.</p>
 </li>
 <li><a href="StructureDefinition-ch-elm-organization-author.html">CH ELM Organization: Author</a> <p>This CH ELM base profile constrains the Organization resource for the author of the laboratory report.</p>
 </li>
@@ -229,20 +236,20 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </li>
 <li><a href="StructureDefinition-ch-elm-specimen.html">CH ELM Specimen: Laboratory</a> <p>This CH ELM base profile constrains the Specimen resource for the purpose of laboratory test reports.</p>
 </li>
-<li><a href="StructureDefinition-PublishDocumentReference.html">DocumentReference for  Publish</a> <p>A profile on the DocumentReference resource for  Publish constraints.</p>
-<p>Publish</p>
+<li><a href="StructureDefinition-PublishDocumentReferenceResponse.html">DocumentReference for  Publish Response</a> <p>A profile on the DocumentReference resource for the publication response:</p>
 <ul>
 <li>must be status current</li>
-<li>must have an masterIdentifer</li>
+<li>must have an identifier</li>
+</ul>
+</li>
+<li><a href="StructureDefinition-PublishDocumentReference.html">DocumentReference for sending the report</a> <p>A profile on the DocumentReference resource with publication constraints:</p>
+<ul>
+<li>must be status current</li>
+<li>must have an identifier</li>
 <li>uses attachment.url to carry the document as a contained resource</li>
 </ul>
 </li>
-<li><a href="StructureDefinition-PublishDocumentReferenceResponse.html">DocumentReference for  Publish Response</a> <p>A profile on the DocumentReference resource for  Publish Response constraints.</p>
-<p>Publish Response</p>
-<ul>
-<li>must be status current</li>
-<li>must have an identifer</li>
-</ul>
+<li><a href="StructureDefinition-FindDocumentReferencesResponse.html">Find Document References Response message</a> <p>A profile on the Find Document References Response message</p>
 </li>
 
 <h3 id="data-type-profiles">Data Type Profiles</h3>
@@ -251,10 +258,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <a href="StructureDefinition-ch-elm-codeableconcept.html">CH ELM CodeableConcept</a>
 </li>
 <li>
-    <a href="StructureDefinition-ch-elm-oasi-li-identifier.html">OASI LI Identifier</a>
+    <a href="StructureDefinition-ch-elm-coding.html">CH ELM Coding</a>
 </li>
 <li>
-    <a href="StructureDefinition-ch-elm-coding.html">CH ELM Coding</a>
+    <a href="StructureDefinition-ch-elm-idn-identifier.html">IDN Identifier</a>
 </li>
 
 
@@ -281,7 +288,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.0.0-trialuse based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 13, 2023 14:50+0200">2023-09-13</span>
+          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Nov 16, 2023 14:46+0100">2023-11-16</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -289,7 +296,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.0.0-trialuse%20/profiles.html&amp;entry%2E247644557=Profiles">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.0.0%20/profiles.html&amp;entry%2E247644557=Profiles">Propose a change</a>
 
           </span>
         </p>

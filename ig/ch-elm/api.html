@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>API - CH ELM (R4) v1.0.0-trialuse</title>
+    <title>API - CH ELM (R4) v1.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -65,11 +65,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ELM (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0-trialuse - trial-use
+            <span style="display:inline-block;">1.0.0 - trial-use
 
 
 
-  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+  Switzerland
 
 
             </span>
@@ -138,6 +138,9 @@
     <a href="api.html">API</a>
   </li>
   <li>
+    <a href="CodeSystem-ch-elm-foph-business-rules.html">Business Rules</a>
+  </li>
+  <li>
     <a href="artifacts.html">Artifacts</a>
   </li>
 </ul>
@@ -172,7 +175,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.0.0-trialuse: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>API</h2>
   
 
@@ -193,37 +196,42 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#scope" id="markdown-toc-scope">Scope</a></li>
   <li><a href="#actor-roles" id="markdown-toc-actor-roles">Actor Roles</a></li>
   <li><a href="#referenced-standards" id="markdown-toc-referenced-standards">Referenced Standards</a></li>
-  <li><a href="#messages" id="markdown-toc-messages">Messages</a></li>
+  <li><a href="#send-report-transaction" id="markdown-toc-send-report-transaction">Send Report transaction</a></li>
+  <li><a href="#verifying-processing-state" id="markdown-toc-verifying-processing-state">Verifying processing state</a></li>
   <li><a href="#security-considerations" id="markdown-toc-security-considerations">Security Considerations</a></li>
+  <li><a href="#endpoints" id="markdown-toc-endpoints">Endpoints</a></li>
 </ul>
 
 </div>
-<p>CH ELM defines a RESTful web API based on FHIR to enable a laboratory to send its reports.</p>
+<p>CH ELM defines a RESTful web API based on FHIR to enable a laboratory to send and verify the processing of its reports.</p>
 
 <h3 id="scope">Scope</h3>
-<p>The Publish transaction passes a Publish Request from the laboratory to the FOPH, providing the document directly as a FHIR Bundle.</p>
+<p>The Send Report transaction provides a report from the laboratory to the FOPH.</p>
 
-<p>After providing the document the laboratory shall check through the API that the document has been successfully processed.</p>
+<p>After providing the report the laboratory shall verify through the API that the report has been successfully processed.</p>
 
 <h3 id="actor-roles">Actor Roles</h3>
 <p><strong>Actor:</strong> Laboratory <br />
-<strong>Role:</strong> Sends CH ELM document and metadata to the FOPH <br />
-<strong>Actor:</strong> FOPH <br />
-<strong>Role:</strong> Accepts the document and metadata sent from the Document Source</p>
+<strong>Role:</strong> Sends a report in the CH ELM document format and metadata to the FOPH and verifies that the report has been successfully processed.</p>
+
+<p><strong>Actor:</strong> FOPH <br />
+<strong>Role:</strong> Accepts the report from the Document Source and processes the report in a later stage.</p>
+
+<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="394px" preserveAspectRatio="none" style="width:759px;height:394px;background:#FFFFFF;" version="1.1" viewBox="0 0 759 394" width="759px" zoomAndPan="magnify"><defs /><g><rect fill="#FFFFFF" height="322.7949" style="stroke:#181818;stroke-width:1.0;" width="10" x="44" y="46.4883" /><rect fill="#FFFFFF" height="322.7949" style="stroke:#181818;stroke-width:1.0;" width="10" x="508" y="46.4883" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="49" x2="49" y1="36.4883" y2="387.2832" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="512.5" x2="512.5" y1="36.4883" y2="387.2832" /><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="88" x="5" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="12" y="25.5352">Laboratory</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="51" x="487.5" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="494.5" y="25.5352">FOPH</text><rect fill="#FFFFFF" height="322.7949" style="stroke:#181818;stroke-width:1.0;" width="10" x="44" y="46.4883" /><rect fill="#FFFFFF" height="322.7949" style="stroke:#181818;stroke-width:1.0;" width="10" x="508" y="46.4883" /><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="752" x="0" y="67.1436" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="752" y1="67.1436" y2="67.1436" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="752" y1="70.1436" y2="70.1436" /><rect fill="#EEEEEE" height="23.3105" style="stroke:#000000;stroke-width:2.0;" width="100" x="326" y="56.4883" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="82" x="332" y="73.0566">Send Report</text><polygon fill="#181818" points="496,107.1094,506,111.1094,496,115.1094,500,111.1094" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="54" x2="502" y1="111.1094" y2="111.1094" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="61" y="106.3672">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="417" x="74" y="106.3672">Request to provide DocumentReference with embedded Document</text><line style="stroke:#181818;stroke-width:1.0;" x1="518" x2="560" y1="140.4199" y2="140.4199" /><line style="stroke:#181818;stroke-width:1.0;" x1="560" x2="560" y1="140.4199" y2="153.4199" /><line style="stroke:#181818;stroke-width:1.0;" x1="519" x2="560" y1="153.4199" y2="153.4199" /><polygon fill="#181818" points="529,149.4199,519,153.4199,529,157.4199,525,153.4199" style="stroke:#181818;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="525" y="135.6777">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="135" x="538" y="135.6777">Extract the document</text><line style="stroke:#181818;stroke-width:1.0;" x1="518" x2="560" y1="182.7305" y2="182.7305" /><line style="stroke:#181818;stroke-width:1.0;" x1="560" x2="560" y1="182.7305" y2="195.7305" /><line style="stroke:#181818;stroke-width:1.0;" x1="519" x2="560" y1="195.7305" y2="195.7305" /><polygon fill="#181818" points="529,191.7305,519,195.7305,529,199.7305,525,195.7305" style="stroke:#181818;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="525" y="177.9883">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="117" x="538" y="177.9883">Validate document</text><line style="stroke:#181818;stroke-width:1.0;" x1="518" x2="560" y1="225.041" y2="225.041" /><line style="stroke:#181818;stroke-width:1.0;" x1="560" x2="560" y1="225.041" y2="238.041" /><line style="stroke:#181818;stroke-width:1.0;" x1="519" x2="560" y1="238.041" y2="238.041" /><polygon fill="#181818" points="529,234.041,519,238.041,529,242.041,525,238.041" style="stroke:#181818;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="525" y="220.2988">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="202" x="538" y="220.2988">Queue document for processing</text><polygon fill="#181818" points="65,263.3516,55,267.3516,65,271.3516,61,267.3516" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="59" x2="507" y1="267.3516" y2="267.3516" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="71" y="262.6094">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="297" x="84" y="262.6094">Document accepted and queued for processing</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1.0;" width="752" x="0" y="296.0068" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="752" y1="296.0068" y2="296.0068" /><line style="stroke:#000000;stroke-width:1.0;" x1="0" x2="752" y1="299.0068" y2="299.0068" /><rect fill="#EEEEEE" height="23.3105" style="stroke:#000000;stroke-width:2.0;" width="180" x="286" y="285.3516" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="162" x="292" y="301.9199">Verify Report processed</text><polygon fill="#181818" points="496,335.9727,506,339.9727,496,343.9727,500,339.9727" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="54" x2="502" y1="339.9727" y2="339.9727" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="61" y="335.2305">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="269" x="74" y="335.2305">Check if document(s) have been processed</text><polygon fill="#181818" points="60,365.2832,50,369.2832,60,373.2832,56,369.2832" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="54" x2="512" y1="369.2832" y2="369.2832" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="66" y="364.541">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="390" x="79" y="364.541">DocumentReference(s) either completed, failed or in-progress</text></g></svg></div>
+
+<p><br clear="all" /></p>
+
+<p><strong>Figure: Report Interactions</strong></p>
 
 <h3 id="referenced-standards">Referenced Standards</h3>
 <p>Release 4 of the <a href="https://www.hl7.org/fhir/index.html">HL7® FHIR®</a> standard.</p>
 
-<h3 id="messages">Messages</h3>
+<h3 id="send-report-transaction">Send Report transaction</h3>
 
-<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="345px" preserveAspectRatio="none" style="width:747px;height:345px;background:#FFFFFF;" version="1.1" viewBox="0 0 747 345" width="747px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="186" x="282.5" y="28.5352">Publish Document Bundle</text><rect fill="#FFFFFF" height="236.1738" style="stroke:#181818;stroke-width:1.0;" width="10" x="44" y="83.9766" /><rect fill="#FFFFFF" height="236.1738" style="stroke:#181818;stroke-width:1.0;" width="10" x="508" y="83.9766" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="49" x2="49" y1="73.9766" y2="338.1504" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="512.5" x2="512.5" y1="73.9766" y2="338.1504" /><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="88" x="5" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="12" y="63.0234">Laboratory</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="51" x="487.5" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="494.5" y="63.0234">FOPH</text><rect fill="#FFFFFF" height="236.1738" style="stroke:#181818;stroke-width:1.0;" width="10" x="44" y="83.9766" /><rect fill="#FFFFFF" height="236.1738" style="stroke:#181818;stroke-width:1.0;" width="10" x="508" y="83.9766" /><polygon fill="#181818" points="496,101.2871,506,105.2871,496,109.2871,500,105.2871" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="54" x2="502" y1="105.2871" y2="105.2871" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="61" y="100.5449">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="417" x="74" y="100.5449">Request to provide DocumentReference with embedded Document</text><line style="stroke:#181818;stroke-width:1.0;" x1="518" x2="560" y1="134.5977" y2="134.5977" /><line style="stroke:#181818;stroke-width:1.0;" x1="560" x2="560" y1="134.5977" y2="147.5977" /><line style="stroke:#181818;stroke-width:1.0;" x1="519" x2="560" y1="147.5977" y2="147.5977" /><polygon fill="#181818" points="529,143.5977,519,147.5977,529,151.5977,525,147.5977" style="stroke:#181818;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="525" y="129.8555">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="135" x="538" y="129.8555">Extract the document</text><line style="stroke:#181818;stroke-width:1.0;" x1="518" x2="560" y1="176.9082" y2="176.9082" /><line style="stroke:#181818;stroke-width:1.0;" x1="560" x2="560" y1="176.9082" y2="189.9082" /><line style="stroke:#181818;stroke-width:1.0;" x1="519" x2="560" y1="189.9082" y2="189.9082" /><polygon fill="#181818" points="529,185.9082,519,189.9082,529,193.9082,525,189.9082" style="stroke:#181818;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="525" y="172.166">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="117" x="538" y="172.166">Validate document</text><line style="stroke:#181818;stroke-width:1.0;" x1="518" x2="560" y1="219.2188" y2="219.2188" /><line style="stroke:#181818;stroke-width:1.0;" x1="560" x2="560" y1="219.2188" y2="232.2188" /><line style="stroke:#181818;stroke-width:1.0;" x1="519" x2="560" y1="232.2188" y2="232.2188" /><polygon fill="#181818" points="529,228.2188,519,232.2188,529,236.2188,525,232.2188" style="stroke:#181818;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="525" y="214.4766">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="202" x="538" y="214.4766">Queue document for processing</text><polygon fill="#181818" points="65,257.5293,55,261.5293,65,265.5293,61,261.5293" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="59" x2="507" y1="261.5293" y2="261.5293" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="71" y="256.7871">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="297" x="84" y="256.7871">Document accepted and queued for processing</text><polygon fill="#181818" points="496,286.8398,506,290.8398,496,294.8398,500,290.8398" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="54" x2="502" y1="290.8398" y2="290.8398" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="61" y="286.0977">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="247" x="74" y="286.0977">Check if document has been processed</text><polygon fill="#181818" points="60,316.1504,50,320.1504,60,324.1504,56,320.1504" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="54" x2="512" y1="320.1504" y2="320.1504" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9" x="66" y="315.4082">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="375" x="79" y="315.4082">DocumentReference either completed, failed or in-progress</text></g></svg></div>
+<p>The Send report transaction passes a DocumentReference message from the laboratory to the FOPH, providing the report directly as a FHIR Bundle.</p>
 
-<p><br clear="all" /></p>
-
-<p><strong>Figure:  Publish Interactions</strong></p>
-
-<h4 id="publish-request-message">Publish Request Message</h4>
-<p>This message uses the HTTP POST method on the target Publish endpoint to convey the metadata and the document as a FHIR DocumentReference.
+<h4 id="send-report-message">Send Report Message</h4>
+<p>This message uses the HTTP POST method on the DocumentReference endpoint to convey the metadata and the document as a FHIR DocumentReference.
 See also the <a href="CapabilityStatement-ch-elm-documentrecipient.html">CapabilityStatement</a> of the server.</p>
 
 <h5 id="trigger-events">Trigger Events</h5>
@@ -236,7 +244,7 @@ See also the <a href="CapabilityStatement-ch-elm-documentrecipient.html">Capabil
 
 <p>The media type of the HTTP body shall be either <code class="language-plaintext highlighter-rouge">application/fhir+json</code> or <code class="language-plaintext highlighter-rouge">application/fhir+xml</code>.</p>
 
-<p>The  Publish message is sent to the DocumentReference at the base URL as defined in FHIR. See <a href="http://hl7.org/fhir/R4/http.html">http://hl7.org/fhir/R4/http.html</a> for the definition of “HTTP” access methods and “base”.</p>
+<p>The message is sent to the DocumentReference at the base URL as defined in FHIR. See <a href="http://hl7.org/fhir/R4/http.html">http://hl7.org/fhir/R4/http.html</a> for the definition of “HTTP” access methods and “base”.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST http://[base]/DocumentReference HTTP/1.1
 Content-Type: application/fhir+json
@@ -286,15 +294,6 @@ Accept: application/fhir+json
 
 <p>When resources are <code class="language-plaintext highlighter-rouge">contained</code> they shall be contained using the FHIR contained method (see <a href="http://hl7.org/fhir/R4/references.html#contained">http://hl7.org/fhir/R4/references.html#contained</a> ).</p>
 
-<h6 id="replace-transform-signs-and-append-associations">Replace, Transform, Signs, and Append Associations</h6>
-
-<p>The DocumentReference.relatesTo element indicates an association between DocumentReference resources. The relatesTo.target element in the provided DocumentReference points at the pre-existing DocumentReference that is being replaced, transformed, signed, or appended. The relatesTo.code element in the provided DocumentReference shall be the appropriate relationship type code defined in <a href="http://hl7.org/fhir/R4/valueset-document-relationship-type.html">http://hl7.org/fhir/R4/valueset-document-relationship-type.html</a>.</p>
-
-<div class="dragon">
-For the pilot there is no support for Replace, Transform, Signs, and Append Associations.
-</div>
-<p>&nbsp;</p>
-
 <h5 id="expected-actions">Expected Actions</h5>
 
 <p>The FOPH shall accept both media types <code class="language-plaintext highlighter-rouge">application/fhir+json</code> and <code class="language-plaintext highlighter-rouge">application/fhir+xml</code>.</p>
@@ -303,11 +302,11 @@ For the pilot there is no support for Replace, Transform, Signs, and Append Asso
 
 <p>If the FOPH encounters any errors or if any validation fails, the FOPH shall return an error using a FHIR OperationOutcome.</p>
 
-<h4 id="publish-response-message">Publish Response Message</h4>
+<h4 id="send-report-response-message">Send Report Response Message</h4>
 
 <p>The FOPH returns a HTTP Status code appropriate to the processing outcome, conforming to the create transaction specification requirements as specified in <a href="http://hl7.org/fhir/R4/http.html#create">http://hl7.org/fhir/R4/http.html#create</a>.</p>
 
-<p>If the FOPH has accepted the information it will return an id for the created DocumentReference. The DocumentReference will have an additional element returning the processsing state of the document, which can have the following values:
+<p>If the FOPH has accepted the information it will return an id for the created DocumentReference. The DocumentReference will have an additional element returning the processing state of the document, which can have the following values:
 <a href="DocumentReference-1-DocumentReferenceResponseInProgress.json.html">in-progress</a>, <a href="DocumentReference-1-DocumentReferenceResponseFailed.json.html">failed</a>, <a href="DocumentReference-1-DocumentReferenceResponseCompleted.json.html">completed</a>. If failed a reference to an OperationOutcome is added.</p>
 
 <h5 id="trigger-events-1">Trigger Events</h5>
@@ -322,16 +321,134 @@ For the pilot there is no support for Replace, Transform, Signs, and Append Asso
 
 <p>The FOPH processes the results according to application-defined rules.</p>
 
-<p><em>Important</em>: The laboratory SHALL afterwards check the status of the processing via accessing the DocumentReference directly via id (DocuemntReference/id) or querying via the provided identifier by the laboratory (DocumentReference?identifier=urn:uid:…) until the status is completed or failed.</p>
+<p><em>Important</em>: The laboratory shall afterwards check the status of the processing, see next message.</p>
+
+<h3 id="verifying-processing-state">Verifying processing state</h3>
+
+<p>The laboratory shall verify through the API that the reports have been successfully processed. The laboratory can either query the DocumentReference by id or query it with different search parameters.</p>
+
+<h4 id="request-message">Request Message</h4>
+
+<p>This message uses the search method parameterized query to obtain DocumentReference Resources from the FOPH.</p>
+
+<h5 id="trigger-events-2">Trigger Events</h5>
+
+<p>When the laboratory needs to discover DocumentReference Resources matching various metadata parameters, it issues a request message.</p>
+
+<h5 id="message-semantics-2">Message Semantics</h5>
+
+<p>The laboratory executes an HTTP search against the FOPHs DocumentReference URL. The search tar follows the FHIR HTTP specification, addressing the DocumentReference Resource <a href="http://hl7.org/fhir/R4/http.html">http://hl7.org/fhir/R4/http.html</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[base]/DocumentReference?&lt;query&gt;
+</code></pre></div></div>
+
+<p>If the id of the DocumentReference resource is known, it can be directly accessed by id instead of a query.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[base]/DocumentReference/id
+</code></pre></div></div>
+
+<p>This URL <code class="language-plaintext highlighter-rouge">[base]</code> is configurable by the FOPH and is subject to the following constraints:</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;query&gt;</code> represents a series of encoded name-value pairs representing the filter for the query as well as control parameters to modify the behavior of the FOPH such as response format, or pagination.</p>
+
+<p>The laboratory can use GET searches.</p>
+
+<h6 id="query-search-parameters">Query Search Parameters</h6>
+
+<p>The laboratory may supply, and the FOPH shall be capable of processing, all query parameters listed below. All query parameter values shall be appropriately encoded per RFC3986 “percent” encoding rules. Note that percent encoding does restrict the character set to a subset of ASCII characters which is used for encoding all other characters used in the URL.</p>
+
+<p>The parameters described below are optional. The FOPH must implement the parameters described below. The FOPH may choose to support additional query parameters beyond the subset listed below. Any additional query parameters supported shall be supported according to the core FHIR specification. Such additional parameters are considered out of scope for this transaction. Any additional parameters not supported should be ignored. See <a href="http://hl7.org/fhir/R4/search.html#errors">http://hl7.org/fhir/R4/search.html#errors</a>.</p>
+
+<p><strong>date</strong>:
+This parameter, of type date, specifies the time when the DocumentReference was created. See <a href="http://hl7.org/fhir/R4/search.html#date">http://hl7.org/fhir/R4/search.html#date</a> for use of the date search type.</p>
+
+<p><strong>_lastUpdate</strong>:
+The search parameter _lastUpdated can be used to select resources based on the last time they were changed. See <a href="http://hl7.org/fhir/R4/search.html#lastUpdated]">http://hl7.org/fhir/R4/search.html#lastUpdated</a> for use of the _lastUpdate search type.</p>
+
+<p>for date and _lastUpdate the following <a href="http://hl7.org/fhir/R4/search.html#prefix">prefixes</a> for parameter are supported: eq,ne,gt,ge,lt, le</p>
+
+<p><strong>identifier</strong>:
+This parameter, of type token, specifies an identifier for this DocumentReference and/or the contained document. The search results represent the results of a search on DocumentReference.identifier.</p>
+
+<p><strong>elm-status</strong>:
+This <a href="SearchParameter-SearchParameter-ch-elm-status.html">parameter</a>, of type token, specifies the status of the processing of the report at the FOPH. It can be either in-progress, failed or completed, see <a href="ValueSet-ch-elm-status.html">ValueSet</a>. Only one status per query is supported, you cannot query for multiple (e.g. failed, complete).</p>
+
+<h6 id="managing-returned-resources">Managing Returned Resources</h6>
+
+<p><strong>Sorting</strong></p>
+
+<p>The client can indicate which order to return the results by using the parameter <a href="http://hl7.org/fhir/R4/search.html#_sort">_sort</a>, which can contain a comma-separated list of sort rules in priority order.
+The following support parameters can be specified: <strong>identifier</strong>, <strong>date</strong>, <strong>elm-status</strong>, <strong>_lastUpdated</strong>. A prefix of ‘-‘ indicates decreasing order; in its absence, 
+the parameter is applied in increasing order.</p>
+
+<p><strong>Paging</strong></p>
+
+<p>The parameter <em>_count</em> is defined as an instruction to the server regarding how many resources should be returned in a single <a href="http://hl7.org/fhir/R4/search.html#count">page</a>.</p>
+
+<p>If _count has the value 0, this shall be treated the same as _summary=count: the server returns a bundle that reports the total number of resources that match in Bundle.total, but with no entries, and no prev/next/last links.</p>
+
+<p>FOPH allows with the parameter page to directly query a specific page in the search result. The client can also follow the first, next, prev, last link in the Bundle search response.</p>
+
+<h6 id="populating-expected-response-format">Populating Expected Response Format</h6>
+
+<p>The FHIR standard provides encodings for responses as either XML or JSON.</p>
+
+<h6 id="example-documentreference-search-for-error-messages-since-a-specific-date">Example DocumentReference Search for error messages since a specific date</h6>
+
+<h6 id="example">Example</h6>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET http://[base]/DocumentReference?_lastUpdate=gt2023-10-02T08:00:00+02:00&amp;elm-status=failed
+</code></pre></div></div>
+
+<h5 id="actions">Actions</h5>
+
+<p>The FOPH shall process the query to discover the DocumentReference entries that match the search parameters given.</p>
+
+<h4 id="response-message">Response Message</h4>
+
+<p>The FOPH returns a HTTP Status code appropriate to the processing as well as a Bundle of the matching DocumentReference Resources for the query, DocumentReference resource if the DocumentReference was accessed by id.</p>
+
+<h5 id="trigger-events-3">Trigger Events</h5>
+
+<p>The FOPH completed processing of the request message.</p>
+
+<h5 id="message-semantics-3">Message Semantics</h5>
+
+<p>Based on the query results, the FOPH will either return an error or success. Guidance on handling Access Denied related to use of 200, 403 and 404 can be found in <a href="https://profiles.ihe.net/ITI/TF/Volume2/ch-Z.html#z.8-mobile-security-considerations">ITI TF-2x: Appendix Z.7</a>.</p>
+
+<p>When the FOPH needs to report an error, it shall use HTTP error response codes and should include a FHIR OperationOutcome with more details on the failure. See FHIR <a href="http://hl7.org/fhir/R4/http.html">http://hl7.org/fhir/R4/http.html</a> and <a href="http://hl7.org/fhir/R4/operationoutcome.html">http://hl7.org/fhir/R4/operationoutcome.html</a>.</p>
+
+<p>If the query is processed successfully, whether or not any DocumentReference Resources are found, the HTTP status code shall be 200. The response message shall be a Bundle Resource containing zero or more DocumentReference Resources.</p>
+
+<p>The response shall adhere to the FHIR Bundle constraints <a href="StructureDefinition-FindDocumentReferencesResponse.html">specified</a>.</p>
+
+<p><a href="Bundle-ex-findDocumentReferencesResponse.json.html">Example search response</a>.</p>
+
+<h6 id="documentreference-resource-contents">DocumentReference Resource Contents</h6>
+
+<p>Example of responses from query by id:
+<a href="DocumentReference-1-DocumentReferenceResponseInProgress.json.html">in-progress</a>, <a href="DocumentReference-1-DocumentReferenceResponseFailed.json.html">failed</a>, <a href="DocumentReference-1-DocumentReferenceResponseCompleted.json.html">completed</a>.</p>
+
+<h4 id="expected-actions-2">Expected Actions</h4>
+
+<p>The laboratory shall process the results. It is in the responsibility of the laboratory to resubmit the failed responses.</p>
 
 <h3 id="security-considerations">Security Considerations</h3>
 
-<p>mTLS SHALL be used.</p>
+<p>mTLS shall be used.</p>
 <div class="dragon">
 During the pilot a TLS client certificate will be provided by the FOPH.
 </div>
 <p>&nbsp;</p>
 
+<h3 id="endpoints">Endpoints</h3>
+
+<p>The following endpoints are defined:</p>
+
+<p><strong>Integration System</strong>: 
+https://ws.infreport-a.bag.admin.ch/ch-elm/v1/fhir</p>
+
+<p><strong>Production System</strong>: 
+https://ws.infreport.bag.admin.ch/ch-elm/v1/fhir</p>
 
 
 
@@ -357,7 +474,7 @@ During the pilot a TLS client certificate will be provided by the FOPH.
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.0.0-trialuse based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 13, 2023 14:50+0200">2023-09-13</span>
+          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Nov 16, 2023 14:46+0100">2023-11-16</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -365,7 +482,7 @@ During the pilot a TLS client certificate will be provided by the FOPH.
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.0.0-trialuse%20/api.html&amp;entry%2E247644557=API">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.0.0%20/api.html&amp;entry%2E247644557=API">Propose a change</a>
 
           </span>
         </p>

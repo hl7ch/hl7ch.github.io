@@ -4,15 +4,11 @@
   "meta" : {
     "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"]
   },
-  "text" : {
-    "status" : "generated",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: DocumentReference</b><a name=\"1-DocumentReference\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource DocumentReference &quot;1-DocumentReference&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-PublishDocumentReference.html\">DocumentReference for  Publish</a></p></div><p><b>identifier</b>: id:\u00a0urn:uuid:1901332d-6012-443f-9690-9291adb2e19d</p><p><b>status</b>: current</p><blockquote><p><b>content</b></p><h3>Attachments</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Language</b></td><td><b>Url</b></td></tr><tr><td style=\"display: none\">*</td><td>de-CH</td><td><code>#1Doc-NeisseriaGonorrhoeae</code></td></tr></table></blockquote><hr/><blockquote><hr/><hr/><div><h2>Analyseergebnisse der mikrobiologischen Untersuchung</h2></div></blockquote></div>"
-  },
   "contained" : [{
     "resourceType" : "Bundle",
     "id" : "1Doc-NeisseriaGonorrhoeae",
     "meta" : {
-      "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document",
+      "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict",
       "http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"]
     },
     "identifier" : {
@@ -86,6 +82,10 @@
             "reference" : "Composition/1Comp-NeisseriaGonorrhoeae"
           }
         }],
+        "identifier" : [{
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:1901332d-6012-443f-9690-9291adb2e19d"
+        }],
         "basedOn" : [{
           "reference" : "ServiceRequest/1SR-Order"
         }],
@@ -153,7 +153,7 @@
         "resourceType" : "Observation",
         "id" : "1Obs-NeisseriaGonorrhoeae",
         "meta" : {
-          "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"]
+          "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-strict"]
         },
         "status" : "final",
         "category" : [{
@@ -205,7 +205,7 @@
           "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-specimen"]
         },
         "type" : {
-          "text" : "Material declared by LOINC system axis"
+          "text" : "Material declared by Observation.code or non-mandatory"
         },
         "subject" : {
           "reference" : "Patient/1Pat-DM"
@@ -322,8 +322,20 @@
         }],
         "name" : "Kantonsspital ABC",
         "address" : [{
-          "line" : ["Aortastrasse 22",
-          "Postfach 18"],
+          "_line" : [{
+            "extension" : [{
+              "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+              "valueString" : "Aortastrasse"
+            },
+            {
+              "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+              "valueString" : "22"
+            },
+            {
+              "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox",
+              "valueString" : "18"
+            }]
+          }],
           "city" : "Bern",
           "postalCode" : "3000"
         }]

@@ -2,7 +2,7 @@
   "resourceType" : "Bundle",
   "id" : "1Doc-NeisseriaGonorrhoeae",
   "meta" : {
-    "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document",
+    "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict",
     "http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"]
   },
   "identifier" : {
@@ -76,6 +76,10 @@
           "reference" : "Composition/1Comp-NeisseriaGonorrhoeae"
         }
       }],
+      "identifier" : [{
+        "system" : "urn:ietf:rfc:3986",
+        "value" : "urn:uuid:1901332d-6012-443f-9690-9291adb2e19d"
+      }],
       "basedOn" : [{
         "reference" : "ServiceRequest/1SR-Order"
       }],
@@ -143,7 +147,7 @@
       "resourceType" : "Observation",
       "id" : "1Obs-NeisseriaGonorrhoeae",
       "meta" : {
-        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"]
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-strict"]
       },
       "status" : "final",
       "category" : [{
@@ -195,7 +199,7 @@
         "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-specimen"]
       },
       "type" : {
-        "text" : "Material declared by LOINC system axis"
+        "text" : "Material declared by Observation.code or non-mandatory"
       },
       "subject" : {
         "reference" : "Patient/1Pat-DM"
@@ -312,8 +316,20 @@
       }],
       "name" : "Kantonsspital ABC",
       "address" : [{
-        "line" : ["Aortastrasse 22",
-        "Postfach 18"],
+        "_line" : [{
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+            "valueString" : "Aortastrasse"
+          },
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+            "valueString" : "22"
+          },
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox",
+            "valueString" : "18"
+          }]
+        }],
         "city" : "Bern",
         "postalCode" : "3000"
       }]

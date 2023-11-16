@@ -3,7 +3,7 @@
 <Bundle xmlns="http://hl7.org/fhir">
   <id value="1Doc-NeisseriaGonorrhoeae"/>
   <meta>
-    <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"/>
+    <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
     <profile value="http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"/>
   </meta>
   <identifier>
@@ -77,6 +77,10 @@
             <reference value="Composition/1Comp-NeisseriaGonorrhoeae"/>
           </valueReference>
         </extension>
+        <identifier>
+          <system value="urn:ietf:rfc:3986"/>
+          <value value="urn:uuid:1901332d-6012-443f-9690-9291adb2e19d"/>
+        </identifier>
         <basedOn>
           <reference value="ServiceRequest/1SR-Order"/>
         </basedOn>
@@ -144,7 +148,7 @@
       <Observation>
         <id value="1Obs-NeisseriaGonorrhoeae"/>
         <meta>
-          <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"/>
+          <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-strict"/>
         </meta>
         <status value="final"/>
         <category>
@@ -197,7 +201,7 @@
           <profile value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-specimen"/>
         </meta>
         <type>
-          <text value="Material declared by LOINC system axis"/>
+          <text value="Material declared by Observation.code or non-mandatory"/>
         </type>
         <subject>
           <reference value="Patient/1Pat-DM"/>
@@ -318,8 +322,17 @@
         </identifier>
         <name value="Kantonsspital ABC"/>
         <address>
-          <line value="Aortastrasse 22"/>
-          <line value="Postfach 18"/>
+          <line>
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName">
+              <valueString value="Aortastrasse"/>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber">
+              <valueString value="22"/>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox">
+              <valueString value="18"/>
+            </extension>
+          </line>
           <city value="Bern"/>
           <postalCode value="3000"/>
         </address>
