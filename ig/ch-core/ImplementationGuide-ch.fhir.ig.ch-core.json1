@@ -6,12 +6,12 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_Core</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core</pre><div><p>FHIR implementation guide CH Core</p>\n</div></div>"
   },
   "url" : "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core",
-  "version" : "4.0.0-ballot",
+  "version" : "4.0.0",
   "name" : "CH_Core",
   "title" : "CH Core (R4)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2023-06-27",
+  "date" : "2023-12-19",
   "publisher" : "HL7 Switzerland",
   "contact" : [{
     "name" : "HL7 Switzerland",
@@ -51,15 +51,15 @@
   },
   {
     "id" : "ch_fhir_ig_ch_epr_term",
-    "uri" : "http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term",
+    "uri" : "http://fhir.org/packages/ch.fhir.ig.ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term",
     "packageId" : "ch.fhir.ig.ch-epr-term",
-    "version" : "2.0.9"
+    "version" : "2.0.x"
   },
   {
     "id" : "hl7_terminology",
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology",
-    "version" : "5.1.0"
+    "version" : "5.4.0"
   }],
   "definition" : {
     "extension" : [{
@@ -80,7 +80,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "ballot"
+        "valueString" : "trial-use"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -318,6 +318,17 @@
     {
       "extension" : [{
         "url" : "code",
+        "valueString" : "apply-wg"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
         "valueString" : "active-tables"
       },
       {
@@ -392,7 +403,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "ballot"
+        "valueString" : "trial-use"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -630,6 +641,17 @@
     {
       "extension" : [{
         "url" : "code",
+        "valueCode" : "apply-wg"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
         "valueCode" : "active-tables"
       },
       {
@@ -788,6 +810,18 @@
       },
       "name" : "BER",
       "description" : "The Business and Enterprise Register (BER) contains all enterprises and business in private and public law which are domiciled and exercise an economic activity in Switzerland.                       French: (REE) Registre des entreprises et des établissements.                        German: (BUR) Betriebs- und Unternehmensregister,                       Italian: (RIS) Registro delle imprese e degli stabilimenti.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-ber-identifier"
+      },
+      "name" : "BER Identifier",
+      "description" : "Identifier holding a number for BER (Business and Enterprise Register), BUR (Betriebs- und Unternehmensregister), REE (Registre des entreprises et des établissements), RIS (Registro delle imprese e degli stabilimenti)",
       "exampleBoolean" : false
     },
     {
@@ -1441,6 +1475,54 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/2-ResourceCrossReferencesDokument"
+      },
+      "name" : "Dokument Eintrag referenz zu anderem Eintrag in einem anderen Dokument",
+      "description" : "Ein Beispieldokument mit einem Eintrag welcher die Extension zur kreuzreferenzierung auf einen anderen Eintrag in einem anderen Dokument enthält.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-document"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/ech-7-cantonabbreviation"
+      },
+      "name" : "eCH-0007 Canton Abbreviation",
+      "description" : "eCH-0007: Each municipality has a unique cantonal affiliation, which can be defined by the cantonal abbreviation commonly used in Switzerland.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/ech-7-cantonflabbreviation"
+      },
+      "name" : "eCH-0007 Canton Abbreviation incl. FL (Fürstentum Liechtenstein)",
+      "description" : "eCH-0007: Analogous to cantonAbbreviation, but contains the entry 'FL' for the Principality of Liechtenstein in addition to the actual cantons.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/ech-7-cantonflabbreviation"
+      },
+      "name" : "eCH-0007 Canton Abbreviation incl. FL (Fürstentum Liechtenstein)",
+      "description" : "eCH-0007 defines cantonAbbreviation/cantonFLAbbreviation (Kantonskürzel inkl. Fürstentum Liechtenstein), see [here](https://www.ech.ch/de/ech/ech-0007/6.0).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
@@ -1532,6 +1614,18 @@
       },
       "name" : "Encounter, Suspected Readmission",
       "description" : "Encounter Extension for suspected readmission",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-ext-entry-resource-cross-references"
+      },
+      "name" : "Entry Resource Cross References",
+      "description" : "Extension to make a reference beween resources as entries in i.e. document bundles.",
       "exampleBoolean" : false
     },
     {
@@ -1717,6 +1811,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Immunization"
+      }],
+      "reference" : {
+        "reference" : "Immunization/ImmunizationEntry"
+      },
+      "name" : "Immunization example for Immunization Administration",
+      "description" : "An Immunization example with extension for cross dokument referencing.",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
@@ -1789,6 +1895,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/ResourceCrossReferencesDokumentComposition"
+      },
+      "name" : "Patient Document 1 Stammgemeinschaft Composition",
+      "description" : "Example for Composition Immunization Administration",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Patient"
       }],
       "reference" : {
@@ -1807,7 +1925,7 @@
         "reference" : "Organization/PhysiotherapieCH"
       },
       "name" : "Physiotherapie CH",
-      "description" : "Organization with GLN ending on 0",
+      "description" : "Organization with GLN (ending on 0), UIDB, BER",
       "exampleCanonical" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
     },
     {
@@ -1904,6 +2022,18 @@
       },
       "name" : "UIDB",
       "description" : "Unique IDentification Business (UIDB) number (in French, numéro d'IDentification suisse des Enterprises (IDE)) (in German, Schweizer Unternehmens-IDentifikationsnummer (UID)) (in Italian, numero d'IDentificazione svizzero delle Imprese (IDI))   Organizations Covered By System: All Companies/organizations registered in the public Swiss Registers such as the Swiss Register of Commerce, the Value Added Tax (VAT) register, the Social security agencies Registers, Cantons registers, etc., and publish in the UID Register.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-uidb-identifier"
+      },
+      "name" : "UIDB Identifier",
+      "description" : "Identifier holding a number for UIDB (Unique Identification Business), UID (Verwendung der Unternehmens-Identifikationsnummer), IDE (Utilisation du numéro d'identification des entreprises), IDI (Utilizzo del numero d'identificazione delle imprese)",
       "exampleBoolean" : false
     },
     {
@@ -2161,6 +2291,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-core-zsr-identifier"
+      },
+      "name" : "ZSR Identifier",
+      "description" : "Identifier holding a number for ZSR (Zahlstellenregister), RCC (Registre des codes-créanciers), RCC (Registro dei codici creditori)",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Composition"
       }],
       "reference" : {
@@ -2202,6 +2344,15 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "guidance.html"
+        }],
+        "nameUrl" : "guidance.html",
+        "title" : "Guidance",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
           "valueUrl" : "profiles.html"
         }],
         "nameUrl" : "profiles.html",
@@ -2232,7 +2383,7 @@
           "valueUrl" : "changelog.html"
         }],
         "nameUrl" : "changelog.html",
-        "title" : "Change Log",
+        "title" : "Changelog",
         "generation" : "markdown"
       }]
     },

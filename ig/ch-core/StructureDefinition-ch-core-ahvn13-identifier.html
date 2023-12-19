@@ -7,7 +7,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-CORE\AHVN13 / NAVS13 Identifier - FHIR v4.0.1</title>
+    <title>AHVN13 / NAVS13 Identifier - CH Core (R4) v4.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -45,8 +45,8 @@
 
 	  <script src="assets/js/prism.js"></script>
 
-    <style type="text/css">h2{--heading-prefix:"6.21"}
-    h3,h4,h5,h6{--heading-prefix:"6.21"}</style>
+    <style type="text/css">h2{--heading-prefix:"7.21"}
+    h3,h4,h5,h6{--heading-prefix:"7.21"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
@@ -66,7 +66,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH Core (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.0-ballot - ballot
+            <span style="display:inline-block;">4.0.0 - trial-use
 
 
 
@@ -99,6 +99,9 @@
 <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
   <li>
     <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="guidance.html">Guidance</a>
   </li>
   <li>
     <a href="profiles.html">Profiles</a>
@@ -137,7 +140,7 @@
           <div class="inner-wrapper">
 
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH Core (R4) (v4.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-core/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH Core (R4) (v4.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   
 
 
@@ -211,7 +214,7 @@
       <td colspan="4"><i>Official URL</i>: <span class="copy-text">http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ahvn13-identifier<button title="Click to copy URL" class="btn-copy" data-clipboard-text="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ahvn13-identifier"/></span>
       </td>
       <td><i>Version</i>:
-      <span class="copy-text">4.0.0-ballot<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ahvn13-identifier|4.0.0-ballot"/></span>
+      <span class="copy-text">4.0.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ahvn13-identifier|4.0.0"/></span>
       </td>
     </tr>
 
@@ -227,7 +230,7 @@
         
           Active
           
-            as of 2023-06-27
+            as of 2023-12-19
           
         
       </td>
@@ -322,9 +325,9 @@
             <h4>Constraints</h4>
 <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
-<tr><td>ahvn13-digit-check</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(value.substring(3,1).toInteger()*3)+(value.substring(4,1).toInteger()*1)+(value.substring(5,1).toInteger()*3)+(value.substring(6,1).toInteger()*1)+(value.substring(7,1).toInteger()*3)+(value.substring(8,1).toInteger()*1)+(value.substring(9,1).toInteger()*3)+(value.substring(10,1).toInteger()*1)+(value.substring(11,1).toInteger()*3))mod(10))mod(10))=value.substring(12,1).toInteger())</td><td></td></tr>
-<tr><td>ahvn13-length</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: value.matches('^[0-9]{13}$')</td><td></td></tr>
-<tr><td>ahvn13-startswith756</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: value.startsWith('756')</td><td></td></tr>
+<tr><td>ahvn13-digit-check</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(substring(3,1).toInteger()*3)+(substring(4,1).toInteger()*1)+(substring(5,1).toInteger()*3)+(substring(6,1).toInteger()*1)+(substring(7,1).toInteger()*3)+(substring(8,1).toInteger()*1)+(substring(9,1).toInteger()*3)+(substring(10,1).toInteger()*1)+(substring(11,1).toInteger()*3))mod(10))mod(10))=substring(12,1).toInteger())</td><td></td></tr>
+<tr><td>ahvn13-length</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: matches('^[0-9]{13}$')</td><td></td></tr>
+<tr><td>ahvn13-startswith756</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: startsWith('756')</td><td></td></tr>
 </table>
 
           
@@ -356,9 +359,9 @@
             <h4>Constraints</h4>
 <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
-<tr><td>ahvn13-digit-check</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(value.substring(3,1).toInteger()*3)+(value.substring(4,1).toInteger()*1)+(value.substring(5,1).toInteger()*3)+(value.substring(6,1).toInteger()*1)+(value.substring(7,1).toInteger()*3)+(value.substring(8,1).toInteger()*1)+(value.substring(9,1).toInteger()*3)+(value.substring(10,1).toInteger()*1)+(value.substring(11,1).toInteger()*3))mod(10))mod(10))=value.substring(12,1).toInteger())</td><td></td></tr>
-<tr><td>ahvn13-length</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: value.matches('^[0-9]{13}$')</td><td></td></tr>
-<tr><td>ahvn13-startswith756</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: value.startsWith('756')</td><td></td></tr>
+<tr><td>ahvn13-digit-check</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(substring(3,1).toInteger()*3)+(substring(4,1).toInteger()*1)+(substring(5,1).toInteger()*3)+(substring(6,1).toInteger()*1)+(substring(7,1).toInteger()*3)+(substring(8,1).toInteger()*1)+(substring(9,1).toInteger()*3)+(substring(10,1).toInteger()*1)+(substring(11,1).toInteger()*3))mod(10))mod(10))=substring(12,1).toInteger())</td><td></td></tr>
+<tr><td>ahvn13-length</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: matches('^[0-9]{13}$')</td><td></td></tr>
+<tr><td>ahvn13-startswith756</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: startsWith('756')</td><td></td></tr>
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 </table>
 
@@ -397,9 +400,9 @@
             <h4>Constraints</h4>
 <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
-<tr><td>ahvn13-digit-check</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(value.substring(3,1).toInteger()*3)+(value.substring(4,1).toInteger()*1)+(value.substring(5,1).toInteger()*3)+(value.substring(6,1).toInteger()*1)+(value.substring(7,1).toInteger()*3)+(value.substring(8,1).toInteger()*1)+(value.substring(9,1).toInteger()*3)+(value.substring(10,1).toInteger()*1)+(value.substring(11,1).toInteger()*3))mod(10))mod(10))=value.substring(12,1).toInteger())</td><td></td></tr>
-<tr><td>ahvn13-length</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: value.matches('^[0-9]{13}$')</td><td></td></tr>
-<tr><td>ahvn13-startswith756</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: value.startsWith('756')</td><td></td></tr>
+<tr><td>ahvn13-digit-check</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(substring(3,1).toInteger()*3)+(substring(4,1).toInteger()*1)+(substring(5,1).toInteger()*3)+(substring(6,1).toInteger()*1)+(substring(7,1).toInteger()*3)+(substring(8,1).toInteger()*1)+(substring(9,1).toInteger()*3)+(substring(10,1).toInteger()*1)+(substring(11,1).toInteger()*3))mod(10))mod(10))=substring(12,1).toInteger())</td><td></td></tr>
+<tr><td>ahvn13-length</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: matches('^[0-9]{13}$')</td><td></td></tr>
+<tr><td>ahvn13-startswith756</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: startsWith('756')</td><td></td></tr>
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 <tr><td>ext-1</td><td>error</td><td>**ALL** extensions</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
 </table>
@@ -481,9 +484,9 @@ Summary
             <h4>Constraints</h4>
 <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
-<tr><td>ahvn13-digit-check</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(value.substring(3,1).toInteger()*3)+(value.substring(4,1).toInteger()*1)+(value.substring(5,1).toInteger()*3)+(value.substring(6,1).toInteger()*1)+(value.substring(7,1).toInteger()*3)+(value.substring(8,1).toInteger()*1)+(value.substring(9,1).toInteger()*3)+(value.substring(10,1).toInteger()*1)+(value.substring(11,1).toInteger()*3))mod(10))mod(10))=value.substring(12,1).toInteger())</td><td></td></tr>
-<tr><td>ahvn13-length</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: value.matches('^[0-9]{13}$')</td><td></td></tr>
-<tr><td>ahvn13-startswith756</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: value.startsWith('756')</td><td></td></tr>
+<tr><td>ahvn13-digit-check</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(substring(3,1).toInteger()*3)+(substring(4,1).toInteger()*1)+(substring(5,1).toInteger()*3)+(substring(6,1).toInteger()*1)+(substring(7,1).toInteger()*3)+(substring(8,1).toInteger()*1)+(substring(9,1).toInteger()*3)+(substring(10,1).toInteger()*1)+(substring(11,1).toInteger()*3))mod(10))mod(10))=substring(12,1).toInteger())</td><td></td></tr>
+<tr><td>ahvn13-length</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: matches('^[0-9]{13}$')</td><td></td></tr>
+<tr><td>ahvn13-startswith756</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: startsWith('756')</td><td></td></tr>
 </table>
 
           
@@ -515,9 +518,9 @@ Summary
             <h4>Constraints</h4>
 <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
-<tr><td>ahvn13-digit-check</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(value.substring(3,1).toInteger()*3)+(value.substring(4,1).toInteger()*1)+(value.substring(5,1).toInteger()*3)+(value.substring(6,1).toInteger()*1)+(value.substring(7,1).toInteger()*3)+(value.substring(8,1).toInteger()*1)+(value.substring(9,1).toInteger()*3)+(value.substring(10,1).toInteger()*1)+(value.substring(11,1).toInteger()*3))mod(10))mod(10))=value.substring(12,1).toInteger())</td><td></td></tr>
-<tr><td>ahvn13-length</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: value.matches('^[0-9]{13}$')</td><td></td></tr>
-<tr><td>ahvn13-startswith756</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: value.startsWith('756')</td><td></td></tr>
+<tr><td>ahvn13-digit-check</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(substring(3,1).toInteger()*3)+(substring(4,1).toInteger()*1)+(substring(5,1).toInteger()*3)+(substring(6,1).toInteger()*1)+(substring(7,1).toInteger()*3)+(substring(8,1).toInteger()*1)+(substring(9,1).toInteger()*3)+(substring(10,1).toInteger()*1)+(substring(11,1).toInteger()*3))mod(10))mod(10))=substring(12,1).toInteger())</td><td></td></tr>
+<tr><td>ahvn13-length</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: matches('^[0-9]{13}$')</td><td></td></tr>
+<tr><td>ahvn13-startswith756</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: startsWith('756')</td><td></td></tr>
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 </table>
 
@@ -556,9 +559,9 @@ Summary
             <h4>Constraints</h4>
 <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
-<tr><td>ahvn13-digit-check</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(value.substring(3,1).toInteger()*3)+(value.substring(4,1).toInteger()*1)+(value.substring(5,1).toInteger()*3)+(value.substring(6,1).toInteger()*1)+(value.substring(7,1).toInteger()*3)+(value.substring(8,1).toInteger()*1)+(value.substring(9,1).toInteger()*3)+(value.substring(10,1).toInteger()*1)+(value.substring(11,1).toInteger()*3))mod(10))mod(10))=value.substring(12,1).toInteger())</td><td></td></tr>
-<tr><td>ahvn13-length</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: value.matches('^[0-9]{13}$')</td><td></td></tr>
-<tr><td>ahvn13-startswith756</td><td>error</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: value.startsWith('756')</td><td></td></tr>
+<tr><td>ahvn13-digit-check</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must pass digit check - https://www.gs1.org/services/how-calculate-check-digit-manually<br/>: (((10-(28+(substring(3,1).toInteger()*3)+(substring(4,1).toInteger()*1)+(substring(5,1).toInteger()*3)+(substring(6,1).toInteger()*1)+(substring(7,1).toInteger()*3)+(substring(8,1).toInteger()*1)+(substring(9,1).toInteger()*3)+(substring(10,1).toInteger()*1)+(substring(11,1).toInteger()*3))mod(10))mod(10))=substring(12,1).toInteger())</td><td></td></tr>
+<tr><td>ahvn13-length</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must be exactly 13 characters long<br/>: matches('^[0-9]{13}$')</td><td></td></tr>
+<tr><td>ahvn13-startswith756</td><td>warning</td><td>Identifier.value</td><td>AHVN13 / NAVS13 must start with 756<br/>: startsWith('756')</td><td></td></tr>
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 <tr><td>ext-1</td><td>error</td><td>**ALL** extensions</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
 </table>
@@ -671,7 +674,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-core#4.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 27, 2023 23:16+0200">2023-06-27</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-core#4.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 19, 2023 13:50+0100">2023-12-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -679,7 +682,7 @@ Summary
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeZjRSISsMmPJawlA6EbFNg1kQyu013AilssLb5AohZ2vUCDw/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-core%234.0.0-ballot%20/StructureDefinition-ch-core-ahvn13-identifier.html&amp;entry%2E247644557=AHVN13%20/%20NAVS13%20Identifier">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeZjRSISsMmPJawlA6EbFNg1kQyu013AilssLb5AohZ2vUCDw/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-core%234.0.0%20/StructureDefinition-ch-core-ahvn13-identifier.html&amp;entry%2E247644557=AHVN13%20/%20NAVS13%20Identifier">Propose a change</a>
 
           </span>
         </p>
