@@ -6,12 +6,12 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_EMED</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed</pre><div><p>Implementation Guide for the eMedication in Switzerland.</p>\n</div></div>"
   },
   "url" : "http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed",
-  "version" : "4.0.0-ballot",
+  "version" : "4.0.0",
   "name" : "CH_EMED",
   "title" : "CH EMED (R4)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2023-06-29",
+  "date" : "2023-12-19",
   "publisher" : "HL7 Switzerland",
   "contact" : [{
     "name" : "HL7 Switzerland",
@@ -53,19 +53,19 @@
     "id" : "ch_fhir_ig_ch_core",
     "uri" : "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core",
     "packageId" : "ch.fhir.ig.ch-core",
-    "version" : "4.0.0-ballot"
+    "version" : "4.0.0"
   },
   {
     "id" : "ch_fhir_ig_ch_epr_term",
     "uri" : "http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term",
     "packageId" : "ch.fhir.ig.ch-epr-term",
-    "version" : "2.0.9"
+    "version" : "2.0.10"
   },
   {
     "id" : "hl7_terminology",
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology",
-    "version" : "5.1.0"
+    "version" : "5.4.0"
   }],
   "definition" : {
     "extension" : [{
@@ -86,7 +86,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "ballot"
+        "valueString" : "trial-use"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -335,6 +335,17 @@
     {
       "extension" : [{
         "url" : "code",
+        "valueString" : "apply-wg"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
         "valueString" : "active-tables"
       },
       {
@@ -409,7 +420,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "ballot"
+        "valueString" : "trial-use"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -648,6 +659,17 @@
       "extension" : [{
         "url" : "code",
         "valueCode" : "apply-version"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-wg"
       },
       {
         "url" : "value",
@@ -1097,6 +1119,54 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/3-1-Composition"
+      },
+      "name" : "3-1 Composition for Medication Dispense document",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/3-1-MedicationDispense"
+      },
+      "name" : "3-1 Medication Dispense document",
+      "description" : "Example for Bundle",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Composition"
+      }],
+      "reference" : {
+        "reference" : "Composition/3-2-Composition"
+      },
+      "name" : "3-2 Composition for Medication Dispense document",
+      "description" : "Example for Composition",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/3-2-MedicationDispense"
+      },
+      "name" : "3-2 Medication Dispense document",
+      "description" : "Example for Bundle",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
@@ -1368,6 +1438,30 @@
       },
       "name" : "CH EMED Medication Treatment Plan Document",
       "description" : "Definition of the bundle for the medication treatment plan document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationadministration"
+      },
+      "name" : "CH EMED MedicationAdministration (DIS)",
+      "description" : "Definition of the medication administration for the medication dispense document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ch-emed-medicationadministration-list"
+      },
+      "name" : "CH EMED MedicationAdministration (LIST)",
+      "description" : "Definition of the medication administration for the medication list document",
       "exampleBoolean" : false
     },
     {
@@ -1697,6 +1791,42 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Patient"
+      }],
+      "reference" : {
+        "reference" : "Patient/MaxMoser"
+      },
+      "name" : "Max Moser",
+      "description" : "Example for Patient",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationAdministration"
+      }],
+      "reference" : {
+        "reference" : "MedicationAdministration/3-2-MedAdminFentanyl"
+      },
+      "name" : "Medication Administration Fentanyl",
+      "description" : "Example for MedicationAdministration (DIS)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationadministration"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationAdministration"
+      }],
+      "reference" : {
+        "reference" : "MedicationAdministration/3-1-MedAdminNacl"
+      },
+      "name" : "Medication Administration NaCL",
+      "description" : "Example for MedicationAdministration (DIS)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationadministration"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "MedicationDispense"
       }],
       "reference" : {
@@ -1823,18 +1953,6 @@
         "reference" : "Observation/Obs-ChangeDosage"
       },
       "name" : "Observation for Pharmaceutical Advice document",
-      "description" : "Example for Observation (PADV): CHANGE",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Observation"
-      }],
-      "reference" : {
-        "reference" : "Observation/PharmaceuticalAdvice-ChangeDosage"
-      },
-      "name" : "Observation for Pharmaceutical Advice document",
       "description" : "Example for Observation (PADV): CHANGE with new MedicationStatement",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"
     },
@@ -1861,6 +1979,42 @@
       "name" : "Pharmaceutical Advice document to change the dosage",
       "description" : "Example for Bundle",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Practitioner"
+      }],
+      "reference" : {
+        "reference" : "Practitioner/PriskaHuber"
+      },
+      "name" : "Priska Huber",
+      "description" : "Example for Practitioner",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitioner"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PractitionerRole"
+      }],
+      "reference" : {
+        "reference" : "PractitionerRole/PriskaHuberAtRettungsdienst"
+      },
+      "name" : "Priska Huber @ Rettungsdienst",
+      "description" : "Example for PractitionerRole",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitionerrole"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/Rettungsdienst"
+      },
+      "name" : "Rettungsdienst",
+      "description" : "Example for Organization",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-organization"
     },
     {
       "extension" : [{
@@ -2080,10 +2234,10 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "different-authors.html"
+          "valueUrl" : "authorship.html"
         }],
-        "nameUrl" : "different-authors.html",
-        "title" : "Different Authors",
+        "nameUrl" : "authorship.html",
+        "title" : "Authorship",
         "generation" : "markdown"
       },
       {

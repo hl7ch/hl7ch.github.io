@@ -1,0 +1,89 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/Composition/3-2-Composition> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "3-2-Composition"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense>
+     ] )
+  ] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><p><b>Generated Narrative: Composition</b><a name=\"3-2-Composition\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Composition &quot;3-2-Composition&quot;  (Language &quot;de-CH&quot;) </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emed-composition-medicationdispense.html\">CH EMED Medication Dispense Composition</a></p></div><p><b>identifier</b>: id: <a href=\"http://terminology.hl7.org/5.4.0/NamingSystem-uri.html\">#</a>urn:uuid:8ef0d745-e218-4636-abac-ea842ca6a421</p><p><b>status</b>: final</p><p><b>type</b>: Medication dispense document (record artifact) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT[??]</a>#82291000195104; <a href=\"https://loinc.org/\">LOINC</a>#60593-1 &quot;Medication dispensed.extended Document&quot;)</span></p><p><b>date</b>: 2020-02-03 17:00:00+0100</p><p><b>author</b>: <a href=\"PractitionerRole-PriskaHuberAtRettungsdienst.html\">PractitionerRole/PriskaHuberAtRettungsdienst</a></p><p><b>title</b>: Abgabe</p><p><b>confidentiality</b>: N</p></div>"
+  ] ; # 
+  fhir:identifier [
+     fhir:system [ fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "urn:uuid:8ef0d745-e218-4636-abac-ea842ca6a421" ]
+  ] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a sct:82291000195104 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:version [ fhir:v "http://snomed.info/sct/2011000195101" ] ;
+       fhir:code [ fhir:v "82291000195104" ] ;
+       fhir:display [ fhir:v "Medication dispense document (record artifact)" ]
+     ] [
+       a loinc:60593-1 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "60593-1" ] ;
+       fhir:display [ fhir:v "Medication dispensed.extended Document" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-emed/Patient/MaxMoser> ;
+     fhir:reference [ fhir:v "Patient/MaxMoser" ]
+  ] ; # 
+  fhir:date [ fhir:v "2020-02-03T17:00:00+01:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-emed/PractitionerRole/PriskaHuberAtRettungsdienst> ;
+     fhir:reference [ fhir:v "PractitionerRole/PriskaHuberAtRettungsdienst" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Abgabe"] ; # 
+  fhir:confidentiality [
+     fhir:v "N" ;
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a sct:17621005 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "17621005" ] ;
+           fhir:display [ fhir:v "Normal (qualifier value)" ]
+         ] )
+       ]
+     ] )
+  ] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Abgabe eines Medikaments" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:60590-7 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "60590-7" ] ;
+         fhir:display [ fhir:v "Medication dispensed.brief Document" ]
+       ] )
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><span id=\"co1\">Anwendung: 0.05 mg Fentanyl, 14:32, 03.02.2020</span></div>"
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-emed/MedicationAdministration/3-2-MedAdminFentanyl> ;
+       fhir:reference [ fhir:v "MedicationAdministration/3-2-MedAdminFentanyl" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

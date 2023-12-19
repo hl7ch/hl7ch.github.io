@@ -7,12 +7,12 @@
 </div></div>
   </text>
   <url value="http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed"/>
-  <version value="4.0.0-ballot"/>
+  <version value="4.0.0"/>
   <name value="CH_EMED"/>
   <title value="CH EMED (R4)"/>
   <status value="active"/>
   <experimental value="false"/>
-  <date value="2023-06-29"/>
+  <date value="2023-12-19"/>
   <publisher value="HL7 Switzerland"/>
   <contact>
     <name value="HL7 Switzerland"/>
@@ -51,17 +51,17 @@
   <dependsOn id="ch_fhir_ig_ch_core">
     <uri value="http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core"/>
     <packageId value="ch.fhir.ig.ch-core"/>
-    <version value="4.0.0-ballot"/>
+    <version value="4.0.0"/>
   </dependsOn>
   <dependsOn id="ch_fhir_ig_ch_epr_term">
     <uri value="http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term"/>
     <packageId value="ch.fhir.ig.ch-epr-term"/>
-    <version value="2.0.9"/>
+    <version value="2.0.10"/>
   </dependsOn>
   <dependsOn id="hl7_terminology">
     <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
     <packageId value="hl7.terminology"/>
-    <version value="5.1.0"/>
+    <version value="5.4.0"/>
   </dependsOn>
   <definition>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -77,7 +77,7 @@
         <valueString value="releaselabel"/>
       </extension>
       <extension url="value">
-        <valueString value="ballot"/>
+        <valueString value="trial-use"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -258,6 +258,14 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
+        <valueString value="apply-wg"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
         <valueString value="active-tables"/>
       </extension>
       <extension url="value">
@@ -312,7 +320,7 @@
         <valueCode value="releaselabel"/>
       </extension>
       <extension url="value">
-        <valueString value="ballot"/>
+        <valueString value="trial-use"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -486,6 +494,14 @@
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
         <valueCode value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-wg"/>
       </extension>
       <extension url="value">
         <valueString value="true"/>
@@ -885,6 +901,50 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <reference>
+        <reference value="Composition/3-1-Composition"/>
+      </reference>
+      <name value="3-1 Composition for Medication Dispense document"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/3-1-MedicationDispense"/>
+      </reference>
+      <name value="3-1 Medication Dispense document"/>
+      <description value="Example for Bundle"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Composition"/>
+      </extension>
+      <reference>
+        <reference value="Composition/3-2-Composition"/>
+      </reference>
+      <name value="3-2 Composition for Medication Dispense document"/>
+      <description value="Example for Composition"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/3-2-MedicationDispense"/>
+      </reference>
+      <name value="3-2 Medication Dispense document"/>
+      <description value="Example for Bundle"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
@@ -1134,6 +1194,28 @@
       </reference>
       <name value="CH EMED Medication Treatment Plan Document"/>
       <description value="Definition of the bundle for the medication treatment plan document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationadministration"/>
+      </reference>
+      <name value="CH EMED MedicationAdministration (DIS)"/>
+      <description value="Definition of the medication administration for the medication dispense document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ch-emed-medicationadministration-list"/>
+      </reference>
+      <name value="CH EMED MedicationAdministration (LIST)"/>
+      <description value="Definition of the medication administration for the medication list document"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1435,6 +1517,39 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <reference>
+        <reference value="Patient/MaxMoser"/>
+      </reference>
+      <name value="Max Moser"/>
+      <description value="Example for Patient"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationAdministration"/>
+      </extension>
+      <reference>
+        <reference value="MedicationAdministration/3-2-MedAdminFentanyl"/>
+      </reference>
+      <name value="Medication Administration Fentanyl"/>
+      <description value="Example for MedicationAdministration (DIS)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationadministration"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationAdministration"/>
+      </extension>
+      <reference>
+        <reference value="MedicationAdministration/3-1-MedAdminNacl"/>
+      </reference>
+      <name value="Medication Administration NaCL"/>
+      <description value="Example for MedicationAdministration (DIS)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationadministration"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="MedicationDispense"/>
       </extension>
       <reference>
@@ -1551,17 +1666,6 @@
         <reference value="Observation/Obs-ChangeDosage"/>
       </reference>
       <name value="Observation for Pharmaceutical Advice document"/>
-      <description value="Example for Observation (PADV): CHANGE"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Observation"/>
-      </extension>
-      <reference>
-        <reference value="Observation/PharmaceuticalAdvice-ChangeDosage"/>
-      </reference>
-      <name value="Observation for Pharmaceutical Advice document"/>
       <description value="Example for Observation (PADV): CHANGE with new MedicationStatement"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-observation"/>
     </resource>
@@ -1586,6 +1690,39 @@
       <name value="Pharmaceutical Advice document to change the dosage"/>
       <description value="Example for Bundle"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-pharmaceuticaladvice"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/PriskaHuber"/>
+      </reference>
+      <name value="Priska Huber"/>
+      <description value="Example for Practitioner"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitioner"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="PractitionerRole"/>
+      </extension>
+      <reference>
+        <reference value="PractitionerRole/PriskaHuberAtRettungsdienst"/>
+      </reference>
+      <name value="Priska Huber @ Rettungsdienst"/>
+      <description value="Example for PractitionerRole"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-practitionerrole"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/Rettungsdienst"/>
+      </reference>
+      <name value="Rettungsdienst"/>
+      <description value="Example for Organization"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-organization"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -1783,10 +1920,10 @@
       </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="different-authors.html"/>
+          <valueUrl value="authorship.html"/>
         </extension>
-        <nameUrl value="different-authors.html"/>
-        <title value="Different Authors"/>
+        <nameUrl value="authorship.html"/>
+        <title value="Authorship"/>
         <generation value="markdown"/>
       </page>
       <page>

@@ -7,7 +7,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-EMED\CH EMED Medication - FHIR v4.0.1</title>
+    <title>CH EMED Medication - CH EMED (R4) v4.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -66,7 +66,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EMED (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.0-ballot - ballot
+            <span style="display:inline-block;">4.0.0 - trial-use
 
 
 
@@ -150,7 +150,7 @@
         <a href="repeated-dispense.html">Repeated Dispense (Prescription)</a>
       </li>
       <li>
-        <a href="different-authors.html">Different Authors</a>
+        <a href="authorship.html">Authorship</a>
       </li>
     </ul>
   </li>
@@ -191,7 +191,7 @@
           <div class="inner-wrapper">
 
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v4.0.0-ballot: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 4 Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v4.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   
 
 
@@ -275,7 +275,7 @@
       <td colspan="4"><i>Official URL</i>: <span class="copy-text">http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication<button title="Click to copy URL" class="btn-copy" data-clipboard-text="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication"/></span>
       </td>
       <td><i>Version</i>:
-      <span class="copy-text">4.0.0-ballot<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication|4.0.0-ballot"/></span>
+      <span class="copy-text">4.0.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication|4.0.0"/></span>
       </td>
     </tr>
 
@@ -291,7 +291,7 @@
         
           Active
           
-            as of 2023-06-29
+            as of 2023-12-19
           
         
       </td>
@@ -602,6 +602,12 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
             <h4>Constraints</h4>
 <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
+<tr><td>ch-emed-med-1</td><td>error</td><td>Medication</td><td>Medication or ingredient name has to be specified<br/>: code.text.exists() or ingredient.item.text.exists()</td><td></td></tr>
+<tr><td>dom-2</td><td>error</td><td>Medication</td><td>If the resource is contained in another resource, it SHALL NOT contain nested Resources<br/>: contained.contained.empty()</td><td></td></tr>
+<tr><td>dom-3</td><td>error</td><td>Medication</td><td>If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
+<tr><td>dom-4</td><td>error</td><td>Medication</td><td>If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated<br/>: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</td><td></td></tr>
+<tr><td>dom-5</td><td>error</td><td>Medication</td><td>If a resource is contained in another resource, it SHALL NOT have a security label<br/>: contained.meta.security.empty()</td><td></td></tr>
+<tr><td>dom-6</td><td>best practice</td><td>Medication</td><td>A resource should have narrative for robust management<br/>: text.`div`.exists()</td><td></td></tr>
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 <tr><td>ext-1</td><td>error</td><td>**ALL** extensions</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
 <tr><td>rat-1</td><td>error</td><td>Medication.amount, Medication.ingredient.strength</td><td>Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present<br/>: (numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())</td><td></td></tr>
@@ -639,7 +645,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     "extension": [
     ],
     "<a href="StructureDefinition-ch-emed-medication.html#Medication.identifier" title="Business identifier for this medication" class="dict"><span style="text-decoration: underline">identifier</span></a>" : [{<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a></span>}], <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8">Business identifier for this medication</span>
-    "<a href="StructureDefinition-ch-emed-medication.html#Medication.code" title="A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems" class="dict"><span style="text-decoration: underline">code</span></a>" : { <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Codes that identify this medication</a></span>
+    "<a href="StructureDefinition-ch-emed-medication.html#Medication.code" title="A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems" class="dict"><span style="text-decoration: underline">code</span></a>" : { <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Codes that identify this medication</a></span>
       "extension": [
       ],
       "<a href="StructureDefinition-ch-emed-medication.html#Medication.code.coding" title="A reference to a code defined by a terminology system" class="dict"><span style="text-decoration: underline">coding</span></a>" : [ <span style="color: navy">// sliced by value:system  in the specified order Open</span>
@@ -666,7 +672,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     },
     "<a href="StructureDefinition-ch-emed-medication.html#Medication.status" title="A code to indicate if the medication is in active use (this element modifies the meaning of other elements)" class="dict"><span style="text-decoration: underline">status</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#code">code</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">active | inactive | entered-in-error</a></span>
     "<a href="StructureDefinition-ch-emed-medication.html#Medication.manufacturer" title="Describes the details of the manufacturer of the medication product.  This is not intended to represent the distributor of a medication product" class="dict"><span style="text-decoration: underline">manufacturer</span></a>" : {<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a></span>(<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/organization.html">Organization</a></span>)}, <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8">Manufacturer of the item</span>
-    "<a href="StructureDefinition-ch-emed-medication.html#Medication.form" title="Describes the form of the item.  Powder; tablets; capsule" class="dict"><span style="text-decoration: underline">form</span></a>" : { <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Galenic form</a></span>
+    "<a href="StructureDefinition-ch-emed-medication.html#Medication.form" title="Describes the form of the item.  Powder; tablets; capsule" class="dict"><span style="text-decoration: underline">form</span></a>" : { <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Galenic form</a></span>
       "extension": [
       ],
       "<a href="StructureDefinition-ch-emed-medication.html#Medication.form.coding" title="A reference to a code defined by a terminology system (this element must be supported)" class="dict"><span style="text-decoration: underline">coding</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: brown" title="This element is required"><b>R!</b></span> <span style="color: navy; opacity: 0.8">Code defined by a terminology system</span>
@@ -681,11 +687,11 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
       "<a href="StructureDefinition-ch-emed-medication.html#Medication.form.text" title="A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user" class="dict"><span style="text-decoration: underline">text</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></span>&gt;" <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8">Plain text representation of the concept</span>
     },
     "<a href="StructureDefinition-ch-emed-medication.html#Medication.amount" title="A relationship of two Quantity values - expressed as a numerator and a denominator" class="dict"><span style="text-decoration: underline">amount</span></a>" : {<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#Ratio">Ratio</a></span> (as <span style="color: darkgreen"><a href="StructureDefinition-ch-emed-ratio.html#Ratio">CHEMEDRatioWithEmedUnits</a></span>)}, <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children; rat-1: Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present"><b>C?</b></span> <span style="color: navy; opacity: 0.8">Package size</span>
-    "<a href="StructureDefinition-ch-emed-medication.html#Medication.ingredient" title="Identifies a particular constituent of interest in the product" class="dict"><span style="text-decoration: underline">ingredient</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8">Active or inactive ingredient</span>
+    "<a href="StructureDefinition-ch-emed-medication.html#Medication.ingredient" title="Identifies a particular constituent of interest in the product" class="dict"><span style="text-decoration: underline">ingredient</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8">Active or inactive ingredient</span>
       "extension": [
       ],
       "<a href="StructureDefinition-ch-emed-medication.html#Medication.ingredient.itemCodeableConcept" title="The actual ingredient - either a substance (simple ingredient) or another medication of a medication" class="dict"><span style="text-decoration: underline">itemCodeableConcept</span></a>" : [ <span style="color: navy">// sliced by type:$this  in the specified order Open</span>
-        { // <span style="color: navy; opacity: 0.8">The actual ingredient or content</span>
+        { // <span style="color: navy; opacity: 0.8">The actual ingredient or content</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span>
           "<a href="StructureDefinition-ch-emed-medication.html#Medication.ingredient.itemCodeableConcept.extension" title="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension" class="dict"><span style="text-decoration: underline">extension</span></a>" : [ <span style="color: navy">// sliced by value:url  in the specified order Open</span>
           ],
           "<a href="StructureDefinition-ch-emed-medication.html#Medication.ingredient.itemCodeableConcept.coding" title="A reference to a code defined by a terminology system" class="dict"><span style="text-decoration: underline">coding</span></a>" : [{<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#Coding">Coding</a></span>}], <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Ingredients coded with SNOMED CT</a></span>
@@ -976,6 +982,12 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
             <h4>Constraints</h4>
 <table class="list">
 <tr><td width="60"><b>Id</b></td><td><b>Grade</b></td><td><b>Path(s)</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>
+<tr><td>ch-emed-med-1</td><td>error</td><td>Medication</td><td>Medication or ingredient name has to be specified<br/>: code.text.exists() or ingredient.item.text.exists()</td><td></td></tr>
+<tr><td>dom-2</td><td>error</td><td>Medication</td><td>If the resource is contained in another resource, it SHALL NOT contain nested Resources<br/>: contained.contained.empty()</td><td></td></tr>
+<tr><td>dom-3</td><td>error</td><td>Medication</td><td>If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource<br/>: contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</td><td></td></tr>
+<tr><td>dom-4</td><td>error</td><td>Medication</td><td>If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated<br/>: contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</td><td></td></tr>
+<tr><td>dom-5</td><td>error</td><td>Medication</td><td>If a resource is contained in another resource, it SHALL NOT have a security label<br/>: contained.meta.security.empty()</td><td></td></tr>
+<tr><td>dom-6</td><td>best practice</td><td>Medication</td><td>A resource should have narrative for robust management<br/>: text.`div`.exists()</td><td></td></tr>
 <tr><td>ele-1</td><td>error</td><td>**ALL** elements</td><td>All FHIR elements must have a @value or children<br/>: hasValue() or (children().count() &gt; id.count())</td><td></td></tr>
 <tr><td>ext-1</td><td>error</td><td>**ALL** extensions</td><td>Must have either extensions or value[x], not both<br/>: extension.exists() != value.exists()</td><td></td></tr>
 <tr><td>rat-1</td><td>error</td><td>Medication.amount, Medication.ingredient.strength</td><td>Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present<br/>: (numerator.empty() xor denominator.exists()) and (numerator.exists() or extension.exists())</td><td></td></tr>
@@ -1013,7 +1025,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     "extension": [
     ],
     "<a href="StructureDefinition-ch-emed-medication.html#Medication.identifier" title="Business identifier for this medication" class="dict"><span style="text-decoration: underline">identifier</span></a>" : [{<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a></span>}], <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8">Business identifier for this medication</span>
-    "<a href="StructureDefinition-ch-emed-medication.html#Medication.code" title="A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems" class="dict"><span style="text-decoration: underline">code</span></a>" : { <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Codes that identify this medication</a></span>
+    "<a href="StructureDefinition-ch-emed-medication.html#Medication.code" title="A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems" class="dict"><span style="text-decoration: underline">code</span></a>" : { <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Codes that identify this medication</a></span>
       "extension": [
       ],
       "<a href="StructureDefinition-ch-emed-medication.html#Medication.code.coding" title="A reference to a code defined by a terminology system" class="dict"><span style="text-decoration: underline">coding</span></a>" : [ <span style="color: navy">// sliced by value:system  in the specified order Open</span>
@@ -1040,7 +1052,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
     },
     "<a href="StructureDefinition-ch-emed-medication.html#Medication.status" title="A code to indicate if the medication is in active use (this element modifies the meaning of other elements)" class="dict"><span style="text-decoration: underline">status</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#code">code</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">active | inactive | entered-in-error</a></span>
     "<a href="StructureDefinition-ch-emed-medication.html#Medication.manufacturer" title="Describes the details of the manufacturer of the medication product.  This is not intended to represent the distributor of a medication product" class="dict"><span style="text-decoration: underline">manufacturer</span></a>" : {<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a></span>(<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/organization.html">Organization</a></span>)}, <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8">Manufacturer of the item</span>
-    "<a href="StructureDefinition-ch-emed-medication.html#Medication.form" title="Describes the form of the item.  Powder; tablets; capsule" class="dict"><span style="text-decoration: underline">form</span></a>" : { <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Galenic form</a></span>
+    "<a href="StructureDefinition-ch-emed-medication.html#Medication.form" title="Describes the form of the item.  Powder; tablets; capsule" class="dict"><span style="text-decoration: underline">form</span></a>" : { <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Galenic form</a></span>
       "extension": [
       ],
       "<a href="StructureDefinition-ch-emed-medication.html#Medication.form.coding" title="A reference to a code defined by a terminology system (this element must be supported)" class="dict"><span style="text-decoration: underline">coding</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: brown" title="This element is required"><b>R!</b></span> <span style="color: navy; opacity: 0.8">Code defined by a terminology system</span>
@@ -1055,11 +1067,11 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
       "<a href="StructureDefinition-ch-emed-medication.html#Medication.form.text" title="A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user" class="dict"><span style="text-decoration: underline">text</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></span>&gt;" <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8">Plain text representation of the concept</span>
     },
     "<a href="StructureDefinition-ch-emed-medication.html#Medication.amount" title="A relationship of two Quantity values - expressed as a numerator and a denominator" class="dict"><span style="text-decoration: underline">amount</span></a>" : {<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#Ratio">Ratio</a></span> (as <span style="color: darkgreen"><a href="StructureDefinition-ch-emed-ratio.html#Ratio">CHEMEDRatioWithEmedUnits</a></span>)}, <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children; rat-1: Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present"><b>C?</b></span> <span style="color: navy; opacity: 0.8">Package size</span>
-    "<a href="StructureDefinition-ch-emed-medication.html#Medication.ingredient" title="Identifies a particular constituent of interest in the product" class="dict"><span style="text-decoration: underline">ingredient</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: navy; opacity: 0.8">Active or inactive ingredient</span>
+    "<a href="StructureDefinition-ch-emed-medication.html#Medication.ingredient" title="Identifies a particular constituent of interest in the product" class="dict"><span style="text-decoration: underline">ingredient</span></a>" : [{ <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8">Active or inactive ingredient</span>
       "extension": [
       ],
       "<a href="StructureDefinition-ch-emed-medication.html#Medication.ingredient.itemCodeableConcept" title="The actual ingredient - either a substance (simple ingredient) or another medication of a medication" class="dict"><span style="text-decoration: underline">itemCodeableConcept</span></a>" : [ <span style="color: navy">// sliced by type:$this  in the specified order Open</span>
-        { // <span style="color: navy; opacity: 0.8">The actual ingredient or content</span>
+        { // <span style="color: navy; opacity: 0.8">The actual ingredient or content</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span>
           "<a href="StructureDefinition-ch-emed-medication.html#Medication.ingredient.itemCodeableConcept.extension" title="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension" class="dict"><span style="text-decoration: underline">extension</span></a>" : [ <span style="color: navy">// sliced by value:url  in the specified order Open</span>
           ],
           "<a href="StructureDefinition-ch-emed-medication.html#Medication.ingredient.itemCodeableConcept.coding" title="A reference to a code defined by a terminology system" class="dict"><span style="text-decoration: underline">coding</span></a>" : [{<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#Coding">Coding</a></span>}], <span style="color: Gray">//</span> <span style="color: brown" title="ele-1: All FHIR elements must have a @value or children"><b>C?</b></span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Ingredients coded with SNOMED CT</a></span>
@@ -1167,7 +1179,7 @@ Summary
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#4.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 29, 2023 15:03+0200">2023-06-29</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#4.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 19, 2023 15:44+0100">2023-12-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -1175,7 +1187,7 @@ Summary
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%234.0.0-ballot%20/StructureDefinition-ch-emed-medication.html&amp;entry%2E247644557=CH%20EMED%20Medication">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%234.0.0%20/StructureDefinition-ch-emed-medication.html&amp;entry%2E247644557=CH%20EMED%20Medication">Propose a change</a>
 
           </span>
         </p>
