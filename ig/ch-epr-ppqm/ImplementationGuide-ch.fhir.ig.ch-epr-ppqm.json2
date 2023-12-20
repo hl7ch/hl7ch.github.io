@@ -6,11 +6,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_EPR_PPQm</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-epr-ppqm/ImplementationGuide/ch.fhir.ig.ch-epr-ppqm</pre><div><p>Implementation Guide for the Privacy Policy Query for Mobile (PPQm) for the Swiss EPR</p>\n</div></div>"
   },
   "url" : "http://fhir.ch/ig/ch-epr-ppqm/ImplementationGuide/ch.fhir.ig.ch-epr-ppqm",
-  "version" : "2.0.0-ballot",
+  "version" : "2.0.0",
   "name" : "CH_EPR_PPQm",
   "title" : "CH EPR PPQm (R4)",
   "status" : "active",
-  "date" : "2023-06-30",
+  "date" : "2023-12-20",
   "publisher" : "eHealth Suisse",
   "contact" : [{
     "name" : "eHealth Suisse",
@@ -44,13 +44,13 @@
     "id" : "hl7_terminology",
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology",
-    "version" : "5.1.0"
+    "version" : "5.4.0"
   },
   {
     "id" : "ch_fhir_ig_ch_epr_term",
     "uri" : "http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term",
     "packageId" : "ch.fhir.ig.ch-epr-term",
-    "version" : "2.0.9"
+    "version" : "2.0.10"
   }],
   "definition" : {
     "extension" : [{
@@ -71,7 +71,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "ballot"
+        "valueString" : "draft"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -265,6 +265,17 @@
     {
       "extension" : [{
         "url" : "code",
+        "valueString" : "apply-wg"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
         "valueString" : "active-tables"
       },
       {
@@ -339,7 +350,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "ballot"
+        "valueString" : "draft"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -533,6 +544,17 @@
     {
       "extension" : [{
         "url" : "code",
+        "valueCode" : "apply-wg"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
         "valueCode" : "active-tables"
       },
       {
@@ -624,6 +646,42 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/PpqmFeedRequestBundleDelete"
+      },
+      "name" : "PPQm Feed Request Bundle for HTTP method DELETE -- delete policy sets",
+      "description" : "PPQm Feed Request Bundle for HTTP method DELETE -- delete policy sets",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmFeedRequestBundle"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/PpqmFeedRequestBundleAdd"
+      },
+      "name" : "PPQm Feed Request Bundle for HTTP method POST -- add new policy sets",
+      "description" : "PPQm Feed Request Bundle for HTTP method POST -- add new policy sets",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmFeedRequestBundle"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/PpqmFeedRequestBundleUpdate"
+      },
+      "name" : "PPQm Feed Request Bundle for HTTP method PUT -- conditionally add/update policy sets",
+      "description" : "PPQm Feed Request Bundle for HTTP method PUT -- conditionally add/update policy sets",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmFeedRequestBundle"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
       }],
       "reference" : {
@@ -632,6 +690,18 @@
       "name" : "PPQm Feed Request HTTP Method",
       "description" : "HTTP methods allowed in PPQm Feed requests",
       "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/6de90529-3baa-4157-9bef-e945363b2c39"
+      },
+      "name" : "PPQm Feed Response Bundle",
+      "description" : "PPQm Feed Response Bundle",
+      "exampleBoolean" : true
     },
     {
       "extension" : [{
@@ -666,7 +736,7 @@
         "reference" : "ValueSet/PpqmReferencedPolicySet"
       },
       "name" : "PPQm Referenced Policy Set",
-      "description" : "IDs of basis policy sets to be referenced from patient policies",
+      "description" : "IDs of basis policy sets that may be referenced from templates.  Note that this value set intentionally does not contain IDs of all policy sets contained in the official stack, see [documentation](https://github.com/ehealthsuisse/ch-epr-adr-ppq/blob/main/docs/Policies.md)",
       "exampleBoolean" : false
     },
     {
@@ -675,47 +745,11 @@
         "valueString" : "Bundle"
       }],
       "reference" : {
-        "reference" : "Bundle/PpqmRequestBundleDelete"
+        "reference" : "Bundle/PpqmRetrieveResponseBundle"
       },
-      "name" : "PPQm Request Bundle for HTTP method DELETE -- delete policy sets",
-      "description" : "PPQm Request Bundle for HTTP method DELETE -- delete policy sets",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmRequestBundle"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Bundle"
-      }],
-      "reference" : {
-        "reference" : "Bundle/PpqmRequestBundleAdd"
-      },
-      "name" : "PPQm Request Bundle for HTTP method POST -- add new policy sets",
-      "description" : "PPQm Request Bundle for HTTP method POST -- add new policy sets",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmRequestBundle"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Bundle"
-      }],
-      "reference" : {
-        "reference" : "Bundle/PpqmRequestBundleUpdate"
-      },
-      "name" : "PPQm Request Bundle for HTTP method PUT -- conditionally add/update policy sets",
-      "description" : "PPQm Request Bundle for HTTP method PUT -- conditionally add/update policy sets",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmRequestBundle"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Bundle"
-      }],
-      "reference" : {
-        "reference" : "Bundle/PpqmResponseBundle"
-      },
-      "name" : "PPQm Response Bundle",
-      "description" : "PPQm Response Bundle",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmResponseBundle"
+      "name" : "PPQm Retrieve Response Bundle",
+      "description" : "PPQm Retrieve Response Bundle",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmRetrieveResponseBundle"
     },
     {
       "extension" : [{
@@ -807,9 +841,9 @@
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/PpqmRequestBundle"
+        "reference" : "StructureDefinition/PpqmFeedRequestBundle"
       },
-      "name" : "PpqmRequestBundle",
+      "name" : "PpqmFeedRequestBundle",
       "description" : "Bundle for Mobile Privacy Policy Bundle Feed requests",
       "exampleBoolean" : false
     },
@@ -819,10 +853,10 @@
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/PpqmResponseBundle"
+        "reference" : "StructureDefinition/PpqmRetrieveResponseBundle"
       },
-      "name" : "PpqmResponseBundle",
-      "description" : "Bundle for Mobile Privacy Policy Query responses",
+      "name" : "PpqmRetrieveResponseBundle",
+      "description" : "Bundle for Mobile Privacy Policy Retrieve responses",
       "exampleBoolean" : false
     }],
     "page" : {

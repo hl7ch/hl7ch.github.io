@@ -7,11 +7,11 @@
 </div></div>
   </text>
   <url value="http://fhir.ch/ig/ch-epr-ppqm/ImplementationGuide/ch.fhir.ig.ch-epr-ppqm"/>
-  <version value="2.0.0-ballot"/>
+  <version value="2.0.0"/>
   <name value="CH_EPR_PPQm"/>
   <title value="CH EPR PPQm (R4)"/>
   <status value="active"/>
-  <date value="2023-06-30"/>
+  <date value="2023-12-20"/>
   <publisher value="eHealth Suisse"/>
   <contact>
     <name value="eHealth Suisse"/>
@@ -42,12 +42,12 @@
   <dependsOn id="hl7_terminology">
     <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
     <packageId value="hl7.terminology"/>
-    <version value="5.1.0"/>
+    <version value="5.4.0"/>
   </dependsOn>
   <dependsOn id="ch_fhir_ig_ch_epr_term">
     <uri value="http://fhir.ch/ig/ch-epr-term/ImplementationGuide/ch.fhir.ig.ch-epr-term"/>
     <packageId value="ch.fhir.ig.ch-epr-term"/>
-    <version value="2.0.9"/>
+    <version value="2.0.10"/>
   </dependsOn>
   <definition>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -63,7 +63,7 @@
         <valueString value="releaselabel"/>
       </extension>
       <extension url="value">
-        <valueString value="ballot"/>
+        <valueString value="draft"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -204,6 +204,14 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
+        <valueString value="apply-wg"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
         <valueString value="active-tables"/>
       </extension>
       <extension url="value">
@@ -258,7 +266,7 @@
         <valueCode value="releaselabel"/>
       </extension>
       <extension url="value">
-        <valueString value="ballot"/>
+        <valueString value="draft"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -399,6 +407,14 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
+        <valueCode value="apply-wg"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
         <valueCode value="active-tables"/>
       </extension>
       <extension url="value">
@@ -472,6 +488,39 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/PpqmFeedRequestBundleDelete"/>
+      </reference>
+      <name value="PPQm Feed Request Bundle for HTTP method DELETE -- delete policy sets"/>
+      <description value="PPQm Feed Request Bundle for HTTP method DELETE -- delete policy sets"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmFeedRequestBundle"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/PpqmFeedRequestBundleAdd"/>
+      </reference>
+      <name value="PPQm Feed Request Bundle for HTTP method POST -- add new policy sets"/>
+      <description value="PPQm Feed Request Bundle for HTTP method POST -- add new policy sets"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmFeedRequestBundle"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/PpqmFeedRequestBundleUpdate"/>
+      </reference>
+      <name value="PPQm Feed Request Bundle for HTTP method PUT -- conditionally add/update policy sets"/>
+      <description value="PPQm Feed Request Bundle for HTTP method PUT -- conditionally add/update policy sets"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmFeedRequestBundle"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="ValueSet"/>
       </extension>
       <reference>
@@ -480,6 +529,17 @@
       <name value="PPQm Feed Request HTTP Method"/>
       <description value="HTTP methods allowed in PPQm Feed requests"/>
       <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/6de90529-3baa-4157-9bef-e945363b2c39"/>
+      </reference>
+      <name value="PPQm Feed Response Bundle"/>
+      <description value="PPQm Feed Response Bundle"/>
+      <exampleBoolean value="true"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -511,7 +571,7 @@
         <reference value="ValueSet/PpqmReferencedPolicySet"/>
       </reference>
       <name value="PPQm Referenced Policy Set"/>
-      <description value="IDs of basis policy sets to be referenced from patient policies"/>
+      <description value="IDs of basis policy sets that may be referenced from templates.  Note that this value set intentionally does not contain IDs of all policy sets contained in the official stack, see [documentation](https://github.com/ehealthsuisse/ch-epr-adr-ppq/blob/main/docs/Policies.md)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -519,44 +579,11 @@
         <valueString value="Bundle"/>
       </extension>
       <reference>
-        <reference value="Bundle/PpqmRequestBundleDelete"/>
+        <reference value="Bundle/PpqmRetrieveResponseBundle"/>
       </reference>
-      <name value="PPQm Request Bundle for HTTP method DELETE -- delete policy sets"/>
-      <description value="PPQm Request Bundle for HTTP method DELETE -- delete policy sets"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmRequestBundle"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Bundle"/>
-      </extension>
-      <reference>
-        <reference value="Bundle/PpqmRequestBundleAdd"/>
-      </reference>
-      <name value="PPQm Request Bundle for HTTP method POST -- add new policy sets"/>
-      <description value="PPQm Request Bundle for HTTP method POST -- add new policy sets"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmRequestBundle"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Bundle"/>
-      </extension>
-      <reference>
-        <reference value="Bundle/PpqmRequestBundleUpdate"/>
-      </reference>
-      <name value="PPQm Request Bundle for HTTP method PUT -- conditionally add/update policy sets"/>
-      <description value="PPQm Request Bundle for HTTP method PUT -- conditionally add/update policy sets"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmRequestBundle"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Bundle"/>
-      </extension>
-      <reference>
-        <reference value="Bundle/PpqmResponseBundle"/>
-      </reference>
-      <name value="PPQm Response Bundle"/>
-      <description value="PPQm Response Bundle"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmResponseBundle"/>
+      <name value="PPQm Retrieve Response Bundle"/>
+      <description value="PPQm Retrieve Response Bundle"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-epr-ppqm/StructureDefinition/PpqmRetrieveResponseBundle"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -640,9 +667,9 @@
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/PpqmRequestBundle"/>
+        <reference value="StructureDefinition/PpqmFeedRequestBundle"/>
       </reference>
-      <name value="PpqmRequestBundle"/>
+      <name value="PpqmFeedRequestBundle"/>
       <description value="Bundle for Mobile Privacy Policy Bundle Feed requests"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -651,10 +678,10 @@
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/PpqmResponseBundle"/>
+        <reference value="StructureDefinition/PpqmRetrieveResponseBundle"/>
       </reference>
-      <name value="PpqmResponseBundle"/>
-      <description value="Bundle for Mobile Privacy Policy Query responses"/>
+      <name value="PpqmRetrieveResponseBundle"/>
+      <description value="Bundle for Mobile Privacy Policy Retrieve responses"/>
       <exampleBoolean value="false"/>
     </resource>
     <page>
