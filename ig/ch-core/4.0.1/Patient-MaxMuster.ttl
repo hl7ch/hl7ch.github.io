@@ -1,0 +1,156 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Patient/MaxMuster> a fhir:Patient ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "MaxMuster"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient>
+     ] [
+       fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-epr"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-epr>
+     ] )
+  ] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\"><b>Max Muster (OFFICIAL)</b> male, DoB: 1938-12-12 ( Medical record number: 8733)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Details:</td><td colspan=\"3\"><ul><li><a href=\"tel:+41326851234\">+41326851234</a></li><li>ph: 079 333 22 11(MOBILE)</li><li><a href=\"tel:+41321237788\">+41321237788</a></li><li><a href=\"mailto:max.muster@sampledomain.ch\">max.muster@sampledomain.ch</a></li><li><a href=\"www.sampledomain.ch\">www.sampledomain.ch</a></li><li>079 333 22 11</li><li>Leidensweg 10 Specimendorf 9999 CH (HOME)</li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Patient Links\">Links:</td><td colspan=\"3\"><ul><li>Managing Organization: <a href=\"Organization-GruppenpraxisCH.html\">Organization/GruppenpraxisCH</a> &quot;Gruppenpraxis CH&quot;</li></ul></td></tr></table></div>"
+  ] ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "MR" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "urn:oid:2.16.756.888888.3.1"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "8733" ]
+  ] ) ; # 
+  fhir:name ( [
+     fhir:use [ fhir:v "official" ] ;
+     fhir:family [
+       fhir:v "Muster" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "officialName" ]
+       ] )
+     ] ;
+     fhir:given ( [
+       fhir:v "Max" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-firstname"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "officialFirstName" ]
+       ] )
+     ] )
+  ] ) ; # 
+  fhir:telecom ( [
+     fhir:system [ fhir:v "phone" ] ;
+     fhir:value [ fhir:v "+41326851234" ] ;
+     fhir:use [
+       fhir:v "home" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-46-phonecategory"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:CodeableConcept ;
+           fhir:coding ( [
+             fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/ech-46-phonecategory"^^xsd:anyURI ] ;
+             fhir:code [ fhir:v "1" ] ;
+             fhir:display [ fhir:v "private Telefonnummer" ]
+           ] )
+         ]
+       ] )
+     ]
+  ] [
+     fhir:system [ fhir:v "phone" ] ;
+     fhir:value [ fhir:v "079 333 22 11" ] ;
+     fhir:use [
+       fhir:v "mobile" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-46-phonecategory"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:CodeableConcept ;
+           fhir:coding ( [
+             fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/ech-46-phonecategory"^^xsd:anyURI ] ;
+             fhir:code [ fhir:v "2" ] ;
+             fhir:display [ fhir:v "private Mobil-Nummer" ]
+           ] )
+         ]
+       ] )
+     ]
+  ] [
+     fhir:system [ fhir:v "phone" ] ;
+     fhir:value [ fhir:v "+41321237788" ] ;
+     fhir:use [
+       fhir:v "work" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-46-phonecategory"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:CodeableConcept ;
+           fhir:coding ( [
+             fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/ech-46-phonecategory"^^xsd:anyURI ] ;
+             fhir:code [ fhir:v "6" ] ;
+             fhir:display [ fhir:v "geschäftliche Nummer (Durchwahl)" ]
+           ] )
+         ]
+       ] )
+     ]
+  ] [
+     fhir:system [ fhir:v "email" ] ;
+     fhir:value [ fhir:v "max.muster@sampledomain.ch" ] ;
+     fhir:use [
+       fhir:v "home" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-46-emailcategory"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:CodeableConcept ;
+           fhir:coding ( [
+             fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/ech-46-emailcategory"^^xsd:anyURI ] ;
+             fhir:code [ fhir:v "1" ] ;
+             fhir:display [ fhir:v "private Email-Adresse" ]
+           ] )
+         ]
+       ] )
+     ]
+  ] [
+     fhir:system [ fhir:v "url" ] ;
+     fhir:value [ fhir:v "www.sampledomain.ch" ] ;
+     fhir:use [
+       fhir:v "work" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-46-internetcategory"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:CodeableConcept ;
+           fhir:coding ( [
+             fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/ech-46-internetcategory"^^xsd:anyURI ] ;
+             fhir:code [ fhir:v "2" ] ;
+             fhir:display [ fhir:v "geschäftliche Internet-Adresse" ]
+           ] )
+         ]
+       ] )
+     ]
+  ] [
+     fhir:system [ fhir:v "sms" ] ;
+     fhir:value [ fhir:v "079 333 22 11" ]
+  ] ) ; # 
+  fhir:gender [ fhir:v "male"] ; # 
+  fhir:birthDate [ fhir:v "1938-12-12"^^xsd:date] ; # 
+  fhir:address ( [
+     fhir:use [ fhir:v "home" ] ;
+     fhir:line ( [ fhir:v "Leidensweg" ] [ fhir:v "10" ] ) ;
+     fhir:city [ fhir:v "Specimendorf" ] ;
+     fhir:postalCode [ fhir:v "9999" ] ;
+     fhir:country [ fhir:v "CH" ]
+  ] ) ; # 
+  fhir:managingOrganization [
+     fhir:link <http://fhir.ch/ig/ch-core/Organization/GruppenpraxisCH> ;
+     fhir:reference [ fhir:v "Organization/GruppenpraxisCH" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

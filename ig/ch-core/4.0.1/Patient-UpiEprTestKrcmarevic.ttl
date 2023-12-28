@@ -1,0 +1,99 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Patient/UpiEprTestKrcmarevic> a fhir:Patient ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "UpiEprTestKrcmarevic"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "additional" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div><ul><li><b>EPR-SPID</b>: 7560521127080</li><li><b>Date of Birth</b>: 20.03.1982</li><li><b>First Name</b>: Claude-Hélène Marguerite</li><li><b>Official Name</b>: Krcmarevic</li><li><b>Original Name</b>: Scheuble</li><li><b>Sex</b>: 2 (Needs transformation to HL7 ValueSet, see <a href=\"ConceptMap-sex-ech11-to-fhir.html\">ConceptMap Sex eCH-011 to FHIR mapping</a>)</li><li><b>Mother</b></li><ul><li><b>First Name</b>: Hui Xue</li><li><b>Last Name</b>: Dalkiliç</li></ul><li><b>Father</b></li><ul><li><b>First Name</b>: Fabio Nicola</li><li><b>Last Name</b>: Dalkiliç</li></ul><li><b>Nationality</b>: Switzerland (8100)</li><li><b>Country of Birth</b>: Switzerland (8100)</li><li><b>Place of Birth</b>: Zürich (261)</li></ul></div><div>Base test data for Projectathon from UPI, see <a href=\"https://docs.google.com/spreadsheets/d/1yWPhTI7DDgYDMXPVFGRmdb50c8TuUnQp9fECM3iGTBo/edit#gid=0\">Google Doc for more examples.</a></div></div>"
+  ] ; # 
+  fhir:extension ( [
+     fhir:extension ( [
+       fhir:url [ fhir:v "code"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "CH" ] ;
+           fhir:display [ fhir:v "Switzerland" ]
+         ] )
+       ]
+     ] ) ;
+     fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/patient-citizenship"^^xsd:anyURI ]
+  ] [
+     fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/patient-birthPlace"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Address ;
+       fhir:city [
+         fhir:v "Zürich" ;
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-7-municipalityid"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "261" ]
+         ] )
+       ] ;
+       fhir:country [
+         fhir:v "Switzerland" ;
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding"^^xsd:anyURI ] ;
+           fhir:value [
+             a fhir:Coding ;
+             fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+             fhir:code [ fhir:v "CH" ]
+           ]
+         ] )
+       ]
+     ]
+  ] ) ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.3"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "761337611234567897" ]
+  ] ) ; # 
+  fhir:name ( [
+     fhir:use [ fhir:v "official" ] ;
+     fhir:family [ fhir:v "Krcmarevic" ] ;
+     fhir:given ( [ fhir:v "Claude-Hélène Marguerite" ] )
+  ] [
+     fhir:use [ fhir:v "maiden" ] ;
+     fhir:family [ fhir:v "Scheuble" ]
+  ] ) ; # 
+  fhir:gender [ fhir:v "female"] ; # 
+  fhir:birthDate [ fhir:v "1982-03-20"^^xsd:date] ; # 
+  fhir:contact ( [
+     fhir:relationship ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-RoleCode"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PRN" ] ;
+         fhir:display [ fhir:v "parent" ]
+       ] )
+     ] ) ;
+     fhir:name [
+       fhir:family [ fhir:v "Dalkiliç" ] ;
+       fhir:given ( [ fhir:v "Hui Xue" ] )
+     ]
+  ] [
+     fhir:relationship ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-RoleCode"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PRN" ] ;
+         fhir:display [ fhir:v "parent" ]
+       ] )
+     ] ) ;
+     fhir:name [
+       fhir:family [ fhir:v "Dalkiliç" ] ;
+       fhir:given ( [ fhir:v "Fabio Nicola" ] )
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

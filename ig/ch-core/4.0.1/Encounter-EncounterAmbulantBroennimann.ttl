@@ -1,0 +1,97 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Encounter/EncounterAmbulantBroennimann> a fhir:Encounter ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "EncounterAmbulantBroennimann"] ; # 
+  fhir:meta [
+     fhir:source [ fhir:v "https://www.ti.bfh.ch/de/bachelor/medizininformatik.html"^^xsd:anyURI ] ;
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Encounter</b><a name=\"EncounterAmbulantBroennimann\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Encounter &quot;EncounterAmbulantBroennimann&quot; </p><p style=\"margin-bottom: 0px\">Information Source: https://www.ti.bfh.ch/de/bachelor/medizininformatik.html!</p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-core-encounter.html\">CH Core Encounter</a></p></div><p><b>identifier</b>: Visit number: 1234</p><p><b>status</b>: finished</p><p><b>class</b>: ambulatory (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code AMB = 'ambulatory', stated as 'ambulatory')</p><p><b>priority</b>: angemeldet, geplant <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-bfs-medstats-18-admittype.html\">BFS Medizinische Statistik - 18 1.2.V03 - Eintrittsart / Mode d’admission / Genere di ricovero</a>#2)</span></p><p><b>subject</b>: <a href=\"Patient-ElisabethBroennimannByBFH.html\">Patient/ElisabethBroennimannByBFH</a> &quot; BRÖNNIMANN-BERTHOLET&quot;</p><p><b>period</b>: 2019-04-22 16:00:00+0200 --&gt; 2019-04-22 16:15:00+0200</p><h3>Hospitalizations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Extension</b></td><td><b>AdmitSource</b></td><td><b>DischargeDisposition</b></td></tr><tr><td style=\"display: none\">*</td><td>, , </td><td>Zuhause <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-bfs-medstats-17-admitsource.html\">BFS Medizinische Statistik - 17 1.2.V02 - Aufenthaltsort vor dem Eintritt / Séjour avant l’admission / Luogo di soggiorno prima dell’ammissione</a>#1)</span></td><td>geheilt/kein Behandlungsbedarf <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-bfs-medstats-29-dischargeencounter.html\">BFS Medizinische Statistik - 29 1.5.V04 - Behandlung nach Austritt / Prise en charge après la sortie / Trattamento dopo l’uscita</a>#1)</span></td></tr></table></div>"
+  ] ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "VN" ] ;
+         fhir:display [ fhir:v "Visit number" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "http://www.ti.bfh.ch/example/fallnummerdomain"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "1234" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "finished"] ; # 
+  fhir:class [
+     fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-ActCode"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "AMB" ] ;
+     fhir:display [ fhir:v "ambulatory" ]
+  ] ; # 
+  fhir:priority [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-18-admittype"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "2" ] ;
+       fhir:display [ fhir:v "angemeldet, geplant" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-core/Patient/ElisabethBroennimannByBFH> ;
+     fhir:reference [ fhir:v "Patient/ElisabethBroennimannByBFH" ]
+  ] ; # 
+  fhir:period [
+     fhir:start [ fhir:v "2019-04-22T16:00:00+02:00"^^xsd:dateTime ] ;
+     fhir:end [ fhir:v "2019-04-22T16:15:00+02:00"^^xsd:dateTime ]
+  ] ; # 
+  fhir:hospitalization [
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-bfs-ms-admitrole"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:Coding ;
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-19-admitrole"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1" ] ;
+         fhir:display [ fhir:v "selbst, Angehörige" ]
+       ]
+     ] [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-bfs-ms-dischargedecision"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:Coding ;
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-27-dischargedecision"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1" ] ;
+         fhir:display [ fhir:v "auf Initiative des Behandelnden" ]
+       ]
+     ] [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-bfs-ms-dischargedestination"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:Coding ;
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-28-dischargedestination"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1" ] ;
+         fhir:display [ fhir:v "Zuhause" ]
+       ]
+     ] ) ;
+     fhir:admitSource [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-17-admitsource"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1" ] ;
+         fhir:display [ fhir:v "Zuhause" ]
+       ] )
+     ] ;
+     fhir:dischargeDisposition [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-29-dischargeencounter"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1" ] ;
+         fhir:display [ fhir:v "geheilt/kein Behandlungsbedarf" ]
+       ] )
+     ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

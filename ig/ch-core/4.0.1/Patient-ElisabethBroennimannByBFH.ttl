@@ -1,0 +1,75 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Patient/ElisabethBroennimannByBFH> a fhir:Patient ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ElisabethBroennimannByBFH"] ; # 
+  fhir:meta [
+     fhir:source [ fhir:v "https://www.ti.bfh.ch/de/bachelor/medizininformatik.html"^^xsd:anyURI ] ;
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\"><b>Elisabeth Brönnimann-Bertholet </b> female, DoB: 1937-05-03 ( id: 80756015090002647590)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Known Marital status of Patient\">Marital Status:</td><td colspan=\"3\"><span title=\"Codes: {http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus 2}, {http://terminology.hl7.org/CodeSystem/v3-MaritalStatus M}\">verheiratet</span></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Details:</td><td colspan=\"3\"><ul><li><a href=\"tel:+41323216111\">+41 32 321 61 11</a></li><li><a href=\"mailto:elisabeth@broennimann.today\">elisabeth@broennimann.today</a></li><li>Kreuzweg 11 Biel/Bienne BE 2500 Schweiz (HOME)</li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Patient Links\">Links:</td><td colspan=\"3\"><ul><li>General Practitioner: <a href=\"Practitioner-HanspeterWengerByBFH.html\">Practitioner/HanspeterWengerByBFH</a> &quot; WENGER&quot;</li></ul></td></tr></table></div>"
+  ] ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.123.100.1.1.1"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "80756015090002647590" ]
+  ] ) ; # 
+  fhir:name ( [
+     fhir:family [ fhir:v "Brönnimann-Bertholet" ] ;
+     fhir:given ( [ fhir:v "Elisabeth" ] )
+  ] ) ; # 
+  fhir:telecom ( [
+     fhir:system [ fhir:v "phone" ] ;
+     fhir:value [ fhir:v "+41 32 321 61 11" ] ;
+     fhir:use [ fhir:v "home" ]
+  ] [
+     fhir:system [ fhir:v "email" ] ;
+     fhir:value [ fhir:v "elisabeth@broennimann.today" ]
+  ] ) ; # 
+  fhir:gender [ fhir:v "female"] ; # 
+  fhir:birthDate [ fhir:v "1937-05-03"^^xsd:date] ; # 
+  fhir:address ( [
+     fhir:use [ fhir:v "home" ] ;
+     fhir:line ( [ fhir:v "Kreuzweg 11" ] ) ;
+     fhir:city [ fhir:v "Biel/Bienne" ] ;
+     fhir:state [ fhir:v "BE" ] ;
+     fhir:postalCode [ fhir:v "2500" ] ;
+     fhir:country [
+       fhir:v "Schweiz" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "CH" ]
+         ]
+       ] )
+     ]
+  ] ) ; # 
+  fhir:maritalStatus [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "2" ] ;
+       fhir:display [ fhir:v "verheiratet" ]
+     ] [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "M" ] ;
+       fhir:display [ fhir:v "married" ]
+     ] )
+  ] ; # 
+  fhir:generalPractitioner ( [
+     fhir:link <http://fhir.ch/ig/ch-core/Practitioner/HanspeterWengerByBFH> ;
+     fhir:reference [ fhir:v "Practitioner/HanspeterWengerByBFH" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
