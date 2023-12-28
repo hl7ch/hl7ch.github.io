@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Use Case 5 Etablir Un Certificat Verifiable - Implementation Guide CH VACD v4.0.1</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"42"}
+    h3,h4,h5,h6{--heading-prefix:"42"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+        <!-- Placeholder for child template header declarations -->
+
+            <div id="family-nav">
+	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
+		alt="logo fhir" src="fhir-logo-www.png" />
+	</a>
+</div>
+
+            <div id="hl7-nav">
+    <a id="hl7-logo" no-external="true" href="http://www.hl7.ch">
+        <img alt="visit the hl7 website" height="50" src="hl7-logo.png" />
+    </a>            
+</div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Implementation Guide CH VACD</span>
+            <br/>
+            <span style="display:inline-block;">4.0.1 - trial-use
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+	<!--<li><a href="toc.html">Table of Contents</a></li> -->
+	<li>
+		<a href="index.html">Home</a>
+	</li>
+
+
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Use Cases
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="Use-Cases-Deutsch.html">Anwendungsfälle</a>
+			</li>
+			<li>
+				<a href="Use-Cases-Francais.html">Les cas d'utilisation</a>
+			</li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Documents/Messages
+			<b class="caret">
+			</b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="immunization-administration-document.html">Immunization Administration document</a>
+			</li>
+			<li>
+				<a href="vaccination-record-document.html">Vaccination Record document</a>
+			</li>
+			<li>
+				<a href="immunization-recommendation-request-message.html">Immunization Recommendation Request message</a>
+			</li>
+			<li>
+				<a href="immunization-recommendation-response-message.html">Immunization Recommendation Response message</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="profiles.html">Profiles</a>
+	</li>
+	<li>
+		<a href="extensions.html">Extensions</a>
+	</li>
+	<li>
+		<a href="terminology.html">Terminology</a>
+	</li>
+	<li>
+		<a href="artifacts.html">Artifacts</a>
+	</li>
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Test Cases
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="TestCases.html">Overview</a>
+			</li>
+			<li>
+				<a href="TestCases.html#a-immunizations">A Immunizations</a>
+			</li>
+			<li>
+				<a href="TestCases.html#b-other-elements">B Other Elements</a>
+			</li>
+			<li>
+				<a href="TestCases.html#c-correction-of-entries">C Correction of Entries</a>
+			</li>
+			<li>
+				<a href="TestCases.html#d-conflicts-on-merging-documents">D Conflicts on merging Documents</a>
+			</li>
+			<li>
+				<a href="TestCases.html#e-language-handling-on-merging-documents">E Language handling on merging Documents</a>
+			</li>
+			<li>
+				<a href="TestCases.html#f-add-notes-to-existing-elements">F Add Notes to existing Elements</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Use Case 5 Etablir Un Certificat Verifiable</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH VACD (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version in its permanent home (it will always be available at this URL).  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-vacd/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Use Case 5 Etablir Un Certificat Verifiable</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+</div>
+<h3 id="établir-un-certificat-vérifiable">Établir un certificat vérifiable</h3>
+
+<p>Un patient requiert un certificat vérifiable (p. ex. un certificat COVID-19) auprès d’un professionnel de la santé, en tant que justificatif internationalement reconnu de vaccination, de guérison confirmée ou de test confirmé par un laboratoire pour prouver l’immunité.</p>
+
+<p>Le professionnel de la santé établit un certificat vérifiable dans le système primaire ou sur le portail de la communauté.</p>
+
+<p>Le système primaire ou le portail de la communauté fait appel à un service central pour établir un certificat vérifiable internationalement reconnu et un code-barres. Le système primaire ou le portail de la communauté sauvegarde le certificat vérifiable et le code-barres dans le DEP du patient.</p>
+
+<p>Sur demande, le patient présente le certificat vérifiable sur la version mobile du portail pour les patients ou dans une application mobile spécifique.</p>
+
+<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="435.6718px" preserveAspectRatio="none" style="width:800px;height:435px;background:#FFFFFF;" version="1.1" viewBox="0 0 800 435" width="800.3171px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="8.8783" font-weight="bold" lengthAdjust="spacing" textLength="152.8339" x="323.583" y="18.096">Cr&#233;ation du carnet de vaccination</text><rect fill="none" height="48.1532" style="stroke:#000000;stroke-width:0.9512485136741974;" width="405.866" x="250.8125" y="161.4137" /><line style="stroke:#181818;stroke-width:0.3170828378913991;stroke-dasharray:5.0,5.0;" x1="58.9774" x2="58.9774" y1="75.4509" y2="375.1945" /><line style="stroke:#181818;stroke-width:0.3170828378913991;stroke-dasharray:5.0,5.0;" x1="274.2767" x2="274.2767" y1="75.4509" y2="375.1945" /><line style="stroke:#181818;stroke-width:0.3170828378913991;stroke-dasharray:5.0,5.0;" x1="502.5763" x2="502.5763" y1="75.4509" y2="375.1945" /><line style="stroke:#181818;stroke-width:0.3170828378913991;stroke-dasharray:5.0,5.0;" x1="604.0428" x2="604.0428" y1="75.4509" y2="375.1945" /><line style="stroke:#181818;stroke-width:0.3170828378913991;stroke-dasharray:5.0,5.0;" x1="699.8018" x2="699.8018" y1="75.4509" y2="375.1945" /><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="108.4423" x="3.1708" y="73.5781">Professionnel de la sant&#233;</text><ellipse cx="59.2945" cy="32.335" fill="#0000FF" rx="5.0733" ry="5.0733" style="stroke:#181818;stroke-width:0.3170828378913991;" /><path d="M59.2945,37.4083 L59.2945,54.5308 M51.0503,42.4817 L67.5386,42.4817 M59.2945,54.5308 L51.0503,64.0433 M59.2945,54.5308 L67.5386,64.0433 " fill="none" style="stroke:#181818;stroke-width:0.3170828378913991;" /><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="108.4423" x="3.1708" y="383.1438">Professionnel de la sant&#233;</text><ellipse cx="59.2945" cy="390.407" fill="#0000FF" rx="5.0733" ry="5.0733" style="stroke:#181818;stroke-width:0.3170828378913991;" /><path d="M59.2945,395.4803 L59.2945,412.6028 M51.0503,400.5537 L67.5386,400.5537 M59.2945,412.6028 L51.0503,422.1153 M59.2945,412.6028 L67.5386,422.1153 " fill="none" style="stroke:#181818;stroke-width:0.3170828378913991;" /><rect fill="#00CC00" height="19.3346" rx="1.5854" ry="1.5854" style="stroke:#181818;stroke-width:0.3170828378913991;" width="34.2449" x="257.1542" y="55.4821" /><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="25.3666" x="261.5933" y="68.5048">Portal</text><rect fill="#00CC00" height="19.3346" rx="1.5854" ry="1.5854" style="stroke:#181818;stroke-width:0.3170828378913991;" width="34.2449" x="257.1542" y="374.5603" /><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="25.3666" x="261.5933" y="387.583">Portal</text><rect fill="#00CC00" height="29.7909" rx="1.5854" ry="1.5854" style="stroke:#181818;stroke-width:0.3170828378913991;" width="97.6615" x="453.7455" y="45.0258" /><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="88.7832" x="458.1847" y="58.0485">Propre communaut&#233;</text><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="6.3417" x="499.4055" y="68.5048">A</text><rect fill="#00CC00" height="29.7909" rx="1.5854" ry="1.5854" style="stroke:#181818;stroke-width:0.3170828378913991;" width="97.6615" x="453.7455" y="374.5603" /><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="88.7832" x="458.1847" y="387.583">Propre communaut&#233;</text><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="6.3417" x="499.4055" y="398.0393">A</text><rect fill="#00AAFF" height="29.7909" rx="1.5854" ry="1.5854" style="stroke:#181818;stroke-width:0.3170828378913991;" width="92.5882" x="557.7487" y="45.0258" /><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="83.7099" x="562.1879" y="58.0485">Autre communaut&#233;</text><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="6.3417" x="600.872" y="68.5048">N</text><rect fill="#00AAFF" height="29.7909" rx="1.5854" ry="1.5854" style="stroke:#181818;stroke-width:0.3170828378913991;" width="92.5882" x="557.7487" y="374.5603" /><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="83.7099" x="562.1879" y="387.583">Autre communaut&#233;</text><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="6.3417" x="600.872" y="398.0393">N</text><rect fill="#00AA00" height="19.3346" rx="1.5854" ry="1.5854" style="stroke:#181818;stroke-width:0.3170828378913991;" width="86.2465" x="656.6786" y="55.4821" /><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="77.3682" x="661.1177" y="68.5048">Certificate Service</text><rect fill="#00AA00" height="19.3346" rx="1.5854" ry="1.5854" style="stroke:#181818;stroke-width:0.3170828378913991;" width="86.2465" x="656.6786" y="374.5603" /><text fill="#000000" font-family="sans-serif" font-size="8.8783" lengthAdjust="spacing" textLength="77.3682" x="661.1177" y="387.583">Certificate Service</text><polygon fill="#181818" points="266.6667,102.4797,273.0083,105.0163,266.6667,107.553,269.2033,105.0163" style="stroke:#181818;stroke-width:0.6341656757827983;" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="59.2945" x2="270.4717" y1="105.0163" y2="105.0163" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="63.7337" y="97.1543">[01]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="179.4689" x="84.027" y="92.2996">Ajuster les donn&#233;es de vaccination agr&#233;g&#233;es,</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="135.0773" x="84.027" y="102.009">cr&#233;er un document de vaccination</text><polygon fill="#181818" points="494.9663,130.7769,501.308,133.3135,494.9663,135.8502,497.503,133.3135" style="stroke:#181818;stroke-width:0.6341656757827983;" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="274.2767" x2="498.7713" y1="133.3135" y2="133.3135" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="278.7158" y="125.4515">[02]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="192.7864" x="299.0091" y="120.5968">Enregistrez le nouveau document de vaccination</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="150.9314" x="299.0091" y="130.3062">et remplacez les "anciens" documents</text><polygon fill="#181818" points="281.2525,138.3868,274.9108,140.9235,281.2525,143.4602,278.7158,140.9235" style="stroke:#181818;stroke-width:0.6341656757827983;" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="277.4475" x2="501.9421" y1="140.9235" y2="140.9235" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="285.0575" y="149.5281">[03]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="11.415" x="305.3508" y="149.5281">OK</text><path d="M250.8125,161.4137 L297.7408,161.4137 L297.7408,166.0498 L291.3991,172.3915 L250.8125,172.3915 L250.8125,161.4137 " fill="#EEEEEE" style="stroke:#000000;stroke-width:0.9512485136741974;" /><rect fill="none" height="48.1532" style="stroke:#000000;stroke-width:0.9512485136741974;" width="405.866" x="250.8125" y="161.4137" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="18.3908" x="260.325" y="170.0183">loop</text><polygon fill="#181818" points="596.4328,183.3693,602.7745,185.9059,596.4328,188.4426,598.9695,185.9059" style="stroke:#181818;stroke-width:0.6341656757827983;" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="274.2767" x2="600.2378" y1="185.9059" y2="185.9059" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="278.7158" y="182.8986">[04]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="266.3496" x="299.0091" y="182.8986">D&#233;finissez les "anciens" documents de vaccination sur "OBSOLETE"</text><polygon fill="#181818" points="281.2525,190.9792,274.9108,193.5159,281.2525,196.0526,278.7158,193.5159" style="stroke:#181818;stroke-width:0.6341656757827983;" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="277.4475" x2="603.4086" y1="193.5159" y2="193.5159" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="285.0575" y="202.1205">[05]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="11.415" x="305.3508" y="202.1205">OK</text><polygon fill="#181818" points="266.6667,224.9839,273.0083,227.5206,266.6667,230.0572,269.2033,227.5206" style="stroke:#181818;stroke-width:0.6341656757827983;" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="59.2945" x2="270.4717" y1="227.5206" y2="227.5206" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="63.7337" y="224.5132">[06]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="133.809" x="84.027" y="224.5132">Cr&#233;ation du carnet de vaccination</text><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="274.2767" x2="300.9116" y1="246.1083" y2="246.1083" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="300.9116" x2="300.9116" y1="246.1083" y2="254.3525" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="274.9108" x2="300.9116" y1="254.3525" y2="254.3525" /><polygon fill="#181818" points="281.2525,251.8158,274.9108,254.3525,281.2525,256.8891,278.7158,254.3525" style="stroke:#181818;stroke-width:0.6341656757827983;" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="278.7158" y="243.101">[07]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="153.4681" x="299.0091" y="243.101">Collecte des donn&#233;es pour le certificat</text><polygon fill="#181818" points="692.1918,270.4035,698.5335,272.9402,692.1918,275.4769,694.7285,272.9402" style="stroke:#181818;stroke-width:0.6341656757827983;" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="274.2767" x2="695.9968" y1="272.9402" y2="272.9402" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="278.7158" y="269.9329">[08]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="81.1732" x="299.0091" y="269.9329">envoyer les donn&#233;es</text><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="699.8018" x2="726.4368" y1="291.5279" y2="291.5279" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="726.4368" x2="726.4368" y1="291.5279" y2="299.7721" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="700.436" x2="726.4368" y1="299.7721" y2="299.7721" /><polygon fill="#181818" points="706.7776,297.2354,700.436,299.7721,706.7776,302.3088,704.241,299.7721" style="stroke:#181818;stroke-width:0.6341656757827983;" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="704.241" y="288.5206">[09]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="71.6607" x="724.5343" y="288.5206">Cr&#233;er un certificat</text><polygon fill="#181818" points="281.2525,304.8454,274.9108,307.3821,281.2525,309.9187,278.7158,307.3821" style="stroke:#181818;stroke-width:0.6341656757827983;" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="277.4475" x2="699.1677" y1="307.3821" y2="307.3821" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="285.0575" y="315.9867">[10]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="126.199" x="305.3508" y="315.9867">Certificat de vaccination d&#233;livr&#233;</text><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="274.2767" x2="300.9116" y1="336.9476" y2="336.9476" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="300.9116" x2="300.9116" y1="336.9476" y2="345.1917" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="274.9108" x2="300.9116" y1="345.1917" y2="345.1917" /><polygon fill="#181818" points="281.2525,342.6551,274.9108,345.1917,281.2525,347.7284,278.7158,345.1917" style="stroke:#181818;stroke-width:0.6341656757827983;" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="278.7158" y="333.9402">[11]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="171.2247" x="299.0091" y="333.9402">Enregistrement du certificat de vaccination</text><polygon fill="#181818" points="66.2703,350.2651,59.9287,352.8017,66.2703,355.3384,63.7337,352.8017" style="stroke:#181818;stroke-width:0.6341656757827983;" /><line style="stroke:#181818;stroke-width:0.6341656757827983;" x1="62.4653" x2="273.6425" y1="352.8017" y2="352.8017" /><text fill="#000000" font-family="sans-serif" font-size="8.2442" font-weight="bold" lengthAdjust="spacing" textLength="17.7566" x="70.0753" y="361.4063">[12]</text><text fill="#000000" font-family="sans-serif" font-size="8.2442" lengthAdjust="spacing" textLength="117.9548" x="90.3686" y="361.4063">Confirmation d'enregistration</text><text fill="#888888" font-family="sans-serif" font-size="6.3417" lengthAdjust="spacing" textLength="34.8791" x="382.5604" y="429.8318">Version 1.0</text></g></svg></div>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      if(window.location.hash != "") {
+          $('a[href="' + window.location.hash + '"]').click()
+      }
+    });
+  </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-vacd#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Dec 28, 2023 11:10+0100">2023-12-28</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSejY5cinbQ4kHgGKMhncYu0mPuWb7euUkxfeXZeiUCFFa4k6g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-vacd%234.0.1%20/Use-Case-5-Etablir-un-certificat-verifiable.html&amp;entry%2E247644557=Use%20Case%205%20Etablir%20Un%20Certificat%20Verifiable">Propose a change</a>
+
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+  
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script>anchors.options.visible = 'hover'
+anchors.add()</script>
+  
+<!-- feedback form - Google forms -->
+<!-- v0.1, 2021-01-09 -->
+
+
+  
+
+
+  
+
+
+
+<!-- / feedback form  -->
+
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

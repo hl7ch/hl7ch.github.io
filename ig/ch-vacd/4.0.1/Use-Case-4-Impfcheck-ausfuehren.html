@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Use Case 4 Impfcheck Ausfuehren - Implementation Guide CH VACD v4.0.1</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"40"}
+    h3,h4,h5,h6{--heading-prefix:"40"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+        <!-- Placeholder for child template header declarations -->
+
+            <div id="family-nav">
+	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
+		alt="logo fhir" src="fhir-logo-www.png" />
+	</a>
+</div>
+
+            <div id="hl7-nav">
+    <a id="hl7-logo" no-external="true" href="http://www.hl7.ch">
+        <img alt="visit the hl7 website" height="50" src="hl7-logo.png" />
+    </a>            
+</div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Implementation Guide CH VACD</span>
+            <br/>
+            <span style="display:inline-block;">4.0.1 - trial-use
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+	<!--<li><a href="toc.html">Table of Contents</a></li> -->
+	<li>
+		<a href="index.html">Home</a>
+	</li>
+
+
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Use Cases
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="Use-Cases-Deutsch.html">Anwendungsfälle</a>
+			</li>
+			<li>
+				<a href="Use-Cases-Francais.html">Les cas d'utilisation</a>
+			</li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Documents/Messages
+			<b class="caret">
+			</b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="immunization-administration-document.html">Immunization Administration document</a>
+			</li>
+			<li>
+				<a href="vaccination-record-document.html">Vaccination Record document</a>
+			</li>
+			<li>
+				<a href="immunization-recommendation-request-message.html">Immunization Recommendation Request message</a>
+			</li>
+			<li>
+				<a href="immunization-recommendation-response-message.html">Immunization Recommendation Response message</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="profiles.html">Profiles</a>
+	</li>
+	<li>
+		<a href="extensions.html">Extensions</a>
+	</li>
+	<li>
+		<a href="terminology.html">Terminology</a>
+	</li>
+	<li>
+		<a href="artifacts.html">Artifacts</a>
+	</li>
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Test Cases
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="TestCases.html">Overview</a>
+			</li>
+			<li>
+				<a href="TestCases.html#a-immunizations">A Immunizations</a>
+			</li>
+			<li>
+				<a href="TestCases.html#b-other-elements">B Other Elements</a>
+			</li>
+			<li>
+				<a href="TestCases.html#c-correction-of-entries">C Correction of Entries</a>
+			</li>
+			<li>
+				<a href="TestCases.html#d-conflicts-on-merging-documents">D Conflicts on merging Documents</a>
+			</li>
+			<li>
+				<a href="TestCases.html#e-language-handling-on-merging-documents">E Language handling on merging Documents</a>
+			</li>
+			<li>
+				<a href="TestCases.html#f-add-notes-to-existing-elements">F Add Notes to existing Elements</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Use Case 4 Impfcheck Ausfuehren</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH VACD (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version in its permanent home (it will always be available at this URL).  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-vacd/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Use Case 4 Impfcheck Ausfuehren</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#impfcheck-ausführen-gesundheitsfachperson" id="markdown-toc-impfcheck-ausführen-gesundheitsfachperson">Impfcheck ausführen (Gesundheitsfachperson)</a></li>
+  <li><a href="#impfcheck-ausführen-patient" id="markdown-toc-impfcheck-ausführen-patient">Impfcheck ausführen (Patient)</a></li>
+</ul>
+
+</div>
+<h3 id="impfcheck-ausführen-gesundheitsfachperson">Impfcheck ausführen (Gesundheitsfachperson)</h3>
+
+<p>Eine Gesundheitsfachperson aktualisiert die Impfdaten in seinem Primärsystem mit der Impfdaten eines Patienten im EPD.</p>
+
+<p>Die Gesundheitsfachperson stellt ggf. die zusätzlichen und für den Impfcheck benötigten medizinischen Informationen mit Bezug zum Immunitätsstatus des Patienten im Primärsystem zusammen oder wählt diese in den Benutzeroberflächen des Portals der Gemeinschaft aus.</p>
+
+<p>Die Gesundheitsfachperson ruft den automatischen Impfcheck auf, sichtet die Impfempfehlungen und berücksichtigt diese in der Planung zukünftiger Impfungen.</p>
+
+<p>Die Gesundheitsfachperson ergänzt ggf. das Impfdossier des Patienten um die Impfempfehlungen und speichert das aktualisierte Impfdossier im Austauschformat Impfdossier im EPD ab. Im neuen Dokument wird vermerkt, welche älteren Dokumente durch das neue Dokument ersetzt bzw. ergänzt werden. Dazu wird das Datenelement relatesTo der Austauschformats Impfdossier verwendet.</p>
+
+<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="443.6325px" preserveAspectRatio="none" style="width:800px;height:443px;background:#FFFFFF;" version="1.1" viewBox="0 0 800 443" width="800.4299px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="12.0365" font-weight="bold" lengthAdjust="spacing" textLength="286.2977" x="258.5707" y="24.5332">Suchen und Zusammenfassen Impfdokumente</text><rect fill="none" height="65.2824" style="stroke:#000000;stroke-width:1.2896292315959161;" width="559.2692" x="236.432" y="142.1061" /><line style="stroke:#181818;stroke-width:0.42987641053197206;stroke-dasharray:5.0,5.0;" x1="76.518" x2="76.518" y1="102.2904" y2="361.1667" /><line style="stroke:#181818;stroke-width:0.42987641053197206;stroke-dasharray:5.0,5.0;" x1="268.2429" x2="268.2429" y1="102.2904" y2="361.1667" /><line style="stroke:#181818;stroke-width:0.42987641053197206;stroke-dasharray:5.0,5.0;" x1="550.6717" x2="550.6717" y1="102.2904" y2="361.1667" /><line style="stroke:#181818;stroke-width:0.42987641053197206;stroke-dasharray:5.0,5.0;" x1="635.7872" x2="635.7872" y1="102.2904" y2="361.1667" /><line style="stroke:#181818;stroke-width:0.42987641053197206;stroke-dasharray:5.0,5.0;" x1="733.799" x2="733.799" y1="102.2904" y2="361.1667" /><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="139.28" x="4.2988" y="99.7515">Gesundheitsfachperson</text><ellipse cx="76.518" cy="43.8373" fill="#0000FF" rx="6.878" ry="6.878" style="stroke:#181818;stroke-width:0.42987641053197206;" /><path d="M76.518,50.7153 L76.518,73.9287 M65.3412,57.5934 L87.6948,57.5934 M76.518,73.9287 L65.3412,86.825 M76.518,73.9287 L87.6948,86.825 " fill="none" style="stroke:#181818;stroke-width:0.42987641053197206;" /><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="139.28" x="4.2988" y="371.9438">Gesundheitsfachperson</text><ellipse cx="76.518" cy="381.7907" fill="#0000FF" rx="6.878" ry="6.878" style="stroke:#181818;stroke-width:0.42987641053197206;" /><path d="M76.518,388.6687 L76.518,411.8821 M65.3412,395.5467 L87.6948,395.5467 M76.518,411.8821 L65.3412,424.7783 M76.518,411.8821 L87.6948,424.7783 " fill="none" style="stroke:#181818;stroke-width:0.42987641053197206;" /><rect fill="#00CC00" height="26.2124" rx="2.1494" ry="2.1494" style="stroke:#181818;stroke-width:0.42987641053197206;" width="46.4267" x="245.0296" y="75.2183" /><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="34.3901" x="251.0478" y="92.8735">Portal</text><rect fill="#00CC00" height="26.2124" rx="2.1494" ry="2.1494" style="stroke:#181818;stroke-width:0.42987641053197206;" width="46.4267" x="245.0296" y="360.307" /><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="34.3901" x="251.0478" y="377.9621">Portal</text><rect fill="#E2E2F0" height="26.2124" rx="2.1494" ry="2.1494" style="stroke:#181818;stroke-width:0.42987641053197206;" width="79.957" x="511.1231" y="75.2183" /><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="67.9205" x="517.1413" y="92.8735">Aggregator</text><rect fill="#E2E2F0" height="26.2124" rx="2.1494" ry="2.1494" style="stroke:#181818;stroke-width:0.42987641053197206;" width="79.957" x="511.1231" y="360.307" /><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="67.9205" x="517.1413" y="377.9621">Aggregator</text><rect fill="#FF0000" height="26.2124" rx="2.1494" ry="2.1494" style="stroke:#181818;stroke-width:0.42987641053197206;" width="72.2192" x="599.6776" y="75.2183" /><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="60.1827" x="605.6959" y="92.8735">Impfcheck</text><rect fill="#FF0000" height="26.2124" rx="2.1494" ry="2.1494" style="stroke:#181818;stroke-width:0.42987641053197206;" width="72.2192" x="599.6776" y="360.307" /><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="60.1827" x="605.6959" y="377.9621">Impfcheck</text><rect fill="#00CC00" height="40.3882" rx="2.1494" ry="2.1494" style="stroke:#181818;stroke-width:0.42987641053197206;" width="106.6093" x="680.4944" y="61.0425" /><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="94.5728" x="686.5126" y="78.6976">Gemeinschaften</text><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="24.0731" x="721.7625" y="92.8735">A..N</text><rect fill="#00CC00" height="40.3882" rx="2.1494" ry="2.1494" style="stroke:#181818;stroke-width:0.42987641053197206;" width="106.6093" x="680.4944" y="360.307" /><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="94.5728" x="686.5126" y="377.9621">Gemeinschaften</text><text fill="#000000" font-family="sans-serif" font-size="12.0365" lengthAdjust="spacing" textLength="24.0731" x="721.7625" y="392.138">A..N</text><polygon fill="#181818" points="257.9258,125.7708,266.5234,129.2098,257.9258,132.6488,261.3649,129.2098" style="stroke:#181818;stroke-width:0.8597528210639441;" /><line style="stroke:#181818;stroke-width:0.8597528210639441;" x1="76.518" x2="263.0844" y1="129.2098" y2="129.2098" /><text fill="#000000" font-family="sans-serif" font-size="11.1768" font-weight="bold" lengthAdjust="spacing" textLength="24.0731" x="82.5363" y="125.1327">[01]</text><text fill="#000000" font-family="sans-serif" font-size="11.1768" lengthAdjust="spacing" textLength="143.5787" x="110.0484" y="125.1327">Suche alle Impfdokumente</text><path d="M236.432,142.1061 L300.0537,142.1061 L300.0537,148.3913 L291.4562,156.9889 L236.432,156.9889 L236.432,142.1061 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.2896292315959161;" /><rect fill="none" height="65.2824" style="stroke:#000000;stroke-width:1.2896292315959161;" width="559.2692" x="236.432" y="142.1061" /><text fill="#000000" font-family="sans-serif" font-size="11.1768" font-weight="bold" lengthAdjust="spacing" textLength="24.9328" x="249.3283" y="153.7715">loop</text><text fill="#000000" font-family="sans-serif" font-size="9.4573" font-weight="bold" lengthAdjust="spacing" textLength="158.1945" x="312.95" y="152.9688">["Abfrage aller Gemeinschaften"]</text><polygon fill="#181818" points="723.482,171.8716,732.0795,175.3107,723.482,178.7497,726.921,175.3107" style="stroke:#181818;stroke-width:0.8597528210639441;" /><line style="stroke:#181818;stroke-width:0.8597528210639441;" x1="268.2429" x2="728.6405" y1="175.3107" y2="175.3107" /><text fill="#000000" font-family="sans-serif" font-size="11.1768" font-weight="bold" lengthAdjust="spacing" textLength="24.0731" x="274.2611" y="171.2335">[02]</text><text fill="#000000" font-family="sans-serif" font-size="11.1768" lengthAdjust="spacing" textLength="157.3348" x="301.7732" y="171.2335">Suche nach Impfdokumenten</text><polygon fill="#181818" points="277.7002,182.1887,269.1026,185.6277,277.7002,189.0667,274.2611,185.6277" style="stroke:#181818;stroke-width:0.8597528210639441;" /><line style="stroke:#181818;stroke-width:0.8597528210639441;" x1="272.5416" x2="732.9393" y1="185.6277" y2="185.6277" /><text fill="#000000" font-family="sans-serif" font-size="11.1768" font-weight="bold" lengthAdjust="spacing" textLength="24.0731" x="282.8587" y="197.2931">[03]</text><text fill="#000000" font-family="sans-serif" font-size="11.1768" lengthAdjust="spacing" textLength="222.676" x="310.3708" y="197.2931">Alle gefundenen Impfdokumente (Gem A)</text><polygon fill="#181818" points="540.7845,228.2896,549.3821,231.7286,540.7845,235.1676,544.2235,231.7286" style="stroke:#181818;stroke-width:0.8597528210639441;" /><line style="stroke:#181818;stroke-width:0.8597528210639441;" x1="268.2429" x2="545.943" y1="231.7286" y2="231.7286" /><text fill="#000000" font-family="sans-serif" font-size="11.1768" font-weight="bold" lengthAdjust="spacing" textLength="24.0731" x="274.2611" y="227.6515">[04]</text><text fill="#000000" font-family="sans-serif" font-size="11.1768" lengthAdjust="spacing" textLength="234.7125" x="301.7732" y="227.6515">Zusammenfassen aller strukturierten Daten</text><polygon fill="#181818" points="277.7002,238.6066,269.1026,242.0456,277.7002,245.4846,274.2611,242.0456" style="stroke:#181818;stroke-width:0.8597528210639441;" /><line style="stroke:#181818;stroke-width:0.8597528210639441;" x1="272.5416" x2="550.2418" y1="242.0456" y2="242.0456" /><text fill="#000000" font-family="sans-serif" font-size="11.1768" font-weight="bold" lengthAdjust="spacing" textLength="24.0731" x="282.8587" y="253.711">[05]</text><text fill="#000000" font-family="sans-serif" font-size="11.1768" lengthAdjust="spacing" textLength="170.2311" x="310.3708" y="253.711">Ein aggregiertes Impfdokument</text><polygon fill="#181818" points="625.4702,278.6892,634.0677,282.1282,625.4702,285.5672,628.9092,282.1282" style="stroke:#181818;stroke-width:0.8597528210639441;" /><line style="stroke:#181818;stroke-width:0.8597528210639441;" x1="268.2429" x2="630.6287" y1="282.1282" y2="282.1282" /><text fill="#000000" font-family="sans-serif" font-size="11.1768" font-weight="bold" lengthAdjust="spacing" textLength="24.0731" x="274.2611" y="278.0511">[06]</text><text fill="#000000" font-family="sans-serif" font-size="11.1768" lengthAdjust="spacing" textLength="150.4567" x="301.7732" y="278.0511">aggregiertes Impfdokument</text><polygon fill="#181818" points="277.7002,289.0062,269.1026,292.4453,277.7002,295.8843,274.2611,292.4453" style="stroke:#181818;stroke-width:0.8597528210639441;" /><line style="stroke:#181818;stroke-width:0.8597528210639441;" x1="272.5416" x2="634.9275" y1="292.4453" y2="292.4453" /><text fill="#000000" font-family="sans-serif" font-size="11.1768" font-weight="bold" lengthAdjust="spacing" textLength="24.0731" x="282.8587" y="304.1107">[07]</text><text fill="#000000" font-family="sans-serif" font-size="11.1768" lengthAdjust="spacing" textLength="89.4143" x="310.3708" y="304.1107">Impfempfehlung</text><polygon fill="#181818" points="85.9753,314.2061,77.3778,317.6451,85.9753,321.0841,82.5363,317.6451" style="stroke:#181818;stroke-width:0.8597528210639441;" /><line style="stroke:#181818;stroke-width:0.8597528210639441;" x1="80.8168" x2="267.3831" y1="317.6451" y2="317.6451" /><text fill="#000000" font-family="sans-serif" font-size="11.1768" font-weight="bold" lengthAdjust="spacing" textLength="24.0731" x="91.1338" y="335.8922">[08]</text><text fill="#000000" font-family="sans-serif" font-size="11.1768" lengthAdjust="spacing" textLength="141.8592" x="118.6459" y="329.3105">Anzeigen der aggregierten</text><text fill="#000000" font-family="sans-serif" font-size="11.1768" lengthAdjust="spacing" textLength="55.0242" x="118.6459" y="342.4738">Impfdaten</text><text fill="#888888" font-family="sans-serif" font-size="8.5975" lengthAdjust="spacing" textLength="47.2864" x="378.0763" y="435.2398">Version 1.0</text></g></svg></div>
+
+<h3 id="impfcheck-ausführen-patient">Impfcheck ausführen (Patient)</h3>
+<p>Ein Patient sichtet die Impfdaten und wählt die zusätzlichen und für den Impfcheck benötigten medizinischen Informationen mit Bezug zum Immunitätsstatus im Portal der Gemeinschaft aus.</p>
+
+<p>Der Patient ruft den automatischen Impfcheck auf und sichtet die Impfempfehlungen.</p>
+
+<p>Der Patient ergänzt ggf. sein Impfdossier um die die Impfempfehlungen und speichert das aktualisierte Impfdossier im Austauschformat Impfdossier im EPD ab. Im neuen Dokument wird vermerkt, welche älteren Dokumente durch die neuen Dokumente ersetzt bzw. ergänzt werden. Dazu wird das Datenelement relatesTo der CH-VACD Austauschformate verwendet.</p>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      if(window.location.hash != "") {
+          $('a[href="' + window.location.hash + '"]').click()
+      }
+    });
+  </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-vacd#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Dec 28, 2023 11:10+0100">2023-12-28</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSejY5cinbQ4kHgGKMhncYu0mPuWb7euUkxfeXZeiUCFFa4k6g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-vacd%234.0.1%20/Use-Case-4-Impfcheck-ausfuehren.html&amp;entry%2E247644557=Use%20Case%204%20Impfcheck%20Ausfuehren">Propose a change</a>
+
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+  
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script>anchors.options.visible = 'hover'
+anchors.add()</script>
+  
+<!-- feedback form - Google forms -->
+<!-- v0.1, 2021-01-09 -->
+
+
+  
+
+
+  
+
+
+
+<!-- / feedback form  -->
+
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

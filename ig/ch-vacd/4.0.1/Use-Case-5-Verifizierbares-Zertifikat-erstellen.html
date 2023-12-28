@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Use Case 5 Verifizierbares Zertifikat Erstellen - Implementation Guide CH VACD v4.0.1</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"43"}
+    h3,h4,h5,h6{--heading-prefix:"43"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+        <!-- Placeholder for child template header declarations -->
+
+            <div id="family-nav">
+	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
+		alt="logo fhir" src="fhir-logo-www.png" />
+	</a>
+</div>
+
+            <div id="hl7-nav">
+    <a id="hl7-logo" no-external="true" href="http://www.hl7.ch">
+        <img alt="visit the hl7 website" height="50" src="hl7-logo.png" />
+    </a>            
+</div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Implementation Guide CH VACD</span>
+            <br/>
+            <span style="display:inline-block;">4.0.1 - trial-use
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+	<!--<li><a href="toc.html">Table of Contents</a></li> -->
+	<li>
+		<a href="index.html">Home</a>
+	</li>
+
+
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Use Cases
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="Use-Cases-Deutsch.html">Anwendungsfälle</a>
+			</li>
+			<li>
+				<a href="Use-Cases-Francais.html">Les cas d'utilisation</a>
+			</li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Documents/Messages
+			<b class="caret">
+			</b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="immunization-administration-document.html">Immunization Administration document</a>
+			</li>
+			<li>
+				<a href="vaccination-record-document.html">Vaccination Record document</a>
+			</li>
+			<li>
+				<a href="immunization-recommendation-request-message.html">Immunization Recommendation Request message</a>
+			</li>
+			<li>
+				<a href="immunization-recommendation-response-message.html">Immunization Recommendation Response message</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="profiles.html">Profiles</a>
+	</li>
+	<li>
+		<a href="extensions.html">Extensions</a>
+	</li>
+	<li>
+		<a href="terminology.html">Terminology</a>
+	</li>
+	<li>
+		<a href="artifacts.html">Artifacts</a>
+	</li>
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Test Cases
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="TestCases.html">Overview</a>
+			</li>
+			<li>
+				<a href="TestCases.html#a-immunizations">A Immunizations</a>
+			</li>
+			<li>
+				<a href="TestCases.html#b-other-elements">B Other Elements</a>
+			</li>
+			<li>
+				<a href="TestCases.html#c-correction-of-entries">C Correction of Entries</a>
+			</li>
+			<li>
+				<a href="TestCases.html#d-conflicts-on-merging-documents">D Conflicts on merging Documents</a>
+			</li>
+			<li>
+				<a href="TestCases.html#e-language-handling-on-merging-documents">E Language handling on merging Documents</a>
+			</li>
+			<li>
+				<a href="TestCases.html#f-add-notes-to-existing-elements">F Add Notes to existing Elements</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Use Case 5 Verifizierbares Zertifikat Erstellen</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH VACD (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version in its permanent home (it will always be available at this URL).  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-vacd/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Use Case 5 Verifizierbares Zertifikat Erstellen</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+</div>
+<h3 id="verifizierbares-zertifikat-erstellen">Verifizierbares Zertifikat erstellen</h3>
+
+<p>Ein Patient verlangt von einer Gesundheitsfachperson ein verifizierbares Zertifikat (z.B. Covid 19 Zertifikat) als international anerkannter Beleg für eine Impfung, eine bestätigte Genesung oder einen laborbestätigten Test zum Nachweis der Immunität.</p>
+
+<p>Die Gesundheitsfachperson erstellt im Primärsystem oder dem Portal der Gemeinschaft ein verifizierbares Zertifikat.</p>
+
+<p>Das Primärsystem bzw. das Portal Gemeinschaft erstellt das verifizierbare Zertifikat und den Barcode mit digitaler Signatur der Gesundheitsfachperson bzw. der Institution oder ruft einen zentralen Dienst zur Erstellung international anerkannter verifizierbarer Zertifikate und Barcodes auf. Das Primärsystem bzw. das Portal der Gemeinschaft speichert das verifizierbare Zertifikat und den Barcode im EPD des Patienten.</p>
+
+<p>Der Patient weist das verifizierbare Zertifikat mit der mobilen Version des Patientenportals oder einer speziellen mobilen Applikation auf Verlangen vor.</p>
+
+<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="455.9104px" preserveAspectRatio="none" style="width:800px;height:455px;background:#FFFFFF;" version="1.1" viewBox="0 0 800 455" width="800.3318px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="9.2908" font-weight="bold" lengthAdjust="spacing" textLength="112.1526" x="343.9237" y="18.9366">Impfzertifikat erstellen</text><rect fill="none" height="50.3901" style="stroke:#000000;stroke-width:0.9954375777685608;" width="417.0883" x="230.9415" y="168.912" /><line style="stroke:#181818;stroke-width:0.3318125259228536;stroke-dasharray:5.0,5.0;" x1="59.0626" x2="59.0626" y1="78.9558" y2="392.6237" /><line style="stroke:#181818;stroke-width:0.3318125259228536;stroke-dasharray:5.0,5.0;" x1="255.4956" x2="255.4956" y1="78.9558" y2="392.6237" /><line style="stroke:#181818;stroke-width:0.3318125259228536;stroke-dasharray:5.0,5.0;" x1="475.4873" x2="475.4873" y1="78.9558" y2="392.6237" /><line style="stroke:#181818;stroke-width:0.3318125259228536;stroke-dasharray:5.0,5.0;" x1="587.64" x2="587.64" y1="78.9558" y2="392.6237" /><line style="stroke:#181818;stroke-width:0.3318125259228536;stroke-dasharray:5.0,5.0;" x1="693.1564" x2="693.1564" y1="78.9558" y2="392.6237" /><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="107.5073" x="3.3181" y="76.9961">Gesundheitsfachperson</text><ellipse cx="59.0626" cy="33.8371" fill="#0000FF" rx="5.309" ry="5.309" style="stroke:#181818;stroke-width:0.3318125259228536;" /><path d="M59.0626,39.1461 L59.0626,57.064 M50.4355,44.4551 L67.6898,44.4551 M59.0626,57.064 L50.4355,67.0184 M59.0626,57.064 L67.6898,67.0184 " fill="none" style="stroke:#181818;stroke-width:0.3318125259228536;" /><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="107.5073" x="3.3181" y="400.9423">Gesundheitsfachperson</text><ellipse cx="59.0626" cy="408.5429" fill="#0000FF" rx="5.309" ry="5.309" style="stroke:#181818;stroke-width:0.3318125259228536;" /><path d="M59.0626,413.8519 L59.0626,431.7698 M50.4355,419.1609 L67.6898,419.1609 M59.0626,431.7698 L50.4355,441.7241 M59.0626,431.7698 L67.6898,441.7241 " fill="none" style="stroke:#181818;stroke-width:0.3318125259228536;" /><rect fill="#00CC00" height="20.2328" rx="1.6591" ry="1.6591" style="stroke:#181818;stroke-width:0.3318125259228536;" width="35.8358" x="237.5778" y="58.0594" /><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="26.545" x="242.2231" y="71.6871">Portal</text><rect fill="#00CC00" height="20.2328" rx="1.6591" ry="1.6591" style="stroke:#181818;stroke-width:0.3318125259228536;" width="35.8358" x="237.5778" y="391.96" /><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="26.545" x="242.2231" y="405.5877">Portal</text><rect fill="#00CC00" height="31.1748" rx="1.6591" ry="1.6591" style="stroke:#181818;stroke-width:0.3318125259228536;" width="104.1891" x="423.7246" y="47.1174" /><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="94.8984" x="428.37" y="60.745">Eigene Gemeinschaft</text><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="6.6363" x="472.501" y="71.6871">A</text><rect fill="#00CC00" height="31.1748" rx="1.6591" ry="1.6591" style="stroke:#181818;stroke-width:0.3318125259228536;" width="104.1891" x="423.7246" y="391.96" /><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="94.8984" x="428.37" y="405.5877">Eigene Gemeinschaft</text><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="6.6363" x="472.501" y="416.5297">A</text><rect fill="#00AAFF" height="31.1748" rx="1.6591" ry="1.6591" style="stroke:#181818;stroke-width:0.3318125259228536;" width="106.8436" x="534.55" y="47.1174" /><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="97.5529" x="539.1954" y="60.745">Andere Gemeinschaft</text><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="6.6363" x="584.6537" y="71.6871">N</text><rect fill="#00AAFF" height="31.1748" rx="1.6591" ry="1.6591" style="stroke:#181818;stroke-width:0.3318125259228536;" width="106.8436" x="534.55" y="391.96" /><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="97.5529" x="539.1954" y="405.5877">Andere Gemeinschaft</text><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="6.6363" x="584.6537" y="416.5297">N</text><rect fill="#00AA00" height="20.2328" rx="1.6591" ry="1.6591" style="stroke:#181818;stroke-width:0.3318125259228536;" width="90.253" x="648.0299" y="58.0594" /><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="80.9623" x="652.6752" y="71.6871">Certificate Service</text><rect fill="#00AA00" height="20.2328" rx="1.6591" ry="1.6591" style="stroke:#181818;stroke-width:0.3318125259228536;" width="90.253" x="648.0299" y="391.96" /><text fill="#000000" font-family="sans-serif" font-size="9.2908" lengthAdjust="spacing" textLength="80.9623" x="652.6752" y="405.5877">Certificate Service</text><polygon fill="#181818" points="247.5321,107.2403,254.1684,109.8948,247.5321,112.5493,250.1866,109.8948" style="stroke:#181818;stroke-width:0.6636250518457072;" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="59.0626" x2="251.5139" y1="109.8948" y2="109.8948" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="63.708" y="101.6675">[01]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="159.27" x="84.944" y="96.5873">Anpassen der aggregierten Impfdaten,</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="100.2074" x="84.944" y="106.7477">erstellen Impfdokument</text><polygon fill="#181818" points="467.8557,136.8519,474.4919,139.5064,467.8557,142.1609,470.5102,139.5064" style="stroke:#181818;stroke-width:0.6636250518457072;" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="255.4956" x2="471.8374" y1="139.5064" y2="139.5064" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="260.141" y="131.2792">[02]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="149.9793" x="281.377" y="126.1989">Speichern des neuen Impfdokument</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="150.6429" x="281.377" y="136.3594">und ersetzen der "alten" Dokumente</text><polygon fill="#181818" points="262.7955,144.8154,256.1593,147.4699,262.7955,150.1244,260.141,147.4699" style="stroke:#181818;stroke-width:0.6636250518457072;" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="258.8138" x2="475.1555" y1="147.4699" y2="147.4699" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="266.7773" y="156.4742">[03]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="11.9453" x="288.0133" y="156.4742">OK</text><path d="M230.9415,168.912 L280.0498,168.912 L280.0498,173.7635 L273.4135,180.3997 L230.9415,180.3997 L230.9415,168.912 " fill="#EEEEEE" style="stroke:#000000;stroke-width:0.9954375777685608;" /><rect fill="none" height="50.3901" style="stroke:#000000;stroke-width:0.9954375777685608;" width="417.0883" x="230.9415" y="168.912" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="19.2451" x="240.8959" y="177.9163">loop</text><polygon fill="#181818" points="580.0083,191.8874,586.6445,194.5419,580.0083,197.1964,582.6628,194.5419" style="stroke:#181818;stroke-width:0.6636250518457072;" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="255.4956" x2="583.99" y1="194.5419" y2="194.5419" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="260.141" y="191.3949">[04]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="208.3783" x="281.377" y="191.3949">Setzen der "alten" Impfdokumente auf "VERALTET"</text><polygon fill="#181818" points="262.7955,199.8509,256.1593,202.5054,262.7955,205.1599,260.141,202.5054" style="stroke:#181818;stroke-width:0.6636250518457072;" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="258.8138" x2="587.3082" y1="202.5054" y2="202.5054" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="266.7773" y="211.5097">[05]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="11.9453" x="288.0133" y="211.5097">OK</text><polygon fill="#181818" points="247.5321,235.4352,254.1684,238.0897,247.5321,240.7442,250.1866,238.0897" style="stroke:#181818;stroke-width:0.6636250518457072;" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="59.0626" x2="251.5139" y1="238.0897" y2="238.0897" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="63.708" y="234.9427">[06]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="117.4616" x="84.944" y="234.9427">Erstellen des Impfzertifikats</text><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="255.4956" x2="283.3679" y1="257.541" y2="257.541" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="283.3679" x2="283.3679" y1="257.541" y2="266.1681" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="256.1593" x2="283.3679" y1="266.1681" y2="266.1681" /><polygon fill="#181818" points="262.7955,263.5136,256.1593,266.1681,262.7955,268.8226,260.141,266.1681" style="stroke:#181818;stroke-width:0.6636250518457072;" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="260.141" y="254.3939">[07]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="189.7968" x="281.377" y="254.3939">Zusammenstellen der Daten f&#252;r das Zertifikat</text><polygon fill="#181818" points="685.1929,282.9648,691.8291,285.6193,685.1929,288.2738,687.8474,285.6193" style="stroke:#181818;stroke-width:0.6636250518457072;" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="255.4956" x2="689.1746" y1="285.6193" y2="285.6193" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="260.141" y="282.4723">[08]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="72.9988" x="281.377" y="282.4723">Senden der Daten</text><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="693.1564" x2="721.0286" y1="305.0705" y2="305.0705" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="721.0286" x2="721.0286" y1="305.0705" y2="313.6976" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="693.82" x2="721.0286" y1="313.6976" y2="313.6976" /><polygon fill="#181818" points="700.4562,311.0431,693.82,313.6976,700.4562,316.3521,697.8017,313.6976" style="stroke:#181818;stroke-width:0.6636250518457072;" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="697.8017" y="301.9235">[09]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="76.9805" x="719.0377" y="301.9235">Erstellen Zertifikat</text><polygon fill="#181818" points="262.7955,319.0066,256.1593,321.6611,262.7955,324.3156,260.141,321.6611" style="stroke:#181818;stroke-width:0.6636250518457072;" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="258.8138" x2="692.4927" y1="321.6611" y2="321.6611" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="266.7773" y="330.6654">[10]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="98.2165" x="288.0133" y="330.6654">Erstelltes Impfzertifikat</text><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="255.4956" x2="283.3679" y1="352.6001" y2="352.6001" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="283.3679" x2="283.3679" y1="352.6001" y2="361.2272" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="256.1593" x2="283.3679" y1="361.2272" y2="361.2272" /><polygon fill="#181818" points="262.7955,358.5727,256.1593,361.2272,262.7955,363.8817,260.141,361.2272" style="stroke:#181818;stroke-width:0.6636250518457072;" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="260.141" y="349.453">[11]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="122.107" x="281.377" y="349.453">Speichern des Impfzertifikats</text><polygon fill="#181818" points="66.3625,366.5362,59.7263,369.1907,66.3625,371.8452,63.708,369.1907" style="stroke:#181818;stroke-width:0.6636250518457072;" /><line style="stroke:#181818;stroke-width:0.6636250518457072;" x1="62.3808" x2="254.832" y1="369.1907" y2="369.1907" /><text fill="#000000" font-family="sans-serif" font-size="8.6271" font-weight="bold" lengthAdjust="spacing" textLength="18.5815" x="70.3443" y="378.195">[12]</text><text fill="#000000" font-family="sans-serif" font-size="8.6271" lengthAdjust="spacing" textLength="118.7889" x="91.5803" y="378.195">Best&#228;tigung der Speicherung</text><text fill="#888888" font-family="sans-serif" font-size="6.6363" lengthAdjust="spacing" textLength="36.4994" x="381.7503" y="449.7991">Version 1.0</text></g></svg></div>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      if(window.location.hash != "") {
+          $('a[href="' + window.location.hash + '"]').click()
+      }
+    });
+  </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-vacd#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Dec 28, 2023 11:10+0100">2023-12-28</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSejY5cinbQ4kHgGKMhncYu0mPuWb7euUkxfeXZeiUCFFa4k6g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-vacd%234.0.1%20/Use-Case-5-Verifizierbares-Zertifikat-erstellen.html&amp;entry%2E247644557=Use%20Case%205%20Verifizierbares%20Zertifikat%20Erstellen">Propose a change</a>
+
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+  
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script>anchors.options.visible = 'hover'
+anchors.add()</script>
+  
+<!-- feedback form - Google forms -->
+<!-- v0.1, 2021-01-09 -->
+
+
+  
+
+
+  
+
+
+
+<!-- / feedback form  -->
+
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

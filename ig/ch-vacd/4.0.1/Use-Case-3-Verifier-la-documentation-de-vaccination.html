@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Use Case 3 Verifier La Documentation De Vaccination - Implementation Guide CH VACD v4.0.1</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"39"}
+    h3,h4,h5,h6{--heading-prefix:"39"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+        <!-- Placeholder for child template header declarations -->
+
+            <div id="family-nav">
+	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
+		alt="logo fhir" src="fhir-logo-www.png" />
+	</a>
+</div>
+
+            <div id="hl7-nav">
+    <a id="hl7-logo" no-external="true" href="http://www.hl7.ch">
+        <img alt="visit the hl7 website" height="50" src="hl7-logo.png" />
+    </a>            
+</div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Implementation Guide CH VACD</span>
+            <br/>
+            <span style="display:inline-block;">4.0.1 - trial-use
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+	<!--<li><a href="toc.html">Table of Contents</a></li> -->
+	<li>
+		<a href="index.html">Home</a>
+	</li>
+
+
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Use Cases
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="Use-Cases-Deutsch.html">Anwendungsfälle</a>
+			</li>
+			<li>
+				<a href="Use-Cases-Francais.html">Les cas d'utilisation</a>
+			</li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Documents/Messages
+			<b class="caret">
+			</b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="immunization-administration-document.html">Immunization Administration document</a>
+			</li>
+			<li>
+				<a href="vaccination-record-document.html">Vaccination Record document</a>
+			</li>
+			<li>
+				<a href="immunization-recommendation-request-message.html">Immunization Recommendation Request message</a>
+			</li>
+			<li>
+				<a href="immunization-recommendation-response-message.html">Immunization Recommendation Response message</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="profiles.html">Profiles</a>
+	</li>
+	<li>
+		<a href="extensions.html">Extensions</a>
+	</li>
+	<li>
+		<a href="terminology.html">Terminology</a>
+	</li>
+	<li>
+		<a href="artifacts.html">Artifacts</a>
+	</li>
+	<li class="dropdown">
+		<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+			Test Cases
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="TestCases.html">Overview</a>
+			</li>
+			<li>
+				<a href="TestCases.html#a-immunizations">A Immunizations</a>
+			</li>
+			<li>
+				<a href="TestCases.html#b-other-elements">B Other Elements</a>
+			</li>
+			<li>
+				<a href="TestCases.html#c-correction-of-entries">C Correction of Entries</a>
+			</li>
+			<li>
+				<a href="TestCases.html#d-conflicts-on-merging-documents">D Conflicts on merging Documents</a>
+			</li>
+			<li>
+				<a href="TestCases.html#e-language-handling-on-merging-documents">E Language handling on merging Documents</a>
+			</li>
+			<li>
+				<a href="TestCases.html#f-add-notes-to-existing-elements">F Add Notes to existing Elements</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Use Case 3 Verifier La Documentation De Vaccination</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH VACD (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version in its permanent home (it will always be available at this URL).  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-vacd/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Use Case 3 Verifier La Documentation De Vaccination</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#vérifier-la-documentation-de-vaccination-professionnel-de-la-santé" id="markdown-toc-vérifier-la-documentation-de-vaccination-professionnel-de-la-santé">Vérifier la documentation de vaccination (professionnel de la santé)</a></li>
+  <li><a href="#mettre-à-jour-le-dossier-de-vaccination" id="markdown-toc-mettre-à-jour-le-dossier-de-vaccination">Mettre à jour le dossier de vaccination</a></li>
+  <li><a href="#mise-en-œuvre-technique" id="markdown-toc-mise-en-œuvre-technique">Mise en œuvre technique</a></li>
+</ul>
+
+</div>
+<h3 id="vérifier-la-documentation-de-vaccination-professionnel-de-la-santé">Vérifier la documentation de vaccination (professionnel de la santé)</h3>
+
+<p>Un professionnel de la santé consulte les données de vaccination sauvegardées dans le DEP d’un patient via son système primaire ou le portail de la communauté. Il choisit à cet effet les interfaces utilisateur correspondantes dans le système primaire ou sur le portail, recherche le patient et consulte son <em>dossier de vaccination</em> pour obtenir les informations sur les vaccins administrés, les vaccins non désirés ou non indiqués, les antécédents médicaux et les allergies à des vaccins enregistrées dans le DEP du patient.</p>
+
+<p>Le professionnel de la santé vérifie les données de vaccination, en particulier les vaccins administrés enregistrés par le patient. Le professionnel de la santé corrige les erreurs dans la saisie des vaccinations, des allergies et des antécédents médicaux dans l’interface utilisateur du système primaire ou sur le portail de la communauté. Le professionnel de la santé sauvegarde les données corrigées en tant que <em>documentation de vaccination vérifiée</em> sous la forme d’un nouveau document dans le DEP du patient.</p>
+
+<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="257.2864px" preserveAspectRatio="none" style="width:800px;height:257px;background:#FFFFFF;" version="1.1" viewBox="0 0 800 257" width="800.3655px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="10.233" font-weight="bold" lengthAdjust="spacing" textLength="344.9977" x="227.1357" y="20.8571">Enregistrement d'un document de vaccination agr&#233;g&#233; dans le DEP</text><line style="stroke:#181818;stroke-width:0.3654636820465966;stroke-dasharray:5.0,5.0;" x1="67.9762" x2="67.9762" y1="86.9632" y2="187.2773" /><line style="stroke:#181818;stroke-width:0.3654636820465966;stroke-dasharray:5.0,5.0;" x1="476.9301" x2="476.9301" y1="86.9632" y2="187.2773" /><line style="stroke:#181818;stroke-width:0.3654636820465966;stroke-dasharray:5.0,5.0;" x1="740.064" x2="740.064" y1="86.9632" y2="187.2773" /><text fill="#000000" font-family="sans-serif" font-size="10.233" lengthAdjust="spacing" textLength="124.9886" x="3.6546" y="84.8047">Professionnel de la sant&#233;</text><ellipse cx="68.3417" cy="37.2687" fill="#0000FF" rx="5.8474" ry="5.8474" style="stroke:#181818;stroke-width:0.3654636820465966;" /><path d="M68.3417,43.1161 L68.3417,62.8512 M58.8397,48.9636 L77.8438,48.9636 M68.3417,62.8512 L58.8397,73.8151 M68.3417,62.8512 L77.8438,73.8151 " fill="none" style="stroke:#181818;stroke-width:0.3654636820465966;" /><text fill="#000000" font-family="sans-serif" font-size="10.233" lengthAdjust="spacing" textLength="124.9886" x="3.6546" y="196.4396">Professionnel de la sant&#233;</text><ellipse cx="68.3417" cy="204.811" fill="#0000FF" rx="5.8474" ry="5.8474" style="stroke:#181818;stroke-width:0.3654636820465966;" /><path d="M68.3417,210.6584 L68.3417,230.3934 M58.8397,216.5058 L77.8438,216.5058 M68.3417,230.3934 L58.8397,241.3574 M68.3417,230.3934 L77.8438,241.3574 " fill="none" style="stroke:#181818;stroke-width:0.3654636820465966;" /><rect fill="#00CC00" height="22.2847" rx="1.8273" ry="1.8273" style="stroke:#181818;stroke-width:0.3654636820465966;" width="39.4701" x="457.1951" y="63.9476" /><text fill="#000000" font-family="sans-serif" font-size="10.233" lengthAdjust="spacing" textLength="29.2371" x="462.3116" y="78.9573">Portal</text><rect fill="#00CC00" height="22.2847" rx="1.8273" ry="1.8273" style="stroke:#181818;stroke-width:0.3654636820465966;" width="39.4701" x="457.1951" y="186.5464" /><text fill="#000000" font-family="sans-serif" font-size="10.233" lengthAdjust="spacing" textLength="29.2371" x="462.3116" y="201.5561">Portal</text><rect fill="#00CC00" height="34.3365" rx="1.8273" ry="1.8273" style="stroke:#181818;stroke-width:0.3654636820465966;" width="112.5628" x="683.7825" y="51.8958" /><text fill="#000000" font-family="sans-serif" font-size="10.233" lengthAdjust="spacing" textLength="102.3298" x="688.899" y="66.9056">Propre communaut&#233;</text><text fill="#000000" font-family="sans-serif" font-size="10.233" lengthAdjust="spacing" textLength="7.3093" x="736.4093" y="78.9573">A</text><rect fill="#00CC00" height="34.3365" rx="1.8273" ry="1.8273" style="stroke:#181818;stroke-width:0.3654636820465966;" width="112.5628" x="683.7825" y="186.5464" /><text fill="#000000" font-family="sans-serif" font-size="10.233" lengthAdjust="spacing" textLength="102.3298" x="688.899" y="201.5561">Propre communaut&#233;</text><text fill="#000000" font-family="sans-serif" font-size="10.233" lengthAdjust="spacing" textLength="7.3093" x="736.4093" y="213.6078">A</text><polygon fill="#181818" points="468.159,106.9253,475.4683,109.849,468.159,112.7727,471.0827,109.849" style="stroke:#181818;stroke-width:0.7309273640931933;" /><line style="stroke:#181818;stroke-width:0.7309273640931933;" x1="68.3417" x2="472.5445" y1="109.849" y2="109.849" /><text fill="#000000" font-family="sans-serif" font-size="9.5021" font-weight="bold" lengthAdjust="spacing" textLength="20.466" x="73.4582" y="106.3828">[01]</text><text fill="#000000" font-family="sans-serif" font-size="9.5021" lengthAdjust="spacing" textLength="367.6565" x="96.8479" y="106.3828">Ajuster les donn&#233;es de vaccination agr&#233;g&#233;es,\cr&#233;er un document de vaccination</text><polygon fill="#181818" points="731.2928,128.3491,738.6021,131.2728,731.2928,134.1966,734.2165,131.2728" style="stroke:#181818;stroke-width:0.7309273640931933;" /><line style="stroke:#181818;stroke-width:0.7309273640931933;" x1="476.9301" x2="735.6784" y1="131.2728" y2="131.2728" /><text fill="#000000" font-family="sans-serif" font-size="9.5021" font-weight="bold" lengthAdjust="spacing" textLength="20.466" x="482.0466" y="127.8066">[02]</text><text fill="#000000" font-family="sans-serif" font-size="9.5021" lengthAdjust="spacing" textLength="222.2019" x="505.4363" y="127.8066">Enregistrez le nouveau document de vaccination</text><polygon fill="#181818" points="484.9703,137.1203,477.661,140.044,484.9703,142.9677,482.0466,140.044" style="stroke:#181818;stroke-width:0.7309273640931933;" /><line style="stroke:#181818;stroke-width:0.7309273640931933;" x1="480.5847" x2="739.333" y1="140.044" y2="140.044" /><text fill="#000000" font-family="sans-serif" font-size="9.5021" font-weight="bold" lengthAdjust="spacing" textLength="20.466" x="489.3559" y="149.9615">[03]</text><text fill="#000000" font-family="sans-serif" font-size="9.5021" lengthAdjust="spacing" textLength="13.1567" x="512.7455" y="149.9615">OK</text><polygon fill="#181818" points="76.3819,158.5441,69.0726,161.4679,76.3819,164.3916,73.4582,161.4679" style="stroke:#181818;stroke-width:0.7309273640931933;" /><line style="stroke:#181818;stroke-width:0.7309273640931933;" x1="71.9963" x2="476.1992" y1="161.4679" y2="161.4679" /><text fill="#000000" font-family="sans-serif" font-size="9.5021" font-weight="bold" lengthAdjust="spacing" textLength="20.466" x="80.7675" y="171.3853">[04]</text><text fill="#000000" font-family="sans-serif" font-size="9.5021" lengthAdjust="spacing" textLength="135.9525" x="104.1571" y="171.3853">Confirmation d'enregistration</text><text fill="#888888" font-family="sans-serif" font-size="7.3093" lengthAdjust="spacing" textLength="40.201" x="379.534" y="250.2513">Version 1.0</text></g></svg></div>
+
+<p><em>Mise en œuvre technique dans le DEP</em>: le portail ou le système primaire adresse une demande de documents de vaccination au point d’accès de la communauté, qui transmet la demande à d’autres communautés où sont stockés les documents du patient. Le portail ou le système primaire analyse le résultat de la requête au registre et récupère les documents de vaccination auprès de toutes les communautés de référence qui ont sauvegardé des documents dont le type ou la classe correspond. Par conséquent, le portail fait <em>une</em> demande pour tous les documents à chaque communauté qui a sauvegardé des données de vaccination concernant le patient sélectionné. Le portail centralise les résultats et affiche les données compilées (<em>dossier de vaccination</em>) à l’intention du professionnel de la santé dans une interface utilisateur.</p>
+
+<p>Les données indiquées ou corrigées par le professionnel de la santé sont enregistrées dans le système primaire ou sur le portail et sauvegardées dans le DEP après vérification, soit sous la forme d’un document unique, soit sous la forme de documents multiples au format documentation de vaccination. Les nouveaux documents contiennent une indication sur les anciens documents remplacés ou complétés par les nouveaux. On utilise à cet effet l’élément de données relatesTo associé à la valeur replaces des formats d’échange CH-VACD.</p>
+
+<h3 id="mettre-à-jour-le-dossier-de-vaccination">Mettre à jour le dossier de vaccination</h3>
+
+<p>Un professionnel de la santé met à jour les données de vaccination dans son système primaire à l’aide des données de vaccination d’un patient dans le DEP (cf. 3.6.1). Il reprend à cet effet les nouvelles données issues du DEP ou transpose des données nouvellement enregistrées dans le DEP du patient (cf. 3.6.3).</p>
+
+<p>Le professionnel de la santé rassemble dans le système primaire les informations médicales supplémentaires et nécessaires pour le <em>dossier de vaccination</em> qui concernent le statut immunitaire du patient ou sélectionne celles-ci sur le portail de la communauté. Le professionnel de la santé sélectionne la fonction permettant d’établir le format d’échange <em>documentation de vaccination</em>.</p>
+
+<p>Le professionnel de la santé fait appel à la nouvelle compilation du <em>dossier de vaccination</em> et, au besoin, au contrôle des vaccins automatisé.</p>
+
+<p><em>Mise en œuvre technique dans le DEP</em>: le système primaire ou le portail établit un document au format d’échange documentation de vaccination avec les données indiquées et le sauvegarde dans le DEP du patient. Le nouveau document contient une indication sur les anciens documents au format d’échange <em>documentation de vaccination</em> remplacés par le nouveau document. On utilise à cet effet l’élément de données relatesTo associé à la valeur <em>replaces</em> ou <em>appends</em> des formats d’échange CH-VACD.</p>
+
+<h3 id="mise-en-œuvre-technique">Mise en œuvre technique</h3>
+
+<p>Toutes les transactions IHE requises pour le cas d’utilisation sont présentées dans le diagramme suivant.</p>
+
+<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="518px" preserveAspectRatio="none" style="width:763px;height:518px;background:#FFFFFF;" version="1.1" viewBox="0 0 763 518" width="763px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="259" x="249" y="28.5352">Save a vaccination document in EPD</text><rect fill="#DDDDDD" height="454.3926" style="stroke:#181818;stroke-width:0.5;" width="566.5" x="190.5" y="43.4883" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="92" x="427.75" y="56.0566">Community A</text><rect fill="#FFFFFF" height="232.7949" style="stroke:#181818;stroke-width:1.0;" width="10" x="227" y="150.2871" /><rect fill="#FFFFFF" height="101.2422" style="stroke:#181818;stroke-width:1.0;" width="10" x="490" y="237.2188" /><rect fill="#FFFFFF" height="12" style="stroke:#181818;stroke-width:1.0;" width="10" x="699" y="281.8398" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="22" x2="22" y1="118.9766" y2="418.3926" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="231.5" x2="231.5" y1="118.9766" y2="418.3926" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="495" x2="495" y1="118.9766" y2="418.3926" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="704" x2="704" y1="118.9766" y2="418.3926" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="5" y="116.0234">HCP</text><ellipse cx="22" cy="50.9883" fill="#0000FF" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;" /><path d="M22,58.9883 L22,85.9883 M9,66.9883 L35,66.9883 M22,85.9883 L9,100.9883 M22,85.9883 L35,100.9883 " fill="none" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="5" y="430.9277">HCP</text><ellipse cx="22" cy="442.3809" fill="#0000FF" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;" /><path d="M22,450.3809 L22,477.3809 M9,458.3809 L35,458.3809 M22,477.3809 L9,492.3809 M22,477.3809 L35,492.3809 " fill="none" style="stroke:#181818;stroke-width:0.5;" /><rect fill="#00CC00" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="75" x="194.5" y="87.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="201.5" y="108.0234">GFPP/PIS</text><rect fill="#00CC00" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="75" x="194.5" y="417.3926" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="201.5" y="437.9277">GFPP/PIS</text><rect fill="#00CC00" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="116" x="437" y="87.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="444" y="108.0234">CO-Repository</text><rect fill="#00CC00" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="116" x="437" y="417.3926" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="444" y="437.9277">CO-Repository</text><rect fill="#00CC00" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="98" x="655" y="87.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="662" y="108.0234">CO-Registry</text><rect fill="#00CC00" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="98" x="655" y="417.3926" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="662" y="437.9277">CO-Registry</text><rect fill="#FFFFFF" height="232.7949" style="stroke:#181818;stroke-width:1.0;" width="10" x="227" y="150.2871" /><rect fill="#FFFFFF" height="101.2422" style="stroke:#181818;stroke-width:1.0;" width="10" x="490" y="237.2188" /><rect fill="#FFFFFF" height="12" style="stroke:#181818;stroke-width:1.0;" width="10" x="699" y="281.8398" /><polygon fill="#181818" points="215,146.2871,225,150.2871,215,154.2871,219,150.2871" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="22" x2="221" y1="150.2871" y2="150.2871" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="29" y="145.5449">[01]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="154" x="61" y="145.5449">Change data and store it</text><line style="stroke:#181818;stroke-width:1.0;" x1="237" x2="279" y1="179.5977" y2="179.5977" /><line style="stroke:#181818;stroke-width:1.0;" x1="279" x2="279" y1="179.5977" y2="192.5977" /><line style="stroke:#181818;stroke-width:1.0;" x1="238" x2="279" y1="192.5977" y2="192.5977" /><polygon fill="#181818" points="248,188.5977,238,192.5977,248,196.5977,244,192.5977" style="stroke:#181818;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="244" y="174.8555">[02]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="198" x="276" y="174.8555">Create FHIR ch-vacd Document</text><polygon fill="#181818" points="478,233.2188,488,237.2188,478,241.2188,482,237.2188" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="237" x2="484" y1="237.2188" y2="237.2188" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="244" y="224.8213">[03]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="197" x="276" y="217.166">Provide and Register Document</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="125" x="276" y="232.4766">Set Request [ITI-41]</text><polygon fill="#181818" points="687,277.8398,697,281.8398,687,285.8398,691,281.8398" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="500" x2="693" y1="281.8398" y2="281.8398" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="507" y="269.4424">[04]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143" x="539" y="261.7871">Register Document Set</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="102" x="539" y="277.0977">Request [ITI-41]</text><polygon fill="#181818" points="511,289.8398,501,293.8398,511,297.8398,507,293.8398" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="505" x2="703" y1="293.8398" y2="293.8398" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="517" y="315.0635">[05]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143" x="549" y="307.4082">Register Document Set</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="112" x="549" y="322.7188">Response [ITI-41]</text><polygon fill="#181818" points="248,334.4609,238,338.4609,248,342.4609,244,338.4609" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="242" x2="494" y1="338.4609" y2="338.4609" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="254" y="359.6846">[06]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="197" x="286" y="352.0293">Provide and Register Document</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="135" x="286" y="367.3398">Set Response [ITI-41]</text><polygon fill="#181818" points="33,379.082,23,383.082,33,387.082,29,383.082" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="27" x2="231" y1="383.082" y2="383.082" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="39" y="396.6504">[07]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="71" y="396.6504">Show success message</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="55" x="351" y="508.5488">Version 1.0</text></g></svg></div>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      if(window.location.hash != "") {
+          $('a[href="' + window.location.hash + '"]').click()
+      }
+    });
+  </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-vacd#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Dec 28, 2023 11:10+0100">2023-12-28</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSejY5cinbQ4kHgGKMhncYu0mPuWb7euUkxfeXZeiUCFFa4k6g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-vacd%234.0.1%20/Use-Case-3-Verifier-la-documentation-de-vaccination.html&amp;entry%2E247644557=Use%20Case%203%20Verifier%20La%20Documentation%20De%20Vaccination">Propose a change</a>
+
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+  
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script>anchors.options.visible = 'hover'
+anchors.add()</script>
+  
+<!-- feedback form - Google forms -->
+<!-- v0.1, 2021-01-09 -->
+
+
+  
+
+
+  
+
+
+
+<!-- / feedback form  -->
+
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+
