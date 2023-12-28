@@ -1,0 +1,98 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-allergyintolerance/Composition/ch-allergyintolerance-composition-example> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ch-allergyintolerance-composition-example"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-allergyintolerance/StructureDefinition/ch-allergyintolerance-composition-epr"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-allergyintolerance/StructureDefinition/ch-allergyintolerance-composition-epr>
+     ] )
+  ] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><p><b>Generated Narrative: Composition</b><a name=\"ch-allergyintolerance-composition-example\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Composition &quot;ch-allergyintolerance-composition-example&quot;  (Language &quot;de-CH&quot;) </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-allergyintolerance-composition-epr.html\">CH Allergy Intolerance Composition Profile</a></p></div><p><b>EPR Information Recipient</b>: <a href=\"Patient-ElisabethBroennimannByBFH.html\">Patient/ElisabethBroennimannByBFH</a> &quot; BRÖNNIMANN-BERTHOLET&quot;</p><p><b>identifier</b>: id: <a href=\"http://terminology.hl7.org/5.4.0/NamingSystem-uri.html\">#</a>urn:uuid:4356b15f-4061-49d9-80bf-b84d23113a6a</p><p><b>status</b>: final</p><p><b>type</b>: Allergy record (record artifact) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#722446000)</span></p><p><b>date</b>: 2022-01-12 17:00:00+0100</p><p><b>author</b>: </p><ul><li><a href=\"Practitioner-FamilienHausarzt.html\">Practitioner/FamilienHausarzt</a> &quot; HAUSARZT&quot;</li><li><a href=\"Organization-Hausarzt.html\">Organization/Hausarzt</a> &quot;Hausarzt&quot;</li></ul><p><b>title</b>: Allergies and adverse reactions Document</p><p><b>confidentiality</b>: N</p><p><b>custodian</b>: <a href=\"Organization-Custodian.html\">Organization/Custodian</a> &quot;Hausarzt&quot;</p></div>"
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-informationrecipient"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-allergyintolerance/Patient/ElisabethBroennimannByBFH> ;
+       fhir:reference [ fhir:v "Patient/ElisabethBroennimannByBFH" ]
+     ]
+  ] ) ; # 
+  fhir:identifier [
+     fhir:system [ fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "urn:uuid:4356b15f-4061-49d9-80bf-b84d23113a6a" ]
+  ] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a sct:722446000 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "722446000" ] ;
+       fhir:display [ fhir:v "Allergy record (record artifact)" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-allergyintolerance/Patient/ElisabethBroennimannByBFH> ;
+     fhir:reference [ fhir:v "Patient/ElisabethBroennimannByBFH" ]
+  ] ; # 
+  fhir:date [ fhir:v "2022-01-12T17:00:00+01:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-allergyintolerance/Practitioner/FamilienHausarzt> ;
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time"^^xsd:anyURI ] ;
+       fhir:value [ fhir:v "2012-02-04T14:00:00+01:00"^^xsd:dateTime ]
+     ] ) ;
+     fhir:reference [ fhir:v "Practitioner/FamilienHausarzt" ]
+  ] [
+     fhir:link <http://fhir.ch/ig/ch-allergyintolerance/Organization/Hausarzt> ;
+     fhir:reference [ fhir:v "Organization/Hausarzt" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Allergies and adverse reactions Document"] ; # 
+  fhir:confidentiality [
+     fhir:v "N" ;
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a sct:17621005 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "17621005" ] ;
+           fhir:display [ fhir:v "Normal" ]
+         ] )
+       ]
+     ] )
+  ] ; # 
+  fhir:custodian [
+     fhir:link <http://fhir.ch/ig/ch-allergyintolerance/Organization/Custodian> ;
+     fhir:reference [ fhir:v "Organization/Custodian" ]
+  ] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Allergy Intolerance" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:48765-2 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "48765-2" ] ;
+         fhir:display [ fhir:v "Allergies and adverse reactions Document" ]
+       ] )
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-allergyintolerance/AllergyIntolerance/CH-AllergyIntolerance-IPAG-Recommendation-Table-1> ;
+       fhir:reference [ fhir:v "AllergyIntolerance/CH-AllergyIntolerance-IPAG-Recommendation-Table-1" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
