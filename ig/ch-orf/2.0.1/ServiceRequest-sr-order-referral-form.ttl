@@ -1,0 +1,68 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/ServiceRequest/sr-order-referral-form> a fhir:ServiceRequest ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "sr-order-referral-form"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-servicerequest>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: ServiceRequest</b><a name=\"sr-order-referral-form\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource ServiceRequest &quot;sr-order-referral-form&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-orf-servicerequest.html\">CH ORF ServiceRequest</a></p></div><p><b>CH ORF Requested Encounter Details</b>: <a href=\"Encounter-EncounterMusterfrau.html\">Encounter/EncounterMusterfrau</a></p><p><b>identifier</b>: Placer Identifier: 123, Filler Identifier: 456</p><p><b>status</b>: active</p><p><b>intent</b>: order</p><p><b>priority</b>: routine</p><p><b>subject</b>: <a href=\"Patient-ErikaMusterfrau.html\">Patient/ErikaMusterfrau</a> &quot; MUSTERFRAU&quot;</p><p><b>requester</b>: <a href=\"PractitionerRole-SabineMeierPraxisSeeblick.html\">PractitionerRole/SabineMeierPraxisSeeblick</a></p><p><b>insurance</b>: <a href=\"Coverage-CoverageMusterfrau.html\">Coverage/CoverageMusterfrau</a></p><p><b>note</b>: Bemerkung/Kommentar</p></div>"
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-requestedencounterdetails"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-orf/Encounter/EncounterMusterfrau> ;
+       fhir:reference [ fhir:v "Encounter/EncounterMusterfrau" ]
+     ]
+  ] ) ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PLAC" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "urn:oid:2.999.1"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "123" ]
+  ] [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "FILL" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "http://example.com/identifier"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "456" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:intent [ fhir:v "order"] ; # 
+  fhir:priority [ fhir:v "routine"] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-orf/Patient/ErikaMusterfrau> ;
+     fhir:reference [ fhir:v "Patient/ErikaMusterfrau" ]
+  ] ; # 
+  fhir:requester [
+     fhir:link <http://fhir.ch/ig/ch-orf/PractitionerRole/SabineMeierPraxisSeeblick> ;
+     fhir:reference [ fhir:v "PractitionerRole/SabineMeierPraxisSeeblick" ]
+  ] ; # 
+  fhir:insurance ( [
+     fhir:link <http://fhir.ch/ig/ch-orf/Coverage/CoverageMusterfrau> ;
+     fhir:reference [ fhir:v "Coverage/CoverageMusterfrau" ]
+  ] ) ; # 
+  fhir:note ( [
+     fhir:text [ fhir:v "Bemerkung/Kommentar" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

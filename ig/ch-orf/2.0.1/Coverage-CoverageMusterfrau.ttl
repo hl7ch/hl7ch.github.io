@@ -1,0 +1,61 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Coverage/CoverageMusterfrau> a fhir:Coverage ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "CoverageMusterfrau"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-coverage>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Coverage</b><a name=\"CoverageMusterfrau\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Coverage &quot;CoverageMusterfrau&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-orf-coverage.html\">CH ORF Coverage</a></p></div><p><b>identifier</b>: Insurance Card Number: 80756015090002647590</p><p><b>status</b>: active</p><p><b>type</b>: According to KVG <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"CodeSystem-ch-orf-cs-coveragetype.html\">Coverage Type</a>#KVG)</span></p><p><b>beneficiary</b>: <a href=\"Patient-ErikaMusterfrau.html\">Patient/ErikaMusterfrau</a> &quot; MUSTERFRAU&quot;</p><p><b>payor</b>: <a name=\"sanitas\"> </a></p><blockquote><p/><p><a name=\"sanitas\"> </a></p><p><b>name</b>: Sanitas</p></blockquote><hr/><blockquote><p><b>Generated Narrative: Organization #sanitas</b><a name=\"sanitas\"> </a></p><p><b>name</b>: Sanitas</p></blockquote></div>"
+  ] ; # 
+  fhir:contained ( [
+     a fhir:Organization ;
+     fhir:id [ fhir:v "sanitas" ] ;
+     fhir:name [ fhir:v "Sanitas" ]
+  ] ) ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coverageidentifiertype"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "VeKa" ]
+       ] )
+     ] ;
+     fhir:value [ fhir:v "80756015090002647590" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "active"] ; # <identifier>
+#        <type>
+#            <coding>
+#                <system value="http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coverageidentifiertype"/>
+#                <code value="Other"/>
+#            </coding>
+#            <text value="Bemerkung zur beliebigen ID"/>
+#        </type>
+#        <value value="1234" />
+#    </identifier>
+  fhir:type [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-orf/CodeSystem/ch-orf-cs-coveragetype"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "KVG" ] ;
+       fhir:display [ fhir:v "According to KVG" ]
+     ] )
+  ] ; # 
+  fhir:beneficiary [
+     fhir:link <http://fhir.ch/ig/ch-orf/Patient/ErikaMusterfrau> ;
+     fhir:reference [ fhir:v "Patient/ErikaMusterfrau" ]
+  ] ; # 
+  fhir:payor ( [
+     fhir:reference [ fhir:v "#sanitas" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

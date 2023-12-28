@@ -1,0 +1,123 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-orf/Composition/comp-order-referral-form> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "comp-order-referral-form"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-composition"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-composition>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n            Order-Referral-Form\n        </div>"
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-dataenterer"^^xsd:anyURI ] ;
+     fhir:extension ( [
+       fhir:url [ fhir:v "enterer"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:Reference ;
+         fhir:link <http://fhir.ch/ig/ch-orf/PractitionerRole/StabiloBossPraxisSeeblick> ;
+         fhir:reference [ fhir:v "PractitionerRole/StabiloBossPraxisSeeblick" ]
+       ]
+     ] )
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-urgentnoficationcontactforthisdocument"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-orf/PractitionerRole/NotificationContactHansRoentgen> ;
+       fhir:reference [ fhir:v "PractitionerRole/NotificationContactHansRoentgen" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-urgentnoficationcontactfortheresponsetothisdocument"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-orf/PractitionerRole/NotificationContactSabineMeier> ;
+       fhir:reference [ fhir:v "PractitionerRole/NotificationContactSabineMeier" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-orf/PractitionerRole/HansRoentgenKantonsspital> ;
+       fhir:reference [ fhir:v "PractitionerRole/HansRoentgenKantonsspital" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-orf/PractitionerRole/CopyReceiverSabineMeierPraxisSeeblick> ;
+       fhir:reference [ fhir:v "PractitionerRole/CopyReceiverSabineMeierPraxisSeeblick" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-orf/Patient/ErikaMusterfrau> ;
+       fhir:reference [ fhir:v "Patient/ErikaMusterfrau" ]
+     ]
+  ] ) ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a sct:419891008 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "419891008" ] ;
+       fhir:display [ fhir:v "Record artifact (record artifact)" ]
+     ] )
+  ] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       a sct:721963009 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "721963009" ] ;
+       fhir:display [ fhir:v "Order (record artifact)" ]
+     ] )
+  ] ) ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-orf/Patient/ErikaMusterfrau> ;
+     fhir:reference [ fhir:v "Patient/ErikaMusterfrau" ]
+  ] ; # 
+  fhir:date [ fhir:v "2019-03-31T11:46:09+02:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-orf/PractitionerRole/SabineMeierPraxisSeeblick> ;
+     fhir:reference [ fhir:v "PractitionerRole/SabineMeierPraxisSeeblick" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Order-Referral-Form"] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Order-Referral" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:93037-0 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "93037-0" ] ;
+         fhir:display [ fhir:v "Portable medical order form" ]
+       ] )
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n                Order-Referral-Form\n            </div>"
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-orf/Questionnaire/order-referral-form> ;
+       fhir:reference [ fhir:v "Questionnaire/order-referral-form" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-orf/QuestionnaireResponse/qr-order-referral-form> ;
+       fhir:reference [ fhir:v "QuestionnaireResponse/qr-order-referral-form" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-orf/ServiceRequest/sr-order-referral-form> ;
+       fhir:reference [ fhir:v "ServiceRequest/sr-order-referral-form" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
