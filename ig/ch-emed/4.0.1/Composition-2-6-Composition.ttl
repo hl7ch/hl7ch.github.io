@@ -1,0 +1,116 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emed/Composition/2-6-Composition> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "2-6-Composition"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationprescription"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-medicationprescription>
+     ] )
+  ] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><p><b>Generated Narrative: Composition</b><a name=\"2-6-Composition\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Composition &quot;2-6-Composition&quot;  (Language &quot;de-CH&quot;) </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emed-composition-medicationprescription.html\">CH EMED Medication Prescription Composition</a></p></div><p><b>identifier</b>: id: <a href=\"http://terminology.hl7.org/5.4.0/NamingSystem-uri.html\">#</a>urn:uuid:d41d72ba-2100-11e6-b67b-9e71128cae77</p><p><b>status</b>: final</p><p><b>type</b>: Prescription for medication <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#57833-6; <a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#761938008 &quot;Medicinal prescription record (record artifact)&quot;)</span></p><p><b>date</b>: 2012-02-04 14:00:00+0100</p><p><b>author</b>: <a href=\"PractitionerRole-FamilienHausarztAtHausarzt.html\">PractitionerRole/FamilienHausarztAtHausarzt</a></p><p><b>title</b>: Rezept</p><p><b>confidentiality</b>: N</p></div>"
+  ] ; # 
+  fhir:identifier [
+     fhir:system [ fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "urn:uuid:d41d72ba-2100-11e6-b67b-9e71128cae77" ]
+  ] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a loinc:57833-6 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "57833-6" ] ;
+       fhir:display [ fhir:v "Prescription for medication" ]
+     ] [
+       a sct:761938008 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "761938008" ] ;
+       fhir:display [ fhir:v "Medicinal prescription record (record artifact)" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-emed/Patient/MonikaWegmueller> ;
+     fhir:reference [ fhir:v "Patient/MonikaWegmueller" ]
+  ] ; # 
+  fhir:date [ fhir:v "2012-02-04T14:00:00+01:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-emed/PractitionerRole/FamilienHausarztAtHausarzt> ;
+     fhir:reference [ fhir:v "PractitionerRole/FamilienHausarztAtHausarzt" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Rezept"] ; # 
+  fhir:confidentiality [
+     fhir:v "N" ;
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a sct:17621005 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "17621005" ] ;
+           fhir:display [ fhir:v "Normal (qualifier value)" ]
+         ] )
+       ]
+     ] )
+  ] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Kommentar" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:48767-8 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "48767-8" ] ;
+         fhir:display [ fhir:v "Annotation comment [Interpretation] Narrative" ]
+       ] )
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><span id=\"co1\">Kommentar zu Medication Prescription</span></div>"
+     ]
+  ] [
+     fhir:title [ fhir:v "Original Darstellung" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:55108-5 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "55108-5" ] ;
+         fhir:display [ fhir:v "Clinical presentation Document" ]
+       ] )
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a href=\"Binary/2-6-pdf\">Representation of the original view</a></div>"
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-emed/Binary/2-6-pdf> ;
+       fhir:reference [ fhir:v "Binary/2-6-pdf" ]
+     ] )
+  ] [
+     fhir:title [ fhir:v "Arzneimittelverordnung" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:57828-6 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "57828-6" ] ;
+         fhir:display [ fhir:v "PRESCRIPTIONS" ]
+       ] )
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-emed/MedicationRequest/2-6-MedReqNorvasc> ;
+       fhir:reference [ fhir:v "MedicationRequest/2-6-MedReqNorvasc" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
