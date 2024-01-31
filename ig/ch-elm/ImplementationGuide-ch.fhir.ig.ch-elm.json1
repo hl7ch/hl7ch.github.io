@@ -6,11 +6,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_ELM</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-elm/ImplementationGuide/ch.fhir.ig.ch-elm</pre><div><p>FHIR® Implementation Guide for the Electronic Laboratory Report of the Swiss Federal Office of Public Health</p>\n</div></div>"
   },
   "url" : "http://fhir.ch/ig/ch-elm/ImplementationGuide/ch.fhir.ig.ch-elm",
-  "version" : "1.0.0",
+  "version" : "1.1.0",
   "name" : "CH_ELM",
   "title" : "CH ELM (R4)",
   "status" : "active",
-  "date" : "2023-11-16",
+  "date" : "2024-01-31",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -31,32 +31,28 @@
   "license" : "CC0-1.0",
   "fhirVersion" : ["4.0.1"],
   "dependsOn" : [{
-    "id" : "hl7tx",
-    "extension" : [{
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
-    }],
+    "id" : "hl7_terminology",
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
-    "packageId" : "hl7.terminology.r4",
-    "version" : "5.3.0"
+    "packageId" : "hl7.terminology",
+    "version" : "5.4.0"
   },
   {
     "id" : "hl7_fhir_eu_laboratory",
     "uri" : "http://hl7.eu/fhir/laboratory/ImplementationGuide/hl7.fhir.eu.laboratory",
     "packageId" : "hl7.fhir.eu.laboratory",
-    "version" : "current"
+    "version" : "0.1.0-ballot"
   },
   {
     "id" : "ch_fhir_ig_ch_lab_report",
     "uri" : "http://fhir.ch/ig/ch-lab-report/ImplementationGuide/ch.fhir.ig.ch-lab-report",
     "packageId" : "ch.fhir.ig.ch-lab-report",
-    "version" : "current"
+    "version" : "0.1.1"
   },
   {
     "id" : "ch_fhir_ig_ch_core",
     "uri" : "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core",
     "packageId" : "ch.fhir.ig.ch-core",
-    "version" : "current"
+    "version" : "4.0.1"
   },
   {
     "id" : "hl7_fhir_uv_extensions_r4",
@@ -397,7 +393,7 @@
     },
     {
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
-      "valueCode" : "hl7.fhir.uv.tools#current"
+      "valueCode" : "hl7.fhir.uv.tools#0.1.0"
     },
     {
       "extension" : [{
@@ -816,6 +812,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ServiceRequest"
+      }],
+      "reference" : {
+        "reference" : "ServiceRequest/1bSR-Order"
+      },
+      "name" : "1bSR - Order",
+      "description" : "Example for a CH ELM ServiceRequest: Laboratory Order",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-servicerequest-laboratory-order"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Composition"
       }],
       "reference" : {
@@ -1170,7 +1178,7 @@
         "reference" : "CodeSystem/ch-elm-foph-patient-name-representation"
       },
       "name" : "CH ELM FOPH Patient Name Representation",
-      "description" : "This CH ELM code system defines the codes which identify possible patient name schemas to be used.",
+      "description" : "This CH ELM resource defines the codes which identify possible patient name schemas to be used.",
       "exampleBoolean" : false
     },
     {
@@ -1182,7 +1190,7 @@
         "reference" : "ValueSet/ch-elm-foph-patient-name-representation"
       },
       "name" : "CH ELM FOPH Patient Name Representation",
-      "description" : "This CH ELM value set includes the codes which identify possible patient name schemas to be used.",
+      "description" : "This CH ELM resource defines the codes which identify possible patient name schemas to be used.",
       "exampleBoolean" : false
     },
     {
@@ -1314,7 +1322,7 @@
         "reference" : "StructureDefinition/ch-elm-practitionerrole-orderer"
       },
       "name" : "CH ELM PractitionerRole: Orderer",
-      "description" : "This CH ELM base profile constrains the PractitionerRole resource for the orderer.",
+      "description" : "This profile constrains the PractitionerRole resource for the orderer: \n- orderer organization and/or practitioner must be present\n- a postalCode and city must be present from organization and/or practitioner",
       "exampleBoolean" : false
     },
     {
@@ -1467,6 +1475,42 @@
         "valueString" : "DocumentReference"
       }],
       "reference" : {
+        "reference" : "DocumentReference/2-DocumentReferenceStrict"
+      },
+      "name" : "DocumentReference for reporting Chlamydia Trachomatis",
+      "description" : "Example for a CH ELM DocumentReference: Laboratory Report",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "DocumentReference"
+      }],
+      "reference" : {
+        "reference" : "DocumentReference/2-DocumentReference"
+      },
+      "name" : "DocumentReference for reporting Chlamydia Trachomatis",
+      "description" : "Example for a CH ELM DocumentReference: Laboratory Report",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "DocumentReference"
+      }],
+      "reference" : {
+        "reference" : "DocumentReference/1-DocumentReferenceStrict"
+      },
+      "name" : "DocumentReference for reporting Neisseria Gonorhoeae",
+      "description" : "Example for a CH ELM DocumentReference: Laboratory Report",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "DocumentReference"
+      }],
+      "reference" : {
         "reference" : "DocumentReference/1-DocumentReference"
       },
       "name" : "DocumentReference for reporting Neisseria Gonorhoeae",
@@ -1482,7 +1526,19 @@
         "reference" : "StructureDefinition/PublishDocumentReference"
       },
       "name" : "DocumentReference for sending the report",
-      "description" : "A profile on the DocumentReference resource with publication constraints: \n- must be status current\n- must have an identifier\n- uses attachment.url to carry the document as a contained resource",
+      "description" : "A profile on the DocumentReference resource with publication constraints: \n- must be status current\n- must have an identifier\n- uses attachment.url to carry the document as a contained resource\n- validation according to http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/PublishDocumentReferenceStrict"
+      },
+      "name" : "DocumentReference for sending the report with strict validation",
+      "description" : "A profile on the DocumentReference resource with publication constraints: \n- must be status current\n- must have an identifier\n- uses attachment.url to carry the document as a contained resource\n- strict validation according to http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict",
       "exampleBoolean" : false
     },
     {

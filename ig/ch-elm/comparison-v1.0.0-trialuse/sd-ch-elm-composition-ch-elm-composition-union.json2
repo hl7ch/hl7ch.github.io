@@ -1,11 +1,11 @@
 {
   "resourceType" : "StructureDefinition",
-  "id" : "1625360e-3863-4bc5-be19-4c489b8ffb66-14",
-  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/1625360e-3863-4bc5-be19-4c489b8ffb66-14",
+  "id" : "e672cbb3-2908-4b64-9c99-c0ce996c6fe0-14",
+  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/e672cbb3-2908-4b64-9c99-c0ce996c6fe0-14",
   "name" : "UnionChElmCompositionAndChElmComposition",
   "title" : "Union of CH ELM Composition: Laboratory Report And CH ELM Composition: Laboratory Report",
   "status" : "draft",
-  "date" : "2023-11-16T14:47:37+01:00",
+  "date" : "2024-01-31T13:00:16+01:00",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -213,7 +213,7 @@
     },
     {
       "path" : "Composition.text",
-      "short" : "left: Text summary of the resource, for human interpretation; right: Narrative text",
+      "short" : "Text summary of the resource, for human interpretation",
       "definition" : "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
       "comment" : "Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a \"text blob\" or where text is additionally entered raw or narrated and encoded information is added later.",
       "alias" : ["narrative",
@@ -809,9 +809,9 @@
     },
     {
       "path" : "Composition.category",
-      "short" : "Categorization of Composition",
-      "definition" : "A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.",
-      "comment" : "This is a metadata field from [XDS/MHD]).",
+      "short" : "left: Categorization of Composition; right: Report Category",
+      "definition" : "left: A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.; right: A code that classifies this laboratory report.",
+      "comment" : "left: This is a metadata field from [XDS/MHD]).; right: DiagnosticReport.category and Composition.category shall be aligned",
       "requirements" : "Helps humans to assess whether the composition is of interest when viewing an index of compositions or documents.",
       "min" : 0,
       "max" : "*",
@@ -1100,7 +1100,8 @@
       "max" : "1",
       "type" : [{
         "code" : "Reference",
-        "targetProfile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter"]
+        "targetProfile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter",
+        "#sd-ch-core-encounter-ch-core-encounter"]
       }],
       "constraint" : [{
         "extension" : [{
@@ -1724,7 +1725,8 @@
         "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
         "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner",
         "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole",
-        "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"]
+        "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization",
+        "#sd-ch-core-patient-ch-core-patient"]
       }],
       "constraint" : [{
         "extension" : [{
@@ -1948,7 +1950,8 @@
       "max" : "1",
       "type" : [{
         "code" : "Reference",
-        "targetProfile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"]
+        "targetProfile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization",
+        "#sd-ch-core-organization-ch-core-organization"]
       }],
       "constraint" : [{
         "extension" : [{
@@ -2360,7 +2363,8 @@
       },
       {
         "code" : "Reference",
-        "targetProfile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-composition"]
+        "targetProfile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-composition",
+        "#sd-ch-core-composition-ch-core-composition"]
       }],
       "constraint" : [{
         "extension" : [{
@@ -2914,7 +2918,8 @@
         "http://hl7.org/fhir/StructureDefinition/Device",
         "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient",
         "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
-        "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"]
+        "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization",
+        "#sd-ch-core-practitioner-ch-core-practitioner"]
       }],
       "constraint" : [{
         "extension" : [{

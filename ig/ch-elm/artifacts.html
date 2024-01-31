@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Artifacts Summary - CH ELM (R4) v1.0.0</title>
+    <title>Artifacts Summary - CH ELM (R4) v1.1.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -21,6 +21,14 @@
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -56,6 +64,11 @@
 -->
 
 
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
             <div id="hl7-nav">
     <a id="logo" no-external="true" href="https://www.bag.admin.ch/bag/en/home.html">
         <img alt="visit the website" height="60" src="bag-logo.jpg" />
@@ -65,11 +78,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ELM (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - trial-use
+            <span style="display:inline-block;">1.1.0 - trial-use
 
 
 
-  Switzerland
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
 
 
             </span>
@@ -175,7 +188,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.1.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Artifacts Summary</h2>
   
   
@@ -394,7 +407,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="StructureDefinition/ch-elm-practitionerrole-orderer">CH ELM PractitionerRole: Orderer</a>
             </td>
             <td>
-<p>This CH ELM base profile constrains the PractitionerRole resource for the orderer.</p>
+<p>This profile constrains the PractitionerRole resource for the orderer:</p>
+<ul>
+  <li>orderer organization and/or practitioner must be present</li>
+  <li>a postalCode and city must be present from organization and/or practitioner</li>
+</ul>
 </td>
          </tr>
          <tr>
@@ -439,6 +456,22 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li>must be status current</li>
   <li>must have an identifier</li>
   <li>uses attachment.url to carry the document as a contained resource</li>
+  <li>validation according to http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document</li>
+</ul>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-PublishDocumentReferenceStrict.html"
+                  title="StructureDefinition/PublishDocumentReferenceStrict">DocumentReference for sending the report with strict validation</a>
+            </td>
+            <td>
+<p>A profile on the DocumentReference resource with publication constraints:</p>
+<ul>
+  <li>must be status current</li>
+  <li>must have an identifier</li>
+  <li>uses attachment.url to carry the document as a contained resource</li>
+  <li>strict validation according to http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict</li>
 </ul>
 </td>
          </tr>
@@ -544,7 +577,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="ValueSet/ch-elm-foph-patient-name-representation">CH ELM FOPH Patient Name Representation</a>
             </td>
             <td>
-<p>This CH ELM value set includes the codes which identify possible patient name schemas to be used.</p>
+<p>This CH ELM resource defines the codes which identify possible patient name schemas to be used.</p>
 </td>
          </tr>
          <tr>
@@ -632,7 +665,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="CodeSystem/ch-elm-foph-patient-name-representation">CH ELM FOPH Patient Name Representation</a>
             </td>
             <td>
-<p>This CH ELM code system defines the codes which identify possible patient name schemas to be used.</p>
+<p>This CH ELM resource defines the codes which identify possible patient name schemas to be used.</p>
 </td>
          </tr>
          <tr>
@@ -860,6 +893,14 @@ For more details please visit https://www.llv.li/de/privatpersonen/gesundheit-vo
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="ServiceRequest-1bSR-Order.html" title="ServiceRequest/1bSR-Order">1bSR - Order</a>
+            </td>
+            <td>
+<p>Example for a CH ELM ServiceRequest: Laboratory Order</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="Specimen-1bSpec-Specimen.html" title="Specimen/1bSpec-Specimen">1bSpec - Neisseria Gonorrhoeae</a>
             </td>
             <td>
@@ -945,8 +986,35 @@ For more details please visit https://www.llv.li/de/privatpersonen/gesundheit-vo
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="DocumentReference-2-DocumentReference.html"
+                  title="DocumentReference/2-DocumentReference">DocumentReference for reporting Chlamydia Trachomatis</a>
+            </td>
+            <td>
+<p>Example for a CH ELM DocumentReference: Laboratory Report</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="DocumentReference-2-DocumentReferenceStrict.html"
+                  title="DocumentReference/2-DocumentReferenceStrict">DocumentReference for reporting Chlamydia Trachomatis</a>
+            </td>
+            <td>
+<p>Example for a CH ELM DocumentReference: Laboratory Report</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="DocumentReference-1-DocumentReference.html"
                   title="DocumentReference/1-DocumentReference">DocumentReference for reporting Neisseria Gonorhoeae</a>
+            </td>
+            <td>
+<p>Example for a CH ELM DocumentReference: Laboratory Report</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="DocumentReference-1-DocumentReferenceStrict.html"
+                  title="DocumentReference/1-DocumentReferenceStrict">DocumentReference for reporting Neisseria Gonorhoeae</a>
             </td>
             <td>
 <p>Example for a CH ELM DocumentReference: Laboratory Report</p>
@@ -1083,7 +1151,7 @@ For more details please visit https://www.llv.li/de/privatpersonen/gesundheit-vo
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Nov 16, 2023 14:46+0100">2023-11-16</span>
+          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jan 31, 2024 12:59+0100">2024-01-31</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -1091,7 +1159,18 @@ For more details please visit https://www.llv.li/de/privatpersonen/gesundheit-vo
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.0.0%20/artifacts.html&amp;entry%2E247644557=Artifacts%20Summary">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.1.0%20/artifacts.html&amp;entry%2E247644557=Artifacts%20Summary">Propose a change</a>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ED8VLFMEVY"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ED8VLFMEVY');
+</script>
+
 
           </span>
         </p>

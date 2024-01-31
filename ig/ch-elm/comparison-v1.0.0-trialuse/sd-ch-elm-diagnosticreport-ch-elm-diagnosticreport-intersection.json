@@ -1,11 +1,11 @@
 {
   "resourceType" : "StructureDefinition",
-  "id" : "1625360e-3863-4bc5-be19-4c489b8ffb66-30",
-  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/1625360e-3863-4bc5-be19-4c489b8ffb66-30",
+  "id" : "e672cbb3-2908-4b64-9c99-c0ce996c6fe0-51",
+  "url" : "http://hl7.org/fhir/comparison/StructureDefinition/e672cbb3-2908-4b64-9c99-c0ce996c6fe0-51",
   "name" : "IntersectionChElmDiagnosticReportAndChElmDiagnosticReport",
   "title" : "Intersection of CH ELM DiagnosticReport: Laboratory Report And CH ELM DiagnosticReport: Laboratory Report",
   "status" : "draft",
-  "date" : "2023-11-16T14:47:37+01:00",
+  "date" : "2024-01-31T13:00:16+01:00",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -491,9 +491,9 @@
     },
     {
       "path" : "DiagnosticReport.category",
-      "short" : "Service category",
-      "definition" : "A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.",
-      "comment" : "Multiple categories are allowed using various categorization schemes.   The level of granularity is defined by the category concepts in the value set. More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in DiagnosticReport.code.",
+      "short" : "left: Service category; right: Report Category",
+      "definition" : "left: A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.; right: A code that classifies this laboratory report.",
+      "comment" : "left: Multiple categories are allowed using various categorization schemes.   The level of granularity is defined by the category concepts in the value set. More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in DiagnosticReport.code.; right: DiagnosticReport.category and Composition.category shall be aligned",
       "alias" : ["Department",
       "Sub-department",
       "Service",
@@ -501,7 +501,8 @@
       "min" : 0,
       "max" : "*",
       "type" : [{
-        "code" : "CodeableConcept"
+        "code" : "CodeableConcept",
+        "profile" : ["http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips"]
       }],
       "constraint" : [{
         "extension" : [{

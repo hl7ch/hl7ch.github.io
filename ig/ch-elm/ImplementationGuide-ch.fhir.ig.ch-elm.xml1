@@ -7,11 +7,11 @@
 </div></div>
   </text>
   <url value="http://fhir.ch/ig/ch-elm/ImplementationGuide/ch.fhir.ig.ch-elm"/>
-  <version value="1.0.0"/>
+  <version value="1.1.0"/>
   <name value="CH_ELM"/>
   <title value="CH ELM (R4)"/>
   <status value="active"/>
-  <date value="2023-11-16"/>
+  <date value="2024-01-31"/>
   <publisher value="Federal Office of Public Health FOPH"/>
   <contact>
     <name value="Federal Office of Public Health FOPH"/>
@@ -31,28 +31,25 @@
   <packageId value="ch.fhir.ig.ch-elm"/>
   <license value="CC0-1.0"/>
   <fhirVersion value="4.0.1"/>
-  <dependsOn id="hl7tx">
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
-      <valueMarkdown value="Automatically added as a dependency - all IGs depend on HL7 Terminology"/>
-    </extension>
+  <dependsOn id="hl7_terminology">
     <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
-    <packageId value="hl7.terminology.r4"/>
-    <version value="5.3.0"/>
+    <packageId value="hl7.terminology"/>
+    <version value="5.4.0"/>
   </dependsOn>
   <dependsOn id="hl7_fhir_eu_laboratory">
     <uri value="http://hl7.eu/fhir/laboratory/ImplementationGuide/hl7.fhir.eu.laboratory"/>
     <packageId value="hl7.fhir.eu.laboratory"/>
-    <version value="current"/>
+    <version value="0.1.0-ballot"/>
   </dependsOn>
   <dependsOn id="ch_fhir_ig_ch_lab_report">
     <uri value="http://fhir.ch/ig/ch-lab-report/ImplementationGuide/ch.fhir.ig.ch-lab-report"/>
     <packageId value="ch.fhir.ig.ch-lab-report"/>
-    <version value="current"/>
+    <version value="0.1.1"/>
   </dependsOn>
   <dependsOn id="ch_fhir_ig_ch_core">
     <uri value="http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core"/>
     <packageId value="ch.fhir.ig.ch-core"/>
-    <version value="current"/>
+    <version value="4.0.1"/>
   </dependsOn>
   <dependsOn id="hl7_fhir_uv_extensions_r4">
     <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
@@ -301,7 +298,7 @@
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency">
-      <valueCode value="hl7.fhir.uv.tools#current"/>
+      <valueCode value="hl7.fhir.uv.tools#0.1.0"/>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
@@ -619,6 +616,17 @@
       <name value="1bSpec - Neisseria Gonorrhoeae"/>
       <description value="Example for a CH ELM Specimen: Laboratory"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-specimen"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ServiceRequest"/>
+      </extension>
+      <reference>
+        <reference value="ServiceRequest/1bSR-Order"/>
+      </reference>
+      <name value="1bSR - Order"/>
+      <description value="Example for a CH ELM ServiceRequest: Laboratory Order"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-servicerequest-laboratory-order"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -947,7 +955,7 @@
         <reference value="CodeSystem/ch-elm-foph-patient-name-representation"/>
       </reference>
       <name value="CH ELM FOPH Patient Name Representation"/>
-      <description value="This CH ELM code system defines the codes which identify possible patient name schemas to be used."/>
+      <description value="This CH ELM resource defines the codes which identify possible patient name schemas to be used."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -958,7 +966,7 @@
         <reference value="ValueSet/ch-elm-foph-patient-name-representation"/>
       </reference>
       <name value="CH ELM FOPH Patient Name Representation"/>
-      <description value="This CH ELM value set includes the codes which identify possible patient name schemas to be used."/>
+      <description value="This CH ELM resource defines the codes which identify possible patient name schemas to be used."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1079,7 +1087,7 @@
         <reference value="StructureDefinition/ch-elm-practitionerrole-orderer"/>
       </reference>
       <name value="CH ELM PractitionerRole: Orderer"/>
-      <description value="This CH ELM base profile constrains the PractitionerRole resource for the orderer."/>
+      <description value="This profile constrains the PractitionerRole resource for the orderer: &#xA;- orderer organization and/or practitioner must be present&#xA;- a postalCode and city must be present from organization and/or practitioner"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1219,6 +1227,39 @@
         <valueString value="DocumentReference"/>
       </extension>
       <reference>
+        <reference value="DocumentReference/2-DocumentReferenceStrict"/>
+      </reference>
+      <name value="DocumentReference for reporting Chlamydia Trachomatis"/>
+      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/2-DocumentReference"/>
+      </reference>
+      <name value="DocumentReference for reporting Chlamydia Trachomatis"/>
+      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/1-DocumentReferenceStrict"/>
+      </reference>
+      <name value="DocumentReference for reporting Neisseria Gonorhoeae"/>
+      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
         <reference value="DocumentReference/1-DocumentReference"/>
       </reference>
       <name value="DocumentReference for reporting Neisseria Gonorhoeae"/>
@@ -1233,7 +1274,18 @@
         <reference value="StructureDefinition/PublishDocumentReference"/>
       </reference>
       <name value="DocumentReference for sending the report"/>
-      <description value="A profile on the DocumentReference resource with publication constraints: &#xA;- must be status current&#xA;- must have an identifier&#xA;- uses attachment.url to carry the document as a contained resource"/>
+      <description value="A profile on the DocumentReference resource with publication constraints: &#xA;- must be status current&#xA;- must have an identifier&#xA;- uses attachment.url to carry the document as a contained resource&#xA;- validation according to http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/PublishDocumentReferenceStrict"/>
+      </reference>
+      <name value="DocumentReference for sending the report with strict validation"/>
+      <description value="A profile on the DocumentReference resource with publication constraints: &#xA;- must be status current&#xA;- must have an identifier&#xA;- uses attachment.url to carry the document as a contained resource&#xA;- strict validation according to http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

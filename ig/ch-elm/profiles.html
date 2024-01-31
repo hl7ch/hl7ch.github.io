@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Profiles - CH ELM (R4) v1.0.0</title>
+    <title>Profiles - CH ELM (R4) v1.1.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -21,6 +21,14 @@
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -56,6 +64,11 @@
 -->
 
 
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
             <div id="hl7-nav">
     <a id="logo" no-external="true" href="https://www.bag.admin.ch/bag/en/home.html">
         <img alt="visit the website" height="60" src="bag-logo.jpg" />
@@ -65,11 +78,11 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ELM (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - trial-use
+            <span style="display:inline-block;">1.1.0 - trial-use
 
 
 
-  Switzerland
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
 
 
             </span>
@@ -175,7 +188,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.1.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Profiles</h2>
   
 
@@ -230,7 +243,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </li>
 <li><a href="StructureDefinition-ch-elm-practitioner-orderer.html">CH ELM Practitioner: Orderer</a> <p>This CH ELM base profile constrains the Practitioner resource for the orderer.</p>
 </li>
-<li><a href="StructureDefinition-ch-elm-practitionerrole-orderer.html">CH ELM PractitionerRole: Orderer</a> <p>This CH ELM base profile constrains the PractitionerRole resource for the orderer.</p>
+<li><a href="StructureDefinition-ch-elm-practitionerrole-orderer.html">CH ELM PractitionerRole: Orderer</a> <p>This profile constrains the PractitionerRole resource for the orderer:</p>
+<ul>
+<li>orderer organization and/or practitioner must be present</li>
+<li>a postalCode and city must be present from organization and/or practitioner</li>
+</ul>
 </li>
 <li><a href="StructureDefinition-ch-elm-servicerequest-laboratory-order.html">CH ELM ServiceRequest: Laboratory Order</a> <p>This CH ELM base profile constrains the ServiceRequest resource for the purpose of laboratory orders.</p>
 </li>
@@ -247,6 +264,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <li>must be status current</li>
 <li>must have an identifier</li>
 <li>uses attachment.url to carry the document as a contained resource</li>
+<li>validation according to http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document</li>
+</ul>
+</li>
+<li><a href="StructureDefinition-PublishDocumentReferenceStrict.html">DocumentReference for sending the report with strict validation</a> <p>A profile on the DocumentReference resource with publication constraints:</p>
+<ul>
+<li>must be status current</li>
+<li>must have an identifier</li>
+<li>uses attachment.url to carry the document as a contained resource</li>
+<li>strict validation according to http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict</li>
 </ul>
 </li>
 <li><a href="StructureDefinition-FindDocumentReferencesResponse.html">Find Document References Response message</a> <p>A profile on the Find Document References Response message</p>
@@ -288,7 +314,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Nov 16, 2023 14:46+0100">2023-11-16</span>
+          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jan 31, 2024 12:59+0100">2024-01-31</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -296,7 +322,18 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.0.0%20/profiles.html&amp;entry%2E247644557=Profiles">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.1.0%20/profiles.html&amp;entry%2E247644557=Profiles">Propose a change</a>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ED8VLFMEVY"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ED8VLFMEVY');
+</script>
+
 
           </span>
         </p>

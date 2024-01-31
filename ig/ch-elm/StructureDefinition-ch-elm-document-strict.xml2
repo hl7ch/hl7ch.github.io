@@ -9,11 +9,11 @@
 <tr><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr></table></div>
   </text>
   <url value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
-  <version value="1.0.0"/>
+  <version value="1.1.0"/>
   <name value="ChElmDocumentStrict"/>
   <title value="CH ELM Document: Laboratory Report (strict)"/>
   <status value="active"/>
-  <date value="2023-11-16T14:46:54+01:00"/>
+  <date value="2024-01-31T12:59:55+01:00"/>
   <publisher value="Federal Office of Public Health FOPH"/>
   <contact>
     <name value="Federal Office of Public Health FOPH"/>
@@ -945,7 +945,7 @@
       </slicing>
       <short value="Entry in the bundle - will have a resource or information"/>
       <definition value="An entry in a bundle resource - will either contain a resource or information about a resource (transactions and history only)."/>
-      <min value="9"/>
+      <min value="8"/>
       <max value="*"/>
       <base>
         <path value="Bundle.entry"/>
@@ -3982,7 +3982,7 @@
       <sliceName value="Practitioner"/>
       <short value="Entry in the bundle - will have a resource or information"/>
       <definition value="An entry in a bundle resource - will either contain a resource or information about a resource (transactions and history only)."/>
-      <min value="1"/>
+      <min value="0"/>
       <max value="1"/>
       <base>
         <path value="Bundle.entry"/>
@@ -5290,8 +5290,8 @@
       <constraint>
         <key value="ch-elm-practrole"/>
         <severity value="error"/>
-        <human value="Must have at least a practitioner or an organization."/>
-        <expression value="practitioner.exists() or practitioner.exists()"/>
+        <human value="Must have at least a practitioner or an organization. Practitioner or organization must have at least a postalCode and a city defined."/>
+        <expression value="(practitioner.exists() and practitioner.resolve().address.city.exists() and practitioner.resolve().address.postalCode.exists()) or (organization.exists() and organization.resolve().address.city.exists() and organization.resolve().address.postalCode.exists())"/>
         <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-practitionerrole-orderer"/>
       </constraint>
       <isModifier value="false"/>
@@ -12490,13 +12490,6 @@
         <severity value="error"/>
         <human value="If Observation.code is a member of http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-expecting-organism-specification, then Observation.valueCodeableConcept must be a member of the mapped ValueSet in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-organism-specification-to-results-completion-vs"/>
         <expression value="code.memberOf('http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-expecting-organism-specification') implies value.exists() and (value as CodeableConcept).exists() and (value as CodeableConcept).memberOf('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-organism-specification-to-results-completion-vs'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).target.first().code)"/>
-        <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"/>
-      </constraint>
-      <constraint>
-        <key value="ch-elm-material"/>
-        <severity value="error"/>
-        <human value="Material declared by Observation.code or non-mandatory."/>
-        <expression value="code.memberOf('http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-expecting-specimen-specification').not() implies specimen.resolve().exists() and specimen.resolve().type.exists() and specimen.resolve().type.text.exists() and specimen.resolve().type.text.first()='Material declared by Observation.code or non-mandatory'"/>
         <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"/>
       </constraint>
       <constraint>
