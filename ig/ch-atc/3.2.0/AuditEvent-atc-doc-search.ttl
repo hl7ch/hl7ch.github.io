@@ -1,0 +1,112 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-atc/AuditEvent/atc-doc-search> a fhir:AuditEvent ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "atc-doc-search"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-atc/StructureDefinition/DocumentAuditEvent"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-atc/StructureDefinition/DocumentAuditEvent>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\">Search for documents 10.10.2022 18:49 Dr. med. Sabine Musterfrau requesting documents in Emergency Access from Kardiologie Universitätsspital Musterstadt \n        </div>"
+  ] ; # 
+  fhir:type [
+     fhir:system [ fhir:v "http://dicom.nema.org/resources/ontology/DCM"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "110106" ] ;
+     fhir:display [ fhir:v "Export" ]
+  ] ; # 
+  fhir:subtype ( [
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.7"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "ATC_DOC_SEARCH" ] ;
+     fhir:display [ fhir:v "Document search" ]
+  ] ) ; # 
+  fhir:action [ fhir:v "E"] ; # 
+  fhir:recorded [ fhir:v "2022-10-10T18:49:00Z"^^xsd:dateTime] ; # 
+  fhir:outcome [ fhir:v "0"] ; # 
+  fhir:purposeOfEvent ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.5"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "EMER" ] ;
+       fhir:display [ fhir:v "Emergency Access" ]
+     ] )
+  ] ) ; # 
+  fhir:agent ( [
+     fhir:role ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.6"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "HCP" ] ;
+         fhir:display [ fhir:v "Healthcare professional" ]
+       ] )
+     ] ) ;
+     fhir:name [ fhir:v "Dr. med. Sabine Musterfrau" ] ;
+     fhir:requestor [ fhir:v "true"^^xsd:boolean ]
+  ] [
+     fhir:role ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.14"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "GRP" ] ;
+         fhir:display [ fhir:v "Group" ]
+       ] )
+     ] ) ;
+     fhir:who [
+       fhir:identifier [
+         fhir:value [ fhir:v "urn:oid:1.1.1.1.1" ]
+       ]
+     ] ;
+     fhir:name [ fhir:v "Kardiologie Universitätsspital Musterstadt" ] ;
+     fhir:requestor [ fhir:v "false"^^xsd:boolean ]
+  ] ) ; # 
+  fhir:source [
+     fhir:observer [
+       fhir:identifier [
+         fhir:system [ fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "urn:oid:7.8.9.10.11" ]
+       ]
+     ]
+  ] ; # 
+  fhir:entity ( [
+     fhir:what [
+       fhir:identifier [
+         fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.3"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "761337610469261945" ]
+       ]
+     ] ; #  Patient 
+     fhir:type [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/audit-entity-type"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1" ] ;
+       fhir:display [ fhir:v "Person" ]
+     ] ;
+     fhir:role [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/object-role"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1" ] ;
+       fhir:display [ fhir:v "Patient" ]
+     ]
+  ] [
+     fhir:what [
+       fhir:identifier [
+         fhir:system [ fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d" ]
+       ] #  Stored Query Id: https:\/\/profiles.ihe.net\/ITI\/TF\/Volume2\/ITI-18.html#3.18.4.1.2.4 
+     ] ; #  Query 
+     fhir:type [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/audit-entity-type"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "2" ] ;
+       fhir:display [ fhir:v "System Object" ]
+     ] ;
+     fhir:role [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/object-role"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "24" ] ;
+       fhir:display [ fhir:v "Query" ]
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
