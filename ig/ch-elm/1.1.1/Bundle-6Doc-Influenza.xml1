@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="6Doc-Influenza"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:uuid:1901332d-6012-443f-9690-9291adb23a5c"/>
+  </identifier>
+  <type value="document"/>
+  <timestamp value="2023-09-10T12:00:00+02:00"/>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Composition/6Comp-Influenza"/>
+    <resource>
+      <Composition>
+        <id value="6Comp-Influenza"/>
+        <language value="de-CH"/>
+        <identifier>
+          <system value="urn:ietf:rfc:3986"/>
+          <value value="urn:uuid:1901332d-6012-443f-9690-9291adb23a5c"/>
+        </identifier>
+        <status value="final"/>
+        <type>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <version value="http://snomed.info/sct/2011000195101"/>
+            <code value="4241000179101"/>
+            <display value="Laborbericht"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="11502-2"/>
+            <display value="Laboratory report"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/1Pat-DM"/>
+        </subject>
+        <date value="2023-09-10T12:00:00+02:00"/>
+        <author>
+          <reference value="Organization/1Org-Labor"/>
+        </author>
+        <title value="Laborbericht vom 10.09.2023"/>
+        <section>
+          <title value="Analyseergebnisse der mikrobiologischen Untersuchung"/>
+          <code>
+            <coding>
+              <system value="http://loinc.org"/>
+              <code value="18725-2"/>
+              <display value="Microbiology studies (set)"/>
+            </coding>
+          </code>
+          <entry>
+            <reference value="Observation/6Obs-Influenza"/>
+          </entry>
+        </section>
+      </Composition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/DiagnosticReport/6DR-Influenza"/>
+    <resource>
+      <DiagnosticReport>
+        <id value="6DR-Influenza"/>
+        <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition">
+          <valueReference>
+            <reference value="Composition/6Comp-Influenza"/>
+          </valueReference>
+        </extension>
+        <identifier>
+          <system value="urn:ietf:rfc:3986"/>
+          <value value="urn:uuid:1901332d-6012-443f-9690-9291adb23a5c"/>
+        </identifier>
+        <basedOn>
+          <reference value="ServiceRequest/6SR-Order"/>
+        </basedOn>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="11502-2"/>
+            <display value="Laboratory report"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/1Pat-DM"/>
+        </subject>
+        <performer>
+          <reference value="Organization/1Org-Labor"/>
+        </performer>
+        <specimen>
+          <reference value="Specimen/6Spec-Specimen"/>
+        </specimen>
+        <result>
+          <reference value="Observation/6Obs-Influenza"/>
+        </result>
+      </DiagnosticReport>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Patient/1Pat-DM"/>
+    <resource>
+      <Patient>
+        <id value="1Pat-DM"/>
+        <identifier>
+          <system value="urn:oid:2.16.756.5.32"/>
+          <value value="7562295883070"/>
+        </identifier>
+        <name>
+          <family value="M"/>
+          <given value="D"/>
+        </name>
+        <gender value="male"/>
+        <birthDate value="1960-08-22"/>
+        <address>
+          <use value="home"/>
+          <city value="Bern"/>
+          <state value="BE"/>
+          <postalCode value="3000"/>
+          <country value="CH">
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding">
+              <valueCoding>
+                <system value="urn:iso:std:iso:3166"/>
+                <code value="CH"/>
+              </valueCoding>
+            </extension>
+          </country>
+        </address>
+      </Patient>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Observation/6Obs-Influenza"/>
+    <resource>
+      <Observation>
+        <id value="6Obs-Influenza"/>
+        <status value="final"/>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+            <code value="laboratory"/>
+            <display value="Laboratory"/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="100343-3"/>
+            <display value="Influenza virus B RNA [Presence] in Saliva (oral fluid) by NAA with probe detection"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/1Pat-DM"/>
+        </subject>
+        <effectiveDateTime value="2023-09-10T14:20:00+02:00"/>
+        <performer>
+          <reference value="Organization/1Org-Labor"/>
+        </performer>
+        <valueCodeableConcept>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="10828004"/>
+            <display value="Positive"/>
+          </coding>
+        </valueCodeableConcept>
+        <interpretation>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+            <code value="POS"/>
+            <display value="Positive"/>
+          </coding>
+        </interpretation>
+        <specimen>
+          <reference value="Specimen/6Spec-Specimen"/>
+        </specimen>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Specimen/6Spec-Specimen"/>
+    <resource>
+      <Specimen>
+        <id value="6Spec-Specimen"/>
+        <type>
+          <text value="Material declared by Observation.code or non-mandatory"/>
+        </type>
+        <subject>
+          <reference value="Patient/1Pat-DM"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2023-09-08"/>
+        </collection>
+      </Specimen>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/ServiceRequest/6SR-Order"/>
+    <resource>
+      <ServiceRequest>
+        <id value="6SR-Order"/>
+        <identifier>
+          <system value="http://fhir.lab.ch/order-identifier"/>
+          <value value="26500923622"/>
+        </identifier>
+        <status value="completed"/>
+        <intent value="order"/>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="100343-3"/>
+            <display value="Influenza virus B RNA [Presence] in Saliva (oral fluid) by NAA with probe detection"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/1Pat-DM"/>
+        </subject>
+        <requester>
+          <reference value="PractitionerRole/PR-PeterHauser"/>
+        </requester>
+        <specimen>
+          <reference value="Specimen/6Spec-Specimen"/>
+        </specimen>
+      </ServiceRequest>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Organization/1Org-Labor"/>
+    <resource>
+      <Organization>
+        <id value="1Org-Labor"/>
+        <identifier>
+          <system value="urn:oid:2.51.1.3"/>
+          <value value="7601002331470"/>
+        </identifier>
+        <name value="SanLab"/>
+      </Organization>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/PractitionerRole/PR-PeterHauser"/>
+    <resource>
+      <PractitionerRole>
+        <id value="PR-PeterHauser"/>
+        <practitioner>
+          <reference value="Practitioner/Pract-PeterHauser"/>
+        </practitioner>
+        <organization>
+          <reference value="Organization/Org-PeterHauser"/>
+        </organization>
+      </PractitionerRole>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Practitioner/Pract-PeterHauser"/>
+    <resource>
+      <Practitioner>
+        <id value="Pract-PeterHauser"/>
+        <identifier>
+          <system value="urn:oid:2.51.1.3"/>
+          <value value="7601000000514"/>
+        </identifier>
+        <name>
+          <family value="Hauser"/>
+          <given value="Peter"/>
+        </name>
+        <telecom>
+          <system value="email"/>
+          <value value="peter.hauser@hauserpraxis.ch"/>
+        </telecom>
+        <telecom>
+          <system value="phone"/>
+          <value value="+41 79 222 33 44"/>
+        </telecom>
+      </Practitioner>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Organization/Org-PeterHauser"/>
+    <resource>
+      <Organization>
+        <id value="Org-PeterHauser"/>
+        <name value="Praxis Dr. Hauser"/>
+        <address>
+          <line value="Hauptstrasse 10">
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName">
+              <valueString value="Hauptstrasse"/>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber">
+              <valueString value="10"/>
+            </extension>
+          </line>
+          <city value="Solothurn"/>
+          <postalCode value="4500"/>
+        </address>
+      </Organization>
+    </resource>
+  </entry>
+</Bundle>

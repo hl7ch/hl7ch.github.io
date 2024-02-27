@@ -6,11 +6,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_ELM</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-elm/ImplementationGuide/ch.fhir.ig.ch-elm</pre><div><p>FHIR® Implementation Guide for the Electronic Laboratory Report of the Swiss Federal Office of Public Health</p>\n</div></div>"
   },
   "url" : "http://fhir.ch/ig/ch-elm/ImplementationGuide/ch.fhir.ig.ch-elm",
-  "version" : "1.1.0",
+  "version" : "1.1.1",
   "name" : "CH_ELM",
   "title" : "CH ELM (R4)",
   "status" : "active",
-  "date" : "2024-01-31",
+  "date" : "2024-02-27",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -79,7 +79,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "trial-use"
+        "valueString" : "draft"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -413,7 +413,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "trial-use"
+        "valueString" : "draft"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -987,7 +987,7 @@
       },
       "name" : "4Doc - Campylobacter spp.",
       "description" : "Example for a CH ELM Document: Laboratory Report",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"
+      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"
     },
     {
       "extension" : [{
@@ -999,7 +999,7 @@
       },
       "name" : "5Doc - Treponema pallidum",
       "description" : "Example for a CH ELM Document: Laboratory Report (SNOMED CT as leading code)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"
+      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"
     },
     {
       "extension" : [{
@@ -1011,7 +1011,7 @@
       },
       "name" : "6Doc - Influenza",
       "description" : "Example for a CH ELM Document: Laboratory Report",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"
+      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"
     },
     {
       "extension" : [{
@@ -1023,7 +1023,7 @@
       },
       "name" : "7Doc - SARS-CoV-2",
       "description" : "Example for a CH ELM Document: Laboratory Report (document in French, patient with full name)",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"
+      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"
     },
     {
       "extension" : [{
@@ -1191,6 +1191,66 @@
       },
       "name" : "CH ELM FOPH Patient Name Representation",
       "description" : "This CH ELM resource defines the codes which identify possible patient name schemas to be used.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/ch-elm-interpretation-codes-pos"
+      },
+      "name" : "CH ELM Interpretation Codes Positive",
+      "description" : "This CH ELM value set includes the code for positive interpretation code.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/ch-elm-interpretation-codes-pos-neg"
+      },
+      "name" : "CH ELM Interpretation Codes Positive and Negative",
+      "description" : "This CH ELM value set includes the code for positive and negative interpretation codes.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/ch-elm-interpretation-codes-res-sus"
+      },
+      "name" : "CH ELM Interpretation Codes Resistant and Susceptible",
+      "description" : "This CH ELM value set includes the code for resistant and susceptible interpretation codes.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/ch-elm-interpretation-codes-vs"
+      },
+      "name" : "CH ELM Interpretation Codes Vs",
+      "description" : "This CH ELM code system defines the value set URLs as Interpretation Codes to map in the concept maps the leading codes.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/ch-elm-interpretation-codes-vs"
+      },
+      "name" : "CH ELM Interpretation Codes Vs",
+      "description" : "This CH ELM value set includes the value set URLs as interpretation codes to map in the concept maps the leading codes.",
       "exampleBoolean" : false
     },
     {
@@ -1412,6 +1472,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ConceptMap"
+      }],
+      "reference" : {
+        "reference" : "ConceptMap/ch-elm-results-to-interpretation-code"
+      },
+      "name" : "CH ELM Results To Interpretation Code",
+      "description" : "This CH ELM concept map specifies the interpretation codes for each leading code. E.g. if positive, positive and negative or resistant-susceptible values are allowed",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
@@ -1516,6 +1588,18 @@
       "name" : "DocumentReference for reporting Neisseria Gonorhoeae",
       "description" : "Example for a CH ELM DocumentReference: Laboratory Report",
       "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "DocumentReference"
+      }],
+      "reference" : {
+        "reference" : "DocumentReference/7-DocumentReferenceStrict"
+      },
+      "name" : "DocumentReference for reporting SARSCoV2",
+      "description" : "Example for a CH ELM DocumentReference: Laboratory Report",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"
     },
     {
       "extension" : [{

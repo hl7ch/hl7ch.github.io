@@ -7,11 +7,11 @@
 </div></div>
   </text>
   <url value="http://fhir.ch/ig/ch-elm/ImplementationGuide/ch.fhir.ig.ch-elm"/>
-  <version value="1.1.0"/>
+  <version value="1.1.1"/>
   <name value="CH_ELM"/>
   <title value="CH ELM (R4)"/>
   <status value="active"/>
-  <date value="2024-01-31"/>
+  <date value="2024-02-27"/>
   <publisher value="Federal Office of Public Health FOPH"/>
   <contact>
     <name value="Federal Office of Public Health FOPH"/>
@@ -70,7 +70,7 @@
         <valueString value="releaselabel"/>
       </extension>
       <extension url="value">
-        <valueString value="trial-use"/>
+        <valueString value="draft"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -313,7 +313,7 @@
         <valueCode value="releaselabel"/>
       </extension>
       <extension url="value">
-        <valueString value="trial-use"/>
+        <valueString value="draft"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -780,7 +780,7 @@
       </reference>
       <name value="4Doc - Campylobacter spp."/>
       <description value="Example for a CH ELM Document: Laboratory Report"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -791,7 +791,7 @@
       </reference>
       <name value="5Doc - Treponema pallidum"/>
       <description value="Example for a CH ELM Document: Laboratory Report (SNOMED CT as leading code)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -802,7 +802,7 @@
       </reference>
       <name value="6Doc - Influenza"/>
       <description value="Example for a CH ELM Document: Laboratory Report"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -813,7 +813,7 @@
       </reference>
       <name value="7Doc - SARS-CoV-2"/>
       <description value="Example for a CH ELM Document: Laboratory Report (document in French, patient with full name)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -967,6 +967,61 @@
       </reference>
       <name value="CH ELM FOPH Patient Name Representation"/>
       <description value="This CH ELM resource defines the codes which identify possible patient name schemas to be used."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ch-elm-interpretation-codes-pos"/>
+      </reference>
+      <name value="CH ELM Interpretation Codes Positive"/>
+      <description value="This CH ELM value set includes the code for positive interpretation code."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ch-elm-interpretation-codes-pos-neg"/>
+      </reference>
+      <name value="CH ELM Interpretation Codes Positive and Negative"/>
+      <description value="This CH ELM value set includes the code for positive and negative interpretation codes."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ch-elm-interpretation-codes-res-sus"/>
+      </reference>
+      <name value="CH ELM Interpretation Codes Resistant and Susceptible"/>
+      <description value="This CH ELM value set includes the code for resistant and susceptible interpretation codes."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/ch-elm-interpretation-codes-vs"/>
+      </reference>
+      <name value="CH ELM Interpretation Codes Vs"/>
+      <description value="This CH ELM code system defines the value set URLs as Interpretation Codes to map in the concept maps the leading codes."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ch-elm-interpretation-codes-vs"/>
+      </reference>
+      <name value="CH ELM Interpretation Codes Vs"/>
+      <description value="This CH ELM value set includes the value set URLs as interpretation codes to map in the concept maps the leading codes."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1169,6 +1224,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ConceptMap"/>
+      </extension>
+      <reference>
+        <reference value="ConceptMap/ch-elm-results-to-interpretation-code"/>
+      </reference>
+      <name value="CH ELM Results To Interpretation Code"/>
+      <description value="This CH ELM concept map specifies the interpretation codes for each leading code. E.g. if positive, positive and negative or resistant-susceptible values are allowed"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
@@ -1265,6 +1331,17 @@
       <name value="DocumentReference for reporting Neisseria Gonorhoeae"/>
       <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/7-DocumentReferenceStrict"/>
+      </reference>
+      <name value="DocumentReference for reporting SARSCoV2"/>
+      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
