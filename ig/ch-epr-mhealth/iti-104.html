@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-EPR-MHEALTH\Patient Identity Feed FHIR [ITI-104] - FHIR v4.0.1</title>
+    <title>Patient Identity Feed FHIR [ITI-104] - CH EPR mHealth (R4) v3.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -21,6 +21,14 @@
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -56,6 +64,11 @@
 -->
 
 
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
             <div id="hl7-nav">
     <a id="ehealthsuisse-logo" no-external="true" href="https://www.e-health-suisse.ch">
         <img alt="visit the e-health-suisse website" height="60" src="assets/images/LogoDE_ehealthsuisse.svg" />
@@ -65,7 +78,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR mHealth (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.0.0-ballot - ballot
+            <span style="display:inline-block;">3.0.0 - DSTU3
 
 
 
@@ -98,7 +111,7 @@
         <a href="index.html">Home</a>
     </li>
     <li class="Profiles">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Profiles
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 1
             <b class="caret">
             </b>
         </a>
@@ -124,7 +137,7 @@
         </ul>
     </li>
     <li class="dropdown">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Transactions
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 2
             <b class="caret">
             </b>
         </a>
@@ -171,6 +184,9 @@
         </a>
         <ul class="dropdown-menu">
             <li>
+                <a href="profiles.html">Profiles</a>
+            </li>
+            <li>
                 <a href="extensions.html">Extensions</a>
             </li>
             <li>
@@ -184,6 +200,9 @@
             </li>
             <li>
                 <a href="sequencediagrams.html">Sequence diagrams</a>
+            </li>
+            <li>
+                <a href="tracecontext.html">Trace Context</a>
             </li>
             <li>
                 <a href="openissues.html">Open Issues / Change Log</a>
@@ -206,7 +225,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='transactions.html'><b>Transactions</b></a></li><li><b>Patient Identity Feed FHIR [ITI-104]</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='volume2.html'><b>Volume 2</b></a></li><li><b>Patient Identity Feed FHIR [ITI-104]</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -226,7 +245,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR mHealth (R4) (v3.0.0-ballot: Draft Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-epr-mhealth/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR mHealth (R4) (v3.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a>3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-mhealth/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Patient Identity Feed FHIR [ITI-104]</h2>
   
 
@@ -248,14 +267,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#actor-roles" id="markdown-toc-actor-roles">Actor Roles</a></li>
   <li><a href="#referenced-standards" id="markdown-toc-referenced-standards">Referenced Standards</a></li>
   <li><a href="#messages" id="markdown-toc-messages">Messages</a></li>
-  <li><a href="#trigger-events" id="markdown-toc-trigger-events">Trigger Events</a></li>
-  <li><a href="#message-semantics" id="markdown-toc-message-semantics">Message Semantics</a></li>
-  <li><a href="#expected-actions-consumer-played-by-patient-identifier-cross-reference-manager" id="markdown-toc-expected-actions-consumer-played-by-patient-identifier-cross-reference-manager">Expected Actions Consumer played by Patient Identifier Cross-reference Manager</a></li>
-  <li><a href="#message-example" id="markdown-toc-message-example">Message Example</a></li>
   <li><a href="#security-consideration" id="markdown-toc-security-consideration">Security Consideration</a></li>
 </ul>
 
 </div>
+<p>This section describes the national extension for the Swiss EPR to the <a href="https://profiles.ihe.net/ITI/PIXm/ITI-104.html">Patient Identity Feed FHIR
+[ITI-104]</a> transaction defined in the IUA profile published in the
+IHE IT Infrastructure Technical Framework Trial Implementation “Patient Identifier Cross-referencing for mobile”.</p>
+
 <h3 id="scope">Scope</h3>
 
 <p>This transaction communicates patient information, including corroborating demographic data, after a patient’s identity is established, modified or merged or after the key corroborating demographic data has been modified.</p>
@@ -268,41 +287,44 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <strong>Role:</strong> Serves a well-defined set of Patient Identification Domains. Based on information provided in each Patient Identification Domain by a Patient Identity Source Actor, it manages the cross-referencing of patient identifiers across Patient Identification Domains.</p>
 
 <h3 id="referenced-standards">Referenced Standards</h3>
-<p><a href="https://profiles.ihe.net/ITI/PIXm/index.html">Patient Identifier Cross-referencing for mobile (PIXm), Rev. 3.0.0 – Trial-Implementation, November 8, 2021</a></p>
+
+<ol>
+  <li><a href="https://profiles.ihe.net/ITI/PIXm/index.html">Patient Identifier Cross-referencing for mobile (PIXm), Rev. 3.0.3</a></li>
+  <li>This PIXm Profile is based on Release 4 of the emerging <a href="https://hl7.org/fhir/R4/index.html">HL7® FHIR®</a> standard.</li>
+</ol>
 
 <h3 id="messages">Messages</h3>
 
 <div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="180px" preserveAspectRatio="none" style="width:495px;height:180px;background:#FFFFFF;" version="1.1" viewBox="0 0 495 180" width="495px" zoomAndPan="magnify"><defs /><g><rect fill="#FFFFFF" height="109.2422" style="stroke:#181818;stroke-width:1.0;" width="10" x="83.5" y="46.4883" /><rect fill="#FFFFFF" height="109.2422" style="stroke:#181818;stroke-width:1.0;" width="10" x="330.5" y="46.4883" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="88" x2="88" y1="36.4883" y2="173.7305" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="335" x2="335" y1="36.4883" y2="173.7305" /><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="167" x="5" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="153" x="12" y="25.5352">Patient Identity Source</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="307" x="182" y="5" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="293" x="189" y="25.5352">Patient Identifier Cross-reference Manager</text><rect fill="#FFFFFF" height="109.2422" style="stroke:#181818;stroke-width:1.0;" width="10" x="83.5" y="46.4883" /><rect fill="#FFFFFF" height="109.2422" style="stroke:#181818;stroke-width:1.0;" width="10" x="330.5" y="46.4883" /><polygon fill="#181818" points="318.5,63.7988,328.5,67.7988,318.5,71.7988,322.5,67.7988" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="93.5" x2="324.5" y1="67.7988" y2="67.7988" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="130" x="100.5" y="63.0566">Add or revise Patient</text><polygon fill="#181818" points="104.5,93.1094,94.5,97.1094,104.5,101.1094,100.5,97.1094" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="98.5" x2="329.5" y1="97.1094" y2="97.1094" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="151" x="110.5" y="92.3672">Patient added or revised</text><polygon fill="#181818" points="318.5,122.4199,328.5,126.4199,318.5,130.4199,322.5,126.4199" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="93.5" x2="324.5" y1="126.4199" y2="126.4199" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="159" x="100.5" y="121.6777">Resolve Duplicate Patient</text><polygon fill="#181818" points="99.5,151.7305,89.5,155.7305,99.5,159.7305,95.5,155.7305" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="93.5" x2="334.5" y1="155.7305" y2="155.7305" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="162" x="105.5" y="150.9883">Patient duplicate resolved</text></g></svg></div>
 
-<h3 id="trigger-events">Trigger Events</h3>
+<h4 id="request">Request</h4>
+
+<h5 id="trigger-events">Trigger Events</h5>
 
 <p>The Add Patient message is triggered when a new patient is added to a Patient Identity Source.
-The Revise Patient message is triggered when the patient information is revised within a Patient Identity Source (e.g., change in patient name, patient address, etc.).
-A Resolve Duplicate Patient message is triggered when the Patient Identity Source does a merge within its Patient Identification Domain.</p>
+The Revise Patient message is triggered when the patient information is revised within a Patient Identity Source 
+(e.g., change in patient name, patient address, etc.).
+A Resolve Duplicate Patient message is triggered when the Patient Identity Source does a merge within its 
+Patient Identification Domain.</p>
 
-<h3 id="message-semantics">Message Semantics</h3>
+<h5 id="message-semantics">Message Semantics</h5>
 
 <p>The same message semantic apply as in <a href="https://profiles.ihe.net/ITI/PIXm/ITI-104.html#23104412-message-semantics">2:3.104.4.1.2</a> and <a href="https://profiles.ihe.net/ITI/PIXm/ITI-104.html#23104422-message-semantics">2:3.104.4.2.2</a> Message Semantics.</p>
 
-<p>The patient data (see <a href="Patient-PatientPIXmFeed.html">Patient example</a>) SHALL be conform to the PIXm Patient profile with the canonical url
-<a href="StructureDefinition-ch-pixm-patient.html">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-pixm-patient</a>. The Patient Identifier Cross-reference Manager SHALL reference the PIXm Patient profile or a derived constrained profile as a supportedProfile in the CapabilityStatement.</p>
+<p>The patient data (see <a href="Patient-PatientPIXmFeed.html">Patient example</a>) SHALL conform to the <a href="StructureDefinition-ch-pixm-patient-feed.html">PIXm Patient Feed profile</a>.
+The <em>Patient Identifier Cross-reference Manager</em> SHALL reference the <em>PIXm Patient Feed</em> profile or a derived
+constrained profile as a <code class="language-plaintext highlighter-rouge">supportedProfile</code> in the CapabilityStatement.</p>
 
-<p>If the patient is already registered in a community, the MPI-PID SHALL be provided as an identifier. The EPR-SPID 
-as an identifier MAY be added. The birthname can be added with the ISO 21090 qualifier extension, the religion SHALL not be added.</p>
+<p>The EPR-SPID as an identifier SHALL be added. The birthname can be added with the ISO 21090 qualifier extension, the religion SHALL not be added.</p>
 
-<h3 id="expected-actions-consumer-played-by-patient-identifier-cross-reference-manager">Expected Actions Consumer played by Patient Identifier Cross-reference Manager</h3>
-
-<p>If the MPI-PID is provided as an identifier the Patient Identifier Cross-reference Manager SHALL use the MPI-PID to correlate
-the patient in the community.</p>
-
-<h3 id="message-example">Message Example</h3>
+<h5 id="message-example">Message Example</h5>
 
 <p>Add Patient <a href="Patient-PatientPIXmFeed.json.html">Franz Muster</a>:</p>
 
-<pre>
-PUT http://example.org/fhir/Patient?identifier=urn:oid:2.16.756.888888.3.1|8734 HTTP/1.1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PUT http://example.org/fhir/Patient?identifier=urn:oid:2.16.756.888888.3.1|8734 HTTP/1.1
 Accept: application/fhir+json
 Content-Type: application/fhir+json
+traceparent: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-00
 
 {
   "resourceType" : "Patient",
@@ -318,6 +340,10 @@ Content-Type: application/fhir+json
       },
       "system" : "urn:oid:2.16.756.888888.3.1",
       "value" : "8734"
+    },
+    {
+      "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+      "value" : "the EPR-SPID value"
     }
   ],
   "name" : [
@@ -348,13 +374,48 @@ Content-Type: application/fhir+json
     }
   }
 }
-</pre>
+</code></pre></div></div>
+
+<h4 id="response">Response</h4>
+
+<p>See <a href="https://hl7.org/fhir/R4/http.html#cond-update">https://hl7.org/fhir/R4/http.html#cond-update</a> for response.</p>
+
+<h4 id="capabilitystatement-resource">CapabilityStatement Resource</h4>
+
+<p>The CapabilityStatement resource for the <strong>Patient Identity Source</strong> is
+<a href="CapabilityStatement-CH.PIXm.Source.html">PIXm Patient Identity Source</a>.</p>
+
+<p>The CapabilityStatement resource for the <strong>Patient Identifier Cross-reference Manager</strong> is
+<a href="CapabilityStatement-CH.PIXm.Manager.html">PIXm Patient Identifier Cross-reference Manager</a>.</p>
 
 <h3 id="security-consideration">Security Consideration</h3>
+
 <p>TLS SHALL be used. This national extension enforces authentication and authorization of access to the
 Patient Identifier Cross-reference Manager using the IUA profile with basic access token. Consequently
-the Patient Identity Feed FHIR [ITI-104] request must authorize using the Incorporate Access Token
-[ITI-72] transaction of the IUA profile.</p>
+the <em>Patient Identity Feed FHIR</em> [ITI-104] request must authorize using the 
+<a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">[ITI-72]</a> transaction of the IUA profile.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">traceparent</code> header is required, as described in <a href="tracecontext.html">Trace Context header</a>.</p>
+
+<h4 id="security-audit-considerations">Security Audit Considerations</h4>
+
+<h5 id="patient-identity-source-audit">Patient Identity Source Audit</h5>
+
+<p>The <strong>Patient Identity Source</strong> shall be able to record a
+<a href="https://profiles.ihe.net/ITI/PIXm/StructureDefinition-IHE.PIXm.Feed.Update.Audit.Source.html">PIXm Feed Source Audit Event Log</a>.
+<a href="https://profiles.ihe.net/ITI/PIXm/AuditEvent-ex-auditPixmFeed-update-source.html">Audit Example for a PIXm Feed transaction from source perspective</a>.</p>
+
+<h5 id="patient-identifier-cross-reference-manager-audit">Patient Identifier Cross-reference Manager Audit</h5>
+
+<p>The <strong>Patient Identifier Cross-reference Manager</strong> shall be able to record audit events:</p>
+
+<ul>
+  <li>on an <em>Add Patient</em> message: <a href="https://profiles.ihe.net/ITI/PIXm/StructureDefinition-IHE.PIXm.Feed.Create.Audit.Manager.html">Audit Event for Patient Identity Feed FHIR by the Manager that Creates a Patient</a>.
+<a href="https://profiles.ihe.net/ITI/PIXm/AuditEvent-ex-auditPixmFeed-create-manager.html">Audit Example of ITI-104 Create at Manager</a>.</li>
+  <li>on a Revise Patient message: <a href="https://profiles.ihe.net/ITI/PIXm/StructureDefinition-IHE.PIXm.Feed.Update.Audit.Manager.html">Audit Event for Patient Identity Feed FHIR by the Manager that Updates a Patient</a>.
+<a href="https://profiles.ihe.net/ITI/PIXm/AuditEvent-ex-auditPixmFeed-update-manager.html">Audit Example of ITI-104 Update at Manager</a>.</li>
+</ul>
+
 
 
 
@@ -380,7 +441,7 @@ the Patient Identity Feed FHIR [ITI-104] request must authorize using the Incorp
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-mhealth#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jun 30, 2023 15:53+0200">2023-06-30</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-mhealth#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Mar 5, 2024 12:09+0100">2024-03-05</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -388,7 +449,10 @@ the Patient Identity Feed FHIR [ITI-104] request must authorize using the Incorp
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-mhealth%233.0.0-ballot%20/iti-104.html&amp;entry%2E247644557=Patient%20Identity%20Feed%20FHIR%20[ITI-104]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-mhealth%233.0.0%20/iti-104.html&amp;entry%2E247644557=Patient%20Identity%20Feed%20FHIR%20[ITI-104]">Propose a change</a>
+
+
+
 
           </span>
         </p>

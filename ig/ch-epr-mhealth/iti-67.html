@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-EPR-MHEALTH\Find Document References [ITI-67] - FHIR v4.0.1</title>
+    <title>Find Document References [ITI-67] - CH EPR mHealth (R4) v3.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -21,6 +21,14 @@
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -56,6 +64,11 @@
 -->
 
 
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
             <div id="hl7-nav">
     <a id="ehealthsuisse-logo" no-external="true" href="https://www.e-health-suisse.ch">
         <img alt="visit the e-health-suisse website" height="60" src="assets/images/LogoDE_ehealthsuisse.svg" />
@@ -65,7 +78,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR mHealth (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.0.0-ballot - ballot
+            <span style="display:inline-block;">3.0.0 - DSTU3
 
 
 
@@ -98,7 +111,7 @@
         <a href="index.html">Home</a>
     </li>
     <li class="Profiles">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Profiles
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 1
             <b class="caret">
             </b>
         </a>
@@ -124,7 +137,7 @@
         </ul>
     </li>
     <li class="dropdown">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Transactions
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 2
             <b class="caret">
             </b>
         </a>
@@ -171,6 +184,9 @@
         </a>
         <ul class="dropdown-menu">
             <li>
+                <a href="profiles.html">Profiles</a>
+            </li>
+            <li>
                 <a href="extensions.html">Extensions</a>
             </li>
             <li>
@@ -184,6 +200,9 @@
             </li>
             <li>
                 <a href="sequencediagrams.html">Sequence diagrams</a>
+            </li>
+            <li>
+                <a href="tracecontext.html">Trace Context</a>
             </li>
             <li>
                 <a href="openissues.html">Open Issues / Change Log</a>
@@ -206,7 +225,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='transactions.html'><b>Transactions</b></a></li><li><b>Find Document References [ITI-67]</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='volume2.html'><b>Volume 2</b></a></li><li><b>Find Document References [ITI-67]</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -226,7 +245,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR mHealth (R4) (v3.0.0-ballot: Draft Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-epr-mhealth/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR mHealth (R4) (v3.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a>3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-mhealth/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Find Document References [ITI-67]</h2>
   
 
@@ -248,21 +267,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#actor-roles" id="markdown-toc-actor-roles">Actor Roles</a></li>
   <li><a href="#referenced-standards" id="markdown-toc-referenced-standards">Referenced Standards</a></li>
   <li><a href="#messages" id="markdown-toc-messages">Messages</a></li>
-  <li><a href="#trigger-events" id="markdown-toc-trigger-events">Trigger Events</a></li>
-  <li><a href="#message-example" id="markdown-toc-message-example">Message Example</a></li>
   <li><a href="#security-consideration" id="markdown-toc-security-consideration">Security Consideration</a></li>
 </ul>
 
 </div>
-<p>There are no additional requirements for the Swiss EPR extension of the Find
-Document References [ITI-67] transaction defined in the MHD Profile published in the IHE ITI Trial Implementation
-“Mobile Access to Health Documents”.</p>
+<p>This section describes the additional requirements for the Swiss EPR of the <a href="https://profiles.ihe.net/ITI/MHD/ITI-67.html">Find Document References
+[ITI-67]</a> transaction defined in the MHD Profile published in the IHE ITI
+Trial Implementation “Mobile Access to Health Documents”.</p>
 
 <h3 id="scope">Scope</h3>
 
 <p>The Find Document References transaction is used to find DocumentReference Resources that
-satisfy a set of parameters. It is equivalent to the FindDocuments and
-FindDocumentsByReferenceId queries from the Registry Stored Query [ITI-18] transaction. The
+satisfy a set of parameters. It is equivalent to the <em>FindDocuments</em> and
+<em>FindDocumentsByReferenceId</em> queries from the <em>Registry Stored Query</em> [ITI-18] transaction. The
 result of the query is a FHIR Bundle containing DocumentReference Resources that match the
 query parameters.</p>
 
@@ -275,34 +292,55 @@ query parameters.</p>
 
 <h3 id="referenced-standards">Referenced Standards</h3>
 
-<p><a href="https://profiles.ihe.net/ITI/MHD/index.html">Mobile access to Health Documents (MHD), Rev. 4.0.2 – Trial-Implementation,  November 8, 2021</a></p>
-
-<p>This MHD Profile is based on Release 4 of the <a href="https://www.hl7.org/fhir/index.html">HL7® FHIR®</a> standard.</p>
+<ol>
+  <li><a href="https://profiles.ihe.net/ITI/MHD/index.html">Mobile access to Health Documents (MHD), Rev. 4.0.2 – Trial-Implementation,  November 8, 2021</a></li>
+  <li>This MHD Profile is based on Release 4 of the <a href="https://hl7.org/fhir/R4/index.html">HL7® FHIR®</a> standard.</li>
+</ol>
 
 <h3 id="messages">Messages</h3>
 
-<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="172px" preserveAspectRatio="none" style="width:441px;height:172px;background:#FFFFFF;" version="1.1" viewBox="0 0 441 172" width="441px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="232" x="103.75" y="28.5352">Interaction Diagram for [ITI-67]</text><rect fill="#FFFFFF" height="35.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="79.5" y="83.9766" /><rect fill="#FFFFFF" height="35.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="349.5" y="83.9766" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="84" x2="84" y1="73.9766" y2="137.2871" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="354.5" x2="354.5" y1="73.9766" y2="137.2871" /><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="159" x="5" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="145" x="12" y="63.0234">Document Consumer</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="159" x="5" y="136.2871" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="145" x="12" y="156.8223">Document Consumer</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="162" x="273.5" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148" x="280.5" y="63.0234">Document Responder</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="162" x="273.5" y="136.2871" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148" x="280.5" y="156.8223">Document Responder</text><rect fill="#FFFFFF" height="35.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="79.5" y="83.9766" /><rect fill="#FFFFFF" height="35.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="349.5" y="83.9766" /><polygon fill="#181818" points="337.5,101.2871,347.5,105.2871,337.5,109.2871,341.5,105.2871" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="89.5" x2="343.5" y1="105.2871" y2="105.2871" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="236" x="96.5" y="100.5449">1. Find Document References [ITI-67]</text><polygon fill="#181818" points="95.5,115.2871,85.5,119.2871,95.5,123.2871,91.5,119.2871" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="89.5" x2="353.5" y1="119.2871" y2="119.2871" /></g></svg></div>
+<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="159px" preserveAspectRatio="none" style="width:432px;height:159px;background:#FFFFFF;" version="1.1" viewBox="0 0 432 159" width="432px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="232" x="99.25" y="28.5352">Interaction Diagram for [ITI-67]</text><rect fill="#FFFFFF" height="29.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="340.5" y="105.2871" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="84" x2="84" y1="73.9766" y2="152.5977" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="345.5" x2="345.5" y1="73.9766" y2="152.5977" /><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="159" x="5" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="145" x="12" y="63.0234">Document Consumer</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="162" x="264.5" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148" x="271.5" y="63.0234">Document Responder</text><rect fill="#FFFFFF" height="29.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="340.5" y="105.2871" /><polygon fill="#181818" points="328.5,101.2871,338.5,105.2871,328.5,109.2871,332.5,105.2871" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="84.5" x2="334.5" y1="105.2871" y2="105.2871" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="222" x="91.5" y="100.5449">Find Document References Request</text><polygon fill="#181818" points="95.5,130.5977,85.5,134.5977,95.5,138.5977,91.5,134.5977" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="89.5" x2="344.5" y1="134.5977" y2="134.5977" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="232" x="101.5" y="129.8555">Find Document References Response</text></g></svg></div>
 
-<h3 id="trigger-events">Trigger Events</h3>
+<h4 id="find-document-references-request-message">Find Document References Request Message</h4>
 
-<p>When the Document Consumer needs to discover DocumentReference Resources matching
-various metadata parameters, it issues a Find Document References message.</p>
-
-<h3 id="message-example">Message Example</h3>
-
-<p>Find Document Reference <strong>request</strong>:</p>
+<p><em>Find Document Reference</em> example <strong>request</strong>:</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/DocumentReference?patient.identifier=urn:oid:2.999|11111111 HTTP/1.1
 Accept: application/fhir+json
+traceparent: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-00
 </code></pre></div></div>
 
-<p>See <a href="Bundle-Bundle-FindDocumentReferences.html">Bundle example</a> (and the corresponding <a href="StructureDefinition-ch-mhd-documentreference-comprehensive-bundle.html">profile</a>) as <strong>response</strong> to the Find Document Reference request.</p>
+<h4 id="find-document-references-response-message">Find Document References Response Message</h4>
+
+<p>The response Bundle SHALL follow the <a href="StructureDefinition-ch-mhd-documentreference-comprehensive-bundle.html">CH MHD Find Document References Comprehensive Response message</a>
+Profile (<a href="Bundle-Bundle-FindDocumentReferences.html">example: MHD Find DocumentReferences</a>).</p>
+
+<h4 id="capabilitystatement-resource">CapabilityStatement Resource</h4>
+
+<p>The CapabilityStatement resource for the <strong>Document Consumer</strong> is <a href="CapabilityStatement-CH.MHD.DocumentConsumer.html">MHD Document Consumer</a>.</p>
+
+<p>The CapabilityStatement resource for the <strong>Document Responder</strong> is <a href="CapabilityStatement-CH.MHD.DocumentResponder.html">MHD Document Responder</a>.</p>
 
 <h3 id="security-consideration">Security Consideration</h3>
 
 <p>TLS SHALL be used. This national extension enforces authentication and authorization of access to the
 Document Responder using the IUA profile with extended access token. Consequently
-the Find Document References [ITI-67] request must authorize using the Incorporate Access Token
-[ITI-72] transaction of the IUA profile.</p>
+the <em>Find Document References</em> [ITI-67] request must authorize using the 
+<a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">[ITI-72]</a> transaction of the IUA profile.</p>
+
+<h4 id="security-audit-considerations">Security Audit Considerations</h4>
+
+<h5 id="document-consumer-audit">Document Consumer Audit</h5>
+
+<p>The <strong>Document Consumer</strong> shall be able to record a
+<a href="https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.FindDocumentReferences.Audit.Consumer.html">Find Document References Consumer Audit Event Log</a>.
+<a href="https://profiles.ihe.net/ITI/MHD/AuditEvent-ex-auditFindDocumentReferences-consumer.html">Audit Example for a Find Document References transaction from consumer perspective</a>.</p>
+
+<h5 id="document-responder-audit">Document Responder Audit</h5>
+
+<p>The <strong>Document Responder</strong> shall be able to record a
+<a href="https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.FindDocumentReferences.Audit.Responder.html">Find Document References Responder Audit Event Log</a>.
+<a href="https://profiles.ihe.net/ITI/MHD/AuditEvent-ex-auditFindDocumentReferences-responder.html">Audit Example for a Find Document Lists Transaction from responder perspective</a>.</p>
+
 
 
 
@@ -328,7 +366,7 @@ the Find Document References [ITI-67] request must authorize using the Incorpora
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-mhealth#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jun 30, 2023 15:53+0200">2023-06-30</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-mhealth#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Mar 5, 2024 12:09+0100">2024-03-05</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -336,7 +374,10 @@ the Find Document References [ITI-67] request must authorize using the Incorpora
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-mhealth%233.0.0-ballot%20/iti-67.html&amp;entry%2E247644557=Find%20Document%20References%20[ITI-67]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-mhealth%233.0.0%20/iti-67.html&amp;entry%2E247644557=Find%20Document%20References%20[ITI-67]">Propose a change</a>
+
+
+
 
           </span>
         </p>

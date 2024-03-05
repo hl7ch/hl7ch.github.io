@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-EPR-MHEALTH\Patient Demographics Query for Mobile (PDQm) - FHIR v4.0.1</title>
+    <title>Patient Demographics Query for Mobile (PDQm) - CH EPR mHealth (R4) v3.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -21,6 +21,14 @@
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -56,6 +64,11 @@
 -->
 
 
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
             <div id="hl7-nav">
     <a id="ehealthsuisse-logo" no-external="true" href="https://www.e-health-suisse.ch">
         <img alt="visit the e-health-suisse website" height="60" src="assets/images/LogoDE_ehealthsuisse.svg" />
@@ -65,7 +78,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR mHealth (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.0.0-ballot - ballot
+            <span style="display:inline-block;">3.0.0 - DSTU3
 
 
 
@@ -98,7 +111,7 @@
         <a href="index.html">Home</a>
     </li>
     <li class="Profiles">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Profiles
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 1
             <b class="caret">
             </b>
         </a>
@@ -124,7 +137,7 @@
         </ul>
     </li>
     <li class="dropdown">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Transactions
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 2
             <b class="caret">
             </b>
         </a>
@@ -171,6 +184,9 @@
         </a>
         <ul class="dropdown-menu">
             <li>
+                <a href="profiles.html">Profiles</a>
+            </li>
+            <li>
                 <a href="extensions.html">Extensions</a>
             </li>
             <li>
@@ -184,6 +200,9 @@
             </li>
             <li>
                 <a href="sequencediagrams.html">Sequence diagrams</a>
+            </li>
+            <li>
+                <a href="tracecontext.html">Trace Context</a>
             </li>
             <li>
                 <a href="openissues.html">Open Issues / Change Log</a>
@@ -206,7 +225,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='profiles.html'><b>Profiles</b></a></li><li><b>Patient Demographics Query for Mobile (PDQm)</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='volume1.html'><b>Volume 1</b></a></li><li><b>Patient Demographics Query for Mobile (PDQm)</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -226,7 +245,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR mHealth (R4) (v3.0.0-ballot: Draft Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-epr-mhealth/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR mHealth (R4) (v3.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a>3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-mhealth/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Patient Demographics Query for Mobile (PDQm)</h2>
   
 
@@ -259,10 +278,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <p>In the Swiss EPR, the PDQm profile ensures that different systems can search patients participating in the Swiss EPR by demographics and that the initial demographics data can be retrieved from the MPI.</p>
 
 <h3 id="use-cases">Use Cases</h3>
-<p>A mHealth App wants to search a patient participating in the EPR. The mHealth App needs to provide demographic search cirterias and can then retreive patients matching this parameters.</p>
+<p>A mHealth App wants to search a patient participating in the EPR. The mHealth App needs to provide demographic search criteria and can then retrieve patients matching these parameters.</p>
 
 <h3 id="actors-and-transactions-content-specifications">Actors and Transactions, Content Specifications</h3>
-<p>This national extension adds restrictions to the amount of query results if too many many are found. Otherwise there are no extensions or restrictions to the profile actors and the transaction.</p>
+<p>This national extension adds restrictions to the amount of query results if too many are found. Otherwise there are no extensions or restrictions to the profile actors and the transaction.</p>
+
+<div>
+<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="200px" preserveAspectRatio="none" style="width:407px;height:200px;background:#FFFFFF;" version="1.1" viewBox="0 0 407 200" width="407px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="155" x="119.25" y="23.5352">PDQm Actor Diagram</text><!--entity Client--><g id="elem_Client"><rect fill="#F1F1F1" height="36.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="245" x="7" y="44.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="225" x="17" y="68.0234">Patient Demographics Consumer</text></g><!--entity Server--><g id="elem_Server"><rect fill="#F1F1F1" height="36.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="231" x="14" y="157.9783" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="211" x="24" y="181.5134">Patient Demographics Supplier</text></g><!--link Client to Server--><g id="link_Client_Server"><path d="M129.5,81.1583 C129.5,99.9483 129.5,129.9883 129.5,151.0583 " fill="none" id="Client-to-Server" style="stroke:#181818;stroke-width:1.0;" /><polygon fill="#181818" points="129.5,156.0483,133.5,147.0483,129.5,151.0483,125.5,147.0483,129.5,156.0483" style="stroke:#181818;stroke-width:1.0;" /><a href="iti-78.html" target="_top" title="iti-78.html" xlink:actuate="onRequest" xlink:href="iti-78.html" xlink:show="new" xlink:title="iti-78.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="269" x="130.5" y="124.5466">ITI-78 Mobile Patient Demographics Query</text></a></g></g></svg>
+</div>
+<p>This figure shows the actors directly involved in the <em>Patient Demographics Query for Mobile</em> Profile and the 
+relevant transactions between them.</p>
 
 <h3 id="actor-options">Actor Options</h3>
 <p>No extensions or restrictions to the profile actor options are specified in the Swiss national extension.</p>
@@ -322,7 +347,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-mhealth#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jun 30, 2023 15:53+0200">2023-06-30</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-mhealth#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Mar 5, 2024 12:09+0100">2024-03-05</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -330,7 +355,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-mhealth%233.0.0-ballot%20/iti-pdqm.html&amp;entry%2E247644557=Patient%20Demographics%20Query%20for%20Mobile%20(PDQm)">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-mhealth%233.0.0%20/iti-pdqm.html&amp;entry%2E247644557=Patient%20Demographics%20Query%20for%20Mobile%20(PDQm)">Propose a change</a>
+
+
+
 
           </span>
         </p>

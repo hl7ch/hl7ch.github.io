@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-EPR-MHEALTH\Get Authorization Server Metadata [ITI-103] - FHIR v4.0.1</title>
+    <title>Get Authorization Server Metadata [ITI-103] - CH EPR mHealth (R4) v3.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -21,6 +21,14 @@
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -56,6 +64,11 @@
 -->
 
 
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
             <div id="hl7-nav">
     <a id="ehealthsuisse-logo" no-external="true" href="https://www.e-health-suisse.ch">
         <img alt="visit the e-health-suisse website" height="60" src="assets/images/LogoDE_ehealthsuisse.svg" />
@@ -65,7 +78,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR mHealth (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.0.0-ballot - ballot
+            <span style="display:inline-block;">3.0.0 - DSTU3
 
 
 
@@ -98,7 +111,7 @@
         <a href="index.html">Home</a>
     </li>
     <li class="Profiles">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Profiles
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 1
             <b class="caret">
             </b>
         </a>
@@ -124,7 +137,7 @@
         </ul>
     </li>
     <li class="dropdown">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Transactions
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 2
             <b class="caret">
             </b>
         </a>
@@ -171,6 +184,9 @@
         </a>
         <ul class="dropdown-menu">
             <li>
+                <a href="profiles.html">Profiles</a>
+            </li>
+            <li>
                 <a href="extensions.html">Extensions</a>
             </li>
             <li>
@@ -184,6 +200,9 @@
             </li>
             <li>
                 <a href="sequencediagrams.html">Sequence diagrams</a>
+            </li>
+            <li>
+                <a href="tracecontext.html">Trace Context</a>
             </li>
             <li>
                 <a href="openissues.html">Open Issues / Change Log</a>
@@ -206,7 +225,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='transactions.html'><b>Transactions</b></a></li><li><b>Get Authorization Server Metadata [ITI-103]</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='volume2.html'><b>Volume 2</b></a></li><li><b>Get Authorization Server Metadata [ITI-103]</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -226,7 +245,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR mHealth (R4) (v3.0.0-ballot: Draft Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-epr-mhealth/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR mHealth (R4) (v3.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a>3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-mhealth/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Get Authorization Server Metadata [ITI-103]</h2>
   
 
@@ -248,18 +267,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#actor-roles" id="markdown-toc-actor-roles">Actor Roles</a></li>
   <li><a href="#referenced-standards" id="markdown-toc-referenced-standards">Referenced Standards</a></li>
   <li><a href="#messages" id="markdown-toc-messages">Messages</a></li>
-  <li><a href="#trigger-events" id="markdown-toc-trigger-events">Trigger Events</a></li>
-  <li><a href="#message-semantics" id="markdown-toc-message-semantics">Message Semantics</a></li>
-  <li><a href="#expected-actions-authorization-client-or-resource-server" id="markdown-toc-expected-actions-authorization-client-or-resource-server">Expected Actions Authorization Client or Resource Server</a></li>
-  <li><a href="#expected-actions-authorization-server" id="markdown-toc-expected-actions-authorization-server">Expected Actions Authorization Server</a></li>
-  <li><a href="#message-example" id="markdown-toc-message-example">Message Example</a></li>
   <li><a href="#security-consideration" id="markdown-toc-security-consideration">Security Consideration</a></li>
 </ul>
 
 </div>
 <h3 id="scope">Scope</h3>
 
-<p>At launch time the app may connect to the Authorization Server to retrieve the configuration data. The Authorization Server responds with the configuration data and the Authorization Server endpoint the app shall  direct the User Agent to.</p>
+<p>At launch time an App may connect to the Authorization Server to retrieve the configuration data. The Authorization Server responds with the configuration data and the Authorization Server endpoint the App shall direct the User Agent to.</p>
 
 <h3 id="actor-roles">Actor Roles</h3>
 
@@ -270,26 +284,44 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="referenced-standards">Referenced Standards</h3>
 
-<p><a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE ITI Technical Framework Supplement Internet User Authorization (IUA) Revision 2.1</a><br />
-<a href="http://www.hl7.org/fhir/smart-app-launch/">SMART Application Launch Framework Implementation Guide Release 1.0.0</a></p>
+<ol>
+  <li><a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE ITI Technical Framework Supplement Internet User Authorization (IUA) Revision 2.2</a></li>
+  <li><a href="http://www.hl7.org/fhir/smart-app-launch/">SMART Application Launch Framework Implementation Guide Release 2.1.0</a></li>
+  <li><a href="https://www.rfc-editor.org/rfc/pdfrfc/rfc8615.txt.pdf">Well-Known Uniform Resource Identifiers</a></li>
+</ol>
 
 <h3 id="messages">Messages</h3>
 
-<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="254px" preserveAspectRatio="none" style="width:479px;height:254px;background:#FFFFFF;" version="1.1" viewBox="0 0 479 254" width="479px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="241" x="118.25" y="28.5352">Interaction Diagram for [ITI-103]</text><rect fill="#FFFFFF" height="29.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="390.5" y="138.2637" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="81" x2="81" y1="106.9531" y2="185.5742" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="395.5" x2="395.5" y1="106.9531" y2="185.5742" /><rect fill="#E2E2F0" height="63.4648" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="153" x="5" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="12" y="63.0234">Authorization Client</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15" x="74" y="79.5117">or</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="26.5" y="96">Resource Server</text><rect fill="#E2E2F0" height="63.4648" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="153" x="5" y="184.5742" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="12" y="205.1094">Authorization Client</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15" x="74" y="221.5977">or</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="26.5" y="238.0859">Resource Server</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="156" x="317.5" y="75.4648" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="324.5" y="96">Authorization Server</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="156" x="317.5" y="184.5742" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="324.5" y="205.1094">Authorization Server</text><rect fill="#FFFFFF" height="29.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="390.5" y="138.2637" /><polygon fill="#181818" points="378.5,134.2637,388.5,138.2637,378.5,142.2637,382.5,138.2637" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="81.5" x2="384.5" y1="138.2637" y2="138.2637" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="88.5" y="133.5215">[00]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="243" x="120.5" y="133.5215">Authorization Server Metadata Request</text><polygon fill="#181818" points="92.5,163.5742,82.5,167.5742,92.5,171.5742,88.5,167.5742" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="86.5" x2="394.5" y1="167.5742" y2="167.5742" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="98.5" y="162.832">[01]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="253" x="130.5" y="162.832">Authorization Server Metadata Response</text></g></svg></div>
+<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="192px" preserveAspectRatio="none" style="width:447px;height:192px;background:#FFFFFF;" version="1.1" viewBox="0 0 447 192" width="447px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="241" x="102.25" y="28.5352">Interaction Diagram for [ITI-103]</text><rect fill="#FFFFFF" height="29.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="358.5" y="138.2637" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="81" x2="81" y1="106.9531" y2="185.5742" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="363.5" x2="363.5" y1="106.9531" y2="185.5742" /><rect fill="#E2E2F0" height="63.4648" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="153" x="5" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="12" y="63.0234">Authorization Client</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15" x="74" y="79.5117">or</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="26.5" y="96">Resource Server</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="156" x="285.5" y="75.4648" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="292.5" y="96">Authorization Server</text><rect fill="#FFFFFF" height="29.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="358.5" y="138.2637" /><polygon fill="#181818" points="346.5,134.2637,356.5,138.2637,346.5,142.2637,350.5,138.2637" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="81.5" x2="352.5" y1="138.2637" y2="138.2637" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="243" x="88.5" y="133.5215">Authorization Server Metadata Request</text><polygon fill="#181818" points="92.5,163.5742,82.5,167.5742,92.5,171.5742,88.5,167.5742" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="86.5" x2="362.5" y1="167.5742" y2="167.5742" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="253" x="98.5" y="162.832">Authorization Server Metadata Response</text></g></svg></div>
 
-<h3 id="trigger-events">Trigger Events</h3>
+<h4 id="authorization-server-metadata-request">Authorization Server Metadata Request</h4>
 
-<p>A mHealth App or a Resource server wants to retrieve the Authorization Server configuration data. A mHealth App is launched in a SMART on FHIR launch sequence.</p>
+<h5 id="trigger-events">Trigger Events</h5>
 
-<h3 id="message-semantics">Message Semantics</h3>
+<p>A mHealth App (portal, primary system or SMART on FHIR App) wants to retrieve the Authorization Server metadata (e.g.
+, authorization endpoint locations, key material required for signature validation, or other relevant authorization data).</p>
 
-<h4 id="request">Request</h4>
+<h5 id="message-semantics">Message Semantics</h5>
 
-<p>The Authorization Client or Resource Server performs a HTTP GET request to the Authorization Server. The request SHALL neither use parameter nor body data.</p>
+<p>The Authorization Client or Resource Server performs an HTTP GET request to the Authorization Server well-known 
+endpoint URL for the smart configuration. The request SHALL neither use parameter nor body data.</p>
 
-<h4 id="response">Response</h4>
+<h5 id="expected-actions">Expected Actions</h5>
 
-<p>The Authorization Server SHALL response with a HTTP response conveying a JSON formatted object as HTTP body element. The JSON object SHALL convey the following attributes:</p>
+<p>The Authorization Client or Resource Server MAY read the URL of the IUA Authorization Server and 
+redirect the User Agent to the Authorization Server.</p>
+
+<h5 id="message-example">Message Example</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET {URL-Server}/.well-known/smart-configuration  HTTP/1.1
+</code></pre></div></div>
+
+<h4 id="authorization-server-metadata-response">Authorization Server Metadata Response</h4>
+
+<h5 id="message-semantics-1">Message Semantics</h5>
+
+<p>The Authorization Server SHALL respond with an HTTP response conveying a JSON formatted object as HTTP body 
+element. The JSON object SHALL convey the following attributes:</p>
 
 <table class="table table-bordered">
   <thead>
@@ -314,10 +346,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>Authorization Server’s Authorization token end-point location.</td>
     </tr>
     <tr>
-      <td>token_endpoint_auth_methods</td>
+      <td>token_endpoint_auth_methods_supported</td>
       <td>O</td>
       <td>SMART on FHIR</td>
-      <td><span style="background-color: #fff2ff;">Client authentication methods supported by the token endpoint. The options are “client_secret_post” and “client_secret_basic”. <a href="https://github.com/ehealthsuisse/ch-epr-mhealth/issues/19">#19</a></span></td>
+      <td>Client authentication methods supported by the token endpoint. When provided, this list SHALL include “client_secret_basic” and SHOULD include “client_secret_post”.</td>
     </tr>
     <tr>
       <td>registration_endpoint</td>
@@ -333,15 +365,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td>response_types_supported</td>
-      <td>O</td>
+      <td>R</td>
       <td>SMART on FHIR / IUA</td>
-      <td>Recommended: Supported OAuth2.1 response_type values.</td>
+      <td>Supported OAuth 2.1 response_type values.</td>
     </tr>
     <tr>
       <td>grant_types_supported</td>
       <td>R</td>
       <td>IUA</td>
-      <td>SHALL be “authorization_code”.</td>
+      <td>SHALL include “authorization_code” and “urn:ietf:params:oauth:grant-type:jwt-bearer”.</td>
     </tr>
     <tr>
       <td>management_endpoint</td>
@@ -377,50 +409,48 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>access_token_format</td>
       <td>O</td>
       <td>IUA</td>
-      <td>JSON string defining the format of the access token as provided by the Authorization Server. Values are “ihe_jwt” or <span style="background-color: #fff2ff;">“ihe_saml”.<a href="https://github.com/ehealthsuisse/ch-epr-mhealth/issues/21">#21</a></span></td>
+      <td>Array of JSON strings defining the format of the access token as provided by the Authorization Server. The array SHALL contain a single string with value “urn:ietf:params:oauth:token-type:jwt”.</td>
     </tr>
   </tbody>
 </table>
 
 <div><figcaption>Attributes of the Get metadata transaction</figcaption></div>
 
-<h3 id="expected-actions-authorization-client-or-resource-server">Expected Actions Authorization Client or Resource Server</h3>
-
-<p>The Authorization Client or Resource Server MAY read the URL of the IUA Authorization Server and redirect the User Agent to the Authorization Server.</p>
-
-<h3 id="expected-actions-authorization-server">Expected Actions Authorization Server</h3>
+<h5 id="expected-actions-1">Expected Actions</h5>
 
 <p>There are no further requirements beyond those defined in the SMART on FHIR specification.</p>
 
-<h3 id="message-example">Message Example</h3>
-
-<h4 id="request-1">Request</h4>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET {URL-Server}/.well-known/smart-configuration  HTTP/1.1
-</code></pre></div></div>
-
-<h4 id="response-1">Response</h4>
+<h5 id="message-example-1">Message Example</h5>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"authorization_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/auth/authorize"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"token_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/auth/token"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"token_endpoint_auth_methods_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"client_secret_basic"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"token_endpoint_auth_methods_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"client_secret_basic"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client_secret_post"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"registration_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/auth/register"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"scopes_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"openid"</span><span class="p">,</span><span class="w"> </span><span class="s2">"profile"</span><span class="p">,</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w"> </span><span class="s2">"launch/patient"</span><span class="p">,</span><span class="w"> </span><span class="s2">"patient/*.*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"purpose_of_use=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"subject_role=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"person_id=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"principal=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"principal_id=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"organization=*"</span><span class="p">,</span><span class="w">  </span><span class="s2">"organization=_id*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"access_token_format=*"</span><span class="p">],</span><span class="w">
-    </span><span class="nl">"response_types_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"code"</span><span class="p">,</span><span class="w"> </span><span class="s2">"code id_token"</span><span class="p">,</span><span class="w"> </span><span class="s2">"id_token"</span><span class="p">,</span><span class="w"> </span><span class="s2">"refresh_token"</span><span class="p">],</span><span class="w">
-    </span><span class="nl">"grant_types_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"client_credentials"</span><span class="p">,</span><span class="w"> </span><span class="s2">"authorization_code"</span><span class="p">,</span><span class="w"> </span><span class="s2">"id_token"</span><span class="p">,</span><span class="w"> </span><span class="s2">"refresh_token"</span><span class="p">,</span><span class="w"> </span><span class="s2">"urn:ietf:params:oauth:grant-type:jwt-bearer"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"response_types_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"code"</span><span class="p">,</span><span class="w"> </span><span class="s2">"id_token"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"grant_types_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"client_credentials"</span><span class="p">,</span><span class="w"> </span><span class="s2">"authorization_code"</span><span class="p">,</span><span class="w"> </span><span class="s2">"urn:ietf:params:oauth:grant-type:jwt-bearer"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"management_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/user/manage"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"revocation_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/user/revoke"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"launch-ehr"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client-public"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client-confidential-symmetric"</span><span class="p">,</span><span class="w"> </span><span class="s2">"context-ehr-patient"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sso-openid-connect"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"launch-ehr"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client-public"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client-confidential-symmetric"</span><span class="p">,</span><span class="w"> </span><span class="s2">"context-ehr-patient"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sso-openid-connect"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"jwks_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/auth/jws"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"access_token_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ihe_jwt"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+    </span><span class="nl">"access_token_format"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"urn:ietf:params:oauth:token-type:jwt"</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
+
+<h4 id="capabilitystatement-resource">CapabilityStatement Resource</h4>
+
+<p>There are no CapabilityStatement resources defined for this transaction.</p>
 
 <h3 id="security-consideration">Security Consideration</h3>
 
-<p>There are no special security requirements for this transaction.</p>
+<p>The <code class="language-plaintext highlighter-rouge">traceparent</code> header is required, as described in <a href="tracecontext.html">Trace Context header</a>.</p>
+
+<h4 id="security-audit-considerations">Security Audit Considerations</h4>
+
+<p>There is no audit event required for this transaction.</p>
+
 
 
 
@@ -446,7 +476,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-mhealth#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jun 30, 2023 15:53+0200">2023-06-30</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-mhealth#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Mar 5, 2024 12:09+0100">2024-03-05</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -454,7 +484,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-mhealth%233.0.0-ballot%20/iti-103.html&amp;entry%2E247644557=Get%20Authorization%20Server%20Metadata%20[ITI-103]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-mhealth%233.0.0%20/iti-103.html&amp;entry%2E247644557=Get%20Authorization%20Server%20Metadata%20[ITI-103]">Propose a change</a>
+
+
+
 
           </span>
         </p>

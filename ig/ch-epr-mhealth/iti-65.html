@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-EPR-MHEALTH\Provide Document Bundle [ITI-65] - FHIR v4.0.1</title>
+    <title>Provide Document Bundle [ITI-65] - CH EPR mHealth (R4) v3.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -21,6 +21,14 @@
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -56,6 +64,11 @@
 -->
 
 
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
             <div id="hl7-nav">
     <a id="ehealthsuisse-logo" no-external="true" href="https://www.e-health-suisse.ch">
         <img alt="visit the e-health-suisse website" height="60" src="assets/images/LogoDE_ehealthsuisse.svg" />
@@ -65,7 +78,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR mHealth (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.0.0-ballot - ballot
+            <span style="display:inline-block;">3.0.0 - DSTU3
 
 
 
@@ -98,7 +111,7 @@
         <a href="index.html">Home</a>
     </li>
     <li class="Profiles">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Profiles
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 1
             <b class="caret">
             </b>
         </a>
@@ -124,7 +137,7 @@
         </ul>
     </li>
     <li class="dropdown">
-        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Transactions
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 2
             <b class="caret">
             </b>
         </a>
@@ -171,6 +184,9 @@
         </a>
         <ul class="dropdown-menu">
             <li>
+                <a href="profiles.html">Profiles</a>
+            </li>
+            <li>
                 <a href="extensions.html">Extensions</a>
             </li>
             <li>
@@ -184,6 +200,9 @@
             </li>
             <li>
                 <a href="sequencediagrams.html">Sequence diagrams</a>
+            </li>
+            <li>
+                <a href="tracecontext.html">Trace Context</a>
             </li>
             <li>
                 <a href="openissues.html">Open Issues / Change Log</a>
@@ -206,7 +225,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='transactions.html'><b>Transactions</b></a></li><li><b>Provide Document Bundle [ITI-65]</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='volume2.html'><b>Volume 2</b></a></li><li><b>Provide Document Bundle [ITI-65]</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -226,7 +245,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR mHealth (R4) (v3.0.0-ballot: Draft Ballot 1) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. This is the current published version.  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-epr-mhealth/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR mHealth (R4) (v3.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a>3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-mhealth/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Provide Document Bundle [ITI-65]</h2>
   
 
@@ -248,16 +267,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#actor-roles" id="markdown-toc-actor-roles">Actor Roles</a></li>
   <li><a href="#referenced-standards" id="markdown-toc-referenced-standards">Referenced Standards</a></li>
   <li><a href="#messages" id="markdown-toc-messages">Messages</a></li>
-  <li><a href="#trigger-events" id="markdown-toc-trigger-events">Trigger Events</a></li>
-  <li><a href="#message-semantics" id="markdown-toc-message-semantics">Message Semantics</a></li>
-  <li><a href="#message-example" id="markdown-toc-message-example">Message Example</a></li>
   <li><a href="#security-consideration" id="markdown-toc-security-consideration">Security Consideration</a></li>
 </ul>
 
 </div>
-<p>This section describes the additional requirements for the Swiss EPR of the Provide Document Bundle [ITI-
-65] transaction defined in the MHD Profile published in the IHE ITI Trial Implementation “Mobile Access to
-Health Documents”.</p>
+<p>This section describes the additional requirements for the Swiss EPR of the <a href="https://profiles.ihe.net/ITI/MHD/ITI-65.html">Provide Document Bundle
+[ITI-65]</a> transaction defined in the MHD Profile published in the IHE ITI 
+Trial Implementation “Mobile Access to Health Documents”.</p>
 
 <h3 id="scope">Scope</h3>
 
@@ -271,20 +287,19 @@ Health Documents”.</p>
 <strong>Role:</strong> Accepts the document and metadata sent from the Document Source.</p>
 
 <h3 id="referenced-standards">Referenced Standards</h3>
-<p><a href="https://profiles.ihe.net/ITI/MHD/index.html">Mobile access to Health Documents (MHD), Rev. 4.0.2 – Trial-Implementation,  November 8, 2021</a><br />
-This MHD Profile is based on Release 4 of the <a href="https://www.hl7.org/fhir/index.html">HL7® FHIR®</a> standard.</p>
+
+<ol>
+  <li><a href="https://profiles.ihe.net/ITI/MHD/index.html">Mobile access to Health Documents (MHD), Rev. 4.0.2 – Trial-Implementation,  November 8, 2021</a></li>
+  <li>This MHD Profile is based on Release 4 of the <a href="https://hl7.org/fhir/R4/index.html">HL7® FHIR®</a> standard.</li>
+</ol>
 
 <h3 id="messages">Messages</h3>
 
-<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="159px" preserveAspectRatio="none" style="width:448px;height:159px;background:#FFFFFF;" version="1.1" viewBox="0 0 448 159" width="448px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="232" x="107" y="28.5352">Interaction Diagram for [ITI-65]</text><rect fill="#FFFFFF" height="50.6211" style="stroke:#181818;stroke-width:1.0;" width="10" x="67.5" y="83.9766" /><rect fill="#FFFFFF" height="50.6211" style="stroke:#181818;stroke-width:1.0;" width="10" x="361.5" y="83.9766" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="72" x2="72" y1="73.9766" y2="152.5977" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="366" x2="366" y1="73.9766" y2="152.5977" /><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="135" x="5" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="12" y="63.0234">Document Source</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="151" x="291" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="137" x="298" y="63.0234">Document Recipient</text><rect fill="#FFFFFF" height="50.6211" style="stroke:#181818;stroke-width:1.0;" width="10" x="67.5" y="83.9766" /><rect fill="#FFFFFF" height="50.6211" style="stroke:#181818;stroke-width:1.0;" width="10" x="361.5" y="83.9766" /><polygon fill="#181818" points="349.5,101.2871,359.5,105.2871,349.5,109.2871,353.5,105.2871" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="77.5" x2="355.5" y1="105.2871" y2="105.2871" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="260" x="84.5" y="100.5449">1. Request to publish documents [ITI-65]</text><polygon fill="#181818" points="83.5,130.5977,73.5,134.5977,83.5,138.5977,79.5,134.5977" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="77.5" x2="365.5" y1="134.5977" y2="134.5977" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="206" x="89.5" y="129.8555">2. Documents published [ITI-65]</text></g></svg></div>
+<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="159px" preserveAspectRatio="none" style="width:370px;height:159px;background:#FFFFFF;" version="1.1" viewBox="0 0 370 159" width="370px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="232" x="68" y="28.5352">Interaction Diagram for [ITI-65]</text><rect fill="#FFFFFF" height="29.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="283.5" y="105.2871" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="72" x2="72" y1="73.9766" y2="152.5977" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="288" x2="288" y1="73.9766" y2="152.5977" /><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="135" x="5" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="12" y="63.0234">Document Source</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="151" x="213" y="42.4883" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="137" x="220" y="63.0234">Document Recipient</text><rect fill="#FFFFFF" height="29.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="283.5" y="105.2871" /><polygon fill="#181818" points="271.5,101.2871,281.5,105.2871,271.5,109.2871,275.5,105.2871" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="72.5" x2="277.5" y1="105.2871" y2="105.2871" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="192" x="79.5" y="100.5449">Request to publish documents</text><polygon fill="#181818" points="83.5,130.5977,73.5,134.5977,83.5,138.5977,79.5,134.5977" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="77.5" x2="287.5" y1="134.5977" y2="134.5977" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="138" x="89.5" y="129.8555">Documents published</text></g></svg></div>
 
-<h3 id="trigger-events">Trigger Events</h3>
+<h4 id="provide-document-bundle-request-message">Provide Document Bundle Request Message</h4>
 
-<p>This method is invoked when the Document Source needs to submit one or more documents to a Document
-Recipient.</p>
-
-<h3 id="message-semantics">Message Semantics</h3>
-<p>The same message semantics as for <a href="https://profiles.ihe.net/ITI/MHD/ITI-65.html#2365412-message-semantics">2:3.65.4.1.2</a> Message Semantics applies. The FHIR <code class="language-plaintext highlighter-rouge">Bundle.meta.profile</code> shall have the following value:</p>
+<p>The FHIR <code class="language-plaintext highlighter-rouge">Bundle.meta.profile</code> shall have the following value:</p>
 
 <p><code class="language-plaintext highlighter-rouge">https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Comprehensive.ProvideBundle</code></p>
 
@@ -296,25 +311,66 @@ Recipient.</p>
   <li><a href="#documententryoriginalproviderrole">DocumentEntry.originalProviderRole </a> (Annex 5.1 1.2.4.4)</li>
 </ul>
 
-<h4 id="deletionstatus">DeletionStatus</h4>
-<p>The optional metadata about the DeletionStatus of the document is represented in the DocumentReference using the extension with the URL <a href="StructureDefinition-ch-ext-deletionstatus.html">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-ext-deletionstatus</a>. The values are defined in the ValueSet <a href="http://fhir.ch/ig/ch-epr-term/ValueSet/DocumentEntry.Ext.EprDeletionStatus">DocumentEntry.Ext.EprDeletionStatus</a>.</p>
-<h4 id="submissionsetauthorauthorrole">SubmissionSet.Author.AuthorRole</h4>
-<p>The SubmissionSet.Author element MAY be used to track the user who made the latest changes to the document metadata. If present, the value of the AuthorRole attribute SHALL be taken from the SubmissionSet.Author.AuthorRole value set with the OID 2.16.756.5.30.1.127.3.10.1.41. The required metadata about the AuthorRole of the Author is represented in the List for the SubmissionSet using the extension with the URL <a href="StructureDefinition-ch-ext-author-authorrole.html">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-ext-author-authorrole</a>. The values are defined in the ValueSet <a href="http://fhir.ch/ig/ch-epr-term/ValueSet/SubmissionSet.Author.AuthorRole">SubmissionSet.Author.AuthorRole</a>.</p>
+<p>The request Bundle SHALL follow the <a href="StructureDefinition-ch-mhd-providedocumentbundle-comprehensive.html">CH MHD Provide Document Bundle Comprehensive</a>
+Profile (<a href="Bundle-2-7-BundleProvideDocument.html">example: Bundle: 2-7-BundleProvideDocument</a>).</p>
 
-<h4 id="documententryoriginalproviderrole">DocumentEntry.originalProviderRole</h4>
-<p>An extra metadata attribute SHALL be used to distinguish document originally provided by patients or their representatives from documents originally provided by healthcare professionals, assistants, technical users or document administrators. The extra metadata attribute SHALL be set by the Document Source actor to the role value of the current user and SHALL NOT be updated by Update Initiator or Document Administrator actors. The required metadata about the originalProviderRole of the Author is represented in the DocumentReference using the extension with the URL <a href="StructureDefinition-ch-ext-author-authorrole.html">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-ext-author-authorrole</a>. The values are defined in the ValueSet <a href="http://fhir.ch/ig/ch-epr-term/ValueSet/DocumentEntry.originalProviderRole">DocumentEntry.originalProviderRole</a>.</p>
+<h5 id="deletionstatus">DeletionStatus</h5>
 
-<h3 id="message-example">Message Example</h3>
+<p>The optional metadata about the DeletionStatus of the document is represented in the DocumentReference using the
+extension with the URL <a href="StructureDefinition-ch-ext-deletionstatus.html">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-ext-deletionstatus</a>.
+The values are defined in the ValueSet <a href="http://fhir.ch/ig/ch-epr-term/ValueSet/DocumentEntry.Ext.EprDeletionStatus">DocumentEntry.Ext.EprDeletionStatus</a>.</p>
 
-<p>See <a href="Bundle-2-7-BundleProvideDocument.html">Bundle example</a> (and the corresponding <a href="StructureDefinition-ch-mhd-providedocumentbundle-comprehensive.html">profile</a>) for the Provide Document Bundle <strong>request</strong>. <br />
-See <a href="Bundle-2-7-BundleProvideDocument-Response.html">Bundle example</a> (and the corresponding <a href="StructureDefinition-ch-mhd-providedocumentbundle-comprehensive-response.html">profile</a>) for the Provide Document Bundle <strong>response</strong>.</p>
+<h5 id="submissionsetauthorauthorrole">SubmissionSet.Author.AuthorRole</h5>
+
+<p>The SubmissionSet.Author element MAY be used to track the user who made the latest changes to the document metadata.
+If present, the value of the AuthorRole attribute SHALL be taken from the SubmissionSet.Author.AuthorRole value set
+with the OID <code class="language-plaintext highlighter-rouge">2.16.756.5.30.1.127.3.10.1.41</code>. The required metadata about the AuthorRole of the Author is represented
+in the List for the SubmissionSet using the extension with the URL <a href="StructureDefinition-ch-ext-author-authorrole.html">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-ext-author-authorrole</a>.
+The values are defined in the ValueSet <a href="http://fhir.ch/ig/ch-epr-term/ValueSet/SubmissionSet.Author.AuthorRole">SubmissionSet.Author.AuthorRole</a>.</p>
+
+<h5 id="documententryoriginalproviderrole">DocumentEntry.originalProviderRole</h5>
+
+<p>An extra metadata attribute SHALL be used to distinguish document originally provided by patients or their
+representatives from documents originally provided by healthcare professionals, assistants, technical users or document
+administrators. The extra metadata attribute SHALL be set by the Document Source actor to the role value of the current
+user and SHALL NOT be updated by Update Initiator or Document Administrator actors. The required metadata about the
+originalProviderRole of the Author is represented in the DocumentReference using the extension with the URL
+<a href="StructureDefinition-ch-ext-author-authorrole.html">http://fhir.ch/ig/ch-epr-mhealth/StructureDefinition/ch-ext-author-authorrole</a>.
+The values are defined in the ValueSet <a href="http://fhir.ch/ig/ch-epr-term/ValueSet/DocumentEntry.originalProviderRole">DocumentEntry.originalProviderRole</a>.</p>
+
+<h4 id="provide-document-bundle-response-message">Provide Document Bundle Response Message</h4>
+
+<p>The response Bundle SHALL follow the <a href="StructureDefinition-ch-mhd-providedocumentbundle-comprehensive-response.html">CH MHD Provide Document Bundle Comprehensive Response</a>
+Profile (<a href="Bundle-2-7-BundleProvideDocument-Response.html">example: Bundle: 2-7-BundleProvideDocument-Response</a>).</p>
+
+<h4 id="capabilitystatement-resource">CapabilityStatement Resource</h4>
+
+<p>The CapabilityStatement resource for the <strong>Document Source</strong> is <a href="CapabilityStatement-CH.MHD.DocumentSource.html">MHD Document Source</a>.</p>
+
+<p>The CapabilityStatement resource for the <strong>Document Recipient</strong> is <a href="CapabilityStatement-CH.MHD.DocumentRecipient.html">MHD Document Recipient</a>.</p>
 
 <h3 id="security-consideration">Security Consideration</h3>
 
 <p>TLS SHALL be used. This national extension enforces authentication and authorization of access to the
 Document Recipient using the IUA profile with extended access token. Consequently
-the Provide Document Bundle [ITI-65] request must authorize using the Incorporate Access Token [ITI-
-72] transaction of the IUA profile.</p>
+the <em>Provide Document Bundle</em> [ITI-65] request must authorize using the <a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">[ITI-72]</a>
+transaction of the IUA profile.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">traceparent</code> header is required, as described in <a href="tracecontext.html">Trace Context header</a>.</p>
+
+<h4 id="security-audit-considerations">Security Audit Considerations</h4>
+
+<h5 id="document-source-audit">Document Source Audit</h5>
+
+<p>The <strong>Document Source</strong> shall be able to record an
+<a href="https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.ProvideBundle.Audit.Source.html">Audit Event for Provide Bundle Transaction at Source</a>.
+<a href="https://profiles.ihe.net/ITI/MHD/AuditEvent-ex-auditProvideBundle-source.html">Audit Example for a Provide Bundle Transaction from source perspective</a>.</p>
+
+<h5 id="document-recipient-audit">Document Recipient Audit</h5>
+
+<p>The <strong>Document Recipient</strong> shall be able to record an
+<a href="https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.ProvideBundle.Audit.Recipient.html">Audit Event for Provide Bundle Transaction at Recipient</a>.
+<a href="https://profiles.ihe.net/ITI/MHD/AuditEvent-ex-auditProvideBundle-recipient.html">Audit Example for a Provide Bundle Transaction from recipient perspective</a>.</p>
 
 
 
@@ -341,7 +397,7 @@ the Provide Document Bundle [ITI-65] request must authorize using the Incorporat
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-mhealth#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jun 30, 2023 15:53+0200">2023-06-30</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-mhealth#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Mar 5, 2024 12:09+0100">2024-03-05</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -349,7 +405,10 @@ the Provide Document Bundle [ITI-65] request must authorize using the Incorporat
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-mhealth%233.0.0-ballot%20/iti-65.html&amp;entry%2E247644557=Provide%20Document%20Bundle%20[ITI-65]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-mhealth%233.0.0%20/iti-65.html&amp;entry%2E247644557=Provide%20Document%20Bundle%20[ITI-65]">Propose a change</a>
+
+
+
 
           </span>
         </p>
