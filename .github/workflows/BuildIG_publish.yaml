@@ -160,3 +160,19 @@ jobs:
           gsutil cp ./package-feed.xml gs://fhir-ch-www/
           gsutil cp ./package-registry.json gs://fhir-ch-www/
           gsutil cp ./publication-feed.xml gs://fhir-ch-www/
+
+      - name: Send a stream message to Zulip
+        uses: zulip/github-actions-zulip/send-message@v1
+        with:
+          api-key: ${{ secrets.ZULIPAPIKEY }}
+          email: "hl7ch-bot@chat.fhir.org"
+          organization-url: "https://chat.fhir.org"
+          to: "switzerland"
+          type: "stream"
+          topic: "fhir.ch: new FHIR Implementation Guide published"
+          content: |
+             :rocket: ${{ steps.repo_name.outputs.repo }}/${{ env.version }} published :rocket:
+             
+             Details: [published](https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}/index.html) | [qa]((https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}/qa.html)
+             
+             :memo: It might take a few minutes until the fhir.ch is serving the new version, should be visible on packages servers in [max 1](https://packages2.fhir.org/packages/catalog) to [max 8](https://registry.fhir.org/) hours.
