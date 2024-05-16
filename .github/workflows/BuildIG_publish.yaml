@@ -125,14 +125,14 @@ jobs:
         shell: bash
 
       - uses: actions/upload-artifact@v4
-        if: ${{ env.publish === 'false' }}
+        if: ${{ env.publish == 'false' }}
         with:
           name: my-artifact
           path: ./ig/${{ steps.repo_name.outputs.repo }} 
           retention-days: 2
 
       - name: 🐙 Commit and push changes
-        if: ${{ env.publish === 'true' }}
+        if: ${{ env.publish == 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -141,24 +141,24 @@ jobs:
           git push
 
       - id: 'auth'
-        if: ${{ env.publish === 'true' }}
+        if: ${{ env.publish == 'true' }}
         uses: 'google-github-actions/auth@v2'
         with:                                     
           workload_identity_provider: 'projects/436430299306/locations/global/workloadIdentityPools/pool1/providers/oidc-github-provider'
           service_account: 'github-fhir-ch@fhir-ch.iam.gserviceaccount.com'
 
       - name: '☁️ Set up Cloud SDK'
-        if: ${{ env.publish === 'true' }}
+        if: ${{ env.publish == 'true' }}
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
           version: '>= 363.0.0'
 
       - name: '☁️ Use gcloud CLI'
-        if: ${{ env.publish === 'true' }}
+        if: ${{ env.publish == 'true' }}
         run: 'gcloud info'
 
       - name: '🚚 Publish IG to fhir.ch 🚀 🚀 🚀 '
-        if: ${{ env.publish === 'true' }}
+        if: ${{ env.publish == 'true' }}
         run: |
           gsutil -m rsync ./ig/${{ steps.repo_name.outputs.repo }} gs://fhir-ch-www/ig/${{ steps.repo_name.outputs.repo }}
           gsutil -m rsync -r ./ig/${{ steps.repo_name.outputs.repo }}/assets gs://fhir-ch-www/ig/${{ steps.repo_name.outputs.repo }}/assets
