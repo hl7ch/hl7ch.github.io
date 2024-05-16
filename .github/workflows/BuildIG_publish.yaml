@@ -13,11 +13,11 @@ on:
         required: true
         default: '1.0.0'
         type: string
-      # publish:
-      #   description: 'Publish to github / fhir.ch if build is successful '
-      #   required: true
-      #   default: true
-      #   type: boolean
+    publish:
+      description: 'Publish to github / fhir.ch if build is successfull'
+      required: true
+      default: true
+      type: boolean
 
 # The following jobs are equal for all IGs and can be moved to a common composite-action if 'uses'-support is added, see:
 # https://github.com/actions/runner/blob/main/docs/adrs/1144-composite-actions.md
@@ -30,14 +30,14 @@ jobs:
     env:
       orgrepo: "${{ github.event.inputs.orgrepo }}"
       version: "${{ github.event.inputs.version }}"
-      # publish: "${{ github.event.inputs.publish }}" currently the if's are not working
+      publish: "${{ github.event.inputs.publish }}"
       publish: true
     steps:
       - name: 📦 Build and test with Rake        
         run: |
           sudo apt-get update
-          sudo apt-get install ruby-full
-          sudo gem install jekyll
+          sudo apt-get install ruby-full graphviz
+          sudo gem install jekyll jekyll-asciidoc
 
       - name: 📦 Install modules
         run: npm install -g fsh-sushi
@@ -125,8 +125,15 @@ jobs:
         run: rm -rf ${{ steps.repo_name.outputs.repo }}
         shell: bash
 
+      - uses: actions/upload-artifact@v4
+        if: ${{ env.publish === 'false' }}
+        with:
+          name: my-artifact
+          path: ./ig/${{ steps.repo_name.outputs.repo }} 
+          retention-days: 2
+
       - name: 🐙 Commit and push changes
-        if: ${{ env.publish }}
+        if: ${{ env.publish === 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -135,24 +142,24 @@ jobs:
           git push
 
       - id: 'auth'
-        if: ${{ env.publish }}
+        if: ${{ env.publish === 'true' }}
         uses: 'google-github-actions/auth@v2'
         with:                                     
           workload_identity_provider: 'projects/436430299306/locations/global/workloadIdentityPools/pool1/providers/oidc-github-provider'
           service_account: 'github-fhir-ch@fhir-ch.iam.gserviceaccount.com'
 
       - name: '☁️ Set up Cloud SDK'
-        if: ${{ env.publish }}
+        if: ${{ env.publish === 'true' }}
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
           version: '>= 363.0.0'
 
       - name: '☁️ Use gcloud CLI'
-        if: ${{ env.publish }}
+        if: ${{ env.publish === 'true' }}
         run: 'gcloud info'
 
       - name: '🚚 Publish IG to fhir.ch 🚀 🚀 🚀 '
-        if: ${{ env.publish }}
+        if: ${{ env.publish === 'true' }}
         run: |
           gsutil -m rsync ./ig/${{ steps.repo_name.outputs.repo }} gs://fhir-ch-www/ig/${{ steps.repo_name.outputs.repo }}
           gsutil -m rsync -r ./ig/${{ steps.repo_name.outputs.repo }}/assets gs://fhir-ch-www/ig/${{ steps.repo_name.outputs.repo }}/assets
@@ -175,4 +182,4 @@ jobs:
              
              Details: [published](https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}/index.html) | [qa](https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}/qa.html)
              
-             :memo: It might take a few minutes until the fhir.ch is serving the new version, should be visible on packages servers in [max 1](https://packages2.fhir.org/packages/catalog) to [max 8](https://registry.fhir.org/) hours.
+             :memo: It might take a few minutes until [fhir.ch](https://fhir.ch/) is serving the new version, should be visible on packages servers in [max 1](https://packages2.fhir.org/packages/catalog) to [max 8](https://registry.fhir.org/) hours.
