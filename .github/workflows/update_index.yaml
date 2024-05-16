@@ -1,0 +1,39 @@
+name: Publish index.html on fhir.ch
+
+on:
+  push:
+    paths:
+      - 'index.html'
+    branches:
+#      - 'main'
+      - '**'
+
+jobs:
+  job_id:
+    # Add "id-token" with the intended permissions.
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v2'
+      with:                                     
+        workload_identity_provider: 'projects/436430299306/locations/global/workloadIdentityPools/pool1/providers/oidc-github-provider'
+        service_account: 'github-fhir-ch@fhir-ch.iam.gserviceaccount.com'
+
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v2'
+      with:
+        version: '>= 363.0.0'
+
+    - name: 'Use gcloud CLI'
+      run: 'gcloud info'
+
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          .github
+
+    - name: 'Publish index.html'
+      run: 'gsutil cp ./index.html gs://fhir-ch-www/'
