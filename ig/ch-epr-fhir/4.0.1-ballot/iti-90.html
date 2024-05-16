@@ -1,0 +1,743 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Find Matching Care Services [ITI-90] - CH EPR FHIR (R4) v4.0.1-ballot</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link rel="stylesheet" href="fhir.css"/>
+
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-fhir.css"/>
+
+      <!-- Project extras -->
+    <link rel="stylesheet" href="assets/css/project.css"/>
+    <link rel="stylesheet" href="assets/css/pygments-manni.css"/>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css"/>
+  	<link rel="stylesheet" href="assets/css/prism.css"/>
+      <!-- Placeholder for child template CSS declarations -->
+    <link rel="stylesheet" href="assets/css/hl7.css"/>
+    <link rel="stylesheet" href="assets/css/fhir.css"/>
+
+    <style>
+    
+    .navbar-inverse {
+        background-color: #144b8a;
+    }   
+
+    #segment-footer .container {
+      background-color: #144b8a;
+    }
+    
+
+    
+
+    
+    #ig-status {
+      color: #4fa2da;
+    } 
+    
+
+    </style>
+ 
+
+    <script src="fhir-table-scripts.js" type="text/javascript"> </script>
+
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- [if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif] -->
+
+      <!-- Favicons -->
+    <link sizes="144x144" rel="fhir-logo" href="assets/ico/icon-fhir-144.png"/>
+    <link sizes="114x114" rel="fhir-logo" href="assets/ico/icon-fhir-114.png"/>
+    <link sizes="72x72" rel="fhir-logo" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"3.12"}
+    h3,h4,h5,h6{--heading-prefix:"3.12"}</style>
+    <div id="segment-header" class="segment">    <!-- segment-header -->
+      <div class="container">    <!-- container -->
+          <!-- Placeholder for child template header declarations -->
+
+              <!-- <div id="family-nav">
+	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
+		alt="logo fhir" src="assets/images/fhir-logo-www.png" />
+	</a>
+</div> -->
+
+
+            <div id="family-nav">
+                <a no-external="true" id="logo" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR"/>
+                </a>
+            </div>
+            <div id="hl7-nav">
+    <a no-external="true" id="ehealthsuisse-logo" href="https://www.e-health-suisse.ch">
+        <img src="assets/images/LogoDE_ehealthsuisse.svg" alt="visit the e-health-suisse website" height="60"/>
+    </a>            
+</div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
+            <br/>
+            <span style="display:inline-block;">4.0.1-ballot - ballot
+
+
+
+  <img src="assets/images/che.svg" alt="Switzerland flag" title="Switzerland" height="16"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div>   <!-- /container -->
+    </div>    <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">    <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">    <!-- container -->
+          <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+            <!-- status-bar -->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a href="http://hl7.org/fhir/R4/index.html" class="navbar-brand hidden">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <ul class="nav navbar-nav">
+    <li>
+        <a href="index.html">Home</a>
+    </li>
+    <li class="Profiles">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 1
+            <b class="caret">
+            </b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="iti-iua.html">Internet User Authorization (IUA)</a>
+            </li>
+            <li>
+                <a href="iti-pdqm.html">Patient Demographics Query for mobile (PDQm)</a>
+            </li>
+            <li>
+                <a href="iti-pixm.html">Patient Identifier Cross-referencing for mobile (PIXm)</a>
+            </li>
+            <li>
+                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD) with XDS on FHIR</a>
+            </li>
+            <li>
+                <a href="iti-restful-atna.html">RESTful ATNA</a>
+            </li>
+            <li>
+                <a href="iti-mcsd.html">Mobile Care Services Discovery (mCSD)</a>
+            </li>
+            <li>
+                <a href="ppqm.html">Privacy Policy Query for Mobile (CH:PPQm)</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 2
+            <b class="caret">
+            </b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="iti-103.html">Get Authorization Server Metadata [ITI-103]</a>
+            </li>
+            <li>
+                <a href="iti-71.html">Get Access Token [ITI-71]</a>
+            </li>
+            <li>
+                <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
+            </li>
+            <li>
+                <a href="iti-78.html">Mobile Patient Demographics Query [ITI-78]</a>
+            </li>
+            <li>
+                <a href="iti-83.html">Mobile Patient Identifier Cross-reference Query [ITI-83]</a>
+            </li>
+            <li>
+                <a href="iti-65.html">Provide Document Bundle [ITI-65]</a>
+            </li>
+            <li>
+                <a href="iti-66.html">Find Document Lists [ITI-66]</a>
+            </li>
+            <li>
+                <a href="iti-67.html">Find Document References [ITI-67]</a>
+            </li>
+            <li>
+                <a href="iti-68.html">Retrieve Document [ITI-68]</a>
+            </li>
+            <li>
+                <a href="ch-mhd-1.html">Update Document Metadata [CH:MHD-1]</a>
+            </li>
+            <li>
+                <a href="iti-20.html">Record Audit Event [ITI-20]</a>
+            </li>
+            <li>
+                <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
+            </li>
+            <li>
+                <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
+            </li>
+            <li>
+                <a href="ppq-4.html">Mobile Privacy Policy Bundle Feed [PPQ-4]</a>
+            </li>
+            <li>
+                <a href="ppq-5.html">Mobile Privacy Policy Retrieve [PPQ-5]</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Appendix
+            <b class="caret">
+            </b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="profiles.html">Profiles</a>
+            </li>
+            <li>
+                <a href="extensions.html">Extensions</a>
+            </li>
+            <li>
+                <a href="terminology.html">Terminology</a>
+            </li>
+            <li>
+                <a href="capstatements.html">Capability Statements</a>
+            </li>
+            <li>
+                <a href="operations.html">Operations</a>
+            </li>
+            <li>
+                <a href="sequencediagrams.html">Sequence diagrams</a>
+            </li>
+            <li>
+                <a href="tracecontext.html">Trace Context</a>
+            </li>
+            <li>
+                <a href="changelog.html">Open Issues / Change Log</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="artifacts.html">Artifacts</a>
+    </li>
+</ul>
+
+            </div>    <!-- /.nav-collapse -->
+          </div>    <!-- /.container -->
+        </nav>    <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-navbar -->
+      <!-- status-bar -->
+
+    <div id="segment-breadcrumb" class="segment">    <!-- segment-breadcrumb -->
+      <div class="container">    <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href="toc.html"><b>Table of Contents</b></a></li><li><a href="volume2.html"><b>Volume 2</b></a></li><li><b>Find Matching Care Services [ITI-90]</b></li>
+
+        </ul>
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">    <!-- segment-content -->
+      <div class="container">    <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+    <!-- ReleaseHeader --><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version in its permanent home (it will always be available at this URL).  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p>  <!-- EndReleaseHeader -->
+  <h2>Find Matching Care Services [ITI-90]</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>  <!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#scope" id="markdown-toc-scope">Scope</a></li>
+  <li><a href="#actor-roles" id="markdown-toc-actor-roles">Actor Roles</a></li>
+  <li><a href="#referenced-standards" id="markdown-toc-referenced-standards">Referenced Standards</a></li>
+  <li><a href="#messages" id="markdown-toc-messages">Messages</a></li>
+  <li><a href="#security-considerations" id="markdown-toc-security-considerations">Security Considerations</a></li>
+</ul>
+
+</div>
+<p>This section describes the national extension for the Swiss EPR to the <a href="https://profiles.ihe.net/ITI/mCSD/ITI-90.html">Find Matching Care Services
+[ITI-90]</a> transaction defined in the IUA profile published in the
+IHE IT Infrastructure Technical Framework Trial Implementation “Mobile Care Services Discovery”.</p>
+
+<h3 id="scope">Scope</h3>
+
+<p>A primary system wants to search for healthcare organizations or professionals. It can perform an
+<a href="iti-90.html">ITI-90</a> request with search parameters to get a list of matched resources.</p>
+
+<p>It offers an alternative to the HPD ITI-58 transaction.</p>
+
+<h3 id="actor-roles">Actor Roles</h3>
+
+<p><strong>Actor:</strong> Care Services Selective Consumer<br/>
+<strong>Role:</strong> Requests a list of resources from the Care Services Selective Supplier based on query parameters.<br/>
+<strong>Actor:</strong> Care Services Selective Supplier<br/>
+<strong>Role:</strong> Accepts the query request and returns a list of matching resources.<br/></p>
+
+<h3 id="referenced-standards">Referenced Standards</h3>
+
+<ol>
+  <li><a href="https://profiles.ihe.net/ITI/mCSD/3.8.0/">IHE ITI Mobile Care Services Discovery (mCSD) 3.8.0</a></li>
+  <li><a href="http://hl7.org/fhir/R4/http.html#search">FHIR R4 API search</a></li>
+  <li><a href="https://www.e-health-suisse.ch/en/technique/technical-interoperability/specifications-for-the-epr-implementation#CentServRes">EPR – Central Services, Interface Documentation v1.0.40</a></li>
+</ol>
+
+<h3 id="messages">Messages</h3>
+
+<div>  <!-- ?xml version="1.0" encoding="us-ascii" standalone="no"? --><svg xmlns="http://www.w3.org/2000/svg" contentStyleType="text/css" viewBox="0 0 487 233" zoomAndPan="magnify" preserveAspectRatio="none" width="487px" xmlns:xlink="http://www.w3.org/1999/xlink" style="width:487px;height:233px;background:#FFFFFF;" version="1.1" height="233px"><defs></defs><g><text font-weight="bold" lengthAdjust="spacing" x="121" font-size="14" textLength="243" y="27.9951" font-family="sans-serif" fill="#000000">Interaction Diagram for [ITI-90]</text><rect width="10" x="389" y="121.0234" style="stroke:#181818;stroke-width:1.0;" fill="#FFFFFF" height="29.1328"></rect><rect width="10" x="389" y="179.2891" style="stroke:#181818;stroke-width:1.0;" fill="#FFFFFF" height="29.1328"></rect><line y1="89.8906" x1="92" y2="226.4219" style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x2="92"></line><line y1="89.8906" x1="394" y2="226.4219" style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x2="394"></line><rect rx="2.5" ry="2.5" width="174" x="5" y="42.2969" style="stroke:#181818;stroke-width:0.5;" fill="#E2E2F0" height="46.5938"></rect><text lengthAdjust="spacing" x="12" font-size="14" textLength="160" y="62.292" font-family="sans-serif" fill="#000000">Care Services Selective</text><text lengthAdjust="spacing" x="56" font-size="14" textLength="72" y="78.5889" font-family="sans-serif" fill="#000000">Consumer</text><rect rx="2.5" ry="2.5" width="174" x="307" y="42.2969" style="stroke:#181818;stroke-width:0.5;" fill="#E2E2F0" height="46.5938"></rect><text lengthAdjust="spacing" x="314" font-size="14" textLength="160" y="62.292" font-family="sans-serif" fill="#000000">Care Services Selective</text><text lengthAdjust="spacing" x="366" font-size="14" textLength="56" y="78.5889" font-family="sans-serif" fill="#000000">Supplier</text><rect width="10" x="389" y="121.0234" style="stroke:#181818;stroke-width:1.0;" fill="#FFFFFF" height="29.1328"></rect><rect width="10" x="389" y="179.2891" style="stroke:#181818;stroke-width:1.0;" fill="#FFFFFF" height="29.1328"></rect><polygon style="stroke:#181818;stroke-width:1.0;" fill="#181818" points="377,117.0234,387,121.0234,377,125.0234,381,121.0234"></polygon><line y1="121.0234" x1="92" y2="121.0234" style="stroke:#181818;stroke-width:1.0;" x2="383"></line><text lengthAdjust="spacing" x="99" font-size="13" textLength="236" y="115.9575" font-family="sans-serif" fill="#000000">Find Matching Care Services Request</text><polygon style="stroke:#181818;stroke-width:1.0;" fill="#181818" points="103,146.1563,93,150.1563,103,154.1563,99,150.1563"></polygon><line y1="150.1563" x1="97" y2="150.1563" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x2="393"></line><text lengthAdjust="spacing" x="109" font-size="13" textLength="246" y="145.0903" font-family="sans-serif" fill="#000000">Find Matching Care Services Response</text><polygon style="stroke:#181818;stroke-width:1.0;" fill="#181818" points="377,175.2891,387,179.2891,377,183.2891,381,179.2891"></polygon><line y1="179.2891" x1="92" y2="179.2891" style="stroke:#181818;stroke-width:1.0;" x2="383"></line><text lengthAdjust="spacing" x="99" font-size="13" textLength="263" y="174.2231" font-family="sans-serif" fill="#000000">Retrieve Care Services Resource Request</text><polygon style="stroke:#181818;stroke-width:1.0;" fill="#181818" points="103,204.4219,93,208.4219,103,212.4219,99,208.4219"></polygon><line y1="208.4219" x1="97" y2="208.4219" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x2="393"></line><text lengthAdjust="spacing" x="109" font-size="13" textLength="273" y="203.356" font-family="sans-serif" fill="#000000">Retrieve Care Services Resource Response</text></g></svg></div>
+
+<h4 id="find-matching-care-services-request-message">Find Matching Care Services Request Message</h4>
+
+<p>The <em>Find Matching Care Services</em> message is a FHIR search operation on the mCSD Resources.</p>
+
+<p>A <em>Care Services Selective Consumer</em> initiates a search request using HTTP GET or POST:</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">[base]/[resource]?[parameters]</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/fhir+json</span>
+<span class="na">traceparent</span><span class="p">:</span> <span class="s">00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-00</span>
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">POST</span> <span class="nn">[base]/[resource]/_search</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/fhir+json</span>
+<span class="na">traceparent</span><span class="p">:</span> <span class="s">00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-00</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/x-www-form-urlencoded</span>
+
+param1=value&amp;param2=value
+</code></pre></div></div>
+
+<h5 id="semantics">Semantics</h5>
+
+<p>The <em>Care Services Selective Supplier</em> shall support the following search parameters for all resources:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Path</th>
+      <th>Modifiers</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>_id</td>
+      <td>token</td>
+      <td>Resource.id</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>_lastUpdated</td>
+      <td>date</td>
+      <td>Resource.meta.lastUpdated</td>
+      <td>ge, le</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>_format</td>
+      <td>token</td>
+      <td>N/A</td>
+      <td>&nbsp;</td>
+      <td>Defines the <a href="https://profiles.ihe.net/ITI/TF/Volume2/ch-Z.html#z.6-populating-the-expected-response-format">expected response format</a></td>
+    </tr>
+    <tr>
+      <td>_sort</td>
+      <td>&nbsp;</td>
+      <td>N/A</td>
+      <td>&nbsp;</td>
+      <td>For <a href="https://www.hl7.org/fhir/R4/search.html#sort">sorting</a></td>
+    </tr>
+    <tr>
+      <td>_count</td>
+      <td>number</td>
+      <td>N/A</td>
+      <td>&nbsp;</td>
+      <td>For <a href="https://www.hl7.org/fhir/R4/search.html#count">paging</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <em>Care Services Selective Supplier</em> shall support the following search parameters on the
+<strong><a href="StructureDefinition-CH.mCSD.Organization.html">Organization</a></strong> resource:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Path</th>
+      <th>Modifiers</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>active</td>
+      <td>token</td>
+      <td>Organization.active</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>identifier</td>
+      <td>token</td>
+      <td>Organization.identifier</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>string</td>
+      <td>Organization.(name, alias)</td>
+      <td>:contains, :exact</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>partof</td>
+      <td>reference</td>
+      <td>Organization.partOf</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>token</td>
+      <td>Organization.type</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>_include=Organization.endpoint</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>It has no effect</td>
+    </tr>
+    <tr>
+      <td>_revInclude=Location:organization</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>It has no effect</td>
+    </tr>
+    <tr>
+      <td>_revInclude=OrganizationAffiliation:participating-organization</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>It has no effect</td>
+    </tr>
+    <tr>
+      <td>_revInclude=OrganizationAffiliation:primary-organization</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>It has no effect</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <em>Care Services Selective Supplier</em> shall support the following search parameters on the
+<strong><a href="StructureDefinition-CH.mCSD.Practitioner.html">Practitioner</a></strong> resource:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Path</th>
+      <th>Modifiers</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>active</td>
+      <td>token</td>
+      <td>Practitioner.active</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>identifier</td>
+      <td>token</td>
+      <td>Practitioner.identifier</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>string</td>
+      <td>Practitioner.name</td>
+      <td>:contains, :exact</td>
+      <td>A server defined search that may match any of the string fields in the HumanName</td>
+    </tr>
+    <tr>
+      <td>given</td>
+      <td>string</td>
+      <td>Practitioner.name.given</td>
+      <td>:contains, :exact</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>family</td>
+      <td>string</td>
+      <td>Practitioner.name.family</td>
+      <td>:contains, :exact</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <em>Care Services Selective Supplier</em> shall support the following search parameters on the
+<strong><a href="StructureDefinition-CH.mCSD.PractitionerRole.html">PractitionerRole</a></strong> resource:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Path</th>
+      <th>Modifiers</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>active</td>
+      <td>token</td>
+      <td>PractitionerRole.active</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>location</td>
+      <td>reference</td>
+      <td>PractitionerRole.location</td>
+      <td>&nbsp;</td>
+      <td>Will not yield any results</td>
+    </tr>
+    <tr>
+      <td>organization</td>
+      <td>reference</td>
+      <td>PractitionerRole.organization</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>practitioner</td>
+      <td>reference</td>
+      <td>PractitionerRole.practitioner</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>role</td>
+      <td>token</td>
+      <td>PractitionerRole.code</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>service</td>
+      <td>reference</td>
+      <td>PractitionerRole.healthcareService</td>
+      <td>&nbsp;</td>
+      <td>Will not yield any results</td>
+    </tr>
+    <tr>
+      <td>specialty</td>
+      <td>token</td>
+      <td>PractitionerRole.specialty</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>_include=PractitionerRole:practitioner</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Includes the referenced Practitioners in the response</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <em>Care Services Selective Supplier</em> may not support other resources (<strong>Endpoint</strong>, <strong>HealthcareService</strong>,
+<strong>Location</strong> and <strong>OrganizationAffiliation</strong>), as they are not used in this national extension. Any search query on
+these resources may not yield any result. Some example queries are given here:</p>
+
+<ol>
+  <li>The following request searches for an active <strong>Organization</strong> whose name contains ‘Medical’:
+<code class="language-plaintext highlighter-rouge">GET [base]/Organization?active=true&amp;name:contains=Medical</code></li>
+  <li>The following request searches for a <strong>Practitioner</strong> named ‘Müller’:
+<code class="language-plaintext highlighter-rouge">GET [base]/Practitioner?family=Müller</code></li>
+  <li>The following request searches for a <strong>Practitioner</strong> with the GLN ‘7601000102737’:
+<code class="language-plaintext highlighter-rouge">GET [base]/Practitioner?identifier=urn:oid:2.51.1.3|7601000102737</code></li>
+  <li>The following request searches for all <strong>Practitioners</strong> working at the ‘HUG’ organization:
+<code class="language-plaintext highlighter-rouge">GET [base]/PractitionerRole?organization=Organization/HUG&amp;_include=PractitionerRole:practitioner</code></li>
+</ol>
+
+<h4 id="find-matching-care-services-response-message">Find Matching Care Services Response Message</h4>
+
+<p>The response message is a <a href="http://hl7.org/fhir/R4/bundle.html#searchset">Search Results Bundle</a> that contains
+<strong><a href="StructureDefinition-CH.mCSD.Organization.html">Organizations</a></strong>,
+<strong><a href="StructureDefinition-CH.mCSD.Practitioner.html">Practitioners</a></strong> and
+<strong><a name="l1395">​</a><a href="StructureDefinition-CH.mCSD.Practitionerrole.html">PractitionerRoles</a></strong>.
+<a href="Bundle-FindMatchingCareServicesResponse.html">An example of response message</a> is provided.</p>
+
+<h4 id="retrieve-care-services-resource-message">Retrieve Care Services Resource Message</h4>
+
+<p>The <em>Retrieve Care Services Resource</em> is conducted by executing an HTTP GET against the <em>Care Services Selective
+Supplier</em>’s Care Services Resource URL, providing the resource id of the resource being retrieved. The target is
+formatted as: <code class="language-plaintext highlighter-rouge">GET [base]/[resource]/[resourceId]</code>. Some examples are</p>
+
+<ol>
+  <li>Retrieve the <strong>Organization</strong> ‘Spital X Dept. 3’: <code class="language-plaintext highlighter-rouge">GET [base]/Organization/SpitalXDept3</code>.</li>
+  <li>Retrieve the <strong>Practitioner</strong> ‘Dr. Peter Pan’: <code class="language-plaintext highlighter-rouge">GET [base]/Practitioner/DrPeterPan</code>.</li>
+  <li>Retrieve the <strong>PractitionerRole</strong> ‘Dr. Peter Pan at Praxis P’: <code class="language-plaintext highlighter-rouge">GET [base]/PractitionerRole/PeterPanPraxisP</code>.</li>
+</ol>
+
+<h4 id="retrieve-care-services-resource-response-message">Retrieve Care Services Resource Response Message</h4>
+
+<p>The <em>Care Services Selective Supplier</em> shall respond to this query by sending a single <em>Care Services Resource</em>
+instance.</p>
+
+<ul>
+  <li>If the <em>Care Services Selective Supplier</em> finds the resource, <code class="language-plaintext highlighter-rouge">HTTP 200 OK</code> is returned with the resource (an
+<strong><a href="StructureDefinition-CH.mCSD.Organization.html">Organization</a></strong>,
+<strong><a href="StructureDefinition-CH.mCSD.Practitioner.html">Practitioner</a></strong> or
+<strong><a name="l1478">​</a><a href="StructureDefinition-CH.mCSD.Practitionerrole.html">PractitionerRole</a></strong>).</li>
+  <li>If the <em>Care Services Selective Supplier</em> does not find the resource, <code class="language-plaintext highlighter-rouge">HTTP 404 Not Found</code> is returned with an
+<strong><a href="https://www.hl7.org/fhir/r4/operationoutcome.html">OperationOutcome</a></strong> resource.</li>
+</ul>
+
+<h4 id="capabilitystatement-resource">CapabilityStatement Resource</h4>
+
+<p>The CapabilityStatement resource for the <strong>Care Services Selective Consumer</strong> is
+<a href="CapabilityStatement-CH.mCSD.CareServicesSelectiveConsumer.html">mCSD Care Services Selective Consumer</a>.</p>
+
+<p>The CapabilityStatement resource for the <strong>Care Services Selective Supplier</strong> is
+<a href="CapabilityStatement-CH.mCSD.CareServicesSelectiveSupplier.html">mCSD Care Services Selective Supplier</a>.</p>
+
+<h3 id="security-considerations">Security Considerations</h3>
+
+<p>TLS SHALL be used. This national extension enforces authentication and authorization of access to the <em>Care Services
+Selective Supplier</em> using the IUA profile with basic access token. Consequently, the <em>Find Matching Care Services</em>
+[ITI-90] request must authorize using the <a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">[ITI-72]</a> transaction of the IUA profile.</p>
+
+<p>For the <code class="language-plaintext highlighter-rouge">traceparent</code> header handling refer to <a href="tracecontext.html">Trace Context header</a>.</p>
+
+<h4 id="security-audit-considerations">Security Audit Considerations</h4>
+
+<p>Note that the same audit message is recorded by both <strong>Care Services Selective Supplier</strong> and <strong>Care Services 
+Selective Consumer</strong>. The difference being the Audit Source element. Both sides record to show consistency between 
+the message sent by the Consumer and the action taken at the Supplier.</p>
+
+<p>The actors involved shall record audit events according to the <a href="https://profiles.ihe.net/ITI/mCSD/3.8.0/StructureDefinition-IHE.mCSD.Audit.CareServices.Read.html">Audit Event for Find Matching Care Services for Read by
+the Care Services Selective Supplier and Consumer</a>
+or the <a href="https://profiles.ihe.net/ITI/mCSD/3.8.0/StructureDefinition-IHE.mCSD.Audit.CareServices.Query.html">Audit Event for Find Matching Care Services for Query by the Care Services Selective Supplier and
+Consumer</a>.</p>
+
+
+
+
+</div>
+        </div>    <!-- /inner-wrapper -->
+      </div>    <!-- /row -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-content -->
+
+  <script src="assets/js/jquery.js" type="text/javascript"> </script>       <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script src="assets/js/jquery-ui.min.js" type="text/javascript"> </script>
+
+  <script src="assets/js/window-hash.js" type="text/javascript"> </script>
+  <a name="bottom"> </a>
+  <div igtool="footer" id="segment-footer" class="segment">    <!-- segment-footer -->
+    <div class="container">    <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &copy; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 21:43+0000">2024-05-16</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+|&nbsp;<a style="color: #81BEF7" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot%20/iti-90.html&amp;entry%2E247644557=Find%20Matching%20Care%20Services%20[ITI-90]" target="_blank">Propose a change</a>
+
+
+
+
+          </span>
+        </p>
+      </div>    <!-- /inner-wrapper -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">    <!-- segment-post-footer -->
+    <div class="container">    <!-- container -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-post-footer -->
+  
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"> </script>
+  <script src="assets/js/respond.min.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard-btn.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor-hover.js" type="text/javascript"> </script>
+  
+    <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
