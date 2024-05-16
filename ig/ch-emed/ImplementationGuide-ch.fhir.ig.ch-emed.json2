@@ -6,12 +6,12 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>CH_EMED</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed</pre><div><p>Implementation Guide for the eMedication in Switzerland.</p>\n</div></div>"
   },
   "url" : "http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed",
-  "version" : "4.0.1",
+  "version" : "5.0.0-ballot",
   "name" : "CH_EMED",
   "title" : "CH EMED (R4)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2023-12-28",
+  "date" : "2024-05-16",
   "publisher" : "HL7 Switzerland",
   "contact" : [{
     "name" : "HL7 Switzerland",
@@ -47,19 +47,19 @@
     }],
     "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
     "packageId" : "hl7.fhir.uv.extensions.r4",
-    "version" : "1.0.0"
+    "version" : "5.1.0"
   },
   {
     "id" : "ch_fhir_ig_ch_core",
     "uri" : "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core",
     "packageId" : "ch.fhir.ig.ch-core",
-    "version" : "4.0.1"
+    "version" : "5.0.0-ballot"
   },
   {
     "id" : "hl7_terminology",
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology",
-    "version" : "5.4.0"
+    "version" : "5.5.0"
   }],
   "definition" : {
     "extension" : [{
@@ -80,7 +80,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "trial-use"
+        "valueString" : "ballot"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -92,28 +92,6 @@
       {
         "url" : "value",
         "valueString" : "true"
-      }],
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-    },
-    {
-      "extension" : [{
-        "url" : "code",
-        "valueString" : "special-url"
-      },
-      {
-        "url" : "value",
-        "valueString" : "urn:oid:0.4.0.127.0.16.1.1.2.1"
-      }],
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-    },
-    {
-      "extension" : [{
-        "url" : "code",
-        "valueString" : "special-url"
-      },
-      {
-        "url" : "value",
-        "valueString" : "urn:oid:1.3.6.1.4.1.19376.1.9.2.1"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -394,7 +372,7 @@
     },
     {
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
-      "valueCode" : "hl7.fhir.uv.tools#current"
+      "valueCode" : "hl7.fhir.uv.tools#0.1.0"
     },
     {
       "extension" : [{
@@ -414,7 +392,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "trial-use"
+        "valueString" : "ballot"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -426,28 +404,6 @@
       {
         "url" : "value",
         "valueString" : "true"
-      }],
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-    },
-    {
-      "extension" : [{
-        "url" : "code",
-        "valueCode" : "special-url"
-      },
-      {
-        "url" : "value",
-        "valueString" : "urn:oid:0.4.0.127.0.16.1.1.2.1"
-      }],
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-    },
-    {
-      "extension" : [{
-        "url" : "code",
-        "valueCode" : "special-url"
-      },
-      {
-        "url" : "value",
-        "valueString" : "urn:oid:1.3.6.1.4.1.19376.1.9.2.1"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -1072,7 +1028,7 @@
       },
       "name" : "2-7 Medication Card document (with references/fullUrls as UUIDs)",
       "description" : "Example for Bundle (with references/fullUrls as UUIDs)",
-      "exampleBoolean" : true
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-document-medicationcard"
     },
     {
       "extension" : [{
@@ -1212,6 +1168,18 @@
         "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
+        "reference" : "StructureDefinition/ch-emed-ext-last-considered-document"
+      },
+      "name" : "CH EMED Extension Last Considered Document",
+      "description" : "Extension including the identifier of the last considered document for consolidating this MedicationStatement.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      }],
+      "reference" : {
         "reference" : "StructureDefinition/ch-emed-ext-medicationrequest-changed"
       },
       "name" : "CH EMED Extension MedicationRequest Changed",
@@ -1260,34 +1228,10 @@
         "valueString" : "StructureDefinition:extension"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ext-substitution"
-      },
-      "name" : "CH EMED Extension Substitution",
-      "description" : "This extension is used to indicate whether the medication can be substituted for this patient, i.e. whether it is allowed. \n                        (For a prescription, MedicationRequest.substitution is used to record whether a substitution is allowed or not. \n                        When dispensing, a performed substitution is recorded in MedicationDispense.substitution.)",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      }],
-      "reference" : {
         "reference" : "StructureDefinition/ch-emed-ext-treatmentplan"
       },
       "name" : "CH EMED Extension Treatment Plan",
       "description" : "Extension to reference an external MedicationStatement and the Medication Treatment Plan document that contains it",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ext-treatmentreason"
-      },
-      "name" : "CH EMED Extension Treatment Reason",
-      "description" : "Extension to represent the treatment reason",
       "exampleBoolean" : false
     },
     {
@@ -1653,66 +1597,6 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-quantity"
-      },
-      "name" : "CH EMED Quantity with Units",
-      "description" : "A quantity with defined units",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-range"
-      },
-      "name" : "CH EMED Range with Units",
-      "description" : "A range with defined quantity/units",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/ch-emed-ratio"
-      },
-      "name" : "CH EMED Ratio with Units",
-      "description" : "A ratio with defined units",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CodeSystem"
-      }],
-      "reference" : {
-        "reference" : "CodeSystem/edqm-standardterms"
-      },
-      "name" : "EDQM - Standard Terms",
-      "description" : "EDQM - Standard Terms used in Switzerland (aggregations of codes of ValueSets RouteOfAdministration, Dose Form, see original codes system defined in https://standardterms.edqm.eu/#)",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CodeSystem"
-      }],
-      "reference" : {
-        "reference" : "CodeSystem/ihe-pharmaceuticaladvicestatuslist"
-      },
-      "name" : "IHE Pharmaceutical Advice Status List",
-      "description" : "IHE Pharmaceutical Advice Status List",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Composition"
       }],
       "reference" : {
@@ -1721,18 +1605,6 @@
       "name" : "Composition - Change Dosage",
       "description" : "Example for Composition",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-composition-pharmaceuticaladvice"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CodeSystem"
-      }],
-      "reference" : {
-        "reference" : "CodeSystem/event-timing"
-      },
-      "name" : "event-timing Supplement",
-      "description" : "Translations of concepts for event-timing",
-      "exampleBoolean" : false
     },
     {
       "extension" : [{
@@ -2033,90 +1905,6 @@
       "name" : "Triatec with local codes",
       "description" : "Example for Medication with local medication codes",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medication-medicationdispense"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CodeSystem"
-      }],
-      "reference" : {
-        "reference" : "CodeSystem/v3-TimingEvent"
-      },
-      "name" : "v3-TimingEvent Supplement",
-      "description" : "Translations of concepts for v3-TimingEvent",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "ValueSet"
-      }],
-      "reference" : {
-        "reference" : "ValueSet/ActivePharmaceuticalIngredient"
-      },
-      "name" : "ActivePharmaceuticalIngredient",
-      "description" : "ActivePharmaceuticalIngredient",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "ValueSet"
-      }],
-      "reference" : {
-        "reference" : "ValueSet/ActSubstanceAdminSubstitutionCode"
-      },
-      "name" : "ActSubstanceAdminSubstitutionCode",
-      "description" : "ActSubstanceAdminSubstitutionCode",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "ValueSet"
-      }],
-      "reference" : {
-        "reference" : "ValueSet/edqm-pharmaceuticaldoseform"
-      },
-      "name" : "EDQM - Pharmaceutical Dose Form",
-      "description" : "Valueset Pharmaceutical Dose Form from EDQM, PDF, export20.5.2021, see https://standardterms.edqm.eu/#",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "ValueSet"
-      }],
-      "reference" : {
-        "reference" : "ValueSet/edqm-routeofadministration"
-      },
-      "name" : "EDQM - RouteOfAdministration",
-      "description" : "Valueset RouteOfAdministration from EDQM, ROA, export 1.6.2021, see https://standardterms.edqm.eu/#",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "ValueSet"
-      }],
-      "reference" : {
-        "reference" : "ValueSet/ihe-pharmaceuticaladvicestatuslist"
-      },
-      "name" : "IHE Pharmaceutical Advice Status List",
-      "description" : "IHE Pharmaceutical Advice Status List",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "ValueSet"
-      }],
-      "reference" : {
-        "reference" : "ValueSet/UnitCode"
-      },
-      "name" : "UnitCode",
-      "description" : "UnitCode",
-      "exampleBoolean" : false
     }],
     "page" : {
       "extension" : [{
@@ -2250,15 +2038,6 @@
         }],
         "nameUrl" : "extensions.html",
         "title" : "Extensions",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "terminology.html"
-        }],
-        "nameUrl" : "terminology.html",
-        "title" : "Terminology",
         "generation" : "markdown"
       },
       {

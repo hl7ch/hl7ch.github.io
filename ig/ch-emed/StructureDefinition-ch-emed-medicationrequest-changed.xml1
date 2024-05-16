@@ -9,11 +9,11 @@
 <tr><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr></table></div>
   </text>
   <url value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest-changed"/>
-  <version value="4.0.1"/>
+  <version value="5.0.0-ballot"/>
   <name value="CHEMEDMedicationRequestChanged"/>
   <title value="CH EMED MedicationRequest Changed"/>
   <status value="active"/>
-  <date value="2023-12-28T10:07:10+01:00"/>
+  <date value="2024-05-16T19:08:44+00:00"/>
   <publisher value="HL7 Switzerland"/>
   <contact>
     <name value="HL7 Switzerland"/>
@@ -128,6 +128,13 @@
         <expression value="text.`div`.exists()"/>
         <xpath value="exists(f:text/h:div)"/>
         <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
+      </constraint>
+      <constraint>
+        <key value="ch-dosage-medreq"/>
+        <severity value="error"/>
+        <human value="If one dosage element is present, it should not have a sequence number. &#xA;              If more than one dosage element is present, the base entry has the sequence number 1."/>
+        <expression value="(dosageInstruction.count() &gt; 1 implies dosageInstruction.where($this.conformsTo('http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-dosage-medicationrequest') and sequence = 1).exists()) &#xA;         and (dosageInstruction.count() = 1 implies dosageInstruction.single().sequence.exists().not())"/>
+        <source value="http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-medicationrequest"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -1130,7 +1137,7 @@
       </type>
       <type>
         <code value="Reference"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Medication"/>
+        <targetProfile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-medication"/>
       </type>
       <constraint>
         <key value="ele-1"/>
@@ -2024,7 +2031,7 @@
       <definition value="The reason or the indication for ordering or not ordering the medication."/>
       <comment value="This could be a diagnosis code. If a full condition record exists or additional detail is needed, use reasonReference."/>
       <min value="0"/>
-      <max value="1"/>
+      <max value="*"/>
       <base>
         <path value="MedicationRequest.reasonCode"/>
         <min value="0"/>
@@ -2369,7 +2376,7 @@
         <rules value="closed"/>
       </slicing>
       <short value="How the medication should be taken"/>
-      <definition value="Indicates how the medication is to be used by the patient."/>
+      <definition value="Indicates how the medication is/was taken or should be taken by the patient."/>
       <comment value="There are examples where a medication request may include the option of an oral dose or an Intravenous or Intramuscular dose.  For example, &quot;Ondansetron 8mg orally or IV twice a day as needed for nausea&quot; or &quot;Compazine® (prochlorperazine) 5-10mg PO or 25mg PR bid prn nausea or vomiting&quot;.  In these cases, two medication requests would be created that could be grouped together.  The decision on which dose and route of administration to use is based on the patient's condition at the time the dose is needed."/>
       <min value="1"/>
       <max value="*"/>
@@ -2380,6 +2387,7 @@
       </base>
       <type>
         <code value="Dosage"/>
+        <profile value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-dosage"/>
       </type>
       <constraint>
         <key value="ele-1"/>
@@ -2390,14 +2398,13 @@
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
       <isModifier value="false"/>
-      <isSummary value="false"/>
       <mapping>
-        <identity value="workflow"/>
-        <map value="Request.occurrence[x]"/>
+        <identity value="rim"/>
+        <map value="n/a"/>
       </mapping>
       <mapping>
         <identity value="rim"/>
-        <map value="see dosageInstruction mapping"/>
+        <map value=".outboundRelationship[typeCode=COMP].target[classCode=SBADM, moodCode=INT]"/>
       </mapping>
     </element>
     <element id="MedicationRequest.dosageInstruction:baseEntry">
@@ -3179,7 +3186,7 @@
           <path value="$this"/>
         </discriminator>
         <ordered value="false"/>
-        <rules value="open"/>
+        <rules value="closed"/>
       </slicing>
       <short value="Whether substitution is allowed or not"/>
       <definition value="True if the prescriber allows a different drug to be dispensed from what was prescribed."/>
@@ -3191,9 +3198,6 @@
         <min value="1"/>
         <max value="1"/>
       </base>
-      <type>
-        <code value="boolean"/>
-      </type>
       <type>
         <code value="CodeableConcept"/>
       </type>
