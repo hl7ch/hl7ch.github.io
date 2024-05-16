@@ -64,6 +64,18 @@ jobs:
             ig/${{ steps.repo_name.outputs.repo }}
 
       - uses: actions/checkout@v4
+        if: ${{ steps.repo_name.outputs.repo == 'ch-term' }}
+        with:
+          sparse-checkout: |
+            ig/ch-epr-term
+
+      - uses: actions/checkout@v4
+        if: ${{ steps.repo_name.outputs.repo == 'ch-epr-fhir' }}
+        with:
+          sparse-checkout: |
+            ig/ch-epr-mhealth
+
+      - uses: actions/checkout@v4
         with:
           repository: ${{ env.orgrepo }}
           path: ${{ steps.repo_name.outputs.repo }} 
