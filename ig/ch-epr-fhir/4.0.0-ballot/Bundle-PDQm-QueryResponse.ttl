@@ -1,0 +1,67 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-fhir/Bundle/PDQm-QueryResponse> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "PDQm-QueryResponse"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-querypatientresourceresponsemessage"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-querypatientresourceresponsemessage>
+     ] )
+  ] ; # 
+  fhir:type [ fhir:v "searchset"] ; # 
+  fhir:total [ fhir:v "1"^^xsd:nonNegativeInteger] ; # 
+  fhir:link ( [
+     fhir:relation [ fhir:v "self" ] ;
+     fhir:url [ fhir:v "http://example.com/fhir/Patient?birthdate=1995-01-27&name=Muster"^^xsd:anyURI ]
+  ] ) ; # 
+  fhir:entry ( [
+     fhir:fullUrl [ fhir:v "http://example.com/fhir/Patient/FranzMuster"^^xsd:anyURI ] ;
+     fhir:resource ( <http://example.com/fhir/Patient/FranzMuster> ) ;
+     fhir:search [
+       fhir:mode [ fhir:v "match" ]
+     ]
+  ] ) . # 
+
+<http://example.com/fhir/Patient/FranzMuster> a fhir:Patient ;
+  fhir:id [ fhir:v "FranzMuster"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_FranzMuster\"> </a><p><b>Generated Narrative: Patient</b><a name=\"FranzMuster\"> </a><a name=\"hcFranzMuster\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">ResourcePatient &quot;FranzMuster&quot; </p></div><p><b>identifier</b>: <code>urn:oid:2.999.5.6.7</code>/value of MPI-PID, Medical record number/8734, <code>urn:oid:2.16.756.5.30.1.127.3.10.3</code>/761337610411353650</p><p><b>name</b>: Franz Muster </p><p><b>gender</b>: male</p><p><b>birthDate</b>: 1995-01-27</p><p><b>managingOrganization</b>: <span><a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000201041</span></p></div>"
+  ] ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "urn:oid:2.999.5.6.7"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "value of MPI-PID" ]
+  ] [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "MR" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "urn:oid:2.16.756.888888.3.1"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "8734" ]
+  ] [
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.3"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "761337610411353650" ]
+  ] ) ; # 
+  fhir:name ( [
+     fhir:family [ fhir:v "Muster" ] ;
+     fhir:given ( [ fhir:v "Franz" ] )
+  ] ) ; # 
+  fhir:gender [ fhir:v "male"] ; # 
+  fhir:birthDate [ fhir:v "1995-01-27"^^xsd:date] ; # 
+  fhir:managingOrganization [
+     fhir:identifier [
+       fhir:system [ fhir:v "urn:oid:2.51.1.3"^^xsd:anyURI ] ;
+       fhir:value [ fhir:v "7601000201041" ]
+     ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+
