@@ -1,0 +1,98 @@
+name: Build IG and publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      orgrepo:
+        description: 'Github repository of the IG e.g. hl7ch/ch-ig'
+        required: true
+        default: 'hl7ch/ch-'
+        type: string
+      version:
+        description: 'Version of the IG'
+        required: true
+        default: '1.0.0'
+        type: string
+
+# The following jobs are equal for all IGs and can be moved to a common composite-action if 'uses'-support is added, see:
+# https://github.com/actions/runner/blob/main/docs/adrs/1144-composite-actions.md
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      orgrepo: "${{ github.event.inputs.orgrepo }}"
+      version: "${{ github.event.inputs.version }}"
+    steps:
+      - name: Build and test with Rake        
+        run: |
+          sudo apt-get update
+          sudo apt-get install ruby-full
+          sudo gem install jekyll
+
+      - name: Install modules
+        run: npm install -g fsh-sushi
+
+      - name: Setup Java 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: 21
+          distribution: adopt
+
+      - name: Get the repo name
+        id: repo_name
+        run: echo "::set-output name=repo::$(echo ${{ env.orgrepo }} | cut -d '/' -f 2)"
+        shell: bash
+
+      - name: Change to workspace
+        run: echo "Changing to workspace "
+        working-directory: ${{ github.workspace }}          
+
+      - name: Workspace
+        run: echo "${{ github.workspace }}"
+        shell: bash
+
+      - uses: actions/checkout@v4
+        sparse-checkout: |
+          .github
+          assets
+          templates
+          ig-history
+          ig-registry
+          ig/${{ steps.repo_name.outputs.repo }}
+
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.orgrepo }}
+          path: ${{ steps.repo_name.outputs.repo }} 
+        
+      - name: 📥 Download IG Publisher
+        run: |
+              wget -q https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
+              ls -all ./publisher.jar
+
+      # Builds the HTML page for the IG.
+      - name: 🏃‍♂️ Run IG Publisher local
+        timeout-minutes: 45 # We need a long timeout here
+        run: |
+              cd ${{ steps.repo_name.outputs.repo }}
+              java -Xmx8192m -jar ../publisher.jar  -ig .
+              cd ..
+
+      - name: 🏃‍♂️ Run Publication
+        timeout-minutes: 135 # We need a long timeout here
+        run: |
+              java -jar -Dfile.encoding=UTF-8 -Xms3550m -Xmx3550m ./publisher.jar -go-publish -source ${{ steps.repo_name.outputs.repo }} -web $PWD -registry ig-registry/fhir-ig-list.json -history ig-history -templates ./templates -temp $PWD/buildtmp
+
+      - name: Clean download git repo
+        run: rm -rf ${{ steps.repo_name.outputs.repo }}
+        shell: bash
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "${{ steps.repo_name.outputs.repo }} - ${{ env.version }} "
+          git push
