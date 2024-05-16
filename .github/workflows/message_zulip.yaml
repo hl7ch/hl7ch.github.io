@@ -22,14 +22,14 @@ jobs:
       text: "${{ github.event.inputs.text }}"
       title: "${{ github.event.inputs.title }}"
     steps:
-
-- name: Send a stream message
-  uses: zulip/github-actions-zulip/send-message@v1
-  with:
-    api-key: ${{ secrets.ZULIP_API_KEY }}
-    email: "hl7ch-bot@chat.fhir.org"
-    organization-url: "https://org.zulipchat.com"
-    to: "#switzerland"
-    type: "stream"
-    topic: ${{ env.title }}
-    content: ${{ env.text }}
+    
+      - name: Send a stream message
+        uses: zulip/github-actions-zulip/send-message@v1
+        with:
+          api-key: ${{ secrets.ZULIP_API_KEY }}
+          email: "hl7ch-bot@chat.fhir.org"
+          organization-url: "https://org.zulipchat.com"
+          to: "#switzerland"
+          type: "stream"
+          topic: ${{ env.title }}
+          content: ${{ env.text }}
