@@ -1,0 +1,153 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/Patient/PersonEch011> a fhir:Patient ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "PersonEch011"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient>
+     ] )
+  ] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "additional" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><div>Example according to eCH-011</div>3.3.2 nameData – Namensangaben<ul><li>Amtlicher Name (zwingend) – officialName, siehe Kapitel 3.3.2.1</li><li>Amtliche Vornamen (zwingend) – firstName, siehe Kapitel 3.3.2.2</li><li>Ledigname (optional) – originalName, siehe Kapitel 3.3.2.3</li><li>Allianzname (optional) – allianceName, siehe Kapitel 3.3.2.4</li><li>Aliasname (optional) – aliasName, siehe Kapitel 3.3.2.5</li><li>Andere amtliche Name (optional) – otherName, siehe Kapitel 3.3.2.6</li><li>Rufname (optional) – callName, siehe Kapitel 3.3.2.7</li><li>entweder<ul><li>Name im ausländischen Pass (optional) - nameOnForeignPassport, siehe Kapitel 3.3.2.8 oder</li><li>Name gemäss Deklaration (optional) – declaredForeignName, siehe Kapitel 3.3.2.9</li></ul></li></ul>3.3.5 maritalData - Zivilstandsangaben<ul><li>Zivilstand in eingetragener Partnerschaft (married), aber freiwillig getrennt lebend</li></ul>3.3.8 contactData – Kontaktangaben<ul><li>Zusätzlich Beispiel für Zustelladresse, falls es nicht die Adresse des Patienten direkt ist, mit Angaben von eCH-0010</li></ul></div>"
+  ] ; # 
+  fhir:name ( [
+     fhir:use [ fhir:v "official" ] ;
+     fhir:family [
+       fhir:v "Amtlicher Name" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "officialName" ]
+       ] )
+     ] ;
+     fhir:given ( [
+       fhir:v "Amtliche Vornamen (zwingend)" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-firstname"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "officialFirstName" ]
+       ] )
+     ] )
+  ] [
+     fhir:family [
+       fhir:v "Allianzname" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "allianceName" ]
+       ] )
+     ]
+  ] [
+     fhir:use [ fhir:v "maiden" ] ;
+     fhir:family [
+       fhir:v "Ledigname (optional) – originalName" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "originalName" ]
+       ] )
+     ]
+  ] [
+     fhir:family [
+       fhir:v "Alias name" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "aliasName" ]
+       ] )
+     ]
+  ] ) ; # 
+  fhir:gender [ fhir:v "female"] ; # 
+  fhir:birthDate [ fhir:v "1982-03-20"^^xsd:date] ; # 
+  fhir:maritalStatus [
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-maritaldata-separation"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritaldata-separation"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "1" ] ;
+           fhir:display [ fhir:v "Freiwillig getrennt" ]
+         ] )
+       ]
+     ] ) ;
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "M" ]
+     ] [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "6" ] ;
+       fhir:display [ fhir:v "in eingetragener Partnerschaft" ]
+     ] )
+  ] ; # 
+  fhir:contact ( [
+     fhir:relationship ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/ech-11"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "contactData" ]
+       ] )
+     ] ) ;
+     fhir:name [
+       fhir:family [ fhir:v "Dalkiliç" ] ;
+       fhir:given ( [ fhir:v "Fabio Nicola" ] )
+     ] ;
+     fhir:address [
+       fhir:line ( [
+         fhir:v "addressLine1 sollte für personifizierte Adressangaben verwendet werden (z.B. c/o- Adresse)." ;
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-10-linetype"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "addressLine1" ]
+         ] )
+       ] [
+         fhir:v "addressLine2 solle für unpersonifizierte Adressangaben verwendet werden (z.B. Zu- satzangaben zur Lokalisation, z.B. Chalet Edelweiss)." ;
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-10-linetype"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "addressLine2" ]
+         ] )
+       ] [
+         fhir:v "Strassenbezeichnungen in Postadressen. Es kann sich dabei auch um den Namen einer Lokalität, eines Weilers etc. handeln. No. 10 Wohung 5" ;
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-10-linetype"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "street" ]
+         ] [
+           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "Strassenbezeichnug" ]
+         ] [
+           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "10" ]
+         ] [
+           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-unitID"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "5" ]
+         ] )
+       ] [
+         fhir:v "Postfach" ;
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-10-linetype"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "postOfficeBoxText" ]
+         ] [
+           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "12345678" ]
+         ] )
+       ] ) ;
+       fhir:city [ fhir:v "Ort" ] ;
+       fhir:postalCode [ fhir:v "PLZ" ] ;
+       fhir:country [
+         fhir:v "Schweiz" ;
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding"^^xsd:anyURI ] ;
+           fhir:value [
+             a fhir:Coding ;
+             fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+             fhir:code [ fhir:v "CH" ]
+           ]
+         ] )
+       ]
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

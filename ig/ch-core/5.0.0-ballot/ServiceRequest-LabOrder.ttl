@@ -1,0 +1,48 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-core/ServiceRequest/LabOrder> a fhir:ServiceRequest ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "LabOrder"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: ServiceRequest</b><a name=\"LabOrder\"> </a><a name=\"hcLabOrder\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">ResourceServiceRequest &quot;LabOrder&quot; </p></div><p><b>status</b>: active</p><p><b>intent</b>: order</p><p><b>category</b>: Anforderung von Laboruntersuchungen <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://fhir.ch/ig/ch-term/3.0.0/CodeSystem-servicerequest-category.html\">ServiceRequest Category</a>#RequestForLabExam)</span></p><p><b>priority</b>: routine</p><p><b>code</b>: Creatinine renal clearance in 24 hour Urine and Serum or Plasma <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#2164-2)</span></p><p><b>subject</b>: <a href=\"Patient-ElisabethBroennimannByBFH.html\">Patient/ElisabethBroennimannByBFH</a> &quot; BRÖNNIMANN-BERTHOLET&quot;</p><p><b>requester</b>: <a href=\"PractitionerRole-HPWengerRole.html\">PractitionerRole/HPWengerRole</a></p><p><b>insurance</b>: <a href=\"Coverage-CoverageBroennimann.html\">Coverage/CoverageBroennimann</a></p></div>"
+  ] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:intent [ fhir:v "order"] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-term/CodeSystem/servicerequest-category"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "RequestForLabExam" ] ;
+       fhir:display [ fhir:v "Anforderung von Laboruntersuchungen" ]
+     ] )
+  ] ) ; # 
+  fhir:priority [ fhir:v "routine"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:2164-2 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "2164-2" ] ;
+       fhir:display [ fhir:v "Creatinine renal clearance in 24 hour Urine and Serum or Plasma" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-core/Patient/ElisabethBroennimannByBFH> ;
+     fhir:reference [ fhir:v "Patient/ElisabethBroennimannByBFH" ]
+  ] ; # 
+  fhir:requester [
+     fhir:link <http://fhir.ch/ig/ch-core/PractitionerRole/HPWengerRole> ;
+     fhir:reference [ fhir:v "PractitionerRole/HPWengerRole" ]
+  ] ; # 
+  fhir:insurance ( [
+     fhir:link <http://fhir.ch/ig/ch-core/Coverage/CoverageBroennimann> ;
+     fhir:reference [ fhir:v "Coverage/CoverageBroennimann" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
