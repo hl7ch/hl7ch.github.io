@@ -1,0 +1,56 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-report/Observation/ExampleObservationWBC> a fhir:Observation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ExampleObservationWBC"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-wbc"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-wbc>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b><a name=\"ExampleObservationWBC\"> </a><a name=\"hcExampleObservationWBC\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">ResourceObservation &quot;ExampleObservationWBC&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-wbc.html\">CH LAB Observation Results: LeucocyteCount</a></p></div><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.5.0/CodeSystem-observation-category.html\">Observation Category Codes</a>#laboratory)</span></p><p><b>code</b>: Leukocytes [#/volume] in Blood by Automated count <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#6690-2)</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef: Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>issued</b>: Apr 24, 2024, 10:24:26 AM</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052: Eva Erlenmeyer</a></p><p><b>value</b>: 2.9 10*9/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code 10*9/L = '10*9/L')</span></p></div>"
+  ] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/observation-category"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "laboratory" ]
+     ] )
+  ] ) ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:6690-2 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "6690-2" ] ;
+       fhir:display [ fhir:v "Leukocytes [#/volume] in Blood by Automated count" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:reference [ fhir:v "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef" ] ;
+     fhir:display [ fhir:v "Hans Guggindieluft" ]
+  ] ; # 
+  fhir:effective [ fhir:v "2024-04-23T11:24:26+01:00"^^xsd:dateTime] ; # 
+  fhir:issued [ fhir:v "2024-04-24T11:24:26+01:00"^^xsd:dateTime] ; # 
+  fhir:performer ( [
+     fhir:reference [ fhir:v "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052" ] ;
+     fhir:display [ fhir:v "Eva Erlenmeyer" ]
+  ] ) ; # 
+  fhir:value [
+     a fhir:Quantity ;
+     fhir:value [ fhir:v "2.9"^^xsd:decimal ] ;
+     fhir:unit [ fhir:v "10*9/L" ] ;
+     fhir:system [ fhir:v "http://unitsofmeasure.org"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "10*9/L" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+
