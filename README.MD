@@ -9,26 +9,8 @@ take a few minutes).
 
 ## Publish a new IG: preparation
 
-1. To add a new IG create a new folder with the ig name in the folder ig
-2. Add an default package-list.json
+1.you might need to create a new folder with the ig name in the folder ig (to be confirmed)
 
-```json
-{
-    "package-id": "ch.fhir.ig.ch-ig",
-    "title": "CH IG (R4)",
-    "introduction": "Example IG.",
-    "canonical": "http://fhir.ch/ig/ch-ig",
-    "list": [
-        {
-            "version": "current",
-            "desc": "Continuous Integration Build (latest in version control)",
-            "path": "http://build.fhir.org/ig/ahdis/ch-ig",
-            "status": "ci-build",
-            "current": true
-        }
-    ],
-    "category": "National Base"
-}
 ```
 
 Note: if you rename an ig and have an old ig you refer in package-list.json you need to update [.github/workflow/BuildIG_publish.yaml](https://github.com/hl7ch/hl7ch.github.io/.github/workflows/BuildIG_publish.yaml), see ch-term entry as an example. 
