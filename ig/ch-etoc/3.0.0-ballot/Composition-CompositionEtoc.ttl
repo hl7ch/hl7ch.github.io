@@ -1,0 +1,95 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-etoc/Composition/CompositionEtoc> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "CompositionEtoc"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-etoc/StructureDefinition/ch-etoc-composition"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-etoc/StructureDefinition/ch-etoc-composition>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "additional" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div>Medical Referral</div></div>"
+  ] ; # 
+  fhir:extension ( [
+     fhir:extension ( [
+       fhir:url [ fhir:v "enterer"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:Reference ;
+         fhir:link <http://fhir.ch/ig/ch-etoc/PractitionerRole/DAtaentererHappyDoctors> ;
+         fhir:reference [ fhir:v "PractitionerRole/DAtaentererHappyDoctors" ]
+       ]
+     ] ) ;
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-dataenterer"^^xsd:anyURI ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-etoc/PractitionerRole/MedicalDepartmentHappyHospital> ;
+       fhir:reference [ fhir:v "PractitionerRole/MedicalDepartmentHappyHospital" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-etoc/Patient/SUffererCopyReceiver> ;
+       fhir:reference [ fhir:v "Patient/SUffererCopyReceiver" ]
+     ]
+  ] ) ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a sct:371535009 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "371535009" ]
+     ] )
+  ] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       a sct:721927009 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "721927009" ]
+     ] )
+  ] ) ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-etoc/Patient/SUfferer> ;
+     fhir:reference [ fhir:v "Patient/SUfferer" ]
+  ] ; # 
+  fhir:date [ fhir:v "2019-04-01T20:18:41.341+00:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-etoc/PractitionerRole/ORderplacerHappyDoctors> ;
+     fhir:reference [ fhir:v "PractitionerRole/ORderplacerHappyDoctors" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Zuweisungsschreiben"] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Order-Referral" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:93037-0 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "93037-0" ]
+       ] )
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-etoc/Questionnaire/QuestionnaireEtoc> ;
+       fhir:reference [ fhir:v "Questionnaire/QuestionnaireEtoc" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-etoc/QuestionnaireResponse/QuestionnaireResponseEtoc> ;
+       fhir:reference [ fhir:v "QuestionnaireResponse/QuestionnaireResponseEtoc" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-etoc/ServiceRequest/ServiceRequestEtoc> ;
+       fhir:reference [ fhir:v "ServiceRequest/ServiceRequestEtoc" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
