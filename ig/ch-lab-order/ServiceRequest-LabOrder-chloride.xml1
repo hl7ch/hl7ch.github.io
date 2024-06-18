@@ -6,7 +6,7 @@
     <profile value="http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR-singletest"/>
   </meta>
   <text>
-    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative: ServiceRequest</b><a name="LabOrder-chloride"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Resource ServiceRequest &quot;LabOrder-chloride&quot; </p><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-ch-lab-order-SR-singletest.html">CH LAB-Order-SR Labtest</a></p></div><p><b>identifier</b>: Placer Identifier: 123</p><p><b>instantiatesCanonical</b>: <a href="ActivityDefinition-procedure-chloride-serum.html">Procedure - chloride measurement on in vitro blood serum</a></p><p><b>requisition</b>: Placer Identifier: ReqID-1234567</p><p><b>status</b>: active</p><p><b>intent</b>: original-order</p><p><b>category</b>: Anforderung Laboruntersuchung <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (ch-lab-order-servicerequest-categories#RequestForLabExam)</span></p><p><b>priority</b>: urgent</p><p><b>code</b>: Chloride [Moles/volume] in Serum or Plasma <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="https://loinc.org/">LOINC</a>#2075-0)</span></p><p><b>subject</b>: <a href="Patient-HansGuggindieluft.html">Patient/HansGuggindieluft</a> &quot; GUGGINDIELUFT&quot;</p><p><b>requester</b>: <a href="PractitionerRole-MarcMustermannArztpraxis.html">PractitionerRole/MarcMustermannArztpraxis</a></p><p><b>reasonCode</b>: Chronic renal failure syndrome (disorder) <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="https://browser.ihtsdotools.org/">SNOMED CT</a>#90688005)</span></p><p><b>insurance</b>: <a href="Coverage-HealthInsuranceCard.html">Coverage/HealthInsuranceCard</a></p><p><b>specimen</b>: <a href="Specimen-Serum.html">Specimen/Serum: Serum specimen</a></p></div>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative: ServiceRequest </b><a name="LabOrder-chloride"> </a><a name="hcLabOrder-chloride"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourceServiceRequest &quot;LabOrder-chloride&quot; </p><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-ch-lab-order-SR-singletest.html">CH LAB-Order-SR Single-test</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>instantiatesCanonical</b>: <a href="ActivityDefinition-procedure-chloride-serum.html">Procedure - chloride measurement on in vitro blood serum</a></p><p><b>replaces</b>: <a href="ServiceRequest-LabOrder-sodium.html">ServiceRequest/LabOrder-sodium</a></p><p><b>requisition</b>: Placer Identifier/ReqID-1234567</p><p><b>status</b>: active</p><p><b>intent</b>: original-order</p><p><b>priority</b>: urgent</p><p><b>code</b>: Chloride [Moles/volume] in Serum or Plasma <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="https://loinc.org/">LOINC</a>#2075-0)</span></p><p><b>orderDetail</b>: Order Control code <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="http://terminology.hl7.org/5.1.0/CodeSystem-v2-0119.html">orderControlCodes</a>#NW &quot;New order/service&quot;)</span></p><p><b>subject</b>: <a href="Patient-HansGuggindieluft.html">Patient/HansGuggindieluft</a> &quot; GUGGINDIELUFT&quot;</p><p><b>requester</b>: <a href="PractitionerRole-MarcMustermannGruppenpraxis.html">PractitionerRole/MarcMustermannGruppenpraxis</a></p><p><b>reasonCode</b>: Chronic renal failure syndrome (disorder) <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="https://browser.ihtsdotools.org/">SNOMED CT</a>#90688005)</span></p><p><b>insurance</b>: <a href="Coverage-HealthInsuranceCard.html">Coverage/HealthInsuranceCard</a></p><p><b>specimen</b>: <a href="Specimen-Serum.html">Specimen/Serum: Serum specimen</a></p></div>
   </text>
   <identifier>
     <type>
@@ -20,6 +20,9 @@
     <value value="123"/>
   </identifier>
   <instantiatesCanonical value="http://fhir.ch/ig/ch-lab-order/lab-compendium/ActivityDefinition/procedure-chloride-serum"/>
+  <replaces>
+    <reference value="ServiceRequest/LabOrder-sodium"/>
+  </replaces>
   <requisition>
     <type>
       <coding>
@@ -33,13 +36,6 @@
   </requisition>
   <status value="active"/>
   <intent value="original-order"/>
-  <category>
-    <coding>
-      <system value="http://fhir.ch/ig/ch-lab-order/CodeSystem/ch-lab-order-servicerequest-categories"/>
-      <code value="RequestForLabExam"/>
-      <display value="Anforderung Laboruntersuchung"/>
-    </coding>
-  </category>
   <priority value="urgent"/>
   <code>
     <coding>
@@ -48,11 +44,19 @@
       <display value="Chloride [Moles/volume] in Serum or Plasma"/>
     </coding>
   </code>
+  <orderDetail>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0119"/>
+      <code value="NW"/>
+      <display value="New order/service"/>
+    </coding>
+    <text value="Order Control code"/>
+  </orderDetail>
   <subject>
     <reference value="Patient/HansGuggindieluft"/>
   </subject>
   <requester>
-    <reference value="PractitionerRole/MarcMustermannArztpraxis"/>
+    <reference value="PractitionerRole/MarcMustermannGruppenpraxis"/>
   </requester>
   <reasonCode>
     <coding>

@@ -1,0 +1,73 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/DiagnosticReport/skin-dermatoscopy> a fhir:DiagnosticReport ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "skin-dermatoscopy"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-diagnostic-report"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-diagnostic-report>
+     ] [
+       fhir:v "http://hl7.org/fhir/StructureDefinition/DiagnosticReport"^^xsd:anyURI ;
+       fhir:link <http://hl7.org/fhir/StructureDefinition/DiagnosticReport>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2><span title=\"Codes:{http://snomed.info/sct 1237125003}\">Dermatoscopy of skin, Diagnostic Report</span> (<span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0074 PAT}\">Pathology</span>) </h2><table class=\"grid\"><tr><td>Subject</td><td><b>Simone Studer (Official)</b> female, DoB: 1992-01-08 ( Medical record number/012/08.111113)</td></tr><tr><td>When For</td><td>2017-03-02</td></tr><tr><td>Reported</td><td>2017-03-15 08:13:08+0000</td></tr><tr><td>Identifier:</td><td> <code>https://www.acmeonline.com</code>/P44444444</td></tr></table><p><b>Report Details</b></p></div>"
+  ] ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "https://www.acmeonline.com"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "P44444444" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0074"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "PAT" ] ;
+       fhir:display [ fhir:v "Pathology (gross & histopath, not surgical)" ]
+     ] ) ;
+     fhir:text [ fhir:v "Pathology" ]
+  ] ) ; # 
+  fhir:code [
+     fhir:coding ( [
+       a sct:1237125003 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1237125003" ] ;
+       fhir:display [ fhir:v "Optical dermatoscopy of skin (procedure)" ]
+     ] ) ;
+     fhir:text [ fhir:v "Dermatoscopy of skin, Diagnostic Report" ]
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/SimoneStuder> ;
+     fhir:reference [ fhir:v "Patient/SimoneStuder" ] ;
+     fhir:display [ fhir:v "Simone Studer" ]
+  ] ; # 
+  fhir:effective [ fhir:v "2017-03-02"^^xsd:date] ; # 
+  fhir:issued [ fhir:v "2017-03-15T08:13:08Z"^^xsd:dateTime] ; # 
+  fhir:performer ( [
+     fhir:display [ fhir:v "Marc Mustermann, Arztpraxis" ]
+  ] ) ; # 
+  fhir:resultsInterpreter ( [
+     fhir:display [ fhir:v "Marc Mustermann, Dr. med." ]
+  ] ) ; # 
+  fhir:specimen ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Skin> ;
+     fhir:reference [ fhir:v "Specimen/Skin" ]
+  ] ) ; # 
+  fhir:media ( [
+     fhir:comment [ fhir:v "Dermatoskopy" ] ;
+     fhir:link [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/Media/skin-dermatoskopy-image> ;
+       fhir:reference [ fhir:v "Media/skin-dermatoskopy-image" ]
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

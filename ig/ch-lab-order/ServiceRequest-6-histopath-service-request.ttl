@@ -1,0 +1,77 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/6-histopath-service-request> a fhir:ServiceRequest ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "6-histopath-service-request"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: ServiceRequest </b><a name=\"6-histopath-service-request\"> </a><a name=\"hc6-histopath-service-request\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">ResourceServiceRequest &quot;6-histopath-service-request&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order-SR</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>status</b>: active</p><p><b>intent</b>: original-order</p><p><b>priority</b>: urgent</p><p><b>code</b>: Pathology study <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#11526-1)</span></p><p><b>subject</b>: <a href=\"Patient-SimoneStuder.html\">Patient/SimoneStuder</a> &quot; STUDER&quot;</p><p><b>requester</b>: <a href=\"PractitionerRole-ArminAhrensArztpraxis.html\">PractitionerRole/ArminAhrensArztpraxis</a></p><p><b>reasonCode</b>: Suspicion Melanoma Skin <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#1163403006 &quot;Pigmented nevus (morphologic abnormality)&quot;)</span></p><p><b>reasonReference</b>: <a href=\"DiagnosticReport-skin-dermatoscopy.html\">DiagnosticReport/skin-dermatoscopy</a></p><p><b>insurance</b>: <a href=\"Coverage-HealthInsuranceCardSimoneStuder.html\">Coverage/HealthInsuranceCardSimoneStuder</a></p><p><b>specimen</b>: <a href=\"Specimen-Skin.html\">Specimen/Skin: Skin specimen</a></p></div>"
+  ] ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PLAC" ] ;
+         fhir:display [ fhir:v "Placer Identifier" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "123" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:intent [ fhir:v "original-order"] ; # 
+  fhir:priority [ fhir:v "urgent"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:11526-1 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "11526-1" ] ;
+       fhir:display [ fhir:v "Pathology study" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/SimoneStuder> ;
+     fhir:reference [ fhir:v "Patient/SimoneStuder" ]
+  ] ; # 
+  fhir:requester [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/ArminAhrensArztpraxis> ;
+     fhir:reference [ fhir:v "PractitionerRole/ArminAhrensArztpraxis" ]
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       a sct:1163403006 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1163403006" ] ;
+       fhir:display [ fhir:v "Pigmented nevus (morphologic abnormality)" ]
+     ] ) ;
+     fhir:text [ fhir:v "Suspicion Melanoma Skin" ]
+  ] ) ; # 
+  fhir:reasonReference ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/DiagnosticReport/skin-dermatoscopy> ;
+     fhir:reference [ fhir:v "DiagnosticReport/skin-dermatoscopy" ]
+  ] ) ; # 
+  fhir:insurance ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Coverage/HealthInsuranceCardSimoneStuder> ;
+     fhir:reference [ fhir:v "Coverage/HealthInsuranceCardSimoneStuder" ]
+  ] ) ; # 
+  fhir:specimen ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Skin> ;
+     fhir:reference [ fhir:v "Specimen/Skin" ] ;
+     fhir:display [ fhir:v "Skin specimen" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

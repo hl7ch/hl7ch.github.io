@@ -1,0 +1,67 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Medication/Voltaren> a fhir:Medication ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "Voltaren"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Medication </b><a name=\"Voltaren\"> </a><a name=\"hcVoltaren\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">ResourceMedication &quot;Voltaren&quot; </p></div><p><b>code</b>: VOLTAREN Drag 50 mg <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#775563008 &quot;Product containing only diclofenac (medicinal product)&quot;)</span></p><p><b>form</b>: Tablet (basic dose form) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#385055001)</span></p><h3>Ingredients</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Item[x]</b></td><td><b>Strength</b></td></tr><tr><td style=\"display: none\">*</td><td><a name=\"hcsub01\"> </a><blockquote><p/><p><a name=\"sub01\"> </a></p><p><a name=\"hcsub01\"> </a></p><p><b>code</b>: Diclofenac sodium (substance) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#62039007)</span></p></blockquote></td><td>50 milligram<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemg = 'mg')</span>/1 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span></td></tr></table><hr/><blockquote><p><b>Generated Narrative: Substance  #sub01</b><a name=\"sub01\"> </a><a name=\"hcsub01\"> </a></p><p><b>code</b>: Diclofenac sodium (substance) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#62039007)</span></p></blockquote></div>"
+  ] ; # 
+  fhir:contained ( [
+     a fhir:Substance ;
+     fhir:id [ fhir:v "sub01" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a sct:62039007 ;
+         fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "62039007" ] ;
+         fhir:display [ fhir:v "Diclofenac sodium (substance)" ]
+       ] )
+     ]
+  ] ) ; # 
+  fhir:code [
+     fhir:coding ( [
+       a sct:775563008 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "775563008" ] ;
+       fhir:display [ fhir:v "Product containing only diclofenac (medicinal product)" ]
+     ] ) ;
+     fhir:text [ fhir:v "VOLTAREN Drag 50 mg" ]
+  ] ; # 
+  fhir:form [
+     fhir:coding ( [
+       a sct:385055001 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "385055001" ] ;
+       fhir:display [ fhir:v "Tablet (basic dose form)" ]
+     ] )
+  ] ; # 
+  fhir:ingredient ( [
+     fhir:item [
+       a fhir:Reference ;
+       fhir:reference [ fhir:v "#sub01" ]
+     ] ;
+     fhir:strength [
+       fhir:numerator [
+         fhir:value [ fhir:v "50"^^xsd:decimal ] ;
+         fhir:unit [ fhir:v "milligram" ] ;
+         fhir:system [ fhir:v "http://unitsofmeasure.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "mg" ]
+       ] ;
+       fhir:denominator [
+         fhir:value [ fhir:v "1"^^xsd:decimal ] ;
+         fhir:unit [ fhir:v "Tablet (unit of presentation)" ] ;
+         fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "732936001" ]
+       ]
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

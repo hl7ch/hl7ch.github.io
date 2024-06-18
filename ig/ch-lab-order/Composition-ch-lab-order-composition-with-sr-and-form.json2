@@ -1,0 +1,98 @@
+{
+  "resourceType" : "Composition",
+  "id" : "ch-lab-order-composition-with-sr-and-form",
+  "meta" : {
+    "versionId" : "1",
+    "lastUpdated" : "2021-02-18T17:04:38.520+00:00",
+    "profile" : ["http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-composition-with-sr-and-form"]
+  },
+  "text" : {
+    "status" : "additional",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div>Laboratory Order</div></div>"
+  },
+  "extension" : [{
+    "extension" : [{
+      "url" : "enterer",
+      "valueReference" : {
+        "reference" : "PractitionerRole/MarcMustermannGruppenpraxis"
+      }
+    }],
+    "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-dataenterer"
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-urgentnoficationcontactforthisdocument",
+    "valueReference" : {
+      "reference" : "PractitionerRole/EvaErlenmeyerLaborPipette"
+    }
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-urgentnoficationcontactfortheresponsetothisdocument",
+    "valueReference" : {
+      "reference" : "PractitionerRole/MarcMustermannGruppenpraxis"
+    }
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver",
+    "valueReference" : {
+      "reference" : "PractitionerRole/EvaErlenmeyerLaborPipette"
+    }
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver",
+    "valueReference" : {
+      "reference" : "PractitionerRole/PeterPrestoGruppenpraxis"
+    }
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver",
+    "valueReference" : {
+      "reference" : "Patient/HansGuggindieluft"
+    }
+  }],
+  "status" : "final",
+  "type" : {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "721965002",
+      "display" : "Laboratory order (record artifact)"
+    }]
+  },
+  "category" : [{
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "721963009",
+      "display" : "Order (record artifact)"
+    }]
+  }],
+  "subject" : {
+    "reference" : "Patient/HansGuggindieluft"
+  },
+  "date" : "2019-03-31T11:46:09+02:00",
+  "author" : [{
+    "reference" : "PractitionerRole/MarcMustermannGruppenpraxis"
+  }],
+  "title" : "Laborauftrag",
+  "section" : [{
+    "title" : "Auftrag für Laboruntersuchung",
+    "code" : {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "93037-0",
+        "display" : "Portable medical order form"
+      }]
+    },
+    "text" : {
+      "status" : "generated",
+      "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">Order-Referral-Form</div>"
+    },
+    "entry" : [{
+      "reference" : "Questionnaire/LabOrder-form"
+    },
+    {
+      "reference" : "QuestionnaireResponse/LabOrder-qr"
+    },
+    {
+      "reference" : "ServiceRequest/LabOrder-potassium"
+    }]
+  }]
+}

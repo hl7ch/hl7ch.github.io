@@ -1,0 +1,118 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Composition/ch-lab-order-composition-with-sr> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ch-lab-order-composition-with-sr"] ; # 
+  fhir:meta [
+     fhir:versionId [ fhir:v "1" ] ;
+     fhir:lastUpdated [ fhir:v "2021-02-18T17:04:38.520+00:00"^^xsd:dateTime ] ;
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-composition-with-sr"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-composition-with-sr>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "additional" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div>Laboratory Order</div></div>"
+  ] ; # 
+  fhir:extension ( [
+     fhir:extension ( [
+       fhir:url [ fhir:v "enterer"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:Reference ;
+         fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/MarcMustermannGruppenpraxis> ;
+         fhir:reference [ fhir:v "PractitionerRole/MarcMustermannGruppenpraxis" ]
+       ]
+     ] ) ;
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-dataenterer"^^xsd:anyURI ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-urgentnoficationcontactforthisdocument"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/EvaErlenmeyerLaborPipette> ;
+       fhir:reference [ fhir:v "PractitionerRole/EvaErlenmeyerLaborPipette" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-urgentnoficationcontactfortheresponsetothisdocument"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/MarcMustermannGruppenpraxis> ;
+       fhir:reference [ fhir:v "PractitionerRole/MarcMustermannGruppenpraxis" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/EvaErlenmeyerLaborPipette> ;
+       fhir:reference [ fhir:v "PractitionerRole/EvaErlenmeyerLaborPipette" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/PeterPrestoGruppenpraxis> ;
+       fhir:reference [ fhir:v "PractitionerRole/PeterPrestoGruppenpraxis" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/HansGuggindieluft> ;
+       fhir:reference [ fhir:v "Patient/HansGuggindieluft" ]
+     ]
+  ] ) ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a sct:721965002 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "721965002" ] ;
+       fhir:display [ fhir:v "Laboratory order (record artifact)" ]
+     ] )
+  ] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       a sct:721963009 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "721963009" ] ;
+       fhir:display [ fhir:v "Order (record artifact)" ]
+     ] )
+  ] ) ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/HansGuggindieluft> ;
+     fhir:reference [ fhir:v "Patient/HansGuggindieluft" ]
+  ] ; # 
+  fhir:date [ fhir:v "2019-03-31T11:46:09+02:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/MarcMustermannGruppenpraxis> ;
+     fhir:reference [ fhir:v "PractitionerRole/MarcMustermannGruppenpraxis" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Laborauftrag"] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Auftrag für Laboruntersuchung" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a sct:721963009 ;
+         fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "721963009" ] ;
+         fhir:display [ fhir:v "Order (record artifact)" ]
+       ] )
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\">Order-Referral-Form</div>"
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/ServiceRequest/LabOrder-potassium> ;
+       fhir:reference [ fhir:v "ServiceRequest/LabOrder-potassium" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

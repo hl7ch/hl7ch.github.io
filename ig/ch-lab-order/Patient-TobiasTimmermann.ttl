@@ -1,0 +1,89 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Patient/TobiasTimmermann> a fhir:Patient ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "TobiasTimmermann"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "additional" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>id</b>: TobiasTimmermann</p><p><b>meta</b>:</p><p><b>identifier</b>: 012/08.111111</p><p><b>name</b>: Tobias Timmermann</p><p><b>gender</b>: MALE</p><p><b>birthDate</b>: Jan 01, 1981</p><p><b>maritalStatus</b>: unverheiratet <span style=\"background: LightGoldenRodYellow\">(Details : {$ech-11-maritalstatus code '5' = '5', given as 'unverheiratet'})</span></p><h3>Communications</h3><table class=\"grid\"><tr><td>-</td><td><b>Language</b></td><td><b>Preferred</b></td></tr><tr><td>*</td><td>Deutsch (Schweiz) <span style=\"background: LightGoldenRodYellow\">(Details : {urn:ietf:bcp:47 code 'de-CH' = 'German (Region=Schweiz))</span></td><td>true</td></tr></table></div>"
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/patient-birthPlace"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Address ;
+       fhir:city [ fhir:v "Zürich" ] ;
+       fhir:country [ fhir:v "Schweiz" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-ech-11-placeoforigin"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Address ;
+       fhir:city [ fhir:v "Breitenbach" ] ;
+       fhir:state [ fhir:v "BL" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/patient-religion"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1007" ] ;
+         fhir:display [ fhir:v "Atheism" ]
+       ] )
+     ]
+  ] ) ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "MR" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30.999777.1"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "012/08.111111" ]
+  ] ) ; # 
+  fhir:name ( [
+     fhir:family [ fhir:v "Timmermann" ] ;
+     fhir:given ( [ fhir:v "Tobias" ] )
+  ] ) ; # 
+  fhir:telecom ( [
+     fhir:system [ fhir:v "phone" ] ;
+     fhir:value [ fhir:v "079 979 79 79" ] ;
+     fhir:use [ fhir:v "home" ]
+  ] [
+     fhir:system [ fhir:v "email" ] ;
+     fhir:value [ fhir:v "tobias.timmermann@example.ch" ]
+  ] ) ; # 
+  fhir:gender [ fhir:v "male"] ; # 
+  fhir:birthDate [ fhir:v "1984-01-01"^^xsd:date] ; # 
+  fhir:maritalStatus [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "5" ] ;
+       fhir:display [ fhir:v "unverheiratet" ]
+     ] )
+  ] ; # 
+  fhir:communication ( [
+     fhir:language [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:ietf:bcp:47"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "de-CH" ]
+       ] ) ;
+       fhir:text [ fhir:v "Deutsch (Schweiz)" ]
+     ] ;
+     fhir:preferred [ fhir:v "true"^^xsd:boolean ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

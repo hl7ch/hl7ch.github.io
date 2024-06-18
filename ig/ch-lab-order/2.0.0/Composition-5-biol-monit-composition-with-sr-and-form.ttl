@@ -1,0 +1,111 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Composition/5-biol-monit-composition-with-sr-and-form> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "5-biol-monit-composition-with-sr-and-form"] ; # 
+  fhir:meta [
+     fhir:versionId [ fhir:v "1" ] ;
+     fhir:lastUpdated [ fhir:v "2021-02-18T17:04:38.520+00:00"^^xsd:dateTime ] ;
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-composition"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-composition>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "additional" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div>Case study 5</div><div><h3>Collective order “SUVA biological monitoring”</h3><p>Companies that work with substances hazardous to health and in which employees are exposed to special risks are subject to occupational health screening by SUVA. Biological monitoring is one of the control options. This assesses the exposure of workers to chemical agents by determining the agents or metabolites in biological material (e.g. urine). The Occupational Medical Prevention (AMV) of SUVA sends the laboratory a monthly list with the following information per company (collective order):</p><ul><li>Establishment (name, address, establishment number).</li><li>Number of employees for biological monitoring</li><li>Examinations to be carried out (e.g. arsenic, lead, mercury, mandelic acid). The companies receive a list from the AMV including labels with the affected employees. Here we take the document of an employee Beat Borer, born 6. 6. 1986. The laboratory prints the order forms with the company number and sends the necessary number of urine cups and order forms to the companies. In the company, order forms and urine cups are labelled with the labels supplied by the AMV and given to the employees. The samples, including the order form, are sent from the company to the laboratory.</li></ul></div></div>"
+  ] ; # 
+  fhir:extension ( [
+     fhir:extension ( [
+       fhir:url [ fhir:v "enterer"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:Reference ;
+         fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/PauloPorcelliniSuva> ;
+         fhir:reference [ fhir:v "PractitionerRole/PauloPorcelliniSuva" ]
+       ]
+     ] ) ;
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-dataenterer"^^xsd:anyURI ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/EvaErlenmeyerLaborPipette> ;
+       fhir:reference [ fhir:v "PractitionerRole/EvaErlenmeyerLaborPipette" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/ArminAhrensArztpraxis> ;
+       fhir:reference [ fhir:v "PractitionerRole/ArminAhrensArztpraxis" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/WoodyWorkdocSpeiserRails> ;
+       fhir:reference [ fhir:v "PractitionerRole/WoodyWorkdocSpeiserRails" ]
+     ]
+  ] ) ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a sct:721965002 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "721965002" ] ;
+       fhir:display [ fhir:v "Laboratory order (record artifact)" ]
+     ] )
+  ] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       a sct:721963009 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "721963009" ] ;
+       fhir:display [ fhir:v "Order (record artifact)" ]
+     ] )
+  ] ) ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/BeatBorer> ;
+     fhir:reference [ fhir:v "Patient/BeatBorer" ]
+  ] ; # 
+  fhir:date [ fhir:v "2019-03-31T11:46:09+02:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/PauloPorcelliniSuva> ;
+     fhir:reference [ fhir:v "PractitionerRole/PauloPorcelliniSuva" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Referral 5-biol-monit"] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Order-Referral-Form 5-biol-monit" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:93037-0 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "93037-0" ] ;
+         fhir:display [ fhir:v "Portable medical order form" ]
+       ] )
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\">Order-Referral-Form 5-biol-monit</div>"
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/Questionnaire/5-biol-monit> ;
+       fhir:reference [ fhir:v "Questionnaire/5-biol-monit" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/QuestionnaireResponse/5-biol-monit> ;
+       fhir:reference [ fhir:v "QuestionnaireResponse/5-biol-monit" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/ServiceRequest/5-biol-monit-service-request> ;
+       fhir:reference [ fhir:v "ServiceRequest/5-biol-monit-service-request" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
