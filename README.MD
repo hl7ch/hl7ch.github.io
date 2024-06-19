@@ -52,9 +52,7 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
    }
    ```
    For the first release, some more elements are required.
-5. Verify that the IG build is as expected and error-free
-   - build local
-   - check the ci build
+5. Verify that the IG build is as expected and error-free, therefore check the ci build.
 6. Commit and push the changes to the master branch of the repository   
 7. [Set a tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) (from command line in repo)
    ```
