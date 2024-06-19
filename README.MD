@@ -6,16 +6,16 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
 
 ## Prepare an IG for publication
 1. Go to the repository of the IG (example ch-core)
-2. Update/check the IG config **sushi-config.yaml** or **ch.fhir.ig.ch-core.xml**
-   `date: 2024-06-19`
-   `version: 5.0.0-ballot` or `version: 5.0.0` 
-      -> after the publication change the value to `version: {next-proposed-version}-ci-build`
-   `releaselabel: ballot` or `releaselabel: trial-use` (ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use)
-      -> after the publication change the value to `releaselabel: ci-build`
-   all `dependencies`
-   `license: CC0-1.0`
-3. Update the STU note box in **index.md** according to the type of publication
-   Ballot (STU or informative):
+2. Update/check the IG config **sushi-config.yaml** or **ch.fhir.ig.ch-core.xml**   
+   `date: 2024-06-19`   
+   `version: 5.0.0-ballot` or `version: 5.0.0`    
+      -> after the publication change the value to `version: {next-proposed-version}-ci-build`   
+   `releaselabel: ballot` or `releaselabel: trial-use` (ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use)   
+      -> after the publication change the value to `releaselabel: ci-build`   
+   all `dependencies`   
+   `license: CC0-1.0`   
+3. Update the STU note box in **index.md** according to the type of publication   
+   Ballot (STU or informative):   
    ```
    This implementation guide is under STU ballot by [HL7 Switzerland](https://www.hl7.ch/) until September 30th, 2024 midnight.   
    Please add your feedback via the ‘Propose a change’-link in the footer on the page where you have comments.
@@ -42,15 +42,15 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
    }
    ```
    For the first release, some more elements are required.
-5. Verify that the IG build is as expected and error-free.
+5. Verify that the IG build is as expected and error-free
    - build local
    - check the ci build
-6. Commit and push the changes to the master branch of the repository.
+6. Commit and push the changes to the master branch of the repository   
 7. [Set a tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) (from command line in repo)
-   ´´´
+   ```
    git tag -a v5.0.0-ballot -m "published version 5.0.0-ballot on 2024-06-19"   
    git push origin v5.0.0-ballot
-   ´´´
+   ```
 8. Create a [release in github](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)
    
 ## Publish an IG
