@@ -1,20 +1,30 @@
 # Publication setup for fhir.ch
 In this repository we store all FHIR Implementation Guides (IG) published by HL7 Switzerland on [fhir.ch](https://fhir.ch).
 
+- [Update index.html](#update-indexhtml)
+- [Prepare an IG for publication](#prepare-an-ig-for-publication)
+- [Publish an IG](#publish-an-ig)
+   - [Publish a new IG: preparation](#publish-a-new-ig-preparation)
+   - [Publish an updated or new release of an IG](#publish-an-updated-or-new-release-of-an-ig)
+- [Background setup](#background-setup)
+
+
 ## Update index.html
 If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/index.html) the file will be automatically published on fhir.ch (there is some caching on the reverse proxy, it might take a few minutes).
 
 ## Prepare an IG for publication
 1. Go to the repository of the IG (example ch-core)
 2. Update/check the IG config **sushi-config.yaml** or **ch.fhir.ig.ch-core.xml**   
-   `date: 2024-06-19`   
-   `version: 5.0.0-ballot` or `version: 5.0.0`    
-      -> after the publication change the value to `version: {next-proposed-version}-ci-build`   
-   `releaselabel: ballot` or `releaselabel: trial-use` (ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use)   
-      -> after the publication change the value to `releaselabel: ci-build`   
-   all `dependencies`   
-   `license: CC0-1.0`   
+   - `date: 2024-06-19`   
+   - `version: 5.0.0-ballot` or `version: 5.0.0`    
+      - after the publication change the value to `version: {next-proposed-version}-ci-build`   
+   - `releaselabel: ballot` or `releaselabel: trial-use` 
+      - ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use  
+      - after the publication change the value to `releaselabel: ci-build`   
+   - all `dependencies`   
+   - `license: CC0-1.0`   
 3. Update the STU note box in **index.md** according to the type of publication   
+
    Ballot (STU or informative):   
    ```
    This implementation guide is under STU ballot by [HL7 Switzerland](https://www.hl7.ch/) until September 30th, 2024 midnight.   
@@ -32,7 +42,7 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
    {
      "package-id" : "ch.fhir.ig.ch-core",
      "version" : "5.0.0-ballot", (or {5.0.0})
-     "path" : "http://fhir.ch/ig/ch-core/5.0.0-ballot", (or {http://fhir.ch/ig/ch-core/5.0.0}
+     "path" : "http://fhir.ch/ig/ch-core/5.0.0-ballot", (or {http://fhir.ch/ig/ch-core/5.0.0})
      "mode" : "milestone",
      "status" : "ballot", (or {trial-use})
      "sequence" : "STU 5",
