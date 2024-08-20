@@ -148,12 +148,14 @@ jobs:
 
       - name: tag the ig repository with the published version
         if: ${{ env.publish == 'true' }}
+        id: tag_release
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           cd ${{ steps.repo_name.outputs.repo }}
-          git tag -a ${{ env.version }} -m "Release ${{ env.version }}"
-          git push origin ${{ env.version }}
+          git tag -fa ${{ env.version }} -m "Release ${{ env.version }}"
+          git push origin ${{ env.version }} --force
+          echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_OUTPUT"
           cd ..
     
       - name: Create Release in github repository
@@ -171,6 +173,7 @@ jobs:
           prerelease: false
           repo: ${{ steps.repo_name.outputs.repo }}
           owner: ${{ steps.org_name.outputs.org }}
+          commitish: ${{ steps.tag_release.outputs.sha_short }}
 
       - name: 🐙 Clean download git repo
         run: rm -rf ${{ steps.repo_name.outputs.repo }}
