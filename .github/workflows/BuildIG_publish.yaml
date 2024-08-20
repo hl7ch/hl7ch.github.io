@@ -95,18 +95,10 @@ jobs:
             ig/ch-epr-fhir
             ig/ch-epr-mhealth
 
-      - name: Generate a token for the Github APP that we can commmit to the foreign repository
-        id: generate-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ env.fhirchappid }}
-          private-key: ${{ secrets.HL7CHAPPFHIRCH }}
-    
       - uses: actions/checkout@v4
         with:
           repository: ${{ env.orgrepo }}
           path: ${{ steps.repo_name.outputs.repo }}
-          token: ${{ steps.generate-token.outputs.token }}
         
       - name: 📥 Download IG Publisher
         run: |
@@ -129,9 +121,9 @@ jobs:
         run: |
               java -jar -Dfile.encoding=UTF-8 -Xms3550m -Xmx3550m ./publisher.jar -go-publish -source ${{ steps.repo_name.outputs.repo }} -web $PWD -registry ig-registry/fhir-ig-list.json -history ig-history -templates ./templates -temp $PWD/buildtmp
 
-      # - name: 🐙 Clean download git repo
-      #   run: rm -rf ${{ steps.repo_name.outputs.repo }}
-      #   shell: bash
+      - name: 🐙 Clean download git repo
+        run: rm -rf ${{ steps.repo_name.outputs.repo }}
+        shell: bash
 
       - uses: actions/upload-artifact@v4
         if: ${{ env.publish == 'false' }}
@@ -195,6 +187,19 @@ jobs:
              
              :memo: It might take a few minutes until [fhir.ch](https://fhir.ch/) is serving the new version, should be visible on packages servers in [max 1](https://packages2.fhir.org/packages/catalog) to [max 8](https://registry.fhir.org/) hours.
 
+      - name: Generate a token for the Github APP that we can commit to the foreign repository
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ env.fhirchappid }}
+          private-key: ${{ secrets.HL7CHAPPFHIRCH }}
+    
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.orgrepo }}
+          path: ${{ steps.repo_name.outputs.repo }}
+          token: ${{ steps.generate-token.outputs.token }}
+     
       - name: tag the ig repository with the published version
         if: ${{ env.publish == 'true' }}
         env:
