@@ -126,23 +126,29 @@ jobs:
       #   run: |
       #         java -jar -Dfile.encoding=UTF-8 -Xms3550m -Xmx3550m ./publisher.jar -go-publish -source ${{ steps.repo_name.outputs.repo }} -web $PWD -registry ig-registry/fhir-ig-list.json -history ig-history -templates ./templates -temp $PWD/buildtmp
 
-      - name: Generate a token for the Github APP that we can commit to the foreign repository
-        id: generate-token
+      - name: app a token for the Github APP that we can commit to the foreign repository
+        id: app-token
         uses: actions/create-github-app-token@v1
         with:
           app-id: ${{ env.fhirchappid }}
           private-key: ${{ secrets.HL7CHAPPFHIRCH }}
-          owner: ${{ steps.repo_name.outputs.org }}
-          repositories: "${{ steps.repo_name.outputs.repo }}"
+          owner: ${{ github.repository_owner }}
+      
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+      - run: |
+          git config --global user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
+          git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com>'
                   
       - name: tag the ig repository with the published version
         if: ${{ env.publish == 'true' }}
         env:
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           cd ${{ steps.repo_name.outputs.repo }}
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git tag -a ${{ env.version }} -m "Release ${{ env.version }}"
           git push origin ${{ env.version }}
           cd ..
@@ -152,7 +158,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         with:
           tag_name: ${{ env.version }}
           release_name: Release ${{ env.version }}
