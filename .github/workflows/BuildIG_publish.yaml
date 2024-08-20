@@ -66,65 +66,102 @@ jobs:
         run: echo "${{ github.workspace }}"
         shell: bash
 
-      - uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            .github
-            assets
-            templates
-            ig-history
-            ig-registry
-            ig/${{ steps.repo_name.outputs.repo }}
+      # - uses: actions/checkout@v4
+      #   with:
+      #     sparse-checkout: |
+      #       .github
+      #       assets
+      #       templates
+      #       ig-history
+      #       ig-registry
+      #       ig/${{ steps.repo_name.outputs.repo }}
 
-      - uses: actions/checkout@v4
-        if: ${{ steps.repo_name.outputs.repo == 'ch-term' }}
-        with:
-          sparse-checkout: |
-            .github
-            assets
-            templates
-            ig-history
-            ig-registry
-            ig/ch-term
-            ig/ch-epr-term
+      # - uses: actions/checkout@v4
+      #   if: ${{ steps.repo_name.outputs.repo == 'ch-term' }}
+      #   with:
+      #     sparse-checkout: |
+      #       .github
+      #       assets
+      #       templates
+      #       ig-history
+      #       ig-registry
+      #       ig/ch-term
+      #       ig/ch-epr-term
 
-      - uses: actions/checkout@v4
-        if: ${{ steps.repo_name.outputs.repo == 'ch-epr-fhir' }}
-        with:
-          sparse-checkout: |
-            .github
-            assets
-            templates
-            ig-history
-            ig-registry
-            ig/ch-epr-fhir
-            ig/ch-epr-mhealth
+      # - uses: actions/checkout@v4
+      #   if: ${{ steps.repo_name.outputs.repo == 'ch-epr-fhir' }}
+      #   with:
+      #     sparse-checkout: |
+      #       .github
+      #       assets
+      #       templates
+      #       ig-history
+      #       ig-registry
+      #       ig/ch-epr-fhir
+      #       ig/ch-epr-mhealth
     
       - uses: actions/checkout@v4
         with:
           repository: ${{ env.orgrepo }}
           path: ${{ steps.repo_name.outputs.repo }}
             
-      - name: 📥 Download IG Publisher
-        run: |
-              wget -q https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
-              ls -all ./publisher.jar
+      # - name: 📥 Download IG Publisher
+      #   run: |
+      #         wget -q https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
+      #         ls -all ./publisher.jar
 
-      - name: 📝 List path
-        run: ls -R ./
+      # - name: 📝 List path
+      #   run: ls -R ./
 
-      # Builds the HTML page for the IG.
-      - name: 🏃‍♂️ Run IG Publisher local
-        timeout-minutes: 45 # We need a long timeout here
-        run: |
-              cd ${{ steps.repo_name.outputs.repo }}
-              java -Xmx8192m -jar ../publisher.jar  -ig .
-              cd ..
+      # # Builds the HTML page for the IG.
+      # - name: 🏃‍♂️ Run IG Publisher local
+      #   timeout-minutes: 45 # We need a long timeout here
+      #   run: |
+      #         cd ${{ steps.repo_name.outputs.repo }}
+      #         java -Xmx8192m -jar ../publisher.jar  -ig .
+      #         cd ..
 
-      - name: 🏃‍♂️ Run Publication
-        timeout-minutes: 135 # We need a long timeout here
+      # - name: 🏃‍♂️ Run Publication
+      #   timeout-minutes: 135 # We need a long timeout here
+      #   run: |
+      #         java -jar -Dfile.encoding=UTF-8 -Xms3550m -Xmx3550m ./publisher.jar -go-publish -source ${{ steps.repo_name.outputs.repo }} -web $PWD -registry ig-registry/fhir-ig-list.json -history ig-history -templates ./templates -temp $PWD/buildtmp
+
+      - name: Generate a token for the Github APP that we can commit to the foreign repository
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ env.fhirchappid }}
+          private-key: ${{ secrets.HL7CHAPPFHIRCH }}
+          owner: ${{ steps.repo_name.outputs.repo }}
+          repositories: "${{ steps.repo_name.outputs.org }}"
+                  
+      - name: tag the ig repository with the published version
+        if: ${{ env.publish == 'true' }}
+        env:
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
-              java -jar -Dfile.encoding=UTF-8 -Xms3550m -Xmx3550m ./publisher.jar -go-publish -source ${{ steps.repo_name.outputs.repo }} -web $PWD -registry ig-registry/fhir-ig-list.json -history ig-history -templates ./templates -temp $PWD/buildtmp
+          cd ${{ steps.repo_name.outputs.repo }}
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a ${{ env.version }} -m "Release ${{ env.version }}"
+          git push origin ${{ env.version }}
+          cd ..
+    
+      - name: Create Release in github repository
+        if: ${{ env.publish == 'true' }}
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+        with:
+          tag_name: ${{ env.version }}
+          release_name: Release ${{ env.version }}
+          body: |
+            see https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
+          draft: false
+          prerelease: false
+          repo: ${{ steps.repo_name.outputs.repo }}
+          owner: ${{ steps.repo_name.outputs.org }}
 
       - name: 🐙 Clean download git repo
         run: rm -rf ${{ steps.repo_name.outputs.repo }}
@@ -191,44 +228,3 @@ jobs:
              Details: [published](https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}/index.html) | [qa](https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}/qa.html)
              
              :memo: It might take a few minutes until [fhir.ch](https://fhir.ch/) is serving the new version, should be visible on packages servers in [max 1](https://packages2.fhir.org/packages/catalog) to [max 8](https://registry.fhir.org/) hours.
-     
-      - name: Generate a token for the Github APP that we can commit to the foreign repository
-        id: generate-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ env.fhirchappid }}
-          private-key: ${{ secrets.HL7CHAPPFHIRCH }}
-
-      - uses: actions/checkout@v4
-        with:
-          repository: ${{ env.orgrepo }}
-          path: ${{ steps.repo_name.outputs.repo }}
-          token: ${{ steps.generate-token.outputs.token }}
-  
-      - name: tag the ig repository with the published version
-        if: ${{ env.publish == 'true' }}
-        env:
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
-        run: |
-          cd ${{ steps.repo_name.outputs.repo }}
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag -a ${{ env.version }} -m "Release ${{ env.version }}"
-          git push origin ${{ env.version }}
-          cd ..
-    
-      - name: Create Release
-        if: ${{ env.publish == 'true' }}
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
-        with:
-          tag_name: ${{ env.version }}
-          release_name: Release ${{ env.version }}
-          body: |
-            see https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
-          draft: false
-          prerelease: false
-          repo: ${{ steps.repo_name.outputs.repo }}
-          owner: ${{ steps.repo_name.outputs.org }}
