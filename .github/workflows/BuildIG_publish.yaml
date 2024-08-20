@@ -132,7 +132,7 @@ jobs:
         with:
           app-id: ${{ env.fhirchappid }}
           private-key: ${{ secrets.HL7CHAPPFHIRCH }}
-          owner: ${{ github.repository_owner }}
+          owner: ${{ steps.org_name.outputs.org }}
       
       - name: Get GitHub App User ID
         id: get-user-id
@@ -167,7 +167,7 @@ jobs:
           draft: false
           prerelease: false
           repo: ${{ steps.repo_name.outputs.repo }}
-          owner: ${{ steps.repo_name.outputs.org }}
+          owner: ${{ steps.org_name.outputs.org }}
 
       - name: 🐙 Clean download git repo
         run: rm -rf ${{ steps.repo_name.outputs.repo }}
