@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Guidance - CH ELM (R4) v1.3.1</title>
+    <title>Guidance - CH ELM (R4) v1.4.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -50,7 +50,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"5"}
     h3,h4,h5,h6{--heading-prefix:"5"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -80,7 +81,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ELM (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.3.1 - release
+            <span style="display:inline-block;">1.4.0 - release
 
 
 
@@ -196,7 +197,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.3.1: Release) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.4.0: Release) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Guidance</h2>
   
 
@@ -215,7 +216,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div class="markdown-toc">
 <ul id="markdown-toc">
   <li><a href="#key-facts" id="markdown-toc-key-facts">Key Facts</a></li>
-  <li><a href="#personal-data-patient-name" id="markdown-toc-personal-data-patient-name">Personal Data (Patient Name)</a></li>
+  <li><a href="#personal-data-patient" id="markdown-toc-personal-data-patient">Personal Data (Patient)</a></li>
   <li><a href="#laboratory-study-types" id="markdown-toc-laboratory-study-types">Laboratory Study Types</a></li>
   <li><a href="#laboratory-result" id="markdown-toc-laboratory-result">Laboratory Result</a></li>
   <li><a href="#multiplex-cases" id="markdown-toc-multiplex-cases">Multiplex Cases</a></li>
@@ -229,36 +230,40 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h3 id="key-facts">Key Facts</h3>
 <p>The reporting obligation is the key systemic element for the surveillance of communicable diseases in Switzerland. Notifiable laboratory findings must comply with the legal provisions regarding reporting criteria, reporting deadlines and reporting data in accordance with the Ordinance of the FDHA on the Reporting of Observations of Communicable human diseases (SR 818.101.126) (<a href="https://www.fedlex.admin.ch/eli/cc/2015/892/de">DE</a>, <a href="https://www.fedlex.admin.ch/eli/cc/2015/892/fr">FR</a>, <a href="https://www.fedlex.admin.ch/eli/cc/2015/892/it">IT</a>).</p>
 
-<h3 id="personal-data-patient-name">Personal Data (Patient Name)</h3>
-<p>Depending on the organism (leading code), the requirement for how the patient’s name (e.g. Ernst Karl Tanner) is reported varies. There are different <a href="CodeSystem-ch-elm-foph-patient-name-representation.html">patient name schemas</a> to be used:</p>
+<h3 id="personal-data-patient">Personal Data (Patient)</h3>
+<p>Depending on the organism (leading code), the requirement for how the patient’s personal data, such as name or address, (e.g. Ernst Karl Tanner, Tannenstrasse 10a, 3000 Bern) is reported varies. There are different <a href="CodeSystem-ch-elm-foph-patient-name-representation.html">patient schemas</a> to be used:</p>
 <ul>
   <li><strong>Full Name</strong>
     <ul>
       <li>Organism: SARS-CoV-2, Legionella spp., etc.</li>
-      <li><a href="Patient-Pat-ErnstKarlTanner.json.html">Example</a>: Ernst Karl Tanner (Patient.name.family = Tanner, Patient.name.given = Ernst, Karl)</li>
+      <li>see Profile <a href="StructureDefinition-ch-elm-patient.html">CH ELM Patient</a></li>
+      <li><a href="Patient-Pat-006.json.html">Example</a>: Ernst Karl Tanner (Patient.name.family = Tanner, Patient.name.given = Ernst, Karl, Patient.address)</li>
     </ul>
   </li>
   <li><strong>Initials</strong>
     <ul>
       <li>Organism: Organism: Neisseria gonorrhoeae, Chlamydia trachomatis, etc</li>
-      <li><a href="Patient-Pat-ET.json.html">Example</a>: ET (Patient.name.family = T, Patient.name.given = E)</li>
+      <li>see Profile <a href="StructureDefinition-ChElmPatientInitials.html">CH ELM Patient Initials</a></li>
+      <li><a href="Patient-Pat-005.json.html">Example</a>: ET (Patient.name.family = T, Patient.name.given = E, no telecom and no street address)</li>
     </ul>
   </li>
   <li><strong>VCT Code</strong>
     <ul>
       <li>Organism: Neisseria gonorrhoeae, Chlamydia trachomatis, Treponema pallidum</li>
-      <li><a href="Patient-Pat-VCT.json.html">Example</a>: kste12345 (Patient.name.extension = kste12345, Patient.name.family/Patient.name.given = masked)</li>
+      <li>see Profile <a href="StructureDefinition-ChElmPatientVCT.html">CH ELM Patient VCT</a></li>
+      <li><a href="Patient-Pat-VCT.json.html">Example</a>: kste12345 (Patient.name.extension = kste12345, Patient.name.family/Patient.name.given = masked, no telecom and no street address)</li>
     </ul>
   </li>
   <li><strong>HIV Code</strong>
     <ul>
       <li>Organism: In the case of HIV/AIDS, under initials, enter the first letter and the number of letters of the first name. If this is longer than 9 letters, the number is 0. In the case of multi-part first names with a hyphen or in two words, only the first part is used.</li>
-      <li><a href="Patient-Pat-E5.json.html">Example</a>: E5 (Patient.name.extension = E5, Patient.name.family/Patient.name.given = masked)</li>
+      <li>see Profile <a href="StructureDefinition-ChElmPatientHIV.html">CH ELM Patient HIV</a></li>
+      <li><a href="Patient-Pat-004.json.html">Example</a>: E5 (Patient.name.extension = E5, Patient.name.family/Patient.name.given = masked, no telecom and no street address)</li>
     </ul>
   </li>
   <li><strong>Conditional</strong>
     <ul>
-      <li>The patient’s identification cannot determined directly based on the leading code. Consult the implementation guideline for further information.</li>
+      <li>The patient's identification cannot determined directly based on the leading code. Consult the implementation guideline for further information.</li>
     </ul>
   </li>
 </ul>
@@ -272,7 +277,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Composition.section.code</code> = LOINC 18725-2 Microbiology studies (set)</li>
   <li><code class="language-plaintext highlighter-rouge">Observation.value</code> = Positive/Negative (<a href="ValueSet-ch-elm-results-coded-values-laboratory.html">CH ELM Results Coded Values Laboratory</a>)</li>
-  <li><code class="language-plaintext highlighter-rouge">Observation.interpretation</code> = Positive/Negative (<a href="ValueSet-ch-elm-observation-interpretation-codes.html">CH ELM Observation Interpretation Codes</a>)</li>
+  <li><code class="language-plaintext highlighter-rouge">Observation.interpretation</code> = Positive/Negative (<a href="ValueSet-ch-elm-interpretation-codes-pos-neg.html">CH ELM Interpretation Codes Positive and Negative</a>)</li>
 </ul>
 
 <p><a href="Bundle-1Doc-NeisseriaGonorrhoeae.html">Example</a>: Laboratory report for Neisseria gonorrhoeae</p>
@@ -280,7 +285,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h4 id="resistance-detection">Resistance Detection</h4>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Composition.section.code</code> = LOINC 18769-0 Microbial susceptibility tests Set</li>
-  <li><code class="language-plaintext highlighter-rouge">Observation.interpretation</code> = Resistant/Susceptible (<a href="ValueSet-ch-elm-observation-interpretation-codes.html">CH ELM Observation Interpretation Codes</a>)</li>
+  <li><code class="language-plaintext highlighter-rouge">Observation.interpretation</code> = Resistant/Susceptible (<a href="ValueSet-ch-elm-interpretation-codes-res-sus.html">CH ELM Interpretation Codes Resistant and Susceptible</a>)</li>
 </ul>
 
 <h3 id="laboratory-result">Laboratory Result</h3>
@@ -395,7 +400,7 @@ are allowed (e.g. for Neisseria gonorrhoeae the <a href="ValueSet-ch-elm-interpr
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.3.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jun 17, 2024 08:59+0000">2024-06-17</span>
+          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.4.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 20, 2024 16:32+0000">2024-08-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -403,7 +408,7 @@ are allowed (e.g. for Neisseria gonorrhoeae the <a href="ValueSet-ch-elm-interpr
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.3.1%20/guidance.html&amp;entry%2E247644557=Guidance">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.4.0%20/guidance.html&amp;entry%2E247644557=Guidance">Propose a change</a>
 
 
 
@@ -418,7 +423,7 @@ are allowed (e.g. for Neisseria gonorrhoeae the <a href="ValueSet-ch-elm-interpr
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -429,7 +434,6 @@ are allowed (e.g. for Neisseria gonorrhoeae the <a href="ValueSet-ch-elm-interpr
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

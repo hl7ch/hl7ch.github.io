@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Anwendungsfälle - CH ELM (R4) v1.3.1</title>
+    <title>Anwendungsfälle - CH ELM (R4) v1.4.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -50,7 +50,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"4"}
     h3,h4,h5,h6{--heading-prefix:"4"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -80,7 +81,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ELM (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.3.1 - release
+            <span style="display:inline-block;">1.4.0 - release
 
 
 
@@ -196,7 +197,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.3.1: Release) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.4.0: Release) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Anwendungsfälle</h2>
   
 
@@ -230,7 +231,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <p><i>Abb. 3: Meldeweg für den Standardfall</i></p>
 
 <h4 id="neisseria-gonorrhoeae">Neisseria gonorrhoeae</h4>
-<p><a href="Patient-1Pat-DM.html">Herr Daniel Meier</a> geboren am 22.08.1960, wohnhaft in 3000 Bern, konsultiert am 11.07.2023 die <a href="PractitionerRole-1PR-KsAbc.html">Ärztin Dr. Monika Giacometti am Kantonsspital</a>. Herr Meier klagt über Juckreiz der Harnröhre und Schmerzen beim Wasserlassen. Da der Verdacht auf eine Harnwegsinfektion besteht, wird ein <a href="Specimen-1Spec-Specimen.html">Abstrich</a> abgenommen und zur Analyse an das <a href="Organization-1Org-Labor.html">Labor</a> geschickt. Mittels Isolierung in Kultur wird am 14.07.2023 <a href="Observation-1Obs-NeisseriaGonorrhoeae.html">Neisseria gonorrhoeae nachgewiesen (LOINC 697-3)</a>. Das Labor meldet den <strong><a href="Bundle-1Doc-NeisseriaGonorrhoeae.html">meldepflichtigen Laborbefund</a></strong> dem Meldesystem des Bundesamtes für Gesundheit.</p>
+<p><a href="Patient-Pat-001.html">Herr Daniel Meier</a> geboren am 22.08.1960, wohnhaft in 3000 Bern, konsultiert am 11.07.2023 die <a href="PractitionerRole-1PR-KsAbc.html">Ärztin Dr. Monika Giacometti am Kantonsspital</a>. Herr Meier klagt über Juckreiz der Harnröhre und Schmerzen beim Wasserlassen. Da der Verdacht auf eine Harnwegsinfektion besteht, wird ein <a href="Specimen-1Spec-Specimen.html">Abstrich</a> abgenommen und zur Analyse an das <a href="Organization-1Org-Labor.html">Labor</a> geschickt. Mittels Isolierung in Kultur wird am 14.07.2023 <a href="Observation-1Obs-NeisseriaGonorrhoeae.html">Neisseria gonorrhoeae nachgewiesen (LOINC 697-3)</a>. Das Labor meldet den <strong><a href="Bundle-1Doc-NeisseriaGonorrhoeae.html">meldepflichtigen Laborbefund</a></strong> dem Meldesystem des Bundesamtes für Gesundheit.</p>
 
 <h5 id="broker-szenario">Broker Szenario</h5>
 <p><a href="Organization-1bOrg-Broker.html">Private Dienstleister (sog. Broker)</a>, welche den <strong><a href="Bundle-1bDoc-NeisseriaGonorrhoeae.html">meldepflichtigen Laborbefund</a></strong> im Auftrag des <a href="Organization-1bOrg-Labor.html">Labors</a> an das Meldesystem des Bundesamtes für Gesundheit übermitteln, werden im FHIR-Dokument als Autor des Dokuments abgebildet.</p>
@@ -250,7 +251,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 Da es sich nicht um den Typ S. enteritidis handelt, wird die Probe zur genauen Typisierung an das Nationale Zentrum für enteropathogene Bakterien und Listerien („NENT“, Sekundärlabor) geschickt. Das Sekundärlabor benötigt Stammdaten zum Auftraggeber und zum Patienten, Angaben zur Herkunft der Probe (Lebensmittel, Faeces, Blut, Urin etc.), die gewünschte Typisierung und die vorangehenden Resultate. Nach erfolgter Typisierung schickt das Sekundärlabor seine Befunde (die 2. Meldung) zusammen mit der Auftragsnummer des zuweisenden Labors an das BAG.</p>
 
 <h4 id="neisseria-meningitidis">Neisseria meningitidis</h4>
-<p>Eine Liquorprobe wurde vom Kreisspital notfallmässig zugeschickt und direkt mikroskopisch untersucht. Es finden sich gramnegative Diplokokken. Dieser Befund zu einer Infektion mit Neisseria meningitidis muss innerhalb eines Tages gemeldet werden. Die weitere Verarbeitung (Kultur, Genomsequenz) erfolgt durch das Nationale Zentrum für Meningokokken (Sekundärlabor), von welchem wiederum eine vollständige Meldung zusammen mit der Auftragsnummer des Primärlabors an die Sektion Meldesysteme des BAG erfolgt.</p>
+<p>Eine Liquorprobe wurde vom Kreisspital notfallmässig zugeschickt und direkt mikroskopisch untersucht. Es finden sich gramnegative Diplokokken. Dieser Befund zu einer Infektion mit Neisseria meningitidis muss innerhalb eines Tages gemeldet werden <a href="Bundle-17Doc-Neisseria.json.html">JSON</a>. Die weitere Verarbeitung (Kultur, Genomsequenz) erfolgt durch das Nationale Zentrum für Meningokokken (Sekundärlabor), von welchem wiederum eine vollständige Meldung zusammen mit der Auftragsnummer des Primärlabors (50002610 im Beispiel) an die Sektion Meldesysteme des BAG erfolgt <a href="Bundle-14Doc-Neisseriameningitidis-confirmationtest.json.html">JSON</a>.</p>
 
 <h3 id="szenario-3---meldeweg-bei-weitergabe-eines-laborauftrages-oder-bei-hiv-diagnose">Szenario 3 - Meldeweg bei Weitergabe eines Laborauftrages oder bei HIV-Diagnose</h3>
 
@@ -277,7 +278,7 @@ Da es sich nicht um den Typ S. enteritidis handelt, wird die Probe zur genauen T
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.3.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jun 17, 2024 08:59+0000">2024-06-17</span>
+          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.4.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 20, 2024 16:32+0000">2024-08-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -285,7 +286,7 @@ Da es sich nicht um den Typ S. enteritidis handelt, wird die Probe zur genauen T
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.3.1%20/usecase-german.html&amp;entry%2E247644557=Anwendungsf%C3%A4lle">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.4.0%20/usecase-german.html&amp;entry%2E247644557=Anwendungsf%C3%A4lle">Propose a change</a>
 
 
 
@@ -300,7 +301,7 @@ Da es sich nicht um den Typ S. enteritidis handelt, wird die Probe zur genauen T
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -311,7 +312,6 @@ Da es sich nicht um den Typ S. enteritidis handelt, wird die Probe zur genauen T
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>
