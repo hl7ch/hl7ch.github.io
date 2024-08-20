@@ -129,7 +129,7 @@ jobs:
       - name: 🐙 Clean download git repo
         run: rm -rf ${{ steps.repo_name.outputs.repo }}
         shell: bash
-        
+
       - uses: actions/upload-artifact@v4
         if: ${{ env.publish == 'false' }}
         with:
@@ -211,6 +211,8 @@ jobs:
           GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           cd ${{ steps.repo_name.outputs.repo }}
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git tag -a ${{ env.version }} -m "Release ${{ env.version }}"
           git push origin ${{ env.version }}
           cd ..
