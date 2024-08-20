@@ -158,22 +158,34 @@ jobs:
           echo "sha=$(git rev-parse --verify "$GITHUB_SHA")" >> "$GITHUB_OUTPUT"
           cd ..
     
-      - name: Create Release in github repository
+      # - name: Create Release in github repository
+      #   if: ${{ env.publish == 'true' }}
+      #   id: create_release
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+      #   with:
+      #     tag_name: ${{ env.version }}
+      #     release_name: Release ${{ env.version }}
+      #     draft: false
+      #     prerelease: false
+      #     repo: ${{ steps.repo_name.outputs.repo }}
+      #     owner: ${{ steps.org_name.outputs.org }}
+      #     commitish: ${{ steps.tag_release.outputs.sha }}
+      #     body: |
+      #       see https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
+
+      - uses: ncipollo/release-action@v1
         if: ${{ env.publish == 'true' }}
-        id: create_release
-        uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         with:
-          tag_name: ${{ env.version }}
-          release_name: Release ${{ env.version }}
-          draft: false
-          prerelease: false
-          repo: ${{ steps.repo_name.outputs.repo }}
-          owner: ${{ steps.org_name.outputs.org }}
-          commitish: ${{ steps.tag_release.outputs.sha }}
-          body: |
-            see https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
+            repo: ${{ steps.repo_name.outputs.repo }}
+            owner: ${{ steps.org_name.outputs.org }}
+            tag: ${{ env.version }}
+            commit: ${{ steps.tag_release.outputs.sha }}
+            name: Release ${{ env.version }}
+            body: see https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
 
       - name: 🐙 Clean download git repo
         run: rm -rf ${{ steps.repo_name.outputs.repo }}
