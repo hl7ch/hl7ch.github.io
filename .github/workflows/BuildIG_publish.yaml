@@ -155,7 +155,7 @@ jobs:
           cd ${{ steps.repo_name.outputs.repo }}
           git tag -fa ${{ env.version }} -m "Release ${{ env.version }}"
           git push origin ${{ env.version }} --force
-          echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse --verify "$GITHUB_SHA")" >> "$GITHUB_OUTPUT"
           cd ..
     
       - name: Create Release in github repository
@@ -167,13 +167,13 @@ jobs:
         with:
           tag_name: ${{ env.version }}
           release_name: Release ${{ env.version }}
-          body: |
-            see https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
           draft: false
           prerelease: false
           repo: ${{ steps.repo_name.outputs.repo }}
           owner: ${{ steps.org_name.outputs.org }}
-          commitish: ${{ steps.tag_release.outputs.sha_short }}
+          commitish: ${{ steps.tag_release.outputs.sha }}
+          body: |
+            see https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
 
       - name: 🐙 Clean download git repo
         run: rm -rf ${{ steps.repo_name.outputs.repo }}
