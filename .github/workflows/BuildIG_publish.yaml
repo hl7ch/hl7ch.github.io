@@ -31,6 +31,7 @@ jobs:
       orgrepo: "${{ github.event.inputs.orgrepo }}"
       version: "${{ github.event.inputs.version }}"
       publish: "${{ github.event.inputs.publish }}"
+      fhirchappid: 974513
     steps:
       - name: 📦 Build and test with Rake        
         run: |
@@ -94,10 +95,18 @@ jobs:
             ig/ch-epr-fhir
             ig/ch-epr-mhealth
 
+      - name: Generate a token for the Github APP that we can commmit to the foreign repository
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ env.fhirchappid }}
+          private-key: ${{ secrets.HL7CHAPPFHIRCH }}
+    
       - uses: actions/checkout@v4
         with:
           repository: ${{ env.orgrepo }}
-          path: ${{ steps.repo_name.outputs.repo }} 
+          path: ${{ steps.repo_name.outputs.repo }}
+          token: ${{ steps.generate-token.outputs.token }}
         
       - name: 📥 Download IG Publisher
         run: |
@@ -120,9 +129,9 @@ jobs:
         run: |
               java -jar -Dfile.encoding=UTF-8 -Xms3550m -Xmx3550m ./publisher.jar -go-publish -source ${{ steps.repo_name.outputs.repo }} -web $PWD -registry ig-registry/fhir-ig-list.json -history ig-history -templates ./templates -temp $PWD/buildtmp
 
-      - name: 🐙 Clean download git repo
-        run: rm -rf ${{ steps.repo_name.outputs.repo }}
-        shell: bash
+      # - name: 🐙 Clean download git repo
+      #   run: rm -rf ${{ steps.repo_name.outputs.repo }}
+      #   shell: bash
 
       - uses: actions/upload-artifact@v4
         if: ${{ env.publish == 'false' }}
@@ -131,7 +140,7 @@ jobs:
           path: ./ig/${{ steps.repo_name.outputs.repo }} 
           retention-days: 2
 
-      - name: 🐙 Commit and push changes
+      - name: 🐙 Commit and push changes to 
         if: ${{ env.publish == 'true' }}
         run: |
           git config user.name "github-actions[bot]"
@@ -185,3 +194,13 @@ jobs:
              Details: [published](https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}/index.html) | [qa](https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}/qa.html)
              
              :memo: It might take a few minutes until [fhir.ch](https://fhir.ch/) is serving the new version, should be visible on packages servers in [max 1](https://packages2.fhir.org/packages/catalog) to [max 8](https://registry.fhir.org/) hours.
+
+      - name: tag the ig repository with the published version
+        if: ${{ env.publish == 'true' }}
+        env:
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+        run: |
+          cd ${{ steps.repo_name.outputs.repo }}
+          git tag -a ${{ env.version }} -m "Release ${{ env.version }}"
+          git push origin ${{ env.version }}
+          cd ..
