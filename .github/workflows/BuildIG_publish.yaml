@@ -147,8 +147,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config pull.ff only
+          git rm --cached ${{ steps.repo_name.outputs.repo }}
           git pull
-          git add --sparse . 
+          git add --sparse .
           git commit -m "${{ steps.repo_name.outputs.repo }} - ${{ env.version }}"
           git push
 
@@ -216,7 +217,7 @@ jobs:
           tag_name: ${{ env.version }}
           release_name: Release ${{ env.version }}
           body: |
-            see http://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
+            see https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
           draft: false
           prerelease: false
           repo: ${{ steps.repo_name.outputs.repo }}
