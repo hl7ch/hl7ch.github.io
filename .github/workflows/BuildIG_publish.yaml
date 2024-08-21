@@ -66,62 +66,49 @@ jobs:
         run: echo "${{ github.workspace }}"
         shell: bash
 
-      # - uses: actions/checkout@v4
-      #   with:
-      #     sparse-checkout: |
-      #       .github
-      #       assets
-      #       templates
-      #       ig-history
-      #       ig-registry
-      #       ig/${{ steps.repo_name.outputs.repo }}
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+            assets
+            templates
+            ig-history
+            ig-registry
+            ig/${{ steps.repo_name.outputs.repo }}
 
-      # - uses: actions/checkout@v4
-      #   if: ${{ steps.repo_name.outputs.repo == 'ch-term' }}
-      #   with:
-      #     sparse-checkout: |
-      #       .github
-      #       assets
-      #       templates
-      #       ig-history
-      #       ig-registry
-      #       ig/ch-term
-      #       ig/ch-epr-term
+      - uses: actions/checkout@v4
+        if: ${{ steps.repo_name.outputs.repo == 'ch-term' }}
+        with:
+          sparse-checkout: |
+            .github
+            assets
+            templates
+            ig-history
+            ig-registry
+            ig/ch-term
+            ig/ch-epr-term
 
-      # - uses: actions/checkout@v4
-      #   if: ${{ steps.repo_name.outputs.repo == 'ch-epr-fhir' }}
-      #   with:
-      #     sparse-checkout: |
-      #       .github
-      #       assets
-      #       templates
-      #       ig-history
-      #       ig-registry
-      #       ig/ch-epr-fhir
-      #       ig/ch-epr-mhealth
+      - uses: actions/checkout@v4
+        if: ${{ steps.repo_name.outputs.repo == 'ch-epr-fhir' }}
+        with:
+          sparse-checkout: |
+            .github
+            assets
+            templates
+            ig-history
+            ig-registry
+            ig/ch-epr-fhir
+            ig/ch-epr-mhealth
     
-      # - name: 📥 Download IG Publisher
-      #   run: |
-      #         wget -q https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
-      #         ls -all ./publisher.jar
+      - name: 📥 Download IG Publisher
+        run: |
+              wget -q https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
+              ls -all ./publisher.jar
 
-      # - name: 📝 List path
-      #   run: ls -R ./
+      - name: 📝 List path
+        run: ls -R ./
 
-      # # Builds the HTML page for the IG.
-      # - name: 🏃‍♂️ Run IG Publisher local
-      #   timeout-minutes: 45 # We need a long timeout here
-      #   run: |
-      #         cd ${{ steps.repo_name.outputs.repo }}
-      #         java -Xmx8192m -jar ../publisher.jar  -ig .
-      #         cd ..
-
-      # - name: 🏃‍♂️ Run Publication
-      #   timeout-minutes: 135 # We need a long timeout here
-      #   run: |
-      #         java -jar -Dfile.encoding=UTF-8 -Xms3550m -Xmx3550m ./publisher.jar -go-publish -source ${{ steps.repo_name.outputs.repo }} -web $PWD -registry ig-registry/fhir-ig-list.json -history ig-history -templates ./templates -temp $PWD/buildtmp
-
-      - name: app a token for the Github APP that we can commit to the foreign repository
+      - name: app a token for the Github APP that we can commit to the owner repo, app needs permission to org and repo, see https://github.com/organizations/hl7ch/settings/apps/fhir-ig-publication-on-fhir-ch/permissions
         id: app-token
         uses: actions/create-github-app-token@v1
         with:
@@ -146,11 +133,33 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           ref: ${{ github.head_ref }}
 
+      # Builds the HTML page for the IG.
+      - name: 🏃‍♂️ Run IG Publisher local
+        timeout-minutes: 45 # We need a long timeout here
+        run: |
+              cd ${{ steps.repo_name.outputs.repo }}
+              java -Xmx8192m -jar ../publisher.jar  -ig .
+              cd ..
+
+      - name: 🏃‍♂️ Run Publication
+        timeout-minutes: 135 # We need a long timeout here
+        run: |
+              java -jar -Dfile.encoding=UTF-8 -Xms3550m -Xmx3550m ./publisher.jar -go-publish -source ${{ steps.repo_name.outputs.repo }} -web $PWD -registry ig-registry/fhir-ig-list.json -history ig-history -templates ./templates -temp $PWD/buildtmp
+
+      - name: get a second token for the Github APP that we can commit to the owner repo
+        id: app-token2
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ env.fhirchappid }}
+          private-key: ${{ secrets.HL7CHAPPFHIRCH }}
+          owner: ${{ steps.org_name.outputs.org }}
+          repositories: "${{ steps.repo_name.outputs.repo }}"
+      
       - name: tag the ig repository with the published version
         if: ${{ env.publish == 'true' }}
         id: tag_release
         env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_TOKEN: ${{ steps.app-token2.outputs.token }}
         run: |
           cd ${{ steps.repo_name.outputs.repo }}
           git tag -fa ${{ env.version }} -m "Release ${{ env.version }}"
@@ -158,35 +167,6 @@ jobs:
           echo "sha=$(git rev-parse --verify "$GITHUB_SHA")" >> "$GITHUB_OUTPUT"
           cd ..
     
-      # - name: Create Release in github repository
-      #   if: ${{ env.publish == 'true' }}
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-      #   with:
-      #     tag_name: ${{ env.version }}
-      #     release_name: Release ${{ env.version }}
-      #     draft: false
-      #     prerelease: false
-      #     repo: ${{ steps.repo_name.outputs.repo }}
-      #     owner: ${{ steps.org_name.outputs.org }}
-      #     commitish: ${{ steps.tag_release.outputs.sha }}
-      #     body: |
-      #       see https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
-
-      - uses: ncipollo/release-action@v1
-        if: ${{ env.publish == 'true' }}
-        env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
-        with:
-            repo: ${{ steps.repo_name.outputs.repo }}
-            owner: ${{ steps.org_name.outputs.org }}
-            tag: ${{ env.version }}
-            commit: ${{ steps.tag_release.outputs.sha }}
-            name: Release ${{ env.version }}
-            body: see https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/changelog.html
-
       - name: 🐙 Clean download git repo
         run: rm -rf ${{ steps.repo_name.outputs.repo }}
         shell: bash

@@ -54,24 +54,20 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
    For the first release, some more elements are required.
 5. Verify that the IG build is as expected and error-free, therefore check the ci build.
 6. Commit and push the changes to the master branch of the repository   
-7. [Set a tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) (from command line in repo)
-   ```
-   git tag -a v5.0.0-ballot -m "published version 5.0.0-ballot on 2024-06-19"   
-   git push origin v5.0.0-ballot
-   ```
-8. Create a [release in github](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release)
    
 ## Publish an IG
 
 ### Publish a new IG: preparation
-1. You might need to create a new folder named after the IG you want to pubish in the folder [ig](https://github.com/hl7ch/hl7ch.github.io/tree/main/ig) (to be confirmed)
-2. Continue with the steps below
+1. You might need to create a new folder named after the IG you want to publish in the folder [ig](https://github.com/hl7ch/hl7ch.github.io/tree/main/ig) (to be confirmed)
+2. You have to give the Githu App [FHIR IG Publication on fhir.ch](https://github.com/organizations/hl7ch/settings/installations) permission to your repo  
+3. Continue with the steps below
 
 **Note:** If you rename an IG and have an old IG that you refer in package-list.json (e.g. [https://fhir.ch/ig/ch-term/package-list.json](https://fhir.ch/ig/ch-term/package-list.json)), you need to update the file [.github/workflows/BuildIG_publish.yaml](https://github.com/hl7ch/hl7ch.github.io/.github/workflows/BuildIG_publish.yaml), see ch-term entry as an example. 
  
 ### Publish an updated or new release of an IG 
 1. Go to [https://github.com/hl7ch/hl7ch.github.io/actions/workflows/BuildIG_publish.yaml](https://github.com/hl7ch/hl7ch.github.io/actions/workflows/BuildIG_publish.yaml) (> Actions > Build IG and publish)
-2. Click on **Run workflow**, provide the repository of the IG repo and the version of the IG. If the tick is set it will commit the release here and publish to [fhir.ch](https://fhir.ch). If the publish tick is set to false, the generated IGs will be provided as an artifact (dry run).  
+2. Click on **Run workflow**, provide the repository of the IG repo and the version of the IG. If the tick is set it will commit the tag the release in the repository here and publish to [fhir.ch](https://fhir.ch). If the publish tick is set to false, the generated IGs will be provided as an artifact (dry run).  
+3. If everything is successful, the master branch will be tagged with the version you specified and you get a zulip message in the [switzerland stream](https://chat.fhir.org/#narrow/stream/214781-switzerland/topic/fhir.2Ech.3A.20new.20FHIR.20Implementation.20Guide.20published) that the IG go published
 
 **Note:** You should not run publication actions in parallel if you have the publish flag set to true, this will not work (merge conflicts).
 
