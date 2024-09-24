@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>FHIR Document (Bundle) - CH ELM (R4) v1.4.0</title>
+    <title>FHIR Document (Bundle) - CH ELM (R4) v1.5.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -81,7 +81,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ELM (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.4.0 - release
+            <span style="display:inline-block;">1.5.0 - release
 
 
 
@@ -197,7 +197,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.4.0: Release) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Observations of notifiable communicable infectious diseases (v1.5.0: Release) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-elm/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>FHIR Document (Bundle)</h2>
   
 
@@ -213,63 +213,546 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div>
-<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#resource-profiles" id="markdown-toc-resource-profiles">Resource profiles</a></li>
+  <li><a href="#example-fhir-documents" id="markdown-toc-example-fhir-documents">Example FHIR documents</a></li>
+</ul>
+
 </div>
-<p>The CH ELM exchange format is defined as a <a href="https://hl7.org/fhir/R4/documents.html">document</a> type that corresponds to a <a href="https://hl7.org/fhir/R4/bundle.html">Bundle</a> as a FHIR resource. A Bundle has a list of entries. The first entry is the <a href="https://hl7.org/fhir/R4/composition.html">Composition</a>, in which all contained entries are then referenced.</p>
+<p>The CH ELM exchange format defines a FHIR document representing a coherent set of information specific to the transmission of laboratory data. This FHIR document is based on the <a href="StructureDefinition-ch-elm-document.html">CH Lab report document</a> which is part of the <a href="index.html">CH LAB-Report Project</a>.</p>
 
-<p>The exchange format defines the FHIR document for reporting to the FOPH so that <strong>one document per organism per patient</strong> is submitted.</p>
+<p>The exchange format expects a separate FHIR document per patient, organism and test performed.</p>
 
-<p><img src="laboratory-report.png" class="figure-img img-responsive img-rounded center-block" alt="Fig. 2: Laboratory Report" style="width:35%" /></p>
-<div style="clear:both;"></div>
-<p><i>Fig. 2: Laboratory Report</i></p>
+<p>The FHIR document consists of a bundle-resource of type "document" (the terms "FHIR document" and "Bundle" are synonymous in the context of the CH ELM project).</p>
 
-<p>Each CH ELM document requires</p>
+<p>The bundle resource contains a consistent set of entries representing FHIR resources specific for the transmission of laboratory data:</p>
 
-<ul>
-  <li>a Composition resource with the metadata for the document</li>
-  <li>a DiagnosticReport resource indicating for which organism the report is</li>
-</ul>
+<style>
 
-<p><a href="profiles.html#overview">Here</a> you will find an overview of the resources and their references to each other for which profiles are defined to represent the CH ELM laboratory report.</p>
+   .first-table {
+       width: 85%;  
+       td:first-child {
+       width: 1%;
+       white-space: pre; 
+}  
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    
+    table, th, td {
+         border: 1px solid silver;
+         font-size: 12px;
+         line-height: 1.4em;
+         font-family: verdana;
+         font-weight: normal;
+         padding: 3px;
+         vertical-align: top;
+         overflow-wrap: break-word; 
+    }
 
-<h3 id="examples-and-profiles">Examples and Profiles</h3>
-<p>The profile <a href="StructureDefinition-ch-elm-document.html">CH ELM Document</a> is a <strong>generic profile</strong> for all types of laboratory reports.</p>
+    th, td {
+        text-align: left;
+        vertical-align: top;
+    }
 
-<p>Here are examples of laboratory reports for different organisms that have different requirements (see also use case (<a href="usecase-german.html">DE</a>) or <a href="guidance.html">guidance</a>):</p>
-<ul>
-  <li>Neisseria Gonorrhoeae: <a href="Bundle-1Doc-NeisseriaGonorrhoeae.json.html">JSON</a>, <a href="Bundle-1Doc-NeisseriaGonorrhoeae.xml.html">XML</a>
-    <ul>
-      <li>Neisseria gonorrhoeae - Broker Szenario: <a href="Bundle-1bDoc-NeisseriaGonorrhoeae.json.html">JSON</a>, <a href="Bundle-1bDoc-NeisseriaGonorrhoeae.xml.html">XML</a></li>
-    </ul>
-  </li>
-  <li>Chlamydia trachomatis: <a href="Bundle-2Doc-ChlamydiaTrachomatis.json.html">JSON</a>, <a href="Bundle-2Doc-ChlamydiaTrachomatis.xml.html">XML</a>
-    <ul>
-      <li>Chlamydia trachomatis - with Patient VCT Code: <a href="Bundle-2Doc-ChlamydiaTrachomatis-Vct.json.html">JSON</a>, <a href="Bundle-2Doc-ChlamydiaTrachomatis-Vct.xml.html">XML</a></li>
-    </ul>
-  </li>
-  <li>Carbapenemase-producing Enterobacteriaceae (CPE): <a href="Bundle-3Doc-CPE.json.html">JSON</a>, <a href="Bundle-3Doc-CPE.xml.html">XML</a></li>
-  <li>Campylobacter spp.: <a href="Bundle-4Doc-Campylobacter.json.html">JSON</a>, <a href="Bundle-4Doc-Campylobacter.xml.html">XML</a></li>
-  <li>Treponema pallidum: <a href="Bundle-5Doc-TreponemaPallidum.json.html">JSON</a>, <a href="Bundle-5Doc-TreponemaPallidum.xml.html">XML</a></li>
-  <li>Influenza: <a href="Bundle-6Doc-Influenza.json.html">JSON</a>, <a href="Bundle-6Doc-Influenza.xml.html">XML</a></li>
-  <li>SARS-CoV-2: <a href="Bundle-7Doc-SARSCoV2.json.html">JSON</a>, <a href="Bundle-7Doc-SARSCoV2.xml.html">XML</a></li>
-  <li>Hepatite B: <a href="Bundle-8Doc-HepatiteB.json.html">JSON</a>, <a href="Bundle-8Doc-HepatiteB.xml.html">XML</a></li>
-  <li>Hepatite C: <a href="Bundle-9Doc-HepatiteC.json.html">JSON</a>, <a href="Bundle-9Doc-HepatiteC.xml.html">XML</a></li>
-  <li>Legionella: <a href="Bundle-10Doc-Legionella.json.html">JSON</a>, <a href="Bundle-10Doc-Legionella.xml.html">XML</a></li>
-  <li>Malaria: <a href="Bundle-11Doc-Malaria.json.html">JSON</a>, <a href="Bundle-11Doc-Malaria.xml.html">XML</a></li>
-  <li>Monkeypox: <a href="Bundle-12Doc-Monkeypox.json.html">JSON</a>, <a href="Bundle-12Doc-Monkeypox.xml.html">XML</a></li>
-  <li>Shigella: <a href="Bundle-13Doc-Shigella.json.html">JSON</a>, <a href="Bundle-13Doc-Shigella.xml.html">XML</a></li>
-  <li>Neisseria meningitidis by secondary lab: <a href="Bundle-14Doc-Neisseriameningitidis-confirmationtest.json.html">JSON</a>, <a href="Bundle-14Doc-Neisseriameningitidis-confirmationtest.xml.html">XML</a></li>
-  <li>Measles Seroconversion: <a href="Bundle-15Doc-Measles-Seroconversion.json.html">JSON</a>, <a href="Bundle-15Doc-Measles-Seroconversion.xml.html">XML</a></li>
-  <li>Dengue Titer: <a href="Bundle-16Doc-Dengue-Titer.json.html">JSON</a>, <a href="Bundle-16Doc-Dengue-Titer.xml.html">XML</a></li>
-  <li>Neisseria meningitidis by primary lab: <a href="Bundle-17Doc-Neisseria.json.html">JSON</a>, <a href="Bundle-17Doc-Neisseria.xml.html">XML</a></li>
-  <li>Corynebacterium diphtheriae with specimen specification: <a href="Bundle-18Doc-C-diphtheriae.json.html">JSON</a>, <a href="Bundle-18Doc-C-diphtheriae.xml.html">XML</a></li>
-  <li>Streptococcus pneumoniae: <a href="Bundle-19Doc-S-pneumoniae.json.html">JSON</a>, <a href="Bundle-19Doc-S-pneumoniae.xml.html">XML</a></li>
-  <li>Vibrio cholerae: <a href="Bundle-20Doc-Vibrio-cholerae.json.html">JSON</a>, <a href="Bundle-20Doc-Vibrio-cholerae.xml.html">XML</a></li>
-  <li>Hepatite E: <a href="Bundle-21Doc-HepatiteE.json.html">JSON</a>, <a href="Bundle-21Doc-HepatiteE.xml.html">XML</a></li>
-  <li>Haemophilus influenzae: <a href="Bundle-22Doc-H-influenzae.json.html">JSON</a>, <a href="Bundle-22Doc-H-influenzae.xml.html">XML</a></li>
-  <li>Francisella tularensis with organism specification: <a href="Bundle-23Doc-F-tularensis.json.html">JSON</a>, <a href="Bundle-23Doc-F-tularensis.xml.html">XML</a></li>
-</ul>
+    th {
+        font-weight: bold;
+        width: 25%; 
+    }
+
+    td {
+        width: 25%; 
+    }
+
+</style>
+
+<table class="first-table">
+    <tr>
+    <td colspan="2">{</td>
+  </tr>
+  <tr>
+    <td colspan="2">"resourceType": "Bundle",</td>
+  </tr>
+<tr>
+    <td colspan="2">"entry": [</td>
+  </tr>
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"resourceType": "<a href="StructureDefinition-ch-elm-composition.html">Composition</a>"<br />&nbsp;&nbsp;&nbsp;&nbsp;},</td>
+    <td>parameters like date, language, title, author, and referring to the different resources</td>
+  </tr>
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"resourceType": "<a href="StructureDefinition-ch-elm-diagnosticreport.html">DiagnosticReport</a>"<br />&nbsp;&nbsp;&nbsp;&nbsp;},</td>
+    <td>represents the laboratory report as a result of a lab order, with references to all other resources</td>
+ </tr>
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"resourceType": "<a href="StructureDefinition-ch-elm-patient.html">Patient</a>"<br />&nbsp;&nbsp;&nbsp;&nbsp;},</td>
+    <td>the person from whom the specimen was taken</td>
+ </tr>
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"resourceType": "<a href="StructureDefinition-ch-elm-observation-results-laboratory.html">Observation</a>"<br />&nbsp;&nbsp;&nbsp;&nbsp;},</td>
+    <td>defines the analyzed organism with the laboratory test result-values, interpretation, and test execution date</td>
+ </tr>
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"resourceType": "<a href="StructureDefinition-ch-elm-specimen.html">Specimen</a>"<br />&nbsp;&nbsp;&nbsp;&nbsp;},</td>
+    <td>the specimen material with collection date</td>
+ </tr>
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"resourceType": "<a href="StructureDefinition-ch-elm-servicerequest-laboratory-order.html">ServiceRequest</a>"<br />&nbsp;&nbsp;&nbsp;&nbsp;},</td>
+    <td>the lab order with the laboratory order ID, the requester, and performer of the laboratory test</td>
+ </tr>
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"resourceType": "<a href="StructureDefinition-ch-elm-practitionerrole-orderer.html">PractitionerRole</a>"<br />&nbsp;&nbsp;&nbsp;&nbsp;},</td>
+    <td>the orderer of the laboratory test containing a practitioner and/or organization</td>
+</tr>
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"resourceType": "<a href="StructureDefinition-ch-elm-practitioner-orderer.html">Practitioner</a>"<br />&nbsp;&nbsp;&nbsp;&nbsp;},</td>
+    <td>the person ordering the laboratory test</td>
+</tr>
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"resourceType": "<a href="StructureDefinition-ch-elm-organization-orderer.html">Organization</a>"<br />&nbsp;&nbsp;&nbsp;&nbsp;},</td>
+    <td>the organization ordering the laboratory test</td>
+</tr>
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"resourceType": "<a href="StructureDefinition-ch-elm-organization-lab.html">Organization</a>"<br />&nbsp;&nbsp;&nbsp;&nbsp;}</td>
+    <td>the performing laboratory</td>
+</tr>
+  <tr>
+    <td colspan="6">]</td>
+  </tr>
+   <tr>
+    <td colspan="7">}</td>
+  </tr>
+</table>
+
+<p>The FHIR document is generic and applicable for all types of organisms and reporting scenarios (use cases). For each resource within the FHIR document, a resource profile is defined to meet specific data needs depending on the context and use case.</p>
+
+<h3 id="resource-profiles">Resource profiles</h3>
+
+<p>Resource profiles are a way to customize and constrain FHIR resources to meet specific requirements depending on a particular context. These rules might restrict the allowable values for certain elements, specify additional mandatory elements, or define extensions to capture additional data beyond the standard FHIR resources. In the CH ELM Implementation Guide multiple profiles can exist based on the same FHIR resource.</p>
+
+<p>Example: the FHIR resource «organization» is used to map the sender of the FHIR Document, the performing laboratory and the orderer of the laboratory test – each of which having its own profile.</p>
+
+<p>The diagram <a href="profiles.html#overview">“Resource Overview”</a> illustrates the connections between the individual resource-profiles of a FHIR document.</p>
+
+<p>See the examples in chapter 2.2 to learn how to use the resource profiles for different use cases and data requirements.</p>
+
+<h3 id="example-fhir-documents">Example FHIR documents</h3>
+
+<h4 id="default-scenario">Default scenario</h4>
+
+<h5 id="examples-of-basic-fhir-documents-no-additional-codes-for-organism-or-specimen">Examples of basic FHIR documents (no additional codes for organism or specimen)</h5>
+<table class="grid">
+    <colgroup> 
+        <col style="width:25%" /> 
+        <col style="width:50%" /> 
+        <col style="width:15%" /> 
+        <col style="width:10%" /> 
+    </colgroup> 
+    <thead>
+        <tr>
+            <th>Disease</th>
+            <th>observation.code display</th>
+            <th>LOINC observation.code<br />(leading code)</th>
+            <th>FHIR Document</th>
+        </tr>
+    </thead>
+    <tbody>
+           <tr>
+            <td>Campylobacteriosis</td>
+            <td>Campylobacter coli DNA [Presence] in Stool by NAA with probe detection</td>
+            <td>101552-8</td>
+            <td>
+                <a href="Bundle-4Doc-Campylobacter.json.html">JSON</a>, 
+                <a href="Bundle-4Doc-Campylobacter.xml.html">XML</a>
+            </td>
+        </tr>       
+        <tr>
+            <td>Chikungunya fever</td>
+            <td>Chikungunya virus RNA [Presence] in Urine by NAA with probe detection</td>
+            <td>86515-4</td>
+             <td>
+                <a href="Bundle-24Doc-Chikungunya.json.html">JSON</a>, 
+                <a href="Bundle-24Doc-Chikungunya.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Cholera</td>
+            <td>Vibrio cholerae toxin ctx gene [Presence] in Specimen by NAA with probe detection</td>
+            <td>53942-9</td>
+             <td>
+                <a href="Bundle-20Doc-Vibrio-cholerae.json.html">JSON</a>, 
+                <a href="Bundle-20Doc-Vibrio-cholerae.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Covid-19</td>
+            <td>SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory system specimen by NAA with probe detection</td>
+            <td>94500-6</td>
+            <td>
+                <a href="Bundle-7Doc-SARSCoV2.json.html">JSON</a>, 
+                <a href="Bundle-7Doc-SARSCoV2.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Dengue - reporting of high-level titer result</td>
+            <td>Dengue virus IgG Ab [Titer] in Serum</td>
+            <td>6811-4</td>
+            <td>
+                <a href="Bundle-16Doc-Dengue-Titer.json.html">JSON</a>, 
+                <a href="Bundle-16Doc-Dengue-Titer.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Diphtheria</td>
+            <td>Corynebacterium diphtheriae DNA [Presence] in Specimen by NAA with probe detection</td>
+            <td>67561-1</td>
+             <td>
+                <a href="Bundle-18Doc-C-diphtheriae.json.html">JSON</a>, 
+                <a href="Bundle-18Doc-C-diphtheriae.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Gonorrhoea</td>
+            <td>Neisseria gonorrhoeae [Presence] in Urethra by Organism specific culture</td>
+            <td>697-3</td>
+           <td>
+                <a href="Bundle-1Doc-NeisseriaGonorrhoeae.json.html">JSON</a>, 
+                <a href="Bundle-1Doc-NeisseriaGonorrhoeae.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Haemophilus influenzae disease</td>
+            <td>Haemophilus influenzae B DNA [Presence] in Blood by NAA with probe detection</td>
+            <td>53607-8</td>
+           <td>
+                <a href="Bundle-22Doc-H-influenzae.json.html">JSON</a>, 
+                <a href="Bundle-22Doc-H-influenzae.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Hepatitis A</td>
+            <td>Hepatitis A virus IgM Ab [Presence] in Serum</td>
+            <td>22314-9</td>
+           <td>
+                <a href="Bundle-26Doc-HepatiteA.json.html">JSON</a>, 
+                <a href="Bundle-26Doc-HepatiteA.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Hepatitis B</td>
+            <td>Hepatitis B virus core IgM Ab [Presence] in Serum</td>
+            <td>31204-1</td>
+            <td>
+                <a href="Bundle-8Doc-HepatiteB.json.html">JSON</a>, 
+                <a href="Bundle-8Doc-HepatiteB.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Hepatitis C</td>
+            <td>Hepatitis C virus Ab [Presence] in Serum by Immunoblot</td>
+            <td>5199-5</td>
+            <td>
+                <a href="Bundle-9Doc-HepatiteC.json.html">JSON</a>, 
+                <a href="Bundle-9Doc-HepatiteC.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Hepatitis E</td>
+            <td>Hepatitis E virus RNA [Presence] in Stool by NAA with probe detection</td>
+            <td>91071-1</td>
+           <td>
+                <a href="Bundle-21Doc-HepatiteE.json.html">JSON</a>, 
+                <a href="Bundle-21Doc-HepatiteE.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Influenza</td>
+            <td>Influenza virus A RNA [Presence] in Nasopharynx by NAA with probe detection</td>
+            <td>76078-5</td>
+              <td>
+                <a href="Bundle-6Doc-Influenza.json.html">JSON</a>, 
+                <a href="Bundle-6Doc-Influenza.xml.html">XML</a>
+            </td>
+        </tr>
+          <tr>
+            <td>Listeriosis</td>
+            <td>Listeria monocytogenes DNA [Presence] in Cerebral spinal fluid by NAA with non-probe detection</td>
+            <td>82184-3</td>
+              <td>
+                <a href="Bundle-28Doc-Listeria-monocytogenes.json.html">JSON</a>, 
+                <a href="Bundle-28Doc-Listeria-monocytogenes.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Malaria</td>
+            <td>Plasmodium knowlesi DNA [Presence] in Blood by NAA with probe detection</td>
+            <td>70568-1</td>
+             <td>
+                <a href="Bundle-11Doc-Malaria.json.html">JSON</a>, 
+                <a href="Bundle-11Doc-Malaria.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Measles - reporting of a seroconversion</td>
+            <td>Measles virus IgG and IgM [Interpretation] in Serum</td>
+            <td>44012-3</td>
+              <td>
+                <a href="Bundle-15Doc-Measles-Seroconversion.json.html">JSON</a>, 
+                <a href="Bundle-15Doc-Measles-Seroconversion.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Pneumococcal disease</td>
+            <td>Streptococcus pneumoniae Ag [Presence] in Cerebral spinal fluid</td>
+            <td>20489-1</td>
+            <td>
+                <a href="Bundle-19Doc-S-pneumoniae.json.html">JSON</a>, 
+                <a href="Bundle-19Doc-S-pneumoniae.json.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Rubella - reporting of a seroconversion</td>
+            <td>Rubella virus IgG Ab [Interpretation] in Serum</td>
+            <td>20458-6</td>
+            <td>
+                <a href="Bundle-29Doc-Rubella.json.html">JSON</a>, 
+                <a href="Bundle-29Doc-Rubella.json.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Tick - borne encephalitis</td>
+            <td>Tick - borne encephalitis virus RNA [Presence] in Specimen by NAA with probe detection</td>
+            <td>97920-3</td>
+             <td>
+                <a href="Bundle-25Doc-Tick-borne-encephalitis.json.html">JSON</a>, 
+                <a href="Bundle-25Doc-Tick-borne-encephalitis.xml.html">XML</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h5 id="example-of-a-snomed-ct-code-instead-of-a-loinc-code-in-observationcode">Example of a SNOMED CT code instead of a LOINC code in observation.code</h5>
+<table class="grid">
+    <colgroup> 
+        <col style="width:25%" /> 
+        <col style="width:50%" /> 
+        <col style="width:15%" /> 
+        <col style="width:10%" /> 
+    </colgroup> 
+    <thead>
+      <tr>
+            <th>Disease</th>
+            <th>observation.code display</th>
+            <th>SNOMED CT observation.code<br />(leading code)</th>
+            <th>FHIR Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Syphilis</td>
+            <td>Treponema pallidum (organism)</td>
+            <td>72904005</td>
+            <td>
+                <a href="Bundle-5Doc-TreponemaPallidum.json.html">JSON</a>, 
+                <a href="Bundle-5Doc-TreponemaPallidum.xml.html">XML</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h5 id="example-of-an-organism-specification">Example of an organism specification</h5>
+<table class="grid">
+    <colgroup> 
+        <col style="width:25%" /> 
+        <col style="width:50%" /> 
+        <col style="width:15%" /> 
+        <col style="width:10%" /> 
+    </colgroup> 
+    <thead>
+          <tr>
+            <th>Disease</th>
+            <th>observation.code display</th>
+            <th>LOINC observation.code<br />(leading code)</th>
+            <th>FHIR Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Carbapenemase - producing enterobacteriaceae (CPE)</td>
+            <td>Carbapenem resistance bla OXA-48-like gene [Presence] by Molecular method</td>
+            <td>85827-4</td>
+              <td>
+                <a href="Bundle-3Doc-CPE.json.html">JSON</a>, 
+                <a href="Bundle-3Doc-CPE.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Legionellosis</td>
+            <td>Legionella sp Ag [Presence] in Urine</td>
+            <td>32781-7</td>
+            <td>
+                <a href="Bundle-10Doc-Legionella.json.html#root">JSON</a>, 
+                <a href="Bundle-10Doc-Legionella.xml.html#root">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Shigellosis</td>
+            <td>Shigella sp DNA [Presence] in Stool by NAA with probe detection</td>
+            <td>101427-3</td>
+             <td>
+                <a href="Bundle-13Doc-Shigella.json.html">JSON</a>, 
+                <a href="Bundle-13Doc-Shigella.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Tularaemia - with optional organism specification</td>
+            <td>Francisella tularensis Ag [Presence] in Serum</td>
+            <td>31828-7</td>
+          <td>
+                <a href="Bundle-23Doc-F-tularensis.json.html">JSON</a>, 
+                <a href="Bundle-23Doc-F-tularensis.xml.html">XML</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h5 id="example-of-a-specimen-specification">Example of a specimen specification</h5>
+<table class="grid">
+    <colgroup> 
+        <col style="width:25%" /> 
+        <col style="width:50%" /> 
+        <col style="width:15%" /> 
+        <col style="width:10%" /> 
+    </colgroup> 
+    <thead>
+          <tr>
+            <th>Disease</th>
+            <th>observation.code display</th>
+            <th>LOINC observation.code<br />(leading code)</th>
+            <th>FHIR Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Chlamydiosis</td>
+            <td>Chlamydia trachomatis [Presence] in Specimen by Organism specific culture</td>
+            <td>6349-5</td>
+            <td>
+                <a href="Bundle-2Doc-ChlamydiaTrachomatis.json.html">JSON</a>, 
+                <a href="Bundle-2Doc-ChlamydiaTrachomatis.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Monkeypox</td>
+            <td>Monkeypox virus DNA [Presence] in Specimen by NAA with probe detection</td>
+            <td>100383-9</td>
+             <td>
+                <a href="Bundle-12Doc-Monkeypox.json.html">JSON</a>, 
+                <a href="Bundle-12Doc-Monkeypox.xml.html">XML</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h5 id="example-of-a-vct-patient-with-specimen-specification">Example of a VCT Patient with specimen specification</h5>
+<table class="grid">
+    <colgroup> 
+        <col style="width:25%" /> 
+        <col style="width:50%" /> 
+        <col style="width:15%" /> 
+        <col style="width:10%" /> 
+    </colgroup> 
+    <thead>
+          <tr>
+            <th>Disease</th>
+            <th>observation.code display</th>
+            <th>LOINC observation.code<br />(leading code)</th>
+            <th>FHIR Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Chlamydiosis</td>
+            <td>Chlamydia trachomatis [Presence] in Specimen by Organism specific culture</td>
+            <td>6349-5</td>
+           <td>
+                <a href="Bundle-2Doc-ChlamydiaTrachomatis-Vct.json.html">JSON</a>, 
+                <a href="Bundle-2Doc-ChlamydiaTrachomatis-Vct.xml.html">XML</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h4 id="broker-scenario">Broker scenario</h4>
+<table class="grid">
+    <colgroup> 
+        <col style="width:25%" /> 
+        <col style="width:50%" /> 
+        <col style="width:15%" /> 
+        <col style="width:10%" /> 
+    </colgroup> 
+    <thead>
+           <tr>
+            <th>Disease</th>
+            <th>observation.code display</th>
+            <th>LOINC observation.code<br />(leading code)</th>
+            <th>FHIR Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Gonorrhoea</td>
+            <td>Neisseria gonorrhoeae [Presence] in Urethra by Organism specific culture</td>
+            <td>697-3</td>
+             <td>
+                <a href="Bundle-1bDoc-NeisseriaGonorrhoeae.json.html">JSON</a>, 
+                <a href="Bundle-1bDoc-NeisseriaGonorrhoeae.xml.html">XML</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h4 id="scenario-for-confirmation-tests">Scenario for confirmation tests</h4>
+<table class="grid">
+    <colgroup> 
+        <col style="width:25%" /> 
+        <col style="width:50%" /> 
+        <col style="width:15%" /> 
+        <col style="width:10%" /> 
+    </colgroup> 
+    <thead>
+           <tr>
+            <th>Disease</th>
+            <th>observation.code display</th>
+            <th>LOINC observation.code<br />(leading code)</th>
+            <th>FHIR Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Meningococcal disease - initial observation by primary laboratory</td>
+            <td>Microscopic observation [Identifier] in Cerebral spinal fluid by Gram stain</td>
+            <td>14357-8</td>
+            <td>
+                <a href="Bundle-17Doc-Neisseria.json.html">JSON</a>, 
+                <a href="Bundle-17Doc-Neisseria.xml.html">XML</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Meningococcal disease - confirmation test by reference laboratory</td>
+            <td>Neisseria meningitidis [Presence] in Cerebral spinal fluid by Organism specific culture</td>
+            <td>86581-6</td>
+            <td>
+                <a href="Bundle-14Doc-Neisseriameningitidis-confirmationtest.json.html">JSON</a>, 
+                <a href="Bundle-14Doc-Neisseriameningitidis-confirmationtest.xml.html">XML</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 
 
@@ -289,7 +772,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.4.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 20, 2024 16:32+0000">2024-08-20</span>
+          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Sep 24, 2024 11:18+0000">2024-09-24</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -297,7 +780,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.4.0%20/document.html&amp;entry%2E247644557=FHIR%20Document%20(Bundle)">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.5.0%20/document.html&amp;entry%2E247644557=FHIR%20Document%20(Bundle)">Propose a change</a>
 
 
 

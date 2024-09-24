@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TestScript xmlns="http://hl7.org/fhir">
+  <id value="Test95-Ignore-Observation-Interpretation-Codes-Warning"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: TestScript Test95-Ignore-Observation-Interpretation-Codes-Warning</b></p><a name="Test95-Ignore-Observation-Interpretation-Codes-Warning"> </a><a name="hcTest95-Ignore-Observation-Interpretation-Codes-Warning"> </a><a name="Test95-Ignore-Observation-Interpretation-Codes-Warning-en-US"> </a><p><b>url</b>: <a href="TestScript-Test95-Ignore-Observation-Interpretation-Codes-Warning.html">TestScript Test95IgnoreObservationInterpretationCodesWarning</a></p><p><b>version</b>: 1.5.0</p><p><b>name</b>: Test95IgnoreObservationInterpretationCodesWarning</p><p><b>status</b>: Active</p><p><b>date</b>: 2024-09-24 11:09:20+0000</p><p><b>publisher</b>: Federal Office of Public Health FOPH</p><p><b>contact</b>: Federal Office of Public Health FOPH: <a href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html</a></p><p><b>jurisdiction</b>: <span title="Codes:{urn:iso:std:iso:3166 CHE}">Switzerland</span></p><p><b>copyright</b>: </p><div><p>CC0-1.0</p>
+</div><blockquote><p><b>fixture</b></p><blockquote><p><b>id</b></p>inputdata</blockquote><p><b>autocreate</b>: false</p><p><b>autodelete</b>: false</p><p><b>resource</b>: <a href="Bundle-15Doc-Measles-Seroconversion.html">Bundle: identifier = UUID:3401332d-6012-443f-9690-9291adb23aa3; type = document; timestamp = 2024-08-05 12:00:00+0200</a></p></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Test95</p><p><b>description</b>: Test script to verify that warning None of the codings provided are in the value set 'Observation Interpretation Codes' is ignored</p><blockquote><p><b>action</b></p><h3>Operations</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Type</b></td><td><b>Description</b></td><td><b>ContentType</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td><td><b>SourceId</b></td></tr><tr><td style="display: none">*</td><td><a href="http://terminology.hl7.org/5.5.0/CodeSystem-testscript-operation-codes.html#testscript-operation-codes-validate">Test script operation code</a> validate: $validate</td><td>validate</td><td>application/fhir+json</td><td>true</td><td>profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict</td><td>inputdata</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td style="display: none">*</td><td>Confirm that the returned HTTP status is 200(OK).</td><td>response</td><td>200</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Description</b></td><td><b>Expression</b></td><td><b>Value</b></td><td><b>WarningOnly</b></td></tr><tr><td style="display: none">*</td><td>Confirm that the returned resource is an OperationOutcome.</td><td>is(FHIR.OperationOutcome)</td><td>true</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Description</b></td><td><b>Expression</b></td><td><b>Value</b></td><td><b>WarningOnly</b></td></tr><tr><td style="display: none">*</td><td>Confirm that we have no errors.</td><td>issue.where(severity='error' or severity='fatal').count()=0</td><td>true</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Description</b></td><td><b>Expression</b></td><td><b>Value</b></td><td><b>WarningOnly</b></td></tr><tr><td style="display: none">*</td><td>Check warning ignored</td><td>issue.where(severity='warning' and diagnostics.matches('None of the codings provided are in the value set \'Observation Interpretation Codes\'(.+)')).count() = 0</td><td>true</td><td>false</td></tr></table></blockquote></blockquote></div>
+  </text>
+  <url value="http://fhir.ch/ig/ch-elm/TestScript/Test95-Ignore-Observation-Interpretation-Codes-Warning"/>
+  <version value="1.5.0"/>
+  <name value="Test95IgnoreObservationInterpretationCodesWarning"/>
+  <status value="active"/>
+  <date value="2024-09-24T11:09:20+00:00"/>
+  <publisher value="Federal Office of Public Health FOPH"/>
+  <contact>
+    <name value="Federal Office of Public Health FOPH"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"/>
+    </telecom>
+  </contact>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="CHE"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="CC0-1.0"/>
+  <fixture id="inputdata">
+    <autocreate value="false"/>
+    <autodelete value="false"/>
+    <resource>
+      <reference value="Bundle/15Doc-Measles-Seroconversion"/>
+    </resource>
+  </fixture>
+  <test>
+    <name value="Test95"/>
+    <description value="Test script to verify that warning None of the codings provided are in the value set 'Observation Interpretation Codes' is ignored"/>
+    <action>
+      <operation>
+        <type>
+          <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+          <code value="validate"/>
+        </type>
+        <description value="validate"/>
+        <contentType value="application/fhir+json"/>
+        <encodeRequestUrl value="true"/>
+        <params value="profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
+        <sourceId value="inputdata"/>
+      </operation>
+    </action>
+    <action>
+      <assert>
+        <description value="Confirm that the returned HTTP status is 200(OK)."/>
+        <direction value="response"/>
+        <responseCode value="200"/>
+        <warningOnly value="false"/>
+      </assert>
+    </action>
+    <action>
+      <assert>
+        <description value="Confirm that the returned resource is an OperationOutcome."/>
+        <expression value="is(FHIR.OperationOutcome)"/>
+        <value value="true"/>
+        <warningOnly value="false"/>
+      </assert>
+    </action>
+    <action>
+      <assert>
+        <description value="Confirm that we have no errors."/>
+        <expression value="issue.where(severity='error' or severity='fatal').count()=0"/>
+        <value value="true"/>
+        <warningOnly value="false"/>
+      </assert>
+    </action>
+    <action>
+      <assert>
+        <description value="Check warning ignored"/>
+        <expression value="issue.where(severity='warning' and diagnostics.matches('None of the codings provided are in the value set \'Observation Interpretation Codes\'(.+)')).count() = 0"/>
+        <value value="true"/>
+        <warningOnly value="false"/>
+      </assert>
+    </action>
+  </test>
+</TestScript>
