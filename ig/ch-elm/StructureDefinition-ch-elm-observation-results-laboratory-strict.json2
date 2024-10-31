@@ -10,11 +10,11 @@
     "valueCanonical" : "http://hl7.eu/fhir/laboratory/StructureDefinition/Observation-resultslab-eu-lab"
   }],
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-strict",
-  "version" : "1.5.0",
+  "version" : "1.6.0",
   "name" : "ChElmObservationResultsLaboratoryStrict",
   "title" : "CH ELM Observation Results: Laboratory (strict)",
   "status" : "active",
-  "date" : "2024-09-24T11:18:39+00:00",
+  "date" : "2024-10-31T11:15:20+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -217,6 +217,20 @@
         "severity" : "error",
         "human" : "If Observation.code is mapped to initials or vctcode in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation then patient.name family and given must have one character or - in case of a VCT patient - must be masked and the following elements must not be provided: patient.telecom, patient.address.line.",
         "expression" : "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).empty() or ('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code = 'initials-or-vctcode' implies (subject.resolve().conformsTo('http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientInitials') or subject.resolve().conformsTo('http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientVCT')))",
+        "source" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"
+      },
+      {
+        "key" : "ch-elm-observation-profile-loinc",
+        "severity" : "error",
+        "human" : "If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile', then the observation must be conform to the mapped profile",
+        "expression" : "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).exists() implies conformsTo('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).target.first().code)",
+        "source" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"
+      },
+      {
+        "key" : "ch-elm-observation-profile-snomedct",
+        "severity" : "error",
+        "human" : "If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile', then the observation must be conform to the mapped profile",
+        "expression" : "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).exists() implies conformsTo('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code)",
         "source" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"
       }],
       "isModifier" : false,
@@ -3119,6 +3133,12 @@
         "max" : "1"
       },
       "type" : [{
+        "code" : "string"
+      },
+      {
+        "code" : "Quantity"
+      },
+      {
         "code" : "CodeableConcept"
       }],
       "condition" : ["obs-7"],
@@ -3147,6 +3167,102 @@
       {
         "identity" : "sct-attr",
         "map" : "363714003 |Interprets|"
+      }]
+    },
+    {
+      "id" : "Observation.value[x]:valueString",
+      "path" : "Observation.value[x]",
+      "sliceName" : "valueString",
+      "short" : "String if required by leading code, see also 'Guidance - Laboratory Result'",
+      "definition" : "The information determined as a result of making the observation, if the information has a simple value.",
+      "comment" : "An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](http://hl7.org/fhir/R4/observation.html#notes) below.",
+      "requirements" : "An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Observation.value[x]",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "string"
+      }],
+      "condition" : ["obs-7"],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      }],
+      "isModifier" : false,
+      "isSummary" : true,
+      "mapping" : [{
+        "identity" : "sct-concept",
+        "map" : "< 441742003 |Evaluation finding|"
+      },
+      {
+        "identity" : "v2",
+        "map" : "OBX.2, OBX.5, OBX.6"
+      },
+      {
+        "identity" : "rim",
+        "map" : "value"
+      },
+      {
+        "identity" : "sct-attr",
+        "map" : "363714003 |Interprets|"
+      }]
+    },
+    {
+      "id" : "Observation.value[x]:valueQuantity",
+      "path" : "Observation.value[x]",
+      "sliceName" : "valueQuantity",
+      "short" : "Quantity if required by leading code, see also 'Guidance - Laboratory Result'",
+      "definition" : "A measured amount (or an amount that can potentially be measured) and uncertainty of the measurement. Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.\r\nThis profile imposes that the code system for units be UCUM.",
+      "comment" : "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.",
+      "requirements" : "An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.",
+      "min" : 0,
+      "max" : "1",
+      "base" : {
+        "path" : "Observation.value[x]",
+        "min" : 0,
+        "max" : "1"
+      },
+      "type" : [{
+        "code" : "Quantity",
+        "profile" : ["http://hl7.eu/fhir/laboratory/StructureDefinition/Quantity-eu-lab"]
+      }],
+      "condition" : ["ele-1"],
+      "constraint" : [{
+        "key" : "ele-1",
+        "severity" : "error",
+        "human" : "All FHIR elements must have a @value or children",
+        "expression" : "hasValue() or (children().count() > id.count())",
+        "xpath" : "@value|f:*|h:div",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+      },
+      {
+        "key" : "qty-3",
+        "severity" : "error",
+        "human" : "If a code for the unit is present, the system SHALL also be present",
+        "expression" : "code.empty() or system.exists()",
+        "xpath" : "not(exists(f:code)) or exists(f:system)",
+        "source" : "http://hl7.org/fhir/StructureDefinition/Quantity"
+      }],
+      "isModifier" : false,
+      "mapping" : [{
+        "identity" : "rim",
+        "map" : "n/a"
+      },
+      {
+        "identity" : "v2",
+        "map" : "SN (see also Range) or CQ"
+      },
+      {
+        "identity" : "rim",
+        "map" : "PQ, IVL<PQ>, MO, CO, depending on the values"
       }]
     },
     {
@@ -3242,52 +3358,6 @@
       {
         "identity" : "orim",
         "map" : "fhir:CodeableConcept rdfs:subClassOf dt:CD"
-      }]
-    },
-    {
-      "id" : "Observation.value[x]:valueString",
-      "path" : "Observation.value[x]",
-      "sliceName" : "valueString",
-      "short" : "Actual result",
-      "definition" : "The information determined as a result of making the observation, if the information has a simple value.",
-      "comment" : "An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](http://hl7.org/fhir/R4/observation.html#notes) below.",
-      "requirements" : "An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.",
-      "min" : 0,
-      "max" : "1",
-      "base" : {
-        "path" : "Observation.value[x]",
-        "min" : 0,
-        "max" : "1"
-      },
-      "type" : [{
-        "code" : "string"
-      }],
-      "condition" : ["obs-7"],
-      "constraint" : [{
-        "key" : "ele-1",
-        "severity" : "error",
-        "human" : "All FHIR elements must have a @value or children",
-        "expression" : "hasValue() or (children().count() > id.count())",
-        "xpath" : "@value|f:*|h:div",
-        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
-      }],
-      "isModifier" : false,
-      "isSummary" : true,
-      "mapping" : [{
-        "identity" : "sct-concept",
-        "map" : "< 441742003 |Evaluation finding|"
-      },
-      {
-        "identity" : "v2",
-        "map" : "OBX.2, OBX.5, OBX.6"
-      },
-      {
-        "identity" : "rim",
-        "map" : "value"
-      },
-      {
-        "identity" : "sct-attr",
-        "map" : "363714003 |Interprets|"
       }]
     },
     {
@@ -3526,56 +3596,6 @@
       {
         "identity" : "sct-attr",
         "map" : "363714003 |Interprets|"
-      }]
-    },
-    {
-      "id" : "Observation.value[x]:valueQuantity",
-      "path" : "Observation.value[x]",
-      "sliceName" : "valueQuantity",
-      "short" : "A measured amount using UCUM",
-      "definition" : "A measured amount (or an amount that can potentially be measured) and uncertainty of the measurement. Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.\r\nThis profile imposes that the code system for units be UCUM.",
-      "comment" : "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator.",
-      "requirements" : "An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations.",
-      "min" : 0,
-      "max" : "1",
-      "base" : {
-        "path" : "Observation.value[x]",
-        "min" : 0,
-        "max" : "1"
-      },
-      "type" : [{
-        "code" : "Quantity",
-        "profile" : ["http://hl7.eu/fhir/laboratory/StructureDefinition/Quantity-eu-lab"]
-      }],
-      "condition" : ["ele-1"],
-      "constraint" : [{
-        "key" : "ele-1",
-        "severity" : "error",
-        "human" : "All FHIR elements must have a @value or children",
-        "expression" : "hasValue() or (children().count() > id.count())",
-        "xpath" : "@value|f:*|h:div",
-        "source" : "http://hl7.org/fhir/StructureDefinition/Element"
-      },
-      {
-        "key" : "qty-3",
-        "severity" : "error",
-        "human" : "If a code for the unit is present, the system SHALL also be present",
-        "expression" : "code.empty() or system.exists()",
-        "xpath" : "not(exists(f:code)) or exists(f:system)",
-        "source" : "http://hl7.org/fhir/StructureDefinition/Quantity"
-      }],
-      "isModifier" : false,
-      "mapping" : [{
-        "identity" : "rim",
-        "map" : "n/a"
-      },
-      {
-        "identity" : "v2",
-        "map" : "SN (see also Range) or CQ"
-      },
-      {
-        "identity" : "rim",
-        "map" : "PQ, IVL<PQ>, MO, CO, depending on the values"
       }]
     },
     {

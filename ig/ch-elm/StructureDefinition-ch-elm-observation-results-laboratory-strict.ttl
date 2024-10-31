@@ -20,11 +20,11 @@
      ]
   ] ) ; # 
   fhir:url [ fhir:v "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-strict"^^xsd:anyURI] ; # 
-  fhir:version [ fhir:v "1.5.0"] ; # 
+  fhir:version [ fhir:v "1.6.0"] ; # 
   fhir:name [ fhir:v "ChElmObservationResultsLaboratoryStrict"] ; # 
   fhir:title [ fhir:v "CH ELM Observation Results: Laboratory (strict)"] ; # 
   fhir:status [ fhir:v "active"] ; # 
-  fhir:date [ fhir:v "2024-09-24T11:18:39+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2024-10-31T11:15:20+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Federal Office of Public Health FOPH"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Federal Office of Public Health FOPH" ] ;
@@ -253,6 +253,24 @@
          fhir:severity [ fhir:v "error" ] ;
          fhir:human [ fhir:v "If Observation.code is mapped to initials or vctcode in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation then patient.name family and given must have one character or - in case of a VCT patient - must be masked and the following elements must not be provided: patient.telecom, patient.address.line." ] ;
          fhir:expression [ fhir:v "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).empty() or ('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code = 'initials-or-vctcode' implies (subject.resolve().conformsTo('http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientInitials') or subject.resolve().conformsTo('http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientVCT')))" ] ;
+         fhir:source [
+           fhir:v "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"^^xsd:anyURI ;
+           fhir:link <http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory>
+         ]
+       ] [
+         fhir:key [ fhir:v "ch-elm-observation-profile-loinc" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile', then the observation must be conform to the mapped profile" ] ;
+         fhir:expression [ fhir:v "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).exists() implies conformsTo('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).target.first().code)" ] ;
+         fhir:source [
+           fhir:v "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"^^xsd:anyURI ;
+           fhir:link <http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory>
+         ]
+       ] [
+         fhir:key [ fhir:v "ch-elm-observation-profile-snomedct" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile', then the observation must be conform to the mapped profile" ] ;
+         fhir:expression [ fhir:v "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).exists() implies conformsTo('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-observation-profile'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code)" ] ;
          fhir:source [
            fhir:v "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"^^xsd:anyURI ;
            fhir:link <http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory>
@@ -3297,6 +3315,10 @@
          fhir:max [ fhir:v "1" ]
        ] ;
        fhir:type ( [
+         fhir:code [ fhir:v "string"^^xsd:anyURI ]
+       ] [
+         fhir:code [ fhir:v "Quantity"^^xsd:anyURI ]
+       ] [
          fhir:code [ fhir:v "CodeableConcept"^^xsd:anyURI ]
        ] ) ;
        fhir:condition ( [ fhir:v "obs-7" ] ) ;
@@ -3325,6 +3347,106 @@
        ] [
          fhir:identity [ fhir:v "sct-attr" ] ;
          fhir:map [ fhir:v "363714003 |Interprets|" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Observation.value[x]:valueString" ] ;
+       fhir:path [ fhir:v "Observation.value[x]" ] ;
+       fhir:sliceName [ fhir:v "valueString" ] ;
+       fhir:short [ fhir:v "String if required by leading code, see also 'Guidance - Laboratory Result'" ] ;
+       fhir:definition [ fhir:v "The information determined as a result of making the observation, if the information has a simple value." ] ;
+       fhir:comment [ fhir:v "An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](http://hl7.org/fhir/R4/observation.html#notes) below." ] ;
+       fhir:requirements [ fhir:v "An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "1" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "Observation.value[x]" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "1" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [ fhir:v "string"^^xsd:anyURI ]
+       ] ) ;
+       fhir:condition ( [ fhir:v "obs-7" ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v "false"^^xsd:boolean ] ;
+       fhir:isSummary [ fhir:v "true"^^xsd:boolean ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "sct-concept" ] ;
+         fhir:map [ fhir:v "< 441742003 |Evaluation finding|" ]
+       ] [
+         fhir:identity [ fhir:v "v2" ] ;
+         fhir:map [ fhir:v "OBX.2, OBX.5, OBX.6" ]
+       ] [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "value" ]
+       ] [
+         fhir:identity [ fhir:v "sct-attr" ] ;
+         fhir:map [ fhir:v "363714003 |Interprets|" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Observation.value[x]:valueQuantity" ] ;
+       fhir:path [ fhir:v "Observation.value[x]" ] ;
+       fhir:sliceName [ fhir:v "valueQuantity" ] ;
+       fhir:short [ fhir:v "Quantity if required by leading code, see also 'Guidance - Laboratory Result'" ] ;
+       fhir:definition [ fhir:v "A measured amount (or an amount that can potentially be measured) and uncertainty of the measurement. Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.\r\nThis profile imposes that the code system for units be UCUM." ] ;
+       fhir:comment [ fhir:v "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator." ] ;
+       fhir:requirements [ fhir:v "An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "1" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "Observation.value[x]" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "1" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [ fhir:v "Quantity"^^xsd:anyURI ] ;
+         fhir:profile ( [
+           fhir:v "http://hl7.eu/fhir/laboratory/StructureDefinition/Quantity-eu-lab"^^xsd:anyURI ;
+           fhir:link <http://hl7.eu/fhir/laboratory/StructureDefinition/Quantity-eu-lab>
+         ] )
+       ] ) ;
+       fhir:condition ( [ fhir:v "ele-1" ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] [
+         fhir:key [ fhir:v "qty-3" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "If a code for the unit is present, the system SHALL also be present" ] ;
+         fhir:expression [ fhir:v "code.empty() or system.exists()" ] ;
+         fhir:xpath [ fhir:v "not(exists(f:code)) or exists(f:system)" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Quantity"^^xsd:anyURI ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Quantity>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v "false"^^xsd:boolean ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "n/a" ]
+       ] [
+         fhir:identity [ fhir:v "v2" ] ;
+         fhir:map [ fhir:v "SN (see also Range) or CQ" ]
+       ] [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "PQ, IVL<PQ>, MO, CO, depending on the values" ]
        ] )
      ] [
        fhir:id [ fhir:v "Observation.value[x]:valueCodeableConcept" ] ;
@@ -3426,51 +3548,6 @@
        ] [
          fhir:identity [ fhir:v "orim" ] ;
          fhir:map [ fhir:v "fhir:CodeableConcept rdfs:subClassOf dt:CD" ]
-       ] )
-     ] [
-       fhir:id [ fhir:v "Observation.value[x]:valueString" ] ;
-       fhir:path [ fhir:v "Observation.value[x]" ] ;
-       fhir:sliceName [ fhir:v "valueString" ] ;
-       fhir:short [ fhir:v "Actual result" ] ;
-       fhir:definition [ fhir:v "The information determined as a result of making the observation, if the information has a simple value." ] ;
-       fhir:comment [ fhir:v "An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](http://hl7.org/fhir/R4/observation.html#notes) below." ] ;
-       fhir:requirements [ fhir:v "An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations." ] ;
-       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
-       fhir:max [ fhir:v "1" ] ;
-       fhir:base [
-         fhir:path [ fhir:v "Observation.value[x]" ] ;
-         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
-         fhir:max [ fhir:v "1" ]
-       ] ;
-       fhir:type ( [
-         fhir:code [ fhir:v "string"^^xsd:anyURI ]
-       ] ) ;
-       fhir:condition ( [ fhir:v "obs-7" ] ) ;
-       fhir:constraint ( [
-         fhir:key [ fhir:v "ele-1" ] ;
-         fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
-         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
-         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
-         fhir:source [
-           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
-         ]
-       ] ) ;
-       fhir:isModifier [ fhir:v "false"^^xsd:boolean ] ;
-       fhir:isSummary [ fhir:v "true"^^xsd:boolean ] ;
-       fhir:mapping ( [
-         fhir:identity [ fhir:v "sct-concept" ] ;
-         fhir:map [ fhir:v "< 441742003 |Evaluation finding|" ]
-       ] [
-         fhir:identity [ fhir:v "v2" ] ;
-         fhir:map [ fhir:v "OBX.2, OBX.5, OBX.6" ]
-       ] [
-         fhir:identity [ fhir:v "rim" ] ;
-         fhir:map [ fhir:v "value" ]
-       ] [
-         fhir:identity [ fhir:v "sct-attr" ] ;
-         fhir:map [ fhir:v "363714003 |Interprets|" ]
        ] )
      ] [
        fhir:id [ fhir:v "Observation.value[x]:valueRange" ] ;
@@ -3716,61 +3793,6 @@
        ] [
          fhir:identity [ fhir:v "sct-attr" ] ;
          fhir:map [ fhir:v "363714003 |Interprets|" ]
-       ] )
-     ] [
-       fhir:id [ fhir:v "Observation.value[x]:valueQuantity" ] ;
-       fhir:path [ fhir:v "Observation.value[x]" ] ;
-       fhir:sliceName [ fhir:v "valueQuantity" ] ;
-       fhir:short [ fhir:v "A measured amount using UCUM" ] ;
-       fhir:definition [ fhir:v "A measured amount (or an amount that can potentially be measured) and uncertainty of the measurement. Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.\r\nThis profile imposes that the code system for units be UCUM." ] ;
-       fhir:comment [ fhir:v "The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator." ] ;
-       fhir:requirements [ fhir:v "An observation exists to have a value, though it might not if it is in error, or if it represents a group of observations." ] ;
-       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
-       fhir:max [ fhir:v "1" ] ;
-       fhir:base [
-         fhir:path [ fhir:v "Observation.value[x]" ] ;
-         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
-         fhir:max [ fhir:v "1" ]
-       ] ;
-       fhir:type ( [
-         fhir:code [ fhir:v "Quantity"^^xsd:anyURI ] ;
-         fhir:profile ( [
-           fhir:v "http://hl7.eu/fhir/laboratory/StructureDefinition/Quantity-eu-lab"^^xsd:anyURI ;
-           fhir:link <http://hl7.eu/fhir/laboratory/StructureDefinition/Quantity-eu-lab>
-         ] )
-       ] ) ;
-       fhir:condition ( [ fhir:v "ele-1" ] ) ;
-       fhir:constraint ( [
-         fhir:key [ fhir:v "ele-1" ] ;
-         fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
-         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
-         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
-         fhir:source [
-           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
-         ]
-       ] [
-         fhir:key [ fhir:v "qty-3" ] ;
-         fhir:severity [ fhir:v "error" ] ;
-         fhir:human [ fhir:v "If a code for the unit is present, the system SHALL also be present" ] ;
-         fhir:expression [ fhir:v "code.empty() or system.exists()" ] ;
-         fhir:xpath [ fhir:v "not(exists(f:code)) or exists(f:system)" ] ;
-         fhir:source [
-           fhir:v "http://hl7.org/fhir/StructureDefinition/Quantity"^^xsd:anyURI ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Quantity>
-         ]
-       ] ) ;
-       fhir:isModifier [ fhir:v "false"^^xsd:boolean ] ;
-       fhir:mapping ( [
-         fhir:identity [ fhir:v "rim" ] ;
-         fhir:map [ fhir:v "n/a" ]
-       ] [
-         fhir:identity [ fhir:v "v2" ] ;
-         fhir:map [ fhir:v "SN (see also Range) or CQ" ]
-       ] [
-         fhir:identity [ fhir:v "rim" ] ;
-         fhir:map [ fhir:v "PQ, IVL<PQ>, MO, CO, depending on the values" ]
        ] )
      ] [
        fhir:id [ fhir:v "Observation.dataAbsentReason" ] ;
