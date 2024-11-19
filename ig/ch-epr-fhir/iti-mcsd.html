@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Mobile Care Services Discovery (mCSD) - CH EPR FHIR (R4) v4.0.1-ballot</title>
+    <title>Mobile Care Services Discovery (mCSD) - CH EPR FHIR (R4) v4.0.1-ballot-2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -62,7 +62,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"2.6"}
     h3,h4,h5,h6{--heading-prefix:"2.6"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -92,7 +93,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1-ballot - ballot
+            <span style="display:inline-block;">4.0.1-ballot-2 - ballot
 
 
 
@@ -140,7 +141,7 @@
                 <a href="iti-pixm.html">Patient Identifier Cross-referencing for mobile (PIXm)</a>
             </li>
             <li>
-                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD) with XDS on FHIR</a>
+                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD)</a>
             </li>
             <li>
                 <a href="iti-restful-atna.html">RESTful ATNA</a>
@@ -169,16 +170,13 @@
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
             </li>
             <li>
-                <a href="iti-78.html">Mobile Patient Demographics Query [ITI-78]</a>
+                <a href="iti-119.html">Patient Demographics Match [ITI-119]</a>
             </li>
             <li>
                 <a href="iti-83.html">Mobile Patient Identifier Cross-reference Query [ITI-83]</a>
             </li>
             <li>
                 <a href="iti-65.html">Provide Document Bundle [ITI-65]</a>
-            </li>
-            <li>
-                <a href="iti-66.html">Find Document Lists [ITI-66]</a>
             </li>
             <li>
                 <a href="iti-67.html">Find Document References [ITI-67]</a>
@@ -194,6 +192,9 @@
             </li>
             <li>
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
+            </li>
+            <li>
+                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -274,7 +275,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot-2: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Mobile Care Services Discovery (mCSD)</h2>
   
 
@@ -307,8 +308,9 @@ mCSD is <a href="https://profiles.ihe.net/ITI/mCSD/index.html">published</a> as 
 
 <h3 id="scope">Scope</h3>
 
-<p>In the Swiss EPR, the mCSD profile ensures that different systems can search for healthcare organizations and/or
-professionals.</p>
+<p>In the Swiss EPR, the mCSD profile ensures that different systems can search for healthcare organizations and
+professionals.
+It also allows systems to provide updated information about healthcare organizations and professionals.</p>
 
 <h3 id="use-cases">Use Cases</h3>
 
@@ -319,17 +321,22 @@ It offers an alternative to the HPD ITI-58 transaction, which is SOAP-based.</p>
 
 <p>The <em>Request Care Services Updates</em> [ITI-91] transaction is not used in this national extension.</p>
 
+<p>A primary system wants to provide updated information about its healthcare organizations or professionals to a 
+directory.
+It can perform a <a href="ch-mcsd-1.html">CH:mCSD-1</a> request to update a resource.
+It offers an alternative to the HPD ITI-59 transaction, which is SOAP-based.</p>
+
 <h3 id="actors-and-transactions-content-specifications">Actors and Transactions, Content Specifications</h3>
 
 <div>
-<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="199px" preserveAspectRatio="none" style="width:362px;height:199px;background:#FFFFFF;" version="1.1" viewBox="0 0 362 199" width="362px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="163" x="92.5" y="22.9951">mCSD Actor Diagram</text><!--entity SelectiveSupplier--><g id="elem_SelectiveSupplier"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="240" x="15" y="157.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="220" x="25" y="180.292">Care Services Selective Supplier</text></g><!--entity SelectiveConsumer--><g id="elem_SelectiveConsumer"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="256" x="7" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="236" x="17" y="67.292">Care Services Selective Consumer</text></g><!--link SelectiveConsumer to SelectiveSupplier--><g id="link_SelectiveConsumer_SelectiveSupplier"><path d="M135,80.6369 C135,99.8669 135,130.9269 135,151.9569 " fill="none" id="SelectiveConsumer-to-SelectiveSupplier" style="stroke:#181818;stroke-width:1.0;" /><polygon fill="#181818" points="135,157.0769,139,148.0769,135,152.0769,131,148.0769,135,157.0769" style="stroke:#181818;stroke-width:1.0;" /><a href="iti-90.html" target="_top" title="iti-90.html" xlink:actuate="onRequest" xlink:href="iti-90.html" xlink:show="new" xlink:title="iti-90.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="218" x="136" y="123.3638">ITI-90 Find Matching Care Services</text></a></g></g></svg>
+<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="199px" preserveAspectRatio="none" style="width:608px;height:199px;background:#FFFFFF;" version="1.1" viewBox="0 0 608 199" width="608px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="163" x="215.5" y="22.9951">mCSD Actor Diagram</text><!--entity SelectiveSupplier--><g id="elem_SelectiveSupplier"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="240" x="15" y="157.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="220" x="25" y="180.292">Care Services Selective Supplier</text></g><!--entity SelectiveConsumer--><g id="elem_SelectiveConsumer"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="256" x="7" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="236" x="17" y="67.292">Care Services Selective Consumer</text></g><!--entity Source--><g id="elem_Source"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="167" x="311.5" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="147" x="321.5" y="67.292">Care Services Source</text></g><!--entity Directory--><g id="elem_Directory"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="180" x="305" y="157.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="315" y="180.292">Care Services Directory</text></g><!--link SelectiveConsumer to SelectiveSupplier--><g id="link_SelectiveConsumer_SelectiveSupplier"><path d="M133.47,80.4069 C132.49,93.2969 131.49,111.3969 132,127.2969 C132.25,135.2669 132.75,143.9769 133.27,151.7169 " fill="none" id="SelectiveConsumer-to-SelectiveSupplier" style="stroke:#181818;stroke-width:1.0;" /><polygon fill="#181818" points="133.62,156.8969,136.9686,147.6348,133.2638,151.9096,128.9889,148.2047,133.62,156.8969" style="stroke:#181818;stroke-width:1.0;" /><a href="iti-90.html" target="_top" title="iti-90.html" xlink:actuate="onRequest" xlink:href="iti-90.html" xlink:show="new" xlink:title="iti-90.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="218" x="133" y="123.3638">ITI-90 Find Matching Care Services</text></a></g><!--link Source to Directory--><g id="link_Source_Directory"><path d="M395,80.6369 C395,99.8669 395,130.9269 395,151.9569 " fill="none" id="Source-to-Directory" style="stroke:#181818;stroke-width:1.0;" /><polygon fill="#181818" points="395,157.0769,399,148.0769,395,152.0769,391,148.0769,395,157.0769" style="stroke:#181818;stroke-width:1.0;" /><a href="ch-mcsd-1.html" target="_top" title="ch-mcsd-1.html" xlink:actuate="onRequest" xlink:href="ch-mcsd-1.html" xlink:show="new" xlink:title="ch-mcsd-1.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="204" x="396" y="123.3638">CH:mCSD-1 Care Services Feed</text></a></g></g></svg>
 </div>
 <p>This figure shows the actors directly involved in the <em>Mobile Care Services Discovery</em> Profile and the relevant 
 transactions between them.</p>
 
 <h3 id="actor-options">Actor Options</h3>
 
-<p>The Swiss national extension does not implement the ‘Location Distance Option’.</p>
+<p>The Swiss national extension does not implement the 'Location Distance Option'.</p>
 
 <h3 id="required-actor-grouping">Required Actor Grouping</h3>
 
@@ -352,6 +359,16 @@ Therefore, actors of this profile must be grouped with actors of other profiles 
     </tr>
     <tr>
       <td>Care Services Selective Supplier</td>
+      <td>IUA Resource Server</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Care Services Source</td>
+      <td>IUA Authorization Client</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Care Services Directory</td>
       <td>IUA Resource Server</td>
       <td>R</td>
     </tr>
@@ -389,7 +406,7 @@ using the IUA profile with basic access token as described in <a href="iti-71.ht
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 21:49+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot-2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Nov 19, 2024 17:31+0000">2024-11-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -397,7 +414,7 @@ using the IUA profile with basic access token as described in <a href="iti-71.ht
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot%20/iti-mcsd.html&amp;entry%2E247644557=Mobile%20Care%20Services%20Discovery%20(mCSD)">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot-2%20/iti-mcsd.html&amp;entry%2E247644557=Mobile%20Care%20Services%20Discovery%20(mCSD)">Propose a change</a>
 
 
 
@@ -412,7 +429,7 @@ using the IUA profile with basic access token as described in <a href="iti-71.ht
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -423,7 +440,6 @@ using the IUA profile with basic access token as described in <a href="iti-71.ht
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

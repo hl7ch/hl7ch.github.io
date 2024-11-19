@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Record Audit Event [ITI-20] - CH EPR FHIR (R4) v4.0.1-ballot</title>
+    <title>Record Audit Event [ITI-20] - CH EPR FHIR (R4) v4.0.1-ballot-2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -62,9 +62,10 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
-    <style type="text/css">h2{--heading-prefix:"3.11"}
-    h3,h4,h5,h6{--heading-prefix:"3.11"}</style>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"3.10"}
+    h3,h4,h5,h6{--heading-prefix:"3.10"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
@@ -92,7 +93,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1-ballot - ballot
+            <span style="display:inline-block;">4.0.1-ballot-2 - ballot
 
 
 
@@ -140,7 +141,7 @@
                 <a href="iti-pixm.html">Patient Identifier Cross-referencing for mobile (PIXm)</a>
             </li>
             <li>
-                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD) with XDS on FHIR</a>
+                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD)</a>
             </li>
             <li>
                 <a href="iti-restful-atna.html">RESTful ATNA</a>
@@ -169,16 +170,13 @@
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
             </li>
             <li>
-                <a href="iti-78.html">Mobile Patient Demographics Query [ITI-78]</a>
+                <a href="iti-119.html">Patient Demographics Match [ITI-119]</a>
             </li>
             <li>
                 <a href="iti-83.html">Mobile Patient Identifier Cross-reference Query [ITI-83]</a>
             </li>
             <li>
                 <a href="iti-65.html">Provide Document Bundle [ITI-65]</a>
-            </li>
-            <li>
-                <a href="iti-66.html">Find Document Lists [ITI-66]</a>
             </li>
             <li>
                 <a href="iti-67.html">Find Document References [ITI-67]</a>
@@ -194,6 +192,9 @@
             </li>
             <li>
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
+            </li>
+            <li>
+                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -274,7 +275,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot-2: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Record Audit Event [ITI-20]</h2>
   
 
@@ -316,7 +317,7 @@ Trial Implementation with the working title ”Add RESTful ATNA (Query and Feed)
 <h3 id="referenced-standards">Referenced Standards</h3>
 
 <ol>
-  <li><a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RESTful-ATNA.pdf">Add RESTful ATNA (Query and Feed), Rev. 3.3 – Trial Implementation, July 2, 2021</a></li>
+  <li><a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RESTful-ATNA.pdf">Add RESTful ATNA (Query and Feed), Rev. 3.3</a></li>
   <li>This RESTful ATNA profile is based on Release 4 of the <a href="https://hl7.org/fhir/R4/index.html">HL7® FHIR®</a> standard.</li>
 </ol>
 
@@ -336,7 +337,16 @@ Repository.</p>
 
 <h5 id="message-semantics">Message Semantics</h5>
 
-<p><a href="AuditEvent-ex-auditProvideBundle-source.html">Audit Example for a Provide Bundle Transaction from source perspective</a></p>
+<p>The base profiles for the Swiss AuditEvents in the EPR are:</p>
+
+<ul>
+  <li><a href="StructureDefinition-ChAuditEventBasicToken.html">CH Audit Event with a Basic Auth Token</a> when a transaction is 
+secured with a Basic IUA Token.</li>
+  <li><a href="StructureDefinition-ChAuditEventExtendedToken.html">CH Audit Event with an Extended Token</a> when a transaction is 
+secured with an Extended IUA Token.</li>
+</ul>
+
+<p><a href="AuditEvent-ChAuditEventIti65SourceExample.html">Audit Example for a Provide Bundle Transaction from source perspective</a></p>
 
 <h5 id="expected-actions">Expected Actions</h5>
 
@@ -356,7 +366,7 @@ Repository.</p>
 
 <p>TLS SHALL be used.</p>
 
-<p>For the <code class="language-plaintext highlighter-rouge">traceparent</code> header handling refer to <a href="tracecontext.html">Trace Context header</a>.</p>
+<p>The actors SHALL support the <em>traceparent</em> header handling, as defined in <a href="tracecontext.html">Appendix: Trace Context</a>.</p>
 
 
 
@@ -377,7 +387,7 @@ Repository.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 21:49+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot-2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Nov 19, 2024 17:31+0000">2024-11-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -385,7 +395,7 @@ Repository.</p>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot%20/iti-20.html&amp;entry%2E247644557=Record%20Audit%20Event%20[ITI-20]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot-2%20/iti-20.html&amp;entry%2E247644557=Record%20Audit%20Event%20[ITI-20]">Propose a change</a>
 
 
 
@@ -400,7 +410,7 @@ Repository.</p>
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -411,7 +421,6 @@ Repository.</p>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Retrieve Document [ITI-68] - CH EPR FHIR (R4) v4.0.1-ballot</title>
+    <title>Retrieve Document [ITI-68] - CH EPR FHIR (R4) v4.0.1-ballot-2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -62,9 +62,10 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
-    <style type="text/css">h2{--heading-prefix:"3.9"}
-    h3,h4,h5,h6{--heading-prefix:"3.9"}</style>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"3.8"}
+    h3,h4,h5,h6{--heading-prefix:"3.8"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
@@ -92,7 +93,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1-ballot - ballot
+            <span style="display:inline-block;">4.0.1-ballot-2 - ballot
 
 
 
@@ -140,7 +141,7 @@
                 <a href="iti-pixm.html">Patient Identifier Cross-referencing for mobile (PIXm)</a>
             </li>
             <li>
-                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD) with XDS on FHIR</a>
+                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD)</a>
             </li>
             <li>
                 <a href="iti-restful-atna.html">RESTful ATNA</a>
@@ -169,16 +170,13 @@
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
             </li>
             <li>
-                <a href="iti-78.html">Mobile Patient Demographics Query [ITI-78]</a>
+                <a href="iti-119.html">Patient Demographics Match [ITI-119]</a>
             </li>
             <li>
                 <a href="iti-83.html">Mobile Patient Identifier Cross-reference Query [ITI-83]</a>
             </li>
             <li>
                 <a href="iti-65.html">Provide Document Bundle [ITI-65]</a>
-            </li>
-            <li>
-                <a href="iti-66.html">Find Document Lists [ITI-66]</a>
             </li>
             <li>
                 <a href="iti-67.html">Find Document References [ITI-67]</a>
@@ -194,6 +192,9 @@
             </li>
             <li>
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
+            </li>
+            <li>
+                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -274,7 +275,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot-2: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Retrieve Document [ITI-68]</h2>
   
 
@@ -319,7 +320,7 @@ document from the Document Responder.</p>
 <h3 id="referenced-standards">Referenced Standards</h3>
 
 <ol>
-  <li><a href="https://profiles.ihe.net/ITI/MHD/index.html">Mobile access to Health Documents (MHD), Rev. 4.2.1 – Trial-Implementation,  August 2, 2023</a></li>
+  <li><a href="https://profiles.ihe.net/ITI/MHD/4.2.2">Mobile access to Health Documents (MHD), Rev. 4.2.2</a></li>
   <li>This MHD Profile is based on Release 4 of the <a href="https://hl7.org/fhir/R4/index.html">HL7® FHIR®</a> standard.</li>
 </ol>
 
@@ -327,9 +328,30 @@ document from the Document Responder.</p>
 
 <div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="158px" preserveAspectRatio="none" style="width:352px;height:158px;background:#FFFFFF;" version="1.1" viewBox="0 0 352 158" width="352px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="243" x="53.5" y="27.9951">Interaction Diagram for [ITI-68]</text><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="257" y="104.7266" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="86" x2="86" y1="73.5938" y2="151.8594" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="262" x2="262" y1="73.5938" y2="151.8594" /><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="163" x="5" y="42.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="12" y="62.292">Document Consumer</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="168" x="178" y="42.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="185" y="62.292">Document Responder</text><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="257" y="104.7266" /><polygon fill="#181818" points="245,100.7266,255,104.7266,245,108.7266,249,104.7266" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="86.5" x2="251" y1="104.7266" y2="104.7266" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123" x="93.5" y="99.6606">Retrieve Document</text><polygon fill="#181818" points="97.5,129.8594,87.5,133.8594,97.5,137.8594,93.5,133.8594" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="91.5" x2="261" y1="133.8594" y2="133.8594" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="131" x="103.5" y="128.7935">Retrieved Document</text></g></svg></div>
 
-<h4 id="retrieve-document-request-message">Retrieve Document Request Message</h4>
+<h4 id="expected-actions">Expected Actions</h4>
 
-<h4 id="retrieve-document-response-message">Retrieve Document Response Message</h4>
+<h5 id="federated-cross-community-access-option">Federated Cross Community Access Option</h5>
+
+<div class="mermaid">
+%%{
+    init: {
+        'theme': 'neutral',
+        'themeVariables': {
+            'fontSize': '14px'
+        }
+    }
+}%%
+flowchart LR
+    A[Document Consumer] --&gt;|Retrieve| B(Document Responder
+    Option FXCA
+    Grouped with Document Consumer)
+    B --&gt; C{own community?}
+    C --&gt;|yes| D(Document Responder own community)
+    C --&gt;|no| E(Document Responder federated community)
+</div>
+
+<p>All Document Responders except the one with the Federated Cross Community Access Option SHALL identify if the document retrieve 
+targets another community. If this is the case, it SHALL forward the request to the target community, otherwise the request can be handled directly.</p>
 
 <h4 id="capabilitystatement-resource">CapabilityStatement Resource</h4>
 
@@ -339,26 +361,32 @@ document from the Document Responder.</p>
 
 <h3 id="security-consideration">Security Consideration</h3>
 
-<p>TLS SHALL be used. This national extension enforces authentication and authorization of access to the
-Document Responder using the IUA profile with extended access token. Consequently
-the <em>Retrieve Document</em> [ITI-68] request must authorize using the <a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">[ITI-72]</a>
-transaction of the IUA profile.</p>
+<p>The transaction SHALL be secured by Transport Layer Security (TLS) encryption and server authentication with server certificates. Transactions across communities SHALL use mTLS.</p>
 
-<p>For the <code class="language-plaintext highlighter-rouge">traceparent</code> header handling refer to <a href="tracecontext.html">Trace Context header</a>.</p>
+<p>The transaction SHALL use client authentication and authorization using extended authorization token as defined
+in the <a href="https://profiles.ihe.net/ITI/IUA">IUA profile</a>. The extended authorization token SHALL be conveyed as
+defined in the <a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">Incorporate Access Token [ITI-72]</a>
+transaction.</p>
+
+<p>All Document Responders except the one with the Federated Cross Community Access Option SHALL be grouped with the Authorization Decision Consumer actor of the CH:ADR profile
+defined in Extension 2.1 to Annex 5 of the ordinances and perform an Authorization Decision Request [CH:ADR] for
+every Retrieve Document [ITI-68] request.</p>
+
+<p>The actors SHALL support the <em>traceparent</em> header handling, as defined in <a href="tracecontext.html">Appendix: Trace Context</a>.</p>
 
 <h4 id="security-audit-considerations">Security Audit Considerations</h4>
 
 <h5 id="document-consumer-audit">Document Consumer Audit</h5>
 
 <p>The <strong>Document Consumer</strong> shall record a
-<a href="https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.RetrieveDocument.Audit.Consumer.html">Retrieve Document Consumer Audit Event Log</a>.
-<a href="https://profiles.ihe.net/ITI/MHD/AuditEvent-ex-auditRetrieveDocument-consumer.html">Audit Example for a Retrieve Document transaction from consumer perspective</a>.</p>
+<a href="StructureDefinition-ChAuditEventIti68Consumer.html">CH Audit Event for [ITI-68] Document Consumer</a>
+(<a href="AuditEvent-ChAuditEventIti68ConsumerExample.html">example</a>).</p>
 
 <h5 id="document-responder-audit">Document Responder Audit</h5>
 
 <p>The <strong>Document Responder</strong> shall record a
-<a href="https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.RetrieveDocument.Audit.Responder.html">Retrieve Document Responder Audit Event Log</a>.
-<a href="https://profiles.ihe.net/ITI/MHD/AuditEvent-ex-auditRetrieveDocument-responder.html">Audit Example for a Find Document Lists Transaction from responder perspective</a>.</p>
+<a href="StructureDefinition-ChAuditEventIti68Responder.html">CH Audit Event for [ITI-68] Document Responder</a>
+(<a href="AuditEvent-ChAuditEventIti68ResponderExample.html">example</a>).</p>
 
 
 
@@ -379,7 +407,7 @@ transaction of the IUA profile.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 21:49+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot-2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Nov 19, 2024 17:31+0000">2024-11-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -387,7 +415,7 @@ transaction of the IUA profile.</p>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot%20/iti-68.html&amp;entry%2E247644557=Retrieve%20Document%20[ITI-68]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot-2%20/iti-68.html&amp;entry%2E247644557=Retrieve%20Document%20[ITI-68]">Propose a change</a>
 
 
 
@@ -402,7 +430,7 @@ transaction of the IUA profile.</p>
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -413,7 +441,6 @@ transaction of the IUA profile.</p>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Profiles - CH EPR FHIR (R4) v4.0.1-ballot</title>
+    <title>Profiles - CH EPR FHIR (R4) v4.0.1-ballot-2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -62,7 +62,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"4.1"}
     h3,h4,h5,h6{--heading-prefix:"4.1"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -92,7 +93,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1-ballot - ballot
+            <span style="display:inline-block;">4.0.1-ballot-2 - ballot
 
 
 
@@ -140,7 +141,7 @@
                 <a href="iti-pixm.html">Patient Identifier Cross-referencing for mobile (PIXm)</a>
             </li>
             <li>
-                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD) with XDS on FHIR</a>
+                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD)</a>
             </li>
             <li>
                 <a href="iti-restful-atna.html">RESTful ATNA</a>
@@ -169,16 +170,13 @@
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
             </li>
             <li>
-                <a href="iti-78.html">Mobile Patient Demographics Query [ITI-78]</a>
+                <a href="iti-119.html">Patient Demographics Match [ITI-119]</a>
             </li>
             <li>
                 <a href="iti-83.html">Mobile Patient Identifier Cross-reference Query [ITI-83]</a>
             </li>
             <li>
                 <a href="iti-65.html">Provide Document Bundle [ITI-65]</a>
-            </li>
-            <li>
-                <a href="iti-66.html">Find Document Lists [ITI-66]</a>
             </li>
             <li>
                 <a href="iti-67.html">Find Document References [ITI-67]</a>
@@ -194,6 +192,9 @@
             </li>
             <li>
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
+            </li>
+            <li>
+                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -274,7 +275,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot-2: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Profiles</h2>
   
 
@@ -294,27 +295,85 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
 
-<li><a href="StructureDefinition-ch-mhd-updatedocumentmetadata-audit-recipient.html">Audit Event for Update Document Metadata Transaction at Recipient</a> <p>Defines constraints on the AuditEvent Resource to record when a Update Document Metadata Transaction happens at the Recipient.</p>
-<ul>
-<li>Import event</li>
-<li>shall have source of itself</li>
-<li>shall have a document source agent</li>
-<li>shall have a document recipient agent</li>
-<li>may have user, app, organization agent(s)</li>
-<li>shall have a patient entity</li>
-<li>shall have a documentreference identity entity</li>
-</ul>
+<li><a href="StructureDefinition-ch-mhd-updatedocumentmetadata-audit-recipient.html">CH Audit Event for [CH:MHD-1] Document Recipient</a> <p>This profile is used to define the CH Audit Event for the [CH:MHD-1] transaction and the actor 'Document
+Recipient'.</p>
 </li>
-<li><a href="StructureDefinition-ch-mhd-updatedocumentmetadata-audit-source.html">Audit Event for Update DocumentMetadata Transaction at Source</a> <p>Defines constraints on the AuditEvent Resource to record when a updatedocumentmetadata Transaction happens at the Source.</p>
-<ul>
-<li>Export event</li>
-<li>shall have source of itself</li>
-<li>shall have a document source agent</li>
-<li>shall have a document recipient agent</li>
-<li>may have user, app, organization agent(s)</li>
-<li>shall have a patient entity</li>
-<li>shall have a submission set identity entity</li>
-</ul>
+<li><a href="StructureDefinition-ch-mhd-updatedocumentmetadata-audit-source.html">CH Audit Event for [CH:MHD-1] Document Source</a> <p>This profile is used to define the CH Audit Event for the [CH:MHD-1] transaction and the actor 'Document
+Source'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventmCSD1Create.html">CH Audit Event for [CH:mCSD-1] Care Services Source &amp; Directory / Add</a> <p>This profile is used to define the CH Audit Event for the [CH:mCSD-1] transaction and the actors 'Care
+Services Source' &amp; Directory, when adding care service resources.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventmCSD1Delete.html">CH Audit Event for [CH:mCSD-1] Care Services Source &amp; Directory / Delete</a> <p>This profile is used to define the CH Audit Event for the [CH:mCSD-1] transaction and the actors 'Care
+Services Source' &amp; Directory, when deleting care service resources.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventmCSD1Update.html">CH Audit Event for [CH:mCSD-1] Care Services Source &amp; Directory / Update</a> <p>This profile is used to define the CH Audit Event for the [CH:mCSD-1] transaction and the actors 'Care
+Services Source' &amp; Directory, when updating care service resources.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti104ManagerCreate.html">CH Audit Event for [ITI-104] Patient Identifier Cross-reference Manager / Create patient</a> <p>This profile is used to define the CH Audit Event for the [ITI-104] transaction and the actor 'Patient
+Identifier Cross-reference Manager' when creating a patient.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti104ManagerUpdate.html">CH Audit Event for [ITI-104] Patient Identifier Cross-reference Manager / Update patient</a> <p>This profile is used to define the CH Audit Event for the [ITI-104] transaction and the actor 'Patient
+Identifier Cross-reference Manager' when updating a patient.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti104Source.html">CH Audit Event for [ITI-104] Patient Identity Source</a> <p>This profile is used to define the CH Audit Event for the [ITI-104] transaction and the actor 'Patient
+Identity Source'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti119Consumer.html">CH Audit Event for [ITI-119] Patient Demographics Consumer</a> <p>This profile is used to define the CH Audit Event for the [ITI-119] transaction and the actor 'Patient
+Demographics Consumer'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti119Supplier.html">CH Audit Event for [ITI-119] Patient Demographics Supplier</a> <p>This profile is used to define the CH Audit Event for the [ITI-119] transaction and the actor 'Patient
+Demographics Supplier'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti65Recipient.html">CH Audit Event for [ITI-65] Document Recipient</a> <p>This profile is used to define the CH Audit Event for the [ITI-65] transaction and the actor 'Document
+Recipient'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti65Source.html">CH Audit Event for [ITI-65] Document Source</a> <p>This profile is used to define the CH Audit Event for the [ITI-65] transaction and the actor 'Document
+Source'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti67Consumer.html">CH Audit Event for [ITI-67] Document Consumer</a> <p>This profile is used to define the CH Audit Event for the [ITI-67] transaction and the actor 'Document
+Consumer'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti67Responder.html">CH Audit Event for [ITI-67] Document Responder</a> <p>This profile is used to define the CH Audit Event for the [ITI-67] transaction and the actor 'Document
+Responder'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti68Consumer.html">CH Audit Event for [ITI-68] Document Consumer</a> <p>This profile is used to define the CH Audit Event for the [ITI-68] transaction and the actor 'Document
+Consumer'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti68Responder.html">CH Audit Event for [ITI-68] Document Responder</a> <p>This profile is used to define the CH Audit Event for the [ITI-68] transaction and the actor 'Document
+Responder'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti83Consumer.html">CH Audit Event for [ITI-83] Patient Identifier Cross-reference Consumer</a> <p>This profile is used to define the CH Audit Event for the [ITI-83] transaction and the actor 'Patient
+Identifier Cross-reference Consumer'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti83Manager.html">CH Audit Event for [ITI-83] Patient Identifier Cross-reference Manager</a> <p>This profile is used to define the CH Audit Event for the [ITI-83] transaction and the actor 'Patient
+Identifier Cross-reference Manager'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti90Query.html">CH Audit Event for [ITI-90] Care Services Selective Consumer &amp; Supplier / Query</a> <p>This profile is used to define the CH Audit Event for the [ITI-90] transaction and the actors 'Care
+Services Selective Consumer' &amp; Supplier, when querying care service resources.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventIti90Read.html">CH Audit Event for [ITI-90] Care Services Selective Consumer &amp; Supplier / Read</a> <p>This profile is used to define the CH Audit Event for the [ITI-90] transaction and the actors 'Care
+Services Selective Consumer' &amp; Supplier, when reading care service resources.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventPpq3Create.html">CH Audit Event for [PPQ-3] Create privacy policy</a> <p>This profile is used to define the CH Audit Event for the [PPQ-3] transaction and the actors 'Policy
+Source' and 'Policy Repository' when creating a privacy policy.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventPpq3Delete.html">CH Audit Event for [PPQ-3] Delete privacy policy</a> <p>This profile is used to define the CH Audit Event for the [PPQ-3] transaction and the actors 'Policy
+Source' and 'Policy Repository' when deleting a privacy policy.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventPpq3Update.html">CH Audit Event for [PPQ-3] Update privacy policy</a> <p>This profile is used to define the CH Audit Event for the [PPQ-3] transaction and the actors 'Policy
+Source' and 'Policy Repository' when updating a privacy policy.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventPpq5Consumer.html">CH Audit Event for [PPQ-5] Policy Consumer</a> <p>This profile is used to define the CH Audit Event for the [PPQ-5] transaction and the actor 'Policy
+Consumer'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventPpq5Repository.html">CH Audit Event for [PPQ-5] Policy Repository</a> <p>This profile is used to define the CH Audit Event for the [PPQ-5] transaction and the actor 'Policy
+Repository'.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventBasicToken.html">CH Audit Event with a Basic Auth Token</a> <p>This is the profile for Swiss Audit Events when a transaction is secured with a Basic Authorization Token.</p>
+</li>
+<li><a href="StructureDefinition-ChAuditEventExtendedToken.html">CH Audit Event with an Extended Auth Token</a> <p>This is the profile for Swiss Audit Events when a transaction is secured with an Extended Authorization
+Token.</p>
 </li>
 <li><a href="StructureDefinition-ch-epr-fhir-auditevent.html">CH EPR FHIR AuditEvent</a> <p>CH EPR FHIR profile on AuditEvent</p>
 </li>
@@ -328,15 +387,26 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </li>
 <li><a href="StructureDefinition-ch-mhd-submissionset-comprehensive.html">CH MHD SubmissionSet Comprehensive</a> <p>CH MHD SubmissionSet Comprehensive</p>
 </li>
-<li><a href="StructureDefinition-ch-mhd-submissionset-comprehensive-bundle.html">CH MHD SubmissionSet Comprehensive Bundle</a> <p>CH MHD SubmissionSet Comprehensive Bundle response [ITI-66]</p>
+<li><a href="StructureDefinition-CHPDQmMatchParametersIn.html">CH PDQm Match Input Parameters Profile</a> <p>The PDQm Match Input Parameters Profile describes the Parameters Resource that is to be posted to the $match endpoint when invoking ITI-119.
+This profile is consistent with the exceptions of the <a href="http://hl7.org/fhir/R4/patient-operation-match.html">Patient-match operation in FHIR core</a>,
+except the input resource SHALL be an instance of the <a href="StructureDefinition-CHPDQmMatchInput.html">PDQm Patient Profile for $match Input</a>.</p>
+<p>Note that the only REQUIRED parameter is the Patient Resource. When only the Patient is supplied, it can be POSTed directly to the $match endpoint
+without being wrapped in a Parameters Resource, as long as it conforms to the <a href="StructureDefinition-CHPDQmMatchInput.html">PDQm Patient Profile for $match Input</a>.</p>
+</li>
+<li><a href="StructureDefinition-ch-pdqm-matchparametersout.html">CH PDQm Match Output Bundle Profile</a> <p>A profile on the Query Patient Resource Response message for ITI-119</p>
 </li>
 <li><a href="StructureDefinition-ch-pdqm-moreattributesrequested.html">CH PDQm OperationOutcome More Attributes Requested</a> <p>A profile on the OperationOutcome for indicating which additional attributes are requested to lower the results number.</p>
 </li>
 <li><a href="StructureDefinition-ch-pdqm-patient.html">CH PDQm Patient</a> <p>The patient demographics and identifier information which can be provided in the PDQm response according to the EPR. If the patient is already registered in a community, the MPI-PID SHALL be provided as an identifier. The EPR-SPID as an identifier MAY be added. The birthname can be added with the  ISO 21090 qualifier extension.</p>
 </li>
-<li><a href="StructureDefinition-ch-pdqm-provider-organization.html">CH PDQm Provider Organization</a> <p>Organization</p>
+<li><a href="StructureDefinition-CHPDQmMatchInput.html">CH PDQm Patient Profile for $match Input</a> <p>The PDQm Patient Profile for $match Input SHALL be provided as input to the ITI-119 transaction.</p>
+<ul>
+<li>While it is not REQUIRED that the input to $match be a valid FHIR instance, it is RECOMMENDED to supply as many elements as possible to facilitate matching.</li>
+<li>modifierExtension and implicitRules SHALL not be specified.</li>
+<li>The ChEprFhirBirthName profile is available to hold the mother's maiden name</li>
+</ul>
 </li>
-<li><a href="StructureDefinition-ch-pdqm-querypatientresourceresponsemessage.html">CH PDQm Query Patient Resource Response message</a> <p>A profile on the Query Patient Resource Response message for ITI-78</p>
+<li><a href="StructureDefinition-ch-pdqm-provider-organization.html">CH PDQm Provider Organization</a> <p>Organization</p>
 </li>
 <li><a href="StructureDefinition-ch-pixm-in-parameters.html">CH PIXm IN Parameters</a> <p>The StructureDefinition defines the Input Parameters for the $ihe-pix operation: - Input: sourceIdentifier, targetSystem</p>
 </li>
@@ -358,7 +428,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </li>
 <li><a href="StructureDefinition-PpqmConsentTemplate201.html">EPR policy set based on template 201</a> <p>EPR policy set based on template 201 -- grants the patient the full access to the their EPR.  This policy set shall be created during the patient's onboarding.</p>
 </li>
-<li><a href="StructureDefinition-PpqmConsentTemplate202.html">EPR policy set based on template 202</a> <p>EPR policy set based on template 202 -- grants healthcare professionals accass to the patient's EPR in emergency mode.  This policy set shall be created during the patient's onboarding, but can be modified later.</p>
+<li><a href="StructureDefinition-PpqmConsentTemplate202.html">EPR policy set based on template 202</a> <p>EPR policy set based on template 202 -- grants healthcare professionals access to the patient's EPR in emergency mode.  This policy set shall be created during the patient's onboarding, but can be modified later.</p>
 </li>
 <li><a href="StructureDefinition-PpqmConsentTemplate203.html">EPR policy set based on template 203</a> <p>EPR policy set based on template 203 -- defines the minimal confidentiality level of documents.  This policy set shall be created during the patient's onboarding, but can be modified later.</p>
 </li>
@@ -390,7 +460,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 21:49+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot-2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Nov 19, 2024 17:31+0000">2024-11-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -398,7 +468,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot%20/profiles.html&amp;entry%2E247644557=Profiles">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot-2%20/profiles.html&amp;entry%2E247644557=Profiles">Propose a change</a>
 
 
 
@@ -413,7 +483,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -424,7 +494,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

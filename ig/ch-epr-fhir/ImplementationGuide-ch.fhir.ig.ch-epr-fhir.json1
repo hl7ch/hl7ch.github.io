@@ -6,12 +6,12 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n            Implementation Guide for the Mobile access to Health Documents (EPR FHIR) Profile for the Swiss EPR\n        </div>"
   },
   "url" : "http://fhir.ch/ig/ch-epr-fhir/ImplementationGuide/ch.fhir.ig.ch-epr-fhir",
-  "version" : "4.0.1-ballot",
+  "version" : "4.0.1-ballot-2",
   "name" : "CHEprFhir",
   "title" : "CH EPR FHIR (R4)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2024-05-16",
+  "date" : "2024-11-18",
   "publisher" : "eHealth Suisse",
   "contact" : [{
     "name" : "eHealth Suisse",
@@ -75,13 +75,19 @@
     "id" : "ihemhdfhir",
     "uri" : "https://profiles.ihe.net/ITI/MHD/ImplementationGuide/ihe.iti.mhd",
     "packageId" : "ihe.iti.mhd",
-    "version" : "4.2.1"
+    "version" : "4.2.2"
   },
   {
     "id" : "ihemcsdfhir",
     "uri" : "https://profiles.ihe.net/ITI/mCSD/ImplementationGuide/ihe.iti.mcsd",
     "packageId" : "ihe.iti.mcsd",
     "version" : "3.8.0"
+  },
+  {
+    "id" : "ihebalp",
+    "uri" : "https://profiles.ihe.net/ITI/BALP/ImplementationGuide/ihe.iti.balp",
+    "packageId" : "ihe.iti.balp",
+    "version" : "1.1.3"
   }],
   "definition" : {
     "extension" : [{
@@ -394,7 +400,7 @@
     },
     {
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
-      "valueCode" : "hl7.fhir.uv.tools#0.1.0"
+      "valueCode" : "hl7.fhir.uv.tools.r4#0.3.0"
     },
     {
       "extension" : [{
@@ -784,9 +790,9 @@
       "reference" : {
         "reference" : "Bundle/PDQm-QueryResponse"
       },
-      "name" : "PDQm Query response message",
-      "description" : "CH PDQm Query response message example result for Franz Muster, 27.1.1955",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-querypatientresourceresponsemessage"
+      "name" : "PDQm Match response message",
+      "description" : "CH PDQm Match response message example result for Franz Muster, 27.1.1955",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-matchparametersout"
     },
     {
       "extension" : [{
@@ -796,9 +802,9 @@
       "reference" : {
         "reference" : "Bundle/PDQm-QueryResponseTooManyResults"
       },
-      "name" : "PDQm Query response message too many results",
-      "description" : "CH PDQm Query response message with too many results indication",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-querypatientresourceresponsemessage"
+      "name" : "PDQm Match response message too many results",
+      "description" : "CH PDQm Match response message with too many results indication",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-matchparametersout"
     },
     {
       "extension" : [{
@@ -842,35 +848,11 @@
         "valueString" : "Bundle"
       }],
       "reference" : {
-        "reference" : "Bundle/Bundle-FindSubmissionSets"
-      },
-      "name" : "MHD Find DocumentSubmissionSet (List)",
-      "description" : "MHD Find Document SubmissionSet- Bundle as Response",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-submissionset-comprehensive-bundle"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Bundle"
-      }],
-      "reference" : {
         "reference" : "Bundle/Bundle-FindDocumentReferences"
       },
       "name" : "MHD Find DocumentReferences",
       "description" : "MHD Find DocumentReferences - Bundle as Response",
       "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-documentreference-comprehensive-bundle"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "AuditEvent"
-      }],
-      "reference" : {
-        "reference" : "AuditEvent/ex-auditProvideBundle-source"
-      },
-      "name" : "ATNA Audit Event for Provide Bundle Transaction at Source",
-      "description" : "Audit Example for a Provide Bundle Transaction from source perspective",
-      "exampleCanonical" : "https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.ProvideBundle.Audit.Source"
     },
     {
       "extension" : [{
@@ -938,6 +920,18 @@
         "valueString" : "Organization"
       }],
       "reference" : {
+        "reference" : "Organization/CommunityA"
+      },
+      "name" : "mCSD Organization Community A",
+      "description" : "An example of CHmCSDOrganization that contains the same information as Community A in the Swiss examples (uid=CommunityA,OU=CHCommunity,DC=CPI,O=BAG,C=ch)",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
         "reference" : "Organization/SpitalX"
       },
       "name" : "mCSD Organization Spital X",
@@ -996,6 +990,14 @@
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Bundle"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
       }],
       "reference" : {
         "reference" : "Bundle/FindMatchingCareServicesResponse"
@@ -1008,6 +1010,18 @@
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Bundle"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate201"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate203"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmFeedRequestBundle"
       }],
       "reference" : {
         "reference" : "Bundle/PpqmFeedRequestBundleAdd"
@@ -1020,6 +1034,22 @@
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Bundle"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate303"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate302"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmFeedRequestBundle"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate304"
       }],
       "reference" : {
         "reference" : "Bundle/PpqmFeedRequestBundleUpdate"
@@ -1056,6 +1086,18 @@
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Bundle"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate201"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmRetrieveResponseBundle"
+      },
+      {
+        "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImplementationGuide.definition.resource.profile",
+        "valueCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate203"
       }],
       "reference" : {
         "reference" : "Bundle/PpqmRetrieveResponseBundle"
@@ -1147,6 +1189,318 @@
       "name" : "PPQm Consent for template 304",
       "description" : "CH:PPQm Consent for template 304 -- Read access for a healthcare professional, with delegation",
       "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate304"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti65SourceExample"
+      },
+      "name" : "Example of audit event for an [ITI-65] transaction at Source",
+      "description" : "This example shows an  made by the Document Source for an ITI-65 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti65Source"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti65RecipientExample"
+      },
+      "name" : "Example of audit event for an [ITI-65] transaction at Recipient",
+      "description" : "This example shows an  made by the Document Recipient for an ITI-65 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti65Recipient"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti67ConsumerExample"
+      },
+      "name" : "Example of audit event for an [ITI-67] transaction at Consumer",
+      "description" : "This example shows an  made by the Document Consumer for an ITI-67 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti67Consumer"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti67ResponderExample"
+      },
+      "name" : "Example of audit event for an [ITI-67] transaction at Responder",
+      "description" : "This example shows an  made by the Document Responder for an ITI-67 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti67Responder"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti68ConsumerExample"
+      },
+      "name" : "Example of audit event for an [ITI-68] transaction at Consumer",
+      "description" : "This example shows an  made by the Document Consumer for an ITI-68 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti68Consumer"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti68ResponderExample"
+      },
+      "name" : "Example of audit event for an [ITI-68] transaction at Responder",
+      "description" : "This example shows an  made by the Document Responder for an ITI-68 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti68Responder"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventChMhd1SourceExample"
+      },
+      "name" : "Example of audit event for a [CH:MHD-1] transaction at Source",
+      "description" : "This example shows an  made by the Document Source for a CH:MHD-1 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-updatedocumentmetadata-audit-source"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventChMhd1RecipientExample"
+      },
+      "name" : "Example of audit event for a [CH:MHD-1] transaction at Recipient",
+      "description" : "This example shows an  made by the Document Recipient for a CH:MHD-1 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-updatedocumentmetadata-audit-recipient"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti83ConsumerExample"
+      },
+      "name" : "Example of audit event for an [ITI-83] transaction at Consumer",
+      "description" : "This example shows an  made by the Patient Identifier Cross-reference Consumer for an ITI-83 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti83Consumer"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti83ManagerExample"
+      },
+      "name" : "Example of audit event for an [ITI-83] transaction at Manager",
+      "description" : "This example shows an  made by the Patient Identifier Cross-reference Manager for an ITI-83 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti83Manager"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti104SourceExample"
+      },
+      "name" : "Example of audit event for an [ITI-104] transaction at Source",
+      "description" : "This example shows an  made by the Patient Identity Source for an ITI-104 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti104Source"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti104ManagerCreateExample"
+      },
+      "name" : "Example of audit event for an [ITI-104] add transaction at Manager",
+      "description" : "This example shows an  made by the Patient Identifier Cross-reference Manager for an ITI-104 transaction that added a new Patient.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti104ManagerCreate"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti104ManagerUpdateExample"
+      },
+      "name" : "Example of audit event for an [ITI-104] update transaction at Manager",
+      "description" : "This example shows an  made by the Patient Identifier Cross-reference Manager for an ITI-104 transaction that revised an existing Patient.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti104ManagerUpdate"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti119ConsumerExample"
+      },
+      "name" : "Example of audit event for an [ITI-119] transaction at Consumer",
+      "description" : "This example shows an  made by the Patient Demographics Consumer for an ITI-119 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti119Consumer"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti119SupplierExample"
+      },
+      "name" : "Example of audit event for an [ITI-119] transaction at Supplier",
+      "description" : "This example shows an  made by the Patient Demographics Supplier for an ITI-119 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti119Supplier"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventPpq3CreateExample"
+      },
+      "name" : "Example of audit event for a [PPQ-3] create transaction",
+      "description" : "This example shows an  made by the Policy Source for a PPQ-3 transaction that added a new Consent.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventPpq3Create"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventPpq3UpdateExample"
+      },
+      "name" : "Example of audit event for a [PPQ-3] update transaction",
+      "description" : "This example shows an  made by the Policy Repository for a PPQ-3 transaction that updated an existing Consent.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventPpq3Update"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventPpq3DeleteExample"
+      },
+      "name" : "Example of audit event for a [PPQ-3] delete transaction",
+      "description" : "This example shows an AuditEvent made by the Policy Source for a PPQ-3 transaction that deleted a Consent.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventPpq3Delete"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ChAuditEventPpq4Example"
+      },
+      "name" : "Example of bundle of audit events for a [PPQ-4] transaction",
+      "description" : "This example shows a Bundle of AuditEvents made by the Policy Source for a PPQ-4 transaction.",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventPpq5ConsumerExample"
+      },
+      "name" : "Example of audit event for a [PPQ-5] transaction at Consumer",
+      "description" : "This example shows an  made by the Policy Consumer for a PPQ-5 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventPpq5Consumer"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventPpq5RepositoryExample"
+      },
+      "name" : "Example of audit event for a [PPQ-5] transaction at Repository",
+      "description" : "This example shows an  made by the Policy Repository for a PPQ-5 transaction.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventPpq5Repository"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti90ReadExample"
+      },
+      "name" : "Example of audit event for an [ITI-90] read transaction",
+      "description" : "This example shows an  made by the Care Services Selective Consumer for an ITI-90 transaction that read an Organization.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti90Read"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventIti90QueryExample"
+      },
+      "name" : "Example of audit event for an [ITI-90] query transaction",
+      "description" : "This example shows an  made by the Care Services Selective Supplier for an ITI-90 transaction that searched Practitioners.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti90Query"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventmCSD1CreateExample"
+      },
+      "name" : "Example of audit event for a [CH:mCSD-1] create transaction",
+      "description" : "This example shows an AuditEvent made by the Care Services Source for a CH:mCSD-1 transaction that added a new PractitionerRole (relationship).",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventmCSD1Create"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventmCSD1UpdateExample"
+      },
+      "name" : "Example of audit event for a [CH:mCSD-1] update transaction",
+      "description" : "This example shows an AuditEvent made by the Care Services Directory for a CH:mCSD-1 transaction that updated an existing Practitioner.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventmCSD1Update"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "AuditEvent"
+      }],
+      "reference" : {
+        "reference" : "AuditEvent/ChAuditEventmCSD1DeleteExample"
+      },
+      "name" : "Example of audit event for a [CH:mCSD-1] delete transaction",
+      "description" : "This example shows an AuditEvent made by the Care Services Directory for a CH:mCSD-1 transaction that deleted an Organization.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventmCSD1Delete"
     },
     {
       "extension" : [{
@@ -1262,18 +1616,6 @@
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-mhd-submissionset-comprehensive-bundle"
-      },
-      "name" : "CH MHD SubmissionSet Comprehensive Bundle",
-      "description" : "CH MHD SubmissionSet Comprehensive Bundle response [ITI-66]",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:resource"
-      }],
-      "reference" : {
         "reference" : "StructureDefinition/ch-mhd-documentreference-comprehensive-bundle"
       },
       "name" : "CH MHD Find Document References Comprehensive Response message",
@@ -1288,8 +1630,8 @@
       "reference" : {
         "reference" : "StructureDefinition/ch-mhd-updatedocumentmetadata-audit-recipient"
       },
-      "name" : "Audit Event for Update Document Metadata Transaction at Recipient",
-      "description" : "Defines constraints on the AuditEvent Resource to record when a Update Document Metadata Transaction happens at the Recipient.\n- Import event\n- shall have source of itself\n- shall have a document source agent\n- shall have a document recipient agent\n- may have user, app, organization agent(s)\n- shall have a patient entity\n- shall have a documentreference identity entity",
+      "name" : "CH Audit Event for [CH:MHD-1] Document Recipient",
+      "description" : "This profile is used to define the CH Audit Event for the [CH:MHD-1] transaction and the actor 'Document\nRecipient'.",
       "exampleBoolean" : false
     },
     {
@@ -1300,8 +1642,8 @@
       "reference" : {
         "reference" : "StructureDefinition/ch-mhd-updatedocumentmetadata-audit-source"
       },
-      "name" : "Audit Event for Update DocumentMetadata Transaction at Source",
-      "description" : "Defines constraints on the AuditEvent Resource to record when a updatedocumentmetadata Transaction happens at the Source.\n- Export event\n- shall have source of itself\n- shall have a document source agent\n- shall have a document recipient agent\n- may have user, app, organization agent(s)\n- shall have a patient entity\n- shall have a submission set identity entity",
+      "name" : "CH Audit Event for [CH:MHD-1] Document Source",
+      "description" : "This profile is used to define the CH Audit Event for the [CH:MHD-1] transaction and the actor 'Document\nSource'.",
       "exampleBoolean" : false
     },
     {
@@ -1367,6 +1709,42 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventmCSD1Create"
+      },
+      "name" : "CH Audit Event for [CH:mCSD-1] Care Services Source & Directory / Add",
+      "description" : "This profile is used to define the CH Audit Event for the [CH:mCSD-1] transaction and the actors 'Care\nServices Source' & Directory, when adding care service resources.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventmCSD1Update"
+      },
+      "name" : "CH Audit Event for [CH:mCSD-1] Care Services Source & Directory / Update",
+      "description" : "This profile is used to define the CH Audit Event for the [CH:mCSD-1] transaction and the actors 'Care\nServices Source' & Directory, when updating care service resources.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventmCSD1Delete"
+      },
+      "name" : "CH Audit Event for [CH:mCSD-1] Care Services Source & Directory / Delete",
+      "description" : "This profile is used to define the CH Audit Event for the [CH:mCSD-1] transaction and the actors 'Care\nServices Source' & Directory, when deleting care service resources.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
@@ -1386,18 +1764,6 @@
       },
       "name" : "CH EPR FHIR BirthName",
       "description" : "The birthname with the ISO 21090 qualifier https://www.hl7.org/fhir/extension-iso21090-en-qualifier.html BR",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:complex-type"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/OidIdentifier"
-      },
-      "name" : "Oid Identifier",
-      "description" : "Identifer with an oid",
       "exampleBoolean" : false
     },
     {
@@ -1625,7 +1991,7 @@
         "reference" : "CapabilityStatement/CH.ATNA.AuditCreator"
       },
       "name" : "ATNA Audit Creator (client)",
-      "description" : "CapabilityStatement for Server Actor in the IHE IT Infrastructure Technical Framework Supplement Add RESTful ATNA."
+      "description" : "CapabilityStatement for Client Actor in the IHE IT Infrastructure Technical Framework Supplement Add RESTful ATNA."
     },
     {
       "extension" : [{
@@ -1637,6 +2003,28 @@
       },
       "name" : "ATNA Audit Record Repository (server)",
       "description" : "CapabilityStatement for Server Actor in the IHE IT Infrastructure Technical Framework Supplement Add RESTful ATNA."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CapabilityStatement"
+      }],
+      "reference" : {
+        "reference" : "CapabilityStatement/CH.mCSD.CareServicesDirectory"
+      },
+      "name" : "mCSD Care Services Directory (server)",
+      "description" : "CapabilityStatement for Server Actor in the Swiss mCSD profile extension."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CapabilityStatement"
+      }],
+      "reference" : {
+        "reference" : "CapabilityStatement/CH.mCSD.CareServicesSource"
+      },
+      "name" : "mCSD Care Services Source (client)",
+      "description" : "CapabilityStatement for Server Actor in the Swiss mCSD profile extension."
     },
     {
       "extension" : [{
@@ -1685,6 +2073,17 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "OperationDefinition"
+      }],
+      "reference" : {
+        "reference" : "OperationDefinition/CHPDQmMatch"
+      },
+      "name" : "CH PDQm $Match",
+      "description" : "This operation implements the [Patient Demographics Match \\[ITI-119\\]](iti-119.html) transaction.\nIt is fully compatible with the [$match Operation on Patient](http://hl7.org/fhir/R4/patient-operation-match.html).\nThe only changes are to constrain the input parameters to use the [PDQm Patient Profile for $match Input](StructureDefinition-CHPDQmMatchInput.html) profile\nand to constring the output parameters to use the [PDQm Patient Profile](StructureDefinition-ch-pdqm-patient.html) profile."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
@@ -1721,6 +2120,292 @@
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
+        "reference" : "StructureDefinition/CHPDQmMatchInput"
+      },
+      "name" : "CH PDQm Patient Profile for $match Input",
+      "description" : "The PDQm Patient Profile for $match Input SHALL be provided as input to the ITI-119 transaction.\n- While it is not REQUIRED that the input to $match be a valid FHIR instance, it is RECOMMENDED to supply as many elements as possible to facilitate matching.\n- modifierExtension and implicitRules SHALL not be specified.\n- The ChEprFhirBirthName profile is available to hold the mother's maiden name"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/CHPDQmMatchParametersIn"
+      },
+      "name" : "CH PDQm Match Input Parameters Profile",
+      "description" : "The PDQm Match Input Parameters Profile describes the Parameters Resource that is to be posted to the $match endpoint when invoking ITI-119.\nThis profile is consistent with the exceptions of the [Patient-match operation in FHIR core](http://hl7.org/fhir/R4/patient-operation-match.html),\nexcept the input resource SHALL be an instance of the [PDQm Patient Profile for $match Input](StructureDefinition-CHPDQmMatchInput.html).\n\nNote that the only REQUIRED parameter is the Patient Resource. When only the Patient is supplied, it can be POSTed directly to the $match endpoint\nwithout being wrapped in a Parameters Resource, as long as it conforms to the [PDQm Patient Profile for $match Input](StructureDefinition-CHPDQmMatchInput.html)."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventBasicToken"
+      },
+      "name" : "CH Audit Event with a Basic Auth Token",
+      "description" : "This is the profile for Swiss Audit Events when a transaction is secured with a Basic Authorization Token."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventExtendedToken"
+      },
+      "name" : "CH Audit Event with an Extended Auth Token",
+      "description" : "This is the profile for Swiss Audit Events when a transaction is secured with an Extended Authorization\nToken."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti104ManagerCreate"
+      },
+      "name" : "CH Audit Event for [ITI-104] Patient Identifier Cross-reference Manager / Create patient",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-104] transaction and the actor 'Patient\nIdentifier Cross-reference Manager' when creating a patient."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti104ManagerUpdate"
+      },
+      "name" : "CH Audit Event for [ITI-104] Patient Identifier Cross-reference Manager / Update patient",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-104] transaction and the actor 'Patient\nIdentifier Cross-reference Manager' when updating a patient."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti104Source"
+      },
+      "name" : "CH Audit Event for [ITI-104] Patient Identity Source",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-104] transaction and the actor 'Patient\nIdentity Source'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti119Consumer"
+      },
+      "name" : "CH Audit Event for [ITI-119] Patient Demographics Consumer",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-119] transaction and the actor 'Patient\n              Demographics Consumer'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti119Supplier"
+      },
+      "name" : "CH Audit Event for [ITI-119] Patient Demographics Supplier",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-119] transaction and the actor 'Patient\nDemographics Supplier'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti65Recipient"
+      },
+      "name" : "CH Audit Event for [ITI-65] Document Recipient",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-65] transaction and the actor 'Document\nRecipient'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti65Source"
+      },
+      "name" : "CH Audit Event for [ITI-65] Document Source",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-65] transaction and the actor 'Document\nSource'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti67Consumer"
+      },
+      "name" : "CH Audit Event for [ITI-67] Document Consumer",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-67] transaction and the actor 'Document\nConsumer'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti67Responder"
+      },
+      "name" : "CH Audit Event for [ITI-67] Document Responder",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-67] transaction and the actor 'Document\nResponder'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti68Consumer"
+      },
+      "name" : "CH Audit Event for [ITI-68] Document Consumer",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-68] transaction and the actor 'Document\nConsumer'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti68Responder"
+      },
+      "name" : "CH Audit Event for [ITI-68] Document Responder",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-68] transaction and the actor 'Document\nResponder'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti83Consumer"
+      },
+      "name" : "CH Audit Event for [ITI-83] Patient Identifier Cross-reference Consumer",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-83] transaction and the actor 'Patient\nIdentifier Cross-reference Consumer'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti83Manager"
+      },
+      "name" : "CH Audit Event for [ITI-83] Patient Identifier Cross-reference Manager",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-83] transaction and the actor 'Patient\nIdentifier Cross-reference Manager'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti90Query"
+      },
+      "name" : "CH Audit Event for [ITI-90] Care Services Selective Consumer & Supplier / Query",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-90] transaction and the actors 'Care\nServices Selective Consumer' & Supplier, when querying care service resources."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventIti90Read"
+      },
+      "name" : "CH Audit Event for [ITI-90] Care Services Selective Consumer & Supplier / Read",
+      "description" : "This profile is used to define the CH Audit Event for the [ITI-90] transaction and the actors 'Care\nServices Selective Consumer' & Supplier, when reading care service resources."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventPpq3Create"
+      },
+      "name" : "CH Audit Event for [PPQ-3] Create privacy policy",
+      "description" : "This profile is used to define the CH Audit Event for the [PPQ-3] transaction and the actors 'Policy\nSource' and 'Policy Repository' when creating a privacy policy."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventPpq3Delete"
+      },
+      "name" : "CH Audit Event for [PPQ-3] Delete privacy policy",
+      "description" : "This profile is used to define the CH Audit Event for the [PPQ-3] transaction and the actors 'Policy\nSource' and 'Policy Repository' when deleting a privacy policy."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventPpq3Update"
+      },
+      "name" : "CH Audit Event for [PPQ-3] Update privacy policy",
+      "description" : "This profile is used to define the CH Audit Event for the [PPQ-3] transaction and the actors 'Policy\nSource' and 'Policy Repository' when updating a privacy policy."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventPpq5Consumer"
+      },
+      "name" : "CH Audit Event for [PPQ-5] Policy Consumer",
+      "description" : "This profile is used to define the CH Audit Event for the [PPQ-5] transaction and the actor 'Policy\nConsumer'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ChAuditEventPpq5Repository"
+      },
+      "name" : "CH Audit Event for [PPQ-5] Policy Repository",
+      "description" : "This profile is used to define the CH Audit Event for the [PPQ-5] transaction and the actor 'Policy\nRepository'."
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/LdapIdentifier"
+      },
+      "name" : "LDAP Identifier",
+      "description" : "Identifier with an LDAP DN"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/OidIdentifier"
+      },
+      "name" : "Oid Identifier",
+      "description" : "Identifer with an oid"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
         "reference" : "StructureDefinition/PpqmConsentTemplate201"
       },
       "name" : "EPR policy set based on template 201",
@@ -1735,7 +2420,7 @@
         "reference" : "StructureDefinition/PpqmConsentTemplate202"
       },
       "name" : "EPR policy set based on template 202",
-      "description" : "EPR policy set based on template 202 -- grants healthcare professionals accass to the patient's EPR in emergency mode.  This policy set shall be created during the patient's onboarding, but can be modified later."
+      "description" : "EPR policy set based on template 202 -- grants healthcare professionals access to the patient's EPR in emergency mode.  This policy set shall be created during the patient's onboarding, but can be modified later."
     },
     {
       "extension" : [{
@@ -1798,10 +2483,10 @@
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-pdqm-moreattributesrequested"
+        "reference" : "StructureDefinition/ch-pdqm-matchparametersout"
       },
-      "name" : "CH PDQm OperationOutcome More Attributes Requested",
-      "description" : "A profile on the OperationOutcome for indicating which additional attributes are requested to lower the results number."
+      "name" : "CH PDQm Match Output Bundle Profile",
+      "description" : "A profile on the Query Patient Resource Response message for ITI-119"
     },
     {
       "extension" : [{
@@ -1809,10 +2494,10 @@
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/ch-pdqm-querypatientresourceresponsemessage"
+        "reference" : "StructureDefinition/ch-pdqm-moreattributesrequested"
       },
-      "name" : "CH PDQm Query Patient Resource Response message",
-      "description" : "A profile on the Query Patient Resource Response message for ITI-78"
+      "name" : "CH PDQm OperationOutcome More Attributes Requested",
+      "description" : "A profile on the OperationOutcome for indicating which additional attributes are requested to lower the results number."
     },
     {
       "extension" : [{
@@ -1982,7 +2667,7 @@
             "valueUrl" : "iti-mhd.html"
           }],
           "nameUrl" : "iti-mhd.html",
-          "title" : "Mobile Access to Health Documents (MHD) with XDS on FHIR",
+          "title" : "Mobile Access to Health Documents (MHD)",
           "generation" : "markdown"
         },
         {
@@ -2042,10 +2727,10 @@
         {
           "extension" : [{
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-            "valueUrl" : "iti-78.html"
+            "valueUrl" : "iti-119.html"
           }],
-          "nameUrl" : "iti-78.html",
-          "title" : "Mobile Patient Demographics Query [ITI-78]",
+          "nameUrl" : "iti-119.html",
+          "title" : "Patient Demographics Match [ITI-119]",
           "generation" : "markdown"
         },
         {
@@ -2073,15 +2758,6 @@
           }],
           "nameUrl" : "iti-65.html",
           "title" : "Provide Document Bundle [ITI-65]",
-          "generation" : "markdown"
-        },
-        {
-          "extension" : [{
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-            "valueUrl" : "iti-66.html"
-          }],
-          "nameUrl" : "iti-66.html",
-          "title" : "Find Document Lists [ITI-66]",
           "generation" : "markdown"
         },
         {
@@ -2127,6 +2803,15 @@
           }],
           "nameUrl" : "iti-90.html",
           "title" : "Find Matching Care Services [ITI-90]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [{
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+            "valueUrl" : "ch-mcsd-1.html"
+          }],
+          "nameUrl" : "ch-mcsd-1.html",
+          "title" : "Care Services Feed [CH:mCSD-1]",
           "generation" : "markdown"
         },
         {

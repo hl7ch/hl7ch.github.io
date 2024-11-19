@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Get Access Token [ITI-71] - CH EPR FHIR (R4) v4.0.1-ballot</title>
+    <title>Get Access Token [ITI-71] - CH EPR FHIR (R4) v4.0.1-ballot-2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -62,7 +62,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"3.1"}
     h3,h4,h5,h6{--heading-prefix:"3.1"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -92,7 +93,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1-ballot - ballot
+            <span style="display:inline-block;">4.0.1-ballot-2 - ballot
 
 
 
@@ -140,7 +141,7 @@
                 <a href="iti-pixm.html">Patient Identifier Cross-referencing for mobile (PIXm)</a>
             </li>
             <li>
-                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD) with XDS on FHIR</a>
+                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD)</a>
             </li>
             <li>
                 <a href="iti-restful-atna.html">RESTful ATNA</a>
@@ -169,16 +170,13 @@
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
             </li>
             <li>
-                <a href="iti-78.html">Mobile Patient Demographics Query [ITI-78]</a>
+                <a href="iti-119.html">Patient Demographics Match [ITI-119]</a>
             </li>
             <li>
                 <a href="iti-83.html">Mobile Patient Identifier Cross-reference Query [ITI-83]</a>
             </li>
             <li>
                 <a href="iti-65.html">Provide Document Bundle [ITI-65]</a>
-            </li>
-            <li>
-                <a href="iti-66.html">Find Document Lists [ITI-66]</a>
             </li>
             <li>
                 <a href="iti-67.html">Find Document References [ITI-67]</a>
@@ -194,6 +192,9 @@
             </li>
             <li>
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
+            </li>
+            <li>
+                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -274,7 +275,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot-2: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Get Access Token [ITI-71]</h2>
   
 
@@ -504,7 +505,7 @@ Authorization”. In this transaction, the OAuth Authorization Code grant type o
     <td>R</td>
     <td>IUA</td>
     <td>An unguessable value used by the Authorization Client to track the state between the authorization request and
-     the callback.</td>
+     the callback to the redirect_uri.</td>
    </tr>
    <tr>
     <td>&nbsp;</td>
@@ -549,7 +550,7 @@ Authorization”. In this transaction, the OAuth Authorization Code grant type o
    </tr>
    <tr>
     <td>02, 03</td>
-    <td>The Authorization Server performs an HTTP GET on the Authorization Client callback URL (redirect_uri) conveying
+    <td>The Authorization Server performs an HTTP GET on the Authorization Client redirect_uri conveying
      the authorization code.</td>
     <td>code</td>
     <td>R</td>
@@ -563,7 +564,7 @@ Authorization”. In this transaction, the OAuth Authorization Code grant type o
     <td>R</td>
     <td>IUA</td>
     <td>The unguessable value used by the Authorization Client to track the state between the authorization request and
-     the callback.</td>
+     the callback (redirect_uri).</td>
    </tr>
    <tr>
     <td>04</td>
@@ -711,9 +712,9 @@ Authorization”. In this transaction, the OAuth Authorization Code grant type o
 
 <h6 id="expected-actions">Expected Actions</h6>
 
-<p>When receiving a Get Access Token Request with purpose of use set to AUTO and subject role set to TCU, the Authorization Server SHALL identify and authenticate the Authorization Client with the client_id, client_secret and the client’s certificate of the TLS connection.</p>
+<p>When receiving a Get Access Token Request with purpose of use set to AUTO and subject role set to TCU, the Authorization Server SHALL identify and authenticate the Authorization Client with the client_id, client_secret and the client's certificate of the TLS connection.</p>
 
-<p>The Authorization Server SHALL verify that the Authorization Client was registered during onboading with the same client_id, client_secret and the client’s certificate of the TLS connection and is authorized to access the EHR.</p>
+<p>The Authorization Server SHALL verify that the Authorization Client was registered during onboading with the same client_id, client_secret and the client's certificate of the TLS connection and is authorized to access the EHR.</p>
 
 <p>The Authorization Server SHALL verify that the principal_id matches the GLN of the legal responsible healthcare professional the Authorization Client was registered during onboading.</p>
 
@@ -830,9 +831,9 @@ scope=user%2F*.*+openid+fhirUser+purpose_of_use%3Durn%3Aoid%3A2.16.756.5.30.1.12
 <p>The scope parameter of the request MAY claim the following attributes:</p>
 <ul>
   <li>There MAY be a scope with name “launch”. If present, it indicates the permission of SMART on FHIR Apps to obtain launch context from a portal or primary system authorized to access the EPR.</li>
-  <li>There MAY be a scope with name “purpose_of_use=token”. If present, the token SHALL convey the coded value of the current transaction’s purpose of use. Allowed values are NORM (normal access) and EMER (emergency access) from code system 2.16.756.5.30.1.127.3.10.5 of the CH:EPR value set. e.g. purpose_of_use=urn:oid:2.16.756.5.30.1.127.3.10.5|NORM</li>
-  <li>There MAY be a scope with name “subject_role=token”. If present, the token SHALL convey the coded value of the subject’s role. The value SHALL be either HCP (healthcare professional), ASS (assistant), REP (representative) or PAT (patient) from code system 2.16.756.5.30.1.127.3.10.6 of the CH:EPR value set. e.g.: subject_role=urn:oid:2.16.756.5.30.1.127.3.10.6|HCP</li>
-  <li>There MAY be a scope with name “person_id=value”. If present, the value SHALL convey the EPR-SPID identifier of the patient’s record and the patient assigning authority formatted in CX syntax. e.g: person_id=761337610411353650^^^&amp;2.16.756.5.30.1.109.6.5.3.1.1&amp;ISO</li>
+  <li>There MAY be a scope with name "purpose_of_use=token". If present, the token SHALL convey the coded value of the current transaction’s purpose of use. Allowed values are NORM (normal access) and EMER (emergency access) from code system 2.16.756.5.30.1.127.3.10.5 of the CH:EPR value set. e.g. purpose_of_use=urn:oid:2.16.756.5.30.1.127.3.10.5|NORM</li>
+  <li>There MAY be a scope with name "subject_role=token". If present, the token SHALL convey the coded value of the subject’s role. The value SHALL be either HCP (healthcare professional), ASS (assistant), REP (representative) or PAT (patient) from code system 2.16.756.5.30.1.127.3.10.6 of the CH:EPR value set. e.g.: subject_role=urn:oid:2.16.756.5.30.1.127.3.10.6|HCP</li>
+  <li>There MAY be a scope with name "person_id=value". If present, the value SHALL convey the EPR-SPID identifier of the patient’s record and the patient assigning authority formatted in CX syntax. e.g: person_id=761337610411353650^^^&amp;2.16.756.5.30.1.109.6.5.3.1.1&amp;ISO</li>
 </ul>
 
 <p>Note: The parameters need to be url encoded, see above message example.</p>
@@ -869,7 +870,7 @@ scope=user%2F*.*+openid+fhirUser+purpose_of_use%3Durn%3Aoid%3A2.16.756.5.30.1.12
 
 <p>The Authorization Server SHALL enforce that the user is authenticated compliant to the regulations of the Swiss EHR and has a valid browser session with an certified Identity Provider. If the user is not authenticated the Authorization Server SHALL respond with an error page or redirect the user to a Identity Provider.</p>
 
-<p>If the IUA Authorization Client receives the request from the IUA Authorization Server on the callback URL conveying the authorization code, the Authorization Client SHALL perform the HTTP POST request with the client_id and client_secret in the HTTP authorization header field to resolve the authorization code to the access token.</p>
+<p>If the IUA Authorization Client receives the request from the IUA Authorization Server on the redirect-uri conveying the authorization code, the Authorization Client SHALL perform the HTTP POST request with the client_id and client_secret in the HTTP authorization header field to resolve the authorization code to the access token.</p>
 
 <p>The Authorization Server SHALL respond with the Get Access Token response as defined in <a href="#get-access-token-response">Get Access Token Response</a> only if all checks are successful. If one of the above checks fails, the Authorization Server SHALL respond with HTTP 401 (Unauthorized) error.</p>
 
@@ -1034,7 +1035,7 @@ access_token_format=urn:ietf:params:oauth:token-type:jwt
   <li>id: The id of the organization/group.The id SHALL be an OID in the format of a URN</li>
 </ul>
 
-<p>The ch_group extension claims shall be wrapped in an “extensions” object with key ‘ch_group’ and a JSON array containing the JSON objects with properties name and id. The id SHALL be an OID in the format of a URN.</p>
+<p>The ch_group extension claims shall be wrapped in an "extensions" object with key 'ch_group’ and a JSON array containing the JSON objects with properties name and id. The id SHALL be an OID in the format of a URN.</p>
 
 <table class="table table-bordered">
   <thead>
@@ -1072,7 +1073,7 @@ access_token_format=urn:ietf:params:oauth:token-type:jwt
   <li>principal_id (optional) GLN of the healthcare professional an assistant is acting on behalf of.</li>
 </ul>
 
-<p>The ch_delegation extension claims shall be wrapped in an “extensions” object with key ‘ch_delegation’ and a JSON value object containing the claims.
+<p>The ch_delegation extension claims shall be wrapped in an "extensions" object with key 'ch_delegation' and a JSON value object containing the claims.
 The claim content for the JWT CH:EPR extensions shall correspond to the content defined in the XUA specification (see 1.6.4.2 Get X-User Assertion, A5E1).</p>
 
 <table class="table table-bordered">
@@ -1130,7 +1131,7 @@ The claim content for the JWT CH:EPR extensions shall correspond to the content 
 
 <h5 id="message-example-2">Message Example</h5>
 
-<p>A JWT access token returned by the IUA Authorization Server and to be used to retrieve patient data may look like:</p>
+<p>A basic JWT access token returned by the IUA Authorization Server and to be used to retrieve patient data may look like:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuerAdress.ch"</span><span class="p">,</span><span class="w">
@@ -1152,7 +1153,7 @@ The claim content for the JWT CH:EPR extensions shall correspond to the content 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>A extend JWT access token to be used to access patient documents SHALL have the additional attributes of the purpose of use, subject role, the EPR-SPID of the patient and may look like:</p>
+<p>An extended JWT access token to be used to access patient documents SHALL have the additional attributes of the purpose of use, subject role, the EPR-SPID of the patient and may look like:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuerAdress.ch"</span><span class="p">,</span><span class="w">
@@ -1198,7 +1199,7 @@ The claim content for the JWT CH:EPR extensions shall correspond to the content 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>A JWT access token to be used to access by an assistant acting behalf on a healthcare professional for a patient SHALL have the additional extension ch_delegation:</p>
+<p>An extended JWT access token to be used to access by an assistant acting behalf on a healthcare professional for a patient SHALL have the additional extension ch_delegation:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuerAdress.ch"</span><span class="p">,</span><span class="w">
@@ -1257,7 +1258,7 @@ The claim content for the JWT CH:EPR extensions shall correspond to the content 
 <p>IUA Authorization Clients, Authorization Servers and Resource Server actors SHALL use the JWS (signed) alternative 
 of the JWT token as specified in the IUA Trial Implementation. The JWE alternative SHALL not be used.</p>
 
-<p>For the <code class="language-plaintext highlighter-rouge">traceparent</code> header handling refer to <a href="tracecontext.html">Trace Context header</a>.</p>
+<p>The actors SHALL support the <em>traceparent</em> header handling, as defined in <a href="tracecontext.html">Appendix: Trace Context</a>.</p>
 
 <h4 id="security-audit-considerations">Security Audit Considerations</h4>
 
@@ -1282,7 +1283,7 @@ of the JWT token as specified in the IUA Trial Implementation. The JWE alternati
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 21:49+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot-2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Nov 19, 2024 17:31+0000">2024-11-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -1290,7 +1291,7 @@ of the JWT token as specified in the IUA Trial Implementation. The JWE alternati
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot%20/iti-71.html&amp;entry%2E247644557=Get%20Access%20Token%20[ITI-71]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot-2%20/iti-71.html&amp;entry%2E247644557=Get%20Access%20Token%20[ITI-71]">Propose a change</a>
 
 
 
@@ -1305,7 +1306,7 @@ of the JWT token as specified in the IUA Trial Implementation. The JWE alternati
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -1316,7 +1317,6 @@ of the JWT token as specified in the IUA Trial Implementation. The JWE alternati
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

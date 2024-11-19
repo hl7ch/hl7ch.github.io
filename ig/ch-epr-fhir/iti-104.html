@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Patient Identity Feed FHIR [ITI-104] - CH EPR FHIR (R4) v4.0.1-ballot</title>
+    <title>Patient Identity Feed FHIR [ITI-104] - CH EPR FHIR (R4) v4.0.1-ballot-2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -62,7 +62,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"3.5"}
     h3,h4,h5,h6{--heading-prefix:"3.5"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -92,7 +93,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1-ballot - ballot
+            <span style="display:inline-block;">4.0.1-ballot-2 - ballot
 
 
 
@@ -140,7 +141,7 @@
                 <a href="iti-pixm.html">Patient Identifier Cross-referencing for mobile (PIXm)</a>
             </li>
             <li>
-                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD) with XDS on FHIR</a>
+                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD)</a>
             </li>
             <li>
                 <a href="iti-restful-atna.html">RESTful ATNA</a>
@@ -169,16 +170,13 @@
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
             </li>
             <li>
-                <a href="iti-78.html">Mobile Patient Demographics Query [ITI-78]</a>
+                <a href="iti-119.html">Patient Demographics Match [ITI-119]</a>
             </li>
             <li>
                 <a href="iti-83.html">Mobile Patient Identifier Cross-reference Query [ITI-83]</a>
             </li>
             <li>
                 <a href="iti-65.html">Provide Document Bundle [ITI-65]</a>
-            </li>
-            <li>
-                <a href="iti-66.html">Find Document Lists [ITI-66]</a>
             </li>
             <li>
                 <a href="iti-67.html">Find Document References [ITI-67]</a>
@@ -194,6 +192,9 @@
             </li>
             <li>
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
+            </li>
+            <li>
+                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -274,7 +275,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot-2: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Patient Identity Feed FHIR [ITI-104]</h2>
   
 
@@ -318,7 +319,7 @@ IHE IT Infrastructure Technical Framework Trial Implementation “Patient Identi
 <h3 id="referenced-standards">Referenced Standards</h3>
 
 <ol>
-  <li><a href="https://profiles.ihe.net/ITI/PIXm/index.html">Patient Identifier Cross-referencing for mobile (PIXm), Rev. 3.0.3</a></li>
+  <li><a href="https://profiles.ihe.net/ITI/PIXm/3.0.4">Patient Identifier Cross-referencing for mobile (PIXm), Rev. 3.0.4</a></li>
   <li>This PIXm Profile is based on Release 4 of the emerging <a href="https://hl7.org/fhir/R4/index.html">HL7® FHIR®</a> standard.</li>
 </ol>
 
@@ -419,30 +420,35 @@ constrained profile as a <code class="language-plaintext highlighter-rouge">supp
 
 <h3 id="security-consideration">Security Consideration</h3>
 
-<p>TLS SHALL be used. This national extension enforces authentication and authorization of access to the
-Patient Identifier Cross-reference Manager using the IUA profile with basic access token. Consequently
-the <em>Patient Identity Feed FHIR</em> [ITI-104] request must authorize using the 
-<a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">[ITI-72]</a> transaction of the IUA profile.</p>
+<p>The transaction SHALL be secured by Transport Layer Security (TLS) encryption and server authentication with
+server certificates.</p>
 
-<p>For the <code class="language-plaintext highlighter-rouge">traceparent</code> header handling refer to <a href="tracecontext.html">Trace Context header</a>.</p>
+<p>The transaction SHALL use client authentication and authorization using basic authorization token as defined
+in the <a href="https://profiles.ihe.net/ITI/IUA">IUA profile</a>. The authorization token SHALL be conveyed as
+defined in the <a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">Incorporate Access Token [ITI-72]</a>
+transaction.</p>
+
+<p>The actors SHALL support the <em>traceparent</em> header handling, as defined in <a href="tracecontext.html">Appendix: Trace Context</a>.</p>
 
 <h4 id="security-audit-considerations">Security Audit Considerations</h4>
 
 <h5 id="patient-identity-source-audit">Patient Identity Source Audit</h5>
 
 <p>The <strong>Patient Identity Source</strong> shall record a
-<a href="https://profiles.ihe.net/ITI/PIXm/StructureDefinition-IHE.PIXm.Feed.Update.Audit.Source.html">PIXm Feed Source Audit Event Log</a>.
-<a href="https://profiles.ihe.net/ITI/PIXm/AuditEvent-ex-auditPixmFeed-update-source.html">Audit Example for a PIXm Feed transaction from source perspective</a>.</p>
+<a href="StructureDefinition-ChAuditEventIti104Source.html">CH Audit Event for [ITI-104] Patient Identity Source</a>
+(<a href="AuditEvent-ChAuditEventIti104SourceExample.html">example</a>).</p>
 
 <h5 id="patient-identifier-cross-reference-manager-audit">Patient Identifier Cross-reference Manager Audit</h5>
 
 <p>The <strong>Patient Identifier Cross-reference Manager</strong> shall record audit events:</p>
 
 <ul>
-  <li>on an <em>Add Patient</em> message: <a href="https://profiles.ihe.net/ITI/PIXm/StructureDefinition-IHE.PIXm.Feed.Create.Audit.Manager.html">Audit Event for Patient Identity Feed FHIR by the Manager that Creates a Patient</a>.
-<a href="https://profiles.ihe.net/ITI/PIXm/AuditEvent-ex-auditPixmFeed-create-manager.html">Audit Example of ITI-104 Create at Manager</a>.</li>
-  <li>on a Revise Patient message: <a href="https://profiles.ihe.net/ITI/PIXm/StructureDefinition-IHE.PIXm.Feed.Update.Audit.Manager.html">Audit Event for Patient Identity Feed FHIR by the Manager that Updates a Patient</a>.
-<a href="https://profiles.ihe.net/ITI/PIXm/AuditEvent-ex-auditPixmFeed-update-manager.html">Audit Example of ITI-104 Update at Manager</a>.</li>
+  <li>on an <em>Add Patient</em> message:
+<a href="StructureDefinition-ChAuditEventIti104ManagerCreate.html">CH Audit Event for [ITI-104] Patient Identifier Cross-reference Manager / <strong>Create</strong> patient</a>
+(<a href="AuditEvent-ChAuditEventIti104ManagerCreateExample.html">example</a>).</li>
+  <li>on a <em>Revise Patient</em> message:
+<a href="StructureDefinition-ChAuditEventIti104ManagerUpdate.html">CH Audit Event for [ITI-104] Patient Identifier Cross-reference Manager / <strong>Update</strong> patient</a>
+(<a href="AuditEvent-ChAuditEventIti104ManagerUpdateExample.html">example</a>).</li>
 </ul>
 
 
@@ -464,7 +470,7 @@ the <em>Patient Identity Feed FHIR</em> [ITI-104] request must authorize using t
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 21:49+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot-2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Nov 19, 2024 17:31+0000">2024-11-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -472,7 +478,7 @@ the <em>Patient Identity Feed FHIR</em> [ITI-104] request must authorize using t
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot%20/iti-104.html&amp;entry%2E247644557=Patient%20Identity%20Feed%20FHIR%20[ITI-104]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot-2%20/iti-104.html&amp;entry%2E247644557=Patient%20Identity%20Feed%20FHIR%20[ITI-104]">Propose a change</a>
 
 
 
@@ -487,7 +493,7 @@ the <em>Patient Identity Feed FHIR</em> [ITI-104] request must authorize using t
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -498,7 +504,6 @@ the <em>Patient Identity Feed FHIR</em> [ITI-104] request must authorize using t
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

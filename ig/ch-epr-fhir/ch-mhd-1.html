@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Update Document Metadata [CH:MHD-1] - CH EPR FHIR (R4) v4.0.1-ballot</title>
+    <title>Update Document Metadata [CH:MHD-1] - CH EPR FHIR (R4) v4.0.1-ballot-2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -62,9 +62,10 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
-    <style type="text/css">h2{--heading-prefix:"3.10"}
-    h3,h4,h5,h6{--heading-prefix:"3.10"}</style>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"3.9"}
+    h3,h4,h5,h6{--heading-prefix:"3.9"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
@@ -92,7 +93,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1-ballot - ballot
+            <span style="display:inline-block;">4.0.1-ballot-2 - ballot
 
 
 
@@ -140,7 +141,7 @@
                 <a href="iti-pixm.html">Patient Identifier Cross-referencing for mobile (PIXm)</a>
             </li>
             <li>
-                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD) with XDS on FHIR</a>
+                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD)</a>
             </li>
             <li>
                 <a href="iti-restful-atna.html">RESTful ATNA</a>
@@ -169,16 +170,13 @@
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
             </li>
             <li>
-                <a href="iti-78.html">Mobile Patient Demographics Query [ITI-78]</a>
+                <a href="iti-119.html">Patient Demographics Match [ITI-119]</a>
             </li>
             <li>
                 <a href="iti-83.html">Mobile Patient Identifier Cross-reference Query [ITI-83]</a>
             </li>
             <li>
                 <a href="iti-65.html">Provide Document Bundle [ITI-65]</a>
-            </li>
-            <li>
-                <a href="iti-66.html">Find Document Lists [ITI-66]</a>
             </li>
             <li>
                 <a href="iti-67.html">Find Document References [ITI-67]</a>
@@ -194,6 +192,9 @@
             </li>
             <li>
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
+            </li>
+            <li>
+                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -274,7 +275,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot-2: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Update Document Metadata [CH:MHD-1]</h2>
   
 
@@ -304,7 +305,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="scope">Scope</h3>
 
-<p>The Update Document Metadata [CH-MHD-1] transaction is used to update  document metadata from the Document Consumer to the Document Responder.</p>
+<p>The Update Document Metadata [CH-MHD-1] transaction is used to update document metadata from the Document Consumer to the Document Responder.</p>
 
 <h3 id="actor-roles">Actor Roles</h3>
 
@@ -316,7 +317,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h3 id="referenced-standards">Referenced Standards</h3>
 
 <ol>
-  <li><a href="https://profiles.ihe.net/ITI/MHD/index.html">Mobile access to Health Documents (MHD), Rev. 4.2.1 – Trial-Implementation,  August 2, 2023</a></li>
+  <li><a href="https://profiles.ihe.net/ITI/MHD/index.html">Mobile access to Health Documents (MHD), Rev. 4.2.2 – Trial-Implementation, 2024-05-18</a></li>
   <li>This MHD Profile is based on Release 4 of the <a href="https://hl7.org/fhir/R4/index.html">HL7® FHIR®</a> standard.</li>
 </ol>
 
@@ -492,29 +493,60 @@ the request in its response message.</p>
   <li>Check the submitted DocumentReference and determine if it contains only changes to modifiable attributes, as described in Annex 5.1 1.12.1. If not, an OperationOutcome with the error code <a href="OperationOutcome-MhdOperationOutcomeErrorUnmodifiableMetadataError.html">UnmodifiableMetadataError</a> should be returned.</li>
 </ol>
 
+<h6 id="federated-cross-community-access-option">Federated Cross Community Access Option</h6>
+
+<div class="mermaid">
+%%{
+    init: {
+        'theme': 'neutral',
+        'themeVariables': {
+            'fontSize': '14px'
+        }
+    }
+}%%
+flowchart LR
+    A[Document Source] --&gt;|Update Doc Metadata| B(DocumentRecipient
+    Option FXCA
+    Grouped with Document Source)
+    B --&gt; C{own Community?}
+    C --&gt;|yes| D(Document Recipient own community)
+    C --&gt;|no| E(Document Recipient federated community)
+</div>
+
+<p>With the Federated Cross Community Access option the Document Recipient SHALL identify if a document metadata update targets another community. If this is the case, it SHALL forward the request to the target community, otherwise the request can be handled in the own community. If the remote community cannot be reached an error SHALL be generated by the Document Recipient and the Document Source SHALL process this error.</p>
+
 <h5 id="response-message">Response Message</h5>
 <p>See http://hl7.org/fhir/http.html#update for response.</p>
 
 <h3 id="security-consideration">Security Consideration</h3>
 
-<p>TLS SHALL be used. This national extension enforces authentication and authorization of access to the
-Document Recipient using the IUA profile with extended access token. Consequently
-the <em>Update Document Metadata</em> [CH:MHD-1] request must authorize using the <a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">[ITI-72]</a>
-transaction of the IUA profile.</p>
+<p>The transaction SHALL be secured by Transport Layer Security (TLS) encryption and server authentication with
+server certificates. Transactions across communities SHALL use mTLS.</p>
 
-<p>For the <code class="language-plaintext highlighter-rouge">traceparent</code> header handling refer to <a href="tracecontext.html">Trace Context header</a>.</p>
+<p>The transaction SHALL use client authentication and authorization using extended authorization token as defined
+in the <a href="https://profiles.ihe.net/ITI/IUA">IUA profile</a>. The extended authorization token SHALL be conveyed as
+defined in the <a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">Incorporate Access Token [ITI-72]</a>
+transaction.</p>
+
+<p>All Document Recipients except the one with the Federated Cross Community Access Option SHALL be grouped with the Authorization Decision Consumer actor of the CH:ADR profile
+defined in Extension 2.1 to Annex 5 of the ordinances and perform an Authorization Decision Request [CH:ADR] for
+every update document metadata [CH:MHD-1] request.</p>
+
+<p>The actors SHALL support the <em>traceparent</em> header handling, as defined in <a href="tracecontext.html">Appendix: Trace Context</a>.</p>
 
 <h4 id="security-audit-considerations">Security Audit Considerations</h4>
 
 <h5 id="document-source-audit">Document Source Audit</h5>
 
 <p>The <strong>Document Source</strong> shall record an
-<a href="StructureDefinition-ch-mhd-updatedocumentmetadata-audit-source.html">Audit Event for Update Document Metadata Transaction at Source</a>.</p>
+<a href="StructureDefinition-ch-mhd-updatedocumentmetadata-audit-source.html">CH Audit Event for [CH:MHD-1] Document Source</a>
+(<a href="AuditEvent-ChAuditEventChMhd1SourceExample.html">example</a>).</p>
 
 <h5 id="document-recipient-audit">Document Recipient Audit</h5>
 
 <p>The <strong>Document Recipient</strong> shall record an
-<a href="StructureDefinition-ch-mhd-updatedocumentmetadata-audit-recipient.html">Audit Event for Update Document Metadata Transaction at Recipient</a>.</p>
+<a href="StructureDefinition-ch-mhd-updatedocumentmetadata-audit-recipient.html">CH Audit Event for [CH:MHD-1] Document Recipient</a>
+(<a href="AuditEvent-ChAuditEventChMhd1RecipientExample.html">example</a>).</p>
 
 
 
@@ -535,7 +567,7 @@ transaction of the IUA profile.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 21:49+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot-2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Nov 19, 2024 17:31+0000">2024-11-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -543,7 +575,7 @@ transaction of the IUA profile.</p>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot%20/ch-mhd-1.html&amp;entry%2E247644557=Update%20Document%20Metadata%20[CH:MHD-1]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot-2%20/ch-mhd-1.html&amp;entry%2E247644557=Update%20Document%20Metadata%20[CH:MHD-1]">Propose a change</a>
 
 
 
@@ -558,7 +590,7 @@ transaction of the IUA profile.</p>
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -569,7 +601,6 @@ transaction of the IUA profile.</p>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

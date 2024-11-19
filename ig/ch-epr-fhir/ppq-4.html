@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Mobile Privacy Policy Bundle Feed [PPQ-4] - CH EPR FHIR (R4) v4.0.1-ballot</title>
+    <title>Mobile Privacy Policy Bundle Feed [PPQ-4] - CH EPR FHIR (R4) v4.0.1-ballot-2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -62,7 +62,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"3.14"}
     h3,h4,h5,h6{--heading-prefix:"3.14"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -92,7 +93,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1-ballot - ballot
+            <span style="display:inline-block;">4.0.1-ballot-2 - ballot
 
 
 
@@ -140,7 +141,7 @@
                 <a href="iti-pixm.html">Patient Identifier Cross-referencing for mobile (PIXm)</a>
             </li>
             <li>
-                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD) with XDS on FHIR</a>
+                <a href="iti-mhd.html">Mobile Access to Health Documents (MHD)</a>
             </li>
             <li>
                 <a href="iti-restful-atna.html">RESTful ATNA</a>
@@ -169,16 +170,13 @@
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
             </li>
             <li>
-                <a href="iti-78.html">Mobile Patient Demographics Query [ITI-78]</a>
+                <a href="iti-119.html">Patient Demographics Match [ITI-119]</a>
             </li>
             <li>
                 <a href="iti-83.html">Mobile Patient Identifier Cross-reference Query [ITI-83]</a>
             </li>
             <li>
                 <a href="iti-65.html">Provide Document Bundle [ITI-65]</a>
-            </li>
-            <li>
-                <a href="iti-66.html">Find Document Lists [ITI-66]</a>
             </li>
             <li>
                 <a href="iti-67.html">Find Document References [ITI-67]</a>
@@ -194,6 +192,9 @@
             </li>
             <li>
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
+            </li>
+            <li>
+                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -274,7 +275,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1-ballot-2: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4 Ballot 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Mobile Privacy Policy Bundle Feed [PPQ-4]</h2>
   
 
@@ -330,9 +331,9 @@ as an ACID transaction.</p>
   <li>On each request entry, perform the operation specified the attribute <code class="language-plaintext highlighter-rouge">entry.request.method</code> on the embedded or
 referenced <a href="StructureDefinition-PpqmConsent.html">PpqmConsent</a> resource:
     <ul>
-      <li>“POST” — add policy set.</li>
-      <li>“PUT” — update policy set if it is already present, otherwise add it.</li>
-      <li>“DELETE” — delete policy set.</li>
+      <li>"POST" — add policy set.</li>
+      <li>"PUT" — update policy set if it is already present, otherwise add it.</li>
+      <li>"DELETE" — delete policy set.</li>
     </ul>
   </li>
   <li>Create a PPQ-4 response according to the transaction outcome.</li>
@@ -351,16 +352,19 @@ as described in the Amendment mHealth of Annex 5, Section 3.2. Consequently, the
 <a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">[ITI-72]</a> transaction of the IUA
 profile.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">traceparent</code> header is required, as described in <a href="tracecontext.html">Trace Context header</a>.</p>
+<p>The actors SHALL support the <em>traceparent</em> header handling, as defined in <a href="tracecontext.html">Appendix: Trace Context</a>.</p>
 
-<p>The involved actors SHALL record audit events. The Policy Source SHALL use the ATNA FHIR Feed option thereby, the
-Policy Repository SHALL use either the ATNA FHIR Feed option or the ATNA TLS Syslog option.</p>
+<p>The <strong>Policy Source</strong> and <strong>Policy Repository</strong> SHALL record the right [PPQ-3] audit event for each operation in the 
+transaction:</p>
 
-<p>The audit records correspond to the ones of PPQ-1, with the following adaptations:</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">EventTypeCode</code> SHALL be set to <code class="language-plaintext highlighter-rouge">EV("PPQ-4", "e-health-suisse", "Mobile Privacy Policy Bundle Feed")</code>.</li>
-  <li>The Destination User ID SHALL be the FHIR endpoint URI of the Policy Repository.</li>
+  <li><a href="StructureDefinition-ChAuditEventPpq3Create.html">CH Audit Event for [PPQ-3] <strong>Create</strong> Privacy Policy</a></li>
+  <li><a href="StructureDefinition-ChAuditEventPpq3Update.html">CH Audit Event for [PPQ-3] <strong>Update</strong> Privacy Policy</a></li>
+  <li><a href="StructureDefinition-ChAuditEventPpq3Delete.html">CH Audit Event for [PPQ-3] <strong>Delete</strong> Privacy Policy</a></li>
 </ul>
+
+<p>All audit events may be sent to the Audit Record Repository in a single Bundle (ITI-20 Send Audit Bundle Request).
+<a href="Bundle-ChAuditEventPpq4Example.html">Example of such a Bundle</a>.</p>
 
 
 
@@ -381,7 +385,7 @@ Policy Repository SHALL use either the ATNA FHIR Feed option or the ATNA TLS Sys
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 21:49+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1-ballot-2 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Nov 19, 2024 17:31+0000">2024-11-19</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -389,7 +393,7 @@ Policy Repository SHALL use either the ATNA FHIR Feed option or the ATNA TLS Sys
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot%20/ppq-4.html&amp;entry%2E247644557=Mobile%20Privacy%20Policy%20Bundle%20Feed%20[PPQ-4]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1-ballot-2%20/ppq-4.html&amp;entry%2E247644557=Mobile%20Privacy%20Policy%20Bundle%20Feed%20[PPQ-4]">Propose a change</a>
 
 
 
@@ -404,7 +408,7 @@ Policy Repository SHALL use either the ATNA FHIR Feed option or the ATNA TLS Sys
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -415,7 +419,6 @@ Policy Repository SHALL use either the ATNA FHIR Feed option or the ATNA TLS Sys
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>
