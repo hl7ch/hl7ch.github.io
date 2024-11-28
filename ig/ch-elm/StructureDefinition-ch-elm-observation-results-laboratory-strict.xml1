@@ -11,11 +11,11 @@
     <valueCanonical value="http://hl7.eu/fhir/laboratory/StructureDefinition/Observation-resultslab-eu-lab"/>
   </extension>
   <url value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-strict"/>
-  <version value="1.6.0"/>
+  <version value="1.7.0"/>
   <name value="ChElmObservationResultsLaboratoryStrict"/>
   <title value="CH ELM Observation Results: Laboratory (strict)"/>
   <status value="active"/>
-  <date value="2024-10-31T11:15:20+00:00"/>
+  <date value="2024-11-28T14:18:34+00:00"/>
   <publisher value="Federal Office of Public Health FOPH"/>
   <contact>
     <name value="Federal Office of Public Health FOPH"/>
@@ -215,6 +215,20 @@
         <severity value="error"/>
         <human value="If Observation.code is mapped to initials or vctcode in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation then patient.name family and given must have one character or - in case of a VCT patient - must be masked and the following elements must not be provided: patient.telecom, patient.address.line."/>
         <expression value="'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).empty() or ('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code = 'initials-or-vctcode' implies (subject.resolve().conformsTo('http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientInitials') or subject.resolve().conformsTo('http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientVCT')))"/>
+        <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"/>
+      </constraint>
+      <constraint>
+        <key value="ch-elm-patient-name-representation-hiv-code-loinc"/>
+        <severity value="error"/>
+        <human value="If Observation.code is mapped to hiv-code in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation then patient representation must follow profile resource profile: CH ELM Patient HIV"/>
+        <expression value="'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).empty() or ('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).target.first().code = 'hiv-code' implies (subject.resolve().conformsTo('http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientHIV')))"/>
+        <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"/>
+      </constraint>
+      <constraint>
+        <key value="ch-elm-patient-name-representation-hiv-code-snomedct"/>
+        <severity value="error"/>
+        <human value="If Observation.code is mapped to hiv-code in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation then patient representation must follow profile resource profile: CH ELM Patient HIV"/>
+        <expression value="'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).empty() or ('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code = 'hiv-code' implies (subject.resolve().conformsTo('http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientHIV')))"/>
         <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory"/>
       </constraint>
       <constraint>
