@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Authorship - CH EMED (R4) v5.0.0-ballot</title>
+    <title>Authorship - CH EMED (R4) v5.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"12"}
     h3,h4,h5,h6{--heading-prefix:"12"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EMED (R4)</span>
             <br/>
-            <span style="display:inline-block;">5.0.0-ballot - ballot
+            <span style="display:inline-block;">5.0.0 - trial-use
 
 
 
@@ -163,6 +165,9 @@
       <li>
         <a href="authorship.html">Authorship</a>
       </li>
+      <li>
+        <a href="relationship-between-documents.html">Relationship Between Documents</a>
+      </li>
     </ul>
   </li>
   <li>
@@ -206,7 +211,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v5.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 5 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v5.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 5) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Authorship</h2>
   
 
@@ -245,7 +250,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h4 id="different-authors">Different Authors</h4>
 
-<h5 id="elementary-documents-mtp-pre-dis-padv">“Elementary” Documents (MTP, PRE, DIS, PADV)</h5>
+<h5 id="elementary-documents-mtp-pre-dis-padv">"Elementary" Documents (MTP, PRE, DIS, PADV)</h5>
 <p><em>The specialist Dr. med. Sandra Meier orders Monika Wegmüller to be treated with Aspirin and also issues a prescription. The medical practice assistant Andrew Stabilo creates the corresponding eMedication documents (MTP, PRE).</em></p>
 
 <p>In this case, the author of the document and the author of the medical decision are different. In the eMedication documents, these two authors are mapped differently.</p>
@@ -254,7 +259,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><strong>Author of the medical decision</strong>: MedicationStatement.informationSource (MTP) &amp; MedicationRequest.requester (PRE) (<em>Dr. med. Sandra Meier</em>)</li>
 </ul>
 
-<h5 id="overview-document-card">“Overview” Document CARD</h5>
+<h5 id="overview-document-card">"Overview" Document CARD</h5>
 <p><em>The pharmacist Peter Pharma creates a Medication Plan document for Mona Muster, which provides the patient with an overview of her current medication. Mona Muster is currently taking Aspirin cardio. This medication was initiated and authored by the general practitioner Dr. med. Familien Hausarzt (MTP). The specialist Dr. med. Sandra Meier later adjusted the dosage and the medical practice assistant Andrew Stabilo documented this accordingly (PADV).</em></p>
 
 <ul>
@@ -267,8 +272,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </li>
 </ul>
 
-<h5 id="overview-document-list">“Overview” Document LIST</h5>
-<p><em>The pharmacist wants to get an overview of Mona Muster’s current medication and therefore requests his Medication List document. (Same use case as described above for CARD.)</em></p>
+<h5 id="overview-document-list">"Overview" Document LIST</h5>
+<p><em>The pharmacist wants to get an overview of Mona Muster's current medication and therefore requests his Medication List document. (Same use case as described above for CARD.)</em></p>
 
 <ul>
   <li><strong>Author document</strong>: The Medication List document is a dynamically generated document, generally created by a machine/software; Composition.author (<em>Device</em>)</li>
@@ -349,7 +354,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="timestamp">Timestamp</h3>
 <ul>
-  <li>The document’s creation date and time is mapped for all documents in Bundle.timestamp and Composition.date.</li>
+  <li>The document's creation date and time is mapped for all documents in Bundle.timestamp and Composition.date.</li>
   <li>In addition, a timestamp is specified at entry level:
     <ul>
       <li><a href="StructureDefinition-ch-emed-medicationstatement.html">MedicationStatement.dateAsserted</a> (1..1) When the statement was asserted</li>
@@ -380,7 +385,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 19:08+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#5.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 17, 2024 21:35+0000">2024-12-17</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -388,7 +393,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%235.0.0-ballot%20/authorship.html&amp;entry%2E247644557=Authorship">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%235.0.0%20/authorship.html&amp;entry%2E247644557=Authorship">Propose a change</a>
 
 
 
@@ -403,7 +408,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -414,7 +419,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

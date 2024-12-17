@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Cas d’application - CH EMED (R4) v5.0.0-ballot</title>
+    <title>Cas d’application - CH EMED (R4) v5.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"9"}
     h3,h4,h5,h6{--heading-prefix:"9"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EMED (R4)</span>
             <br/>
-            <span style="display:inline-block;">5.0.0-ballot - ballot
+            <span style="display:inline-block;">5.0.0 - trial-use
 
 
 
@@ -163,6 +165,9 @@
       <li>
         <a href="authorship.html">Authorship</a>
       </li>
+      <li>
+        <a href="relationship-between-documents.html">Relationship Between Documents</a>
+      </li>
     </ul>
   </li>
   <li>
@@ -206,7 +211,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v5.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 5 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v5.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 5) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Cas d’application</h2>
   
 
@@ -234,7 +239,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <p>L’objectif est, dune part la mise à disposition des informations sur l’état de santé d’un patient pour les personnes impliquées dans la voie de traitement sous une forme lisible par l’homme. D’autre part, des processus doivent être optimisés dans les systèmes informatiques par le traitement électronique de ces informations. Il en découle les cas d’application décrits ci-après.</p>
 
 <h3 id="exemple-de-cas-ipag">Exemple de cas IPAG</h3>
-<p>Dans son rapport, le groupe de travail IPAG a élaboré un cas d’application (Use Case) afin d’illustrer les processus interprofessionnels et la communication dans la cybermédication. L’exemple de cas énumère des situations auxquelles les différents professionnels de la santé impliqués dans le traitement médicamenteux d’un patient peuvent être confrontés au quotidien. Cet exemple de cas décrit les deux premières étapes du cas d’application du <a href="https://www.e-health-suisse.ch/fileadmin/user_upload/Dokumente/2017/F/170607_Bericht_eMedikation_IPAG_f.pdf">Rapport IPAG Cybermédication</a> au chapitre 6, appendice II : Cas de Madame Wegmüller.</p>
+<p>Dans son rapport, le groupe de travail IPAG a élaboré un cas d’application (Use Case) afin d’illustrer les processus interprofessionnels et la communication dans la cybermédication. L’exemple de cas énumère des situations auxquelles les différents professionnels de la santé impliqués dans le traitement médicamenteux d’un patient peuvent être confrontés au quotidien. Cet exemple de cas décrit les deux premières étapes du cas d’application du <a href="https://www.e-health-suisse.ch/upload/documents/Rapport_IPAG_Cybermedication.pdf">Rapport IPAG Cybermédication</a> au chapitre 6, appendice II : Cas de Madame Wegmüller.</p>
 
 <p><em>Le texte suivant comporte des tableaux qui reprennent et appliquent les recommandations du groupe de travail IPAG. Ces tableaux représentent, à titre d’exemple, les possibilités d’application des documents électroniques. Les listes de médication représentées n’ont pas encore été validées en termes de contenu et sur le plan clinique.</em></p>
 
@@ -249,7 +254,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <th style="text-align: left">Nom de la préparation</th>
       <th style="text-align: left">Nom du principe actif</th>
-      <th style="text-align: left">Dose par principe actif</th>
       <th style="text-align: left">Forme galénique</th>
       <th style="text-align: left">Dose par unité</th>
       <th style="text-align: left">Posologie</th>
@@ -267,10 +271,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td style="text-align: left">Triatec</td>
       <td style="text-align: left">Rampiril</td>
-      <td style="text-align: left"> </td>
       <td style="text-align: left">Cpr.</td>
       <td style="text-align: left">2.5 mg / Cpr.</td>
-      <td style="text-align: left">1/2 comprimé le matin</td>
+      <td style="text-align: left">Prendre 1/2 comprimé le matin</td>
       <td style="text-align: left">0.5</td>
       <td style="text-align: left">0</td>
       <td style="text-align: left">0</td>
@@ -290,7 +293,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <th style="text-align: left">Nom de la préparation</th>
       <th style="text-align: left">Nom du principe actif</th>
-      <th style="text-align: left">Dose par principe actif</th>
       <th style="text-align: left">Forme galénique</th>
       <th style="text-align: left">Dose par unité</th>
       <th style="text-align: left">Taille de l’emballage</th>
@@ -312,12 +314,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td style="text-align: left">Triatec</td>
       <td style="text-align: left">Rampiril</td>
-      <td style="text-align: left"> </td>
       <td style="text-align: left">Cpr.</td>
       <td style="text-align: left">2.5 mg / Cpr.</td>
       <td style="text-align: left">1</td>
       <td style="text-align: left">20 pces</td>
-      <td style="text-align: left">1/2 comprimé le matin</td>
+      <td style="text-align: left">Prendre 1/2 comprimé le matin</td>
       <td style="text-align: left">0.5</td>
       <td style="text-align: left">0</td>
       <td style="text-align: left">0</td>
@@ -345,7 +346,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <th style="text-align: left">Nom de la préparation</th>
       <th style="text-align: left">Nom du principe actif</th>
-      <th style="text-align: left">Dose par principe actif</th>
       <th style="text-align: left">Forme galénique</th>
       <th style="text-align: left">Dose par unité</th>
       <th style="text-align: left">Posologie</th>
@@ -363,10 +363,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td style="text-align: left">Triatec</td>
       <td style="text-align: left">Ramipril</td>
-      <td style="text-align: left"> </td>
       <td style="text-align: left">Cpr.</td>
       <td style="text-align: left">2.5 mg / Cpr.</td>
-      <td style="text-align: left">1/2 comprimé le matin</td>
+      <td style="text-align: left">Prendre 1/2 comprimé le matin</td>
       <td style="text-align: left">0.5</td>
       <td style="text-align: left">0</td>
       <td style="text-align: left">0</td>
@@ -388,7 +387,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <th style="text-align: left">Nom de la préparation</th>
       <th style="text-align: left">Nom du principe actif</th>
-      <th style="text-align: left">Dose par principe actif</th>
       <th style="text-align: left">Forme galénique</th>
       <th style="text-align: left">Dose par unité</th>
       <th style="text-align: left">Posologie</th>
@@ -406,10 +404,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td style="text-align: left">Triatec</td>
       <td style="text-align: left">Ramipril</td>
-      <td style="text-align: left"> </td>
       <td style="text-align: left">Cpr.</td>
       <td style="text-align: left">2.5 mg / Cpr.</td>
-      <td style="text-align: left">1/2 comprimé le matin</td>
+      <td style="text-align: left">Prendre 1/2 comprimé le matin</td>
       <td style="text-align: left">0.5</td>
       <td style="text-align: left">0</td>
       <td style="text-align: left">0</td>
@@ -431,7 +428,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <th style="text-align: left">Nom de la préparation</th>
       <th style="text-align: left">Nom du principe actif</th>
-      <th style="text-align: left">Dose par principe actif</th>
       <th style="text-align: left">Forme galénique</th>
       <th style="text-align: left">Dose par unité</th>
       <th style="text-align: left">Posologie</th>
@@ -449,10 +445,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td style="text-align: left">Beloc Zok</td>
       <td style="text-align: left">Metoprolol</td>
-      <td style="text-align: left"> </td>
       <td style="text-align: left">Cpr. Ret.</td>
       <td style="text-align: left">50 mg / Cpr.</td>
-      <td style="text-align: left">1 comprimé le matin et 1/2 comprimé le soir</td>
+      <td style="text-align: left">Prendre 1 comprimé le matin et 1/2 comprimé le soir</td>
       <td style="text-align: left">1</td>
       <td style="text-align: left">0</td>
       <td style="text-align: left">0.5</td>
@@ -472,7 +467,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <th style="text-align: left">Nom de la préparation</th>
       <th style="text-align: left">Nom du principe actif</th>
-      <th style="text-align: left">Dose par principe actif</th>
       <th style="text-align: left">Forme galénique</th>
       <th style="text-align: left">Dose par unité</th>
       <th style="text-align: left">Taille de l’emballage</th>
@@ -494,12 +488,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td style="text-align: left">Beloc Zok</td>
       <td style="text-align: left">Metoprolol</td>
-      <td style="text-align: left"> </td>
       <td style="text-align: left">Cpr. Ret.</td>
       <td style="text-align: left">50 mg / Cpr.</td>
       <td style="text-align: left">1</td>
       <td style="text-align: left">30 pces</td>
-      <td style="text-align: left">1 comprimé le matin et 1/2 comprimé le soir</td>
+      <td style="text-align: left">Prendre 1 comprimé le matin et 1/2 comprimé le soir</td>
       <td style="text-align: left">1</td>
       <td style="text-align: left">0</td>
       <td style="text-align: left">0.5</td>
@@ -521,7 +514,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <th style="text-align: left">Nom de la préparation</th>
       <th style="text-align: left">Nom du principe actif</th>
-      <th style="text-align: left">Dose par principe actif</th>
       <th style="text-align: left">Forme galénique</th>
       <th style="text-align: left">Dose par unité</th>
       <th style="text-align: left">Posologie</th>
@@ -539,10 +531,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td style="text-align: left">Norvasc</td>
       <td style="text-align: left">Amlodipin</td>
-      <td style="text-align: left"> </td>
       <td style="text-align: left">Cpr.</td>
       <td style="text-align: left">10 mg / Cpr.</td>
-      <td style="text-align: left">1 comprimé le matin et le soir</td>
+      <td style="text-align: left">Prendre 1 comprimé le matin et 1 comprimé le soir</td>
       <td style="text-align: left">1</td>
       <td style="text-align: left">0</td>
       <td style="text-align: left">1</td>
@@ -562,7 +553,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <th style="text-align: left">Nom de la préparation</th>
       <th style="text-align: left">Nom du principe actif</th>
-      <th style="text-align: left">Dose par principe actif</th>
       <th style="text-align: left">Forme galénique</th>
       <th style="text-align: left">Dose par unité</th>
       <th style="text-align: left">Retrait répété du médicament</th>
@@ -582,12 +572,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td style="text-align: left">Norvasc</td>
       <td style="text-align: left">Amlodipin</td>
-      <td style="text-align: left"> </td>
       <td style="text-align: left">Cpr.</td>
       <td style="text-align: left">10 mg / Cpr.</td>
       <td style="text-align: left">Ordonnance pour 3 mois</td>
       <td style="text-align: left"> </td>
-      <td style="text-align: left">1 comprimé le matin et le soir</td>
+      <td style="text-align: left">Prendre 1 comprimé le matin et 1 comprimé le soir</td>
       <td style="text-align: left">1</td>
       <td style="text-align: left">0</td>
       <td style="text-align: left">1</td>
@@ -610,7 +599,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <th style="text-align: left">Nom de la préparation</th>
       <th style="text-align: left">Nom du principe actif</th>
-      <th style="text-align: left">Dose par principe actif</th>
       <th style="text-align: left">Forme galénique</th>
       <th style="text-align: left">Dose par unité</th>
       <th style="text-align: left">Posologie</th>
@@ -628,10 +616,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td style="text-align: left">Beloc Zok</td>
       <td style="text-align: left">Metoprolol</td>
-      <td style="text-align: left"> </td>
       <td style="text-align: left">Cpr. Ret.</td>
       <td style="text-align: left">50 mg / Cpr.</td>
-      <td style="text-align: left">1 comprimé le matin et 1/2 comprimé le soir</td>
+      <td style="text-align: left">Prendre 1 comprimé le matin et 1/2 comprimé le soir</td>
       <td style="text-align: left">1</td>
       <td style="text-align: left">0</td>
       <td style="text-align: left">0.5</td>
@@ -644,10 +631,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td style="text-align: left">Norvasc</td>
       <td style="text-align: left">Amlodipin</td>
-      <td style="text-align: left"> </td>
       <td style="text-align: left">Cpr.</td>
       <td style="text-align: left">10 mg / Cpr.</td>
-      <td style="text-align: left">1 comprimé le matin et le soir</td>
+      <td style="text-align: left">Prendre 1 comprimé le matin et 1 comprimé le soir</td>
       <td style="text-align: left">1</td>
       <td style="text-align: left">0</td>
       <td style="text-align: left">1</td>
@@ -668,9 +654,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p><strong>Accident du 3 février 2020</strong></p>
 
-<p>Monsieur Max Moser (nom modifié), né le 27.11.1988 (date modifiée), titulaire d’un DEP, se promène le 3 février 2020 (journée d’hiver glaciale avec du verglas) à Berne. Il glisse dans un escalier et se blesse si gravement qu’il ne peut plus continuer à marcher lui-même. Monsieur Moser souffre beaucoup.   <br />
-Les services de secours appelés sur place soupçonnent une fracture de la jambe qui doit être traitée à l’hôpital. Afin de rendre Monsieur Moser transportable, l’ambulancière Priska Huber (nom modifié) lui pose une perfusion de NaCL 0,9% à 14h32 et lui administre 0,05 mg de Fentanyl i.v. pour traiter la douleur.   <br />
-La médication est enregistrée par l’équipe du service de secours dans le protocole d’intervention électronique. Monsieur Moser est alors transporté à l’hôpital. Lors du transfert du patient, l’équipe du service des urgences est informée non seulement du diagnostic de suspicion, mais aussi de la médication administrée. L’application de la médication est classée par le service de secours dans le dossier électronique du patient de Monsieur Moser.</p>
+<p>Monsieur Max Moser (nom modifié), né le 27.11.1988 (date modifiée), titulaire d'un DEP, se promène le 3 février 2020 (journée d'hiver glaciale avec du verglas) à Berne. Il glisse dans un escalier et se blesse si gravement qu'il ne peut plus continuer à marcher lui-même. Monsieur Moser souffre beaucoup.   <br />
+Les services de secours appelés sur place soupçonnent une fracture de la jambe qui doit être traitée à l'hôpital. Afin de rendre Monsieur Moser transportable, l'ambulancière Priska Huber (nom modifié) lui pose une perfusion de NaCL 0,9% à 14h32 et lui administre 0,05 mg de Fentanyl i.v. pour traiter la douleur.   <br />
+La médication est enregistrée par l'équipe du service de secours dans le protocole d'intervention électronique. Monsieur Moser est alors transporté à l'hôpital. Lors du transfert du patient, l'équipe du service des urgences est informée non seulement du diagnostic de suspicion, mais aussi de la médication administrée. L'application de la médication est classée par le service de secours dans le dossier électronique du patient de Monsieur Moser.</p>
 
 <p><em>Application</em> : <a href="Bundle-3-1-MedicationDispense.html">3-1 Medication Dispense document (NaCL)</a> &amp; <a href="Bundle-3-2-MedicationDispense.html">3-2 Medication Dispense document (Fentanyl)</a></p>
 
@@ -693,7 +679,7 @@ La médication est enregistrée par l’équipe du service de secours dans le pr
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 19:08+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#5.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 17, 2024 21:35+0000">2024-12-17</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -701,7 +687,7 @@ La médication est enregistrée par l’équipe du service de secours dans le pr
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%235.0.0-ballot%20/usecase-french.html&amp;entry%2E247644557=Cas%20d%E2%80%99application">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%235.0.0%20/usecase-french.html&amp;entry%2E247644557=Cas%20d%E2%80%99application">Propose a change</a>
 
 
 
@@ -716,7 +702,7 @@ La médication est enregistrée par l’équipe du service de secours dans le pr
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -727,7 +713,6 @@ La médication est enregistrée par l’équipe du service de secours dans le pr
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>
