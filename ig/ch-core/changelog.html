@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Changelog - CH Core (R4) v5.0.0-ballot</title>
+    <title>Changelog - CH Core (R4) v5.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"5"}
     h3,h4,h5,h6{--heading-prefix:"5"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH Core (R4)</span>
             <br/>
-            <span style="display:inline-block;">5.0.0-ballot - ballot
+            <span style="display:inline-block;">5.0.0 - trial-use
 
 
 
@@ -111,8 +113,18 @@
   <li>
     <a href="index.html">Home</a>
   </li>
-  <li>
-    <a href="guidance.html">Guidance</a>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Guidance
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="guidance.html#snomed-ct-swiss-extension">SNOMED CT Swiss Extension</a>
+      </li>
+      <li>
+        <a href="guidance.html#readable-representation-of-epr-documents">Readable Representation of EPR Documents</a>
+      </li>
+    </ul>
   </li>
   <li>
     <a href="profiles.html">Profiles</a>
@@ -155,7 +167,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH Core (R4) (v5.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 5 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH Core (R4) (v5.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 5) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Changelog</h2>
   
 
@@ -173,6 +185,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
+  <li><a href="#stu-5-2024-12-17" id="markdown-toc-stu-5-2024-12-17">STU 5 (2024-12-17)</a></li>
   <li><a href="#stu-5-ballot-2024-05-16" id="markdown-toc-stu-5-ballot-2024-05-16">STU 5 Ballot (2024-05-16)</a></li>
   <li><a href="#stu-4-2023-12-28" id="markdown-toc-stu-4-2023-12-28">STU 4 (2023-12-28)</a></li>
   <li><a href="#stu-4-ballot-2023-06-27" id="markdown-toc-stu-4-ballot-2023-06-27">STU 4 Ballot (2023-06-27)</a></li>
@@ -184,6 +197,43 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 </div>
 <p>All significant changes to this FHIR implementation guide will be documented on this page.</p>
+
+<h3 id="stu-5-2024-12-17">STU 5 (2024-12-17)</h3>
+
+<h4 id="open-issues">Open Issues</h4>
+<p>During the ballot, the following comments came in, which will be taken into account in the further development of CH Core:</p>
+
+<ul>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/299">#299</a>:
+    <ul>
+      <li>Add guidance for the <a href="https://hl7.org/fhir/r4/http.html">RESTful use</a>, including the <a href="https://hl7.org/fhir/smart-app-launch/">SMART on FHIR mechanism</a>.</li>
+      <li>Compatibility with the <a href="https://hl7.org/fhir/uv/ipa/">International Patient Access (IPA) specification</a>.</li>
+      <li>Define formal descriptions of capabilities per actor (server/client), e.g. <a href="https://hl7.org/fhir/uv/ipa/StructureDefinition-ipa-patient.html">IPA-Patient</a>. See also <a href="https://build.fhir.org/obligations.html">implementation obligations</a>.</li>
+      <li>Clarification of the relationship to the EPR and the supported exchange mechanisms.</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/hl7ch/ch-term/issues/41">CH Term #41</a>: Revision (harmonization, usage SCT) of code system and value set ServiceRequest Category</li>
+</ul>
+
+<p>See also open issues on <a href="https://github.com/hl7ch/ch-core/issues">GitHub</a>.</p>
+
+<h4 id="changed--updated">Changed / Updated</h4>
+<ul>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/303">#303</a>: Entry Resource Cross References, Usage/Description</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/294">#294</a>: Differentiation of severity of constraint ch-pat-1 for CH Core Patient (warning) and CH Core Patient EPR (error)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/293">#293</a>: Clarification of the description for Patient.gender</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/293">#300</a>: Add guidance for readable representation of EPR documents and update example</li>
+</ul>
+
+<h4 id="fixed">Fixed</h4>
+<ul>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/306">#306</a>: Replace deprecated discriminator (<code class="language-plaintext highlighter-rouge">pattern</code> -&gt; <code class="language-plaintext highlighter-rouge">value</code>)</li>
+</ul>
+
+<h4 id="issues-resolved-without-amendment-in-ig">Issues resolved without amendment (in IG)</h4>
+<ul>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/289">#289</a>: Validation issue with display values; fixed with new version of IG publisher</li>
+</ul>
 
 <h3 id="stu-5-ballot-2024-05-16">STU 5 Ballot (2024-05-16)</h3>
 
@@ -207,7 +257,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </li>
 </ul>
 
-<h4 id="changed--updated">Changed / Updated</h4>
+<h4 id="changed--updated-1">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/272">#272</a>: Update the CHCoreDocumentReference EPR-XDS mapping</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/269">#269</a>: max cardinality for only one gln for practitioner</li>
@@ -216,7 +266,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/287">#287</a>: Unified identifier slicing (Coverage, Practitioner)</li>
 </ul>
 
-<h4 id="fixed">Fixed</h4>
+<h4 id="fixed-1">Fixed</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/277">#277</a>: update the expression of constraints ch-docref-1/2</li>
 </ul>
@@ -234,7 +284,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/262">#262</a>: New extension to reference entries in i.e. other documents</li>
 </ul>
 
-<h4 id="changed--updated-1">Changed / Updated</h4>
+<h4 id="changed--updated-2">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/242">#242</a>: Update the description for type of <a href="StructureDefinition-ch-core-composition-epr.html">CH Core Composition EPR</a></li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/238">#238</a>: Update context of <a href="StructureDefinition-ch-ext-epr-time.html">Extension EPR Time</a> with MedicationRequest.requester</li>
@@ -243,7 +293,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/252">#252</a>: Technical Correction of FHIRPath constraints with .value</li>
 </ul>
 
-<h4 id="fixed-1">Fixed</h4>
+<h4 id="fixed-2">Fixed</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/235">#235</a>/<a href="https://github.com/hl7ch/ch-core/issues/265">#265</a>: Fix GLN constraint/adapt Practitioner.identifier in example</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/247">#247</a>: Fix constraint text and refactor expression (ch-core-doc-1)</li>
@@ -261,7 +311,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/224">#224</a>: Forum Datenaustausch tariff Naming System</li>
 </ul>
 
-<h4 id="changed--updated-2">Changed / Updated</h4>
+<h4 id="changed--updated-3">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/206">#206</a>: Improve acronyms definition</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/191">#191</a>: <a href="StructureDefinition-ch-core-patient.html">CH Core Patient</a> - Relax max cardinality to * for EPR-SPID and AHVN13</li>
@@ -274,7 +324,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/205">#205</a>: Concretization of the mapping of Patient.telecom for versions as of HL7 v2.7</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/181">#181</a>: Updated used eCH standards (incl. versions) to <a href="index.html#introduction">introduction (home)</a> (standards themselves currently have no updates)</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/217">#217</a>: Add language tag to instances, to be able to validate the translation of codes</li>
-  <li><a href="https://github.com/hl7ch/ch-core/issues/215">#215</a>: Relax binding strength to value sets from ‘required’ to ‘extensible’</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/215">#215</a>: Relax binding strength to value sets from 'required' to 'extensible'</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/225">#225</a>: Fix FHIRPath expression</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/226">#226</a>: Change license for ImplementationGuide / StructureDefinition to CC0 1.0 Universal (CC0 1.0)</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/222">#222</a>: PractitionerRole EPR: code binding</li>
@@ -288,7 +338,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/158">#158</a>, <a href="https://github.com/hl7ch/ch-core/issues/189">#189</a>: Include new IG fragments (IP Statements, Cross Version Analysis, Dependency Table, Globals Table); CH Core can be used for both R4 and R4B, packages are available for both versions</li>
 </ul>
 
-<h4 id="changed--updated-3">Changed / Updated</h4>
+<h4 id="changed--updated-4">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/150">#150</a>: Expansion of the context of the extension <a href="StructureDefinition-ch-ext-epr-time.html">EPR Time</a></li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/160">#160</a>: Slicing on repeating element</li>
@@ -301,21 +351,21 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/153">#153</a>: Rephrasing of the sentence for the exchange formats (current and general validity)</li>
 </ul>
 
-<h4 id="fixed-2">Fixed</h4>
+<h4 id="fixed-3">Fixed</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/163">#163</a>: Typo</li>
-  <li><a href="https://github.com/hl7ch/ch-core/issues/159">#159</a>: Add element ‘experimental’ (false) to CS/VS</li>
-  <li><a href="https://github.com/hl7ch/ch-core/issues/161">#161</a>: Use ‘patternCodeableConcept’ instead of ‘fixedCodeableConcept’ for <a href="StructureDefinition-ch-core-epr-consent.html">Consent.policyRule</a></li>
-  <li><a href="https://github.com/hl7ch/ch-core/issues/167">#167</a>: Fix URIs in ConceptMaps ‘MaritalStatus eCH-011 to FHIR mapping’, ‘Sex eCH-011 to FHIR mapping’</li>
-  <li><a href="https://github.com/hl7ch/ch-core/issues/152">#152</a>: Changes status form ‘draft’ to ‘active’</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/159">#159</a>: Add element 'experimental' (false) to CS/VS</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/161">#161</a>: Use 'patternCodeableConcept' instead of 'fixedCodeableConcept' for <a href="StructureDefinition-ch-core-epr-consent.html">Consent.policyRule</a></li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/167">#167</a>: Fix URIs in ConceptMaps 'MaritalStatus eCH-011 to FHIR mapping', 'Sex eCH-011 to FHIR mapping'</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/152">#152</a>: Changes status form 'draft' to 'active'</li>
 </ul>
 
-<h4 id="issues-resolved-without-amendment-in-ig">Issues resolved without amendment (in IG)</h4>
+<h4 id="issues-resolved-without-amendment-in-ig-1">Issues resolved without amendment (in IG)</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/39">#39</a>: Consent code for ch-epr has been added in <a href="https://terminology.hl7.org/4.0.0/CodeSystem-consentpolicycodes.html">hl7.terminology</a> published 2022-09-14	(version 4.0.0)</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/174">#174</a>: Verification/confirmation that the eCH-011 values for gender are still up-to-date</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/157">#157</a>: Fixed dead link on the <a href="https://github.com/hl7ch/ch-core/wiki/HL7.ch-FHIR-IG-Balloting">HL7.ch FHIR IG Balloting</a> page</li>
-  <li><a href="https://github.com/hl7ch/ch-core/issues/156">#156</a>: Change default branch from ‘master’ to ‘main’ to postponed to a later publication due to dependence on IG Publisher</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/156">#156</a>: Change default branch from 'master' to 'main' to postponed to a later publication due to dependence on IG Publisher</li>
 </ul>
 
 <h3 id="stu-3-ballot-2022-06-29">STU 3 Ballot (2022-06-29)</h3>
@@ -327,7 +377,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/131">#131</a>: Update change log/STU note box according to the latest requirements</li>
 </ul>
 
-<h4 id="changed--updated-4">Changed / Updated</h4>
+<h4 id="changed--updated-5">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/133">#133</a>: Fix example OIDs</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/129">#129</a>: Wrong slicing for Composition.author.extension:ch-ext-epr-time profiles/structures</li>
@@ -391,7 +441,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-core#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 16, 2024 16:13+0000">2024-05-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-core#5.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 17, 2024 19:57+0000">2024-12-17</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -399,7 +449,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeZjRSISsMmPJawlA6EbFNg1kQyu013AilssLb5AohZ2vUCDw/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-core%235.0.0-ballot%20/changelog.html&amp;entry%2E247644557=Changelog">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeZjRSISsMmPJawlA6EbFNg1kQyu013AilssLb5AohZ2vUCDw/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-core%235.0.0%20/changelog.html&amp;entry%2E247644557=Changelog">Propose a change</a>
 
 
 
@@ -414,7 +464,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -425,7 +475,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>
