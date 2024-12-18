@@ -8,11 +8,11 @@
 <tr><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr></table></div>
   </text>
   <url value="http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pixm-patient-feed"/>
-  <version value="4.0.1-ballot-2"/>
+  <version value="4.0.1"/>
   <name value="CHPIXmPatientFeed"/>
   <title value="CH PIXm Patient Feed"/>
   <status value="active"/>
-  <date value="2024-11-19T17:31:05+00:00"/>
+  <date value="2024-12-18T12:16:22+00:00"/>
   <publisher value="eHealth Suisse"/>
   <contact>
     <name value="eHealth Suisse"/>
@@ -126,15 +126,15 @@
       </constraint>
       <constraint>
         <key value="ch-pat-1"/>
-        <severity value="error"/>
-        <human value="At least one HumanName with given and family name must be provided."/>
+        <severity value="warning"/>
+        <human value="If one ore more human names are provided, at least one human name should have a family and a given name."/>
         <expression value="name.where(family.exists() and given.exists()).count()&gt;0 or name.empty()"/>
         <source value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"/>
       </constraint>
       <constraint>
         <key value="ch-pat-2"/>
         <severity value="warning"/>
-        <human value="gender unknown is currently not used in Switzerland in eCH and the EPR"/>
+        <human value="gender 'unknown' is currently not used in Switzerland in eCH and the EPR"/>
         <expression value="gender.empty() or gender!='unknown'"/>
         <source value="http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"/>
       </constraint>
@@ -558,7 +558,7 @@
       <path value="Patient.identifier"/>
       <slicing>
         <discriminator>
-          <type value="pattern"/>
+          <type value="value"/>
           <path value="$this"/>
         </discriminator>
         <rules value="open"/>
@@ -607,8 +607,8 @@
     <element id="Patient.identifier:EPR-SPID">
       <path value="Patient.identifier"/>
       <sliceName value="EPR-SPID"/>
-      <short value="An identifier intended for computation"/>
-      <definition value="An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers."/>
+      <short value="EPR-SPID"/>
+      <definition value="EPR-SPID: The Central Compensation Office (ZAS; CCO) assigns and manages the new patient identification number according to the EPRA (EPR-SPID), which is only linked internally in the CCO with the AHV number. It maintains the UPI identification database (Unique Personal Identifier Database), which the EPR communities may access. The law regulates how the the EPR-SPID can be used. SR 816.111 states (Art. 10 para. 3 EPDV) that communities must ensure that the EPR-SPID number cannot be not stored in document repositories or document registries."/>
       <requirements value="Patients are almost always assigned specific numerical identifiers."/>
       <min value="1"/>
       <max value="1"/>
@@ -1224,6 +1224,10 @@
       <mustSupport value="true"/>
       <isModifier value="false"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0011: nameData"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value="n/a"/>
       </mapping>
@@ -1238,10 +1242,6 @@
       <mapping>
         <identity value="servd"/>
         <map value="ProviderName"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0011: nameData"/>
       </mapping>
     </element>
     <element id="Patient.name:HumanName">
@@ -1433,6 +1433,14 @@
       <isModifier value="false"/>
       <isSummary value="true"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0046: Contact"/>
+      </mapping>
+      <mapping>
+        <identity value="v2"/>
+        <map value="-&gt; as of HL7 v2.7 PID-40 (leave PID-13 and PID-14 empty)"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PID-13, PID-14, PID-40"/>
       </mapping>
@@ -1443,14 +1451,6 @@
       <mapping>
         <identity value="cda"/>
         <map value=".telecom"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0046: Contact"/>
-      </mapping>
-      <mapping>
-        <identity value="v2"/>
-        <map value="-&gt; as of HL7 v2.7 PID-40 (leave PID-13 and PID-14 empty)"/>
       </mapping>
     </element>
     <element id="Patient.telecom.id">
@@ -1767,6 +1767,10 @@
       </constraint>
       <isModifier value="false"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0046: email"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value="n/a"/>
       </mapping>
@@ -1781,10 +1785,6 @@
       <mapping>
         <identity value="servd"/>
         <map value="ContactPoint"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0046: email"/>
       </mapping>
     </element>
     <element id="Patient.telecom:phone">
@@ -1824,6 +1824,10 @@
       </constraint>
       <isModifier value="false"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0046: phone"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value="n/a"/>
       </mapping>
@@ -1838,10 +1842,6 @@
       <mapping>
         <identity value="servd"/>
         <map value="ContactPoint"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0046: phone"/>
       </mapping>
     </element>
     <element id="Patient.telecom:internet">
@@ -1881,6 +1881,10 @@
       </constraint>
       <isModifier value="false"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0046: internet"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value="n/a"/>
       </mapping>
@@ -1896,14 +1900,10 @@
         <identity value="servd"/>
         <map value="ContactPoint"/>
       </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0046: internet"/>
-      </mapping>
     </element>
     <element id="Patient.gender">
       <path value="Patient.gender"/>
-      <short value="male | female | other"/>
+      <short value="male | female | other | unknown* (* see warning 'ch-pat-2')"/>
       <definition value="Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes."/>
       <comment value="The gender might not match the biological sex as determined by genetics or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than male and female, though the vast majority of systems and contexts only support male and female.  Systems providing decision support or enforcing business rules should ideally do this on the basis of Observations dealing with the specific sex or gender aspect of interest (anatomical, chromosomal, social, etc.)  However, because these observations are infrequently recorded, defaulting to the administrative gender is common practice.  Where such defaulting occurs, rule enforcement should allow for the variation between administrative and biological, chromosomal and other gender aspects.  For example, an alert about a hysterectomy on a male should be handled as a warning or overridable error, not a &quot;hard&quot; error.  See the Patient Gender and Sex section for additional information about communicating patient gender and sex."/>
       <requirements value="Needed for identification of the individual, in combination with (at least) name and birth date."/>
@@ -1936,6 +1936,10 @@
         <valueSet value="http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1"/>
       </binding>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0011: sex. sexType, BFS-33, see ConceptMap http://fhir.ch/ig/ch-core/ConceptMap/sex-ech11-to-fhir"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PID-8"/>
       </mapping>
@@ -1946,10 +1950,6 @@
       <mapping>
         <identity value="cda"/>
         <map value=".patient.administrativeGenderCode"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0011: sex. sexType, BFS-33, see ConceptMap http://fhir.ch/ig/ch-core/ConceptMap/sex-ech11-to-fhir"/>
       </mapping>
     </element>
     <element id="Patient.birthDate">
@@ -1979,6 +1979,10 @@
       <isModifier value="false"/>
       <isSummary value="true"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0011: birthData, BFS-31"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PID-7"/>
       </mapping>
@@ -1993,10 +1997,6 @@
       <mapping>
         <identity value="loinc"/>
         <map value="21112-8"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0011: birthData, BFS-31"/>
       </mapping>
     </element>
     <element id="Patient.deceased[x]">
@@ -2030,6 +2030,10 @@
       <isModifierReason value="This element is labeled as a modifier because once a patient is marked as deceased, the actions that are appropriate to perform on the patient may be significantly different."/>
       <isSummary value="true"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0011: deathData, deathPeriod, dateFrom, BFS-361"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PID-30  (bool) and PID-29 (datetime)"/>
       </mapping>
@@ -2040,10 +2044,6 @@
       <mapping>
         <identity value="cda"/>
         <map value="n/a"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0011: deathData, deathPeriod, dateFrom, BFS-361"/>
       </mapping>
     </element>
     <element id="Patient.address">
@@ -2081,6 +2081,10 @@
       </constraint>
       <isModifier value="false"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0010: addressInformation"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value="n/a"/>
       </mapping>
@@ -2095,10 +2099,6 @@
       <mapping>
         <identity value="servd"/>
         <map value="Address"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0010: addressInformation"/>
       </mapping>
     </element>
     <element id="Patient.maritalStatus">
@@ -2131,6 +2131,10 @@
         <valueSet value="http://fhir.ch/ig/ch-core/ValueSet/ch-core-maritalstatus"/>
       </binding>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0011: maritalData, BFS-341, see ConceptMap http://fhir.ch/ig/ch-core/ConceptMap/maritalstatus-ech11-to-fhir"/>
+      </mapping>
+      <mapping>
         <identity value="v2"/>
         <map value="PID-16"/>
       </mapping>
@@ -2141,10 +2145,6 @@
       <mapping>
         <identity value="cda"/>
         <map value=".patient.maritalStatusCode"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0011: maritalData, BFS-341, see ConceptMap http://fhir.ch/ig/ch-core/ConceptMap/maritalstatus-ech11-to-fhir"/>
       </mapping>
     </element>
     <element id="Patient.maritalStatus.id">
@@ -2896,16 +2896,16 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0011: contactData, BFS-61"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]"/>
       </mapping>
       <mapping>
         <identity value="cda"/>
         <map value="n/a"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0011: contactData, BFS-61"/>
       </mapping>
     </element>
     <element id="Patient.contact:contact.id">
@@ -3180,6 +3180,10 @@
       </constraint>
       <isModifier value="false"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0010: addressInformation"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value="n/a"/>
       </mapping>
@@ -3194,10 +3198,6 @@
       <mapping>
         <identity value="servd"/>
         <map value="Address"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0010: addressInformation"/>
       </mapping>
     </element>
     <element id="Patient.contact:contact.gender">
@@ -3355,16 +3355,16 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0021: nameOfParent"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]"/>
       </mapping>
       <mapping>
         <identity value="cda"/>
         <map value="n/a"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0021: nameOfParent"/>
       </mapping>
     </element>
     <element id="Patient.contact:nameOfParent.id">
@@ -4029,16 +4029,16 @@
       <isModifier value="false"/>
       <isSummary value="false"/>
       <mapping>
+        <identity value="eCH"/>
+        <map value="eCH-0011: languageOfCorrespondance: de, fr, it, rm = Rhaeto-Romance, en, other languages ISO 639-1"/>
+      </mapping>
+      <mapping>
         <identity value="rim"/>
         <map value="LanguageCommunication"/>
       </mapping>
       <mapping>
         <identity value="cda"/>
         <map value="patient.languageCommunication"/>
-      </mapping>
-      <mapping>
-        <identity value="eCH"/>
-        <map value="eCH-0011: languageOfCorrespondance: de, fr, it, rm = Rhaeto-Romance, en, other languages ISO 639-1"/>
       </mapping>
     </element>
     <element id="Patient.communication:languageOfCorrespondence.id">
