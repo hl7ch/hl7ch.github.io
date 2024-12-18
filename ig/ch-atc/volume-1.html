@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Volume 1 - Integration Profiles - CH ATC (R4) v3.3.0-ballot</title>
+    <title>Volume 1 - Integration Profiles - CH ATC (R4) v3.3.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -62,7 +63,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"2"}
     h3,h4,h5,h6{--heading-prefix:"2"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -92,7 +94,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ATC (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.3.0-ballot - ballot
+            <span style="display:inline-block;">3.3.0 - draft
 
 
 
@@ -239,7 +241,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ATC (R4) (v3.3.0-ballot: Draft Ballot 5) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-atc/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ATC (R4) (v3.3.0: Draft Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-atc/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Volume 1 - Integration Profiles</h2>
   
 
@@ -287,7 +289,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div style="clear:both;"></div>
 <p><i>Figure 2: CH:ATC Actor diagram</i></p>
 
-<p>Table 1 lists the transactions for each actor directly involved in the CH:ATC Profile. To claim compliance with this Profile, an actor shall support all required transactions (labeled “R”) and may support the optional transactions (labeled “O”).</p>
+<p>Table 1 lists the transactions for each actor directly involved in the CH:ATC Profile. To claim compliance with this Profile, an actor shall support all required transactions (labeled "R") and may support the optional transactions (labeled "O").</p>
 
 <table class="table table-bordered">
   <thead>
@@ -325,15 +327,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h4 id="patient-audit-record-repository">Patient Audit Record Repository</h4>
 
-<p>For the actor Patient Audit Record Repository the actor Audit Record Repository in <a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RESTful-ATNA.pdf">IHE ITI Supplement Add RESTful Query to ATNA</a> is relevant.</p>
+<p>For the actor Patient Audit Record Repository the actor Audit Record Repository in <a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RESTful-ATNA_Rev3-3_TI_2021-07-02.pdf">IHE ITI Supplement Add RESTful Query to ATNA</a> is relevant.</p>
 
-<p>The Patient Audit Record Repository shall support the Retrieve Audit Message Option from the Audit Record Repository (<strong>TODO leere section</strong> <a href="https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html#9.2.3">IHE ITI TF-1, chapter 9.2.3</a>) with the search capabilities as defined in <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-81.html">IHE ITI TF-2, chapter 3.81</a> and the Audit Message Formats defined in Volume 3 - Content Profiles.</p>
+<p>The Patient Audit Record Repository shall support the Retrieve Audit Message Option from the Audit Record Repository (<a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RESTful-ATNA_Rev3-3_TI_2021-07-02.pdf">IHE ITI Supplement Add RESTful Query to ATNA, chapter 9.2.3</a>) with the search capabilities as defined in <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-81.html">IHE ITI TF-2, chapter 3.81</a> and the Audit Message Formats defined in Volume 3 - Content Profiles.</p>
 
 <h4 id="patient-audit-consumer">Patient Audit Consumer</h4>
 
 <p>For the actor Patient Audit Consumer the actor Audit Consumer in <a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RESTful-ATNA.pdf">IHE ITI Supplement Add RESTful Query to ATNA</a> is relevant.</p>
 
-<p>The Patient Audit Consumer queries a Patient Audit Record Repository for Audit Events defined by this profile. The Patient Audit Consumer shall support the Retrieve Audit Message Option from the Audit Consumer (<strong>TODO leere section</strong> <a href="https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html#9.2.3">IHE ITI TF-1, chapter 9.2.3</a>).</p>
+<p>The Patient Audit Consumer queries a Patient Audit Record Repository for Audit Events defined by this profile. The Patient Audit Consumer shall support the Retrieve Audit Message Option from the Audit Consumer (<a href="https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RESTful-ATNA_Rev3-3_TI_2021-07-02.pdf">IHE ITI Supplement Add RESTful Query to ATNA, chapter 9.2.3</a>).</p>
 
 <p>The Patient Audit Consumer should filter duplicate AuditEvents for display (e.g. Document Retrieval Audit Event for the same document access are in multiple Patient Audit Record Repositories, because the requesting and responding community need to make the AuditEvent available).</p>
 
@@ -362,7 +364,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p><em>Table 2: Actors and Options</em></p>
 
-<p>The aggregate Audit Message Options allows the Patient Audit Consumer to aggregate results from multiple Patient Audit Record Repositories. A reference community shall support at least one Patient Audit Consumer with this Option. If a Patient Audit Record Repository does not respond, an OperationOutcome with a severity warning shall be added to the aggregated results indicating the Patient Audit Record Repository of the community that does not respond.</p>
+<p>The Aggregate Audit Message Option allows the Patient Audit Consumer to aggregate results from multiple Patient Audit Record Repositories. A reference community shall provide at least one Patient Audit Consumer with this Option. If a Patient Audit Consumer implementing this option is unable to obtain audit records from a particular community, the Patient Audit Consumer shall add an OperationOutcome with a severity “warning” and the OID of the non-responding community to the aggregated results.</p>
 
 <h3 id="actor-groupings">Actor Groupings</h3>
 
@@ -500,7 +502,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="security-considerations">Security Considerations</h3>
 
-<p>The transaction is used to exchange sensitive information and requires authentication and authorization. This profile requires all actors to be grouped with Secure Node or Secure Application implementing the “STX: TLS 1.2 floor using BCP195 Option” defined in the <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-19.html#3.19.6.2.3">IHE ITI TF-2, chapter 3.19.6.2.3</a>.</p>
+<p>The transaction is used to exchange sensitive information and requires authentication and authorization. This profile requires all actors to be grouped with Secure Node or Secure Application implementing the "STX: TLS 1.2 floor using BCP195 Option" defined in the <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-19.html#3.19.6.2.3">IHE ITI TF-2, chapter 3.19.6.2.3</a>.</p>
 
 <p>Access control shall be implemented by grouping the CH:ATC Audit Consumer and Audit Record Repository with the Authorization Client and Resource Server from the IUA trial implementation profile using the SAML Token option (see <a href="https://profiles.ihe.net/ITI/IUA/index.html#372432-saml-token-option">IHE ITI Supplement IUA, chapter 3.72.4.3.2</a>). As defined therein, the CH:ATC Audit Consumer and Audit Record Repository shall implement the Incorporate Authorization Token [ITI-72] transaction to convey the XUA token.</p>
 
@@ -525,7 +527,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch/">eHealth Suisse</a>.  Package ch.fhir.ig.ch-atc#3.3.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 09:00+0000">2024-05-17</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch/">eHealth Suisse</a>.  Package ch.fhir.ig.ch-atc#3.3.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 12:54+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -533,7 +535,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSenz6zPRm-I72pSb_GCFYn8nuqYhJ32dSyDJrlclUDBe9kn8g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-atc%233.3.0-ballot%20/volume-1.html&amp;entry%2E247644557=Volume%201%20-%20Integration%20Profiles">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSenz6zPRm-I72pSb_GCFYn8nuqYhJ32dSyDJrlclUDBe9kn8g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-atc%233.3.0%20/volume-1.html&amp;entry%2E247644557=Volume%201%20-%20Integration%20Profiles">Propose a change</a>
 
 
 
@@ -548,7 +550,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -559,7 +561,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

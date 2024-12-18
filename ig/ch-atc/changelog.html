@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Changelog - CH ATC (R4) v3.3.0-ballot</title>
+    <title>Changelog - CH ATC (R4) v3.3.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -62,7 +63,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"8"}
     h3,h4,h5,h6{--heading-prefix:"8"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -92,7 +94,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ATC (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.3.0-ballot - ballot
+            <span style="display:inline-block;">3.3.0 - draft
 
 
 
@@ -239,7 +241,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ATC (R4) (v3.3.0-ballot: Draft Ballot 5) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-atc/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ATC (R4) (v3.3.0: Draft Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-atc/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Changelog</h2>
   
 
@@ -257,6 +259,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
+  <li><a href="#v330-2024-12-18" id="markdown-toc-v330-2024-12-18">v3.3.0 (2024-12-18)</a></li>
   <li><a href="#v330-ballot-2024-05-17" id="markdown-toc-v330-ballot-2024-05-17">v3.3.0-ballot (2024-05-17)</a></li>
   <li><a href="#v320-2024-01-31" id="markdown-toc-v320-2024-01-31">v3.2.0 (2024-01-31)</a></li>
   <li><a href="#v320-ballot-2023-06-30" id="markdown-toc-v320-ballot-2023-06-30">v3.2.0-ballot (2023-06-30)</a></li>
@@ -268,18 +271,55 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>All significant changes to this FHIR implementation guide will be documented on this page.</p>
 
-<h3 id="v330-ballot-2024-05-17">v3.3.0-ballot (2024-05-17)</h3>
+<h3 id="v330-2024-12-18">v3.3.0 (2024-12-18)</h3>
+
+<h4 id="open-issue">Open Issue</h4>
+<ul>
+  <li>'Event Date and Time' in the Audit Events can no more be changed in this ballot <a href="https://github.com/ehealthsuisse/ch-atc/issues/42">#42</a></li>
+</ul>
 
 <h4 id="added">Added</h4>
 <ul>
-  <li>Integration of volume 1, 2 and 3 from ‘Ergänzung 2.2 zu Anhang 5 EPDV-EDI’ in consideration of CP ‘EPDBEP-244’ <a href="https://github.com/ehealthsuisse/ch-atc/issues/12">#12</a>
+  <li>CapabilityStatement for the Patient Audit Record Repository <a href="https://github.com/ehealthsuisse/ch-atc/issues/47">#47</a></li>
+</ul>
+
+<h4 id="changed--updated">Changed / Updated</h4>
+<ul>
+  <li>Revise <a href="https://fhir.ch/ig/ch-atc/index.html#introduction">Introduction</a> <a href="https://github.com/ehealthsuisse/ch-atc/issues/23">#23</a></li>
+  <li>Improve description of the exclusion of a healthcare professional from accessing an EPR <a href="https://github.com/ehealthsuisse/ch-atc/issues/25">#25</a></li>
+  <li>Textual improvement of narrative part in examples <a href="https://github.com/ehealthsuisse/ch-atc/issues/26">#26</a></li>
+  <li>Correct typo 'EPR_SPID' to 'EPR-SPID' in <a href="https://fhir.ch/ig/ch-atc/volume-3.html#access-audit-trail-content-profile">Access Audit Trail Content Profile</a> <a href="https://github.com/ehealthsuisse/ch-atc/issues/27">#27</a></li>
+  <li>Textual improvement in narrative part in example <a href="https://github.com/ehealthsuisse/ch-atc/issues/28">#28</a></li>
+  <li>After adding the W3C Trace Context to this profile with <a href="https://github.com/ehealthsuisse/ch-atc/issues/18">#18</a> remove it again from the descriptions and examples according to decision <a href="https://github.com/ehealthsuisse/ch-atc/issues/51">#51</a></li>
+  <li>Correct reference from IHE 'ITI TF-1' to 'IHE ITI Supplement Add RESTful Query to ATNA' in <a href="https://fhir.ch/ig/ch-atc/volume-1.html#patient-audit-record-repository">Patient Audit Record Repository</a> and <a href="https://fhir.ch/ig/ch-atc/volume-1.html#patient-audit-consumer">Patient Audit Consumer</a> <a href="https://github.com/ehealthsuisse/ch-atc/issues/32">#32</a>, <a href="https://github.com/ehealthsuisse/ch-atc/issues/37">#37</a></li>
+  <li>Add to the Aggregate Audit Message Option in <a href="https://fhir.ch/ig/ch-atc/volume-1.html#integration-profile-options">Integration Profile Options</a> an OperationOutcome in case of a non-responding community <a href="https://github.com/ehealthsuisse/ch-atc/issues/33">#33</a></li>
+  <li>Identifier in KeyElements table <a href="https://github.com/ehealthsuisse/ch-atc/issues/36">#36</a></li>
+  <li>CP 'EHSEPDBEP-244' XDSDocumentEntry.uniqueId precision <a href="https://github.com/ehealthsuisse/ch-atc/issues/38">#38</a>, <a href="https://github.com/ehealthsuisse/ch-atc/issues/53">#53</a></li>
+  <li>Correct example in <a href="https://fhir.ch/ig/ch-atc/volume-2.html#security-considerations">Security Considertations</a> <a href="https://github.com/ehealthsuisse/ch-atc/issues/39">#39</a></li>
+  <li>Remove 'user' from Additional ATNA Search Parameters <a href="https://github.com/ehealthsuisse/ch-atc/issues/40">#40</a></li>
+  <li>Correct display name of the SNOMED CT code 419891008 <a href="https://github.com/ehealthsuisse/ch-atc/issues/43">#43</a></li>
+  <li>Correct typo in reference to footnote <a href="https://github.com/ehealthsuisse/ch-atc/issues/44">#44</a></li>
+  <li>Align min cardinalities in the ChAtcIti81Response profile <a href="https://github.com/ehealthsuisse/ch-atc/issues/48">#48</a></li>
+  <li>Update the IG dependencies to the current published versions (HL7 Terminology 6.1.0, CH EPR FHIR 4.0.1-ballot-2)</li>
+</ul>
+
+<h4 id="issues-resolved-without-amendment-in-ig">Issues resolved without amendment (in IG)</h4>
+<ul>
+  <li>Remove Trace Context from CH ATC Profile <a href="https://github.com/ehealthsuisse/ch-atc/issues/51">#51</a></li>
+</ul>
+
+<h3 id="v330-ballot-2024-05-17">v3.3.0-ballot (2024-05-17)</h3>
+
+<h4 id="added-1">Added</h4>
+<ul>
+  <li>Integration of volume 1, 2 and 3 from 'Ergänzung 2.2 zu Anhang 5 EPDV-EDI' in consideration of CP 'EHSEPDBEP-244' <a href="https://github.com/ehealthsuisse/ch-atc/issues/12">#12</a>
     <ul>
       <li>Add tracecontext by using ChEprFhirAuditEvent as parent profile for all AuditEvent profiles in CH ATC <a href="https://github.com/ehealthsuisse/ch-atc/issues/18">#18</a></li>
     </ul>
   </li>
 </ul>
 
-<h4 id="changed--updated">Changed / Updated</h4>
+<h4 id="changed--updated-1">Changed / Updated</h4>
 <ul>
   <li>Updated the IG dependencies to the current published versions
     <ul>
@@ -297,7 +337,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li>Overview of transactions/use cases <a href="https://github.com/ehealthsuisse/ch-atc/issues/12">#12</a></li>
 </ul>
 
-<h4 id="added-1">Added</h4>
+<h4 id="added-2">Added</h4>
 <ul>
   <li><a href="Bundle-ch-atc-iti-81-response-sample.xml.html">Example</a> for partial result in CH:ATC Query <a href="https://github.com/ehealthsuisse/ch-atc/issues/6">#6</a></li>
 </ul>
@@ -312,12 +352,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="v320-ballot-2023-06-30">v3.2.0-ballot (2023-06-30)</h3>
 
-<h4 id="added-2">Added</h4>
+<h4 id="added-3">Added</h4>
 <ul>
   <li>Example for partial result in CH:ATC Query</li>
-  <li>Added ‘HpdAuditEvent’ Profile and ‘HpdAuditEventType’ ValueSet.
+  <li>Added 'HpdAuditEvent' Profile and 'HpdAuditEventType' ValueSet.
     <ul>
-      <li>Additional slice Bundle.entry:HpdAuditEvent in ‘ChAtcIti81Response’ profile.</li>
+      <li>Additional slice Bundle.entry:HpdAuditEvent in 'ChAtcIti81Response' profile.</li>
     </ul>
   </li>
   <li>Added examples:
@@ -326,10 +366,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li>CH ATC - Audit Event for Group Entry Audit Event Content Profile (Profile: HpdAuditEvent)</li>
     </ul>
   </li>
-  <li>Added ‘STU Note’ box, ‘Change Log’ and NPM package download link.</li>
+  <li>Added 'STU Note' box, 'Change Log' and NPM package download link.</li>
 </ul>
 
-<h4 id="changed--updated-1">Changed / Updated</h4>
+<h4 id="changed--updated-2">Changed / Updated</h4>
 <ul>
   <li>DocumentAuditEvent:
     <ul>
@@ -337,8 +377,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li>Added slice AuditEvent.entity:Document.detail:title</li>
     </ul>
   </li>
-  <li>Added the code ‘ATC_DOC_SEARCH’ to existing ValueSet ‘DocumentAuditEventType’.</li>
-  <li>Updated description of the ‘ChAtcIti81Response’ profile and unified the notation in the IG.</li>
+  <li>Added the code 'ATC_DOC_SEARCH' to existing ValueSet 'DocumentAuditEventType'.</li>
+  <li>Updated description of the 'ChAtcIti81Response' profile and unified the notation in the IG.</li>
   <li>Structural updates of the IG analogous to the further development of the IG Publisher. Removed elements in the differential which did not deviate from the core specification to clean the differential table of the profiles.</li>
   <li>Added an <a href="Bundle-ch-atc-iti-81-response-sample.xml.html">example</a> how to indicate a partial success (e.g. one of the communities not responding)</li>
 </ul>
@@ -362,12 +402,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h3 id="v310-2020-06-11">v3.1.0 (2020-06-11)</h3>
 <p>Updated draft version:</p>
 <ul>
-  <li>Added SearchParameter ‘AuditEvent entity.identifier’.</li>
-  <li>Changed CodeSystem agentRole from ‘urn:oid:2.16.756.5.30.1.127.3.10.8’ to ‘urn:oid:2.16.756.5.30.1.127.3.10.14’</li>
+  <li>Added SearchParameter 'AuditEvent entity.identifier'.</li>
+  <li>Changed CodeSystem agentRole from 'urn:oid:2.16.756.5.30.1.127.3.10.8' to 'urn:oid:2.16.756.5.30.1.127.3.10.14'</li>
   <li>Introduction of dependence to implementation guide CH EPR Term.
     <ul>
       <li>Removed all CodeSystems.</li>
-      <li>Removed ValueSet ‘EprPurposeOfUse’.</li>
+      <li>Removed ValueSet 'EprPurposeOfUse'.</li>
       <li>Adapted URLs of the ValueSets.</li>
     </ul>
   </li>
@@ -376,7 +416,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </ul>
 
 <h3 id="v120-2019-03-01">v1.2.0 (2019-03-01)</h3>
-<p>Initial published draft version according to ‘www.e-health-suisse.ch/fileadmin/user_upload/Dokumente/2019/E/190528_Entwurf_EPDV-EDI_E2A5_ATC_V1.9_e.pdf’.</p>
+<p>Initial published draft version according to 'www.e-health-suisse.ch/fileadmin/user_upload/Dokumente/2019/E/190528_Entwurf_EPDV-EDI_E2A5_ATC_V1.9_e.pdf'.</p>
 
 
 
@@ -396,7 +436,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch/">eHealth Suisse</a>.  Package ch.fhir.ig.ch-atc#3.3.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 09:00+0000">2024-05-17</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch/">eHealth Suisse</a>.  Package ch.fhir.ig.ch-atc#3.3.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 12:54+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -404,7 +444,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSenz6zPRm-I72pSb_GCFYn8nuqYhJ32dSyDJrlclUDBe9kn8g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-atc%233.3.0-ballot%20/changelog.html&amp;entry%2E247644557=Changelog">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSenz6zPRm-I72pSb_GCFYn8nuqYhJ32dSyDJrlclUDBe9kn8g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-atc%233.3.0%20/changelog.html&amp;entry%2E247644557=Changelog">Propose a change</a>
 
 
 
@@ -419,7 +459,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -430,7 +470,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

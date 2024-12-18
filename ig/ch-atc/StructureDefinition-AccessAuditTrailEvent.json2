@@ -6,7 +6,7 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">StructureDefinition for the AccessAuditTrailEvent.</div>"
   },
   "url" : "http://fhir.ch/ig/ch-atc/StructureDefinition/AccessAuditTrailEvent",
-  "version" : "3.3.0-ballot",
+  "version" : "3.3.0",
   "name" : "AccessAuditTrailEvent",
   "title" : "AccessAuditTrailEvent",
   "status" : "active",
@@ -517,6 +517,10 @@
         "valueSet" : "http://fhir.ch/ig/ch-atc/ValueSet/AccessAuditTrailEventType"
       },
       "mapping" : [{
+        "identity" : "ch-atc",
+        "map" : "Event Type"
+      },
+      {
         "identity" : "w5",
         "map" : "FiveWs.what[x]"
       },
@@ -527,10 +531,6 @@
       {
         "identity" : "dicom",
         "map" : "EventTypeCode"
-      },
-      {
-        "identity" : "ch-atc",
-        "map" : "Event Type"
       }]
     },
     {
@@ -660,6 +660,10 @@
       "isModifier" : false,
       "isSummary" : true,
       "mapping" : [{
+        "identity" : "ch-atc",
+        "map" : "Event Date and Time"
+      },
+      {
         "identity" : "w5",
         "map" : "FiveWs.recorded"
       },
@@ -674,10 +678,6 @@
       {
         "identity" : "fhirprovenance",
         "map" : "Provenance.recorded"
-      },
-      {
-        "identity" : "ch-atc",
-        "map" : "Event Date and Time"
       }]
     },
     {
@@ -855,6 +855,10 @@
       "isModifier" : false,
       "isSummary" : false,
       "mapping" : [{
+        "identity" : "ch-atc",
+        "map" : "Participants"
+      },
+      {
         "identity" : "workflow",
         "map" : "Event.performer"
       },
@@ -877,10 +881,6 @@
       {
         "identity" : "fhirprovenance",
         "map" : "Provenance.agent"
-      },
-      {
-        "identity" : "ch-atc",
-        "map" : "Participants"
       }]
     },
     {
@@ -1091,6 +1091,10 @@
         "valueSet" : "http://fhir.ch/ig/ch-atc/ValueSet/EprParticipant"
       },
       "mapping" : [{
+        "identity" : "ch-atc",
+        "map" : "role (PAT, REP)"
+      },
+      {
         "identity" : "w5",
         "map" : "FiveWs.who"
       },
@@ -1109,10 +1113,6 @@
       {
         "identity" : "fhirprovenance",
         "map" : "Provenance.agent.role"
-      },
-      {
-        "identity" : "ch-atc",
-        "map" : "role (PAT, REP)"
       }]
     },
     {
@@ -1349,12 +1349,12 @@
       "isModifier" : false,
       "isSummary" : true,
       "mapping" : [{
-        "identity" : "rim",
-        "map" : ".identifier"
-      },
-      {
         "identity" : "ch-atc",
         "map" : "Identifier if applicable"
+      },
+      {
+        "identity" : "rim",
+        "map" : ".identifier"
       }]
     },
     {
@@ -1462,6 +1462,10 @@
       "isModifier" : false,
       "isSummary" : false,
       "mapping" : [{
+        "identity" : "ch-atc",
+        "map" : "Name"
+      },
+      {
         "identity" : "w5",
         "map" : "FiveWs.who"
       },
@@ -1476,10 +1480,6 @@
       {
         "identity" : "w3c.prov",
         "map" : "Agent.Identity"
-      },
-      {
-        "identity" : "ch-atc",
-        "map" : "Name"
       }]
     },
     {
@@ -1510,6 +1510,10 @@
       "isModifier" : false,
       "isSummary" : true,
       "mapping" : [{
+        "identity" : "ch-atc",
+        "map" : "if participant is Initiator"
+      },
+      {
         "identity" : "w5",
         "map" : "FiveWs.who"
       },
@@ -1520,10 +1524,6 @@
       {
         "identity" : "dicom",
         "map" : "UserIsRequestor"
-      },
-      {
-        "identity" : "ch-atc",
-        "map" : "if participant is Initiator"
       }]
     },
     {
@@ -3069,6 +3069,10 @@
       "isModifier" : false,
       "isSummary" : false,
       "mapping" : [{
+        "identity" : "ch-atc",
+        "map" : "Patient"
+      },
+      {
         "identity" : "w5",
         "map" : "FiveWs.what[x]"
       },
@@ -3087,10 +3091,6 @@
       {
         "identity" : "fhirprovenance",
         "map" : "Provenance.target, Provenance.entity"
-      },
-      {
-        "identity" : "ch-atc",
-        "map" : "Patient"
       }]
     },
     {
@@ -3423,12 +3423,12 @@
       "isModifier" : false,
       "isSummary" : true,
       "mapping" : [{
-        "identity" : "rim",
-        "map" : ".identifier"
-      },
-      {
         "identity" : "ch-atc",
         "map" : "EPR-SPID"
+      },
+      {
+        "identity" : "rim",
+        "map" : ".identifier"
       }]
     },
     {
@@ -6894,6 +6894,12 @@
         "identity" : "ch-atc",
         "map" : "role (PAT, REP)"
       }]
+    },
+    {
+      "id" : "AuditEvent.agent.who",
+      "path" : "AuditEvent.agent.who",
+      "min" : 0,
+      "max" : "1"
     },
     {
       "id" : "AuditEvent.agent.who.identifier",

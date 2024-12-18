@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Volume 2 - Transactions - CH ATC (R4) v3.3.0-ballot</title>
+    <title>Volume 2 - Transactions - CH ATC (R4) v3.3.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -62,7 +63,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"3"}
     h3,h4,h5,h6{--heading-prefix:"3"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -92,7 +94,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ATC (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.3.0-ballot - ballot
+            <span style="display:inline-block;">3.3.0 - draft
 
 
 
@@ -239,7 +241,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ATC (R4) (v3.3.0-ballot: Draft Ballot 5) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-atc/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH ATC (R4) (v3.3.0: Draft Draft) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-atc/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Volume 2 - Transactions</h2>
   
 
@@ -264,7 +266,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h4 id="message-semantics">Message Semantics</h4>
 
-<p>The Retrieve ATNA Audit Event message shall be a HTTP GET request sent to the Patient Audit Record Repository. This message is a FHIR search (see <a href="http://hl7.org/fhir/R4/search.html">http://hl7.org/fhir/R4/search.html</a>) on AuditEvent Resources (see <a href="http://hl7.org/fhir/R4/auditevent.html">http://hl7.org/fhir/R4/auditevent.html</a>). This “search” target is formatted as:</p>
+<p>The Retrieve ATNA Audit Event message shall be a HTTP GET request sent to the Patient Audit Record Repository. This message is a FHIR search (see <a href="http://hl7.org/fhir/R4/search.html">http://hl7.org/fhir/R4/search.html</a>) on AuditEvent Resources (see <a href="http://hl7.org/fhir/R4/auditevent.html">http://hl7.org/fhir/R4/auditevent.html</a>). This "search" target is formatted as:</p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">&lt;scheme&gt;://&lt;authority&gt;/&lt;path&gt;/AuditEvent?date=ge[start-time]&amp;date=le[stop-time]&amp;&lt;query&gt;
 </span></code></pre></div></div>
@@ -282,7 +284,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h4 id="additional-atna-search-parameters">Additional ATNA Search Parameters</h4>
 
-<p>The Patient Audit Consumer shall not use the following parameters in a query parameters: address, patient.identifier, source, type, user, outcome. The Patient Audit Consumer may use other parameters as listed in Retrieve Audit Event [ITI-81].</p>
+<p>The Patient Audit Consumer shall not use the following parameters in a query parameters: address, patient.identifier, source, type, outcome. The Patient Audit Consumer may use other parameters as listed in Retrieve Audit Event [ITI-81].</p>
 
 <p><strong>entity.identifier</strong> is a parameter of token type. This parameter specifies unique identifier for the object. The parameter value should be identified in accordance to the entity type; <br />
 For example:</p>
@@ -300,13 +302,13 @@ For example:</p>
 
 <h4 id="security-considerations">Security Considerations</h4>
 
-<p>The transaction is used to exchange sensitive information and requires authentication and authorization. This profile requires all actors to be grouped with Secure Node or Secure Application implementing the “STX: TLS 1.2 floor using BCP195 Option” defined in the <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-19.html#3.19.6.2.3">IHE ITI TF-2, chapter 3.19.6.2.3</a>.</p>
+<p>The transaction is used to exchange sensitive information and requires authentication and authorization. This profile requires all actors to be grouped with Secure Node or Secure Application implementing the "STX: TLS 1.2 floor using BCP195 Option" defined in the <a href="https://profiles.ihe.net/ITI/TF/Volume2/ITI-19.html#3.19.6.2.3">IHE ITI TF-2, chapter 3.19.6.2.3</a>.</p>
 
 <p>Access control shall be implemented by grouping the CH:ATC Audit Consumer and Audit Record Repository with the Authorization Client and Resource Server from the IUA trial implementation profile using the SAML Token option (see <a href="https://profiles.ihe.net/ITI/IUA/index.html#372432-saml-token-option">IHE ITI Supplement IUA , chapter 3.72.4.3.2</a>). As defined therein, the CH:ATC Audit Consumer and Audit Record Repository shall implement the Incorporate Authorization Token [ITI-72] transaction to convey the XUA token.</p>
 
-<p>The actors shall implement the Incorporate Authorization Token [ITI-72] transaction with SAML token option, using the base64url encoded SAML assertion defined in XUA to the authorization header of the HTTP1.1 GET request with key “Bearer” as follows:</p>
+<p>The actors shall implement the Incorporate Authorization Token [ITI-72] transaction with SAML token option, using the base64url encoded SAML assertion defined in XUA to the authorization header of the HTTP1.1 GET request with key "Bearer" as follows:</p>
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/example/url/to/resource/location</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">"Bearer" fFBGRNJru1FQd[…omitted for brevity…]44AzqT3Zg</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer fFBGRNJru1FQd[…omitted for brevity…]44AzqT3Zg</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">examplehost.com</span>
 </code></pre></div></div>
 
@@ -334,7 +336,7 @@ For example:</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch/">eHealth Suisse</a>.  Package ch.fhir.ig.ch-atc#3.3.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 09:00+0000">2024-05-17</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch/">eHealth Suisse</a>.  Package ch.fhir.ig.ch-atc#3.3.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 12:54+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -342,7 +344,7 @@ For example:</p>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSenz6zPRm-I72pSb_GCFYn8nuqYhJ32dSyDJrlclUDBe9kn8g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-atc%233.3.0-ballot%20/volume-2.html&amp;entry%2E247644557=Volume%202%20-%20Transactions">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSenz6zPRm-I72pSb_GCFYn8nuqYhJ32dSyDJrlclUDBe9kn8g/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-atc%233.3.0%20/volume-2.html&amp;entry%2E247644557=Volume%202%20-%20Transactions">Propose a change</a>
 
 
 
@@ -357,7 +359,7 @@ For example:</p>
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -368,7 +370,6 @@ For example:</p>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>
