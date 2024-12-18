@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Anwendungsfälle - CH IPS (R4) v1.0.0-ballot</title>
+    <title>Anwendungsfälle - CH IPS (R4) v1.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"4"}
     h3,h4,h5,h6{--heading-prefix:"4"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH IPS (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0-ballot - ballot
+            <span style="display:inline-block;">1.0.0 - trial-use
 
 
 
@@ -130,6 +132,16 @@
       </li>
     </ul>
   </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Guidance
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="narrative-content.html">Narrative Content</a>
+      </li>
+    </ul>
+  </li>
   <li>
     <a href="profiles.html">Profiles</a>
   </li>
@@ -168,7 +180,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH IPS (R4) (v1.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-ips/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH IPS (R4) (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-ips/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Anwendungsfälle</h2>
   
 
@@ -187,13 +199,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div>
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<p>Die nachfolgenden Anwendungsfälle dienen der Illustration möglicher Szenarien für den Einsatz des International Patient Summary Dokuments. Die Fälle sollen exemplarisch die Repräsentation des Dokuments darstellen. Der klinische Inhalt wurde noch nicht validiert.</p>
+<p>Die nachfolgenden Anwendungsfälle dienen der Illustration möglicher Szenarien für den Einsatz des International Patient Summary Dokuments. Die Fälle sollen exemplarisch die Repräsentation des Dokuments darstellen.</p>
 
 <h3 id="fallbeispiel-1">Fallbeispiel 1</h3>
-<p>Frau <a href="Patient-MonikaWegmueller.html">Monika Wegmüller</a>, geboren am 15. Mai 1943, kommt am 26. April 2024 mit einem stechenden Schmerz in der Brust und Atemnot in die Notaufnahme. Dort wird sie von einem Team aus ärztlichem Fachpersonal und Pflegepersonal betreut. Die verantwortliche Ärztin im Spital, Dr. Martina Meier, ruft das aktuellste <a href="Bundle-UC1-SwissIpsDocument1.html">IPS Dokument (11. Januar 2024)</a> von Frau Wegmüller ab, welches der <a href="PractitionerRole-FamilienHausarztAtHausarzt.html">Hausarzt</a> am 11. Januar 2024 erstellt hat. Frau Dr. Meier sieht darin dokumentiert, dass Frau Wegmüller an <a href="Condition-DiabetesMellitus.html">Diabetes</a> leidet und deswegen <a href="MedicationStatement-MedStatMetformin.html">Metformin</a> einnimmt. Frau Wegmüller hat <a href="AllergyIntolerance-NoKnownAllergy.html">keine bekannten Allergien</a>.  <br />
-Mit diesen Informationen kann die Behandlung gegen die Atemnot und den stechenden Brustschmerz sofort gestartet werden. Frau Wegmüller wird eine niedrige Dosis Betablocker verabreicht, und ihr Herzrhythmus wird überwacht.</p>
+<p>Frau <a href="Patient-MonikaWegmueller.html">Monika Wegmüller</a>, geboren am 15. Mai 1943, kommt am 26. April 2024 mit plötzlich aufgetretenem Unwohlsein, Schwindel und Atembeschwerden in die Notaufnahme. Dort wird sie von einem Team aus ärztlichem Fachpersonal und Pflegepersonal betreut. Die verantwortliche Ärztin im Spital, Dr. Martina Meier, ruft das <a href="Bundle-UC1-SwissIpsDocument1.html"><strong>aktuellste IPS Dokument (11. Januar 2024)</strong></a> von Frau Wegmüller ab, welches der <a href="PractitionerRole-FamilienHausarztAtHausarzt.html">Hausarzt</a> am 11. Januar 2024 erstellt hat. Frau Dr. Meier sieht darin dokumentiert, dass Frau Wegmüller an <a href="Condition-DiabetesMellitus.html">Diabetes</a> und <a href="Condition-HighBloodPressure.html">Bluthochdruck</a> leidet und deswegen <a href="MedicationStatement-MedStatMetformin.html">Metformin</a> und <a href="MedicationStatement-MedStatCandesartan.html">Candesartan</a> einnimmt, ausserdem ist eine <a href="Condition-CoronaryHeartDisease.html">koronare Herzkrankheit</a> bekannt, weswegen Frau Wegmüller vor 2 Jahren einen <a href="Procedure-StentPlacement.html">Stent</a> erhalten hat. Allergien und Intoleranzen von Frau Wegmüller wurden durch ihren Hausarzt bisher noch nicht erfragt.</p>
 
-<p>Nachdem es Frau Wegmüller dank der Behandlung in der Notaufnahme schnell besser geht, entscheidet die verantwortliche Ärztin Fr. Wegmüller zur weiteren Untersuchung der Ursache auf die Station zu verlegen. Dort wird sie weiterhin von <a href="PractitionerRole-869a4dd9-3a4a-4838-ad1e-42453d341147.html">Dr. Meier</a> betreut und am Ende des Spitalaufenthalts wird ein neues <a href="Bundle-UC1-SwissIpsDocument2.html">IPS Dokument (3. Mai 2024)</a> mit den aktuellsten und ergänzten Informationen für Fr. Wegmüller erstellt.</p>
+<p>Aufgrund dieser Vorinformationen vermutet Dr. Meier als Grund für das Unwohlsein und die Atembeschwerden einen <a href="Condition-12d8debe-5e03-465d-83f3-17675be9db4a.html">Herzinfarkt</a>, der sich dann auch im EKG und den Laboruntersuchungen bestätigt. Frau Wegmüller wird ins Herzkatheterlabor gebracht, wo sich zeigt, dass ein Herzkranzgefäss beinahe verschlossen ist und sie einen weiteren <a href="Procedure-d646c888-7af0-4439-8aae-9fd490054583.html">Stent</a> braucht. Weil Frau Dr. Meier so gut informiert war konnte sie schnell richtig handeln und so geht es Frau Wegmüller schnell besser. Zur Überwachung wird sie auf die kardiologische Überwachungsstation (Kardio-IMC) aufgenommen.  <br />
+Dort wird sie weiterhin von <a href="PractitionerRole-869a4dd9-3a4a-4838-ad1e-42453d341147.html">Dr. Meier</a> betreut und am Ende des Spitalaufenthalts wird ein <a href="Bundle-UC1-SwissIpsDocument2.html"><strong>neues IPS Dokument (3. Mai 2024)</strong></a> mit den aktuellsten und ergänzten Informationen für Fr. Wegmüller erstellt.</p>
 
 
 
@@ -214,7 +226,7 @@ Mit diesen Informationen kann die Behandlung gegen die Atemnot und den stechende
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-ips#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 10:26+0000">2024-05-17</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-ips#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 08:08+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -222,7 +234,7 @@ Mit diesen Informationen kann die Behandlung gegen die Atemnot und den stechende
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdxByu8qJuO5SMt8V3RVivlUVkGkq1dbY-EMtpikWZ2f4Vt6A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-ips%231.0.0-ballot%20/usecase-german.html&amp;entry%2E247644557=Anwendungsf%C3%A4lle">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdxByu8qJuO5SMt8V3RVivlUVkGkq1dbY-EMtpikWZ2f4Vt6A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-ips%231.0.0%20/usecase-german.html&amp;entry%2E247644557=Anwendungsf%C3%A4lle">Propose a change</a>
 
 
 
@@ -237,7 +249,7 @@ Mit diesen Informationen kann die Behandlung gegen die Atemnot und den stechende
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -248,7 +260,6 @@ Mit diesen Informationen kann die Behandlung gegen die Atemnot und den stechende
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

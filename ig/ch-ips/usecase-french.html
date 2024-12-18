@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Cas d’application - CH IPS (R4) v1.0.0-ballot</title>
+    <title>Cas d’application - CH IPS (R4) v1.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"5"}
     h3,h4,h5,h6{--heading-prefix:"5"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH IPS (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0-ballot - ballot
+            <span style="display:inline-block;">1.0.0 - trial-use
 
 
 
@@ -130,6 +132,16 @@
       </li>
     </ul>
   </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Guidance
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="narrative-content.html">Narrative Content</a>
+      </li>
+    </ul>
+  </li>
   <li>
     <a href="profiles.html">Profiles</a>
   </li>
@@ -168,7 +180,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH IPS (R4) (v1.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-ips/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH IPS (R4) (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-ips/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Cas d’application</h2>
   
 
@@ -187,13 +199,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div>
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<p>Les cas d’utilisation suivants servent à illustrer des scénarios possibles pour l’utilisation du document International Patient Summary. Les cas sont conçus pour illustrer de façon exemplaire la représentation du document. Le contenu clinique n’a pas encore été validé.</p>
+<p>Les cas d'utilisation suivants servent à illustrer des scénarios possibles pour l'utilisation du document International Patient Summary. Les cas sont conçus pour illustrer de façon exemplaire la représentation du document.</p>
 
 <h3 id="exemple-de-cas-1">Exemple de cas 1</h3>
-<p>Madame <a href="Patient-MonikaWegmueller.html">Monika Wegmüller</a>, née le 15 mai 1943, se présente aux urgences le 26 avril 2024 avec une douleur lancinante dans le thorax et des difficultés respiratoires. Elle y est prise en charge par une équipe composée de personnel médical spécialisé et de personnel infirmier. Le médecin responsable à l’hôpital, Dr Martina Meier, récupère le <a href="Bundle-UC1-SwissIpsDocument1.html">document IPS le plus récent (11 janvier 2024)</a> de Mme Wegmüller, établi par le <a href="PractitionerRole-FamilienHausarztAtHausarzt.html">médecin de famille</a> le 11 janvier 2024. Dr Meier voit dans ce document que Mme Wegmüller souffre de <a href="Condition-DiabetesMellitus.html">diabète</a> et prend donc de la <a href="MedicationStatement-MedStatMetformin.html">metformine</a>. Mme Wegmüller <a href="AllergyIntolerance-NoKnownAllergy.html">n’a pas d’allergie connue</a>. <br />
-Avec ces informations, le traitement contre des difficultés respiratoires et des douleurs thoraciques lancinantes peut être lancé immédiatement. Une faible dose de bêtabloquant est administrée à Mme Wegmüller et son rythme cardiaque est surveillé.</p>
+<p>Madame <a href="Patient-MonikaWegmueller.html">Monika Wegmüller</a>, née le 15 mai 1943, se rend aux urgences le 26 avril 2024 pour un malaise soudain, des vertiges et des difficultés respiratoires. Elle y est prise en charge par une équipe composée de personnel médical spécialisé et de personnel infirmier. Le médecin responsable à l'hôpital, Dr Martina Meier, récupère le <a href="Bundle-UC1-SwissIpsDocument1.html"><strong>document IPS le plus récent (11 janvier 2024)</strong></a> de Mme Wegmüller, établi par le <a href="PractitionerRole-FamilienHausarztAtHausarzt.html">médecin de famille</a> le 11 janvier 2024. Dr Meier y voit documenté que Mme Wegmüller souffre de <a href="Condition-DiabetesMellitus.html">diabète</a> et d'<a href="Condition-HighBloodPressure.html">hypertension</a>, raison pour laquelle elle prend de la <a href="MedicationStatement-MedStatMetformin.html">metformine</a> et du <a href="MedicationStatement-MedStatCandesartan.html">candesartan</a>, et qu'une <a href="Condition-CoronaryHeartDisease.html">maladie coronarienne</a> est connue, raison pour laquelle Mme Wegmüller a reçu une <a href="Procedure-StentPlacement.html">endoprothèse</a> il y a deux ans. Les allergies et intolérances de Mme Wegmüller n'ont pas encore été demandées par son médecin de famille.</p>
 
-<p>Après que Mme Wegmüller se soit rapidement sentie mieux grâce au traitement reçu aux urgences, le médecin responsable décide de transférer Mme Wegmüller sur la station pour un examen plus approfondi de la cause. Là, elle continue à être suivie par <a href="PractitionerRole-869a4dd9-3a4a-4838-ad1e-42453d341147.html">Dr Meier</a> et, à la fin de son séjour à l’hôpital, un <a href="Bundle-UC1-SwissIpsDocument2.html">nouveau document IPS (3 mai 2024)</a> contenant les informations les plus récentes et complétées est établi pour Mme Wegmüller.</p>
+<p>Sur la base de ces informations préliminaires, Dr Meier soupçonne un <a href="Condition-12d8debe-5e03-465d-83f3-17675be9db4a.html">infarctus du myocarde</a> d'être à l'origine du malaise et des difficultés respiratoires, ce que confirment ensuite l'ECG et les examens de laboratoire. Mme Wegmüller est emmenée au laboratoire de cathétérisme cardiaque, où il s'avère qu'une artère coronaire est presque bouchée et qu'elle a besoin d'une autre <a href="Procedure-d646c888-7af0-4439-8aae-9fd490054583.html">endoprothèse</a>. Comme Dr Meier était si bien informée, elle a pu agir rapidement et Mme Wegmüller se sent rapidement mieux. Pour la surveillance, elle est admise dans l'unité de soins intensifs en cardiologie (Cardio-IMC).  <br />
+Là, elle continuera à être suivie par <a href="PractitionerRole-869a4dd9-3a4a-4838-ad1e-42453d341147.html">Dr Meier</a> et, à la fin de son séjour à l'hôpital, un <a href="Bundle-UC1-SwissIpsDocument2.html"><strong>nouveau document IPS (3 mai 2024)</strong></a> sera établi pour Mme Wegmüller avec les informations les plus récentes et complétées.</p>
 
 
 
@@ -214,7 +226,7 @@ Avec ces informations, le traitement contre des difficultés respiratoires et de
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-ips#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 10:26+0000">2024-05-17</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-ips#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 08:08+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -222,7 +234,7 @@ Avec ces informations, le traitement contre des difficultés respiratoires et de
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdxByu8qJuO5SMt8V3RVivlUVkGkq1dbY-EMtpikWZ2f4Vt6A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-ips%231.0.0-ballot%20/usecase-french.html&amp;entry%2E247644557=Cas%20d%E2%80%99application">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdxByu8qJuO5SMt8V3RVivlUVkGkq1dbY-EMtpikWZ2f4Vt6A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-ips%231.0.0%20/usecase-french.html&amp;entry%2E247644557=Cas%20d%E2%80%99application">Propose a change</a>
 
 
 
@@ -237,7 +249,7 @@ Avec ces informations, le traitement contre des difficultés respiratoires et de
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -248,7 +260,6 @@ Avec ces informations, le traitement contre des difficultés respiratoires et de
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

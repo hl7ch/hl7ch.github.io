@@ -1,0 +1,25 @@
+<?php
+function Redirect($url)
+{
+  header('Location: ' . $url, true, 302);
+  exit();
+}
+
+$accept = $_SERVER['HTTP_ACCEPT'];
+if (strpos($accept, 'application/json+fhir') !== false)
+  Redirect('http://fhir.ch/ig/ch-ips/1.0.0/MedicationStatement-f27b9345-6ba6-4fd6-83ab-6db6c2acd981.json2');
+elseif (strpos($accept, 'application/fhir+json') !== false)
+  Redirect('http://fhir.ch/ig/ch-ips/1.0.0/MedicationStatement-f27b9345-6ba6-4fd6-83ab-6db6c2acd981.json1');
+elseif (strpos($accept, 'json') !== false)
+  Redirect('http://fhir.ch/ig/ch-ips/1.0.0/MedicationStatement-f27b9345-6ba6-4fd6-83ab-6db6c2acd981.json');
+elseif (strpos($accept, 'application/xml+fhir') !== false)
+  Redirect('http://fhir.ch/ig/ch-ips/1.0.0/MedicationStatement-f27b9345-6ba6-4fd6-83ab-6db6c2acd981.xml2');
+elseif (strpos($accept, 'application/fhir+xml') !== false)
+  Redirect('http://fhir.ch/ig/ch-ips/1.0.0/MedicationStatement-f27b9345-6ba6-4fd6-83ab-6db6c2acd981.xml1');
+elseif (strpos($accept, 'html') !== false)
+  Redirect('http://fhir.ch/ig/ch-ips/1.0.0/MedicationStatement-f27b9345-6ba6-4fd6-83ab-6db6c2acd981.html');
+else 
+  Redirect('http://fhir.ch/ig/ch-ips/1.0.0/MedicationStatement-f27b9345-6ba6-4fd6-83ab-6db6c2acd981.xml');
+?>
+    
+You should not be seeing this page. If you do, PHP has failed badly.

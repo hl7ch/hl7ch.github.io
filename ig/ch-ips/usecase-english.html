@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Use Cases - CH IPS (R4) v1.0.0-ballot</title>
+    <title>Use Cases - CH IPS (R4) v1.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"3"}
     h3,h4,h5,h6{--heading-prefix:"3"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH IPS (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0-ballot - ballot
+            <span style="display:inline-block;">1.0.0 - trial-use
 
 
 
@@ -130,6 +132,16 @@
       </li>
     </ul>
   </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Guidance
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="narrative-content.html">Narrative Content</a>
+      </li>
+    </ul>
+  </li>
   <li>
     <a href="profiles.html">Profiles</a>
   </li>
@@ -168,7 +180,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH IPS (R4) (v1.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-ips/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH IPS (R4) (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-ips/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Use Cases</h2>
   
 
@@ -187,14 +199,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div>
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<p>The following use cases serve to illustrate possible scenarios for the use of the International Patient Summary document. The cases are designed to illustrate the representation of the document. The clinical content has not yet been validated.</p>
+<p>The following use cases serve to illustrate possible scenarios for the use of the International Patient Summary document. The cases are designed to illustrate the representation of the document.</p>
 
 <h3 id="use-case-1">Use case 1</h3>
+<p>Mrs. <a href="Patient-MonikaWegmueller.html">Monika Wegmüller</a>, born on 15 May 1943, comes to the emergency room on 26 April 2024 with sudden onset of malaise, dizziness and breathing difficulties. She is cared for by a team of medical and nursing staff. The doctor in charge at the hospital, Dr. Martina Meier, retrieves Mrs. Wegmüller's <a href="Bundle-UC1-SwissIpsDocument1.html"><strong>most recent IPS document (11 January 2024)</strong></a>, which the <a href="PractitionerRole-FamilienHausarztAtHausarzt.html">family doctor</a> prepared on 11 January 2024. Dr. Meier sees documented in it that Mrs. Wegmüller suffers from <a href="Condition-DiabetesMellitus.html">diabetes</a> and <a href="Condition-HighBloodPressure.html">high blood pressure</a> and therefore takes <a href="MedicationStatement-MedStatMetformin.html">metformin</a> and <a href="MedicationStatement-MedStatCandesartan.html">candesartan</a>, and that she also has <a href="Condition-CoronaryHeartDisease.html">coronary heart disease</a>, which is why Mrs. Wegmüller received a <a href="Procedure-StentPlacement.html">stent</a> two years ago. Mrs. Wegmüller's allergies and intolerances have not yet been asked about by her family doctor.</p>
 
-<p>Mrs. <a href="Patient-MonikaWegmueller.html">Monika Wegmüller</a>, born on 15 May 1943, comes to the emergency room on 26 April 2024 with a sharp pain in her chest and shortness of breath. She is cared for by a team of medical and nursing staff. The doctor in charge at the hospital, Dr. Martina Meier, requests Mrs. Wegmüller’s most recent <a href="Bundle-UC1-SwissIpsDocument1.html">IPS document (11 January 2024)</a>, which the <a href="PractitionerRole-FamilienHausarztAtHausarzt.html">family doctor</a> created on 11 January 2024. Dr. Meier sees documented in it that Mrs. Wegmüller suffers from <a href="Condition-DiabetesMellitus.html">diabetes</a> and is taking <a href="MedicationStatement-MedStatMetformin.html">metformin</a> for this reason. Mrs. Wegmüller has <a href="AllergyIntolerance-NoKnownAllergy.html">no known allergies</a>.   <br />
-With this information, treatment for the shortness of breath and the stabbing chest pain can be started immediately. Mrs. Wegmüller is given a low dose of beta blockers and her heart rhythm is monitored.</p>
-
-<p>After Mrs. Wegmüller quickly feels better thanks to the treatment in the emergency room, the doctor in charge decides to transfer Mrs. Wegmüller to the station for further examination of the cause. There she continues to be cared for by <a href="PractitionerRole-869a4dd9-3a4a-4838-ad1e-42453d341147.html">Dr. Meier</a> and at the end of her hospital stay a new <a href="Bundle-UC1-SwissIpsDocument2.html">IPS document (May 3 2024)</a> is created for Mrs. Wegmüller with the latest and additional information.</p>
+<p>Based on this preliminary information, Dr. Meier suspects a <a href="Condition-12d8debe-5e03-465d-83f3-17675be9db4a.html">heart attack</a> as the reason for her discomfort and breathing difficulties, which is confirmed by the ECG and laboratory tests. Mrs. Wegmüller is taken to the cardiac catheterization laboratory, where it is revealed that a coronary vessel is almost blocked and she needs another <a href="Procedure-d646c888-7af0-4439-8aae-9fd490054583.html">stent</a>. Because Dr. Meier was so well informed, she was able to act quickly and Mrs. Wegmüller quickly improved. She is admitted to the cardiac monitoring ward (cardio-IMC) for monitoring.   <br />
+<a href="PractitionerRole-869a4dd9-3a4a-4838-ad1e-42453d341147.html">Dr. Meier</a> continues to look after her there and at the end of her hospital stay, a <a href="Bundle-UC1-SwissIpsDocument2.html"><strong>new IPS document (May 3, 2024)</strong></a> is created for Mrs. Wegmüller with the latest and additional information.</p>
 
 
 
@@ -215,7 +226,7 @@ With this information, treatment for the shortness of breath and the stabbing ch
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-ips#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 10:26+0000">2024-05-17</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-ips#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 08:08+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -223,7 +234,7 @@ With this information, treatment for the shortness of breath and the stabbing ch
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdxByu8qJuO5SMt8V3RVivlUVkGkq1dbY-EMtpikWZ2f4Vt6A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-ips%231.0.0-ballot%20/usecase-english.html&amp;entry%2E247644557=Use%20Cases">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdxByu8qJuO5SMt8V3RVivlUVkGkq1dbY-EMtpikWZ2f4Vt6A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-ips%231.0.0%20/usecase-english.html&amp;entry%2E247644557=Use%20Cases">Propose a change</a>
 
 
 
@@ -238,7 +249,7 @@ With this information, treatment for the shortness of breath and the stabbing ch
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -249,7 +260,6 @@ With this information, treatment for the shortness of breath and the stabbing ch
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>
