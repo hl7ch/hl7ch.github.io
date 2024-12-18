@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Clinical Use Case Scenarios - CH AllergyIntolerance (R4) v3.0.0-ballot</title>
+    <title>Clinical Use Case Scenarios - CH AllergyIntolerance (R4) v3.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"3"}
     h3,h4,h5,h6{--heading-prefix:"3"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH AllergyIntolerance (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.0.0-ballot - ballot
+            <span style="display:inline-block;">3.0.0 - trial-use
 
 
 
@@ -130,6 +132,16 @@
       </li>
     </ul>
   </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Guidance
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="reaction-manifestation.html">Adverse Reaction &amp; Manifestation</a>
+      </li>
+    </ul>
+  </li>
   <li>
     <a href="profiles.html">Profiles</a>
   </li>
@@ -171,7 +183,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH-AllergyIntolerance (R4) (v3.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-allergyintolerance/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH-AllergyIntolerance (R4) (v3.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-allergyintolerance/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Clinical Use Case Scenarios</h2>
   
 
@@ -201,10 +213,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 </div>
 
-<p>The use cases are adapted from the “Implementation Guide for Use of SNOMED CT in Documentation of Allergy, Non-allergic Hypersensitivity and Intolerance” of <a href="https://confluence.ihtsdotools.org/pages/viewpage.action?pageId=40143192">Allergies/Hypersensitivity and Intolerance Clinical Reference Group</a> of Snomed CT.</p>
+<p>The use cases are adapted from the "Implementation Guide for Use of SNOMED CT in Documentation of Allergy, Non-allergic Hypersensitivity and Intolerance" of <a href="https://confluence.ihtsdotools.org/pages/viewpage.action?pageId=40143192">Allergies/Hypersensitivity and Intolerance Clinical Reference Group</a> of SNOMED CT.</p>
 
 <h3 id="use-case-1-documentation-of-an-adverse-reaction-to-a-drug-substance">Use case 1: Documentation of an adverse reaction to a drug substance</h3>
-<p>Szenario: A physician sees a patient in clinic for routine outpatient care.  The patient has been receiving care for diabetes and hypertension.  Recently the patient was prescribed 25mg hydrochlorothiazide for his blood pressure.  He tells the physician that he has developed hives weeks previously and on examination, the physician confirms the presence of generalized hives.  A review of systems fails to reveal any other causes and the physician believes that the patient may be having an urticarial reaction to hydrochlorothiazide.  He has lingering uncertainty about this and tells the patient to stop the thiazide and employ diphenhydramine for relief.  The physician advances the patient dose of losartan for blood pressure control.  He schedules him back in a week for follow-up and when recording his note for the visit, he adds to his assessment in the problem list: “Urticarial reaction, possible thiazide allergy”. A week later the patient returns for follow-up with the itching and rash entirely resolved.  He reports that the reaction subsided within days after stopping the thiazide.  The physician adds “Hydrochlorothiazide allergy:reaction of hives; moderate criticality, probable” to the problem list.</p>
+<p>Scenario: A physician sees a patient in clinic for routine outpatient care.  The patient has been receiving care for diabetes and hypertension.  Recently the patient was prescribed 25mg hydrochlorothiazide for his blood pressure.  He tells the physician that he has developed hives weeks previously and on examination, the physician confirms the presence of generalized hives.  A review of systems fails to reveal any other causes and the physician believes that the patient may be having an urticarial reaction to hydrochlorothiazide.  He has lingering uncertainty about this and tells the patient to stop the thiazide and employ diphenhydramine for relief.  The physician advances the patient dose of losartan for blood pressure control.  He schedules him back in a week for follow-up and when recording his note for the visit, he adds to his assessment in the problem list: “Urticarial reaction, possible thiazide allergy”. A week later the patient returns for follow-up with the itching and rash entirely resolved.  He reports that the reaction subsided within days after stopping the thiazide.  The physician adds “Hydrochlorothiazide allergy:reaction of hives; moderate criticality, probable” to the problem list.</p>
 
 <p><strong>FHIR Condition resource query from patient record</strong> (<a href="Condition-CH-AllergyIntolerance-Condition-Visit1-Usecase-1.html">Entry of urticaria due to possible thiazide allergy in problem list</a>)</p>
 <style type="text/css">
@@ -295,7 +307,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </table>
 
 <h3 id="use-case-2-documentation-in-drug-allergy-list-by-provider-and-use-as-allergy-alert">Use case 2: Documentation in drug allergy list by provider and use as allergy alert</h3>
-<p>Scenario: The clinic nurse calls the patient from scenario 4.1 a week later with test results from his visit.  She inquires as to the urticaria and the patient verifies that they have disappeared with discontinuation of the diuretic.  Following clinic protocols she accesses the patient EHR and proceeds to make a new entry into the allergy list which is employed by the EHR software for issuing clinical prescribing alerts.  The software steps through a series of questions asking: what was the offending agent, what were symptoms or findings resulting from the reaction, what class of reaction occurred, what was the severity, criticality and verification status.  The nurse answers the questions and an allergy record appears in the list “Hydrochlorothiazide; Allergy; Moderate severity; Low criticality; Symptoms-Hives”.
+<p>Scenario: The clinic nurse calls the patient from scenario 1 a week later with test results from his visit.  She inquires as to the urticaria and the patient verifies that they have disappeared with discontinuation of the diuretic.  Following clinic protocols she accesses the patient EHR and proceeds to make a new entry into the allergy list which is employed by the EHR software for issuing clinical prescribing alerts.  The software steps through a series of questions asking: what was the offending agent, what were symptoms or findings resulting from the reaction, what class of reaction occurred, what was the severity, criticality and verification status.  The nurse answers the questions and an allergy record appears in the list “Hydrochlorothiazide; Allergy; Moderate severity; Low criticality; Symptoms-Hives”.
 Years later the patient is seeing another physician within the organization for consultation on treatment of resistant hypertension.  The second physician decides that an ACE inhibitor/thiazide medication is appropriate for the patient.  When the physician creates an order for “Lisinopril-hydrochlorothiazide 20/25” and commits to the electronic prescription, an alert appears which requires a response by the physician warning him of an allergy history to hydrochlorothiazide which is an ingredient in the drug he is about to order.  The alert is generated by the EHR software which uses the Allergy list as reference.   The physician retracts the order and chooses another antihypertensive.</p>
 
 <p><strong>FHIR AllergyIntolerance  resource query of patient record</strong> (<a href="AllergyIntolerance-CH-AllergyIntolerance-Usecase-2.html">Entry of a probable thiazide allergy in allergy list</a>)</p>
@@ -1062,7 +1074,7 @@ The EHR software supports selection of foods, chemicals and animal biological pr
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-allergyintolerance#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 08:05+0000">2024-05-17</span>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-allergyintolerance#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 09:27+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -1070,7 +1082,7 @@ The EHR software supports selection of foods, chemicals and animal biological pr
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSceJIF66-j8AqkisJMMVdRDucQhX2uoC1mr5dsrwkM_Pa3-iQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-allergyintolerance%233.0.0-ballot%20/usecase-english.html&amp;entry%2E247644557=Clinical%20Use%20Case%20Scenarios">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSceJIF66-j8AqkisJMMVdRDucQhX2uoC1mr5dsrwkM_Pa3-iQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-allergyintolerance%233.0.0%20/usecase-english.html&amp;entry%2E247644557=Clinical%20Use%20Case%20Scenarios">Propose a change</a>
 
 
 
@@ -1085,7 +1097,7 @@ The EHR software supports selection of foods, chemicals and animal biological pr
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -1096,7 +1108,6 @@ The EHR software supports selection of foods, chemicals and animal biological pr
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

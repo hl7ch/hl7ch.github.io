@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Klinische Anwendungsfall-Szenarien - CH AllergyIntolerance (R4) v3.0.0-ballot</title>
+    <title>Klinische Anwendungsfall-Szenarien - CH AllergyIntolerance (R4) v3.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"5"}
     h3,h4,h5,h6{--heading-prefix:"5"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH AllergyIntolerance (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.0.0-ballot - ballot
+            <span style="display:inline-block;">3.0.0 - trial-use
 
 
 
@@ -130,6 +132,16 @@
       </li>
     </ul>
   </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Guidance
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="reaction-manifestation.html">Adverse Reaction &amp; Manifestation</a>
+      </li>
+    </ul>
+  </li>
   <li>
     <a href="profiles.html">Profiles</a>
   </li>
@@ -171,7 +183,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH-AllergyIntolerance (R4) (v3.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-allergyintolerance/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH-AllergyIntolerance (R4) (v3.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-allergyintolerance/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Klinische Anwendungsfall-Szenarien</h2>
   
 
@@ -197,7 +209,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#use-case-5-dokumentation-einer-tierallergie" id="markdown-toc-use-case-5-dokumentation-einer-tierallergie">Use case 5: Dokumentation einer Tierallergie</a></li>
       <li><a href="#use-case-6-dokumentation-einer-allergie-gegen-einen-nicht-medikamentösen-stoff-der-mit-einem-arzneimittel-kreuzreagiert" id="markdown-toc-use-case-6-dokumentation-einer-allergie-gegen-einen-nicht-medikamentösen-stoff-der-mit-einem-arzneimittel-kreuzreagiert">Use case 6: Dokumentation einer Allergie gegen einen nicht-medikamentösen Stoff, der mit einem Arzneimittel kreuzreagiert</a></li>
       <li><a href="#use-case-7-dokumentation-einer-allergischen-reaktion-auf-andere-nicht-medikamentöse-stoffe" id="markdown-toc-use-case-7-dokumentation-einer-allergischen-reaktion-auf-andere-nicht-medikamentöse-stoffe">Use case 7: Dokumentation einer allergischen Reaktion auf andere nicht-medikamentöse Stoffe</a></li>
-      <li><a href="#use-case-8-dokumentation-von-keine-bekannten-allergien" id="markdown-toc-use-case-8-dokumentation-von-keine-bekannten-allergien">Use case 8: Dokumentation von ‘Keine bekannten Allergien’</a></li>
+      <li><a href="#use-case-8-dokumentation-von-keine-bekannten-allergien" id="markdown-toc-use-case-8-dokumentation-von-keine-bekannten-allergien">Use case 8: Dokumentation von 'Keine bekannten Allergien'</a></li>
     </ul>
   </li>
 </ul>
@@ -205,10 +217,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h1 id="klinische-anwendungsfall-szenarien">Klinische Anwendungsfall-Szenarien</h1>
 
-<p>Die Use cases sind adaptiert vom “Implementation Guide for Use of SNOMED CT in Documentation of Allergy, Non-allergic Hypersensitivity and Intolerance” der <a href="https://confluence.ihtsdotools.org/pages/viewpage.action?pageId=40143192">Allergies/Hypersensitivity and Intolerance Clinical Reference Group</a> of Snomed CT.</p>
+<p>Die Use cases sind adaptiert vom "Implementation Guide for Use of SNOMED CT in Documentation of Allergy, Non-allergic Hypersensitivity and Intolerance" der <a href="https://confluence.ihtsdotools.org/pages/viewpage.action?pageId=40143192">Allergies/Hypersensitivity and Intolerance Clinical Reference Group</a> of SNOMED CT.</p>
 
 <h3 id="use-case-1-dokumentation-einer-unerwünschten-reaktion-auf-einen-medikamentenwirkstoff">Use case 1: Dokumentation einer unerwünschten Reaktion auf einen Medikamentenwirkstoff</h3>
-<p>Szenario: Ein Arzt empfängt einen Patienten in der Klinik zur ambulanten Routineversorgung.  Der Patient wurde bereits wegen Diabetes und Bluthochdruck behandelt.  Kürzlich wurden dem Patienten 25 mg Hydrochlorothiazid gegen seinen Bluthochdruck verschrieben. Er teilt dem Arzt mit, dass er vor einigen Wochen eine Nesselsucht entwickelt habe, und bei der Untersuchung bestätigt der Arzt das Vorhandensein einer generalisierten Urtikaria.  Eine Überprüfung des Systems ergibt keine anderen Ursachen und der Arzt glaubt, dass der Patient möglicherweise eine urtikarielle Reaktion auf Hydrochlorothiazid zeigt.  Er ist sich dessen nicht ganz sicher und rät dem Patienten, das Thiazid abzusetzen und Diphenhydramin (Antihistaminikum) zur Linderung einzusetzen.  Der Arzt gibt dem Patienten eine höhere Dosis Losartan zur Blutdruckkontrolle.  Er meldet den Patienten in einer Woche zur Nachuntersuchung an und fügt seine Einschätzung in der Problemliste hinzu: “Urtikarielle Reaktion, mögliche Thiazid-Allergie”. Eine Woche später kommt der Patient zur Nachuntersuchung, wobei der Juckreiz und der Ausschlag vollständig verschwunden sind.  Er berichtet, dass die Reaktion innerhalb weniger Tage nach Absetzen des Thiazids abgeklungen ist.  Der Arzt fügt der Problemliste den Vermerk “Hydrochlorothiazid-Allergie: Urtikaria; mässig kritisch, wahrscheinlich” hinzu.</p>
+<p>Szenario: Ein Arzt empfängt einen Patienten in der Klinik zur ambulanten Routineversorgung.  Der Patient wurde bereits wegen Diabetes und Bluthochdruck behandelt.  Kürzlich wurden dem Patienten 25 mg Hydrochlorothiazid gegen seinen Bluthochdruck verschrieben. Er teilt dem Arzt mit, dass er vor einigen Wochen eine Nesselsucht entwickelt habe, und bei der Untersuchung bestätigt der Arzt das Vorhandensein einer generalisierten Urtikaria.  Eine Überprüfung des Systems ergibt keine anderen Ursachen und der Arzt glaubt, dass der Patient möglicherweise eine urtikarielle Reaktion auf Hydrochlorothiazid zeigt.  Er ist sich dessen nicht ganz sicher und rät dem Patienten, das Thiazid abzusetzen und Diphenhydramin (Antihistaminikum) zur Linderung einzusetzen.  Der Arzt gibt dem Patienten eine höhere Dosis Losartan zur Blutdruckkontrolle.  Er meldet den Patienten in einer Woche zur Nachuntersuchung an und fügt seine Einschätzung in der Problemliste hinzu: "Urtikarielle Reaktion, mögliche Thiazid-Allergie". Eine Woche später kommt der Patient zur Nachuntersuchung, wobei der Juckreiz und der Ausschlag vollständig verschwunden sind.  Er berichtet, dass die Reaktion innerhalb weniger Tage nach Absetzen des Thiazids abgeklungen ist.  Der Arzt fügt der Problemliste den Vermerk "Hydrochlorothiazid-Allergie: Urtikaria; mässig kritisch, wahrscheinlich" hinzu.</p>
 
 <p><strong>FHIR Condition resource query from patient record</strong> (<a href="Condition-CH-AllergyIntolerance-Condition-Visit1-Usecase-1.html">Eintrag einer Urtikaria wegen einer möglichen Thiazidallergie in Problemliste</a>)</p>
 <style type="text/css">
@@ -299,8 +311,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </table>
 
 <h3 id="use-case-2-dokumentation-einer-arzneimittelallergie-in-der-allergieliste-und-auslösung-einer-warnmeldung-für-die-gesundheitsfachperson">Use case 2: Dokumentation einer Arzneimittelallergie in der Allergieliste und Auslösung einer Warnmeldung für die Gesundheitsfachperson</h3>
-<p>Szenario: Die Krankenschwester der Klinik ruft den Patienten aus Szenario 1 eine Woche später an und teilt ihm die Testergebnisse seines Besuchs mit.  Sie erkundigt sich nach der Urtikaria, und der Patient bestätigt, dass diese mit dem Absetzen des Diuretikums verschwunden ist.  Gemäss den Klinikprotokollen greift sie auf die elektronische Patientenakte zu und nimmt einen neuen Eintrag in der Allergieliste vor, die vom KIS für die Ausgabe von klinischen Verordnungswarnungen verwendet wird.  Die Software durchläuft eine Reihe von Fragen: Was war der auslösende Wirkstoff, welche Symptome oder Befunde traten bei der Reaktion auf, welche Art von Reaktion trat auf, wie hoch war der Schweregrad, die Kritikalität und wie der Verifizierungsstatus.  Die Krankenschwester beantwortet die Fragen, und in der Liste erscheint ein Allergieeintrag: “Hydrochlorothiazid; Allergie; mittlerer Schweregrad; geringer Kritikalitätsgrad; Symptome - Urtikaria”.
-Jahre später sucht der Patient einen anderen Arzt innerhalb der Organisation auf, um sich über die Behandlung einer resistenten Hypertonie beraten zu lassen.  Der zweite Arzt entscheidet, dass ein ACE-Hemmer/Thiazid-Medikament für den Patienten geeignet ist.  Als der Arzt eine Verordnung für “ CO-LISINOPRIL Mepha Tabl 20/12.5” erstellt und die elektronische Verordnung bestätigt, erscheint eine Warnmeldung, die eine Reaktion des Arztes erfordert und ihn vor einer Allergie gegen Hydrochlorothiazid warnt, das ein Bestandteil des Medikaments ist, das er verordnen will.  Die Warnung wird von der KIS-Software generiert, die die Allergieliste als Referenz verwendet. Der Arzt zieht die Bestellung zurück und wählt ein anderes blutdrucksenkendes Mittel.</p>
+<p>Szenario: Die Krankenschwester der Klinik ruft den Patienten aus Szenario 1 eine Woche später an und teilt ihm die Testergebnisse seines Besuchs mit.  Sie erkundigt sich nach der Urtikaria, und der Patient bestätigt, dass diese mit dem Absetzen des Diuretikums verschwunden ist.  Gemäss den Klinikprotokollen greift sie auf die elektronische Patientenakte zu und nimmt einen neuen Eintrag in der Allergieliste vor, die vom KIS für die Ausgabe von klinischen Verordnungswarnungen verwendet wird.  Die Software durchläuft eine Reihe von Fragen: Was war der auslösende Wirkstoff, welche Symptome oder Befunde traten bei der Reaktion auf, welche Art von Reaktion trat auf, wie hoch war der Schweregrad, die Kritikalität und wie der Verifizierungsstatus.  Die Krankenschwester beantwortet die Fragen, und in der Liste erscheint ein Allergieeintrag: "Hydrochlorothiazid; Allergie; mittlerer Schweregrad; geringer Kritikalitätsgrad; Symptome - Urtikaria".
+Jahre später sucht der Patient einen anderen Arzt innerhalb der Organisation auf, um sich über die Behandlung einer resistenten Hypertonie beraten zu lassen.  Der zweite Arzt entscheidet, dass ein ACE-Hemmer/Thiazid-Medikament für den Patienten geeignet ist.  Als der Arzt eine Verordnung für " CO-LISINOPRIL Mepha Tabl 20/12.5" erstellt und die elektronische Verordnung bestätigt, erscheint eine Warnmeldung, die eine Reaktion des Arztes erfordert und ihn vor einer Allergie gegen Hydrochlorothiazid warnt, das ein Bestandteil des Medikaments ist, das er verordnen will.  Die Warnung wird von der KIS-Software generiert, die die Allergieliste als Referenz verwendet. Der Arzt zieht die Bestellung zurück und wählt ein anderes blutdrucksenkendes Mittel.</p>
 
 <p><strong>FHIR AllergyIntolerance resource query of patient record</strong> (<a href="AllergyIntolerance-CH-AllergyIntolerance-Usecase-2.html">Eintrag einer wahrscheinblichen Thiazidallergie in Allergieliste</a>)</p>
 <style type="text/css">
@@ -484,7 +496,7 @@ Jahre später sucht der Patient einen anderen Arzt innerhalb der Organisation au
 
 <p>Szenario: Der Patient aus Szenario 1 plant einen Urlaub mit seiner Familie, der aus einem Campingausflug quer durchs Land besteht.  Zur Vorbereitung der Reise spricht er mit seinem Arzt und lässt sich eine elektronische Zusammenfassung seiner Krankenakte auf einem USB-Stick für sich, seine Frau und seine Kinder aushändigen. Sein Arzt teilt ihm mit, dass die Software für die Zusammenfassung ein elektronisches Lesegerät sowie ein Standardformat enthält, das in ein anderes KIS für die Patientenversorgung importiert werden kann.  Der Urlaub verläuft glücklich, bis der Patient viele Kilometer von zu Hause entfernt beim Wandern Schmerzen in der Brust bekommt und in die örtliche Notaufnahme eingeliefert wird.  Er übergibt den USB-Stick mit seiner elektronischen Aktenzusammenfassung dem Arzt der Notaufnahme, dessen Krankenhaus ein KIS einsetzt, das FHIR-extrahierte elektronische Aktenzusammenfassungen zur Integration in das KIS vor Ort akzeptieren kann.  Die Pflegefachfrau in der Notaufnahme lädt den USB-Stick und übernimmt die elektronische Kopie der Problemliste, der Allergien und der Medikamentenliste in die Akte vor Ort.  Der Softwareextrakt gleicht die Unterschiede im Informationsmodell der verschiedenen KIS-Anbieter ab, indem er die Allergieliste mit den Informationen in der Problemliste und der Diagnosenliste abgleicht.</p>
 
-<p>Später schreibt der behandelnde Arzt eine Einweisungsverfügung für den Patienten und nimmt ihn zur Beobachtung auf die Station auf.  Der Arzt stellt fest, dass der Blutdruck des Patienten mit 195/100 zu hoch ist.  Der Arzt möchte keine aggressiven Maßnahmen ergreifen, sondern entscheidet, dass der Blutdruck langsam gesenkt werden sollte.  Er stellt fest, dass die Medikamentenliste des Patienten bereits zwei Arten von Blutdruckmedikamenten enthält, und gibt eine elektronische Verordnung für “Hygroton 50 mg po täglich” ein, ein beliebtes Mittel gegen Bluthochdruck mit langsamem Wirkungseintritt.  Als der Arzt die “Enter”-Taste drückt, um die Bestellung zu bestätigen, wird eine Pop-up-Warnung vom KIS generiert, die darauf hinweist, dass dieser Patient eine allergische Reaktion auf ein Thiazid-Diuretikum in Form von Nesselsucht gezeigt hat und dass Chlortalidon (Hygroton) mit hoher Wahrscheinlichkeit eine Kreuzreaktion hervorruft.  Beim Studieren der Warnmeldung stellt der Arzt fest, dass die unterstützenden Informationen der Problemliste und der Allergieliste entnommen wurden.  Während der frühere Eintrag in der Problemliste vorläufig war, ist der spätere Eintrag in der Allergieliste als wahrscheinliche Allergie und mäßiges Risiko zu bezeichnen.  Die KIS-Arzneimittelinteraktionssoftware hat die chemische Zusammensetzung von Hydrochlorothiazid und Hygroton (Chlortalidon) abgeglichen und festgestellt, dass sie ähnlich sind.  Er entscheidet, dass die Informationen glaubwürdig sind, und ändert seine Bestellung in ein Medikament, das wahrscheinlich keine allergische Reaktion auslöst.</p>
+<p>Später schreibt der behandelnde Arzt eine Einweisungsverfügung für den Patienten und nimmt ihn zur Beobachtung auf die Station auf.  Der Arzt stellt fest, dass der Blutdruck des Patienten mit 195/100 zu hoch ist.  Der Arzt möchte keine aggressiven Maßnahmen ergreifen, sondern entscheidet, dass der Blutdruck langsam gesenkt werden sollte.  Er stellt fest, dass die Medikamentenliste des Patienten bereits zwei Arten von Blutdruckmedikamenten enthält, und gibt eine elektronische Verordnung für "Hygroton 50 mg po täglich" ein, ein beliebtes Mittel gegen Bluthochdruck mit langsamem Wirkungseintritt.  Als der Arzt die "Enter"-Taste drückt, um die Bestellung zu bestätigen, wird eine Pop-up-Warnung vom KIS generiert, die darauf hinweist, dass dieser Patient eine allergische Reaktion auf ein Thiazid-Diuretikum in Form von Nesselsucht gezeigt hat und dass Chlortalidon (Hygroton) mit hoher Wahrscheinlichkeit eine Kreuzreaktion hervorruft.  Beim Studieren der Warnmeldung stellt der Arzt fest, dass die unterstützenden Informationen der Problemliste und der Allergieliste entnommen wurden.  Während der frühere Eintrag in der Problemliste vorläufig war, ist der spätere Eintrag in der Allergieliste als wahrscheinliche Allergie und mäßiges Risiko zu bezeichnen.  Die KIS-Arzneimittelinteraktionssoftware hat die chemische Zusammensetzung von Hydrochlorothiazid und Hygroton (Chlortalidon) abgeglichen und festgestellt, dass sie ähnlich sind.  Er entscheidet, dass die Informationen glaubwürdig sind, und ändert seine Bestellung in ein Medikament, das wahrscheinlich keine allergische Reaktion auslöst.</p>
 
 <p><strong>FHIR AllergyIntolerance resource query of patient record</strong> (<a href="AllergyIntolerance-CH-AllergyIntolerance-Usecase-2.html">Abfrage der wahrscheinlichen Thiazidallergie aus der Allergieliste</a>)</p>
 <style type="text/css">
@@ -716,7 +728,7 @@ Jahre später sucht der Patient einen anderen Arzt innerhalb der Organisation au
 
 <h3 id="use-case-6-dokumentation-einer-allergie-gegen-einen-nicht-medikamentösen-stoff-der-mit-einem-arzneimittel-kreuzreagiert">Use case 6: Dokumentation einer Allergie gegen einen nicht-medikamentösen Stoff, der mit einem Arzneimittel kreuzreagiert</h3>
 
-<p>Szenario: Die Mutter eines Patienten berichtet dem Arzt ihres Kindes, dass das Kind auf den Verzehr von Erdnüssen heftig mit Symptomen wie generalisiertem Nesselausschlag, Keuchen und Hypotonie reagiert, die den Einsatz von Adrenalin zur Wiederbelebung erfordern.  Der Arzt führt einen Bluttest durch, der hohe Konzentrationen von IgE-Antikörpern gegen das Erdnussprotein Arachis h2 nachweist, das im Erdnussöl (Arachis-Öl) enthalten ist - dem Sensibilisierungsstoff für die klinische Erdnussallergie.  Der Arzt trägt eine Erdnussallergie in die elektronische Patientenakte ein, wobei er Anaphylaxie, Nesselsucht und Keuchen als Reaktionssymptome angibt, die Kritikalität als hoch und den Schweregrad der Reaktion als “schwer” einstuft.<br />
+<p>Szenario: Die Mutter eines Patienten berichtet dem Arzt ihres Kindes, dass das Kind auf den Verzehr von Erdnüssen heftig mit Symptomen wie generalisiertem Nesselausschlag, Keuchen und Hypotonie reagiert, die den Einsatz von Adrenalin zur Wiederbelebung erfordern.  Der Arzt führt einen Bluttest durch, der hohe Konzentrationen von IgE-Antikörpern gegen das Erdnussprotein Arachis h2 nachweist, das im Erdnussöl (Arachis-Öl) enthalten ist - dem Sensibilisierungsstoff für die klinische Erdnussallergie.  Der Arzt trägt eine Erdnussallergie in die elektronische Patientenakte ein, wobei er Anaphylaxie, Nesselsucht und Keuchen als Reaktionssymptome angibt, die Kritikalität als hoch und den Schweregrad der Reaktion als "schwer" einstuft.<br />
 Jahre später wird der Junge von einem Dermatologen zur Behandlung von Akne untersucht.  Als Teil des Behandlungsplans gibt der Arzt ein elektronisches Rezept für Isotretinoin-Kapseln ein.  Als der Arzt die Verordnung bestätigt, führt die KIS-Software einen Allergieabgleich durch und gibt eine Warnung hoher Priorität aus, dass die Kapseln Erdnussöl enthalten, das nicht hoch raffiniert ist und daher möglicherweise Erdnussprotein enthält und für den Patienten kontraindiziert ist.  Der Arzt storniert die Bestellung und wählt ein alternatives Präparat aus.</p>
 
 <p><strong>FHIR <a href="https://hl7.org/fhir/observation.html">Observation resource</a></strong> (Laborbefund mit positiven Allergietest-Resultat auf Erdnussprotein)</p>
@@ -998,9 +1010,9 @@ Die KIS-Software unterstützt die Auswahl von Lebensmitteln, Chemikalien und tie
 </tbody>
 </table>
 
-<h3 id="use-case-8-dokumentation-von-keine-bekannten-allergien">Use case 8: Dokumentation von ‘Keine bekannten Allergien’</h3>
+<h3 id="use-case-8-dokumentation-von-keine-bekannten-allergien">Use case 8: Dokumentation von 'Keine bekannten Allergien'</h3>
 
-<p>Szenario: Eine Krankenschwester führt eine Aufnahmeuntersuchung bei einer Patientin durch, die neu in der Praxis ist. Im Rahmen des klinischen Gesprächs erkundigt sie sich nach Medikamenten und anderen Allergien. Die Patientin berichtet, dass sie auf keine Medikamente, Lebensmittel, Chemikalien oder Tiere allergisch ist. Die Krankenschwester öffnet die “Allergieliste” im KIS und dokumentiert “Keine bekannten Allergien”, womit elektronisch bestätigt wird, dass die Krankenschwester sich bei der Patientin erkundigt hat und dass die Anamnese zum aufgezeichneten Datum und Zeitpunkt negativ bestätigt wurde. Dies erfüllt die Kriterien für die Entscheidungshilfe, wonach Allergien dokumentiert werden müssen, bevor Medikamentenverordnungen geschrieben werden, und wird in der KIS-Allergieliste als bestätigte Abwesenheit von unerwünschten Reaktionen kodiert.</p>
+<p>Szenario: Eine Krankenschwester führt eine Aufnahmeuntersuchung bei einer Patientin durch, die neu in der Praxis ist. Im Rahmen des klinischen Gesprächs erkundigt sie sich nach Medikamenten und anderen Allergien. Die Patientin berichtet, dass sie auf keine Medikamente, Lebensmittel, Chemikalien oder Tiere allergisch ist. Die Krankenschwester öffnet die "Allergieliste" im KIS und dokumentiert "Keine bekannten Allergien", womit elektronisch bestätigt wird, dass die Krankenschwester sich bei der Patientin erkundigt hat und dass die Anamnese zum aufgezeichneten Datum und Zeitpunkt negativ bestätigt wurde. Dies erfüllt die Kriterien für die Entscheidungshilfe, wonach Allergien dokumentiert werden müssen, bevor Medikamentenverordnungen geschrieben werden, und wird in der KIS-Allergieliste als bestätigte Abwesenheit von unerwünschten Reaktionen kodiert.</p>
 
 <p><strong>FHIR AllergyIntolerance resource query of patient record</strong> (<a href="AllergyIntolerance-CH-AllergyIntolerance-Usecase-8.html">Eintrag keine bekannte Allergie in Allergieliste</a>)</p>
 <style type="text/css">
@@ -1067,7 +1079,7 @@ Die KIS-Software unterstützt die Auswahl von Lebensmitteln, Chemikalien und tie
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-allergyintolerance#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 08:05+0000">2024-05-17</span>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-allergyintolerance#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 09:27+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -1075,7 +1087,7 @@ Die KIS-Software unterstützt die Auswahl von Lebensmitteln, Chemikalien und tie
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSceJIF66-j8AqkisJMMVdRDucQhX2uoC1mr5dsrwkM_Pa3-iQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-allergyintolerance%233.0.0-ballot%20/usecase-german.html&amp;entry%2E247644557=Klinische%20Anwendungsfall-Szenarien">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSceJIF66-j8AqkisJMMVdRDucQhX2uoC1mr5dsrwkM_Pa3-iQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-allergyintolerance%233.0.0%20/usecase-german.html&amp;entry%2E247644557=Klinische%20Anwendungsfall-Szenarien">Propose a change</a>
 
 
 
@@ -1090,7 +1102,7 @@ Die KIS-Software unterstützt die Auswahl von Lebensmitteln, Chemikalien und tie
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -1101,7 +1113,6 @@ Die KIS-Software unterstützt die Auswahl von Lebensmitteln, Chemikalien und tie
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>
