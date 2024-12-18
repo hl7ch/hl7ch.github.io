@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Use Cases in English - CH LAB-Report (R4) v1.0.0-ballot</title>
+    <title>Use Cases in English - CH LAB-Report (R4) v1.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"2.1"}
     h3,h4,h5,h6{--heading-prefix:"2.1"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Report (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0-ballot - ballot
+            <span style="display:inline-block;">1.0.0 - trial-use
 
 
 
@@ -137,6 +139,9 @@
     <a href="document.html">Document</a>
   </li>
   <li>
+    <a href="guidance.html">Guidance</a>
+  </li>
+  <li>
     <a href="profiles.html">Profiles</a>
   </li>
   <li>
@@ -180,7 +185,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Report (R4) (v1.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-lab-report/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Report (R4) (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-lab-report/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Use Cases in English</h2>
   
 
@@ -198,7 +203,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#diagram-of-resources" id="markdown-toc-diagram-of-resources">Diagram of Resources</a></li>
   <li><a href="#laboratory-result-documents" id="markdown-toc-laboratory-result-documents">Laboratory Result Documents</a></li>
   <li><a href="#laboratory-test-panels-also-called-test-batteries" id="markdown-toc-laboratory-test-panels-also-called-test-batteries">Laboratory Test Panels (also called test batteries)</a></li>
 </ul>
@@ -206,16 +210,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <!--  markdownlint-disable MD001 MD041 -->
 
-<h3 id="diagram-of-resources">Diagram of Resources</h3>
-
-<p><img src="Resource Overview.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig. 1: Resource Overview" style="width:80%" /></p>
-<div style="clear:both;"></div>
-<p><i>Fig. 1: Resource Overview</i></p>
-
 <h3 id="laboratory-result-documents">Laboratory Result Documents</h3>
 
-<p>Based on ‘HL7 Europe Laboratory Report’, the laboratory results are shown here as FHIR bundle of type document. The first entry element is therefore the composition, which defines the structure of the document.
-The bundle contains exactly one DiagnosticReport (Laboratory Report), which references the composition. It also references the results of the laboratory tests. These can be preseneted in the form of several observations and also as a PDF document. The ‘result’ element contains the results as references to observations.</p>
+<p>Based on 'HL7 Europe Laboratory Report', the laboratory results are shown here as FHIR bundle of type document. The first entry element is therefore the composition, which defines the structure of the document.
+The bundle contains exactly one DiagnosticReport (Laboratory Report), which references the composition. It also references the results of the laboratory tests. These can be preseneted in the form of several observations and also as a PDF document. The 'result' element contains the results as references to observations.</p>
 
 <h4 id="use-case-suspected-deep-vein-thrombosis-with-common-laboratory-results-1-tvt">Use case Suspected deep vein thrombosis with common laboratory results, 1-tvt</h4>
 
@@ -233,13 +231,13 @@ The bundle contains exactly one DiagnosticReport (Laboratory Report), which refe
 
 <h4 id="use-case-serum-electrophoresis-2-electrophoresis">Use case serum electrophoresis, 2-electrophoresis</h4>
 
-<p>This use case involves the reproduction of several protein fractions in serum that have been separated using electrophoresis technology. The individual fractions are listed as ‘hasMember Observation’ with respective reference ranges. The result is available as a 2-dimensional graph as well as in numerical form and must also be reproduced in the document. The graphic was encoded in ‘base64’ and thus integrated into the document as a larger text field. It is important to ensure that the data volume of the graphic is not too large. We would recommend an upper limit of 20 Megabytes.</p>
+<p>This use case involves the reproduction of several protein fractions in serum that have been separated using electrophoresis technology. The individual fractions are listed as 'hasMember Observation' with respective reference ranges. The result is available as a 2-dimensional graph as well as in numerical form and must also be reproduced in the document. The graphic was encoded in 'base64' and thus integrated into the document as a larger text field. It is important to ensure that the data volume of the graphic is not too large. We would recommend an upper limit of 20 Megabytes.</p>
 
 <p><a href="Bundle-LabResultReport-2-electrophoresis.html">Laboratory Result Document</a></p>
 
 <h4 id="use-case-breath-test-3-breath-test">Use case breath test, 3-breath-test</h4>
 
-<p>The breath test is a provocation test to find intolerances to certain types of sugar (lactose, fructose). The concentration of hydrogen and methane in the exhaled air is measured at half-hour intervals after a certain amount of the type of sugar to be tested has been administered. The result is a 2-dimensional graph of the measurements, which must also be recorded along with the numerical results. The ‘base64’ encoding was also used here.</p>
+<p>The breath test is a provocation test to find intolerances to certain types of sugar (lactose, fructose). The concentration of hydrogen and methane in the exhaled air is measured at half-hour intervals after a certain amount of the type of sugar to be tested has been administered. The result is a 2-dimensional graph of the measurements, which must also be recorded along with the numerical results. The 'base64' encoding was also used here.</p>
 
 <p><a href="Bundle-LabResultReport-3-breath-test.html">Laboratory Result Document</a></p>
 
@@ -261,14 +259,14 @@ The bundle contains exactly one DiagnosticReport (Laboratory Report), which refe
   <li>Standardization: By using test panels, laboratories can implement a standardized approach for testing specific analytes. This promotes consistency and comparability of results both within a laboratory and between different laboratories.</li>
 </ul>
 
-<p>In our healthcare systems, there is high competitive pressure between laboratories and the ability to offer differentiated services can be an important competitive advantage. A mandatory standardized test panel can affect a laboratory’s ability to differentiate itself from the competition by offering specialized tests or customized services. The test panels proposed here are therefore not a mandatory standard, but should be optional where this makes sense. The automated CBC panel and the renal insufficiency panel <a href="https://www.swissnephrology.ch/wp/wp-content/uploads/2023/01/161121_SGN_Pocketguide_CKD_Web_A4_e_WZ.pdf">screening test</a> are intended as examples of observation profiles.
+<p>In our healthcare systems, there is high competitive pressure between laboratories and the ability to offer differentiated services can be an important competitive advantage. A mandatory standardized test panel can affect a laboratory's ability to differentiate itself from the competition by offering specialized tests or customized services. The test panels proposed here are therefore not a mandatory standard, but should be optional where this makes sense. The automated CBC panel and the renal insufficiency panel <a href="https://www.swissnephrology.ch/wp/wp-content/uploads/2023/01/161121_SGN_Pocketguide_CKD_Web_A4_e_WZ.pdf">screening test</a> are intended as examples of observation profiles.
 The test panels listed here also serve as examples of how laboratories can implement their own test panels as Observation Profiles.</p>
 
 <h4 id="use-case-count-of-blood-cells-automated-cbc">Use Case Count of Blood Cells (automated CBC)</h4>
 
 <p>The hematogram II of the [analysis list(https://www.bag.admin.ch/dam/bag/de/dokumente/kuv-leistungen/leistungen-und-tarife/Analysenliste/Analysenliste%20per%201.%20Januar%202024%20in%20Excel%20Format.xlsx.download.xlsx/Analysenliste%20per%201.%20Januar%202024%20in%20Excel%20Format.xlsx)]  is the template for this test panel.</p>
 
-<p>Profile: <a href="StructureDefinition-ch-lab-observation-cbc-panel.html">CH LAB Observation Results: Count of Blood Cells (automated CBC)</a></p>
+<p>Profile: <a href="StructureDefinition-ch-lab-observation-cbc-panel.html">CH LAB-Report Observation Results: Count of Blood Cells (automated CBC)</a></p>
 
 <p>Example: <a href="Observation-ExampleObservationCBCPanel.html">Observation Results: Count of Blood Cells (automated CBC)</a></p>
 
@@ -278,13 +276,13 @@ The test panels listed here also serve as examples of how laboratories can imple
 
 <p>The second indicator of kidney function is albumin excretion in 24 h urine. To simplify the determination procedure, the albumin/creatinine ratio in urine is used.</p>
 
-<p>Profile: <a href="StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html">CH LAB Observation Results: Renal Insufficiency Panel</a></p>
+<p>Profile: <a href="StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html">CH LAB-Report Observation Results: Renal Insufficiency Panel</a></p>
 
 <p>Example: <a href="Observation-ObservationRenalInsufficiencyPanel.html">Observation Results: Renal Insufficiency Panel</a></p>
 
 <h4 id="use-case-blood-bank">Use Case Blood Bank</h4>
 
-<p>Standardization in the area of blood bank results would improve safety in the transmission of laboratory results. HL7 Europe Laboratory Report has included two ValueSets with the binding ‘preferred’:</p>
+<p>Standardization in the area of blood bank results would improve safety in the transmission of laboratory results. HL7 Europe Laboratory Report has included two ValueSets with the binding 'preferred':</p>
 
 <ol>
   <li>
@@ -295,23 +293,26 @@ The test panels listed here also serve as examples of how laboratories can imple
   </li>
 </ol>
 
-<p>This guide contains 2 further possible ValueSets:</p>
+<p>This guide contains 3 further possible ValueSets:</p>
 
 <ol>
   <li>
-    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-screen.html">ValueSet: ChLab BloodGroup Antibody Screen Tests (Experimental)</a> with the SNOMED CT codes of the blood group antibody screening tests.</p>
+    <p><a href="ValueSet-ch-lab-bloodgroup-immuno-hematology-vs.html">ValueSet: CH LAB-Report BloodGroup Immunohematology Tests (SNOMED CT coded procedures)</a> with the SNOMED CT codes of the blood group antibody screening tests.</p>
   </li>
   <li>
-    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-vs.html">ValueSet: CH Lab Results Blood Group Antibody (Experimental)</a> with the SNOMED CT codes of the blood group antibodies</p>
+    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-screen-vs.html">ValueSet: CH LAB-Report BloodGroup Antibody Screen Tests Result (LOINC codes)</a> with LOINC codes of the result of bloodgroup antibody screening tests.</p>
+  </li>
+  <li>
+    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-vs.html">ValueSet: CH LAB-Report BloodGroup Antibody Result</a> with the SNOMED CT codes of the blood group antibodies</p>
   </li>
 </ol>
 
-<p>Standardization in the blood bank sector requires the cooperation and approval of the professional association (Schweizerische Vereinigung für Transfusionsmedizin), which could not be obtained in the short time available. This guideline is therefore limited to 4 possible forms of presentation as examples of blood bank results:</p>
+<p>Standardization in the blood bank sector requires the cooperation and approval of the professional association (Schweizerische Vereinigung für Transfusionsmedizin), which could not be obtained in the short time available. This guideline is therefore limited to 3 possible forms of presentation as examples of blood bank results:</p>
 
 <ul>
-  <li><a href="Observation-BloodGroupSimple.html">Blood Group Panel ABO Rh simple</a></li>
+  <li><a href="Observation-BloodGroupAB0RhD.html">Blood Group Panel ABO Rh simple</a></li>
   <li><a href="Observation-BloodGroupPanel.html">Blood Group Panel ABO Rh Panel</a></li>
-  <li><a href="Observation-BloodGroupComponent.html">Blood Group Panel ABO Rh using ‘Component’</a></li>
+  <li><a href="Observation-BloodGroupCompAB0CompRhD.html">Blood Group Panel ABO Rh using 'Component'</a></li>
 </ul>
 
 
@@ -333,7 +334,7 @@ The test panels listed here also serve as examples of how laboratories can imple
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-report#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 09:40+0000">2024-05-17</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-report#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 08:59+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -341,7 +342,7 @@ The test panels listed here also serve as examples of how laboratories can imple
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdManNpcqsivF5T9CmkhRazKB8bGq--DPesAtn56xvy86Rl-w/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-report%231.0.0-ballot%20/usecases-en.html&amp;entry%2E247644557=Use%20Cases%20in%20English">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdManNpcqsivF5T9CmkhRazKB8bGq--DPesAtn56xvy86Rl-w/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-report%231.0.0%20/usecases-en.html&amp;entry%2E247644557=Use%20Cases%20in%20English">Propose a change</a>
 
 
 
@@ -356,7 +357,7 @@ The test panels listed here also serve as examples of how laboratories can imple
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -367,7 +368,6 @@ The test panels listed here also serve as examples of how laboratories can imple
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

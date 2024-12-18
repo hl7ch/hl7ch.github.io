@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Use Cases in Italian - CH LAB-Report (R4) v1.0.0-ballot</title>
+    <title>Use Cases in Italian - CH LAB-Report (R4) v1.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"2.4"}
     h3,h4,h5,h6{--heading-prefix:"2.4"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Report (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0-ballot - ballot
+            <span style="display:inline-block;">1.0.0 - trial-use
 
 
 
@@ -137,6 +139,9 @@
     <a href="document.html">Document</a>
   </li>
   <li>
+    <a href="guidance.html">Guidance</a>
+  </li>
+  <li>
     <a href="profiles.html">Profiles</a>
   </li>
   <li>
@@ -180,7 +185,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Report (R4) (v1.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-lab-report/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Report (R4) (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-lab-report/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Use Cases in Italian</h2>
   
 
@@ -198,7 +203,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#diagramma-delle-risorse" id="markdown-toc-diagramma-delle-risorse">Diagramma delle risorse</a></li>
   <li><a href="#documenti-dei-risultati-di-laboratorio" id="markdown-toc-documenti-dei-risultati-di-laboratorio">Documenti dei risultati di laboratorio</a></li>
   <li><a href="#pannelli-di-test-di-laboratorio-chiamati-anche-batterie-di-test" id="markdown-toc-pannelli-di-test-di-laboratorio-chiamati-anche-batterie-di-test">Pannelli di test di laboratorio (chiamati anche batterie di test)</a></li>
 </ul>
@@ -206,20 +210,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <!-- markdownlint-disable MD001 MD041 -->
 
-<h3 id="diagramma-delle-risorse">Diagramma delle risorse</h3>
-
-<p><img src="Resource Overview.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig. 1: Panoramica delle risorse" style="width:80%" /></p>
-<div style="clear:both;"></div>
-<p><i>Fig. 1: Panoramica delle risorse</i></p>
-
 <h3 id="documenti-dei-risultati-di-laboratorio">Documenti dei risultati di laboratorio</h3>
 
-<p>In linea con il ‘HL7 Europe Laboratory Report’, i risultati di laboratorio sono visualizzati qui come un bundle FHIR del tipo di documento. Il primo elemento di ingresso è quindi la composizione, che definisce la struttura del documento.
-Il bundle contiene esattamente un DiagnosticReport (rapporto di laboratorio) che si riferisce alla composizione. Si riferisce anche ai risultati degli esami di laboratorio. Questi possono essere presentati sotto forma di diverse osservazioni e anche come documento PDF. L’elemento “result” contiene i risultati come riferimenti alle osservazioni.</p>
+<p>In linea con il 'HL7 Europe Laboratory Report', i risultati di laboratorio sono visualizzati qui come un bundle FHIR del tipo di documento. Il primo elemento di ingresso è quindi la composizione, che definisce la struttura del documento.
+Il bundle contiene esattamente un DiagnosticReport (rapporto di laboratorio) che si riferisce alla composizione. Si riferisce anche ai risultati degli esami di laboratorio. Questi possono essere presentati sotto forma di diverse osservazioni e anche come documento PDF. L'elemento “result” contiene i risultati come riferimenti alle osservazioni.</p>
 
-<h4 id="caso-duso-sospetta-trombosi-venosa-profonda-con-risultati-di-laboratorio-comuni-1-tvt">Caso d’uso Sospetta trombosi venosa profonda con risultati di laboratorio comuni, 1-tvt</h4>
+<h4 id="caso-duso-sospetta-trombosi-venosa-profonda-con-risultati-di-laboratorio-comuni-1-tvt">Caso d'uso Sospetta trombosi venosa profonda con risultati di laboratorio comuni, 1-tvt</h4>
 
-<p>Un paziente, Hans Guggindieluft, si reca dal Dr. Marc Mustermann presso lo studio medico di Olten. Si identifica verbalmente tramite i suoi dati anagrafici come Hans Guggindieluft, 01.01.1981. Riferisce un vago dolore alla parte inferiore della gamba sinistra e contemporaneamente dolore respiratorio e tosse. Il medico raccoglie l’anamnesi, esegue un esame fisico e prescrive i seguenti parametri di laboratorio:</p>
+<p>Un paziente, Hans Guggindieluft, si reca dal Dr. Marc Mustermann presso lo studio medico di Olten. Si identifica verbalmente tramite i suoi dati anagrafici come Hans Guggindieluft, 01.01.1981. Riferisce un vago dolore alla parte inferiore della gamba sinistra e contemporaneamente dolore respiratorio e tosse. Il medico raccoglie l'anamnesi, esegue un esame fisico e prescrive i seguenti parametri di laboratorio:</p>
 
 <ul>
   <li>Emocromo con conteggio automatico, ematogramma</li>
@@ -227,23 +225,23 @@ Il bundle contiene esattamente un DiagnosticReport (rapporto di laboratorio) che
   <li>D-dimero</li>
 </ul>
 
-<p>Questo documento di laboratorio mostra i risultati di 3 esami di laboratorio: l’esame emocromocitometrico automatico, la proteina C-reattiva nel siero e il D-dimero di fibrina nel sangue, tre esami di laboratorio molto comuni. L’esame emocromocitometrico rimanda poi ai singoli risultati dei conteggi e delle misurazioni disponibili come osservazioni, ovvero esami di laboratorio molto comuni.</p>
+<p>Questo documento di laboratorio mostra i risultati di 3 esami di laboratorio: l'esame emocromocitometrico automatico, la proteina C-reattiva nel siero e il D-dimero di fibrina nel sangue, tre esami di laboratorio molto comuni. L'esame emocromocitometrico rimanda poi ai singoli risultati dei conteggi e delle misurazioni disponibili come osservazioni, ovvero esami di laboratorio molto comuni.</p>
 
 <p><a href="Bundle-LabResultReport-1-tvt.html">Documento sui risultati di laboratorio</a></p>
 
-<h4 id="caso-duso-elettroforesi-del-siero-2-elettroforesi">Caso d’uso elettroforesi del siero, 2-elettroforesi</h4>
+<h4 id="caso-duso-elettroforesi-del-siero-2-elettroforesi">Caso d'uso elettroforesi del siero, 2-elettroforesi</h4>
 
-<p>Questo caso d’uso riguarda la riproduzione di diverse frazioni proteiche del siero che sono state separate con la tecnica dell’elettroforesi. Le singole frazioni sono elencate come ‘hasMember Observation’ con i rispettivi intervalli di riferimento. Il risultato è disponibile sia in forma numerica che come grafico bidimensionale e deve essere riprodotto nel documento. Il grafico è stato codificato in ‘base64’ e quindi integrato nel documento come campo di testo più grande. È importante assicurarsi che il volume dei dati del grafico non sia troppo grande. Si consiglia un limite massimo di 20 Megabyte.</p>
+<p>Questo caso d'uso riguarda la riproduzione di diverse frazioni proteiche del siero che sono state separate con la tecnica dell'elettroforesi. Le singole frazioni sono elencate come 'hasMember Observation' con i rispettivi intervalli di riferimento. Il risultato è disponibile sia in forma numerica che come grafico bidimensionale e deve essere riprodotto nel documento. Il grafico è stato codificato in 'base64' e quindi integrato nel documento come campo di testo più grande. È importante assicurarsi che il volume dei dati del grafico non sia troppo grande. Si consiglia un limite massimo di 20 Megabyte.</p>
 
 <p><a href="Bundle-LabResultReport-2-electrophoresis.html">Documento sui risultati di laboratorio</a></p>
 
-<h4 id="caso-duso-test-del-respiro-3-breath-test">Caso d’uso test del respiro, 3-breath-test</h4>
+<h4 id="caso-duso-test-del-respiro-3-breath-test">Caso d'uso test del respiro, 3-breath-test</h4>
 
-<p>Il test del respiro è un test di provocazione per verificare l’intolleranza ad alcuni tipi di zucchero (lattosio, fruttosio). La concentrazione di idrogeno e metano nell’aria espirata viene misurata a intervalli di mezz’ora dopo la somministrazione di una certa quantità del tipo di zucchero da testare. Il risultato è un grafico bidimensionale con le misurazioni, che devono essere registrate insieme ai risultati numerici. Anche in questo caso è stata utilizzata la codifica ‘base64’.</p>
+<p>Il test del respiro è un test di provocazione per verificare l'intolleranza ad alcuni tipi di zucchero (lattosio, fruttosio). La concentrazione di idrogeno e metano nell'aria espirata viene misurata a intervalli di mezz'ora dopo la somministrazione di una certa quantità del tipo di zucchero da testare. Il risultato è un grafico bidimensionale con le misurazioni, che devono essere registrate insieme ai risultati numerici. Anche in questo caso è stata utilizzata la codifica 'base64'.</p>
 
 <p><a href="Bundle-LabResultReport-3-breath-test.html">Documento sui risultati di laboratorio</a></p>
 
-<h4 id="caso-duso-sepsi-4-sepsi">Caso d’uso sepsi, 4-sepsi</h4>
+<h4 id="caso-duso-sepsi-4-sepsi">Caso d'uso sepsi, 4-sepsi</h4>
 
 <p>I risultati dei test microbiologici differiscono dagli altri risultati di laboratorio in quanto non sono disponibili solo valori numerici di ritorno, ma anche identificatori di agenti patogeni, crescita semiquantitativa nelle colture o attributi dei test di resistenza. Oltre alla codifica LOINC, qui viene spesso utilizzata la terminologia SNOMET CT.</p>
 
@@ -251,40 +249,40 @@ Il bundle contiene esattamente un DiagnosticReport (rapporto di laboratorio) che
 
 <h3 id="pannelli-di-test-di-laboratorio-chiamati-anche-batterie-di-test">Pannelli di test di laboratorio (chiamati anche batterie di test)</h3>
 
-<p>I pannelli di test di laboratorio sono l’aggregazione di diversi test di laboratorio, come spesso vengono commissionati in un contesto clinico e presentati come risultati. In linea di principio, abbiamo dimostrato con gli esempi precedenti che i risultati di laboratorio e i gruppi di test possono essere rappresentati con le risorse definite qui. Tuttavia, i gruppi di test offrono alcuni vantaggi.</p>
+<p>I pannelli di test di laboratorio sono l'aggregazione di diversi test di laboratorio, come spesso vengono commissionati in un contesto clinico e presentati come risultati. In linea di principio, abbiamo dimostrato con gli esempi precedenti che i risultati di laboratorio e i gruppi di test possono essere rappresentati con le risorse definite qui. Tuttavia, i gruppi di test offrono alcuni vantaggi.</p>
 
 <ul>
   <li>Analisi completa: Forniscono un modo efficiente per ordinare ed esaminare più analiti contemporaneamente e visualizzare i risultati in modo chiaro. Ciò è particolarmente utile nella diagnosi di quadri clinici complessi in cui diversi parametri giocano un ruolo.</li>
-  <li>Aumento dell’efficienza: Combinando più test in un unico pannello, è possibile aumentare l’efficienza del laboratorio e utilizzare in modo ottimale le risorse. Invece di testare ogni singolo analita, è possibile testare simultaneamente più parametri, riducendo i tempi e la manodopera.</li>
-  <li>Efficienza dei costi: I pannelli di test possono anche essere più efficaci dal punto di vista dei costi rispetto ai singoli test, in quanto sono spesso offerti a un prezzo ridotto. Questo può essere particolarmente vantaggioso quando è richiesta un’analisi completa.</li>
-  <li>Rilevanza clinica nel contesto terapeutico: I pannelli di test sono spesso progettati per coprire una serie di analiti clinicamente rilevanti per specifiche malattie o condizioni di salute. Ciò facilita l’interpretazione dei risultati e consente una diagnosi più rapida e accurata.</li>
-  <li>Standardizzazione: Utilizzando i pannelli di test, i laboratori possono implementare un approccio standardizzato per testare analiti specifici. Ciò favorisce la coerenza e la comparabilità dei risultati sia all’interno di un laboratorio che tra laboratori diversi.</li>
+  <li>Aumento dell'efficienza: Combinando più test in un unico pannello, è possibile aumentare l'efficienza del laboratorio e utilizzare in modo ottimale le risorse. Invece di testare ogni singolo analita, è possibile testare simultaneamente più parametri, riducendo i tempi e la manodopera.</li>
+  <li>Efficienza dei costi: I pannelli di test possono anche essere più efficaci dal punto di vista dei costi rispetto ai singoli test, in quanto sono spesso offerti a un prezzo ridotto. Questo può essere particolarmente vantaggioso quando è richiesta un'analisi completa.</li>
+  <li>Rilevanza clinica nel contesto terapeutico: I pannelli di test sono spesso progettati per coprire una serie di analiti clinicamente rilevanti per specifiche malattie o condizioni di salute. Ciò facilita l'interpretazione dei risultati e consente una diagnosi più rapida e accurata.</li>
+  <li>Standardizzazione: Utilizzando i pannelli di test, i laboratori possono implementare un approccio standardizzato per testare analiti specifici. Ciò favorisce la coerenza e la comparabilità dei risultati sia all'interno di un laboratorio che tra laboratori diversi.</li>
 </ul>
 
-<p>Nei nostri sistemi sanitari, la pressione competitiva tra i laboratori è elevata e la capacità di offrire servizi differenziati può rappresentare un importante vantaggio competitivo. Un pannello di test standardizzato obbligatorio può compromettere la capacità di un laboratorio di differenziarsi dalla concorrenza offrendo test specializzati o servizi personalizzati. I pannelli di test qui proposti non sono quindi uno standard obbligatorio, ma dovrebbero essere facoltativi laddove ciò sia sensato. Il pannello CBC automatizzato e il pannello di insufficienza renale [test di screening] (https://www.swissnephrology.ch/wp/wp-content/uploads/2023/01/161121_SGN_Pocketguide_CKD_Web_A4_e_WZ.pdf) sono intesi come esempi di profili di osservazione.
+<p>Nei nostri sistemi sanitari, la pressione competitiva tra i laboratori è elevata e la capacità di offrire servizi differenziati può rappresentare un importante vantaggio competitivo. Un pannello di test standardizzato obbligatorio può compromettere la capacità di un laboratorio di differenziarsi dalla concorrenza offrendo test specializzati o servizi personalizzati. I pannelli di test qui proposti non sono quindi uno standard obbligatorio, ma dovrebbero essere facoltativi laddove ciò sia sensato. Il pannello CBC automatizzato e il pannello di insufficienza renale <a href="https://www.swissnephrology.ch/wp/wp-content/uploads/2023/01/161121_SGN_Pocketguide_CKD_Web_A4_e_WZ.pdf">test di screening</a> sono intesi come esempi di profili di osservazione.
 I pannelli di test qui elencati servono anche come esempi di come i laboratori possono implementare i propri pannelli di test come profili di osservazione.</p>
 
-<h4 id="caso-duso-conteggio-delle-cellule-del-sangue-emocromo-automatizzato">Caso d’uso Conteggio delle cellule del sangue (emocromo automatizzato)</h4>
+<h4 id="caso-duso-conteggio-delle-cellule-del-sangue-emocromo-automatizzato">Caso d'uso Conteggio delle cellule del sangue (emocromo automatizzato)</h4>
 
-<p>L’ematogramma II della [lista di analisi(https://www.bag.admin.ch/dam/bag/de/dokumente/kuv-leistungen/leistungen-und-tarife/Analysenliste/Analysenliste%20per%201.%20Januar%202024%20in%20Excel%20Format.xlsx.download.xlsx/Analysenliste%20per%201.%20Januar%202024%20in%20Excel%20Format.xlsx)] è il modello per questo pannello di test.</p>
+<p>L'ematogramma II della [lista di analisi(https://www.bag.admin.ch/dam/bag/de/dokumente/kuv-leistungen/leistungen-und-tarife/Analysenliste/Analysenliste%20per%201.%20Januar%202024%20in%20Excel%20Format.xlsx.download.xlsx/Analysenliste%20per%201.%20Januar%202024%20in%20Excel%20Format.xlsx)] è il modello per questo pannello di test.</p>
 
-<p>Profilo: <a href="StructureDefinition-ch-lab-observation-cbc-panel.html">CH LAB Observation Results: Count of Blood Cells (automated CBC)</a></p>
+<p>Profilo: <a href="StructureDefinition-ch-lab-observation-cbc-panel.html">CH LAB-Report Observation Results: Count of Blood Cells (automated CBC)</a></p>
 
-<p>Esempio: <a href="Observation-ExampleObservationCBCPanel.html">Risultati dell’osservazione: conteggio delle cellule del sangue (emocromo automatico)</a></p>
+<p>Esempio: <a href="Observation-ExampleObservationCBCPanel.html">Risultati dell'osservazione: conteggio delle cellule del sangue (emocromo automatico)</a></p>
 
-<h4 id="caso-duso-insufficienza-renale">Caso d’uso Insufficienza renale</h4>
+<h4 id="caso-duso-insufficienza-renale">Caso d'uso Insufficienza renale</h4>
 
-<p>Malattie croniche come il diabete o l’ipertensione sono talvolta accompagnate da una malattia renale cronica. Richiedono quindi il monitoraggio della funzione renale. La velocità di filtrazione glomerulare (GFR) e l’escrezione di albumina nelle urine delle 24 ore si sono rivelati parametri utili per la funzione renale. Il GFR è abbastanza difficile da determinare. Per questo motivo, sono state utilizzate formule che consentono approssimazioni con l’aiuto di misurazioni di marcatori endogeni, creatinina o cistatina-C. La formula più utilizzata è la CKD-EPI, che tiene conto di altre caratteristiche del paziente, come l’età e il sesso. Inoltre, nel corso del tempo sono stati apportati diversi aggiustamenti alla formula, l’ultimo dei quali nel 2021, quando il colore della pelle è stato omesso come parametro. I risultati delle formule CKD-EPI si riferiscono sempre a persone con una superficie corporea di 1,73 m².</p>
+<p>Malattie croniche come il diabete o l'ipertensione sono talvolta accompagnate da una malattia renale cronica. Richiedono quindi il monitoraggio della funzione renale. La velocità di filtrazione glomerulare (GFR) e l'escrezione di albumina nelle urine delle 24 ore si sono rivelati parametri utili per la funzione renale. Il GFR è abbastanza difficile da determinare. Per questo motivo, sono state utilizzate formule che consentono approssimazioni con l'aiuto di misurazioni di marcatori endogeni, creatinina o cistatina-C. La formula più utilizzata è la CKD-EPI, che tiene conto di altre caratteristiche del paziente, come l'età e il sesso. Inoltre, nel corso del tempo sono stati apportati diversi aggiustamenti alla formula, l'ultimo dei quali nel 2021, quando il colore della pelle è stato omesso come parametro. I risultati delle formule CKD-EPI si riferiscono sempre a persone con una superficie corporea di 1,73 m².</p>
 
-<p>Il secondo indicatore della funzione renale è l’escrezione di albumina nelle urine delle 24 ore. Per semplificare la procedura di determinazione, si utilizza il rapporto albumina/creatinina nelle urine.</p>
+<p>Il secondo indicatore della funzione renale è l'escrezione di albumina nelle urine delle 24 ore. Per semplificare la procedura di determinazione, si utilizza il rapporto albumina/creatinina nelle urine.</p>
 
-<p>Profilo: <a href="StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html">CH LAB Observation Results: Renal Insufficiency Panel</a></p>
+<p>Profilo: <a href="StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html">CH LAB-Report Observation Results: Renal Insufficiency Panel</a></p>
 
-<p>Esempio: <a href="Observation-ObservationRenalInsufficiencyPanel.html">Risultati dell’osservazione: pannello di insufficienza renale</a></p>
+<p>Esempio: <a href="Observation-ObservationRenalInsufficiencyPanel.html">Risultati dell'osservazione: pannello di insufficienza renale</a></p>
 
-<h4 id="caso-duso-banca-del-sangue">Caso d’uso Banca del sangue</h4>
+<h4 id="caso-duso-banca-del-sangue">Caso d'uso Banca del sangue</h4>
 
-<p>La standardizzazione nell’area dei risultati delle banche del sangue migliorerebbe la sicurezza nella trasmissione dei risultati di laboratorio. HL7 Europe Laboratory Report ha incluso due ValueSet con il binding ‘preferred’:</p>
+<p>La standardizzazione nell'area dei risultati delle banche del sangue migliorerebbe la sicurezza nella trasmissione dei risultati di laboratorio. HL7 Europe Laboratory Report ha incluso due ValueSet con il binding 'preferred':</p>
 
 <ol>
   <li>
@@ -295,23 +293,26 @@ I pannelli di test qui elencati servono anche come esempi di come i laboratori p
   </li>
 </ol>
 
-<p>Questa guida contiene altri 2 possibili ValueSet:</p>
+<p>Questa guida contiene altri 3 possibili ValueSet:</p>
 
 <ol>
   <li>
-    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-screen.html">ValueSet: ChLab BloodGroup Antibody Screen Tests (Experimental)</a> con i codici SNOMED CT dei test di screening degli anticorpi del gruppo sanguigno.</p>
+    <p><a href="ValueSet-ch-lab-bloodgroup-immuno-hematology-vs.html">ValueSet: CH LAB-Report BloodGroup Immunohematology Tests (SNOMED CT coded procedures)</a> con i codici SNOMED CT dei test di screening degli anticorpi del gruppo sanguigno.</p>
   </li>
   <li>
-    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-vs.html">ValueSet: CH Lab Results Blood Group Antibody (Experimental)</a> con i codici SNOMED CT degli anticorpi del gruppo sanguigno.</p>
+    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-screen-vs.html">ValueSet: CH LAB-Report BloodGroup Antibody Screen Tests Result (LOINC codes)</a> con i codici LOINC dei resultati dei test di screening degli anticorpi del gruppo sanguigno.</p>
+  </li>
+  <li>
+    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-vs.html">ValueSet: CH LAB-Report BloodGroup Antibody Result</a> con i codici SNOMED CT degli anticorpi del gruppo sanguigno.</p>
   </li>
 </ol>
 
-<p>La standardizzazione nel settore delle banche del sangue richiede la collaborazione e l’approvazione dell’associazione professionale (Schweizerische Vereinigung für Transfusionsmedizin), che non è stato possibile ottenere nel breve tempo a disposizione. La presente linea guida si limita pertanto a 4 possibili forme di presentazione come esempi di risultati delle banche del sangue:</p>
+<p>La standardizzazione nel settore delle banche del sangue richiede la collaborazione e l'approvazione dell'associazione professionale (Schweizerische Vereinigung für Transfusionsmedizin), che non è stato possibile ottenere nel breve tempo a disposizione. La presente linea guida si limita pertanto a 3 possibili forme di presentazione come esempi di risultati delle banche del sangue:</p>
 
 <ul>
-  <li><a href="Observation-BloodGroupSimple.html">Pannello gruppi sanguigni ABO Rh semplice</a></li>
+  <li><a href="Observation-BloodGroupAB0RhD.html">Pannello gruppi sanguigni ABO Rh semplice</a></li>
   <li><a href="Observation-BloodGroupPanel.html">Pannello gruppi sanguigni ABO Rh</a></li>
-  <li><a href="Observation-BloodGroupComponent.html">Pannello gruppi sanguigni ABO Rh usando ‘Component’</a></li>
+  <li><a href="Observation-BloodGroupCompAB0CompRhD.html">Pannello gruppi sanguigni ABO Rh usando 'Component'</a></li>
 </ul>
 
 
@@ -333,7 +334,7 @@ I pannelli di test qui elencati servono anche come esempi di come i laboratori p
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-report#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 09:40+0000">2024-05-17</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-report#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 08:59+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -341,7 +342,7 @@ I pannelli di test qui elencati servono anche come esempi di come i laboratori p
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdManNpcqsivF5T9CmkhRazKB8bGq--DPesAtn56xvy86Rl-w/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-report%231.0.0-ballot%20/usecases-it.html&amp;entry%2E247644557=Use%20Cases%20in%20Italian">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdManNpcqsivF5T9CmkhRazKB8bGq--DPesAtn56xvy86Rl-w/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-report%231.0.0%20/usecases-it.html&amp;entry%2E247644557=Use%20Cases%20in%20Italian">Propose a change</a>
 
 
 
@@ -356,7 +357,7 @@ I pannelli di test qui elencati servono anche come esempi di come i laboratori p
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -367,7 +368,6 @@ I pannelli di test qui elencati servono anche come esempi di come i laboratori p
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

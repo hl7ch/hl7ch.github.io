@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Use Cases in German - CH LAB-Report (R4) v1.0.0-ballot</title>
+    <title>Use Cases in German - CH LAB-Report (R4) v1.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"2.3"}
     h3,h4,h5,h6{--heading-prefix:"2.3"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Report (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0-ballot - ballot
+            <span style="display:inline-block;">1.0.0 - trial-use
 
 
 
@@ -137,6 +139,9 @@
     <a href="document.html">Document</a>
   </li>
   <li>
+    <a href="guidance.html">Guidance</a>
+  </li>
+  <li>
     <a href="profiles.html">Profiles</a>
   </li>
   <li>
@@ -180,7 +185,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Report (R4) (v1.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-lab-report/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Report (R4) (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-lab-report/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Use Cases in German</h2>
   
 
@@ -198,7 +203,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#diagram-der-resourcen" id="markdown-toc-diagram-der-resourcen">Diagram der Resourcen</a></li>
   <li><a href="#laborergebnis-dokumente" id="markdown-toc-laborergebnis-dokumente">Laborergebnis Dokumente</a></li>
   <li><a href="#labor-test-panels-auch-test-batterien-oder-test-profile-genannt" id="markdown-toc-labor-test-panels-auch-test-batterien-oder-test-profile-genannt">Labor Test Panels (auch Test-Batterien oder Test-Profile genannt)</a></li>
 </ul>
@@ -206,15 +210,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <!-- markdownlint-disable MD001 MD041 -->
 
-<h3 id="diagram-der-resourcen">Diagram der Resourcen</h3>
-
-<p><img src="Resource Overview.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig. 1: Resourcen Übersicht" style="width:80%" /></p>
-<div style="clear:both;"></div>
-<p><i>Fig. 1: Resourcen Übersicht</i></p>
-
 <h3 id="laborergebnis-dokumente">Laborergebnis Dokumente</h3>
 
-<p>In Anlehnung an ‘HL7 Europe Laboratory Report’ werden hier die Laborergebnisse als FHIR-Bundle vom Typ Dokument dargestellt. Das erste entry Element ist also die Composition, die die Struktur des Dokuments definiert.
+<p>In Anlehnung an 'HL7 Europe Laboratory Report' werden hier die Laborergebnisse als FHIR-Bundle vom Typ Dokument dargestellt. Das erste entry Element ist also die Composition, die die Struktur des Dokuments definiert.
 Das Bundle enthält genau einen DiagnosticReport (Laborbericht), der auf die Composition verweist. Es verweist auch auf die Ergebnisse der Laboruntersuchungen. Diese können in Form von mehreren Beobachtungen und auch als PDF-Dokument dargestellt werden. Das Element „result“ enthält die Ergebnisse als Verweise auf Beobachtungen.</p>
 
 <h4 id="anwendungsfall-verdacht-auf-tiefe-venenthrombose-mit-gängigen-laborresultaten-1-tvt">Anwendungsfall Verdacht auf tiefe Venenthrombose mit gängigen Laborresultaten, 1-tvt</h4>
@@ -233,13 +231,13 @@ Das Bundle enthält genau einen DiagnosticReport (Laborbericht), der auf die Com
 
 <h4 id="anwendungsfall-serum-elektrophorese-2-electrophoresis">Anwendungsfall Serum-Elektrophorese, 2-electrophoresis</h4>
 
-<p>Bei diesem Anwendungsfall geht es um die Wiedergabe von mehreren Eiweiss-Fraktionen im Serum, die mittels Elektrophorese-Technik aufgetrennt wurden. Die einzelnen Fraktionen sind als ‘hasMember Observation’ mit jeweiligen Referenzbereichen aufgeführt. Das Ergebnis liegt nebst in Zahlenform auch als 2-dimensionale Grafik vor, und muss ebenfalls im Dokument wiedergegeben werden. Die Grafik wurde ‘base64’ encodiert und somit als grösseres Textfeld im Dokument integriert. Es ist hier zu beachten, dass die Datenmenge der Grafik nicht zu gross wird. Wir würden eine Obergrenze von 20 Megabytes empfehlen.</p>
+<p>Bei diesem Anwendungsfall geht es um die Wiedergabe von mehreren Eiweiss-Fraktionen im Serum, die mittels Elektrophorese-Technik aufgetrennt wurden. Die einzelnen Fraktionen sind als 'hasMember Observation' mit jeweiligen Referenzbereichen aufgeführt. Das Ergebnis liegt nebst in Zahlenform auch als 2-dimensionale Grafik vor, und muss ebenfalls im Dokument wiedergegeben werden. Die Grafik wurde 'base64' encodiert und somit als grösseres Textfeld im Dokument integriert. Es ist hier zu beachten, dass die Datenmenge der Grafik nicht zu gross wird. Wir würden eine Obergrenze von 20 Megabytes empfehlen.</p>
 
 <p><a href="Bundle-LabResultReport-2-electrophoresis.html">Laborergebnis Dokument</a></p>
 
 <h4 id="anwendungsfall-atemtest-3-breath-test">Anwendungsfall Atemtest, 3-breath-test</h4>
 
-<p>Der Atemtest ist ein Provokationstest, um Intoleranzen gegenüber gewissen Zuckerarten (Lactose, Fructose) zu testen. Es wird die Konzentration von Wasserstoff und Methan in der Ausatmungsluft in halbstündigen Intervallen gemessen, nachdem eine bestimmte Menge der zu testenden Zuckerart verabreicht wurde. Als Ergebnis liegt eine 2 dimensionale Grafik mit den Messungen vor, die ebenfalls nebst den Zahlenergebnissen festgehalten werden muss. Auch hier ist die ‘base64’ Encodierung zur Anwendung gekommen.</p>
+<p>Der Atemtest ist ein Provokationstest, um Intoleranzen gegenüber gewissen Zuckerarten (Lactose, Fructose) zu testen. Es wird die Konzentration von Wasserstoff und Methan in der Ausatmungsluft in halbstündigen Intervallen gemessen, nachdem eine bestimmte Menge der zu testenden Zuckerart verabreicht wurde. Als Ergebnis liegt eine 2 dimensionale Grafik mit den Messungen vor, die ebenfalls nebst den Zahlenergebnissen festgehalten werden muss. Auch hier ist die 'base64' Encodierung zur Anwendung gekommen.</p>
 
 <p><a href="Bundle-LabResultReport-3-breath-test.html">Laborergebnis Dokument</a></p>
 
@@ -251,7 +249,7 @@ Das Bundle enthält genau einen DiagnosticReport (Laborbericht), der auf die Com
 
 <h3 id="labor-test-panels-auch-test-batterien-oder-test-profile-genannt">Labor Test Panels (auch Test-Batterien oder Test-Profile genannt)</h3>
 
-<p>Unter Labor Testpanels versteht man die Aggregierung mehrerer Laboruntersuchungen, wie sie gerne in einem klinischen Kontext in Auftrag gegeben und als Resultate dargestellt werden. Grundsätzlich haben wir mit obigen Beispielen gezeigt, dass sich Laborresultate wie auch Test-Panels mit den Resourcen, wie sie hier definiert sind abbilden lassen. Trotzdem bieten Testpanels als Observation Profile gewisse Vorteile.</p>
+<p>Unter Labor Testpanels versteht man die Aggregierung mehrerer Laboruntersuchungen, wie sie gerne in einem klinischen Kontext in Auftrag gegeben und als Resultate dargestellt werden. Grundsätzlich haben wir mit obigen Beispielen gezeigt, dass sich Laborresultate wie auch Test-Panels mit den Resourcen, wie sie hier definiert sind, abbilden lassen. Trotzdem bieten Testpanels als Observation Profile gewisse Vorteile.</p>
 
 <ul>
   <li>Umfassende Analyse: Sie bieten eine effiziente Möglichkeit, mehrere Analyte gleichzeitig zu bestellen, zu untersuchen und die Ergebnisse übersichtlich darzustellen. Dies ist besonders nützlich bei der Diagnose komplexer Krankheitsbilder, bei denen mehrere Parameter eine Rolle spielen.</li>
@@ -268,7 +266,7 @@ Die hier aufgeführten Testpanels dienen auch als Beispiele, wie Labore eigene T
 
 <p>Das Hämatogramm II der <a href="https://www.bag.admin.ch/dam/bag/de/dokumente/kuv-leistungen/leistungen-und-tarife/Analysenliste/Analysenliste%20per%201.%20Januar%202024%20in%20Excel%20Format.xlsx.download.xlsx/Analysenliste%20per%201.%20Januar%202024%20in%20Excel%20Format.xlsx">Analysenliste</a> ist die Vorlage für dieses Testpanel.</p>
 
-<p>Profile: <a href="StructureDefinition-ch-lab-observation-cbc-panel.html">CH LAB Observation Results: Count of Blood Cells (automated CBC)</a></p>
+<p>Profile: <a href="StructureDefinition-ch-lab-observation-cbc-panel.html">CH LAB-Report Observation Results: Count of Blood Cells (automated CBC)</a></p>
 
 <p>Example: <a href="Observation-ExampleObservationCBCPanel.html">Observation Results: Count of Blood Cells (automated CBC)</a></p>
 
@@ -278,13 +276,13 @@ Die hier aufgeführten Testpanels dienen auch als Beispiele, wie Labore eigene T
 
 <p>Der zweite Indikator für die Nierenfunktion ist die Albumin-Ausscheidung im 24 h Urin. Um das Bestimmungsverfahren zu vereinfachen wird die Albumin/Creatinin Ratio im Urin verwendet.</p>
 
-<p>Profile: <a href="StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html">CH LAB Observation Results: Renal Insufficiency Panel</a></p>
+<p>Profile: <a href="StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html">CH LAB-Report Observation Results: Renal Insufficiency Panel</a></p>
 
 <p>Example: <a href="Observation-ObservationRenalInsufficiencyPanel.html">Observation Results: Renal Insufficiency Panel</a></p>
 
 <h4 id="use-case-blood-bank">Use Case Blood Bank</h4>
 
-<p>Eine Standardisierung im Bereich der Blutbank Resultate würde die Sicherheit bei der Übertragung von Laborresultaten verbessern. HL7 Europe Laboratory Report hat zwei ValueSets mit der Bindung ‘preferred’ einbezogen:</p>
+<p>Eine Standardisierung im Bereich der Blutbank Resultate würde die Sicherheit bei der Übertragung von Laborresultaten verbessern. HL7 Europe Laboratory Report hat zwei ValueSets mit der Bindung 'preferred' einbezogen:</p>
 
 <ol>
   <li>
@@ -295,23 +293,26 @@ Die hier aufgeführten Testpanels dienen auch als Beispiele, wie Labore eigene T
   </li>
 </ol>
 
-<p>Dieser Leitfaden enthält 2 weitere mögliche ValueSets:</p>
+<p>Dieser Leitfaden enthält 3 weitere mögliche ValueSets:</p>
 
 <ol>
   <li>
-    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-screen.html">ValueSet: ChLab BloodGroup Antibody Screen Tests (Experimental)</a> mit den SNOMED CT Codes der Blutgruppen Antikörper Screening Tests</p>
+    <p><a href="ValueSet-ch-lab-bloodgroup-immuno-hematology-vs.html">ValueSet: CH LAB-Report BloodGroup Immunohematology Tests (SNOMED CT coded procedures)</a> mit den SNOMED CT Codes der Blutgruppen-Antikörper screening tests</p>
   </li>
   <li>
-    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-vs.html">ValueSet: CH Lab Results Blood Group Antibody (Experimental)</a> mit den SNOMED CT Codes der Blutgruppen Antikörper</p>
+    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-screen-vs.html">ValueSet: CH LAB-Report BloodGroup Antibody Screen Tests Result (LOINC codes)</a> mit den LOINC Codes der Resultate der Blutgruppen Antikörper screening Tests</p>
+  </li>
+  <li>
+    <p><a href="ValueSet-ch-lab-bloodgroup-antibody-vs.html">ValueSet: CH LAB-Report BloodGroup Antibody Result</a> mit den SNOMED CT Codes der Blutgruppen Antikörper</p>
   </li>
 </ol>
 
-<p>Für die Standardisierung in Bereich Blutbank braucht es Mitarbeit und Zustimmung der Fachgesellschaft (Schweizerische Vereinigung für Transfusionsmedizin), die in der kurzen Zeit nicht erlangt werden konnte. Somit beschränkt sich dieser Leitfaden auf 4 mögliche Darstellungsformen als Beispiele von Blutbank Resultate:</p>
+<p>Für die Standardisierung in Bereich Blutbank braucht es Mitarbeit und Zustimmung der Fachgesellschaft (Schweizerische Vereinigung für Transfusionsmedizin), die in der kurzen Zeit nicht erlangt werden konnte. Somit beschränkt sich dieser Leitfaden auf 3 mögliche Darstellungsformen als Beispiele von Blutbank Resultate:</p>
 
 <ul>
-  <li><a href="Observation-BloodGroupSimple.html">Blood Group Panel ABO Rh simple</a></li>
+  <li><a href="Observation-BloodGroupAB0RhD.html">Blood Group Panel ABO Rh simple</a></li>
   <li><a href="Observation-BloodGroupPanel.html">Blood Group Panel ABO Rh Panel</a></li>
-  <li><a href="Observation-BloodGroupComponent.html">Blood Group Panel ABO Rh mit ‘Component’</a></li>
+  <li><a href="Observation-BloodGroupCompAB0CompRhD.html">Blood Group Panel ABO Rh mit 'Component'</a></li>
 </ul>
 
 
@@ -333,7 +334,7 @@ Die hier aufgeführten Testpanels dienen auch als Beispiele, wie Labore eigene T
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-report#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 09:40+0000">2024-05-17</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-report#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 08:59+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -341,7 +342,7 @@ Die hier aufgeführten Testpanels dienen auch als Beispiele, wie Labore eigene T
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdManNpcqsivF5T9CmkhRazKB8bGq--DPesAtn56xvy86Rl-w/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-report%231.0.0-ballot%20/usecases-ge.html&amp;entry%2E247644557=Use%20Cases%20in%20German">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdManNpcqsivF5T9CmkhRazKB8bGq--DPesAtn56xvy86Rl-w/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-report%231.0.0%20/usecases-ge.html&amp;entry%2E247644557=Use%20Cases%20in%20German">Propose a change</a>
 
 
 
@@ -356,7 +357,7 @@ Die hier aufgeführten Testpanels dienen auch als Beispiele, wie Labore eigene T
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -367,7 +368,6 @@ Die hier aufgeführten Testpanels dienen auch als Beispiele, wie Labore eigene T
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

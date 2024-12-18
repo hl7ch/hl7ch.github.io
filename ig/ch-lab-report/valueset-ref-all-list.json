@@ -2,7 +2,7 @@
   "codeSystems" : [
     {
       "url" : "http://fhir.ch/ig/ch-core/ValueSet/ch-core-maritalstatus",
-      "version" : "3.0.0",
+      "version" : "3.1.0",
       "status" : "active",
       "name" : "ChCoreMaritalStatus",
       "title" : "ChCoreMaritalStatus",
@@ -14,29 +14,96 @@
       ],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-patient.html" : "CH LAB Patient"
+      "StructureDefinition-ch-lab-patient.html" : "CH LAB-Report Patient"
     },
     {
-      "url" : "http://fhir.ch/ig/ch-lab-report/ValueSet/ch-lab-bloodgroup-antibody-screen",
-      "version" : "1.0.0-ballot",
-      "status" : "active",
+      "url" : "http://fhir.ch/ig/ch-lab-report/ValueSet/ch-lab-bloodgroup-antibody-screen-vs",
+      "version" : "1.0.0",
+      "status" : "draft",
       "name" : "ChLabBloodGroupAntibodyScreen",
-      "title" : "ChLab BloodGroup Antibody Screen Tests",
-      "description" : "Detects atypical IgG antibodies prior to transfusion or during pregnancy. The screening test is designed specifically to detect IgG antibodies and some IgM antibodies (non ABO) may also be detected. Antibodies detected by the antibody screen should then be identified, and a titer performed if the antibody identified is considered to be clinically significant during pregnancy.",
-      "systems" : ["http://snomed.info/sct"]
+      "title" : "CH LAB-Report BloodGroup Antibody Screen Test (LOINC codes)",
+      "description" : "This value set is used in the ChLabObservationBloodGroup profile. It represents\natypical IgG antibodies prior to transfusion or during pregnancy. The screening test is designed\nspecifically to detect IgG antibodies and some IgM antibodies (non ABO) may also be detected.\nAntibodies detected by the antibody screen should then be identified, and a titer performed if\nthe antibody identified is considered to be clinically significant during pregnancy.",
+      "systems" : ["http://loinc.org"],
+      "uses" : {
+      },
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://fhir.ch/ig/ch-lab-report/ValueSet/ch-lab-bloodgroup-antibody-vs",
-      "version" : "1.0.0-ballot",
+      "version" : "1.0.0",
       "status" : "active",
       "name" : "ChLabBloodGroupAntibody",
-      "title" : "CH Lab Results Blood Group Antibody",
-      "description" : "ValueSet Blood Group Antibody",
-      "systems" : ["http://snomed.info/sct"]
+      "title" : "CH LAB-Report BloodGroup Antibody Result (SNOMED CT coded substances)",
+      "description" : "This value set is used in the ChLabObservationBloodGroup profile. It contains results of Blood Group Antibodies\n(substance) coded with SNOMED CT. It is used in the ChLabObservationBloodGroup profile",
+      "systems" : ["http://snomed.info/sct"],
+      "uses" : {
+      },
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
+    },
+    {
+      "url" : "http://fhir.ch/ig/ch-lab-report/ValueSet/ch-lab-bloodgroup-immuno-hematology-vs",
+      "version" : "1.0.0",
+      "status" : "draft",
+      "name" : "ChLabBloodGroupImmunoHematology",
+      "title" : "CH LAB-Report BloodGroup Immunohematology Tests (SNOMED CT coded procedures)",
+      "description" : "This value set is used in the ChLabObservationBloodGroup profile. It contains Laboratory tests related to immunohematology",
+      "systems" : ["http://snomed.info/sct"],
+      "uses" : {
+      },
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
+    },
+    {
+      "url" : "http://fhir.ch/ig/ch-lab-report/ValueSet/observation-code-cdk-epi-2009",
+      "version" : "1.0.0",
+      "status" : "draft",
+      "name" : "ObservationCode_CDK_EPI_2009",
+      "title" : "CH LAB-Report Codes for eGFR in CKD-EPI",
+      "description" : "ValueSet for the allowed eGFRcr and eGFRcr-cys codes among non-blacks",
+      "systems" : ["http://loinc.org"],
+      "uses" : {
+      },
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks"
+    },
+    {
+      "url" : "http://fhir.ch/ig/ch-lab-report/ValueSet/observation-code-cdk-epi-2021",
+      "version" : "1.0.0",
+      "status" : "draft",
+      "name" : "ObservationCode_CDK_EPI_2021",
+      "title" : "CH LAB-Report Codes for eGFR in CKD-EPI 2021",
+      "description" : "ValueSet for the allowed eGFRcr and eGFRcr-cys codes, has no race term",
+      "systems" : ["http://loinc.org"],
+      "uses" : {
+      },
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile"
+    },
+    {
+      "url" : "http://fhir.ch/ig/ch-lab-report/ValueSet/observation-code-entsvol-ratio",
+      "version" : "1.0.0",
+      "status" : "draft",
+      "name" : "ObservationCodeEntvolRatio",
+      "title" : "CH LAB-Report Codes for Erythrocyte Distribuiton Width Test",
+      "description" : "ValueSet for the allowed codes ENTVOL and RATIO",
+      "systems" : ["http://loinc.org"],
+      "uses" : {
+      },
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component"
+    },
+    {
+      "url" : "http://fhir.ch/ig/ch-lab-report/ValueSet/observation-code-mdrd-male-female",
+      "version" : "1.0.0",
+      "status" : "draft",
+      "name" : "ObservationCodeMDRD",
+      "title" : "CH LAB-Report Codes for eGFR (MDRD)",
+      "description" : "ValueSet for the allowed eGFR among males and eGFR among females codes",
+      "systems" : ["http://loinc.org"],
+      "uses" : {
+      },
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks"
     },
     {
       "url" : "http://fhir.ch/ig/ch-term/ValueSet/HCProfessional.hcProfession",
-      "version" : "3.0.0",
+      "version" : "3.1.0",
       "status" : "active",
       "name" : "HCProfessionalHcProfession",
       "title" : "HCProfessional.hcProfession",
@@ -46,11 +113,11 @@
       "sources" : ["2.16.756.5.30.1.127.3.10.8.1"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-practitionerrole.html" : "CH LAB PractitionerRole"
+      "StructureDefinition-ch-lab-practitionerrole.html" : "CH LAB-Report PractitionerRole"
     },
     {
       "url" : "http://fhir.ch/ig/ch-term/ValueSet/HCProfessional.hcSpecialisation",
-      "version" : "3.0.0",
+      "version" : "3.1.0",
       "status" : "active",
       "name" : "HCProfessionalHcSpecialisation",
       "title" : "HCProfessional.hcSpecialisation",
@@ -60,7 +127,7 @@
       "sources" : ["2.16.756.5.30.1.127.3.10.8.2"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-practitionerrole.html" : "CH LAB PractitionerRole"
+      "StructureDefinition-ch-lab-practitionerrole.html" : "CH LAB-Report PractitionerRole"
     },
     {
       "url" : "http://hl7.eu/fhir/laboratory/ValueSet/lab-obsCode-eu-lab",
@@ -72,32 +139,25 @@
       "systems" : ["http://loinc.org", "http://npu-terminology.org"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.eu/fhir/laboratory/ValueSet/lab-orderCodes-eu-lab",
@@ -109,7 +169,7 @@
       "systems" : ["http://loinc.org"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order"
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order"
     },
     {
       "url" : "http://hl7.eu/fhir/laboratory/ValueSet/lab-reportType-eu-lab",
@@ -121,7 +181,7 @@
       "systems" : ["http://loinc.org"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB DiagnosticReport: Laboratory Report"
+      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB-Report DiagnosticReport: Laboratory Report"
     },
     {
       "url" : "http://hl7.eu/fhir/laboratory/ValueSet/lab-specialty-eu-lab",
@@ -133,34 +193,31 @@
       "systems" : ["http://snomed.info/sct"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB DiagnosticReport: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB-Report DiagnosticReport: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.eu/fhir/laboratory/ValueSet/lab-specimenAdditive-eu-lab",
@@ -172,7 +229,7 @@
       "systems" : ["http://snomed.info/sct"],
       "uses" : {
       },
-      "StructureDefinition-specimen-additive-substance-eu-lab.html" : "Substance: Specimen Additive Substance"
+      "StructureDefinition-ch-lab-specimen-additive-substance.html" : "CH LAB-Report Additive Substance"
     },
     {
       "url" : "http://hl7.eu/fhir/laboratory/ValueSet/lab-specimenContainer-eu-lab",
@@ -184,7 +241,7 @@
       "systems" : ["http://snomed.info/sct"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-specimen.html" : "CH LAB Specimen"
+      "StructureDefinition-ch-lab-specimen.html" : "CH LAB-Report Specimen"
     },
     {
       "url" : "http://hl7.eu/fhir/laboratory/ValueSet/lab-specimenType-eu-lab",
@@ -196,7 +253,7 @@
       "systems" : ["http://snomed.info/sct"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-specimen.html" : "CH LAB Specimen"
+      "StructureDefinition-ch-lab-specimen.html" : "CH LAB-Report Specimen"
     },
     {
       "url" : "http://hl7.eu/fhir/laboratory/ValueSet/lab-studyType-eu-lab",
@@ -208,34 +265,31 @@
       "systems" : ["http://loinc.org"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB DiagnosticReport: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB-Report DiagnosticReport: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.eu/fhir/laboratory/ValueSet/lab-technique-eu-lab",
@@ -247,32 +301,29 @@
       "systems" : ["http://snomed.info/sct"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/administrative-gender",
@@ -286,8 +337,8 @@
       "sources" : ["2.16.840.1.113883.4.642.3.1"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-practitioner.html" : "CH LAB Practitioner",
-      "StructureDefinition-ch-lab-patient.html" : "CH LAB Patient"
+      "StructureDefinition-ch-lab-patient.html" : "CH LAB-Report Patient",
+      "StructureDefinition-ch-lab-practitioner.html" : "CH LAB-Report Practitioner"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/body-site",
@@ -301,34 +352,31 @@
       "sources" : ["2.16.840.1.113883.4.642.3.141"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-specimen.html" : "CH LAB Specimen",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-specimen.html" : "CH LAB-Report Specimen",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/bundle-type",
@@ -342,7 +390,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.620"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-document.html" : "CH LAB Document: Laboratory Report"
+      "StructureDefinition-ch-lab-report-document.html" : "CH LAB-Report Document: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/clinical-findings",
@@ -356,7 +404,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.232"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB DiagnosticReport: Laboratory Report"
+      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB-Report DiagnosticReport: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/composition-attestation-mode",
@@ -370,7 +418,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.238"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/composition-status",
@@ -384,7 +432,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.241"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/contact-point-system",
@@ -398,8 +446,8 @@
       "sources" : ["2.16.840.1.113883.4.642.3.71"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-practitioner.html" : "CH LAB Practitioner",
-      "StructureDefinition-ch-lab-patient.html" : "CH LAB Patient"
+      "StructureDefinition-ch-lab-patient.html" : "CH LAB-Report Patient",
+      "StructureDefinition-ch-lab-practitioner.html" : "CH LAB-Report Practitioner"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/contact-point-use",
@@ -413,8 +461,8 @@
       "sources" : ["2.16.840.1.113883.4.642.3.73"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-practitioner.html" : "CH LAB Practitioner",
-      "StructureDefinition-ch-lab-patient.html" : "CH LAB Patient"
+      "StructureDefinition-ch-lab-patient.html" : "CH LAB-Report Patient",
+      "StructureDefinition-ch-lab-practitioner.html" : "CH LAB-Report Practitioner"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/data-absent-reason",
@@ -428,32 +476,29 @@
       "sources" : ["2.16.840.1.113883.4.642.3.5"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/days-of-week",
@@ -467,7 +512,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.512"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-practitionerrole.html" : "CH LAB PractitionerRole"
+      "StructureDefinition-ch-lab-practitionerrole.html" : "CH LAB-Report PractitionerRole"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/device-nametype",
@@ -481,8 +526,8 @@
       "sources" : ["2.16.840.1.113883.4.642.3.1083"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB Device: Analyzer",
-      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB Device: TestKit"
+      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB-Report Device: Analyzer",
+      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB-Report Device: TestKit"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/device-status",
@@ -496,8 +541,8 @@
       "sources" : ["2.16.840.1.113883.4.642.3.209"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB Device: Analyzer",
-      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB Device: TestKit"
+      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB-Report Device: Analyzer",
+      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB-Report Device: TestKit"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/device-status-reason",
@@ -511,8 +556,8 @@
       "sources" : ["2.16.840.1.113883.4.642.3.1081"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB Device: Analyzer",
-      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB Device: TestKit"
+      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB-Report Device: Analyzer",
+      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB-Report Device: TestKit"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/device-type",
@@ -526,8 +571,8 @@
       "sources" : ["2.16.840.1.113883.4.642.3.1376"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB Device: Analyzer",
-      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB Device: TestKit"
+      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB-Report Device: Analyzer",
+      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB-Report Device: TestKit"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/diagnostic-report-status",
@@ -541,7 +586,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.235"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB DiagnosticReport: Laboratory Report"
+      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB-Report DiagnosticReport: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
@@ -555,7 +600,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.234"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB DiagnosticReport: Laboratory Report"
+      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB-Report DiagnosticReport: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/doc-section-codes",
@@ -569,7 +614,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.237"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/doc-typecodes",
@@ -583,7 +628,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.240"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/document-classcodes",
@@ -597,7 +642,7 @@
       "sources" : ["2.16.840.1.113883.3.88.12.80.46"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/document-relationship-type",
@@ -611,7 +656,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.244"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/http-verb",
@@ -625,7 +670,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.624"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-document.html" : "CH LAB Document: Laboratory Report"
+      "StructureDefinition-ch-lab-report-document.html" : "CH LAB-Report Document: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/identifier-type",
@@ -639,8 +684,8 @@
       "sources" : ["2.16.840.1.113883.4.642.3.45"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-patient.html" : "CH LAB Patient",
-      "StructureDefinition-ch-lab-report-document.html" : "CH LAB Document: Laboratory Report"
+      "StructureDefinition-ch-lab-patient.html" : "CH LAB-Report Patient",
+      "StructureDefinition-ch-lab-report-document.html" : "CH LAB-Report Document: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/identifier-use",
@@ -654,8 +699,8 @@
       "sources" : ["2.16.840.1.113883.4.642.3.57"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-patient.html" : "CH LAB Patient",
-      "StructureDefinition-ch-lab-report-document.html" : "CH LAB Document: Laboratory Report"
+      "StructureDefinition-ch-lab-patient.html" : "CH LAB-Report Patient",
+      "StructureDefinition-ch-lab-report-document.html" : "CH LAB-Report Document: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/languages",
@@ -669,43 +714,40 @@
       "sources" : ["2.16.840.1.113883.4.642.3.20"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report",
-      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB Device: Analyzer",
-      "StructureDefinition-specimen-additive-substance-eu-lab.html" : "Substance: Specimen Additive Substance",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-specimen.html" : "CH LAB Specimen",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-patient.html" : "CH LAB Patient",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-report-document.html" : "CH LAB Document: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-practitionerrole.html" : "CH LAB PractitionerRole",
-      "StructureDefinition-ch-lab-practitioner.html" : "CH LAB Practitioner",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB Device: TestKit",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB DiagnosticReport: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-specimen-additive-substance.html" : "CH LAB-Report Additive Substance",
+      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB-Report Device: TestKit",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-practitioner.html" : "CH LAB-Report Practitioner",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-practitionerrole.html" : "CH LAB-Report PractitionerRole",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-diagnosticreport.html" : "CH LAB-Report DiagnosticReport: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-patient.html" : "CH LAB-Report Patient",
+      "StructureDefinition-ch-lab-report-document.html" : "CH LAB-Report Document: Laboratory Report",
+      "StructureDefinition-ch-lab-specimen.html" : "CH LAB-Report Specimen",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB-Report Device: Analyzer",
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/link-type",
@@ -719,7 +761,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.423"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-patient.html" : "CH LAB Patient"
+      "StructureDefinition-ch-lab-patient.html" : "CH LAB-Report Patient"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/list-empty-reason",
@@ -733,7 +775,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.322"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/list-mode",
@@ -747,7 +789,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.318"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/list-order",
@@ -761,7 +803,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.324"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/medication-as-needed-reason",
@@ -775,7 +817,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.96"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order"
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/observation-category",
@@ -789,32 +831,29 @@
       "sources" : ["2.16.840.1.113883.4.642.3.403"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/observation-codes",
@@ -828,32 +867,29 @@
       "sources" : ["2.16.840.1.113883.4.642.3.396"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/observation-interpretation",
@@ -869,32 +905,29 @@
       "sources" : ["2.16.840.1.113883.4.642.3.399"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/observation-status",
@@ -908,32 +941,29 @@
       "sources" : ["2.16.840.1.113883.4.642.3.400"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/participant-role",
@@ -947,7 +977,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.152"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order"
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/patient-contactrelationship",
@@ -961,7 +991,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.1130"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-patient.html" : "CH LAB Patient"
+      "StructureDefinition-ch-lab-patient.html" : "CH LAB-Report Patient"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/procedure-reason",
@@ -975,7 +1005,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.432"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order"
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/quantity-comparator",
@@ -989,13 +1019,9 @@
       "sources" : ["2.16.840.1.113883.4.642.3.59"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females"
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/referencerange-appliesto",
@@ -1012,32 +1038,29 @@
       "sources" : ["2.16.840.1.113883.4.642.3.407"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/referencerange-meaning",
@@ -1053,32 +1076,29 @@
       "sources" : ["2.16.840.1.113883.4.642.3.397"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/request-intent",
@@ -1092,7 +1112,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.113"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order"
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/request-priority",
@@ -1106,7 +1126,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.115"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order"
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/request-status",
@@ -1120,7 +1140,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.111"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order"
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/resource-types",
@@ -1134,33 +1154,30 @@
       "sources" : ["2.16.840.1.113883.4.642.3.27"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/search-entry-mode",
@@ -1174,7 +1191,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.622"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-document.html" : "CH LAB Document: Laboratory Report"
+      "StructureDefinition-ch-lab-report-document.html" : "CH LAB-Report Document: Laboratory Report"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/servicerequest-category",
@@ -1188,7 +1205,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.434"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order"
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/servicerequest-orderdetail",
@@ -1202,7 +1219,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.435"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order"
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/specimen-collection-method",
@@ -1216,7 +1233,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.468"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-specimen.html" : "CH LAB Specimen"
+      "StructureDefinition-ch-lab-specimen.html" : "CH LAB-Report Specimen"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/specimen-processing-procedure",
@@ -1230,7 +1247,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.469"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-specimen.html" : "CH LAB Specimen"
+      "StructureDefinition-ch-lab-specimen.html" : "CH LAB-Report Specimen"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/specimen-status",
@@ -1244,7 +1261,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.471"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-specimen.html" : "CH LAB Specimen"
+      "StructureDefinition-ch-lab-specimen.html" : "CH LAB-Report Specimen"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/substance-category",
@@ -1258,7 +1275,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.476"],
       "uses" : {
       },
-      "StructureDefinition-specimen-additive-substance-eu-lab.html" : "Substance: Specimen Additive Substance"
+      "StructureDefinition-ch-lab-specimen-additive-substance.html" : "CH LAB-Report Additive Substance"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/substance-code",
@@ -1272,7 +1289,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.473"],
       "uses" : {
       },
-      "StructureDefinition-specimen-additive-substance-eu-lab.html" : "Substance: Specimen Additive Substance"
+      "StructureDefinition-ch-lab-specimen-additive-substance.html" : "CH LAB-Report Additive Substance"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/substance-status",
@@ -1286,7 +1303,7 @@
       "sources" : ["2.16.840.1.113883.4.642.3.474"],
       "uses" : {
       },
-      "StructureDefinition-specimen-additive-substance-eu-lab.html" : "Substance: Specimen Additive Substance"
+      "StructureDefinition-ch-lab-specimen-additive-substance.html" : "CH LAB-Report Additive Substance"
     },
     {
       "url" : "http://hl7.org/fhir/ValueSet/udi-entry-type",
@@ -1300,8 +1317,42 @@
       "sources" : ["2.16.840.1.113883.4.642.3.211"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB Device: Analyzer",
-      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB Device: TestKit"
+      "StructureDefinition-ch-lab-report-device-analyzer.html" : "CH LAB-Report Device: Analyzer",
+      "StructureDefinition-ch-lab-report-device-test-kit.html" : "CH LAB-Report Device: TestKit"
+    },
+    {
+      "url" : "http://hl7.org/fhir/uv/ips/ValueSet/results-blood-group-snomed-ct-ips-free-set",
+      "version" : "1.1.0",
+      "status" : "active",
+      "name" : "ResultsBloodGroupSnomedCtIpsFreeSet",
+      "title" : "Results Blood Group - SNOMED CT IPS Free Set",
+      "description" : "This value set includes the codes for blood group findings from the SNOMED International Patient Set (IPS) subset of SNOMED CT (IPS Free Set).",
+      "systems" : ["http://snomed.info/sct"],
+      "uses" : {
+      },
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://hl7.org/fhir/uv/ips/ValueSet/results-coded-values-laboratory-uv-ips",
@@ -1313,32 +1364,97 @@
       "systems" : ["http://snomed.info/sct"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin",
-      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-male.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for males",
-      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB Observation Results: Platelet Distribution With",
-      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB Observation Results: Laboratory Report",
-      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
-      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR Profiles",
-      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB Observation Results: Renal Insufficiency Panel",
-      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
-      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB Observation Results: Albumin/Creatinine Ratio in Urine",
-      "StructureDefinition-ch-lab-observation-results-ery-dist-width-ratio.html" : "CH LAB Observation Results: Erythrocyte distribution width [Ratio] by Automated count",
-      "StructureDefinition-ch-lab-observation-egfr-cr-cys-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr-cys - CKD-EPI(AS) Creatinin and Cystatin-C based Profile",
-      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB Observation Results: Panel",
-      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB Observation Results: Single Test",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-male.html" : "CH LAB Observation Results: eGFR - MDRD Profile for males",
-      "StructureDefinition-ch-lab-observation-egfr-mdrd-female.html" : "CH LAB Observation Results: eGFR - MDRD Profile for females",
-      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB Observation Results: Erythrocyte distribution width [Entitic volume] by Automated count",
-      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB Observation Results: LeucocyteCount",
-      "StructureDefinition-ch-lab-observation-egfr-cr-ckd-epi-2021.html" : "CH LAB Observation Results: eGFRcr - CKD-EPI(AS) Creatinin based Profile",
-      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB Observation Results: Hemotocrit",
-      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB Observation Results: Platelet Mean Volume",
-      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB Observation Results: MeanCorpuscularVolume",
-      "StructureDefinition-ch-lab-observation-egfr-female.html" : "CH LAB Observation Results: eGFR - CKD-EPI(ASR) Profile for females",
-      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB Observation Results: Hemoglobin",
-      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB Observation Results: Mean Corpuscular Hemoglobin Concentration",
-      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB Observation Results: Platelet Count",
-      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB Observation Results: ErythrocyteCount"
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
+    },
+    {
+      "url" : "http://hl7.org/fhir/uv/ips/ValueSet/results-microorganism-snomed-ct-ips-free-set",
+      "version" : "1.1.0",
+      "status" : "active",
+      "name" : "ResultsMicroorganismSnomedCtIpsFreeSet",
+      "title" : "Results Microorganism - SNOMED CT IPS Free Set",
+      "description" : "This value set includes the codes for microorganisms from the SNOMED International Patient Set (IPS) subset of SNOMED CT (IPS Free Set).",
+      "systems" : ["http://snomed.info/sct"],
+      "uses" : {
+      },
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
+    },
+    {
+      "url" : "http://hl7.org/fhir/uv/ips/ValueSet/results-presence-absence-snomed-ct-ips-free-set",
+      "version" : "1.1.0",
+      "status" : "active",
+      "name" : "ResultsPresenceAbsenceSnomedCtIpsFreeSet",
+      "title" : "Results Presence Absence - SNOMED CT IPS Free Set",
+      "description" : "This value set includes the codes for presence and absence findings (qualifier values) from the SNOMED International Patient Set (IPS) subset of SNOMED CT (IPS Free Set).",
+      "systems" : ["http://snomed.info/sct"],
+      "uses" : {
+      },
+      "StructureDefinition-ch-lab-observation-results-laboratory.html" : "CH LAB-Report Observation Results: Laboratory Report",
+      "StructureDefinition-ch-lab-observation-renal-insufficiency-panel.html" : "CH LAB-Report Observation Results: Renal Insufficiency Panel",
+      "StructureDefinition-ch-lab-observation-results-ht.html" : "CH LAB-Report Observation Results: Hemotocrit",
+      "StructureDefinition-ch-lab-observation-results-ery-distribution-width.html" : "CH LAB-Report Observation Results: Erythrocyte distribution width by Automated count",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2021.html" : "CH LAB-Report Observation Results: eGFR-CKD-EPI(AS) 2021 Creatinin/Cystatin-C based Profile",
+      "StructureDefinition-ch-lab-observation-cbc-panel.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in nested Profiles",
+      "StructureDefinition-ch-lab-observation-egfr-mdrd.html" : "CH LAB-Report Observation Results: eGFR - MDRD Profile for male and female Patients, components for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-cbc.html" : "CH LAB-Report Observation Results CBC Panel - Blood by Automated count, Results in sliced component",
+      "StructureDefinition-ch-lab-observation-results-platelets.html" : "CH LAB-Report Observation Results: Platelet Count",
+      "StructureDefinition-ch-lab-observation-results-hb.html" : "CH LAB-Report Observation Results: Hemoglobin",
+      "StructureDefinition-ChLab-observation-panel.html" : "CH LAB-Report Observation Results: Panel",
+      "StructureDefinition-ChLab-observation-single-test.html" : "CH LAB-Report Observation Results: Single Test",
+      "StructureDefinition-ch-lab-observation-egfr.html" : "CH LAB Observation Results: eGFR",
+      "StructureDefinition-ch-lab-observation-albumin-creatinine-urine-ratio.html" : "CH LAB-Report Observation Results: Albumin/Creatinine Ratio in Urine",
+      "StructureDefinition-ch-lab-observation-results-mcv.html" : "CH LAB-Report Observation Results: MeanCorpuscularVolume MCV",
+      "StructureDefinition-ch-lab-observation-results-platelets-distribution-width.html" : "CH LAB-Report Observation Results: Platelet Distribution Width",
+      "StructureDefinition-ch-lab-observation-results-rbc.html" : "CH LAB-Report Observation Results: ErythrocyteCount",
+      "StructureDefinition-ch-lab-observation-results-platelets-mean-volume.html" : "CH LAB-Report Observation Results: Platelet Mean Volume",
+      "StructureDefinition-ch-lab-observation-egfr-ckd-epi-2009.html" : "CH LAB Observation Results: eGFR-CKD-EPI(ASR) 2009 Profile for blacks and non-blacks",
+      "StructureDefinition-ch-lab-observation-results-mch.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin MCH",
+      "StructureDefinition-ch-lab-observation-results-wbc.html" : "CH LAB-Report Observation Results: LeucocyteCount",
+      "StructureDefinition-ch-lab-observation-results-mchc.html" : "CH LAB-Report Observation Results: Mean Corpuscular Hemoglobin Concentration MCHC",
+      "StructureDefinition-ch-lab-observation-blood-group.html" : "CH LAB-Report Observation Results: Blood Group"
     },
     {
       "url" : "http://terminology.hl7.org/ValueSet/v2-0371",
@@ -1352,7 +1468,7 @@
       "sources" : ["2.16.840.1.113883.21.245"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-specimen.html" : "CH LAB Specimen"
+      "StructureDefinition-ch-lab-specimen.html" : "CH LAB-Report Specimen"
     },
     {
       "url" : "http://terminology.hl7.org/ValueSet/v2-0493",
@@ -1366,7 +1482,7 @@
       "sources" : ["2.16.840.1.113883.21.333"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-specimen.html" : "CH LAB Specimen"
+      "StructureDefinition-ch-lab-specimen.html" : "CH LAB-Report Specimen"
     },
     {
       "url" : "http://terminology.hl7.org/ValueSet/v2-0916",
@@ -1380,7 +1496,7 @@
       "sources" : ["2.16.840.1.113883.21.440"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-specimen.html" : "CH LAB Specimen"
+      "StructureDefinition-ch-lab-specimen.html" : "CH LAB-Report Specimen"
     },
     {
       "url" : "http://terminology.hl7.org/ValueSet/v2-2.7-0360",
@@ -1392,7 +1508,7 @@
       "systems" : ["http://terminology.hl7.org/CodeSystem/v2-0360|2.7"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-practitioner.html" : "CH LAB Practitioner"
+      "StructureDefinition-ch-lab-practitioner.html" : "CH LAB-Report Practitioner"
     },
     {
       "url" : "http://terminology.hl7.org/ValueSet/v3-ActCode",
@@ -1404,7 +1520,7 @@
       "systems" : ["http://terminology.hl7.org/CodeSystem/v3-ActCode"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://terminology.hl7.org/ValueSet/v3-ConfidentialityClassification",
@@ -1418,7 +1534,7 @@
       "sources" : ["2.16.840.1.113883.1.11.10228"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB Composition: Laboratory Report"
+      "StructureDefinition-ch-lab-report-composition.html" : "CH LAB-Report Composition: Laboratory Report"
     },
     {
       "url" : "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType",
@@ -1432,7 +1548,7 @@
       "sources" : ["2.16.840.1.113883.1.11.17660"],
       "uses" : {
       },
-      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB ServiceRequest: Laboratory Order"
+      "StructureDefinition-ch-lab-report-servicerequest.html" : "CH LAB-Report ServiceRequest: Laboratory Order"
     }
   ]
 }
