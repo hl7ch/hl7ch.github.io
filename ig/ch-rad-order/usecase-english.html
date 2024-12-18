@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Use Cases - CH RAD-Order (R4) v2.0.0-ballot</title>
+    <title>Use Cases - CH RAD-Order (R4) v2.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"2"}
     h3,h4,h5,h6{--heading-prefix:"2"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH RAD-Order (R4)</span>
             <br/>
-            <span style="display:inline-block;">2.0.0-ballot - ballot
+            <span style="display:inline-block;">2.0.0 - trial-use
 
 
 
@@ -185,7 +187,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH RAD-Order (R4) (v2.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-rad-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH RAD-Order (R4) (v2.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-rad-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Use Cases</h2>
   
 
@@ -203,59 +205,82 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#radiology-order" id="markdown-toc-radiology-order">Radiology Order</a></li>
-  <li><a href="#second-opinion" id="markdown-toc-second-opinion">Second Opinion</a></li>
-  <li><a href="#externe-befundung" id="markdown-toc-externe-befundung">Externe Befundung</a></li>
-  <li><a href="#request-for-results-from-earlier" id="markdown-toc-request-for-results-from-earlier">Request for Results from earlier</a></li>
+  <li><a href="#order-for-diagnostic-imaging" id="markdown-toc-order-for-diagnostic-imaging">Order for diagnostic imaging</a></li>
+  <li><a href="#order-for-a-radiological-examination-with-intervention" id="markdown-toc-order-for-a-radiological-examination-with-intervention">Order for a radiological examination with intervention</a></li>
+  <li><a href="#obtaining-a-second-opinion" id="markdown-toc-obtaining-a-second-opinion">Obtaining a second opinion</a></li>
+  <li><a href="#order-for-external-reporting" id="markdown-toc-order-for-external-reporting">Order for external reporting</a></li>
+  <li><a href="#request-for-results-from-earlier" id="markdown-toc-request-for-results-from-earlier">Request for results from earlier</a></li>
 </ul>
 
 </div>
-<p>TBD</p>
-
-<h3 id="radiology-order">Radiology Order</h3>
-<p>The players are:</p>
+<h3 id="order-for-diagnostic-imaging">Order for diagnostic imaging</h3>
+<p>Players:</p>
 
 <ul>
-  <li>Order placer: Health professional Dr. O. Rderplacer who is a GP in group practice “Happy Doctors”</li>
-  <li>Order filler: Radiology department of “Happy Hospital”</li>
-  <li>Patient: Mrs. S. Ufferer who needs a radiological exam</li>
+  <li>Order placed by: <a href="Practitioner-PractORderplacer.html">Dr O. Rderplacer</a>, general practitioner at the <a href="Organization-OrgHappyDoctors.html">group practice ‘Happy Doctors’</a>.</li>
+  <li>Recipient of the order: <a href="Practitioner-PractORderfiller.html">Dr O. Rderfiller</a>, radiologist at the <a href="Organization-OrgRadHappyHospital.html">radiology department ‘Happy Hospital’</a></li>
+  <li>Patient: <a href="Patient-PatSUfferer.html">Mrs S. Ufferer</a>, who requires a radiological examination</li>
 </ul>
 
-<p>Patient S. Ufferer has an appointment with Dr. O. Rderplacer in group practice “Happy Doctors”: Dr. O. Rderplacer agrees with the patient that a chest x-ray is necessary which will be made at the x-ray department of “Happy Hospital”. Dr. O. Rderplacer writes a radiology order, which contains all necessary information and sends it to the radiology department of “Happy Hospital”. For comparison purposes, Dr. O. Rderplacer attaches images and reports made earlier. He furhter aks for a copy of the report to be sent to the patient.</p>
+<p>The patient <a href="Patient-PatSUfferer.html">Mrs S. Ufferer</a> has an appointment with <a href="Practitioner-PractORderplacer.html">Dr O. Rderplacer</a> at the <a href="Organization-OrgHappyDoctors.html">group practice ‘Happy Doctors’</a>: <a href="Practitioner-PractORderplacer.html">Dr O. Rderplacer</a> agrees with the patient that a chest X-ray will be done in the <a href="Organization-OrgRadHappyHospital.html">Radiology Department ‘Happy Hospital’</a>. <a href="Practitioner-PractORderplacer.html">Dr O. Rderplacer</a> writes an X-ray order containing all the necessary information and sends it to <a href="Practitioner-PractORderfiller.html">Dr O. Rderfiller</a>. For comparison, <a href="Practitioner-PractORderplacer.html">Dr O. Rderplacer</a> encloses images and reports from earlier. She also asks for a copy of the report to be sent to the patient.</p>
+
+<p>Associated <a href="QuestionnaireResponse-QuestionnaireResponseRadiologyOrderImagingRequest.html">Questionnaire Response</a></p>
+
+<h3 id="order-for-a-radiological-examination-with-intervention">Order for a radiological examination with intervention</h3>
+<p>Players:</p>
 
 <ul>
-  <li><strong>Radiology Order:</strong> <a href="Bundle-DocumentRadiologyOrder.xml.html">XML</a>, <a href="Bundle-DocumentRadiologyOrder.json.html">JSON</a></li>
+  <li>Order placed by: <a href="Practitioner-PractORderplacer.html">Dr O. Rderplacer</a>, general practitioner at the <a href="Organization-OrgHappyDoctors.html">group practice ‘Happy Doctors’</a>.</li>
+  <li>Recipient of the order: <a href="Practitioner-PractORderfiller.html">Dr O. Rderfiller</a>, radiologist at the <a href="Organization-OrgRadHappyHospital.html">radiology department ‘Happy Hospital’</a></li>
+  <li>Patient: <a href="Patient-PatSUfferer.html">Mrs S. Ufferer</a>, who requires radiological intervention</li>
 </ul>
 
-<h3 id="second-opinion">Second Opinion</h3>
-<p>The players are:</p>
+<p>The patient <a href="Patient-PatSUfferer.html">Mrs S. Ufferer</a> has pain in the buttock, thigh and calf muscles after walking approx. 100 m, and her toes are also discoloured blue. <a href="Practitioner-PractORderplacer.html">Dr O. Rderplacer</a> suggests an angiography for the patient, if necessary with subsequent balloon dilatation (PTA), and registers her with <a href="Practitioner-PractORderfiller.html">Dr O. Rderfiller</a> for this.</p>
+
+<p>Associated <a href="QuestionnaireResponse-QuestionnaireResponseRadiologyOrderImagIntervent.html">Questionnaire Response</a></p>
+
+<h3 id="obtaining-a-second-opinion">Obtaining a second opinion</h3>
+<p>Players:</p>
 
 <ul>
-  <li>Order placer: Health professional Dr. O. Rderplacer who is a GP in group practice “Happy Doctors”</li>
-  <li>Order filler: Dr. S. Urgeon, Orthopedic Surgeon at “Happy Hospital”</li>
-  <li>Patient: Mrs. S. Ufferer who lives in an elderly home. She felt after leaving the bed.</li>
+  <li>Order placed by: <a href="Practitioner-PractORderplacer.html">Dr O. Rderplacer</a>, general practitioner at the <a href="Organization-OrgHappyDoctors.html">group practice ‘Happy Doctors’</a></li>
+  <li>Recipient of the order: <a href="Practitioner-PractKNowit-All.html">Prof K. Nowit-All</a>, Chief Physician of the <a href="Organization-OrgRadHappyHospital.html">Radiology Department ‘Happy Hospital’</a></li>
+  <li>Patient: <a href="Patient-PatSUfferer.html">Mrs S. Ufferer</a>, whose femoral neck fracture is being treated conservatively after a fall</li>
 </ul>
 
-<p>Dr. O. Rderplacer ordered a ct scan of the hip. The images show an impression fracture of the right thighbone. According to the radiology report, the impression fracture seems to be stable. Taking into account the age of the patient, a surgical intervention does not seem to be necessary. However, Dr. O. Rderplacer is not shure, if this decision is right and he sends images and report to a orthopedic surgean for a second oppinion.</p>
+<p>According to the radiological report, the impression fracture appears to be stable. Therefore, and in view of the patient's age, surgery was not performed. However, <a href="Practitioner-PractORderplacer.html">Dr O. Rderplacer</a> is not sure whether this decision was correct and sends the images and report to <a href="Practitioner-PractKNowit-All.html">Prof K. Nowit-All</a> for a second opinion.</p>
 
-<p><i>The second opinion as described above has to be distinguished from real-time remote reporting and case presentation such as provided by various teleradiology solutions. The latter requires however a technical infrastructure which is beyond what is necessary for direc-tional communication such as discussed here. <i></i></i></p>
+<p>Associated <a href="QuestionnaireResponse-QuestionnaireResponseRadiologyOrderSecondOpinion.html">Questionnaire Response</a></p>
 
-<h3 id="externe-befundung">Externe Befundung</h3>
-<ul>
-  <li>Todo</li>
-</ul>
+<p><i>The second opinion described above must be distinguished from the real-time remote diagnosis and case presentation offered by various teleradiology solutions. However, the latter require a technical infrastructure that goes beyond what is discussed here. <i></i></i></p>
 
-<h3 id="request-for-results-from-earlier">Request for Results from earlier</h3>
-<p>The players are:</p>
+<h3 id="order-for-external-reporting">Order for external reporting</h3>
+<p>Players:</p>
 
 <ul>
-  <li>Order placer: Health professional Dr. O. Rderplacer who is a GP in group practice “Happy Doctors”</li>
-  <li>Order filler: Radiology department of “Happy Hospital”</li>
-  <li>Patient: Mrs. S. Ufferer who had a radiological exam (following the order of his former family doctor) six months ago.</li>
+  <li>Order placed by assistant physician: <a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a> at <a href="Organization-OrgSmallHospital.html">Small Hospital</a>.</li>
+  <li>Recipient of the order: <a href="Practitioner-PractORderfiller.html">Dr O. Rderfiller</a>, radiologist at the <a href="Organization-OrgRadHappyHospital.html">Radiology Department ‘Happy Hospital’</a></li>
+  <li>Patient: <a href="Patient-PatSUfferer.html">Mrs S. Ufferer</a>, who is visiting her niece. She suddenly has a fever, chills and a cough.</li>
 </ul>
 
-<p>Patient S. Ufferer has an appointment with his new family doctor Dr. O. Rderplacer in group practice “Happy Doctors”: Dr. O. Rderplacer asks he patient if he had once a chest x-ray. Patient S. Ufferer tells, that one had been made six months ago at the x-ray department of “Happy Hospital”. Dr. O. Rderplacer writes a request for the results of this exam and sends it to the radiology department of “Happy Hospital”. He furhter aks for a copy of the report to be sent to the patient.</p>
+<p><a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a> is on emergency duty. She orders a chest X-ray. The <a href="Organization-OrgSmallHospital.html">Small Hospital</a> does have an X-ray machine, but a radiologist only visits on Tuesdays and Thursdays; on the other days of the week the images are examined by the radiologists at the Happy Hospital. <a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a> therefore sends the images to <a href="Practitioner-PractORderfiller.html">Dr O. Rderfiller</a> for reporting.</p>
 
+<p>Associated <a href="QuestionnaireResponse-QuestionnaireResponseRadiologyOrderRemoteReporting.html">Questionnaire Response</a></p>
+
+<p><i>The external reporting described above must be distinguished from the real-time remote reporting and case presentation offered by various teleradiology solutions. The latter, however, require a technical infrastructure that goes beyond what is discussed here. <i></i></i></p>
+
+<h3 id="request-for-results-from-earlier">Request for results from earlier</h3>
+<p>Players:</p>
+
+<ul>
+  <li>Order placed by assistant physician: <a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a>, in the hospital <a href="Organization-OrgSmallHospital.html">Hospital ‘Small Hospital’</a>.</li>
+  <li>Recipient of the order: <a href="Practitioner-PractORderfiller.html">Dr O. Rderfiller</a>, radiologist at the <a href="Organization-OrgRadHappyHospital.html">Radiology Department ‘Happy Hospital’</a></li>
+  <li>Patient: <a href="Patient-PatSUfferer.html">Mrs S. Ufferer</a>, who had a radiological examination a year ago (on the orders of her former GP)</li>
+</ul>
+
+<p><a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a> asks the patient <a href="Patient-PatSUfferer.html">Mrs S. Ufferer</a> whether she has ever had a chest X-ray. She says that she was x-rayed a year ago in the <a href="Organization-OrgRadHappyHospital.html">radiology department ‘Happy Hospital’</a>. <a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a> writes a request for the results of this examination and sends it to <a href="Practitioner-PractORderfiller.html">Dr O. Rderfiller</a>, radiologist at the <a href="Organization-OrgRadHappyHospital.html">Radiology Department ‘Happy Hospital’</a>. She also asks for a copy of the report to be sent to the patient.</p>
+
+<p>Associated <a href="QuestionnaireResponse-QuestionnaireResponseRadiologyOrderRequestPrevious.html">Questionnaire Response</a></p>
 
 
 
@@ -275,7 +300,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-rad-order#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 11:27+0000">2024-05-17</span>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-rad-order#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 10:05+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -283,7 +308,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdNCGaS-ZHfitfCs7PjaLjw6Jt1scmgipyRf0HFrHbRO2EtZg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-rad-order%232.0.0-ballot%20/usecase-english.html&amp;entry%2E247644557=Use%20Cases">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdNCGaS-ZHfitfCs7PjaLjw6Jt1scmgipyRf0HFrHbRO2EtZg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-rad-order%232.0.0%20/usecase-english.html&amp;entry%2E247644557=Use%20Cases">Propose a change</a>
 
 
 
@@ -298,7 +323,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -309,7 +334,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

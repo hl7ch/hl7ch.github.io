@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Anwendungsfälle - CH RAD-Order (R4) v2.0.0-ballot</title>
+    <title>Anwendungsfälle - CH RAD-Order (R4) v2.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"3"}
     h3,h4,h5,h6{--heading-prefix:"3"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -77,7 +79,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH RAD-Order (R4)</span>
             <br/>
-            <span style="display:inline-block;">2.0.0-ballot - ballot
+            <span style="display:inline-block;">2.0.0 - trial-use
 
 
 
@@ -185,7 +187,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH RAD-Order (R4) (v2.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-rad-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH RAD-Order (R4) (v2.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-rad-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Anwendungsfälle</h2>
   
 
@@ -203,54 +205,82 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#radiologie-auftrag" id="markdown-toc-radiologie-auftrag">Radiologie-Auftrag</a></li>
-  <li><a href="#zweitmeinung" id="markdown-toc-zweitmeinung">Zweitmeinung</a></li>
-  <li><a href="#externe-befundung" id="markdown-toc-externe-befundung">Externe Befundung</a></li>
-  <li><a href="#anfrage-nach-ergebnissen-von-früher" id="markdown-toc-anfrage-nach-ergebnissen-von-früher">Anfrage nach Ergebnissen von früher</a></li>
+  <li><a href="#auftrag-für-bildgebende-diagnostik" id="markdown-toc-auftrag-für-bildgebende-diagnostik">Auftrag für bildgebende Diagnostik</a></li>
+  <li><a href="#auftrag-für-eine-radiologische-untersuchung-mit-intervention" id="markdown-toc-auftrag-für-eine-radiologische-untersuchung-mit-intervention">Auftrag für eine radiologische Untersuchung mit Intervention</a></li>
+  <li><a href="#einholen-einer-zweitmeinung" id="markdown-toc-einholen-einer-zweitmeinung">Einholen einer Zweitmeinung</a></li>
+  <li><a href="#auftrag-für-externe-befundung" id="markdown-toc-auftrag-für-externe-befundung">Auftrag für externe Befundung</a></li>
+  <li><a href="#anfrage-für-ergebnissen-von-früher" id="markdown-toc-anfrage-für-ergebnissen-von-früher">Anfrage für Ergebnissen von früher</a></li>
 </ul>
 
 </div>
-<p>TBD</p>
-
-<h3 id="radiologie-auftrag">Radiologie-Auftrag</h3>
+<h3 id="auftrag-für-bildgebende-diagnostik">Auftrag für bildgebende Diagnostik</h3>
 <p>Akteure:</p>
 
 <ul>
-  <li>Auftrag erteilt durch: Dr. O. Rderplacer, Hausarzt in der Gemeinschaftspraxis “Happy Doctors”</li>
-  <li>Empfänger des Auftrages: Radiologieabteilung “Happy Hospital”</li>
-  <li>Patientin: Frau S. Ufferer, der eine radiologische Untersuchung benötigt.</li>
+  <li>Auftrag erteilt durch: <a href="Practitioner-PractORderplacer.html">Dr. O. Rderplacer</a>, Hausärztin in der <a href="Organization-OrgHappyDoctors.html">Gemeinschaftspraxis "Happy Doctors"</a>.</li>
+  <li>Empfänger des Auftrages: <a href="Practitioner-PractORderfiller.html">Dr. O. Rderfiller</a>, Radiologe an der <a href="Organization-OrgRadHappyHospital.html">Radiologieabteilung "Happy Hospital"</a></li>
+  <li>Patientin: <a href="Patient-PatSUfferer.html">Frau S. Ufferer</a>, die eine radiologische Untersuchung benötigt</li>
 </ul>
 
-<p>Patientin S. Ufferer hat einen Termin bei Dr. O. Rderplacer in der Gemeinschaftspraxis “Happy Doctors”: Dr. O. Rderplacer vereinbart mit dem Patienten, dass ein Thorax-Röntgen die in der Röntgenabteilung des “Happy Hospital” gemacht wird. Dr. O. Rderplacer schreibt einen Röntgenauftrag, der alle notwendigen Informationen enthält und schickt ihn an die Röntgenabteilung des “Happy Hospital”. Zum Vergleich legt Dr. O. Rderplacer Bilder und Berichte vom früher bei. Außerdem bittet er darum, dem Patienten eine Kopie des Berichts zukommen zu lassen.</p>
+<p>Die Patientin <a href="Patient-PatSUfferer.html">Frau S. Ufferer</a> hat einen Termin bei <a href="Practitioner-PractORderplacer.html">Dr. O. Rderplacer</a> in der <a href="Organization-OrgHappyDoctors.html">Gemeinschaftspraxis "Happy Doctors"</a>: <a href="Practitioner-PractORderplacer.html">Dr. O. Rderplacer</a> vereinbart mit der Patientin, dass ein Thorax-Röntgen in der <a href="Organization-OrgRadHappyHospital.html">Radiologieabteilung "Happy Hospital"</a> gemacht wird. <a href="Practitioner-PractORderplacer.html">Dr. O. Rderplacer</a> schreibt einen Röntgenauftrag, der alle notwendigen Informationen enthält und schickt ihn an <a href="Practitioner-PractORderfiller.html">Dr. O. Rderfiller</a>. Zum Vergleich legt <a href="Practitioner-PractORderplacer.html">Dr. O. Rderplacer</a> Bilder und Berichte vom früher bei. Außerdem bittet sie darum, der Patientin eine Kopie des Berichts zukommen zu lassen.</p>
 
-<h3 id="zweitmeinung">Zweitmeinung</h3>
+<p>Zugehöriger <a href="QuestionnaireResponse-QuestionnaireResponseRadiologyOrderImagingRequest.html">Questionnaire Response</a></p>
+
+<h3 id="auftrag-für-eine-radiologische-untersuchung-mit-intervention">Auftrag für eine radiologische Untersuchung mit Intervention</h3>
 <p>Akteure:</p>
 
 <ul>
-  <li>Auftrag erteilt durch: Dr. O. Rderplacer, Hausarzt in der Gemeinschaftspraxis “Happy Doctors”</li>
-  <li>Empfänger des Auftrages: Dr. S. Urgeon, Orthopäde am “Happy Hospital”</li>
-  <li>Patientin: Frau S. Ufferer, der in einem Altenheim lebt. Er stürzte nach dem Verlassen des Bettes.</li>
+  <li>Auftrag erteilt durch: <a href="Practitioner-PractORderplacer.html">Dr. O. Rderplacer</a>, Hausärztin in der <a href="Organization-OrgHappyDoctors.html">Gemeinschaftspraxis "Happy Doctors"</a>.</li>
+  <li>Empfänger des Auftrages: <a href="Practitioner-PractORderfiller.html">Dr. O. Rderfiller</a>, Radiologe an der <a href="Organization-OrgRadHappyHospital.html">Radiologieabteilung "Happy Hospital"</a></li>
+  <li>Patientin: <a href="Patient-PatSUfferer.html">Frau S. Ufferer</a>, die eine radiologische Intervention benötigt</li>
 </ul>
 
-<p>Dr. O. Rderplacer ordnete eine CT-Untersuchung der Hüfte an. Die Bilder zeigen eine Impressionsfraktur des rechten Oberschenkelknochens. Laut dem radiologischen Bericht scheint die Impressionsfraktur stabil zu sein. In Anbetracht des Alters des Patienten scheint ein chirurgischer Eingriff nicht notwendig zu sein. Dr. O. Rderplacer ist sich jedoch nicht sicher, ob diese Entscheidung richtig ist und schickt Bilder und Bericht an einen Orthopäden für eine Zweitmeinung.</p>
+<p>Die Patientin <a href="Patient-PatSUfferer.html">Frau S. Ufferer</a> hat nach ca.100 m Gehen Schmerzen im Bereich der Gesäss-, Oberschenkel- und Wadenmuskulatur, zudem sind ihre Zehen blau verfärbt. <a href="Practitioner-PractORderplacer.html">Dr. O. Rderplacer</a> schlägt der Patientin eine Angiographie, gegebenenfalls mit anschliessender Ballondilatation (PTA) vor und meldet sie bei <a href="Practitioner-PractORderfiller.html">Dr. O. Rderfiller</a> dafür an.</p>
 
-<p><i>Die oben beschriebene Zweitmeinung ist zu unterscheiden von der Echtzeit-Fernbefundung und Falldarstellung, wie sie von verschiedenen Teleradiologie-Lösungen angeboten wird. Letztere erfordert jedoch eine technische Infrastruktur, die über das hinausgeht, was für eine direkte Kommunikation, wie sie hier diskutiert wird, notwendig ist. <i></i></i></p>
+<p>Zugehöriger <a href="QuestionnaireResponse-QuestionnaireResponseRadiologyOrderImagIntervent.html">Questionnaire Response</a></p>
 
-<h3 id="externe-befundung">Externe Befundung</h3>
-<ul>
-  <li>Todo</li>
-</ul>
-
-<h3 id="anfrage-nach-ergebnissen-von-früher">Anfrage nach Ergebnissen von früher</h3>
+<h3 id="einholen-einer-zweitmeinung">Einholen einer Zweitmeinung</h3>
 <p>Akteure:</p>
 
 <ul>
-  <li>Auftrag erteilt durch: Dr. O. Rderplacer, Hausarzt in der Gemeinschaftspraxis “Happy Doctors”</li>
-  <li>Empfänger des Auftrages: Radiologieabteilung “Happy Hospital”</li>
-  <li>Patientin: Frau S. Ufferer, der vor sechs Monaten eine radiologische Untersuchung (auf Anordnung seines ehemaligen Hausarztes) hatte.</li>
+  <li>Auftrag erteilt durch: <a href="Practitioner-PractORderplacer.html">Dr. O. Rderplacer</a>, Hausärztin in der <a href="Organization-OrgHappyDoctors.html">Gemeinschaftspraxis "Happy Doctors"</a></li>
+  <li>Empfänger des Auftrages: <a href="Practitioner-PractKNowit-All.html">Prof. K. Nowit-All</a>, Chefarzt der <a href="Organization-OrgRadHappyHospital.html">Radiologieabteilung "Happy Hospital"</a></li>
+  <li>Patientin: <a href="Patient-PatSUfferer.html">Frau S. Ufferer</a>, bei der nach einem Sturz die Schenkelhalsfraktur konservativ behandelt wird</li>
 </ul>
 
-<p>Patientin S. Ufferer hat einen Termin bei seinem neuen Hausarzt Dr. O. Rderplacer in der Gemeinschaftspraxis “Happy Doctors”: Dr. O. Rderplacer fragt den Patienten, ob er schon einmal eine Röntgenaufnahme der Brust hatte. Patientin S. Ufferer erzählt, dass er vor sechs Monaten in der Röntgenabteilung des “Happy Hospital” geröntgt wurde. Dr. O. Rderplacer schreibt eine Anfrage nach den Ergebnissen dieser Untersuchung und schickt sie an die Radiologieabteilung des “Happy Hospital”. Außerdem bittet er darum, dem Patienten eine Kopie des Berichts zukommen zu lassen.</p>
+<p>Laut dem radiologischen Bericht scheint die Impressionsfraktur stabil zu sein. Deshalb und in Anbetracht des Alters des Patienten wurde auf einen chirurgischen Eingriff verzichtet. <a href="Practitioner-PractORderplacer.html">Dr. O. Rderplacer</a> ist sich jedoch nicht sicher ob diese Entscheidung richtig war und schickt die Bilder und den Bericht für eine Zweitmeinung an <a href="Practitioner-PractKNowit-All.html">Prof. K. Nowit-All</a>.</p>
+
+<p>Zugehöriger <a href="QuestionnaireResponse-QuestionnaireResponseRadiologyOrderSecondOpinion.html">Questionnaire Response</a></p>
+
+<p><i>Die oben beschriebene Zweitmeinung ist zu unterscheiden von der Echtzeit-Fernbefundung und Falldarstellung, wie sie von verschiedenen Teleradiologie-Lösungen angeboten wird. Letztere erfordern jedoch eine technische Infrastruktur die über das hinausgeht, was hier diskutiert wird. <i></i></i></p>
+
+<h3 id="auftrag-für-externe-befundung">Auftrag für externe Befundung</h3>
+<p>Akteure:</p>
+
+<ul>
+  <li>Auftrag erteilt durch Assistenzärztin: <a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a> im <a href="Organization-OrgSmallHospital.html">Spital "Small Hospital"</a>.</li>
+  <li>Empfänger des Auftrages: <a href="Practitioner-PractORderfiller.html">Dr. O. Rderfiller</a>, Radiologe an der <a href="Organization-OrgRadHappyHospital.html">Radiologieabteilung "Happy Hospital"</a></li>
+  <li>Patientin: <a href="Patient-PatSUfferer.html">Frau S. Ufferer</a>, welche bei Ihrer Nichte zu Besuch ist. Sie hat plötzlich Fieber, Schüttelfrost und Husten.</li>
+</ul>
+
+<p><a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a> hat Notfalldienst. Sie veranlasst ein Thorax-Röntgen. Im <a href="Organization-OrgSmallHospital.html">Spital "Small Hospital"</a> hat es zwar ein Röntgengerät; aber nur dienstags und donnerstags kommt ein Radiologe vorbei; an den anderen Wochentagen werden die Bilder durch die Radiologen des "Happy Hospital" befundet. <a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a> schickt deshalb die Bilder für die Befundung an <a href="Practitioner-PractORderfiller.html">Dr. O. Rderfiller</a>.</p>
+
+<p>Zugehöriger <a href="QuestionnaireResponse-QuestionnaireResponseRadiologyOrderRemoteReporting.html">Questionnaire Response</a></p>
+
+<p><i>Die oben beschriebene externe Befundung ist zu unterscheiden von der Echtzeit-Fernbefundung und Falldarstellung, wie sie von verschiedenen Teleradiologie-Lösungen angeboten wird. Letztere erfordern jedoch eine technische Infrastruktur die über das hinausgeht, was hier diskutiert wird. <i></i></i></p>
+
+<h3 id="anfrage-für-ergebnissen-von-früher">Anfrage für Ergebnissen von früher</h3>
+<p>Akteure:</p>
+
+<ul>
+  <li>Auftrag erteilt durch Assistenzärztin: <a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a>, im Spital <a href="Organization-OrgSmallHospital.html">Spital "Small Hospital"</a>.</li>
+  <li>Empfänger des Auftrages: <a href="Practitioner-PractORderfiller.html">Dr. O. Rderfiller</a>, Radiologe an der <a href="Organization-OrgRadHappyHospital.html">Radiologieabteilung "Happy Hospital"</a></li>
+  <li>Patientin: <a href="Patient-PatSUfferer.html">Frau S. Ufferer</a>, die vor einem Jahr eine radiologische Untersuchung (auf Anordnung ihres ehemaligen Hausarztes) hatte</li>
+</ul>
+
+<p><a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a> fragt die Patientin <a href="Patient-PatSUfferer.html">Frau S. Ufferer</a>, ob sie schon einmal eine Röntgenaufnahme der Brust hatte. Sie erzählt, dass sie vor einem Jahr in der <a href="Organization-OrgRadHappyHospital.html">Radiologieabteilung "Happy Hospital"</a> geröntgt wurde. <a href="Practitioner-PractORderplacerJunior.html">Med.pract. O. Rderplacer-Junior</a> schreibt eine Anfrage für die Ergebnisse dieser Untersuchung und schickt sie an <a href="Practitioner-PractORderfiller.html">Dr. O. Rderfiller</a>, Radiologe an der <a href="Organization-OrgRadHappyHospital.html">Radiologieabteilung "Happy Hospital"</a>. Außerdem bittet sie darum, der Patientin eine Kopie des Berichts zukommen zu lassen.</p>
+
+<p>Zugehöriger <a href="QuestionnaireResponse-QuestionnaireResponseRadiologyOrderRequestPrevious.html">Questionnaire Response</a></p>
 
 
 
@@ -270,7 +300,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-rad-order#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 11:27+0000">2024-05-17</span>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-rad-order#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 10:05+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -278,7 +308,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdNCGaS-ZHfitfCs7PjaLjw6Jt1scmgipyRf0HFrHbRO2EtZg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-rad-order%232.0.0-ballot%20/usecase-german.html&amp;entry%2E247644557=Anwendungsf%C3%A4lle">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdNCGaS-ZHfitfCs7PjaLjw6Jt1scmgipyRf0HFrHbRO2EtZg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-rad-order%232.0.0%20/usecase-german.html&amp;entry%2E247644557=Anwendungsf%C3%A4lle">Propose a change</a>
 
 
 
@@ -293,7 +323,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -304,7 +334,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>
