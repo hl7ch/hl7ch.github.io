@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Use Cases - CH eTOC (R4) v3.0.0-ballot</title>
+    <title>Use Cases - CH eTOC (R4) v3.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,7 +51,8 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"2"}
     h3,h4,h5,h6{--heading-prefix:"2"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
@@ -76,7 +78,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH eTOC (R4)</span>
             <br/>
-            <span style="display:inline-block;">3.0.0-ballot - ballot
+            <span style="display:inline-block;">3.0.0 - trial-use
 
 
 
@@ -182,7 +184,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH eTOC (R4) (v3.0.0-ballot: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3 Ballot 1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-etoc/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH eTOC (R4) (v3.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-etoc/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Use Cases</h2>
   
 
@@ -201,34 +203,35 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div class="markdown-toc">
 <ul id="markdown-toc">
   <li><a href="#transition-of-care-letter" id="markdown-toc-transition-of-care-letter">Transition of care letter</a></li>
-  <li><a href="#requesting-a-discharge-letter-from-earlier" id="markdown-toc-requesting-a-discharge-letter-from-earlier">Requesting a discharge letter from earlier</a></li>
+  <li><a href="#request-for-a-discharge-letter-from-earlier" id="markdown-toc-request-for-a-discharge-letter-from-earlier">Request for a discharge letter from earlier</a></li>
 </ul>
 
 </div>
-
 <h3 id="transition-of-care-letter">Transition of care letter</h3>
-<p>The players are:</p>
+<p>Players:</p>
 
 <ul>
-  <li>Referrer: Dr. O. Rderplacer, who is a family physician in the Happy Doctors group practice.</li>
-  <li>Hospital: Surgical department of Happy Hospital</li>
-  <li>Patient: Ms. S. Ufferer, who is in need of surgical intervention.</li>
+  <li>Order placed by: <a href="Practitioner-ORderplacer.html">Dr O. Rderplacer</a>, general practitioner at the <a href="Organization-HappyDoctors.html">group practice ‘Happy Doctors’</a>.</li>
+  <li>Recipient of the order: <a href="Practitioner-ORderfiller.html">Dr O. Rderfiller</a>, Chief Physician <a href="Organization-HappyHospital.html">Internal Medicine ‘Happy Hospital’</a></li>
+  <li>Patient: <a href="Patient-SUfferer.html">Mrs S. Ufferer</a>; she has had a heart attack.</li>
 </ul>
 
-<p>Patient S. Ufferer has an appointment with Dr. O. Rderplacer who agrees with the patient that an operation is necessary, to be performed in the Surgical Department of Happy Hospital. Dr. O. Rderplacer writes a referral containing all the necessary information and sends it to Happy Hospital. This includes existing x-rays and reports, as well as lab results. He also asks that a copy of the report be sent to the patient.</p>
+<p><a href="Patient-SUfferer.html">Mrs S. Ufferer</a> is on holiday at Plfegeheim Bergblick. Dr O. Rderplacer is in charge of this nursing home. An acute heart attack makes an admission to the <a href="Organization-HappyHospital.html">Internal Medicine ‘Happy Hospital’</a> necessary. <a href="Practitioner-ORderplacer.html">Dr O. Rderplacer</a> writes a referral containing all the necessary information and sends it to <a href="Practitioner-ORderfiller.html">Dr O. Rderfiller</a>, Head Physician <a href="Organization-HappyHospital.html">Internal Medicine ‘Happy Hospital’</a>. She also sends a copy of the registration to the family doctor <a href="Practitioner-SMeier.html">Dr med S.Meier</a>.</p>
 
-<h3 id="requesting-a-discharge-letter-from-earlier">Requesting a discharge letter from earlier</h3>
-<p>The players are:</p>
+<p>Associated <a href="QuestionnaireResponse-QuestionnaireResponseEtocTransCare.html">Questionnaire Response</a></p>
+
+<h3 id="request-for-a-discharge-letter-from-earlier">Request for a discharge letter from earlier</h3>
+<p>Players:</p>
 
 <ul>
-  <li>Dr. O. Rderplacer, who is a family physician in the Happy Doctors group practice.</li>
-  <li>Surgical department in Happy Hospital.</li>
-  <li>Patient: Ms. S. Ufferer, who was at Happy Hospital 2 or 3 years ago for an operative procedure.</li>
+  <li>Order placed by: <a href="Practitioner-ORderplacer.html">Dr. O. Rderplacer</a>, General Practitioner at <a href="Organization-HappyDoctors.html">Group Practice ‘Happy Doctors’</a>.</li>
+  <li>Recipient of the order: <a href="Practitioner-ORderfiller.html">Dr. O. Rderfiller</a>, Chief Physician <a href="Organization-HappyHospital.html">Internal Medicine ‘Happy Hospital’</a></li>
+  <li>Patient: <a href="Patient-SUfferer.html">Mrs. S. Ufferer</a>, who was with <a href="Practitioner-ORderfiller.html">Dr. O. Rderfiller</a>, Chief Physician <a href="Organization-HappyHospital.html">Internal Medicine ‘Happy Hospital’</a> 3 years ago</li>
 </ul>
 
-<p>Dr. O. Rderplacer requests the discharge report from Happy Hospital.</p>
+<p><a href="Practitioner-ORderplacer.html">Dr. O. Rderplacer</a> requests the discharge report from <a href="Practitioner-ORderfiller.html">Dr. O. Rderfiller</a>, Chief Physician <a href="Organization-HappyHospital.html">Internal Medicine ‘Happy Hospital’</a>.</p>
 
-<p><i>Although the primary care physician could be called something else (e.g., Dr. R. Equester; since in common usage it is a request rather than an order), we will stick with calling the primary care physician Dr. O. Rderplacer: conceptually, there is no difference between requesting a report, a referral, and an order (laboratory. radiology, etc.).<i></i></i></p>
+<p>Associated <a href="QuestionnaireResponse-QuestionnaireResponseEtocRequestPrevious.html">Questionnaire Response</a></p>
 
 
 
@@ -249,7 +252,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-etoc#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, May 17, 2024 13:00+0000">2024-05-17</span>
+          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-etoc#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 10:53+0000">2024-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -257,7 +260,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSerx40YmdrEeMoX2L8nTp_cBjq8K3-juuiCi0oN_edH1HC7yA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-etoc%233.0.0-ballot%20/usecase-english.html&amp;entry%2E247644557=Use%20Cases">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSerx40YmdrEeMoX2L8nTp_cBjq8K3-juuiCi0oN_edH1HC7yA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-etoc%233.0.0%20/usecase-english.html&amp;entry%2E247644557=Use%20Cases">Propose a change</a>
 
 
 
@@ -272,7 +275,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -283,7 +286,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>
