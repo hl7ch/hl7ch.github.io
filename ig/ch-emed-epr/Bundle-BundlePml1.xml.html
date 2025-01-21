@@ -5,7 +5,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Bundle: PML #1 - XML Representation - CH EMED EPR v1.0.0</title>
+    <title>Bundle: PML #1 - XML Representation - CH EMED EPR v2.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -20,6 +20,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -30,9 +31,11 @@
         background-color: #0086CB;
     }   
 
-    #segment-footer > .container {
+    #segment-footer .container {
       background-color: #0086CB;
     }
+    
+
     
 
     
@@ -62,11 +65,13 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
-    <style type="text/css">h2{--heading-prefix:"17.53"}
-    h3,h4,h5,h6{--heading-prefix:"17.53"}</style>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"18.62"}
+    h3,h4,h5,h6{--heading-prefix:"18.62"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <!--
@@ -92,7 +97,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EMED EPR</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - trial-use
+            <span style="display:inline-block;">2.0.0 - trial-use
 
 
 
@@ -141,6 +146,7 @@
             <li><a href="guidance_treatment.html">Treatment</a></li>
             <li><a href="guidance_compositions.html">Compositions</a></li>
             <li><a href="guidance_amount_quantity.html">Amount Quantity</a></li>
+            <li><a href="guidance_comments.html">Comments / Notes</a></li>
             <li><a href="guidance_others.html">Others</a></li>
             <li><a href="http://build.fhir.org/ig/hl7ch/ch-emed/authorship.html" target="_blank">CH EMED: Authorship and timestamps</a></li>
             <li><a href="http://build.fhir.org/ig/hl7ch/ch-emed/dosage.html" target="_blank">CH EMED: Dosage</a></li>
@@ -177,7 +183,7 @@
           <div class="inner-wrapper">
 
 <div style="counter-reset: section 7" class="col-12">
-<!--ReleaseHeader--><p id="publish-box">This page is part of the FHIR eMedication exchange formats for the implementation effort of CARA within its EPR community (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed-epr/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+<!--ReleaseHeader--><p id="publish-box">This page is part of the FHIR eMedication exchange formats for the implementation effort of CARA within its EPR community (v2.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed-epr/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
 
 
 
@@ -227,8 +233,7 @@
 
 
 
-  <pre class="xml" style="white-space: pre; text-wrap: nowrap;"><code style="white-space: pre; text-wrap: nowrap;">
-
+  <pre class="xml" style="white-space: pre; text-wrap: nowrap; width: auto;"><code style="white-space: pre; text-wrap: nowrap;">
 &lt;<a href="http://hl7.org/fhir/R4/bundle.html#Bundle">Bundle</a> xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;<a href="http://hl7.org/fhir/R4/bundle.html#Bundle.id">id</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;BundlePml1&quot;/&gt;
   &lt;<a href="http://hl7.org/fhir/R4/bundle.html#Bundle.meta">meta</a>&gt;
@@ -253,7 +258,13 @@
         &lt;<a href="http://hl7.org/fhir/R4/composition.html#Composition.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;fr-CH&quot;/&gt;
         &lt;<a href="http://hl7.org/fhir/R4/composition.html#Composition.text">text</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;generated&quot;/&gt;
-          &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;fr-CH&quot; lang=&quot;fr-CH&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: Composition&lt;/b&gt;&lt;a name=&quot;Inline-Instance-for-pml1-1&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;div style=&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%&quot;&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Resource Composition &amp;quot;Inline-Instance-for-pml1-1&amp;quot;  (Language &amp;quot;fr-CH&amp;quot;) &lt;/p&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Profile: &lt;a href=&quot;StructureDefinition-ch-emed-epr-composition-medicationlist.html&quot;&gt;PML Composition&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: &lt;a href=&quot;http://terminology.hl7.org/5.4.0/NamingSystem-uri.html&quot;&gt;#&lt;/a&gt;urn:uuid:7042ee91-a485-47cb-94fa-a1c2f0ef2dbc&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: final&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: Medication summary document (record artifact) &lt;span style=&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki&quot;&gt; (&lt;a href=&quot;https://browser.ihtsdotools.org/&quot;&gt;SNOMED CT&lt;/a&gt;#721912009; &lt;a href=&quot;https://loinc.org/&quot;&gt;LOINC&lt;/a&gt;#56445-0 &amp;quot;Medication summary Document&amp;quot;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;date&lt;/b&gt;: 2023-04-21 09:21:54+0200&lt;/p&gt;&lt;p&gt;&lt;b&gt;author&lt;/b&gt;: &lt;a href=&quot;#Device_Inline-Instance-for-pml1-3&quot;&gt;See above (urn:uuid:7dd779b9-c6ac-4fea-81e3-9d7cc6bd040b)&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Liste de médication&lt;/p&gt;&lt;p&gt;&lt;b&gt;confidentiality&lt;/b&gt;: N&lt;/p&gt;&lt;p&gt;&lt;b&gt;custodian&lt;/b&gt;: &lt;a href=&quot;#Organization_Inline-Instance-for-pml1-4&quot;&gt;See above (urn:uuid:0b08ced4-feaa-416e-98b9-78d1597e0940)&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;<a name="end-xhtml"></a>
+          &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;fr-CH&quot; lang=&quot;fr-CH&quot;&gt;&lt;a name=&quot;Composition_Inline-Instance-for-pml1-1&quot;&gt; &lt;/a&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Generated Narrative: Composition Inline-Instance-for-pml1-1&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;Inline-Instance-for-pml1-1&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hcInline-Instance-for-pml1-1&quot;&gt; &lt;/a&gt;&lt;a name=&quot;Inline-Instance-for-pml1-1-en-US&quot;&gt; &lt;/a&gt;&lt;div style=&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%&quot;&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Language: fr-CH&lt;/p&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Profile: &lt;a href=&quot;StructureDefinition-ch-emed-epr-composition-medicationlist.html&quot;&gt;PML Composition&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=&quot;http://terminology.hl7.org/6.1.0/NamingSystem-uri.html&quot; title=&quot;As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt 
+
+This oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: 
+
+Note that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.
+
+This OID may also be used in CD.codeSystem.&quot;&gt;Uniform Resource Identifier (URI)&lt;/a&gt;/urn:uuid:7042ee91-a485-47cb-94fa-a1c2f0ef2dbc&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: Final&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;span title=&quot;Codes:{http://snomed.info/sct 721912009}, {http://loinc.org 56445-0}&quot;&gt;Medication summary document (record artifact)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;date&lt;/b&gt;: 2023-04-21 09:21:54+0200&lt;/p&gt;&lt;p&gt;&lt;b&gt;author&lt;/b&gt;: &lt;a href=&quot;Bundle-BundlePml1.html#urn-uuid-7dd779b9-c6ac-4fea-81e3-9d7cc6bd040b&quot;&gt;Bundle: identifier = UUID:7042ee91-a485-47cb-94fa-a1c2f0ef2dbc; type = document; timestamp = 2023-04-21 09:21:54+0200&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Liste de médication&lt;/p&gt;&lt;p&gt;&lt;b&gt;confidentiality&lt;/b&gt;: normal&lt;/p&gt;&lt;p&gt;&lt;b&gt;custodian&lt;/b&gt;: &lt;a href=&quot;Bundle-BundlePml1.html#urn-uuid-0b08ced4-feaa-416e-98b9-78d1597e0940&quot;&gt;Bundle: identifier = UUID:7042ee91-a485-47cb-94fa-a1c2f0ef2dbc; type = document; timestamp = 2023-04-21 09:21:54+0200&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;<a name="end-xhtml"></a>
         &lt;/text&gt;
         &lt;<a href="http://hl7.org/fhir/R4/composition.html#Composition.identifier">identifier</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;urn:ietf:rfc:3986&quot;/&gt;
@@ -306,7 +317,7 @@
           &lt;/code&gt;
           &lt;<a href="http://hl7.org/fhir/R4/composition.html#Composition.section.text">text</a>&gt;
             &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;generated&quot;/&gt;
-            &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;Cette liste de médication a été générée automatiquement par le service eMedication CARA le 21 avril 2023 à 09:21:54 CEST. Les paramètres utilisés pour la génération du document sont : les éléments de type Medication Treatment Plan Item, Prescription Item, Dispense Item et PADV sont inclus ; tous les traitements sont considérés.&lt;/div&gt;<a name="end-xhtml"></a>
+            &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;Cette liste de médication a été générée automatiquement par le service eMedication CARA le 21 avril 2023 à 09:21:54 CEST. Les paramètres utilisés pour la génération du document sont : les éléments de type Medication Treatment Plan Item, Prescription Item, Dispense Item et PADV sont inclus ; tous les traitements sont considérés.&lt;/div&gt;
           &lt;/text&gt;
           &lt;<a href="http://hl7.org/fhir/R4/composition.html#Composition.section.entry">entry</a>&gt;
             &lt;<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;urn:uuid:41b97645-e263-47c2-8d96-79da451a33f2&quot;/&gt;
@@ -326,7 +337,7 @@
         &lt;/meta&gt;
         &lt;<a href="http://hl7.org/fhir/R4/patient.html#Patient.text">text</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;generated&quot;/&gt;
-          &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: Patient&lt;/b&gt;&lt;a name=&quot;Inline-Instance-for-pml1-2&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;div style=&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%&quot;&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Resource Patient &amp;quot;Inline-Instance-for-pml1-2&amp;quot; &lt;/p&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Profile: &lt;a href=&quot;StructureDefinition-ch-emed-epr-patient.html&quot;&gt;CH EMED EPR Patient&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: Medical record number: 7a4ec59f-a024-4cfb-bc04-3339c53cb9ac (use: OFFICIAL), Medical record number: L53672539 (use: SECONDARY), Medical record number: MAGMED005 (use: SECONDARY), Medical record number: 3486389 (use: SECONDARY), Medical record number: 3503409 (use: SECONDARY), Medical record number: 3505915 (use: SECONDARY), Medical record number: 99146298 (use: SECONDARY), Medical record number: 3475203 (use: SECONDARY), Medical record number: 02fc1dd1-fc13-4ca0-874c-b8372b7e6cfc (use: SECONDARY), Medical record number: 11111111 (use: SECONDARY)&lt;/p&gt;&lt;p&gt;&lt;b&gt;active&lt;/b&gt;: true&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Leandra Corina Behluli-Qazimi &lt;/p&gt;&lt;p&gt;&lt;b&gt;gender&lt;/b&gt;: female&lt;/p&gt;&lt;p&gt;&lt;b&gt;birthDate&lt;/b&gt;: 2002-12-21&lt;/p&gt;&lt;/div&gt;<a name="end-xhtml"></a>
+          &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;a name=&quot;Patient_Inline-Instance-for-pml1-2&quot;&gt; &lt;/a&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Generated Narrative: Patient Inline-Instance-for-pml1-2&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;Inline-Instance-for-pml1-2&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hcInline-Instance-for-pml1-2&quot;&gt; &lt;/a&gt;&lt;a name=&quot;Inline-Instance-for-pml1-2-en-US&quot;&gt; &lt;/a&gt;&lt;p style=&quot;border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;&quot;&gt;Leandra Corina Behluli-Qazimi  Female, DoB: 2002-12-21 ( Medical record number (use: official, ))&lt;/p&gt;&lt;hr/&gt;&lt;table class=&quot;grid&quot;&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Record is active&quot;&gt;Active:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Other Ids (see the one above)&quot;&gt;Other Ids:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;ul&gt;&lt;li&gt;Medical record number/L53672539 (use: secondary, )&lt;/li&gt;&lt;li&gt;Medical record number/MAGMED005 (use: secondary, )&lt;/li&gt;&lt;li&gt;Medical record number/3486389 (use: secondary, )&lt;/li&gt;&lt;li&gt;Medical record number/3503409 (use: secondary, )&lt;/li&gt;&lt;li&gt;Medical record number/3505915 (use: secondary, )&lt;/li&gt;&lt;li&gt;Medical record number/99146298 (use: secondary, )&lt;/li&gt;&lt;li&gt;Medical record number/3475203 (use: secondary, )&lt;/li&gt;&lt;li&gt;Medical record number/02fc1dd1-fc13-4ca0-874c-b8372b7e6cfc (use: secondary, )&lt;/li&gt;&lt;li&gt;Medical record number/11111111 (use: secondary, )&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
         &lt;/text&gt;
         &lt;<a href="http://hl7.org/fhir/R4/patient.html#Patient.identifier">identifier</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.use">use</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;official&quot;/&gt;
@@ -459,7 +470,7 @@
         &lt;/meta&gt;
         &lt;<a href="http://hl7.org/fhir/R4/device.html#Device.text">text</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;generated&quot;/&gt;
-          &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: Device&lt;/b&gt;&lt;a name=&quot;Inline-Instance-for-pml1-3&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;div style=&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%&quot;&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Resource Device &amp;quot;Inline-Instance-for-pml1-3&amp;quot; &lt;/p&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Profile: &lt;a href=&quot;StructureDefinition-ch-emed-epr-device.html&quot;&gt;CH EMED EPR Device&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;h3&gt;DeviceNames&lt;/h3&gt;&lt;table class=&quot;grid&quot;&gt;&lt;tr&gt;&lt;td style=&quot;display: none&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Name&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Type&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;display: none&quot;&gt;*&lt;/td&gt;&lt;td&gt;PMP CARA v0.1&lt;/td&gt;&lt;td&gt;model-name&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: Pharmaceutical information system application software (physical object) &lt;span style=&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki&quot;&gt; (&lt;a href=&quot;https://browser.ihtsdotools.org/&quot;&gt;SNOMED CT&lt;/a&gt;#701612004)&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;Versions&lt;/h3&gt;&lt;table class=&quot;grid&quot;&gt;&lt;tr&gt;&lt;td style=&quot;display: none&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Value&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;display: none&quot;&gt;*&lt;/td&gt;&lt;td&gt;8153cba&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;owner&lt;/b&gt;: &lt;a href=&quot;#Organization_Inline-Instance-for-pml1-4&quot;&gt;See above (urn:uuid:0b08ced4-feaa-416e-98b9-78d1597e0940)&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;<a name="end-xhtml"></a>
+          &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;a name=&quot;Device_Inline-Instance-for-pml1-3&quot;&gt; &lt;/a&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Generated Narrative: Device Inline-Instance-for-pml1-3&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;Inline-Instance-for-pml1-3&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hcInline-Instance-for-pml1-3&quot;&gt; &lt;/a&gt;&lt;a name=&quot;Inline-Instance-for-pml1-3-en-US&quot;&gt; &lt;/a&gt;&lt;h3&gt;DeviceNames&lt;/h3&gt;&lt;table class=&quot;grid&quot;&gt;&lt;tr&gt;&lt;td style=&quot;display: none&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Name&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Type&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;display: none&quot;&gt;*&lt;/td&gt;&lt;td&gt;PMP CARA v0.1&lt;/td&gt;&lt;td&gt;Model name&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;span title=&quot;Codes:{http://snomed.info/sct 701612004}&quot;&gt;Pharmaceutical information system application software (physical object)&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;Versions&lt;/h3&gt;&lt;table class=&quot;grid&quot;&gt;&lt;tr&gt;&lt;td style=&quot;display: none&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Value&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;display: none&quot;&gt;*&lt;/td&gt;&lt;td&gt;8153cba&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;&lt;b&gt;owner&lt;/b&gt;: &lt;a href=&quot;Bundle-BundlePml1.html#urn-uuid-0b08ced4-feaa-416e-98b9-78d1597e0940&quot;&gt;Bundle: identifier = UUID:7042ee91-a485-47cb-94fa-a1c2f0ef2dbc; type = document; timestamp = 2023-04-21 09:21:54+0200&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
         &lt;/text&gt;
         &lt;<a href="http://hl7.org/fhir/R4/device.html#Device.deviceName">deviceName</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/device.html#Device.deviceName.name">name</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;PMP CARA v0.1&quot;/&gt;
@@ -493,7 +504,7 @@
         &lt;/meta&gt;
         &lt;<a href="http://hl7.org/fhir/R4/organization.html#Organization.text">text</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;generated&quot;/&gt;
-          &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: Organization&lt;/b&gt;&lt;a name=&quot;Inline-Instance-for-pml1-4&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;div style=&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%&quot;&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Resource Organization &amp;quot;Inline-Instance-for-pml1-4&amp;quot; &lt;/p&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Profile: &lt;a href=&quot;StructureDefinition-ch-emed-epr-organization.html&quot;&gt;CH EMED EPR Organization&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: 7601001407428&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Association CARA&lt;/p&gt;&lt;p&gt;&lt;b&gt;address&lt;/b&gt;: Route de la Corniche 3a Épalinges Vaud 1066 CH &lt;/p&gt;&lt;/div&gt;<a name="end-xhtml"></a>
+          &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;a name=&quot;Organization_Inline-Instance-for-pml1-4&quot;&gt; &lt;/a&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Generated Narrative: Organization Inline-Instance-for-pml1-4&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;Inline-Instance-for-pml1-4&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hcInline-Instance-for-pml1-4&quot;&gt; &lt;/a&gt;&lt;a name=&quot;Inline-Instance-for-pml1-4-en-US&quot;&gt; &lt;/a&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=&quot;https://www.gs1.org/standards/id-keys/gln&quot; title=&quot;Global Location Number&quot;&gt;GLN&lt;/a&gt;/7601001407428&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Association CARA&lt;/p&gt;&lt;p&gt;&lt;b&gt;address&lt;/b&gt;: Route de la Corniche 3a Épalinges Vaud 1066 CH &lt;/p&gt;&lt;/div&gt;
         &lt;/text&gt;
         &lt;<a href="http://hl7.org/fhir/R4/organization.html#Organization.identifier">identifier</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;urn:oid:2.51.1.3&quot;/&gt;
@@ -521,7 +532,25 @@
         &lt;/meta&gt;
         &lt;<a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.text">text</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;extensions&quot;/&gt;
-          &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: MedicationStatement&lt;/b&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;div style=&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%&quot;&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Resource MedicationStatement &amp;quot;Inline-Instance-for-pml1-5&amp;quot; &lt;/p&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Profile: &lt;a href=&quot;StructureDefinition-ch-emed-epr-medicationstatement-list.html&quot;&gt;PML MedicationStatement&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;CH EMED Extension Treatment Plan&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;url&lt;/b&gt;&lt;/p&gt;&lt;a href=&quot;http://hl7.org/fhir/R4/datatypes.html#id&quot;&gt;id&lt;/a&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;value&lt;/b&gt;: id: &lt;a href=&quot;http://terminology.hl7.org/5.4.0/NamingSystem-uri.html&quot;&gt;#&lt;/a&gt;urn:uuid:41b97645-e263-47c2-8d96-79da451a33f2&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;url&lt;/b&gt;&lt;/p&gt;&lt;code&gt;externalDocumentId&lt;/code&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;value&lt;/b&gt;: id: &lt;a href=&quot;http://terminology.hl7.org/5.4.0/NamingSystem-uri.html&quot;&gt;#&lt;/a&gt;urn:uuid:24c84eef-f9db-4710-8f6c-2d342ad3ac2d&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: &lt;a href=&quot;http://terminology.hl7.org/5.4.0/NamingSystem-uri.html&quot;&gt;#&lt;/a&gt;urn:uuid:41b97645-e263-47c2-8d96-79da451a33f2&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: active&lt;/p&gt;&lt;p&gt;&lt;b&gt;medication&lt;/b&gt;: &lt;a name=&quot;medication-1&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p/&gt;&lt;p&gt;&lt;a name=&quot;medication-1&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;code&lt;/b&gt;: TRIATEC Tabl 2.5 mg &lt;span style=&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki&quot;&gt; (unknown#7680538751228 &amp;quot;TRIATEC Tabl 2.5 mg 20 Stk&amp;quot;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;form&lt;/b&gt;: Tablet &lt;span style=&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki&quot;&gt; (&lt;a href=&quot;http://fhir.ch/ig/ch-emed/4.0.1/CodeSystem-edqm-standardterms.html&quot;&gt;EDQM - Standard Terms&lt;/a&gt;#10219000)&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: &lt;a href=&quot;#Patient_Inline-Instance-for-pml1-2&quot;&gt;See above (urn:uuid:35b7e959-3b7e-416a-ac16-68896d26d5bb)&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;dateAsserted&lt;/b&gt;: 2023-04-11&lt;/p&gt;&lt;p&gt;&lt;b&gt;informationSource&lt;/b&gt;: &lt;a name=&quot;practitioner-role-1&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p/&gt;&lt;p&gt;&lt;a name=&quot;practitioner-role-1&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;practitioner&lt;/b&gt;: &lt;a href=&quot;#practitioner-1&quot;&gt;#practitioner-1&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;organization&lt;/b&gt;: &lt;a href=&quot;#organization-1&quot;&gt;#organization-1&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;dosage&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;id&lt;/b&gt;&lt;/p&gt;#dosage-1&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;patientInstruction&lt;/b&gt;: À prendre avec de l'eau&lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: Medication #medication-1&lt;/b&gt;&lt;a name=&quot;medication-1&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;code&lt;/b&gt;: TRIATEC Tabl 2.5 mg &lt;span style=&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki&quot;&gt; (unknown#7680538751228 &amp;quot;TRIATEC Tabl 2.5 mg 20 Stk&amp;quot;)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;form&lt;/b&gt;: Tablet &lt;span style=&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki&quot;&gt; (&lt;a href=&quot;http://fhir.ch/ig/ch-emed/4.0.1/CodeSystem-edqm-standardterms.html&quot;&gt;EDQM - Standard Terms&lt;/a&gt;#10219000)&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: PractitionerRole #practitioner-role-1&lt;/b&gt;&lt;a name=&quot;practitioner-role-1&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;practitioner&lt;/b&gt;: &lt;a href=&quot;#practitioner-1&quot;&gt;#practitioner-1&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;organization&lt;/b&gt;: &lt;a href=&quot;#organization-1&quot;&gt;#organization-1&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: Practitioner #practitioner-1&lt;/b&gt;&lt;a name=&quot;practitioner-1&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: 7601000234438&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Perry Cox &lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: Organization #organization-1&lt;/b&gt;&lt;a name=&quot;organization-1&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: id: 7601000234438&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Hôpitaux universitaires de Genève&lt;/p&gt;&lt;p&gt;&lt;b&gt;address&lt;/b&gt;: Rue Gabrielle-Perret-Gentil 4 Genève 1205 CH &lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;<a name="end-xhtml"></a>
+          &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;a name=&quot;MedicationStatement_Inline-Instance-for-pml1-5&quot;&gt; &lt;/a&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Generated Narrative: MedicationStatement Inline-Instance-for-pml1-5&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hcInline-Instance-for-pml1-5&quot;&gt; &lt;/a&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5-en-US&quot;&gt; &lt;/a&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;CH EMED Extension Treatment Plan&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;id: &lt;a href=&quot;http://terminology.hl7.org/6.1.0/NamingSystem-uri.html&quot; title=&quot;As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt 
+
+This oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: 
+
+Note that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.
+
+This OID may also be used in CD.codeSystem.&quot;&gt;Uniform Resource Identifier (URI)&lt;/a&gt;/urn:uuid:41b97645-e263-47c2-8d96-79da451a33f2&lt;/li&gt;&lt;li&gt;externalDocumentId: &lt;a href=&quot;http://terminology.hl7.org/6.1.0/NamingSystem-uri.html&quot; title=&quot;As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt 
+
+This oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: 
+
+Note that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.
+
+This OID may also be used in CD.codeSystem.&quot;&gt;Uniform Resource Identifier (URI)&lt;/a&gt;/urn:uuid:24c84eef-f9db-4710-8f6c-2d342ad3ac2d&lt;/li&gt;&lt;/ul&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=&quot;http://terminology.hl7.org/6.1.0/NamingSystem-uri.html&quot; title=&quot;As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt 
+
+This oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: 
+
+Note that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.
+
+This OID may also be used in CD.codeSystem.&quot;&gt;Uniform Resource Identifier (URI)&lt;/a&gt;/urn:uuid:41b97645-e263-47c2-8d96-79da451a33f2&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: Active&lt;/p&gt;&lt;p&gt;&lt;b&gt;medication&lt;/b&gt;: &lt;a href=&quot;#hcInline-Instance-for-pml1-5/medication-1&quot;&gt;Medication TRIATEC Tabl 2.5 mg 20 Stk&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: &lt;a href=&quot;Bundle-BundlePml1.html#urn-uuid-35b7e959-3b7e-416a-ac16-68896d26d5bb&quot;&gt;Bundle: identifier = UUID:7042ee91-a485-47cb-94fa-a1c2f0ef2dbc; type = document; timestamp = 2023-04-21 09:21:54+0200&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;dateAsserted&lt;/b&gt;: 2023-04-11&lt;/p&gt;&lt;p&gt;&lt;b&gt;informationSource&lt;/b&gt;: &lt;a href=&quot;#hcInline-Instance-for-pml1-5/practitioner-role-1&quot;&gt;PractitionerRole&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;dosage&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;id&lt;/b&gt;&lt;/p&gt;#dosage-1&lt;/blockquote&gt;&lt;p&gt;&lt;b&gt;text&lt;/b&gt;: À prendre avec de l'eau&lt;/p&gt;&lt;p&gt;&lt;b&gt;patientInstruction&lt;/b&gt;: À prendre avec de l'eau&lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Generated Narrative: Medication #medication-1&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5/medication-1&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hcInline-Instance-for-pml1-5/medication-1&quot;&gt; &lt;/a&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5/medication-1-en-US&quot;&gt; &lt;/a&gt;&lt;p&gt;&lt;b&gt;code&lt;/b&gt;: &lt;span title=&quot;Codes:{urn:oid:2.51.1.1 7680538751228}&quot;&gt;TRIATEC Tabl 2.5 mg&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;form&lt;/b&gt;: &lt;span title=&quot;Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10219000}&quot;&gt;Tablet&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Generated Narrative: PractitionerRole #practitioner-role-1&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5/practitioner-role-1&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hcInline-Instance-for-pml1-5/practitioner-role-1&quot;&gt; &lt;/a&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5/practitioner-role-1-en-US&quot;&gt; &lt;/a&gt;&lt;p&gt;&lt;b&gt;practitioner&lt;/b&gt;: &lt;a href=&quot;#hcInline-Instance-for-pml1-5/practitioner-1&quot;&gt;Practitioner Perry Cox &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;organization&lt;/b&gt;: &lt;a href=&quot;#hcInline-Instance-for-pml1-5/organization-1&quot;&gt;Organization Hôpitaux universitaires de Genève&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Generated Narrative: Practitioner #practitioner-1&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5/practitioner-1&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hcInline-Instance-for-pml1-5/practitioner-1&quot;&gt; &lt;/a&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5/practitioner-1-en-US&quot;&gt; &lt;/a&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=&quot;https://www.gs1.org/standards/id-keys/gln&quot; title=&quot;Global Location Number&quot;&gt;GLN&lt;/a&gt;/7601000234438&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Perry Cox &lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Generated Narrative: Organization #organization-1&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5/organization-1&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hcInline-Instance-for-pml1-5/organization-1&quot;&gt; &lt;/a&gt;&lt;a name=&quot;Inline-Instance-for-pml1-5/organization-1-en-US&quot;&gt; &lt;/a&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=&quot;https://www.gs1.org/standards/id-keys/gln&quot; title=&quot;Global Location Number&quot;&gt;GLN&lt;/a&gt;/7601000234438&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Hôpitaux universitaires de Genève&lt;/p&gt;&lt;p&gt;&lt;b&gt;address&lt;/b&gt;: Rue Gabrielle-Perret-Gentil 4 Genève 1205 CH &lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;
         &lt;/text&gt;
         &lt;<a href="http://hl7.org/fhir/R4/medication.html#Medication">contained</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/medication.html#Medication">Medication</a>&gt;
@@ -615,6 +644,7 @@
           &lt;<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">reference</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;#practitioner-role-1&quot;/&gt;
         &lt;/informationSource&gt;
         &lt;<a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.dosage">dosage</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">id</a>=&quot;#dosage-1&quot;&gt;
+          &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Dosage#Dosage.text">text</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;À prendre avec de l'eau&quot;/&gt;
           &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Dosage#Dosage.patientInstruction">patientInstruction</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;À prendre avec de l'eau&quot;/&gt;
         &lt;/dosage&gt;
       &lt;/MedicationStatement&gt;
@@ -637,20 +667,14 @@
   <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      if(window.location.hash != "") {
-          $('a[href="' + window.location.hash + '"]').click()
-      }
-    });
-  </script>
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
   <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.cara.ch">CARA</a>.  Package ch.fhir.ig.ch-emed-epr#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jan 26, 2024 09:56+0100">2024-01-26</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.cara.ch">CARA</a>.  Package ch.fhir.ig.ch-emed-epr#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jan 21, 2025 11:06+0000">2025-01-21</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -658,17 +682,9 @@
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSf2h69aPkVsCC7rQ3rEGPofycO4ylPd0urxp0tmjQkzlZRbHg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed-epr%231.0.0%20/Bundle-BundlePml1.xml.html&amp;entry%2E247644557=Bundle:%20PML%20#1%20-%20XML%20Representation">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSf2h69aPkVsCC7rQ3rEGPofycO4ylPd0urxp0tmjQkzlZRbHg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed-epr%232.0.0%20/Bundle-BundlePml1.xml.html&amp;entry%2E247644557=Bundle:%20PML%20#1%20-%20XML%20Representation">Propose a change</a>
 
 
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ED8VLFMEVY"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ED8VLFMEVY');
-</script>
 
 
           </span>
@@ -681,7 +697,7 @@
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -691,22 +707,7 @@
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
-  
-<!-- feedback form - Google forms -->
-<!-- v0.1, 2021-01-09 -->
-
-
-  
-
-
-  
-
-
-
-<!-- / feedback form  -->
-
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   <!-- Analytics Below
   ================================================== -->
   </body>

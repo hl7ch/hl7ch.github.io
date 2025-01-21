@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Time Quantity Unit Codes - CH EMED EPR v1.0.0</title>
+    <title>Time Quantity Unit Codes - CH EMED EPR v2.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -28,9 +29,11 @@
         background-color: #0086CB;
     }   
 
-    #segment-footer > .container {
+    #segment-footer .container {
       background-color: #0086CB;
     }
+    
+
     
 
     
@@ -60,11 +63,13 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
-    <style type="text/css">h2{--heading-prefix:"17.45"}
-    h3,h4,h5,h6{--heading-prefix:"17.45"}</style>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"18.48"}
+    h3,h4,h5,h6{--heading-prefix:"18.48"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <!--
@@ -90,7 +95,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EMED EPR</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - trial-use
+            <span style="display:inline-block;">2.0.0 - trial-use
 
 
 
@@ -139,6 +144,7 @@
             <li><a href="guidance_treatment.html">Treatment</a></li>
             <li><a href="guidance_compositions.html">Compositions</a></li>
             <li><a href="guidance_amount_quantity.html">Amount Quantity</a></li>
+            <li><a href="guidance_comments.html">Comments / Notes</a></li>
             <li><a href="guidance_others.html">Others</a></li>
             <li><a href="http://build.fhir.org/ig/hl7ch/ch-emed/authorship.html" target="_blank">CH EMED: Authorship and timestamps</a></li>
             <li><a href="http://build.fhir.org/ig/hl7ch/ch-emed/dosage.html" target="_blank">CH EMED: Dosage</a></li>
@@ -175,7 +181,7 @@
           <div class="inner-wrapper">
 
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the FHIR eMedication exchange formats for the implementation effort of CARA within its EPR community (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed-epr/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the FHIR eMedication exchange formats for the implementation effort of CARA within its EPR community (v2.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed-epr/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   
 
 
@@ -221,7 +227,7 @@
       <td colspan="4"><i>Official URL</i>: <span class="copy-text">http://fhir.ch/ig/ch-emed-epr/ValueSet/ch-emed-epr-time-quantity-unit-code<button title="Click to copy URL" class="btn-copy" data-clipboard-text="http://fhir.ch/ig/ch-emed-epr/ValueSet/ch-emed-epr-time-quantity-unit-code"/></span>
       </td>
       <td><i>Version</i>:
-      <span class="copy-text">1.0.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://fhir.ch/ig/ch-emed-epr/ValueSet/ch-emed-epr-time-quantity-unit-code|1.0.0"/></span>
+      <span class="copy-text">2.0.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://fhir.ch/ig/ch-emed-epr/ValueSet/ch-emed-epr-time-quantity-unit-code|2.0.0"/></span>
       </td>
     </tr>
 
@@ -237,7 +243,7 @@
         
           Draft
           
-            as of 2024-01-26
+            as of 2025-01-21
           
         
       </td>
@@ -283,13 +289,14 @@
 
 <!-- Content Logical Definition heading in the fragment -->
   <h3>Logical Definition (CLD)</h3>
-<div xmlns="http://www.w3.org/1999/xhtml"><ul><li>Include these codes as defined in <a href="http://unitsofmeasure.org"><code>http://unitsofmeasure.org</code></a><table class="none"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td></tr><tr><td>s</td><td>Second</td></tr><tr><td>min</td><td>Minute</td></tr><tr><td>h</td><td>Hour</td></tr><tr><td>d</td><td>Day</td></tr><tr><td>mo</td><td>Month</td></tr><tr><td>a</td><td>Year</td></tr></table></li></ul></div>
+<div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ValueSet ch-emed-epr-time-quantity-unit-code</b></p><a name="ch-emed-epr-time-quantity-unit-code"> </a><a name="hcch-emed-epr-time-quantity-unit-code"> </a><a name="ch-emed-epr-time-quantity-unit-code-und"> </a>
+<ul><li>Include these codes as defined in <a href="http://unitsofmeasure.org"><code>http://unitsofmeasure.org</code></a><table class="none"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td><td><b><a href="ConceptMap-CHEMEDEPRTimeQuantityUnitCodeToCdTyp9.html">CHEMEDEPRTimeQuantityUnitCode -&gt; CdTyp9</a></b></td></tr><tr><td>s</td><td>Second</td><td></td></tr><tr><td>min</td><td>Minute</td><td></td></tr><tr><td>h</td><td>Hour</td><td><span title="EQUIVALENT">~</span>h</td></tr><tr><td>d</td><td>Day</td><td><span title="EQUIVALENT">~</span>Tag</td></tr><tr><td>mo</td><td>Month</td><td><span title="EQUIVALENT">~</span>Monat</td></tr><tr><td>a</td><td>Year</td><td><span title="EQUIVALENT">~</span>Jahr</td></tr></table></li></ul></div>
 
   <p>&#160;</p>
   <a name="expansion"> </a>
   <h3 id="expansion">Expansion</h3>
 
-  <div xmlns="http://www.w3.org/1999/xhtml"><p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion based on codesystem UCUM version 2.0.1</p><p>This value set contains 6 concepts.</p><table class="codes"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>System</b></td><td><b>Display</b></td></tr><tr><td style="white-space:nowrap"><a name="http---unitsofmeasure.org-s"> </a>  s</td><td>http://unitsofmeasure.org</td><td>Second</td></tr><tr><td style="white-space:nowrap"><a name="http---unitsofmeasure.org-min"> </a>  min</td><td>http://unitsofmeasure.org</td><td>Minute</td></tr><tr><td style="white-space:nowrap"><a name="http---unitsofmeasure.org-h"> </a>  h</td><td>http://unitsofmeasure.org</td><td>Hour</td></tr><tr><td style="white-space:nowrap"><a name="http---unitsofmeasure.org-d"> </a>  d</td><td>http://unitsofmeasure.org</td><td>Day</td></tr><tr><td style="white-space:nowrap"><a name="http---unitsofmeasure.org-mo"> </a>  mo</td><td>http://unitsofmeasure.org</td><td>Month</td></tr><tr><td style="white-space:nowrap"><a name="http---unitsofmeasure.org-a"> </a>  a</td><td>http://unitsofmeasure.org</td><td>Year</td></tr></table></div>
+  <div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ValueSet </b></p><p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion from tx.fhir.org based on codesystem UCUM version2.2</p><p>This value set contains 6 concepts</p><table class="codes"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>System</b></td><td><b>Display</b></td><td><b><a href="ConceptMap-CHEMEDEPRTimeQuantityUnitCodeToCdTyp9.html">CHEMEDEPRTimeQuantityUnitCode -&gt; CdTyp9</a></b></td></tr><tr><td style="white-space:nowrap"><a name="x-http://unitsofmeasure.org-s"> </a>  s</td><td>http://unitsofmeasure.org</td><td>s</td><td/></tr><tr><td style="white-space:nowrap"><a name="x-http://unitsofmeasure.org-min"> </a>  min</td><td>http://unitsofmeasure.org</td><td>min</td><td/></tr><tr><td style="white-space:nowrap"><a name="x-http://unitsofmeasure.org-h"> </a>  h</td><td>http://unitsofmeasure.org</td><td>h</td><td><span title="EQUIVALENT">~</span>ConceptMap-CHEMEDEPRTimeQuantityUnitCodeToCdTyp9.html</td></tr><tr><td style="white-space:nowrap"><a name="x-http://unitsofmeasure.org-d"> </a>  d</td><td>http://unitsofmeasure.org</td><td>d</td><td><span title="EQUIVALENT">~</span>ConceptMap-CHEMEDEPRTimeQuantityUnitCodeToCdTyp9.html</td></tr><tr><td style="white-space:nowrap"><a name="x-http://unitsofmeasure.org-mo"> </a>  mo</td><td>http://unitsofmeasure.org</td><td>mo</td><td><span title="EQUIVALENT">~</span>ConceptMap-CHEMEDEPRTimeQuantityUnitCodeToCdTyp9.html</td></tr><tr><td style="white-space:nowrap"><a name="x-http://unitsofmeasure.org-a"> </a>  a</td><td>http://unitsofmeasure.org</td><td>a</td><td><span title="EQUIVALENT">~</span>ConceptMap-CHEMEDEPRTimeQuantityUnitCodeToCdTyp9.html</td></tr></table></div>
 
   <hr/>
   <p>
@@ -341,20 +348,14 @@
   <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      if(window.location.hash != "") {
-          $('a[href="' + window.location.hash + '"]').click()
-      }
-    });
-  </script>
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
   <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.cara.ch">CARA</a>.  Package ch.fhir.ig.ch-emed-epr#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jan 26, 2024 09:56+0100">2024-01-26</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.cara.ch">CARA</a>.  Package ch.fhir.ig.ch-emed-epr#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jan 21, 2025 11:06+0000">2025-01-21</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -362,17 +363,9 @@
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSf2h69aPkVsCC7rQ3rEGPofycO4ylPd0urxp0tmjQkzlZRbHg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed-epr%231.0.0%20/ValueSet-ch-emed-epr-time-quantity-unit-code.html&amp;entry%2E247644557=Time%20Quantity%20Unit%20Codes">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSf2h69aPkVsCC7rQ3rEGPofycO4ylPd0urxp0tmjQkzlZRbHg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed-epr%232.0.0%20/ValueSet-ch-emed-epr-time-quantity-unit-code.html&amp;entry%2E247644557=Time%20Quantity%20Unit%20Codes">Propose a change</a>
 
 
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ED8VLFMEVY"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ED8VLFMEVY');
-</script>
 
 
           </span>
@@ -385,7 +378,7 @@
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -395,22 +388,7 @@
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
-  
-<!-- feedback form - Google forms -->
-<!-- v0.1, 2021-01-09 -->
-
-
-  
-
-
-  
-
-
-
-<!-- / feedback form  -->
-
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   <!-- Analytics Below
   ================================================== -->
   </body>

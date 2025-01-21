@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Guidance Compositions - CH EMED EPR v1.0.0</title>
+    <title>Guidance Compositions - CH EMED EPR v2.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -28,9 +29,11 @@
         background-color: #0086CB;
     }   
 
-    #segment-footer > .container {
+    #segment-footer .container {
       background-color: #0086CB;
     }
+    
+
     
 
     
@@ -60,11 +63,13 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
-    <style type="text/css">h2{--heading-prefix:"10"}
-    h3,h4,h5,h6{--heading-prefix:"10"}</style>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"11"}
+    h3,h4,h5,h6{--heading-prefix:"11"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <!--
@@ -90,7 +95,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EMED EPR</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - trial-use
+            <span style="display:inline-block;">2.0.0 - trial-use
 
 
 
@@ -139,6 +144,7 @@
             <li><a href="guidance_treatment.html">Treatment</a></li>
             <li><a href="guidance_compositions.html">Compositions</a></li>
             <li><a href="guidance_amount_quantity.html">Amount Quantity</a></li>
+            <li><a href="guidance_comments.html">Comments / Notes</a></li>
             <li><a href="guidance_others.html">Others</a></li>
             <li><a href="http://build.fhir.org/ig/hl7ch/ch-emed/authorship.html" target="_blank">CH EMED: Authorship and timestamps</a></li>
             <li><a href="http://build.fhir.org/ig/hl7ch/ch-emed/dosage.html" target="_blank">CH EMED: Dosage</a></li>
@@ -182,7 +188,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the FHIR eMedication exchange formats for the implementation effort of CARA within its EPR community (v1.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>1) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed-epr/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the FHIR eMedication exchange formats for the implementation effort of CARA within its EPR community (v2.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed-epr/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Guidance Compositions</h2>
   
 
@@ -204,12 +210,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h2 id="definitions">Definitions</h2>
 <p>The documents defined in this guide (<a href="document_mtp.html">MTP</a>, <a href="document_dis.html">DIS</a>, <a href="document_padv.html">PADV</a>, <a href="document_pml.html">PML</a>, <a href="document_pmlc.html">PMLc</a>, <a href="document_pre.html">PRE</a>) are all FHIR documents. As such they all have the same structure, which is well described in the <a href="https://www.hl7.org/fhir/documents.html">FHIR documentation</a>.</p>
 
-<p>This page outlines some important aspects of the document’s structure and give several pointers towards useful documentations.</p>
+<p>This page outlines some important aspects of the document's structure and give several pointers towards useful documentations.</p>
 
 <p>FHIR documents are a special type of <a href="https://www.hl7.org/fhir/bundle.html">FHIR Bundles</a>, with <a href="https://www.hl7.org/fhir/bundle-definitions.html#Bundle.type">type</a> = <code class="language-plaintext highlighter-rouge">"document"</code>. The first <a href="https://www.hl7.org/fhir/bundle-definitions.html#Bundle.entry">entry</a> of the document bundle is always a <a href="https://www.hl7.org/fhir/composition.html">composition</a>, that is a structure containing <a href="https://www.hl7.org/fhir/references.htm">references</a> towards <a href="https://www.hl7.org/fhir/resource.html">resources</a>.</p>
 
 <h2 id="example">Example</h2>
-<p>The example below shows the skeletton of the <a href="https://www.hl7.org/fhir/document-example-dischargesummary.json.html">FHIR’s discharge summary document</a>.</p>
+<p>The example below shows the skeletton of the <a href="https://www.hl7.org/fhir/document-example-dischargesummary.json.html">FHIR's discharge summary document</a>.</p>
 <ul>
   <li>The resource is of Bundle of type <code class="language-plaintext highlighter-rouge">"document"</code></li>
   <li>It contains a series of entries</li>
@@ -313,20 +319,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      if(window.location.hash != "") {
-          $('a[href="' + window.location.hash + '"]').click()
-      }
-    });
-  </script>
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
   <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.cara.ch">CARA</a>.  Package ch.fhir.ig.ch-emed-epr#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Jan 26, 2024 09:56+0100">2024-01-26</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.cara.ch">CARA</a>.  Package ch.fhir.ig.ch-emed-epr#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jan 21, 2025 11:06+0000">2025-01-21</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -334,17 +334,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSf2h69aPkVsCC7rQ3rEGPofycO4ylPd0urxp0tmjQkzlZRbHg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed-epr%231.0.0%20/guidance_compositions.html&amp;entry%2E247644557=Guidance%20Compositions">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSf2h69aPkVsCC7rQ3rEGPofycO4ylPd0urxp0tmjQkzlZRbHg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed-epr%232.0.0%20/guidance_compositions.html&amp;entry%2E247644557=Guidance%20Compositions">Propose a change</a>
 
 
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ED8VLFMEVY"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ED8VLFMEVY');
-</script>
 
 
           </span>
@@ -357,7 +349,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -367,22 +359,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
-  
-<!-- feedback form - Google forms -->
-<!-- v0.1, 2021-01-09 -->
-
-
-  
-
-
-  
-
-
-
-<!-- / feedback form  -->
-
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   <!-- Analytics Below
   ================================================== -->
   </body>
