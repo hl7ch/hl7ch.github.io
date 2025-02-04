@@ -7,11 +7,11 @@
 </div></div>
   </text>
   <url value="http://fhir.ch/ig/ch-elm/ImplementationGuide/ch.fhir.ig.ch-elm"/>
-  <version value="1.7.0"/>
+  <version value="1.8.0"/>
   <name value="CH_ELM"/>
   <title value="CH ELM (R4)"/>
   <status value="active"/>
-  <date value="2024-11-28"/>
+  <date value="2025-02-04"/>
   <publisher value="Federal Office of Public Health FOPH"/>
   <contact>
     <name value="Federal Office of Public Health FOPH"/>
@@ -34,7 +34,7 @@
   <dependsOn id="hl7_terminology">
     <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
     <packageId value="hl7.terminology"/>
-    <version value="5.4.0"/>
+    <version value="6.1.0"/>
   </dependsOn>
   <dependsOn id="hl7_fhir_eu_laboratory">
     <uri value="http://hl7.eu/fhir/laboratory/ImplementationGuide/hl7.fhir.eu.laboratory"/>
@@ -49,12 +49,12 @@
   <dependsOn id="ch_fhir_ig_ch_lab_report">
     <uri value="http://fhir.ch/ig/ch-lab-report/ImplementationGuide/ch.fhir.ig.ch-lab-report"/>
     <packageId value="ch.fhir.ig.ch-lab-report"/>
-    <version value="1.0.0-ballot"/>
+    <version value="1.0.0"/>
   </dependsOn>
   <dependsOn id="ch_fhir_ig_ch_core">
     <uri value="http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core"/>
     <packageId value="ch.fhir.ig.ch-core"/>
-    <version value="5.0.0-ballot"/>
+    <version value="5.0.0"/>
   </dependsOn>
   <dependsOn id="hl7_fhir_uv_extensions_r4">
     <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
@@ -694,6 +694,17 @@
         <valueString value="Bundle"/>
       </extension>
       <reference>
+        <reference value="Bundle/1cDoc-NeisseriaGonorrhoeae"/>
+      </reference>
+      <name value="1 Doc - Neisseria Gonorrhoeae"/>
+      <description value="Example for a CH ELM Document: Laboratory Report (where the 'Lab' is the same as the 'Author')"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
         <reference value="Bundle/10Doc-Legionella"/>
       </reference>
       <name value="10Doc - Legionella"/>
@@ -889,6 +900,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DiagnosticReport"/>
+      </extension>
+      <reference>
+        <reference value="DiagnosticReport/1cDR-NeisseriaGonorrhoeae"/>
+      </reference>
+      <name value="1cDR - Neisseria Gonorrhoeae"/>
+      <description value="Example for a CH ELM DiagnosticReport: Laboratory Report"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-diagnosticreport"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="Composition"/>
       </extension>
       <reference>
@@ -897,6 +919,17 @@
       <name value="1Comp - Neisseria Gonorrhoeae"/>
       <description value="Example for a CH ELM Composition: Laboratory Report"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-composition"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ServiceRequest"/>
+      </extension>
+      <reference>
+        <reference value="ServiceRequest/1cSR-Order"/>
+      </reference>
+      <name value="1cSR - Order"/>
+      <description value="Example for a CH ELM ServiceRequest: Laboratory Order"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-servicerequest-laboratory-order"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -974,6 +1007,28 @@
       <name value="1PR - Monika Giacometti @ Kantonsspital ABC"/>
       <description value="Example for a CH ELM PractitionerRole: Orderer"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-practitionerrole-orderer"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="PractitionerRole"/>
+      </extension>
+      <reference>
+        <reference value="PractitionerRole/1cPR-KsAbc"/>
+      </reference>
+      <name value="1PR - Monika Giacometti @ Kantonsspital ABC"/>
+      <description value="Example for a CH ELM PractitionerRole: Orderer where the organization is not known, only the prtactitioner"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-practitionerrole-orderer"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/1cPract-KsAbc"/>
+      </reference>
+      <name value="1Pract - Giacometti"/>
+      <description value="Example for a CH ELM Practitioner: Orderer where only the name, plz and city is known"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-practitioner-orderer"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -1233,17 +1288,6 @@
         <valueString value="Bundle"/>
       </extension>
       <reference>
-        <reference value="Bundle/3Doc-CPE"/>
-      </reference>
-      <name value="3Doc - Carbapenemase-producing Enterobacteriaceae (CPE)"/>
-      <description value="Example for a CH ELM Document: Laboratory Report (organism in addition to the leading LOINC code)"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Bundle"/>
-      </extension>
-      <reference>
         <reference value="Bundle/40Doc-Crimean-Congo"/>
       </reference>
       <name value="40Doc - Crimean-Congo"/>
@@ -1453,6 +1497,28 @@
         <valueString value="Bundle"/>
       </extension>
       <reference>
+        <reference value="Bundle/58Doc-Coxiella"/>
+      </reference>
+      <name value="58Doc - Coxiella"/>
+      <description value="Example Document for reporting titer ratio"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/59Doc-EHEC"/>
+      </reference>
+      <name value="59Doc - EHEC"/>
+      <description value="Example Document for reporting EHEC toxin"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
         <reference value="Bundle/5Doc-TreponemaPallidum"/>
       </reference>
       <name value="5Doc - Treponema pallidum"/>
@@ -1501,6 +1567,17 @@
       </reference>
       <name value="9Doc - HepatiteC"/>
       <description value="Example Document for Hepatite C"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/3Doc-CPE"/>
+      </reference>
+      <name value="Carbapenemase-producing Enterobacteriaceae"/>
+      <description value="Example Document for reporting Carbapenemase-producing Enterobacteriaceae"/>
       <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
     </resource>
     <resource>
@@ -2495,17 +2572,6 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="DocumentReference"/>
-      </extension>
-      <reference>
-        <reference value="DocumentReference/1-DocumentReferenceResponseFailed"/>
-      </reference>
-      <name value="DocumentReference for  Neisseria Gonorhoeae - falied"/>
-      <description value="Example for a CH ELM DocumentReference: Laboratory Report - failed"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceResponse"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
@@ -2514,83 +2580,6 @@
       <name value="DocumentReference for  Publish Response"/>
       <description value="A profile on the DocumentReference resource for the publication response: &#xA;- must be status current&#xA;- must have an identifier"/>
       <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="DocumentReference"/>
-      </extension>
-      <reference>
-        <reference value="DocumentReference/2-DocumentReferenceStrict"/>
-      </reference>
-      <name value="DocumentReference for reporting Chlamydia Trachomatis"/>
-      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="DocumentReference"/>
-      </extension>
-      <reference>
-        <reference value="DocumentReference/2-DocumentReference"/>
-      </reference>
-      <name value="DocumentReference for reporting Chlamydia Trachomatis"/>
-      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="DocumentReference"/>
-      </extension>
-      <reference>
-        <reference value="DocumentReference/2-DocumentReferenceVctStrict"/>
-      </reference>
-      <name value="DocumentReference for reporting Chlamydia Trachomatis with Patient VCT Code"/>
-      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="DocumentReference"/>
-      </extension>
-      <reference>
-        <reference value="DocumentReference/2-DocumentReferenceVct"/>
-      </reference>
-      <name value="DocumentReference for reporting Chlamydia Trachomatis with Patient VCT Code"/>
-      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="DocumentReference"/>
-      </extension>
-      <reference>
-        <reference value="DocumentReference/1-DocumentReferenceStrict"/>
-      </reference>
-      <name value="DocumentReference for reporting Neisseria Gonorhoeae"/>
-      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="DocumentReference"/>
-      </extension>
-      <reference>
-        <reference value="DocumentReference/1-DocumentReference"/>
-      </reference>
-      <name value="DocumentReference for reporting Neisseria Gonorhoeae"/>
-      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="DocumentReference"/>
-      </extension>
-      <reference>
-        <reference value="DocumentReference/7-DocumentReferenceStrict"/>
-      </reference>
-      <name value="DocumentReference for reporting SARSCoV2"/>
-      <description value="Example for a CH ELM DocumentReference: Laboratory Report"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -2613,28 +2602,6 @@
       <name value="DocumentReference for sending the report with strict validation"/>
       <description value="A profile on the DocumentReference resource with publication constraints: &#xA;- must be status current&#xA;- must have an identifier&#xA;- uses attachment.url to carry the document as a contained resource&#xA;- strict validation according to http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
       <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="DocumentReference"/>
-      </extension>
-      <reference>
-        <reference value="DocumentReference/1-DocumentReferenceResponseCompleted"/>
-      </reference>
-      <name value="DocumentReference Response for  Neisseria Gonorhoeae completed"/>
-      <description value="Example for a CH ELM DocumentReference: Laboratory Report - completed"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceResponse"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="DocumentReference"/>
-      </extension>
-      <reference>
-        <reference value="DocumentReference/1-DocumentReferenceResponseInProgress"/>
-      </reference>
-      <name value="DocumentReference Response for Neisseria Gonorhoeae in progress"/>
-      <description value="Example for a CH ELM DocumentReference: Laboratory Report - in-progress"/>
-      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceResponse"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -2847,6 +2814,180 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/1c-DocumentReferenceStrict"/>
+      </reference>
+      <name value="Publish 1cDoc-NeisseriaGonorrhoeae (Strict)"/>
+      <description value="Reporting Neisseria Gonorhoeae with minimal orderer information (name, plz, city)"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/Publish-1Doc-NeisseriaGonorrhoeae"/>
+      </reference>
+      <name value="Publish 1Doc-NeisseriaGonorrhoeae"/>
+      <description value="Reporting Neisseria Gonorhoeae"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/1-DocumentReferenceStrict"/>
+      </reference>
+      <name value="Publish 1Doc-NeisseriaGonorrhoeae (Strict)"/>
+      <description value="Reporting Neisseria Gonorhoeae"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/2-DocumentReferenceStrict"/>
+      </reference>
+      <name value="Publish 2Doc-ChlamydiaTrachomatis (Strict)"/>
+      <description value="Reporting Chlamydia Trachomatis"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/2-DocumentReference"/>
+      </reference>
+      <name value="Publish 2Doc-ChlamydiaTrachomatis (Strict)"/>
+      <description value="Reporting Chlamydia Trachomatis"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/Publish-2Doc-ChlamydiaTrachomatis-Vct"/>
+      </reference>
+      <name value="Publish 2Doc-ChlamydiaTrachomatis with Patient VCT Code"/>
+      <description value="Reporting Chlamydia Trachomatis"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/2-DocumentReferenceVctStrict"/>
+      </reference>
+      <name value="Publish 2Doc-ChlamydiaTrachomatis with Patient VCT Code (Strict)"/>
+      <description value="Reporting Chlamydia Trachomatis"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/Publish-4Doc-Campylobacter"/>
+      </reference>
+      <name value="Publish 4Doc-Campylobacter"/>
+      <description value="Reporting Campylobacter coli"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/Publish-5Doc-TreponemaPallidum"/>
+      </reference>
+      <name value="Publish 5Doc-TreponemaPallidum"/>
+      <description value="Reporting Treponema pallidum"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/Publish-6Doc-Influenza"/>
+      </reference>
+      <name value="Publish 6Doc-Influenza"/>
+      <description value="Reporting Influenza"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/Publish-7Doc-SARSCoV2"/>
+      </reference>
+      <name value="Publish 7Doc-SARSCoV2"/>
+      <description value="Reporting SARSCoV2"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/1-DocumentReferenceResponseCompleted"/>
+      </reference>
+      <name value="Publish Response for Neisseria Gonorhoeae completed"/>
+      <description value="Reporting Neisseria Gonorhoeae"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceResponse"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/1-DocumentReferenceResponseFailed"/>
+      </reference>
+      <name value="Publish Response for Neisseria Gonorhoeae failed"/>
+      <description value="Reporting Neisseria Gonorhoeae"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceResponse"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/1-DocumentReferenceResponseInProgress"/>
+      </reference>
+      <name value="Publish Response for Neisseria Gonorhoeae in progress"/>
+      <description value="Reporting Neisseria Gonorhoeae"/>
+      <exampleCanonical value="http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceResponse"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/Publish-58Doc-Coxiella"/>
+      </reference>
+      <name value="Publish-58Doc-Coxiella"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="DocumentReference"/>
+      </extension>
+      <reference>
+        <reference value="DocumentReference/Publish-59Doc-EHEC"/>
+      </reference>
+      <name value="Publish-59Doc-EHEC"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="SearchParameter"/>
       </extension>
       <reference>
@@ -2946,6 +3087,30 @@
         <reference value="TestScript/Test96-Ignore-Slice-Patient-Eu-Lab-Information"/>
       </reference>
       <name value="Test96-Ignore-Slice-Patient-Eu-Lab-Information"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-resource-format">
+        <valueCode value="application/fhir+xml"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Binary"/>
+      </extension>
+      <reference>
+        <reference value="Binary/Test97-Bundle-CoaxiellaNoRatio"/>
+      </reference>
+      <name value="Test97 - Coxiella without titer ratio which should raise an error"/>
+      <description value="Coxiella without titer ratio which should raise an error"/>
+      <exampleCanonical value="http://hl7.org/fhir/StructureDefinition/Binary"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="TestScript"/>
+      </extension>
+      <reference>
+        <reference value="TestScript/Test97-CoaxiellaNoRatio"/>
+      </reference>
+      <name value="Test97-CoaxiellaNoRatio"/>
       <exampleBoolean value="true"/>
     </resource>
     <page>
