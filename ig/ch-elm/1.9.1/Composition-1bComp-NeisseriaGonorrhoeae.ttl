@@ -1,0 +1,61 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-elm/Composition/1bComp-NeisseriaGonorrhoeae> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "1bComp-NeisseriaGonorrhoeae"] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:identifier [
+     fhir:system [ fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "urn:uuid:1901332d-6012-443f-9690-9291df32e177" ]
+  ] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a sct:4241000179101 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:version [ fhir:v "http://snomed.info/sct/2011000195101" ] ;
+       fhir:code [ fhir:v "4241000179101" ] ;
+       fhir:display [ fhir:v "Laborbericht" ]
+     ] [
+       a loinc:11502-2 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "11502-2" ] ;
+       fhir:display [ fhir:v "Laboratory report" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-elm/Patient/Pat-001> ;
+     fhir:reference [ fhir:v "Patient/Pat-001" ]
+  ] ; # 
+  fhir:date [ fhir:v "2023-07-14T12:10:00+02:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-elm/Organization/1bOrg-Broker> ;
+     fhir:reference [ fhir:v "Organization/1bOrg-Broker" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Laborbericht MikroLab - 14.07.2023"] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Testergebnisse" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:18725-2 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "18725-2" ] ;
+         fhir:display [ fhir:v "Microbiology studies (set)" ]
+       ] )
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-elm/Observation/1bObs-NeisseriaGonorrhoeae> ;
+       fhir:reference [ fhir:v "Observation/1bObs-NeisseriaGonorrhoeae" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
