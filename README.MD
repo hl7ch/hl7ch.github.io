@@ -71,6 +71,10 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
 
 **Note:** You should not run publication actions in parallel if you have the publish flag set to true, this will not work (merge conflicts).
 
+### Keeping https://fhir.org/guides/registry/ in sync
+
+During publication ig-registry/fhir-ig-list.json gets updated. If you wan't to keep the https://fhir.org/guides/registry/ in sync, you need to copy the changes from ig-registry/fhir-ig-list.json to https://github.com/ahdis/ig-registry/blob/master/fhir-ig-list.json and then create a PR to https://github.com/FHIR/ig-registry.
+
 # Background setup
 The implementation guides are hosted here in this repository, but then uploaded to a google drive.   
 [fhir.ch](https://fhir.ch) has reverse proxy setup and returns the content from the the google drive.
