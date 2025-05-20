@@ -26,7 +26,7 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
 3. Update the date and version in the changelog file (according to the step above)
 4. Update the STU note box in **index.md** according to the type of publication   
 
-   Ballot (STU or informative -> adapt the text):   
+   **Ballot version** (STU or informative -> adapt the text):   
    ```
    This implementation guide is under STU ballot by [HL7 Switzerland](https://www.hl7.ch/) until September 30th, 2025 midnight.   
    Please add your feedback via the ‘Propose a change’-link in the footer on the page where you have comments.
@@ -34,9 +34,9 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
    [Changelog](changelog.html) with significant changes, open and closed issues.
    ```
 
-   Stable version:
+   **Stable version**:
    ```
-   [Significant changes, open and closed issues.](changelog.html)
+   [Changelog](changelog.html) with significant changes, open and closed issues.
    ```
 5. Create/update the file **publication-request.json** in the IG root folder, see also [https://confluence.hl7.org/display/FHIR/IG+Publication+Request+Documentation](https://confluence.hl7.org/display/FHIR/IG+Publication+Request+Documentation).
    ```
@@ -67,7 +67,7 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
  
 ### Publish an updated or new release of an IG 
 1. Go to [https://github.com/hl7ch/hl7ch.github.io/actions/workflows/BuildIG_publish.yaml](https://github.com/hl7ch/hl7ch.github.io/actions/workflows/BuildIG_publish.yaml) (> Actions > Build IG and publish)
-2. Click on **Run workflow**, provide the repository of the IG repo and the version of the IG. If the tick is set it will commit the tag the release in the repository here and publish to [fhir.ch](https://fhir.ch). If the publish tick is set to false, the generated IGs will be provided as an artifact (dry run).  
+2. Click on **Run workflow**, provide the **repository** of the IG and the **version** of the IG. If the **tick** is set it will commit the tag the release in the repository here and publish to [fhir.ch](https://fhir.ch). If the publish tick is set to false, the generated IGs will be provided as an artifact (dry run).  
 3. If everything is successful, the master branch will be tagged with the version you specified and you get a zulip message in the [switzerland stream](https://chat.fhir.org/#narrow/stream/214781-switzerland/topic/fhir.2Ech.3A.20new.20FHIR.20Implementation.20Guide.20published) that the IG got published
 
 **Note:** You should not run publication actions in parallel if you have the publish flag set to true, this will not work (merge conflicts).
