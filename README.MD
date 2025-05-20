@@ -23,7 +23,8 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
       - after the publication change the value to `releaselabel: ci-build`   
    - all `dependencies`   
    - `license: CC0-1.0`   
-3. Update the STU note box in **index.md** according to the type of publication   
+3. Update the date and version in the changelog file (according to the step above)
+4. Update the STU note box in **index.md** according to the type of publication   
 
    Ballot (STU or informative -> adapt the text):   
    ```
@@ -37,7 +38,7 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
    ```
    [Significant changes, open and closed issues.](changelog.html)
    ```
-4. Create/update the file **publication-request.json** in the IG root folder, see also [https://confluence.hl7.org/display/FHIR/IG+Publication+Request+Documentation](https://confluence.hl7.org/display/FHIR/IG+Publication+Request+Documentation).
+5. Create/update the file **publication-request.json** in the IG root folder, see also [https://confluence.hl7.org/display/FHIR/IG+Publication+Request+Documentation](https://confluence.hl7.org/display/FHIR/IG+Publication+Request+Documentation).
    ```
    {
      "package-id" : "ch.fhir.ig.ch-core",
@@ -52,8 +53,8 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
    }
    ```
    For the first release, some more elements are required.
-5. Verify that the IG build is as expected and error-free, therefore check the ci build.
-6. Commit and push the changes to the master branch of the repository   
+6. Verify that the IG build is as expected and error-free, therefore check the ci build.
+7. Commit and push the changes to the master branch of the repository   
    
 ## Publish an IG
 
