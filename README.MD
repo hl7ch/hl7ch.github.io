@@ -25,9 +25,9 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
    - `license: CC0-1.0`   
 3. Update the STU note box in **index.md** according to the type of publication   
 
-   Ballot (STU or informative):   
+   Ballot (STU or informative -> adapt the text):   
    ```
-   This implementation guide is under STU ballot by [HL7 Switzerland](https://www.hl7.ch/) until September 30th, 2024 midnight.   
+   This implementation guide is under STU ballot by [HL7 Switzerland](https://www.hl7.ch/) until September 30th, 2025 midnight.   
    Please add your feedback via the ‘Propose a change’-link in the footer on the page where you have comments.
 
    [Changelog](changelog.html) with significant changes, open and closed issues.
