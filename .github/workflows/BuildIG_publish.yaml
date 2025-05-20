@@ -144,7 +144,7 @@ jobs:
       - name: 🏃‍♂️ Run Publication
         timeout-minutes: 135 # We need a long timeout here
         run: |
-              java -jar -Dfile.encoding=UTF-8 -Xms3550m -Xmx3550m ./publisher.jar -go-publish -source ${{ steps.repo_name.outputs.repo }} -web $PWD -registry ig-registry/fhir-ig-list.json -history ig-history -templates ./templates -temp $PWD/buildtmp
+              java -jar -Dfile.encoding=UTF-8 -Xms3550m -Xmx8192m ./publisher.jar -go-publish -source ${{ steps.repo_name.outputs.repo }} -web $PWD -registry ig-registry/fhir-ig-list.json -history ig-history -templates ./templates -temp $PWD/buildtmp
 
       - name: get a second token for the Github APP that we can commit to the owner repo
         id: app-token2
