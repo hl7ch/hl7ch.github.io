@@ -67,7 +67,7 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
 ### Publish an updated or new release of an IG 
 1. Go to [https://github.com/hl7ch/hl7ch.github.io/actions/workflows/BuildIG_publish.yaml](https://github.com/hl7ch/hl7ch.github.io/actions/workflows/BuildIG_publish.yaml) (> Actions > Build IG and publish)
 2. Click on **Run workflow**, provide the repository of the IG repo and the version of the IG. If the tick is set it will commit the tag the release in the repository here and publish to [fhir.ch](https://fhir.ch). If the publish tick is set to false, the generated IGs will be provided as an artifact (dry run).  
-3. If everything is successful, the master branch will be tagged with the version you specified and you get a zulip message in the [switzerland stream](https://chat.fhir.org/#narrow/stream/214781-switzerland/topic/fhir.2Ech.3A.20new.20FHIR.20Implementation.20Guide.20published) that the IG go published
+3. If everything is successful, the master branch will be tagged with the version you specified and you get a zulip message in the [switzerland stream](https://chat.fhir.org/#narrow/stream/214781-switzerland/topic/fhir.2Ech.3A.20new.20FHIR.20Implementation.20Guide.20published) that the IG got published
 
 **Note:** You should not run publication actions in parallel if you have the publish flag set to true, this will not work (merge conflicts).
 
@@ -76,7 +76,7 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
 During publication ig-registry/fhir-ig-list.json gets updated. If you wan't to keep the https://fhir.org/guides/registry/ in sync, you need to copy the changes from ig-registry/fhir-ig-list.json to https://github.com/ahdis/ig-registry/blob/master/fhir-ig-list.json and then create a PR to https://github.com/FHIR/ig-registry.
 
 # Background setup
-The implementation guides are hosted here in this repository, but then uploaded to a google drive.   
-[fhir.ch](https://fhir.ch) has reverse proxy setup and returns the content from the the google drive.
+The implementation guides are hosted here in this repository.   
+[fhir.ch](https://fhir.ch) syncs the setup every 10 minutes from this repository behind reverse proxy setup and returns the content from the github page.
 
 This repository is too big, that it could be hosted via github pages :-(

@@ -189,33 +189,6 @@ jobs:
           git commit -m "${{ steps.repo_name.outputs.repo }} - ${{ env.version }}"
           git push
 
-      - id: 'auth'
-        if: ${{ env.publish == 'true' }}
-        uses: 'google-github-actions/auth@v2'
-        with:                                     
-          workload_identity_provider: 'projects/436430299306/locations/global/workloadIdentityPools/pool1/providers/oidc-github-provider'
-          service_account: 'github-fhir-ch@fhir-ch.iam.gserviceaccount.com'
-
-      - name: '☁️ Set up Cloud SDK'
-        if: ${{ env.publish == 'true' }}
-        uses: 'google-github-actions/setup-gcloud@v2'
-        with:
-          version: '>= 363.0.0'
-
-      - name: '☁️ Use gcloud CLI'
-        if: ${{ env.publish == 'true' }}
-        run: 'gcloud info'
-
-      - name: '🚚 Publish IG to fhir.ch 🚀 🚀 🚀 '
-        if: ${{ env.publish == 'true' }}
-        run: |
-          gsutil -m rsync ./ig/${{ steps.repo_name.outputs.repo }} gs://fhir-ch-www/ig/${{ steps.repo_name.outputs.repo }}
-          gsutil -m rsync -r ./ig/${{ steps.repo_name.outputs.repo }}/assets gs://fhir-ch-www/ig/${{ steps.repo_name.outputs.repo }}/assets
-          gsutil -m rsync -r ./ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }} gs://fhir-ch-www/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}
-          gsutil cp ./package-feed.xml gs://fhir-ch-www/
-          gsutil cp ./package-registry.json gs://fhir-ch-www/
-          gsutil cp ./publication-feed.xml gs://fhir-ch-www/
-
       - name: Send a stream message to Zulip
         if: ${{ env.publish == 'true' }}
         uses: zulip/github-actions-zulip/send-message@v1
