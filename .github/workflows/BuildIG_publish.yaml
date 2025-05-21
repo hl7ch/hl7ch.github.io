@@ -158,6 +158,7 @@ jobs:
       - name: tag the ig repository with the published version
         if: ${{ env.publish == 'true' }}
         id: tag_release
+        continue-on-error: true
         run: |
           cd ${{ steps.repo_name.outputs.repo }}
           git remote set-url origin https://x-access-token:${{ steps.app-token2.outputs.token }}@github.com/${{ steps.org_name.outputs.org }}/${{ steps.repo_name.outputs.repo }}.git
