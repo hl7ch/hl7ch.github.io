@@ -14,7 +14,7 @@ on:
         default: '1.0.0'
         type: string
       publish:
-        description: 'Publish to github / fhir.ch if build is successful'
+        description: 'Publish to github if build is successful'
         required: true
         default: true
         type: boolean
@@ -108,7 +108,7 @@ jobs:
       - name: 📝 List path
         run: ls -R ./
 
-      - name: app a token for the Github APP that we can commit to the owner repo, app needs permission to org and repo, see https://github.com/organizations/hl7ch/settings/apps/fhir-ig-publication-on-fhir-ch/permissions
+      - name: app a token for the Github APP that we can read from the owner repo, app needs permission to org and repo, see https://github.com/organizations/hl7ch/settings/apps/fhir-ig-publication-on-fhir-ch/permissions
         id: app-token
         uses: actions/create-github-app-token@v1
         with:
@@ -158,10 +158,9 @@ jobs:
       - name: tag the ig repository with the published version
         if: ${{ env.publish == 'true' }}
         id: tag_release
-        env:
-          GH_TOKEN: ${{ steps.app-token2.outputs.token }}
         run: |
           cd ${{ steps.repo_name.outputs.repo }}
+          git remote set-url origin https://x-access-token:${{ steps.app-token2.outputs.token }}@github.com/${{ steps.org_name.outputs.org }}/${{ steps.repo_name.outputs.repo }}.git
           git tag -fa ${{ env.version }} -m "Release ${{ env.version }}"
           git push origin ${{ env.version }} --force
           echo "sha=$(git rev-parse --verify "$GITHUB_SHA")" >> "$GITHUB_OUTPUT"
@@ -178,11 +177,9 @@ jobs:
           path: ./ig/${{ steps.repo_name.outputs.repo }} 
           retention-days: 2
 
-      - name: 🐙 Commit and push changes to 
+      - name: 🐙 Commit and push changes to hl7ch.github.io
         if: ${{ env.publish == 'true' }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config pull.ff only
           git pull
           git add --sparse .
