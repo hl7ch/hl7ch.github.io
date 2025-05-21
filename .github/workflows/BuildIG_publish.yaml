@@ -74,32 +74,7 @@ jobs:
             templates
             ig-history
             ig-registry
-            ig/${{ steps.repo_name.outputs.repo }}
-
-      - uses: actions/checkout@v4
-        if: ${{ steps.repo_name.outputs.repo == 'ch-term' }}
-        with:
-          sparse-checkout: |
-            .github
-            assets
-            templates
-            ig-history
-            ig-registry
-            ig/ch-term
-            ig/ch-epr-term
-
-      - uses: actions/checkout@v4
-        if: ${{ steps.repo_name.outputs.repo == 'ch-epr-fhir' }}
-        with:
-          sparse-checkout: |
-            .github
-            assets
-            templates
-            ig-history
-            ig-registry
-            ig/ch-epr-fhir
-            ig/ch-epr-mhealth
-    
+            ig/${{ steps.repo_name.outputs.repo }}    
       - name: 📥 Download IG Publisher
         run: |
               wget -q https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
