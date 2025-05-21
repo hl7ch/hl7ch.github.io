@@ -7,19 +7,19 @@ function Redirect($url)
 
 $accept = $_SERVER['HTTP_ACCEPT'];
 if (strpos($accept, 'application/json+fhir') !== false)
-  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0-ballot/Specimen-Lsac.json2');
+  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0/Specimen-Lsac.json2');
 elseif (strpos($accept, 'application/fhir+json') !== false)
-  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0-ballot/Specimen-Lsac.json1');
+  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0/Specimen-Lsac.json1');
 elseif (strpos($accept, 'json') !== false)
-  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0-ballot/Specimen-Lsac.json');
+  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0/Specimen-Lsac.json');
 elseif (strpos($accept, 'application/xml+fhir') !== false)
-  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0-ballot/Specimen-Lsac.xml2');
+  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0/Specimen-Lsac.xml2');
 elseif (strpos($accept, 'application/fhir+xml') !== false)
-  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0-ballot/Specimen-Lsac.xml1');
+  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0/Specimen-Lsac.xml1');
 elseif (strpos($accept, 'html') !== false)
-  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0-ballot/Specimen-Lsac.html');
+  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0/Specimen-Lsac.html');
 else 
-  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0-ballot/Specimen-Lsac.xml');
+  Redirect('http://fhir.ch/ig/ch-lab-order/2.0.0/Specimen-Lsac.xml');
 ?>
     
 You should not be seeing this page. If you do, PHP has failed badly.
