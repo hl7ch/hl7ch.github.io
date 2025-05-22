@@ -1,0 +1,69 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Observation/ObservationEcoli> a fhir:Observation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ObservationEcoli"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-observation-r4-r5"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-observation-r4-r5>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Observation ObservationEcoli</b></p><a name=\"ObservationEcoli\"> </a><a name=\"hcObservationEcoli\"> </a><a name=\"ObservationEcoli-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-r4-r5.html\">My Observation Profile</a></p></div><p><b>basedOn</b>: <a href=\"ServiceRequest-4-sepsis-ServiceRequest.html\">ServiceRequest: identifier = Placer Identifier: Y274589; status = active; intent = original-order; priority = urgent; reasonCode = Sepsis screening</a></p><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 43409-2}\">Bacteria identified in Isolate by Culture</span></p><p><b>subject</b>: <a href=\"Patient-SaraSpeckmann.html\">Sara Speckmann  Female, DoB: 1975-12-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400006)</a></p><p><b>effective</b>: 2025-04-08</p><p><b>issued</b>: 2025-04-08 10:28:00+0100</p><p><b>performer</b>: <a href=\"PractitionerRole-EvaErlenmeyerLaborPipette.html\">E. Erlenmeyer, Labor Pipette</a></p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 112283007}\">Escherichia coli (organism)</span></p><p><b>hasMember</b>: </p><ul><li><a href=\"Observation-ObservationSusceptibilityEcoli.html\">Observation Bacterial susceptibility panel</a></li><li><a href=\"Observation-ObservationGramStainResultEcoli.html\">Observation Microscopic observation [Identifier] in Isolate by Gram stain</a></li></ul></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/ServiceRequest/4-sepsis-ServiceRequest> ;
+     fhir:reference [ fhir:v "ServiceRequest/4-sepsis-ServiceRequest" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:43409-2 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "43409-2" ] ;
+       fhir:display [ fhir:v "Bacteria identified in Isolate by Culture" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/SaraSpeckmann> ;
+     fhir:reference [ fhir:v "Patient/SaraSpeckmann" ]
+  ] ; # 
+  fhir:effective [
+     a fhir:dateTime ;
+     fhir:v "2025-04-08"^^xsd:date
+  ] ; # 
+  fhir:issued [ fhir:v "2025-04-08T10:28:00+01:00"^^xsd:dateTime] ; # 
+  fhir:performer ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/EvaErlenmeyerLaborPipette> ;
+     fhir:reference [ fhir:v "PractitionerRole/EvaErlenmeyerLaborPipette" ] ;
+     fhir:display [ fhir:v "E. Erlenmeyer, Labor Pipette" ]
+  ] ) ; # 
+  fhir:value [
+     a fhir:CodeableConcept ;
+     fhir:coding ( [
+       a sct:112283007 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "112283007" ] ;
+       fhir:display [ fhir:v "Escherichia coli (organism)" ]
+     ] )
+  ] ; # 
+  fhir:hasMember ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Observation/ObservationSusceptibilityEcoli> ;
+     fhir:reference [ fhir:v "Observation/ObservationSusceptibilityEcoli" ]
+  ] [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Observation/ObservationGramStainResultEcoli> ;
+     fhir:reference [ fhir:v "Observation/ObservationGramStainResultEcoli" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

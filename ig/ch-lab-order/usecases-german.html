@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Use Cases in German - CH LAB-Order (R4) v2.0.0</title>
+    <title>Use Cases in German - CH LAB-Order (R4) v3.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,11 +51,13 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"3"}
     h3,h4,h5,h6{--heading-prefix:"3"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <div id="family-nav">
@@ -77,7 +80,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Order (R4)</span>
             <br/>
-            <span style="display:inline-block;">2.0.0 - trial-use
+            <span style="display:inline-block;">3.0.0-ballot - ballot
 
 
 
@@ -172,6 +175,9 @@
   <li>
     <a href="artifacts.html">Artifacts</a>
   </li>
+  <li>
+    <a href="changelog.html">Changelog</a>
+  </li>
 </ul>
             </div>  <!-- /.nav-collapse -->
           </div>  <!-- /.container -->
@@ -204,7 +210,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v2.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v3.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Use Cases in German</h2>
   
 
@@ -226,6 +232,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#anwendungsfall-2-anforderung-zusätzlicher-tests-für-dieselbe-probe" id="markdown-toc-anwendungsfall-2-anforderung-zusätzlicher-tests-für-dieselbe-probe">Anwendungsfall 2: Anforderung zusätzlicher Tests für dieselbe Probe</a></li>
   <li><a href="#anwendungsfall-3-sammelauftrag-für-toxikologische-tests-biologische-überwachung" id="markdown-toc-anwendungsfall-3-sammelauftrag-für-toxikologische-tests-biologische-überwachung">Anwendungsfall 3: Sammelauftrag für toxikologische Tests (biologische Überwachung)</a></li>
   <li><a href="#anwendungsfall-4-vorschlag-von-zusatz--oder-alternativuntersuchungen-durch-den-laborarzt-auftragsempfänger-empfänger" id="markdown-toc-anwendungsfall-4-vorschlag-von-zusatz--oder-alternativuntersuchungen-durch-den-laborarzt-auftragsempfänger-empfänger">Anwendungsfall 4: Vorschlag von Zusatz- oder Alternativuntersuchungen durch den Laborarzt (Auftragsempfänger, Empfänger)</a></li>
+  <li><a href="#use-case-5-erstellen-von-labor-auftrags-panels-die-die-plandefinition-aus-dem-order-katalog-instanziieren" id="markdown-toc-use-case-5-erstellen-von-labor-auftrags-panels-die-die-plandefinition-aus-dem-order-katalog-instanziieren">Use Case 5: Erstellen von Labor-Auftrags-Panels, die die Plandefinition aus dem Order-Katalog instanziieren.</a></li>
 </ul>
 
 </div>
@@ -237,8 +244,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 -->
 <h3 id="anwendungsfall-1-einen-laborauftragsdokument-generieren">Anwendungsfall 1: Einen Laborauftragsdokument generieren</h3>
 
-<p><strong>Fig.: Arbeitsablauf bei Laboraufträgen und Tests</strong></p>
-<p><img src="LabOrderWorkflow.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig.: Arbeitsablauf bei Laboraufträgen und Tests" style="width:60%" /></p>
+<p><strong>Fig. 1: Arbeitsablauf bei Laboraufträgen und Tests</strong></p>
+<p><img src="LabOrderWorkflow.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig. 1: Arbeitsablauf bei Laboraufträgen und Tests" style="width:60%" /></p>
 <div style="clear:both;"></div>
 
 <h4 id="laborauftragsdokument-mit-serviceanforderung">Laborauftragsdokument mit Serviceanforderung</h4>
@@ -295,19 +302,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Im Beispiel des 2-pertussis Falles werden die internen Labortests (automatisiertes Blutbild, CRP) durch die Suche nach Bordetella pertussis- und parapertussis-DNA im Rachenabstrich ergänzt, die von einem externen Vertragslabor durchgeführt wird, um Keuchhusten auszuschliessen.</p>
 
-<p>Wenn das placer System zusätzliche Tests für die vorhandenen Proben anfordert, kopiert es die ursprüngliche ServiceAnforderung, fügt die erforderlichen Labortests und einen Auftragskontrollcode ‘RP’ hinzu, was eine Auftrags-/Leistungsersetzungsanforderung bedeutet. Eine spezielle Invarianzregel ‘sr-1’ sorgt dafür, dass ein Verweis auf die ursprüngliche ServiceAnforderung hergestellt wird.</p>
+<p>Wenn das placer System zusätzliche Tests für die vorhandenen Proben anfordert, kopiert es die ursprüngliche ServiceAnforderung, fügt die erforderlichen Labortests und einen Auftragskontrollcode 'RP' hinzu, was eine Auftrags-/Leistungsersetzungsanforderung bedeutet. Eine spezielle Invarianzregel 'sr-1' sorgt dafür, dass ein Verweis auf die ursprüngliche ServiceAnforderung hergestellt wird.</p>
 
 <p>Die Order Control Codes können auch zum Stornieren, Halten oder Freigeben von gehaltenen Bestellanforderungen verwendet werden. Auch in diesen Fällen muss der Verweis auf die ursprüngliche Bestellung hergestellt werden.</p>
 
 <ul>
   <li>Der 2-pertussis-ServiceRequest wird ersetzt durch den</li>
-  <li>2-Pertussis-ServiceRequest-add-test, der die Untersuchung des Rachenabstrichs auf Pertussis- oder Parapertussis-DNA anfordert</li>
+  <li>2-Pertussis-ServiceRequestAddTest, der die Untersuchung des Rachenabstrichs auf Pertussis- oder Parapertussis-DNA anfordert</li>
 </ul>
 
-<p>Beispiel für eine referenzierte Serviceanfrage: <a href="ServiceRequest-2-pertussis-service-request.html">CH LAB-Order 2-pertussis</a>, der Code im Element ‘orderDetail’ wäre ‘NW’ für “Neue Bestellung/Leistung”, oder das Element könnte ganz weggelassen werden.</p>
+<p>Beispiel für eine referenzierte Serviceanfrage: <a href="ServiceRequest-2-pertussis-ServiceRequest.html">CH LAB-Order 2-pertussis</a>, der Code im Element 'orderDetail' wäre 'NW' für "Neue Bestellung/Leistung", oder das Element könnte ganz weggelassen werden.</p>
 
-<p>Beispiel Service Replace Request: <a href="ServiceRequest-2-pertussis-service-request-add-test.html">CH LAB-Order 2-pertussis Zusatztest</a>
-Der Replace Request enthält einen Verweis auf den vorherigen ServiceRequest und ein Element ‘orderDetail’, das den Order Control Code aus dem Code System v2-0119 trägt: ‘RP’ für “Order/service replace request”, ‘CA’ für “Cancel order/service request”, ‘HD’ für “Hold order request”, und ‘RL’ für “Release previous hold”</p>
+<p>Beispiel Service Replace Request: <a href="ServiceRequest-2-pertussis-ServiceRequestAddTest.html">CH LAB-Order 2-pertussis Zusatztest</a>
+Der Replace Request enthält einen Verweis auf den vorherigen ServiceRequest und ein Element 'orderDetail', das den Order Control Code aus dem Code System v2-0119 trägt: 'RP' für "Order/service replace request", 'CA' für "Cancel order/service request", 'HD' für "Hold order request", und 'RL' für "Release previous hold"</p>
 
 <h3 id="anwendungsfall-3-sammelauftrag-für-toxikologische-tests-biologische-überwachung">Anwendungsfall 3: Sammelauftrag für toxikologische Tests (biologische Überwachung)</h3>
 
@@ -340,6 +347,14 @@ Der Replace Request enthält einen Verweis auf den vorherigen ServiceRequest und
   <li>ServiceRequest.category: ProposalForAdditionalExam</li>
 </ul>
 
+<h3 id="use-case-5-erstellen-von-labor-auftrags-panels-die-die-plandefinition-aus-dem-order-katalog-instanziieren">Use Case 5: Erstellen von Labor-Auftrags-Panels, die die Plandefinition aus dem Order-Katalog instanziieren.</h3>
+
+<p><strong>Fig. 2: Renal Insufficiency Service</strong></p>
+<p><img src="RenalInsufficiencyPanel.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig. 2: Renal Insufficiency Service" style="width:95%" /></p>
+<div style="clear:both;"></div>
+
+<p>Auftraggeber und Labore verwenden gerne Panels mit mehreren Einzel-Tests oder verschachtelt mit weiteren Panels. Die Labore stellen die Panels gemäss dem eigenen Angebot zur Verfügung. In diesem Beispiel geht es um die Abklärung und Standortbestimmung einer chronischen Niereninsuffizienz. Der Auftrag besteht aus zwei Unteraufträgen, eGFR (estimated Glomerulum Filtrationsrate) und uACR (Albumin/Creatinine Verhältnis im Urin). Letzterer enthält wiederum zwei Unteraufträge: die Albumin Konzentration und die Kreatinin Konzentration im Urin.
+Die Plandefinitionen und Aktivitätsdefinitionen sind im Laborkompendium hinterlegt und können vom Auftraggeber gewählt werden.</p>
 
 
 
@@ -359,7 +374,7 @@ Der Replace Request enthält einen Verweis auf den vorherigen ServiceRequest und
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 18, 2024 13:35+0000">2024-06-18</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 12:30+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -367,7 +382,7 @@ Der Replace Request enthält einen Verweis auf den vorherigen ServiceRequest und
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%232.0.0%20/usecases-german.html&amp;entry%2E247644557=Use%20Cases%20in%20German">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%233.0.0-ballot%20/usecases-german.html&amp;entry%2E247644557=Use%20Cases%20in%20German">Propose a change</a>
 
 
 
@@ -382,7 +397,7 @@ Der Replace Request enthält einen Verweis auf den vorherigen ServiceRequest und
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -393,7 +408,6 @@ Der Replace Request enthält einen Verweis auf den vorherigen ServiceRequest und
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Changelog - CH LAB-Order (R4) v2.0.0</title>
+    <title>Changelog - CH LAB-Order (R4) v3.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,11 +51,13 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"12"}
     h3,h4,h5,h6{--heading-prefix:"12"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <div id="family-nav">
@@ -77,7 +80,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Order (R4)</span>
             <br/>
-            <span style="display:inline-block;">2.0.0 - trial-use
+            <span style="display:inline-block;">3.0.0-ballot - ballot
 
 
 
@@ -172,6 +175,9 @@
   <li>
     <a href="artifacts.html">Artifacts</a>
   </li>
+  <li>
+    <a href="changelog.html">Changelog</a>
+  </li>
 </ul>
             </div>  <!-- /.nav-collapse -->
           </div>  <!-- /.container -->
@@ -204,7 +210,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v2.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v3.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Changelog</h2>
   
 
@@ -222,6 +228,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
+  <li><a href="#changes" id="markdown-toc-changes">Changes</a></li>
+  <li><a href="#fixed" id="markdown-toc-fixed">Fixed</a></li>
   <li><a href="#open-issues-for-stu-3" id="markdown-toc-open-issues-for-stu-3">Open Issues for STU 3</a></li>
   <li><a href="#stu-2-ballot" id="markdown-toc-stu-2-ballot">STU 2 Ballot</a></li>
   <li><a href="#discouraged-loinc-codes" id="markdown-toc-discouraged-loinc-codes">Discouraged LOINC codes</a></li>
@@ -231,6 +239,24 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <!-- markdownlint-disable MD001 MD041 -->
 
 <p>All significant changes to this FHIR implementation guide will be documented on this page.</p>
+
+<h3 id="changes">Changes</h3>
+<ul>
+  <li>In version 2.0.0, the 'basedOn' element in the ServiceRequest resource was pointing in the wrong direction. A sub-ServiceRequest must contain a 'basedOn' element pointing to its parent ServiceRequest. The profiles and examples have been updated to reflect this.</li>
+  <li>The 'code' element in the ServiceRequest has a cardinality of 0..1 and can therefore only contain a single test entry. The data type 'codeableConcept' can have several codes, but only in relation to the same test. This means that different code systems can designate the same test and therefore specify different codes. However, the codeableConcept must not be used as a container for several tests. Each laboratory test must claim a separate ServiceRequest. The examples have been adapted accordingly.</li>
+  <li>Use case 5 has been added for illustration purposes. It shows the hierarchical structure of ServiceRequest for the creation of test panels. At the same time, the diagram shows the basics as PlanDefinition, ActivitityDefinition, SpecimenDefinition and ObservationDefinition, as they can be stored in a compendium.</li>
+  <li>
+    <p>The CH LAB-Order 4-sepsis case study has been supplemented with a diagram showing how the workflow for clinical laboratory orders can look (Fig. 1). It contains a task resource which describes an activity that can be performed on the specimen, and tracks the state of completion of that activity. It is a representation that an activity should be or has been initiated, and eventually, represents the successful or unsuccessful completion of that activity. Below is an example of a reflexed observation, that means, an observation created without explicit ServiceRequest, as consequence of a precedent observation.</p>
+  </li>
+  <li>Add example for Renal Insufficiency as Panel with PlanDefinition and ActionDefinition</li>
+  <li>[Issue#332](https://github.com/hl7ch/ch-lab-order/issues/332  Instance 3-gyn-ServiceRequest: split each lab test into a separate Service Request</li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/329">Issue#329</a> ObservationDefinition Hemoglobin blood -&gt; fix erroneous entries</li>
+</ul>
+
+<h3 id="fixed">Fixed</h3>
+<ul>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/313">#313</a>: Add <a href="https://build.fhir.org/codesystem-guide-parameter-code.html#:~:text=expansion%2Dparameter,as%20SNOMED%20CT">expansion-parameter</a> for the usage of SNOMED CT Swiss Extension</li>
+</ul>
 
 <h3 id="open-issues-for-stu-3">Open Issues for STU 3</h3>
 
@@ -242,7 +268,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><a href="https://github.com/hl7ch/ch-lab-order/issues/313">Issue #313</a> ch.fhir.ig.ch-lab-order#2.0.0-ballot /terminology.html – replaced status = #draft with status = #active in all occurrencies</p>
   </li>
   <li>
-    <p><a href="https://github.com/hl7ch/ch-lab-order/issues/312">Issue #312</a> Rename ChLabOrderLabSpecialties to ChLabOrderLabStudyTypes, change title to “Laboratory Study Types”. Translate all Titles of ValueSets to english.</p>
+    <p><a href="https://github.com/hl7ch/ch-lab-order/issues/312">Issue #312</a> Rename ChLabOrderLabSpecialties to ChLabOrderLabStudyTypes, change title to "Laboratory Study Types". Translate all Titles of ValueSets to english.</p>
   </li>
   <li>
     <p><a href="https://github.com/hl7ch/ch-lab-order/issues/311">Issue #311</a> removed from Aliases.fsh:
@@ -312,6 +338,12 @@ Alias:  $documentEntryClassCode, Alias:  $documentEntryTypeCode</p>
   <li><a href="http://build.fhir.org/ig/hl7ch/ch-orf/changelog.html">Change Log CH-ORF</a>:</li>
 </ul>
 
+<h4 id="follow-up-of-changes-in-ch-term">Follow up of changes in CH TERM</h4>
+
+<ul>
+  <li><a href="https://github.com/hl7ch/ch-term/issues/98">#98</a>: Add NamingSystem for VEKA and GTIN</li>
+</ul>
+
 <h4 id="changed--updated">Changed / Updated</h4>
 
 <ul>
@@ -334,8 +366,8 @@ Alias:  $documentEntryClassCode, Alias:  $documentEntryTypeCode</p>
     <p><a href="https://github.com/hl7ch/ch-lab-order/issues/78">Issue #78</a> Test to be performed is missing in ServiceRequest.code</p>
   </li>
   <li><a href="https://github.com/hl7ch/ch-lab-order/issues/77">Issue #77</a> Pathology Order: Case Study and Instance is added: Case study 6: Suspected Melanoma, order for histopathology examination</li>
-  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/89">Issue #89</a>: Case Study 0-generic has been deleted.</li>
-  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/86">Issue #86</a>: Add Term ‘Nachverordnung’ in <a href="https://fhir.ch/ig/ch-lab-order/CodeSystem-ServiceRequest.categories.html">ChLabOrderServiceRequestCategories codesystem</a></li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/89">Issue #89</a>: Case study chronic renal insufficiency-generic has been deleted.</li>
+  <li><a href="https://github.com/hl7ch/ch-lab-order/issues/86">Issue #86</a>: Add Term 'Nachverordnung' in <a href="https://fhir.ch/ig/ch-lab-order/CodeSystem-ServiceRequest.categories.html">ChLabOrderServiceRequestCategories codesystem</a></li>
   <li><a href="https://github.com/hl7ch/ch-lab-order/issues/85">Issue #85</a>: Remove SR of Vital Monitoring Devices; should be realized under a separate IG</li>
   <li>
     <table>
@@ -352,8 +384,8 @@ Alias:  $documentEntryClassCode, Alias:  $documentEntryTypeCode</p>
   <li>
     <p>Issue #82: Previous lab results or images can be easily requested by phone. However, if a previous order can still be found in the system, the associated results can be requested easily and precisely by adjusting the value of ServiceRequest.categories accordingly.</p>
   </li>
-  <li><a href="https://github.com/hl7ch/ch-rad-order/issues/18#issue-1001931518">Issue #81: Laborder without Q / QR: By adopting from the change in ORF, proposal 2 from Emmanuel and the UC around “lab orders without Forms/ Q QR” comes to fruition:</a></li>
-  <li>Issue #76: Want’s to add a Reason for Order: We have reasonReference reasonCode and reasonCode.text in SR for further information, has zu be mapped Q to SR; see issue #128 above</li>
+  <li><a href="https://github.com/hl7ch/ch-rad-order/issues/18#issue-1001931518">Issue #81: Laborder without Q / QR: By adopting from the change in ORF, proposal 2 from Emmanuel and the UC around "lab orders without Forms/ Q QR" comes to fruition:</a></li>
+  <li>Issue #76: Want's to add a Reason for Order: We have reasonReference reasonCode and reasonCode.text in SR for further information, has zu be mapped Q to SR; see issue #128 above</li>
   <li>Issue #75: resolved in ORF: Practitioner and PractitionerRole may have GLN and ZSR as Identifier, the same for ReceiverCopies, has to be resolved in ORF too in a STU 2</li>
   <li>Issue #74: AHVN13 as Patient Identifier: The use of the AHVN13 is regulated in Art. 5 EPDG. It can be used for: query of the patient identification number at the central clearing office ZAS
 correct assignment of the patient identification number. In principle, several identifiers are possible for the patient. BUT: It is forbidden to store the AHVN13 permanently. Thus, the use of AHVN13 as a patient identifier is not possible.</li>
@@ -368,7 +400,7 @@ correct assignment of the patient identification number. In principle, several i
 
 <ul>
   <li>removed not used ValueSets</li>
-  <li>put serviceRequest.categories into ChLabOrderSR, replace it’s value with fixed value ‘Laboratory procedure (procedure)’ for all ServiceRequests.</li>
+  <li>put serviceRequest.categories into ChLabOrderSR, replace it's value with fixed value 'Laboratory procedure (procedure)' for all ServiceRequests.</li>
   <li>replace in casestudies parent ChOrfServiceRequest with ChLabOrderSR</li>
   <li>reset dependencies ch.fhir.ig.ch-orf: current to 2.0.1</li>
   <li>reset dependencies ch.fhir.ig.ch-core: current to 4.0.1</li>
@@ -390,7 +422,7 @@ correct assignment of the patient identification number. In principle, several i
 <h3 id="discouraged-loinc-codes">Discouraged LOINC codes</h3>
 
 <ul>
-  <li>replace all ‘Auto Differential panel - Blood’ with ‘CBC W Auto Differential panel - Blood’</li>
+  <li>replace all 'Auto Differential panel - Blood' with 'CBC W Auto Differential panel - Blood'</li>
 </ul>
 
 
@@ -412,7 +444,7 @@ correct assignment of the patient identification number. In principle, several i
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 18, 2024 13:35+0000">2024-06-18</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 12:30+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -420,7 +452,7 @@ correct assignment of the patient identification number. In principle, several i
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%232.0.0%20/changelog.html&amp;entry%2E247644557=Changelog">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%233.0.0-ballot%20/changelog.html&amp;entry%2E247644557=Changelog">Propose a change</a>
 
 
 
@@ -435,7 +467,7 @@ correct assignment of the patient identification number. In principle, several i
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -446,7 +478,6 @@ correct assignment of the patient identification number. In principle, several i
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

@@ -1,0 +1,188 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/PlanDefinition/LabServiceVitaminDserum> a fhir:PlanDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "LabServiceVitaminDserum"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/LabServiceDefinition"^^xsd:anyURI ;
+       fhir:link <http://hl7.org/fhir/uv/order-catalog/StructureDefinition/LabServiceDefinition>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "additional" ] ;
+     fhir:div "<div xml:lang=\"de-CH\" xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"de-CH\"><p><b>Zusätzliche Informationen in deutscher Sprache | Informationen in deutscher Sprache:</b></p><p>Monoparametrischer medizinischer Biologietest :</p><p>Konzentration von 25-hydroxyvitamin D3 [Moles/Vol]</p><p>Beschreibung : Vitamine D Konzentration in Serum-Probe</p><p>verschreibbar : ja</p><p>Laufzeit : 120 Minuten</p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/CatalogReference"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/Composition/Pipette-Catalog-Header> ;
+       fhir:reference [ fhir:v "Composition/Pipette-Catalog-Header" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/ServiceBillingCode"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/ChargeItemDefinition/example-lab-billing-vitamind-focus> ;
+       fhir:reference [ fhir:v "ChargeItemDefinition/example-lab-billing-vitamind-focus" ]
+     ]
+  ] [
+     fhir:extension ( [
+       fhir:url [ fhir:v "textualSummary"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:markdown ;
+         fhir:v "Reimbursement is subject to the patient condition in conjunction with the reason for ordering"
+       ]
+     ] [
+       fhir:url [ fhir:v "reimbursabilitySummary"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:code ;
+         fhir:v "conditional"
+       ]
+     ] ) ;
+     fhir:url [ fhir:v "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/BillingSummary"^^xsd:anyURI ]
+  ] [
+     fhir:url [ fhir:v "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/ScheduleSummary"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:string ;
+       fhir:v "Set up: Mon-Sat (Day shift or Night shift), Sun (Day shift); Report available: 1 day"
+     ]
+  ] [
+     fhir:url [ fhir:v "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/LimitationSummary"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:string ;
+       fhir:v "No specific limitation for this test"
+     ]
+  ] ) ; # 
+  fhir:url [ fhir:v "http://hl7.org/fhir/uv/order-catalog/PlanDefinition/example-lab-service-LabServiceVitaminDserum"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "3.0.0-ballot"] ; # 
+  fhir:name [ fhir:v "VitaminDMeasurement"] ; # 
+  fhir:title [
+     fhir:v "25-hydroxyvitamin D3 [Moles/Vol]" ;
+     fhir:extension ( [
+       fhir:extension ( [
+         fhir:url [ fhir:v "lang"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:code ;
+           fhir:v "de-CH"
+         ]
+       ] [
+         fhir:url [ fhir:v "content"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:string ;
+           fhir:v "25-hydroxyvitamin D3 [Moles/Vol]"
+         ]
+       ] ) ;
+       fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/translation"^^xsd:anyURI ]
+     ] )
+  ] ; # 
+  fhir:type [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://hl7.org/fhir/uv/order-catalog/CodeSystem/laboratory-service-definition-type"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "test" ] ;
+       fhir:display [ fhir:v "unitary measurement performed on an in vitro biologic specimen" ]
+     ] )
+  ] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v true] ; # 
+  fhir:date [ fhir:v "2020-02-19T20:00:00+02:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "HL7 Switzerland"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "HL7 Switzerland" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.hl7.ch" ]
+     ] )
+  ] [
+     fhir:name [ fhir:v "Marcel Hanselmann" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "email" ] ;
+       fhir:value [ fhir:v "laborprojektgruppe@gmail.com" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Vitamine D dosée sur échantillon de sérum"] ; # 
+  fhir:useContext ( [
+     fhir:code [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/usage-context-type"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "task" ]
+     ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-ActCode"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "LABOE" ]
+       ] )
+     ]
+  ] ) ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "CH" ]
+     ] )
+  ] ) ; # 
+  fhir:copyright [ fhir:v "CC0-1.0"] ; # 
+  fhir:topic ( [
+     fhir:coding ( [
+       a loinc:18719-5 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "18719-5" ] ;
+       fhir:display [ fhir:v "Chemistry studies (set)" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       a sct:166312007 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "166312007" ] ;
+       fhir:display [ fhir:v "Blood chemistry" ]
+     ] )
+  ] ) ; # 
+  fhir:action ( [
+     fhir:extension ( [
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [ fhir:v "Material"^^xsd:anyURI ] ;
+           fhir:value [
+             a fhir:Reference ;
+             fhir:link <http://fhir.ch/ig/ch-lab-order/SpecimenDefinition/single-test-serum-capillary> ;
+             fhir:reference [ fhir:v "SpecimenDefinition/single-test-serum-capillary" ] ;
+             fhir:display [ fhir:v "example-specimen-capillary-serum-single-test" ]
+           ]
+         ] ) ;
+         fhir:url [ fhir:v "ExclusiveGroup"^^xsd:anyURI ]
+       ] ) ;
+       fhir:url [ fhir:v "http://hl7.org/fhir/uv/order-catalog/StructureDefinition/SpecimenRequested"^^xsd:anyURI ]
+     ] ) ;
+     fhir:code ( [
+       fhir:coding ( [
+         a loinc:14635-7 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "14635-7" ] ;
+         fhir:display [ fhir:v "25-hydroxyvitamin D3 [Moles/volume] in Serum or Plasma" ]
+       ] )
+     ] ) ;
+     fhir:timing [
+       a fhir:Duration ;
+       fhir:value [ fhir:v "120"^^xsd:decimal ] ;
+       fhir:unit [ fhir:v "minutes" ] ;
+       fhir:system [ fhir:v "http://unitsofmeasure.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "mn" ]
+     ] ;
+     fhir:definition [
+       a fhir:canonical ;
+       fhir:v "http://fhir.ch/ig/ch-lab-order/ActivityDefinition/procedure-vitamin-d-serum"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/ActivityDefinition/procedure-vitamin-d-serum>
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

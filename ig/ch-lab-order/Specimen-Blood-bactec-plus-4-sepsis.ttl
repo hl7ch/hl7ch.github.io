@@ -1,0 +1,85 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Specimen/Blood-bactec-plus-4-sepsis> a fhir:Specimen ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "Blood-bactec-plus-4-sepsis"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Specimen Blood-bactec-plus-4-sepsis</b></p><a name=\"Blood-bactec-plus-4-sepsis\"> </a><a name=\"hcBlood-bactec-plus-4-sepsis\"> </a><a name=\"Blood-bactec-plus-4-sepsis-en-US\"> </a><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 119297000}\">Blood sample</span></p><p><b>subject</b>: <a href=\"Patient-SaraSpeckmann.html\">Sara Speckmann  Female, DoB: 1975-12-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400006)</a></p><p><b>request</b>: <a href=\"ServiceRequest-4-sepsis-ServiceRequest.html\">ServiceRequest: identifier = Placer Identifier: Y274589; status = active; intent = original-order; priority = urgent; reasonCode = Sepsis screening</a></p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>BodySite</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Practitioner-HansHauser.html\">Practitioner Hans Hauser (official)</a></td><td>2025-03-16 06:20:17+0000 --&gt; 2025-03-16 06:50:17+0000</td><td><span title=\"Codes:{http://snomed.info/sct 721029009}\">Structure of superficial vein of left upper limb (body structure)</span></td></tr></table><blockquote><p><b>container</b></p><p><b>identifier</b>: 95ab0fb1-6d1c-40f0-9aaa-a68f29238a4e-bactec-plus</p><p><b>description</b>: Two BACTEC™ PLUS Aerobic/F Culture Vial, cap color: grey-blue</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 767385003}\">Aerobic blood culture bottle (physical object)</span></p></blockquote><blockquote><p><b>container</b></p><p><b>identifier</b>: 92af0fee-1aeb-472e-8b57-a885ba33b745-bactec-plus</p><p><b>description</b>: Two BACTEC™ PLUS Anaerobic/F Culture Vial, cap color: purple</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 767383005}\">Anaerobic blood culture bottle (physical object)</span></p></blockquote><p><b>note</b>: Each container type contains two blood samples taken 30 minutes apart, so we get 4 vials in total</p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:status [ fhir:v "available"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a sct:119297000 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "119297000" ] ;
+       fhir:display [ fhir:v "Blood sample" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/SaraSpeckmann> ;
+     fhir:reference [ fhir:v "Patient/SaraSpeckmann" ]
+  ] ; # 
+  fhir:request ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/ServiceRequest/4-sepsis-ServiceRequest> ;
+     fhir:reference [ fhir:v "ServiceRequest/4-sepsis-ServiceRequest" ]
+  ] ) ; # 
+  fhir:collection [
+     fhir:collector [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/Practitioner/HansHauser> ;
+       fhir:reference [ fhir:v "Practitioner/HansHauser" ]
+     ] ;
+     fhir:collected [
+       a fhir:Period ;
+       fhir:start [ fhir:v "2025-03-16T06:20:17Z"^^xsd:dateTime ] ;
+       fhir:end [ fhir:v "2025-03-16T06:50:17Z"^^xsd:dateTime ]
+     ] ;
+     fhir:bodySite [
+       fhir:coding ( [
+         a sct:721029009 ;
+         fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "721029009" ] ;
+         fhir:display [ fhir:v "Structure of superficial vein of left upper limb (body structure)" ]
+       ] )
+     ]
+  ] ; # 
+  fhir:container ( [
+     fhir:identifier ( [
+       fhir:value [ fhir:v "95ab0fb1-6d1c-40f0-9aaa-a68f29238a4e-bactec-plus" ]
+     ] ) ;
+     fhir:description [ fhir:v "Two BACTEC™ PLUS Aerobic/F Culture Vial, cap color: grey-blue" ] ;
+     fhir:type [
+       fhir:coding ( [
+         a sct:767385003 ;
+         fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "767385003" ] ;
+         fhir:display [ fhir:v "Aerobic blood culture bottle (physical object)" ]
+       ] )
+     ]
+  ] [
+     fhir:identifier ( [
+       fhir:value [ fhir:v "92af0fee-1aeb-472e-8b57-a885ba33b745-bactec-plus" ]
+     ] ) ;
+     fhir:description [ fhir:v "Two BACTEC™ PLUS Anaerobic/F Culture Vial, cap color: purple" ] ;
+     fhir:type [
+       fhir:coding ( [
+         a sct:767383005 ;
+         fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "767383005" ] ;
+         fhir:display [ fhir:v "Anaerobic blood culture bottle (physical object)" ]
+       ] )
+     ]
+  ] ) ; # 
+  fhir:note ( [
+     fhir:text [ fhir:v "Each container type contains two blood samples taken 30 minutes apart, so we get 4 vials in total" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

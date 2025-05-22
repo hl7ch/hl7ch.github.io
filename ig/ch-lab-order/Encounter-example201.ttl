@@ -1,0 +1,65 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/Encounter/example201> a fhir:Encounter ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "example201"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Encounter example201</b></p><a name=\"example201\"> </a><a name=\"hcexample201\"> </a><a name=\"example201-en-US\"> </a><p><b>identifier</b>: Encounter_Hans_20130404 (use: temp, )</p><p><b>status</b>: Finished</p><p><b>class</b>: <a href=\"http://terminology.hl7.org/5.5.0/CodeSystem-v3-ActCode.html#v3-ActCode-AMB\">ActCode AMB</a>: ambulatory</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 11429006}\">Consultation</span></p><p><b>priority</b>: <span title=\"Codes:{http://snomed.info/sct 17621005}\">Normal</span></p><p><b>subject</b>: <a href=\"Patient-SaraSpeckmann.html\">Sara Speckmann</a></p><h3>Participants</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Individual</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Practitioner-HansHauser.html\">Dr Hans Hauser</a></td></tr></table><p><b>reasonCode</b>: <span title=\"Codes:\">The patient had fever peaks over the last night, the general condition deteriorated massively.</span></p><p><b>serviceProvider</b>: <a href=\"Organization-Kantonsspital.html\">Kantonsspital</a></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:identifier ( [
+     fhir:use [ fhir:v "temp" ] ;
+     fhir:value [ fhir:v "Encounter_Hans_20130404" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "finished"] ; # 
+  fhir:class [
+     fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-ActCode"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "AMB" ] ;
+     fhir:display [ fhir:v "ambulatory" ]
+  ] ; # 
+  fhir:type ( [
+     fhir:coding ( [
+       a sct:11429006 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "11429006" ] ;
+       fhir:display [ fhir:v "Consultation" ]
+     ] )
+  ] ) ; # 
+  fhir:priority [
+     fhir:coding ( [
+       a sct:17621005 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "17621005" ] ;
+       fhir:display [ fhir:v "Normal" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/SaraSpeckmann> ;
+     fhir:reference [ fhir:v "Patient/SaraSpeckmann" ] ;
+     fhir:display [ fhir:v "Sara Speckmann" ]
+  ] ; # 
+  fhir:participant ( [
+     fhir:individual [
+       fhir:link <http://fhir.ch/ig/ch-lab-order/Practitioner/HansHauser> ;
+       fhir:reference [ fhir:v "Practitioner/HansHauser" ] ;
+       fhir:display [ fhir:v "Dr Hans Hauser" ]
+     ]
+  ] ) ; # 
+  fhir:reasonCode ( [
+     fhir:text [ fhir:v "The patient had fever peaks over the last night, the general condition deteriorated massively." ]
+  ] ) ; # 
+  fhir:serviceProvider [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Organization/Kantonsspital> ;
+     fhir:reference [ fhir:v "Organization/Kantonsspital" ] ;
+     fhir:display [ fhir:v "Kantonsspital" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

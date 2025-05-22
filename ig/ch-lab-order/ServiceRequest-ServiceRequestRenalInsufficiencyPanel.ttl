@@ -1,0 +1,85 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/ServiceRequestRenalInsufficiencyPanel> a fhir:ServiceRequest ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ServiceRequestRenalInsufficiencyPanel"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest ServiceRequestRenalInsufficiencyPanel</b></p><a name=\"ServiceRequestRenalInsufficiencyPanel\"> </a><a name=\"hcServiceRequestRenalInsufficiencyPanel\"> </a><a name=\"ServiceRequestRenalInsufficiencyPanel-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order-SR</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-LabServiceRenalInsufficiency.html\">Renal Insufficiency Lab Panel</a></p><p><b>requisition</b>: Placer Identifier/ReqID-123456789</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org LP31398-8}\">Renal function</span></p><p><b>orderDetail</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0119 NW}\">Order Control code</span></p><p><b>subject</b>: <a href=\"Bundle-LabOrderDocument.html#urn-uuid-b82ca08b-9476-44a7-9893-74adbe93ab54\">Bundle: identifier = UUID:bc4715e6-c46d-4794-a379-b809f24ef05d; type = document; timestamp = 2025-03-05 12:00:00+0000</a></p><p><b>requester</b>: <a href=\"Bundle-LabOrderDocument.html#urn-uuid-1301bc1f-9d23-4529-b30d-f1a0e792823c\">Bundle: identifier = UUID:bc4715e6-c46d-4794-a379-b809f24ef05d; type = document; timestamp = 2025-03-05 12:00:00+0000</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 90688005}\">Chronic renal failure syndrome (disorder)</span></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PLAC" ] ;
+         fhir:display [ fhir:v "Placer Identifier" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.123.100.2.1.1"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "Y274589" ]
+  ] ) ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://fhir.ch/ig/ch-lab-order/PlanDefinition/LabServiceRenalInsufficiency"^^xsd:anyURI ;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PlanDefinition/LabServiceRenalInsufficiency>
+  ] ) ; # 
+  fhir:requisition [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PLAC" ] ;
+         fhir:display [ fhir:v "Placer Identifier" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "http://example.org/placer-system/req-nr"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "ReqID-123456789" ]
+  ] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:intent [ fhir:v "original-order"] ; # 
+  fhir:priority [ fhir:v "urgent"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:LP31398-8 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "LP31398-8" ] ;
+       fhir:display [ fhir:v "Renal function" ]
+     ] )
+  ] ; # 
+  fhir:orderDetail ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0119"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "NW" ] ;
+       fhir:display [ fhir:v "New order/service" ]
+     ] ) ;
+     fhir:text [ fhir:v "Order Control code" ]
+  ] ) ; # 
+  fhir:subject [
+     fhir:reference [ fhir:v "urn:uuid:b82ca08b-9476-44a7-9893-74adbe93ab54" ]
+  ] ; # 
+  fhir:requester [
+     fhir:reference [ fhir:v "urn:uuid:1301bc1f-9d23-4529-b30d-f1a0e792823c" ]
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       a sct:90688005 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "90688005" ]
+     ] ) ;
+     fhir:text [ fhir:v "Chronic renal failure syndrome (disorder)" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

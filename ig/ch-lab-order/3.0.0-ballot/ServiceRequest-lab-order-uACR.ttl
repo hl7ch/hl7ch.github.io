@@ -1,0 +1,103 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/lab-order-uACR> a fhir:ServiceRequest ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "lab-order-uACR"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest lab-order-uACR</b></p><a name=\"lab-order-uACR\"> </a><a name=\"hclab-order-uACR\"> </a><a name=\"lab-order-uACR-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order-SR</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-LabService-uACR.html\">Renal Insufficiendy Panel uACR</a></p><p><b>basedOn</b>: <a href=\"ServiceRequest-panel-renal-insufficiency-order.html\">ServiceRequest Renal function</a></p><p><b>requisition</b>: Placer Identifier/ReqID-123456789</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 14585-4}\">Albumin/Creatinine [Molar Ratio] in Urine</span></p><p><b>orderDetail</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0119 NW}\">Order Control code</span></p><p><b>subject</b>: <a href=\"Patient-HansGuggindieluft.html\">Hans Guggindieluft  Male, DoB: 1981-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400009)</a></p><p><b>requester</b>: <a href=\"PractitionerRole-MarcMustermannGruppenpraxis.html\">PractitionerRole</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 90688005}\">Chronic renal failure syndrome (disorder)</span></p><p><b>supportingInfo</b>: </p><ul><li><a href=\"MedicationStatement-Diclofenac.html\">MedicationStatement: status = active; medication[x] = -&gt;Medication Product containing only diclofenac (medicinal product); effective[x] = 2023-11-11; dateAsserted = 2023-11-11; note = Patient takes it every day in the morning back pain</a></li><li><a href=\"Condition-Renal-insufficiency.html\">Condition Chronic renal insufficiency (disorder)</a></li></ul><p><b>specimen</b>: <a href=\"Specimen-Urine.html\">Urine specimen</a></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PLAC" ] ;
+         fhir:display [ fhir:v "Placer Identifier" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.123.100.2.1.1"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "Y274589" ]
+  ] ) ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://fhir.ch/ig/ch-lab-order/PlanDefinition/LabService-uACR"^^xsd:anyURI ;
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PlanDefinition/LabService-uACR>
+  ] ) ; # 
+  fhir:basedOn ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/ServiceRequest/panel-renal-insufficiency-order> ;
+     fhir:reference [ fhir:v "ServiceRequest/panel-renal-insufficiency-order" ]
+  ] ) ; # 
+  fhir:requisition [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PLAC" ] ;
+         fhir:display [ fhir:v "Placer Identifier" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.123.100.2.1.1"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "ReqID-123456789" ]
+  ] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:intent [ fhir:v "original-order"] ; # 
+  fhir:priority [ fhir:v "urgent"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:14585-4 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "14585-4" ] ;
+       fhir:display [ fhir:v "Albumin/Creatinine [Molar Ratio] in Urine" ]
+     ] )
+  ] ; # 
+  fhir:orderDetail ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0119"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "NW" ] ;
+       fhir:display [ fhir:v "New order/service" ]
+     ] ) ;
+     fhir:text [ fhir:v "Order Control code" ]
+  ] ) ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/HansGuggindieluft> ;
+     fhir:reference [ fhir:v "Patient/HansGuggindieluft" ]
+  ] ; # 
+  fhir:requester [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/MarcMustermannGruppenpraxis> ;
+     fhir:reference [ fhir:v "PractitionerRole/MarcMustermannGruppenpraxis" ]
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       a sct:90688005 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "90688005" ]
+     ] ) ;
+     fhir:text [ fhir:v "Chronic renal failure syndrome (disorder)" ]
+  ] ) ; # 
+  fhir:supportingInfo ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/MedicationStatement/Diclofenac> ;
+     fhir:reference [ fhir:v "MedicationStatement/Diclofenac" ]
+  ] [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Condition/Renal-insufficiency> ;
+     fhir:reference [ fhir:v "Condition/Renal-insufficiency" ]
+  ] ) ; # 
+  fhir:specimen ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Urine> ;
+     fhir:reference [ fhir:v "Specimen/Urine" ] ;
+     fhir:display [ fhir:v "Urine specimen" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

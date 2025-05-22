@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Case Studies in German - CH LAB-Order (R4) v2.0.0</title>
+    <title>Case Studies in German - CH LAB-Order (R4) v3.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,11 +51,13 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"6"}
     h3,h4,h5,h6{--heading-prefix:"6"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <div id="family-nav">
@@ -77,7 +80,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Order (R4)</span>
             <br/>
-            <span style="display:inline-block;">2.0.0 - trial-use
+            <span style="display:inline-block;">3.0.0-ballot - ballot
 
 
 
@@ -172,6 +175,9 @@
   <li>
     <a href="artifacts.html">Artifacts</a>
   </li>
+  <li>
+    <a href="changelog.html">Changelog</a>
+  </li>
 </ul>
             </div>  <!-- /.nav-collapse -->
           </div>  <!-- /.container -->
@@ -204,7 +210,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v2.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v3.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Case Studies in German</h2>
   
 
@@ -288,7 +294,7 @@ Der Hausarzt Peter Presto gibt ihr deshalb sofort die Keuchhustenimpfung und emp
   <li>Gynäkologische Zervixzytologie: Pap-Abstrich - falls indiziert, sollte auch der Nachweis und die Typisierung von HPV (humanes Papillomavirus) durchgeführt werden. Entnahmematerial gemäß den Anweisungen des Labors. Die zytologische Untersuchung wird im Pipette-Labor durchgeführt. Das Pipette-Labor führt die Typisierung nicht selbst durch.</li>
   <li>Teilurinstatus (Combur9-Test): wird von der MPA in der Praxis durchgeführt: folgende Parameter werden untersucht: pH-Wert, Leukozyten, Erythrozyten, Nitrit, Eiweiß, Glukose, Ketone, Urobilinogen, Bilirubin (halbquantitative Untersuchungen, Ergebnisse werden wahrscheinlich manuell in das Laborsystem der Praxis eingegeben).</li>
   <li>Urinbakteriologie: Entnahmematerial nach den Vorgaben des Labors. Allgemeine Bakt, inkl. Pilze an die Laborpipette Übermittlung des Auftrages wird durch die MPA ausgelöst (Abholzeitpunkt)</li>
-  <li>Ergänzungsauftrag “Screening vor Schwangerschaft”: Alle Tests können aus dem vorab in der Ambulanz entnommenen Material (Serum, EDTA-Blut) durchgeführt werden (Hepatitis-Bc-Antikörper, HIV 1+2 (Ak+p24), Röteln-IgG, Lues/Syphilis-Screening-Test)</li>
+  <li>Ergänzungsauftrag "Screening vor Schwangerschaft": Alle Tests können aus dem vorab in der Ambulanz entnommenen Material (Serum, EDTA-Blut) durchgeführt werden (Hepatitis-Bc-Antikörper, HIV 1+2 (Ak+p24), Röteln-IgG, Lues/Syphilis-Screening-Test)</li>
 </ul>
 
 <p><a href="Bundle-3-gyn-document.html">Order Document with ServiceRequest</a></p>
@@ -299,7 +305,24 @@ Der Hausarzt Peter Presto gibt ihr deshalb sofort die Keuchhustenimpfung und emp
 
 <h4 id="case-study-4-verdacht-auf-sepsis">Case study 4: Verdacht auf Sepsis</h4>
 
-<p>Die Patientin Sara Speckmann, geboren am 12. 12. 1975, befindet sich seit einiger Zeit im Kantonsspital. In der vergangenen Nacht hat sich ihr Allgemeinzustand massiv verschlechtert. Da der Verdacht auf eine Sepsis besteht, ordnet der zuständige Oberarzt, Dr. Hans Hauser, an, ihr am Morgen Blut für eine Blutkultur zu entnehmen. 30 Minuten später werden eine weitere aerobe und eine anaerobe Blutkultur sowie eine Urinprobe entnommen. Alle fünf Proben werden im externen Labor Pipette weiterverarbeitet. Dort werden in allen Materialien Keime nachgewiesen und anschliessend mittels Massenspektrometrie identifiziert. In den vier Blutkulturflaschen wurden die Erreger “Klebsiella pneumoniae” und “Escherichia coli” nachgewiesen, in einer aeroben Flasche zusätzlich das Bakterium “Streptococcus mitis”. Der in der Urinprobe identifizierte Keim ist normalerweise nicht pathogen. Von allen drei im Blut nachgewiesenen Krankheitserregern wird ein Antibiogramm erstellt. Dieses zeigt, dass die beiden Wirkstoffe “Amoxicillin+Clavulansäure” und “Ceftriaxon” gegen alle drei Keime wirksam sind. Der Mikrobiologe informiert Dr. Hans Hauser regelmäßig über die verschiedenen Teilergebnisse.</p>
+<p>Die Patientin Sara Speckmann, geboren am 12. 12. 1975, befindet sich seit einiger Zeit im Kantonsspital. In der vergangenen Nacht hat sich ihr Allgemeinzustand massiv verschlechtert. Da der Verdacht auf eine Sepsis besteht, ordnet der zuständige Oberarzt, Dr. Hans Hauser, an, ihr am Morgen Blut für eine Blutkultur zu entnehmen. 30 Minuten später werden eine weitere aerobe und eine anaerobe Blutkultur sowie eine Urinprobe entnommen. Alle fünf Proben werden im externen Labor Pipette weiterverarbeitet. Dort werden in einigen Materialien Keime nachgewiesen und anschliessend mittels Massenspektrometrie identifiziert. In den aeroben Blutkulturflaschen wurden die Erreger "Klebsiella pneumoniae" und "Escherichia coli" nachgewiesen. Der in der Urinprobe identifizierte Keim ist normalerweise nicht pathogen. 
+Das Bakterienwachstum in den aeroben Kulturen führt zu weiteren Labortests, ohne dass dafür ein spezifischer Auftrag gegeben werden muss (reflexed Test).
+Von den zwei im Blut nachgewiesenen Krankheitserregern wird ein Antibiogramm erstellt. Dieses zeigt, dass die beiden Wirkstoffe "Amoxicillin+Clavulansäure" und "Ceftriaxon" gegen beide Keime wirksam sind. Der Mikrobiologe informiert Dr. Hans Hauser regelmäßig über die verschiedenen Teilergebnisse.</p>
+
+<p><strong>Fig. 1: Task</strong></p>
+<p><img src="4-sepsis-task.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig. 1: Task" style="width:85%" /></p>
+<div style="clear:both;"></div>
+
+<p>Das Diagramm zeigt, wie der Arbeitsablauf für klinische Laboraufträge mit einem ServiceRequest verknüpft werden kann (Fig. 1). Sie enthält eine Aufgabenressource (Task), die eine Aktivität beschreibt, die mit der Probe durchgeführt werden kann, und verfolgt den Status der Fertigstellung dieser Aktivität. Sie stellt dar, dass eine Aktivität eingeleitet werden sollte oder eingeleitet worden ist, und repräsentiert schließlich den erfolgreichen oder erfolglosen Abschluss dieser Aktivität.</p>
+
+<p>Übersetzt mit DeepL.com (kostenlose Version)</p>
+
+<p><strong>Fig. 2: Reflexed Observation</strong></p>
+<p><img src="4-sepsis-reflex-testing.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig. 2: Reflexed Observation" style="width:60%" /></p>
+<div style="clear:both;"></div>
+
+<p>legend diagram Reflex Testing
+Dieses Diagramm (Fig. 2) zeigt das Beispiel eines reflex Befundes, das heisst das Resultat eines vorangehenden Test löst weitere Tests aus, ohne dass dazu ausdrückliche ServiceRequests benötigt werden. Im Beispiel ist es der Befund des positiven Bakterienwachstums, der weitere Tests, wie Keimidentifikation und Ansprechen auf Antibiotika, auslöst.</p>
 
 <p><a href="Bundle-4-sepsis-document-with-sr.html">Order Document with ServiceRequest</a></p>
 
@@ -357,7 +380,7 @@ Der Hausarzt Peter Presto gibt ihr deshalb sofort die Keuchhustenimpfung und emp
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 18, 2024 13:35+0000">2024-06-18</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 12:30+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -365,7 +388,7 @@ Der Hausarzt Peter Presto gibt ihr deshalb sofort die Keuchhustenimpfung und emp
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%232.0.0%20/case-studies-german.html&amp;entry%2E247644557=Case%20Studies%20in%20German">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%233.0.0-ballot%20/case-studies-german.html&amp;entry%2E247644557=Case%20Studies%20in%20German">Propose a change</a>
 
 
 
@@ -380,7 +403,7 @@ Der Hausarzt Peter Presto gibt ihr deshalb sofort die Keuchhustenimpfung und emp
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -391,7 +414,6 @@ Der Hausarzt Peter Presto gibt ihr deshalb sofort die Keuchhustenimpfung und emp
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

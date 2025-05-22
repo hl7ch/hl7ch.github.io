@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Use Cases in French - CH LAB-Order (R4) v2.0.0</title>
+    <title>Use Cases in French - CH LAB-Order (R4) v3.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -18,6 +18,7 @@
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
   	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
@@ -50,11 +51,13 @@
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"4"}
     h3,h4,h5,h6{--heading-prefix:"4"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <div id="family-nav">
@@ -77,7 +80,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH LAB-Order (R4)</span>
             <br/>
-            <span style="display:inline-block;">2.0.0 - trial-use
+            <span style="display:inline-block;">3.0.0-ballot - ballot
 
 
 
@@ -172,6 +175,9 @@
   <li>
     <a href="artifacts.html">Artifacts</a>
   </li>
+  <li>
+    <a href="changelog.html">Changelog</a>
+  </li>
 </ul>
             </div>  <!-- /.nav-collapse -->
           </div>  <!-- /.container -->
@@ -204,7 +210,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v2.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH LAB-Order (R4) (v3.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 3) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-lab-order/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Use Cases in French</h2>
   
 
@@ -222,10 +228,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#cas-dapplication-1-générer-un-document-dordre-de-laboratoire" id="markdown-toc-cas-dapplication-1-générer-un-document-dordre-de-laboratoire">Cas d’application 1: Générer un document d’ordre de laboratoire</a></li>
-  <li><a href="#cas-dapplication-2-demande-de-tests-supplémentaires-sur-le-même-échantillon" id="markdown-toc-cas-dapplication-2-demande-de-tests-supplémentaires-sur-le-même-échantillon">Cas d’application 2: Demande de tests supplémentaires sur le même échantillon</a></li>
-  <li><a href="#cas-dapplication-3-demande-collective-dessais-toxicologiques-surveillance-biologique" id="markdown-toc-cas-dapplication-3-demande-collective-dessais-toxicologiques-surveillance-biologique">Cas d’application 3: Demande collective d’essais toxicologiques (surveillance biologique)</a></li>
-  <li><a href="#cas-dapplication-4-suggestion-dexamens-supplémentaires-ou-alternatifs-par-le-médecin-de-laboratoire-destinataire-de-lordonnance-récepteur" id="markdown-toc-cas-dapplication-4-suggestion-dexamens-supplémentaires-ou-alternatifs-par-le-médecin-de-laboratoire-destinataire-de-lordonnance-récepteur">Cas d’application 4: Suggestion d’examens supplémentaires ou alternatifs par le médecin de laboratoire (destinataire de l’ordonnance, récepteur)</a></li>
+  <li><a href="#cas-dapplication-1-générer-un-document-dordre-de-laboratoire" id="markdown-toc-cas-dapplication-1-générer-un-document-dordre-de-laboratoire">Cas d'application 1: Générer un document d'ordre de laboratoire</a></li>
+  <li><a href="#cas-dapplication-2-demande-de-tests-supplémentaires-sur-le-même-échantillon" id="markdown-toc-cas-dapplication-2-demande-de-tests-supplémentaires-sur-le-même-échantillon">Cas d'application 2: Demande de tests supplémentaires sur le même échantillon</a></li>
+  <li><a href="#cas-dapplication-3-demande-collective-dessais-toxicologiques-surveillance-biologique" id="markdown-toc-cas-dapplication-3-demande-collective-dessais-toxicologiques-surveillance-biologique">Cas d'application 3: Demande collective d'essais toxicologiques (surveillance biologique)</a></li>
+  <li><a href="#cas-dapplication-4-suggestion-dexamens-supplémentaires-ou-alternatifs-par-le-médecin-de-laboratoire-destinataire-de-lordonnance-récepteur" id="markdown-toc-cas-dapplication-4-suggestion-dexamens-supplémentaires-ou-alternatifs-par-le-médecin-de-laboratoire-destinataire-de-lordonnance-récepteur">Cas d'application 4: Suggestion d'examens supplémentaires ou alternatifs par le médecin de laboratoire (destinataire de l'ordonnance, récepteur)</a></li>
+  <li><a href="#use-case-5-créer-des-panels-dordres-de-laboratoire-qui-instancient-la-définition-du-plan-à-partir-du-catalogue-des-ordres" id="markdown-toc-use-case-5-créer-des-panels-dordres-de-laboratoire-qui-instancient-la-définition-du-plan-à-partir-du-catalogue-des-ordres">Use Case 5: Créer des panels d'ordres de laboratoire qui instancient la définition du plan à partir du catalogue des ordres.</a></li>
 </ul>
 
 </div>
@@ -235,25 +242,25 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 │  UC-english is original, german and french are dependent  │
 ╰───────────────────────────────────────────────────────────╯
 -->
-<h3 id="cas-dapplication-1-générer-un-document-dordre-de-laboratoire">Cas d’application 1: Générer un document d’ordre de laboratoire</h3>
+<h3 id="cas-dapplication-1-générer-un-document-dordre-de-laboratoire">Cas d'application 1: Générer un document d'ordre de laboratoire</h3>
 
-<p><strong>Fig.: Commande de laboratoire et flux de travail des tests</strong></p>
-<p><img src="LabOrderWorkflow.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig.: Commande de laboratoire et flux de travail des tests" style="width:60%" /></p>
+<p><strong>Fig. 1: Commande de laboratoire et flux de travail des tests</strong></p>
+<p><img src="LabOrderWorkflow.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig. 1: Commande de laboratoire et flux de travail des tests" style="width:60%" /></p>
 <div style="clear:both;"></div>
 
 <h4 id="document-de-commande-de-laboratoire-avec-demande-de-service">Document de commande de laboratoire avec demande de service</h4>
 
-<p>Le client (par exemple un médecin) a besoin de divers tests de laboratoire pour compléter le processus de diagnostic. Il crée un document de commande dans son système de dossiers médicaux électroniques (DME), qui contient les données administratives structurées conformément au guide de mise en œuvre du CH Core et dont le contenu est disponible dans le DME. Parmi les analyses fournies par le SIL, il peut sélectionner celles qui l’aident à répondre à sa question, et il peut également déterminer les échantillons correspondant aux analyses. Par exemple, il veut faire analyser le glucose dans le sang et le liquide céphalo-rachidien. Le système de laboratoire peut stocker les informations sur les récipients d’échantillons requis et les additifs éventuels dans le système. Les conditions pré-analytiques sont spécifiées.</p>
+<p>Le client (par exemple un médecin) a besoin de divers tests de laboratoire pour compléter le processus de diagnostic. Il crée un document de commande dans son système de dossiers médicaux électroniques (DME), qui contient les données administratives structurées conformément au guide de mise en œuvre du CH Core et dont le contenu est disponible dans le DME. Parmi les analyses fournies par le SIL, il peut sélectionner celles qui l'aident à répondre à sa question, et il peut également déterminer les échantillons correspondant aux analyses. Par exemple, il veut faire analyser le glucose dans le sang et le liquide céphalo-rachidien. Le système de laboratoire peut stocker les informations sur les récipients d'échantillons requis et les additifs éventuels dans le système. Les conditions pré-analytiques sont spécifiées.</p>
 
 <p>Il peut de plus ajouter des informations sur le contexte clinique à la commande du laboratoire : liste des problèmes, liste des médicaments en cours, questions sur les analyses prescrites.</p>
 
-<p>Le document de commande est envoyé au système d’information du laboratoire (LIS).</p>
+<p>Le document de commande est envoyé au système d'information du laboratoire (LIS).</p>
 
 <p>Exemple de document de commande par ServiceRequest: <a href="Bundle-0-best-practice-document-with-sr.html">CH LAB-Order 0-best-practice</a></p>
 
 <h4 id="document-de-commande-de-laboratoire-avec-demande-de-service-et-formulaire">Document de commande de laboratoire avec demande de service et formulaire</h4>
 
-<p>Le client (par exemple, le médecin) a besoin de divers tests de laboratoire pour un diagnostic plus approfondi. À cette fin, il crée un document de commande dans le système d’information de son cabinet, avec les informations nécessaires sur le patient, le test de laboratoire, les échantillons, etc. Les échantillons nécessaires (sérum, urine, liquide céphalorachidien, etc.) sont stockés dans les documents de commande correspondants. Les échantillons nécessaires (sérum, urine, liquide céphalorachidien) sont collectés dans des récipients appropriés et clairement affectés au document de commande (Specimen.identifier, Specimen.container.identifier). Les échantillons peuvent être examinés dans le propre laboratoire ou doivent être envoyés par courrier ou par service de messagerie au laboratoire externe. Là, le système d’information du laboratoire leur attribue leur propre identifiant (Specimen.accessionIdentifier).</p>
+<p>Le client (par exemple, le médecin) a besoin de divers tests de laboratoire pour un diagnostic plus approfondi. À cette fin, il crée un document de commande dans le système d'information de son cabinet, avec les informations nécessaires sur le patient, le test de laboratoire, les échantillons, etc. Les échantillons nécessaires (sérum, urine, liquide céphalorachidien, etc.) sont stockés dans les documents de commande correspondants. Les échantillons nécessaires (sérum, urine, liquide céphalorachidien) sont collectés dans des récipients appropriés et clairement affectés au document de commande (Specimen.identifier, Specimen.container.identifier). Les échantillons peuvent être examinés dans le propre laboratoire ou doivent être envoyés par courrier ou par service de messagerie au laboratoire externe. Là, le système d'information du laboratoire leur attribue leur propre identifiant (Specimen.accessionIdentifier).</p>
 
 <p>Un formulaire (Questionnaire) est présenté au client, qui contient les informations suivantes :</p>
 
@@ -262,17 +269,17 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li>Informations sur la commande</li>
   <li>Informations sur le destinataire de la commande (receiver)</li>
   <li>Informations sur le patient</li>
-  <li>Informations sur le donneur d’ordre (expéditeur)</li>
-  <li>Informations sur les destinataires éventuels d’une copie des résultats (receiverCopies)</li>
+  <li>Informations sur le donneur d'ordre (expéditeur)</li>
+  <li>Informations sur les destinataires éventuels d'une copie des résultats (receiverCopies)</li>
   <li>Informations sur la spécialité du laboratoire</li>
   <li>
     <p>Informations sur les examens demandés</p>
   </li>
-  <li>Informations sur le matériau de l’échantillon, Spécimen
+  <li>Informations sur le matériau de l'échantillon, Spécimen
     <ul>
       <li>Type : par exemple, sérum, sang total, liquide céphalo-rachidien</li>
       <li>Sujet : référence au patient</li>
-      <li>Prélèvement : informations sur le prélèvement, l’heure du prélèvement, la quantité, la méthode, le site de prélèvement (par exemple, bras droit), la période de jeûne.</li>
+      <li>Prélèvement : informations sur le prélèvement, l'heure du prélèvement, la quantité, la méthode, le site de prélèvement (par exemple, bras droit), la période de jeûne.</li>
       <li>Conteneur, récipient : identifiant, type</li>
       <li>et autres informations</li>
     </ul>
@@ -280,7 +287,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li>Informations sur le service demandé
 Information sur le service demandé : * service request.category is RequestForLabExam
     <ul>
-      <li>Question, raison de l’investigation (ServiceRequest.reasonCode, ServiceRequest.reasonReference)</li>
+      <li>Question, raison de l'investigation (ServiceRequest.reasonCode, ServiceRequest.reasonReference)</li>
       <li>payeur (assurance maladie, assurance accident, etc.)</li>
       <li>et plus encore.</li>
     </ul>
@@ -289,40 +296,40 @@ Information sur le service demandé : * service request.category is RequestForLa
 
 <p>Exemple de document de commande par formulaire: <a href="Bundle-1-tvt-document-with-sr-and-form.html">CH LAB-Order 1-tvt by Form</a></p>
 
-<h3 id="cas-dapplication-2-demande-de-tests-supplémentaires-sur-le-même-échantillon">Cas d’application 2: Demande de tests supplémentaires sur le même échantillon</h3>
+<h3 id="cas-dapplication-2-demande-de-tests-supplémentaires-sur-le-même-échantillon">Cas d'application 2: Demande de tests supplémentaires sur le même échantillon</h3>
 
-<p>Il n’est pas rare que les résultats des tests de laboratoire conduisent à demander des tests supplémentaires sur le même échantillon. Ou bien les analyses de laboratoire internes sont complétées par d’autres tests qui ne peuvent être effectués que dans un laboratoire externe.</p>
+<p>Il n'est pas rare que les résultats des tests de laboratoire conduisent à demander des tests supplémentaires sur le même échantillon. Ou bien les analyses de laboratoire internes sont complétées par d'autres tests qui ne peuvent être effectués que dans un laboratoire externe.</p>
 
-<p>Dans l’exemple 2-pertussis, les analyses de laboratoire internes (numération sanguine automatisée, CRP) sont complétées par une recherche d’ADN de Bordetella pertussis et parapertussis dans le prélèvement de gorge, effectuée par un laboratoire contractuel externe, afin d’exclure la coqueluche.</p>
+<p>Dans l'exemple 2-pertussis, les analyses de laboratoire internes (numération sanguine automatisée, CRP) sont complétées par une recherche d'ADN de Bordetella pertussis et parapertussis dans le prélèvement de gorge, effectuée par un laboratoire contractuel externe, afin d'exclure la coqueluche.</p>
 
-<p>Lorsque le système de placement demande des tests supplémentaires pour les échantillons existants, il copie la demande de service originale, ajoute les tests de laboratoire requis et un code de commande ‘RP’, qui signifie une demande de remplacement d’une commande ou d’un service. Une règle invariante spéciale “sr-1” garantit la création d’une référence à la demande de service originale.</p>
+<p>Lorsque le système de placement demande des tests supplémentaires pour les échantillons existants, il copie la demande de service originale, ajoute les tests de laboratoire requis et un code de commande 'RP', qui signifie une demande de remplacement d'une commande ou d'un service. Une règle invariante spéciale "sr-1" garantit la création d'une référence à la demande de service originale.</p>
 
-<p>Les codes de commande peuvent par ailleurs être utilisés pour annuler, mettre en attente ou libérer des demandes de commande mises en attente. Dans ce cas, la référence à l’ordre original doit être créée.</p>
+<p>Les codes de commande peuvent par ailleurs être utilisés pour annuler, mettre en attente ou libérer des demandes de commande mises en attente. Dans ce cas, la référence à l'ordre original doit être créée.</p>
 
 <ul>
   <li>La demande de 2-pertussis-ServiceRequest est remplacée par la demande de service</li>
-  <li>2-pertussis-ServiceRequest-add-test, qui demande l’examen du prélèvement de gorge à la recherche de l’ADN de la coqueluche ou de la para-coqueluche.</li>
+  <li>2-pertussis-ServiceRequestAddTest, qui demande l'examen du prélèvement de gorge à la recherche de l'ADN de la coqueluche ou de la para-coqueluche.</li>
 </ul>
 
-<p>Exemple de demande de service référencée : <a href="ServiceRequest-2-pertussis-service-request.html">CH LAB-Order 2-pertussis</a>, le code de l’élément ‘orderDetail’ serait ‘NW’ pour “New order/service”, ou l’élément pourrait être complètement omis.</p>
+<p>Exemple de demande de service référencée : <a href="ServiceRequest-2-pertussis-ServiceRequest.html">CH LAB-Order 2-pertussis</a>, le code de l'élément 'orderDetail' serait 'NW' pour "New order/service", ou l'élément pourrait être complètement omis.</p>
 
-<p>Exemple de demande de remplacement de service : <a href="ServiceRequest-2-pertussis-service-request-add-test.html">CH LAB-Order 2-pertussis additional test</a>
-La demande de remplacement contient une référence à la demande de service précédente et un élément “orderDetail”, qui porte le code de contrôle de l’ordre du système de codes v2-0119 : ‘RP’ pour “Order/service replace request”, ‘CA’ pour “Cancel order/service request”, ‘HD’ pour “Hold order request”, et ‘RL’ pour “Release previous hold”</p>
+<p>Exemple de demande de remplacement de service : <a href="ServiceRequest-2-pertussis-ServiceRequestAddTest.html">CH LAB-Order 2-pertussis additional test</a>
+La demande de remplacement contient une référence à la demande de service précédente et un élément "orderDetail", qui porte le code de contrôle de l'ordre du système de codes v2-0119 : 'RP' pour "Order/service replace request", 'CA' pour "Cancel order/service request", 'HD' pour "Hold order request", et 'RL' pour "Release previous hold"</p>
 
-<h3 id="cas-dapplication-3-demande-collective-dessais-toxicologiques-surveillance-biologique">Cas d’application 3: Demande collective d’essais toxicologiques (surveillance biologique)</h3>
+<h3 id="cas-dapplication-3-demande-collective-dessais-toxicologiques-surveillance-biologique">Cas d'application 3: Demande collective d'essais toxicologiques (surveillance biologique)</h3>
 
-<p>Ce cas d’application correspond à l’exemple 5-biol-monit. Afin d’évaluer l’exposition des travailleurs aux substances chimiques, les mesures sur le lieu de travail sont complétées par des examens de santé au travail. Les substances toxiques elles-mêmes ou leurs métabolites dans le sérum ou l’urine peuvent être déterminés. La demande est initiée par le médecin du travail de l’entreprise ou de la compagnie d’assurance. Le problème des fluctuations des employés doit être pris en compte.</p>
+<p>Ce cas d'application correspond à l'exemple 5-biol-monit. Afin d'évaluer l'exposition des travailleurs aux substances chimiques, les mesures sur le lieu de travail sont complétées par des examens de santé au travail. Les substances toxiques elles-mêmes ou leurs métabolites dans le sérum ou l'urine peuvent être déterminés. La demande est initiée par le médecin du travail de l'entreprise ou de la compagnie d'assurance. Le problème des fluctuations des employés doit être pris en compte.</p>
 
 <p>Voici quelques exemples :</p>
 
 <ul>
-  <li>Médecine du travail : demande d’analyses de laboratoire pour un groupe de travailleurs
+  <li>Médecine du travail : demande d'analyses de laboratoire pour un groupe de travailleurs
     <ul>
       <li>ServiceRequest.subject se réfère à un groupe</li>
       <li>ServiceRequest.specimen se réfère à plusieurs échantillons (0 .. *)</li>
     </ul>
   </li>
-  <li>Industrie alimentaire : enquête sur l’hygiène des employés (par exemple, contamination par la salmonelle)</li>
+  <li>Industrie alimentaire : enquête sur l'hygiène des employés (par exemple, contamination par la salmonelle)</li>
   <li>Enquêtes de police</li>
 </ul>
 
@@ -332,14 +339,22 @@ La demande de remplacement contient une référence à la demande de service pr�
 
 <p>Exemple de document de commande avec ServiceRequest et Formulaire: <a href="Bundle-5-biol-monit-document-with-sr-and-form.html">CH LAB-Order 5-biol-monit-form</a>.</p>
 
-<h3 id="cas-dapplication-4-suggestion-dexamens-supplémentaires-ou-alternatifs-par-le-médecin-de-laboratoire-destinataire-de-lordonnance-récepteur">Cas d’application 4: Suggestion d’examens supplémentaires ou alternatifs par le médecin de laboratoire (destinataire de l’ordonnance, récepteur)</h3>
+<h3 id="cas-dapplication-4-suggestion-dexamens-supplémentaires-ou-alternatifs-par-le-médecin-de-laboratoire-destinataire-de-lordonnance-récepteur">Cas d'application 4: Suggestion d'examens supplémentaires ou alternatifs par le médecin de laboratoire (destinataire de l'ordonnance, récepteur)</h3>
 
-<p>Après réception et traitement de l’ordonnance du laboratoire, il peut arriver que le médecin du laboratoire souhaite suggérer à l’auteur de l’ordonnance des examens supplémentaires ou alternatifs. Il peut utiliser le document de commande reçu à cette fin, échanger les données personnelles de l’expéditeur et du destinataire par l’intermédiaire de son système d’information et le renvoyer avec les suggestions d’examens de laboratoire supplémentaires ou alternatifs.</p>
+<p>Après réception et traitement de l'ordonnance du laboratoire, il peut arriver que le médecin du laboratoire souhaite suggérer à l'auteur de l'ordonnance des examens supplémentaires ou alternatifs. Il peut utiliser le document de commande reçu à cette fin, échanger les données personnelles de l'expéditeur et du destinataire par l'intermédiaire de son système d'information et le renvoyer avec les suggestions d'examens de laboratoire supplémentaires ou alternatifs.</p>
 
 <ul>
   <li>ServiceRequest.category : ProposalForAdditionalExam</li>
 </ul>
 
+<h3 id="use-case-5-créer-des-panels-dordres-de-laboratoire-qui-instancient-la-définition-du-plan-à-partir-du-catalogue-des-ordres">Use Case 5: Créer des panels d'ordres de laboratoire qui instancient la définition du plan à partir du catalogue des ordres.</h3>
+
+<p><strong>Fig. 2: Renal Insufficiency Service</strong></p>
+<p><img src="RenalInsufficiencyPanel.svg" class="figure-img img-responsive img-rounded center-block" alt="Fig. 2: Renal Insufficiency Service" style="width:95%" /></p>
+<div style="clear:both;"></div>
+
+<p>Les donneurs d'ordre et les laboratoires ont tendance à utiliser des panels comportant plusieurs tests individuels ou imbriqués entre eux. Les laboratoires mettent ces panels à disposition selon leur propre offre. Dans cet exemple, il s'agit d'évaluer et de faire le point sur une insuffisance rénale chronique. Le mandat se compose de deux sous-commandes : la première, eGFR (taux de filtration glomérulaire estimé), concerne le taux de filtration glomérulaire estimé, et la seconde, uACR (rapport albumine/créatinine dans l'urine), est relative au rapport albumine/créatinine dans l'urine. Ce dernier contient à son tour deux sous-commandes : la concentration d'albumine et la concentration de créatinine dans l'urine.
+Les définitions de plan et d'activité sont enregistrées dans le compendium de laboratoire et peuvent être sélectionnées par le donneur d'ordre.</p>
 
 
 
@@ -359,7 +374,7 @@ La demande de remplacement contient une référence à la demande de service pr�
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2021+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 18, 2024 13:35+0000">2024-06-18</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-lab-order#3.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 12:30+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -367,7 +382,7 @@ La demande de remplacement contient une référence à la demande de service pr�
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%232.0.0%20/usecases-french.html&amp;entry%2E247644557=Use%20Cases%20in%20French">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScaRAJBq98JUBkffY6SXR3PapHbfZs8dTMBb20FQvvXcVcAzg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-lab-order%233.0.0-ballot%20/usecases-french.html&amp;entry%2E247644557=Use%20Cases%20in%20French">Propose a change</a>
 
 
 
@@ -382,7 +397,7 @@ La demande de remplacement contient une référence à la demande de service pr�
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
@@ -393,7 +408,6 @@ La demande de remplacement contient une référence à la demande de service pr�
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
   <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  
   <!-- Analytics Below
   ================================================== -->
   </body>

@@ -1,0 +1,68 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-lab-order/ServiceRequest/3-gyn-service-request-smear-test> a fhir:ServiceRequest ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "3-gyn-service-request-smear-test"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 3-gyn-service-request-smear-test</b></p><a name=\"3-gyn-service-request-smear-test\"> </a><a name=\"hc3-gyn-service-request-smear-test\"> </a><a name=\"3-gyn-service-request-smear-test-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order-SR</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Routine</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 86662-4}\">Pap smear tests - FPAR 2.0 set</span></p><p><b>subject</b>: <a href=\"Patient-MarinaRubella.html\">Marina Rubella (official) Female, DoB: 1992-08-08 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400005)</a></p><p><b>requester</b>: <a href=\"PractitionerRole-PeterPapGruppenpraxis.html\">PractitionerRole</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 702601001}\">Routine gynecologic examination (procedure)</span></p><p><b>specimen</b>: <a href=\"Specimen-Cervix-swab.html\">Specimen: identifier = 48736-12345-12345; accessionIdentifier = 4e88a-12345-aa222; status = available; type = Combined specimen of cytologic material from endocervix, ectocervix, and vaginal fornix (specimen)</a></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "PLAC" ] ;
+         fhir:display [ fhir:v "Placer Identifier" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.123.100.2.1.1"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "Y274589" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:intent [ fhir:v "original-order"] ; # 
+  fhir:priority [ fhir:v "routine"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:86662-4 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "86662-4" ] ;
+       fhir:display [ fhir:v "Pap smear tests - FPAR 2.0 set" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Patient/MarinaRubella> ;
+     fhir:reference [ fhir:v "Patient/MarinaRubella" ]
+  ] ; # 
+  fhir:requester [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/PractitionerRole/PeterPapGruppenpraxis> ;
+     fhir:reference [ fhir:v "PractitionerRole/PeterPapGruppenpraxis" ]
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       a sct:702601001 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "702601001" ]
+     ] ) ;
+     fhir:text [ fhir:v "Routine gynecologic examination (procedure)" ]
+  ] ) ; # 
+  fhir:specimen ( [
+     fhir:link <http://fhir.ch/ig/ch-lab-order/Specimen/Cervix-swab> ;
+     fhir:reference [ fhir:v "Specimen/Cervix-swab" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
