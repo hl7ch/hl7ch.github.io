@@ -23,6 +23,12 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
+    <sch:title>f:Observation/f:performer</sch:title>
+    <sch:rule context="f:Observation/f:performer">
+      <sch:assert test="count(f:extension[@url = 'http://hl7.org/fhir/StructureDefinition/event-performerFunction|4.0.1']) &lt;= 1">extension with URL = 'http://hl7.org/fhir/StructureDefinition/event-performerFunction|4.0.1': maximum cardinality of 'extension' is 1</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
     <sch:title>f:Observation/f:component</sch:title>
     <sch:rule context="f:Observation/f:component">
       <sch:assert test="count(f:extension[@url = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.value[x]']) &lt;= 1">extension with URL = 'http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.value[x]': maximum cardinality of 'extension' is 1</sch:assert>
