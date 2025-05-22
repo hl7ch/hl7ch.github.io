@@ -5,7 +5,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Example of audit event for a [PPQ-5] transaction at Consumer - TTL Representation - CH EPR FHIR (R4) v4.0.1</title>
+    <title>Example of audit event for a [PPQ-5] transaction at Consumer - TTL Representation - CH EPR FHIR (R4) v5.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -67,10 +67,11 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"5.153"}
-    h3,h4,h5,h6{--heading-prefix:"5.153"}</style>
+    <style type="text/css">h2{--heading-prefix:"39.133"}
+    h3,h4,h5,h6{--heading-prefix:"39.133"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <!--
@@ -96,7 +97,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1 - trial-use
+            <span style="display:inline-block;">5.0.0-ballot - ballot
 
 
 
@@ -155,6 +156,9 @@
             <li>
                 <a href="ppqm.html">Privacy Policy Query for Mobile (CH:PPQm)</a>
             </li>
+            <li>
+                <a href="ch-atc.html">Audit Trail Consumption (CH:ATC)</a>
+            </li>
         </ul>
     </li>
     <li class="dropdown">
@@ -168,6 +172,9 @@
             </li>
             <li>
                 <a href="iti-71.html">Get Access Token [ITI-71]</a>
+            </li>
+            <li>
+                <a href="iti-72.html">Incorporate Access Token [ITI-72]</a>
             </li>
             <li>
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
@@ -197,7 +204,7 @@
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
             </li>
             <li>
-                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
+                <a href="iti-130.html">Care Services Feed [ITI-130]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -207,6 +214,20 @@
             </li>
             <li>
                 <a href="ppq-5.html">Mobile Privacy Policy Retrieve [PPQ-5]</a>
+            </li>
+            <li>
+                <a href="iti-81.html">Retrieve Audit Event [ITI-81]</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 3
+            <b class="caret">
+            </b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="volume3.html">CH:ATC Audit Event Content Profiles</a>
             </li>
         </ul>
     </li>
@@ -271,7 +292,7 @@
           <div class="inner-wrapper">
 
 <div style="counter-reset: section 9" class="col-12">
-<!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+<!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v5.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 5 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
 
 
 
@@ -303,12 +324,6 @@
   
 
 
-  
-    <li class="active">
-      <a href="#">TTL</a>
-    </li>
-  
-
 
 
 </ul>
@@ -330,6 +345,7 @@
   <pre class="rdf" style="white-space: pre; overflow: hidden"><code class="language-turtle">
 @prefix fhir: &lt;http://hl7.org/fhir/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
@@ -345,7 +361,7 @@
   ] ; # 
   <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.text">fhir:text</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;generated&quot; ] ;
-fhir:div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: AuditEvent ChAuditEventPpq5ConsumerExample&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;ChAuditEventPpq5ConsumerExample\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcChAuditEventPpq5ConsumerExample\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;ChAuditEventPpq5ConsumerExample-en-US\&quot;&gt; &lt;/a&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/5.5.0/CodeSystem-audit-event-type.html#audit-event-type-rest\&quot;&gt;Audit Event ID rest&lt;/a&gt;: Restful Operation&lt;/p&gt;&lt;p&gt;&lt;b&gt;subtype&lt;/b&gt;: unknown PPQ-5: Mobile Privacy Policy Retrieve, &lt;a href=\&quot;http://hl7.org/fhir/R4/codesystem-restful-interaction.html#restful-interaction-search\&quot;&gt;FHIR Restful Interactions search&lt;/a&gt;: search&lt;/p&gt;&lt;p&gt;&lt;b&gt;recorded&lt;/b&gt;: 2024-10-28 09:43:56+0000&lt;/p&gt;&lt;p&gt;&lt;b&gt;outcome&lt;/b&gt;: Success&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;agent&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;span title=\&quot;Codes:{http://dicom.nema.org/resources/ontology/DCM 110153}\&quot;&gt;Source Role ID&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;who&lt;/b&gt;: My e-Health App&lt;/p&gt;&lt;p&gt;&lt;b&gt;requestor&lt;/b&gt;: false&lt;/p&gt;&lt;h3&gt;Networks&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Address&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Type&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;192.168.1.1&lt;/td&gt;&lt;td&gt;IP Address&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;agent&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;span title=\&quot;Codes:{http://dicom.nema.org/resources/ontology/DCM 110152}\&quot;&gt;Destination Role ID&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;who&lt;/b&gt;: Community A&lt;/p&gt;&lt;p&gt;&lt;b&gt;requestor&lt;/b&gt;: false&lt;/p&gt;&lt;h3&gt;Networks&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Address&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Type&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;https://example.org/fhir/&lt;/td&gt;&lt;td&gt;URI&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;agent&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;span title=\&quot;Codes:{http://terminology.hl7.org/CodeSystem/v3-ParticipationType RESP}\&quot;&gt;responsible party&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;role&lt;/b&gt;: &lt;span title=\&quot;Codes:{urn:oid:2.16.756.5.30.1.127.3.10.6 HCP}\&quot;&gt;Healthcare professional&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;altId&lt;/b&gt;: 2000000090092&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Martina Musterarzt&lt;/p&gt;&lt;p&gt;&lt;b&gt;requestor&lt;/b&gt;: true&lt;/p&gt;&lt;p&gt;&lt;b&gt;purposeOfUse&lt;/b&gt;: &lt;span title=\&quot;Codes:{urn:oid:2.16.756.5.30.1.127.3.10.5 NORM}\&quot;&gt;Normal Access&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h3&gt;Sources&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Site&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Observer&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;2.16.756.4.5.6&lt;/td&gt;&lt;td&gt;Community A&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;entity&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/5.5.0/CodeSystem-audit-entity-type.html#audit-entity-type-2\&quot;&gt;Audit event entity type 2&lt;/a&gt;: System Object&lt;/p&gt;&lt;p&gt;&lt;b&gt;role&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/5.5.0/CodeSystem-object-role.html#object-role-24\&quot;&gt;AuditEventEntityRole 24&lt;/a&gt;: Query&lt;/p&gt;&lt;p&gt;&lt;b&gt;query&lt;/b&gt;: &lt;code&gt;aHR0cHM6Ly9leGFtcGxlLm9yZy9maGlyL0NvbnNlbnQ/cGF0aWVudDppZGVudGlmaWVyPXVybjpvaWQ6Mi4xNi43NTYuNS4zMC4xLjEyNy4zLjEwLjN8NzYxMzM3NjEwNDExMzUzNjUw&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;entity&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;what&lt;/b&gt;: Identifier: &lt;code&gt;urn:oid:2.16.756.5.30.1.127.3.10.3&lt;/code&gt;/761337610411353650&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/5.5.0/CodeSystem-audit-entity-type.html#audit-entity-type-1\&quot;&gt;Audit event entity type 1&lt;/a&gt;: Person&lt;/p&gt;&lt;p&gt;&lt;b&gt;role&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/5.5.0/CodeSystem-object-role.html#object-role-1\&quot;&gt;AuditEventEntityRole 1&lt;/a&gt;: Patient&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;entity&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;what&lt;/b&gt;: Identifier: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-00&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/5.5.0/CodeSystem-audit-entity-type.html#audit-entity-type-4\&quot;&gt;Audit event entity type 4&lt;/a&gt;: Other&lt;/p&gt;&lt;p&gt;&lt;b&gt;role&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/5.5.0/CodeSystem-object-role.html#object-role-26\&quot;&gt;AuditEventEntityRole 26&lt;/a&gt;: Processing Element&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;&quot;
+fhir:div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: AuditEvent ChAuditEventPpq5ConsumerExample&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;ChAuditEventPpq5ConsumerExample\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcChAuditEventPpq5ConsumerExample\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;ChAuditEventPpq5ConsumerExample-en-US\&quot;&gt; &lt;/a&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;/&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Profile: &lt;a href=\&quot;StructureDefinition-ChAuditEventPpq5Consumer.html\&quot;&gt;CH Audit Event for [PPQ-5] Policy Consumer&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/6.2.0/CodeSystem-audit-event-type.html#audit-event-type-rest\&quot;&gt;Audit Event ID rest&lt;/a&gt;: Restful Operation&lt;/p&gt;&lt;p&gt;&lt;b&gt;subtype&lt;/b&gt;: unknown PPQ-5: Mobile Privacy Policy Retrieve, &lt;a href=\&quot;http://hl7.org/fhir/R4/codesystem-restful-interaction.html#restful-interaction-search\&quot;&gt;FHIR Restful Interactions search&lt;/a&gt;: search&lt;/p&gt;&lt;p&gt;&lt;b&gt;recorded&lt;/b&gt;: 2024-10-28 09:43:56+0000&lt;/p&gt;&lt;p&gt;&lt;b&gt;outcome&lt;/b&gt;: Success&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;agent&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;span title=\&quot;Codes:{http://terminology.hl7.org/CodeSystem/v3-ParticipationType RESP}\&quot;&gt;responsible party&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;role&lt;/b&gt;: &lt;span title=\&quot;Codes:{urn:oid:2.16.756.5.30.1.127.3.10.6 HCP}\&quot;&gt;Healthcare professional&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;altId&lt;/b&gt;: 2000000090092&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Martina Musterarzt&lt;/p&gt;&lt;p&gt;&lt;b&gt;requestor&lt;/b&gt;: true&lt;/p&gt;&lt;p&gt;&lt;b&gt;purposeOfUse&lt;/b&gt;: &lt;span title=\&quot;Codes:{urn:oid:2.16.756.5.30.1.127.3.10.5 NORM}\&quot;&gt;Normal Access&lt;/span&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;agent&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;span title=\&quot;Codes:{http://dicom.nema.org/resources/ontology/DCM 110152}\&quot;&gt;Destination Role ID&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;who&lt;/b&gt;: Community A&lt;/p&gt;&lt;p&gt;&lt;b&gt;requestor&lt;/b&gt;: false&lt;/p&gt;&lt;h3&gt;Networks&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Address&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Type&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;http://example.com&lt;/td&gt;&lt;td&gt;URI&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;agent&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;span title=\&quot;Codes:{http://dicom.nema.org/resources/ontology/DCM 110153}\&quot;&gt;Source Role ID&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;who&lt;/b&gt;: My e-Health App&lt;/p&gt;&lt;p&gt;&lt;b&gt;requestor&lt;/b&gt;: false&lt;/p&gt;&lt;h3&gt;Networks&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Address&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Type&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;192.168.1.1&lt;/td&gt;&lt;td&gt;IP Address&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;&lt;h3&gt;Sources&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Site&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Observer&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;2.16.756.4.5.6&lt;/td&gt;&lt;td&gt;Community A&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;entity&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;what&lt;/b&gt;: Identifier: &lt;code&gt;urn:oid:2.16.756.5.30.1.127.3.10.3&lt;/code&gt;/761337610411353650&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/6.2.0/CodeSystem-audit-entity-type.html#audit-entity-type-1\&quot;&gt;Audit event entity type 1&lt;/a&gt;: Person&lt;/p&gt;&lt;p&gt;&lt;b&gt;role&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/6.2.0/CodeSystem-object-role.html#object-role-1\&quot;&gt;AuditEventEntityRole 1&lt;/a&gt;: Patient&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;entity&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/6.2.0/CodeSystem-audit-entity-type.html#audit-entity-type-2\&quot;&gt;Audit event entity type 2&lt;/a&gt;: System Object&lt;/p&gt;&lt;p&gt;&lt;b&gt;role&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/6.2.0/CodeSystem-object-role.html#object-role-24\&quot;&gt;AuditEventEntityRole 24&lt;/a&gt;: Query&lt;/p&gt;&lt;p&gt;&lt;b&gt;query&lt;/b&gt;: &lt;code&gt;aHR0cHM6Ly9leGFtcGxlLm9yZy9maGlyL0NvbnNlbnQ/cGF0aWVudDppZGVudGlmaWVyPXVybjpvaWQ6Mi4xNi43NTYuNS4zMC4xLjEyNy4zLjEwLjN8NzYxMzM3NjEwNDExMzUzNjUw&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;entity&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;what&lt;/b&gt;: Identifier: 00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-00&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/6.2.0/CodeSystem-audit-entity-type.html#audit-entity-type-4\&quot;&gt;Audit event entity type 4&lt;/a&gt;: Other&lt;/p&gt;&lt;p&gt;&lt;b&gt;role&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/6.2.0/CodeSystem-object-role.html#object-role-26\&quot;&gt;AuditEventEntityRole 26&lt;/a&gt;: Processing Element&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;&quot;^^rdf:XMLLiteral
   ] ; # 
   <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.type">fhir:type</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/audit-event-type&quot;^^xsd:anyURI ] ;
@@ -366,30 +382,6 @@ fhir:div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p
   <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent">fhir:agent</a> ( [
 <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.type">fhir:type</a> [
       ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://dicom.nema.org/resources/ontology/DCM&quot;^^xsd:anyURI ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;110153&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Source Role ID&quot; ]       ] )     ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.who">fhir:who</a> [
-<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;My e-Health App&quot; ]     ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.requestor">fhir:requestor</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> &quot;false&quot;^^xsd:boolean ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network">fhir:network</a> [
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network.address">fhir:address</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;192.168.1.1&quot; ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;2&quot; ]     ]
-  ] [
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.type">fhir:type</a> [
-      ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://dicom.nema.org/resources/ontology/DCM&quot;^^xsd:anyURI ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;110152&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Destination Role ID&quot; ]       ] )     ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.who">fhir:who</a> [
-<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Community A&quot; ]     ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.requestor">fhir:requestor</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> &quot;false&quot;^^xsd:boolean ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network">fhir:network</a> [
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network.address">fhir:address</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;https://example.org/fhir/&quot; ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;5&quot; ]     ]
-  ] [
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.type">fhir:type</a> [
-      ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/v3-ParticipationType&quot;^^xsd:anyURI ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;RESP&quot; ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;responsible party&quot; ]       ] )     ] ;
@@ -399,12 +391,36 @@ fhir:div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;HCP&quot; ]       ] )     ] ) ;
 <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.altId">fhir:altId</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;2000000090092&quot; ] ;
 <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Martina Musterarzt&quot; ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.requestor">fhir:requestor</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> &quot;true&quot;^^xsd:boolean ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.requestor">fhir:requestor</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> true ] ;
     ( <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.purposeOfUse">fhir:purposeOfUse</a> [
       ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:2.16.756.5.30.1.127.3.10.5&quot;^^xsd:anyURI ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;NORM&quot; ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Normal Access&quot; ]       ] )     ] )
+  ] [
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.type">fhir:type</a> [
+      ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://dicom.nema.org/resources/ontology/DCM&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;110152&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Destination Role ID&quot; ]       ] )     ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.who">fhir:who</a> [
+<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Community A&quot; ]     ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.requestor">fhir:requestor</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> false ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network">fhir:network</a> [
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network.address">fhir:address</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;http://example.com&quot; ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;5&quot; ]     ]
+  ] [
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.type">fhir:type</a> [
+      ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://dicom.nema.org/resources/ontology/DCM&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;110153&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Source Role ID&quot; ]       ] )     ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.who">fhir:who</a> [
+<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;My e-Health App&quot; ]     ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.requestor">fhir:requestor</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> false ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network">fhir:network</a> [
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network.address">fhir:address</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;192.168.1.1&quot; ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.agent.network.type">fhir:type</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;2&quot; ]     ]
   ] ) ; # 
   <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.source">fhir:source</a> [
 <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.source.site">fhir:site</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;2.16.756.4.5.6&quot; ] ;
@@ -412,16 +428,6 @@ fhir:div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p
 <a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Community A&quot; ]     ]
   ] ; # 
   <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.entity">fhir:entity</a> ( [
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.entity.type">fhir:type</a> [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/audit-entity-type&quot;^^xsd:anyURI ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;2&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;System Object&quot; ]     ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.entity.role">fhir:role</a> [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/object-role&quot;^^xsd:anyURI ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;24&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Query&quot; ]     ] ;
-<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.entity.query">fhir:query</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#base64Binary">fhir:v</a> &quot;aHR0cHM6Ly9leGFtcGxlLm9yZy9maGlyL0NvbnNlbnQ/cGF0aWVudDppZGVudGlmaWVyPXVybjpvaWQ6Mi4xNi43NTYuNS4zMC4xLjEyNy4zLjEwLjN8NzYxMzM3NjEwNDExMzUzNjUw&quot;^^xsd:base64Binary ]
-  ] [
 <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.entity.what">fhir:what</a> [
 <a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.identifier">fhir:identifier</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:2.16.756.5.30.1.127.3.10.3&quot;^^xsd:anyURI ] ;
@@ -434,6 +440,16 @@ fhir:div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/object-role&quot;^^xsd:anyURI ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;1&quot; ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Patient&quot; ]     ]
+  ] [
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.entity.type">fhir:type</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/audit-entity-type&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;2&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;System Object&quot; ]     ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.entity.role">fhir:role</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/object-role&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;24&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Query&quot; ]     ] ;
+<a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.entity.query">fhir:query</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#base64Binary">fhir:v</a> &quot;aHR0cHM6Ly9leGFtcGxlLm9yZy9maGlyL0NvbnNlbnQ/cGF0aWVudDppZGVudGlmaWVyPXVybjpvaWQ6Mi4xNi43NTYuNS4zMC4xLjEyNy4zLjEwLjN8NzYxMzM3NjEwNDExMzUzNjUw&quot;^^xsd:base64Binary ]
   ] [
 <a href="http://hl7.org/fhir/R4/auditevent.html#AuditEvent.entity.what">fhir:what</a> [
 <a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.identifier">fhir:identifier</a> [
@@ -473,7 +489,7 @@ fhir:div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 12:16+0000">2024-12-18</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 13:40+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -481,7 +497,7 @@ fhir:div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1%20/AuditEvent-ChAuditEventPpq5ConsumerExample.ttl.html&amp;entry%2E247644557=Example%20of%20audit%20event%20for%20a%20[PPQ-5]%20transaction%20at%20Consumer%20-%20TTL%20Representation">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%235.0.0-ballot%20/AuditEvent-ChAuditEventPpq5ConsumerExample.ttl.html&amp;entry%2E247644557=Example%20of%20audit%20event%20for%20a%20[PPQ-5]%20transaction%20at%20Consumer%20-%20TTL%20Representation">Propose a change</a>
 
 
 

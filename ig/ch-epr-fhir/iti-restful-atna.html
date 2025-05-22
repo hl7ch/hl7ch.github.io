@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>RESTful ATNA - CH EPR FHIR (R4) v4.0.1</title>
+    <title>RESTful ATNA - CH EPR FHIR (R4) v5.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -65,10 +65,11 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"2.5"}
-    h3,h4,h5,h6{--heading-prefix:"2.5"}</style>
+    <style type="text/css">h2{--heading-prefix:"7"}
+    h3,h4,h5,h6{--heading-prefix:"7"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <!--
@@ -94,7 +95,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1 - trial-use
+            <span style="display:inline-block;">5.0.0-ballot - ballot
 
 
 
@@ -153,6 +154,9 @@
             <li>
                 <a href="ppqm.html">Privacy Policy Query for Mobile (CH:PPQm)</a>
             </li>
+            <li>
+                <a href="ch-atc.html">Audit Trail Consumption (CH:ATC)</a>
+            </li>
         </ul>
     </li>
     <li class="dropdown">
@@ -166,6 +170,9 @@
             </li>
             <li>
                 <a href="iti-71.html">Get Access Token [ITI-71]</a>
+            </li>
+            <li>
+                <a href="iti-72.html">Incorporate Access Token [ITI-72]</a>
             </li>
             <li>
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
@@ -195,7 +202,7 @@
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
             </li>
             <li>
-                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
+                <a href="iti-130.html">Care Services Feed [ITI-130]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -205,6 +212,20 @@
             </li>
             <li>
                 <a href="ppq-5.html">Mobile Privacy Policy Retrieve [PPQ-5]</a>
+            </li>
+            <li>
+                <a href="iti-81.html">Retrieve Audit Event [ITI-81]</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 3
+            <b class="caret">
+            </b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="volume3.html">CH:ATC Audit Event Content Profiles</a>
             </li>
         </ul>
     </li>
@@ -256,7 +277,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='volume1.html'><b>Volume 1</b></a></li><li><b>RESTful ATNA</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>RESTful ATNA</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -276,7 +297,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v5.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 5 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>RESTful ATNA</h2>
   
 
@@ -298,7 +319,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#use-cases" id="markdown-toc-use-cases">Use Cases</a></li>
   <li><a href="#actors-and-transactions" id="markdown-toc-actors-and-transactions">Actors and Transactions</a></li>
   <li><a href="#atna-actor-options" id="markdown-toc-atna-actor-options">ATNA Actor Options</a></li>
-  <li><a href="#grouping" id="markdown-toc-grouping">Grouping</a></li>
+  <li><a href="#required-actor-grouping" id="markdown-toc-required-actor-grouping">Required Actor Grouping</a></li>
   <li><a href="#security-consideration" id="markdown-toc-security-consideration">Security Consideration</a></li>
 </ul>
 
@@ -316,7 +337,7 @@ supplement allows an EPR App to add audit events through a RESTful Feed to the A
 <p>No extensions or restrictions to the actors and transactions are specified in the Swiss national extension.</p>
 
 <div>
-<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="232px" preserveAspectRatio="none" style="width:268px;height:232px;background:#FFFFFF;" version="1.1" viewBox="0 0 268 232" width="268px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="224" x="15.25" y="22.9951">RESTful ATNA Actor Diagram</text><!--entity Client--><g id="elem_Client"><rect fill="#F1F1F1" height="68.8906" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="180" x="10.5" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="20.5" y="67.292">Any Actor grouped with</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108" x="20.5" y="83.5889">Secure Node or</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="20.5" y="99.8857">Secure Application</text></g><!--entity Server--><g id="elem_Server"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="187" x="7" y="190.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="17" y="213.292">Audit Record Repository</text></g><!--link Client to Server--><g id="link_Client_Server"><path d="M100.5,113.6269 C100.5,136.2469 100.5,165.3669 100.5,185.0869 " fill="none" id="Client-to-Server" style="stroke:#181818;stroke-width:1.0;" /><polygon fill="#181818" points="100.5,190.1369,104.5,181.1369,100.5,185.1369,96.5,181.1369,100.5,190.1369" style="stroke:#181818;stroke-width:1.0;" /><a href="iti-20.html" target="_top" title="iti-20.html" xlink:actuate="onRequest" xlink:href="iti-20.html" xlink:show="new" xlink:title="iti-20.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="159" x="101.5" y="156.3638">ITI-20 Record Audit Event</text></a></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="232px" preserveAspectRatio="none" style="width:277px;height:232px;background:#FFFFFF;" version="1.1" viewBox="0 0 277 232" width="277px" zoomAndPan="magnify"><title>RESTful ATNA Actor Diagram</title><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="227.5684" x="17.8669" y="22.9951">RESTful ATNA Actor Diagram</text><!--entity Client--><g class="entity" data-entity="Client" data-source-line="2" data-uid="ent0002" id="entity_Client"><rect fill="#F1F1F1" height="68.8906" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="185.3408" x="9.5" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="165.3408" x="19.5" y="67.292">Any Actor grouped with</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108.1992" x="19.5" y="83.5889">Secure Node or</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="131.1133" x="19.5" y="99.8857">Secure Application</text></g><!--entity Server--><g class="entity" data-entity="Server" data-source-line="3" data-uid="ent0003" id="entity_Server"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="189.9346" x="7" y="190.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169.9346" x="17" y="213.292">Audit Record Repository</text></g><!--link Client to Server--><g class="link" data-entity-1="Client" data-entity-2="Server" data-source-line="4" data-uid="lnk4" id="link_Client_Server"><path d="M102,113.6269 C102,138.2669 102,164.6269 102,184.1369" fill="none" id="Client-to-Server" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="102,190.1369,106,181.1369,102,185.1369,98,181.1369,102,190.1369" style="stroke:#181818;stroke-width:1;" /><a href="iti-20.html" target="_top" title="iti-20.html" xlink:actuate="onRequest" xlink:href="iti-20.html" xlink:show="new" xlink:title="iti-20.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="166.3022" x="103" y="156.3638">ITI-20 Record Audit Event</text></a></g></g></svg>
 </div>
 <p>This figure shows the actors directly involved in the <em>Add RESTful ATNA</em> Profile and the relevant transactions 
 between them.</p>
@@ -324,11 +345,39 @@ between them.</p>
 <h3 id="atna-actor-options">ATNA Actor Options</h3>
 <p>The Audit Record Repository SHALL support the ATX: FHIR Feed Option.</p>
 
-<h3 id="grouping">Grouping</h3>
-<p>The Swiss national extension does not define requirements on the grouping of actors in this profile, which extend or restrict the grouping required from the ATNA profile.</p>
+<h3 id="required-actor-grouping">Required Actor Grouping</h3>
+<p>This national extension enforces authentication and authorization for access control. Therefore actors of this profile must be grouped with actors of other profiles according to the following table:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Required Grouping</th>
+      <th>Optionality</th>
+      <th>Remark</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Audit Record Repository</td>
+      <td><a href="iti-iua.html#actors-and-transactions">IUA Resource Server</a></td>
+      <td>R</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Any Actor grouped with Secure Node or Secure Application</td>
+      <td><a href="iti-iua.html#actors-and-transactions">IUA Authorization Client</a></td>
+      <td>R</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<figcaption id="1">Table 1: Grouping of actors required by this national extension. </figcaption>
 
 <h3 id="security-consideration">Security Consideration</h3>
-<p>The Swiss national extension does not define additional requirements on ATNA Security Considerations.</p>
+<p>This national extension enforces authentication and authorization of access to the Patient Identifier Cross-reference
+Manager using the IUA profile as described in <a href="iti-71.html">IUA</a>.</p>
 
 
 
@@ -349,7 +398,7 @@ between them.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 12:16+0000">2024-12-18</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 13:40+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -357,7 +406,7 @@ between them.</p>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1%20/iti-restful-atna.html&amp;entry%2E247644557=RESTful%20ATNA">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%235.0.0-ballot%20/iti-restful-atna.html&amp;entry%2E247644557=RESTful%20ATNA">Propose a change</a>
 
 
 

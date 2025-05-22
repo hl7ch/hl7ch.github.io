@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Get Authorization Server Metadata [ITI-103] - CH EPR FHIR (R4) v4.0.1</title>
+    <title>Get Authorization Server Metadata [ITI-103] - CH EPR FHIR (R4) v5.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -65,10 +65,11 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"3.2"}
-    h3,h4,h5,h6{--heading-prefix:"3.2"}</style>
+    <style type="text/css">h2{--heading-prefix:"14"}
+    h3,h4,h5,h6{--heading-prefix:"14"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <!--
@@ -94,7 +95,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1 - trial-use
+            <span style="display:inline-block;">5.0.0-ballot - ballot
 
 
 
@@ -153,6 +154,9 @@
             <li>
                 <a href="ppqm.html">Privacy Policy Query for Mobile (CH:PPQm)</a>
             </li>
+            <li>
+                <a href="ch-atc.html">Audit Trail Consumption (CH:ATC)</a>
+            </li>
         </ul>
     </li>
     <li class="dropdown">
@@ -166,6 +170,9 @@
             </li>
             <li>
                 <a href="iti-71.html">Get Access Token [ITI-71]</a>
+            </li>
+            <li>
+                <a href="iti-72.html">Incorporate Access Token [ITI-72]</a>
             </li>
             <li>
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
@@ -195,7 +202,7 @@
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
             </li>
             <li>
-                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
+                <a href="iti-130.html">Care Services Feed [ITI-130]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -205,6 +212,20 @@
             </li>
             <li>
                 <a href="ppq-5.html">Mobile Privacy Policy Retrieve [PPQ-5]</a>
+            </li>
+            <li>
+                <a href="iti-81.html">Retrieve Audit Event [ITI-81]</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 3
+            <b class="caret">
+            </b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="volume3.html">CH:ATC Audit Event Content Profiles</a>
             </li>
         </ul>
     </li>
@@ -256,7 +277,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='volume2.html'><b>Volume 2</b></a></li><li><b>Get Authorization Server Metadata [ITI-103]</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Get Authorization Server Metadata [ITI-103]</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -276,7 +297,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v5.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 5 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Get Authorization Server Metadata [ITI-103]</h2>
   
 
@@ -316,14 +337,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h3 id="referenced-standards">Referenced Standards</h3>
 
 <ol>
-  <li><a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE ITI Technical Framework Supplement Internet User Authorization (IUA) Revision 2.2</a></li>
-  <li><a href="http://www.hl7.org/fhir/smart-app-launch/">SMART Application Launch Framework Implementation Guide Release 2.1.0</a></li>
+  <li><a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE ITI Technical Framework Supplement Internet User Authorization (IUA) Revision 2.3</a></li>
+  <li><a href="http://www.hl7.org/fhir/smart-app-launch/">SMART Application Launch Framework Implementation Guide Release 2.2.0</a></li>
   <li><a href="https://www.rfc-editor.org/rfc/pdfrfc/rfc8615.txt.pdf">Well-Known Uniform Resource Identifiers</a></li>
 </ol>
 
 <h3 id="messages">Messages</h3>
 
-<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="191px" preserveAspectRatio="none" style="width:452px;height:191px;background:#FFFFFF;" version="1.1" viewBox="0 0 452 191" width="452px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="253" x="98.75" y="27.9951">Interaction Diagram for [ITI-103]</text><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="365" y="137.3203" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="79" x2="79" y1="106.1875" y2="184.4531" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="369.5" x2="369.5" y1="106.1875" y2="184.4531" /><rect fill="#E2E2F0" height="62.8906" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="148" x="5" y="42.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="12" y="62.292">Authorization Client</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="14" x="72" y="78.5889">or</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="21.5" y="94.8857">Resource Server</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="153" x="293.5" y="74.8906" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="300.5" y="94.8857">Authorization Server</text><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="365" y="137.3203" /><polygon fill="#181818" points="353,133.3203,363,137.3203,353,141.3203,357,137.3203" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="79" x2="359" y1="137.3203" y2="137.3203" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="252" x="86" y="132.2544">Authorization Server Metadata Request</text><polygon fill="#181818" points="90,162.4531,80,166.4531,90,170.4531,86,166.4531" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="84" x2="369" y1="166.4531" y2="166.4531" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="262" x="96" y="161.3872">Authorization Server Metadata Response</text></g></svg></div>
+<div><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SEQUENCE" height="191px" preserveAspectRatio="none" style="width:462px;height:191px;background:#FFFFFF;" version="1.1" viewBox="0 0 462 191" width="462px" zoomAndPan="magnify"><title>Interaction Diagram for [ITI-103]</title><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="258.9521" x="100.5823" y="27.9951">Interaction Diagram for [ITI-103]</text><g><title>Authorization Server</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="372.0522" y="137.3203" /></g><g><title>Authorization Client</title><rect fill="#000000" fill-opacity="0.00000" height="78.2656" width="8" x="77.3745" y="106.1875" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="81" x2="81" y1="106.1875" y2="184.4531" /></g><g><title>Authorization Server</title><rect fill="#000000" fill-opacity="0.00000" height="78.2656" width="8" x="373.0522" y="106.1875" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="376.9878" x2="376.9878" y1="106.1875" y2="184.4531" /></g><g class="participant participant-head" data-participant="Client"><rect fill="#E2E2F0" height="62.8906" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152.749" x="5" y="42.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138.749" x="12" y="62.292">Authorization Client</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="14.3213" x="74.2139" y="78.5889">or</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115.5" x="23.6245" y="94.8857">Resource Server</text></g><g class="participant participant-head" data-participant="AuthzServer"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="158.1289" x="297.9878" y="74.8906" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144.1289" x="304.9878" y="94.8857">Authorization Server</text></g><g><title>Authorization Server</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="372.0522" y="137.3203" /></g><g class="message" data-participant-1="Client" data-participant-2="AuthzServer"><polygon fill="#181818" points="360.0522,133.3203,370.0522,137.3203,360.0522,141.3203,364.0522,137.3203" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="81.3745" x2="366.0522" y1="137.3203" y2="137.3203" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="257.0483" x="88.3745" y="132.2544">Authorization Server Metadata Request</text></g><g class="message" data-participant-1="AuthzServer" data-participant-2="Client"><polygon fill="#181818" points="92.3745,162.4531,82.3745,166.4531,92.3745,170.4531,88.3745,166.4531" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="86.3745" x2="376.0522" y1="166.4531" y2="166.4531" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="266.6777" x="98.3745" y="161.3872">Authorization Server Metadata Response</text></g></g></svg></div>
 
 <h4 id="authorization-server-metadata-request">Authorization Server Metadata Request</h4>
 
@@ -404,7 +425,7 @@ element. The JSON object SHALL convey the following attributes:</p>
       <td>grant_types_supported</td>
       <td>R</td>
       <td>IUA</td>
-      <td>SHALL include “authorization_code” and "urn:ietf:params:oauth:grant-type:jwt-bearer".</td>
+      <td>SHALL include "client_credentials", “authorization_code” and "urn:ietf:params:oauth:grant-type:jwt-bearer".</td>
     </tr>
     <tr>
       <td>management_endpoint</td>
@@ -421,8 +442,8 @@ element. The JSON object SHALL convey the following attributes:</p>
     <tr>
       <td>capabilities</td>
       <td>R</td>
-      <td>SMART on FHIR</td>
-      <td>SMART capabilities (e.g., single-sign-on or launch-standalone) that the server supports.</td>
+      <td>SMART on FHIR /IUA</td>
+      <td>SMART capabilities (e.g., single-sign-on or launch-standalone) that the server supports with the Swiss extension of "sso-saml" for SAML based single sign on according to EPRO, annex 8.</td>
     </tr>
     <tr>
       <td>issuer</td>
@@ -458,12 +479,12 @@ element. The JSON object SHALL convey the following attributes:</p>
     </span><span class="nl">"token_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/auth/token"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"token_endpoint_auth_methods_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"client_secret_basic"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client_secret_post"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"registration_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/auth/register"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"scopes_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"openid"</span><span class="p">,</span><span class="w"> </span><span class="s2">"profile"</span><span class="p">,</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w"> </span><span class="s2">"launch/patient"</span><span class="p">,</span><span class="w"> </span><span class="s2">"patient/*.*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"purpose_of_use=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"subject_role=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"person_id=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"principal=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"principal_id=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"organization=*"</span><span class="p">,</span><span class="w">  </span><span class="s2">"organization=_id*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"access_token_format=*"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"scopes_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"openid"</span><span class="p">,</span><span class="w"> </span><span class="s2">"profile"</span><span class="p">,</span><span class="w"> </span><span class="s2">"launch/patient"</span><span class="p">,</span><span class="w"> </span><span class="s2">"patient/*.*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w"> </span><span class="s2">"purpose_of_use=*"</span><span class="p">,</span><span class="w"> </span><span class="s2">"subject_role=*"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"response_types_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"code"</span><span class="p">,</span><span class="w"> </span><span class="s2">"id_token"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"grant_types_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"client_credentials"</span><span class="p">,</span><span class="w"> </span><span class="s2">"authorization_code"</span><span class="p">,</span><span class="w"> </span><span class="s2">"urn:ietf:params:oauth:grant-type:jwt-bearer"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"management_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/user/manage"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"revocation_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/user/revoke"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"launch-ehr"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client-public"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client-confidential-symmetric"</span><span class="p">,</span><span class="w"> </span><span class="s2">"context-ehr-patient"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sso-openid-connect"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"launch-ehr"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client-public"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client-confidential-symmetric"</span><span class="p">,</span><span class="w"> </span><span class="s2">"context-ehr-patient"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sso-openid-connect"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sso-saml"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"launch-ehr"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client-public"</span><span class="p">,</span><span class="w"> </span><span class="s2">"client-confidential-symmetric"</span><span class="p">,</span><span class="w"> </span><span class="s2">"context-ehr-patient"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sso-openid-connect"</span><span class="p">],</span><span class="w">
     </span><span class="nl">"jwks_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ehr.example.com/auth/jws"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"access_token_format"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"urn:ietf:params:oauth:token-type:jwt"</span><span class="p">]</span><span class="w">
@@ -501,7 +522,7 @@ element. The JSON object SHALL convey the following attributes:</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 12:16+0000">2024-12-18</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 13:40+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -509,7 +530,7 @@ element. The JSON object SHALL convey the following attributes:</p>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1%20/iti-103.html&amp;entry%2E247644557=Get%20Authorization%20Server%20Metadata%20[ITI-103]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%235.0.0-ballot%20/iti-103.html&amp;entry%2E247644557=Get%20Authorization%20Server%20Metadata%20[ITI-103]">Propose a change</a>
 
 
 

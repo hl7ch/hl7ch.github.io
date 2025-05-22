@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Open Issues / Change Log - CH EPR FHIR (R4) v4.0.1</title>
+    <title>Open Issues / Change Log - CH EPR FHIR (R4) v5.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -65,10 +65,11 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"4.8"}
-    h3,h4,h5,h6{--heading-prefix:"4.8"}</style>
+    <style type="text/css">h2{--heading-prefix:"38"}
+    h3,h4,h5,h6{--heading-prefix:"38"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <!--
@@ -94,7 +95,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1 - trial-use
+            <span style="display:inline-block;">5.0.0-ballot - ballot
 
 
 
@@ -153,6 +154,9 @@
             <li>
                 <a href="ppqm.html">Privacy Policy Query for Mobile (CH:PPQm)</a>
             </li>
+            <li>
+                <a href="ch-atc.html">Audit Trail Consumption (CH:ATC)</a>
+            </li>
         </ul>
     </li>
     <li class="dropdown">
@@ -166,6 +170,9 @@
             </li>
             <li>
                 <a href="iti-71.html">Get Access Token [ITI-71]</a>
+            </li>
+            <li>
+                <a href="iti-72.html">Incorporate Access Token [ITI-72]</a>
             </li>
             <li>
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
@@ -195,7 +202,7 @@
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
             </li>
             <li>
-                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
+                <a href="iti-130.html">Care Services Feed [ITI-130]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -205,6 +212,20 @@
             </li>
             <li>
                 <a href="ppq-5.html">Mobile Privacy Policy Retrieve [PPQ-5]</a>
+            </li>
+            <li>
+                <a href="iti-81.html">Retrieve Audit Event [ITI-81]</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 3
+            <b class="caret">
+            </b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="volume3.html">CH:ATC Audit Event Content Profiles</a>
             </li>
         </ul>
     </li>
@@ -256,7 +277,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='appendix.html'><b>Appendix</b></a></li><li><b>Open Issues / Change Log</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Open Issues / Change Log</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -276,7 +297,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v5.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 5 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Open Issues / Change Log</h2>
   
 
@@ -294,30 +315,80 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
+  <li><a href="#dstu5-informative-ballot-2025" id="markdown-toc-dstu5-informative-ballot-2025">DSTU5 Informative Ballot 2025</a></li>
   <li><a href="#dstu4-informative-ballot-release-2024-12-18" id="markdown-toc-dstu4-informative-ballot-release-2024-12-18">DSTU4 Informative Ballot Release 2024-12-18</a></li>
   <li><a href="#dstu4-informative-ballot-2024---resolved-issues" id="markdown-toc-dstu4-informative-ballot-2024---resolved-issues">DSTU4 Informative Ballot 2024 - Resolved Issues</a></li>
   <li><a href="#dstu4-informative-ballot-2024" id="markdown-toc-dstu4-informative-ballot-2024">DSTU4 Informative Ballot 2024</a></li>
   <li><a href="#dstu3-informative-ballot-2023---resolved-issues" id="markdown-toc-dstu3-informative-ballot-2023---resolved-issues">DSTU3 Informative Ballot 2023 - Resolved Issues</a></li>
   <li><a href="#dstu3-informative-ballot-2023---raised-issues" id="markdown-toc-dstu3-informative-ballot-2023---raised-issues">DSTU3 Informative Ballot 2023 - Raised Issues</a></li>
   <li><a href="#dstu3-informative-ballot-2023---start" id="markdown-toc-dstu3-informative-ballot-2023---start">DSTU3 Informative Ballot 2023 - Start</a></li>
-  <li><a href="#open-issues-1" id="markdown-toc-open-issues-1">Open Issues</a></li>
+  <li><a href="#open-issues-2" id="markdown-toc-open-issues-2">Open Issues</a></li>
   <li><a href="#dstu2-informative-ballot-2022---resolved-issues" id="markdown-toc-dstu2-informative-ballot-2022---resolved-issues">DSTU2 Informative Ballot 2022 - Resolved Issues</a></li>
   <li><a href="#dstu1-informative-ballot-2021---resolved-issues" id="markdown-toc-dstu1-informative-ballot-2021---resolved-issues">DSTU1 Informative Ballot 2021 - Resolved Issues</a></li>
 </ul>
 
 </div>
-<h3 id="dstu4-informative-ballot-release-2024-12-18">DSTU4 Informative Ballot Release 2024-12-18</h3>
+<h3 id="dstu5-informative-ballot-2025">DSTU5 Informative Ballot 2025</h3>
 
 <h4 id="open-issues">Open Issues</h4>
+
+<ul>
+  <li>Unknown code '26' in the CodeSystem 'http://terminology.hl7.org/CodeSystem/object-role' version '1.0.0': waiting to be added, see <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/190">#190</a></li>
+</ul>
+
+<h4 id="resolved-issues">Resolved Issues</h4>
+
+<ul>
+  <li>CH:ATC: Updated references and minor textual corrections in CH:ATC, ITI-81 and Volume 3 <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/323">#323</a>, <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/324">#324</a>, <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/326">#326</a>, <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/327">#327</a></li>
+  <li>fix mCSD capability statement expected actions for update, delete <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/310">#310</a></li>
+  <li>add SCT edition in the expansion parameters <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/256">#256</a></li>
+  <li>Wrong optionality of the attribute Consent.provision.period <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/255">#255</a></li>
+  <li>integrate CH:ATC into this implementation guide <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/257">#257</a></li>
+  <li>Wrong AuditEvent action for the CH:MHD-1 transaction <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/270">#270</a></li>
+  <li>Upgrade to IHE mCSD v4.0.0-comment <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/278">#278</a></li>
+  <li>Update the PPQm-3 and PPQm-5 AuditEvents to BALP v1.1.3 <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/278">#278</a></li>
+  <li>Upgrade to IHE PDQm v3.1.0 <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/281">#281</a></li>
+  <li>MHD: document the use of <code class="language-plaintext highlighter-rouge">DocumentReference.content.attachment.url</code> <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/276">#276</a></li>
+  <li>MHD: invalid mapping of the creation time, remove date <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/299">#299</a></li>
+  <li>MHD: define the mapping of referenceIdList to context.related <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/294">#294</a></li>
+  <li>Remove targetId from the ITI-83 response <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/269">#269</a></li>
+  <li>Use a logical reference (EPR-SPID) to the patient in MHD <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/269">#269</a></li>
+  <li>Remove <code class="language-plaintext highlighter-rouge">DocumentReference.date</code> from the MHD profile <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/274">#274</a></li>
+  <li>Fix dependency to hl7.terminology <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/290">#290</a></li>
+  <li>IUA: Incorporate Access Token [ITI-72] not mentioned in the IUA profile <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/249">#249</a></li>
+  <li>IUA: Add Authenticate User transaction <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/302">#302</a> and upgrade versions <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/300">#300</a></li>
+  <li>PPQm: Allow additional search criteria in CH:PPQ-5 <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/289">#289</a></li>
+  <li>PPQm: Minor textual corrections and updates of links <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/334">#334</a></li>
+  <li>ATNA: precise use of STX:HTTPS IUA <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/307">#307</a>, <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/267">#267</a>, <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/265">#265</a></li>
+  <li>CH MHD-1: wrong actor Document Recipient, should be Document Responder <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/317">#317</a></li>
+  <li>mCSD: add Bundle profile and allow only transaction in bundle <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/315">#315</a></li>
+  <li>Add NamingSystems, update example URLs (http://example.com, urn:oid:2.999) to fix unresolved URLs and add these which are not expected to resolve to the suppressed messages <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/329">#329</a></li>
+  <li>PIXm: fix cardinality of the main user agent in ITI-104 Manager Update audit event <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/330">#330</a></li>
+  <li>Fix the level for MustSupport in case of slicing for consistency <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/332">#332</a></li>
+  <li>Add <a href="http://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/CodeSystem-ig-parameters.html#:~:text=for%20further%20information-,pin%2Dcanonicals,-Pin%20Canonical%20Versions">pin-canonicals</a> parameter to define the handling of unversioned canonical references <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/336">#336</a></li>
+  <li>Fixed OperationDefinitions for PDQm and PIXm <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/340">#340</a></li>
+  <li>Conflict between OAuth2 scope and ITI-71 scope <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/245">#245</a></li>
+  <li>ValueSet binding for DocumentReference.context.event in CH MHD DocumentReference Comprehensive <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/318">#318</a></li>
+</ul>
+
+<h3 id="dstu4-informative-ballot-release-2024-12-18">DSTU4 Informative Ballot Release 2024-12-18</h3>
+
+<h4 id="open-issues-1">Open Issues</h4>
 
 <ul>
   <li>Unknown code '26' in the CodeSystem 'http://terminology.hl7.org/CodeSystem/object-role' version '1.0.0': waiting to be added, see <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/190">#190</a></li>
   <li>in review: ITI-71: Conflict between OAuth2 scope and ITI-71 scope <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/245">#245</a></li>
 </ul>
 
-<h4 id="resolved-issues">Resolved Issues</h4>
+<h4 id="resolved-issues-1">Resolved Issues</h4>
 
 <ul>
+  <li>IUA: fixed the supported scopes and grant_types in IUA Get Authorization Server Metadata [ITI-103] transaction <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/292">#292</a> and <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/293">#293</a>.</li>
+  <li>IUA: fixed parameter naming in Get Access Token [ITI-71] transaction <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/291">#291</a>.</li>
+  <li>IUA: The Get Access Token Request [ITI-71] authorization code flow is extended with the option, to send an identity assertion (SAML or OpenID Connect) in the token request message, required to support SAML authentication <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/258">#258</a>.</li>
+  <li>IUA: The requirement to use mTLS in the Get Access Token Request [ITI-71] is removed. Client identification is now based on the client id, client secret and the signature of the request <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/258">#258</a>.</li>
+  <li>IUA: The use case descriptions are updated <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/258">#258</a>.</li>
+  <li>IUA: Moved all parameter not known by the authorization server from the scope to an extension of the Get Access Token [ITI-71] transaction to match the requirements of the underlying OAuth 2.1 specification <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/245">#245</a></li>
   <li>switch deprecated discriminator type 'pattern' to 'value' <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/239">#239</a></li>
   <li>set status for extensions, profiles and datatypes to active <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/244">#244</a></li>
   <li>mCSD: add the feed transaction (CH:mCSD-1) <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/158">#158</a></li>
@@ -439,7 +510,7 @@ major updates on the IG have been made:</li>
   <li>added the mCSD profile (transaction ITI-90) <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/43">#43</a></li>
 </ul>
 
-<h3 id="open-issues-1">Open Issues</h3>
+<h3 id="open-issues-2">Open Issues</h3>
 <p>See open issues on <a href="https://github.com/ehealthsuisse/ch-epr-fhir/issues/">GitHub</a></p>
 
 <ul>
@@ -515,7 +586,7 @@ major updates on the IG have been made:</li>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 12:16+0000">2024-12-18</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 13:40+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -523,7 +594,7 @@ major updates on the IG have been made:</li>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1%20/changelog.html&amp;entry%2E247644557=Open%20Issues%20/%20Change%20Log">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%235.0.0-ballot%20/changelog.html&amp;entry%2E247644557=Open%20Issues%20/%20Change%20Log">Propose a change</a>
 
 
 

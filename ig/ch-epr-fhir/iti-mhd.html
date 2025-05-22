@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Mobile Access to Health Documents (MHD) - CH EPR FHIR (R4) v4.0.1</title>
+    <title>Mobile Access to Health Documents (MHD) - CH EPR FHIR (R4) v5.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -65,10 +65,11 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"2.4"}
-    h3,h4,h5,h6{--heading-prefix:"2.4"}</style>
+    <style type="text/css">h2{--heading-prefix:"6"}
+    h3,h4,h5,h6{--heading-prefix:"6"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <!--
@@ -94,7 +95,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1 - trial-use
+            <span style="display:inline-block;">5.0.0-ballot - ballot
 
 
 
@@ -153,6 +154,9 @@
             <li>
                 <a href="ppqm.html">Privacy Policy Query for Mobile (CH:PPQm)</a>
             </li>
+            <li>
+                <a href="ch-atc.html">Audit Trail Consumption (CH:ATC)</a>
+            </li>
         </ul>
     </li>
     <li class="dropdown">
@@ -166,6 +170,9 @@
             </li>
             <li>
                 <a href="iti-71.html">Get Access Token [ITI-71]</a>
+            </li>
+            <li>
+                <a href="iti-72.html">Incorporate Access Token [ITI-72]</a>
             </li>
             <li>
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
@@ -195,7 +202,7 @@
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
             </li>
             <li>
-                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
+                <a href="iti-130.html">Care Services Feed [ITI-130]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -205,6 +212,20 @@
             </li>
             <li>
                 <a href="ppq-5.html">Mobile Privacy Policy Retrieve [PPQ-5]</a>
+            </li>
+            <li>
+                <a href="iti-81.html">Retrieve Audit Event [ITI-81]</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 3
+            <b class="caret">
+            </b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="volume3.html">CH:ATC Audit Event Content Profiles</a>
             </li>
         </ul>
     </li>
@@ -256,7 +277,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='volume1.html'><b>Volume 1</b></a></li><li><b>Mobile Access to Health Documents (MHD)</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Mobile Access to Health Documents (MHD)</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -276,7 +297,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v5.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 5 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Mobile Access to Health Documents (MHD)</h2>
   
 
@@ -318,7 +339,7 @@ An EPR App can Update Document Metadata for a published document with this natio
 <h4 id="document-metadata-update-from-a-health-care-professional-with-a-primary-system">Document Metadata update from a Health Care professional with a primary system</h4>
 <p>A Healthcare professional has published a document in his own community for the patient but needs to update the metadata of the document. 
 The healthcare professional updates the metadata (e.g. title) in the primary systems and submits the updated metadata to the community. The
-metadata which is allowed to be updated is defined in Annex 5.1 1.12.1.</p>
+metadata which is allowed to be updated is defined in Annex 5.1 1.12.</p>
 
 <h4 id="federated-cross-community-access">Federated Cross Community Access</h4>
 <p>An EPR App can query and retrieve documents and data for a patient from an EPR Community independent in which community the documents / data are stored.</p>
@@ -329,7 +350,7 @@ metadata which is allowed to be updated is defined in Annex 5.1 1.12.1.</p>
 <h3 id="actors-and-transactions">Actors and Transactions</h3>
 
 <div>
-<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="214px" preserveAspectRatio="none" style="width:603px;height:214px;background:#FFFFFF;" version="1.1" viewBox="0 0 603 214" width="603px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="152" x="218.5" y="22.9951">MHD Actor Diagram</text><!--entity DocumentSource--><g id="elem_DocumentSource"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="146" x="15" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="25" y="67.292">Document Source</text></g><!--entity DocumentConsumer--><g id="elem_DocumentConsumer"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="169" x="299.5" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="309.5" y="67.292">Document Consumer</text></g><!--entity DocumentResponder--><g id="elem_DocumentResponder"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="174" x="297" y="172.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="307" y="195.292">Document Responder</text></g><!--entity DocumentRecipient--><g id="elem_DocumentRecipient"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="162" x="7" y="172.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="17" y="195.292">Document Recipient</text></g><!--link DocumentConsumer to DocumentResponder--><g id="link_DocumentConsumer_DocumentResponder"><path d="M384,80.5569 C384,103.0769 384,142.5369 384,167.2169 " fill="none" id="DocumentConsumer-to-DocumentResponder" style="stroke:#181818;stroke-width:1.0;" /><polygon fill="#181818" points="384,172.2469,388,163.2469,384,167.2469,380,163.2469,384,172.2469" style="stroke:#181818;stroke-width:1.0;" /><a href="iti-67.html" target="_top" title="iti-67.html" xlink:actuate="onRequest" xlink:href="iti-67.html" xlink:show="new" xlink:title="iti-67.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="210" x="385" y="123.3638">ITI-67 Find Document References</text></a><a href="iti-68.html" target="_top" title="iti-68.html" xlink:actuate="onRequest" xlink:href="iti-68.html" xlink:show="new" xlink:title="iti-68.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="161" x="409.5" y="138.4966">ITI-68 Retrieve Document</text></a></g><!--link DocumentSource to DocumentRecipient--><g id="link_DocumentSource_DocumentRecipient"><path d="M88,80.5569 C88,103.0769 88,142.5369 88,167.2169 " fill="none" id="DocumentSource-to-DocumentRecipient" style="stroke:#181818;stroke-width:1.0;" /><polygon fill="#181818" points="88,172.2469,92,163.2469,88,167.2469,84,163.2469,88,172.2469" style="stroke:#181818;stroke-width:1.0;" /><a href="iti-65.html" target="_top" title="iti-65.html" xlink:actuate="onRequest" xlink:href="iti-65.html" xlink:show="new" xlink:title="iti-65.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="204" x="114" y="123.3638">ITI-65 Provide Document Bundle</text></a><a href="ch-mhd-1.html" target="_top" title="ch-mhd-1.html" xlink:actuate="onRequest" xlink:href="ch-mhd-1.html" xlink:show="new" xlink:title="ch-mhd-1.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="254" x="89" y="138.4966">CH:MHD-1 Update Document Metadata</text></a></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="214px" preserveAspectRatio="none" style="width:846px;height:214px;background:#FFFFFF;" version="1.1" viewBox="0 0 846 214" width="846px" zoomAndPan="magnify"><title>MHD Actor Diagram</title><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="156.1943" x="338.2898" y="22.9951">MHD Actor Diagram</text><!--entity DocumentSource--><g class="entity" data-entity="DocumentSource" data-source-line="3" data-uid="ent0002" id="entity_DocumentSource"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="145.3711" x="142" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125.3711" x="152" y="67.292">Document Source</text></g><!--entity DocumentConsumer--><g class="entity" data-entity="DocumentConsumer" data-source-line="4" data-uid="ent0003" id="entity_DocumentConsumer"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="168.3672" x="553.5" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148.3672" x="563.5" y="67.292">Document Consumer</text></g><!--entity DocumentResponder--><g class="entity" data-entity="DocumentResponder" data-source-line="5" data-uid="ent0004" id="entity_DocumentResponder"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="172.1953" x="402.5" y="172.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152.1953" x="412.5" y="195.292">Document Responder</text></g><!--entity DocumentRecipient--><g class="entity" data-entity="DocumentRecipient" data-source-line="6" data-uid="ent0005" id="entity_DocumentRecipient"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="162.6592" x="7" y="172.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142.6592" x="17" y="195.292">Document Recipient</text></g><!--link DocumentConsumer to DocumentResponder--><g class="link" data-entity-1="DocumentConsumer" data-entity-2="DocumentResponder" data-source-line="7" data-uid="lnk6" id="link_DocumentConsumer_DocumentResponder"><path d="M632.87,80.5369 C627.33,98.1469 616.49,125.2669 598.5,142.2969 C584.7,155.3569 572.2651,162.8195 554.8451,169.9295" fill="none" id="DocumentConsumer-to-DocumentResponder" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="549.29,172.1969,559.1342,172.4993,553.9193,170.3074,556.1111,165.0925,549.29,172.1969" style="stroke:#181818;stroke-width:1;" /><a href="iti-67.html" target="_top" title="iti-67.html" xlink:actuate="onRequest" xlink:href="iti-67.html" xlink:show="new" xlink:title="iti-67.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="217.2739" x="621.5" y="123.3638">ITI-67 Find Document References</text></a><a href="iti-68.html" target="_top" title="iti-68.html" xlink:actuate="onRequest" xlink:href="iti-68.html" xlink:show="new" xlink:title="iti-68.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="167.229" x="646.5225" y="138.4966">ITI-68 Retrieve Document</text></a></g><!--link DocumentSource to DocumentResponder--><g class="link" data-entity-1="DocumentSource" data-entity-2="DocumentResponder" data-source-line="8" data-uid="lnk7" id="link_DocumentSource_DocumentResponder"><path d="M251.91,80.4969 C267.83,88.5669 286.22,98.9069 301.5,110.2969 C317.63,122.3169 316.25,131.9569 333.5,142.2969 C355.45,155.4469 375.62,163.517 399.93,170.607" fill="none" id="DocumentSource-to-DocumentResponder" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="405.69,172.2869,398.1699,165.927,400.89,170.887,395.93,173.607,405.69,172.2869" style="stroke:#181818;stroke-width:1;" /><a href="ch-mhd-1.html" target="_top" title="ch-mhd-1.html" xlink:actuate="onRequest" xlink:href="ch-mhd-1.html" xlink:show="new" xlink:title="ch-mhd-1.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="255.582" x="334.5" y="130.8638">CH:MHD-1 Update Document Metadata</text></a></g><!--link DocumentSource to DocumentRecipient--><g class="link" data-entity-1="DocumentSource" data-entity-2="DocumentRecipient" data-source-line="9" data-uid="lnk8" id="link_DocumentSource_DocumentRecipient"><path d="M141.69,73.4569 C120.04,80.2569 98.62,91.5469 85.5,110.2969 C72.83,128.3969 75.5933,149.2188 80.6433,166.4588" fill="none" id="DocumentSource-to-DocumentRecipient" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="82.33,172.2169,83.6387,162.4554,80.9244,167.4185,75.9613,164.7042,82.33,172.2169" style="stroke:#181818;stroke-width:1;" /><a href="iti-65.html" target="_top" title="iti-65.html" xlink:actuate="onRequest" xlink:href="iti-65.html" xlink:show="new" xlink:title="iti-65.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="210.5391" x="86.5" y="130.8638">ITI-65 Provide Document Bundle</text></a></g></g></svg>
 </div>
 <p>This figure shows the actors directly involved in the <em>Mobile Access to Health Documents</em> Profile and the relevant 
 transactions between them.</p>
@@ -338,7 +359,7 @@ transactions between them.</p>
 
 <h3 id="actor-options">Actor options</h3>
 
-<p>Options that can be selected for each actor in this profile,are listed in the table below.</p>
+<p>Options that can be selected for each actor in this profile, are listed in the table below.</p>
 
 <table class="table table-bordered">
   <thead>
@@ -351,23 +372,23 @@ transactions between them.</p>
   <tbody>
     <tr>
       <td>Document Source</td>
-      <td>Comprehensive Metadata <br />Federated Cross Community Access</td>
-      <td>R  <br /> see actor option notes</td>
+      <td>Comprehensive Metadata</td>
+      <td>R</td>
     </tr>
     <tr>
       <td>Document Recipient</td>
-      <td>Comprehensive Metadata <br />Federated Cross Community Access</td>
-      <td>R <br /> see actor option notes</td>
+      <td>Comprehensive Metadata</td>
+      <td>R</td>
     </tr>
     <tr>
       <td>Document Consumer</td>
-      <td>Comprehensive Metadata <br />Federated Cross Community Access</td>
-      <td>R <br /> R</td>
+      <td>Comprehensive Metadata</td>
+      <td>R</td>
     </tr>
     <tr>
       <td>Document Responder</td>
       <td>Comprehensive Metadata <br />Federated Cross Community Access</td>
-      <td>R<br /> see actor option notes</td>
+      <td>R<br /> R</td>
     </tr>
   </tbody>
 </table>
@@ -382,10 +403,10 @@ transactions between them.</p>
 
 <p>The Federated Cross Community Access Option allows querying, retrieving documents and updating document metadata across communities.</p>
 
-<h5 id="querying-and-retrieving-documents-across-communities">Querying and retrieving documents across communities</h5>
-
 <p>A community and reference community SHALL support one Document Responder with the Federated Cross Community Access Option for EPR Apps.
 In addition a community and reference community SHALL support one Document Responder without the Federated Cross Community Access Option for other communities.</p>
+
+<h5 id="querying-and-retrieving-documents-across-communities">Querying and retrieving documents across communities</h5>
 
 <div class="mermaid">
 %%{
@@ -398,7 +419,7 @@ In addition a community and reference community SHALL support one Document Respo
 }%%
 flowchart LR
     A[Document Consumer] --&gt;|Query| B(Document Responder
-    Option FXCA
+    Option Federated Cross Community Access
     Grouped with Document Consumer)
     B --&gt; C(Document Responder own community)
     B --&gt; D(Document Responders federated communities)
@@ -417,7 +438,7 @@ flowchart LR
 }%%
 flowchart LR
     A[Document Consumer] --&gt;|Retrieve| B(Document Responder
-    Option FXCA
+    Option Federated Cross Community Access
     Grouped with Document Consumer)
     B --&gt; C{own community?}
     C --&gt;|yes| D(Document Responder own community)
@@ -438,19 +459,17 @@ flowchart LR
     }
 }%%
 flowchart LR
-    A[Document Source] --&gt;|Update Doc Metadata| B(DocumentRecipient
-    Option FXCA
+    A[Document Source] --&gt;|Update Doc Metadata| B(Document Responder
+    Option Federated Cross Community Access
     Grouped with Document Source)
     B --&gt; C{own Community?}
-    C --&gt;|yes| D(Document Recipient own community)
-    C --&gt;|no| E(Document Recipient federated community)
+    C --&gt;|yes| D(Document Responder own community)
+    C --&gt;|no| E(Document Responder federated community)
 </div>
 
-<p>A community and reference community SHALL support one Document Receiver with the Federated Cross Community Access Option for EPR Apps. In addition a community and reference community SHALL support one Document Receiver without the Federated Cross Community Access Option for other communities.</p>
+<p>With the Federated Cross Community Access option the Document Responder SHALL identify if a document metadata update targets another community. If this is the case, it SHALL forward the request to the target community, otherwise the request can be handled in the own community. If the remote community cannot be reached an error SHALL be generated by the Document Responser and the Document Source SHALL process this error.</p>
 
-<p>With the Federated Cross Community Access option the Document Recipient SHALL identify if a document metadata update targets another community. If this is the case, it SHALL forward the request to the target community, otherwise the request can be handled in the own community. If the remote community cannot be reached an error SHALL be generated by the Document Recipient and the Document Source SHALL process this error.</p>
-
-<p>Note: Except for additional error handling Document Source and Consumer need not to be aware that it is a federated system with multiple communities, this is transparent and the recipient/responder SHALL handle the necessary correlations of the document (metadata) to the communities.</p>
+<p>Note: Except for additional error handling Document Source and Consumer need not to be aware that it is a federated system with multiple communities, this is transparent and the responder SHALL handle the necessary correlations of the document (metadata) to the communities.</p>
 
 <h3 id="required-actor-groupings">Required Actor Groupings</h3>
 <p>This national extension enforces authentication and authorization for access control. Therefore actors of this profile SHALL be grouped with actors of other profiles according to the following table:</p>
@@ -461,6 +480,7 @@ flowchart LR
       <th>Actor</th>
       <th>Required Grouping</th>
       <th>Optionality</th>
+      <th>Remark</th>
     </tr>
   </thead>
   <tbody>
@@ -468,21 +488,25 @@ flowchart LR
       <td>Document Recipient</td>
       <td>IUA Resource Server</td>
       <td>R</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Document Responder</td>
       <td>IUA Authorization Client</td>
       <td>R</td>
+      <td>Proxy Option if Federated Cross Community Access Option is claimed, no Option otherwise</td>
     </tr>
     <tr>
       <td>Document Source</td>
       <td>IUA Authorization Client</td>
       <td>R</td>
+      <td>Workflow Initiator Option or Technical User Option</td>
     </tr>
     <tr>
       <td>Document Consumer</td>
       <td>IUA Authorization Client</td>
       <td>R</td>
+      <td>Workflow Initiator Option</td>
     </tr>
   </tbody>
 </table>
@@ -493,7 +517,7 @@ flowchart LR
 <p>For the process flow of this profile and its interplay with the other profiles see <a href="sequencediagrams.html">sequence diagrams</a>.</p>
 
 <h3 id="security-consideration">Security Consideration</h3>
-<p>This national extension enforces authentication and authorization of access to the Patient Identity Manager using the IUA profile with extended access token as described in <a href="iti-71.html#expected-actions-1">IUA</a>.</p>
+<p>This national extension enforces authentication and authorization of access to the Document Recipient and Document Responder using the  IUA profile as described in <a href="iti-71.html#expected-actions-1">IUA</a>.</p>
 
 
 
@@ -514,7 +538,7 @@ flowchart LR
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 12:16+0000">2024-12-18</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 13:40+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -522,7 +546,7 @@ flowchart LR
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1%20/iti-mhd.html&amp;entry%2E247644557=Mobile%20Access%20to%20Health%20Documents%20(MHD)">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%235.0.0-ballot%20/iti-mhd.html&amp;entry%2E247644557=Mobile%20Access%20to%20Health%20Documents%20(MHD)">Propose a change</a>
 
 
 

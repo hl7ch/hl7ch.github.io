@@ -29,6 +29,7 @@
   <sch:pattern>
     <sch:title>f:Consent/f:provision</sch:title>
     <sch:rule context="f:Consent/f:provision">
+      <sch:assert test="count(f:period) &gt;= 1">period: minimum cardinality of 'period' is 1</sch:assert>
       <sch:assert test="count(f:purpose) &gt;= 1">purpose: minimum cardinality of 'purpose' is 1</sch:assert>
       <sch:assert test="count(f:purpose) &lt;= 1">purpose: maximum cardinality of 'purpose' is 1</sch:assert>
     </sch:rule>

@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Internet User Authorization (IUA) - CH EPR FHIR (R4) v4.0.1</title>
+    <title>Internet User Authorization (IUA) - CH EPR FHIR (R4) v5.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -65,10 +65,11 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"2.1"}
-    h3,h4,h5,h6{--heading-prefix:"2.1"}</style>
+    <style type="text/css">h2{--heading-prefix:"3"}
+    h3,h4,h5,h6{--heading-prefix:"3"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <!--
@@ -94,7 +95,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1 - trial-use
+            <span style="display:inline-block;">5.0.0-ballot - ballot
 
 
 
@@ -153,6 +154,9 @@
             <li>
                 <a href="ppqm.html">Privacy Policy Query for Mobile (CH:PPQm)</a>
             </li>
+            <li>
+                <a href="ch-atc.html">Audit Trail Consumption (CH:ATC)</a>
+            </li>
         </ul>
     </li>
     <li class="dropdown">
@@ -166,6 +170,9 @@
             </li>
             <li>
                 <a href="iti-71.html">Get Access Token [ITI-71]</a>
+            </li>
+            <li>
+                <a href="iti-72.html">Incorporate Access Token [ITI-72]</a>
             </li>
             <li>
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
@@ -195,7 +202,7 @@
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
             </li>
             <li>
-                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
+                <a href="iti-130.html">Care Services Feed [ITI-130]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -205,6 +212,20 @@
             </li>
             <li>
                 <a href="ppq-5.html">Mobile Privacy Policy Retrieve [PPQ-5]</a>
+            </li>
+            <li>
+                <a href="iti-81.html">Retrieve Audit Event [ITI-81]</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 3
+            <b class="caret">
+            </b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="volume3.html">CH:ATC Audit Event Content Profiles</a>
             </li>
         </ul>
     </li>
@@ -256,7 +277,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='volume1.html'><b>Volume 1</b></a></li><li><b>Internet User Authorization (IUA)</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Internet User Authorization (IUA)</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -276,7 +297,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v5.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 5 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Internet User Authorization (IUA)</h2>
   
 
@@ -304,106 +325,362 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </ul>
 
 </div>
-<p>This section specifies Swiss national extensions to Internet User Authorization (IUA) Profile, which is <a href="https://profiles.ihe.net/ITI/IUA/index.html">published</a> as an IHE ITI Trial Implementation profile.</p>
+<p>This section specifies Swiss national extensions to Internet User Authorization (IUA) Profile, which
+is <a href="https://profiles.ihe.net/ITI/IUA/index.html">published</a> as an IHE ITI Trial Implementation profile.</p>
 
 <h3 id="scope">Scope</h3>
 
-<p>This profile provides means to retrieve EPR compliant access token and to incorporate the access token to transactions to authorize client applications when accessing protected resources.</p>
+<p>This profile provides means to retrieve EPR compliant access token and to incorporate the access token to transactions
+to authorize client applications when accessing protected resources.</p>
 
-<p>This profile is based on the IUA Trial Implementation and adds certain restrictions to be compliant to the ordinances of the Swiss EPR.</p>
+<p>This profile is based on the IUA Trial Implementation and adds certain restrictions to be compliant to the ordinances of
+the Swiss EPR.</p>
 
-<p>The scope of this national extension is limited to provide FHIR based interfaces for primary systems and portals connected to the Swiss EPR. This national extension is currently not scoped for native mobile clients. This profile therefore adds the following restrictions to the IUA Trial Implementation:</p>
+<p>This national extension is scoped for client authorization for FHIR based interfaces for primary systems, portals and
+SMART on FHIR Apps launched from the portals or primary systems and to convey the information required to enforce the
+privacy policy settings when accessing protected resources from the EPR.</p>
+
+<p>This national extension covers:</p>
 
 <ul>
-  <li>SMART on FHIR Apps launched from portals and primary systems require a launch context identifying the portal or primary system.</li>
-  <li>Only portals and primary systems registered in the community during the onboarding process may retrieve an authorization token. The Client Authorization by User Consent method of the IUA Trial Implementation SHALL NOT be supported.</li>
+  <li>
+    <p>SMART on FHIR Apps launched from a portal or primary system, which require a launch context identifying the portal or
+primary system the app is launched from. This requires the portal or primary system to be registered with "client_id"
+and "client-secret" during onboarding. This may require an user consent which authorizes the SMART on FHIR to act on
+behalf for given scopes and the authentication of the user compliant to EPRO Annex 8.</p>
+  </li>
+  <li>
+    <p>Portals and primary systems which shall be registered during onboarding, authenticate the user compliant to EPRO Annex
+8 and provide the identity token in the access token request send to the IUA Authorization Server.</p>
+  </li>
 </ul>
-
-<p>For further restrictions on transactions and security consideration, see below.</p>
 
 <h3 id="use-cases">Use Cases</h3>
 
 <h4 id="patient-access-from-a-portal">Patient Access from a Portal</h4>
 
-<p>A patient uses a portal which is integrated to the Swiss EPR using the profiles to access and share data and documents with healthcare professionals. To access documents from the EPR the patient authenticates at a certified Identity Provider and the portal connects to the IUA Authorization Server and sends the required claims to access the EPR.</p>
+<p>A patient uses a portal which is integrated to the Swiss EPR using the profiles to access and share data and documents
+with healthcare professionals. To access documents from the EPR, the patient authenticates at a certified Identity
+Provider. The portal sends the identity token and the required claims to the IUA Authorization Server
+to retrieve an authorization token to access the EPR.</p>
 
-<p>The IUA Authorization Server verifies if the portal is authorized to access the EPR on behalf of the patient by checking that the portal is registered as a portal of the community.</p>
-
-<p>The IUA Authorization Server verifies that the patient has a valid session at the Identity Provider and retrieves the Identity Assertion from the Identity Provider. The Authorization Server validates the claims together with the data from the Identity Assertion and resolves additional information required to access the EPR (e.g., resolve the digital identity to the EPR-SPID).</p>
-
-<p>The IUA Authorization Server responds an IUA Authorization Token the portal shall incorporate to any transaction to retrieve the data and documents from the patients EPR.</p>
+<p>The Authorization Server validates the claims together with the data from the identity token and resolves additional
+information required to access the EPR (e.g., resolve the digital identity to the EPR-SPID). The IUA Authorization
+Server
+responds an IUA Authorization Token the portal shall incorporate to any transaction to retrieve the data and documents
+from the patients EPR.</p>
 
 <h4 id="user-access-from-an-integrated-primary-system">User Access from an integrated Primary System</h4>
 
-<p>A healthcare professional uses a primary system which is integrated to the Swiss EPR using the profiles to access and share data and documents with her patients or other healthcare professionals. To access documents from the EPR the healthcare professional authenticates in her primary system, selects the patient and switches to the user interface to display the patients documents and the primary system connects to the IUA Authorization Server and sends the required claims to access the patients EPR.</p>
+<p>A healthcare professional uses a primary system which is integrated to the Swiss EPR using the profiles to access and
+share data and documents with her patients or other healthcare professionals. To access documents from the EPR the
+healthcare professional authenticates at a certified identity provider from her primary system, selects the patient
+and switches to the user interface to display the patients documents. The primary system connects to the IUA
+Authorization
+Server and sends the identity token and the required claims to access the patients EPR.</p>
 
-<p>The IUA Authorization Server verifies if the primary system is authorized to access the EPR on behalf of the user by checking that the primary system has been registered during the onboarding process of the primary system.</p>
+<p>The IUA Authorization Server verifies if the primary system is authorized to access the EPR on behalf of the user by
+checking that the primary system has been registered during the onboarding process.</p>
 
-<p>The IUA Authorization Server verifies that the healthcare professional has a valid session at the Identity Provider and retrieves the Identity Assertion from the Identity Provider. The Authorization Server validates the claims together with the data from the Identity Assertion and resolves additional information required to access the EPR (e.g., resolve the relations to institutions or other groups).</p>
-
-<p>The IUA Authorization Server responds an IUA Authorization Token the primary system shall incorporate to any transaction to retrieve the data and documents from the patients EPR.</p>
+<p>The Authorization Server validates the claims together with the data from the identity token and resolves additional
+information required to access the EPR (e.g., resolve the digital identity to GLN). The IUA Authorization Server
+responds an IUA Authorization Token the portal shall incorporate to any transaction to retrieve the data and documents
+from the patients EPR.</p>
 
 <h4 id="user-access-from-a-smart-on-fhir-component">User Access from a SMART on FHIR component</h4>
 
-<p>A patient or healthcare professional uses a portal or primary system which uses SMART on FHIR Apps to connect to the Swiss EPR.</p>
+<p>A patient or healthcare professional uses a portal or primary system which uses SMART on FHIR Apps to connect to the
+Swiss EPR.</p>
 
-<p>The patient or healthcare professional authenticates in the portal or primary system and launches the SMART on FHIR App from the portal or primary system. The portal or primary system first builds a SMART on FHIR launch context with the patient context and identifiers of the portal or primary system application and launches the SMART on FHIR App with the launch context.</p>
+<p>The patient or healthcare professional authenticates in the portal or primary system and launches the SMART on FHIR App
+from the portal or primary system. The portal or primary system first builds a SMART on FHIR launch context with the
+patient context and identifiers of the portal or primary system application and launches the SMART on FHIR App with the
+launch context.</p>
 
-<p>The IUA Authorization Server verifies that the portal or primary system is authorized to launch SMART on FHIR Apps which connect to the EPR on behalf of the user by checking that the portal or primary system has been registered beforehand during the onboarding process of the portal or primary system application.</p>
+<p>The IUA Authorization Server verifies that the portal or primary system is authorized to launch SMART on FHIR Apps which
+connect to the EPR on behalf of the user by checking that the portal or primary system has been registered beforehand
+during the onboarding process of the portal or primary system application.</p>
 
-<p>The IUA Authorization Server verifies that the patient or healthcare professional has a valid session at the Identity Provider and retrieves the Identity Assertion from the Identity Provider. The Authorization Server validates the claims together with the data from the Identity Assertion and resolves additional information the SMART on FHIR App requires to access the EPR (e.g., resolve the digital identity to the EPR-SPID).</p>
+<p>The IUA Authorization Server reflects the community policy which requires the user's consent for SMART on FHIR Apps to
+access their protected data with a given scope. The IUA Authorization Server verifies that the user has a valid session
+at the Identity Provider and retrieves the Identity Assertion from the Identity Provider to identity the user.
+The Authorization Server validates the Authorization Client claims and resolves additional information the SMART on
+FHIR App requires to access the EPR (e.g., resolve the digital identity to the EPR-SPID).</p>
 
-<p>The IUA Authorization Server responds an IUA Authorization Token the SMART on FHIR App shall incorporate to any transaction to retrieve the data and documents from the patients EPR.</p>
+<p>The IUA Authorization Server responds an IUA Authorization Token which the SMART on FHIR App shall incorporate to any
+transaction to retrieve the data and documents from the patients EPR.</p>
 
 <h4 id="writing-documents-from-clinical-archives">Writing documents from clinical archives</h4>
 
-<p>A healthcare professional uses a primary system which stores documents in a clinical archive system. The clinical archive system uses specific algorithms to decide which documents shall be stored in the Swiss EPR of the patient.</p>
+<p>A healthcare professional uses a primary system which stores documents in a clinical archive system. The clinical
+archive system uses specific algorithms to decide which documents shall be stored in the Swiss EPR of the patient.</p>
 
-<p>The healthcare professional reports medical information of a treatment in her primary system. The primary system creates a structured or unstructured document from the data and stores them in the clinical archive system. The clinical archive system decides whether the document shall be stored in the patients EHR using the policies defined in the clinic.</p>
+<p>The healthcare professional reports medical information of a treatment in her primary system. The primary system creates
+a structured or unstructured document from the data and stores them in the clinical archive system. The clinical archive
+system decides whether the document shall be stored in the patients EHR using the policies defined in the clinic.</p>
 
-<p>To access the patient EHR the clinical archive system first request a basic authorization token using the client credential flow and uses the basic authorization token in the PIXm or PDQm transactions used to retrieve the EHR-SPID and the XAD PID of the patient.</p>
+<p>To access the patient EHR the clinical archive system first request a basic access token using the client
+credential flow and uses the basic access token in the PIXm or PDQm transactions used to retrieve the EHR-SPID
+and the XAD PID of the patient.</p>
 
-<p>The Authorization server returns the basic access token if the clincial archive systems is reqistered beforehand and is authorized to access the Swiss EHR.</p>
+<p>The Authorization server returns the basic access token if the clinical archive systems is registered beforehand and is
+authorized to access the Swiss EHR.</p>
 
-<p>The clinical archive system then requests a extended authorization token to be used with the MHD transaction to store the document in the patients EHR.</p>
+<p>The clinical archive system then requests an extended authorization token to be used with the MHD transaction to store
+the document in the patients EHR.</p>
 
 <h3 id="actors-and-transactions">Actors and Transactions</h3>
 
-<p>This national extension enhance the requirements on transactions and the expected actions of the Actors of the IUA Trial Implementation to comply to the legal requirements of the Swiss EPR.</p>
-
-<p>The scope of this national extension is limited to portals and primary systems to comply with ordinances of the Swiss EPR. This national extension is currently not scoped for native mobile clients. Therefore the Client Authorization by User Consent method SHALL NOT be supported.</p>
-
-<p>Portals and primary systems SHALL be identified and authorized either on the TLS connection level or by digital signatures of the messages exchanged, or both. See section Expected Actions of the <a href="iti-71.html#expected-actions-1">Get Access Token transaction</a> for further details.</p>
+<p>This national extension enhance the requirements on transactions and the expected actions of the Actors of the IUA Trial
+Implementation to comply to the legal requirements of the Swiss EPR.</p>
 
 <div>
-<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="214px" preserveAspectRatio="none" style="width:656px;height:214px;background:#FFFFFF;" version="1.1" viewBox="0 0 656 214" width="656px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="143" x="249.5" y="22.9951">IUA Actor Diagram</text><!--entity Client--><g id="elem_Client"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="154" x="7" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="17" y="67.292">Authorization Client</text></g><!--entity ResourceServer--><g id="elem_ResourceServer"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="135" x="327.5" y="44.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="337.5" y="67.292">Resource Server</text></g><!--entity Server--><g id="elem_Server"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="159" x="159.5" y="172.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="169.5" y="195.292">Authorization Server</text></g><!--link Client to Server--><g id="link_Client_Server"><path d="M77.61,80.5469 C72.38,97.9069 67.79,124.5869 81,142.2969 C98.23,165.4069 126.37,177.6069 154.16,183.9069 " fill="none" id="Client-to-Server" style="stroke:#181818;stroke-width:1.0;" /><polygon fill="#181818" points="159.34,185.0069,151.3895,179.194,154.4531,183.9495,149.6976,187.0131,159.34,185.0069" style="stroke:#181818;stroke-width:1.0;" /><a href="iti-71.html" target="_top" title="iti-71.html" xlink:actuate="onRequest" xlink:href="iti-71.html" xlink:show="new" xlink:title="iti-71.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="152" x="140.5" y="123.3638">ITI-71 Get Access Token</text></a><a href="iti-103.html" target="_top" title="iti-103.html" xlink:actuate="onRequest" xlink:href="iti-103.html" xlink:show="new" xlink:title="iti-103.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="269" x="82" y="138.4966">ITI-103 Get Authorization Server Metadata</text></a></g><!--link ResourceServer to Server--><g id="link_ResourceServer_Server"><path d="M390.44,80.6169 C384.97,98.2969 374.18,125.4569 356,142.2969 C342.93,154.3969 326.36,163.5569 309.82,170.4169 " fill="none" id="ResourceServer-to-Server" style="stroke:#181818;stroke-width:1.0;" /><polygon fill="#181818" points="305.16,172.2869,315.0019,172.6583,309.8024,170.4299,312.0307,165.2305,305.16,172.2869" style="stroke:#181818;stroke-width:1.0;" /><a href="iti-103.html" target="_top" title="iti-103.html" xlink:actuate="onRequest" xlink:href="iti-103.html" xlink:show="new" xlink:title="iti-103.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="269" x="379" y="130.8638">ITI-103 Get Authorization Server Metadata</text></a></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="216px" preserveAspectRatio="none" style="width:821px;height:216px;background:#FFFFFF;" version="1.1" viewBox="0 0 821 216" width="821px" zoomAndPan="magnify"><title>IUA Actor Diagram</title><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="146.3369" x="330.4697" y="22.9951">IUA Actor Diagram</text><!--entity Client--><g class="entity" data-entity="Client" data-source-line="2" data-uid="ent0002" id="entity_Client"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="158.749" x="226" y="45.8628" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138.749" x="236" y="68.8579">Authorization Client</text></g><!--entity ResourceServer--><g class="entity" data-entity="ResourceServer" data-source-line="3" data-uid="ent0003" id="entity_ResourceServer"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="135.5" x="7" y="173.8628" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115.5" x="17" y="196.8579">Resource Server</text></g><!--entity UAProvider--><g class="entity" data-entity="UAProvider" data-source-line="4" data-uid="ent0004" id="entity_UAProvider"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="221.7764" x="593.5" y="45.8628" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="201.7764" x="603.5" y="68.8579">User Authentication Provider</text></g><!--entity Server--><g class="entity" data-entity="Server" data-source-line="5" data-uid="ent0005" id="entity_Server"><rect fill="#F1F1F1" height="36.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="164.1289" x="454.5" y="173.8628" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144.1289" x="464.5" y="196.8579">Authorization Server</text></g><!--link Client to UAProvider--><g class="link" data-entity-1="Client" data-entity-2="UAProvider" data-source-line="7" data-uid="lnk6" id="link_Client_UAProvider"><path d="M385.28,63.8628 C444.98,63.8628 521.37,63.8628 587.5,63.8628" fill="none" id="Client-to-UAProvider" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="593.5,63.8628,584.5,59.8628,588.5,63.8628,584.5,67.8628,593.5,63.8628" style="stroke:#181818;stroke-width:1;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="172.0659" x="403.25" y="56.9297">CH:XUA Authenticate User</text></g><!--link Client to Server--><g class="link" data-entity-1="Client" data-entity-2="Server" data-source-line="8" data-uid="lnk7" id="link_Client_Server"><path d="M340.61,82.0728 C358.12,90.7828 379.55,101.6528 398.5,111.8628 C436.66,132.4128 474.7465,154.4339 502.4965,170.7339" fill="none" id="Client-to-Server" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="507.67,173.7728,501.9356,165.7655,503.3587,171.2404,497.8838,172.6635,507.67,173.7728" style="stroke:#181818;stroke-width:1;" /><a href="iti-71.html" target="_top" title="iti-71.html" xlink:actuate="onRequest" xlink:href="iti-71.html" xlink:show="new" xlink:title="iti-71.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="156.7998" x="516.1362" y="124.9297">ITI-71 Get Access Token</text></a><a href="iti-103.html" target="_top" title="iti-103.html" xlink:actuate="onRequest" xlink:href="iti-103.html" xlink:show="new" xlink:title="iti-103.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="276.0723" x="456.5" y="140.0625">ITI-103 Get Authorization Server Metadata</text></a></g><!--link Client to ResourceServer--><g class="link" data-entity-1="Client" data-entity-2="ResourceServer" data-source-line="9" data-uid="lnk8" id="link_Client_ResourceServer"><path d="M250.19,81.8928 C227.92,89.7128 202.37,99.9128 180.5,111.8628 C148.07,129.5828 119.0841,152.3798 98.6341,169.7398" fill="none" id="Client-to-ResourceServer" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="94.06,173.6228,103.5098,170.8478,97.8718,170.387,98.3325,164.7489,94.06,173.6228" style="stroke:#181818;stroke-width:1;" /><a href="iti-72.html" target="_top" title="iti-72.html" xlink:actuate="onRequest" xlink:href="iti-72.html" xlink:show="new" xlink:title="iti-72.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="208.7617" x="181.5" y="132.4297">ITI-72 Incorporate Access Token</text></a></g><!--link ResourceServer to Server--><g class="link" data-entity-1="ResourceServer" data-entity-2="Server" data-source-line="10" data-uid="lnk9" id="link_ResourceServer_Server"><path d="M142.17,191.8628 C225.01,191.8628 359.21,191.8628 448.2,191.8628" fill="none" id="ResourceServer-to-Server" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="454.2,191.8628,445.2,187.8628,449.2,191.8628,445.2,195.8628,454.2,191.8628" style="stroke:#181818;stroke-width:1;" /><a href="iti-103.html" target="_top" title="iti-103.html" xlink:actuate="onRequest" xlink:href="iti-103.html" xlink:show="new" xlink:title="iti-103.html" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" text-decoration="underline" textLength="276.0723" x="160.25" y="184.9297">ITI-103 Get Authorization Server Metadata</text></a></g></g></svg>
 </div>
 <p>This figure shows the actors directly involved in the <em>Internet User Authorization</em> Profile and the relevant 
 transactions between them.</p>
 
+<p>The IUA Authorization Client SHALL use the Authenticate User transaction defined in Annex 5 EPRO-FDHA to pass identity claims to the User
+Authentication provider. The User Authentication Provider authenticates the user and returns a SAML 2 Authentication Assertion or an OpenID Connect ID Token. 
+For details of the transaction and message semantics see Annex 8 EPRO-FDHA.</p>
+
 <h3 id="actor-options">Actor Options</h3>
 
-<p>This national extension restricts the Actor options of the IUA Trial Implementation to comply to the legal requirements of the Swiss EPR.</p>
+<p>This national extension restricts the Actor options of the IUA Trial Implementation to comply to the legal requirements
+of the Swiss EPR.</p>
 
-<p>The IUA Trial Implementation supports three options for the Authorization Token format; the JWT Token, the SAML Token and the Token Introspection option. Since this national extension will apply to cross community communication, the Token Introspection Option SHALL NOT be used.</p>
+<p>The IUA Trial Implementation supports three options for the Authorization Token format; the JWT Token, the SAML Token
+and the Token Introspection option. Since this national extension will apply to cross community communication, the Token
+Introspection Option SHALL NOT be used. The SAML Token option is not specified in this profile. 
+The JWT Token option SHALL be supported by the Authorization Server and Resource Server.</p>
 
-<p>This national extension intends to simplify and modernize the technologies used to connect to the Swiss EPR. The legacy SAML Token option SHALL NOT be used. To support automated client configuration the Authorization Server actor SHALL support the Authorization Metadata option.</p>
+<p>To support automated client configuration the Authorization Server actor SHALL support the Authorization Metadata option.</p>
+
+<p>This national extension adds the Actor options Workflow Initiator Option, Technical User Option and Proxy Option to comply 
+to the legal requirements of the Swiss EPR.</p>
+
+<h4 id="workflow-initiator-option">Workflow Initiator Option</h4>
+
+<p>The Workflow Initiator option SHALL be claimed by all implementations, which require user
+authentication and requests to retrieve a EPR compliant access token, i.e., patient and healthcare
+professional portals, primary systems, etc. The implementations usually initiate workflows to access
+data and documents, e.g. read or write documents from the EPR, which are triggered by a user
+interaction. Actors SHALL implement the following required transactions (labelled "R") when claiming the
+Workflow Initiator option:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Transaction</th>
+      <th>Optionality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Authorization Client</td>
+      <td>CH:XUA Authenticate User</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Authorization Client</td>
+      <td>Get Access Token</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Authorization Client</td>
+      <td>Get Authorization Server Metadata</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <td>Authorization Client</td>
+      <td>Incorporate Access Token</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>User Authentication Provider</td>
+      <td>CH:XUA Authenticate User</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Authorization Server</td>
+      <td>Get Access Token</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Authorization Server</td>
+      <td>Get Authorization Server Metadata</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Resource Server</td>
+      <td>Incorporate Access Token</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Resource Server</td>
+      <td>Get Authorization Server Metadata</td>
+      <td>O</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="technical-user-option">Technical User Option</h4>
+
+<p>The Technical User option SHALL be claimed by all implementations, which do not require user
+authentication, but request to retrieve a EPR compliant access token, i.e. archive systems or other
+primary systems accessing EPR data and documents, which are not initiated by a user interaction.
+Actors SHALL perform the following required transactions (labelled "R") when claiming the Technical
+User option:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Transaction</th>
+      <th>Optionality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Authorization Client</td>
+      <td>Get Access Token</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Authorization Client</td>
+      <td>Get Authorization Server Metadata</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <td>Authorization Client</td>
+      <td>Incorporate Access Token</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Authorization Server</td>
+      <td>Get Access Token</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Authorization Server</td>
+      <td>Get Authorization Server Metadata</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Resource Server</td>
+      <td>Incorporate Access Token</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Resource Server</td>
+      <td>Get Authorization Server Metadata</td>
+      <td>O</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="proxy-option">Proxy Option</h4>
+
+<p>The Proxy option SHALL be claimed by all implementations, which use EPR compliant access token from
+other transactions and use the access token when acting as an agent to request protected data
+from other actors, i.e. Document Source or Consumers with the Federated Cross Community Access Option.
+Actors shall perform the following required transactions (labelled "R") when claiming the Proxy
+option:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Transaction</th>
+      <th>Optionality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Authorization Client</td>
+      <td>Incorporate Access Token</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Authorization Client</td>
+      <td>Get Authorization Server Metadata</td>
+      <td>O</td>
+    </tr>
+    <tr>
+      <td>Resource Server</td>
+      <td>Incorporate Access Token</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <td>Resource Server</td>
+      <td>Get Authorization Server Metadata</td>
+      <td>O</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="grouping">Grouping</h3>
-<p>The Swiss national extension does not define requirements on the grouping of actors in this profile, which extend or restrict the grouping required from the IUA profile.</p>
+
+<p>The actors SHALL be grouped with other actors as follows:</p>
+
+<table border="1" style="border: 1px solid black; border-collapse: collapse">
+    <thead>
+        <tr style="background: gray;" class="odd">
+            <td>Actor</td>
+            <td>Optionality</td>
+            <td>Actor to be grouped with</td>
+        </tr>
+    </thead>
+    <tbody>        
+        <tr>        
+            <td rowspan="2">Authorization Client</td>       
+            <td>R</td>
+            <td>CT Time Client</td>
+            <tr>
+            <td>R</td>
+            <td>ATNA Secure Node with <a href="https://profiles.ihe.net/ITI/IUA/index.html#9267-stx-https-iua-option">STX:HTTPS IUA</a> <a href="https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html#9.2">Option</a></td>
+            </tr>
+        </tr>
+        <tr>        
+            <td rowspan="2">Resource server</td>       
+            <td>R</td>
+            <td>CT Time Client</td>
+            <tr>
+            <td>R</td>
+            <td>ATNA Secure Node with <a href="https://profiles.ihe.net/ITI/IUA/index.html#9267-stx-https-iua-option">STX:HTTPS IUA</a> <a href="https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html#9.2">Option</a></td>
+            </tr>
+        </tr>
+        <tr>        
+            <td>Authorization Server</td>       
+            <td>R</td>
+            <td>CT Time Client</td>
+        </tr>
+        <tr>        
+            <td>User Authentication Provider</td>       
+            <td>R</td>
+            <td>CT Time Client</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>The grouping of actors of actors with IUA Authorization Client and Resource Server actor are defined in the respective profile sections.</p>
 
 <h3 id="process-flow">Process Flow</h3>
-<p>For the process flow of this profile and its interplay with the other profiles see <a href="sequencediagrams.html">sequence diagrams</a>.</p>
+
+<p>For the process flow of this profile and its interplay with the other profiles
+see <a href="sequencediagrams.html">sequence diagrams</a>.</p>
 
 <h3 id="security-consideration">Security Consideration</h3>
 
-<p>This national extension enforces client authentication of the TLS network layer with X.509 client certificates. The TLS client certificate shall be used together with the OAuth 2 client ID to identify the client when granting access to the EPR. The client certificates shall match the requirements of EPRO-FDHA, Annex 2, Section 4.15.3b.</p>
+<p>Portals and primary systems SHALL be identified by the client_id and client_secret registered during onboarding. All
+requests to the IUA Authorization Server SHALL be authenticated by the digital signatures of the messages.</p>
 
-<p>Communities shall verify and register the combination of the OAuth client ID, the URLs and the client certificate during the onboarding process.</p>
+<p>Implementers SHALL register the combination of the OAuth client ID, the URLs and the certificate used for message
+signatures during the onboarding process and keep the data up to date.</p>
 
-<p>Communities shall verify the combination of the OAuth client ID, the URLs and the client certificate of all requests against the registered values and shall reject requests in case of mismatch.</p>
-
-<p>The Swiss national extension does not define further additional security requirements beyond those specified in the underlying <a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Trial Implementation</a>.</p>
+<p>Implementers shall verify the combination of the OAuth client ID, the URLs and the certificate of all requests
+against the registered values and shall reject requests in case of mismatch.</p>
 
 
 
@@ -424,7 +701,7 @@ transactions between them.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 12:16+0000">2024-12-18</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 13:40+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -432,7 +709,7 @@ transactions between them.</p>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1%20/iti-iua.html&amp;entry%2E247644557=Internet%20User%20Authorization%20(IUA)">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%235.0.0-ballot%20/iti-iua.html&amp;entry%2E247644557=Internet%20User%20Authorization%20(IUA)">Propose a change</a>
 
 
 

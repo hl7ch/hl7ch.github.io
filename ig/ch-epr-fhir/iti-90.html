@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Find Matching Care Services [ITI-90] - CH EPR FHIR (R4) v4.0.1</title>
+    <title>Find Matching Care Services [ITI-90] - CH EPR FHIR (R4) v5.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -65,10 +65,11 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"3.11"}
-    h3,h4,h5,h6{--heading-prefix:"3.11"}</style>
+    <style type="text/css">h2{--heading-prefix:"24"}
+    h3,h4,h5,h6{--heading-prefix:"24"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
+
         <!-- Placeholder for child template header declarations -->
 
             <!--
@@ -94,7 +95,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">4.0.1 - trial-use
+            <span style="display:inline-block;">5.0.0-ballot - ballot
 
 
 
@@ -153,6 +154,9 @@
             <li>
                 <a href="ppqm.html">Privacy Policy Query for Mobile (CH:PPQm)</a>
             </li>
+            <li>
+                <a href="ch-atc.html">Audit Trail Consumption (CH:ATC)</a>
+            </li>
         </ul>
     </li>
     <li class="dropdown">
@@ -166,6 +170,9 @@
             </li>
             <li>
                 <a href="iti-71.html">Get Access Token [ITI-71]</a>
+            </li>
+            <li>
+                <a href="iti-72.html">Incorporate Access Token [ITI-72]</a>
             </li>
             <li>
                 <a href="iti-104.html">Patient Identity Feed FHIR [ITI-104]</a>
@@ -195,7 +202,7 @@
                 <a href="iti-90.html">Find Matching Care Services [ITI-90]</a>
             </li>
             <li>
-                <a href="ch-mcsd-1.html">Care Services Feed [CH:mCSD-1]</a>
+                <a href="iti-130.html">Care Services Feed [ITI-130]</a>
             </li>
             <li>
                 <a href="ppq-3.html">Mobile Privacy Policy Feed [PPQ-3]</a>
@@ -205,6 +212,20 @@
             </li>
             <li>
                 <a href="ppq-5.html">Mobile Privacy Policy Retrieve [PPQ-5]</a>
+            </li>
+            <li>
+                <a href="iti-81.html">Retrieve Audit Event [ITI-81]</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 3
+            <b class="caret">
+            </b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="volume3.html">CH:ATC Audit Event Content Profiles</a>
             </li>
         </ul>
     </li>
@@ -256,7 +277,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='volume2.html'><b>Volume 2</b></a></li><li><b>Find Matching Care Services [ITI-90]</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Find Matching Care Services [ITI-90]</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -276,7 +297,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v4.0.1: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 4) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v5.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 5 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Find Matching Care Services [ITI-90]</h2>
   
 
@@ -315,28 +336,28 @@ IHE IT Infrastructure Technical Framework Trial Implementation “Mobile Care Se
 
 <h3 id="actor-roles">Actor Roles</h3>
 
-<p><strong>Actor:</strong> Care Services Selective Consumer<br />
-<strong>Role:</strong> Requests a list of resources from the Care Services Selective Supplier based on query parameters.<br />
-<strong>Actor:</strong> Care Services Selective Supplier<br />
+<p><strong>Actor:</strong> Query Client<br />
+<strong>Role:</strong> Requests a list of resources from the Directory based on query parameters.<br />
+<strong>Actor:</strong> Directory<br />
 <strong>Role:</strong> Accepts the query request and returns a list of matching resources.<br /></p>
 
 <h3 id="referenced-standards">Referenced Standards</h3>
 
 <ol>
-  <li><a href="https://profiles.ihe.net/ITI/mCSD/3.8.0">IHE ITI Mobile Care Services Discovery (mCSD) 3.8.0</a></li>
+  <li><a href="https://profiles.ihe.net/ITI/mCSD/4.0.0-comment">IHE ITI Mobile Care Services Discovery (mCSD) 4.0.0-comment</a></li>
   <li><a href="http://hl7.org/fhir/R4/http.html#search">FHIR R4 API search</a></li>
   <li><a href="https://www.e-health-suisse.ch/en/technique/technical-interoperability/specifications-for-the-epr-implementation#CentServRes">EPR – Central Services, Interface Documentation v1.0.40</a></li>
 </ol>
 
 <h3 id="messages">Messages</h3>
 
-<div><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="233px" preserveAspectRatio="none" style="width:487px;height:233px;background:#FFFFFF;" version="1.1" viewBox="0 0 487 233" width="487px" zoomAndPan="magnify"><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="243" x="121" y="27.9951">Interaction Diagram for [ITI-90]</text><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="389" y="121.0234" /><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="389" y="179.2891" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="92" x2="92" y1="89.8906" y2="226.4219" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="394" x2="394" y1="89.8906" y2="226.4219" /><rect fill="#E2E2F0" height="46.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="174" x="5" y="42.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="12" y="62.292">Care Services Selective</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="56" y="78.5889">Consumer</text><rect fill="#E2E2F0" height="46.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="174" x="307" y="42.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="314" y="62.292">Care Services Selective</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="366" y="78.5889">Supplier</text><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="389" y="121.0234" /><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="389" y="179.2891" /><polygon fill="#181818" points="377,117.0234,387,121.0234,377,125.0234,381,121.0234" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="92" x2="383" y1="121.0234" y2="121.0234" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="236" x="99" y="115.9575">Find Matching Care Services Request</text><polygon fill="#181818" points="103,146.1563,93,150.1563,103,154.1563,99,150.1563" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="97" x2="393" y1="150.1563" y2="150.1563" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="246" x="109" y="145.0903">Find Matching Care Services Response</text><polygon fill="#181818" points="377,175.2891,387,179.2891,377,183.2891,381,179.2891" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;" x1="92" x2="383" y1="179.2891" y2="179.2891" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="263" x="99" y="174.2231">Retrieve Care Services Resource Request</text><polygon fill="#181818" points="103,204.4219,93,208.4219,103,212.4219,99,208.4219" style="stroke:#181818;stroke-width:1.0;" /><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="97" x2="393" y1="208.4219" y2="208.4219" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="273" x="109" y="203.356">Retrieve Care Services Resource Response</text></g></svg></div>
+<div><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SEQUENCE" height="217px" preserveAspectRatio="none" style="width:410px;height:217px;background:#FFFFFF;" version="1.1" viewBox="0 0 410 217" width="410px" zoomAndPan="magnify"><title>Interaction Diagram for [ITI-90]</title><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="249.2109" x="79.4915" y="27.9951">Interaction Diagram for [ITI-90]</text><g><title>Directory</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="359.7778" y="104.7266" /></g><g><title>Directory</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="359.7778" y="162.9922" /></g><g><title>Query Client</title><rect fill="#000000" fill-opacity="0.00000" height="136.5313" width="8" x="51.7637" y="73.5938" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="55" x2="55" y1="73.5938" y2="210.125" /></g><g><title>Directory</title><rect fill="#000000" fill-opacity="0.00000" height="136.5313" width="8" x="360.7778" y="73.5938" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="364.3618" x2="364.3618" y1="73.5938" y2="210.125" /></g><g class="participant participant-head" data-participant="Client"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="101.5273" x="5" y="42.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87.5273" x="12" y="62.292">Query Client</text></g><g class="participant participant-head" data-participant="Server"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="78.832" x="325.3618" y="42.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64.832" x="332.3618" y="62.292">Directory</text></g><g><title>Directory</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="359.7778" y="104.7266" /></g><g><title>Directory</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="359.7778" y="162.9922" /></g><g class="message" data-participant-1="Client" data-participant-2="Server"><polygon fill="#181818" points="347.7778,100.7266,357.7778,104.7266,347.7778,108.7266,351.7778,104.7266" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="55.7637" x2="353.7778" y1="104.7266" y2="104.7266" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="242.4741" x="62.7637" y="99.6606">Find Matching Care Services Request</text></g><g class="message" data-participant-1="Server" data-participant-2="Client"><polygon fill="#181818" points="66.7637,129.8594,56.7637,133.8594,66.7637,137.8594,62.7637,133.8594" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="60.7637" x2="363.7778" y1="133.8594" y2="133.8594" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="252.1035" x="72.7637" y="128.7935">Find Matching Care Services Response</text></g><g class="message" data-participant-1="Client" data-participant-2="Server"><polygon fill="#181818" points="347.7778,158.9922,357.7778,162.9922,347.7778,166.9922,351.7778,162.9922" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="55.7637" x2="353.7778" y1="162.9922" y2="162.9922" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="270.3848" x="62.7637" y="157.9263">Retrieve Care Services Resource Request</text></g><g class="message" data-participant-1="Server" data-participant-2="Client"><polygon fill="#181818" points="66.7637,188.125,56.7637,192.125,66.7637,196.125,62.7637,192.125" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="60.7637" x2="363.7778" y1="192.125" y2="192.125" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="280.0142" x="72.7637" y="187.0591">Retrieve Care Services Resource Response</text></g></g></svg></div>
 
 <h4 id="find-matching-care-services-request-message">Find Matching Care Services Request Message</h4>
 
 <p>The <em>Find Matching Care Services</em> message is a FHIR search operation on the mCSD Resources.</p>
 
-<p>A <em>Care Services Selective Consumer</em> initiates a search request using HTTP GET or POST:</p>
+<p>A <em>Query Client</em> initiates a search request using HTTP GET or POST:</p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">[base]/[resource]?[parameters]</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/fhir+json</span>
@@ -355,7 +376,7 @@ param1=value&amp;param2=value
 
 <h5 id="semantics">Semantics</h5>
 
-<p>The <em>Care Services Selective Supplier</em> shall support the following search parameters for all resources:</p>
+<p>The <em>Directory</em> shall support the following search parameters for all resources:</p>
 
 <table class="table table-bordered">
   <thead>
@@ -406,7 +427,7 @@ param1=value&amp;param2=value
   </tbody>
 </table>
 
-<p>The <em>Care Services Selective Supplier</em> shall support the following search parameters on the
+<p>The <em>Directory</em> shall support the following search parameters on the
 <strong><a href="StructureDefinition-CH.mCSD.Organization.html">Organization</a></strong> resource:</p>
 
 <table class="table table-bordered">
@@ -486,7 +507,7 @@ param1=value&amp;param2=value
   </tbody>
 </table>
 
-<p>The <em>Care Services Selective Supplier</em> shall support the following search parameters on the
+<p>The <em>Directory</em> shall support the following search parameters on the
 <strong><a href="StructureDefinition-CH.mCSD.Practitioner.html">Practitioner</a></strong> resource:</p>
 
 <table class="table table-bordered">
@@ -538,7 +559,7 @@ param1=value&amp;param2=value
   </tbody>
 </table>
 
-<p>The <em>Care Services Selective Supplier</em> shall support the following search parameters on the
+<p>The <em>Directory</em> shall support the following search parameters on the
 <strong><a href="StructureDefinition-CH.mCSD.PractitionerRole.html">PractitionerRole</a></strong> resource:</p>
 
 <table class="table table-bordered">
@@ -611,7 +632,7 @@ param1=value&amp;param2=value
   </tbody>
 </table>
 
-<p>The <em>Care Services Selective Supplier</em> may not support other resources (<strong>Endpoint</strong>, <strong>HealthcareService</strong>,
+<p>The <em>Directory</em> may not support other resources (<strong>Endpoint</strong>, <strong>HealthcareService</strong>,
 <strong>Location</strong> and <strong>OrganizationAffiliation</strong>), as they are not used in this national extension. Any search query on
 these resources may not yield any result. Some example queries are given here:</p>
 
@@ -636,8 +657,8 @@ these resources may not yield any result. Some example queries are given here:</
 
 <h4 id="retrieve-care-services-resource-message">Retrieve Care Services Resource Message</h4>
 
-<p>The <em>Retrieve Care Services Resource</em> is conducted by executing an HTTP GET against the <em>Care Services Selective
-Supplier</em>'s Care Services Resource URL, providing the resource id of the resource being retrieved. The target is
+<p>The <em>Retrieve Care Services Resource</em> is conducted by executing an HTTP GET against the <em>Directory</em>'s Care Services 
+Resource URL, providing the resource id of the resource being retrieved. The target is
 formatted as: <code class="language-plaintext highlighter-rouge">GET [base]/[resource]/[resourceId]</code>. Some examples are</p>
 
 <ol>
@@ -648,44 +669,49 @@ formatted as: <code class="language-plaintext highlighter-rouge">GET [base]/[res
 
 <h4 id="retrieve-care-services-resource-response-message">Retrieve Care Services Resource Response Message</h4>
 
-<p>The <em>Care Services Selective Supplier</em> shall respond to this query by sending a single <em>Care Services Resource</em>
+<p>The <em>Directory</em> shall respond to this query by sending a single <em>Care Services Resource</em>
 instance.</p>
 
 <ul>
-  <li>If the <em>Care Services Selective Supplier</em> finds the resource, <code class="language-plaintext highlighter-rouge">HTTP 200 OK</code> is returned with the resource (an
+  <li>If the <em>Directory</em> finds the resource, <code class="language-plaintext highlighter-rouge">HTTP 200 OK</code> is returned with the resource (an
 <strong><a href="StructureDefinition-CH.mCSD.Organization.html">Organization</a></strong>,
 <strong><a href="StructureDefinition-CH.mCSD.Practitioner.html">Practitioner</a></strong> or
 <strong><a href="StructureDefinition-CH.mCSD.PractitionerRole.html">PractitionerRole</a></strong>).</li>
-  <li>If the <em>Care Services Selective Supplier</em> does not find the resource, <code class="language-plaintext highlighter-rouge">HTTP 404 Not Found</code> is returned with an
+  <li>If the <em>Directory</em> does not find the resource, <code class="language-plaintext highlighter-rouge">HTTP 404 Not Found</code> is returned with an
 <strong><a href="https://www.hl7.org/fhir/r4/operationoutcome.html">OperationOutcome</a></strong> resource.</li>
 </ul>
 
 <h4 id="capabilitystatement-resource">CapabilityStatement Resource</h4>
 
-<p>The CapabilityStatement resource for the <strong>Care Services Selective Consumer</strong> is
-<a href="CapabilityStatement-CH.mCSD.CareServicesSelectiveConsumer.html">mCSD Care Services Selective Consumer</a>.</p>
+<p>The CapabilityStatement resource for the <strong>Query Client</strong> is
+<a href="CapabilityStatement-CH.mCSD.QueryClient.html">mCSD Query Client</a>. TODO</p>
 
-<p>The CapabilityStatement resource for the <strong>Care Services Selective Supplier</strong> is
-<a href="CapabilityStatement-CH.mCSD.CareServicesSelectiveSupplier.html">mCSD Care Services Selective Supplier</a>.</p>
+<p>The CapabilityStatement resource for the <strong>Directory</strong> is
+<a href="CapabilityStatement-CH.mCSD.Directory.html">mCSD Directory</a>. TODO</p>
 
 <h3 id="security-considerations">Security Considerations</h3>
 
-<p>TLS SHALL be used. This national extension enforces authentication and authorization of access to the <em>Care Services
-Selective Supplier</em> using the IUA profile with basic access token. Consequently, the <em>Find Matching Care Services</em>
-[ITI-90] request must authorize using the <a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">[ITI-72]</a> transaction of the IUA profile.</p>
+<p>The transaction SHALL be secured by Transport Layer Security (TLS) encryption and server authentication with
+server certificates.</p>
+
+<p>The transaction SHALL use client authentication and authorization using one of the following strategies:</p>
+<ol>
+  <li>Use a basic access token defined in <a href="iti-71.html">IUA</a> conveyed as defined in the <a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">Incorporate Access Token [ITI-72]</a> transaction.</li>
+  <li>or, use mutual authentication (mTLS) on the transport layer.</li>
+</ol>
 
 <p>The actors SHALL support the <em>traceparent</em> header handling, as defined in <a href="tracecontext.html">Appendix: Trace Context</a>.</p>
 
 <h4 id="security-audit-considerations">Security Audit Considerations</h4>
 
-<p>Note that the same audit message is recorded by both <strong>Care Services Selective Supplier</strong> and <strong>Care Services 
-Selective Consumer</strong>. The difference being the Audit Source element. Both sides record to show consistency between 
-the message sent by the Consumer and the action taken at the Supplier.</p>
+<p>Note that the same audit message is recorded by both <strong>Directory</strong> and <strong>Query Client</strong>. The difference being the 
+Audit Source element. Both sides record to show consistency between the message sent by the Query Client and the action 
+taken at the Directory.</p>
 
 <p>The actors involved shall record audit events according to the
-<a href="StructureDefinition-ChAuditEventIti90Read.html">CH Audit Event for [ITI-90] Care Services Selective Consumer &amp; Supplier, for a <strong>Read</strong> operation</a>
+<a href="StructureDefinition-ChAuditEventIti90Read.html">CH Audit Event for [ITI-90] Query Client &amp; Directory, for a <strong>Read</strong> operation</a>
 or the
-<a href="StructureDefinition-ChAuditEventIti90Query.html">CH Audit Event for [ITI-90] Care Services Selective Consumer &amp; Supplier, for a <strong>Query</strong> operation</a>.</p>
+<a href="StructureDefinition-ChAuditEventIti90Query.html">CH Audit Event for [ITI-90] Query Client &amp; Directory, for a <strong>Query</strong> operation</a>.</p>
 
 
 
@@ -706,7 +732,7 @@ or the
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#4.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Dec 18, 2024 12:16+0000">2024-12-18</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 13:40+0000">2025-05-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -714,7 +740,7 @@ or the
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%234.0.1%20/iti-90.html&amp;entry%2E247644557=Find%20Matching%20Care%20Services%20[ITI-90]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%235.0.0-ballot%20/iti-90.html&amp;entry%2E247644557=Find%20Matching%20Care%20Services%20[ITI-90]">Propose a change</a>
 
 
 

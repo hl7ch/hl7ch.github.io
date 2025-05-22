@@ -1,0 +1,102 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epr-fhir/AuditEvent/atc-hpd-group-entry-notify> a fhir:AuditEvent ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "atc-hpd-group-entry-notify"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/HpdAuditEvent"^^xsd:anyURI ;
+       fhir:link <http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/HpdAuditEvent>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n             10.10.2020 10:05: Healthcare professional Dr. med. Sabine Musterfrau has been added to Group Kardiologie Universitätsspital Musterstadt and patient Jakob Wieder-Gesund has been notified \n        </div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:type [
+     fhir:system [ fhir:v "http://dicom.nema.org/resources/ontology/DCM"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "110106" ] ;
+     fhir:display [ fhir:v "Export" ]
+  ] ; # 
+  fhir:subtype ( [
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.7"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "ATC_HPD_GROUP_ENTRY_NOTIFY" ] ;
+     fhir:display [ fhir:v "Entry of healthcare professionals into a group" ]
+  ] ) ; # 
+  fhir:action [ fhir:v "C"] ; # 
+  fhir:recorded [ fhir:v "2022-10-10T10:05:00Z"^^xsd:dateTime] ; # 
+  fhir:outcome [ fhir:v "0"] ; # 
+  fhir:agent ( [
+     fhir:name [ fhir:v "Notifikations-Dienst" ] ;
+     fhir:requestor [ fhir:v false ]
+  ] ) ; # 
+  fhir:source [
+     fhir:observer [
+       fhir:identifier [
+         fhir:system [ fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "urn:oid:7.8.9.10.11" ]
+       ]
+     ]
+  ] ; # 
+  fhir:entity ( [
+     fhir:what [
+       fhir:identifier [
+         fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.3"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "761337610469261945" ]
+       ]
+     ] ;
+     fhir:type [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/audit-entity-type"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1" ] ;
+       fhir:display [ fhir:v "Person" ]
+     ] ;
+     fhir:role [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/object-role"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1" ] ;
+       fhir:display [ fhir:v "Patient" ]
+     ]
+  ] [
+     fhir:what [
+       fhir:identifier [
+         fhir:system [ fhir:v "urn:oid:2.51.1.3"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "7601000050717" ]
+       ]
+     ] ;
+     fhir:type [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/audit-entity-type"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1" ] ;
+       fhir:display [ fhir:v "Person" ]
+     ] ;
+     fhir:role [
+       fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.6"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "HCP" ] ;
+       fhir:display [ fhir:v "Healthcare professional" ]
+     ] ;
+     fhir:name [ fhir:v "Dr. med. Sabine Musterfrau" ]
+  ] [
+     fhir:what [
+       fhir:identifier [
+         fhir:value [ fhir:v "urn:oid:1.1.1.1.1" ]
+       ]
+     ] ;
+     fhir:type [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/audit-entity-type"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "3" ] ;
+       fhir:display [ fhir:v "Organization" ]
+     ] ;
+     fhir:role [
+       fhir:system [ fhir:v "urn:oid:2.16.756.5.30.1.127.3.10.14"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "GRP" ] ;
+       fhir:display [ fhir:v "Group" ]
+     ] ;
+     fhir:name [ fhir:v "Kardiologie Universitätsspital Musterstadt" ]
+  ] ) . #  Patient 
+
+# -------------------------------------------------------------------------------------
+
