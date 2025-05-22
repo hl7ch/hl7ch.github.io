@@ -44,7 +44,7 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
      "package-id" : "ch.fhir.ig.ch-core",
      "version" : "5.0.0-ballot", (or {5.0.0})
      "path" : "http://fhir.ch/ig/ch-core/5.0.0-ballot", (or {http://fhir.ch/ig/ch-core/5.0.0})
-     "mode" : "milestone",
+     "mode" : "milestone", (or {technical-correction})
      "status" : "ballot", (or {trial-use})
      "sequence" : "STU 5",
      "desc" : "HL7 Switzerland STU 5 Ballot", (or {HL7 Switzerland STU 5})
