@@ -1,0 +1,67 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-epreg/RelatedPerson/UC1-RelatedPerson-BiologicalFather> a fhir:RelatedPerson ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "UC1-RelatedPerson-BiologicalFather"] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><p class=\"res-header-id\"><b>Generated Narrative: RelatedPerson UC1-RelatedPerson-BiologicalFather</b></p><a name=\"UC1-RelatedPerson-BiologicalFather\"> </a><a name=\"hcUC1-RelatedPerson-BiologicalFather\"> </a><a name=\"UC1-RelatedPerson-BiologicalFather-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><blockquote><p><b>Patient Citizenship</b></p><ul><li>code: <span title=\"Codes:{urn:iso:std:iso:3166 CH}\">Switzerland</span></li></ul></blockquote><p><b>CH EPREG Extension: Note</b>: Bemerkung</p><p><b>patient</b>: <a href=\"Patient-UC1-Child.html\">Anonymous Patient Female, DoB Unknown ( Patient internal identifier: A)</a></p><p><b>relationship</b>: <span title=\"Codes:{http://snomed.info/sct 9947008}\">Natural father (person)</span></p><p><b>name</b>: Pierre Kinderlieb </p><p><b>birthDate</b>: 1987-07-21</p><h3>Communications</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Language</b></td><td><b>Preferred</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{urn:ietf:bcp:47 de-CH}\">German (Switzerland)</span></td><td>true</td></tr></table></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:extension ( [
+     fhir:extension ( [
+       fhir:url [ fhir:v "code"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "CH" ] ;
+           fhir:display [ fhir:v "Switzerland" ]
+         ] )
+       ]
+     ] ) ;
+     fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/patient-citizenship"^^xsd:anyURI ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-epreg/StructureDefinition/ch-epreg-ext-note"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:string ;
+       fhir:v "Bemerkung"
+     ]
+  ] ) ; # 
+  fhir:patient [
+     fhir:link <http://fhir.ch/ig/ch-epreg/Patient/UC1-Child> ;
+     fhir:reference [ fhir:v "Patient/UC1-Child" ]
+  ] ; # 
+  fhir:relationship ( [
+     fhir:coding ( [
+       a sct:9947008 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "9947008" ] ;
+       fhir:display [ fhir:v "Natural father (person)" ]
+     ] )
+  ] ) ; # 
+  fhir:name ( [
+     fhir:family [ fhir:v "Kinderlieb" ] ;
+     fhir:given ( [ fhir:v "Pierre" ] )
+  ] ) ; # 
+  fhir:birthDate [ fhir:v "1987-07-21"^^xsd:date] ; # 
+  fhir:communication ( [
+     fhir:language [
+       fhir:coding ( [
+         fhir:system [ fhir:v "urn:ietf:bcp:47"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "de-CH" ] ;
+         fhir:display [ fhir:v "German (Switzerland)" ]
+       ] )
+     ] ;
+     fhir:preferred [ fhir:v true ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
