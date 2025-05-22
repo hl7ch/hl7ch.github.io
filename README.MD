@@ -59,9 +59,8 @@ If you update [index.html](https://github.com/hl7ch/hl7ch.github.io/blob/main/in
 ## Publish an IG
 
 ### Publish a new IG: preparation
-1. You might need to create a new folder named after the IG you want to publish in the folder [ig](https://github.com/hl7ch/hl7ch.github.io/tree/main/ig) (to be confirmed)
-2. You have to give the Github App [FHIR IG Publication on fhir.ch](https://github.com/organizations/hl7ch/settings/installations) permission to your repo  
-3. Continue with the steps below
+1. You have to give the Github App [FHIR IG Publication on fhir.ch](https://github.com/organizations/hl7ch/settings/installations) permission to your repo  
+2. Continue with the steps below
 
 **Note:** If you rename an IG and have an old IG that you refer in package-list.json (e.g. [https://fhir.ch/ig/ch-term/package-list.json](https://fhir.ch/ig/ch-term/package-list.json)), you need to update the file [.github/workflows/BuildIG_publish.yaml](https://github.com/hl7ch/hl7ch.github.io/.github/workflows/BuildIG_publish.yaml), see ch-term entry as an example. 
  
