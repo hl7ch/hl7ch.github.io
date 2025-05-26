@@ -153,15 +153,23 @@ jobs:
           path: ./ig/${{ steps.repo_name.outputs.repo }} 
           retention-days: 2
 
+      - name: Set conditional repository name
+        id: conditional_repo
+        run: |
+          if [[ "${{ steps.repo_name.outputs.repo }}" == "bag-epl-fhir" ]]; then
+            echo "repo_name=ch-epl" >> $GITHUB_OUTPUT
+          else
+            echo "repo_name=${{ steps.repo_name.outputs.repo }}" >> $GITHUB_OUTPUT
+          fi    
+          
       - name: 🐙 Commit and push changes to hl7ch.github.io
         if: ${{ env.publish == 'true' }}
         run: |
           git config pull.ff only
           git pull
           git add --sparse .
-          git commit -m "${{ steps.repo_name.outputs.repo }} - ${{ env.version }}"
+          git commit -m "${{ steps.conditional_repo.outputs.repo_name }} - ${{ env.version }}"
           git push
-
       - name: Send a stream message to Zulip
         if: ${{ env.publish == 'true' }}
         uses: zulip/github-actions-zulip/send-message@v1
@@ -173,8 +181,8 @@ jobs:
           type: "stream"
           topic: "fhir.ch: new FHIR Implementation Guide published"
           content: |
-             :rocket: ${{ steps.repo_name.outputs.repo }}/${{ env.version }} published :rocket:
+             :rocket: ${{ steps.conditional_repo.outputs.repo_name }}/${{ env.version }} published :rocket:
              
-             Details: [published](https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}/index.html) | [qa](https://fhir.ch/ig/${{ steps.repo_name.outputs.repo }}/${{ env.version }}/qa.html)
+             Details: [published](https://fhir.ch/ig/${{ steps.conditional_repo.outputs.repo_name }}/${{ env.version }}/index.html) | [qa](https://fhir.ch/ig/${{ steps.conditional_repo.outputs.repo_name }}/${{ env.version }}/qa.html)
              
              :memo: It might take a few minutes until [fhir.ch](https://fhir.ch/) is serving the new version, should be visible on packages servers in [max 1](https://packages2.fhir.org/packages/catalog) to [max 8](https://registry.fhir.org/) hours.
