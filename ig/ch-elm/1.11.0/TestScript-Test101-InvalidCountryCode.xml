@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<TestScript xmlns="http://hl7.org/fhir">
+  <id value="Test101-InvalidCountryCode"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: TestScript Test101-InvalidCountryCode</b></p><a name="Test101-InvalidCountryCode"> </a><a name="hcTest101-InvalidCountryCode"> </a><p><b>url</b>: <a href="TestScript-Test101-InvalidCountryCode.html">TestScript Test101InvalidCountryCode</a></p><p><b>version</b>: 1.11.0</p><p><b>name</b>: Test101InvalidCountryCode</p><p><b>status</b>: Active</p><p><b>date</b>: 2025-08-13 07:08:59+0000</p><p><b>publisher</b>: Federal Office of Public Health FOPH</p><p><b>contact</b>: Federal Office of Public Health FOPH: <a href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html</a></p><p><b>jurisdiction</b>: <span title="Codes:{urn:iso:std:iso:3166 CH}">Switzerland</span></p><p><b>copyright</b>: </p><div><p>CC0-1.0</p>
+</div><blockquote><p><b>fixture</b></p><blockquote><p><b>id</b></p>inputdata</blockquote><p><b>autocreate</b>: false</p><p><b>autodelete</b>: false</p><p><b>resource</b>: <a href="Binary-Test101-Bundle-InvalidCountryCode.html">Binary: application/fhir+json (12184 bytes base64)</a></p></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Test101InvalidCountryCode</p><p><b>description</b>: Test101: Verify that XX raises an error for invalid country code</p><blockquote><p><b>action</b></p><h3>Operations</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Type</b></td><td><b>Description</b></td><td><b>ContentType</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td><td><b>SourceId</b></td></tr><tr><td style="display: none">*</td><td><a href="http://terminology.hl7.org/5.5.0/CodeSystem-testscript-operation-codes.html#testscript-operation-codes-validate">Test script operation code validate</a>: $validate</td><td>validate</td><td>application/fhir+json</td><td>true</td><td>profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict</td><td>inputdata</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td style="display: none">*</td><td>Confirm that the returned HTTP status is 200(OK).</td><td>response</td><td>200</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Description</b></td><td><b>Expression</b></td><td><b>Value</b></td><td><b>WarningOnly</b></td></tr><tr><td style="display: none">*</td><td>Confirm that the returned resource is an OperationOutcome.</td><td>is(FHIR.OperationOutcome)</td><td>true</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Description</b></td><td><b>Expression</b></td><td><b>Value</b></td><td><b>WarningOnly</b></td></tr><tr><td style="display: none">*</td><td>Confirm that we have errors.</td><td>issue.where(severity='error' or severity='fatal').count()&gt;0</td><td>true</td><td>false</td></tr></table></blockquote></blockquote></div>
+  </text>
+  <url value="http://fhir.ch/ig/ch-elm/TestScript/Test101-InvalidCountryCode"/>
+  <version value="1.11.0"/>
+  <name value="Test101InvalidCountryCode"/>
+  <status value="active"/>
+  <date value="2025-08-13T07:08:59+00:00"/>
+  <publisher value="Federal Office of Public Health FOPH"/>
+  <contact>
+    <name value="Federal Office of Public Health FOPH"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"/>
+    </telecom>
+  </contact>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="CH"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="CC0-1.0"/>
+  <fixture id="inputdata">
+    <autocreate value="false"/>
+    <autodelete value="false"/>
+    <resource>
+      <reference value="Binary/Test101-Bundle-InvalidCountryCode"/>
+    </resource>
+  </fixture>
+  <test>
+    <name value="Test101InvalidCountryCode"/>
+    <description value="Test101: Verify that XX raises an error for invalid country code"/>
+    <action>
+      <operation>
+        <type>
+          <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+          <code value="validate"/>
+        </type>
+        <description value="validate"/>
+        <contentType value="application/fhir+json"/>
+        <encodeRequestUrl value="true"/>
+        <params value="profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
+        <sourceId value="inputdata"/>
+      </operation>
+    </action>
+    <action>
+      <assert>
+        <description value="Confirm that the returned HTTP status is 200(OK)."/>
+        <direction value="response"/>
+        <responseCode value="200"/>
+        <warningOnly value="false"/>
+      </assert>
+    </action>
+    <action>
+      <assert>
+        <description value="Confirm that the returned resource is an OperationOutcome."/>
+        <expression value="is(FHIR.OperationOutcome)"/>
+        <value value="true"/>
+        <warningOnly value="false"/>
+      </assert>
+    </action>
+    <action>
+      <assert>
+        <description value="Confirm that we have errors."/>
+        <expression value="issue.where(severity='error' or severity='fatal').count()&gt;0"/>
+        <value value="true"/>
+        <warningOnly value="false"/>
+      </assert>
+    </action>
+  </test>
+</TestScript>
