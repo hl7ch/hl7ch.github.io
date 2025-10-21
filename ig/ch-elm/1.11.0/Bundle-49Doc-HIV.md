@@ -1,0 +1,522 @@
+# 49Doc - HIV - CH ELM (R4) v1.12.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **49Doc - HIV**
+
+## Example Bundle: 49Doc - HIV
+
+**Document Details**
+
+**Document Subject**
+
+null null Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)
+
+-------
+
+-------
+
+**Document Content**
+
+## Analyseergebnisse der mikrobiologischen Untersuchung
+
+-------
+
+## Additional Resources Included in Document
+
+-------
+
+Entry 2 - fullUrl = urn:uuid:53b13bba-26d7-4ab7-81cd-7eaf18dc26eb
+
+Resource Patient:
+
+> null null Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)
+-------
+
+-------
+
+Entry 3 - fullUrl = urn:uuid:3e25781f-bdcc-4e9f-99b2-162b4aaebc56
+
+Resource Organization:
+
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601002331470**name**: SanLab
+
+-------
+
+Entry 4 - fullUrl = urn:uuid:2ead0239-152f-4db9-89dd-68c073477155
+
+Resource Observation:
+
+> **status**: Final**category**:Laboratory**code**:Human immunodeficiency virus type I**subject**:[null null Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)](Bundle-49Doc-HIV.md#urn-uuid-53b13bba-26d7-4ab7-81cd-7eaf18dc26eb)**effective**: 2024-11-04 14:20:00+0200**performer**:[Organization SanLab](Bundle-49Doc-HIV.md#urn-uuid-3e25781f-bdcc-4e9f-99b2-162b4aaebc56)**dataAbsentReason**:Not Applicable**interpretation**:Positive**specimen**:[Specimen: type =](Bundle-49Doc-HIV.md#urn-uuid-fa064f03-0908-4958-82cb-e940cadacfd3)
+
+-------
+
+Entry 5 - fullUrl = urn:uuid:1cb13eb9-4e83-4df0-87ab-11b5cce250ba
+
+Resource Practitioner:
+
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601000000514**name**: Peter Hauser**telecom**:[+41 79 222 33 44](tel:+41792223344),[peter.hauser@hauserpraxis.ch](mailto:peter.hauser@hauserpraxis.ch)
+
+-------
+
+Entry 6 - fullUrl = urn:uuid:1a06aa4d-fc32-403f-99c1-680232316b57
+
+Resource Organization:
+
+> **identifier**:`urn:oid:2.16.756.5.45`/A74966168**name**: Praxis Dr. Hauser
+
+### Contacts
+
+| | |
+| :--- | :--- |
+| - | **Address** |
+| * | Hauptstrasse 10 Solothurn 4500 |
+
+
+-------
+
+Entry 7 - fullUrl = urn:uuid:0d4d9b6a-6a42-47a1-8abf-c715bdb5de2c
+
+Resource PractitionerRole:
+
+> **practitioner**:[Practitioner Peter Hauser](Bundle-49Doc-HIV.md#urn-uuid-1cb13eb9-4e83-4df0-87ab-11b5cce250ba)**organization**:[Organization Praxis Dr. Hauser](Bundle-49Doc-HIV.md#urn-uuid-1a06aa4d-fc32-403f-99c1-680232316b57)
+
+-------
+
+Entry 8 - fullUrl = urn:uuid:fa064f03-0908-4958-82cb-e940cadacfd3
+
+Resource Specimen:
+
+> **type**:Material declared by Observation.code or non-mandatory**subject**:[null null Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)](Bundle-49Doc-HIV.md#urn-uuid-53b13bba-26d7-4ab7-81cd-7eaf18dc26eb)
+
+### Collections
+
+| | |
+| :--- | :--- |
+| - | **Collected[x]** |
+| * | 2024-11-01 14:20:00+0200 |
+
+
+-------
+
+Entry 9 - fullUrl = urn:uuid:d78e6789-f3f0-46fe-aded-04b2da318e68
+
+Resource ServiceRequest:
+
+> **identifier**: 26500923622**status**: Completed**intent**: Order**code**: No display for ServiceRequest.code (concept: Human immunodeficiency virus type I)**subject**:[null null Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)](Bundle-49Doc-HIV.md#urn-uuid-53b13bba-26d7-4ab7-81cd-7eaf18dc26eb)**requester**:[PractitionerRole](Bundle-49Doc-HIV.md#urn-uuid-0d4d9b6a-6a42-47a1-8abf-c715bdb5de2c)**specimen**:[Specimen: type =](Bundle-49Doc-HIV.md#urn-uuid-fa064f03-0908-4958-82cb-e940cadacfd3)
+
+-------
+
+Entry 10 - fullUrl = urn:uuid:6bfcd981-5e6b-47ed-8531-aba2b9eef9cd
+
+Resource DiagnosticReport:
+
+> 
+
+## Laboratory report 
+
+| | |
+| :--- | :--- |
+| Subject | null null Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897) |
+| Performer | [Organization SanLab](Bundle-49Doc-HIV.md#urn-uuid-3e25781f-bdcc-4e9f-99b2-162b4aaebc56) |
+| Identifier | [Uniform Resource Identifier (URI)](http://terminology.hl7.org/5.5.0/NamingSystem-uri.html)/urn:uuid:3401332d-6012-443f-9690-6334adb23aac |
+
+**Report Details**
+
+* **Code**: [Human immunodeficiency virus type I](Bundle-49Doc-HIV.md#urn-uuid-2ead0239-152f-4db9-89dd-68c073477155)
+  * **Value**: Error:**Not Applicable**
+  * **Flags**: Final,Positive
+  * **When For**: 2024-11-04 14:20:00+0200
+
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "49Doc-HIV",
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:3401332d-6012-443f-9690-6334adb23aac"
+  },
+  "type" : "document",
+  "timestamp" : "2024-11-06T12:00:00+02:00",
+  "entry" : [
+    {
+      "fullUrl" : "urn:uuid:288f3a94-5c88-461f-937c-c8948dd86ca0",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "288f3a94-5c88-461f-937c-c8948dd86ca0",
+        "language" : "de-CH",
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:3401332d-6012-443f-9690-6334adb23aac"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "version" : "http://snomed.info/sct/2011000195101",
+              "code" : "4241000179101",
+              "display" : "Laborbericht"
+            },
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:53b13bba-26d7-4ab7-81cd-7eaf18dc26eb"
+        },
+        "date" : "2024-11-06T12:00:00+02:00",
+        "author" : [
+          {
+            "reference" : "urn:uuid:3e25781f-bdcc-4e9f-99b2-162b4aaebc56"
+          }
+        ],
+        "title" : "Laborbericht vom 6.11.2024",
+        "section" : [
+          {
+            "title" : "Analyseergebnisse der mikrobiologischen Untersuchung",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "18725-2",
+                  "display" : "Microbiology studies (set)"
+                }
+              ]
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:2ead0239-152f-4db9-89dd-68c073477155"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:53b13bba-26d7-4ab7-81cd-7eaf18dc26eb",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "53b13bba-26d7-4ab7-81cd-7eaf18dc26eb",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.32",
+            "value" : "7561234567897"
+          }
+        ],
+        "name" : [
+          {
+            "extension" : [
+              {
+                "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-hiv-code",
+                "valueString" : "H5"
+              }
+            ],
+            "_family" : {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                  "valueCode" : "masked"
+                }
+              ]
+            },
+            "_given" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                    "valueCode" : "masked"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1981-02-07",
+        "address" : [
+          {
+            "use" : "home",
+            "city" : "Carouge",
+            "state" : "GE",
+            "postalCode" : "1227",
+            "country" : "CH",
+            "_country" : {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding",
+                  "valueCoding" : {
+                    "system" : "urn:iso:std:iso:3166",
+                    "code" : "CH"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:3e25781f-bdcc-4e9f-99b2-162b4aaebc56",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "3e25781f-bdcc-4e9f-99b2-162b4aaebc56",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601002331470"
+          }
+        ],
+        "name" : "SanLab"
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:2ead0239-152f-4db9-89dd-68c073477155",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "2ead0239-152f-4db9-89dd-68c073477155",
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory",
+                "display" : "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "89293008"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:53b13bba-26d7-4ab7-81cd-7eaf18dc26eb"
+        },
+        "effectiveDateTime" : "2024-11-04T14:20:00+02:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:3e25781f-bdcc-4e9f-99b2-162b4aaebc56"
+          }
+        ],
+        "dataAbsentReason" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code" : "not-applicable"
+            }
+          ]
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "POS",
+                "display" : "Positive"
+              }
+            ]
+          }
+        ],
+        "specimen" : {
+          "reference" : "urn:uuid:fa064f03-0908-4958-82cb-e940cadacfd3"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:1cb13eb9-4e83-4df0-87ab-11b5cce250ba",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "1cb13eb9-4e83-4df0-87ab-11b5cce250ba",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000000514"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Hauser",
+            "given" : ["Peter"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41 79 222 33 44"
+          },
+          {
+            "system" : "email",
+            "value" : "peter.hauser@hauserpraxis.ch"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:1a06aa4d-fc32-403f-99c1-680232316b57",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "1a06aa4d-fc32-403f-99c1-680232316b57",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.45",
+            "value" : "A74966168"
+          }
+        ],
+        "name" : "Praxis Dr. Hauser",
+        "address" : [
+          {
+            "line" : ["Hauptstrasse 10"],
+            "_line" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+                    "valueString" : "Hauptstrasse"
+                  },
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString" : "10"
+                  }
+                ]
+              }
+            ],
+            "city" : "Solothurn",
+            "postalCode" : "4500"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:0d4d9b6a-6a42-47a1-8abf-c715bdb5de2c",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "0d4d9b6a-6a42-47a1-8abf-c715bdb5de2c",
+        "practitioner" : {
+          "reference" : "urn:uuid:1cb13eb9-4e83-4df0-87ab-11b5cce250ba"
+        },
+        "organization" : {
+          "reference" : "urn:uuid:1a06aa4d-fc32-403f-99c1-680232316b57"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:fa064f03-0908-4958-82cb-e940cadacfd3",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "fa064f03-0908-4958-82cb-e940cadacfd3",
+        "type" : {
+          "text" : "Material declared by Observation.code or non-mandatory"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:53b13bba-26d7-4ab7-81cd-7eaf18dc26eb"
+        },
+        "collection" : {
+          "collectedDateTime" : "2024-11-01T14:20:00+02:00"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:d78e6789-f3f0-46fe-aded-04b2da318e68",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "d78e6789-f3f0-46fe-aded-04b2da318e68",
+        "identifier" : [
+          {
+            "value" : "26500923622"
+          }
+        ],
+        "status" : "completed",
+        "intent" : "order",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "89293008"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:53b13bba-26d7-4ab7-81cd-7eaf18dc26eb"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:0d4d9b6a-6a42-47a1-8abf-c715bdb5de2c"
+        },
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:fa064f03-0908-4958-82cb-e940cadacfd3"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:6bfcd981-5e6b-47ed-8531-aba2b9eef9cd",
+      "resource" : {
+        "resourceType" : "DiagnosticReport",
+        "id" : "6bfcd981-5e6b-47ed-8531-aba2b9eef9cd",
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition",
+            "valueReference" : {
+              "reference" : "urn:uuid:288f3a94-5c88-461f-937c-c8948dd86ca0"
+            }
+          }
+        ],
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:uuid:3401332d-6012-443f-9690-6334adb23aac"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "urn:uuid:d78e6789-f3f0-46fe-aded-04b2da318e68"
+          }
+        ],
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:53b13bba-26d7-4ab7-81cd-7eaf18dc26eb"
+        },
+        "performer" : [
+          {
+            "reference" : "urn:uuid:3e25781f-bdcc-4e9f-99b2-162b4aaebc56"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:fa064f03-0908-4958-82cb-e940cadacfd3"
+          }
+        ],
+        "result" : [
+          {
+            "reference" : "urn:uuid:2ead0239-152f-4db9-89dd-68c073477155"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```

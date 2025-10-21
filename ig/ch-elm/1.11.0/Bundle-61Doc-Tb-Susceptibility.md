@@ -1,0 +1,562 @@
+# 61Doc - Tuberculosis Susceptibility - CH ELM (R4) v1.12.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **61Doc - Tuberculosis Susceptibility**
+
+## Example Bundle: 61Doc - Tuberculosis Susceptibility
+
+**Document Details**
+
+**Document Subject**
+
+Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866)
+
+-------
+
+-------
+
+**Document Content**
+
+## Resistenztestung
+
+-------
+
+## Additional Resources Included in Document
+
+-------
+
+Entry 2 - fullUrl = http://test.fhir.ch/r4/DiagnosticReport/61DR-Susceptibility
+
+Resource DiagnosticReport:
+
+> 
+
+## Laboratory report 
+
+| | |
+| :--- | :--- |
+| Subject | Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866) |
+| Performer | [Organization SanLab](Organization-1Org-Labor.md) |
+| Identifier | [Uniform Resource Identifier (URI)](http://terminology.hl7.org/5.5.0/NamingSystem-uri.html)/urn:uuid:2821b775-16f8-4910-bba8-1b7d99627f3e |
+
+**Report Details**
+
+* **Code**: [Mycobacterial susceptibility panel by Method for Slow-growing mycobacteria](Bundle-61Doc-Tb-Susceptibility.md#Observation_61Obs-Susceptibility)
+  * **Value**: 
+  * **Flags**: Final
+  * **When For**: 2024-09-10 14:20:00+0200
+
+
+-------
+
+Entry 3 - fullUrl = http://test.fhir.ch/r4/Patient/Pat-003
+
+Resource Patient:
+
+> Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866)
+-------
+
+-------
+
+Entry 4 - fullUrl = http://test.fhir.ch/r4/Observation/61Obs-Susceptibility
+
+Resource Observation:
+
+> **status**: Final**category**:Laboratory**code**:Mycobacterial susceptibility panel by Method for Slow-growing mycobacteria**subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866)](Patient-Pat-003.md)**effective**: 2024-09-10 14:20:00+0200**performer**:[Organization SanLab](Organization-1Org-Labor.md)**specimen**:[Specimen](Bundle-61Doc-Tb-Susceptibility.md#Specimen_61Spec-Susceptibility)
+> **component****code**:Isoniazid [Susceptibility]**value**: 0.4 mg/L(Details: UCUM codemg/L = 'mg/L')**interpretation**:Susceptible
+
+> **component****code**:rifAMPin [Susceptibility]**value**: 0.1 mg/L(Details: UCUM codemg/L = 'mg/L')**interpretation**:Resistant
+
+-------
+
+Entry 5 - fullUrl = http://test.fhir.ch/r4/Specimen/61Spec-Susceptibility
+
+Resource Specimen:
+
+> **subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866)](Patient-Pat-003.md)
+
+### Collections
+
+| | |
+| :--- | :--- |
+| - | **Collected[x]** |
+| * | 2024-09-08 |
+
+
+-------
+
+Entry 6 - fullUrl = http://test.fhir.ch/r4/ServiceRequest/61SR-Susceptibility
+
+Resource ServiceRequest:
+
+> **identifier**: 26500923622**status**: Completed**intent**: Order**code**: No display for ServiceRequest.code (concept: Mycobacterial susceptibility panel by Method for Slow-growing mycobacteria)**subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866)](Patient-Pat-003.md)**requester**:[PractitionerRole](PractitionerRole-PR-PeterHauser.md)**specimen**:[Specimen](Bundle-61Doc-Tb-Susceptibility.md#Specimen_61Spec-Susceptibility)
+
+-------
+
+Entry 7 - fullUrl = http://test.fhir.ch/r4/Organization/1Org-Labor
+
+Resource Organization:
+
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601002331470**name**: SanLab
+
+-------
+
+Entry 8 - fullUrl = http://test.fhir.ch/r4/PractitionerRole/PR-PeterHauser
+
+Resource PractitionerRole:
+
+> **practitioner**:[Practitioner Peter Hauser](Practitioner-Pract-PeterHauser.md)**organization**:[Organization Praxis Dr. Hauser](Organization-Org-PeterHauser.md)
+
+-------
+
+Entry 9 - fullUrl = http://test.fhir.ch/r4/Practitioner/Pract-PeterHauser
+
+Resource Practitioner:
+
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601000000514**name**: Peter Hauser**telecom**:[peter.hauser@hauserpraxis.ch](mailto:peter.hauser@hauserpraxis.ch),[+41 79 222 33 44](tel:+41792223344)
+
+-------
+
+Entry 10 - fullUrl = http://test.fhir.ch/r4/Organization/Org-PeterHauser
+
+Resource Organization:
+
+> **identifier**:`urn:oid:2.16.756.5.45`/A74966168**name**: Praxis Dr. Hauser
+
+### Contacts
+
+| | |
+| :--- | :--- |
+| - | **Address** |
+| * | Hauptstrasse 10 Solothurn 4500 |
+
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "61Doc-Tb-Susceptibility",
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:2821b775-16f8-4910-bba8-1b7d99627f3e"
+  },
+  "type" : "document",
+  "timestamp" : "2024-09-10T12:00:00+02:00",
+  "entry" : [
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Composition/61Comp-Susceptibility",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "61Comp-Susceptibility",
+        "language" : "de-CH",
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:2821b775-16f8-4910-bba8-1b7d99627f3e"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "version" : "http://snomed.info/sct/2011000195101",
+              "code" : "4241000179101",
+              "display" : "Laborbericht"
+            },
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/Pat-003"
+        },
+        "date" : "2024-09-10T12:00:00+02:00",
+        "author" : [
+          {
+            "reference" : "Organization/1Org-Labor"
+          }
+        ],
+        "title" : "Laborbericht vom 10.09.2024",
+        "section" : [
+          {
+            "title" : "Resistenztestung",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "18769-0",
+                  "display" : "Microbial susceptibility tests Set"
+                }
+              ]
+            },
+            "entry" : [
+              {
+                "reference" : "Observation/61Obs-Susceptibility"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/DiagnosticReport/61DR-Susceptibility",
+      "resource" : {
+        "resourceType" : "DiagnosticReport",
+        "id" : "61DR-Susceptibility",
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition",
+            "valueReference" : {
+              "reference" : "Composition/61Comp-Susceptibility"
+            }
+          }
+        ],
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:uuid:2821b775-16f8-4910-bba8-1b7d99627f3e"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "ServiceRequest/61SR-Susceptibility"
+          }
+        ],
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/Pat-003"
+        },
+        "performer" : [
+          {
+            "reference" : "Organization/1Org-Labor"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "Specimen/61Spec-Susceptibility"
+          }
+        ],
+        "result" : [
+          {
+            "reference" : "Observation/61Obs-Susceptibility"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Patient/Pat-003",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "Pat-003",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.32",
+            "value" : "7561234567866"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Dupont",
+            "given" : ["Antoine"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41 76 222 55 22"
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1981-02-07",
+        "address" : [
+          {
+            "use" : "home",
+            "line" : ["Rue de la république 10"],
+            "_line" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+                    "valueString" : "Rue de la république"
+                  },
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString" : "10"
+                  }
+                ]
+              }
+            ],
+            "city" : "Carouge",
+            "state" : "GE",
+            "postalCode" : "1227",
+            "country" : "CH",
+            "_country" : {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding",
+                  "valueCoding" : {
+                    "system" : "urn:iso:std:iso:3166",
+                    "code" : "CH"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Observation/61Obs-Susceptibility",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "61Obs-Susceptibility",
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory",
+                "display" : "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29579-0",
+              "display" : "Mycobacterial susceptibility panel by Method for Slow-growing mycobacteria"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/Pat-003"
+        },
+        "effectiveDateTime" : "2024-09-10T14:20:00+02:00",
+        "performer" : [
+          {
+            "reference" : "Organization/1Org-Labor"
+          }
+        ],
+        "specimen" : {
+          "reference" : "Specimen/61Spec-Susceptibility"
+        },
+        "component" : [
+          {
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "18934-0",
+                  "display" : "Isoniazid [Susceptibility]"
+                }
+              ]
+            },
+            "valueQuantity" : {
+              "value" : 0.4,
+              "unit" : "mg/L",
+              "system" : "http://unitsofmeasure.org",
+              "code" : "mg/L"
+            },
+            "interpretation" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                    "code" : "S",
+                    "display" : "Susceptible"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "18974-6",
+                  "display" : "rifAMPin [Susceptibility]"
+                }
+              ]
+            },
+            "valueQuantity" : {
+              "value" : 0.1,
+              "unit" : "mg/L",
+              "system" : "http://unitsofmeasure.org",
+              "code" : "mg/L"
+            },
+            "interpretation" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                    "code" : "R",
+                    "display" : "Resistant"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Specimen/61Spec-Susceptibility",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "61Spec-Susceptibility",
+        "subject" : {
+          "reference" : "Patient/Pat-003"
+        },
+        "collection" : {
+          "collectedDateTime" : "2024-09-08"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/ServiceRequest/61SR-Susceptibility",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "61SR-Susceptibility",
+        "identifier" : [
+          {
+            "value" : "26500923622"
+          }
+        ],
+        "status" : "completed",
+        "intent" : "order",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29579-0",
+              "display" : "Mycobacterial susceptibility panel by Method for Slow-growing mycobacteria"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/Pat-003"
+        },
+        "requester" : {
+          "reference" : "PractitionerRole/PR-PeterHauser"
+        },
+        "specimen" : [
+          {
+            "reference" : "Specimen/61Spec-Susceptibility"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Organization/1Org-Labor",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "1Org-Labor",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601002331470"
+          }
+        ],
+        "name" : "SanLab"
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/PractitionerRole/PR-PeterHauser",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "PR-PeterHauser",
+        "practitioner" : {
+          "reference" : "Practitioner/Pract-PeterHauser"
+        },
+        "organization" : {
+          "reference" : "Organization/Org-PeterHauser"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Practitioner/Pract-PeterHauser",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "Pract-PeterHauser",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000000514"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Hauser",
+            "given" : ["Peter"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "email",
+            "value" : "peter.hauser@hauserpraxis.ch"
+          },
+          {
+            "system" : "phone",
+            "value" : "+41 79 222 33 44"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Organization/Org-PeterHauser",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "Org-PeterHauser",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.45",
+            "value" : "A74966168"
+          }
+        ],
+        "name" : "Praxis Dr. Hauser",
+        "address" : [
+          {
+            "line" : ["Hauptstrasse 10"],
+            "_line" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+                    "valueString" : "Hauptstrasse"
+                  },
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString" : "10"
+                  }
+                ]
+              }
+            ],
+            "city" : "Solothurn",
+            "postalCode" : "4500"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```

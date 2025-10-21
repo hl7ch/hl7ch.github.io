@@ -1,0 +1,1641 @@
+# CH ELM Results Laboratory Observation - CH ELM (R4) v1.12.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH ELM Results Laboratory Observation**
+
+## ValueSet: CH ELM Results Laboratory Observation 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation | *Version*:1.12.0 |
+| Active as of 2025-10-21 | *Computable Name*:ChElmResultsLaboratoryObservation |
+| **Copyright/Legal**: CC0-1.0 | |
+
+ 
+This CH ELM value set includes the codes for the laboratory test results (organism). 
+
+ **References** 
+
+* [CH ELM Observation Results for Microbiology studies (set) strict](StructureDefinition-ch-elm-observation-results-laboratory-microbiolgy-strict.md)
+* [CH ELM Observation Results for Microbiology studies (set)](StructureDefinition-ch-elm-observation-results-laboratory-microbiology.md)
+* [CH ELM ServiceRequest: Laboratory Order](StructureDefinition-ch-elm-servicerequest-laboratory-order.md)
+
+### Logical Definition (CLD)
+
+ 
+
+### Expansion
+
+Expansion from tx.fhir.org based on:
+
+* Loinc v2.81
+* SNOMED CT International edition 01-Feb 2025
+
+This value set contains 384 concepts
+
+-------
+
+ Explanation of the columns that may appear on this page: 
+
+| | |
+| :--- | :--- |
+| Level | A few code lists that FHIR defines are hierarchical - each code is assigned a level. In this scheme, some codes are under other codes, and imply that the code they are under also applies |
+| System | The source of the definition of the code (when the value set draws in codes defined elsewhere) |
+| Code | The code (used as the code in the resource instance) |
+| Display | The display (used in the*display*element of a[Coding](http://hl7.org/fhir/R4/datatypes.html#Coding)). If there is no display, implementers should not simply display the code, but map the concept into their application |
+| Definition | An explanation of the meaning of the concept |
+| Comments | Additional notes about how to use the code |
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "ValueSet",
+  "id" : "ch-elm-results-laboratory-observation",
+  "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation",
+  "version" : "1.12.0",
+  "name" : "ChElmResultsLaboratoryObservation",
+  "title" : "CH ELM Results Laboratory Observation",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2025-10-21T11:52:21+00:00",
+  "publisher" : "Federal Office of Public Health FOPH",
+  "contact" : [
+    {
+      "name" : "Federal Office of Public Health FOPH",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+        }
+      ]
+    }
+  ],
+  "description" : "This CH ELM value set includes the codes for the laboratory test results (organism).",
+  "jurisdiction" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CH"
+        }
+      ]
+    }
+  ],
+  "copyright" : "CC0-1.0",
+  "compose" : {
+    "include" : [
+      {
+        "system" : "http://loinc.org",
+        "concept" : [
+          {
+            "code" : "100383-9",
+            "display" : "Monkeypox virus DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "100749-1",
+            "display" : "Legionella pneumophila serogroup 1 [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "100888-7",
+            "display" : "Monkeypox virus clade II DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "100889-5",
+            "display" : "Monkeypox virus clade I DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "100911-7",
+            "display" : "Campylobacter sp [Presence] in Stool by Organism specific culture"
+          },
+          {
+            "code" : "100965-3",
+            "display" : "Dengue virus IgG Ab [Interpretation] in Serum, Plasma or Blood"
+          },
+          {
+            "code" : "101003-2",
+            "display" : "Monkeypox virus clade [Type] in Specimen by Sequencing"
+          },
+          {
+            "code" : "101219-4",
+            "display" : "Legionella sp DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "101307-7",
+            "display" : "Plasmodium vivax+ovale DNA [Presence] in Blood by NAA with non-probe detection"
+          },
+          {
+            "code" : "101364-8",
+            "display" : "Francisella tularensis DNA [Presence] in Blood by NAA with non-probe detection"
+          },
+          {
+            "code" : "101373-9",
+            "display" : "Francisella tularensis DNA [Presence] in Sputum by NAA with non-probe detection"
+          },
+          {
+            "code" : "101423-2",
+            "display" : "Influenza virus A H1 RNA [Presence] in Respiratory system specimen by NAA with probe detection"
+          },
+          {
+            "code" : "101424-0",
+            "display" : "Influenza virus A H3 RNA [Presence] in Respiratory system specimen by NAA with probe detection"
+          },
+          {
+            "code" : "101662-5",
+            "display" : "Abnormal Prion Protein [Presence] in Cerebral spinal fluid by RT-QuIC"
+          },
+          {
+            "code" : "101802-7",
+            "display" : "Brucella sp IgA Ab [Presence] in Serum"
+          },
+          {
+            "code" : "103168-1",
+            "display" : "Campylobacter coli+jejuni DNA [Presence] in Wound by NAA with probe detection"
+          },
+          {
+            "code" : "103717-5",
+            "display" : "Crimean-Congo hemorrhagic fever virus RNA [Presence] in Blood by NAA with non-probe detection"
+          },
+          {
+            "code" : "103719-1",
+            "display" : "Lassa virus RNA [Presence] in Blood by NAA with non-probe detection"
+          },
+          {
+            "code" : "104371-0",
+            "display" : "Corynebacterium pseudotuberculosis [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "104372-8",
+            "display" : "Corynebacterium pseudotuberculosis [Presence] in Upper respiratory specimen by Organism specific culture"
+          },
+          {
+            "code" : "104373-6",
+            "display" : "Corynebacterium ulcerans [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "104374-4",
+            "display" : "Corynebacterium ulcerans [Presence] in Upper respiratory specimen by Organism specific culture"
+          },
+          {
+            "code" : "104375-1",
+            "display" : "Corynebacterium ulcerans DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "104376-9",
+            "display" : "Diphtheria toxin DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "104395-9",
+            "display" : "European tick borne encephalitis virus IgG Ab [Titer] in Serum by Immunoassay --2nd specimen"
+          },
+          {
+            "code" : "104407-2",
+            "display" : "Hantavirus IgG Ab [Titer] in Serum by Immunoassay --2nd specimen"
+          },
+          {
+            "code" : "104454-4",
+            "display" : "Trichinella spiralis IgG Ab [Titer] in Serum by Immunoassay --2nd specimen"
+          },
+          {
+            "code" : "104476-7",
+            "display" : "Zika virus IgG Ab [Titer] in Serum by Immunoassay --2nd specimen"
+          },
+          {
+            "code" : "105065-7",
+            "display" : "Shigella species+EIEC invasion plasmid antigen H ipaH gene [Presence] in Specimen"
+          },
+          {
+            "code" : "105640-7",
+            "display" : "Campylobacter sp DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "106554-9",
+            "display" : "Escherichia coli shiga-like toxin DNA [Presence] in Stool by NAA with probe detection"
+          },
+          {
+            "code" : "107242-0",
+            "display" : "Tick-borne encephalitis virus Ab [Interpretation] in Serum or Plasma"
+          },
+          {
+            "code" : "11259-9",
+            "display" : "Hepatitis C virus RNA [Presence] in Serum or Plasma by NAA with probe detection"
+          },
+          {
+            "code" : "11469-4",
+            "display" : "Bacillus anthracis [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "11477-7",
+            "display" : "Microscopic observation [Identifier] in Sputum by Acid fast stain"
+          },
+          {
+            "code" : "11479-3",
+            "display" : "Microscopic observation [Identifier] in Tissue by Acid fast stain"
+          },
+          {
+            "code" : "11480-1",
+            "display" : "Microscopic observation [Identifier] in Urine by Acid fast stain"
+          },
+          {
+            "code" : "11545-1",
+            "display" : "Microscopic observation [Identifier] in Specimen by Acid fast stain"
+          },
+          {
+            "code" : "13954-3",
+            "display" : "Hepatitis B virus e Ag [Presence] in Serum or Plasma by Immunoassay"
+          },
+          {
+            "code" : "14127-5",
+            "display" : "Neisseria gonorrhoeae [Presence] in Anal by Organism specific culture"
+          },
+          {
+            "code" : "14357-8",
+            "display" : "Microscopic observation [Identifier] in Cerebral spinal fluid by Gram stain"
+          },
+          {
+            "code" : "14463-4",
+            "display" : "Chlamydia trachomatis [Presence] in Cervix by Organism specific culture"
+          },
+          {
+            "code" : "14464-2",
+            "display" : "Chlamydia trachomatis [Presence] in Vaginal fluid by Organism specific culture"
+          },
+          {
+            "code" : "14465-9",
+            "display" : "Chlamydia trachomatis [Presence] in Urethra by Organism specific culture"
+          },
+          {
+            "code" : "16134-9",
+            "display" : "Neisseria meningitidis [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "16600-9",
+            "display" : "Chlamydia trachomatis rRNA [Presence] in Genital specimen by Probe"
+          },
+          {
+            "code" : "16676-9",
+            "display" : "Corynebacterium diphtheriae [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "17552-1",
+            "display" : "Rubella virus IgM Ab [Presence] in Cerebral spinal fluid"
+          },
+          {
+            "code" : "17563-8",
+            "display" : "Salmonella sp identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "17735-2",
+            "display" : "Trichinella spiralis IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "20458-6",
+            "display" : "Rubella virus IgG Ab [Interpretation] in Serum"
+          },
+          {
+            "code" : "20489-1",
+            "display" : "Streptococcus pneumoniae Ag [Presence] in Cerebral spinal fluid"
+          },
+          {
+            "code" : "21190-4",
+            "display" : "Chlamydia trachomatis DNA [Presence] in Cervix by NAA with probe detection"
+          },
+          {
+            "code" : "21191-2",
+            "display" : "Chlamydia trachomatis DNA [Presence] in Urethra by NAA with probe detection"
+          },
+          {
+            "code" : "21262-1",
+            "display" : "Escherichia coli shiga-like toxin [Presence] in Stool by Immunoassay"
+          },
+          {
+            "code" : "21363-7",
+            "display" : "Legionella pneumophila DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "21415-5",
+            "display" : "Neisseria gonorrhoeae DNA [Presence] in Urethra by NAA with probe detection"
+          },
+          {
+            "code" : "21416-3",
+            "display" : "Neisseria gonorrhoeae DNA [Presence] in Urine by NAA with probe detection"
+          },
+          {
+            "code" : "21503-8",
+            "display" : "Measles virus IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "21613-5",
+            "display" : "Chlamydia trachomatis DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "22314-9",
+            "display" : "Hepatitis A virus IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "22502-9",
+            "display" : "Measles virus IgG Ab [Titer] in Serum"
+          },
+          {
+            "code" : "22826-2",
+            "display" : "Influenza virus A identified in Specimen by Bioassay"
+          },
+          {
+            "code" : "22866-8",
+            "display" : "Bacillus anthracis Ag [Presence] in Tissue by Immunofluorescence"
+          },
+          {
+            "code" : "22867-6",
+            "display" : "Bacillus anthracis Ag [Presence] in Specimen by Immunofluorescence"
+          },
+          {
+            "code" : "23024-3",
+            "display" : "Coxiella burnetii DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "23126-6",
+            "display" : "Francisella tularensis Ag [Presence] in Tissue by Immune stain"
+          },
+          {
+            "code" : "23130-8",
+            "display" : "Francisella tularensis DNA [Presence] in Tissue by NAA with probe detection"
+          },
+          {
+            "code" : "23499-7",
+            "display" : "Trichinella spiralis [Presence] in Tissue by Light microscopy"
+          },
+          {
+            "code" : "23838-6",
+            "display" : "Chlamydia trachomatis rRNA [Presence] in Genital fluid by Probe"
+          },
+          {
+            "code" : "24002-8",
+            "display" : "Microscopic observation [Identifier] in Bronchial specimen by Acid fast stain"
+          },
+          {
+            "code" : "24102-6",
+            "display" : "Corynebacterium toxin [Presence] in Specimen by Immune diffusion (ID)"
+          },
+          {
+            "code" : "24111-7",
+            "display" : "Neisseria gonorrhoeae DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "24113-3",
+            "display" : "Hepatitis B virus core IgM Ab [Presence] in Serum or Plasma by Immunoassay"
+          },
+          {
+            "code" : "24116-6",
+            "display" : "Rubella virus IgM Ab [Presence] in Serum or Plasma by Immunoassay"
+          },
+          {
+            "code" : "24396-4",
+            "display" : "Brucella sp IgG Ab [Presence] in Serum"
+          },
+          {
+            "code" : "24397-2",
+            "display" : "Brucella sp IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "25338-5",
+            "display" : "Dengue virus IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "26620-5",
+            "display" : "Hantavirus IgG Ab [Presence] in Serum"
+          },
+          {
+            "code" : "29566-7",
+            "display" : "West Nile virus IgG Ab [Presence] in Serum by Immunoassay"
+          },
+          {
+            "code" : "29610-3",
+            "display" : "Hepatitis B virus DNA [Presence] in Serum or Plasma by NAA with probe detection"
+          },
+          {
+            "code" : "29907-3",
+            "display" : "Haemophilus influenzae B DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "31204-1",
+            "display" : "Hepatitis B virus core IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "31314-8",
+            "display" : "Coxiella burnetii phase 2 IgG Ab [Presence] in Serum"
+          },
+          {
+            "code" : "31315-5",
+            "display" : "Coxiella burnetii phase 2 IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "31616-6",
+            "display" : "Rubella virus IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "31703-2",
+            "display" : "West Nile virus IgM Ab [Presence] in Cerebral spinal fluid"
+          },
+          {
+            "code" : "31726-3",
+            "display" : "Bacillus anthracis Ag [Presence] in Specimen"
+          },
+          {
+            "code" : "31777-6",
+            "display" : "Chlamydia trachomatis Ag [Presence] in Specimen"
+          },
+          {
+            "code" : "31798-2",
+            "display" : "Dengue virus Ag [Presence] in Serum"
+          },
+          {
+            "code" : "31799-0",
+            "display" : "Dengue virus Ag [Presence] in Specimen"
+          },
+          {
+            "code" : "31828-7",
+            "display" : "Francisella tularensis Ag [Presence] in Serum"
+          },
+          {
+            "code" : "31829-5",
+            "display" : "Francisella tularensis Ag [Presence] in Specimen"
+          },
+          {
+            "code" : "31844-4",
+            "display" : "Hepatitis B virus e Ag [Presence] in Serum"
+          },
+          {
+            "code" : "31859-2",
+            "display" : "Influenza virus A Ag [Presence] in Specimen"
+          },
+          {
+            "code" : "31864-2",
+            "display" : "Influenza virus B Ag [Presence] in Specimen"
+          },
+          {
+            "code" : "31868-3",
+            "display" : "Legionella pneumophila 1 Ag [Presence] in Urine"
+          },
+          {
+            "code" : "31870-9",
+            "display" : "Legionella pneumophila Ag [Presence] in Urine"
+          },
+          {
+            "code" : "31879-0",
+            "display" : "Measles virus Ag [Presence] in Nose"
+          },
+          {
+            "code" : "31881-6",
+            "display" : "Measles virus Ag [Presence] in Serum or Plasma"
+          },
+          {
+            "code" : "31883-2",
+            "display" : "Measles virus Ag [Presence] in Sputum"
+          },
+          {
+            "code" : "31884-0",
+            "display" : "Measles virus Ag [Presence] in Throat"
+          },
+          {
+            "code" : "31887-3",
+            "display" : "Measles virus Ag [Presence] in Specimen"
+          },
+          {
+            "code" : "31912-9",
+            "display" : "Neisseria meningitidis Ag [Presence] in Specimen"
+          },
+          {
+            "code" : "31969-9",
+            "display" : "Streptococcus pneumoniae Ag [Presence] in Specimen"
+          },
+          {
+            "code" : "31989-7",
+            "display" : "14-3-3 Ag [Presence] in Cerebral spinal fluid"
+          },
+          {
+            "code" : "32131-5",
+            "display" : "Hantavirus IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "32188-5",
+            "display" : "Microscopic observation [Identifier] in Cerebral spinal fluid by Acid fast stain"
+          },
+          {
+            "code" : "32705-6",
+            "display" : "Neisseria gonorrhoeae DNA [Presence] in Vaginal fluid by NAA with probe detection"
+          },
+          {
+            "code" : "32781-7",
+            "display" : "Legionella sp Ag [Presence] in Urine"
+          },
+          {
+            "code" : "33676-8",
+            "display" : "Francisella tularensis [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "33679-2",
+            "display" : "Francisella tularensis DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "33685-9",
+            "display" : "Yersinia pestis [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "33687-5",
+            "display" : "Yersinia pestis Ag [Presence] in Specimen by Immunofluorescence"
+          },
+          {
+            "code" : "33691-7",
+            "display" : "Yersinia pestis DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "33696-6",
+            "display" : "Clostridium botulinum toxin [Presence] in Specimen by Mouse bioassay"
+          },
+          {
+            "code" : "34460-6",
+            "display" : "West Nile virus RNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "34461-4",
+            "display" : "West Nile virus RNA [Presence] in Cerebral spinal fluid by NAA with probe detection"
+          },
+          {
+            "code" : "34487-9",
+            "display" : "Influenza virus A RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "38270-5",
+            "display" : "Influenza virus A H7 RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "38272-1",
+            "display" : "Influenza virus A H5 RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "38275-4",
+            "display" : "Transmissible spongiform encephalopathy [Presence] in Brain by Light microscopy"
+          },
+          {
+            "code" : "38353-9",
+            "display" : "Streptococcus sp identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "38379-4",
+            "display" : "Mycobacterium tuberculosis complex DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "38382-8",
+            "display" : "Influenza virus B [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "39007-0",
+            "display" : "Hepatitis B virus e Ag [Presence] in Specimen"
+          },
+          {
+            "code" : "39025-2",
+            "display" : "Influenza virus A hemagglutinin cDNA [Identifier] in Specimen by Sequencing"
+          },
+          {
+            "code" : "40614-0",
+            "display" : "Brucella sp Ab [Presence] in Serum by Agglutination"
+          },
+          {
+            "code" : "40669-4",
+            "display" : "Rubella virus IgM Ab [Presence] in Cerebral spinal fluid by Immunoassay"
+          },
+          {
+            "code" : "40982-1",
+            "display" : "Influenza virus B RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "41216-3",
+            "display" : "Yellow fever virus IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "41447-4",
+            "display" : "Plasmodium falciparum DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "41448-2",
+            "display" : "Plasmodium malariae DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "41449-0",
+            "display" : "Plasmodium ovale DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "41450-8",
+            "display" : "Plasmodium vivax DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "41458-1",
+            "display" : "SARS coronavirus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "41623-0",
+            "display" : "Bacillus anthracis DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "41625-5",
+            "display" : "Brucella sp DNA [Identifier] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "41626-3",
+            "display" : "Brucella sp DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "41636-2",
+            "display" : "Ebola virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "41638-8",
+            "display" : "Marburg virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "41763-4",
+            "display" : "Rubella virus IgG Ab [Titer] in Serum"
+          },
+          {
+            "code" : "41856-6",
+            "display" : "Variola virus DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "42931-6",
+            "display" : "Chlamydia trachomatis rRNA [Presence] in Urine by NAA with probe detection"
+          },
+          {
+            "code" : "43304-5",
+            "display" : "Chlamydia trachomatis rRNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "43305-2",
+            "display" : "Neisseria gonorrhoeae rRNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "43389-6",
+            "display" : "Streptococcus sp identified in Isolate by Organism specific culture"
+          },
+          {
+            "code" : "44012-3",
+            "display" : "Measles virus IgG and IgM [Interpretation] in Serum"
+          },
+          {
+            "code" : "44797-9",
+            "display" : "Brucella sp [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "45084-1",
+            "display" : "Chlamydia trachomatis DNA [Presence] in Vaginal fluid by NAA with probe detection"
+          },
+          {
+            "code" : "45090-8",
+            "display" : "Chlamydia trachomatis DNA [Presence] in Anal by NAA with probe detection"
+          },
+          {
+            "code" : "45093-2",
+            "display" : "Chlamydia trachomatis [Presence] in Anal by Organism specific culture"
+          },
+          {
+            "code" : "45095-7",
+            "display" : "Chlamydia trachomatis [Presence] in Genital specimen by Organism specific culture"
+          },
+          {
+            "code" : "46454-5",
+            "display" : "Shigella sp [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "46732-4",
+            "display" : "Francisella tularensis subtype [Identifier] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "47085-6",
+            "display" : "Plasmodium sp DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "47387-6",
+            "display" : "Neisseria gonorrhoeae DNA [Presence] in Genital specimen by NAA with probe detection"
+          },
+          {
+            "code" : "48310-7",
+            "display" : "Influenza virus A [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "48508-6",
+            "display" : "Measles virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "49124-1",
+            "display" : "Coxiella burnetii identified in Specimen by Sequencing"
+          },
+          {
+            "code" : "49521-8",
+            "display" : "Influenza virus A H1 RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "49524-2",
+            "display" : "Influenza virus A H3 RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "49528-3",
+            "display" : "Influenza virus A H9 RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "49612-5",
+            "display" : "Salmonella sp DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "49671-1",
+            "display" : "Neisseria meningitidis DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "49672-9",
+            "display" : "Streptococcus pneumoniae DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "5007-0",
+            "display" : "Hepatitis B virus DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "5009-6",
+            "display" : "Hepatitis B virus DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "5010-4",
+            "display" : "Hepatitis C virus RNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "5012-0",
+            "display" : "Hepatitis C virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "50387-0",
+            "display" : "Chlamydia trachomatis rRNA [Presence] in Cervix by NAA with probe detection"
+          },
+          {
+            "code" : "50388-8",
+            "display" : "Neisseria gonorrhoeae rRNA [Presence] in Cervix by NAA with probe detection"
+          },
+          {
+            "code" : "50687-3",
+            "display" : "Plasmodium sp Ag [Presence] in Blood"
+          },
+          {
+            "code" : "50697-2",
+            "display" : "Influenza virus A Ag [Identifier] in Isolate"
+          },
+          {
+            "code" : "51578-3",
+            "display" : "Chlamydia trachomatis DNA [Presence] in Semen by NAA with probe detection"
+          },
+          {
+            "code" : "51587-4",
+            "display" : "Plasmodium sp [Presence] in Blood by Light microscopy"
+          },
+          {
+            "code" : "51646-8",
+            "display" : "Rabies virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "51664-1",
+            "display" : "Chikungunya virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "51939-7",
+            "display" : "Escherichia coli shiga-like toxin 2 [Presence] in Stool by Immunoassay"
+          },
+          {
+            "code" : "51940-5",
+            "display" : "Escherichia coli shiga-like toxin 1 [Presence] in Stool by Immunoassay"
+          },
+          {
+            "code" : "5195-3",
+            "display" : "Hepatitis B virus surface Ag [Presence] in Serum"
+          },
+          {
+            "code" : "5196-1",
+            "display" : "Hepatitis B virus surface Ag [Presence] in Serum or Plasma by Immunoassay"
+          },
+          {
+            "code" : "5199-5",
+            "display" : "Hepatitis C virus Ab [Presence] in Serum by Immunoblot"
+          },
+          {
+            "code" : "52986-7",
+            "display" : "Rubella virus IgG Ab avidity [Ratio] in Serum by Immunoassay"
+          },
+          {
+            "code" : "534-8",
+            "display" : "Mycobacterium sp identified in Cerebral spinal fluid by Organism specific culture"
+          },
+          {
+            "code" : "53607-8",
+            "display" : "Haemophilus influenzae B DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "53879-3",
+            "display" : "Neisseria gonorrhoeae rRNA [Presence] in Vaginal fluid by NAA with probe detection"
+          },
+          {
+            "code" : "53917-1",
+            "display" : "Streptococcus pneumoniae DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "53925-4",
+            "display" : "Chlamydia trachomatis rRNA [Presence] in Urethra by NAA with probe detection"
+          },
+          {
+            "code" : "53926-2",
+            "display" : "Chlamydia trachomatis rRNA [Presence] in Vaginal fluid by NAA with probe detection"
+          },
+          {
+            "code" : "53927-0",
+            "display" : "Neisseria gonorrhoeae rRNA [Presence] in Urethra by NAA with probe detection"
+          },
+          {
+            "code" : "53941-1",
+            "display" : "Vibrio cholerae toxin Ag [Presence] in Isolate"
+          },
+          {
+            "code" : "53942-9",
+            "display" : "Vibrio cholerae toxin ctx gene [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "53946-0",
+            "display" : "Escherichia coli shiga-like toxin identified in Specimen"
+          },
+          {
+            "code" : "539-7",
+            "display" : "Mycobacterium sp identified in Sputum by Organism specific culture"
+          },
+          {
+            "code" : "540-5",
+            "display" : "Mycobacterium sp identified in Tissue by Organism specific culture"
+          },
+          {
+            "code" : "54091-4",
+            "display" : "Rubella virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "541-3",
+            "display" : "Mycobacterium sp identified in Urine by Organism specific culture"
+          },
+          {
+            "code" : "543-9",
+            "display" : "Mycobacterium sp identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "552-0",
+            "display" : "Brucella sp identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "55465-9",
+            "display" : "Influenza virus A H1 2009 pandemic RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "56129-0",
+            "display" : "Chikungunya virus IgG Ab [Presence] in Serum or Plasma by Immunofluorescence"
+          },
+          {
+            "code" : "56131-6",
+            "display" : "Chikungunya virus IgM Ab [Presence] in Serum or Plasma by Immunofluorescence"
+          },
+          {
+            "code" : "56475-7",
+            "display" : "Salmonella sp antigenic formula [Identifier] in Isolate by Agglutination"
+          },
+          {
+            "code" : "57287-5",
+            "display" : "Chlamydia trachomatis rRNA [Presence] in Anal by NAA with probe detection"
+          },
+          {
+            "code" : "57458-2",
+            "display" : "Neisseria gonorrhoeae rRNA [Presence] in Anal by NAA with probe detection"
+          },
+          {
+            "code" : "57934-2",
+            "display" : "Chikungunya virus IgM Ab [Presence] in Serum or Plasma"
+          },
+          {
+            "code" : "58473-0",
+            "display" : "Haemophilus influenzae serotype DNA [Identifier] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "589-2",
+            "display" : "Legionella sp identified in Bronchial specimen by Organism specific culture"
+          },
+          {
+            "code" : "590-0",
+            "display" : "Legionella sp identified in Sputum by Organism specific culture"
+          },
+          {
+            "code" : "593-4",
+            "display" : "Legionella sp identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "59423-4",
+            "display" : "Influenza virus A hemagglutinin type RNA [Identifier] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "60255-7",
+            "display" : "Neisseria gonorrhoeae rRNA [Presence] in Throat by NAA with probe detection"
+          },
+          {
+            "code" : "60256-5",
+            "display" : "Neisseria gonorrhoeae rRNA [Presence] in Urine by NAA with probe detection"
+          },
+          {
+            "code" : "60261-5",
+            "display" : "Coxiella burnetii DNA [Presence] in Serum or Plasma by NAA with probe detection"
+          },
+          {
+            "code" : "60274-8",
+            "display" : "Rubella virus RNA [Presence] in Serum or Plasma by NAA with probe detection"
+          },
+          {
+            "code" : "60422-3",
+            "display" : "Measles virus genotype [Identifier] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "60534-5",
+            "display" : "SARS coronavirus RNA [Presence] in Serum or Plasma by NAA with probe detection"
+          },
+          {
+            "code" : "60546-9",
+            "display" : "Polio virus identified [Type] in Isolate by Organism specific culture"
+          },
+          {
+            "code" : "61366-1",
+            "display" : "Haemophilus influenzae DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "61369-5",
+            "display" : "Listeria monocytogenes DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "61371-1",
+            "display" : "Vibrio cholerae DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "62469-2",
+            "display" : "HIV 1 RNA [Units/volume] (viral load) in Serum or Plasma by NAA with probe detection"
+          },
+          {
+            "code" : "6349-5",
+            "display" : "Chlamydia trachomatis [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "6356-0",
+            "display" : "Chlamydia trachomatis DNA [Presence] in Genital specimen by NAA with probe detection"
+          },
+          {
+            "code" : "6357-8",
+            "display" : "Chlamydia trachomatis DNA [Presence] in Urine by NAA with probe detection"
+          },
+          {
+            "code" : "6387-5",
+            "display" : "Dengue virus DNA [Presence] in Specimen by Probe"
+          },
+          {
+            "code" : "6508-6",
+            "display" : "Neisseria meningitidis Ag [Presence] in Cerebral spinal fluid"
+          },
+          {
+            "code" : "6532-6",
+            "display" : "Rabies virus Ag [Presence] in Specimen by Immunofluorescence"
+          },
+          {
+            "code" : "6539-1",
+            "display" : "Rabies virus identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "6548-2",
+            "display" : "Rubella virus identified in Serum by Organism specific culture"
+          },
+          {
+            "code" : "65756-9",
+            "display" : "Salmonella sp serovar [Type] in Isolate"
+          },
+          {
+            "code" : "6578-9",
+            "display" : "Vibrio sp identified in Blood by Organism specific culture"
+          },
+          {
+            "code" : "6579-7",
+            "display" : "Vibrio sp identified in Stool by Organism specific culture"
+          },
+          {
+            "code" : "6581-3",
+            "display" : "Vibrio sp identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "6584-7",
+            "display" : "Virus identified in Specimen by Culture"
+          },
+          {
+            "code" : "6600-1",
+            "display" : "Haemophilus sp identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "6604-3",
+            "display" : "Influenza virus identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "6609-2",
+            "display" : "Listeria sp identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "67561-1",
+            "display" : "Corynebacterium diphtheriae DNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "6811-4",
+            "display" : "Dengue virus IgG Ab [Titer] in Serum"
+          },
+          {
+            "code" : "688-2",
+            "display" : "Neisseria gonorrhoeae [Presence] in Cervix by Organism specific culture"
+          },
+          {
+            "code" : "691-6",
+            "display" : "Neisseria gonorrhoeae [Presence] in Genital specimen by Organism specific culture"
+          },
+          {
+            "code" : "693-2",
+            "display" : "Neisseria gonorrhoeae [Presence] in Vaginal fluid by Organism specific culture"
+          },
+          {
+            "code" : "694-0",
+            "display" : "Neisseria gonorrhoeae [Presence] in Semen by Organism specific culture"
+          },
+          {
+            "code" : "69410-9",
+            "display" : "Haemophilus influenzae [Identifier] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "69577-5",
+            "display" : "Hepatitis E virus RNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "696-5",
+            "display" : "Neisseria gonorrhoeae [Presence] in Throat by Organism specific culture"
+          },
+          {
+            "code" : "697-3",
+            "display" : "Neisseria gonorrhoeae [Presence] in Urethra by Organism specific culture"
+          },
+          {
+            "code" : "69765-6",
+            "display" : "Rubella virus IgM Ab [Presence] in Body fluid by Immunoassay"
+          },
+          {
+            "code" : "698-1",
+            "display" : "Neisseria gonorrhoeae [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "70242-3",
+            "display" : "Shigella species+EIEC invasion plasmid antigen H ipaH gene [Presence] in Stool by NAA with probe detection"
+          },
+          {
+            "code" : "70568-1",
+            "display" : "Plasmodium knowlesi DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "70569-9",
+            "display" : "Plasmodium sp Ag [Identifier] in Blood by Rapid immunoassay"
+          },
+          {
+            "code" : "70858-6",
+            "display" : "Rabies virus neutralizing antibody [Presence] in Serum by Neutralization test"
+          },
+          {
+            "code" : "71782-7",
+            "display" : "Yellow fever virus IgM Ab [Presence] in Cerebral spinal fluid by Immunoassay"
+          },
+          {
+            "code" : "72307-2",
+            "display" : "Brucella sp IgG Ab [Titer] in Serum --2nd specimen"
+          },
+          {
+            "code" : "73907-8",
+            "display" : "Polio virus identified in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "74037-3",
+            "display" : "Transmissible spongiform encephalopathy [Identifier] in Brain by Light microscopy"
+          },
+          {
+            "code" : "74785-7",
+            "display" : "Influenza virus B Victoria lineage RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "74786-5",
+            "display" : "Influenza virus B Yamagata lineage RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "75756-7",
+            "display" : "Bacteria identified in Isolate by MS.MALDI-TOF"
+          },
+          {
+            "code" : "76078-5",
+            "display" : "Influenza virus A RNA [Presence] in Nasopharynx by NAA with probe detection"
+          },
+          {
+            "code" : "76080-1",
+            "display" : "Influenza virus B RNA [Presence] in Nasopharynx by NAA with probe detection"
+          },
+          {
+            "code" : "76626-1",
+            "display" : "Measles virus [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "76772-3",
+            "display" : "Plasmodium falciparum Ag [Presence] in Blood by Rapid immunoassay"
+          },
+          {
+            "code" : "77026-3",
+            "display" : "Influenza virus A H1 RNA [Presence] in Nasopharynx by NAA with probe detection"
+          },
+          {
+            "code" : "77027-1",
+            "display" : "Influenza virus A H3 RNA [Presence] in Nasopharynx by NAA with probe detection"
+          },
+          {
+            "code" : "77028-9",
+            "display" : "Influenza virus A H1 2009 pandemic RNA [Presence] in Nasopharynx by NAA with probe detection"
+          },
+          {
+            "code" : "77685-6",
+            "display" : "HIV 1 and 2 IgG Ab [Identifier] in Serum or Plasma by Immunoblot"
+          },
+          {
+            "code" : "77955-3",
+            "display" : "Yellow fever virus IgM Ab [Presence] in Serum by Immunofluorescence"
+          },
+          {
+            "code" : "7889-9",
+            "display" : "Francisella tularensis IgG Ab [Presence] in Serum"
+          },
+          {
+            "code" : "7890-7",
+            "display" : "Francisella tularensis IgM Ab [Presence] in Serum"
+          },
+          {
+            "code" : "7899-8",
+            "display" : "Hantavirus RNA [Presence] in Serum by NAA with probe detection"
+          },
+          {
+            "code" : "7904-6",
+            "display" : "Hepatitis A virus RNA [Presence] in Serum by NAA with probe detection"
+          },
+          {
+            "code" : "79189-7",
+            "display" : "Hepatitis C virus core Ag [Presence] in Serum or Plasma by Immunoassay"
+          },
+          {
+            "code" : "79190-5",
+            "display" : "Zika virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "79386-9",
+            "display" : "Escherichia coli Stx1 toxin stx1 gene [Presence] in Stool by NAA with probe detection"
+          },
+          {
+            "code" : "79387-7",
+            "display" : "Escherichia coli Stx2 toxin stx2 gene [Presence] in Stool by NAA with probe detection"
+          },
+          {
+            "code" : "7964-0",
+            "display" : "Measles virus RNA [Presence] in Nose by NAA with probe detection"
+          },
+          {
+            "code" : "80363-5",
+            "display" : "Chlamydia trachomatis DNA [Presence] in Anorectal by NAA with probe detection"
+          },
+          {
+            "code" : "80364-3",
+            "display" : "Chlamydia trachomatis rRNA [Presence] in Anorectal by NAA with probe detection"
+          },
+          {
+            "code" : "80366-8",
+            "display" : "Neisseria gonorrhoeae rRNA [Presence] in Anorectal by NAA with probe detection"
+          },
+          {
+            "code" : "80367-6",
+            "display" : "Chlamydia trachomatis [Presence] in Anorectal by Organism specific culture"
+          },
+          {
+            "code" : "80368-4",
+            "display" : "Neisseria gonorrhoeae [Presence] in Anorectal by Organism specific culture"
+          },
+          {
+            "code" : "8043-2",
+            "display" : "Trichinella spiralis IgG Ab [Presence] in Serum"
+          },
+          {
+            "code" : "80680-2",
+            "display" : "Vibrio cholerae toxin ctxA gene [Presence] in Stool by NAA with probe detection"
+          },
+          {
+            "code" : "80824-6",
+            "display" : "Zika virus IgM Ab [Presence] in Serum or Plasma by Immunoassay"
+          },
+          {
+            "code" : "81656-1",
+            "display" : "Campylobacter coli+jejuni tuf gene [Presence] in Stool by NAA with probe detection"
+          },
+          {
+            "code" : "82184-3",
+            "display" : "Listeria monocytogenes DNA [Presence] in Cerebral spinal fluid by NAA with non-probe detection"
+          },
+          {
+            "code" : "82300-5",
+            "display" : "Shigella sp [Presence] in Stool by Culture"
+          },
+          {
+            "code" : "82301-3",
+            "display" : "Salmonella sp [Presence] in Stool by Culture"
+          },
+          {
+            "code" : "82731-1",
+            "display" : "Zika virus IgM Ab [Presence] in Serum by Immunofluorescence"
+          },
+          {
+            "code" : "85362-2",
+            "display" : "Mycobacterium tuberculosis complex DNA [Presence] in Sputum or Bronchial by NAA with probe detection"
+          },
+          {
+            "code" : "85477-8",
+            "display" : "Influenza virus A RNA [Presence] in Upper respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "85478-6",
+            "display" : "Influenza virus B RNA [Presence] in Upper respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "85622-9",
+            "display" : "Zika virus RNA [Presence] in Serum or Plasma by NAA with probe detection"
+          },
+          {
+            "code" : "85623-7",
+            "display" : "Zika virus RNA [Presence] in Urine by NAA with probe detection"
+          },
+          {
+            "code" : "86515-4",
+            "display" : "Chikungunya virus RNA [Presence] in Urine by NAA with probe detection"
+          },
+          {
+            "code" : "86518-8",
+            "display" : "Ebola virus RNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "86520-4",
+            "display" : "Hantavirus RNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "86574-1",
+            "display" : "Marburg virus RNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "86576-6",
+            "display" : "Measles virus RNA [Presence] in Serum by NAA with probe detection"
+          },
+          {
+            "code" : "86581-6",
+            "display" : "Neisseria meningitidis [Presence] in Cerebral spinal fluid by Organism specific culture"
+          },
+          {
+            "code" : "86589-9",
+            "display" : "Rubella virus RNA [Presence] in Urine by NAA with probe detection"
+          },
+          {
+            "code" : "87622-7",
+            "display" : "Zika virus IgM Ab [Presence] in Specimen by Immunoassay"
+          },
+          {
+            "code" : "87985-8",
+            "display" : "Trichinella spiralis DNA [Presence] in Tissue by NAA with probe detection"
+          },
+          {
+            "code" : "88177-1",
+            "display" : "Coxiella burnetii DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "88178-9",
+            "display" : "Coxiella burnetii DNA [Presence] in Tissue by NAA with probe detection"
+          },
+          {
+            "code" : "88192-0",
+            "display" : "Crimean-Congo hemorrhagic fever virus RNA [Presence] in Serum by NAA with probe detection"
+          },
+          {
+            "code" : "88199-5",
+            "display" : "Middle East respiratory syndrome coronavirus (MERS-CoV) RNA [Presence] in Aspirate by NAA with probe detection"
+          },
+          {
+            "code" : "88224-1",
+            "display" : "Neisseria gonorrhoeae DNA [Presence] in Anorectal by NAA with probe detection"
+          },
+          {
+            "code" : "88225-8",
+            "display" : "Neisseria gonorrhoeae DNA [Presence] in Throat by NAA with probe detection"
+          },
+          {
+            "code" : "88584-8",
+            "display" : "Corynebacterium diphtheriae [Presence] in Upper respiratory specimen by Organism specific culture"
+          },
+          {
+            "code" : "88585-5",
+            "display" : "Legionella sp identified in Lower respiratory specimen by Organism specific culture"
+          },
+          {
+            "code" : "88588-9",
+            "display" : "Legionella sp DNA [Identifier] in Lower respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "88590-5",
+            "display" : "Legionella pneumophila DNA [Presence] in Lower respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "88592-1",
+            "display" : "Influenza virus B RNA [Presence] in Lower respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "88599-6",
+            "display" : "Influenza virus A RNA [Presence] in Lower respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "88629-1",
+            "display" : "Chikungunya virus IgM Ab [Presence] in Serum or Plasma by Immunoassay"
+          },
+          {
+            "code" : "88875-0",
+            "display" : "Measles virus genotype A vaccine strain N gene [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "89596-1",
+            "display" : "Listeria monocytogenes DNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "90066-2",
+            "display" : "Corynebacterium sp identified in Isolate by Organism specific culture"
+          },
+          {
+            "code" : "90459-9",
+            "display" : "Yellow fever virus RNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "91071-1",
+            "display" : "Hepatitis E virus RNA [Presence] in Stool by NAA with probe detection"
+          },
+          {
+            "code" : "91077-8",
+            "display" : "Measles virus RNA [Presence] in Upper respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "91078-6",
+            "display" : "Zika virus RNA [Presence] in Blood by NAA with probe detection"
+          },
+          {
+            "code" : "91132-1",
+            "display" : "Measles virus RNA [Presence] in Lower respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "91780-7",
+            "display" : "Measles virus [Presence] in Lower respiratory specimen by Organism specific culture"
+          },
+          {
+            "code" : "91786-4",
+            "display" : "Measles virus [Presence] in Upper respiratory specimen by Organism specific culture"
+          },
+          {
+            "code" : "91792-2",
+            "display" : "Rubella virus RNA [Presence] in Upper respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "91807-8",
+            "display" : "Middle East respiratory syndrome coronavirus (MERS-CoV) RNA [Presence] in Upper respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "91823-5",
+            "display" : "Rubella virus RNA [Presence] in Lower respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "91830-0",
+            "display" : "Middle East respiratory syndrome coronavirus (MERS-CoV) RNA [Presence] in Lower respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "92141-1",
+            "display" : "Influenza virus B RNA [Presence] in Respiratory system specimen by NAA with probe detection"
+          },
+          {
+            "code" : "92142-9",
+            "display" : "Influenza virus A RNA [Presence] in Respiratory system specimen by NAA with probe detection"
+          },
+          {
+            "code" : "92145-2",
+            "display" : "Legionella pneumophila DNA [Presence] in Respiratory system specimen by NAA with probe detection"
+          },
+          {
+            "code" : "92771-5",
+            "display" : "Streptococcus pneumoniae DNA [Presence] by NAA with probe detection in Positive blood culture"
+          },
+          {
+            "code" : "92786-3",
+            "display" : "Corynebacterium sp DNA [Presence] by NAA with probe detection in Positive blood culture"
+          },
+          {
+            "code" : "92808-5",
+            "display" : "Influenza virus A H3 RNA [Presence] in Upper respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "92809-3",
+            "display" : "Influenza virus A H1 RNA [Presence] in Upper respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "93385-3",
+            "display" : "Salmonella sp DNA [Presence] by NAA with probe detection in Positive blood culture"
+          },
+          {
+            "code" : "93388-7",
+            "display" : "Neisseria meningitidis DNA [Presence] by NAA with probe detection in Positive blood culture"
+          },
+          {
+            "code" : "93397-8",
+            "display" : "Haemophilus influenzae DNA [Presence] by NAA with probe detection in Positive blood culture"
+          },
+          {
+            "code" : "93716-9",
+            "display" : "Francisella tularensis IgM Ab [Presence] in Serum by Immunoassay"
+          },
+          {
+            "code" : "93717-7",
+            "display" : "Francisella tularensis IgG Ab [Presence] in Serum by Immunoassay"
+          },
+          {
+            "code" : "93718-5",
+            "display" : "Francisella tularensis IgG and IgM [Interpretation] in Serum"
+          },
+          {
+            "code" : "93979-3",
+            "display" : "Chikungunya virus IgG Ab [Presence] in Serum or Plasma"
+          },
+          {
+            "code" : "94184-9",
+            "display" : "Yellow fever virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "94289-6",
+            "display" : "West Nile virus neutralizing antibody [Presence] in Specimen by Neutralization test"
+          },
+          {
+            "code" : "94309-2",
+            "display" : "SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "94394-4",
+            "display" : "Influenza virus A H3 RNA [Presence] in Lower respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "94395-1",
+            "display" : "Influenza virus A H1 2009 pandemic RNA [Presence] in Lower respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "94396-9",
+            "display" : "Influenza virus A H1 RNA [Presence] in Lower respiratory specimen by NAA with probe detection"
+          },
+          {
+            "code" : "94500-6",
+            "display" : "SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory system specimen by NAA with probe detection"
+          },
+          {
+            "code" : "94501-4",
+            "display" : "Middle East respiratory syndrome coronavirus (MERS-CoV) RNA [Presence] in Respiratory system specimen by NAA with probe detection"
+          },
+          {
+            "code" : "94759-8",
+            "display" : "SARS-CoV-2 (COVID-19) RNA [Presence] in Nasopharynx by NAA with probe detection"
+          },
+          {
+            "code" : "94845-5",
+            "display" : "SARS-CoV-2 (COVID-19) RNA [Presence] in Saliva (oral fluid) by NAA with probe detection"
+          },
+          {
+            "code" : "95156-6",
+            "display" : "Hepatitis E virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "95406-5",
+            "display" : "SARS-CoV-2 (COVID-19) RNA [Presence] in Nose by NAA with probe detection"
+          },
+          {
+            "code" : "95687-0",
+            "display" : "Chikungunya virus IgM Ab [Presence] in Specimen by Immunoassay"
+          },
+          {
+            "code" : "95690-4",
+            "display" : "Yellow fever virus IgM Ab [Presence] in Specimen by Immunoassay"
+          },
+          {
+            "code" : "96509-5",
+            "display" : "Tick-borne encephalitis virus IgG Ab [Presence] in Specimen by Immunoassay"
+          },
+          {
+            "code" : "96535-0",
+            "display" : "Tick-borne encephalitis virus IgM Ab [Presence] in Specimen by Immunoassay"
+          },
+          {
+            "code" : "96599-6",
+            "display" : "Neisseria gonorrhoeae DNA [Presence] in Cervix by NAA with probe detection"
+          },
+          {
+            "code" : "96797-6",
+            "display" : "SARS-CoV-2 (COVID-19) RNA [Presence] in Oropharyngeal wash by NAA with probe detection"
+          },
+          {
+            "code" : "9709-7",
+            "display" : "Coxiella burnetii phase 2 IgG Ab [Titer] in Serum"
+          },
+          {
+            "code" : "9711-3",
+            "display" : "Coxiella burnetii phase 2 IgM Ab [Titer] in Serum"
+          },
+          {
+            "code" : "97313-1",
+            "display" : "Salmonella sp DNA [Presence] in Stool by NAA with probe detection"
+          },
+          {
+            "code" : "97314-9",
+            "display" : "Vibrio cholerae DNA [Presence] in Stool by NAA with probe detection"
+          },
+          {
+            "code" : "97513-6",
+            "display" : "Campylobacter sp [Presence] in Specimen by Organism specific culture"
+          },
+          {
+            "code" : "97523-5",
+            "display" : "Hepatitis A virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "97621-7",
+            "display" : "Haemophilus influenzae DNA [Presence] in Synovial fluid by NAA with non-probe detection"
+          },
+          {
+            "code" : "97646-4",
+            "display" : "Lassa virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "97920-3",
+            "display" : "Tick-borne encephalitis virus RNA [Presence] in Specimen by NAA with probe detection"
+          },
+          {
+            "code" : "9823-6",
+            "display" : "Mycobacterium sp identified in Bronchial specimen by Organism specific culture"
+          },
+          {
+            "code" : "99090-3",
+            "display" : "Haemophilus influenzae DNA [Presence] in Cerebral spinal fluid by NAA with probe detection"
+          },
+          {
+            "code" : "99092-9",
+            "display" : "Neisseria meningitidis DNA [Presence] in Cerebral spinal fluid by NAA with probe detection"
+          },
+          {
+            "code" : "99094-5",
+            "display" : "Streptococcus pneumoniae DNA [Presence] in Cerebral spinal fluid by NAA with probe detection"
+          }
+        ]
+      },
+      {
+        "system" : "http://snomed.info/sct",
+        "concept" : [
+          {
+            "code" : "19030005",
+            "display" : "Human immunodeficiency virus (organism)"
+          },
+          {
+            "code" : "36115006",
+            "display" : "Human immunodeficiency virus type 2 (organism)"
+          },
+          {
+            "code" : "72904005",
+            "display" : "Treponema pallidum (organism)"
+          },
+          {
+            "code" : "734351004",
+            "display" : "Carbapenemase-producing Enterobacteriaceae (organism)"
+          },
+          {
+            "code" : "89293008",
+            "display" : "Human immunodeficiency virus type I (organism)"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```

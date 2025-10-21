@@ -62,6 +62,9 @@
       <sch:assert test="count(f:entry) &gt;= 1">entry: minimum cardinality of 'entry' is 1</sch:assert>
       <sch:assert test="count(f:entry) &lt;= 1">entry: maximum cardinality of 'entry' is 1</sch:assert>
       <sch:assert test="count(f:section) &lt;= 0">section: maximum cardinality of 'section' is 0</sch:assert>
+      <sch:assert test="count(f:entry) &gt;= 1">entry: minimum cardinality of 'entry' is 1</sch:assert>
+      <sch:assert test="count(f:entry) &lt;= 1">entry: maximum cardinality of 'entry' is 1</sch:assert>
+      <sch:assert test="count(f:section) &lt;= 0">section: maximum cardinality of 'section' is 0</sch:assert>
     </sch:rule>
   </sch:pattern>
 </sch:schema>

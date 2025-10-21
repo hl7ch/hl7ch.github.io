@@ -1,0 +1,516 @@
+# 9Doc - HepatiteC - CH ELM (R4) v1.12.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **9Doc - HepatiteC**
+
+## Example Bundle: 9Doc - HepatiteC
+
+**Document Details**
+
+**Document Subject**
+
+Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)
+
+-------
+
+-------
+
+**Document Content**
+
+## Résultats de l'analyse microbiologique
+
+-------
+
+## Additional Resources Included in Document
+
+-------
+
+Entry 2 - fullUrl = urn:uuid:838effed-d05d-4722-b9d1-392300061a0f
+
+Resource Patient:
+
+> Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)
+-------
+
+-------
+
+Entry 3 - fullUrl = urn:uuid:75debd36-4677-4e1f-a5ab-0bc57ef57c75
+
+Resource Organization:
+
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601002331470**name**: SanLab
+
+-------
+
+Entry 4 - fullUrl = urn:uuid:3bcc5557-9e4d-4cc5-b6e6-01b0018fdf6a
+
+Resource Observation:
+
+> **status**: Final**category**:Laboratory**code**:Hepatitis C virus Ab [Presence] in Serum by Immunoblot**subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)](Bundle-9Doc-HepatiteC.md#urn-uuid-838effed-d05d-4722-b9d1-392300061a0f)**effective**: 2024-04-17 08:30:00+0200**performer**:[Organization SanLab](Bundle-9Doc-HepatiteC.md#urn-uuid-75debd36-4677-4e1f-a5ab-0bc57ef57c75)**value**:Positive (qualifier value)**interpretation**:Positive**specimen**:[Specimen: type =](Bundle-9Doc-HepatiteC.md#urn-uuid-cc87666c-8a55-4543-9d45-be140b94156b)
+
+-------
+
+Entry 5 - fullUrl = urn:uuid:f7d54392-9d56-43f8-86d8-235f50033aa5
+
+Resource Practitioner:
+
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601000121219**name**: Jeanne Moreau**telecom**:[+41 79 111 88 99](tel:+41791118899),[jm@hr-soleil.ch](mailto:jm@hr-soleil.ch)
+
+-------
+
+Entry 6 - fullUrl = urn:uuid:36b4ad3c-e499-4236-9fb5-6a1901224c83
+
+Resource Organization:
+
+> **identifier**:`urn:oid:2.16.756.5.45`/A99086638**name**: hôpital régional soleil
+
+### Contacts
+
+| | |
+| :--- | :--- |
+| - | **Address** |
+| * | rue des alpes 35 Genève 1202 |
+
+
+-------
+
+Entry 7 - fullUrl = urn:uuid:bcf6b111-a290-4e96-a4a1-78a8b1d8cc04
+
+Resource PractitionerRole:
+
+> **practitioner**:[Practitioner Jeanne Moreau](Bundle-9Doc-HepatiteC.md#urn-uuid-f7d54392-9d56-43f8-86d8-235f50033aa5)**organization**:[Organization hôpital régional soleil](Bundle-9Doc-HepatiteC.md#urn-uuid-36b4ad3c-e499-4236-9fb5-6a1901224c83)
+
+-------
+
+Entry 8 - fullUrl = urn:uuid:cc87666c-8a55-4543-9d45-be140b94156b
+
+Resource Specimen:
+
+> **type**:Material declared by Observation.code or non-mandatory**subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)](Bundle-9Doc-HepatiteC.md#urn-uuid-838effed-d05d-4722-b9d1-392300061a0f)
+
+### Collections
+
+| | |
+| :--- | :--- |
+| - | **Collected[x]** |
+| * | 2024-04-15 |
+
+
+-------
+
+Entry 9 - fullUrl = urn:uuid:30c5012b-18ea-4c3f-9654-68ccce1e1081
+
+Resource ServiceRequest:
+
+> **identifier**: 28541215633**status**: Completed**intent**: Order**code**: No display for ServiceRequest.code (concept: Hepatitis C virus Ab [Presence] in Serum by Immunoblot)**subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)](Bundle-9Doc-HepatiteC.md#urn-uuid-838effed-d05d-4722-b9d1-392300061a0f)**requester**:[PractitionerRole](Bundle-9Doc-HepatiteC.md#urn-uuid-bcf6b111-a290-4e96-a4a1-78a8b1d8cc04)**specimen**:[Specimen: type =](Bundle-9Doc-HepatiteC.md#urn-uuid-cc87666c-8a55-4543-9d45-be140b94156b)
+
+-------
+
+Entry 10 - fullUrl = urn:uuid:ba628129-10bd-493f-a42e-8e74e7abbd94
+
+Resource DiagnosticReport:
+
+> 
+
+## Laboratory report 
+
+| | |
+| :--- | :--- |
+| Subject | Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897) |
+| Performer | [Organization SanLab](Bundle-9Doc-HepatiteC.md#urn-uuid-75debd36-4677-4e1f-a5ab-0bc57ef57c75) |
+| Identifier | [Uniform Resource Identifier (URI)](http://terminology.hl7.org/5.5.0/NamingSystem-uri.html)/urn:uuid:1901862d-6012-443f-9690-9291adb2aa34 |
+
+**Report Details**
+
+* **Code**: [Hepatitis C virus Ab [Presence] in Serum by Immunoblot](Bundle-9Doc-HepatiteC.md#urn-uuid-3bcc5557-9e4d-4cc5-b6e6-01b0018fdf6a)
+  * **Value**: Positive (qualifier value)
+  * **Flags**: Final,Positive
+  * **When For**: 2024-04-17 08:30:00+0200
+
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "9Doc-HepatiteC",
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:1901862d-6012-443f-9690-9291adb2aa34"
+  },
+  "type" : "document",
+  "timestamp" : "2024-04-17T08:30:00+02:00",
+  "entry" : [
+    {
+      "fullUrl" : "urn:uuid:b1b06911-66f9-43a7-8df3-9da1181a8ecd",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "b1b06911-66f9-43a7-8df3-9da1181a8ecd",
+        "language" : "fr-CH",
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:1901862d-6012-443f-9690-9291adb2aa34"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "version" : "http://snomed.info/sct/2011000195101",
+              "code" : "4241000179101",
+              "display" : "Laborbericht"
+            },
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:838effed-d05d-4722-b9d1-392300061a0f"
+        },
+        "date" : "2024-04-17T08:30:00+02:00",
+        "author" : [
+          {
+            "reference" : "urn:uuid:75debd36-4677-4e1f-a5ab-0bc57ef57c75"
+          }
+        ],
+        "title" : "Rapport de laboratoire du 17.04.2024",
+        "section" : [
+          {
+            "title" : "Résultats de l'analyse microbiologique",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "18725-2",
+                  "display" : "Microbiology studies (set)"
+                }
+              ]
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:3bcc5557-9e4d-4cc5-b6e6-01b0018fdf6a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:838effed-d05d-4722-b9d1-392300061a0f",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "838effed-d05d-4722-b9d1-392300061a0f",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.32",
+            "value" : "7561234567897"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Dupont",
+            "given" : ["Antoine"]
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1981-02-07",
+        "address" : [
+          {
+            "use" : "home",
+            "line" : ["rue de la république 10"],
+            "_line" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+                    "valueString" : "rue de la république"
+                  },
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString" : "10"
+                  }
+                ]
+              }
+            ],
+            "city" : "Carouge",
+            "state" : "GE",
+            "postalCode" : "1227",
+            "country" : "CH",
+            "_country" : {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding",
+                  "valueCoding" : {
+                    "system" : "urn:iso:std:iso:3166",
+                    "code" : "CH"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:75debd36-4677-4e1f-a5ab-0bc57ef57c75",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "75debd36-4677-4e1f-a5ab-0bc57ef57c75",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601002331470"
+          }
+        ],
+        "name" : "SanLab"
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:3bcc5557-9e4d-4cc5-b6e6-01b0018fdf6a",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "3bcc5557-9e4d-4cc5-b6e6-01b0018fdf6a",
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory",
+                "display" : "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "5199-5"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:838effed-d05d-4722-b9d1-392300061a0f"
+        },
+        "effectiveDateTime" : "2024-04-17T08:30:00+02:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:75debd36-4677-4e1f-a5ab-0bc57ef57c75"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "10828004",
+              "display" : "Positive (qualifier value)"
+            }
+          ]
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "POS",
+                "display" : "Positive"
+              }
+            ]
+          }
+        ],
+        "specimen" : {
+          "reference" : "urn:uuid:cc87666c-8a55-4543-9d45-be140b94156b"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:f7d54392-9d56-43f8-86d8-235f50033aa5",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "f7d54392-9d56-43f8-86d8-235f50033aa5",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000121219"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Moreau",
+            "given" : ["Jeanne"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41 79 111 88 99"
+          },
+          {
+            "system" : "email",
+            "value" : "jm@hr-soleil.ch"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:36b4ad3c-e499-4236-9fb5-6a1901224c83",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "36b4ad3c-e499-4236-9fb5-6a1901224c83",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.45",
+            "value" : "A99086638"
+          }
+        ],
+        "name" : "hôpital régional soleil",
+        "address" : [
+          {
+            "line" : ["rue des alpes 35"],
+            "_line" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+                    "valueString" : "rue des alpes"
+                  },
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString" : "35"
+                  }
+                ]
+              }
+            ],
+            "city" : "Genève",
+            "postalCode" : "1202"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:bcf6b111-a290-4e96-a4a1-78a8b1d8cc04",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "bcf6b111-a290-4e96-a4a1-78a8b1d8cc04",
+        "practitioner" : {
+          "reference" : "urn:uuid:f7d54392-9d56-43f8-86d8-235f50033aa5"
+        },
+        "organization" : {
+          "reference" : "urn:uuid:36b4ad3c-e499-4236-9fb5-6a1901224c83"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:cc87666c-8a55-4543-9d45-be140b94156b",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "cc87666c-8a55-4543-9d45-be140b94156b",
+        "type" : {
+          "text" : "Material declared by Observation.code or non-mandatory"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:838effed-d05d-4722-b9d1-392300061a0f"
+        },
+        "collection" : {
+          "collectedDateTime" : "2024-04-15"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:30c5012b-18ea-4c3f-9654-68ccce1e1081",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "30c5012b-18ea-4c3f-9654-68ccce1e1081",
+        "identifier" : [
+          {
+            "value" : "28541215633"
+          }
+        ],
+        "status" : "completed",
+        "intent" : "order",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "5199-5"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:838effed-d05d-4722-b9d1-392300061a0f"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:bcf6b111-a290-4e96-a4a1-78a8b1d8cc04"
+        },
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:cc87666c-8a55-4543-9d45-be140b94156b"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:ba628129-10bd-493f-a42e-8e74e7abbd94",
+      "resource" : {
+        "resourceType" : "DiagnosticReport",
+        "id" : "ba628129-10bd-493f-a42e-8e74e7abbd94",
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition",
+            "valueReference" : {
+              "reference" : "urn:uuid:b1b06911-66f9-43a7-8df3-9da1181a8ecd"
+            }
+          }
+        ],
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:uuid:1901862d-6012-443f-9690-9291adb2aa34"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "urn:uuid:30c5012b-18ea-4c3f-9654-68ccce1e1081"
+          }
+        ],
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:838effed-d05d-4722-b9d1-392300061a0f"
+        },
+        "performer" : [
+          {
+            "reference" : "urn:uuid:75debd36-4677-4e1f-a5ab-0bc57ef57c75"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:cc87666c-8a55-4543-9d45-be140b94156b"
+          }
+        ],
+        "result" : [
+          {
+            "reference" : "urn:uuid:3bcc5557-9e4d-4cc5-b6e6-01b0018fdf6a"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```

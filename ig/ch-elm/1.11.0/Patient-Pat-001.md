@@ -1,0 +1,57 @@
+# 1Pat - DM - CH ELM (R4) v1.12.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **1Pat - DM**
+
+## Example Patient: 1Pat - DM
+
+D M Male, DoB: 1960-08-22 ( urn:oid:2.16.756.5.32#7562295883070)
+
+-------
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Patient",
+  "id" : "Pat-001",
+  "identifier" : [
+    {
+      "system" : "urn:oid:2.16.756.5.32",
+      "value" : "7562295883070"
+    }
+  ],
+  "name" : [
+    {
+      "family" : "M",
+      "given" : ["D"]
+    }
+  ],
+  "gender" : "male",
+  "birthDate" : "1960-08-22",
+  "address" : [
+    {
+      "use" : "home",
+      "city" : "Bern",
+      "state" : "BE",
+      "postalCode" : "3000",
+      "country" : "CH",
+      "_country" : {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding",
+            "valueCoding" : {
+              "system" : "urn:iso:std:iso:3166",
+              "code" : "CH"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```

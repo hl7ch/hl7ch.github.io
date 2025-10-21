@@ -1,0 +1,516 @@
+# 58Doc - Coxiella - CH ELM (R4) v1.12.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **58Doc - Coxiella**
+
+## Example Bundle: 58Doc - Coxiella
+
+**Document Details**
+
+**Document Subject**
+
+Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)
+
+-------
+
+-------
+
+**Document Content**
+
+## Analyseergebnisse der mikrobiologischen Untersuchung
+
+-------
+
+## Additional Resources Included in Document
+
+-------
+
+Entry 2 - fullUrl = urn:uuid:9212a59d-af0a-456a-bc90-ed71b9f583e3
+
+Resource Patient:
+
+> Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)
+-------
+
+-------
+
+Entry 3 - fullUrl = urn:uuid:dcf59660-21c9-41a5-a6ee-2c956fe40177
+
+Resource Organization:
+
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601002331470**name**: SanLab
+
+-------
+
+Entry 4 - fullUrl = urn:uuid:f067e8ae-acde-4490-b47f-e3fa400f59b5
+
+Resource Observation:
+
+> **status**: Final**category**:Laboratory**code**:Coxiella burnetii phase 2 IgG Ab [Titer] in Serum**subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)](Bundle-58Doc-Coxiella.md#urn-uuid-9212a59d-af0a-456a-bc90-ed71b9f583e3)**effective**: 2025-01-19 14:20:00+0200**performer**:[Organization SanLab](Bundle-58Doc-Coxiella.md#urn-uuid-dcf59660-21c9-41a5-a6ee-2c956fe40177)**value**: 1 1(Details: UCUM code1 = '1')/200 1(Details: UCUM code1 = '1')**interpretation**:Positive**specimen**:[Specimen](Bundle-58Doc-Coxiella.md#urn-uuid-a7bb6064-feed-49f3-a7b4-058553b08c04)
+
+-------
+
+Entry 5 - fullUrl = urn:uuid:4f0a00b9-9693-46b2-a323-a1d6b079ad17
+
+Resource Practitioner:
+
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601000000514**name**: Peter Hauser**telecom**:[+41 79 222 33 44](tel:+41792223344),[peter.hauser@hauserpraxis.ch](mailto:peter.hauser@hauserpraxis.ch)
+
+-------
+
+Entry 6 - fullUrl = urn:uuid:c23fa7b6-24fd-4aeb-adf9-cae19280a95c
+
+Resource Organization:
+
+> **identifier**:`urn:oid:2.16.756.5.45`/A74966168**name**: Praxis Dr. Hauser
+
+### Contacts
+
+| | |
+| :--- | :--- |
+| - | **Address** |
+| * | Hauptstrasse 10 Solothurn 4500 |
+
+
+-------
+
+Entry 7 - fullUrl = urn:uuid:fd68a58d-7c6b-483c-83cb-5211687415da
+
+Resource PractitionerRole:
+
+> **practitioner**:[Practitioner Peter Hauser](Bundle-58Doc-Coxiella.md#urn-uuid-4f0a00b9-9693-46b2-a323-a1d6b079ad17)**organization**:[Organization Praxis Dr. Hauser](Bundle-58Doc-Coxiella.md#urn-uuid-c23fa7b6-24fd-4aeb-adf9-cae19280a95c)
+
+-------
+
+Entry 8 - fullUrl = urn:uuid:a7bb6064-feed-49f3-a7b4-058553b08c04
+
+Resource Specimen:
+
+> **subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)](Bundle-58Doc-Coxiella.md#urn-uuid-9212a59d-af0a-456a-bc90-ed71b9f583e3)
+
+### Collections
+
+| | |
+| :--- | :--- |
+| - | **Collected[x]** |
+| * | 2025-01-15 14:20:00+0200 |
+
+
+-------
+
+Entry 9 - fullUrl = urn:uuid:a5ee60ab-687f-4d24-a7c2-12826db5c2d4
+
+Resource ServiceRequest:
+
+> **identifier**: 26500923675**status**: Completed**intent**: Order**code**: No display for ServiceRequest.code (concept: Coxiella burnetii phase 2 IgG Ab [Titer] in Serum)**subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897)](Bundle-58Doc-Coxiella.md#urn-uuid-9212a59d-af0a-456a-bc90-ed71b9f583e3)**requester**:[PractitionerRole](Bundle-58Doc-Coxiella.md#urn-uuid-fd68a58d-7c6b-483c-83cb-5211687415da)**specimen**:[Specimen](Bundle-58Doc-Coxiella.md#urn-uuid-a7bb6064-feed-49f3-a7b4-058553b08c04)
+
+-------
+
+Entry 10 - fullUrl = urn:uuid:c49f7bcc-40eb-4c23-a58e-90f74a4e1b44
+
+Resource DiagnosticReport:
+
+> 
+
+## Laboratory report 
+
+| | |
+| :--- | :--- |
+| Subject | Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567897) |
+| Performer | [Organization SanLab](Bundle-58Doc-Coxiella.md#urn-uuid-dcf59660-21c9-41a5-a6ee-2c956fe40177) |
+| Identifier | [Uniform Resource Identifier (URI)](http://terminology.hl7.org/5.5.0/NamingSystem-uri.html)/urn:uuid:54013a2d-6012-443f-9a90-6331adb23aab |
+
+**Report Details**
+
+* **Code**: [Coxiella burnetii phase 2 IgG Ab [Titer] in Serum](Bundle-58Doc-Coxiella.md#urn-uuid-f067e8ae-acde-4490-b47f-e3fa400f59b5)
+  * **Value**: 1 1(Details: UCUM code1 = '1')/200 1(Details: UCUM code1 = '1')
+  * **Flags**: Final,Positive
+  * **When For**: 2025-01-19 14:20:00+0200
+
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "58Doc-Coxiella",
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:54013a2d-6012-443f-9a90-6331adb23aab"
+  },
+  "type" : "document",
+  "timestamp" : "2025-01-20T12:00:00+02:00",
+  "entry" : [
+    {
+      "fullUrl" : "urn:uuid:b88e3a4a-dec6-4815-a622-06a5c30d07b4",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "b88e3a4a-dec6-4815-a622-06a5c30d07b4",
+        "language" : "de-CH",
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:54013a2d-6012-443f-9a90-6331adb23aab"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "version" : "http://snomed.info/sct/2011000195101",
+              "code" : "4241000179101",
+              "display" : "Laborbericht"
+            },
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:9212a59d-af0a-456a-bc90-ed71b9f583e3"
+        },
+        "date" : "2025-01-20T12:00:00+02:00",
+        "author" : [
+          {
+            "reference" : "urn:uuid:dcf59660-21c9-41a5-a6ee-2c956fe40177"
+          }
+        ],
+        "title" : "Laborbericht vom 20.01.2025",
+        "section" : [
+          {
+            "title" : "Analyseergebnisse der mikrobiologischen Untersuchung",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "18725-2",
+                  "display" : "Microbiology studies (set)"
+                }
+              ]
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:f067e8ae-acde-4490-b47f-e3fa400f59b5"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:9212a59d-af0a-456a-bc90-ed71b9f583e3",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "9212a59d-af0a-456a-bc90-ed71b9f583e3",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.32",
+            "value" : "7561234567897"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Dupont",
+            "given" : ["Antoine"]
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1981-02-07",
+        "address" : [
+          {
+            "use" : "home",
+            "line" : ["rue de la république 10"],
+            "_line" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+                    "valueString" : "rue de la république"
+                  },
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString" : "10"
+                  }
+                ]
+              }
+            ],
+            "city" : "Carouge",
+            "state" : "GE",
+            "postalCode" : "1227",
+            "country" : "CH",
+            "_country" : {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding",
+                  "valueCoding" : {
+                    "system" : "urn:iso:std:iso:3166",
+                    "code" : "CH"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:dcf59660-21c9-41a5-a6ee-2c956fe40177",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "dcf59660-21c9-41a5-a6ee-2c956fe40177",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601002331470"
+          }
+        ],
+        "name" : "SanLab"
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:f067e8ae-acde-4490-b47f-e3fa400f59b5",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "f067e8ae-acde-4490-b47f-e3fa400f59b5",
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory",
+                "display" : "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "9709-7"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:9212a59d-af0a-456a-bc90-ed71b9f583e3"
+        },
+        "effectiveDateTime" : "2025-01-19T14:20:00+02:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:dcf59660-21c9-41a5-a6ee-2c956fe40177"
+          }
+        ],
+        "valueRatio" : {
+          "numerator" : {
+            "value" : 1,
+            "system" : "http://unitsofmeasure.org",
+            "code" : "1"
+          },
+          "denominator" : {
+            "value" : 200,
+            "system" : "http://unitsofmeasure.org",
+            "code" : "1"
+          }
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "POS",
+                "display" : "Positive"
+              }
+            ]
+          }
+        ],
+        "specimen" : {
+          "reference" : "urn:uuid:a7bb6064-feed-49f3-a7b4-058553b08c04"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:4f0a00b9-9693-46b2-a323-a1d6b079ad17",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "4f0a00b9-9693-46b2-a323-a1d6b079ad17",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000000514"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Hauser",
+            "given" : ["Peter"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41 79 222 33 44"
+          },
+          {
+            "system" : "email",
+            "value" : "peter.hauser@hauserpraxis.ch"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:c23fa7b6-24fd-4aeb-adf9-cae19280a95c",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "c23fa7b6-24fd-4aeb-adf9-cae19280a95c",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.45",
+            "value" : "A74966168"
+          }
+        ],
+        "name" : "Praxis Dr. Hauser",
+        "address" : [
+          {
+            "line" : ["Hauptstrasse 10"],
+            "_line" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+                    "valueString" : "Hauptstrasse"
+                  },
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString" : "10"
+                  }
+                ]
+              }
+            ],
+            "city" : "Solothurn",
+            "postalCode" : "4500"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:fd68a58d-7c6b-483c-83cb-5211687415da",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "fd68a58d-7c6b-483c-83cb-5211687415da",
+        "practitioner" : {
+          "reference" : "urn:uuid:4f0a00b9-9693-46b2-a323-a1d6b079ad17"
+        },
+        "organization" : {
+          "reference" : "urn:uuid:c23fa7b6-24fd-4aeb-adf9-cae19280a95c"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:a7bb6064-feed-49f3-a7b4-058553b08c04",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "a7bb6064-feed-49f3-a7b4-058553b08c04",
+        "subject" : {
+          "reference" : "urn:uuid:9212a59d-af0a-456a-bc90-ed71b9f583e3"
+        },
+        "collection" : {
+          "collectedDateTime" : "2025-01-15T14:20:00+02:00"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:a5ee60ab-687f-4d24-a7c2-12826db5c2d4",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "a5ee60ab-687f-4d24-a7c2-12826db5c2d4",
+        "identifier" : [
+          {
+            "value" : "26500923675"
+          }
+        ],
+        "status" : "completed",
+        "intent" : "order",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "9709-7"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:9212a59d-af0a-456a-bc90-ed71b9f583e3"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:fd68a58d-7c6b-483c-83cb-5211687415da"
+        },
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:a7bb6064-feed-49f3-a7b4-058553b08c04"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:c49f7bcc-40eb-4c23-a58e-90f74a4e1b44",
+      "resource" : {
+        "resourceType" : "DiagnosticReport",
+        "id" : "c49f7bcc-40eb-4c23-a58e-90f74a4e1b44",
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition",
+            "valueReference" : {
+              "reference" : "urn:uuid:b88e3a4a-dec6-4815-a622-06a5c30d07b4"
+            }
+          }
+        ],
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:uuid:54013a2d-6012-443f-9a90-6331adb23aab"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "urn:uuid:a5ee60ab-687f-4d24-a7c2-12826db5c2d4"
+          }
+        ],
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:9212a59d-af0a-456a-bc90-ed71b9f583e3"
+        },
+        "performer" : [
+          {
+            "reference" : "urn:uuid:dcf59660-21c9-41a5-a6ee-2c956fe40177"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:a7bb6064-feed-49f3-a7b4-058553b08c04"
+          }
+        ],
+        "result" : [
+          {
+            "reference" : "urn:uuid:f067e8ae-acde-4490-b47f-e3fa400f59b5"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```

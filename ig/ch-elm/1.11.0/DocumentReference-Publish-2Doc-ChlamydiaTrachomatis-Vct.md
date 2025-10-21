@@ -1,0 +1,538 @@
+# Publish 2Doc-ChlamydiaTrachomatis with Patient VCT Code - CH ELM (R4) v1.12.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Publish 2Doc-ChlamydiaTrachomatis with Patient VCT Code**
+
+## Example DocumentReference: Publish 2Doc-ChlamydiaTrachomatis with Patient VCT Code
+
+**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/5.5.0/NamingSystem-uri.html)/urn:uuid:1cf9f2c3-7d6f-4b82-86ea-77b048bb4fdc
+
+**status**: Current
+
+> **content**
+
+### Attachments
+
+| | | |
+| :--- | :--- | :--- |
+| - | **Language** | **Url** |
+| * | German (Region=Switzerland) | [Bundle: identifier = UUID:1301332d-6012-443f-9690-929132b2e155; type = document; timestamp = 2023-08-05 11:30:00+0200](#hcPublish-2Doc-ChlamydiaTrachomatis-Vct/2Doc-ChlamydiaTrachomatis-Vct) |
+
+
+-------
+
+> 
+
+**Document Details**
+
+**Document Subject**
+
+null null Female, DoB: 1985-10-17
+
+-------
+
+-------
+
+**Document Content**
+
+## Analyseergebnisse der mikrobiologischen Untersuchung
+
+-------
+
+## Additional Resources Included in Document
+
+-------
+Entry 2 - fullUrl = urn:uuid:9f5bb881-80f5-4962-8885-df6439ebe154Resource DiagnosticReport:
+> 
+
+## Laboratory report 
+
+| | |
+| :--- | :--- |
+| Subject | null null Female, DoB: 1985-10-17 |
+| Performer | [Organization SanLab](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-8b9163cc-4894-462c-8060-b9b01f705a8b) |
+| Identifier | [Uniform Resource Identifier (URI)](http://terminology.hl7.org/5.5.0/NamingSystem-uri.html)/urn:uuid:1301332d-6012-443f-9690-929132b2e155 |
+
+**Report Details**
+
+* **Code**: [Chlamydia trachomatis [Presence] in Specimen by Organism specific culture](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-1ed18b09-bd72-4825-86c4-adfb102a260c)
+  * **Value**: Positive
+  * **Flags**: Final,Positive
+  * **When For**: 2023-08-04 08:25:00+0200
+
+
+-------
+Entry 3 - fullUrl = urn:uuid:d43ab324-dc02-4f8b-abcd-279808dcc315Resource Patient:
+> null null Female, DoB: 1985-10-17
+-------
+
+-------
+Entry 4 - fullUrl = urn:uuid:1ed18b09-bd72-4825-86c4-adfb102a260cResource Observation:
+> **status**: Final**category**:Laboratory**code**:Chlamydia trachomatis [Presence] in Specimen by Organism specific culture**subject**:[null null Female, DoB: 1985-10-17](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-d43ab324-dc02-4f8b-abcd-279808dcc315)**effective**: 2023-08-04 08:25:00+0200**performer**:[Organization SanLab](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-8b9163cc-4894-462c-8060-b9b01f705a8b)**value**:Positive**interpretation**:Positive**specimen**:[Specimen: type = Specimen from urethra (specimen)](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-8e87aff2-708a-4964-a5d1-281e4d4c2786)
+
+-------
+Entry 5 - fullUrl = urn:uuid:8e87aff2-708a-4964-a5d1-281e4d4c2786Resource Specimen:
+> **type**:Specimen from urethra (specimen)**subject**:[null null Female, DoB: 1985-10-17](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-d43ab324-dc02-4f8b-abcd-279808dcc315)
+
+### Collections
+
+| | |
+| :--- | :--- |
+| - | **Collected[x]** |
+| * | 2023-07-29 |
+
+
+-------
+Entry 6 - fullUrl = urn:uuid:cfecb79a-7bb8-45a3-8b1e-9d02cad3e829Resource ServiceRequest:
+> **identifier**: 7601002331521**status**: Completed**intent**: Order**code**:Chlamydia trachomatis [Presence] in Specimen by Organism specific culture**subject**:[null null Female, DoB: 1985-10-17](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-d43ab324-dc02-4f8b-abcd-279808dcc315)**requester**:[PractitionerRole](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-c2be8e31-506b-42b2-adfc-7e47dd23cdb4)**specimen**:[Specimen: type = Specimen from urethra (specimen)](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-8e87aff2-708a-4964-a5d1-281e4d4c2786)
+
+-------
+Entry 7 - fullUrl = urn:uuid:8b9163cc-4894-462c-8060-b9b01f705a8bResource Organization:
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601002331470**name**: SanLab
+
+-------
+Entry 8 - fullUrl = urn:uuid:c2be8e31-506b-42b2-adfc-7e47dd23cdb4Resource PractitionerRole:
+> **practitioner**:[Practitioner Peter Hauser](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-c3384814-b10a-4aea-b84c-a92e9a9f41e3)**organization**:[Organization Praxis Dr. Hauser](Bundle-2Doc-ChlamydiaTrachomatis-Vct.md#urn-uuid-f18f5763-d9a4-4bb7-999e-959beaaba714)
+
+-------
+Entry 9 - fullUrl = urn:uuid:c3384814-b10a-4aea-b84c-a92e9a9f41e3Resource Practitioner:
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601000000514**name**: Peter Hauser**telecom**:[peter.hauser@hauserpraxis.ch](mailto:peter.hauser@hauserpraxis.ch),[+41 79 222 33 44](tel:+41792223344)
+
+-------
+Entry 10 - fullUrl = urn:uuid:f18f5763-d9a4-4bb7-999e-959beaaba714Resource Organization:
+> **identifier**:`urn:oid:2.16.756.5.45`/A74966168**name**: Praxis Dr. Hauser**address**: Hauptstrasse 10 Solothurn 4500
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "DocumentReference",
+  "id" : "Publish-2Doc-ChlamydiaTrachomatis-Vct",
+  "contained" : [
+    {
+      "resourceType" : "Bundle",
+      "id" : "2Doc-ChlamydiaTrachomatis-Vct",
+      "identifier" : {
+        "system" : "urn:ietf:rfc:3986",
+        "value" : "urn:uuid:1301332d-6012-443f-9690-929132b2e155"
+      },
+      "type" : "document",
+      "timestamp" : "2023-08-05T11:30:00+02:00",
+      "entry" : [
+        {
+          "fullUrl" : "urn:uuid:7d9126ab-df2c-47ce-93f8-4ca4f4353b39",
+          "resource" : {
+            "resourceType" : "Composition",
+            "id" : "7d9126ab-df2c-47ce-93f8-4ca4f4353b39",
+            "language" : "de-CH",
+            "identifier" : {
+              "system" : "urn:ietf:rfc:3986",
+              "value" : "urn:uuid:1301332d-6012-443f-9690-929132b2e155"
+            },
+            "status" : "final",
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "version" : "http://snomed.info/sct/2011000195101",
+                  "code" : "4241000179101",
+                  "display" : "Laborbericht"
+                },
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "11502-2",
+                  "display" : "Laboratory report"
+                }
+              ]
+            },
+            "subject" : {
+              "reference" : "urn:uuid:d43ab324-dc02-4f8b-abcd-279808dcc315",
+              "type" : "Patient"
+            },
+            "date" : "2023-08-05T11:30:00+02:00",
+            "author" : [
+              {
+                "reference" : "urn:uuid:8b9163cc-4894-462c-8060-b9b01f705a8b",
+                "type" : "Organization"
+              }
+            ],
+            "title" : "Laborbericht vom 05.08.2023",
+            "section" : [
+              {
+                "title" : "Analyseergebnisse der mikrobiologischen Untersuchung",
+                "code" : {
+                  "coding" : [
+                    {
+                      "system" : "http://loinc.org",
+                      "code" : "18725-2",
+                      "display" : "Microbiology studies (set)"
+                    }
+                  ]
+                },
+                "entry" : [
+                  {
+                    "reference" : "urn:uuid:1ed18b09-bd72-4825-86c4-adfb102a260c",
+                    "type" : "Observation"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl" : "urn:uuid:9f5bb881-80f5-4962-8885-df6439ebe154",
+          "resource" : {
+            "resourceType" : "DiagnosticReport",
+            "id" : "9f5bb881-80f5-4962-8885-df6439ebe154",
+            "extension" : [
+              {
+                "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition",
+                "valueReference" : {
+                  "reference" : "urn:uuid:7d9126ab-df2c-47ce-93f8-4ca4f4353b39",
+                  "type" : "Composition"
+                }
+              }
+            ],
+            "identifier" : [
+              {
+                "system" : "urn:ietf:rfc:3986",
+                "value" : "urn:uuid:1301332d-6012-443f-9690-929132b2e155"
+              }
+            ],
+            "basedOn" : [
+              {
+                "reference" : "urn:uuid:cfecb79a-7bb8-45a3-8b1e-9d02cad3e829",
+                "type" : "ServiceRequest"
+              }
+            ],
+            "status" : "final",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "11502-2",
+                  "display" : "Laboratory report"
+                }
+              ]
+            },
+            "subject" : {
+              "reference" : "urn:uuid:d43ab324-dc02-4f8b-abcd-279808dcc315",
+              "type" : "Patient"
+            },
+            "performer" : [
+              {
+                "reference" : "urn:uuid:8b9163cc-4894-462c-8060-b9b01f705a8b",
+                "type" : "Organization"
+              }
+            ],
+            "specimen" : [
+              {
+                "reference" : "urn:uuid:8e87aff2-708a-4964-a5d1-281e4d4c2786",
+                "type" : "Specimen"
+              }
+            ],
+            "result" : [
+              {
+                "reference" : "urn:uuid:1ed18b09-bd72-4825-86c4-adfb102a260c",
+                "type" : "Observation"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl" : "urn:uuid:d43ab324-dc02-4f8b-abcd-279808dcc315",
+          "resource" : {
+            "resourceType" : "Patient",
+            "id" : "d43ab324-dc02-4f8b-abcd-279808dcc315",
+            "name" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-vct-code",
+                    "valueString" : "kste12345"
+                  }
+                ],
+                "_family" : {
+                  "extension" : [
+                    {
+                      "url" : "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                      "valueCode" : "masked"
+                    }
+                  ]
+                },
+                "_given" : [
+                  {
+                    "extension" : [
+                      {
+                        "url" : "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode" : "masked"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "gender" : "female",
+            "birthDate" : "1985-10-17",
+            "address" : [
+              {
+                "use" : "home",
+                "city" : "Derendingen",
+                "state" : "SO",
+                "postalCode" : "4552",
+                "country" : "CH",
+                "_country" : {
+                  "extension" : [
+                    {
+                      "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding",
+                      "valueCoding" : {
+                        "system" : "urn:iso:std:iso:3166",
+                        "code" : "CH"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl" : "urn:uuid:1ed18b09-bd72-4825-86c4-adfb102a260c",
+          "resource" : {
+            "resourceType" : "Observation",
+            "id" : "1ed18b09-bd72-4825-86c4-adfb102a260c",
+            "status" : "final",
+            "category" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                    "code" : "laboratory",
+                    "display" : "Laboratory"
+                  }
+                ]
+              }
+            ],
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "6349-5",
+                  "display" : "Chlamydia trachomatis [Presence] in Specimen by Organism specific culture"
+                }
+              ]
+            },
+            "subject" : {
+              "reference" : "urn:uuid:d43ab324-dc02-4f8b-abcd-279808dcc315",
+              "type" : "Patient"
+            },
+            "effectiveDateTime" : "2023-08-04T08:25:00+02:00",
+            "performer" : [
+              {
+                "reference" : "urn:uuid:8b9163cc-4894-462c-8060-b9b01f705a8b",
+                "type" : "Organization"
+              }
+            ],
+            "valueCodeableConcept" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "10828004",
+                  "display" : "Positive"
+                }
+              ]
+            },
+            "interpretation" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                    "code" : "POS",
+                    "display" : "Positive"
+                  }
+                ]
+              }
+            ],
+            "specimen" : {
+              "reference" : "urn:uuid:8e87aff2-708a-4964-a5d1-281e4d4c2786",
+              "type" : "Specimen"
+            }
+          }
+        },
+        {
+          "fullUrl" : "urn:uuid:8e87aff2-708a-4964-a5d1-281e4d4c2786",
+          "resource" : {
+            "resourceType" : "Specimen",
+            "id" : "8e87aff2-708a-4964-a5d1-281e4d4c2786",
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "119393003",
+                  "display" : "Specimen from urethra (specimen)"
+                }
+              ]
+            },
+            "subject" : {
+              "reference" : "urn:uuid:d43ab324-dc02-4f8b-abcd-279808dcc315",
+              "type" : "Patient"
+            },
+            "collection" : {
+              "collectedDateTime" : "2023-07-29"
+            }
+          }
+        },
+        {
+          "fullUrl" : "urn:uuid:cfecb79a-7bb8-45a3-8b1e-9d02cad3e829",
+          "resource" : {
+            "resourceType" : "ServiceRequest",
+            "id" : "cfecb79a-7bb8-45a3-8b1e-9d02cad3e829",
+            "identifier" : [
+              {
+                "value" : "7601002331521"
+              }
+            ],
+            "status" : "completed",
+            "intent" : "order",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "6349-5",
+                  "display" : "Chlamydia trachomatis [Presence] in Specimen by Organism specific culture"
+                }
+              ]
+            },
+            "subject" : {
+              "reference" : "urn:uuid:d43ab324-dc02-4f8b-abcd-279808dcc315",
+              "type" : "Patient"
+            },
+            "requester" : {
+              "reference" : "urn:uuid:c2be8e31-506b-42b2-adfc-7e47dd23cdb4",
+              "type" : "PractitionerRole"
+            },
+            "specimen" : [
+              {
+                "reference" : "urn:uuid:8e87aff2-708a-4964-a5d1-281e4d4c2786",
+                "type" : "Specimen"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl" : "urn:uuid:8b9163cc-4894-462c-8060-b9b01f705a8b",
+          "resource" : {
+            "resourceType" : "Organization",
+            "id" : "8b9163cc-4894-462c-8060-b9b01f705a8b",
+            "identifier" : [
+              {
+                "system" : "urn:oid:2.51.1.3",
+                "value" : "7601002331470"
+              }
+            ],
+            "name" : "SanLab"
+          }
+        },
+        {
+          "fullUrl" : "urn:uuid:c2be8e31-506b-42b2-adfc-7e47dd23cdb4",
+          "resource" : {
+            "resourceType" : "PractitionerRole",
+            "id" : "c2be8e31-506b-42b2-adfc-7e47dd23cdb4",
+            "practitioner" : {
+              "reference" : "urn:uuid:c3384814-b10a-4aea-b84c-a92e9a9f41e3",
+              "type" : "Practitioner"
+            },
+            "organization" : {
+              "reference" : "urn:uuid:f18f5763-d9a4-4bb7-999e-959beaaba714",
+              "type" : "Organization"
+            }
+          }
+        },
+        {
+          "fullUrl" : "urn:uuid:c3384814-b10a-4aea-b84c-a92e9a9f41e3",
+          "resource" : {
+            "resourceType" : "Practitioner",
+            "id" : "c3384814-b10a-4aea-b84c-a92e9a9f41e3",
+            "identifier" : [
+              {
+                "system" : "urn:oid:2.51.1.3",
+                "value" : "7601000000514"
+              }
+            ],
+            "name" : [
+              {
+                "family" : "Hauser",
+                "given" : ["Peter"]
+              }
+            ],
+            "telecom" : [
+              {
+                "system" : "email",
+                "value" : "peter.hauser@hauserpraxis.ch"
+              },
+              {
+                "system" : "phone",
+                "value" : "+41 79 222 33 44"
+              }
+            ]
+          }
+        },
+        {
+          "fullUrl" : "urn:uuid:f18f5763-d9a4-4bb7-999e-959beaaba714",
+          "resource" : {
+            "resourceType" : "Organization",
+            "id" : "f18f5763-d9a4-4bb7-999e-959beaaba714",
+            "identifier" : [
+              {
+                "system" : "urn:oid:2.16.756.5.45",
+                "value" : "A74966168"
+              }
+            ],
+            "name" : "Praxis Dr. Hauser",
+            "address" : [
+              {
+                "line" : ["Hauptstrasse 10"],
+                "_line" : [
+                  {
+                    "extension" : [
+                      {
+                        "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+                        "valueString" : "Hauptstrasse"
+                      },
+                      {
+                        "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                        "valueString" : "10"
+                      }
+                    ]
+                  }
+                ],
+                "city" : "Solothurn",
+                "postalCode" : "4500"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "identifier" : [
+    {
+      "system" : "urn:ietf:rfc:3986",
+      "value" : "urn:uuid:1cf9f2c3-7d6f-4b82-86ea-77b048bb4fdc"
+    }
+  ],
+  "status" : "current",
+  "content" : [
+    {
+      "attachment" : {
+        "language" : "de-CH",
+        "url" : "#2Doc-ChlamydiaTrachomatis-Vct"
+      }
+    }
+  ]
+}
+
+```

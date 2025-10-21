@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <title>Guidance - CH ELM (R4) v1.11.0</title>
+    <title>Guidance - CH ELM (R4) v1.12.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -81,7 +81,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH ELM (R4)</span>
             <br/>
-            <span style="display:inline-block;">1.11.0 - release
+            <span style="display:inline-block;">1.12.0 - release
 
 
 
@@ -213,7 +213,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#laboratory-study-types" id="markdown-toc-laboratory-study-types">Laboratory Study Types</a></li>
   <li><a href="#laboratory-result" id="markdown-toc-laboratory-result">Laboratory Result</a></li>
   <li><a href="#multiplex-cases" id="markdown-toc-multiplex-cases">Multiplex Cases</a></li>
-  <li><a href="#genotype-und-susceptibility-test-results" id="markdown-toc-genotype-und-susceptibility-test-results">Genotype und Susceptibility test results</a></li>
+  <li><a href="#genotype-and-susceptibility-test-results" id="markdown-toc-genotype-and-susceptibility-test-results">Genotype and Susceptibility test results</a></li>
+  <li><a href="#hiv-recency-test-results" id="markdown-toc-hiv-recency-test-results">HIV recency test results</a></li>
   <li><a href="#foph-code-system" id="markdown-toc-foph-code-system">FOPH code system</a></li>
 </ul>
 
@@ -252,7 +253,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><strong>HIV Code</strong>
     <ul>
       <li>Organism: HIV/AIDS</li>
-      <li><a name="l480">​</a>Basic principle: Take the first letter of the first name and add the number of letters of the first name. E.g. Samuel -&gt; S6. This value need to be provided in the <a href="SStructureDefinition-ch-elm-ext-hiv-code.html">CH ELM Extension: HIV code</a> and Patient.name.family, Patient.name.given need to be masked.</li>
+      <li><a name="l484">​</a>Basic principle: Take the first letter of the first name and add the number of letters of the first name. E.g. Samuel -&gt; S6. This value need to be provided in the <a href="SStructureDefinition-ch-elm-ext-hiv-code.html">CH ELM Extension: HIV code</a> and Patient.name.family, Patient.name.given need to be masked.</li>
       <li>Special cases:
         <ul>
           <li>If there are more than 9 letters, put 0. E.g. Christopher -&gt; C0</li>
@@ -278,7 +279,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="laboratory-study-types">Laboratory Study Types</h3>
 
-<p>The Laboratory Study Type indicates which type of test has been performed. It is indicated via the <strong>composition.section.code</strong> and allows for distinction between FHIR documents containing organism detection results from documents containing either genotype- or susceptibility results. The composition.section.code also defines which valueset has to be used for the observation.code (leading code). The available composition.section.codes are defined in the valueset <a href="ValueSet-ch-elm-lab-study-types.html">CH ELM Lab Study Types</a>.</p>
+<p>The Laboratory Study Type indicates which type of test has been performed. It is indicated via the <strong>composition.section.code</strong> and allows for distinction between FHIR documents containing organism detection results from documents containing genotype-, susceptibility- or HIV recency results. The composition.section.code also defines which valueset has to be used for the observation.code (leading code). The available composition.section.codes are defined in the valueset <a href="ValueSet-ch-elm-lab-study-types.html">CH ELM Lab Study Types</a>.</p>
 
 <p>The table below lists the composition.section.code with references to FHIR ex-ample documents and the depending observation.code-valuesets:</p>
 
@@ -310,12 +311,18 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td><a href="Bundle-63Doc-Tb-Genotyping.json.html">63Doc - Tuberculosis Genotyping</a></td>
       <td><a href="ValueSet-ch-elm-results-laboratory-observation-geno.html">CH ELM Results Laboratory Observation Genotyping</a></td>
     </tr>
+    <tr>
+      <td>HIV recency determination</td>
+      <td>LOINC 18727-8 <br/>(Serology studies (set))</td>
+      <td><a href="Bundle-66Doc-HivRecency.json.html">66Doc - HivRecency</a></td>
+      <td>always use the observation.code LOINC 77685-6 "HIV 1 and 2 IgG Ab [Identifier] in Serum or Plasma by Immunoblot"</td>
+    </tr>
   </tbody>
 </table>
 
-<p>It is not possible to mix organism-detection results, genotype (mutations) and susceptibility results within the same FHIR document. Use separate FHIR documents for each laboratory study type with its corresponding composition.section.code.</p>
+<p>It is not possible to mix organism-detection results, genotype/susceptibility and HIV-recency results within the same FHIR document. Use separate FHIR documents for each laboratory study type with its corresponding composition.section.code.</p>
 
-<p><strong>Important</strong>: in the CH ELM Lab Project, almost every FHIR document is expected as of Lab Study Type “Microbiology studies (set)” (LOINC 18725-2). Only laboratories performing genotype or susceptibility tests for <em>Mycobacterium tuberculosis</em> or carbapenemase producing enterobacteriaceace send their results as Lab Study Type “Genotyping” resp. “Microbial Susceptibility tests Set”.</p>
+<p><strong>Important</strong>: in the CH ELM Lab Project, almost every FHIR document is expected as of Lab Study Type “Microbiology studies (set)” (LOINC 18725-2). Only laboratories performing genotype, susceptibility or HIV-recency tests send their results as Lab Study Type “Genotyping”, “Microbial Susceptibility tests Set” or “Serology studies (set)”.</p>
 
 <h3 id="laboratory-result">Laboratory Result</h3>
 
@@ -426,9 +433,9 @@ are allowed (e.g. for Neisseria gonorrhoeae the <a href="ValueSet-ch-elm-interpr
 <h3 id="multiplex-cases">Multiplex Cases</h3>
 <p>The exchange format defines the <a href="document.html">FHIR document</a> for reporting to the FOPH so that <strong>one document per organism per patient</strong> is submitted.</p>
 
-<h3 id="genotype-und-susceptibility-test-results">Genotype und Susceptibility test results</h3>
+<h3 id="genotype-and-susceptibility-test-results">Genotype and Susceptibility test results</h3>
 
-<p>For organisms of the <em>mycobacterium tuberculosis</em> complex and for carbapenemase producing enterobacteriaceae, resistance mutations (genotyping) and antibiotics susceptibility (antibiogram) results are reported by (specialized) laboratories.</p>
+<p>For organisms of the <em>mycobacterium tuberculosis</em> complex, resistance mutations (genotyping) and antibiotics susceptibility (antibiogram) results are reported by (specialized) laboratories.</p>
 
 <p>Resistance and susceptibility tests cover multiple mutations/antibiotics and often generate multiple results that can be reported in the same document. Such documents differ from usual laboratory reports in two ways:</p>
 
@@ -500,6 +507,69 @@ are allowed (e.g. for Neisseria gonorrhoeae the <a href="ValueSet-ch-elm-interpr
   <li>the specimen can optionally be reported within specimen.type.code using a specimen code from the valueset <a href="ValueSet-ch-elm-results-complete-spec.html">CH ELM Results Complete Spec</a></li>
 </ul>
 
+<h3 id="hiv-recency-test-results">HIV recency test results</h3>
+
+<p>HIV recency determination is carried out by a few designated laboratories. The testing consists of seven band values that always must be reported together. The FHIR document structure therefore differs from usual laboratory reports in two ways:</p>
+
+<ul>
+  <li>First, the study type, as indicated by the composition.section.code, must be “18727-8 Serology studies (set)” as indicated in section <a href="#laboratory-study-types">5.3</a></li>
+  <li>Second, the observation resource must be completed with an observation.component entry that includes seven child-elements of the following structure:</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>“component” : [</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&nbsp;</td>
+      <td>{</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>code</td>
+      <td>Snomed CT code specifying the measured serological band</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>valueQuantity</td>
+      <td>contains the measured band-value as decimal number and the unit-code "[arb'U]"</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>},</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>{…}</td>
+      <td>repetition of the component-elements as required</td>
+    </tr>
+    <tr>
+      <td>]</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>See the profile <a href="StructureDefinition-ch-elm-observation-results-hiv-recency-strict.html">CH ELM Observation Results for HIV Recency Testing</a> and example <a href="Bundle-66Doc-HivRecency.json.html">66Doc-HivRecency</a> for how to implement this FHIR resource.</p>
+
+<p>Important points:</p>
+
+<ul>
+  <li>for the observation.code always use LOINC 77685-6 "HIV 1 and 2 IgG Ab [Identifier] in Serum or Plasma by Immunoblot" (no dedicated valueset available)</li>
+  <li>the FHIR elements observation.interpretation  and observation.component.interpretation can be omitted (the recency-interpretation is determined by FOPH internal algorithms)</li>
+  <li>the component-array must contain exactly seven entries corresponding to the seven measured serological bands</li>
+  <li>component.valueQuantity is mandatory</li>
+  <li>the specimen can optionally be reported within specimen.type.code using a specimen code from the valueset <a href="ValueSet-ch-elm-results-complete-spec.html">CH ELM Results Complete Spec</a></li>
+</ul>
+
 <h3 id="foph-code-system">FOPH code system</h3>
 
 <p>An FOPH proprietary code system exists alongside standard systems such as LOINC and Snomed CT. The aim is to be able to provide temporary unambigu-ous codes in situations where standards don't offer appropriate alternatives. In particular, this system is meant to be used at the start of a pandemic, if no standard code exists. The codes and their interpretation will be communicated by FOPH when appropriate</p>
@@ -523,7 +593,7 @@ are allowed (e.g. for Neisseria gonorrhoeae the <a href="ValueSet-ch-elm-interpr
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.11.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Aug 13, 2025 07:34+0000">2025-08-13</span>
+          IG &copy; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-elm#1.12.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 21, 2025 11:53+0000">2025-10-21</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -531,7 +601,7 @@ are allowed (e.g. for Neisseria gonorrhoeae the <a href="ValueSet-ch-elm-interpr
                  
                 
 
-|&nbsp;<a style="color: #81BEF7" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.11.0%20/guidance.html&amp;entry%2E247644557=Guidance" target="_blank">Propose a change</a>
+|&nbsp;<a style="color: #81BEF7" href="https://docs.google.com/forms/d/e/1FAIpQLSefM7pEMiqyr1AOEVFfoo54nKBLmuSffdyh3EonFfxhFLrcwA/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-elm%231.12.0%20/guidance.html&amp;entry%2E247644557=Guidance" target="_blank">Propose a change</a>
 
 
 
