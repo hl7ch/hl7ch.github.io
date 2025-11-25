@@ -1,4 +1,4 @@
-# CH ELM Results Complete Spec - CH ELM (R4) v1.12.0
+# CH ELM Results Complete Spec - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-complete-spec | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmResultsCompleteSpec |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-complete-spec | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmResultsCompleteSpec |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -27,7 +27,7 @@ The "CH ELM Results Complete Spec" material group provides a curated set of code
 
 Expansion from tx.fhir.org based on SNOMED CT International edition 01-Feb 2025
 
-This value set contains 70 concepts
+This value set contains 73 concepts
 
 -------
 
@@ -51,12 +51,12 @@ This value set contains 70 concepts
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-complete-spec",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-complete-spec",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmResultsCompleteSpec",
   "title" : "CH ELM Results Complete Spec",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -111,12 +111,20 @@ This value set contains 70 concepts
             "display" : "Body fluid specimen (specimen)"
           },
           {
+            "code" : "119340004",
+            "display" : "Meconium specimen (specimen)"
+          },
+          {
             "code" : "418932006",
             "display" : "Oral Swab (specimen)"
           },
           {
             "code" : "119401005",
             "display" : "Specimen from conjunctiva (specimen)"
+          },
+          {
+            "code" : "127479004",
+            "display" : "Specimen from uterus (specimen)"
           },
           {
             "code" : "119378002",
@@ -265,6 +273,10 @@ This value set contains 70 concepts
           {
             "code" : "119399004",
             "display" : "Specimen from eye (specimen)"
+          },
+          {
+            "code" : "309502007",
+            "display" : "Fetus specimen (specimen)"
           },
           {
             "code" : "119297000",

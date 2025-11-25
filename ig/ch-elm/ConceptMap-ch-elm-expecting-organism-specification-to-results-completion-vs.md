@@ -1,4 +1,4 @@
-# CH ELM Expecting Organism Specification To Results Completion Vs - CH ELM (R4) v1.12.0
+# CH ELM Expecting Organism Specification To Results Completion Vs - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-organism-specification-to-results-completion-vs | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmExpectingOrganismSpecificationToResultsCompletionVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-organism-specification-to-results-completion-vs | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmExpectingOrganismSpecificationToResultsCompletionVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ This CH ELM concept map shows which leading codes have to be completed by an add
 
 Mapping from [CH ELM Expecting Organism Specification](ValueSet-ch-elm-expecting-organism-specification.md) to [CH ELM Results Completion Vs](ValueSet-ch-elm-results-completion-vs.md)
 
-**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.3.0/CodeSystem-v3-loinc.html) to [CH ELM Results Completion Vs](CodeSystem-ch-elm-results-completion-vs.md)
+**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html) to [CH ELM Results Completion Vs](CodeSystem-ch-elm-results-completion-vs.md)
 
 * **Source Code**: 100911-7 (Campylobacter sp [Presence] in Stool by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
@@ -194,12 +194,12 @@ Mapping from [CH ELM Expecting Organism Specification](ValueSet-ch-elm-expecting
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-expecting-organism-specification-to-results-completion-vs",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-organism-specification-to-results-completion-vs",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmExpectingOrganismSpecificationToResultsCompletionVs",
   "title" : "CH ELM Expecting Organism Specification To Results Completion Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

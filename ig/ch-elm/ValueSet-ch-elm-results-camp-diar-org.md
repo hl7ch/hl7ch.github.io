@@ -1,4 +1,4 @@
-# CH ELM Results Camp Diar Org - CH ELM (R4) v1.12.0
+# CH ELM Results Camp Diar Org - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-camp-diar-org | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmResultsCampDiarOrg |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-camp-diar-org | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmResultsCampDiarOrg |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -51,12 +51,12 @@ This value set contains 6 concepts
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-camp-diar-org",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-camp-diar-org",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmResultsCampDiarOrg",
   "title" : "CH ELM Results Camp Diar Org",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

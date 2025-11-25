@@ -1,4 +1,4 @@
-# CH ELM Extension: HIV code - CH ELM (R4) v1.12.0
+# CH ELM Extension: HIV code - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,11 +8,11 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-hiv-code | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmExtHivCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-hiv-code | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmExtHivCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
-This CH ELM extension enables to proivde the HIV Code.
+This CH ELM extension enables to provide the HIV Code.
 
 **Context of Use**
 
@@ -44,11 +44,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-ext-hiv-code.
   "resourceType" : "StructureDefinition",
   "id" : "ch-elm-ext-hiv-code",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-hiv-code",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmExtHivCode",
   "title" : "CH ELM Extension: HIV code",
   "status" : "active",
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -61,7 +61,7 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-ext-hiv-code.
       ]
     }
   ],
-  "description" : "This CH ELM extension enables to proivde the HIV Code.",
+  "description" : "This CH ELM extension enables to provide the HIV Code.",
   "jurisdiction" : [
     {
       "coding" : [
@@ -98,7 +98,7 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-ext-hiv-code.
         "id" : "Extension",
         "path" : "Extension",
         "short" : "CH ELM Extension: HIV Code",
-        "definition" : "This CH ELM extension enables to proivde the HIV Code.",
+        "definition" : "This CH ELM extension enables to provide the HIV Code.",
         "constraint" : [
           {
             "key" : "ch-elm-hiv-check",

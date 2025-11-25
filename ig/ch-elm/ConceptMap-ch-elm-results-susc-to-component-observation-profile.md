@@ -1,4 +1,4 @@
-# CH ELM Results Susceptibility To Component Observation Profile - CH ELM (R4) v1.12.0
+# CH ELM Results Susceptibility To Component Observation Profile - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-observation-profile | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmResultsSuscToComponentObservationProfile |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-observation-profile | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmResultsSuscToComponentObservationProfile |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ This CH ELM concept map specifies the ValuesSet for component.code for each lead
 
 Mapping from [CH ELM Results Laboratory Observation Susceptibility](ValueSet-ch-elm-results-laboratory-observation-susc.md) to [CH ELM Observation Profile Vs](ValueSet-ch-elm-observation-profile-vs.md)
 
-**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.3.0/CodeSystem-v3-loinc.html) to [CH ELM Observation Profile Vs](CodeSystem-ch-elm-observation-profile-vs.md)
+**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html) to [CH ELM Observation Profile Vs](CodeSystem-ch-elm-observation-profile-vs.md)
 
 * **Source Code**: 29579-0 (Mycobacterial susceptibility panel by Method for Slow-growing mycobacteria)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
@@ -32,12 +32,12 @@ Mapping from [CH ELM Results Laboratory Observation Susceptibility](ValueSet-ch-
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-results-susc-to-component-observation-profile",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-observation-profile",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmResultsSuscToComponentObservationProfile",
   "title" : "CH ELM Results Susceptibility To Component Observation Profile",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

@@ -1,4 +1,4 @@
-# CH ELM Extension: VCT code - CH ELM (R4) v1.12.0
+# CH ELM Extension: VCT code - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,11 +8,11 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-vct-code | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmExtVctCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-vct-code | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmExtVctCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
-This CH ELM extension enables to proivde the VCT Code.
+This CH ELM extension enables to provide the VCT Code.
 
 **Context of Use**
 
@@ -44,11 +44,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-ext-vct-code.
   "resourceType" : "StructureDefinition",
   "id" : "ch-elm-ext-vct-code",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-vct-code",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmExtVctCode",
   "title" : "CH ELM Extension: VCT code",
   "status" : "active",
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -61,7 +61,7 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-ext-vct-code.
       ]
     }
   ],
-  "description" : "This CH ELM extension enables to proivde the VCT Code.",
+  "description" : "This CH ELM extension enables to provide the VCT Code.",
   "jurisdiction" : [
     {
       "coding" : [
@@ -98,7 +98,7 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-ext-vct-code.
         "id" : "Extension",
         "path" : "Extension",
         "short" : "CH ELM Extension: VCT Code",
-        "definition" : "This CH ELM extension enables to proivde the VCT Code."
+        "definition" : "This CH ELM extension enables to provide the VCT Code."
       },
       {
         "id" : "Extension.extension",

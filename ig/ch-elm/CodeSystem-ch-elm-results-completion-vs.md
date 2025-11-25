@@ -1,4 +1,4 @@
-# CH ELM Results Completion Vs - CH ELM (R4) v1.12.0
+# CH ELM Results Completion Vs - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-completion-vs | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmResultsCompletionVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-completion-vs | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmResultsCompletionVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,12 +28,12 @@ The codes contained in this code system represent URLs of value sets that can be
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-results-completion-vs",
   "url" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-completion-vs",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmResultsCompletionVs",
   "title" : "CH ELM Results Completion Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -72,6 +72,9 @@ The codes contained in this code system represent URLs of value sets that can be
     },
     {
       "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-geni-spec"
+    },
+    {
+      "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-lis-spec"
     },
     {
       "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sterile-spec"

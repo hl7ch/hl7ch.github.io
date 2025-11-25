@@ -1,4 +1,4 @@
-# Test95-Ignore-Observation-Interpretation-Codes-Warning - CH ELM (R4) v1.12.0
+# Test95-Ignore-Observation-Interpretation-Codes-Warning - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,19 +8,19 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test95-Ignore-Observation-Interpretation-Codes-Warning | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:Test95IgnoreObservationInterpretationCodesWarning |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test95-Ignore-Observation-Interpretation-Codes-Warning | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:Test95IgnoreObservationInterpretationCodesWarning |
 | **Copyright/Legal**: CC0-1.0 | |
 
 **url**: [TestScript Test95IgnoreObservationInterpretationCodesWarning](TestScript-Test95-Ignore-Observation-Interpretation-Codes-Warning.md)
 
-**version**: 1.12.0
+**version**: 1.13.0
 
 **name**: Test95IgnoreObservationInterpretationCodesWarning
 
 **status**: Active
 
-**date**: 2025-10-21 11:52:21+0000
+**date**: 2025-11-25 09:58:53+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -44,7 +44,7 @@ CC0-1.0
 | | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | - | **Type** | **Description** | **ContentType** | **EncodeRequestUrl** | **Params** | **SourceId** |
-| * | [Test script operation code validate](http://terminology.hl7.org/6.3.0/CodeSystem-testscript-operation-codes.html#testscript-operation-codes-validate): $validate | validate | application/fhir+json | true | profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict | inputdata |
+| * | [Test script operation code: validate](http://terminology.hl7.org/6.5.0/CodeSystem-testscript-operation-codes.html#testscript-operation-codes-validate)($validate) | validate | application/fhir+json | true | profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict | inputdata |
 
 
 > **action**
@@ -97,10 +97,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test95-Ignore-Observation-Interpretation-Codes-Warning",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test95-Ignore-Observation-Interpretation-Codes-Warning",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "Test95IgnoreObservationInterpretationCodesWarning",
   "status" : "active",
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

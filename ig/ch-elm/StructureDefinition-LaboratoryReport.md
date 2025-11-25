@@ -1,4 +1,4 @@
-# CH ELM Laboratory Report - CH ELM (R4) v1.12.0
+# CH ELM Laboratory Report - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/LaboratoryReport | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmLaboratoryReport |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/LaboratoryReport | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmLaboratoryReport |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -43,11 +43,11 @@ Other representations of profile: [CSV](StructureDefinition-LaboratoryReport.csv
   "resourceType" : "StructureDefinition",
   "id" : "LaboratoryReport",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/LaboratoryReport",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmLaboratoryReport",
   "title" : "CH ELM Laboratory Report",
   "status" : "active",
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -561,10 +561,75 @@ Other representations of profile: [CSV](StructureDefinition-LaboratoryReport.csv
         ]
       },
       {
+        "id" : "LaboratoryReport.Orderer.PhysicianAddress",
+        "path" : "LaboratoryReport.Orderer.PhysicianAddress",
+        "short" : "Address of the ordering physician (optional, if different from organization address)",
+        "definition" : "Address of the ordering physician (optional, if different from organization address)",
+        "min" : 0,
+        "max" : "1",
+        "type" : [
+          {
+            "code" : "Element"
+          }
+        ]
+      },
+      {
+        "id" : "LaboratoryReport.Orderer.PhysicianAddress.StreetLine",
+        "path" : "LaboratoryReport.Orderer.PhysicianAddress.StreetLine",
+        "short" : "Street name, house number",
+        "definition" : "Street name, house number",
+        "min" : 1,
+        "max" : "1",
+        "type" : [
+          {
+            "code" : "string"
+          }
+        ]
+      },
+      {
+        "id" : "LaboratoryReport.Orderer.PhysicianAddress.PostBox",
+        "path" : "LaboratoryReport.Orderer.PhysicianAddress.PostBox",
+        "short" : "P.O. Box number",
+        "definition" : "P.O. Box number",
+        "min" : 1,
+        "max" : "1",
+        "type" : [
+          {
+            "code" : "string"
+          }
+        ]
+      },
+      {
+        "id" : "LaboratoryReport.Orderer.PhysicianAddress.ZipCode",
+        "path" : "LaboratoryReport.Orderer.PhysicianAddress.ZipCode",
+        "short" : "Zip code",
+        "definition" : "Zip code",
+        "min" : 1,
+        "max" : "1",
+        "type" : [
+          {
+            "code" : "string"
+          }
+        ]
+      },
+      {
+        "id" : "LaboratoryReport.Orderer.PhysicianAddress.City",
+        "path" : "LaboratoryReport.Orderer.PhysicianAddress.City",
+        "short" : "City",
+        "definition" : "City",
+        "min" : 1,
+        "max" : "1",
+        "type" : [
+          {
+            "code" : "string"
+          }
+        ]
+      },
+      {
         "id" : "LaboratoryReport.Orderer.OrganizationAddress",
         "path" : "LaboratoryReport.Orderer.OrganizationAddress",
-        "short" : "Address of the ordering organization",
-        "definition" : "Address of the ordering organization",
+        "short" : "Address of the ordering organization (default address)",
+        "definition" : "Address of the ordering organization (default address)",
         "min" : 1,
         "max" : "1",
         "type" : [

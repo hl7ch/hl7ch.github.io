@@ -1,0 +1,520 @@
+# 67Doc-Emerging-Pathogen - CH ELM (R4) v1.13.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **67Doc-Emerging-Pathogen**
+
+## Example Bundle: 67Doc-Emerging-Pathogen
+
+**Document Details**
+
+**Document Subject**
+
+Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866)
+
+-------
+
+-------
+
+**Document Content**
+
+## Analyseergebnisse der mikrobiologischen Untersuchung
+
+-------
+
+## Additional Resources Included in Document
+
+-------
+
+Entry 2 - fullUrl = urn:uuid:713c0756-48dc-4df0-9dec-50327bfd228d
+
+Resource Patient:
+
+> Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866)
+-------
+
+-------
+
+Entry 3 - fullUrl = urn:uuid:4f8832ab-7ba0-4576-abac-813bb7dadb20
+
+Resource Organization:
+
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601002331470**name**: SanLab
+
+-------
+
+Entry 4 - fullUrl = urn:uuid:666da738-7102-46fa-b936-e6c10b433a0a
+
+Resource Observation:
+
+> **status**: Final**category**:Laboratory**code**:FOPH emerging pathogen placeholder**subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866)](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-713c0756-48dc-4df0-9dec-50327bfd228d)**effective**: 2025-11-11 10:34:56+0200**performer**:[Organization SanLab](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-4f8832ab-7ba0-4576-abac-813bb7dadb20)**dataAbsentReason**:Not Applicable**interpretation**:Positive**specimen**:[Specimen](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-2299d300-4f95-4dec-b6e1-cd1daaa3acb0)
+
+-------
+
+Entry 5 - fullUrl = urn:uuid:6b062c48-93d1-4956-a31b-bf809a593398
+
+Resource Practitioner:
+
+> **identifier**:[GLN](https://www.gs1.org/standards/id-keys/gln)/7601000000514**name**: Peter Hauser**telecom**:[+41 79 222 33 44](tel:+41792223344),[peter.hauser@hauserpraxis.ch](mailto:peter.hauser@hauserpraxis.ch)
+
+-------
+
+Entry 6 - fullUrl = urn:uuid:dd941e76-7414-480c-beba-e6eefe3a3166
+
+Resource Organization:
+
+> **identifier**:`urn:oid:2.16.756.5.45`/A74966168**name**: Praxis Dr. Hauser
+
+### Contacts
+
+| | |
+| :--- | :--- |
+| - | **Address** |
+| * | Hauptstrasse 10 Solothurn 4500 |
+
+
+-------
+
+Entry 7 - fullUrl = urn:uuid:4ee72b6c-58c6-4e8a-a575-ca364e66aae0
+
+Resource PractitionerRole:
+
+> **practitioner**:[Practitioner Peter Hauser](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-6b062c48-93d1-4956-a31b-bf809a593398)**organization**:[Organization Praxis Dr. Hauser](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-dd941e76-7414-480c-beba-e6eefe3a3166)
+
+-------
+
+Entry 8 - fullUrl = urn:uuid:2299d300-4f95-4dec-b6e1-cd1daaa3acb0
+
+Resource Specimen:
+
+> **subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866)](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-713c0756-48dc-4df0-9dec-50327bfd228d)
+
+### Collections
+
+| | |
+| :--- | :--- |
+| - | **Collected[x]** |
+| * | 2025-11-10 12:34:56+0200 |
+
+
+-------
+
+Entry 9 - fullUrl = urn:uuid:ac88082c-6ec2-4a13-b2f8-ec3c96795b83
+
+Resource ServiceRequest:
+
+> **identifier**: 36500923689**status**: Completed**intent**: Order**code**: No display for ServiceRequest.code (concept: FOPH emerging pathogen placeholder)**subject**:[Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866)](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-713c0756-48dc-4df0-9dec-50327bfd228d)**requester**:[PractitionerRole](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-4ee72b6c-58c6-4e8a-a575-ca364e66aae0)**specimen**:[Specimen](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-2299d300-4f95-4dec-b6e1-cd1daaa3acb0)
+
+-------
+
+Entry 10 - fullUrl = urn:uuid:95c69bc1-db89-4746-92ff-40c45007003c
+
+Resource DiagnosticReport:
+
+> 
+
+## Laboratory report 
+
+| | |
+| :--- | :--- |
+| Subject | Antoine Dupont Female, DoB: 1981-02-07 ( urn:oid:2.16.756.5.32#7561234567866) |
+| Performer | [Organization SanLab](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-4f8832ab-7ba0-4576-abac-813bb7dadb20) |
+| Identifier | [Uniform Resource Identifier (URI)](http://terminology.hl7.org/5.3.0/NamingSystem-uri.html)/urn:uuid:ea0a27a6-7693-49df-83be-3b298143aef6 |
+
+**Report Details**
+
+* **Code**: [FOPH emerging pathogen placeholder](Bundle-67Doc-Emerging-Pathogen.md#urn-uuid-666da738-7102-46fa-b936-e6c10b433a0a)
+  * **Value**: Error:**Not Applicable**
+  * **Flags**: Final,Positive
+  * **When For**: 2025-11-11 10:34:56+0200
+
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "67Doc-Emerging-Pathogen",
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:ea0a27a6-7693-49df-83be-3b298143aef6"
+  },
+  "type" : "document",
+  "timestamp" : "2025-11-11T12:34:56+02:00",
+  "entry" : [
+    {
+      "fullUrl" : "urn:uuid:dfa1ff7e-4dae-494a-bb4f-3a9510986d20",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "dfa1ff7e-4dae-494a-bb4f-3a9510986d20",
+        "language" : "de-CH",
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:ea0a27a6-7693-49df-83be-3b298143aef6"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "version" : "http://snomed.info/sct/2011000195101",
+              "code" : "4241000179101",
+              "display" : "Laborbericht"
+            },
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:713c0756-48dc-4df0-9dec-50327bfd228d"
+        },
+        "date" : "2025-11-11T12:34:56+02:00",
+        "author" : [
+          {
+            "reference" : "urn:uuid:4f8832ab-7ba0-4576-abac-813bb7dadb20"
+          }
+        ],
+        "title" : "Laborbericht vom 11.11.2025",
+        "section" : [
+          {
+            "title" : "Analyseergebnisse der mikrobiologischen Untersuchung",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "18725-2",
+                  "display" : "Microbiology studies (set)"
+                }
+              ]
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:666da738-7102-46fa-b936-e6c10b433a0a"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:713c0756-48dc-4df0-9dec-50327bfd228d",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "713c0756-48dc-4df0-9dec-50327bfd228d",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.32",
+            "value" : "7561234567866"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Dupont",
+            "given" : ["Antoine"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "41762225522"
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1981-02-07",
+        "address" : [
+          {
+            "use" : "home",
+            "line" : ["Rue de la république 10"],
+            "_line" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+                    "valueString" : "Rue de la république"
+                  },
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString" : "10"
+                  }
+                ]
+              }
+            ],
+            "city" : "Carouge",
+            "state" : "GE",
+            "postalCode" : "1227",
+            "country" : "CH",
+            "_country" : {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding",
+                  "valueCoding" : {
+                    "system" : "urn:iso:std:iso:3166",
+                    "code" : "CH"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:4f8832ab-7ba0-4576-abac-813bb7dadb20",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "4f8832ab-7ba0-4576-abac-813bb7dadb20",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601002331470"
+          }
+        ],
+        "name" : "SanLab"
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:666da738-7102-46fa-b936-e6c10b433a0a",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "666da738-7102-46fa-b936-e6c10b433a0a",
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory",
+                "display" : "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.129.1.5.1",
+              "code" : "EP-100100-7",
+              "display" : "FOPH emerging pathogen placeholder"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:713c0756-48dc-4df0-9dec-50327bfd228d"
+        },
+        "effectiveDateTime" : "2025-11-11T10:34:56+02:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:4f8832ab-7ba0-4576-abac-813bb7dadb20"
+          }
+        ],
+        "dataAbsentReason" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+              "code" : "not-applicable"
+            }
+          ]
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "POS",
+                "display" : "Positive"
+              }
+            ]
+          }
+        ],
+        "specimen" : {
+          "reference" : "urn:uuid:2299d300-4f95-4dec-b6e1-cd1daaa3acb0"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:6b062c48-93d1-4956-a31b-bf809a593398",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "6b062c48-93d1-4956-a31b-bf809a593398",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000000514"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Hauser",
+            "given" : ["Peter"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41 79 222 33 44"
+          },
+          {
+            "system" : "email",
+            "value" : "peter.hauser@hauserpraxis.ch"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:dd941e76-7414-480c-beba-e6eefe3a3166",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "dd941e76-7414-480c-beba-e6eefe3a3166",
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.45",
+            "value" : "A74966168"
+          }
+        ],
+        "name" : "Praxis Dr. Hauser",
+        "address" : [
+          {
+            "line" : ["Hauptstrasse 10"],
+            "_line" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+                    "valueString" : "Hauptstrasse"
+                  },
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString" : "10"
+                  }
+                ]
+              }
+            ],
+            "city" : "Solothurn",
+            "postalCode" : "4500"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:4ee72b6c-58c6-4e8a-a575-ca364e66aae0",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "4ee72b6c-58c6-4e8a-a575-ca364e66aae0",
+        "practitioner" : {
+          "reference" : "urn:uuid:6b062c48-93d1-4956-a31b-bf809a593398"
+        },
+        "organization" : {
+          "reference" : "urn:uuid:dd941e76-7414-480c-beba-e6eefe3a3166"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:2299d300-4f95-4dec-b6e1-cd1daaa3acb0",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "2299d300-4f95-4dec-b6e1-cd1daaa3acb0",
+        "subject" : {
+          "reference" : "urn:uuid:713c0756-48dc-4df0-9dec-50327bfd228d"
+        },
+        "collection" : {
+          "collectedDateTime" : "2025-11-10T12:34:56+02:00"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:ac88082c-6ec2-4a13-b2f8-ec3c96795b83",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "ac88082c-6ec2-4a13-b2f8-ec3c96795b83",
+        "identifier" : [
+          {
+            "value" : "36500923689"
+          }
+        ],
+        "status" : "completed",
+        "intent" : "order",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.129.1.5.1",
+              "code" : "EP-100100-7",
+              "display" : "FOPH emerging pathogen placeholder"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:713c0756-48dc-4df0-9dec-50327bfd228d"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:4ee72b6c-58c6-4e8a-a575-ca364e66aae0"
+        },
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:2299d300-4f95-4dec-b6e1-cd1daaa3acb0"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:95c69bc1-db89-4746-92ff-40c45007003c",
+      "resource" : {
+        "resourceType" : "DiagnosticReport",
+        "id" : "95c69bc1-db89-4746-92ff-40c45007003c",
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition",
+            "valueReference" : {
+              "reference" : "urn:uuid:dfa1ff7e-4dae-494a-bb4f-3a9510986d20"
+            }
+          }
+        ],
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:uuid:ea0a27a6-7693-49df-83be-3b298143aef6"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "urn:uuid:ac88082c-6ec2-4a13-b2f8-ec3c96795b83"
+          }
+        ],
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:713c0756-48dc-4df0-9dec-50327bfd228d"
+        },
+        "performer" : [
+          {
+            "reference" : "urn:uuid:4f8832ab-7ba0-4576-abac-813bb7dadb20"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:2299d300-4f95-4dec-b6e1-cd1daaa3acb0"
+          }
+        ],
+        "result" : [
+          {
+            "reference" : "urn:uuid:666da738-7102-46fa-b936-e6c10b433a0a"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```

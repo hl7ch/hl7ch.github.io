@@ -1,4 +1,4 @@
-# CH ELM Results To FOPH Patient Name Representation - CH ELM (R4) v1.12.0
+# CH ELM Results To FOPH Patient Name Representation - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmResultsToFophPatientNameRepresentation |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmResultsToFophPatientNameRepresentation |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ This CH ELM concept map specifies the required mode of patient representation fo
 
 Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-laboratory-observation.md) to [CH ELM FOPH Patient Name Representation](ValueSet-ch-elm-foph-patient-name-representation.md)
 
-**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.3.0/CodeSystem-v3-loinc.html) to [CH ELM FOPH Patient Name Representation](CodeSystem-ch-elm-foph-patient-name-representation.md)
+**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html) to [CH ELM FOPH Patient Name Representation](CodeSystem-ch-elm-foph-patient-name-representation.md)
 
 * **Source Code**: 100383-9 (Monkeypox virus DNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
@@ -45,7 +45,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: full-name
 * **Source Code**: 101307-7 (Plasmodium vivax+ovale DNA [Presence] in Blood by NAA with non-probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 101364-8 (Francisella tularensis DNA [Presence] in Blood by NAA with non-probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: initials
@@ -258,7 +258,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: initials
 * **Source Code**: 29566-7 (West Nile virus IgG Ab [Presence] in Serum by Immunoassay)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 29610-3 (Hepatitis B virus DNA [Presence] in Serum or Plasma by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: full-name
@@ -279,7 +279,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: full-name
 * **Source Code**: 31703-2 (West Nile virus IgM Ab [Presence] in Cerebral spinal fluid)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 31726-3 (Bacillus anthracis Ag [Presence] in Specimen)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: full-name
@@ -369,10 +369,10 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: full-name
 * **Source Code**: 34460-6 (West Nile virus RNA [Presence] in Blood by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 34461-4 (West Nile virus RNA [Presence] in Cerebral spinal fluid by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 34487-9 (Influenza virus A RNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: initials
@@ -414,16 +414,16 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: full-name
 * **Source Code**: 41447-4 (Plasmodium falciparum DNA [Presence] in Blood by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 41448-2 (Plasmodium malariae DNA [Presence] in Blood by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 41449-0 (Plasmodium ovale DNA [Presence] in Blood by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 41450-8 (Plasmodium vivax DNA [Presence] in Blood by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 41458-1 (SARS coronavirus RNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: full-name
@@ -486,7 +486,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: initials
 * **Source Code**: 47085-6 (Plasmodium sp DNA [Presence] in Blood by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 47387-6 (Neisseria gonorrhoeae DNA [Presence] in Genital specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: initials-or-vctcode
@@ -537,7 +537,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: initials-or-vctcode
 * **Source Code**: 50687-3 (Plasmodium sp Ag [Presence] in Blood)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 50697-2 (Influenza virus A Ag [Identifier] in Isolate)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: full-name
@@ -546,7 +546,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: initials-or-vctcode
 * **Source Code**: 51587-4 (Plasmodium sp [Presence] in Blood by Light microscopy)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 51646-8 (Rabies virus RNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: full-name
@@ -777,10 +777,10 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: full-name
 * **Source Code**: 70568-1 (Plasmodium knowlesi DNA [Presence] in Blood by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 70569-9 (Plasmodium sp Ag [Identifier] in Blood by Rapid immunoassay)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 70858-6 (Rabies virus neutralizing antibody [Presence] in Serum by Neutralization test)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: full-name
@@ -816,7 +816,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: full-name
 * **Source Code**: 76772-3 (Plasmodium falciparum Ag [Presence] in Blood by Rapid immunoassay)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 77026-3 (Influenza virus A H1 RNA [Presence] in Nasopharynx by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: initials
@@ -886,6 +886,9 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
 * **Source Code**: 81656-1 (Campylobacter coli+jejuni tuf gene [Presence] in Stool by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: initials
+* **Source Code**: 81868-2 (PRNP gene targeted mutation analysis in Blood or Tissue by Molecular genetics method)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: full-name
 * **Source Code**: 82184-3 (Listeria monocytogenes DNA [Presence] in Cerebral spinal fluid by NAA with non-probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: full-name
@@ -1068,7 +1071,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: full-name
 * **Source Code**: 94289-6 (West Nile virus neutralizing antibody [Presence] in Specimen by Neutralization test)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: initials
+  * **Target Code**: full-name
 * **Source Code**: 94309-2 (SARS-CoV-2 (COVID-19) RNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: full-name
@@ -1177,6 +1180,41 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: hiv-code
 
+-------
+
+**Group 3**Mapping from [CH ELM FOPH Code Reserve](CodeSystem-ch-elm-foph-code-reserve.md) to [CH ELM FOPH Patient Name Representation](CodeSystem-ch-elm-foph-patient-name-representation.md)
+
+* **Source Code**: EP-100100-7 (FOPH emerging pathogen placeholder)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: initials
+* **Source Code**: EP-100200-5 (FOPH emerging pathogen placeholder)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: initials
+* **Source Code**: EP-100300-3 (FOPH emerging pathogen placeholder)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: initials
+* **Source Code**: EP-100400-1 (FOPH emerging pathogen placeholder)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: initials
+* **Source Code**: EP-100500-8 (FOPH emerging pathogen placeholder)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: initials
+* **Source Code**: EP-100600-6 (FOPH emerging pathogen placeholder)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: initials
+* **Source Code**: EP-100700-4 (FOPH emerging pathogen placeholder)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: initials
+* **Source Code**: EP-100800-2 (FOPH emerging pathogen placeholder)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: initials
+* **Source Code**: EP-100900-0 (FOPH emerging pathogen placeholder)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: initials
+* **Source Code**: EP-101000-8 (FOPH emerging pathogen placeholder)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: initials
+
 
 
 ## Resource Content
@@ -1186,12 +1224,12 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-results-to-foph-patient-name-representation",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmResultsToFophPatientNameRepresentation",
   "title" : "CH ELM Results To FOPH Patient Name Representation",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -1308,7 +1346,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium vivax+ovale DNA [Presence] in Blood by NAA with non-probe detection",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2018,7 +2056,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "West Nile virus IgG Ab [Presence] in Serum by Immunoassay",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2088,7 +2126,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "West Nile virus IgM Ab [Presence] in Cerebral spinal fluid",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2388,7 +2426,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "West Nile virus RNA [Presence] in Blood by NAA with probe detection",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2398,7 +2436,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "West Nile virus RNA [Presence] in Cerebral spinal fluid by NAA with probe detection",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2538,7 +2576,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium falciparum DNA [Presence] in Blood by NAA with probe detection",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2548,7 +2586,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium malariae DNA [Presence] in Blood by NAA with probe detection",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2558,7 +2596,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium ovale DNA [Presence] in Blood by NAA with probe detection",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2568,7 +2606,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium vivax DNA [Presence] in Blood by NAA with probe detection",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2778,7 +2816,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium sp DNA [Presence] in Blood by NAA with probe detection",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2948,7 +2986,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium sp Ag [Presence] in Blood",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -2978,7 +3016,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium sp [Presence] in Blood by Light microscopy",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -3748,7 +3786,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium knowlesi DNA [Presence] in Blood by NAA with probe detection",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -3758,7 +3796,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium sp Ag [Identifier] in Blood by Rapid immunoassay",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -3878,7 +3916,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Plasmodium falciparum Ag [Presence] in Blood by Rapid immunoassay",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -4109,6 +4147,16 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "target" : [
             {
               "code" : "initials",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
+          "code" : "81868-2",
+          "display" : "PRNP gene targeted mutation analysis in Blood or Tissue by Molecular genetics method",
+          "target" : [
+            {
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -4718,7 +4766,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "West Nile virus neutralizing antibody [Presence] in Specimen by Neutralization test",
           "target" : [
             {
-              "code" : "initials",
+              "code" : "full-name",
               "equivalence" : "relatedto"
             }
           ]
@@ -5065,6 +5113,112 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "target" : [
             {
               "code" : "hiv-code",
+              "equivalence" : "relatedto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source" : "urn:oid:2.16.756.5.30.1.129.1.5.1",
+      "target" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-patient-name-representation",
+      "element" : [
+        {
+          "code" : "EP-100100-7",
+          "display" : "FOPH emerging pathogen placeholder",
+          "target" : [
+            {
+              "code" : "initials",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
+          "code" : "EP-100200-5",
+          "display" : "FOPH emerging pathogen placeholder",
+          "target" : [
+            {
+              "code" : "initials",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
+          "code" : "EP-100300-3",
+          "display" : "FOPH emerging pathogen placeholder",
+          "target" : [
+            {
+              "code" : "initials",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
+          "code" : "EP-100400-1",
+          "display" : "FOPH emerging pathogen placeholder",
+          "target" : [
+            {
+              "code" : "initials",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
+          "code" : "EP-100500-8",
+          "display" : "FOPH emerging pathogen placeholder",
+          "target" : [
+            {
+              "code" : "initials",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
+          "code" : "EP-100600-6",
+          "display" : "FOPH emerging pathogen placeholder",
+          "target" : [
+            {
+              "code" : "initials",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
+          "code" : "EP-100700-4",
+          "display" : "FOPH emerging pathogen placeholder",
+          "target" : [
+            {
+              "code" : "initials",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
+          "code" : "EP-100800-2",
+          "display" : "FOPH emerging pathogen placeholder",
+          "target" : [
+            {
+              "code" : "initials",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
+          "code" : "EP-100900-0",
+          "display" : "FOPH emerging pathogen placeholder",
+          "target" : [
+            {
+              "code" : "initials",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
+          "code" : "EP-101000-8",
+          "display" : "FOPH emerging pathogen placeholder",
+          "target" : [
+            {
+              "code" : "initials",
               "equivalence" : "relatedto"
             }
           ]

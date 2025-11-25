@@ -1,4 +1,4 @@
-# CH ELM Results Susceptibility To Component Interpretation Code - CH ELM (R4) v1.12.0
+# CH ELM Results Susceptibility To Component Interpretation Code - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-interpretation-code | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmResultsSuscToComponentInterpretationCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-interpretation-code | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmResultsSuscToComponentInterpretationCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ This CH ELM concept map specifies the ValuesSet for component.code for each lead
 
 Mapping from [CH ELM Results Laboratory Observation Susceptibility](ValueSet-ch-elm-results-laboratory-observation-susc.md) to [CH ELM Interpretation Codes Vs](ValueSet-ch-elm-interpretation-codes-vs.md)
 
-**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.3.0/CodeSystem-v3-loinc.html) to [CH ELM Interpretation Codes Vs](CodeSystem-ch-elm-interpretation-codes-vs.md)
+**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html) to [CH ELM Interpretation Codes Vs](CodeSystem-ch-elm-interpretation-codes-vs.md)
 
 * **Source Code**: 29579-0 (Mycobacterial susceptibility panel by Method for Slow-growing mycobacteria)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
@@ -32,12 +32,12 @@ Mapping from [CH ELM Results Laboratory Observation Susceptibility](ValueSet-ch-
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-results-susc-to-component-interpretation-code",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-interpretation-code",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmResultsSuscToComponentInterpretationCode",
   "title" : "CH ELM Results Susceptibility To Component Interpretation Code",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

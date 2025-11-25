@@ -1,4 +1,4 @@
-# CH ELM Expecting Specimen Specification To Results Completion Vs - CH ELM (R4) v1.12.0
+# CH ELM Expecting Specimen Specification To Results Completion Vs - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-specimen-specification-to-results-completion-vs | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmExpectingSpecimenSpecificationToResultsCompletionVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-specimen-specification-to-results-completion-vs | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmExpectingSpecimenSpecificationToResultsCompletionVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ This CH ELM concept map shows which leading codes have to be completed by an add
 
 Mapping from [CH ELM Expecting Specimen Specification](ValueSet-ch-elm-expecting-specimen-specification.md) to [CH ELM Results Completion Vs](ValueSet-ch-elm-results-completion-vs.md)
 
-**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.3.0/CodeSystem-v3-loinc.html) to [CH ELM Results Completion Vs](CodeSystem-ch-elm-results-completion-vs.md)
+**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html) to [CH ELM Results Completion Vs](CodeSystem-ch-elm-results-completion-vs.md)
 
 * **Source Code**: 16134-9 (Neisseria meningitidis [Presence] in Specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
@@ -57,7 +57,7 @@ Mapping from [CH ELM Expecting Specimen Specification](ValueSet-ch-elm-expecting
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sterile-spec
 * **Source Code**: 61369-5 (Listeria monocytogenes DNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sterile-spec
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-lis-spec
 * **Source Code**: 6349-5 (Chlamydia trachomatis [Presence] in Specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-geni-spec
@@ -66,7 +66,7 @@ Mapping from [CH ELM Expecting Specimen Specification](ValueSet-ch-elm-expecting
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sterile-spec
 * **Source Code**: 6609-2 (Listeria sp identified in Specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sterile-spec
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-lis-spec
 * **Source Code**: 69410-9 (Haemophilus influenzae [Identifier] in Specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sterile-spec
@@ -80,12 +80,12 @@ Mapping from [CH ELM Expecting Specimen Specification](ValueSet-ch-elm-expecting
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-expecting-specimen-specification-to-results-completion-vs",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-specimen-specification-to-results-completion-vs",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmExpectingSpecimenSpecificationToResultsCompletionVs",
   "title" : "CH ELM Expecting Specimen Specification To Results Completion Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -242,7 +242,7 @@ Mapping from [CH ELM Expecting Specimen Specification](ValueSet-ch-elm-expecting
           "display" : "Listeria monocytogenes DNA [Presence] in Specimen by NAA with probe detection",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sterile-spec",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-lis-spec",
               "equivalence" : "relatedto"
             }
           ]
@@ -272,7 +272,7 @@ Mapping from [CH ELM Expecting Specimen Specification](ValueSet-ch-elm-expecting
           "display" : "Listeria sp identified in Specimen by Organism specific culture",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sterile-spec",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-lis-spec",
               "equivalence" : "relatedto"
             }
           ]

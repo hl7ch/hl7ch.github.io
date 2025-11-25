@@ -1,4 +1,4 @@
-# CH ELM Results Influenza Hxny Org - CH ELM (R4) v1.12.0
+# CH ELM Results Influenza Hxny Org - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-influenza-hxny-org | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmResultsInfluenzaHxnyOrg |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-influenza-hxny-org | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmResultsInfluenzaHxnyOrg |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -27,7 +27,7 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
 
 Expansion from tx.fhir.org based on SNOMED CT International edition 01-Feb 2025
 
-This value set contains 7 concepts
+This value set contains 8 concepts
 
 -------
 
@@ -51,12 +51,12 @@ This value set contains 7 concepts
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-influenza-hxny-org",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-influenza-hxny-org",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmResultsInfluenzaHxnyOrg",
   "title" : "CH ELM Results Influenza Hxny Org",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -89,6 +89,10 @@ This value set contains 7 concepts
           {
             "code" : "446397006",
             "display" : "Influenza A virus subtype H2 (organism)"
+          },
+          {
+            "code" : "446645007",
+            "display" : "Influenza A virus subtype H3 (organism)"
           },
           {
             "code" : "1354812007",

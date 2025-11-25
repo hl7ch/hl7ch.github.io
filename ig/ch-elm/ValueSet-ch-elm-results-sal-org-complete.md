@@ -1,4 +1,4 @@
-# CH ELM Results Sal Org Complete - CH ELM (R4) v1.12.0
+# CH ELM Results Sal Org Complete - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sal-org-complete | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmResultsSalOrgComplete |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sal-org-complete | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmResultsSalOrgComplete |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -51,12 +51,12 @@ This value set has 2,705 codes in it. In order to keep the publication size mana
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-sal-org-complete",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sal-org-complete",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmResultsSalOrgComplete",
   "title" : "CH ELM Results Sal Org Complete",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

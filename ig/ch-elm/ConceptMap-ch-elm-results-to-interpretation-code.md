@@ -1,4 +1,4 @@
-# CH ELM Results To Interpretation Code - CH ELM (R4) v1.12.0
+# CH ELM Results To Interpretation Code - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-interpretation-code | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmResultsToInterpretationCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-interpretation-code | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmResultsToInterpretationCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ This CH ELM concept map specifies the interpretation codes for each leading code
 
 Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-laboratory-observation.md) to [CH ELM Interpretation Codes Vs](ValueSet-ch-elm-interpretation-codes-vs.md)
 
-**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.3.0/CodeSystem-v3-loinc.html) to [CH ELM Interpretation Codes Vs](CodeSystem-ch-elm-interpretation-codes-vs.md)
+**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html) to [CH ELM Interpretation Codes Vs](CodeSystem-ch-elm-interpretation-codes-vs.md)
 
 * **Source Code**: 100383-9 (Monkeypox virus DNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
@@ -60,7 +60,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 101662-5 (Abnormal Prion Protein [Presence] in Cerebral spinal fluid by RT-QuIC)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
 * **Source Code**: 101802-7 (Brucella sp IgA Ab [Presence] in Serum)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
@@ -75,19 +75,19 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
 * **Source Code**: 104371-0 (Corynebacterium pseudotuberculosis [Presence] in Specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 104372-8 (Corynebacterium pseudotuberculosis [Presence] in Upper respiratory specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 104373-6 (Corynebacterium ulcerans [Presence] in Specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 104374-4 (Corynebacterium ulcerans [Presence] in Upper respiratory specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 104375-1 (Corynebacterium ulcerans DNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 104376-9 (Diphtheria toxin DNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
@@ -159,7 +159,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 16676-9 (Corynebacterium diphtheriae [Presence] in Specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 17552-1 (Rubella virus IgM Ab [Presence] in Cerebral spinal fluid)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
@@ -384,7 +384,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
 * **Source Code**: 38275-4 (Transmissible spongiform encephalopathy [Presence] in Brain by Light microscopy)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
 * **Source Code**: 38353-9 (Streptococcus sp identified in Specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
@@ -738,7 +738,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 67561-1 (Corynebacterium diphtheriae DNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 6811-4 (Dengue virus IgG Ab [Titer] in Serum)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-titer
@@ -795,7 +795,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 74037-3 (Transmissible spongiform encephalopathy [Identifier] in Brain by Light microscopy)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
 * **Source Code**: 74785-7 (Influenza virus B Victoria lineage RNA [Presence] in Specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
@@ -883,6 +883,9 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
 * **Source Code**: 81656-1 (Campylobacter coli+jejuni tuf gene [Presence] in Stool by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
+* **Source Code**: 81868-2 (PRNP gene targeted mutation analysis in Blood or Tissue by Molecular genetics method)
+  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 82184-3 (Listeria monocytogenes DNA [Presence] in Cerebral spinal fluid by NAA with non-probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
@@ -957,7 +960,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 88584-8 (Corynebacterium diphtheriae [Presence] in Upper respiratory specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 88585-5 (Legionella sp identified in Lower respiratory specimen by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
@@ -984,7 +987,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 90066-2 (Corynebacterium sp identified in Isolate by Organism specific culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 90459-9 (Yellow fever virus RNA [Presence] in Blood by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
@@ -1032,7 +1035,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 92786-3 (Corynebacterium sp DNA [Presence] by NAA with probe detection in Positive blood culture)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
+  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
 * **Source Code**: 92808-5 (Influenza virus A H3 RNA [Presence] in Upper respiratory specimen by NAA with probe detection)
   * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
   * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos
@@ -1183,12 +1186,12 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-results-to-interpretation-code",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-interpretation-code",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmResultsToInterpretationCode",
   "title" : "CH ELM Results To Interpretation Code",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -1355,7 +1358,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Abnormal Prion Protein [Presence] in Cerebral spinal fluid by RT-QuIC",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
               "equivalence" : "relatedto"
             }
           ]
@@ -1405,7 +1408,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Corynebacterium pseudotuberculosis [Presence] in Specimen by Organism specific culture",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
               "equivalence" : "relatedto"
             }
           ]
@@ -1415,7 +1418,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Corynebacterium pseudotuberculosis [Presence] in Upper respiratory specimen by Organism specific culture",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
               "equivalence" : "relatedto"
             }
           ]
@@ -1425,7 +1428,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Corynebacterium ulcerans [Presence] in Specimen by Organism specific culture",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
               "equivalence" : "relatedto"
             }
           ]
@@ -1435,7 +1438,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Corynebacterium ulcerans [Presence] in Upper respiratory specimen by Organism specific culture",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
               "equivalence" : "relatedto"
             }
           ]
@@ -1445,7 +1448,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Corynebacterium ulcerans DNA [Presence] in Specimen by NAA with probe detection",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
               "equivalence" : "relatedto"
             }
           ]
@@ -1685,7 +1688,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Corynebacterium diphtheriae [Presence] in Specimen by Organism specific culture",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
               "equivalence" : "relatedto"
             }
           ]
@@ -2435,7 +2438,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Transmissible spongiform encephalopathy [Presence] in Brain by Light microscopy",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
               "equivalence" : "relatedto"
             }
           ]
@@ -3615,7 +3618,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Corynebacterium diphtheriae DNA [Presence] in Specimen by NAA with probe detection",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
               "equivalence" : "relatedto"
             }
           ]
@@ -3805,7 +3808,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Transmissible spongiform encephalopathy [Identifier] in Brain by Light microscopy",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
               "equivalence" : "relatedto"
             }
           ]
@@ -4101,6 +4104,16 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           ]
         },
         {
+          "code" : "81868-2",
+          "display" : "PRNP gene targeted mutation analysis in Blood or Tissue by Molecular genetics method",
+          "target" : [
+            {
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+              "equivalence" : "relatedto"
+            }
+          ]
+        },
+        {
           "code" : "82184-3",
           "display" : "Listeria monocytogenes DNA [Presence] in Cerebral spinal fluid by NAA with non-probe detection",
           "target" : [
@@ -4345,7 +4358,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Corynebacterium diphtheriae [Presence] in Upper respiratory specimen by Organism specific culture",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
               "equivalence" : "relatedto"
             }
           ]
@@ -4435,7 +4448,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Corynebacterium sp identified in Isolate by Organism specific culture",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
               "equivalence" : "relatedto"
             }
           ]
@@ -4595,7 +4608,7 @@ Mapping from [CH ELM Results Laboratory Observation](ValueSet-ch-elm-results-lab
           "display" : "Corynebacterium sp DNA [Presence] by NAA with probe detection in Positive blood culture",
           "target" : [
             {
-              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+              "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
               "equivalence" : "relatedto"
             }
           ]

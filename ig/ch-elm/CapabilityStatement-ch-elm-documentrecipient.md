@@ -1,4 +1,4 @@
-# FOPH CapabilityStatement for receiving laboratory reports - CH ELM (R4) v1.12.0
+# FOPH CapabilityStatement for receiving laboratory reports - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CapabilityStatement/ch-elm-documentrecipient | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:CH_ELM_CapabilityStatement_DocumentRecipient |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CapabilityStatement/ch-elm-documentrecipient | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:CH_ELM_CapabilityStatement_DocumentRecipient |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -21,10 +21,10 @@ This is the **Requirements** CapabilityStatement for the Document Recipient.
 
 ## FOPH CapabilityStatement for receiving laboratory reports
 
-* Implementation Guide Version: 1.12.0 
+* Implementation Guide Version: 1.13.0 
 * FHIR Version: 4.0.1 
 * Supported Formats: `application/fhir+xml`, `application/fhir+json`
-* Published on: 2025-10-21 11:52:21+0000 
+* Published on: 2025-11-25 09:58:53+0000 
 * Published by: Federal Office of Public Health FOPH 
 
 > **Note to Implementers: FHIR Capabilities**Any FHIR capability may be 'allowed' by the system unless explicitly marked as 'SHALL NOT'. A few items are marked as MAY in the Implementation Guide to highlight their potential relevance to the use case.
@@ -89,12 +89,12 @@ Search Parameters
   "resourceType" : "CapabilityStatement",
   "id" : "ch-elm-documentrecipient",
   "url" : "http://fhir.ch/ig/ch-elm/CapabilityStatement/ch-elm-documentrecipient",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "CH_ELM_CapabilityStatement_DocumentRecipient",
   "title" : "FOPH CapabilityStatement for receiving laboratory reports",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

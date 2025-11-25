@@ -1,4 +1,4 @@
-# CH ELM Results Laboratory Observation Complete - CH ELM (R4) v1.12.0
+# CH ELM Results Laboratory Observation Complete - CH ELM (R4) v1.13.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-complete | *Version*:1.12.0 |
-| Active as of 2025-10-21 | *Computable Name*:ChElmResultsLaboratoryObservationComplete |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-complete | *Version*:1.13.0 |
+| Active as of 2025-11-25 | *Computable Name*:ChElmResultsLaboratoryObservationComplete |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -29,8 +29,9 @@ Expansion from tx.fhir.org based on:
 
 * Loinc v2.81
 * SNOMED CT International edition 01-Feb 2025
+* [codesystem CH ELM FOPH Code Reserve v1.13.0 (CodeSystem)](CodeSystem-ch-elm-foph-code-reserve.md)
 
-This value set contains 386 concepts
+This value set contains 397 concepts
 
 -------
 
@@ -54,12 +55,12 @@ This value set contains 386 concepts
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-laboratory-observation-complete",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-complete",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "name" : "ChElmResultsLaboratoryObservationComplete",
   "title" : "CH ELM Results Laboratory Observation Complete",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-10-21T11:52:21+00:00",
+  "date" : "2025-11-25T09:58:53+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -1246,6 +1247,10 @@ This value set contains 386 concepts
             "display" : "Campylobacter coli+jejuni tuf gene [Presence] in Stool by NAA with probe detection"
           },
           {
+            "code" : "81868-2",
+            "display" : "PRNP gene targeted mutation analysis in Blood or Tissue by Molecular genetics method"
+          },
+          {
             "code" : "82184-3",
             "display" : "Listeria monocytogenes DNA [Presence] in Cerebral spinal fluid by NAA with non-probe detection"
           },
@@ -1637,6 +1642,51 @@ This value set contains 386 concepts
           {
             "code" : "89293008",
             "display" : "Human immunodeficiency virus type I (organism)"
+          }
+        ]
+      },
+      {
+        "system" : "urn:oid:2.16.756.5.30.1.129.1.5.1",
+        "concept" : [
+          {
+            "code" : "EP-100100-7",
+            "display" : "FOPH emerging pathogen placeholder"
+          },
+          {
+            "code" : "EP-100200-5",
+            "display" : "FOPH emerging pathogen placeholder"
+          },
+          {
+            "code" : "EP-100300-3",
+            "display" : "FOPH emerging pathogen placeholder"
+          },
+          {
+            "code" : "EP-100400-1",
+            "display" : "FOPH emerging pathogen placeholder"
+          },
+          {
+            "code" : "EP-100500-8",
+            "display" : "FOPH emerging pathogen placeholder"
+          },
+          {
+            "code" : "EP-100600-6",
+            "display" : "FOPH emerging pathogen placeholder"
+          },
+          {
+            "code" : "EP-100700-4",
+            "display" : "FOPH emerging pathogen placeholder"
+          },
+          {
+            "code" : "EP-100800-2",
+            "display" : "FOPH emerging pathogen placeholder"
+          },
+          {
+            "code" : "EP-100900-0",
+            "display" : "FOPH emerging pathogen placeholder"
+          },
+          {
+            "code" : "EP-101000-8",
+            "display" : "FOPH emerging pathogen placeholder"
           }
         ]
       }
