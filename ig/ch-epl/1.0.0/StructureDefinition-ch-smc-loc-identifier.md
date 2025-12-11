@@ -1,0 +1,112 @@
+# LOC Identifier - CH EPL (R5) v1.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **LOC Identifier**
+
+## Data Type Profile: LOC Identifier 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-epl/StructureDefinition/ch-smc-loc-identifier | *Version*:1.0.0 |
+| Active as of 2025-12-11 | *Computable Name*:LOCIdentifier |
+| **Copyright/Legal**: CC0-1.0 | |
+
+ 
+Identifier holding a number for LocID (Location Identifier of the European Medicines Agency - Organisation Management System OMS) 
+
+**Usages:**
+
+* Use this DataType Profile: [CH EPL Organization](StructureDefinition-ch-epl-organization.md)
+
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-epl|current/StructureDefinition/ch-smc-loc-identifier)
+
+### Formal Views of Profile Content
+
+ [Description of Profiles, Differentials, Snapshots and how the different presentations work](http://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#structure-definitions). 
+
+ 
+
+Other representations of profile: [CSV](StructureDefinition-ch-smc-loc-identifier.csv), [Excel](StructureDefinition-ch-smc-loc-identifier.xlsx), [Schematron](StructureDefinition-ch-smc-loc-identifier.sch) 
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "ch-smc-loc-identifier",
+  "url" : "http://fhir.ch/ig/ch-epl/StructureDefinition/ch-smc-loc-identifier",
+  "version" : "1.0.0",
+  "name" : "LOCIdentifier",
+  "title" : "LOC Identifier",
+  "status" : "active",
+  "date" : "2025-12-11T12:29:57+00:00",
+  "publisher" : "Federal Office of Public Health FOPH",
+  "contact" : [
+    {
+      "name" : "Federal Office of Public Health FOPH",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+        }
+      ]
+    }
+  ],
+  "description" : "Identifier holding a number for LocID (Location Identifier of the European Medicines Agency - Organisation Management System OMS)",
+  "jurisdiction" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CH"
+        }
+      ]
+    }
+  ],
+  "copyright" : "CC0-1.0",
+  "fhirVersion" : "5.0.0",
+  "mapping" : [
+    {
+      "identity" : "v2",
+      "uri" : "http://hl7.org/v2",
+      "name" : "HL7 V2 Mapping"
+    },
+    {
+      "identity" : "rim",
+      "uri" : "http://hl7.org/v3",
+      "name" : "RIM Mapping"
+    },
+    {
+      "identity" : "servd",
+      "uri" : "http://www.omg.org/spec/ServD/1.0/",
+      "name" : "ServD"
+    }
+  ],
+  "kind" : "complex-type",
+  "abstract" : false,
+  "type" : "Identifier",
+  "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Identifier",
+  "derivation" : "constraint",
+  "differential" : {
+    "element" : [
+      {
+        "id" : "Identifier.system",
+        "path" : "Identifier.system",
+        "short" : "LocID",
+        "min" : 1,
+        "fixedUri" : "urn:oid:1.2.276.0.76"
+      },
+      {
+        "id" : "Identifier.value",
+        "path" : "Identifier.value",
+        "short" : "LocID",
+        "min" : 1
+      }
+    ]
+  }
+}
+
+```
