@@ -60,8 +60,8 @@ jobs:
         shell: bash
 
       - name: 📝 Get the ig name
-        id: ig
-        run: echo "::set-output name=repo::$(echo ${{ env.igname }} | cut -d '/' -f 2)"
+        id: ig_name
+        run: echo "::set-output name=ig::$(echo ${{ env.igname }} | cut -d '/' -f 2)"
         shell: bash
 
       - name: 📝 Get the organization name
@@ -85,7 +85,7 @@ jobs:
             templates
             ig-history
             ig-registry
-            ig/${{ steps.repo_name.outputs.igname }}    
+            ig/${{ steps.ig_name.outputs.ig }}    
       - name: 📥 Download IG Publisher
         run: |
               wget -q https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
@@ -163,15 +163,6 @@ jobs:
           name: my-artifact
           path: ./ig/${{ steps.repo_name.outputs.repo }} 
           retention-days: 2
-
-      - name: Set conditional repository name
-        id: conditional_repo
-        run: |
-          if [[ "${{ steps.repo_name.outputs.repo }}" == "bag-epl-fhir" ]]; then
-            echo "repo_name=ch-epl" >> $GITHUB_OUTPUT
-          else
-            echo "repo_name=${{ steps.repo_name.outputs.repo }}" >> $GITHUB_OUTPUT
-          fi    
           
       - name: 🐙 Commit and push changes to hl7ch.github.io
         if: ${{ env.publish == 'true' }}
@@ -179,7 +170,7 @@ jobs:
           git config pull.ff only
           git pull
           git add --sparse .
-          git commit -m "${{ steps.conditional_repo.outputs.repo_name }} - ${{ env.version }}"
+          git commit -m "${{ steps.ig_name.outputs.ig }} - ${{ env.version }}"
           git push
       - name: Send a stream message to Zulip
         if: ${{ env.publish == 'true' }}
@@ -192,8 +183,8 @@ jobs:
           type: "stream"
           topic: "fhir.ch: new FHIR Implementation Guide published"
           content: |
-             :rocket: ${{ steps.conditional_repo.outputs.repo_name }}/${{ env.version }} published :rocket:
+             :rocket: ${{ steps.ig_name.outputs.ig }}/${{ env.version }} published :rocket:
              
-             Details: [published](https://fhir.ch/ig/${{ steps.conditional_repo.outputs.igname }}/${{ env.version }}/index.html) | [qa](https://fhir.ch/ig/${{ steps.conditional_repo.outputs.igname }}/${{ env.version }}/qa.html)
+             Details: [published](https://fhir.ch/ig/${{ steps.ig_name.outputs.ig }}/${{ env.version }}/index.html) | [qa](https://fhir.ch/ig/${{ steps.ig_name.outputs.ig }}/${{ env.version }}/qa.html)
              
              :memo: It might take a few minutes until [fhir.ch](https://fhir.ch/) is serving the new version, should be visible on packages servers in [max 1](https://packages2.fhir.org/packages/catalog) to [max 8](https://registry.fhir.org/) hours.
