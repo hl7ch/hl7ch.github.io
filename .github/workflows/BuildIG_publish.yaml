@@ -8,6 +8,11 @@ on:
         required: true
         default: 'hl7ch/ch-'
         type: string
+      igname:
+        description: 'Name of the IG. (directory on fhir.ch) e.g. ch-ig'
+        required: true
+        default: 'ch-ig'
+        type: string
       version:
         description: 'Version of the IG'
         required: true
@@ -29,6 +34,7 @@ jobs:
       id-token: 'write'
     env:
       orgrepo: "${{ github.event.inputs.orgrepo }}"
+      igname: "${{ github.event.inputs.igname }}"
       version: "${{ github.event.inputs.version }}"
       publish: "${{ github.event.inputs.publish }}"
       fhirchappid: 974513
@@ -53,6 +59,11 @@ jobs:
         run: echo "::set-output name=repo::$(echo ${{ env.orgrepo }} | cut -d '/' -f 2)"
         shell: bash
 
+      - name: 📝 Get the ig name
+        id: ig
+        run: echo "::set-output name=repo::$(echo ${{ env.igname }} | cut -d '/' -f 2)"
+        shell: bash
+
       - name: 📝 Get the organization name
         id: org_name
         run: echo "::set-output name=org::$(echo ${{ env.orgrepo }} | cut -d '/' -f 1)"
@@ -74,7 +85,7 @@ jobs:
             templates
             ig-history
             ig-registry
-            ig/${{ steps.repo_name.outputs.repo }}    
+            ig/${{ steps.repo_name.outputs.igname }}    
       - name: 📥 Download IG Publisher
         run: |
               wget -q https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
@@ -183,6 +194,6 @@ jobs:
           content: |
              :rocket: ${{ steps.conditional_repo.outputs.repo_name }}/${{ env.version }} published :rocket:
              
-             Details: [published](https://fhir.ch/ig/${{ steps.conditional_repo.outputs.repo_name }}/${{ env.version }}/index.html) | [qa](https://fhir.ch/ig/${{ steps.conditional_repo.outputs.repo_name }}/${{ env.version }}/qa.html)
+             Details: [published](https://fhir.ch/ig/${{ steps.conditional_repo.outputs.igname }}/${{ env.version }}/index.html) | [qa](https://fhir.ch/ig/${{ steps.conditional_repo.outputs.igname }}/${{ env.version }}/qa.html)
              
              :memo: It might take a few minutes until [fhir.ch](https://fhir.ch/) is serving the new version, should be visible on packages servers in [max 1](https://packages2.fhir.org/packages/catalog) to [max 8](https://registry.fhir.org/) hours.
