@@ -1,0 +1,5847 @@
+# CH VACD Snomed CT for VaccineCode - CH Term (R4) v3.3.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH VACD Snomed CT for VaccineCode**
+
+## ValueSet: CH VACD Snomed CT for VaccineCode 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-vaccines-snomedct-vs | *Version*:3.3.0 |
+| Active as of 2025-12-15 | *Computable Name*:SnomedCTForVaccineCode |
+| **Copyright/Legal**: CC0-1.0 | |
+
+ 
+The list of vaccine products in Snomed CT list. 
+
+ **References** 
+
+ Detailed information about the **current version** of this artifact, including cross-references to resources that use it, can be found [here](http://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-term%7Ccurrent/ValueSet/ch-vacd-vaccines-snomedct-vs) via the XIG (Cross-IG) index for FHIR specifications. 
+
+### Logical Definition (CLD)
+
+ 
+
+### Expansion
+
+-------
+
+ Explanation of the columns that may appear on this page: 
+
+| | |
+| :--- | :--- |
+| Level | A few code lists that FHIR defines are hierarchical - each code is assigned a level. In this scheme, some codes are under other codes, and imply that the code they are under also applies |
+| System | The source of the definition of the code (when the value set draws in codes defined elsewhere) |
+| Code | The code (used as the code in the resource instance) |
+| Display | The display (used in the*display*element of a[Coding](http://hl7.org/fhir/R4/datatypes.html#Coding)). If there is no display, implementers should not simply display the code, but map the concept into their application |
+| Definition | An explanation of the meaning of the concept |
+| Comments | Additional notes about how to use the code |
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "ValueSet",
+  "id" : "ch-vacd-vaccines-snomedct-vs",
+  "url" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-vaccines-snomedct-vs",
+  "version" : "3.3.0",
+  "name" : "SnomedCTForVaccineCode",
+  "title" : "CH VACD Snomed CT for VaccineCode",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2025-12-15T10:36:18+00:00",
+  "publisher" : "HL7 Switzerland",
+  "contact" : [
+    {
+      "name" : "HL7 Switzerland",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.hl7.ch/"
+        }
+      ]
+    },
+    {
+      "name" : "HL7 Switzerland",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.hl7.ch/",
+          "use" : "work"
+        }
+      ]
+    }
+  ],
+  "description" : "The list of vaccine products in Snomed CT list.",
+  "jurisdiction" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CH"
+        }
+      ]
+    }
+  ],
+  "copyright" : "CC0-1.0",
+  "compose" : {
+    "include" : [
+      {
+        "system" : "http://snomed.info/sct",
+        "concept" : [
+          {
+            "code" : "787482006",
+            "display" : "No known immunizations",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Unbekannter Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin inconnu"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino sconosciuto"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin nunenconuschent"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine unknown"
+              }
+            ]
+          },
+          {
+            "code" : "787859002",
+            "display" : "Vaccine product (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Unbekannter Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin inconnu"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino sconosciuto"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin nunenconuschent"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine unknown"
+              }
+            ]
+          },
+          {
+            "code" : "37146000",
+            "display" : "Typhus vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Typhus vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Typhus vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Typhus vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Typhus vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Typhus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "409568008",
+            "display" : "Pentavalent botulinum toxoid vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Pentavalent botulinum toxoid vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Pentavalent botulinum toxoid vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Pentavalent botulinum toxoid vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Pentavalent botulinum toxoid vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pentavalent botulinum toxoid vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "428601009",
+            "display" : "Paratyphoid vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Paratyphoid vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Paratyphoid vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Paratyphoid vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Paratyphoid vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Paratyphoid vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "774618008",
+            "display" : "Vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "775641005",
+            "display" : "Vaccine product containing only Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Clostridium tetani toxoid adsorbed and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "777725002",
+            "display" : "Vaccine product containing only Clostridium tetani toxoid antigen adsorbed (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani toxoid antigen adsorbed (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani toxoid antigen adsorbed (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani toxoid antigen adsorbed (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani toxoid antigen adsorbed (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Clostridium tetani toxoid antigen adsorbed (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "836368004",
+            "display" : "Bacteria antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Bacteria antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Bacteria antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Bacteria antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Bacteria antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Bacteria antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836369007",
+            "display" : "Virus antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Virus antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836374004",
+            "display" : "Hepatitis B virus antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Hepatitis B virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Hepatitis B virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Hepatitis B virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Hepatitis B virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Hepatitis B virus antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836375003",
+            "display" : "Vaccine product containing Hepatitis A virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Vaccine product containing Hepatitis A virus antigen"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "Vaccine product containing Hepatitis A virus antigen"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "Vaccine product containing Hepatitis A virus antigen"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "Vaccine product containing Hepatitis A virus antigen"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Hepatitis A virus antigen"
+              }
+            ]
+          },
+          {
+            "code" : "836377006",
+            "display" : "Vaccine product containing Influenza virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Vaccine product containing Influenza virus antigen"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "Vaccine product containing Influenza virus antigen"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "Vaccine product containing Influenza virus antigen"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "Vaccine product containing Influenza virus antigen"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Influenza virus antigen"
+              }
+            ]
+          },
+          {
+            "code" : "836378001",
+            "display" : "Japanese encephalitis virus antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Japanese encephalitis virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Japanese encephalitis virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Japanese encephalitis virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Japanese encephalitis virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Japanese encephalitis virus antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836379009",
+            "display" : "Vaccine product containing Human papillomavirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Human papillomavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Human papillomavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Human papillomavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Human papillomavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Human papillomavirus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "836380007",
+            "display" : "Vaccine product containing Haemophilus influenzae type b antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Haemophilus influenzae type b antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Haemophilus influenzae type b antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Haemophilus influenzae type b antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Haemophilus influenzae type b antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Haemophilus influenzae type b antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "836381006",
+            "display" : "Corynebacterium diphtheriae antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Corynebacterium diphtheriae antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836382004",
+            "display" : "Vaccine product containing Measles morbillivirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Measles morbillivirus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Measles morbillivirus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Measles morbillivirus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Measles morbillivirus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Measles morbillivirus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "836383009",
+            "display" : "Vibrio cholerae antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vibrio cholerae antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vibrio cholerae antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vibrio cholerae antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vibrio cholerae antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vibrio cholerae antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836384003",
+            "display" : "Bacillus anthracis antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Bacillus anthracis antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Bacillus anthracis antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Bacillus anthracis antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Bacillus anthracis antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Bacillus anthracis antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836385002",
+            "display" : "Yellow fever virus antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Yellow fever virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Yellow fever virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Yellow fever virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Yellow fever virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Yellow fever virus antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836387005",
+            "display" : "Rotavirus antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Rotavirus antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Rotavirus antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Rotavirus antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Rotavirus antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Rotavirus antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836388000",
+            "display" : "Vaccine product containing Rubella virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Rubella virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Rubella virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Rubella virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Rubella virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Rubella virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "836389008",
+            "display" : "Vaccine product containing Vaccinia virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Pocken-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la variole"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino antivaiolo"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter la virola"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccinia virus antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836390004",
+            "display" : "Vaccine product containing Salmonella enterica subspecies enterica serovar Typhi antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Salmonella enterica subspecies enterica serovar Typhi antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Salmonella enterica subspecies enterica serovar Typhi antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Salmonella enterica subspecies enterica serovar Typhi antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Salmonella enterica subspecies enterica serovar Typhi antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Salmonella enterica subspecies enterica serovar Typhi antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "836393002",
+            "display" : "Vaccine product containing Rabies lyssavirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Rabies lyssavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Rabies lyssavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Rabies lyssavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Rabies lyssavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Rabies lyssavirus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "836397001",
+            "display" : "Vaccine product containing Coxiella burnetii antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Coxiella burnetii antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Coxiella burnetii antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Coxiella burnetii antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Coxiella burnetii antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Coxiella burnetii antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "836398006",
+            "display" : "Vaccine product containing Streptococcus pneumoniae antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Streptococcus pneumoniae antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Streptococcus pneumoniae antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Streptococcus pneumoniae antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Streptococcus pneumoniae antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Streptococcus pneumoniae antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "836400005",
+            "display" : "Adenovirus antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Adenovirus antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Adenovirus antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Adenovirus antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Adenovirus antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Adenovirus antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836401009",
+            "display" : "Vaccine product containing Neisseria meningitidis antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Vaccine product containing Neisseria meningitidis antigen"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "Vaccine product containing Neisseria meningitidis antigen"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "Vaccine product containing Neisseria meningitidis antigen"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "Vaccine product containing Neisseria meningitidis antigen"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Neisseria meningitidis antigen"
+              }
+            ]
+          },
+          {
+            "code" : "836402002",
+            "display" : "Vaccine product containing live attenuated Mycobacterium bovis antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Vaccine product containing live attenuated Mycobacterium bovis antigen"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "Vaccine product containing live attenuated Mycobacterium bovis antigen"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "Vaccine product containing live attenuated Mycobacterium bovis antigen"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "Vaccine product containing live attenuated Mycobacterium bovis antigen"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing live attenuated Mycobacterium bovis antigen"
+              }
+            ]
+          },
+          {
+            "code" : "836403007",
+            "display" : "Tick-borne encephalitis virus antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Tick-borne encephalitis virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Tick-borne encephalitis virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Tick-borne encephalitis virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Tick-borne encephalitis virus antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Tick-borne encephalitis virus antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "836421005",
+            "display" : "Vaccine product containing Ebolavirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Vaccine product containing Ebolavirus antigen"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "Vaccine product containing Ebolavirus antigen"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "Vaccine product containing Ebolavirus antigen"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "Vaccine product containing Ebolavirus antigen"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Ebolavirus antigen"
+              }
+            ]
+          },
+          {
+            "code" : "836495005",
+            "display" : "Vaccine product containing Human alphaherpesvirus 3 antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Vaccine product containing Human alphaherpesvirus 3 antigen"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "Vaccine product containing Human alphaherpesvirus 3 antigen"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "Vaccine product containing Human alphaherpesvirus 3 antigen"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "Vaccine product containing Human alphaherpesvirus 3 antigen"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Human alphaherpesvirus 3 antigen"
+              }
+            ]
+          },
+          {
+            "code" : "836498007",
+            "display" : "Vaccine product containing Mumps orthorubulavirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Mumps orthorubulavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Mumps orthorubulavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Mumps orthorubulavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Mumps orthorubulavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Mumps orthorubulavirus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "836500008",
+            "display" : "Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "840549009",
+            "display" : "Vaccine product containing Yersinia pestis antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Yersinia pestis antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Yersinia pestis antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Yersinia pestis antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Yersinia pestis antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Yersinia pestis antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "840551008",
+            "display" : "Vaccine product containing Francisella tularensis antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Francisella tularensis antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Francisella tularensis antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Francisella tularensis antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Francisella tularensis antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Francisella tularensis antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "840563003",
+            "display" : "Vaccine product containing Dengue virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Vaccine product containing Dengue virus antigen"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "Vaccine product containing Dengue virus antigen"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "Vaccine product containing Dengue virus antigen"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "Vaccine product containing Dengue virus antigen"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Dengue virus antigen"
+              }
+            ]
+          },
+          {
+            "code" : "840564009",
+            "display" : "Vaccine product containing Leptospira antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Leptospira antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Leptospira antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Leptospira antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Leptospira antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Leptospira antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "840599008",
+            "display" : "Borrelia burgdorferi antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Borrelia burgdorferi antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Borrelia burgdorferi antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Borrelia burgdorferi antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Borrelia burgdorferi antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Borrelia burgdorferi antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "860722004",
+            "display" : "Vaccine product containing Junin virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Junin virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Junin virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Junin virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Junin virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Junin virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "860818003",
+            "display" : "Bacillus anthracis antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Bacillus anthracis antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Bacillus anthracis antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Bacillus anthracis antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Bacillus anthracis antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Bacillus anthracis antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "863911006",
+            "display" : "Vaccine product containing Clostridium tetani antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Clostridium tetani antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Clostridium tetani antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Clostridium tetani antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Clostridium tetani antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Clostridium tetani antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "863950005",
+            "display" : "Bacteria and virus antigens-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Bacteria and virus antigens-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Bacteria and virus antigens-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Bacteria and virus antigens-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Bacteria and virus antigens-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Bacteria and virus antigens-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "865997008",
+            "display" : "Hepatitis A virus antigen only adult vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Hepatitis A virus antigen only adult vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Hepatitis A virus antigen only adult vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Hepatitis A virus antigen only adult vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Hepatitis A virus antigen only adult vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Hepatitis A virus antigen only adult vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871716003",
+            "display" : "Tularemia vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Tularemia vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Tularemia vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Tularemia vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Tularemia vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Tularemia vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871717007",
+            "display" : "Vaccine product containing only Yellow fever virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Gelbfieber-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la fièvre jaune"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la febbre gialla"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter la fevra melna"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Yellow fever vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871718002",
+            "display" : "Plague vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Plague vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Plague vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Plague vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Plague vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Plague vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871719005",
+            "display" : "Vaccine product containing only Tick-borne encephalitis virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Zeckenenzephalitis-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre l'encéphalite à tiques"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la meningoencefalite da zecche"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter l'encefalitis da zeccas"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Tick-borne encephalitis vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871720004",
+            "display" : "Vaccine product containing only Dengue virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Dengue virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Dengue virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Dengue virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Dengue virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Dengue virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871721000",
+            "display" : "Vaccine product containing only Ebolavirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Ebolavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Ebolavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Ebolavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Ebolavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Ebolavirus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871722007",
+            "display" : "Adenovirus antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Adenovirus antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Adenovirus antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Adenovirus antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Adenovirus antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Adenovirus antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871723002",
+            "display" : "Coxiella burnetii antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Coxiella burnetii antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Coxiella burnetii antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Coxiella burnetii antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Coxiella burnetii antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Coxiella burnetii antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871724008",
+            "display" : "Vaccine product containing only Japanese encephalitis virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Japanische-Enzephalitis-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre l'encéphalite japonaise"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro l’encefalite giapponese"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter l'encefalitis giapunaisa"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Japanese encephalitis virus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871725009",
+            "display" : "Vaccine product containing only inactivated whole Japanese encephalitis virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Japanese encephalitis virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Japanese encephalitis virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Japanese encephalitis virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Japanese encephalitis virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only inactivated whole Japanese encephalitis virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871726005",
+            "display" : "Vaccine product containing only Rabies lyssavirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Tollwut-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin antirabique"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la rabbia"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter la frenesia"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Rabies vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871727001",
+            "display" : "Vaccine product containing only Vaccinia virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Vaccinia virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Vaccinia virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Vaccinia virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Vaccinia virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Vaccinia virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871729003",
+            "display" : "Corynebacterium diphtheriae antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Corynebacterium diphtheriae antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871730008",
+            "display" : "Low dose diphtheria vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Low dose diphtheria vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Low dose diphtheria vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Low dose diphtheria vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Low dose diphtheria vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Low dose diphtheria vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871732000",
+            "display" : "Rubella virus antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Rubella virus antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Rubella virus antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Rubella virus antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Rubella virus antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Rubella virus antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871737006",
+            "display" : "Vaccine product containing only Mumps orthorubulavirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Mumps-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre les oreillons"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la parotite"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter il glandun"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Mumps vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871738001",
+            "display" : "Live attenuated mumps vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Live attenuated mumps vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Live attenuated mumps vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Live attenuated mumps vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Live attenuated mumps vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated mumps vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871739009",
+            "display" : "Vaccine product containing only Human poliovirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Poliomyelitis-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la poliomyélite"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la poliomielite"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter poliomielitis"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Human poliovirus antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871740006",
+            "display" : "Inactivated whole Human poliovirus antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Inactivated whole Human poliovirus antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Inactivated whole Human poliovirus antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Inactivated whole Human poliovirus antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Inactivated whole Human poliovirus antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Inactivated whole Human poliovirus antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871742003",
+            "display" : "Vaccine product containing only Clostridium tetani antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Tetanus-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre le tétanos"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro il tetano"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter tetanus"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Tetanus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871750007",
+            "display" : "Hepatitis A virus antigen only paediatric vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Hepatitis A virus antigen only paediatric vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Hepatitis A virus antigen only paediatric vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Hepatitis A virus antigen only paediatric vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Hepatitis A virus antigen only paediatric vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Hepatitis A virus antigen only paediatric vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871751006",
+            "display" : "Vaccine product containing only Hepatitis A virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Hepatitis A-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre l'hépatite A"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro l’epatite A"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter hepatitis A"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Hepatitis A vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871755002",
+            "display" : "Typhoid Vi capsular polysaccharide vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Typhoid Vi capsular polysaccharide vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Typhoid Vi capsular polysaccharide vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Typhoid Vi capsular polysaccharide vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Typhoid Vi capsular polysaccharide vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Typhoid Vi capsular polysaccharide vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871758000",
+            "display" : "Pertussis vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Pertussis vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Pertussis vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Pertussis vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Pertussis vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pertussis vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871759008",
+            "display" : "Acellular Bordetella pertussis only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Acellular Bordetella pertussis only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871761004",
+            "display" : "Vaccine product containing only Rotavirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Rotavirus-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre les rotavirus"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro i rotavirus"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter il rotavirus"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Rotavirus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871764007",
+            "display" : "Vaccine product containing only Haemophilus influenzae type B antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Haemophilus influenzae B-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre Haemophilus influenzae de type B"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro l’Haemophilus influenzae di tipo B"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter hemofilus influenza B"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Haemophilus influenzae type B vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871765008",
+            "display" : "Vaccine product containing only Measles morbillivirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Masern-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la rougeole"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro il morbillo"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter il virustgel"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Measles vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871766009",
+            "display" : "Live attenuated Measles morbillivirus antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Live attenuated Measles morbillivirus antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Live attenuated Measles morbillivirus antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Live attenuated Measles morbillivirus antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Live attenuated Measles morbillivirus antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated Measles morbillivirus antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871768005",
+            "display" : "Influenza virus antigen only vaccine product in nasal dose form",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Influenza virus antigen only vaccine product in nasal dose form"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Influenza virus antigen only vaccine product in nasal dose form"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Influenza virus antigen only vaccine product in nasal dose form"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Influenza virus antigen only vaccine product in nasal dose form"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Influenza virus antigen only vaccine product in nasal dose form"
+              }
+            ]
+          },
+          {
+            "code" : "871772009",
+            "display" : "Influenza H1N1 vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Influenza H1N1 vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Influenza H1N1 vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Influenza H1N1 vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Influenza H1N1 vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Influenza H1N1 vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871803007",
+            "display" : "Vaccine product containing only Hepatitis A and Hepatitis B virus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Hepatitis A- und B-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre les hépatites A et B"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro l’epatite A e B"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter hepatitis A e B"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Hepatitis A and B vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871804001",
+            "display" : "Hepatitis A virus and Salmonella enterica subspecies enterica serovar Typhi antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Hepatitis A virus and Salmonella enterica subspecies enterica serovar Typhi antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Hepatitis A virus and Salmonella enterica subspecies enterica serovar Typhi antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Hepatitis A virus and Salmonella enterica subspecies enterica serovar Typhi antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Hepatitis A virus and Salmonella enterica subspecies enterica serovar Typhi antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Hepatitis A virus and Salmonella enterica subspecies enterica serovar Typhi antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871806004",
+            "display" : "Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871816007",
+            "display" : "Vaccine product containing only Clostridium tetani and Human poliovirus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Clostridium tetani and Human poliovirus antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871817003",
+            "display" : "Measles morbillivirus and Rubella virus antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Measles morbillivirus and Rubella virus antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Measles morbillivirus and Rubella virus antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Measles morbillivirus and Rubella virus antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Measles morbillivirus and Rubella virus antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Measles morbillivirus and Rubella virus antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871822003",
+            "display" : "Vaccine product containing only Hepatitis B virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Hepatitis B-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre l'hépatite B"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro l’epatite B"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter hepatitis B"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Hepatitis B vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871825001",
+            "display" : "Inactivated Japanese encephalitis virus adsorbed vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Inactivated Japanese encephalitis virus adsorbed vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Inactivated Japanese encephalitis virus adsorbed vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Inactivated Japanese encephalitis virus adsorbed vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Inactivated Japanese encephalitis virus adsorbed vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Inactivated Japanese encephalitis virus adsorbed vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871826000",
+            "display" : "Vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Diphterie- und Tetanus-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la diphtérie et le tétanos"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la difterite e il tetano"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter difteria e tetanus"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria and tetanus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871827009",
+            "display" : "Low dose diphtheria and tetanus vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Low dose diphtheria and tetanus vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Low dose diphtheria and tetanus vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Low dose diphtheria and tetanus vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Low dose diphtheria and tetanus vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Low dose diphtheria and tetanus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871830002",
+            "display" : "Corynebacterium diphtheriae toxoid antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae toxoid antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae toxoid antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae toxoid antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Corynebacterium diphtheriae toxoid antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Corynebacterium diphtheriae toxoid antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871831003",
+            "display" : "Vaccine product containing only Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Masern-, Mumps- und Röteln-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la rougeole, les oreillons et la rubéole"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro il morbillo, la parotite e la rosolia"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter il virustgel, il glandun e la rubella"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Measles and mumps and rubella vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871837004",
+            "display" : "Vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Diphterie-, Poliomyelitis- und Tetanus-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la diphtérie, la poliomyélite et le tétanos"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la difterite, il tetano e la poliomielite"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter difteria, poliomielitis e tetanus"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria and poliomyelitis and tetanus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871838009",
+            "display" : "Vaccine product containing only Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated Human poliovirus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated Human poliovirus antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871839001",
+            "display" : "Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871866001",
+            "display" : "Vaccine product containing only Neisseria meningitidis serogroup C antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Meningokokken-C-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre les méningocoques C"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la meningite C"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter meningococcus C"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Meningitis C vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871871008",
+            "display" : "Meningitis A and C vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Meningitis A and C vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Meningitis A and C vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Meningitis A and C vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Meningitis A and C vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Meningitis A and C vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871873006",
+            "display" : "Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Meningokokken-A, C-, W135- und Y-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre les méningocoques de types A, C, W135 et Y"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la meningite A, C, W135 e Y"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter meningococcus A, C, W135 ed Y"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Meningitis A, C, W135 and Y vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871875004",
+            "display" : "Vaccine product containing only Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Diphterie-, Pertussis- und Tetanus-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la diphtérie, la coqueluche et le tétanos"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la difterite, il tetano e la pertosse"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter difteria, la tuss chanina e tetanus"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria and pertussis and tetanus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871876003",
+            "display" : "Diphtheria and acellular pertussis and tetanus vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Diphtheria and acellular pertussis and tetanus vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Diphtheria and acellular pertussis and tetanus vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Diphtheria and acellular pertussis and tetanus vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Diphtheria and acellular pertussis and tetanus vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria and acellular pertussis and tetanus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871878002",
+            "display" : "Vaccine product containing only Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Diphterie-, Pertussis-, Poliomyelitis- und Tetanus-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la diphtérie, la coqueluche, la poliomyélite et le tétanos"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la difterite, il tetano, la pertosse e la poliomielite"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter difteria, la tuss chanina, poliomielitis e tetanus"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria and pertussis and poliomyelitis and tetanus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871883005",
+            "display" : "Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871886002",
+            "display" : "Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871887006",
+            "display" : "Vaccine product containing only Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type B and Human poliovirus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Diphtherie-, Haemophilus influenzae B-, Pertussis-, Poliomyelitis- und Tetanus-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la diphtérie, Haemophilus influenzae de type B, la coqueluche, la poliomyélite et le tétanos"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la difterite, il tetano, la pertosse, la poliomielite e l’Haemophilus influenzae di tipo B"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter difteria, hemofilus influenza B, la tuss chanina, poliomielitis e tetanus"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria and Haemophilus influenzae type B and pertussis and poliomyelitis and tetanus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871888001",
+            "display" : "Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and inactivated Human poliovirus antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and inactivated Human poliovirus antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871889009",
+            "display" : "Diphtheria and hepatitis B and inactivated poliomyelitis and acellular pertussis vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Diphtheria and hepatitis B and inactivated poliomyelitis and acellular pertussis vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Diphtheria and hepatitis B and inactivated poliomyelitis and acellular pertussis vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Diphtheria and hepatitis B and inactivated poliomyelitis and acellular pertussis vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Diphtheria and hepatitis B and inactivated poliomyelitis and acellular pertussis vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria and hepatitis B and inactivated poliomyelitis and acellular pertussis vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871890000",
+            "display" : "Vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871891001",
+            "display" : "Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B and inactivated whole Human poliovirus antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B and inactivated whole Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B and inactivated whole Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B and inactivated whole Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B and inactivated whole Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B and inactivated whole Human poliovirus antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871893003",
+            "display" : "Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and inactivated Human poliovirus antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and inactivated Human poliovirus antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871894009",
+            "display" : "Vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated whole Human poliovirus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated whole Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated whole Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated whole Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated whole Human poliovirus antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only acellular Bordetella pertussis and Clostridium tetani and low dose Corynebacterium diphtheriae and inactivated whole Human poliovirus antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871895005",
+            "display" : "Vaccine product containing only Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type B and Hepatitis B virus and Human poliovirus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Diphtherie-, Haemophilus influenzae B-, Hepatitis B-, Pertussis-, Poliomyelitis- und Tetanus-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la diphtérie, Haemophilus influenzae de type B, l'hépatite B, la coqueluche, la poliomyélite et le tétanos"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la difterite, il tetano, la pertosse, la poliomielite, l’Haemophilus influenzae di tipo B e l’epatite B"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter difteria, hemofilus influenza B, hepatitis B, la tuss chanina, poliomielitis e tetanus"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria and Haemophilus influenzae type B and hepatitis B and pertussis and poliomyelitis and tetanus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871897002",
+            "display" : "Rocky Mountain spotted fever vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Rocky Mountain spotted fever vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Rocky Mountain spotted fever vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Rocky Mountain spotted fever vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Rocky Mountain spotted fever vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Rocky Mountain spotted fever vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871908002",
+            "display" : "Vaccine product containing only Human alphaherpesvirus 3 and Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Masern-, Mumps-, Röteln- und Windpocken-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la rougeole, les oreillons, la rubéole et la varicelle"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro il morbillo, la parotite, la rosolia e la varicella"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter il virustgel, il glandun, la rubella e la virola selvadia"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Measles and mumps and rubella and varicella virus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871911001",
+            "display" : "Vaccine product containing only Borrelia burgdorferi antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Borrelia burgdorferi antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Borrelia burgdorferi antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Borrelia burgdorferi antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Borrelia burgdorferi antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Borrelia burgdorferi antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871916006",
+            "display" : "Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular oligosaccharide conjugated antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular oligosaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular oligosaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular oligosaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular oligosaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular oligosaccharide conjugated antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871918007",
+            "display" : "Rickettsia antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Rickettsia antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Rickettsia antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Rickettsia antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Rickettsia antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Rickettsia antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871919004",
+            "display" : "Human alphaherpesvirus 3 antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Attenuierter Varizella-Zoster-Lebendimpfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin à virus varicelle-zona vivant atténué"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino vivo attenuato contro il virus varicella-zoster"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin viv attenuà cunter la virola selvadia"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated Varicella-zoster vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871921009",
+            "display" : "Staphylococcus toxoid vaccine (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Staphylococcus toxoid vaccine (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Staphylococcus toxoid vaccine (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Staphylococcus toxoid vaccine (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Staphylococcus toxoid vaccine (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Staphylococcus toxoid vaccine (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "871925000",
+            "display" : "Hepatitis B surface antigen vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Hepatitis B surface antigen vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Hepatitis B surface antigen vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Hepatitis B surface antigen vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Hepatitis B surface antigen vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Hepatitis B surface antigen vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "871928003",
+            "display" : "Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus and Measles morbillivirus antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus and Measles morbillivirus antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus and Measles morbillivirus antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus and Measles morbillivirus antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus and Measles morbillivirus antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Human poliovirus and Measles morbillivirus antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "871929006",
+            "display" : "Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B virus antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B virus antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Clostridium tetani and Corynebacterium diphtheriae and Hepatitis B virus antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1003499009",
+            "display" : "Vaccine product containing only Influenza A virus subtype H5N1 antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Influenza A virus subtype H5N1 antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Influenza A virus subtype H5N1 antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Influenza A virus subtype H5N1 antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Influenza A virus subtype H5N1 antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Influenza A virus subtype H5N1 antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1010308001",
+            "display" : "Vaccine product containing only inactivated whole Hepatitis A virus HM-175 strain antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A virus HM-175 strain antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A virus HM-175 strain antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A virus HM-175 strain antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A virus HM-175 strain antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only inactivated whole Hepatitis A virus HM-175 strain antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1010310004",
+            "display" : "Live attenuated Human alphaherpesvirus 3 Oka-Merck strain only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Live attenuated Human alphaherpesvirus 3 Oka-Merck strain only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Live attenuated Human alphaherpesvirus 3 Oka-Merck strain only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Live attenuated Human alphaherpesvirus 3 Oka-Merck strain only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Live attenuated Human alphaherpesvirus 3 Oka-Merck strain only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated Human alphaherpesvirus 3 Oka-Merck strain only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1010313002",
+            "display" : "Vaccine product containing only live attenuated Influenza virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Influenza virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Influenza virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Influenza virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Influenza virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only live attenuated Influenza virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1010318006",
+            "display" : "Inactivated whole Hepatitis A GBM strain vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Inactivated whole Hepatitis A GBM strain vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Inactivated whole Hepatitis A GBM strain vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Inactivated whole Hepatitis A GBM strain vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Inactivated whole Hepatitis A GBM strain vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Inactivated whole Hepatitis A GBM strain vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1010322001",
+            "display" : "Vaccine product containing only live attenuated Human alphaherpesvirus 3 Oka strain antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Human alphaherpesvirus 3 Oka strain antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Human alphaherpesvirus 3 Oka strain antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Human alphaherpesvirus 3 Oka strain antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Human alphaherpesvirus 3 Oka strain antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only live attenuated Human alphaherpesvirus 3 Oka strain antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1010689004",
+            "display" : "Haemophilus influenzae type b capsular polysaccharide polyribosylribitol phosphate conjugated to Clostridium tetani toxoid vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Haemophilus influenzae type b capsular polysaccharide polyribosylribitol phosphate conjugated to Clostridium tetani toxoid vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Haemophilus influenzae type b capsular polysaccharide polyribosylribitol phosphate conjugated to Clostridium tetani toxoid vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Haemophilus influenzae type b capsular polysaccharide polyribosylribitol phosphate conjugated to Clostridium tetani toxoid vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Haemophilus influenzae type b capsular polysaccharide polyribosylribitol phosphate conjugated to Clostridium tetani toxoid vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Haemophilus influenzae type b capsular polysaccharide polyribosylribitol phosphate conjugated to Clostridium tetani toxoid vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1052328007",
+            "display" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 4, 6B, 9V, 14, 18C, 19F, and 23F capsular polysaccharide antigens conjugated (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "7-valenter Pneumokokken-Konjugatimpfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin antipneumoccique conjugué 7-valent"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino coniugato eptavalente contro gli pneumococchi"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter pneumococcus fusiunà valenza 7"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pneumococcal 7-valent conjugate vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1052330009",
+            "display" : "Pneumococcal 10-valent conjugate vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Pneumococcal 10-valent conjugate vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Pneumococcal 10-valent conjugate vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Pneumococcal 10-valent conjugate vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Pneumococcal 10-valent conjugate vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pneumococcal 10-valent conjugate vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1119220001",
+            "display" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 2, 3, 4, 5, 6B, 7F, 8, 9N, 9V, 10A, 11A, 12F, 14, 15B, 17F, 18C, 19A, 19F, 20, 22F, 23F, and 33F capsular polysaccharide antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "23-valenter Pneumokokken-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin antipneumococcique 23-valent"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino 23-valente contro gli pneumococchi"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter pneumococcus fusiunà valenza 23"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pneumococcal 23-valent vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1119254000",
+            "display" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, and 23F capsular polysaccharide antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "13-valenter Pneumokokken-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin antipneumococcique 13-valent"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino 13-valente contro gli pneumococchi"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter pneumococcus fusiunà valenza 13"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pneumococcal 13-valent conjugate vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1119279002",
+            "display" : "Inactivated whole Influenza A virus subtype H5N1 antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Inactivated whole Influenza A virus subtype H5N1 antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Inactivated whole Influenza A virus subtype H5N1 antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Inactivated whole Influenza A virus subtype H5N1 antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Inactivated whole Influenza A virus subtype H5N1 antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Inactivated whole Influenza A virus subtype H5N1 antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1119305005",
+            "display" : "2019 novel coronavirus antigen vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: 2019 novel coronavirus antigen vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: 2019 novel coronavirus antigen vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: 2019 novel coronavirus antigen vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: 2019 novel coronavirus antigen vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "2019 novel coronavirus antigen vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1119349007",
+            "display" : "Vaccine product containing only Severe acute respiratory syndrome coronavirus 2 messenger ribonucleic acid (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "mRNA-Impfstoff gegen COVID-19"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin à ARNm contre le COVID-19"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino a mRNA anti-COVID-19"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter COVID-19 mRNA"
+              },
+              {
+                "language" : "en-US",
+                "value" : "COVID-19 mRNA vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1119351006",
+            "display" : "Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C and Y antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C and Y antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C and Y antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C and Y antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C and Y antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Haemophilus influenzae type b and Neisseria meningitidis serogroup C and Y antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1156183006",
+            "display" : "Vaccine product containing only Human alphaherpesvirus 3 recombinant surface glycoprotein E antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Rekombinanter Varizella-Zoster-Glykoprotein-E-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin varicelle-zona recombinant à glycoprotéine E"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino con antigene glicoproteina E ricombinante del virus varicella-zoster"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter la virola selvadia cun antigens dal glicoprotein E recumbinant"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Recombinant Varicella-zoster glycoprotein E vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1156879008",
+            "display" : "Diphtheria and hepatitis B and pertussis and tetanus vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Diphtheria and hepatitis B and pertussis and tetanus vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Diphtheria and hepatitis B and pertussis and tetanus vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Diphtheria and hepatitis B and pertussis and tetanus vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Diphtheria and hepatitis B and pertussis and tetanus vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria and hepatitis B and pertussis and tetanus vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1157024006",
+            "display" : "Inactivated whole SARS-CoV-2 antigen vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Inactivated whole SARS-CoV-2 antigen vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Inactivated whole SARS-CoV-2 antigen vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Inactivated whole SARS-CoV-2 antigen vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Inactivated whole SARS-CoV-2 antigen vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Inactivated whole SARS-CoV-2 antigen vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1157356006",
+            "display" : "Influenza A virus A/California/7/2009 (H1N1)-like virus strain split virion hemagglutinin antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Influenza A virus A/California/7/2009 (H1N1)-like virus strain split virion hemagglutinin antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Influenza A virus A/California/7/2009 (H1N1)-like virus strain split virion hemagglutinin antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Influenza A virus A/California/7/2009 (H1N1)-like virus strain split virion hemagglutinin antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Influenza A virus A/California/7/2009 (H1N1)-like virus strain split virion hemagglutinin antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Influenza A virus A/California/7/2009 (H1N1)-like virus strain split virion hemagglutinin antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1162629006",
+            "display" : "Influenza A virus A/Indonesia/05/2005 (H5N1)-like virus strain split virion hemagglutinin antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Influenza A virus A/Indonesia/05/2005 (H5N1)-like virus strain split virion hemagglutinin antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Influenza A virus A/Indonesia/05/2005 (H5N1)-like virus strain split virion hemagglutinin antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Influenza A virus A/Indonesia/05/2005 (H5N1)-like virus strain split virion hemagglutinin antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Influenza A virus A/Indonesia/05/2005 (H5N1)-like virus strain split virion hemagglutinin antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Influenza A virus A/Indonesia/05/2005 (H5N1)-like virus strain split virion hemagglutinin antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1162634005",
+            "display" : "Acellular Bordetella pertussis, Clostridium tetani toxoid, Corynebacterium diphtheriae toxoid, Haemophilus influenzae type b conjugated, Hepatitis B virus and inactivated Human poliovirus antigens only pediatric vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis, Clostridium tetani toxoid, Corynebacterium diphtheriae toxoid, Haemophilus influenzae type b conjugated, Hepatitis B virus and inactivated Human poliovirus antigens only pediatric vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis, Clostridium tetani toxoid, Corynebacterium diphtheriae toxoid, Haemophilus influenzae type b conjugated, Hepatitis B virus and inactivated Human poliovirus antigens only pediatric vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis, Clostridium tetani toxoid, Corynebacterium diphtheriae toxoid, Haemophilus influenzae type b conjugated, Hepatitis B virus and inactivated Human poliovirus antigens only pediatric vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis, Clostridium tetani toxoid, Corynebacterium diphtheriae toxoid, Haemophilus influenzae type b conjugated, Hepatitis B virus and inactivated Human poliovirus antigens only pediatric vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Acellular Bordetella pertussis, Clostridium tetani toxoid, Corynebacterium diphtheriae toxoid, Haemophilus influenzae type b conjugated, Hepatitis B virus and inactivated Human poliovirus antigens only pediatric vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1162637003",
+            "display" : "Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus and inactivated Human poliovirus antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus and inactivated Human poliovirus antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Hepatitis B virus and inactivated Human poliovirus antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1162643001",
+            "display" : "Vaccine product containing only severe acute respiratory syndrome coronavirus 2 recombinant spike protein antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Covid-19 rekombinanter Spike-Protein-Antigen-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin antigénique à protéine Spike recombinante contre le COVID-19"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino antigenico anti-COVID-19 con proteina spike ricombinante"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter COVID-19 cun antigens dal protein spike recumbinant"
+              },
+              {
+                "language" : "en-US",
+                "value" : "COVID-19 recombinant spike protein antigen vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1187593009",
+            "display" : "Vaccine product containing only severe acute respiratory syndrome coronavirus 2 deoxyribonucleic acid plasmid encoding spike protein (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only severe acute respiratory syndrome coronavirus 2 deoxyribonucleic acid plasmid encoding spike protein (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only severe acute respiratory syndrome coronavirus 2 deoxyribonucleic acid plasmid encoding spike protein (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only severe acute respiratory syndrome coronavirus 2 deoxyribonucleic acid plasmid encoding spike protein (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only severe acute respiratory syndrome coronavirus 2 deoxyribonucleic acid plasmid encoding spike protein (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only severe acute respiratory syndrome coronavirus 2 deoxyribonucleic acid plasmid encoding spike protein (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1209197008",
+            "display" : "Vaccine product containing only Human papillomavirus 6, 11, 16, 18, 31, 33, 45, 52 and 58 antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Impfstoff gegen die humanen Papillomaviren 6, 11, 16, 18, 31, 33, 45, 52 und 58"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre le papillomavirus humain 6, 11, 16, 18, 31, 33, 45, 52 and 58"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro i papillomavirus umani 6, 11, 16, 18, 31, 33, 45, 52 e 58"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter ils papillomavirus umans 6, 11, 16, 18, 31, 33, 45, 52 e 58"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Human papillomavirus 6, 11, 16, 18, 31, 33, 45, 52 and 58 vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1252690003",
+            "display" : "Meningococcus serogroup A vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Meningococcus serogroup A vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Meningococcus serogroup A vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Meningococcus serogroup A vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Meningococcus serogroup A vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Meningococcus serogroup A vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1252703004",
+            "display" : "Vaccine product containing only Measles morbillivirus and Mumps orthorubulavirus (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Measles morbillivirus and Mumps orthorubulavirus (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Measles morbillivirus and Mumps orthorubulavirus (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Measles morbillivirus and Mumps orthorubulavirus (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Measles morbillivirus and Mumps orthorubulavirus (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Measles morbillivirus and Mumps orthorubulavirus (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1252708008",
+            "display" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, 22F, 23F, and 33F capsular polysaccharide conjugated antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, 22F, 23F, and 33F capsular polysaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, 22F, 23F, and 33F capsular polysaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, 22F, 23F, and 33F capsular polysaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, 22F, 23F, and 33F capsular polysaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, 22F, 23F, and 33F capsular polysaccharide conjugated antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1252709000",
+            "display" : "Pneumococcal 1, 3, 4, 5, 6A, 6B, 7F, 8, 9V, 10A, 11A, 12F, 14, 15B, 18C, 19A, 19F, 22F, 23F, 33F conjugate vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Pneumococcal 1, 3, 4, 5, 6A, 6B, 7F, 8, 9V, 10A, 11A, 12F, 14, 15B, 18C, 19A, 19F, 22F, 23F, 33F conjugate vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Pneumococcal 1, 3, 4, 5, 6A, 6B, 7F, 8, 9V, 10A, 11A, 12F, 14, 15B, 18C, 19A, 19F, 22F, 23F, 33F conjugate vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Pneumococcal 1, 3, 4, 5, 6A, 6B, 7F, 8, 9V, 10A, 11A, 12F, 14, 15B, 18C, 19A, 19F, 22F, 23F, 33F conjugate vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Pneumococcal 1, 3, 4, 5, 6A, 6B, 7F, 8, 9V, 10A, 11A, 12F, 14, 15B, 18C, 19A, 19F, 22F, 23F, 33F conjugate vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pneumococcal 1, 3, 4, 5, 6A, 6B, 7F, 8, 9V, 10A, 11A, 12F, 14, 15B, 18C, 19A, 19F, 22F, 23F, 33F conjugate vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1254676002",
+            "display" : "Vaccine product containing live attenuated virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing live attenuated virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing live attenuated virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing live attenuated virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing live attenuated virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing live attenuated virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1269346004",
+            "display" : "Vaccine product containing only live attenuated Vaccinia virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Vaccinia virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Vaccinia virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Vaccinia virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Vaccinia virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only live attenuated Vaccinia virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1287338003",
+            "display" : "Tick-borne encephalitis virus antigen only paediatric vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Tick-borne encephalitis virus antigen only paediatric vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Tick-borne encephalitis virus antigen only paediatric vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Tick-borne encephalitis virus antigen only paediatric vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Tick-borne encephalitis virus antigen only paediatric vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Tick-borne encephalitis virus antigen only paediatric vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1287595003",
+            "display" : "Pediatric vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pediatric vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1287596002",
+            "display" : "Adult vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Adult vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Adult vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Adult vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Adult vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Adult vaccine product containing only severe acute respiratory syndrome coronavirus 2 encoding B lineage spike protein and BA.4/BA.5 lineage spike protein messenger ribonucleic acid"
+              }
+            ]
+          },
+          {
+            "code" : "1287964002",
+            "display" : "B lineage SARS-CoV-2 monovalent mRNA only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: B lineage SARS-CoV-2 monovalent mRNA only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: B lineage SARS-CoV-2 monovalent mRNA only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: B lineage SARS-CoV-2 monovalent mRNA only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: B lineage SARS-CoV-2 monovalent mRNA only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "B lineage SARS-CoV-2 monovalent mRNA only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1290123005",
+            "display" : "Vaccine product containing protozoa antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing protozoa antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing protozoa antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing protozoa antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing protozoa antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing protozoa antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1290624003",
+            "display" : "Vaccine product containing Variola virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Variola virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Variola virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Variola virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Variola virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Variola virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1290625002",
+            "display" : "Variola virus antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Variola virus antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Variola virus antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Variola virus antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Variola virus antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Variola virus antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1290764006",
+            "display" : "Vaccine product containing only Human-bovine reassortant Rotavirus G1, G2, G3, G4, and P1A[8] antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Human-bovine reassortant Rotavirus G1, G2, G3, G4, and P1A[8] antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Human-bovine reassortant Rotavirus G1, G2, G3, G4, and P1A[8] antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Human-bovine reassortant Rotavirus G1, G2, G3, G4, and P1A[8] antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Human-bovine reassortant Rotavirus G1, G2, G3, G4, and P1A[8] antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Human-bovine reassortant Rotavirus G1, G2, G3, G4, and P1A[8] antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1293025000",
+            "display" : "Vaccine product containing only modified Vaccinia virus Ankara antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only modified Vaccinia virus Ankara antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only modified Vaccinia virus Ankara antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only modified Vaccinia virus Ankara antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only modified Vaccinia virus Ankara antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only modified Vaccinia virus Ankara antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1296676008",
+            "display" : "Hepatitis B recombinant adsorbed surface antigen vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Hepatitis B recombinant adsorbed surface antigen vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Hepatitis B recombinant adsorbed surface antigen vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Hepatitis B recombinant adsorbed surface antigen vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Hepatitis B recombinant adsorbed surface antigen vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Hepatitis B recombinant adsorbed surface antigen vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1296677004",
+            "display" : "Hepatitis B high dose recombinant surface antigen vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Hepatitis B high dose recombinant surface antigen vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Hepatitis B high dose recombinant surface antigen vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Hepatitis B high dose recombinant surface antigen vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Hepatitis B high dose recombinant surface antigen vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Hepatitis B high dose recombinant surface antigen vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1296678009",
+            "display" : "3 antigen Hepatitis B recombinant surface only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: 3 antigen Hepatitis B recombinant surface only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: 3 antigen Hepatitis B recombinant surface only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: 3 antigen Hepatitis B recombinant surface only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: 3 antigen Hepatitis B recombinant surface only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "3 antigen Hepatitis B recombinant surface only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1296753004",
+            "display" : "Paediatric vaccine inactivated whole Hepatitis A and Hepatitis B surface antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Paediatric vaccine inactivated whole Hepatitis A and Hepatitis B surface antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Paediatric vaccine inactivated whole Hepatitis A and Hepatitis B surface antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Paediatric vaccine inactivated whole Hepatitis A and Hepatitis B surface antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Paediatric vaccine inactivated whole Hepatitis A and Hepatitis B surface antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Paediatric vaccine inactivated whole Hepatitis A and Hepatitis B surface antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1296864005",
+            "display" : "Paediatric Hepatitis B recombinant adsorbed surface antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Paediatric Hepatitis B recombinant adsorbed surface antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Paediatric Hepatitis B recombinant adsorbed surface antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Paediatric Hepatitis B recombinant adsorbed surface antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Paediatric Hepatitis B recombinant adsorbed surface antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Paediatric Hepatitis B recombinant adsorbed surface antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "1297215000",
+            "display" : "Live attenuated rubella vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Live attenuated rubella vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Live attenuated rubella vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Live attenuated rubella vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Live attenuated rubella vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated rubella vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1297217008",
+            "display" : "Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "91000221102",
+            "display" : "Vaccine product containing only inactivated whole Hepatitis A virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only inactivated whole Hepatitis A virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "121000221105",
+            "display" : "Vaccine product containing only inactivated whole Hepatitis A and Hepatitis B surface antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A and Hepatitis B surface antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A and Hepatitis B surface antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A and Hepatitis B surface antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Hepatitis A and Hepatitis B surface antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only inactivated whole Hepatitis A and Hepatitis B surface antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "601000221108",
+            "display" : "Bordetella pertussis antigen-containing vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Bordetella pertussis antigen-containing vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Bordetella pertussis antigen-containing vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Bordetella pertussis antigen-containing vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Bordetella pertussis antigen-containing vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Bordetella pertussis antigen-containing vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "911000221103",
+            "display" : "Vaccine product containing only Human papillomavirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Human papillomavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Human papillomavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Human papillomavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Human papillomavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Human papillomavirus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "921000221108",
+            "display" : "Neisseria meningitidis antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Neisseria meningitidis antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Neisseria meningitidis antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Neisseria meningitidis antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Neisseria meningitidis antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Neisseria meningitidis antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "951000221102",
+            "display" : "Vaccine product containing only Neisseria meningitidis serogroup C capsular polysaccharide conjugated antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup C capsular polysaccharide conjugated antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup C capsular polysaccharide conjugated antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup C capsular polysaccharide conjugated antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup C capsular polysaccharide conjugated antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Neisseria meningitidis serogroup C capsular polysaccharide conjugated antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "961000221100",
+            "display" : "Vaccine product containing only Salmonella enterica subspecies enterica serovar Typhi antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Typhus-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la fièvre typhoïde"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la febbre tifoide"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter tifus"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Typhoid vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "971000221109",
+            "display" : "Live attenuated Salmonella enterica subspecies enterica serovar Typhi antigen only vaccine product in oral dose form",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Live attenuated Salmonella enterica subspecies enterica serovar Typhi antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Live attenuated Salmonella enterica subspecies enterica serovar Typhi antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Live attenuated Salmonella enterica subspecies enterica serovar Typhi antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Live attenuated Salmonella enterica subspecies enterica serovar Typhi antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated Salmonella enterica subspecies enterica serovar Typhi antigen only vaccine product in oral dose form"
+              }
+            ]
+          },
+          {
+            "code" : "981000221107",
+            "display" : "Pneumococcal vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "23-valenter Pneumokokken-Konjugatimpfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin antipneumococcique conjugué 23-valent"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino coniugato 23-valente contro gli pneumococchi"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter pneumococcus fusiunà valenza 23"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pneumococcal 23-valent conjugate vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "991000221105",
+            "display" : "Vaccine product containing only Vibrio cholerae antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Cholera-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre le choléra"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro il colera"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter colera"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Cholera vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1001000221103",
+            "display" : "Inactivated cholera vaccine in oral dose form",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Inactivated cholera vaccine in oral dose form"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Inactivated cholera vaccine in oral dose form"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Inactivated cholera vaccine in oral dose form"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Inactivated cholera vaccine in oral dose form"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Inactivated cholera vaccine in oral dose form"
+              }
+            ]
+          },
+          {
+            "code" : "1011000221100",
+            "display" : "Live attenuated Vibrio cholerae antigen only vaccine product in oral dose form",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Live attenuated Vibrio cholerae antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Live attenuated Vibrio cholerae antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Live attenuated Vibrio cholerae antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Live attenuated Vibrio cholerae antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated Vibrio cholerae antigen only vaccine product in oral dose form"
+              }
+            ]
+          },
+          {
+            "code" : "1031000221108",
+            "display" : "Vaccine product containing Human poliovirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Human poliovirus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Human poliovirus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Human poliovirus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Human poliovirus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Human poliovirus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1051000221104",
+            "display" : "Live attenuated poliovirus serotypes 1 and 3 vaccine in oral dose form",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Live attenuated poliovirus serotypes 1 and 3 vaccine in oral dose form"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Live attenuated poliovirus serotypes 1 and 3 vaccine in oral dose form"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Live attenuated poliovirus serotypes 1 and 3 vaccine in oral dose form"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Live attenuated poliovirus serotypes 1 and 3 vaccine in oral dose form"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated poliovirus serotypes 1 and 3 vaccine in oral dose form"
+              }
+            ]
+          },
+          {
+            "code" : "1061000221102",
+            "display" : "Vaccine product containing only Neisseria meningitidis capsular polysaccharide antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis capsular polysaccharide antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis capsular polysaccharide antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis capsular polysaccharide antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis capsular polysaccharide antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Neisseria meningitidis capsular polysaccharide antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1081000221109",
+            "display" : "Vaccine product containing only live attenuated Rotavirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Rotavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Rotavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Rotavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Rotavirus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only live attenuated Rotavirus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1101000221104",
+            "display" : "Vaccine product containing Clostridium tetani toxoid antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Clostridium tetani toxoid antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Clostridium tetani toxoid antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Clostridium tetani toxoid antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Clostridium tetani toxoid antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Clostridium tetani toxoid antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1111000221101",
+            "display" : "Vaccine product containing only live attenuated Junin virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Junin virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Junin virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Junin virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Junin virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only live attenuated Junin virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1121000221106",
+            "display" : "Vaccine product containing only live attenuated Yellow fever virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Yellow fever virus antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Yellow fever virus antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Yellow fever virus antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Yellow fever virus antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only live attenuated Yellow fever virus antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1131000221109",
+            "display" : "Vaccine product containing only inactivated whole Rabies lyssavirus antigen",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Rabies lyssavirus antigen"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Rabies lyssavirus antigen"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Rabies lyssavirus antigen"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Rabies lyssavirus antigen"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only inactivated whole Rabies lyssavirus antigen"
+              }
+            ]
+          },
+          {
+            "code" : "1181000221105",
+            "display" : "Vaccine product containing only Influenza virus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Influenza-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre la grippe"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro l’influenza"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter la grippa"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Influenza vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1801000221105",
+            "display" : "Vaccine product containing only Streptococcus pneumoniae capsular polysaccharide antigen conjugated (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Streptococcus pneumoniae capsular polysaccharide antigen conjugated (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Streptococcus pneumoniae capsular polysaccharide antigen conjugated (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Streptococcus pneumoniae capsular polysaccharide antigen conjugated (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Streptococcus pneumoniae capsular polysaccharide antigen conjugated (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Streptococcus pneumoniae capsular polysaccharide antigen conjugated (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1861000221106",
+            "display" : "Vaccine product containing only live attenuated Mycobacterium bovis antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "BCG (Bacillus Calmette-Guérin)-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin BCG (bacille de Calmette-Guérin)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino BCG (bacillo di Calmette-Guérin)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter BCG (Bacillus Calmette-Guérin)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "BCG (Bacillus Calmette-Guerin) vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1971000221105",
+            "display" : "Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular polysaccharide conjugated antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular polysaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular polysaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular polysaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular polysaccharide conjugated antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Neisseria meningitidis serogroup A, C, W135 and Y capsular polysaccharide conjugated antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "1981000221108",
+            "display" : "Vaccine product containing only Neisseria meningitidis serogroup B antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Meningokokken-B-Impfstoff"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre les méningocoques B"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro la meningite B"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter meningococcus B"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Meningitis B vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "1991000221106",
+            "display" : "Vaccine product containing only Human papillomavirus 16 and 18 antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Impfstoff gegen humanes Papillomavirus 16 und 18"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre les papillomavirus humains 16 et 18"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro il papillomavirus umano tipi 16 e 18"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter ils papillomavirus umans 16 e 18"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Human papillomavirus 16 and 18 vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "2001000221108",
+            "display" : "Vaccine product containing only Human papillomavirus 6, 11, 16 and 18 antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Impfstoff gegen humanes Papillomavirus 6, 11, 16 und 18"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin contre les papillomavirus humains 6, 11, 16 et 18"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino contro il papillomavirus umano tipi 6, 11, 16 e 18"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter ils papillomavirus umans 6, 11, 16 e 18"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Human papillomavirus 6, 11, 16 and 18 vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "2021000221101",
+            "display" : "Tetanus toxoid vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Tetanus toxoid vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Tetanus toxoid vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Tetanus toxoid vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Tetanus toxoid vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Tetanus toxoid vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "2031000221103",
+            "display" : "Adult vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae toxoids (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Adult vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae toxoids (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Adult vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae toxoids (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Adult vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae toxoids (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Adult vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae toxoids (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Adult vaccine product containing only Clostridium tetani and Corynebacterium diphtheriae toxoids (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "2041000221105",
+            "display" : "Haemophilus influenzae type b capsular polysaccharide conjugated vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Haemophilus influenzae type b capsular polysaccharide conjugated vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Haemophilus influenzae type b capsular polysaccharide conjugated vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Haemophilus influenzae type b capsular polysaccharide conjugated vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Haemophilus influenzae type b capsular polysaccharide conjugated vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Haemophilus influenzae type b capsular polysaccharide conjugated vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "2051000221107",
+            "display" : "Adult vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Adult vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Adult vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Adult vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Adult vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Adult vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "2061000221109",
+            "display" : "Pediatric vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pediatric vaccine product containing only whole cell Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "2071000221100",
+            "display" : "Whole cell Bordetella pertussis and Corynebacterium diphtheriae toxoid and Clostridium tetani toxoid and Haemophilus influenzae type b capsular polysaccharide conjugated antigens only pediatric vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Whole cell Bordetella pertussis and Corynebacterium diphtheriae toxoid and Clostridium tetani toxoid and Haemophilus influenzae type b capsular polysaccharide conjugated antigens only pediatric vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Whole cell Bordetella pertussis and Corynebacterium diphtheriae toxoid and Clostridium tetani toxoid and Haemophilus influenzae type b capsular polysaccharide conjugated antigens only pediatric vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Whole cell Bordetella pertussis and Corynebacterium diphtheriae toxoid and Clostridium tetani toxoid and Haemophilus influenzae type b capsular polysaccharide conjugated antigens only pediatric vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Whole cell Bordetella pertussis and Corynebacterium diphtheriae toxoid and Clostridium tetani toxoid and Haemophilus influenzae type b capsular polysaccharide conjugated antigens only pediatric vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Whole cell Bordetella pertussis and Corynebacterium diphtheriae toxoid and Clostridium tetani toxoid and Haemophilus influenzae type b capsular polysaccharide conjugated antigens only pediatric vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "2081000221102",
+            "display" : "Diphtheria toxoid, Haemophilus influenzae type b conjugate, hepatitis B surface antigen, acellular pertussis and tetanus toxoid pediatric vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Diphtheria toxoid, Haemophilus influenzae type b conjugate, hepatitis B surface antigen, acellular pertussis and tetanus toxoid pediatric vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Diphtheria toxoid, Haemophilus influenzae type b conjugate, hepatitis B surface antigen, acellular pertussis and tetanus toxoid pediatric vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Diphtheria toxoid, Haemophilus influenzae type b conjugate, hepatitis B surface antigen, acellular pertussis and tetanus toxoid pediatric vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Diphtheria toxoid, Haemophilus influenzae type b conjugate, hepatitis B surface antigen, acellular pertussis and tetanus toxoid pediatric vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria toxoid, Haemophilus influenzae type b conjugate, hepatitis B surface antigen, acellular pertussis and tetanus toxoid pediatric vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "2091000221104",
+            "display" : "Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens only paediatric vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens only paediatric vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens only paediatric vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens only paediatric vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens only paediatric vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Acellular Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae and Haemophilus influenzae type b and Human poliovirus antigens only paediatric vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "2101000221107",
+            "display" : "Diphtheria and acellular pertussis and Haemophilus influenzae type b and hepatitis B and poliomyelitis and tetanus pediatric vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Diphtheria and acellular pertussis and Haemophilus influenzae type b and hepatitis B and poliomyelitis and tetanus pediatric vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Diphtheria and acellular pertussis and Haemophilus influenzae type b and hepatitis B and poliomyelitis and tetanus pediatric vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Diphtheria and acellular pertussis and Haemophilus influenzae type b and hepatitis B and poliomyelitis and tetanus pediatric vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Diphtheria and acellular pertussis and Haemophilus influenzae type b and hepatitis B and poliomyelitis and tetanus pediatric vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria and acellular pertussis and Haemophilus influenzae type b and hepatitis B and poliomyelitis and tetanus pediatric vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "2171000221104",
+            "display" : "Typhoid polysaccharide vaccine in parenteral dose form",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Typhoid polysaccharide vaccine in parenteral dose form"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Typhoid polysaccharide vaccine in parenteral dose form"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Typhoid polysaccharide vaccine in parenteral dose form"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Typhoid polysaccharide vaccine in parenteral dose form"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Typhoid polysaccharide vaccine in parenteral dose form"
+              }
+            ]
+          },
+          {
+            "code" : "2181000221101",
+            "display" : "Vibrio cholerae antigen only vaccine product in oral dose form",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vibrio cholerae antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vibrio cholerae antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vibrio cholerae antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vibrio cholerae antigen only vaccine product in oral dose form"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vibrio cholerae antigen only vaccine product in oral dose form"
+              }
+            ]
+          },
+          {
+            "code" : "2191000221103",
+            "display" : "Inactivated rabies vaccine grown in cellular line",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Inactivated rabies vaccine grown in cellular line"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Inactivated rabies vaccine grown in cellular line"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Inactivated rabies vaccine grown in cellular line"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Inactivated rabies vaccine grown in cellular line"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Inactivated rabies vaccine grown in cellular line"
+              }
+            ]
+          },
+          {
+            "code" : "2201000221100",
+            "display" : "Vaccine product containing only inactivated whole Rabies lyssavirus antigen grown in brain tissue (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Rabies lyssavirus antigen grown in brain tissue (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Rabies lyssavirus antigen grown in brain tissue (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Rabies lyssavirus antigen grown in brain tissue (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only inactivated whole Rabies lyssavirus antigen grown in brain tissue (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only inactivated whole Rabies lyssavirus antigen grown in brain tissue (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "2211000221102",
+            "display" : "Influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria lineage antigens only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria lineage antigens only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria lineage antigens only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria lineage antigens only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria lineage antigens only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria lineage antigens only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "2221000221107",
+            "display" : "Live attenuated Human alphaherpesvirus 3 only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Live attenuated Human alphaherpesvirus 3 only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Live attenuated Human alphaherpesvirus 3 only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Live attenuated Human alphaherpesvirus 3 only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Live attenuated Human alphaherpesvirus 3 only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated Human alphaherpesvirus 3 only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "2231000221105",
+            "display" : "Vaccine product containing only live attenuated Measles morbillivirus and Rubella virus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Rubella virus antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Rubella virus antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Rubella virus antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Rubella virus antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only live attenuated Measles morbillivirus and Rubella virus antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "2241000221103",
+            "display" : "Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "2251000221101",
+            "display" : "Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus and Human alphaherpesvirus 3 antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus and Human alphaherpesvirus 3 antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus and Human alphaherpesvirus 3 antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus and Human alphaherpesvirus 3 antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus and Human alphaherpesvirus 3 antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only live attenuated Measles morbillivirus and Mumps orthorubulavirus and Rubella virus and Human alphaherpesvirus 3 antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "2261000221104",
+            "display" : "Vaccine product containing only influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria and Yamagata lineage antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria and Yamagata lineage antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria and Yamagata lineage antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria and Yamagata lineage antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria and Yamagata lineage antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only influenza A virus subtypes H1N1 and H3N2 and influenza B virus Victoria and Yamagata lineage antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "28531000087107",
+            "display" : "COVID-19 vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: COVID-19 vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: COVID-19 vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: COVID-19 vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: COVID-19 vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "COVID-19 vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "29061000087103",
+            "display" : "Vaccine product containing only recombinant non-replicating viral vector encoding Severe acute respiratory syndrome coronavirus 2 spike protein (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Nicht replizierender viraler Vektorimpfstoff gegen COVID-19"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "vaccin à vecteur viral non réplicatif contre le COVID-19"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "vaccino a vettore virale non replicante anti-COVID-19"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "vaccin cunter COVID-19 vectorial viral betg replitgant"
+              },
+              {
+                "language" : "en-US",
+                "value" : "COVID-19 non-replicating viral vector vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "30141000087107",
+            "display" : "COVID-19 virus-like particle antigen vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: COVID-19 virus-like particle antigen vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: COVID-19 virus-like particle antigen vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: COVID-19 virus-like particle antigen vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: COVID-19 virus-like particle antigen vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "COVID-19 virus-like particle antigen vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "45861000087106",
+            "display" : "Vaccine product containing Plasmodium falciparum antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing Plasmodium falciparum antigen (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing Plasmodium falciparum antigen (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing Plasmodium falciparum antigen (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing Plasmodium falciparum antigen (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing Plasmodium falciparum antigen (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "45891000087103",
+            "display" : "Live attenuated Zaire ebolavirus antigen only vaccine product",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Live attenuated Zaire ebolavirus antigen only vaccine product"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Live attenuated Zaire ebolavirus antigen only vaccine product"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Live attenuated Zaire ebolavirus antigen only vaccine product"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Live attenuated Zaire ebolavirus antigen only vaccine product"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated Zaire ebolavirus antigen only vaccine product"
+              }
+            ]
+          },
+          {
+            "code" : "51311000087100",
+            "display" : "Vaccine product containing only Human orthopneumovirus antigen (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "Vaccine product containing only Human orthopneumovirus antigen"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "Vaccine product containing only Human orthopneumovirus antigen"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "Vaccine product containing only Human orthopneumovirus antigen"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "Vaccine product containing only Human orthopneumovirus antigen"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Human orthopneumovirus antigen"
+              }
+            ]
+          },
+          {
+            "code" : "51451000087105",
+            "display" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, and 23F capsular polysaccharide antigens conjugated (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, and 23F capsular polysaccharide antigens conjugated (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, and 23F capsular polysaccharide antigens conjugated (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, and 23F capsular polysaccharide antigens conjugated (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, and 23F capsular polysaccharide antigens conjugated (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Streptococcus pneumoniae Danish serotype 1, 3, 4, 5, 6A, 6B, 7F, 9V, 14, 18C, 19A, 19F, and 23F capsular polysaccharide antigens conjugated (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "51591000087104",
+            "display" : "Vaccine product containing only Enterovirus A71 antigen",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Vaccine product containing only Enterovirus A71 antigen"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Vaccine product containing only Enterovirus A71 antigen"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Vaccine product containing only Enterovirus A71 antigen"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Vaccine product containing only Enterovirus A71 antigen"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Vaccine product containing only Enterovirus A71 antigen"
+              }
+            ]
+          },
+          {
+            "code" : "318341000221109",
+            "display" : "Diphtheria toxoid and Haemophilus influenzae type b conjugate and acellular pertussis and tetanus toxoid pediatric vaccine",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Diphtheria toxoid and Haemophilus influenzae type b conjugate and acellular pertussis and tetanus toxoid pediatric vaccine"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Diphtheria toxoid and Haemophilus influenzae type b conjugate and acellular pertussis and tetanus toxoid pediatric vaccine"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Diphtheria toxoid and Haemophilus influenzae type b conjugate and acellular pertussis and tetanus toxoid pediatric vaccine"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Diphtheria toxoid and Haemophilus influenzae type b conjugate and acellular pertussis and tetanus toxoid pediatric vaccine"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Diphtheria toxoid and Haemophilus influenzae type b conjugate and acellular pertussis and tetanus toxoid pediatric vaccine"
+              }
+            ]
+          },
+          {
+            "code" : "318351000221106",
+            "display" : "Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid and inactivated whole Human Poliovirus serotype 1, 2 and 3 antigens (medicinal product)",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid and inactivated whole Human Poliovirus serotype 1, 2 and 3 antigens (medicinal product)"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid and inactivated whole Human Poliovirus serotype 1, 2 and 3 antigens (medicinal product)"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid and inactivated whole Human Poliovirus serotype 1, 2 and 3 antigens (medicinal product)"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid and inactivated whole Human Poliovirus serotype 1, 2 and 3 antigens (medicinal product)"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Pediatric vaccine product containing only acellular Bordetella pertussis and Clostridium tetani toxoid and Corynebacterium diphtheriae toxoid and inactivated whole Human Poliovirus serotype 1, 2 and 3 antigens (medicinal product)"
+              }
+            ]
+          },
+          {
+            "code" : "319941000221104",
+            "display" : "Live attenuated Mycobacterium bovis antigen only vaccine product in parenteral dose form",
+            "designation" : [
+              {
+                "language" : "de-CH",
+                "value" : "TRLT: Live attenuated Mycobacterium bovis antigen only vaccine product in parenteral dose form"
+              },
+              {
+                "language" : "fr-CH",
+                "value" : "TRLT: Live attenuated Mycobacterium bovis antigen only vaccine product in parenteral dose form"
+              },
+              {
+                "language" : "it-CH",
+                "value" : "TRLT: Live attenuated Mycobacterium bovis antigen only vaccine product in parenteral dose form"
+              },
+              {
+                "language" : "rm-CH",
+                "value" : "TRLT: Live attenuated Mycobacterium bovis antigen only vaccine product in parenteral dose form"
+              },
+              {
+                "language" : "en-US",
+                "value" : "Live attenuated Mycobacterium bovis antigen only vaccine product in parenteral dose form"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```
