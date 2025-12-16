@@ -1,0 +1,138 @@
+# CH LAB-Report PractitionerRole - CH LAB-Report (R4) v2.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH LAB-Report PractitionerRole**
+
+## Resource Profile: CH LAB-Report PractitionerRole 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-practitionerrole | *Version*:2.0.0 |
+| Active as of 2025-12-16 | *Computable Name*:ChLabPractitionerRole |
+| **Copyright/Legal**: CC0-1.0 | |
+
+ 
+This profile constrains the PractitionerRole resource for the purpose of laboratory test reports in Switzerland. 
+
+**Usages:**
+
+* Use this Profile: [CH LAB-Report Document: Laboratory Report](StructureDefinition-ch-lab-report-document.md)
+* Refer to this Profile: [CH LAB-Report Observation Results: Laboratory Report](StructureDefinition-ch-lab-observation-results-laboratory.md) and [CH LAB-Report Composition: Laboratory Report](StructureDefinition-ch-lab-report-composition.md)
+
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-lab-report|current/StructureDefinition/ch-lab-practitionerrole)
+
+### Formal Views of Profile Content
+
+ [Description of Profiles, Differentials, Snapshots and how the different presentations work](http://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#structure-definitions). 
+
+ 
+
+Other representations of profile: [CSV](StructureDefinition-ch-lab-practitionerrole.csv), [Excel](StructureDefinition-ch-lab-practitionerrole.xlsx), [Schematron](StructureDefinition-ch-lab-practitionerrole.sch) 
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "ch-lab-practitionerrole",
+  "extension" : [
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-imposeProfile",
+      "valueCanonical" : "http://hl7.eu/fhir/laboratory/StructureDefinition/PractitionerRole-eu-lab"
+    }
+  ],
+  "url" : "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-practitionerrole",
+  "version" : "2.0.0",
+  "name" : "ChLabPractitionerRole",
+  "title" : "CH LAB-Report PractitionerRole",
+  "status" : "active",
+  "date" : "2025-12-16T10:40:10+00:00",
+  "publisher" : "HL7 Switzerland",
+  "contact" : [
+    {
+      "name" : "HL7 Switzerland",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.hl7.ch"
+        }
+      ]
+    },
+    {
+      "name" : "Marcel Hanselmann",
+      "telecom" : [
+        {
+          "system" : "email",
+          "value" : "laborprojektgruppe@gmail.com",
+          "use" : "work"
+        }
+      ]
+    }
+  ],
+  "description" : "This profile constrains the PractitionerRole resource for the purpose of laboratory test reports in Switzerland.",
+  "jurisdiction" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CH"
+        }
+      ]
+    }
+  ],
+  "copyright" : "CC0-1.0",
+  "fhirVersion" : "4.0.1",
+  "mapping" : [
+    {
+      "identity" : "v2",
+      "uri" : "http://hl7.org/v2",
+      "name" : "HL7 v2 Mapping"
+    },
+    {
+      "identity" : "rim",
+      "uri" : "http://hl7.org/v3",
+      "name" : "RIM Mapping"
+    },
+    {
+      "identity" : "servd",
+      "uri" : "http://www.omg.org/spec/ServD/1.0/",
+      "name" : "ServD"
+    },
+    {
+      "identity" : "w5",
+      "uri" : "http://hl7.org/fhir/fivews",
+      "name" : "FiveWs Pattern Mapping"
+    }
+  ],
+  "kind" : "resource",
+  "abstract" : false,
+  "type" : "PractitionerRole",
+  "baseDefinition" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole",
+  "derivation" : "constraint",
+  "differential" : {
+    "element" : [
+      {
+        "id" : "PractitionerRole",
+        "path" : "PractitionerRole",
+        "short" : "CH LAB PractitionerRole"
+      },
+      {
+        "id" : "PractitionerRole.practitioner",
+        "path" : "PractitionerRole.practitioner",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : [
+              "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-practitioner"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```

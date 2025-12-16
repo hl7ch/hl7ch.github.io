@@ -1,0 +1,3044 @@
+# Bundle 1-tvt - CH LAB-Report (R4) v2.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Bundle 1-tvt**
+
+## Example Bundle: Bundle 1-tvt
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "LabResultReport-1-tvt",
+  "meta" : {
+    "lastUpdated" : "2023-08-18T01:43:30Z",
+    "profile" : [
+      "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-document",
+      "http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"
+    ]
+  },
+  "identifier" : {
+    "system" : "http://example.org",
+    "value" : "e65fa2fa-c130-4097-9848-486ee61f58df"
+  },
+  "type" : "document",
+  "timestamp" : "2023-03-09T14:30:00+01:00",
+  "entry" : [
+    {
+      "fullUrl" : "urn:uuid:3dd8d097-67d0-4e39-aa68-5ab6fc13169c",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "3dd8d097-67d0-4e39-aa68-5ab6fc13169c",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-composition"
+          ]
+        },
+        "text" : {
+          "status" : "extensions",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Composition_3dd8d097-67d0-4e39-aa68-5ab6fc13169c\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Composition 3dd8d097-67d0-4e39-aa68-5ab6fc13169c</b></p><a name=\"3dd8d097-67d0-4e39-aa68-5ab6fc13169c\"> </a><a name=\"hc3dd8d097-67d0-4e39-aa68-5ab6fc13169c\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-composition.html\">CH LAB-Report Composition: Laboratory Report</a></p></div><p><b>Information recipient</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">MarcMustermannArztpraxis</a></p><p><b>Information recipient</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>Document DiagnosticReport Reference</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-03464e4f-12f0-4d50-970d-f522b92a3f06\">DiagnosticReport-1-tvt</a></p><p><b>Document Based On Order</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-9e180157-5a4e-4a8a-8ca9-9b09c2056666\">ServiceRequest-CBC-panel</a></p><p><b>Document Based On Order</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-8d98f9d1-581b-4495-93aa-4a522fa30a6c\">ServiceRequest-CRP</a></p><p><b>Document Based On Order</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-e0330c6c-4f9b-46e7-8817-2ae5301f5d14\">ServiceRequest-D-Dimer</a></p><p><b>identifier</b>: <a href=\"http://terminology.hl7.org/5.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:3f69e0a5-2177-4540-baab-7a5d0877428f</p><p><b>status</b>: Final</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 11502-2}\">Laboratory report</span></p><p><b>date</b>: 2023-03-09 14:30:00+0100</p><p><b>author</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Dr. Eva Erlenmeyer</a></p><p><b>title</b>: Laboratory Report - 10 March, 2023 14:30</p><p><b>confidentiality</b>: normal</p><h3>Attesters</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Mode</b></td><td><b>Time</b></td><td><b>Party</b></td></tr><tr><td style=\"display: none\">*</td><td>Legal</td><td>2020-12-27 14:30:00+0100</td><td><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></td></tr></table><p><b>custodian</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-84483dc8-81d3-41cc-8d24-10c241279024\">Labor Pipette</a></p></div>"
+        },
+        "extension" : [
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/information-recipient",
+            "valueReference" : {
+              "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+              "display" : "MarcMustermannArztpraxis"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/information-recipient",
+            "valueReference" : {
+              "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+              "display" : "Hans Guggindieluft"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/laboratory/StructureDefinition/composition-diagnosticReportReference",
+            "valueReference" : {
+              "reference" : "urn:uuid:03464e4f-12f0-4d50-970d-f522b92a3f06",
+              "display" : "DiagnosticReport-1-tvt"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/composition-basedOn-order-or-requisition",
+            "valueReference" : {
+              "reference" : "urn:uuid:9e180157-5a4e-4a8a-8ca9-9b09c2056666",
+              "display" : "ServiceRequest-CBC-panel"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/composition-basedOn-order-or-requisition",
+            "valueReference" : {
+              "reference" : "urn:uuid:8d98f9d1-581b-4495-93aa-4a522fa30a6c",
+              "display" : "ServiceRequest-CRP"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/composition-basedOn-order-or-requisition",
+            "valueReference" : {
+              "reference" : "urn:uuid:e0330c6c-4f9b-46e7-8817-2ae5301f5d14",
+              "display" : "ServiceRequest-D-Dimer"
+            }
+          }
+        ],
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:3f69e0a5-2177-4540-baab-7a5d0877428f"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "date" : "2023-03-09T14:30:00+01:00",
+        "author" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Dr. Eva Erlenmeyer"
+          }
+        ],
+        "title" : "Laboratory Report - 10 March, 2023 14:30",
+        "confidentiality" : "N",
+        "attester" : [
+          {
+            "mode" : "legal",
+            "time" : "2020-12-27T14:30:00+01:00",
+            "party" : {
+              "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+              "display" : "Eva Erlenmeyer"
+            }
+          }
+        ],
+        "custodian" : {
+          "reference" : "urn:uuid:84483dc8-81d3-41cc-8d24-10c241279024",
+          "display" : "Labor Pipette"
+        },
+        "section" : [
+          {
+            "title" : "Laboratory examinations",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "26436-6",
+                  "display" : "Laboratory studies (set)"
+                }
+              ],
+              "text" : "Laboratory studies"
+            },
+            "section" : [
+              {
+                "title" : "Hematology studies (set)",
+                "code" : {
+                  "coding" : [
+                    {
+                      "system" : "http://loinc.org",
+                      "code" : "58410-2"
+                    }
+                  ]
+                },
+                "entry" : [
+                  {
+                    "reference" : "urn:uuid:0ad0810e-6eb4-11ee-b962-0242ac120002",
+                    "display" : "Observation-CBC-panel"
+                  }
+                ]
+              },
+              {
+                "title" : "Chemistry studies (set)",
+                "code" : {
+                  "coding" : [
+                    {
+                      "system" : "http://loinc.org",
+                      "code" : "18719-5"
+                    }
+                  ]
+                },
+                "entry" : [
+                  {
+                    "reference" : "urn:uuid:c0eeeb40-77ed-46f3-b8d6-5fdac0a61f7c",
+                    "display" : "Observation-CRP"
+                  }
+                ]
+              },
+              {
+                "title" : "Coagulation studies (set)",
+                "code" : {
+                  "coding" : [
+                    {
+                      "system" : "http://loinc.org",
+                      "code" : "18720-3"
+                    }
+                  ]
+                },
+                "entry" : [
+                  {
+                    "reference" : "urn:uuid:f30d8df7-474f-401e-b5d4-f690d28d718d",
+                    "display" : "Observation-D-Dimer"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:03464e4f-12f0-4d50-970d-f522b92a3f06",
+      "resource" : {
+        "resourceType" : "DiagnosticReport",
+        "id" : "03464e4f-12f0-4d50-970d-f522b92a3f06",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-diagnosticreport"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DiagnosticReport_03464e4f-12f0-4d50-970d-f522b92a3f06\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DiagnosticReport 03464e4f-12f0-4d50-970d-f522b92a3f06</b></p><a name=\"03464e4f-12f0-4d50-970d-f522b92a3f06\"> </a><a name=\"hc03464e4f-12f0-4d50-970d-f522b92a3f06\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-diagnosticreport.html\">CH LAB-Report DiagnosticReport: Laboratory Report</a></p></div><h2><span title=\"Codes:{http://loinc.org 11502-2}\">Laboratory report</span> </h2><table class=\"grid\"><tr><td>Subject</td><td>Hans Guggindieluft Male, DoB: 1981-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400112)</td></tr><tr><td>When For</td><td>2022-10-25 13:35:00+0100</td></tr><tr><td>Performer</td><td> <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-8472931c-fbd0-437b-9ed1-4f66472c78b5\">Dr. Eva Erlenmeyer</a></td></tr><tr><td>Identifier</td><td> <a href=\"http://terminology.hl7.org/5.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:3f69e0a5-2177-4540-baab-7a5d0877428f</td></tr></table><p><b>Report Details</b></p><table class=\"grid\"><tr><td><b>Code</b></td><td><b>Value</b></td><td><b>Reference Range</b></td><td><b>Flags</b></td><td><b>When For</b></td></tr><tr><td><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-0ad0810e-6eb4-11ee-b962-0242ac120002\"><span title=\"Codes:{http://loinc.org 58410-2}\">CBC panel Auto (Bld)</span></a></td><td/><td/><td>Final</td><td>2024-04-23 11:24:26+0100</td></tr><tr><td><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-c0eeeb40-77ed-46f3-b8d6-5fdac0a61f7c\"><span title=\"Codes:{http://loinc.org 1988-5}\">CRP [Mass/Vol]</span></a></td><td>8 mg/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemg/L = 'mg/L')</span></td><td>&lt;10 mg/L</td><td>Final</td><td>2024-04-23 11:24:26+0100</td></tr><tr><td><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-f30d8df7-474f-401e-b5d4-f690d28d718d\"><span title=\"Codes:{http://loinc.org 71427-9}\">Fibrin D-dimer FEU IA (Bld) [Mass/Vol]</span></a></td><td>1.8 mg/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemg/L = 'mg/L')</span></td><td>&lt;0.5 mg/L</td><td>Final, <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation HH}\">Critical high</span></td><td>2024-04-23 11:24:26+0100</td></tr></table></div>"
+        },
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition",
+            "valueReference" : {
+              "reference" : "urn:uuid:3dd8d097-67d0-4e39-aa68-5ab6fc13169c"
+            }
+          }
+        ],
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:uuid:3f69e0a5-2177-4540-baab-7a5d0877428f"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "urn:uuid:9e180157-5a4e-4a8a-8ca9-9b09c2056666",
+            "display" : "ServiceRequest-CBC-panel"
+          },
+          {
+            "reference" : "urn:uuid:8d98f9d1-581b-4495-93aa-4a522fa30a6c",
+            "display" : "ServiceRequest-CRP"
+          },
+          {
+            "reference" : "urn:uuid:e0330c6c-4f9b-46e7-8817-2ae5301f5d14",
+            "display" : "ServiceRequest-D-Dimer"
+          }
+        ],
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:8472931c-fbd0-437b-9ed1-4f66472c78b5",
+            "display" : "Dr. Eva Erlenmeyer"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Blood Sample"
+          },
+          {
+            "reference" : "urn:uuid:8d38e1bd-dced-45c1-8978-949d6cfd21e8",
+            "display" : "Blood Sample Coagulation"
+          },
+          {
+            "reference" : "urn:uuid:9b554309-f9d4-4559-ba81-91659cd11786",
+            "display" : "Serum Sample"
+          }
+        ],
+        "result" : [
+          {
+            "reference" : "urn:uuid:0ad0810e-6eb4-11ee-b962-0242ac120002",
+            "display" : "Observation-CBC-panel"
+          },
+          {
+            "reference" : "urn:uuid:c0eeeb40-77ed-46f3-b8d6-5fdac0a61f7c",
+            "display" : "Observation-CRP"
+          },
+          {
+            "reference" : "urn:uuid:f30d8df7-474f-401e-b5d4-f690d28d718d",
+            "display" : "Observation-D-Dimer"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "6b8a0365-5022-403b-a5a5-8d8680d701ef",
+        "meta" : {
+          "id" : "meta-12345",
+          "lastUpdated" : "2023-08-18T01:43:30Z",
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-patient"
+          ]
+        },
+        "text" : {
+          "status" : "additional",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_6b8a0365-5022-403b-a5a5-8d8680d701ef\"> </a><p><b>id</b>: HansGuggindieluft</p><p><b>meta</b>:</p><p><b>identifier</b>: 012/08.111111</p><p><b>name</b>: Hans Guggindieluft</p><p><b>gender</b>: MALE</p><p><b>birthDate</b>: Jan 01, 1981</p><p><b>maritalStatus</b>: unverheiratet <span style=\"background: LightGoldenRodYellow\">(Details : {$ech-11-maritalstatus code '5' = '5', given as 'unverheiratet'})</span></p><h3>Communications</h3><table class=\"grid\"><tr><td>-</td><td><b>Language</b></td><td><b>Preferred</b></td></tr><tr><td>*</td><td>Deutsch (Schweiz) <span style=\"background: LightGoldenRodYellow\">(Details : {urn:ietf:bcp:47 code 'de-CH' = 'German (Region=Schweiz))</span></td><td>true</td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.1.1.1",
+            "value" : "80756011110123400112"
+          }
+        ],
+        "name" : [
+          {
+            "text" : "Hans Guggindieluft",
+            "family" : "Guggindieluft",
+            "given" : ["Hans"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "079 979 79 79",
+            "use" : "home"
+          },
+          {
+            "system" : "email",
+            "value" : "hans.guggindieluft@example.ch"
+          }
+        ],
+        "gender" : "male",
+        "birthDate" : "1981-01-01",
+        "maritalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus",
+              "code" : "5",
+              "display" : "unverheiratet"
+            },
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code" : "U",
+              "display" : "unmarried"
+            }
+          ]
+        },
+        "communication" : [
+          {
+            "language" : {
+              "coding" : [
+                {
+                  "system" : "urn:ietf:bcp:47",
+                  "code" : "de-CH"
+                }
+              ],
+              "text" : "Deutsch (Schweiz)"
+            },
+            "preferred" : true
+          }
+        ],
+        "generalPractitioner" : [
+          {
+            "reference" : "urn:uuid:e23d6fa1-88bc-497c-a4df-eb3fa60eaa37",
+            "display" : "Dr. med. Marc Mustermann"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:0ad0810e-6eb4-11ee-b962-0242ac120002",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "0ad0810e-6eb4-11ee-b962-0242ac120002",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_0ad0810e-6eb4-11ee-b962-0242ac120002\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 0ad0810e-6eb4-11ee-b962-0242ac120002</b></p><a name=\"0ad0810e-6eb4-11ee-b962-0242ac120002\"> </a><a name=\"hc0ad0810e-6eb4-11ee-b962-0242ac120002\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394916005}\">Hematopathology</span>, <span title=\"Codes:{http://loinc.org 18723-7}\">Hematology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 58410-2}\">CBC panel Auto (Bld)</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood Sample</a></p><p><b>device</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3b9c6849-cf71-45e9-9d88-31f7879342f0\">Sysmex XP-300</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-5c1ceea1-2751-4ddc-afb5-4c28037ba1be\">Observation-WBC</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-04ec7690-a1e8-4fdf-be4f-6c92949e948a\">Observation-RBC</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-2565be07-47a0-4cca-926e-a57e1ac96fb8\">Observation-HGB</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-c4d64c0a-aafb-4b41-ae0b-a620b2a6c08c\">Observation-HT</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-857cfa10-66ea-45ae-b236-e6e03af4be3f\">Observation-MCV</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3b263f29-44d8-468f-b612-e748442e1845\">Observation-MCH</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-735c9244-497a-420d-b006-15a57be365b1\">Observation-MCHC</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-32a7d6fb-dc8a-4673-8cef-c59c1c5397db\">Observation-Platelet</a></li></ul></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394916005",
+                "display" : "Hematopathology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18723-7",
+                "display" : "Hematology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "58410-2",
+              "display" : "CBC panel - Blood by Automated count"
+            }
+          ],
+          "text" : "CBC panel Auto (Bld)"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "specimen" : {
+          "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+          "display" : "Blood Sample"
+        },
+        "device" : {
+          "reference" : "urn:uuid:3b9c6849-cf71-45e9-9d88-31f7879342f0",
+          "display" : "Sysmex XP-300"
+        },
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:5c1ceea1-2751-4ddc-afb5-4c28037ba1be",
+            "display" : "Observation-WBC"
+          },
+          {
+            "reference" : "urn:uuid:04ec7690-a1e8-4fdf-be4f-6c92949e948a",
+            "display" : "Observation-RBC"
+          },
+          {
+            "reference" : "urn:uuid:2565be07-47a0-4cca-926e-a57e1ac96fb8",
+            "display" : "Observation-HGB"
+          },
+          {
+            "reference" : "urn:uuid:c4d64c0a-aafb-4b41-ae0b-a620b2a6c08c",
+            "display" : "Observation-HT"
+          },
+          {
+            "reference" : "urn:uuid:857cfa10-66ea-45ae-b236-e6e03af4be3f",
+            "display" : "Observation-MCV"
+          },
+          {
+            "reference" : "urn:uuid:3b263f29-44d8-468f-b612-e748442e1845",
+            "display" : "Observation-MCH"
+          },
+          {
+            "reference" : "urn:uuid:735c9244-497a-420d-b006-15a57be365b1",
+            "display" : "Observation-MCHC"
+          },
+          {
+            "reference" : "urn:uuid:32a7d6fb-dc8a-4673-8cef-c59c1c5397db",
+            "display" : "Observation-Platelet"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:5c1ceea1-2751-4ddc-afb5-4c28037ba1be",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "5c1ceea1-2751-4ddc-afb5-4c28037ba1be",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_5c1ceea1-2751-4ddc-afb5-4c28037ba1be\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 5c1ceea1-2751-4ddc-afb5-4c28037ba1be</b></p><a name=\"5c1ceea1-2751-4ddc-afb5-4c28037ba1be\"> </a><a name=\"hc5c1ceea1-2751-4ddc-afb5-4c28037ba1be\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394916005}\">Hematopathology</span>, <span title=\"Codes:{http://loinc.org 18723-7}\">Hematology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 6690-2}\">WBC Auto (Bld) [#/Vol]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>value</b>: 10 10*3/uL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code10*3/uL = '10*3/uL')</span></p><p><b>method</b>: <span title=\"Codes:{http://snomed.info/sct 702659008}\">Automated count technique (qualifier value)</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Low</b></td><td><b>High</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>4.5 10*3/uL</td><td>11 10*3/uL</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/referencerange-meaning normal}\">Normal Range</span></td></tr></table></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394916005",
+                "display" : "Hematopathology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18723-7",
+                "display" : "Hematology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "6690-2",
+              "display" : "Leukocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text" : "WBC Auto (Bld) [#/Vol]"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 10,
+          "unit" : "10*3/uL",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "10*3/uL"
+        },
+        "method" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "702659008",
+              "display" : "Automated count technique (qualifier value)"
+            }
+          ]
+        },
+        "referenceRange" : [
+          {
+            "low" : {
+              "value" : 4.5,
+              "unit" : "10*3/uL"
+            },
+            "high" : {
+              "value" : 11,
+              "unit" : "10*3/uL"
+            },
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+                  "code" : "normal",
+                  "display" : "Normal Range"
+                }
+              ],
+              "text" : "Normal Range"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:04ec7690-a1e8-4fdf-be4f-6c92949e948a",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "04ec7690-a1e8-4fdf-be4f-6c92949e948a",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_04ec7690-a1e8-4fdf-be4f-6c92949e948a\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 04ec7690-a1e8-4fdf-be4f-6c92949e948a</b></p><a name=\"04ec7690-a1e8-4fdf-be4f-6c92949e948a\"> </a><a name=\"hc04ec7690-a1e8-4fdf-be4f-6c92949e948a\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394916005}\">Hematopathology</span>, <span title=\"Codes:{http://loinc.org 18723-7}\">Hematology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 789-8}\">RBC Auto (Bld) [#/Vol]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>value</b>: 4.58 10*6/uL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code10*6/uL = '10*6/uL')</span></p><p><b>method</b>: <span title=\"Codes:{http://snomed.info/sct 702659008}\">Automated count technique (qualifier value)</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Low</b></td><td><b>High</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>4.1 10*6/uL</td><td>6.1 10*6/uL</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/referencerange-meaning normal}\">Normal Range</span></td></tr></table></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394916005",
+                "display" : "Hematopathology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18723-7",
+                "display" : "Hematology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "789-8",
+              "display" : "Erythrocytes [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text" : "RBC Auto (Bld) [#/Vol]"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 4.58,
+          "unit" : "10*6/uL",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "10*6/uL"
+        },
+        "method" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "702659008",
+              "display" : "Automated count technique (qualifier value)"
+            }
+          ]
+        },
+        "referenceRange" : [
+          {
+            "low" : {
+              "value" : 4.1,
+              "unit" : "10*6/uL"
+            },
+            "high" : {
+              "value" : 6.1,
+              "unit" : "10*6/uL"
+            },
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+                  "code" : "normal",
+                  "display" : "Normal Range"
+                }
+              ],
+              "text" : "Normal Range"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:2565be07-47a0-4cca-926e-a57e1ac96fb8",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "2565be07-47a0-4cca-926e-a57e1ac96fb8",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_2565be07-47a0-4cca-926e-a57e1ac96fb8\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 2565be07-47a0-4cca-926e-a57e1ac96fb8</b></p><a name=\"2565be07-47a0-4cca-926e-a57e1ac96fb8\"> </a><a name=\"hc2565be07-47a0-4cca-926e-a57e1ac96fb8\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394916005}\">Hematopathology</span>, <span title=\"Codes:{http://loinc.org 18723-7}\">Hematology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 718-7}\">Hemoglobin (Bld) [Mass/Vol]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>value</b>: 10.8 umol/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codeumol/L = 'umol/L')</span></p><p><b>method</b>: <span title=\"Codes:{http://snomed.info/sct 83561000052101}\">Photometry technique (qualifier value)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood sammple</a></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Low</b></td><td><b>High</b></td></tr><tr><td style=\"display: none\">*</td><td>8.7 umol/L</td><td>11.2 umol/L</td></tr></table></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394916005",
+                "display" : "Hematopathology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18723-7",
+                "display" : "Hematology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "718-7",
+              "display" : "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text" : "Hemoglobin (Bld) [Mass/Vol]"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 10.8,
+          "unit" : "umol/L",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "umol/L"
+        },
+        "method" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "83561000052101",
+              "display" : "Photometry technique (qualifier value)"
+            }
+          ]
+        },
+        "specimen" : {
+          "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+          "display" : "Blood sammple"
+        },
+        "referenceRange" : [
+          {
+            "low" : {
+              "value" : 8.7,
+              "unit" : "umol/L"
+            },
+            "high" : {
+              "value" : 11.2,
+              "unit" : "umol/L"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:c4d64c0a-aafb-4b41-ae0b-a620b2a6c08c",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "c4d64c0a-aafb-4b41-ae0b-a620b2a6c08c",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_c4d64c0a-aafb-4b41-ae0b-a620b2a6c08c\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation c4d64c0a-aafb-4b41-ae0b-a620b2a6c08c</b></p><a name=\"c4d64c0a-aafb-4b41-ae0b-a620b2a6c08c\"> </a><a name=\"hcc4d64c0a-aafb-4b41-ae0b-a620b2a6c08c\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394916005}\">Hematopathology</span>, <span title=\"Codes:{http://loinc.org 18723-7}\">Hematology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 4544-3}\">Hematocrit Auto (Bld) [Volume fraction]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>value</b>: 43 %<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code% = '%')</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood sammple</a></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Low</b></td><td><b>High</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>38 %</td><td>46 %</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/referencerange-meaning normal}\">Normal Range</span></td></tr></table></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394916005",
+                "display" : "Hematopathology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18723-7",
+                "display" : "Hematology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "4544-3",
+              "display" : "Hematocrit [Volume Fraction] of Blood by Automated count"
+            }
+          ],
+          "text" : "Hematocrit Auto (Bld) [Volume fraction]"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 43,
+          "unit" : "%",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "%"
+        },
+        "specimen" : {
+          "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+          "display" : "Blood sammple"
+        },
+        "referenceRange" : [
+          {
+            "low" : {
+              "value" : 38,
+              "unit" : "%"
+            },
+            "high" : {
+              "value" : 46,
+              "unit" : "%"
+            },
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+                  "code" : "normal",
+                  "display" : "Normal Range"
+                }
+              ],
+              "text" : "Normal Range"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:857cfa10-66ea-45ae-b236-e6e03af4be3f",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "857cfa10-66ea-45ae-b236-e6e03af4be3f",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_857cfa10-66ea-45ae-b236-e6e03af4be3f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 857cfa10-66ea-45ae-b236-e6e03af4be3f</b></p><a name=\"857cfa10-66ea-45ae-b236-e6e03af4be3f\"> </a><a name=\"hc857cfa10-66ea-45ae-b236-e6e03af4be3f\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394916005}\">Hematopathology</span>, <span title=\"Codes:{http://loinc.org 18723-7}\">Hematology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 787-2}\">MCV Auto (RBC) [Entitic vol]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>value</b>: 85 fL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codefL = 'fL')</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Low</b></td><td><b>High</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>82.4 fL</td><td>87.3 fL</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/referencerange-meaning normal}\">Normal Range</span></td></tr></table></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394916005",
+                "display" : "Hematopathology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18723-7",
+                "display" : "Hematology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "787-2",
+              "display" : "MCV [Entitic mean volume] in Red Blood Cells by Automated count"
+            }
+          ],
+          "text" : "MCV Auto (RBC) [Entitic vol]"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 85,
+          "unit" : "fL",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "fL"
+        },
+        "referenceRange" : [
+          {
+            "low" : {
+              "value" : 82.4,
+              "unit" : "fL"
+            },
+            "high" : {
+              "value" : 87.3,
+              "unit" : "fL"
+            },
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+                  "code" : "normal",
+                  "display" : "Normal Range"
+                }
+              ],
+              "text" : "Normal Range"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:3b263f29-44d8-468f-b612-e748442e1845",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "3b263f29-44d8-468f-b612-e748442e1845",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_3b263f29-44d8-468f-b612-e748442e1845\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 3b263f29-44d8-468f-b612-e748442e1845</b></p><a name=\"3b263f29-44d8-468f-b612-e748442e1845\"> </a><a name=\"hc3b263f29-44d8-468f-b612-e748442e1845\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394916005}\">Hematopathology</span>, <span title=\"Codes:{http://loinc.org 18723-7}\">Hematology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 785-6}\">MCH Auto (RBC) [Entitic mass]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>value</b>: 30 pg<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codepg = 'pg')</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Low</b></td><td><b>High</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>38 pg</td><td>46 pg</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/referencerange-meaning normal}\">Normal Range</span></td></tr></table></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394916005",
+                "display" : "Hematopathology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18723-7",
+                "display" : "Hematology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "785-6",
+              "display" : "MCH [Entitic mass] by Automated count"
+            }
+          ],
+          "text" : "MCH Auto (RBC) [Entitic mass]"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 30,
+          "unit" : "pg",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "pg"
+        },
+        "referenceRange" : [
+          {
+            "low" : {
+              "value" : 38,
+              "unit" : "pg"
+            },
+            "high" : {
+              "value" : 46,
+              "unit" : "pg"
+            },
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+                  "code" : "normal",
+                  "display" : "Normal Range"
+                }
+              ],
+              "text" : "Normal Range"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:735c9244-497a-420d-b006-15a57be365b1",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "735c9244-497a-420d-b006-15a57be365b1",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_735c9244-497a-420d-b006-15a57be365b1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 735c9244-497a-420d-b006-15a57be365b1</b></p><a name=\"735c9244-497a-420d-b006-15a57be365b1\"> </a><a name=\"hc735c9244-497a-420d-b006-15a57be365b1\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394916005}\">Hematopathology</span>, <span title=\"Codes:{http://loinc.org 18723-7}\">Hematology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 786-4}\">MCHC Auto (RBC) [Mass/Vol]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>value</b>: 34.7 g/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codeg/dL = 'g/dL')</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Low</b></td><td><b>High</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>30 g/dL</td><td>34 g/dL</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/referencerange-meaning normal}\">Normal Range</span></td></tr></table></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394916005",
+                "display" : "Hematopathology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18723-7",
+                "display" : "Hematology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "786-4",
+              "display" : "MCHC [Entitic Mass/volume] in Red Blood Cells by Automated count"
+            }
+          ],
+          "text" : "MCHC Auto (RBC) [Mass/Vol]"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 34.7,
+          "unit" : "g/dL",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "g/dL"
+        },
+        "referenceRange" : [
+          {
+            "low" : {
+              "value" : 30,
+              "unit" : "g/dL"
+            },
+            "high" : {
+              "value" : 34,
+              "unit" : "g/dL"
+            },
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+                  "code" : "normal",
+                  "display" : "Normal Range"
+                }
+              ],
+              "text" : "Normal Range"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:32a7d6fb-dc8a-4673-8cef-c59c1c5397db",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "32a7d6fb-dc8a-4673-8cef-c59c1c5397db",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_32a7d6fb-dc8a-4673-8cef-c59c1c5397db\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 32a7d6fb-dc8a-4673-8cef-c59c1c5397db</b></p><a name=\"32a7d6fb-dc8a-4673-8cef-c59c1c5397db\"> </a><a name=\"hc32a7d6fb-dc8a-4673-8cef-c59c1c5397db\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394916005}\">Hematopathology</span>, <span title=\"Codes:{http://loinc.org 18723-7}\">Hematology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 777-3}\">Platelets Auto (Bld) [#/Vol]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>value</b>: 200 10*3/uL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code10*3/uL = '10*3/uL')</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Low</b></td><td><b>High</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>150 10*3/uL</td><td>450 10*3/uL</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/referencerange-meaning normal}\">Normal Range</span></td></tr></table></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394916005",
+                "display" : "Hematopathology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18723-7",
+                "display" : "Hematology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "777-3",
+              "display" : "Platelets [#/volume] in Blood by Automated count"
+            }
+          ],
+          "text" : "Platelets Auto (Bld) [#/Vol]"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 200,
+          "unit" : "10*3/uL",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "10*3/uL"
+        },
+        "referenceRange" : [
+          {
+            "low" : {
+              "value" : 150,
+              "unit" : "10*3/uL"
+            },
+            "high" : {
+              "value" : 450,
+              "unit" : "10*3/uL"
+            },
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+                  "code" : "normal",
+                  "display" : "Normal Range"
+                }
+              ],
+              "text" : "Normal Range"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:c0eeeb40-77ed-46f3-b8d6-5fdac0a61f7c",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "c0eeeb40-77ed-46f3-b8d6-5fdac0a61f7c",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_c0eeeb40-77ed-46f3-b8d6-5fdac0a61f7c\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation c0eeeb40-77ed-46f3-b8d6-5fdac0a61f7c</b></p><a name=\"c0eeeb40-77ed-46f3-b8d6-5fdac0a61f7c\"> </a><a name=\"hcc0eeeb40-77ed-46f3-b8d6-5fdac0a61f7c\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394596001}\">Chemical pathology</span>, <span title=\"Codes:{http://loinc.org 18719-5}\">Chemistry studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 1988-5}\">CRP [Mass/Vol]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>value</b>: 8 mg/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemg/L = 'mg/L')</span></p><p><b>method</b>: <span title=\"Codes:{http://snomed.info/sct 83611000052104}\">Turbidimetry technique (qualifier value)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-9b554309-f9d4-4559-ba81-91659cd11786\">Serum Sample</a></p><p><b>device</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-729d1c62-051e-4e3a-80d4-06f861b2a794\">Afinion™ CRP Test</a></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>High</b></td></tr><tr><td style=\"display: none\">*</td><td>10 mg/L</td></tr></table></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394596001"
+              }
+            ],
+            "text" : "Chemical pathology"
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18719-5",
+                "display" : "Chemistry studies (set)"
+              }
+            ],
+            "text" : "Chemistry studies (set)"
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "1988-5",
+              "display" : "C reactive protein [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text" : "CRP [Mass/Vol]"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 8,
+          "unit" : "mg/L",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "mg/L"
+        },
+        "method" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "83611000052104",
+              "display" : "Turbidimetry technique (qualifier value)"
+            }
+          ]
+        },
+        "specimen" : {
+          "reference" : "urn:uuid:9b554309-f9d4-4559-ba81-91659cd11786",
+          "display" : "Serum Sample"
+        },
+        "device" : {
+          "reference" : "urn:uuid:729d1c62-051e-4e3a-80d4-06f861b2a794",
+          "display" : "Afinion™ CRP Test"
+        },
+        "referenceRange" : [
+          {
+            "high" : {
+              "value" : 10,
+              "unit" : "mg/L"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:f30d8df7-474f-401e-b5d4-f690d28d718d",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "f30d8df7-474f-401e-b5d4-f690d28d718d",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_f30d8df7-474f-401e-b5d4-f690d28d718d\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation f30d8df7-474f-401e-b5d4-f690d28d718d</b></p><a name=\"f30d8df7-474f-401e-b5d4-f690d28d718d\"> </a><a name=\"hcf30d8df7-474f-401e-b5d4-f690d28d718d\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 394916005}\">Hematopathology</span>, <span title=\"Codes:{http://loinc.org 18723-7}\">Hematology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 71427-9}\">Fibrin D-dimer FEU IA (Bld) [Mass/Vol]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>effective</b>: 2024-04-23 11:24:26+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Eva Erlenmeyer</a></p><p><b>value</b>: 1.8 mg/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemg/L = 'mg/L')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation HH}\">Critical high</span></p><p><b>method</b>: <span title=\"Codes:{http://snomed.info/sct 726449005}\">Immunoassay technique (qualifier value)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-8d38e1bd-dced-45c1-8978-949d6cfd21e8\">Blood Sample Coagulation</a></p><p><b>device</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-523fa1b9-f24d-4ae6-aa98-92d7f57b2066\">Roche CARDIAC D-Dimer Testkit</a></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>High</b></td></tr><tr><td style=\"display: none\">*</td><td>0.5 mg/L</td></tr></table></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394916005",
+                "display" : "Hematopathology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18723-7",
+                "display" : "Hematology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "71427-9",
+              "display" : "Fibrin D-dimer [Mass/volume] in Blood by Rapid immunoassay"
+            }
+          ],
+          "text" : "Fibrin D-dimer FEU IA (Bld) [Mass/Vol]"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "effectiveDateTime" : "2024-04-23T11:24:26+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Eva Erlenmeyer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 1.8,
+          "unit" : "mg/L",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "mg/L"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "HH",
+                "display" : "Critical high"
+              }
+            ]
+          }
+        ],
+        "method" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "726449005",
+              "display" : "Immunoassay technique (qualifier value)"
+            }
+          ]
+        },
+        "specimen" : {
+          "reference" : "urn:uuid:8d38e1bd-dced-45c1-8978-949d6cfd21e8",
+          "display" : "Blood Sample Coagulation"
+        },
+        "device" : {
+          "reference" : "urn:uuid:523fa1b9-f24d-4ae6-aa98-92d7f57b2066",
+          "display" : "Roche CARDIAC D-Dimer Testkit"
+        },
+        "referenceRange" : [
+          {
+            "high" : {
+              "value" : 0.5,
+              "unit" : "mg/L"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-specimen"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_3a98a13d-cf64-40bb-b7a0-87ef45193a74\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen 3a98a13d-cf64-40bb-b7a0-87ef45193a74</b></p><a name=\"3a98a13d-cf64-40bb-b7a0-87ef45193a74\"> </a><a name=\"hc3a98a13d-cf64-40bb-b7a0-87ef45193a74\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-specimen.html\">CH LAB-Report Specimen</a></p></div><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 119297000}\">Blood specimen</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>BodySite</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-e23d6fa1-88bc-497c-a4df-eb3fa60eaa37\">Dr. med. Marc Mustermann</a></td><td>2024-04-16 06:40:17+0000</td><td><span title=\"Codes:{http://snomed.info/sct 721029009}\">Structure of superficial vein of left upper limb (body structure)</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 706053007}\">General specimen container</span></td></tr></table><p><b>note</b>: </p><blockquote><div><p>Specimen is grossly lipemic</p>\n</div></blockquote></div>"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "119297000",
+              "display" : "Blood specimen"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "collection" : {
+          "collector" : {
+            "reference" : "urn:uuid:e23d6fa1-88bc-497c-a4df-eb3fa60eaa37",
+            "display" : "Dr. med. Marc Mustermann"
+          },
+          "collectedDateTime" : "2024-04-16T06:40:17Z",
+          "bodySite" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "721029009",
+                "display" : "Structure of superficial vein of left upper limb (body structure)"
+              }
+            ]
+          }
+        },
+        "container" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "706053007",
+                  "display" : "General specimen container"
+                }
+              ]
+            }
+          }
+        ],
+        "note" : [
+          {
+            "text" : "Specimen is grossly lipemic"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:8d38e1bd-dced-45c1-8978-949d6cfd21e8",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "8d38e1bd-dced-45c1-8978-949d6cfd21e8",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-specimen"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_8d38e1bd-dced-45c1-8978-949d6cfd21e8\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen 8d38e1bd-dced-45c1-8978-949d6cfd21e8</b></p><a name=\"8d38e1bd-dced-45c1-8978-949d6cfd21e8\"> </a><a name=\"hc8d38e1bd-dced-45c1-8978-949d6cfd21e8\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-specimen.html\">CH LAB-Report Specimen</a></p></div><p><b>identifier</b>: 48736-55555-75465</p><p><b>accessionIdentifier</b>: 4e88a-66666-dd888</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 119297000}\">Blood specimen</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>receivedTime</b>: 2020-08-16 16:40:17+0000</p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">PractitionerRole Generalist Medical Practitioners</a></td><td>2024-04-16 06:40:17+0000</td></tr></table><h3>Processings</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Time[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>2024-04-16 06:40:17+0000 --&gt; 2024-04-17 06:40:17+0000</td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Identifier</b></td><td><b>Description</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>4e88a-bc987-dd888-00001-bcoag</td><td>S-Monovette grün</td><td><span title=\"Codes:{http://snomed.info/sct 702296009}\">Non-evacuated blood collection tube, sodium citrate (physical object)</span></td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "value" : "48736-55555-75465"
+          }
+        ],
+        "accessionIdentifier" : {
+          "value" : "4e88a-66666-dd888"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "119297000",
+              "display" : "Blood specimen"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "receivedTime" : "2020-08-16T16:40:17Z",
+        "collection" : {
+          "collector" : {
+            "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048"
+          },
+          "collectedDateTime" : "2024-04-16T06:40:17Z"
+        },
+        "processing" : [
+          {
+            "timePeriod" : {
+              "start" : "2024-04-16T06:40:17Z",
+              "end" : "2024-04-17T06:40:17Z"
+            }
+          }
+        ],
+        "container" : [
+          {
+            "identifier" : [
+              {
+                "value" : "4e88a-bc987-dd888-00001-bcoag"
+              }
+            ],
+            "description" : "S-Monovette grün",
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "702296009",
+                  "display" : "Non-evacuated blood collection tube, sodium citrate (physical object)"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:9b554309-f9d4-4559-ba81-91659cd11786",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "9b554309-f9d4-4559-ba81-91659cd11786",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-specimen"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_9b554309-f9d4-4559-ba81-91659cd11786\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen 9b554309-f9d4-4559-ba81-91659cd11786</b></p><a name=\"9b554309-f9d4-4559-ba81-91659cd11786\"> </a><a name=\"hc9b554309-f9d4-4559-ba81-91659cd11786\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-specimen.html\">CH LAB-Report Specimen</a></p></div><p><b>identifier</b>: 48736-12345-75465</p><p><b>accessionIdentifier</b>: 4e88a-12345-dd888</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 119364003}\">Serum specimen</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>BodySite</b></td><td><b>FastingStatus[x]</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">PractitionerRole Generalist Medical Practitioners</a></td><td>2024-04-16 06:40:17+0000</td><td><span title=\"Codes:{http://snomed.info/sct 49852007}\">Structure of median cubital vein (body structure)</span></td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0916 F}\">Patient was fasting prior to the procedure.</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 706053007}\">General specimen container</span></td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "value" : "48736-12345-75465"
+          }
+        ],
+        "accessionIdentifier" : {
+          "value" : "4e88a-12345-dd888"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "119364003",
+              "display" : "Serum specimen"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "collection" : {
+          "collector" : {
+            "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048"
+          },
+          "collectedDateTime" : "2024-04-16T06:40:17Z",
+          "bodySite" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "49852007",
+                "display" : "Structure of median cubital vein (body structure)"
+              }
+            ]
+          },
+          "fastingStatusCodeableConcept" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0916",
+                "code" : "F",
+                "display" : "Patient was fasting prior to the procedure."
+              }
+            ]
+          }
+        },
+        "container" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "706053007",
+                  "display" : "General specimen container"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:3b9c6849-cf71-45e9-9d88-31f7879342f0",
+      "resource" : {
+        "resourceType" : "Device",
+        "id" : "3b9c6849-cf71-45e9-9d88-31f7879342f0",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-device-analyzer"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Device_3b9c6849-cf71-45e9-9d88-31f7879342f0\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Device 3b9c6849-cf71-45e9-9d88-31f7879342f0</b></p><a name=\"3b9c6849-cf71-45e9-9d88-31f7879342f0\"> </a><a name=\"hc3b9c6849-cf71-45e9-9d88-31f7879342f0\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-device-analyzer.html\">CH LAB-Report Device: Analyzer</a></p></div><p><b>identifier</b>: <code>http://example.org/Labor-Gantenbein/devices/id</code>/345675</p><h3>UdiCarriers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>DeviceIdentifier</b></td></tr><tr><td style=\"display: none\">*</td><td>AN040156300934000</td></tr></table><p><b>status</b>: Active</p><p><b>manufacturer</b>: Sysmex</p><p><b>lotNumber</b>: lot.112233</p><p><b>serialNumber</b>: 06882382</p><h3>DeviceNames</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Name</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>XP-300</td><td>UDI Label name</td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "http://example.org/Labor-Gantenbein/devices/id",
+            "value" : "345675"
+          }
+        ],
+        "udiCarrier" : [
+          {
+            "deviceIdentifier" : "AN040156300934000"
+          }
+        ],
+        "status" : "active",
+        "manufacturer" : "Sysmex",
+        "lotNumber" : "lot.112233",
+        "serialNumber" : "06882382",
+        "deviceName" : [
+          {
+            "name" : "XP-300",
+            "type" : "udi-label-name"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:729d1c62-051e-4e3a-80d4-06f861b2a794",
+      "resource" : {
+        "resourceType" : "Device",
+        "id" : "729d1c62-051e-4e3a-80d4-06f861b2a794",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-device-test-kit"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Device_729d1c62-051e-4e3a-80d4-06f861b2a794\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Device 729d1c62-051e-4e3a-80d4-06f861b2a794</b></p><a name=\"729d1c62-051e-4e3a-80d4-06f861b2a794\"> </a><a name=\"hc729d1c62-051e-4e3a-80d4-06f861b2a794\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-device-test-kit.html\">CH LAB-Report Device: TestKit</a></p></div><p><b>identifier</b>: <code>http://example.org/Labor-Gantenbein/devices/id</code>/345675</p><h3>UdiCarriers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>DeviceIdentifier</b></td></tr><tr><td style=\"display: none\">*</td><td>TK040156300936001</td></tr></table><p><b>status</b>: Active</p><p><b>manufacturer</b>: Abbott</p><p><b>lotNumber</b>: lot.112233</p><p><b>serialNumber</b>: 1116787</p><h3>DeviceNames</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Name</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>Afinion™ CRP</td><td>UDI Label name</td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "http://example.org/Labor-Gantenbein/devices/id",
+            "value" : "345675"
+          }
+        ],
+        "udiCarrier" : [
+          {
+            "deviceIdentifier" : "TK040156300936001"
+          }
+        ],
+        "status" : "active",
+        "manufacturer" : "Abbott",
+        "lotNumber" : "lot.112233",
+        "serialNumber" : "1116787",
+        "deviceName" : [
+          {
+            "name" : "Afinion™ CRP",
+            "type" : "udi-label-name"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:523fa1b9-f24d-4ae6-aa98-92d7f57b2066",
+      "resource" : {
+        "resourceType" : "Device",
+        "id" : "523fa1b9-f24d-4ae6-aa98-92d7f57b2066",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-device-test-kit"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Device_523fa1b9-f24d-4ae6-aa98-92d7f57b2066\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Device 523fa1b9-f24d-4ae6-aa98-92d7f57b2066</b></p><a name=\"523fa1b9-f24d-4ae6-aa98-92d7f57b2066\"> </a><a name=\"hc523fa1b9-f24d-4ae6-aa98-92d7f57b2066\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-device-test-kit.html\">CH LAB-Report Device: TestKit</a></p></div><p><b>identifier</b>: <code>http://example.org/Labor-Gantenbein/devices/id</code>/345675</p><h3>UdiCarriers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>DeviceIdentifier</b></td></tr><tr><td style=\"display: none\">*</td><td>TK040156300936002</td></tr></table><p><b>status</b>: Active</p><p><b>manufacturer</b>: Roche</p><p><b>lotNumber</b>: lot.112233</p><p><b>serialNumber</b>: 06882382</p><h3>DeviceNames</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Name</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>Roche CARDIAC D-Dimer</td><td>UDI Label name</td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "http://example.org/Labor-Gantenbein/devices/id",
+            "value" : "345675"
+          }
+        ],
+        "udiCarrier" : [
+          {
+            "deviceIdentifier" : "TK040156300936002"
+          }
+        ],
+        "status" : "active",
+        "manufacturer" : "Roche",
+        "lotNumber" : "lot.112233",
+        "serialNumber" : "06882382",
+        "deviceName" : [
+          {
+            "name" : "Roche CARDIAC D-Dimer",
+            "type" : "udi-label-name"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:9e180157-5a4e-4a8a-8ca9-9b09c2056666",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "9e180157-5a4e-4a8a-8ca9-9b09c2056666",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_9e180157-5a4e-4a8a-8ca9-9b09c2056666\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 9e180157-5a4e-4a8a-8ca9-9b09c2056666</b></p><a name=\"9e180157-5a4e-4a8a-8ca9-9b09c2056666\"> </a><a name=\"hc9e180157-5a4e-4a8a-8ca9-9b09c2056666\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>basedOn</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-1dcc636a-cc10-450d-9748-cfd760e2668f\">ServiceRequest-WBC</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-a64d92bf-8ca8-4e12-ae29-624c70ac0e26\">ServiceRequest-RBC</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-ce16707a-b9bb-4c8d-8e4e-f8c135ed4a40\">ServiceRequest-HGB</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-e4072da7-a760-47ba-83e7-59796c59a944\">ServiceRequest-HT</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6adcf650-19cb-4d58-b27c-3cf52aa32d86\">ServiceRequest-MCV</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3edb7f4c-e0c8-45c5-aee9-83d326aa61ab\">ServiceRequest-MCH</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-82db46b7-acef-49f4-9456-6e9cbd62a27b\">ServiceRequest-MCHC</a></li><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-bfc054ce-704c-11ee-b962-0242ac120002\">ServiceRequest-Platelet</a></li></ul><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 58410-2}\">CBC panel - Blood by Automated count</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood Sample</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "urn:uuid:1dcc636a-cc10-450d-9748-cfd760e2668f",
+            "display" : "ServiceRequest-WBC"
+          },
+          {
+            "reference" : "urn:uuid:a64d92bf-8ca8-4e12-ae29-624c70ac0e26",
+            "display" : "ServiceRequest-RBC"
+          },
+          {
+            "reference" : "urn:uuid:ce16707a-b9bb-4c8d-8e4e-f8c135ed4a40",
+            "display" : "ServiceRequest-HGB"
+          },
+          {
+            "reference" : "urn:uuid:e4072da7-a760-47ba-83e7-59796c59a944",
+            "display" : "ServiceRequest-HT"
+          },
+          {
+            "reference" : "urn:uuid:6adcf650-19cb-4d58-b27c-3cf52aa32d86",
+            "display" : "ServiceRequest-MCV"
+          },
+          {
+            "reference" : "urn:uuid:3edb7f4c-e0c8-45c5-aee9-83d326aa61ab",
+            "display" : "ServiceRequest-MCH"
+          },
+          {
+            "reference" : "urn:uuid:82db46b7-acef-49f4-9456-6e9cbd62a27b",
+            "display" : "ServiceRequest-MCHC"
+          },
+          {
+            "reference" : "urn:uuid:bfc054ce-704c-11ee-b962-0242ac120002",
+            "display" : "ServiceRequest-Platelet"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "58410-2",
+              "display" : "CBC panel - Blood by Automated count"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Blood Sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:1dcc636a-cc10-450d-9748-cfd760e2668f",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "1dcc636a-cc10-450d-9748-cfd760e2668f",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_1dcc636a-cc10-450d-9748-cfd760e2668f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 1dcc636a-cc10-450d-9748-cfd760e2668f</b></p><a name=\"1dcc636a-cc10-450d-9748-cfd760e2668f\"> </a><a name=\"hc1dcc636a-cc10-450d-9748-cfd760e2668f\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 6690-2}\">Leukocytes [#/volume] in Blood by Automated count</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood Sample</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "6690-2",
+              "display" : "Leukocytes [#/volume] in Blood by Automated count"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Blood Sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:a64d92bf-8ca8-4e12-ae29-624c70ac0e26",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "a64d92bf-8ca8-4e12-ae29-624c70ac0e26",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_a64d92bf-8ca8-4e12-ae29-624c70ac0e26\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest a64d92bf-8ca8-4e12-ae29-624c70ac0e26</b></p><a name=\"a64d92bf-8ca8-4e12-ae29-624c70ac0e26\"> </a><a name=\"hca64d92bf-8ca8-4e12-ae29-624c70ac0e26\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 789-8}\">Erythrocytes [#/volume] in Blood by Automated count</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood Sample</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "789-8",
+              "display" : "Erythrocytes [#/volume] in Blood by Automated count"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Blood Sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:ce16707a-b9bb-4c8d-8e4e-f8c135ed4a40",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "ce16707a-b9bb-4c8d-8e4e-f8c135ed4a40",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_ce16707a-b9bb-4c8d-8e4e-f8c135ed4a40\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest ce16707a-b9bb-4c8d-8e4e-f8c135ed4a40</b></p><a name=\"ce16707a-b9bb-4c8d-8e4e-f8c135ed4a40\"> </a><a name=\"hcce16707a-b9bb-4c8d-8e4e-f8c135ed4a40\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 718-7}\">Hemoglobin [Mass/volume] in Blood</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood Sample</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "718-7",
+              "display" : "Hemoglobin [Mass/volume] in Blood"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Blood Sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:e4072da7-a760-47ba-83e7-59796c59a944",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "e4072da7-a760-47ba-83e7-59796c59a944",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_e4072da7-a760-47ba-83e7-59796c59a944\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest e4072da7-a760-47ba-83e7-59796c59a944</b></p><a name=\"e4072da7-a760-47ba-83e7-59796c59a944\"> </a><a name=\"hce4072da7-a760-47ba-83e7-59796c59a944\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 4544-3}\">Hematocrit [Volume Fraction] of Blood by Automated count</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood Sample</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "4544-3",
+              "display" : "Hematocrit [Volume Fraction] of Blood by Automated count"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Blood Sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:6adcf650-19cb-4d58-b27c-3cf52aa32d86",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "6adcf650-19cb-4d58-b27c-3cf52aa32d86",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_6adcf650-19cb-4d58-b27c-3cf52aa32d86\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 6adcf650-19cb-4d58-b27c-3cf52aa32d86</b></p><a name=\"6adcf650-19cb-4d58-b27c-3cf52aa32d86\"> </a><a name=\"hc6adcf650-19cb-4d58-b27c-3cf52aa32d86\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 787-2}\">MCV [Entitic mean volume] in Red Blood Cells by Automated count</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood Sample</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "787-2",
+              "display" : "MCV [Entitic mean volume] in Red Blood Cells by Automated count"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Blood Sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:3edb7f4c-e0c8-45c5-aee9-83d326aa61ab",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "3edb7f4c-e0c8-45c5-aee9-83d326aa61ab",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_3edb7f4c-e0c8-45c5-aee9-83d326aa61ab\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 3edb7f4c-e0c8-45c5-aee9-83d326aa61ab</b></p><a name=\"3edb7f4c-e0c8-45c5-aee9-83d326aa61ab\"> </a><a name=\"hc3edb7f4c-e0c8-45c5-aee9-83d326aa61ab\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 785-6}\">MCH [Entitic mass] by Automated count</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood Sample</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "785-6",
+              "display" : "MCH [Entitic mass] by Automated count"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Blood Sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:82db46b7-acef-49f4-9456-6e9cbd62a27b",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "82db46b7-acef-49f4-9456-6e9cbd62a27b",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_82db46b7-acef-49f4-9456-6e9cbd62a27b\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 82db46b7-acef-49f4-9456-6e9cbd62a27b</b></p><a name=\"82db46b7-acef-49f4-9456-6e9cbd62a27b\"> </a><a name=\"hc82db46b7-acef-49f4-9456-6e9cbd62a27b\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 786-4}\">MCHC [Entitic Mass/volume] in Red Blood Cells by Automated count</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood Sample</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "786-4",
+              "display" : "MCHC [Entitic Mass/volume] in Red Blood Cells by Automated count"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Blood Sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:bfc054ce-704c-11ee-b962-0242ac120002",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "bfc054ce-704c-11ee-b962-0242ac120002",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_bfc054ce-704c-11ee-b962-0242ac120002\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest bfc054ce-704c-11ee-b962-0242ac120002</b></p><a name=\"bfc054ce-704c-11ee-b962-0242ac120002\"> </a><a name=\"hcbfc054ce-704c-11ee-b962-0242ac120002\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 777-3}\">Platelets [#/volume] in Blood by Automated count</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Blood Sample</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "777-3",
+              "display" : "Platelets [#/volume] in Blood by Automated count"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Blood Sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:8d98f9d1-581b-4495-93aa-4a522fa30a6c",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "8d98f9d1-581b-4495-93aa-4a522fa30a6c",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_8d98f9d1-581b-4495-93aa-4a522fa30a6c\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 8d98f9d1-581b-4495-93aa-4a522fa30a6c</b></p><a name=\"8d98f9d1-581b-4495-93aa-4a522fa30a6c\"> </a><a name=\"hc8d98f9d1-581b-4495-93aa-4a522fa30a6c\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 1988-5}\">C reactive protein [Mass/volume] in Serum or Plasma</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-3a98a13d-cf64-40bb-b7a0-87ef45193a74\">Serum specimen</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "1988-5",
+              "display" : "C reactive protein [Mass/volume] in Serum or Plasma"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:3a98a13d-cf64-40bb-b7a0-87ef45193a74",
+            "display" : "Serum specimen"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:e0330c6c-4f9b-46e7-8817-2ae5301f5d14",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "e0330c6c-4f9b-46e7-8817-2ae5301f5d14",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_e0330c6c-4f9b-46e7-8817-2ae5301f5d14\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest e0330c6c-4f9b-46e7-8817-2ae5301f5d14</b></p><a name=\"e0330c6c-4f9b-46e7-8817-2ae5301f5d14\"> </a><a name=\"hce0330c6c-4f9b-46e7-8817-2ae5301f5d14\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 71427-9}\">Fibrin D-dimer [Mass/volume] in Blood by Rapid immunoassay</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-6b8a0365-5022-403b-a5a5-8d8680d701ef\">Hans Guggindieluft</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-017e8e32-2f3b-4bef-baf1-92c7278a7048\">Marc Mustermann at Arztpraxis</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 432805000}\">Suspected deep vein thrombosis (situation)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-8d38e1bd-dced-45c1-8978-949d6cfd21e8\">Blood Sample Coagulation</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "71427-9",
+              "display" : "Fibrin D-dimer [Mass/volume] in Blood by Rapid immunoassay"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:6b8a0365-5022-403b-a5a5-8d8680d701ef",
+          "display" : "Hans Guggindieluft"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+          "display" : "Marc Mustermann at Arztpraxis"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "432805000"
+              }
+            ],
+            "text" : "Suspected deep vein thrombosis (situation)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:8d38e1bd-dced-45c1-8978-949d6cfd21e8",
+            "display" : "Blood Sample Coagulation"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:017e8e32-2f3b-4bef-baf1-92c7278a7048",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "017e8e32-2f3b-4bef-baf1-92c7278a7048",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_017e8e32-2f3b-4bef-baf1-92c7278a7048\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole 017e8e32-2f3b-4bef-baf1-92c7278a7048</b></p><a name=\"017e8e32-2f3b-4bef-baf1-92c7278a7048\"> </a><a name=\"hc017e8e32-2f3b-4bef-baf1-92c7278a7048\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-practitionerrole.html\">CH LAB-Report PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-e23d6fa1-88bc-497c-a4df-eb3fa60eaa37\">Dr. med. Marc Mustermann</a></p><p><b>organization</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-32c4c990-cedb-4999-998d-bab1d55db49f\">Organization Arztpraxis Messen</a></p><p><b>code</b>: <span title=\"Codes:{urn:oid:2.16.840.1.113883.2.9.6.2.7 2211}\">Generalist Medical Practitioners</span></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "urn:uuid:e23d6fa1-88bc-497c-a4df-eb3fa60eaa37",
+          "display" : "Dr. med. Marc Mustermann"
+        },
+        "organization" : {
+          "reference" : "urn:uuid:32c4c990-cedb-4999-998d-bab1d55db49f"
+        },
+        "code" : [
+          {
+            "coding" : [
+              {
+                "system" : "urn:oid:2.16.840.1.113883.2.9.6.2.7",
+                "code" : "2211",
+                "display" : "Generalist Medical Practitioners"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:e23d6fa1-88bc-497c-a4df-eb3fa60eaa37",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "e23d6fa1-88bc-497c-a4df-eb3fa60eaa37",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_e23d6fa1-88bc-497c-a4df-eb3fa60eaa37\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner e23d6fa1-88bc-497c-a4df-eb3fa60eaa37</b></p><a name=\"e23d6fa1-88bc-497c-a4df-eb3fa60eaa37\"> </a><a name=\"hce23d6fa1-88bc-497c-a4df-eb3fa60eaa37\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-practitioner.html\">CH LAB-Report Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050700, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/L248519</p><p><b>name</b>: Marc Mustermann (Official)</p><p><b>telecom</b>: ph: 033 333 22 11(Work), <a href=\"mailto:marc.mustermann@gruppenpraxis.ch\">marc.mustermann@gruppenpraxis.ch</a></p><p><b>address</b>: Doktorgasse 2 Messen 3254 CH </p><h3>Qualifications</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0360 MD}\">Doctor of Medicine</span></td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050700"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "L248519"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Mustermann",
+            "given" : ["Marc"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "033 333 22 11",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "marc.mustermann@gruppenpraxis.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Doktorgasse 2"],
+            "city" : "Messen",
+            "postalCode" : "3254",
+            "country" : "CH"
+          }
+        ],
+        "qualification" : [
+          {
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code" : "MD",
+                  "display" : "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:32c4c990-cedb-4999-998d-bab1d55db49f",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "32c4c990-cedb-4999-998d-bab1d55db49f",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_32c4c990-cedb-4999-998d-bab1d55db49f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization 32c4c990-cedb-4999-998d-bab1d55db49f</b></p><a name=\"32c4c990-cedb-4999-998d-bab1d55db49f\"> </a><a name=\"hc32c4c990-cedb-4999-998d-bab1d55db49f\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization.html\">CH Core Organization</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000235503</p><p><b>name</b>: Arztpraxis Messen</p><p><b>telecom</b>: <a href=\"tel:+41555545566\">+41555545566</a>, <a href=\"mailto:info@arztpraxis.ch\">info@arztpraxis.ch</a>, <a href=\"http://www.arztpraxis.ch\">http://www.arztpraxis.ch</a></p><p><b>address</b>: Doktorgasse 2 Messen 3254 CH </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000235503"
+          }
+        ],
+        "name" : "Arztpraxis Messen",
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41555545566",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "info@arztpraxis.ch",
+            "use" : "work"
+          },
+          {
+            "system" : "url",
+            "value" : "http://www.arztpraxis.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Doktorgasse 2"],
+            "city" : "Messen",
+            "postalCode" : "3254",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "12328339-f7d6-4bb6-80e4-89fd03ce5052",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_12328339-f7d6-4bb6-80e4-89fd03ce5052\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner 12328339-f7d6-4bb6-80e4-89fd03ce5052</b></p><a name=\"12328339-f7d6-4bb6-80e4-89fd03ce5052\"> </a><a name=\"hc12328339-f7d6-4bb6-80e4-89fd03ce5052\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-practitioner.html\">CH LAB-Report Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050717, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/Y274589</p><p><b>name</b>: Eva Erlenmeyer (Official)</p><p><b>telecom</b>: ph: 033 444 55 66(Work), <a href=\"mailto:eva.erlenmeyer@labor-pipette.ch\">eva.erlenmeyer@labor-pipette.ch</a></p><p><b>address</b>: Laborstrasse 23 Olten 4600 CH </p><h3>Qualifications</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0360 MD}\">Doctor of Medicine</span></td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050717"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Erlenmeyer",
+            "given" : ["Eva"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "033 444 55 66",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "eva.erlenmeyer@labor-pipette.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Laborstrasse 23"],
+            "city" : "Olten",
+            "postalCode" : "4600",
+            "country" : "CH"
+          }
+        ],
+        "qualification" : [
+          {
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code" : "MD",
+                  "display" : "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:8472931c-fbd0-437b-9ed1-4f66472c78b5",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "8472931c-fbd0-437b-9ed1-4f66472c78b5",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_8472931c-fbd0-437b-9ed1-4f66472c78b5\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole 8472931c-fbd0-437b-9ed1-4f66472c78b5</b></p><a name=\"8472931c-fbd0-437b-9ed1-4f66472c78b5\"> </a><a name=\"hc8472931c-fbd0-437b-9ed1-4f66472c78b5\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-practitionerrole.html\">CH LAB-Report PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Practitioner Eva Erlenmeyer (official)</a></p><p><b>organization</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-84483dc8-81d3-41cc-8d24-10c241279024\">Organization Labor Pipette</a></p><p><b>code</b>: <span title=\"Codes:{urn:oid:2.16.840.1.113883.2.9.6.2.7 3212}\">Medical and Pathology Laboratory Technicians</span></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052"
+        },
+        "organization" : {
+          "reference" : "urn:uuid:84483dc8-81d3-41cc-8d24-10c241279024"
+        },
+        "code" : [
+          {
+            "coding" : [
+              {
+                "system" : "urn:oid:2.16.840.1.113883.2.9.6.2.7",
+                "code" : "3212",
+                "display" : "Medical and Pathology Laboratory Technicians"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:84483dc8-81d3-41cc-8d24-10c241279024",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "84483dc8-81d3-41cc-8d24-10c241279024",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_84483dc8-81d3-41cc-8d24-10c241279024\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization 84483dc8-81d3-41cc-8d24-10c241279024</b></p><a name=\"84483dc8-81d3-41cc-8d24-10c241279024\"> </a><a name=\"hc84483dc8-81d3-41cc-8d24-10c241279024\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization.html\">CH Core Organization</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000234407</p><p><b>name</b>: Labor Pipette</p><p><b>telecom</b>: <a href=\"tel:+41223345566\">+41223345566</a></p><p><b>address</b>: Laborstrasse 23 Olten 4600 CH (work)</p><h3>Contacts</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Name</b></td><td><b>Telecom</b></td><td><b>Address</b></td></tr><tr><td style=\"display: none\">*</td><td>Dr. Eva Erlenmeyer(Official)</td><td><a href=\"mailto:eva.erlenmeyer@labor-pipette.ch\">eva.erlenmeyer@labor-pipette.ch</a></td><td>Laborstrasse 23 4. Stock Olten 4600 CH </td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000234407"
+          }
+        ],
+        "name" : "Labor Pipette",
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41223345566",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "use" : "work",
+            "line" : ["Laborstrasse 23"],
+            "city" : "Olten",
+            "postalCode" : "4600",
+            "country" : "CH"
+          }
+        ],
+        "contact" : [
+          {
+            "name" : {
+              "use" : "official",
+              "text" : "Dr. Eva Erlenmeyer",
+              "family" : "Erlenmeyer",
+              "given" : ["Eva"],
+              "prefix" : ["Dr. med."]
+            },
+            "telecom" : [
+              {
+                "system" : "email",
+                "value" : "eva.erlenmeyer@labor-pipette.ch",
+                "use" : "work"
+              }
+            ],
+            "address" : {
+              "line" : ["Laborstrasse 23", "4. Stock"],
+              "city" : "Olten",
+              "postalCode" : "4600",
+              "country" : "CH"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```

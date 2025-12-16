@@ -1,0 +1,4842 @@
+# Bundle 4-sepsis - CH LAB-Report (R4) v2.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Bundle 4-sepsis**
+
+## Example Bundle: Bundle 4-sepsis
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "LabResultReport-4-sepsis",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-document",
+      "http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"
+    ]
+  },
+  "identifier" : {
+    "system" : "http://example.org",
+    "value" : "07436e49-5e49-4b72-95cd-13a3921b880f"
+  },
+  "type" : "document",
+  "timestamp" : "2023-03-09T14:30:00+01:00",
+  "entry" : [
+    {
+      "fullUrl" : "urn:uuid:832c053d-e0a0-4467-9f85-4bde09b825af",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "832c053d-e0a0-4467-9f85-4bde09b825af",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-composition"
+          ]
+        },
+        "text" : {
+          "status" : "extensions",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Composition_832c053d-e0a0-4467-9f85-4bde09b825af\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Composition 832c053d-e0a0-4467-9f85-4bde09b825af</b></p><a name=\"832c053d-e0a0-4467-9f85-4bde09b825af\"> </a><a name=\"hc832c053d-e0a0-4467-9f85-4bde09b825af\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-composition.html\">CH LAB-Report Composition: Laboratory Report</a></p></div><p><b>Document Based On Order</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-21dbc37f-28b5-4ef8-9835-c79dbf7c99b7\">ServiceRequest-gram-stain</a></p><p><b>Document Based On Order</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-6bb29a10-2313-48b9-96ba-e903d0ae3c2b\">ServiceRequest-anaerobe-culture</a></p><p><b>Document Based On Order</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-a168c88a-f2c1-43d1-9dd7-611a64cd7be8\">ServiceRequest-aerobe-culture</a></p><p><b>Document Based On Order</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7\">ServiceRequest-susceptibility-panel</a></p><p><b>Document Based On Order</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-fbcca2e1-3d0a-4cb8-9a02-c6f8b41a962e\">ServiceRequest-urine-culture</a></p><p><b>Information recipient</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-10b95d3c-5402-4631-a404-e0d7e74c9a8f\">Hans Hauser at Kantonsspital</a></p><p><b>Information recipient</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller, patient</a></p><p><b>Document DiagnosticReport Reference</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-1e56bbe9-ee25-45db-a887-987090f89810\">DiagnosticReport-4-sepsis</a></p><p><b>identifier</b>: <a href=\"http://terminology.hl7.org/5.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:07436e49-5e49-4b72-95cd-13a3921b880f</p><p><b>status</b>: Final</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 11502-2}\">Laboratory report</span></p><p><b>category</b>: <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span></p><p><b>date</b>: 2023-03-09 14:30:00+0100</p><p><b>author</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Dr. Beat Bunsen</a></p><p><b>title</b>: Laboratory Report - 10 March, 2023 14:30</p><p><b>confidentiality</b>: normal</p><h3>Attesters</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Mode</b></td><td><b>Time</b></td><td><b>Party</b></td></tr><tr><td style=\"display: none\">*</td><td>Legal</td><td>2020-12-27 14:30:00+0100</td><td><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></td></tr></table><p><b>custodian</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-17742f1f-ba4f-423c-b6de-463409f20431\">Organization Labor Gantenbein</a></p></div>"
+        },
+        "extension" : [
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/composition-basedOn-order-or-requisition",
+            "valueReference" : {
+              "reference" : "urn:uuid:21dbc37f-28b5-4ef8-9835-c79dbf7c99b7",
+              "display" : "ServiceRequest-gram-stain"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/composition-basedOn-order-or-requisition",
+            "valueReference" : {
+              "reference" : "urn:uuid:6bb29a10-2313-48b9-96ba-e903d0ae3c2b",
+              "display" : "ServiceRequest-anaerobe-culture"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/composition-basedOn-order-or-requisition",
+            "valueReference" : {
+              "reference" : "urn:uuid:a168c88a-f2c1-43d1-9dd7-611a64cd7be8",
+              "display" : "ServiceRequest-aerobe-culture"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/composition-basedOn-order-or-requisition",
+            "valueReference" : {
+              "reference" : "urn:uuid:3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7",
+              "display" : "ServiceRequest-susceptibility-panel"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/composition-basedOn-order-or-requisition",
+            "valueReference" : {
+              "reference" : "urn:uuid:fbcca2e1-3d0a-4cb8-9a02-c6f8b41a962e",
+              "display" : "ServiceRequest-urine-culture"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/information-recipient",
+            "valueReference" : {
+              "reference" : "urn:uuid:10b95d3c-5402-4631-a404-e0d7e74c9a8f",
+              "display" : "Hans Hauser at Kantonsspital"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/StructureDefinition/information-recipient",
+            "valueReference" : {
+              "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+              "display" : "Katarina Keller, patient"
+            }
+          },
+          {
+            "url" : "http://hl7.eu/fhir/laboratory/StructureDefinition/composition-diagnosticReportReference",
+            "valueReference" : {
+              "reference" : "urn:uuid:1e56bbe9-ee25-45db-a887-987090f89810",
+              "display" : "DiagnosticReport-4-sepsis"
+            }
+          }
+        ],
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:07436e49-5e49-4b72-95cd-13a3921b880f"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          }
+        ],
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "date" : "2023-03-09T14:30:00+01:00",
+        "author" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Dr. Beat Bunsen"
+          }
+        ],
+        "title" : "Laboratory Report - 10 March, 2023 14:30",
+        "confidentiality" : "N",
+        "attester" : [
+          {
+            "mode" : "legal",
+            "time" : "2020-12-27T14:30:00+01:00",
+            "party" : {
+              "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+              "display" : "Beat Bunsen, practitioner"
+            }
+          }
+        ],
+        "custodian" : {
+          "reference" : "urn:uuid:17742f1f-ba4f-423c-b6de-463409f20431"
+        },
+        "section" : [
+          {
+            "title" : "Bacterial Aerobic & Anaerobic Culture & Susceptibility",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "18725-2",
+                  "display" : "Microbiology studies (set)"
+                }
+              ],
+              "text" : "Mikrobiologische Untersuchungen:Komplex:-:^Patient:Set:"
+            },
+            "section" : [
+              {
+                "title" : "Bacterial susceptibility panel",
+                "code" : {
+                  "coding" : [
+                    {
+                      "system" : "http://loinc.org",
+                      "code" : "29576-6"
+                    }
+                  ]
+                },
+                "entry" : [
+                  {
+                    "reference" : "urn:uuid:24f1a039-5146-4e51-8c07-dfd94bc7370d",
+                    "display" : "Observation-org-aerobe-culture-2-susc-panel"
+                  }
+                ]
+              },
+              {
+                "title" : "Aerobic culture technique (qualifier value)",
+                "code" : {
+                  "coding" : [
+                    {
+                      "system" : "http://snomed.info/sct",
+                      "code" : "703750006"
+                    }
+                  ]
+                },
+                "entry" : [
+                  {
+                    "reference" : "urn:uuid:3184e9e2-4f12-43ce-9e83-f5c4a21c1eeb",
+                    "display" : "Observation-aerobe-culture"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:1e56bbe9-ee25-45db-a887-987090f89810",
+      "resource" : {
+        "resourceType" : "DiagnosticReport",
+        "id" : "1e56bbe9-ee25-45db-a887-987090f89810",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-diagnosticreport"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DiagnosticReport_1e56bbe9-ee25-45db-a887-987090f89810\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DiagnosticReport 1e56bbe9-ee25-45db-a887-987090f89810</b></p><a name=\"1e56bbe9-ee25-45db-a887-987090f89810\"> </a><a name=\"hc1e56bbe9-ee25-45db-a887-987090f89810\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-diagnosticreport.html\">CH LAB-Report DiagnosticReport: Laboratory Report</a></p></div><h2><span title=\"Codes:{http://loinc.org 11502-2}\">Laboratory report</span> (<span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>) </h2><table class=\"grid\"><tr><td>Subject</td><td>Katarina Keller  Female, DoB: 1975-12-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400113)</td></tr><tr><td>When For</td><td>2022-10-25 13:35:00+0100</td></tr><tr><td>Performer</td><td> <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-06929c8b-9fb9-43fe-b12c-439fd470be59\">Dr. Beat Bunsen</a></td></tr><tr><td>Identifier</td><td> <a href=\"http://terminology.hl7.org/5.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:07436e49-5e49-4b72-95cd-13a3921b880f</td></tr></table><p><b>Report Details</b></p><table class=\"grid\"><tr><td><b>Code</b></td><td><b>Value</b></td><td><b>Flags</b></td></tr><tr><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-a335d2df-6f77-4ae8-bb6e-f7086fd25de0\"><span title=\"Codes:{http://loinc.org 87969-2}\">Microscopic observation Gram stain Nom (Bld)</span></a></td><td/><td>Final</td></tr><tr><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-cea62faa-60b7-442b-b76a-da70ed2d92b1\"><span title=\"Codes:{http://loinc.org 17934-1}\">Bacteria identified Anaer cx Nom (Bld)</span></a></td><td/><td>Final</td></tr><tr><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-3184e9e2-4f12-43ce-9e83-f5c4a21c1eeb\"><span title=\"Codes:{http://loinc.org 17928-3}\">Bacteria identified Aer cx Nom (Bld)</span></a></td><td/><td>Final</td></tr><tr><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-0c1b30c6-9a41-4c59-a403-531654214754\"><span title=\"Codes:{http://snomed.info/sct 117011000}\">Quantitative urine culture (procedure)</span></a></td><td><span title=\"Codes:{http://snomed.info/sct 441614007}\">+</span></td><td>Final</td></tr><tr><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-20e798b7-ef0d-4d22-9099-35219d264dac\"><span title=\"Codes:{http://loinc.org 664-3}\">Microscopic observation [Identifier] in Specimen by Gram stain</span></a></td><td><span title=\"Codes:{http://snomed.info/sct 87172008}\">Gram-negative bacillus (organism)</span></td><td>Final</td></tr><tr><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-ae61519b-b7b4-4bfc-a7a9-f272130a2300\"><span title=\"Codes:{http://loinc.org 664-3}\">Microscopic observation [Identifier] in Specimen by Gram stain</span></a></td><td><span title=\"Codes:{http://snomed.info/sct 87172008}\">Gram-negative bacillus (organism)</span></td><td>Final</td></tr><tr><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-a07e93cc-5908-4ed1-9678-afc61ef9fd9e\"><span title=\"Codes:{http://loinc.org 664-3}\">Microscopic observation [Identifier] in Specimen by Gram stain</span></a></td><td><span title=\"Codes:{http://snomed.info/sct 59206002}\">Gram-positive coccus (organism)</span></td><td>Final</td></tr></table></div>"
+        },
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition",
+            "valueReference" : {
+              "reference" : "urn:uuid:832c053d-e0a0-4467-9f85-4bde09b825af"
+            }
+          }
+        ],
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:uuid:07436e49-5e49-4b72-95cd-13a3921b880f"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "urn:uuid:21dbc37f-28b5-4ef8-9835-c79dbf7c99b7",
+            "display" : "ServiceRequest-gram-stain"
+          },
+          {
+            "reference" : "urn:uuid:6bb29a10-2313-48b9-96ba-e903d0ae3c2b",
+            "display" : "ServiceRequest-anaerobe-culture"
+          },
+          {
+            "reference" : "urn:uuid:a168c88a-f2c1-43d1-9dd7-611a64cd7be8",
+            "display" : "ServiceRequest-aerobe-culture"
+          },
+          {
+            "reference" : "urn:uuid:3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7",
+            "display" : "ServiceRequest-susceptibility-panel"
+          },
+          {
+            "reference" : "urn:uuid:fbcca2e1-3d0a-4cb8-9a02-c6f8b41a962e",
+            "display" : "ServiceRequest-urine-culture"
+          }
+        ],
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "11502-2",
+              "display" : "Laboratory report"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:06929c8b-9fb9-43fe-b12c-439fd470be59",
+            "display" : "Dr. Beat Bunsen"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:4fcf2138-6def-4b6e-beaa-35ee09d9cba8",
+            "display" : "Blood-anaerob-0-min"
+          },
+          {
+            "reference" : "urn:uuid:4b37cb2b-b9fe-4742-aacd-b03259d3035a",
+            "display" : "Blood-anaerob-30-min"
+          },
+          {
+            "reference" : "urn:uuid:7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2",
+            "display" : "Blood-aerob-0-min"
+          },
+          {
+            "reference" : "urn:uuid:b0871e3b-f378-4f07-90ff-f08a20e42c02",
+            "display" : "Blood-aerob-30-min"
+          },
+          {
+            "reference" : "urn:uuid:77ed2f36-b4b1-42da-bc57-563e293c04e8",
+            "display" : "Urine-sample"
+          }
+        ],
+        "result" : [
+          {
+            "reference" : "urn:uuid:a335d2df-6f77-4ae8-bb6e-f7086fd25de0",
+            "display" : "Observation-gram-stain"
+          },
+          {
+            "reference" : "urn:uuid:cea62faa-60b7-442b-b76a-da70ed2d92b1",
+            "display" : "Observation-anaerobe-culture"
+          },
+          {
+            "reference" : "urn:uuid:3184e9e2-4f12-43ce-9e83-f5c4a21c1eeb",
+            "display" : "Observation-aerobe-culture"
+          },
+          {
+            "reference" : "urn:uuid:0c1b30c6-9a41-4c59-a403-531654214754",
+            "display" : "Observation-urine-culture"
+          },
+          {
+            "reference" : "urn:uuid:20e798b7-ef0d-4d22-9099-35219d264dac",
+            "display" : "Observation-org-1"
+          },
+          {
+            "reference" : "urn:uuid:ae61519b-b7b4-4bfc-a7a9-f272130a2300",
+            "display" : "Observation-org-2"
+          },
+          {
+            "reference" : "urn:uuid:a07e93cc-5908-4ed1-9678-afc61ef9fd9e",
+            "display" : "Observation-org-3"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "14fbf29b-5dac-483e-b543-15031f12344b",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-patient"
+          ]
+        },
+        "text" : {
+          "status" : "additional",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_14fbf29b-5dac-483e-b543-15031f12344b\"> </a><p><b>id</b>: KatarinaKeller</p><p><b>meta</b>:</p><p><b>identifier</b>: 012/08.111114</p><p><b>name</b>: Katarina Keller</p><p><b>gender</b>: FEMALE</p><p><b>birthDate</b>: Dec 12, 1975</p><p><b>maritalStatus</b>: verheiratet <span style=\"background: LightGoldenRodYellow\">(Details : {$ech-11-maritalstatus code '2' = '2', given as 'verheiratet'})</span></p><h3>Communications</h3><table class=\"grid\"><tr><td>-</td><td><b>Language</b></td><td><b>Preferred</b></td></tr><tr><td>*</td><td>Deutsch (Schweiz) <span style=\"background: LightGoldenRodYellow\">(Details : {urn:ietf:bcp:47 code 'de-CH' = 'German (Region=Schweiz))</span></td><td>true</td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.1.1.1",
+            "value" : "80756011110123400113"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Keller",
+            "given" : ["Katarina"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41 64 123 45 67",
+            "use" : "home"
+          },
+          {
+            "system" : "email",
+            "value" : "katarina.keller@example.ch"
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1975-12-12",
+        "maritalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus",
+              "code" : "2",
+              "display" : "verheiratet"
+            },
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code" : "M",
+              "display" : "married"
+            }
+          ]
+        },
+        "communication" : [
+          {
+            "language" : {
+              "coding" : [
+                {
+                  "system" : "urn:ietf:bcp:47",
+                  "code" : "de-CH"
+                }
+              ],
+              "text" : "Deutsch (Schweiz)"
+            },
+            "preferred" : true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:21dbc37f-28b5-4ef8-9835-c79dbf7c99b7",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "21dbc37f-28b5-4ef8-9835-c79dbf7c99b7",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_21dbc37f-28b5-4ef8-9835-c79dbf7c99b7\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 21dbc37f-28b5-4ef8-9835-c79dbf7c99b7</b></p><a name=\"21dbc37f-28b5-4ef8-9835-c79dbf7c99b7\"> </a><a name=\"hc21dbc37f-28b5-4ef8-9835-c79dbf7c99b7\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 87969-2}\">Microscopic observation [Identifier] in Blood by Gram stain</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-10b95d3c-5402-4631-a404-e0d7e74c9a8f\">PractitionerRole Medical and Pathology Laboratory Technicians</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 238150007}\">Sepsis syndrome (disorder)</span></p><p><b>specimen</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-4fcf2138-6def-4b6e-beaa-35ee09d9cba8\">Blood-anaerob-0-min</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-4b37cb2b-b9fe-4742-aacd-b03259d3035a\">Blood-anaerob-30-min</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2\">Blood-aerob-0-min</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-b0871e3b-f378-4f07-90ff-f08a20e42c02\">Blood-aerob-30-min</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-77ed2f36-b4b1-42da-bc57-563e293c04e8\">Urine-sample</a></li></ul></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "87969-2",
+              "display" : "Microscopic observation [Identifier] in Blood by Gram stain"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:10b95d3c-5402-4631-a404-e0d7e74c9a8f"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "238150007"
+              }
+            ],
+            "text" : "Sepsis syndrome (disorder)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:4fcf2138-6def-4b6e-beaa-35ee09d9cba8",
+            "display" : "Blood-anaerob-0-min"
+          },
+          {
+            "reference" : "urn:uuid:4b37cb2b-b9fe-4742-aacd-b03259d3035a",
+            "display" : "Blood-anaerob-30-min"
+          },
+          {
+            "reference" : "urn:uuid:7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2",
+            "display" : "Blood-aerob-0-min"
+          },
+          {
+            "reference" : "urn:uuid:b0871e3b-f378-4f07-90ff-f08a20e42c02",
+            "display" : "Blood-aerob-30-min"
+          },
+          {
+            "reference" : "urn:uuid:77ed2f36-b4b1-42da-bc57-563e293c04e8",
+            "display" : "Urine-sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:6bb29a10-2313-48b9-96ba-e903d0ae3c2b",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "6bb29a10-2313-48b9-96ba-e903d0ae3c2b",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_6bb29a10-2313-48b9-96ba-e903d0ae3c2b\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 6bb29a10-2313-48b9-96ba-e903d0ae3c2b</b></p><a name=\"6bb29a10-2313-48b9-96ba-e903d0ae3c2b\"> </a><a name=\"hc6bb29a10-2313-48b9-96ba-e903d0ae3c2b\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 17934-1}\">Bacteria identified in Blood by Anaerobe culture</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-10b95d3c-5402-4631-a404-e0d7e74c9a8f\">PractitionerRole Medical and Pathology Laboratory Technicians</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 238150007}\">Sepsis syndrome (disorder)</span></p><p><b>specimen</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-4fcf2138-6def-4b6e-beaa-35ee09d9cba8\">Blood-anaerob-0-min</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-4b37cb2b-b9fe-4742-aacd-b03259d3035a\">Blood-anaerob-30-min</a></li></ul></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "17934-1",
+              "display" : "Bacteria identified in Blood by Anaerobe culture"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:10b95d3c-5402-4631-a404-e0d7e74c9a8f"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "238150007"
+              }
+            ],
+            "text" : "Sepsis syndrome (disorder)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:4fcf2138-6def-4b6e-beaa-35ee09d9cba8",
+            "display" : "Blood-anaerob-0-min"
+          },
+          {
+            "reference" : "urn:uuid:4b37cb2b-b9fe-4742-aacd-b03259d3035a",
+            "display" : "Blood-anaerob-30-min"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:a168c88a-f2c1-43d1-9dd7-611a64cd7be8",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "a168c88a-f2c1-43d1-9dd7-611a64cd7be8",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_a168c88a-f2c1-43d1-9dd7-611a64cd7be8\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest a168c88a-f2c1-43d1-9dd7-611a64cd7be8</b></p><a name=\"a168c88a-f2c1-43d1-9dd7-611a64cd7be8\"> </a><a name=\"hca168c88a-f2c1-43d1-9dd7-611a64cd7be8\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 17928-3}\">Bacteria identified in Blood by Aerobe culture</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-10b95d3c-5402-4631-a404-e0d7e74c9a8f\">PractitionerRole Medical and Pathology Laboratory Technicians</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 238150007}\">Sepsis syndrome (disorder)</span></p><p><b>specimen</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2\">Blood-aerob-0-min</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-b0871e3b-f378-4f07-90ff-f08a20e42c02\">Blood-aerob-30-min</a></li></ul></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "17928-3",
+              "display" : "Bacteria identified in Blood by Aerobe culture"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:10b95d3c-5402-4631-a404-e0d7e74c9a8f"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "238150007"
+              }
+            ],
+            "text" : "Sepsis syndrome (disorder)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2",
+            "display" : "Blood-aerob-0-min"
+          },
+          {
+            "reference" : "urn:uuid:b0871e3b-f378-4f07-90ff-f08a20e42c02",
+            "display" : "Blood-aerob-30-min"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7</b></p><a name=\"3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7\"> </a><a name=\"hc3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 29576-6}\">Bacterial susceptibility panel</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-10b95d3c-5402-4631-a404-e0d7e74c9a8f\">PractitionerRole Medical and Pathology Laboratory Technicians</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 238150007}\">Sepsis syndrome (disorder)</span></p><p><b>specimen</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2\">Blood-aerob-0-min</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-b0871e3b-f378-4f07-90ff-f08a20e42c02\">Blood-aerob-30-min</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2\">Blood-aerob-0-min</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-b0871e3b-f378-4f07-90ff-f08a20e42c02\">Blood-aerob-30-min</a></li></ul></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29576-6",
+              "display" : "Bacterial susceptibility panel"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:10b95d3c-5402-4631-a404-e0d7e74c9a8f"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "238150007"
+              }
+            ],
+            "text" : "Sepsis syndrome (disorder)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2",
+            "display" : "Blood-aerob-0-min"
+          },
+          {
+            "reference" : "urn:uuid:b0871e3b-f378-4f07-90ff-f08a20e42c02",
+            "display" : "Blood-aerob-30-min"
+          },
+          {
+            "reference" : "urn:uuid:7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2",
+            "display" : "Blood-aerob-0-min"
+          },
+          {
+            "reference" : "urn:uuid:b0871e3b-f378-4f07-90ff-f08a20e42c02",
+            "display" : "Blood-aerob-30-min"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:fbcca2e1-3d0a-4cb8-9a02-c6f8b41a962e",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "fbcca2e1-3d0a-4cb8-9a02-c6f8b41a962e",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-report-servicerequest"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_fbcca2e1-3d0a-4cb8-9a02-c6f8b41a962e\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest fbcca2e1-3d0a-4cb8-9a02-c6f8b41a962e</b></p><a name=\"fbcca2e1-3d0a-4cb8-9a02-c6f8b41a962e\"> </a><a name=\"hcfbcca2e1-3d0a-4cb8-9a02-c6f8b41a962e\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-report-servicerequest.html\">CH LAB-Report ServiceRequest: Laboratory Order</a></p></div><p><b>identifier</b>: Placer Identifier/123</p><p><b>requisition</b>: Provider number/ReqID-1234567</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 17928-3}\">Bacteria identified in Blood by Aerobe culture</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>requester</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-10b95d3c-5402-4631-a404-e0d7e74c9a8f\">Hans Hauser at Kantonsspital</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 238150007}\">Sepsis syndrome (disorder)</span></p><p><b>specimen</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-77ed2f36-b4b1-42da-bc57-563e293c04e8\">Urine-sample</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "http://example.org/order-placer-organization",
+            "value" : "123"
+          }
+        ],
+        "requisition" : {
+          "type" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                "code" : "PRN",
+                "display" : "Provider number"
+              }
+            ]
+          },
+          "system" : "http://example.org/ProviderNumber/Requisition",
+          "value" : "ReqID-1234567"
+        },
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "17928-3",
+              "display" : "Bacteria identified in Blood by Aerobe culture"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "requester" : {
+          "reference" : "urn:uuid:10b95d3c-5402-4631-a404-e0d7e74c9a8f",
+          "display" : "Hans Hauser at Kantonsspital"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "238150007"
+              }
+            ],
+            "text" : "Sepsis syndrome (disorder)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "urn:uuid:77ed2f36-b4b1-42da-bc57-563e293c04e8",
+            "display" : "Urine-sample"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:a335d2df-6f77-4ae8-bb6e-f7086fd25de0",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "a335d2df-6f77-4ae8-bb6e-f7086fd25de0",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_a335d2df-6f77-4ae8-bb6e-f7086fd25de0\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation a335d2df-6f77-4ae8-bb6e-f7086fd25de0</b></p><a name=\"a335d2df-6f77-4ae8-bb6e-f7086fd25de0\"> </a><a name=\"hca335d2df-6f77-4ae8-bb6e-f7086fd25de0\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 87969-2}\">Microscopic observation Gram stain Nom (Bld)</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-c0393c7c-bc8a-47d2-a1a9-d4e1f87c6449\">Observation-wbc</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-4679fd4c-4ef3-4b91-b17c-8a97a25472fb\">Observation-org-1 -&gt; Klebsiella pneumoniae</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-ae61519b-b7b4-4bfc-a7a9-f272130a2300\">Observation-org-2 -&gt; Escherichia coli</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-e6ce8504-dadb-49c9-a997-a8ed4c7cba24\">Observation-org-3 -&gt; Streptococcus mitis</a></li></ul></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "87969-2",
+              "display" : "Microscopic observation [Identifier] in Blood by Gram stain"
+            }
+          ],
+          "text" : "Microscopic observation Gram stain Nom (Bld)"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:c0393c7c-bc8a-47d2-a1a9-d4e1f87c6449",
+            "display" : "Observation-wbc"
+          },
+          {
+            "reference" : "urn:uuid:4679fd4c-4ef3-4b91-b17c-8a97a25472fb",
+            "display" : "Observation-org-1 -> Klebsiella pneumoniae"
+          },
+          {
+            "reference" : "urn:uuid:ae61519b-b7b4-4bfc-a7a9-f272130a2300",
+            "display" : "Observation-org-2 -> Escherichia coli"
+          },
+          {
+            "reference" : "urn:uuid:e6ce8504-dadb-49c9-a997-a8ed4c7cba24",
+            "display" : "Observation-org-3 -> Streptococcus mitis"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:c0393c7c-bc8a-47d2-a1a9-d4e1f87c6449",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "c0393c7c-bc8a-47d2-a1a9-d4e1f87c6449",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_c0393c7c-bc8a-47d2-a1a9-d4e1f87c6449\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation c0393c7c-bc8a-47d2-a1a9-d4e1f87c6449</b></p><a name=\"c0393c7c-bc8a-47d2-a1a9-d4e1f87c6449\"> </a><a name=\"hcc0393c7c-bc8a-47d2-a1a9-d4e1f87c6449\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 72163-9}\">Leukocytes [Presence] in Specimen by Gram stain</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 2667000}\">None observed</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "72163-9",
+              "display" : "Leukocytes [Presence] in Specimen by Gram stain"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "2667000",
+              "display" : "Absent"
+            }
+          ],
+          "text" : "None observed"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:20e798b7-ef0d-4d22-9099-35219d264dac",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "20e798b7-ef0d-4d22-9099-35219d264dac",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_20e798b7-ef0d-4d22-9099-35219d264dac\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 20e798b7-ef0d-4d22-9099-35219d264dac</b></p><a name=\"20e798b7-ef0d-4d22-9099-35219d264dac\"> </a><a name=\"hc20e798b7-ef0d-4d22-9099-35219d264dac\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 664-3}\">Microscopic observation [Identifier] in Specimen by Gram stain</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 87172008}\">Gram-negative bacillus (organism)</span></p><p><b>hasMember</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-cd376843-9c66-4e63-b403-9299bd6c4fc2\">Observation-org-1-quant</a></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "664-3",
+              "display" : "Microscopic observation [Identifier] in Specimen by Gram stain"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "87172008",
+              "display" : "Gram-negative bacillus (organism)"
+            }
+          ]
+        },
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:cd376843-9c66-4e63-b403-9299bd6c4fc2",
+            "display" : "Observation-org-1-quant"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:cd376843-9c66-4e63-b403-9299bd6c4fc2",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "cd376843-9c66-4e63-b403-9299bd6c4fc2",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_cd376843-9c66-4e63-b403-9299bd6c4fc2\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation cd376843-9c66-4e63-b403-9299bd6c4fc2</b></p><a name=\"cd376843-9c66-4e63-b403-9299bd6c4fc2\"> </a><a name=\"hccd376843-9c66-4e63-b403-9299bd6c4fc2\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:\">Observed Quantity</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 441614007}\">+</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "text" : "Observed Quantity"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "441614007",
+              "display" : "Present + out of +++"
+            }
+          ],
+          "text" : "+"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:ae61519b-b7b4-4bfc-a7a9-f272130a2300",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "ae61519b-b7b4-4bfc-a7a9-f272130a2300",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_ae61519b-b7b4-4bfc-a7a9-f272130a2300\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation ae61519b-b7b4-4bfc-a7a9-f272130a2300</b></p><a name=\"ae61519b-b7b4-4bfc-a7a9-f272130a2300\"> </a><a name=\"hcae61519b-b7b4-4bfc-a7a9-f272130a2300\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 664-3}\">Microscopic observation [Identifier] in Specimen by Gram stain</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 87172008}\">Gram-negative bacillus (organism)</span></p><p><b>hasMember</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-e6ce8504-dadb-49c9-a997-a8ed4c7cba24\">Observation-org-2-quant</a></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "664-3",
+              "display" : "Microscopic observation [Identifier] in Specimen by Gram stain"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "87172008",
+              "display" : "Gram-negative bacillus (organism)"
+            }
+          ]
+        },
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:e6ce8504-dadb-49c9-a997-a8ed4c7cba24",
+            "display" : "Observation-org-2-quant"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:e6ce8504-dadb-49c9-a997-a8ed4c7cba24",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "e6ce8504-dadb-49c9-a997-a8ed4c7cba24",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_e6ce8504-dadb-49c9-a997-a8ed4c7cba24\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation e6ce8504-dadb-49c9-a997-a8ed4c7cba24</b></p><a name=\"e6ce8504-dadb-49c9-a997-a8ed4c7cba24\"> </a><a name=\"hce6ce8504-dadb-49c9-a997-a8ed4c7cba24\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:\">Observed Quantity</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 441517005}\">++</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "text" : "Observed Quantity"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "441517005",
+              "display" : "Present ++ out of +++"
+            }
+          ],
+          "text" : "++"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:a07e93cc-5908-4ed1-9678-afc61ef9fd9e",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "a07e93cc-5908-4ed1-9678-afc61ef9fd9e",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_a07e93cc-5908-4ed1-9678-afc61ef9fd9e\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation a07e93cc-5908-4ed1-9678-afc61ef9fd9e</b></p><a name=\"a07e93cc-5908-4ed1-9678-afc61ef9fd9e\"> </a><a name=\"hca07e93cc-5908-4ed1-9678-afc61ef9fd9e\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 664-3}\">Microscopic observation [Identifier] in Specimen by Gram stain</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 59206002}\">Gram-positive coccus (organism)</span></p><p><b>hasMember</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-b564768f-937f-4132-a2eb-91efcf59b952\">Observation-org-3-quant</a></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "664-3",
+              "display" : "Microscopic observation [Identifier] in Specimen by Gram stain"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "59206002",
+              "display" : "Gram-positive coccus (organism)"
+            }
+          ]
+        },
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:b564768f-937f-4132-a2eb-91efcf59b952",
+            "display" : "Observation-org-3-quant"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:b564768f-937f-4132-a2eb-91efcf59b952",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "b564768f-937f-4132-a2eb-91efcf59b952",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_b564768f-937f-4132-a2eb-91efcf59b952\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation b564768f-937f-4132-a2eb-91efcf59b952</b></p><a name=\"b564768f-937f-4132-a2eb-91efcf59b952\"> </a><a name=\"hcb564768f-937f-4132-a2eb-91efcf59b952\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:\">Observed Quantity</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 2667000}\">None observed</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "text" : "Observed Quantity"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "2667000",
+              "display" : "Absent"
+            }
+          ],
+          "text" : "None observed"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:cea62faa-60b7-442b-b76a-da70ed2d92b1",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "cea62faa-60b7-442b-b76a-da70ed2d92b1",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_cea62faa-60b7-442b-b76a-da70ed2d92b1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation cea62faa-60b7-442b-b76a-da70ed2d92b1</b></p><a name=\"cea62faa-60b7-442b-b76a-da70ed2d92b1\"> </a><a name=\"hccea62faa-60b7-442b-b76a-da70ed2d92b1\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 17934-1}\">Bacteria identified Anaer cx Nom (Bld)</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-f89631cb-e973-4ba0-9f48-29b9472b9363\">Observation-anaerobe-culture-org-1</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-5c774433-62ad-4d21-b230-6de2d138a02d\">Observation-anaerobe-culture-org-2</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-296e1564-39d6-497b-9b40-e60f884dd5e4\">Observation-anaerobe-culture-org-3</a></li></ul></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "17934-1",
+              "display" : "Bacteria identified in Blood by Anaerobe culture"
+            }
+          ],
+          "text" : "Bacteria identified Anaer cx Nom (Bld)"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:f89631cb-e973-4ba0-9f48-29b9472b9363",
+            "display" : "Observation-anaerobe-culture-org-1"
+          },
+          {
+            "reference" : "urn:uuid:5c774433-62ad-4d21-b230-6de2d138a02d",
+            "display" : "Observation-anaerobe-culture-org-2"
+          },
+          {
+            "reference" : "urn:uuid:296e1564-39d6-497b-9b40-e60f884dd5e4",
+            "display" : "Observation-anaerobe-culture-org-3"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:f89631cb-e973-4ba0-9f48-29b9472b9363",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "f89631cb-e973-4ba0-9f48-29b9472b9363",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_f89631cb-e973-4ba0-9f48-29b9472b9363\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation f89631cb-e973-4ba0-9f48-29b9472b9363</b></p><a name=\"f89631cb-e973-4ba0-9f48-29b9472b9363\"> </a><a name=\"hcf89631cb-e973-4ba0-9f48-29b9472b9363\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 634-6}\">Bacteria identified in Specimen by Aerobe culture</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 56415008}\">Klebsiella pneumoniae (organism)</span></p><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-17a2d960-c34a-4276-be4a-e1e679fcf415\">Observation-anaerobe-culture-org-1-growth</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-3f40981d-f233-4315-b5c2-d6092d29ea95\">Observation-anaerobe-culture-org-1-susc-panel</a></li></ul></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "634-6",
+              "display" : "Bacteria identified in Specimen by Aerobe culture"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "56415008",
+              "display" : "Klebsiella pneumoniae (organism)"
+            }
+          ]
+        },
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:17a2d960-c34a-4276-be4a-e1e679fcf415",
+            "display" : "Observation-anaerobe-culture-org-1-growth"
+          },
+          {
+            "reference" : "urn:uuid:3f40981d-f233-4315-b5c2-d6092d29ea95",
+            "display" : "Observation-anaerobe-culture-org-1-susc-panel"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:17a2d960-c34a-4276-be4a-e1e679fcf415",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "17a2d960-c34a-4276-be4a-e1e679fcf415",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_17a2d960-c34a-4276-be4a-e1e679fcf415\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 17a2d960-c34a-4276-be4a-e1e679fcf415</b></p><a name=\"17a2d960-c34a-4276-be4a-e1e679fcf415\"> </a><a name=\"hc17a2d960-c34a-4276-be4a-e1e679fcf415\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:\">Microorganism Growth</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 441517005}\">++</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "text" : "Microorganism Growth"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "441517005",
+              "display" : "Present ++ out of +++"
+            }
+          ],
+          "text" : "++"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:3f40981d-f233-4315-b5c2-d6092d29ea95",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "3f40981d-f233-4315-b5c2-d6092d29ea95",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_3f40981d-f233-4315-b5c2-d6092d29ea95\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 3f40981d-f233-4315-b5c2-d6092d29ea95</b></p><a name=\"3f40981d-f233-4315-b5c2-d6092d29ea95\"> </a><a name=\"hc3f40981d-f233-4315-b5c2-d6092d29ea95\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 29576-6}\">Bacterial susceptibility panel</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-af017871-32df-4823-972c-daa256db7eb0\">Observation-org-1-amoxi-clav</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-5aa9b3c0-1057-48c2-ac73-b682fd8b9107\">Observation-org-1-ciprofloxacin</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-9a0233a6-4f0a-4022-9b4c-9a43c83e343e\">Observation-org-1-ceftriaxone</a></li></ul></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29576-6",
+              "display" : "Bacterial susceptibility panel"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:af017871-32df-4823-972c-daa256db7eb0",
+            "display" : "Observation-org-1-amoxi-clav"
+          },
+          {
+            "reference" : "urn:uuid:5aa9b3c0-1057-48c2-ac73-b682fd8b9107",
+            "display" : "Observation-org-1-ciprofloxacin"
+          },
+          {
+            "reference" : "urn:uuid:9a0233a6-4f0a-4022-9b4c-9a43c83e343e",
+            "display" : "Observation-org-1-ceftriaxone"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:af017871-32df-4823-972c-daa256db7eb0",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "af017871-32df-4823-972c-daa256db7eb0",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_af017871-32df-4823-972c-daa256db7eb0\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation af017871-32df-4823-972c-daa256db7eb0</b></p><a name=\"af017871-32df-4823-972c-daa256db7eb0\"> </a><a name=\"hcaf017871-32df-4823-972c-daa256db7eb0\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 18862-3}\">Amoxicillin+Clavulanate [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: &lt;=2 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation S}\">Susceptible</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "18862-3",
+              "display" : "Amoxicillin+Clavulanate [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 2,
+          "comparator" : "<=",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "S",
+                "display" : "Susceptible"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:5aa9b3c0-1057-48c2-ac73-b682fd8b9107",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "5aa9b3c0-1057-48c2-ac73-b682fd8b9107",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_5aa9b3c0-1057-48c2-ac73-b682fd8b9107\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 5aa9b3c0-1057-48c2-ac73-b682fd8b9107</b></p><a name=\"5aa9b3c0-1057-48c2-ac73-b682fd8b9107\"> </a><a name=\"hc5aa9b3c0-1057-48c2-ac73-b682fd8b9107\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 18906-8}\">Ciprofloxacin [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: &gt;4 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation R}\">Resistant</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "18906-8",
+              "display" : "Ciprofloxacin [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 4,
+          "comparator" : ">",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "R",
+                "display" : "Resistant"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:9a0233a6-4f0a-4022-9b4c-9a43c83e343e",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "9a0233a6-4f0a-4022-9b4c-9a43c83e343e",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_9a0233a6-4f0a-4022-9b4c-9a43c83e343e\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 9a0233a6-4f0a-4022-9b4c-9a43c83e343e</b></p><a name=\"9a0233a6-4f0a-4022-9b4c-9a43c83e343e\"> </a><a name=\"hc9a0233a6-4f0a-4022-9b4c-9a43c83e343e\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 18895-3}\">cefTRIAXone [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: 0.5 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation S}\">Susceptible</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "18895-3",
+              "display" : "cefTRIAXone [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 0.5,
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "S",
+                "display" : "Susceptible"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:5c774433-62ad-4d21-b230-6de2d138a02d",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "5c774433-62ad-4d21-b230-6de2d138a02d",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_5c774433-62ad-4d21-b230-6de2d138a02d\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 5c774433-62ad-4d21-b230-6de2d138a02d</b></p><a name=\"5c774433-62ad-4d21-b230-6de2d138a02d\"> </a><a name=\"hc5c774433-62ad-4d21-b230-6de2d138a02d\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 17934-1}\">Bacteria identified in Blood by Anaerobe culture</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 112283007}\">Escherichia coli (organism)</span></p><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-a4191434-87f5-4455-a3fd-e857fea50ea5\">Observation </a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-531337e5-48ec-4ed7-a81f-d30d16b3d7cb\">Observation Bacterial susceptibility panel</a></li></ul></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "17934-1",
+              "display" : "Bacteria identified in Blood by Anaerobe culture"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "112283007",
+              "display" : "Escherichia coli (organism)"
+            }
+          ]
+        },
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:a4191434-87f5-4455-a3fd-e857fea50ea5"
+          },
+          {
+            "reference" : "urn:uuid:531337e5-48ec-4ed7-a81f-d30d16b3d7cb"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:a4191434-87f5-4455-a3fd-e857fea50ea5",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "a4191434-87f5-4455-a3fd-e857fea50ea5",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_a4191434-87f5-4455-a3fd-e857fea50ea5\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation a4191434-87f5-4455-a3fd-e857fea50ea5</b></p><a name=\"a4191434-87f5-4455-a3fd-e857fea50ea5\"> </a><a name=\"hca4191434-87f5-4455-a3fd-e857fea50ea5\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:\">Microorganism Growth</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 441517005}\">++</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "text" : "Microorganism Growth"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "441517005",
+              "display" : "Present ++ out of +++"
+            }
+          ],
+          "text" : "++"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:531337e5-48ec-4ed7-a81f-d30d16b3d7cb",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "531337e5-48ec-4ed7-a81f-d30d16b3d7cb",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_531337e5-48ec-4ed7-a81f-d30d16b3d7cb\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 531337e5-48ec-4ed7-a81f-d30d16b3d7cb</b></p><a name=\"531337e5-48ec-4ed7-a81f-d30d16b3d7cb\"> </a><a name=\"hc531337e5-48ec-4ed7-a81f-d30d16b3d7cb\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 29576-6}\">Bacterial susceptibility panel</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-4f24af8e-00ae-417e-a87c-1c9a012b5e03\">Observation Carbapenem [Susceptibility]</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-1f94a3ab-1c83-4ac5-afec-75fabdf79da4\">Observation Ciprofloxacin [Susceptibility]</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-020c3f3d-a77b-42fa-a10a-c63ee7a5bd0f\">Observation cefTRIAXone [Susceptibility]</a></li></ul></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29576-6",
+              "display" : "Bacterial susceptibility panel"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:4f24af8e-00ae-417e-a87c-1c9a012b5e03"
+          },
+          {
+            "reference" : "urn:uuid:1f94a3ab-1c83-4ac5-afec-75fabdf79da4"
+          },
+          {
+            "reference" : "urn:uuid:020c3f3d-a77b-42fa-a10a-c63ee7a5bd0f"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:4f24af8e-00ae-417e-a87c-1c9a012b5e03",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "4f24af8e-00ae-417e-a87c-1c9a012b5e03",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_4f24af8e-00ae-417e-a87c-1c9a012b5e03\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 4f24af8e-00ae-417e-a87c-1c9a012b5e03</b></p><a name=\"4f24af8e-00ae-417e-a87c-1c9a012b5e03\"> </a><a name=\"hc4f24af8e-00ae-417e-a87c-1c9a012b5e03\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 88462-7}\">Carbapenem [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: &lt;=2 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation S}\">Susceptible</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "88462-7",
+              "display" : "Carbapenem [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 2,
+          "comparator" : "<=",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "S",
+                "display" : "Susceptible"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:1f94a3ab-1c83-4ac5-afec-75fabdf79da4",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "1f94a3ab-1c83-4ac5-afec-75fabdf79da4",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_1f94a3ab-1c83-4ac5-afec-75fabdf79da4\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 1f94a3ab-1c83-4ac5-afec-75fabdf79da4</b></p><a name=\"1f94a3ab-1c83-4ac5-afec-75fabdf79da4\"> </a><a name=\"hc1f94a3ab-1c83-4ac5-afec-75fabdf79da4\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 18906-8}\">Ciprofloxacin [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: &gt;4 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation R}\">Resistant</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "18906-8",
+              "display" : "Ciprofloxacin [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 4,
+          "comparator" : ">",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "R",
+                "display" : "Resistant"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:020c3f3d-a77b-42fa-a10a-c63ee7a5bd0f",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "020c3f3d-a77b-42fa-a10a-c63ee7a5bd0f",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_020c3f3d-a77b-42fa-a10a-c63ee7a5bd0f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 020c3f3d-a77b-42fa-a10a-c63ee7a5bd0f</b></p><a name=\"020c3f3d-a77b-42fa-a10a-c63ee7a5bd0f\"> </a><a name=\"hc020c3f3d-a77b-42fa-a10a-c63ee7a5bd0f\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 18895-3}\">cefTRIAXone [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: 0.5 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation S}\">Susceptible</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "18895-3",
+              "display" : "cefTRIAXone [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 0.5,
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "S",
+                "display" : "Susceptible"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:296e1564-39d6-497b-9b40-e60f884dd5e4",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "296e1564-39d6-497b-9b40-e60f884dd5e4",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_296e1564-39d6-497b-9b40-e60f884dd5e4\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 296e1564-39d6-497b-9b40-e60f884dd5e4</b></p><a name=\"296e1564-39d6-497b-9b40-e60f884dd5e4\"> </a><a name=\"hc296e1564-39d6-497b-9b40-e60f884dd5e4\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 17934-1}\">Bacteria identified in Blood by Anaerobe culture</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 112283007}\">Escherichia coli (organism)</span></p><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-8c885526-b6ed-4f99-bcc1-d294d79e0c7c\">Observation </a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-8c8b2f58-4cc1-4c21-8a92-e65ce31e60b1\">Observation Bacterial susceptibility panel</a></li></ul></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "17934-1",
+              "display" : "Bacteria identified in Blood by Anaerobe culture"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "112283007",
+              "display" : "Escherichia coli (organism)"
+            }
+          ]
+        },
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:8c885526-b6ed-4f99-bcc1-d294d79e0c7c"
+          },
+          {
+            "reference" : "urn:uuid:8c8b2f58-4cc1-4c21-8a92-e65ce31e60b1"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:8c885526-b6ed-4f99-bcc1-d294d79e0c7c",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "8c885526-b6ed-4f99-bcc1-d294d79e0c7c",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_8c885526-b6ed-4f99-bcc1-d294d79e0c7c\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 8c885526-b6ed-4f99-bcc1-d294d79e0c7c</b></p><a name=\"8c885526-b6ed-4f99-bcc1-d294d79e0c7c\"> </a><a name=\"hc8c885526-b6ed-4f99-bcc1-d294d79e0c7c\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:\">Microorganism Growth</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 441517005}\">++</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "text" : "Microorganism Growth"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "441517005",
+              "display" : "Present ++ out of +++"
+            }
+          ],
+          "text" : "++"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:8c8b2f58-4cc1-4c21-8a92-e65ce31e60b1",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "8c8b2f58-4cc1-4c21-8a92-e65ce31e60b1",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_8c8b2f58-4cc1-4c21-8a92-e65ce31e60b1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 8c8b2f58-4cc1-4c21-8a92-e65ce31e60b1</b></p><a name=\"8c8b2f58-4cc1-4c21-8a92-e65ce31e60b1\"> </a><a name=\"hc8c8b2f58-4cc1-4c21-8a92-e65ce31e60b1\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 29576-6}\">Bacterial susceptibility panel</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-6dbb348d-3ce5-451a-b7db-77c2e4d27bb3\">Observation Carbapenem [Susceptibility]</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-eda9070d-cd59-45b3-a1fc-b79cc479c562\">Observation Ciprofloxacin [Susceptibility]</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-ad7dd57d-69c4-493f-bf4e-b919664757ba\">Observation cefTRIAXone [Susceptibility]</a></li></ul></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29576-6",
+              "display" : "Bacterial susceptibility panel"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:6dbb348d-3ce5-451a-b7db-77c2e4d27bb3"
+          },
+          {
+            "reference" : "urn:uuid:eda9070d-cd59-45b3-a1fc-b79cc479c562"
+          },
+          {
+            "reference" : "urn:uuid:ad7dd57d-69c4-493f-bf4e-b919664757ba"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:6dbb348d-3ce5-451a-b7db-77c2e4d27bb3",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "6dbb348d-3ce5-451a-b7db-77c2e4d27bb3",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_6dbb348d-3ce5-451a-b7db-77c2e4d27bb3\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 6dbb348d-3ce5-451a-b7db-77c2e4d27bb3</b></p><a name=\"6dbb348d-3ce5-451a-b7db-77c2e4d27bb3\"> </a><a name=\"hc6dbb348d-3ce5-451a-b7db-77c2e4d27bb3\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 88462-7}\">Carbapenem [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: &lt;=2 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation S}\">Susceptible</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "88462-7",
+              "display" : "Carbapenem [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 2,
+          "comparator" : "<=",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "S",
+                "display" : "Susceptible"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:eda9070d-cd59-45b3-a1fc-b79cc479c562",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "eda9070d-cd59-45b3-a1fc-b79cc479c562",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_eda9070d-cd59-45b3-a1fc-b79cc479c562\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation eda9070d-cd59-45b3-a1fc-b79cc479c562</b></p><a name=\"eda9070d-cd59-45b3-a1fc-b79cc479c562\"> </a><a name=\"hceda9070d-cd59-45b3-a1fc-b79cc479c562\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 18906-8}\">Ciprofloxacin [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: &gt;4 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation R}\">Resistant</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "18906-8",
+              "display" : "Ciprofloxacin [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 4,
+          "comparator" : ">",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "R",
+                "display" : "Resistant"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:ad7dd57d-69c4-493f-bf4e-b919664757ba",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "ad7dd57d-69c4-493f-bf4e-b919664757ba",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_ad7dd57d-69c4-493f-bf4e-b919664757ba\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation ad7dd57d-69c4-493f-bf4e-b919664757ba</b></p><a name=\"ad7dd57d-69c4-493f-bf4e-b919664757ba\"> </a><a name=\"hcad7dd57d-69c4-493f-bf4e-b919664757ba\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 18895-3}\">cefTRIAXone [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: 0.5 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation S}\">Susceptible</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "18895-3",
+              "display" : "cefTRIAXone [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 0.5,
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "S",
+                "display" : "Susceptible"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:3184e9e2-4f12-43ce-9e83-f5c4a21c1eeb",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "3184e9e2-4f12-43ce-9e83-f5c4a21c1eeb",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_3184e9e2-4f12-43ce-9e83-f5c4a21c1eeb\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 3184e9e2-4f12-43ce-9e83-f5c4a21c1eeb</b></p><a name=\"3184e9e2-4f12-43ce-9e83-f5c4a21c1eeb\"> </a><a name=\"hc3184e9e2-4f12-43ce-9e83-f5c4a21c1eeb\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 17928-3}\">Bacteria identified Aer cx Nom (Bld)</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-8b07a6b9-fefd-4ee5-87e1-04cdc4a15327\">Observation Bacteria identified in Specimen by Aerobe culture</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-dc20d7a8-a2ec-4291-b70e-b3049ea05cf3\">Observation Bacteria identified in Specimen by Aerobe culture</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-230f9ed4-0ab0-456e-9161-f1c290e24c92\">Observation Bacteria identified in Specimen by Aerobe culture</a></li></ul></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "17928-3",
+              "display" : "Bacteria identified in Blood by Aerobe culture"
+            }
+          ],
+          "text" : "Bacteria identified Aer cx Nom (Bld)"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:8b07a6b9-fefd-4ee5-87e1-04cdc4a15327"
+          },
+          {
+            "reference" : "urn:uuid:dc20d7a8-a2ec-4291-b70e-b3049ea05cf3"
+          },
+          {
+            "reference" : "urn:uuid:230f9ed4-0ab0-456e-9161-f1c290e24c92"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:8b07a6b9-fefd-4ee5-87e1-04cdc4a15327",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "8b07a6b9-fefd-4ee5-87e1-04cdc4a15327",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_8b07a6b9-fefd-4ee5-87e1-04cdc4a15327\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 8b07a6b9-fefd-4ee5-87e1-04cdc4a15327</b></p><a name=\"8b07a6b9-fefd-4ee5-87e1-04cdc4a15327\"> </a><a name=\"hc8b07a6b9-fefd-4ee5-87e1-04cdc4a15327\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 634-6}\">Bacteria identified in Specimen by Aerobe culture</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 56415008}\">Klebsiella pneumoniae (organism)</span></p><p><b>hasMember</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-f251d8b4-54fb-4060-89fe-f17e54874124\">Observation </a></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "634-6",
+              "display" : "Bacteria identified in Specimen by Aerobe culture"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "56415008",
+              "display" : "Klebsiella pneumoniae (organism)"
+            }
+          ]
+        },
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:f251d8b4-54fb-4060-89fe-f17e54874124"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:f251d8b4-54fb-4060-89fe-f17e54874124",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "f251d8b4-54fb-4060-89fe-f17e54874124",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_f251d8b4-54fb-4060-89fe-f17e54874124\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation f251d8b4-54fb-4060-89fe-f17e54874124</b></p><a name=\"f251d8b4-54fb-4060-89fe-f17e54874124\"> </a><a name=\"hcf251d8b4-54fb-4060-89fe-f17e54874124\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:\">Microorganism Growth</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 441517005}\">++</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "text" : "Microorganism Growth"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "441517005",
+              "display" : "Present ++ out of +++"
+            }
+          ],
+          "text" : "++"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:dc20d7a8-a2ec-4291-b70e-b3049ea05cf3",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "dc20d7a8-a2ec-4291-b70e-b3049ea05cf3",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_dc20d7a8-a2ec-4291-b70e-b3049ea05cf3\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation dc20d7a8-a2ec-4291-b70e-b3049ea05cf3</b></p><a name=\"dc20d7a8-a2ec-4291-b70e-b3049ea05cf3\"> </a><a name=\"hcdc20d7a8-a2ec-4291-b70e-b3049ea05cf3\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 634-6}\">Bacteria identified in Specimen by Aerobe culture</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 112283007}\">Escherichia coli (organism)</span></p><p><b>hasMember</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-e548aa0e-1662-4fda-838a-aa7d169ae44f\">Observation </a></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "634-6",
+              "display" : "Bacteria identified in Specimen by Aerobe culture"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "112283007",
+              "display" : "Escherichia coli (organism)"
+            }
+          ]
+        },
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:e548aa0e-1662-4fda-838a-aa7d169ae44f"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:e548aa0e-1662-4fda-838a-aa7d169ae44f",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "e548aa0e-1662-4fda-838a-aa7d169ae44f",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_e548aa0e-1662-4fda-838a-aa7d169ae44f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation e548aa0e-1662-4fda-838a-aa7d169ae44f</b></p><a name=\"e548aa0e-1662-4fda-838a-aa7d169ae44f\"> </a><a name=\"hce548aa0e-1662-4fda-838a-aa7d169ae44f\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:\">Microorganism Growth</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 441517005}\">++</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "text" : "Microorganism Growth"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "441517005",
+              "display" : "Present ++ out of +++"
+            }
+          ],
+          "text" : "++"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:230f9ed4-0ab0-456e-9161-f1c290e24c92",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "230f9ed4-0ab0-456e-9161-f1c290e24c92",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_230f9ed4-0ab0-456e-9161-f1c290e24c92\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 230f9ed4-0ab0-456e-9161-f1c290e24c92</b></p><a name=\"230f9ed4-0ab0-456e-9161-f1c290e24c92\"> </a><a name=\"hc230f9ed4-0ab0-456e-9161-f1c290e24c92\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 634-6}\">Bacteria identified in Specimen by Aerobe culture</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 112283007}\">Escherichia coli (organism)</span></p><p><b>hasMember</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-1c453ab3-8e39-4530-a581-d3f87e1459fc\">Observation-aerobe-culture-org-2-growth</a></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "634-6",
+              "display" : "Bacteria identified in Specimen by Aerobe culture"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "112283007",
+              "display" : "Escherichia coli (organism)"
+            }
+          ]
+        },
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:1c453ab3-8e39-4530-a581-d3f87e1459fc",
+            "display" : "Observation-aerobe-culture-org-2-growth"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:1c453ab3-8e39-4530-a581-d3f87e1459fc",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "1c453ab3-8e39-4530-a581-d3f87e1459fc",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_1c453ab3-8e39-4530-a581-d3f87e1459fc\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 1c453ab3-8e39-4530-a581-d3f87e1459fc</b></p><a name=\"1c453ab3-8e39-4530-a581-d3f87e1459fc\"> </a><a name=\"hc1c453ab3-8e39-4530-a581-d3f87e1459fc\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:\">Microorganism Growth</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 441517005}\">++</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "text" : "Microorganism Growth"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "441517005",
+              "display" : "Present ++ out of +++"
+            }
+          ],
+          "text" : "++"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:0c1b30c6-9a41-4c59-a403-531654214754",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "0c1b30c6-9a41-4c59-a403-531654214754",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_0c1b30c6-9a41-4c59-a403-531654214754\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 0c1b30c6-9a41-4c59-a403-531654214754</b></p><a name=\"0c1b30c6-9a41-4c59-a403-531654214754\"> </a><a name=\"hc0c1b30c6-9a41-4c59-a403-531654214754\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 117011000}\">Quantitative urine culture (procedure)</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 441614007}\">+</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "117011000",
+              "display" : "Quantitative urine culture (procedure)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "441614007",
+              "display" : "Present + out of +++"
+            }
+          ],
+          "text" : "+"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:24f1a039-5146-4e51-8c07-dfd94bc7370d",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "24f1a039-5146-4e51-8c07-dfd94bc7370d",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_24f1a039-5146-4e51-8c07-dfd94bc7370d\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 24f1a039-5146-4e51-8c07-dfd94bc7370d</b></p><a name=\"24f1a039-5146-4e51-8c07-dfd94bc7370d\"> </a><a name=\"hc24f1a039-5146-4e51-8c07-dfd94bc7370d\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>basedOn</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7\">ServiceRequest Bacterial susceptibility panel</a></p><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 29576-6}\">Bacterial susceptibility panel</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>hasMember</b>: </p><ul><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-9d3394c2-3b7b-4f88-9358-239adbeadba3\">Observation-org-2-carbapenem-susc</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-4679fd4c-4ef3-4b91-b17c-8a97a25472fb\">Observation-org-2-ciprofloxacin-susc</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-6a68a15a-5477-4d01-bfd6-fe7fa7cb97f8\">Observation-org-2-neomycin-susc</a></li><li><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-28a7f5b7-7ba4-4caf-ac43-80326dcf2cfb\">Observation-org-2-vancomycin-susc</a></li></ul></div>"
+        },
+        "basedOn" : [
+          {
+            "reference" : "urn:uuid:3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7"
+          }
+        ],
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29576-6",
+              "display" : "Bacterial susceptibility panel"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "hasMember" : [
+          {
+            "reference" : "urn:uuid:9d3394c2-3b7b-4f88-9358-239adbeadba3",
+            "display" : "Observation-org-2-carbapenem-susc"
+          },
+          {
+            "reference" : "urn:uuid:4679fd4c-4ef3-4b91-b17c-8a97a25472fb",
+            "display" : "Observation-org-2-ciprofloxacin-susc"
+          },
+          {
+            "reference" : "urn:uuid:6a68a15a-5477-4d01-bfd6-fe7fa7cb97f8",
+            "display" : "Observation-org-2-neomycin-susc"
+          },
+          {
+            "reference" : "urn:uuid:28a7f5b7-7ba4-4caf-ac43-80326dcf2cfb",
+            "display" : "Observation-org-2-vancomycin-susc"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:9d3394c2-3b7b-4f88-9358-239adbeadba3",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "9d3394c2-3b7b-4f88-9358-239adbeadba3",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_9d3394c2-3b7b-4f88-9358-239adbeadba3\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 9d3394c2-3b7b-4f88-9358-239adbeadba3</b></p><a name=\"9d3394c2-3b7b-4f88-9358-239adbeadba3\"> </a><a name=\"hc9d3394c2-3b7b-4f88-9358-239adbeadba3\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>basedOn</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7\">ServiceRequest Bacterial susceptibility panel</a></p><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Mikrobielle Empfindlichkeits-Untersuchungen:Empfindlichkeit (Mikroorganismen):Zeitpunkt:^Patient:Set:</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 88462-7}\">Carbapenem [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: &lt;=2 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation S}\">Susceptible</span></p></div>"
+        },
+        "basedOn" : [
+          {
+            "reference" : "urn:uuid:3c58f6f4-3025-43e2-b97c-f6af4f9b4ab7"
+          }
+        ],
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ],
+            "text" : "Mikrobielle Empfindlichkeits-Untersuchungen:Empfindlichkeit (Mikroorganismen):Zeitpunkt:^Patient:Set:"
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "88462-7",
+              "display" : "Carbapenem [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 2,
+          "comparator" : "<=",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "S",
+                "display" : "Susceptible"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:4679fd4c-4ef3-4b91-b17c-8a97a25472fb",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "4679fd4c-4ef3-4b91-b17c-8a97a25472fb",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_4679fd4c-4ef3-4b91-b17c-8a97a25472fb\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 4679fd4c-4ef3-4b91-b17c-8a97a25472fb</b></p><a name=\"4679fd4c-4ef3-4b91-b17c-8a97a25472fb\"> </a><a name=\"hc4679fd4c-4ef3-4b91-b17c-8a97a25472fb\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Mikrobielle Empfindlichkeits-Untersuchungen:Empfindlichkeit (Mikroorganismen):Zeitpunkt:^Patient:Set:</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 18906-8}\">Ciprofloxacin [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: &gt;4 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation R}\">Resistant</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ],
+            "text" : "Mikrobielle Empfindlichkeits-Untersuchungen:Empfindlichkeit (Mikroorganismen):Zeitpunkt:^Patient:Set:"
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "18906-8",
+              "display" : "Ciprofloxacin [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 4,
+          "comparator" : ">",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "R",
+                "display" : "Resistant"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:6a68a15a-5477-4d01-bfd6-fe7fa7cb97f8",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "6a68a15a-5477-4d01-bfd6-fe7fa7cb97f8",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_6a68a15a-5477-4d01-bfd6-fe7fa7cb97f8\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 6a68a15a-5477-4d01-bfd6-fe7fa7cb97f8</b></p><a name=\"6a68a15a-5477-4d01-bfd6-fe7fa7cb97f8\"> </a><a name=\"hc6a68a15a-5477-4d01-bfd6-fe7fa7cb97f8\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 18953-0}\">Neomycin [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: 0.5 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation S}\">Susceptible</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "18953-0",
+              "display" : "Neomycin [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 0.5,
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "S",
+                "display" : "Susceptible"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:28a7f5b7-7ba4-4caf-ac43-80326dcf2cfb",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "28a7f5b7-7ba4-4caf-ac43-80326dcf2cfb",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-observation-results-laboratory"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_28a7f5b7-7ba4-4caf-ac43-80326dcf2cfb\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 28a7f5b7-7ba4-4caf-ac43-80326dcf2cfb</b></p><a name=\"28a7f5b7-7ba4-4caf-ac43-80326dcf2cfb\"> </a><a name=\"hc28a7f5b7-7ba4-4caf-ac43-80326dcf2cfb\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-observation-results-laboratory.html\">CH LAB-Report Observation Results: Laboratory Report</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category laboratory}\">Laboratory</span>, <span title=\"Codes:{http://snomed.info/sct 408454008}\">Clinical microbiology</span>, <span title=\"Codes:{http://loinc.org 18725-2}\">Microbiology studies (set)</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 19000-9}\">Vancomycin [Susceptibility]</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>effective</b>: 2022-10-25 13:35:00+0100</p><p><b>performer</b>: </p><ul><li><a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></li><li>Beat Bunsen, practitioner</li></ul><p><b>value</b>: &lt;=1 1<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code1 = '1')</span></p><p><b>interpretation</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation S}\">Susceptible</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "laboratory"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "408454008",
+                "display" : "Clinical microbiology"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://loinc.org",
+                "code" : "18725-2",
+                "display" : "Microbiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "19000-9",
+              "display" : "Vancomycin [Susceptibility]"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "effectiveDateTime" : "2022-10-25T13:35:00+01:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+            "display" : "Beat Bunsen, practitioner"
+          },
+          {
+            "display" : "Beat Bunsen, practitioner"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 1,
+          "comparator" : "<=",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "1"
+        },
+        "interpretation" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code" : "S",
+                "display" : "Susceptible"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:4fcf2138-6def-4b6e-beaa-35ee09d9cba8",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "4fcf2138-6def-4b6e-beaa-35ee09d9cba8",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_4fcf2138-6def-4b6e-beaa-35ee09d9cba8\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen 4fcf2138-6def-4b6e-beaa-35ee09d9cba8</b></p><a name=\"4fcf2138-6def-4b6e-beaa-35ee09d9cba8\"> </a><a name=\"hc4fcf2138-6def-4b6e-beaa-35ee09d9cba8\"> </a><p><b>identifier</b>: <code>http://ehr.acme.org/identifiers/collections</code>/23234352356</p><p><b>accessionIdentifier</b>: <code>http://lab.acme.org/specimens/2011</code>/X352356</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 122555007}\">Venous blood specimen</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>receivedTime</b>: 2023-11-09 07:30:00+0000</p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>Quantity</b></td><td><b>Method</b></td><td><b>BodySite</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-a7d5a837-288d-4234-923c-c9cb5b6f55a1\">Hans Hauser, practitioner</a></td><td>2011-05-30 06:15:00+0000</td><td>6 mL</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0488 LNV}\">Line, Venous</span></td><td><span title=\"Codes:{http://snomed.info/sct 49852007}\">Right median cubital vein</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Identifier</b></td><td><b>Description</b></td><td><b>Type</b></td><td><b>Capacity</b></td><td><b>SpecimenQuantity</b></td></tr><tr><td style=\"display: none\">*</td><td>48736-15394-75465</td><td>Anaerobic Culture Glass Bootle</td><td><span title=\"Codes:\">Orange top Bottle</span></td><td>10 mL</td><td>6 mL</td></tr></table><p><b>note</b>: </p><blockquote><div><p>ok</p>\n</div></blockquote></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "http://ehr.acme.org/identifiers/collections",
+            "value" : "23234352356"
+          }
+        ],
+        "accessionIdentifier" : {
+          "system" : "http://lab.acme.org/specimens/2011",
+          "value" : "X352356"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "122555007",
+              "display" : "Venous blood specimen"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "receivedTime" : "2023-11-09T07:30:00Z",
+        "collection" : {
+          "collector" : {
+            "reference" : "urn:uuid:a7d5a837-288d-4234-923c-c9cb5b6f55a1",
+            "display" : "Hans Hauser, practitioner"
+          },
+          "collectedDateTime" : "2011-05-30T06:15:00Z",
+          "quantity" : {
+            "value" : 6,
+            "unit" : "mL"
+          },
+          "method" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0488",
+                "code" : "LNV"
+              }
+            ]
+          },
+          "bodySite" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "49852007",
+                "display" : "Structure of median cubital vein (body structure)"
+              }
+            ],
+            "text" : "Right median cubital vein"
+          }
+        },
+        "container" : [
+          {
+            "identifier" : [
+              {
+                "value" : "48736-15394-75465"
+              }
+            ],
+            "description" : "Anaerobic Culture Glass Bootle",
+            "type" : {
+              "text" : "Orange top Bottle"
+            },
+            "capacity" : {
+              "value" : 10,
+              "unit" : "mL"
+            },
+            "specimenQuantity" : {
+              "value" : 6,
+              "unit" : "mL"
+            }
+          }
+        ],
+        "note" : [
+          {
+            "text" : "ok"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:4b37cb2b-b9fe-4742-aacd-b03259d3035a",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "4b37cb2b-b9fe-4742-aacd-b03259d3035a",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_4b37cb2b-b9fe-4742-aacd-b03259d3035a\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen 4b37cb2b-b9fe-4742-aacd-b03259d3035a</b></p><a name=\"4b37cb2b-b9fe-4742-aacd-b03259d3035a\"> </a><a name=\"hc4b37cb2b-b9fe-4742-aacd-b03259d3035a\"> </a><p><b>identifier</b>: <code>http://ehr.acme.org/identifiers/collections</code>/23234352356</p><p><b>accessionIdentifier</b>: <code>http://lab.acme.org/specimens/2011</code>/X352356</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 122555007}\">Venous blood specimen</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>receivedTime</b>: 2023-11-09 06:45:00+0000</p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>Quantity</b></td><td><b>Method</b></td><td><b>BodySite</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-a7d5a837-288d-4234-923c-c9cb5b6f55a1\">Hans Hauser, practitioner</a></td><td>2011-05-30 06:15:00+0000</td><td>6 mL</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0488 LNV}\">Line, Venous</span></td><td><span title=\"Codes:{http://snomed.info/sct 49852007}\">Right median cubital vein</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Identifier</b></td><td><b>Description</b></td><td><b>Type</b></td><td><b>Capacity</b></td><td><b>SpecimenQuantity</b></td></tr><tr><td style=\"display: none\">*</td><td>48736-15394-75465</td><td>Anaerobic Culture Glass Bootle</td><td><span title=\"Codes:\">Orange top Bottle</span></td><td>10 mL</td><td>6 mL</td></tr></table><p><b>note</b>: </p><blockquote><div><p>ok</p>\n</div></blockquote></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "http://ehr.acme.org/identifiers/collections",
+            "value" : "23234352356"
+          }
+        ],
+        "accessionIdentifier" : {
+          "system" : "http://lab.acme.org/specimens/2011",
+          "value" : "X352356"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "122555007",
+              "display" : "Venous blood specimen"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "receivedTime" : "2023-11-09T06:45:00Z",
+        "collection" : {
+          "collector" : {
+            "reference" : "urn:uuid:a7d5a837-288d-4234-923c-c9cb5b6f55a1",
+            "display" : "Hans Hauser, practitioner"
+          },
+          "collectedDateTime" : "2011-05-30T06:15:00Z",
+          "quantity" : {
+            "value" : 6,
+            "unit" : "mL"
+          },
+          "method" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0488",
+                "code" : "LNV"
+              }
+            ]
+          },
+          "bodySite" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "49852007",
+                "display" : "Structure of median cubital vein (body structure)"
+              }
+            ],
+            "text" : "Right median cubital vein"
+          }
+        },
+        "container" : [
+          {
+            "identifier" : [
+              {
+                "value" : "48736-15394-75465"
+              }
+            ],
+            "description" : "Anaerobic Culture Glass Bootle",
+            "type" : {
+              "text" : "Orange top Bottle"
+            },
+            "capacity" : {
+              "value" : 10,
+              "unit" : "mL"
+            },
+            "specimenQuantity" : {
+              "value" : 6,
+              "unit" : "mL"
+            }
+          }
+        ],
+        "note" : [
+          {
+            "text" : "ok"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen 7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2</b></p><a name=\"7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2\"> </a><a name=\"hc7ba89b7b-9898-46cf-ad9d-6cc1f4be31c2\"> </a><p><b>identifier</b>: <code>http://ehr.acme.org/identifiers/collections</code>/23234352356</p><p><b>accessionIdentifier</b>: <code>http://lab.acme.org/specimens/2011</code>/X352356</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 122555007}\">Venous blood specimen</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>receivedTime</b>: 2023-11-09 07:30:00+0000</p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>Quantity</b></td><td><b>Method</b></td><td><b>BodySite</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-a7d5a837-288d-4234-923c-c9cb5b6f55a1\">Hans Hauser, practitioner</a></td><td>2011-05-30 06:15:00+0000</td><td>6 mL</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0488 LNV}\">Line, Venous</span></td><td><span title=\"Codes:{http://snomed.info/sct 49852007}\">Right median cubital vein</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Identifier</b></td><td><b>Description</b></td><td><b>Type</b></td><td><b>Capacity</b></td><td><b>SpecimenQuantity</b></td></tr><tr><td style=\"display: none\">*</td><td>48736-15394-75465</td><td>Aerobic Culture Glass Bootle</td><td><span title=\"Codes:\">Blue top Bottle</span></td><td>10 mL</td><td>6 mL</td></tr></table><p><b>note</b>: </p><blockquote><div><p>ok</p>\n</div></blockquote></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "http://ehr.acme.org/identifiers/collections",
+            "value" : "23234352356"
+          }
+        ],
+        "accessionIdentifier" : {
+          "system" : "http://lab.acme.org/specimens/2011",
+          "value" : "X352356"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "122555007",
+              "display" : "Venous blood specimen"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "receivedTime" : "2023-11-09T07:30:00Z",
+        "collection" : {
+          "collector" : {
+            "reference" : "urn:uuid:a7d5a837-288d-4234-923c-c9cb5b6f55a1",
+            "display" : "Hans Hauser, practitioner"
+          },
+          "collectedDateTime" : "2011-05-30T06:15:00Z",
+          "quantity" : {
+            "value" : 6,
+            "unit" : "mL"
+          },
+          "method" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0488",
+                "code" : "LNV"
+              }
+            ]
+          },
+          "bodySite" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "49852007",
+                "display" : "Structure of median cubital vein (body structure)"
+              }
+            ],
+            "text" : "Right median cubital vein"
+          }
+        },
+        "container" : [
+          {
+            "identifier" : [
+              {
+                "value" : "48736-15394-75465"
+              }
+            ],
+            "description" : "Aerobic Culture Glass Bootle",
+            "type" : {
+              "text" : "Blue top Bottle"
+            },
+            "capacity" : {
+              "value" : 10,
+              "unit" : "mL"
+            },
+            "specimenQuantity" : {
+              "value" : 6,
+              "unit" : "mL"
+            }
+          }
+        ],
+        "note" : [
+          {
+            "text" : "ok"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:b0871e3b-f378-4f07-90ff-f08a20e42c02",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "b0871e3b-f378-4f07-90ff-f08a20e42c02",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_b0871e3b-f378-4f07-90ff-f08a20e42c02\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen b0871e3b-f378-4f07-90ff-f08a20e42c02</b></p><a name=\"b0871e3b-f378-4f07-90ff-f08a20e42c02\"> </a><a name=\"hcb0871e3b-f378-4f07-90ff-f08a20e42c02\"> </a><p><b>identifier</b>: <code>http://ehr.acme.org/identifiers/collections</code>/23234352356</p><p><b>accessionIdentifier</b>: <code>http://lab.acme.org/specimens/2011</code>/X352356</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 122555007}\">Venous blood specimen</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>receivedTime</b>: 2023-11-09 07:30:00+0000</p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>Quantity</b></td><td><b>Method</b></td><td><b>BodySite</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-a7d5a837-288d-4234-923c-c9cb5b6f55a1\">Hans Hauser, practitioner</a></td><td>2011-05-30 06:45:00+0000</td><td>6 mL</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0488 LNV}\">Line, Venous</span></td><td><span title=\"Codes:{http://snomed.info/sct 49852007}\">Right median cubital vein</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Identifier</b></td><td><b>Description</b></td><td><b>Type</b></td><td><b>Capacity</b></td><td><b>SpecimenQuantity</b></td></tr><tr><td style=\"display: none\">*</td><td>48736-15394-75465</td><td>Aerobic Culture Glass Bootle</td><td><span title=\"Codes:\">Blue top Bottle</span></td><td>10 mL</td><td>6 mL</td></tr></table><p><b>note</b>: </p><blockquote><div><p>ok</p>\n</div></blockquote></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "http://ehr.acme.org/identifiers/collections",
+            "value" : "23234352356"
+          }
+        ],
+        "accessionIdentifier" : {
+          "system" : "http://lab.acme.org/specimens/2011",
+          "value" : "X352356"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "122555007",
+              "display" : "Venous blood specimen"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "receivedTime" : "2023-11-09T07:30:00Z",
+        "collection" : {
+          "collector" : {
+            "reference" : "urn:uuid:a7d5a837-288d-4234-923c-c9cb5b6f55a1",
+            "display" : "Hans Hauser, practitioner"
+          },
+          "collectedDateTime" : "2011-05-30T06:45:00Z",
+          "quantity" : {
+            "value" : 6,
+            "unit" : "mL"
+          },
+          "method" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0488",
+                "code" : "LNV"
+              }
+            ]
+          },
+          "bodySite" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "49852007",
+                "display" : "Structure of median cubital vein (body structure)"
+              }
+            ],
+            "text" : "Right median cubital vein"
+          }
+        },
+        "container" : [
+          {
+            "identifier" : [
+              {
+                "value" : "48736-15394-75465"
+              }
+            ],
+            "description" : "Aerobic Culture Glass Bootle",
+            "type" : {
+              "text" : "Blue top Bottle"
+            },
+            "capacity" : {
+              "value" : 10,
+              "unit" : "mL"
+            },
+            "specimenQuantity" : {
+              "value" : 6,
+              "unit" : "mL"
+            }
+          }
+        ],
+        "note" : [
+          {
+            "text" : "ok"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:77ed2f36-b4b1-42da-bc57-563e293c04e8",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "77ed2f36-b4b1-42da-bc57-563e293c04e8",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_77ed2f36-b4b1-42da-bc57-563e293c04e8\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen 77ed2f36-b4b1-42da-bc57-563e293c04e8</b></p><a name=\"77ed2f36-b4b1-42da-bc57-563e293c04e8\"> </a><a name=\"hc77ed2f36-b4b1-42da-bc57-563e293c04e8\"> </a><p><b>identifier</b>: <code>http://ehr.acme.org/identifiers/collections</code>/23234352356</p><p><b>accessionIdentifier</b>: <code>http://lab.acme.org/specimens/2011</code>/X352356</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 122575003}\">Urine specimen</span></p><p><b>subject</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-14fbf29b-5dac-483e-b543-15031f12344b\">Katarina Keller</a></p><p><b>receivedTime</b>: 2023-11-09 07:30:00+0000</p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>Quantity</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-a7d5a837-288d-4234-923c-c9cb5b6f55a1\">Hans Hauser, practitioner</a></td><td>2011-05-30 06:15:00+0000</td><td>60 mL</td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Identifier</b></td><td><b>Description</b></td><td><b>Type</b></td><td><b>Capacity</b></td><td><b>SpecimenQuantity</b></td></tr><tr><td style=\"display: none\">*</td><td>48736-15394-75465</td><td>Urine container</td><td><span title=\"Codes:\">Red cap sterile Urine container</span></td><td>60 mL</td><td>60 mL</td></tr></table><p><b>note</b>: </p><blockquote><div><p>ok</p>\n</div></blockquote></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "http://ehr.acme.org/identifiers/collections",
+            "value" : "23234352356"
+          }
+        ],
+        "accessionIdentifier" : {
+          "system" : "http://lab.acme.org/specimens/2011",
+          "value" : "X352356"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "122575003",
+              "display" : "Urine specimen"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:14fbf29b-5dac-483e-b543-15031f12344b",
+          "display" : "Katarina Keller"
+        },
+        "receivedTime" : "2023-11-09T07:30:00Z",
+        "collection" : {
+          "collector" : {
+            "reference" : "urn:uuid:a7d5a837-288d-4234-923c-c9cb5b6f55a1",
+            "display" : "Hans Hauser, practitioner"
+          },
+          "collectedDateTime" : "2011-05-30T06:15:00Z",
+          "quantity" : {
+            "value" : 60,
+            "unit" : "mL"
+          }
+        },
+        "container" : [
+          {
+            "identifier" : [
+              {
+                "value" : "48736-15394-75465"
+              }
+            ],
+            "description" : "Urine container",
+            "type" : {
+              "text" : "Red cap sterile Urine container"
+            },
+            "capacity" : {
+              "value" : 60,
+              "unit" : "mL"
+            },
+            "specimenQuantity" : {
+              "value" : 60,
+              "unit" : "mL"
+            }
+          }
+        ],
+        "note" : [
+          {
+            "text" : "ok"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:10b95d3c-5402-4631-a404-e0d7e74c9a8f",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "10b95d3c-5402-4631-a404-e0d7e74c9a8f",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_10b95d3c-5402-4631-a404-e0d7e74c9a8f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole 10b95d3c-5402-4631-a404-e0d7e74c9a8f</b></p><a name=\"10b95d3c-5402-4631-a404-e0d7e74c9a8f\"> </a><a name=\"hc10b95d3c-5402-4631-a404-e0d7e74c9a8f\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-practitionerrole.html\">CH LAB-Report PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-a7d5a837-288d-4234-923c-c9cb5b6f55a1\">Hans Hauser, practitioner</a></p><p><b>organization</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-37e198ba-ebae-4438-bf8f-faa42eff82c6\">Kantonsspital</a></p><p><b>code</b>: <span title=\"Codes:{urn:oid:2.16.840.1.113883.2.9.6.2.7 3212}\">Medical and Pathology Laboratory Technicians</span></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "urn:uuid:a7d5a837-288d-4234-923c-c9cb5b6f55a1",
+          "display" : "Hans Hauser, practitioner"
+        },
+        "organization" : {
+          "reference" : "urn:uuid:37e198ba-ebae-4438-bf8f-faa42eff82c6",
+          "display" : "Kantonsspital"
+        },
+        "code" : [
+          {
+            "coding" : [
+              {
+                "system" : "urn:oid:2.16.840.1.113883.2.9.6.2.7",
+                "code" : "3212",
+                "display" : "Medical and Pathology Laboratory Technicians"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:a7d5a837-288d-4234-923c-c9cb5b6f55a1",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "a7d5a837-288d-4234-923c-c9cb5b6f55a1",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_a7d5a837-288d-4234-923c-c9cb5b6f55a1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner a7d5a837-288d-4234-923c-c9cb5b6f55a1</b></p><a name=\"a7d5a837-288d-4234-923c-c9cb5b6f55a1\"> </a><a name=\"hca7d5a837-288d-4234-923c-c9cb5b6f55a1\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitioner.html\">CH Core Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050700, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/L248519</p><p><b>name</b>: Hans Hauser (Official)</p><p><b>telecom</b>: ph: 038 888 22 11(Work), <a href=\"mailto:hans.hauser@kantonsspital.zug.ch\">hans.hauser@kantonsspital.zug.ch</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050700"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "L248519"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Hauser",
+            "given" : ["Hans"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "038 888 22 11",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "hans.hauser@kantonsspital.zug.ch",
+            "use" : "work"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:37e198ba-ebae-4438-bf8f-faa42eff82c6",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "37e198ba-ebae-4438-bf8f-faa42eff82c6",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_37e198ba-ebae-4438-bf8f-faa42eff82c6\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization 37e198ba-ebae-4438-bf8f-faa42eff82c6</b></p><a name=\"37e198ba-ebae-4438-bf8f-faa42eff82c6\"> </a><a name=\"hc37e198ba-ebae-4438-bf8f-faa42eff82c6\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization.html\">CH Core Organization</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000235503</p><p><b>name</b>: Kantonsspital Zug</p><p><b>telecom</b>: <a href=\"tel:+41453345566\">+41 45 334 55 66</a>, <a href=\"mailto:info@kantonsspital.zug.ch\">info@kantonsspital.zug.ch</a>, <a href=\"http://www.kanstonsspital.zug.ch\">http://www.kanstonsspital.zug.ch</a></p><p><b>address</b>: Seestrasse 14 Postfach 14 Zug 8000 Schweiz (work)</p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000235503"
+          }
+        ],
+        "name" : "Kantonsspital Zug",
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41 45 334 55 66",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "info@kantonsspital.zug.ch",
+            "use" : "work"
+          },
+          {
+            "system" : "url",
+            "value" : "http://www.kanstonsspital.zug.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "use" : "work",
+            "line" : ["Seestrasse 14", "Postfach 14"],
+            "city" : "Zug",
+            "postalCode" : "8000",
+            "country" : "Schweiz"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:06929c8b-9fb9-43fe-b12c-439fd470be59",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "06929c8b-9fb9-43fe-b12c-439fd470be59",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_06929c8b-9fb9-43fe-b12c-439fd470be59\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole 06929c8b-9fb9-43fe-b12c-439fd470be59</b></p><a name=\"06929c8b-9fb9-43fe-b12c-439fd470be59\"> </a><a name=\"hc06929c8b-9fb9-43fe-b12c-439fd470be59\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-practitionerrole.html\">CH LAB-Report PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Bundle-LabResultReport-1-tvt.html#urn-uuid-12328339-f7d6-4bb6-80e4-89fd03ce5052\">Beat Bunsen, practitioner</a></p><p><b>organization</b>: <a href=\"Bundle-LabResultReport-4-sepsis.html#urn-uuid-17742f1f-ba4f-423c-b6de-463409f20431\">Organization Labor Gantenbein</a></p><p><b>code</b>: <span title=\"Codes:{urn:oid:2.16.840.1.113883.2.9.6.2.7 3212}\">Medical and Pathology Laboratory Technicians</span></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+          "display" : "Beat Bunsen, practitioner"
+        },
+        "organization" : {
+          "reference" : "urn:uuid:17742f1f-ba4f-423c-b6de-463409f20431"
+        },
+        "code" : [
+          {
+            "coding" : [
+              {
+                "system" : "urn:oid:2.16.840.1.113883.2.9.6.2.7",
+                "code" : "3212",
+                "display" : "Medical and Pathology Laboratory Technicians"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:12328339-f7d6-4bb6-80e4-89fd03ce5052",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "12328339-f7d6-4bb6-80e4-89fd03ce5052",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-report/StructureDefinition/ch-lab-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_12328339-f7d6-4bb6-80e4-89fd03ce5052\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner 12328339-f7d6-4bb6-80e4-89fd03ce5052</b></p><a name=\"12328339-f7d6-4bb6-80e4-89fd03ce5052\"> </a><a name=\"hc12328339-f7d6-4bb6-80e4-89fd03ce5052\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-practitioner.html\">CH LAB-Report Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050717, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/Y274589</p><p><b>name</b>: Beat Bunsen (Official)</p><p><b>telecom</b>: ph: 033 444 77 88(Work), <a href=\"mailto:beat.bunsen@labor-pipette.ch\">beat.bunsen@labor-pipette.ch</a></p><p><b>address</b>: Laborstrasse 23 Olten 4600 CH </p><h3>Qualifications</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0360 MD}\">Doctor of Medicine</span></td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050717"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Bunsen",
+            "given" : ["Beat"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "033 444 77 88",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "beat.bunsen@labor-pipette.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Laborstrasse 23"],
+            "city" : "Olten",
+            "postalCode" : "4600",
+            "country" : "CH"
+          }
+        ],
+        "qualification" : [
+          {
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code" : "MD",
+                  "display" : "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:17742f1f-ba4f-423c-b6de-463409f20431",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "17742f1f-ba4f-423c-b6de-463409f20431",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_17742f1f-ba4f-423c-b6de-463409f20431\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization 17742f1f-ba4f-423c-b6de-463409f20431</b></p><a name=\"17742f1f-ba4f-423c-b6de-463409f20431\"> </a><a name=\"hc17742f1f-ba4f-423c-b6de-463409f20431\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization.html\">CH Core Organization</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601055231116</p><p><b>name</b>: Labor Gantenbein</p><p><b>telecom</b>: <a href=\"tel:+415477889\">+41 547 78 89</a></p><p><b>address</b>: Max-Frisch Strasse 77 Egerkingen 4622 CH (work)</p><h3>Contacts</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Name</b></td><td><b>Telecom</b></td><td><b>Address</b></td></tr><tr><td style=\"display: none\">*</td><td>Dr. Beat Bunsen(Official)</td><td><a href=\"mailto:beat.bunsen@labor-pipette.ch\">beat.bunsen@labor-pipette.ch</a></td><td>Max-Frisch Strasse 77 4. Stock Egerkingen 4622 CH </td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601055231116"
+          }
+        ],
+        "name" : "Labor Gantenbein",
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41 547 78 89",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "use" : "work",
+            "line" : ["Max-Frisch Strasse 77"],
+            "city" : "Egerkingen",
+            "postalCode" : "4622",
+            "country" : "CH"
+          }
+        ],
+        "contact" : [
+          {
+            "name" : {
+              "use" : "official",
+              "text" : "Dr. Beat Bunsen",
+              "family" : "Bunsen",
+              "given" : ["Beat"],
+              "prefix" : ["Dr. med."]
+            },
+            "telecom" : [
+              {
+                "system" : "email",
+                "value" : "beat.bunsen@labor-pipette.ch",
+                "use" : "work"
+              }
+            ],
+            "address" : {
+              "line" : ["Max-Frisch Strasse 77", "4. Stock"],
+              "city" : "Egerkingen",
+              "postalCode" : "4622",
+              "country" : "CH"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```
