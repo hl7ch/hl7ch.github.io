@@ -1,0 +1,39 @@
+# TC D 02 - Implementation Guide CH VACD v6.0.0
+
+* [**Table of Contents**](toc.md)
+* **TC D 02**
+
+## TC D 02
+
+## Test Case D 02: Merging conflicts for immunization, medicalproblems and past illness
+
+### Precondition
+
+In the ehealth ecosystem of the patient there are several ImmunizationAdministration documents. In two documents the same Immunization, PastIllness and MedicalProblem entries are entered.
+
+### Sequence
+
+### Result
+
+A Vaccination Record Document is created with the merging result. The duplicated entries are all in the list, but on all duplicated entries the extension is added to make the duplicate entry visible by reference.
+
+### Documents
+
+* [D_D3_HCP1_C1](Bundle-D-D3-HCP1-C1.md)
+* [D_D4_HCP2_C2](Bundle-D-D4-HCP2-C2.md)
+* [Result. Document D 02](Bundle-RDD02.md)
+* [Result. Document D 02b](Bundle-RDD02b.md)
+
+### Entries
+
+* [Immunization (TCD01_IMMUN1)](Immunization-TCD01-IMMUN1.md)
+* [Immunization (TCD01_IMMUN2)](Immunization-TCD01-IMMUN2.md)
+* [Immunization (TCD01_IMMUN2_2)](Immunization-TCD01-IMMUN2-2.md)
+* [Immunization (TCD01_IMMUN3_2)](Immunization-TCD01-IMMUN3-2.md)
+* [Immunization (TCD01_IMMUN4)](Immunization-TCD01-IMMUN4.md)
+* [Immunization (TCD01_IMMUN5)](Immunization-TCD01-IMMUN5.md)
+* [Condition (TCB02_UNDILL1_2)](Condition-TCB02-UNDILL1-2.md)
+* [Condition (TCD02_UNDILL1_2)](Condition-TCD02-UNDILL1-2.md)
+* [Condition (TCB03_EXPRISK1_2)](Condition-TCB03-EXPRISK1-2.md)
+* [Condition (TCD02_EXPRISK1_2)](Condition-TCD02-EXPRISK1-2.md)
+
