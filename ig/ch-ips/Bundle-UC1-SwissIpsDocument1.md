@@ -1,0 +1,816 @@
+# UC 1.1: Swiss IPS Document - CH IPS (R4) v2.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **UC 1.1: Swiss IPS Document**
+
+## Example Bundle: UC 1.1: Swiss IPS Document
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "UC1-SwissIpsDocument1",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-document"
+    ]
+  },
+  "language" : "de-CH",
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:22f9773e-1a6b-4561-8642-849f15b43b02"
+  },
+  "type" : "document",
+  "timestamp" : "2024-01-11T10:00:00+01:00",
+  "entry" : [
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Composition/UC1-Composition1",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "UC1-Composition1",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-composition"
+          ]
+        },
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Composition_UC1-Composition1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Composition UC1-Composition1</b></p><a name=\"UC1-Composition1\"> </a><a name=\"hcUC1-Composition1\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-composition.html\">CH IPS Composition</a></p></div><p><b>identifier</b>: <a href=\"http://terminology.hl7.org/6.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:22f9773e-1a6b-4561-8642-849f15b43b02</p><p><b>status</b>: Final</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 60591-5}\">Patient summary Document</span></p><p><b>date</b>: 2024-01-11 10:00:00+0100</p><p><b>author</b>: <a href=\"PractitionerRole-FamilienHausarztAtHausarzt.html\">PractitionerRole</a></p><p><b>title</b>: Patient Summary for IPS Switerland</p><p><b>confidentiality</b>: normal</p><h3>Attesters</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Mode</b></td><td><b>Party</b></td></tr><tr><td style=\"display: none\">*</td><td>Legal</td><td><a href=\"Practitioner-FamilienHausarzt.html\">Practitioner Familien Hausarzt </a></td></tr></table><p><b>custodian</b>: <a href=\"Organization-Hausarzt.html\">Organization Hausarzt</a></p><h3>Events</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td><td><b>Period</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ActClass PCPR}\">care provision</span></td><td>?? --&gt; 2024-01-11 10:00:00+0100</td></tr></table></div>"
+        },
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:22f9773e-1a6b-4561-8642-849f15b43b02"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "60591-5",
+              "display" : "Patient summary Document"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/MonikaWegmueller"
+        },
+        "date" : "2024-01-11T10:00:00+01:00",
+        "author" : [
+          {
+            "reference" : "PractitionerRole/FamilienHausarztAtHausarzt"
+          }
+        ],
+        "title" : "Patient Summary for IPS Switerland",
+        "confidentiality" : "N",
+        "_confidentiality" : {
+          "extension" : [
+            {
+              "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode",
+              "valueCodeableConcept" : {
+                "coding" : [
+                  {
+                    "system" : "http://snomed.info/sct",
+                    "code" : "17621005",
+                    "display" : "Normal (qualifier value)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "attester" : [
+          {
+            "mode" : "legal",
+            "party" : {
+              "reference" : "Practitioner/FamilienHausarzt"
+            }
+          }
+        ],
+        "custodian" : {
+          "reference" : "Organization/Hausarzt"
+        },
+        "event" : [
+          {
+            "code" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "http://terminology.hl7.org/CodeSystem/v3-ActClass",
+                    "code" : "PCPR",
+                    "display" : "care provision"
+                  }
+                ]
+              }
+            ],
+            "period" : {
+              "end" : "2024-01-11T10:00:00+01:00"
+            }
+          }
+        ],
+        "section" : [
+          {
+            "title" : "Medikation",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "10160-0",
+                  "display" : "History of Medication use Narrative"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Metformin</li><li>Candesartan</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "MedicationStatement/MedStatMetformin"
+              },
+              {
+                "reference" : "MedicationStatement/MedStatCandesartan"
+              }
+            ]
+          },
+          {
+            "title" : "Allergien und Intoleranzen",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "48765-2",
+                  "display" : "Allergies and adverse reactions Document"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">Allergien und Intoleranzen nicht erfragt</div>"
+            },
+            "emptyReason" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code" : "notasked",
+                  "display" : "Not Asked"
+                }
+              ]
+            }
+          },
+          {
+            "title" : "Problemliste",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "11450-4",
+                  "display" : "Problem list - Reported"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Diabetes mellitus Typ 2</li><li>Bluthochdruck</li><li>Koronare Herzkrankheit</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "Condition/DiabetesMellitus"
+              },
+              {
+                "reference" : "Condition/HighBloodPressure"
+              },
+              {
+                "reference" : "Condition/CoronaryHeartDisease"
+              }
+            ]
+          },
+          {
+            "title" : "Behandlungsverlauf",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "47519-4",
+                  "display" : "History of Procedures Document"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Stent (27.09.2022) aufgrund koronarer Herzkrankheit</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "Procedure/StentPlacement"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Patient/MonikaWegmueller",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "MonikaWegmueller",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-patient"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_MonikaWegmueller\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient MonikaWegmueller</b></p><a name=\"MonikaWegmueller\"> </a><a name=\"hcMonikaWegmueller\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-patient.html\">CH IPS Patient</a></p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Monika Wegmüller  Female, DoB: 1943-05-15</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Detail</td><td colspan=\"3\">Wiesenstr. 12 Zürich 8003 CH </td></tr></table></div>"
+        },
+        "name" : [
+          {
+            "family" : "Wegmüller",
+            "given" : ["Monika"]
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1943-05-15",
+        "address" : [
+          {
+            "line" : ["Wiesenstr. 12"],
+            "city" : "Zürich",
+            "postalCode" : "8003",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Practitioner/FamilienHausarzt",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "FamilienHausarzt",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_FamilienHausarzt\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner FamilienHausarzt</b></p><a name=\"FamilienHausarzt\"> </a><a name=\"hcFamilienHausarzt\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-practitioner.html\">CH IPS Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000121219</p><p><b>name</b>: Familien Hausarzt </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000121219"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Hausarzt",
+            "given" : ["Familien"]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/PractitionerRole/FamilienHausarztAtHausarzt",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "FamilienHausarztAtHausarzt",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_FamilienHausarztAtHausarzt\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole FamilienHausarztAtHausarzt</b></p><a name=\"FamilienHausarztAtHausarzt\"> </a><a name=\"hcFamilienHausarztAtHausarzt\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-practitionerrole.html\">CH IPS PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Practitioner-FamilienHausarzt.html\">Practitioner Familien Hausarzt </a></p><p><b>organization</b>: <a href=\"Organization-Hausarzt.html\">Organization Hausarzt</a></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "Practitioner/FamilienHausarzt"
+        },
+        "organization" : {
+          "reference" : "Organization/Hausarzt"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Organization/Hausarzt",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "Hausarzt",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_Hausarzt\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization Hausarzt</b></p><a name=\"Hausarzt\"> </a><a name=\"hcHausarzt\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-organization.html\">CH IPS Organization</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000121219</p><p><b>name</b>: Hausarzt</p><p><b>address</b>: Krankenstrasse 2 Zürich 8005 CH </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000121219"
+          }
+        ],
+        "name" : "Hausarzt",
+        "address" : [
+          {
+            "line" : ["Krankenstrasse 2"],
+            "city" : "Zürich",
+            "postalCode" : "8005",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/MedicationStatement/MedStatMetformin",
+      "resource" : {
+        "resourceType" : "MedicationStatement",
+        "id" : "MedStatMetformin",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medicationstatement"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MedicationStatement_MedStatMetformin\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement MedStatMetformin</b></p><a name=\"MedStatMetformin\"> </a><a name=\"hcMedStatMetformin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medicationstatement.html\">CH IPS MedicationStatement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"#hcMedStatMetformin/Metformin\">Medication METFORMIN axapharm Filmtabl 500 mg (Blister 50 Stk)</a></p><p><b>subject</b>: <a href=\"Patient-MonikaWegmueller.html\">Monika Wegmüller  Female, DoB: 1943-05-15</a></p><p><b>effective</b>: 2020-03-03 --&gt; (ongoing)</p><p><b>reasonCode</b>: <span title=\"Codes:\">Diabetes</span></p><blockquote><p><b>dosage</b></p><p><b>patientInstruction</b>: Unzerkaut während oder nach den Mahlzeiten mit ausreichend Flüssigkeit einnehmen</p><p><b>timing</b>: Morning, Evening, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>1 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span></td></tr></table></blockquote><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: Medication #Metformin</b></p><a name=\"MedStatMetformin/Metformin\"> </a><a name=\"hcMedStatMetformin/Metformin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medication.html\">CH IPS Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680696890012}\">METFORMIN axapharm Filmtabl 500 mg</span></p><p><b>form</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10219000}\">Tablette</span></p><p><b>amount</b>: 50 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span>/1 Package - unit of product usage (qualifier value)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code1681000175101 = 'Package - unit of product usage')</span></p><h3>Ingredients</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Item[x]</b></td><td><b>Strength</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 109083009}\">Metformin hydrochloride</span></td><td>500 milligram<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemg = 'mg')</span>/1 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span></td></tr></table></blockquote></div>"
+        },
+        "contained" : [
+          {
+            "resourceType" : "Medication",
+            "id" : "Metformin",
+            "meta" : {
+              "profile" : [
+                "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medication"
+              ]
+            },
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:2.51.1.1",
+                  "code" : "7680696890012",
+                  "display" : "METFORMIN axapharm Filmtabl 500 mg (Blister 50 Stk)"
+                }
+              ],
+              "text" : "METFORMIN axapharm Filmtabl 500 mg"
+            },
+            "form" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "10219000",
+                  "display" : "Tablet"
+                }
+              ],
+              "text" : "Tablette"
+            },
+            "amount" : {
+              "numerator" : {
+                "value" : 50,
+                "unit" : "Tablet (unit of presentation)",
+                "system" : "http://snomed.info/sct",
+                "code" : "732936001"
+              },
+              "denominator" : {
+                "value" : 1,
+                "unit" : "Package - unit of product usage (qualifier value)",
+                "system" : "http://snomed.info/sct",
+                "code" : "1681000175101"
+              }
+            },
+            "ingredient" : [
+              {
+                "itemCodeableConcept" : {
+                  "coding" : [
+                    {
+                      "system" : "http://snomed.info/sct",
+                      "code" : "109083009",
+                      "display" : "Metformin hydrochloride (substance)"
+                    }
+                  ],
+                  "text" : "Metformin hydrochloride"
+                },
+                "strength" : {
+                  "numerator" : {
+                    "value" : 500,
+                    "unit" : "milligram",
+                    "system" : "http://unitsofmeasure.org",
+                    "code" : "mg"
+                  },
+                  "denominator" : {
+                    "value" : 1,
+                    "unit" : "Tablet (unit of presentation)",
+                    "system" : "http://snomed.info/sct",
+                    "code" : "732936001"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "status" : "active",
+        "medicationReference" : {
+          "reference" : "#Metformin"
+        },
+        "subject" : {
+          "reference" : "Patient/MonikaWegmueller"
+        },
+        "effectivePeriod" : {
+          "start" : "2020-03-03"
+        },
+        "reasonCode" : [
+          {
+            "text" : "Diabetes"
+          }
+        ],
+        "dosage" : [
+          {
+            "patientInstruction" : "Unzerkaut während oder nach den Mahlzeiten mit ausreichend Flüssigkeit einnehmen",
+            "timing" : {
+              "repeat" : {
+                "boundsPeriod" : {
+                  "start" : "2020-03-03"
+                },
+                "when" : ["MORN", "EVE"]
+              }
+            },
+            "route" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "20053000",
+                  "display" : "Oral use"
+                }
+              ],
+              "text" : "zum Einnehmen"
+            },
+            "doseAndRate" : [
+              {
+                "doseQuantity" : {
+                  "value" : 1,
+                  "unit" : "Tablet (unit of presentation)",
+                  "system" : "http://snomed.info/sct",
+                  "code" : "732936001"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/MedicationStatement/MedStatCandesartan",
+      "resource" : {
+        "resourceType" : "MedicationStatement",
+        "id" : "MedStatCandesartan",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medicationstatement"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MedicationStatement_MedStatCandesartan\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement MedStatCandesartan</b></p><a name=\"MedStatCandesartan\"> </a><a name=\"hcMedStatCandesartan\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medicationstatement.html\">CH IPS MedicationStatement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"#hcMedStatCandesartan/Candesartan\">Medication CANDESARTAN-AMLODIP Mepha Kaps 8mg/5mg (Blister 98 Stk)</a></p><p><b>subject</b>: <a href=\"Patient-MonikaWegmueller.html\">Monika Wegmüller  Female, DoB: 1943-05-15</a></p><p><b>effective</b>: 2020-03-03 --&gt; (ongoing)</p><p><b>reasonCode</b>: <span title=\"Codes:\">Hypertonie</span></p><blockquote><p><b>dosage</b></p><p><b>patientInstruction</b>: Nehmen Sie die Kapseln täglich immer zur gleichen Tageszeit mit oder ohne Mahlzeit mit etwas Wasser ein.</p><p><b>timing</b>: Morning, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>1 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span></td></tr></table></blockquote><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: Medication #Candesartan</b></p><a name=\"MedStatCandesartan/Candesartan\"> </a><a name=\"hcMedStatCandesartan/Candesartan\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medication.html\">CH IPS Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680676560027}\">CANDESARTAN-AMLODIP Mepha Kaps 8mg/5mg</span></p><p><b>form</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10210000}\">Hartkapsel</span></p><p><b>amount</b>: 98 Capsule (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732937005 = 'Capsule (unit of presentation)')</span>/1 Package - unit of product usage (qualifier value)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code1681000175101 = 'Package - unit of product usage')</span></p></blockquote></div>"
+        },
+        "contained" : [
+          {
+            "resourceType" : "Medication",
+            "id" : "Candesartan",
+            "meta" : {
+              "profile" : [
+                "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medication"
+              ]
+            },
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:2.51.1.1",
+                  "code" : "7680676560027",
+                  "display" : "CANDESARTAN-AMLODIP Mepha Kaps 8mg/5mg (Blister 98 Stk)"
+                }
+              ],
+              "text" : "CANDESARTAN-AMLODIP Mepha Kaps 8mg/5mg"
+            },
+            "form" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "10210000",
+                  "display" : "Capsule, hard"
+                }
+              ],
+              "text" : "Hartkapsel"
+            },
+            "amount" : {
+              "numerator" : {
+                "value" : 98,
+                "unit" : "Capsule (unit of presentation)",
+                "system" : "http://snomed.info/sct",
+                "code" : "732937005"
+              },
+              "denominator" : {
+                "value" : 1,
+                "unit" : "Package - unit of product usage (qualifier value)",
+                "system" : "http://snomed.info/sct",
+                "code" : "1681000175101"
+              }
+            }
+          }
+        ],
+        "status" : "active",
+        "medicationReference" : {
+          "reference" : "#Candesartan"
+        },
+        "subject" : {
+          "reference" : "Patient/MonikaWegmueller"
+        },
+        "effectivePeriod" : {
+          "start" : "2020-03-03"
+        },
+        "reasonCode" : [
+          {
+            "text" : "Hypertonie"
+          }
+        ],
+        "dosage" : [
+          {
+            "patientInstruction" : "Nehmen Sie die Kapseln täglich immer zur gleichen Tageszeit mit oder ohne Mahlzeit mit etwas Wasser ein.",
+            "timing" : {
+              "repeat" : {
+                "boundsPeriod" : {
+                  "start" : "2020-03-03"
+                },
+                "when" : ["MORN"]
+              }
+            },
+            "route" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "20053000",
+                  "display" : "Oral use"
+                }
+              ],
+              "text" : "zum Einnehmen"
+            },
+            "doseAndRate" : [
+              {
+                "doseQuantity" : {
+                  "value" : 1,
+                  "unit" : "Tablet (unit of presentation)",
+                  "system" : "http://snomed.info/sct",
+                  "code" : "732936001"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Condition/DiabetesMellitus",
+      "resource" : {
+        "resourceType" : "Condition",
+        "id" : "DiabetesMellitus",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-condition"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_DiabetesMellitus\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition DiabetesMellitus</b></p><a name=\"DiabetesMellitus\"> </a><a name=\"hcDiabetesMellitus\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-condition.html\">CH IPS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>severity</b>: <span title=\"Codes:{http://snomed.info/sct 6736007}\">Moderate (severity modifier) (qualifier value)</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 44054006}\">Diabetes mellitus type 2 (disorder)</span></p><p><b>subject</b>: <a href=\"Patient-MonikaWegmueller.html\">Monika Wegmüller  Female, DoB: 1943-05-15</a></p></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code" : "active",
+              "display" : "Active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code" : "confirmed",
+              "display" : "Confirmed"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code" : "problem-list-item",
+                "display" : "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "severity" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "6736007",
+              "display" : "Moderate (severity modifier) (qualifier value)"
+            }
+          ]
+        },
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "44054006",
+              "display" : "Diabetes mellitus type 2 (disorder)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/MonikaWegmueller"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Condition/HighBloodPressure",
+      "resource" : {
+        "resourceType" : "Condition",
+        "id" : "HighBloodPressure",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-condition"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_HighBloodPressure\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition HighBloodPressure</b></p><a name=\"HighBloodPressure\"> </a><a name=\"hcHighBloodPressure\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-condition.html\">CH IPS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>severity</b>: <span title=\"Codes:{http://snomed.info/sct 6736007}\">Moderate (severity modifier) (qualifier value)</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 38341003}\">Hypertensive disorder, systemic arterial (disorder)</span></p><p><b>subject</b>: <a href=\"Patient-MonikaWegmueller.html\">Monika Wegmüller  Female, DoB: 1943-05-15</a></p></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code" : "active",
+              "display" : "Active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code" : "confirmed",
+              "display" : "Confirmed"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code" : "problem-list-item",
+                "display" : "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "severity" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "6736007",
+              "display" : "Moderate (severity modifier) (qualifier value)"
+            }
+          ]
+        },
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "38341003",
+              "display" : "Hypertensive disorder, systemic arterial (disorder)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/MonikaWegmueller"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Condition/CoronaryHeartDisease",
+      "resource" : {
+        "resourceType" : "Condition",
+        "id" : "CoronaryHeartDisease",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-condition"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_CoronaryHeartDisease\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition CoronaryHeartDisease</b></p><a name=\"CoronaryHeartDisease\"> </a><a name=\"hcCoronaryHeartDisease\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-condition.html\">CH IPS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>severity</b>: <span title=\"Codes:{http://snomed.info/sct 6736007}\">Moderate (severity modifier) (qualifier value)</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 53741008}\">Coronary arteriosclerosis (disorder)</span></p><p><b>subject</b>: <a href=\"Patient-MonikaWegmueller.html\">Monika Wegmüller  Female, DoB: 1943-05-15</a></p></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code" : "active",
+              "display" : "Active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code" : "confirmed",
+              "display" : "Confirmed"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code" : "problem-list-item",
+                "display" : "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "severity" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "6736007",
+              "display" : "Moderate (severity modifier) (qualifier value)"
+            }
+          ]
+        },
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "53741008",
+              "display" : "Coronary arteriosclerosis (disorder)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/MonikaWegmueller"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Procedure/StentPlacement",
+      "resource" : {
+        "resourceType" : "Procedure",
+        "id" : "StentPlacement",
+        "meta" : {
+          "profile" : [
+            "http://hl7.org/fhir/uv/ips/StructureDefinition/Procedure-uv-ips"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Procedure_StentPlacement\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Procedure StentPlacement</b></p><a name=\"StentPlacement\"> </a><a name=\"hcStentPlacement\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://hl7.org/fhir/uv/ips/STU2/StructureDefinition-Procedure-uv-ips.html\">Procedure (IPS)</a></p></div><p><b>status</b>: Completed</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 36969009}\">Placement of stent in coronary artery (procedure)</span></p><p><b>subject</b>: <a href=\"Patient-MonikaWegmueller.html\">Monika Wegmüller  Female, DoB: 1943-05-15</a></p><p><b>performed</b>: 2022-09-27</p><p><b>reasonCode</b>: <span title=\"Codes:\">Koronare Herzkrankheit</span></p><p><b>reasonReference</b>: <a href=\"Condition-CoronaryHeartDisease.html\">Condition Coronary arteriosclerosis (disorder)</a></p></div>"
+        },
+        "status" : "completed",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "36969009",
+              "display" : "Placement of stent in coronary artery (procedure)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/MonikaWegmueller"
+        },
+        "performedDateTime" : "2022-09-27",
+        "reasonCode" : [
+          {
+            "text" : "Koronare Herzkrankheit"
+          }
+        ],
+        "reasonReference" : [
+          {
+            "reference" : "Condition/CoronaryHeartDisease"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```

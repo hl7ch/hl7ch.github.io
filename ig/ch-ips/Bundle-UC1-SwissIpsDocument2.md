@@ -1,0 +1,1643 @@
+# UC 1.2: Swiss IPS Document - EPR conform - CH IPS (R4) v2.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **UC 1.2: Swiss IPS Document - EPR conform**
+
+## Example Bundle: UC 1.2: Swiss IPS Document - EPR conform
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "UC1-SwissIpsDocument2",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-document-epr"
+    ]
+  },
+  "language" : "de-CH",
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:fe724e67-ac59-4933-b997-2770cc506f3b"
+  },
+  "type" : "document",
+  "timestamp" : "2024-05-03T09:30:00+02:00",
+  "entry" : [
+    {
+      "fullUrl" : "urn:uuid:5c3cddfe-bbe6-463f-b76c-3d45bc7998fb",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "5c3cddfe-bbe6-463f-b76c-3d45bc7998fb",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-composition"
+          ]
+        },
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Composition_5c3cddfe-bbe6-463f-b76c-3d45bc7998fb\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Composition 5c3cddfe-bbe6-463f-b76c-3d45bc7998fb</b></p><a name=\"5c3cddfe-bbe6-463f-b76c-3d45bc7998fb\"> </a><a name=\"hc5c3cddfe-bbe6-463f-b76c-3d45bc7998fb\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-composition.html\">CH IPS Composition</a></p></div><p><b>identifier</b>: <a href=\"http://terminology.hl7.org/6.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:fe724e67-ac59-4933-b997-2770cc506f3b</p><p><b>status</b>: Final</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 60591-5}\">Patient summary Document</span></p><p><b>date</b>: 2024-05-03 09:30:00+0200</p><p><b>author</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-869a4dd9-3a4a-4838-ad1e-42453d341147\">Martina Meier @ Spital</a></p><p><b>title</b>: Patient Summary for IPS Switerland</p><p><b>confidentiality</b>: normal</p><h3>Attesters</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Mode</b></td><td><b>Party</b></td></tr><tr><td style=\"display: none\">*</td><td>Legal</td><td><a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-4d4e3587-42eb-4921-8c87-8bbf89b7eb4b\">Martina Meier</a></td></tr></table><p><b>custodian</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-a27376ce-fa12-458d-a2dc-f90e63de126b\">Spital</a></p><h3>RelatesTos</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td><td><b>Target[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>Replaces</td><td><a href=\"http://terminology.hl7.org/6.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:22f9773e-1a6b-4561-8642-849f15b43b02</td></tr></table><h3>Events</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td><td><b>Period</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ActClass PCPR}\">care provision</span></td><td>2024-01-11 10:00:00+0100 --&gt; 2024-05-03 09:30:00+0200</td></tr></table></div>"
+        },
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:fe724e67-ac59-4933-b997-2770cc506f3b"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "60591-5",
+              "display" : "Patient summary Document"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "date" : "2024-05-03T09:30:00+02:00",
+        "author" : [
+          {
+            "reference" : "urn:uuid:869a4dd9-3a4a-4838-ad1e-42453d341147",
+            "type" : "PractitionerRole",
+            "display" : "Martina Meier @ Spital"
+          }
+        ],
+        "title" : "Patient Summary for IPS Switerland",
+        "confidentiality" : "N",
+        "_confidentiality" : {
+          "extension" : [
+            {
+              "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode",
+              "valueCodeableConcept" : {
+                "coding" : [
+                  {
+                    "system" : "http://snomed.info/sct",
+                    "code" : "17621005",
+                    "display" : "Normal (qualifier value)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "attester" : [
+          {
+            "mode" : "legal",
+            "party" : {
+              "reference" : "urn:uuid:4d4e3587-42eb-4921-8c87-8bbf89b7eb4b",
+              "type" : "Practitioner",
+              "display" : "Martina Meier"
+            }
+          }
+        ],
+        "custodian" : {
+          "reference" : "urn:uuid:a27376ce-fa12-458d-a2dc-f90e63de126b",
+          "type" : "Organization",
+          "display" : "Spital"
+        },
+        "relatesTo" : [
+          {
+            "code" : "replaces",
+            "targetIdentifier" : {
+              "system" : "urn:ietf:rfc:3986",
+              "value" : "urn:uuid:22f9773e-1a6b-4561-8642-849f15b43b02"
+            }
+          }
+        ],
+        "event" : [
+          {
+            "code" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "http://terminology.hl7.org/CodeSystem/v3-ActClass",
+                    "code" : "PCPR",
+                    "display" : "care provision"
+                  }
+                ]
+              }
+            ],
+            "period" : {
+              "start" : "2024-01-11T10:00:00+01:00",
+              "end" : "2024-05-03T09:30:00+02:00"
+            }
+          }
+        ],
+        "section" : [
+          {
+            "title" : "Medikation",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "10160-0",
+                  "display" : "History of Medication use Narrative"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Metformin</li><li>Atorvastatin</li><li>Clopidogrel</li><li>Aspirin</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:88ee1ffb-26d0-49a2-95e4-6212261805a6",
+                "type" : "MedicationStatement",
+                "display" : "Metformin"
+              },
+              {
+                "reference" : "urn:uuid:6f369210-adb1-4f11-893d-9977e34932de",
+                "type" : "MedicationStatement",
+                "display" : "Atorvastatin"
+              },
+              {
+                "reference" : "urn:uuid:e463547f-7414-47cb-b97f-04a81e1ab7d8",
+                "type" : "MedicationStatement",
+                "display" : "Clopidogrel"
+              },
+              {
+                "reference" : "urn:uuid:f27b9345-6ba6-4fd6-83ab-6db6c2acd981",
+                "type" : "MedicationStatement",
+                "display" : "Aspirin"
+              }
+            ]
+          },
+          {
+            "title" : "Allergien und Intoleranzen",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "48765-2",
+                  "display" : "Allergies and adverse reactions Document"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Keine bekannten Allergien</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:27da84cc-526a-4098-afb5-f08c7836d893",
+                "type" : "AllergyIntolerance",
+                "display" : "Keine bekannten Allergien"
+              }
+            ]
+          },
+          {
+            "title" : "Problemliste",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "11450-4",
+                  "display" : "Problem list - Reported"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Diabetes mellitus Typ 2</li><li>Bluthochdruck</li><li>Koronare Herzkrankheit</li><li>Herzinfarkt (26.04.2024)</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:506b9fef-be0a-4398-bb7e-7d14c311912f",
+                "type" : "Condition",
+                "display" : "Diabetes Mellitus Typ 2"
+              },
+              {
+                "reference" : "urn:uuid:8a79d459-0d2f-460b-87fd-a7de12d49871",
+                "type" : "Condition",
+                "display" : "Bluthochdruck"
+              },
+              {
+                "reference" : "urn:uuid:2c67cf62-d712-44c7-aedb-b5582bc707f1",
+                "type" : "Condition",
+                "display" : "Koronare Herzkrankheit"
+              },
+              {
+                "reference" : "urn:uuid:12d8debe-5e03-465d-83f3-17675be9db4a",
+                "type" : "Condition",
+                "display" : "Herzinfarkt (26.04.2024)"
+              }
+            ]
+          },
+          {
+            "title" : "Behandlungsverlauf",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "47519-4",
+                  "display" : "History of Procedures Document"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Stent (27.09.2022) aufgrund koronarer Herzkrankheit</li><li>Stent (26.04.2024) aufgrund Herzinfarkt</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:ad3ec07d-1814-4faf-86fd-1a8ebeecb5fe",
+                "type" : "Procedure",
+                "display" : "Stent (27.09.2022)"
+              },
+              {
+                "reference" : "urn:uuid:d646c888-7af0-4439-8aae-9fd490054583",
+                "type" : "Procedure",
+                "display" : "Stent (26.04.2024)"
+              }
+            ]
+          },
+          {
+            "title" : "Impfungen",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "11369-6",
+                  "display" : "History of Immunization Narrative"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>DiTePe-Impfung (15.09.2017)</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:19efd704-3461-4120-b3cf-a76ae046e150",
+                "type" : "Immunization",
+                "display" : "DiTePe-Impfung (15.09.2017)"
+              }
+            ]
+          },
+          {
+            "title" : "Vitalzeichen",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "8716-3",
+                  "display" : "Vital signs"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Körpergewicht: 65 kg</li><li>Körpergrösse: 170 cm</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:db5ef7b0-e946-4260-a604-128b8887a41b",
+                "type" : "Observation",
+                "display" : "Körpergewicht: 65 kg"
+              },
+              {
+                "reference" : "urn:uuid:07b2e450-a62e-4734-98bf-51462f008e0f",
+                "type" : "Observation",
+                "display" : "Körpergrösse: 170 cm"
+              }
+            ]
+          },
+          {
+            "title" : "Sozialanamnese",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "29762-2",
+                  "display" : "Social history Narrative"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Ehemalige Raucherin</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "urn:uuid:93fe0d81-a547-494e-941c-113506108b76",
+                "type" : "Observation",
+                "display" : "Ehemalige Raucherin"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "8383926c-ece1-4384-94bc-b4250b4cb71b",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-patient"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_8383926c-ece1-4384-94bc-b4250b4cb71b\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient 8383926c-ece1-4384-94bc-b4250b4cb71b</b></p><a name=\"8383926c-ece1-4384-94bc-b4250b4cb71b\"> </a><a name=\"hc8383926c-ece1-4384-94bc-b4250b4cb71b\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-patient.html\">CH IPS Patient</a></p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Monika Wegmüller  Female, DoB: 1943-05-15 ( Medical record number: 987654321)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Detail</td><td colspan=\"3\">Wiesenstr. 12 Zürich 8003 CH </td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "MR",
+                  "display" : "Medical record number"
+                }
+              ]
+            },
+            "system" : "http://example.com/fhir/pid",
+            "value" : "987654321"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Wegmüller",
+            "given" : ["Monika"]
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1943-05-15",
+        "address" : [
+          {
+            "line" : ["Wiesenstr. 12"],
+            "city" : "Zürich",
+            "postalCode" : "8003",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:4d4e3587-42eb-4921-8c87-8bbf89b7eb4b",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "4d4e3587-42eb-4921-8c87-8bbf89b7eb4b",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_4d4e3587-42eb-4921-8c87-8bbf89b7eb4b\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner 4d4e3587-42eb-4921-8c87-8bbf89b7eb4b</b></p><a name=\"4d4e3587-42eb-4921-8c87-8bbf89b7eb4b\"> </a><a name=\"hc4d4e3587-42eb-4921-8c87-8bbf89b7eb4b\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-practitioner.html\">CH IPS Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000234438</p><p><b>name</b>: Martina Meier </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000234438"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Meier",
+            "given" : ["Martina"]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:869a4dd9-3a4a-4838-ad1e-42453d341147",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "869a4dd9-3a4a-4838-ad1e-42453d341147",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_869a4dd9-3a4a-4838-ad1e-42453d341147\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole 869a4dd9-3a4a-4838-ad1e-42453d341147</b></p><a name=\"869a4dd9-3a4a-4838-ad1e-42453d341147\"> </a><a name=\"hc869a4dd9-3a4a-4838-ad1e-42453d341147\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-practitionerrole.html\">CH IPS PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-4d4e3587-42eb-4921-8c87-8bbf89b7eb4b\">Practitioner Martina Meier </a></p><p><b>organization</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-a27376ce-fa12-458d-a2dc-f90e63de126b\">Organization Spital</a></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "urn:uuid:4d4e3587-42eb-4921-8c87-8bbf89b7eb4b"
+        },
+        "organization" : {
+          "reference" : "urn:uuid:a27376ce-fa12-458d-a2dc-f90e63de126b"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:a27376ce-fa12-458d-a2dc-f90e63de126b",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "a27376ce-fa12-458d-a2dc-f90e63de126b",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_a27376ce-fa12-458d-a2dc-f90e63de126b\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization a27376ce-fa12-458d-a2dc-f90e63de126b</b></p><a name=\"a27376ce-fa12-458d-a2dc-f90e63de126b\"> </a><a name=\"hca27376ce-fa12-458d-a2dc-f90e63de126b\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-organization.html\">CH IPS Organization</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000234438</p><p><b>name</b>: Spital</p><p><b>address</b>: Spitalstrasse 2 Zürich 8005 CH </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000234438"
+          }
+        ],
+        "name" : "Spital",
+        "address" : [
+          {
+            "line" : ["Spitalstrasse 2"],
+            "city" : "Zürich",
+            "postalCode" : "8005",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:88ee1ffb-26d0-49a2-95e4-6212261805a6",
+      "resource" : {
+        "resourceType" : "MedicationStatement",
+        "id" : "88ee1ffb-26d0-49a2-95e4-6212261805a6",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medicationstatement"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MedicationStatement_88ee1ffb-26d0-49a2-95e4-6212261805a6\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement 88ee1ffb-26d0-49a2-95e4-6212261805a6</b></p><a name=\"88ee1ffb-26d0-49a2-95e4-6212261805a6\"> </a><a name=\"hc88ee1ffb-26d0-49a2-95e4-6212261805a6\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medicationstatement.html\">CH IPS MedicationStatement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"#hc88ee1ffb-26d0-49a2-95e4-6212261805a6/Metformin\">Medication METFORMIN axapharm Filmtabl 500 mg (Blister 50 Stk)</a></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>effective</b>: 2020-03-03 --&gt; (ongoing)</p><p><b>reasonCode</b>: <span title=\"Codes:\">Diabetes</span></p><blockquote><p><b>dosage</b></p><p><b>patientInstruction</b>: Unzerkaut während oder nach den Mahlzeiten mit ausreichend Flüssigkeit einnehmen</p><p><b>timing</b>: Morning, Evening, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>1 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span></td></tr></table></blockquote><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: Medication #Metformin</b></p><a name=\"88ee1ffb-26d0-49a2-95e4-6212261805a6/Metformin\"> </a><a name=\"hc88ee1ffb-26d0-49a2-95e4-6212261805a6/Metformin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medication.html\">CH IPS Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680696890012}\">METFORMIN axapharm Filmtabl 500 mg</span></p><p><b>form</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10219000}\">Tablette</span></p><p><b>amount</b>: 50 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span>/1 Package - unit of product usage (qualifier value)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code1681000175101 = 'Package - unit of product usage')</span></p><h3>Ingredients</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Item[x]</b></td><td><b>Strength</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 109083009}\">Metformin hydrochloride</span></td><td>500 milligram<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemg = 'mg')</span>/1 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span></td></tr></table></blockquote></div>"
+        },
+        "contained" : [
+          {
+            "resourceType" : "Medication",
+            "id" : "Metformin",
+            "meta" : {
+              "profile" : [
+                "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medication"
+              ]
+            },
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:2.51.1.1",
+                  "code" : "7680696890012",
+                  "display" : "METFORMIN axapharm Filmtabl 500 mg (Blister 50 Stk)"
+                }
+              ],
+              "text" : "METFORMIN axapharm Filmtabl 500 mg"
+            },
+            "form" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "10219000",
+                  "display" : "Tablet"
+                }
+              ],
+              "text" : "Tablette"
+            },
+            "amount" : {
+              "numerator" : {
+                "value" : 50,
+                "unit" : "Tablet (unit of presentation)",
+                "system" : "http://snomed.info/sct",
+                "code" : "732936001"
+              },
+              "denominator" : {
+                "value" : 1,
+                "unit" : "Package - unit of product usage (qualifier value)",
+                "system" : "http://snomed.info/sct",
+                "code" : "1681000175101"
+              }
+            },
+            "ingredient" : [
+              {
+                "itemCodeableConcept" : {
+                  "coding" : [
+                    {
+                      "system" : "http://snomed.info/sct",
+                      "code" : "109083009",
+                      "display" : "Metformin hydrochloride (substance)"
+                    }
+                  ],
+                  "text" : "Metformin hydrochloride"
+                },
+                "strength" : {
+                  "numerator" : {
+                    "value" : 500,
+                    "unit" : "milligram",
+                    "system" : "http://unitsofmeasure.org",
+                    "code" : "mg"
+                  },
+                  "denominator" : {
+                    "value" : 1,
+                    "unit" : "Tablet (unit of presentation)",
+                    "system" : "http://snomed.info/sct",
+                    "code" : "732936001"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "status" : "active",
+        "medicationReference" : {
+          "reference" : "#Metformin"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "effectivePeriod" : {
+          "start" : "2020-03-03"
+        },
+        "reasonCode" : [
+          {
+            "text" : "Diabetes"
+          }
+        ],
+        "dosage" : [
+          {
+            "patientInstruction" : "Unzerkaut während oder nach den Mahlzeiten mit ausreichend Flüssigkeit einnehmen",
+            "timing" : {
+              "repeat" : {
+                "boundsPeriod" : {
+                  "start" : "2020-03-03"
+                },
+                "when" : ["MORN", "EVE"]
+              }
+            },
+            "route" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "20053000",
+                  "display" : "Oral use"
+                }
+              ],
+              "text" : "zum Einnehmen"
+            },
+            "doseAndRate" : [
+              {
+                "doseQuantity" : {
+                  "value" : 1,
+                  "unit" : "Tablet (unit of presentation)",
+                  "system" : "http://snomed.info/sct",
+                  "code" : "732936001"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:6f369210-adb1-4f11-893d-9977e34932de",
+      "resource" : {
+        "resourceType" : "MedicationStatement",
+        "id" : "6f369210-adb1-4f11-893d-9977e34932de",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medicationstatement"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MedicationStatement_6f369210-adb1-4f11-893d-9977e34932de\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement 6f369210-adb1-4f11-893d-9977e34932de</b></p><a name=\"6f369210-adb1-4f11-893d-9977e34932de\"> </a><a name=\"hc6f369210-adb1-4f11-893d-9977e34932de\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medicationstatement.html\">CH IPS MedicationStatement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"#hc6f369210-adb1-4f11-893d-9977e34932de/Atorvastatin\">Medication EZETIMIB Atorvast Mepha Filmtabl 10mg/40mg (Blister 30 Stk)</a></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>effective</b>: 2024-05-03 --&gt; (ongoing)</p><p><b>reasonCode</b>: <span title=\"Codes:\">Hypercholesterinämie</span></p><blockquote><p><b>dosage</b></p><p><b>sequence</b>: 1</p><p><b>patientInstruction</b>: Kann unabhängig von den Mahlzeiten eingenommen werden</p><p><b>timing</b>: Morning, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>0.5 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span></td></tr></table></blockquote><blockquote><p><b>dosage</b></p><p><b>sequence</b>: 2</p><p><b>timing</b>: Evening, Once</p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>1 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span></td></tr></table></blockquote><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: Medication #Atorvastatin</b></p><a name=\"6f369210-adb1-4f11-893d-9977e34932de/Atorvastatin\"> </a><a name=\"hc6f369210-adb1-4f11-893d-9977e34932de/Atorvastatin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medication.html\">CH IPS Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680682820054}\">EZETIMIB Atorvast Mepha Filmtabl 10mg/40mg</span></p><p><b>form</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10221000}\">Filmtablette</span></p><p><b>amount</b>: 30 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span>/1 Package - unit of product usage (qualifier value)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code1681000175101 = 'Package - unit of product usage')</span></p></blockquote></div>"
+        },
+        "contained" : [
+          {
+            "resourceType" : "Medication",
+            "id" : "Atorvastatin",
+            "meta" : {
+              "profile" : [
+                "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medication"
+              ]
+            },
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:2.51.1.1",
+                  "code" : "7680682820054",
+                  "display" : "EZETIMIB Atorvast Mepha Filmtabl 10mg/40mg (Blister 30 Stk)"
+                }
+              ],
+              "text" : "EZETIMIB Atorvast Mepha Filmtabl 10mg/40mg"
+            },
+            "form" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "10221000",
+                  "display" : "Film-coated tablet"
+                }
+              ],
+              "text" : "Filmtablette"
+            },
+            "amount" : {
+              "numerator" : {
+                "value" : 30,
+                "unit" : "Tablet (unit of presentation)",
+                "system" : "http://snomed.info/sct",
+                "code" : "732936001"
+              },
+              "denominator" : {
+                "value" : 1,
+                "unit" : "Package - unit of product usage (qualifier value)",
+                "system" : "http://snomed.info/sct",
+                "code" : "1681000175101"
+              }
+            }
+          }
+        ],
+        "status" : "active",
+        "medicationReference" : {
+          "reference" : "#Atorvastatin"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "effectivePeriod" : {
+          "start" : "2024-05-03"
+        },
+        "reasonCode" : [
+          {
+            "text" : "Hypercholesterinämie"
+          }
+        ],
+        "dosage" : [
+          {
+            "sequence" : 1,
+            "patientInstruction" : "Kann unabhängig von den Mahlzeiten eingenommen werden",
+            "timing" : {
+              "repeat" : {
+                "boundsPeriod" : {
+                  "start" : "2024-05-03"
+                },
+                "when" : ["MORN"]
+              }
+            },
+            "route" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "20053000",
+                  "display" : "Oral use"
+                }
+              ],
+              "text" : "zum Einnehmen"
+            },
+            "doseAndRate" : [
+              {
+                "doseQuantity" : {
+                  "value" : 0.5,
+                  "unit" : "Tablet (unit of presentation)",
+                  "system" : "http://snomed.info/sct",
+                  "code" : "732936001"
+                }
+              }
+            ]
+          },
+          {
+            "sequence" : 2,
+            "timing" : {
+              "repeat" : {
+                "when" : ["EVE"]
+              }
+            },
+            "doseAndRate" : [
+              {
+                "doseQuantity" : {
+                  "value" : 1,
+                  "unit" : "Tablet (unit of presentation)",
+                  "system" : "http://snomed.info/sct",
+                  "code" : "732936001"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:e463547f-7414-47cb-b97f-04a81e1ab7d8",
+      "resource" : {
+        "resourceType" : "MedicationStatement",
+        "id" : "e463547f-7414-47cb-b97f-04a81e1ab7d8",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medicationstatement"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MedicationStatement_e463547f-7414-47cb-b97f-04a81e1ab7d8\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement e463547f-7414-47cb-b97f-04a81e1ab7d8</b></p><a name=\"e463547f-7414-47cb-b97f-04a81e1ab7d8\"> </a><a name=\"hce463547f-7414-47cb-b97f-04a81e1ab7d8\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medicationstatement.html\">CH IPS MedicationStatement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"#hce463547f-7414-47cb-b97f-04a81e1ab7d8/Clopidogrel\">Medication CLOPIDOGREL axapharm Filmtabl 75 mg (Blister 28 Stk)</a></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>effective</b>: 2024-05-03 --&gt; (ongoing)</p><p><b>reasonCode</b>: <span title=\"Codes:\">Blutgerinnungshemmer</span></p><blockquote><p><b>dosage</b></p><p><b>patientInstruction</b>: Die Filmtablette soll mit etwas Wasser - unzerkaut und ohne sie zu lutschen - während oder unabhängig von den Mahlzeiten eingenommen werden. Es wird aber empfohlen, sie immer zum selben Zeitpunkt einzunehmen.</p><p><b>timing</b>: Morning, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>1 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span></td></tr></table></blockquote><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: Medication #Clopidogrel</b></p><a name=\"e463547f-7414-47cb-b97f-04a81e1ab7d8/Clopidogrel\"> </a><a name=\"hce463547f-7414-47cb-b97f-04a81e1ab7d8/Clopidogrel\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medication.html\">CH IPS Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680659570012}\">CLOPIDOGREL axapharm Filmtabl 75 mg</span></p><p><b>form</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10221000}\">Filmtablette</span></p><p><b>amount</b>: 28 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span>/1 Package - unit of product usage (qualifier value)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code1681000175101 = 'Package - unit of product usage')</span></p></blockquote></div>"
+        },
+        "contained" : [
+          {
+            "resourceType" : "Medication",
+            "id" : "Clopidogrel",
+            "meta" : {
+              "profile" : [
+                "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medication"
+              ]
+            },
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:2.51.1.1",
+                  "code" : "7680659570012",
+                  "display" : "CLOPIDOGREL axapharm Filmtabl 75 mg (Blister 28 Stk)"
+                }
+              ],
+              "text" : "CLOPIDOGREL axapharm Filmtabl 75 mg"
+            },
+            "form" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "10221000",
+                  "display" : "Film-coated tablet"
+                }
+              ],
+              "text" : "Filmtablette"
+            },
+            "amount" : {
+              "numerator" : {
+                "value" : 28,
+                "unit" : "Tablet (unit of presentation)",
+                "system" : "http://snomed.info/sct",
+                "code" : "732936001"
+              },
+              "denominator" : {
+                "value" : 1,
+                "unit" : "Package - unit of product usage (qualifier value)",
+                "system" : "http://snomed.info/sct",
+                "code" : "1681000175101"
+              }
+            }
+          }
+        ],
+        "status" : "active",
+        "medicationReference" : {
+          "reference" : "#Clopidogrel"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "effectivePeriod" : {
+          "start" : "2024-05-03"
+        },
+        "reasonCode" : [
+          {
+            "text" : "Blutgerinnungshemmer"
+          }
+        ],
+        "dosage" : [
+          {
+            "patientInstruction" : "Die Filmtablette soll mit etwas Wasser - unzerkaut und ohne sie zu lutschen - während oder unabhängig von den Mahlzeiten eingenommen werden. Es wird aber empfohlen, sie immer zum selben Zeitpunkt einzunehmen.",
+            "timing" : {
+              "repeat" : {
+                "boundsPeriod" : {
+                  "start" : "2024-05-03"
+                },
+                "when" : ["MORN"]
+              }
+            },
+            "route" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "20053000",
+                  "display" : "Oral use"
+                }
+              ],
+              "text" : "zum Einnehmen"
+            },
+            "doseAndRate" : [
+              {
+                "doseQuantity" : {
+                  "value" : 1,
+                  "unit" : "Tablet (unit of presentation)",
+                  "system" : "http://snomed.info/sct",
+                  "code" : "732936001"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:f27b9345-6ba6-4fd6-83ab-6db6c2acd981",
+      "resource" : {
+        "resourceType" : "MedicationStatement",
+        "id" : "f27b9345-6ba6-4fd6-83ab-6db6c2acd981",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medicationstatement"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MedicationStatement_f27b9345-6ba6-4fd6-83ab-6db6c2acd981\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement f27b9345-6ba6-4fd6-83ab-6db6c2acd981</b></p><a name=\"f27b9345-6ba6-4fd6-83ab-6db6c2acd981\"> </a><a name=\"hcf27b9345-6ba6-4fd6-83ab-6db6c2acd981\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medicationstatement.html\">CH IPS MedicationStatement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"#hcf27b9345-6ba6-4fd6-83ab-6db6c2acd981/Aspirin\">Medication ASPIRIN CARDIO Filmtabl 100 mg (Blister 28 Stk)</a></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>effective</b>: 2024-05-03 --&gt; (ongoing)</p><p><b>reasonCode</b>: <span title=\"Codes:\">Herzinfarktprophylaxe</span></p><blockquote><p><b>dosage</b></p><p><b>patientInstruction</b>: Tabletten mit etwas Flüssigkeit mindestens eine halbe Stunde vor der Mahlzeit einnehmen</p><p><b>timing</b>: Morning, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>1 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span></td></tr></table></blockquote><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: Medication #Aspirin</b></p><a name=\"f27b9345-6ba6-4fd6-83ab-6db6c2acd981/Aspirin\"> </a><a name=\"hcf27b9345-6ba6-4fd6-83ab-6db6c2acd981/Aspirin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-medication.html\">CH IPS Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680517950680}\">ASPIRIN CARDIO Filmtabl 100 mg</span></p><p><b>form</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10221000}\">Filmtablette</span></p><p><b>amount</b>: 28 Tablet (unit of presentation)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')</span>/1 Package - unit of product usage (qualifier value)<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code1681000175101 = 'Package - unit of product usage')</span></p></blockquote></div>"
+        },
+        "contained" : [
+          {
+            "resourceType" : "Medication",
+            "id" : "Aspirin",
+            "meta" : {
+              "profile" : [
+                "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medication"
+              ]
+            },
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:2.51.1.1",
+                  "code" : "7680517950680",
+                  "display" : "ASPIRIN CARDIO Filmtabl 100 mg (Blister 28 Stk)"
+                }
+              ],
+              "text" : "ASPIRIN CARDIO Filmtabl 100 mg"
+            },
+            "form" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "10221000",
+                  "display" : "Film-coated tablet"
+                }
+              ],
+              "text" : "Filmtablette"
+            },
+            "amount" : {
+              "numerator" : {
+                "value" : 28,
+                "unit" : "Tablet (unit of presentation)",
+                "system" : "http://snomed.info/sct",
+                "code" : "732936001"
+              },
+              "denominator" : {
+                "value" : 1,
+                "unit" : "Package - unit of product usage (qualifier value)",
+                "system" : "http://snomed.info/sct",
+                "code" : "1681000175101"
+              }
+            }
+          }
+        ],
+        "status" : "active",
+        "medicationReference" : {
+          "reference" : "#Aspirin"
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "effectivePeriod" : {
+          "start" : "2024-05-03"
+        },
+        "reasonCode" : [
+          {
+            "text" : "Herzinfarktprophylaxe"
+          }
+        ],
+        "dosage" : [
+          {
+            "patientInstruction" : "Tabletten mit etwas Flüssigkeit mindestens eine halbe Stunde vor der Mahlzeit einnehmen",
+            "timing" : {
+              "repeat" : {
+                "boundsPeriod" : {
+                  "start" : "2024-05-03"
+                },
+                "when" : ["MORN"]
+              }
+            },
+            "route" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+                  "code" : "20053000",
+                  "display" : "Oral use"
+                }
+              ],
+              "text" : "zum Einnehmen"
+            },
+            "doseAndRate" : [
+              {
+                "doseQuantity" : {
+                  "value" : 1,
+                  "unit" : "Tablet (unit of presentation)",
+                  "system" : "http://snomed.info/sct",
+                  "code" : "732936001"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:27da84cc-526a-4098-afb5-f08c7836d893",
+      "resource" : {
+        "resourceType" : "AllergyIntolerance",
+        "id" : "27da84cc-526a-4098-afb5-f08c7836d893",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-allergyintolerance"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"AllergyIntolerance_27da84cc-526a-4098-afb5-f08c7836d893\"> </a><p class=\"res-header-id\"><b>Generated Narrative: AllergyIntolerance 27da84cc-526a-4098-afb5-f08c7836d893</b></p><a name=\"27da84cc-526a-4098-afb5-f08c7836d893\"> </a><a name=\"hc27da84cc-526a-4098-afb5-f08c7836d893\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-allergyintolerance.html\">CH IPS AllergyIntolerance</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/allergyintolerance-verification confirmed}\">Confirmed</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 716186003}\">No known allergy (situation)</span></p><p><b>patient</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>recordedDate</b>: 2024-04-26</p><p><b>recorder</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-869a4dd9-3a4a-4838-ad1e-42453d341147\">Martina Meier @ Spital</a></p></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code" : "active",
+              "display" : "Active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+              "code" : "confirmed",
+              "display" : "Confirmed"
+            }
+          ]
+        },
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "716186003",
+              "display" : "No known allergy (situation)"
+            }
+          ]
+        },
+        "patient" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "recordedDate" : "2024-04-26",
+        "recorder" : {
+          "reference" : "urn:uuid:869a4dd9-3a4a-4838-ad1e-42453d341147",
+          "type" : "PractitionerRole",
+          "display" : "Martina Meier @ Spital"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:506b9fef-be0a-4398-bb7e-7d14c311912f",
+      "resource" : {
+        "resourceType" : "Condition",
+        "id" : "506b9fef-be0a-4398-bb7e-7d14c311912f",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-condition"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_506b9fef-be0a-4398-bb7e-7d14c311912f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition 506b9fef-be0a-4398-bb7e-7d14c311912f</b></p><a name=\"506b9fef-be0a-4398-bb7e-7d14c311912f\"> </a><a name=\"hc506b9fef-be0a-4398-bb7e-7d14c311912f\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-condition.html\">CH IPS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>severity</b>: <span title=\"Codes:{http://snomed.info/sct 6736007}\">Moderate (severity modifier) (qualifier value)</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 44054006}\">Diabetes mellitus type 2 (disorder)</span></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code" : "active",
+              "display" : "Active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code" : "confirmed",
+              "display" : "Confirmed"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code" : "problem-list-item",
+                "display" : "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "severity" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "6736007",
+              "display" : "Moderate (severity modifier) (qualifier value)"
+            }
+          ]
+        },
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "44054006",
+              "display" : "Diabetes mellitus type 2 (disorder)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:8a79d459-0d2f-460b-87fd-a7de12d49871",
+      "resource" : {
+        "resourceType" : "Condition",
+        "id" : "8a79d459-0d2f-460b-87fd-a7de12d49871",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-condition"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_8a79d459-0d2f-460b-87fd-a7de12d49871\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition 8a79d459-0d2f-460b-87fd-a7de12d49871</b></p><a name=\"8a79d459-0d2f-460b-87fd-a7de12d49871\"> </a><a name=\"hc8a79d459-0d2f-460b-87fd-a7de12d49871\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-condition.html\">CH IPS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>severity</b>: <span title=\"Codes:{http://snomed.info/sct 6736007}\">Moderate (severity modifier) (qualifier value)</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 38341003}\">Hypertensive disorder, systemic arterial (disorder)</span></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code" : "active",
+              "display" : "Active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code" : "confirmed",
+              "display" : "Confirmed"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code" : "problem-list-item",
+                "display" : "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "severity" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "6736007",
+              "display" : "Moderate (severity modifier) (qualifier value)"
+            }
+          ]
+        },
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "38341003",
+              "display" : "Hypertensive disorder, systemic arterial (disorder)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:2c67cf62-d712-44c7-aedb-b5582bc707f1",
+      "resource" : {
+        "resourceType" : "Condition",
+        "id" : "2c67cf62-d712-44c7-aedb-b5582bc707f1",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-condition"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_2c67cf62-d712-44c7-aedb-b5582bc707f1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition 2c67cf62-d712-44c7-aedb-b5582bc707f1</b></p><a name=\"2c67cf62-d712-44c7-aedb-b5582bc707f1\"> </a><a name=\"hc2c67cf62-d712-44c7-aedb-b5582bc707f1\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-condition.html\">CH IPS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>severity</b>: <span title=\"Codes:{http://snomed.info/sct 6736007}\">Moderate (severity modifier) (qualifier value)</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 53741008}\">Coronary arteriosclerosis (disorder)</span></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code" : "active",
+              "display" : "Active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code" : "confirmed",
+              "display" : "Confirmed"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code" : "problem-list-item",
+                "display" : "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "severity" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "6736007",
+              "display" : "Moderate (severity modifier) (qualifier value)"
+            }
+          ]
+        },
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "53741008",
+              "display" : "Coronary arteriosclerosis (disorder)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:12d8debe-5e03-465d-83f3-17675be9db4a",
+      "resource" : {
+        "resourceType" : "Condition",
+        "id" : "12d8debe-5e03-465d-83f3-17675be9db4a",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-condition"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_12d8debe-5e03-465d-83f3-17675be9db4a\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition 12d8debe-5e03-465d-83f3-17675be9db4a</b></p><a name=\"12d8debe-5e03-465d-83f3-17675be9db4a\"> </a><a name=\"hc12d8debe-5e03-465d-83f3-17675be9db4a\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-condition.html\">CH IPS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>severity</b>: <span title=\"Codes:{http://snomed.info/sct 24484000}\">Severe (severity modifier) (qualifier value)</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 22298006}\">Myocardial infarction (disorder)</span></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>onset</b>: 2024-04-26</p><p><b>recordedDate</b>: 2024-04-26</p><p><b>recorder</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-869a4dd9-3a4a-4838-ad1e-42453d341147\">Martina Meier @ Spital</a></p><p><b>asserter</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-869a4dd9-3a4a-4838-ad1e-42453d341147\">Martina Meier @ Spital</a></p></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code" : "active",
+              "display" : "Active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code" : "confirmed",
+              "display" : "Confirmed"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code" : "problem-list-item",
+                "display" : "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "severity" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "24484000",
+              "display" : "Severe (severity modifier) (qualifier value)"
+            }
+          ]
+        },
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "22298006",
+              "display" : "Myocardial infarction (disorder)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "onsetDateTime" : "2024-04-26",
+        "recordedDate" : "2024-04-26",
+        "recorder" : {
+          "reference" : "urn:uuid:869a4dd9-3a4a-4838-ad1e-42453d341147",
+          "type" : "PractitionerRole",
+          "display" : "Martina Meier @ Spital"
+        },
+        "asserter" : {
+          "reference" : "urn:uuid:869a4dd9-3a4a-4838-ad1e-42453d341147",
+          "type" : "PractitionerRole",
+          "display" : "Martina Meier @ Spital"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:ad3ec07d-1814-4faf-86fd-1a8ebeecb5fe",
+      "resource" : {
+        "resourceType" : "Procedure",
+        "id" : "ad3ec07d-1814-4faf-86fd-1a8ebeecb5fe",
+        "meta" : {
+          "profile" : [
+            "http://hl7.org/fhir/uv/ips/StructureDefinition/Procedure-uv-ips"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Procedure_ad3ec07d-1814-4faf-86fd-1a8ebeecb5fe\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Procedure ad3ec07d-1814-4faf-86fd-1a8ebeecb5fe</b></p><a name=\"ad3ec07d-1814-4faf-86fd-1a8ebeecb5fe\"> </a><a name=\"hcad3ec07d-1814-4faf-86fd-1a8ebeecb5fe\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://hl7.org/fhir/uv/ips/STU2/StructureDefinition-Procedure-uv-ips.html\">Procedure (IPS)</a></p></div><p><b>status</b>: Completed</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 36969009}\">Placement of stent in coronary artery (procedure)</span></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>performed</b>: 2022-09-27</p><p><b>reasonCode</b>: <span title=\"Codes:\">Koronare Herzkrankheit</span></p><p><b>reasonReference</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-2c67cf62-d712-44c7-aedb-b5582bc707f1\">Koronare Herzkrankheit</a></p></div>"
+        },
+        "status" : "completed",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "36969009",
+              "display" : "Placement of stent in coronary artery (procedure)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "performedDateTime" : "2022-09-27",
+        "reasonCode" : [
+          {
+            "text" : "Koronare Herzkrankheit"
+          }
+        ],
+        "reasonReference" : [
+          {
+            "reference" : "urn:uuid:2c67cf62-d712-44c7-aedb-b5582bc707f1",
+            "type" : "Condition",
+            "display" : "Koronare Herzkrankheit"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:d646c888-7af0-4439-8aae-9fd490054583",
+      "resource" : {
+        "resourceType" : "Procedure",
+        "id" : "d646c888-7af0-4439-8aae-9fd490054583",
+        "meta" : {
+          "profile" : [
+            "http://hl7.org/fhir/uv/ips/StructureDefinition/Procedure-uv-ips"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Procedure_d646c888-7af0-4439-8aae-9fd490054583\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Procedure d646c888-7af0-4439-8aae-9fd490054583</b></p><a name=\"d646c888-7af0-4439-8aae-9fd490054583\"> </a><a name=\"hcd646c888-7af0-4439-8aae-9fd490054583\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://hl7.org/fhir/uv/ips/STU2/StructureDefinition-Procedure-uv-ips.html\">Procedure (IPS)</a></p></div><p><b>status</b>: Completed</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 36969009}\">Placement of stent in coronary artery (procedure)</span></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>performed</b>: 2024-04-26</p><p><b>recorder</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-869a4dd9-3a4a-4838-ad1e-42453d341147\">Martina Meier @ Spital</a></p><p><b>asserter</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-869a4dd9-3a4a-4838-ad1e-42453d341147\">Martina Meier @ Spital</a></p><h3>Performers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Actor</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-869a4dd9-3a4a-4838-ad1e-42453d341147\">Martina Meier @ Spital</a></td></tr></table><p><b>reasonCode</b>: <span title=\"Codes:\">Herzinfarkt (26.04.2024)</span></p><p><b>reasonReference</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-12d8debe-5e03-465d-83f3-17675be9db4a\">Herzinfarkt (26.04.2024)</a></p></div>"
+        },
+        "status" : "completed",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "36969009",
+              "display" : "Placement of stent in coronary artery (procedure)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "performedDateTime" : "2024-04-26",
+        "recorder" : {
+          "reference" : "urn:uuid:869a4dd9-3a4a-4838-ad1e-42453d341147",
+          "type" : "PractitionerRole",
+          "display" : "Martina Meier @ Spital"
+        },
+        "asserter" : {
+          "reference" : "urn:uuid:869a4dd9-3a4a-4838-ad1e-42453d341147",
+          "type" : "PractitionerRole",
+          "display" : "Martina Meier @ Spital"
+        },
+        "performer" : [
+          {
+            "actor" : {
+              "reference" : "urn:uuid:869a4dd9-3a4a-4838-ad1e-42453d341147",
+              "type" : "PractitionerRole",
+              "display" : "Martina Meier @ Spital"
+            }
+          }
+        ],
+        "reasonCode" : [
+          {
+            "text" : "Herzinfarkt (26.04.2024)"
+          }
+        ],
+        "reasonReference" : [
+          {
+            "reference" : "urn:uuid:12d8debe-5e03-465d-83f3-17675be9db4a",
+            "type" : "Condition",
+            "display" : "Herzinfarkt (26.04.2024)"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:19efd704-3461-4120-b3cf-a76ae046e150",
+      "resource" : {
+        "resourceType" : "Immunization",
+        "id" : "19efd704-3461-4120-b3cf-a76ae046e150",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-immunization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Immunization_19efd704-3461-4120-b3cf-a76ae046e150\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Immunization 19efd704-3461-4120-b3cf-a76ae046e150</b></p><a name=\"19efd704-3461-4120-b3cf-a76ae046e150\"> </a><a name=\"hc19efd704-3461-4120-b3cf-a76ae046e150\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-ips-immunization.html\">CH IPS Immunization</a></p></div><p><b>status</b>: Completed</p><p><b>vaccineCode</b>: <span title=\"Codes:{http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-swissmedic-cs 637}, {http://snomed.info/sct 871875004}\">Boostrix</span></p><p><b>patient</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>occurrence</b>: 2017-09-15 09:12:56+0200</p><p><b>recorded</b>: 2017-09-15 09:12:56+0200</p><p><b>lotNumber</b>: 12-34244</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20035000}\">Intramuscular use</span></p><blockquote><p><b>protocolApplied</b></p><p><b>targetDisease</b>: <span title=\"Codes:{http://snomed.info/sct 397430003}\">Diphtheria caused by Corynebacterium diphtheriae (disorder)</span>, <span title=\"Codes:{http://snomed.info/sct 76902006}\">Tetanus (disorder)</span>, <span title=\"Codes:{http://snomed.info/sct 27836007}\">Pertussis (disorder)</span></p><p><b>doseNumber</b>: 1</p></blockquote></div>"
+        },
+        "status" : "completed",
+        "vaccineCode" : {
+          "coding" : [
+            {
+              "system" : "http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-swissmedic-cs",
+              "code" : "637",
+              "display" : "Boostrix"
+            },
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "871875004",
+              "display" : "Vaccine product containing only Bordetella pertussis and Clostridium tetani and Corynebacterium diphtheriae antigens (medicinal product)"
+            }
+          ]
+        },
+        "patient" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "occurrenceDateTime" : "2017-09-15T09:12:56+02:00",
+        "recorded" : "2017-09-15T09:12:56+02:00",
+        "lotNumber" : "12-34244",
+        "route" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+              "code" : "20035000",
+              "display" : "Intramuscular use"
+            }
+          ]
+        },
+        "protocolApplied" : [
+          {
+            "targetDisease" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "http://snomed.info/sct",
+                    "code" : "397430003",
+                    "display" : "Diphtheria caused by Corynebacterium diphtheriae (disorder)"
+                  }
+                ]
+              },
+              {
+                "coding" : [
+                  {
+                    "system" : "http://snomed.info/sct",
+                    "code" : "76902006",
+                    "display" : "Tetanus (disorder)"
+                  }
+                ]
+              },
+              {
+                "coding" : [
+                  {
+                    "system" : "http://snomed.info/sct",
+                    "code" : "27836007",
+                    "display" : "Pertussis (disorder)"
+                  }
+                ]
+              }
+            ],
+            "doseNumberPositiveInt" : 1
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:db5ef7b0-e946-4260-a604-128b8887a41b",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "db5ef7b0-e946-4260-a604-128b8887a41b",
+        "meta" : {
+          "profile" : ["http://hl7.org/fhir/StructureDefinition/bodyweight"]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_db5ef7b0-e946-4260-a604-128b8887a41b\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation db5ef7b0-e946-4260-a604-128b8887a41b</b></p><a name=\"db5ef7b0-e946-4260-a604-128b8887a41b\"> </a><a name=\"hcdb5ef7b0-e946-4260-a604-128b8887a41b\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://hl7.org/fhir/R4/bodyweight.html\">Observation Body Weight Profile</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category vital-signs}\">Vital Signs</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 29463-7}\">Body weight</span></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>effective</b>: 2024-04-27 14:05:00+0200</p><p><b>performer</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-a27376ce-fa12-458d-a2dc-f90e63de126b\">Spital</a></p><p><b>value</b>: 65 kilogram<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codekg = 'kg')</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "vital-signs",
+                "display" : "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29463-7",
+              "display" : "Body weight"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "effectiveDateTime" : "2024-04-27T14:05:00+02:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:a27376ce-fa12-458d-a2dc-f90e63de126b",
+            "type" : "Organization",
+            "display" : "Spital"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 65,
+          "unit" : "kilogram",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "kg"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:07b2e450-a62e-4734-98bf-51462f008e0f",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "07b2e450-a62e-4734-98bf-51462f008e0f",
+        "meta" : {
+          "profile" : ["http://hl7.org/fhir/StructureDefinition/bodyheight"]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_07b2e450-a62e-4734-98bf-51462f008e0f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 07b2e450-a62e-4734-98bf-51462f008e0f</b></p><a name=\"07b2e450-a62e-4734-98bf-51462f008e0f\"> </a><a name=\"hc07b2e450-a62e-4734-98bf-51462f008e0f\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://hl7.org/fhir/R4/bodyheight.html\">Observation Body Height Profile</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category vital-signs}\">Vital Signs</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 8302-2}\">Body height</span></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>effective</b>: 2024-04-27 14:05:00+0200</p><p><b>performer</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-a27376ce-fa12-458d-a2dc-f90e63de126b\">Spital</a></p><p><b>value</b>: 170 centimeter<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codecm = 'cm')</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "vital-signs",
+                "display" : "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "8302-2",
+              "display" : "Body height"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "effectiveDateTime" : "2024-04-27T14:05:00+02:00",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:a27376ce-fa12-458d-a2dc-f90e63de126b",
+            "type" : "Organization",
+            "display" : "Spital"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 170,
+          "unit" : "centimeter",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "cm"
+        }
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:93fe0d81-a547-494e-941c-113506108b76",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "93fe0d81-a547-494e-941c-113506108b76",
+        "meta" : {
+          "profile" : [
+            "http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-tobaccouse-uv-ips"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_93fe0d81-a547-494e-941c-113506108b76\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 93fe0d81-a547-494e-941c-113506108b76</b></p><a name=\"93fe0d81-a547-494e-941c-113506108b76\"> </a><a name=\"hc93fe0d81-a547-494e-941c-113506108b76\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://hl7.org/fhir/uv/ips/STU2/StructureDefinition-Observation-tobaccouse-uv-ips.html\">Observation Social History - Tobacco Use (IPS)</a></p></div><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 72166-2}\">Tobacco smoking status</span></p><p><b>subject</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-8383926c-ece1-4384-94bc-b4250b4cb71b\">Monika Wegmüller</a></p><p><b>effective</b>: 2024-04-26</p><p><b>performer</b>: <a href=\"Bundle-UC1-SwissIpsDocument2.html#urn-uuid-a27376ce-fa12-458d-a2dc-f90e63de126b\">Spital</a></p><p><b>value</b>: <span title=\"Codes:{http://loinc.org LA15920-4}\">Former smoker</span></p></div>"
+        },
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "72166-2",
+              "display" : "Tobacco smoking status"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "urn:uuid:8383926c-ece1-4384-94bc-b4250b4cb71b",
+          "type" : "Patient",
+          "display" : "Monika Wegmüller"
+        },
+        "effectiveDateTime" : "2024-04-26",
+        "performer" : [
+          {
+            "reference" : "urn:uuid:a27376ce-fa12-458d-a2dc-f90e63de126b",
+            "type" : "Organization",
+            "display" : "Spital"
+          }
+        ],
+        "valueCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "LA15920-4",
+              "display" : "Former smoker"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+
+```
