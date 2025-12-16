@@ -1,0 +1,1496 @@
+# Anticoagulant Effect - CH LAB-Order (R4) v3.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Anticoagulant Effect**
+
+## Example Bundle: Anticoagulant Effect
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "0-best-practice-document-with-sr",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-document-with-sr"
+    ]
+  },
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:26d3dff7-ab05-4737-a49c-5eccd33595f8"
+  },
+  "type" : "document",
+  "timestamp" : "2023-04-01T20:18:41.341+00:00",
+  "entry" : [
+    {
+      "fullUrl" : "http://example.com/fhir/Composition/0-best-practice",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "0-best-practice",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-composition-with-sr"
+          ]
+        },
+        "text" : {
+          "status" : "additional",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div><a name=\"Composition_0-best-practice\"> </a><h3>Control of Anticoagulation Effect</h3><p>Mrs Birgit Blum had an unfortunate fall while skiing and sustained a open tibial plateau fracture. She was transferred to the Kantonsspital, a centre hospital, by helicopter and is waiting there for her operation. The patient is administered Liquemin 5000 E s.c. daily to prevent thromboembolic events, and the effect. To monitor the effect of this treatment, regular blood tests are carried out to determine anti-Xa activity. A special sample vessel with citrate additive is used for this purpose. The sample must be centrifuged and cooled within one hour.</p></div></div>"
+        },
+        "extension" : [
+          {
+            "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-urgentnoficationcontactforthisdocument",
+            "valueReference" : {
+              "reference" : "PractitionerRole/EvaErlenmeyerLaborPipette"
+            }
+          },
+          {
+            "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-urgentnoficationcontactfortheresponsetothisdocument",
+            "valueReference" : {
+              "reference" : "PractitionerRole/MarcMustermannGruppenpraxis"
+            }
+          },
+          {
+            "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver",
+            "valueReference" : {
+              "reference" : "PractitionerRole/EvaErlenmeyerLaborPipette"
+            }
+          },
+          {
+            "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver",
+            "valueReference" : {
+              "reference" : "PractitionerRole/MarcMustermannGruppenpraxis"
+            }
+          },
+          {
+            "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver",
+            "valueReference" : {
+              "reference" : "Patient/BirgitBlum"
+            }
+          }
+        ],
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "721965002",
+              "display" : "Laboratory order (record artifact)"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "721963009",
+                "display" : "Order (record artifact)"
+              }
+            ]
+          }
+        ],
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        },
+        "date" : "2025-03-05T11:46:09+02:00",
+        "author" : [
+          {
+            "reference" : "PractitionerRole/MarcMustermannGruppenpraxis"
+          }
+        ],
+        "title" : "Laboratory order 0-best-practice",
+        "section" : [
+          {
+            "title" : "Laboratory Order by Service Request 0-best-practice",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "721963009",
+                  "display" : "Order (record artifact)"
+                }
+              ]
+            },
+            "entry" : [
+              {
+                "reference" : "ServiceRequest/0-best-practice-ServiceRequest-0"
+              },
+              {
+                "reference" : "ServiceRequest/0-best-practice-ServiceRequest-1"
+              },
+              {
+                "reference" : "ServiceRequest/0-best-practice-ServiceRequest-2"
+              },
+              {
+                "reference" : "ServiceRequest/0-best-practice-ServiceRequest-3"
+              },
+              {
+                "reference" : "ServiceRequest/0-best-practice-ServiceRequest-3-Hb"
+              },
+              {
+                "reference" : "ServiceRequest/0-best-practice-ServiceRequest-3-Ht"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Patient/BirgitBlum",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "BirgitBlum",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_BirgitBlum\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient BirgitBlum</b></p><a name=\"BirgitBlum\"> </a><a name=\"hcBirgitBlum\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-patient.html\">CH Core Patient</a></p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Known Marital status of Patient\">Marital Status:</td><td colspan=\"3\"><span title=\"Codes:{http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus 5}\">unverheiratet</span></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Detail</td><td colspan=\"3\"><ul><li>ph: 079 979 79 79(Home)</li><li><a href=\"mailto:Birgit.Blum@example.ch\">Birgit.Blum@example.ch</a></li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Language spoken\">Language:</td><td colspan=\"3\"><span title=\"Codes:{urn:ietf:bcp:47 de-CH}\">Deutsch (Schweiz)</span> (preferred)</td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The registered place of birth of the patient. A sytem may use the address.text if they don't store the birthPlace address in discrete elements.\"><a href=\"http://hl7.org/fhir/extensions/5.3.0-ballot-tc1/StructureDefinition-patient-birthPlace.html\">Patient Birth Place</a></td><td colspan=\"3\">Zürich Schweiz </td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The place of origin of the patient.\"><a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-patient-ech-11-placeoforigin.html\">Place of Origin according to eCH-0011</a></td><td colspan=\"3\">Breitenbach BL </td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The patient's professed religious affiliations.\"><a href=\"http://hl7.org/fhir/extensions/5.3.0-ballot-tc1/StructureDefinition-patient-religion.html\">Patient Religion</a></td><td colspan=\"3\"><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation 1007}\">Atheism</span></td></tr></table></div>"
+        },
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+            "valueAddress" : {
+              "city" : "Zürich",
+              "country" : "Schweiz"
+            }
+          },
+          {
+            "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-ech-11-placeoforigin",
+            "valueAddress" : {
+              "city" : "Breitenbach",
+              "state" : "BL"
+            }
+          },
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/patient-religion",
+            "valueCodeableConcept" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation",
+                  "code" : "1007",
+                  "display" : "Atheism"
+                }
+              ]
+            }
+          }
+        ],
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.1.1.1",
+            "value" : "80756011110123400002"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Blum",
+            "given" : ["Birgit"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "079 979 79 79",
+            "use" : "home"
+          },
+          {
+            "system" : "email",
+            "value" : "Birgit.Blum@example.ch"
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1984-01-01",
+        "maritalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus",
+              "code" : "5",
+              "display" : "unverheiratet"
+            }
+          ]
+        },
+        "communication" : [
+          {
+            "language" : {
+              "coding" : [
+                {
+                  "system" : "urn:ietf:bcp:47",
+                  "code" : "de-CH"
+                }
+              ],
+              "text" : "Deutsch (Schweiz)"
+            },
+            "preferred" : true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Practitioner/MarcMustermann",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "MarcMustermann",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_MarcMustermann\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner MarcMustermann</b></p><a name=\"MarcMustermann\"> </a><a name=\"hcMarcMustermann\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitioner.html\">CH Core Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050700, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/L248519</p><p><b>name</b>: Marc Mustermann (Official)</p><p><b>telecom</b>: ph: 033 444 22 11(Work), <a href=\"mailto:marc.mustermann@gruppenpraxis.ch\">marc.mustermann@gruppenpraxis.ch</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050700"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "L248519"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Mustermann",
+            "given" : ["Marc"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "033 444 22 11",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "marc.mustermann@gruppenpraxis.ch",
+            "use" : "work"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Organization/Gruppenpraxis",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "Gruppenpraxis",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization-epr"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_Gruppenpraxis\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization Gruppenpraxis</b></p><a name=\"Gruppenpraxis\"> </a><a name=\"hcGruppenpraxis\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization-epr.html\">CH Core Organization EPR</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000241115</p><p><b>name</b>: Gruppenpraxis Olten</p><p><b>telecom</b>: <a href=\"tel:+41555556677\">+41555556677</a>, <a href=\"mailto:info@gruppenpraxis.ch\">info@gruppenpraxis.ch</a>, <a href=\"http://www.gruppenpraxis.ch\">http://www.gruppenpraxis.ch</a></p><p><b>address</b>: Gerbergasse 12 Olten 4600 CH </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000241115"
+          }
+        ],
+        "name" : "Gruppenpraxis Olten",
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41555556677",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "info@gruppenpraxis.ch",
+            "use" : "work"
+          },
+          {
+            "system" : "url",
+            "value" : "http://www.gruppenpraxis.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Gerbergasse 12"],
+            "city" : "Olten",
+            "postalCode" : "4600",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/PractitionerRole/MarcMustermannGruppenpraxis",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "MarcMustermannGruppenpraxis",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_MarcMustermannGruppenpraxis\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole MarcMustermannGruppenpraxis</b></p><a name=\"MarcMustermannGruppenpraxis\"> </a><a name=\"hcMarcMustermannGruppenpraxis\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitionerrole.html\">CH Core PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Practitioner_MarcMustermann\">Practitioner Marc Mustermann (official)</a></p><p><b>organization</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Organization_Gruppenpraxis\">Organization Gruppenpraxis Olten</a></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "Practitioner/MarcMustermann"
+        },
+        "organization" : {
+          "reference" : "Organization/Gruppenpraxis"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Practitioner/HansHauser",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "HansHauser",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_HansHauser\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner HansHauser</b></p><a name=\"HansHauser\"> </a><a name=\"hcHansHauser\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitioner.html\">CH Core Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050700, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/L248519</p><p><b>name</b>: Hans Hauser (Official)</p><p><b>telecom</b>: ph: 038 888 22 11(Work), <a href=\"mailto:hans.hauser@gruppenpraxis.ch\">hans.hauser@gruppenpraxis.ch</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050700"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "L248519"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Hauser",
+            "given" : ["Hans"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "038 888 22 11",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "hans.hauser@gruppenpraxis.ch",
+            "use" : "work"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Organization/Kantonsspital",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "Kantonsspital",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_Kantonsspital\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization Kantonsspital</b></p><a name=\"Kantonsspital\"> </a><a name=\"hcKantonsspital\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization.html\">CH Core Organization</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000235503</p><p><b>name</b>: Kantonsspital Zug</p><p><b>telecom</b>: <a href=\"tel:+41453345566\">+41 45 334 55 66</a>, <a href=\"mailto:info@kantonsspital.zug.ch\">info@kantonsspital.zug.ch</a>, <a href=\"http://www.kanstonsspital.zug.ch\">http://www.kanstonsspital.zug.ch</a></p><p><b>address</b>: Seestrasse 14 Postfach 14 Zug 8000 Schweiz (work)</p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000235503"
+          }
+        ],
+        "name" : "Kantonsspital Zug",
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41 45 334 55 66",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "info@kantonsspital.zug.ch",
+            "use" : "work"
+          },
+          {
+            "system" : "url",
+            "value" : "http://www.kanstonsspital.zug.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "use" : "work",
+            "line" : ["Seestrasse 14", "Postfach 14"],
+            "city" : "Zug",
+            "postalCode" : "8000",
+            "country" : "Schweiz"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/PractitionerRole/HansHauserKantonsspital",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "HansHauserKantonsspital",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_HansHauserKantonsspital\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole HansHauserKantonsspital</b></p><a name=\"HansHauserKantonsspital\"> </a><a name=\"hcHansHauserKantonsspital\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitionerrole.html\">CH Core PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Practitioner_HansHauser\">Practitioner Hans Hauser (official)</a></p><p><b>organization</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Organization_Kantonsspital\">Organization Kantonsspital Zug</a></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "Practitioner/HansHauser"
+        },
+        "organization" : {
+          "reference" : "Organization/Kantonsspital"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Practitioner/EvaErlenmeyer",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "EvaErlenmeyer",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_EvaErlenmeyer\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner EvaErlenmeyer</b></p><a name=\"EvaErlenmeyer\"> </a><a name=\"hcEvaErlenmeyer\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitioner.html\">CH Core Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050717, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/Y274589</p><p><b>name</b>: Eva Erlenmeyer (Official)</p><p><b>telecom</b>: ph: 033 444 55 66(Work), <a href=\"mailto:eva.erlenmeyer@labor-pipette.ch\">eva.erlenmeyer@labor-pipette.ch</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050717"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Erlenmeyer",
+            "given" : ["Eva"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "033 444 55 66",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "eva.erlenmeyer@labor-pipette.ch",
+            "use" : "work"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Organization/LaborPipette",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "LaborPipette",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_LaborPipette\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization LaborPipette</b></p><a name=\"LaborPipette\"> </a><a name=\"hcLaborPipette\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization.html\">CH Core Organization</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000234407</p><p><b>name</b>: Labor Pipette</p><p><b>telecom</b>: <a href=\"tel:+41223345566\">+41223345566</a>, <a href=\"mailto:info@labor-pipette.ch\">info@labor-pipette.ch</a>, <a href=\"http://www.labor-pipette.ch\">http://www.labor-pipette.ch</a></p><p><b>address</b>: Laborstrasse 23 Olten 4600 CH </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000234407"
+          }
+        ],
+        "name" : "Labor Pipette",
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41223345566",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "info@labor-pipette.ch",
+            "use" : "work"
+          },
+          {
+            "system" : "url",
+            "value" : "http://www.labor-pipette.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Laborstrasse 23"],
+            "city" : "Olten",
+            "postalCode" : "4600",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/PractitionerRole/EvaErlenmeyerLaborPipette",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "EvaErlenmeyerLaborPipette",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_EvaErlenmeyerLaborPipette\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole EvaErlenmeyerLaborPipette</b></p><a name=\"EvaErlenmeyerLaborPipette\"> </a><a name=\"hcEvaErlenmeyerLaborPipette\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitionerrole.html\">CH Core PractitionerRole</a></p></div><p><b>identifier</b>: <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/K333333</p><p><b>practitioner</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Practitioner_EvaErlenmeyer\">Practitioner Eva Erlenmeyer (official)</a></p><p><b>organization</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Organization_LaborPipette\">Organization Labor Pipette</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "K333333"
+          }
+        ],
+        "practitioner" : {
+          "reference" : "Practitioner/EvaErlenmeyer"
+        },
+        "organization" : {
+          "reference" : "Organization/LaborPipette"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Encounter/FirstEncounter",
+      "resource" : {
+        "resourceType" : "Encounter",
+        "id" : "FirstEncounter",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Encounter_FirstEncounter\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Encounter FirstEncounter</b></p><a name=\"FirstEncounter\"> </a><a name=\"hcFirstEncounter\"> </a><p><b>status</b>: In Progress</p><p><b>class</b>: <a href=\"http://terminology.hl7.org/7.0.1/CodeSystem-v3-ActCode.html#v3-ActCode-IMP\">ActCode: IMP</a> (inpatient encounter)</p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</a></p></div>"
+        },
+        "status" : "in-progress",
+        "class" : {
+          "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code" : "IMP",
+          "display" : "inpatient encounter"
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Medication/Liquemin",
+      "resource" : {
+        "resourceType" : "Medication",
+        "id" : "Liquemin",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-medication"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Medication_Liquemin\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Medication Liquemin</b></p><a name=\"Liquemin\"> </a><a name=\"hcLiquemin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-medication.html\">CH Core Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680151590587}, {http://www.whocc.no/atc B01AB01}\">LIQUEMIN Inj Lös 25000 IE/5ml</span></p><p><b>status</b>: Active</p><p><b>form</b>: <span title=\"Codes:{http://snomed.info/sct 385219001}\">Conventional release solution for injection (dose form)</span></p><h3>Ingredients</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Item[x]</b></td><td><b>Strength</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 372877000}\">Heparin (substance)</span></td><td>5000 international unit<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  code[iU] = '[iU]')</span>/0.5 milliliter<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemL = 'mL')</span></td></tr></table><h3>Batches</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>LotNumber</b></td><td><b>ExpirationDate</b></td></tr><tr><td style=\"display: none\">*</td><td>9494788</td><td>2024-05-22</td></tr></table></div>"
+        },
+        "code" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:2.51.1.1",
+              "code" : "7680151590587",
+              "display" : "LIQUEMIN Inj Lös 25000 IE/5ml"
+            },
+            {
+              "system" : "http://www.whocc.no/atc",
+              "code" : "B01AB01",
+              "display" : "Heparin"
+            }
+          ],
+          "text" : "LIQUEMIN Inj Lös 25000 IE/5ml"
+        },
+        "status" : "active",
+        "form" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "385219001",
+              "display" : "Conventional release solution for injection (dose form)"
+            }
+          ]
+        },
+        "ingredient" : [
+          {
+            "itemCodeableConcept" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "372877000",
+                  "display" : "Heparin (substance)"
+                }
+              ]
+            },
+            "strength" : {
+              "numerator" : {
+                "value" : 5000,
+                "unit" : "international unit",
+                "system" : "http://unitsofmeasure.org",
+                "code" : "[iU]"
+              },
+              "denominator" : {
+                "value" : 0.5,
+                "unit" : "milliliter",
+                "system" : "http://unitsofmeasure.org",
+                "code" : "mL"
+              }
+            }
+          }
+        ],
+        "batch" : {
+          "lotNumber" : "9494788",
+          "expirationDate" : "2024-05-22"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Specimen/Serum-0-best-practice",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "Serum-0-best-practice",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_Serum-0-best-practice\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen Serum-0-best-practice</b></p><a name=\"Serum-0-best-practice\"> </a><a name=\"hcSerum-0-best-practice\"> </a><p><b>identifier</b>: 48736-12345-75465</p><p><b>accessionIdentifier</b>: 4e88a-12345-dd888</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 119364003}\">Serum specimen (specimen)</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</a></p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>BodySite</b></td><td><b>FastingStatus[x]</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-0-best-practice-document-with-sr.html#Practitioner_MarcMustermann\">Practitioner Marc Mustermann (official)</a></td><td>2023-12-01 16:40:17+0000</td><td><span title=\"Codes:{http://snomed.info/sct 49852007}\">Structure of median cubital vein (body structure)</span></td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0916 F}\">Patient was fasting prior to the procedure.</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Description</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>General specimen container (physical object)</td><td><span title=\"Codes:{http://snomed.info/sct 706053007}\">General specimen container (physical object)</span></td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "value" : "48736-12345-75465"
+          }
+        ],
+        "accessionIdentifier" : {
+          "value" : "4e88a-12345-dd888"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "119364003",
+              "display" : "Serum specimen (specimen)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        },
+        "collection" : {
+          "collector" : {
+            "reference" : "Practitioner/MarcMustermann"
+          },
+          "collectedDateTime" : "2023-12-01T16:40:17Z",
+          "bodySite" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "49852007",
+                "display" : "Structure of median cubital vein (body structure)"
+              }
+            ]
+          },
+          "fastingStatusCodeableConcept" : {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v2-0916",
+                "code" : "F",
+                "display" : "Patient was fasting prior to the procedure."
+              }
+            ]
+          }
+        },
+        "container" : [
+          {
+            "description" : "General specimen container (physical object)",
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "706053007",
+                  "display" : "General specimen container (physical object)"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Specimen/Blood-coag-0-best-practice",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "Blood-coag-0-best-practice",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_Blood-coag-0-best-practice\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen Blood-coag-0-best-practice</b></p><a name=\"Blood-coag-0-best-practice\"> </a><a name=\"hcBlood-coag-0-best-practice\"> </a><p><b>identifier</b>: 48736-55555-75465</p><p><b>accessionIdentifier</b>: 4e88a-66666-dd888</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 119297000}\">Blood sample</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</a></p><p><b>receivedTime</b>: 2023-12-01 16:40:17+0000</p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-0-best-practice-document-with-sr.html#Practitioner_MarcMustermann\">Practitioner Marc Mustermann (official)</a></td><td>2023-12-01 17:00:17+0000</td></tr></table><h3>Processings</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Description</b></td><td><b>Time[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>Needs to be centrifugated and cooled within 1 hour</td><td>2023-12-01 17:00:17+0000 --&gt; 2023-12-01 17:30:17+0000</td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Identifier</b></td><td><b>Description</b></td><td><b>Type</b></td><td><b>Additive[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>4e88a-bc987-dd888-00001-bcoag</td><td>Blood collection Luer adaptor, 3.8% Citrate</td><td><span title=\"Codes:{http://snomed.info/sct 702120003}\">Blood collection Luer adaptor</span></td><td><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v2-0371 C38}\">3.8% Citrate</span></td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "value" : "48736-55555-75465"
+          }
+        ],
+        "accessionIdentifier" : {
+          "value" : "4e88a-66666-dd888"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "119297000",
+              "display" : "Blood sample"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        },
+        "receivedTime" : "2023-12-01T16:40:17Z",
+        "collection" : {
+          "collector" : {
+            "reference" : "Practitioner/MarcMustermann"
+          },
+          "collectedDateTime" : "2023-12-01T17:00:17Z"
+        },
+        "processing" : [
+          {
+            "description" : "Needs to be centrifugated and cooled within 1 hour",
+            "timePeriod" : {
+              "start" : "2023-12-01T17:00:17Z",
+              "end" : "2023-12-01T17:30:17Z"
+            }
+          }
+        ],
+        "container" : [
+          {
+            "identifier" : [
+              {
+                "value" : "4e88a-bc987-dd888-00001-bcoag"
+              }
+            ],
+            "description" : "Blood collection Luer adaptor, 3.8% Citrate",
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "702120003",
+                  "display" : "Blood collection Luer adaptor"
+                }
+              ]
+            },
+            "additiveCodeableConcept" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0371",
+                  "code" : "C38"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Specimen/Blood-0-best-practice",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "Blood-0-best-practice",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_Blood-0-best-practice\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen Blood-0-best-practice</b></p><a name=\"Blood-0-best-practice\"> </a><a name=\"hcBlood-0-best-practice\"> </a><p><b>identifier</b>: 48736-55555-75465</p><p><b>accessionIdentifier</b>: 4e88a-66666-dd888</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 119297000}\">Blood sample</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</a></p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>BodySite</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-0-best-practice-document-with-sr.html#Practitioner_MarcMustermann\">Practitioner Marc Mustermann (official)</a></td><td>2023-12-01 06:40:17+0000</td><td><span title=\"Codes:{http://snomed.info/sct 721029009}\">Structure of superficial vein of left upper limb (body structure)</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 706053007}\">General specimen container (physical object)</span></td></tr></table><p><b>note</b>: </p><blockquote><div><p>Specimen is grossly lipemic</p>\n</div></blockquote></div>"
+        },
+        "identifier" : [
+          {
+            "value" : "48736-55555-75465"
+          }
+        ],
+        "accessionIdentifier" : {
+          "value" : "4e88a-66666-dd888"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "119297000",
+              "display" : "Blood sample"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        },
+        "collection" : {
+          "collector" : {
+            "reference" : "Practitioner/MarcMustermann"
+          },
+          "collectedDateTime" : "2023-12-01T06:40:17Z",
+          "bodySite" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "721029009",
+                "display" : "Structure of superficial vein of left upper limb (body structure)"
+              }
+            ]
+          }
+        },
+        "container" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "706053007",
+                  "display" : "General specimen container (physical object)"
+                }
+              ]
+            }
+          }
+        ],
+        "note" : [
+          {
+            "text" : "Specimen is grossly lipemic"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/ServiceRequest/0-best-practice-ServiceRequest-0",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "0-best-practice-ServiceRequest-0",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_0-best-practice-ServiceRequest-0\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 0-best-practice-ServiceRequest-0</b></p><a name=\"0-best-practice-ServiceRequest-0\"> </a><a name=\"hc0-best-practice-ServiceRequest-0\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 401186003}\">Deep vein thrombosis screening (procedure)</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</a></p><p><b>encounter</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Encounter_FirstEncounter\">Encounter: status = in-progress; class = inpatient encounter (ActCode#IMP)</a></p><p><b>requester</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#PractitionerRole_HansHauserKantonsspital\">PractitionerRole</a></p><p><b>supportingInfo</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Condition_ConditionTibiaFracture\">Condition Open fracture of tibial plateau (disorder)</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "401186003",
+              "display" : "Deep vein thrombosis screening (procedure)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        },
+        "encounter" : {
+          "reference" : "Encounter/FirstEncounter"
+        },
+        "requester" : {
+          "reference" : "PractitionerRole/HansHauserKantonsspital"
+        },
+        "supportingInfo" : [
+          {
+            "reference" : "Condition/ConditionTibiaFracture"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/ServiceRequest/0-best-practice-ServiceRequest-1",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "0-best-practice-ServiceRequest-1",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_0-best-practice-ServiceRequest-1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 0-best-practice-ServiceRequest-1</b></p><a name=\"0-best-practice-ServiceRequest-1\"> </a><a name=\"hc0-best-practice-ServiceRequest-1\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>basedOn</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#ServiceRequest_0-best-practice-ServiceRequest-0\">ServiceRequest Deep vein thrombosis screening (procedure)</a></p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 80627-3}\">Coagulation factor X activated inhibitor [Mass/volume] in Platelet poor plasma</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</a></p><p><b>requester</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#PractitionerRole_HansHauserKantonsspital\">PractitionerRole</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 250361003}\">Patient gets Heparin injections</span></p><p><b>reasonReference</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Condition_ConditionAnticoagulation\">Condition Prophylactic anticoagulation given (situation)</a></p><p><b>supportingInfo</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Medication_Liquemin\">Medication LIQUEMIN Inj Lös 25000 IE/5ml</a></p><p><b>specimen</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Specimen_Blood-coag-0-best-practice\">Specimen: identifier = 48736-55555-75465; accessionIdentifier = 4e88a-66666-dd888; status = available; type = Blood sample; receivedTime = 2023-12-01 16:40:17+0000</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "ServiceRequest/0-best-practice-ServiceRequest-0"
+          }
+        ],
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "80627-3",
+              "display" : "Coagulation factor X activated inhibitor [Mass/volume] in Platelet poor plasma"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        },
+        "requester" : {
+          "reference" : "PractitionerRole/HansHauserKantonsspital"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "250361003",
+                "display" : "Heparin control test (procedure)"
+              }
+            ],
+            "text" : "Patient gets Heparin injections"
+          }
+        ],
+        "reasonReference" : [
+          {
+            "reference" : "Condition/ConditionAnticoagulation"
+          }
+        ],
+        "supportingInfo" : [
+          {
+            "reference" : "Medication/Liquemin"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "Specimen/Blood-coag-0-best-practice"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/ServiceRequest/0-best-practice-ServiceRequest-2",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "0-best-practice-ServiceRequest-2",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_0-best-practice-ServiceRequest-2\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 0-best-practice-ServiceRequest-2</b></p><a name=\"0-best-practice-ServiceRequest-2\"> </a><a name=\"hc0-best-practice-ServiceRequest-2\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>basedOn</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#ServiceRequest_0-best-practice-ServiceRequest-0\">ServiceRequest Deep vein thrombosis screening (procedure)</a></p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 47622-6}\">Glucose [Moles/volume] in Serum or Plasma --pre dose glucose</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</a></p><p><b>requester</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#PractitionerRole_HansHauserKantonsspital\">PractitionerRole</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 171183004}\">Diabetes mellitus screening</span></p><p><b>specimen</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Specimen_Serum-0-best-practice\">Serum specimen</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "ServiceRequest/0-best-practice-ServiceRequest-0"
+          }
+        ],
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "47622-6",
+              "display" : "Glucose [Moles/volume] in Serum or Plasma --pre dose glucose"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        },
+        "requester" : {
+          "reference" : "PractitionerRole/HansHauserKantonsspital"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "171183004",
+                "display" : "Diabetes mellitus screening (procedure)"
+              }
+            ],
+            "text" : "Diabetes mellitus screening"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "Specimen/Serum-0-best-practice",
+            "display" : "Serum specimen"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/ServiceRequest/0-best-practice-ServiceRequest-3",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "0-best-practice-ServiceRequest-3",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_0-best-practice-ServiceRequest-3\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 0-best-practice-ServiceRequest-3</b></p><a name=\"0-best-practice-ServiceRequest-3\"> </a><a name=\"hc0-best-practice-ServiceRequest-3\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>basedOn</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#ServiceRequest_0-best-practice-ServiceRequest-0\">ServiceRequest Deep vein thrombosis screening (procedure)</a></p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 24360-0}\">Hemoglobin and Hematocrit panel - Blood</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</a></p><p><b>requester</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#PractitionerRole_HansHauserKantonsspital\">PractitionerRole</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 171201007}\">Anemia screening</span></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "ServiceRequest/0-best-practice-ServiceRequest-0"
+          }
+        ],
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "24360-0",
+              "display" : "Hemoglobin and Hematocrit panel - Blood"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        },
+        "requester" : {
+          "reference" : "PractitionerRole/HansHauserKantonsspital"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "171201007",
+                "display" : "Anemia screening (procedure)"
+              }
+            ],
+            "text" : "Anemia screening"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/ServiceRequest/0-best-practice-ServiceRequest-3-Hb",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "0-best-practice-ServiceRequest-3-Hb",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_0-best-practice-ServiceRequest-3-Hb\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 0-best-practice-ServiceRequest-3-Hb</b></p><a name=\"0-best-practice-ServiceRequest-3-Hb\"> </a><a name=\"hc0-best-practice-ServiceRequest-3-Hb\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>basedOn</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#ServiceRequest_0-best-practice-ServiceRequest-3\">ServiceRequest Hemoglobin and Hematocrit panel - Blood</a></p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 718-7}\">Hemoglobin [Mass/volume] in Blood</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</a></p><p><b>requester</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#PractitionerRole_HansHauserKantonsspital\">PractitionerRole</a></p><p><b>specimen</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Specimen_Blood-0-best-practice\">Specimen: identifier = 48736-55555-75465; accessionIdentifier = 4e88a-66666-dd888; status = available; type = Blood sample; note = Specimen is grossly lipemic</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "ServiceRequest/0-best-practice-ServiceRequest-3"
+          }
+        ],
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "718-7",
+              "display" : "Hemoglobin [Mass/volume] in Blood"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        },
+        "requester" : {
+          "reference" : "PractitionerRole/HansHauserKantonsspital"
+        },
+        "specimen" : [
+          {
+            "reference" : "Specimen/Blood-0-best-practice"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/ServiceRequest/0-best-practice-ServiceRequest-3-Ht",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "0-best-practice-ServiceRequest-3-Ht",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_0-best-practice-ServiceRequest-3-Ht\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 0-best-practice-ServiceRequest-3-Ht</b></p><a name=\"0-best-practice-ServiceRequest-3-Ht\"> </a><a name=\"hc0-best-practice-ServiceRequest-3-Ht\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>basedOn</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#ServiceRequest_0-best-practice-ServiceRequest-3\">ServiceRequest Hemoglobin and Hematocrit panel - Blood</a></p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 20570-8}\">Hematocrit [Volume Fraction] of Blood by calculation</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum  Female, DoB: 1984-01-01 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400002)</a></p><p><b>requester</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#PractitionerRole_HansHauserKantonsspital\">PractitionerRole</a></p><p><b>specimen</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Specimen_Blood-0-best-practice\">Specimen: identifier = 48736-55555-75465; accessionIdentifier = 4e88a-66666-dd888; status = available; type = Blood sample; note = Specimen is grossly lipemic</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "ServiceRequest/0-best-practice-ServiceRequest-3"
+          }
+        ],
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "20570-8",
+              "display" : "Hematocrit [Volume Fraction] of Blood by calculation"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum"
+        },
+        "requester" : {
+          "reference" : "PractitionerRole/HansHauserKantonsspital"
+        },
+        "specimen" : [
+          {
+            "reference" : "Specimen/Blood-0-best-practice"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Condition/ConditionTibiaFracture",
+      "resource" : {
+        "resourceType" : "Condition",
+        "id" : "ConditionTibiaFracture",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-condition"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_ConditionTibiaFracture\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition ConditionTibiaFracture</b></p><a name=\"ConditionTibiaFracture\"> </a><a name=\"hcConditionTibiaFracture\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-condition.html\">CH Core Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>severity</b>: <span title=\"Codes:{http://snomed.info/sct 24484000}\">Severe (severity modifier) (qualifier value)</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 446980008}\">Open fracture of tibial plateau (disorder)</span></p><p><b>bodySite</b>: <span title=\"Codes:{http://snomed.info/sct 719496004}\">Bone structure of proximal left tibia (body structure)</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum</a></p><p><b>encounter</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Encounter_FirstEncounter\">Encounter: status = in-progress; class = inpatient encounter (ActCode#IMP)</a></p><p><b>onset</b>: 2024-02-05</p><p><b>recordedDate</b>: 2024-02-05</p><p><b>asserter</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#PractitionerRole_HansHauserKantonsspital\">Birgit Blum</a></p><h3>Evidences</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 111645003}\">Open fracture of upper end of tibia (disorder)</span></td></tr></table></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code" : "active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code" : "confirmed"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code" : "problem-list-item"
+              }
+            ]
+          }
+        ],
+        "severity" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "24484000",
+              "display" : "Severe (severity modifier) (qualifier value)"
+            }
+          ]
+        },
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "446980008",
+              "display" : "Open fracture of tibial plateau (disorder)"
+            }
+          ]
+        },
+        "bodySite" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "719496004"
+              }
+            ],
+            "text" : "Bone structure of proximal left tibia (body structure)"
+          }
+        ],
+        "subject" : {
+          "reference" : "Patient/BirgitBlum",
+          "display" : "Birgit Blum"
+        },
+        "encounter" : {
+          "reference" : "Encounter/FirstEncounter"
+        },
+        "onsetDateTime" : "2024-02-05",
+        "recordedDate" : "2024-02-05",
+        "asserter" : {
+          "reference" : "PractitionerRole/HansHauserKantonsspital",
+          "display" : "Birgit Blum"
+        },
+        "evidence" : [
+          {
+            "code" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "http://snomed.info/sct",
+                    "code" : "111645003",
+                    "display" : "Open fracture of upper end of tibia (disorder)"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Condition/ConditionAnticoagulation",
+      "resource" : {
+        "resourceType" : "Condition",
+        "id" : "ConditionAnticoagulation",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-condition"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_ConditionAnticoagulation\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition ConditionAnticoagulation</b></p><a name=\"ConditionAnticoagulation\"> </a><a name=\"hcConditionAnticoagulation\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-condition.html\">CH Core Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 122621000119109}\">Prophylactic anticoagulation given (situation)</span></p><p><b>subject</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Patient_BirgitBlum\">Birgit Blum</a></p><p><b>encounter</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Encounter_FirstEncounter\">Encounter: status = in-progress; class = inpatient encounter (ActCode#IMP)</a></p><p><b>onset</b>: 2024-02-05</p><p><b>recordedDate</b>: 2024-02-05</p><p><b>asserter</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#PractitionerRole_HansHauserKantonsspital\">Birgit Blum</a></p><h3>Evidences</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 111645003}\">Open fracture of upper end of tibia (disorder)</span></td></tr></table></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code" : "active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code" : "confirmed"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code" : "problem-list-item"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "122621000119109",
+              "display" : "Prophylactic anticoagulation given (situation)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BirgitBlum",
+          "display" : "Birgit Blum"
+        },
+        "encounter" : {
+          "reference" : "Encounter/FirstEncounter"
+        },
+        "onsetDateTime" : "2024-02-05",
+        "recordedDate" : "2024-02-05",
+        "asserter" : {
+          "reference" : "PractitionerRole/HansHauserKantonsspital",
+          "display" : "Birgit Blum"
+        },
+        "evidence" : [
+          {
+            "code" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "http://snomed.info/sct",
+                    "code" : "111645003",
+                    "display" : "Open fracture of upper end of tibia (disorder)"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```

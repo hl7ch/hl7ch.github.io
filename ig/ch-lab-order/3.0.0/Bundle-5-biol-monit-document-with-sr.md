@@ -1,0 +1,1054 @@
+# Biological Monitoring - CH LAB-Order (R4) v3.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Biological Monitoring**
+
+## Example Bundle: Biological Monitoring
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "5-biol-monit-document-with-sr",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-document-with-sr"
+    ]
+  },
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:26d3dff7-ab05-4737-a49c-5eccd3359505"
+  },
+  "type" : "document",
+  "timestamp" : "2019-04-01T20:18:41.341+00:00",
+  "entry" : [
+    {
+      "fullUrl" : "http://example.com/fhir/Composition/5-biol-monit-composition-with-sr",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "5-biol-monit-composition-with-sr",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-composition-with-sr"
+          ]
+        },
+        "text" : {
+          "status" : "extensions",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Composition_5-biol-monit-composition-with-sr\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Composition 5-biol-monit-composition-with-sr</b></p><a name=\"5-biol-monit-composition-with-sr\"> </a><a name=\"hc5-biol-monit-composition-with-sr\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-composition-with-sr.html\">CH LAB-Order Composition with ServiceRequest</a></p></div><p><b>CH ORF Receiver</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#PractitionerRole_EvaErlenmeyerLaborPipette\">PractitionerRole: identifier = urn:oid:2.16.756.5.30.1.123.100.2.1.1#K333333</a></p><p><b>CH ORF Copy Receiver</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#PractitionerRole_ArminAhrensArztpraxis\">PractitionerRole</a></p><p><b>CH ORF Copy Receiver</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#PractitionerRole_WoodyWorkdocSpeiserRails\">PractitionerRole</a></p><p><b>status</b>: Final</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 721965002}\">Laboratory order (record artifact)</span></p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 721963009}\">Order (record artifact)</span></p><p><b>date</b>: 2025-03-05 11:46:09+0200</p><p><b>author</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#PractitionerRole_PauloPorcelliniSuva\">PractitionerRole</a></p><p><b>title</b>: Laboratory order 5-biol-monit</p></div>"
+        },
+        "extension" : [
+          {
+            "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-receiver",
+            "valueReference" : {
+              "reference" : "PractitionerRole/EvaErlenmeyerLaborPipette"
+            }
+          },
+          {
+            "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver",
+            "valueReference" : {
+              "reference" : "PractitionerRole/ArminAhrensArztpraxis"
+            }
+          },
+          {
+            "url" : "http://fhir.ch/ig/ch-orf/StructureDefinition/ch-orf-copyreceiver",
+            "valueReference" : {
+              "reference" : "PractitionerRole/WoodyWorkdocSpeiserRails"
+            }
+          }
+        ],
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "721965002",
+              "display" : "Laboratory order (record artifact)"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "721963009",
+                "display" : "Order (record artifact)"
+              }
+            ]
+          }
+        ],
+        "subject" : {
+          "reference" : "Patient/BeatBorer"
+        },
+        "date" : "2025-03-05T11:46:09+02:00",
+        "author" : [
+          {
+            "reference" : "PractitionerRole/PauloPorcelliniSuva"
+          }
+        ],
+        "title" : "Laboratory order 5-biol-monit",
+        "section" : [
+          {
+            "title" : "Laboratory Order with Service Request 5-biol-monit",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "721963009",
+                  "display" : "Order (record artifact)"
+                }
+              ]
+            },
+            "entry" : [
+              {
+                "reference" : "ServiceRequest/5-biol-monit-ServiceRequest"
+              },
+              {
+                "reference" : "ServiceRequest/5-biol-monit-ServiceRequestToxPanelBlood"
+              },
+              {
+                "reference" : "ServiceRequest/5-biol-monit-ServiceRequestHeavyMetalsUrine"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Patient/BeatBorer",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "BeatBorer",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_BeatBorer\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient BeatBorer</b></p><a name=\"BeatBorer\"> </a><a name=\"hcBeatBorer\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-patient.html\">CH Core Patient</a></p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Beat Borer  Male, DoB: 1986-06-06 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400007)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Known Marital status of Patient\">Marital Status:</td><td colspan=\"3\"><span title=\"Codes:{http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus 2}\">verheiratet</span></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Detail</td><td colspan=\"3\"><ul><li><a href=\"tel:+41361234567\">+41 36 123 45 67</a></li><li><a href=\"mailto:beat.borer@example.ch\">beat.borer@example.ch</a></li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Language spoken\">Language:</td><td colspan=\"3\"><span title=\"Codes:{urn:ietf:bcp:47 de-CH}\">Deutsch (Schweiz)</span> (preferred)</td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The registered place of birth of the patient. A sytem may use the address.text if they don't store the birthPlace address in discrete elements.\"><a href=\"http://hl7.org/fhir/extensions/5.3.0-ballot-tc1/StructureDefinition-patient-birthPlace.html\">Patient Birth Place</a></td><td colspan=\"3\">Lausanne Schweiz </td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The place of origin of the patient.\"><a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-patient-ech-11-placeoforigin.html\">Place of Origin according to eCH-0011</a></td><td colspan=\"3\">Köniz BE </td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The patient's professed religious affiliations.\"><a href=\"http://hl7.org/fhir/extensions/5.3.0-ballot-tc1/StructureDefinition-patient-religion.html\">Patient Religion</a></td><td colspan=\"3\"><span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation 1077}\">Protestant</span></td></tr></table></div>"
+        },
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+            "valueAddress" : {
+              "city" : "Lausanne",
+              "country" : "Schweiz"
+            }
+          },
+          {
+            "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-ech-11-placeoforigin",
+            "valueAddress" : {
+              "city" : "Köniz",
+              "state" : "BE"
+            }
+          },
+          {
+            "url" : "http://hl7.org/fhir/StructureDefinition/patient-religion",
+            "valueCodeableConcept" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation",
+                  "code" : "1077",
+                  "display" : "Protestant"
+                }
+              ]
+            }
+          }
+        ],
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.1.1.1",
+            "value" : "80756011110123400007"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Borer",
+            "given" : ["Beat"]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41 36 123 45 67",
+            "use" : "home"
+          },
+          {
+            "system" : "email",
+            "value" : "beat.borer@example.ch"
+          }
+        ],
+        "gender" : "male",
+        "birthDate" : "1986-06-06",
+        "maritalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://fhir.ch/ig/ch-core/CodeSystem/ech-11-maritalstatus",
+              "code" : "2",
+              "display" : "verheiratet"
+            }
+          ]
+        },
+        "communication" : [
+          {
+            "language" : {
+              "coding" : [
+                {
+                  "system" : "urn:ietf:bcp:47",
+                  "code" : "de-CH"
+                }
+              ],
+              "text" : "Deutsch (Schweiz)"
+            },
+            "preferred" : true
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Practitioner/PauloPorcellini",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "PauloPorcellini",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner-epr"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_PauloPorcellini\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner PauloPorcellini</b></p><a name=\"PauloPorcellini\"> </a><a name=\"hcPauloPorcellini\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitioner-epr.html\">CH Core Practitioner EPR</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050700, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/L248519</p><p><b>name</b>: Paulo Porcellini (Official)</p><p><b>telecom</b>: ph: 036 336 22 33(Work), <a href=\"mailto:paulo.porcellini@suva.ch\">paulo.porcellini@suva.ch</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050700"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "L248519"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Porcellini",
+            "given" : ["Paulo"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "036 336 22 33",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "paulo.porcellini@suva.ch",
+            "use" : "work"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Organization/Suva",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "Suva",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_Suva\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization Suva</b></p><a name=\"Suva\"> </a><a name=\"hcSuva\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization.html\">CH Core Organization</a></p></div><p><b>identifier</b>: <code>urn:oid:2.16.756.5.45</code>/A62088168</p><p><b>name</b>: Suva</p><p><b>telecom</b>: <a href=\"tel:+41322345566\">+41322345566</a>, <a href=\"mailto:info@suva.ch\">info@suva.ch</a>, <a href=\"http://www.suva.ch\">http://www.suva.ch</a></p><p><b>address</b>: Löwenplatz 1 Luzern 6004 CH </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.45",
+            "value" : "A62088168"
+          }
+        ],
+        "name" : "Suva",
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41322345566",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "info@suva.ch",
+            "use" : "work"
+          },
+          {
+            "system" : "url",
+            "value" : "http://www.suva.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Löwenplatz 1"],
+            "city" : "Luzern",
+            "postalCode" : "6004",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/PractitionerRole/PauloPorcelliniSuva",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "PauloPorcelliniSuva",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_PauloPorcelliniSuva\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole PauloPorcelliniSuva</b></p><a name=\"PauloPorcelliniSuva\"> </a><a name=\"hcPauloPorcelliniSuva\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitionerrole.html\">CH Core PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Practitioner_PauloPorcellini\">Practitioner Paulo Porcellini (official)</a></p><p><b>organization</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Organization_Suva\">Organization Suva</a></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "Practitioner/PauloPorcellini"
+        },
+        "organization" : {
+          "reference" : "Organization/Suva"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Practitioner/ArminAhrens",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "ArminAhrens",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_ArminAhrens\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner ArminAhrens</b></p><a name=\"ArminAhrens\"> </a><a name=\"hcArminAhrens\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitioner.html\">CH Core Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050700, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/G999999</p><p><b>name</b>: Armin Ahrens (Official)</p><p><b>telecom</b>: ph: 033 123 22 11(Work), <a href=\"mailto:armin.ahrens@arztpraxis.ch\">armin.ahrens@arztpraxis.ch</a></p><h3>Qualifications</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{urn:oid:2.16.756.5.30.1.127.3.5 1021}\">Dermatology and venereology</span></td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050700"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "G999999"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Ahrens",
+            "given" : ["Armin"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "033 123 22 11",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "armin.ahrens@arztpraxis.ch",
+            "use" : "work"
+          }
+        ],
+        "qualification" : [
+          {
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:2.16.756.5.30.1.127.3.5",
+                  "code" : "1021"
+                }
+              ],
+              "text" : "Dermatology and venereology"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Organization/Arztpraxis",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "Arztpraxis",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_Arztpraxis\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization Arztpraxis</b></p><a name=\"Arztpraxis\"> </a><a name=\"hcArztpraxis\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization.html\">CH Core Organization</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000235503</p><p><b>name</b>: Arztpraxis Messen</p><p><b>telecom</b>: <a href=\"tel:+41555545566\">+41555545566</a>, <a href=\"mailto:info@arztpraxis.ch\">info@arztpraxis.ch</a>, <a href=\"http://www.arztpraxis.ch\">http://www.arztpraxis.ch</a></p><p><b>address</b>: Doktorgasse 2 Messen 3254 CH </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000235503"
+          }
+        ],
+        "name" : "Arztpraxis Messen",
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41555545566",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "info@arztpraxis.ch",
+            "use" : "work"
+          },
+          {
+            "system" : "url",
+            "value" : "http://www.arztpraxis.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Doktorgasse 2"],
+            "city" : "Messen",
+            "postalCode" : "3254",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/PractitionerRole/ArminAhrensArztpraxis",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "ArminAhrensArztpraxis",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_ArminAhrensArztpraxis\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole ArminAhrensArztpraxis</b></p><a name=\"ArminAhrensArztpraxis\"> </a><a name=\"hcArminAhrensArztpraxis\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitionerrole.html\">CH Core PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Practitioner_ArminAhrens\">Practitioner Armin Ahrens (official)</a></p><p><b>organization</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Organization_Arztpraxis\">Organization Arztpraxis Messen</a></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "Practitioner/ArminAhrens"
+        },
+        "organization" : {
+          "reference" : "Organization/Arztpraxis"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Practitioner/EvaErlenmeyer",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "EvaErlenmeyer",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_EvaErlenmeyer\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner EvaErlenmeyer</b></p><a name=\"EvaErlenmeyer\"> </a><a name=\"hcEvaErlenmeyer\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitioner.html\">CH Core Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050717, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/Y274589</p><p><b>name</b>: Eva Erlenmeyer (Official)</p><p><b>telecom</b>: ph: 033 444 55 66(Work), <a href=\"mailto:eva.erlenmeyer@labor-pipette.ch\">eva.erlenmeyer@labor-pipette.ch</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050717"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Erlenmeyer",
+            "given" : ["Eva"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "033 444 55 66",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "eva.erlenmeyer@labor-pipette.ch",
+            "use" : "work"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Organization/LaborPipette",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "LaborPipette",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_LaborPipette\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization LaborPipette</b></p><a name=\"LaborPipette\"> </a><a name=\"hcLaborPipette\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization.html\">CH Core Organization</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000234407</p><p><b>name</b>: Labor Pipette</p><p><b>telecom</b>: <a href=\"tel:+41223345566\">+41223345566</a>, <a href=\"mailto:info@labor-pipette.ch\">info@labor-pipette.ch</a>, <a href=\"http://www.labor-pipette.ch\">http://www.labor-pipette.ch</a></p><p><b>address</b>: Laborstrasse 23 Olten 4600 CH </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000234407"
+          }
+        ],
+        "name" : "Labor Pipette",
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41223345566",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "info@labor-pipette.ch",
+            "use" : "work"
+          },
+          {
+            "system" : "url",
+            "value" : "http://www.labor-pipette.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Laborstrasse 23"],
+            "city" : "Olten",
+            "postalCode" : "4600",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/PractitionerRole/EvaErlenmeyerLaborPipette",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "EvaErlenmeyerLaborPipette",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_EvaErlenmeyerLaborPipette\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole EvaErlenmeyerLaborPipette</b></p><a name=\"EvaErlenmeyerLaborPipette\"> </a><a name=\"hcEvaErlenmeyerLaborPipette\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitionerrole.html\">CH Core PractitionerRole</a></p></div><p><b>identifier</b>: <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/K333333</p><p><b>practitioner</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Practitioner_EvaErlenmeyer\">Practitioner Eva Erlenmeyer (official)</a></p><p><b>organization</b>: <a href=\"Bundle-0-best-practice-document-with-sr.html#Organization_LaborPipette\">Organization Labor Pipette</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "K333333"
+          }
+        ],
+        "practitioner" : {
+          "reference" : "Practitioner/EvaErlenmeyer"
+        },
+        "organization" : {
+          "reference" : "Organization/LaborPipette"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Practitioner/WoodyWorkdoc",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "WoodyWorkdoc",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner-epr"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_WoodyWorkdoc\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner WoodyWorkdoc</b></p><a name=\"WoodyWorkdoc\"> </a><a name=\"hcWoodyWorkdoc\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitioner-epr.html\">CH Core Practitioner EPR</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000050717, <code>urn:oid:2.16.756.5.30.1.123.100.2.1.1</code>/L248519</p><p><b>name</b>: Woody Worksdoc (Official)</p><p><b>telecom</b>: ph: 077 888 88 11(Work), <a href=\"mailto:woody.worksdoc@speiser-rails.ch\">woody.worksdoc@speiser-rails.ch</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000050717"
+          },
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "L248519"
+          }
+        ],
+        "name" : [
+          {
+            "use" : "official",
+            "family" : "Worksdoc",
+            "given" : ["Woody"],
+            "prefix" : ["Dr. med."],
+            "_prefix" : [
+              {
+                "extension" : [
+                  {
+                    "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+                    "valueCode" : "AC"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "077 888 88 11",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "woody.worksdoc@speiser-rails.ch",
+            "use" : "work"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Organization/SpeiserRails",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "SpeiserRails",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_SpeiserRails\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization SpeiserRails</b></p><a name=\"SpeiserRails\"> </a><a name=\"hcSpeiserRails\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization.html\">CH Core Organization</a></p></div><p><b>identifier</b>: <code>urn:oid:2.16.756.5.45</code>/A62088168</p><p><b>telecom</b>: <a href=\"tel:+41412345566\">+41412345566</a>, <a href=\"mailto:info@speiser-rails.ch\">info@speiser-rails.ch</a>, <a href=\"http://www.speiser-rails.ch\">http://www.speiser-rails.ch</a></p><p><b>address</b>: Gleisallee 123 Arbon 9320 CH </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.16.756.5.45",
+            "value" : "A62088168"
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "phone",
+            "value" : "+41412345566",
+            "use" : "work"
+          },
+          {
+            "system" : "email",
+            "value" : "info@speiser-rails.ch",
+            "use" : "work"
+          },
+          {
+            "system" : "url",
+            "value" : "http://www.speiser-rails.ch",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Gleisallee 123"],
+            "city" : "Arbon",
+            "postalCode" : "9320",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/PractitionerRole/WoodyWorkdocSpeiserRails",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "WoodyWorkdocSpeiserRails",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_WoodyWorkdocSpeiserRails\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole WoodyWorkdocSpeiserRails</b></p><a name=\"WoodyWorkdocSpeiserRails\"> </a><a name=\"hcWoodyWorkdocSpeiserRails\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitionerrole.html\">CH Core PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Practitioner_WoodyWorkdoc\">Practitioner Woody Worksdoc (official)</a></p><p><b>organization</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Organization_SpeiserRails\">Organization: identifier = urn:oid:2.16.756.5.45#A62088168; telecom = ph: +41412345566(Work),info@speiser-rails.ch(Work),http://www.speiser-rails.ch(Work)</a></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "Practitioner/WoodyWorkdoc"
+        },
+        "organization" : {
+          "reference" : "Organization/SpeiserRails"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Specimen/Blood-biol-monit",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "Blood-biol-monit",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_Blood-biol-monit\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen Blood-biol-monit</b></p><a name=\"Blood-biol-monit\"> </a><a name=\"hcBlood-biol-monit\"> </a><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 119297000}\">Blood sample</span></p><p><b>subject</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Patient_BeatBorer\">Beat Borer  Male, DoB: 1986-06-06 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400007)</a></p><p><b>request</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#ServiceRequest_5-biol-monit-ServiceRequestToxPanelBlood\">ServiceRequest Toxicology panel - Blood</a></p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td><td><b>BodySite</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Practitioner_PauloPorcellini\">Practitioner Paulo Porcellini (official)</a></td><td>2015-08-16 06:40:17+0000</td><td><span title=\"Codes:{http://snomed.info/sct 721029009}\">Structure of superficial vein of left upper limb (body structure)</span></td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 706053007}\">General specimen container (physical object)</span></td></tr></table><p><b>note</b>: </p><blockquote><div><p>Specimen is grossly lipemic</p>\n</div></blockquote></div>"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "119297000",
+              "display" : "Blood sample"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BeatBorer"
+        },
+        "request" : [
+          {
+            "reference" : "ServiceRequest/5-biol-monit-ServiceRequestToxPanelBlood"
+          }
+        ],
+        "collection" : {
+          "collector" : {
+            "reference" : "Practitioner/PauloPorcellini"
+          },
+          "collectedDateTime" : "2015-08-16T06:40:17Z",
+          "bodySite" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "721029009",
+                "display" : "Structure of superficial vein of left upper limb (body structure)"
+              }
+            ]
+          }
+        },
+        "container" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "706053007",
+                  "display" : "General specimen container (physical object)"
+                }
+              ]
+            }
+          }
+        ],
+        "note" : [
+          {
+            "text" : "Specimen is grossly lipemic"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/Specimen/Urine-biol-monit",
+      "resource" : {
+        "resourceType" : "Specimen",
+        "id" : "Urine-biol-monit",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Specimen_Urine-biol-monit\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Specimen Urine-biol-monit</b></p><a name=\"Urine-biol-monit\"> </a><a name=\"hcUrine-biol-monit\"> </a><p><b>identifier</b>: 11111-15394-75465</p><p><b>accessionIdentifier</b>: 22222-bc987-dd888</p><p><b>status</b>: Available</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 122575003}\">Urine sample</span></p><p><b>subject</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Patient_BeatBorer\">Beat Borer  Male, DoB: 1986-06-06 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400007)</a></p><p><b>receivedTime</b>: 2023-12-01 16:40:17+0000</p><p><b>request</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#ServiceRequest_5-biol-monit-ServiceRequestHeavyMetalsUrine\">ServiceRequest Heavy metals panel - Urine</a></p><h3>Collections</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Practitioner_PauloPorcellini\">Practitioner Paulo Porcellini (official)</a></td><td>2023-12-01 06:40:17+0000</td></tr></table><h3>Containers</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Identifier</b></td><td><b>Description</b></td><td><b>Type</b></td></tr><tr><td style=\"display: none\">*</td><td>4e88a-bc987-dd888-12345-urin</td><td>Uriswab™ : Urine Collection System</td><td><span title=\"Codes:{http://snomed.info/sct 706054001}\">Urine specimen container (physical object)</span></td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "value" : "11111-15394-75465"
+          }
+        ],
+        "accessionIdentifier" : {
+          "value" : "22222-bc987-dd888"
+        },
+        "status" : "available",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "122575003",
+              "display" : "Urine sample"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BeatBorer"
+        },
+        "receivedTime" : "2023-12-01T16:40:17Z",
+        "request" : [
+          {
+            "reference" : "ServiceRequest/5-biol-monit-ServiceRequestHeavyMetalsUrine"
+          }
+        ],
+        "collection" : {
+          "collector" : {
+            "reference" : "Practitioner/PauloPorcellini"
+          },
+          "collectedDateTime" : "2023-12-01T06:40:17Z"
+        },
+        "container" : [
+          {
+            "identifier" : [
+              {
+                "value" : "4e88a-bc987-dd888-12345-urin"
+              }
+            ],
+            "description" : "Uriswab™ : Urine Collection System",
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "706054001",
+                  "display" : "Urine specimen container (physical object)"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/ServiceRequest/5-biol-monit-ServiceRequest",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "5-biol-monit-ServiceRequest",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_5-biol-monit-ServiceRequest\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 5-biol-monit-ServiceRequest</b></p><a name=\"5-biol-monit-ServiceRequest\"> </a><a name=\"hc5-biol-monit-ServiceRequest\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>subject</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Patient_BeatBorer\">Beat Borer  Male, DoB: 1986-06-06 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400007)</a></p><p><b>requester</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#PractitionerRole_PauloPorcelliniSuva\">PractitionerRole</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 314076009}\">Toxicology screening test (procedure)</span></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "subject" : {
+          "reference" : "Patient/BeatBorer"
+        },
+        "requester" : {
+          "reference" : "PractitionerRole/PauloPorcelliniSuva"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "314076009"
+              }
+            ],
+            "text" : "Toxicology screening test (procedure)"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/ServiceRequest/5-biol-monit-ServiceRequestToxPanelBlood",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "5-biol-monit-ServiceRequestToxPanelBlood",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_5-biol-monit-ServiceRequestToxPanelBlood\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 5-biol-monit-ServiceRequestToxPanelBlood</b></p><a name=\"5-biol-monit-ServiceRequestToxPanelBlood\"> </a><a name=\"hc5-biol-monit-ServiceRequestToxPanelBlood\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>basedOn</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#ServiceRequest_5-biol-monit-ServiceRequest\">ServiceRequest: identifier = Placer Identifier: Y274589; status = active; intent = original-order; priority = urgent; reasonCode = Toxicology screening test</a></p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 29587-3}\">Toxicology panel - Blood</span></p><p><b>subject</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Patient_BeatBorer\">Beat Borer  Male, DoB: 1986-06-06 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400007)</a></p><p><b>requester</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#PractitionerRole_PauloPorcelliniSuva\">PractitionerRole</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 314076009}\">Toxicology screening test (procedure)</span></p><p><b>specimen</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Specimen_Blood-biol-monit\">Specimen: status = available; type = Blood sample; note = Specimen is grossly lipemic</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "ServiceRequest/5-biol-monit-ServiceRequest"
+          }
+        ],
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29587-3",
+              "display" : "Toxicology panel - Blood"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BeatBorer"
+        },
+        "requester" : {
+          "reference" : "PractitionerRole/PauloPorcelliniSuva"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "314076009"
+              }
+            ],
+            "text" : "Toxicology screening test (procedure)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "Specimen/Blood-biol-monit"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/fhir/ServiceRequest/5-biol-monit-ServiceRequestHeavyMetalsUrine",
+      "resource" : {
+        "resourceType" : "ServiceRequest",
+        "id" : "5-biol-monit-ServiceRequestHeavyMetalsUrine",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-lab-order/StructureDefinition/ch-lab-order-SR"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_5-biol-monit-ServiceRequestHeavyMetalsUrine\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 5-biol-monit-ServiceRequestHeavyMetalsUrine</b></p><a name=\"5-biol-monit-ServiceRequestHeavyMetalsUrine\"> </a><a name=\"hc5-biol-monit-ServiceRequestHeavyMetalsUrine\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-lab-order-SR.html\">CH LAB-Order ServiceRequest</a></p></div><p><b>identifier</b>: Placer Identifier/Y274589</p><p><b>basedOn</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#ServiceRequest_5-biol-monit-ServiceRequest\">ServiceRequest: identifier = Placer Identifier: Y274589; status = active; intent = original-order; priority = urgent; reasonCode = Toxicology screening test</a></p><p><b>status</b>: Active</p><p><b>intent</b>: Original Order</p><p><b>priority</b>: Urgent</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 29589-9}\">Heavy metals panel - Urine</span></p><p><b>subject</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Patient_BeatBorer\">Beat Borer  Male, DoB: 1986-06-06 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#80756011110123400007)</a></p><p><b>requester</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#PractitionerRole_PauloPorcelliniSuva\">PractitionerRole</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://snomed.info/sct 314076009}\">Toxicology screening test (procedure)</span></p><p><b>specimen</b>: <a href=\"Bundle-5-biol-monit-document-with-sr-and-form.html#Specimen_Urine-biol-monit\">Specimen: identifier = 11111-15394-75465; accessionIdentifier = 22222-bc987-dd888; status = available; type = Urine sample; receivedTime = 2023-12-01 16:40:17+0000</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PLAC",
+                  "display" : "Placer Identifier"
+                }
+              ]
+            },
+            "system" : "urn:oid:2.16.756.5.30.1.123.100.2.1.1",
+            "value" : "Y274589"
+          }
+        ],
+        "basedOn" : [
+          {
+            "reference" : "ServiceRequest/5-biol-monit-ServiceRequest"
+          }
+        ],
+        "status" : "active",
+        "intent" : "original-order",
+        "priority" : "urgent",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29589-9",
+              "display" : "Heavy metals panel - Urine"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/BeatBorer"
+        },
+        "requester" : {
+          "reference" : "PractitionerRole/PauloPorcelliniSuva"
+        },
+        "reasonCode" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "314076009"
+              }
+            ],
+            "text" : "Toxicology screening test (procedure)"
+          }
+        ],
+        "specimen" : [
+          {
+            "reference" : "Specimen/Urine-biol-monit"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```
