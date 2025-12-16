@@ -1,0 +1,381 @@
+# CH-AllergyIntolerance-Document-Example - CH AllergyIntolerance (R4) v3.0.1
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH-AllergyIntolerance-Document-Example**
+
+## Example Bundle: CH-AllergyIntolerance-Document-Example
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "ch-allergyintolerance-document-example",
+  "meta" : {
+    "lastUpdated" : "2022-01-15T14:30:48.139+00:00",
+    "profile" : [
+      "http://fhir.ch/ig/ch-allergyintolerance/StructureDefinition/ch-allergyintolerance-document-epr"
+    ]
+  },
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:2eadef87-8850-46e5-9557-1e08dcfaa759"
+  },
+  "type" : "document",
+  "timestamp" : "2022-01-12T18:00:00+01:00",
+  "entry" : [
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Composition/AllergyIntoleranceComposition",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "AllergyIntoleranceComposition",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Composition_AllergyIntoleranceComposition\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Composition AllergyIntoleranceComposition</b></p><a name=\"AllergyIntoleranceComposition\"> </a><a name=\"hcAllergyIntoleranceComposition\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>identifier</b>: <a href=\"http://terminology.hl7.org/6.2.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:4356b15f-4061-49d9-80bf-b84d23113a6a</p><p><b>status</b>: Final</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 722446000}\">Allergy record (record artifact)</span></p><p><b>date</b>: 2022-01-12 17:00:00+0100</p><p><b>author</b>: <a href=\"PractitionerRole-FamilienHausarztAtHausarzt.html\">PractitionerRole</a></p><p><b>title</b>: Allergies and adverse reactions Document</p><p><b>confidentiality</b>: normal</p><p><b>custodian</b>: <a href=\"Organization-Custodian.html\">Organization Hausarzt</a></p></div>"
+        },
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:4356b15f-4061-49d9-80bf-b84d23113a6a"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "722446000",
+              "display" : "Allergy record (record artifact)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/MonikaWegmueller"
+        },
+        "date" : "2022-01-12T17:00:00+01:00",
+        "author" : [
+          {
+            "extension" : [
+              {
+                "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-time",
+                "valueDateTime" : "2012-02-04T14:00:00+01:00"
+              }
+            ],
+            "reference" : "PractitionerRole/FamilienHausarztAtHausarzt"
+          }
+        ],
+        "title" : "Allergies and adverse reactions Document",
+        "confidentiality" : "N",
+        "_confidentiality" : {
+          "extension" : [
+            {
+              "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode",
+              "valueCodeableConcept" : {
+                "coding" : [
+                  {
+                    "system" : "http://snomed.info/sct",
+                    "code" : "17621005",
+                    "display" : "Normal"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "custodian" : {
+          "reference" : "Organization/Custodian"
+        },
+        "section" : [
+          {
+            "title" : "Allergy Intolerance",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "48765-2",
+                  "display" : "Allergies and adverse reactions Document"
+                }
+              ]
+            },
+            "entry" : [
+              {
+                "reference" : "AllergyIntolerance/AllergyToCatDander"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Patient/MonikaWegmueller",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "MonikaWegmueller",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-epr"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_MonikaWegmueller\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient MonikaWegmueller</b></p><a name=\"MonikaWegmueller\"> </a><a name=\"hcMonikaWegmueller\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-patient-epr.html\">CH Core Patient EPR</a></p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Monika Wegmüller  Female, DoB: 1943-05-15 ( Medical record number)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Detail</td><td colspan=\"3\">Wiesenstr. 12 Zürich 8003 CH </td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "MR"
+                }
+              ]
+            },
+            "system" : "urn:oid:2.999.1",
+            "value" : "11111111"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Wegmüller",
+            "given" : ["Monika"]
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1943-05-15",
+        "address" : [
+          {
+            "line" : ["Wiesenstr. 12"],
+            "city" : "Zürich",
+            "postalCode" : "8003",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/PractitionerRole/FamilienHausarztAtHausarzt",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "FamilienHausarztAtHausarzt",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole-epr"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_FamilienHausarztAtHausarzt\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole FamilienHausarztAtHausarzt</b></p><a name=\"FamilienHausarztAtHausarzt\"> </a><a name=\"hcFamilienHausarztAtHausarzt\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitionerrole-epr.html\">CH Core PractitionerRole EPR</a></p></div><p><b>practitioner</b>: <a href=\"Practitioner-FamilienHausarzt.html\">Practitioner Familien Hausarzt </a></p><p><b>organization</b>: <a href=\"Organization-Hausarzt.html\">Organization Hausarzt</a></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "Practitioner/FamilienHausarzt"
+        },
+        "organization" : {
+          "reference" : "Organization/Hausarzt"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Practitioner/FamilienHausarzt",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "FamilienHausarzt",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner-epr"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_FamilienHausarzt\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner FamilienHausarzt</b></p><a name=\"FamilienHausarzt\"> </a><a name=\"hcFamilienHausarzt\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-practitioner-epr.html\">CH Core Practitioner EPR</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000121219</p><p><b>name</b>: Familien Hausarzt </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000121219"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Hausarzt",
+            "given" : ["Familien"]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Organization/Hausarzt",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "Hausarzt",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization-epr"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_Hausarzt\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization Hausarzt</b></p><a name=\"Hausarzt\"> </a><a name=\"hcHausarzt\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization-epr.html\">CH Core Organization EPR</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000121219</p><p><b>name</b>: Hausarzt</p><p><b>address</b>: Krankenstrasse 2 Zürich 8005 CH </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000121219"
+          }
+        ],
+        "name" : "Hausarzt",
+        "address" : [
+          {
+            "line" : ["Krankenstrasse 2"],
+            "city" : "Zürich",
+            "postalCode" : "8005",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Organization/Custodian",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "Custodian",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization-epr"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_Custodian\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization Custodian</b></p><a name=\"Custodian\"> </a><a name=\"hcCustodian\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-organization-epr.html\">CH Core Organization EPR</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000234438</p><p><b>name</b>: Hausarzt</p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000234438"
+          }
+        ],
+        "name" : "Hausarzt"
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Patient/MonikaWegmuellerRecipient",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "MonikaWegmuellerRecipient",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_MonikaWegmuellerRecipient\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient MonikaWegmuellerRecipient</b></p><a name=\"MonikaWegmuellerRecipient\"> </a><a name=\"hcMonikaWegmuellerRecipient\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-core/6.0.0/StructureDefinition-ch-core-patient.html\">CH Core Patient</a></p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Monika Wegmüller  (no stated gender), DoB Unknown</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Detail</td><td colspan=\"3\">Wiesenstr. 12 Zürich 8003 CH </td></tr></table></div>"
+        },
+        "name" : [
+          {
+            "family" : "Wegmüller",
+            "given" : ["Monika"]
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Wiesenstr. 12"],
+            "city" : "Zürich",
+            "postalCode" : "8003",
+            "country" : "CH"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/AllergyIntolerance/AllergyToCatDander",
+      "resource" : {
+        "resourceType" : "AllergyIntolerance",
+        "id" : "AllergyToCatDander",
+        "text" : {
+          "status" : "extensions",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"AllergyIntolerance_AllergyToCatDander\"> </a><p class=\"res-header-id\"><b>Generated Narrative: AllergyIntolerance AllergyToCatDander</b></p><a name=\"AllergyToCatDander\"> </a><a name=\"hcAllergyToCatDander\"> </a><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/allergyintolerance-verification confirmed}\">Confirmed</span></p><p><b>type</b>: Allergy</p><p><b>category</b>: Biologic</p><p><b>criticality</b>: Low Risk</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 232346004}\">Allergy to cat dander (finding)</span></p><p><b>patient</b>: <a href=\"Patient-MonikaWegmueller.html\">Monika Wegmüller  Female, DoB: 1943-05-15 ( Medical record number)</a></p><blockquote><p><b>reaction</b></p><p><b>AllergyIntolerance Certainty</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/reaction-event-certainty confirmed}\">Confirmed</span></p><p><b>AllergyIntolerance ExposureDescription</b>: Animal shelter</p><p><b>substance</b>: <span title=\"Codes:{http://snomed.info/sct 260152009}\">Cat dander (substance)</span></p><p><b>manifestation</b>: <span title=\"Codes:{http://snomed.info/sct 271807003}\">Eruption of skin (disorder)</span></p><p><b>severity</b>: Mild</p></blockquote></div>"
+        },
+        "clinicalStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code" : "active",
+              "display" : "Active"
+            }
+          ]
+        },
+        "verificationStatus" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+              "code" : "confirmed",
+              "display" : "Confirmed"
+            }
+          ]
+        },
+        "type" : "allergy",
+        "category" : ["biologic"],
+        "criticality" : "low",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "232346004",
+              "display" : "Allergy to cat dander (finding)"
+            }
+          ]
+        },
+        "patient" : {
+          "reference" : "Patient/MonikaWegmueller"
+        },
+        "reaction" : [
+          {
+            "extension" : [
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/allergyintolerance-certainty",
+                "valueCodeableConcept" : {
+                  "coding" : [
+                    {
+                      "system" : "http://terminology.hl7.org/CodeSystem/reaction-event-certainty",
+                      "code" : "confirmed",
+                      "display" : "Confirmed"
+                    }
+                  ]
+                }
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/openEHR-exposureDescription",
+                "valueString" : "Animal shelter"
+              }
+            ],
+            "substance" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "260152009",
+                  "display" : "Cat dander (substance)"
+                }
+              ]
+            },
+            "manifestation" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "http://snomed.info/sct",
+                    "code" : "271807003",
+                    "display" : "Eruption of skin (disorder)"
+                  }
+                ]
+              }
+            ],
+            "severity" : "mild"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```
