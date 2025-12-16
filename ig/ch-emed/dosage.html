@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Dosage - CH EMED (R4) v6.0.0-ballot</title>
+    <title>Dosage - CH EMED (R4) v6.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -42,10 +42,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
-    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
-    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
-    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -80,7 +80,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EMED (R4)</span>
             <br/>
-            <span style="display:inline-block;">6.0.0-ballot - ballot
+            <span style="display:inline-block;">6.0.0 - trial-use
 
 
 
@@ -212,7 +212,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v6.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 6 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMED (R4) (v6.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 6) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-emed/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Dosage</h2>
   
 
@@ -239,7 +239,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h3 id="overview">Overview</h3>
 
-<p>This implementation guide currently describes the <strong>normal dosing</strong> and the <strong>split dosing</strong>. The normal dosing can be given in a structured form and/or as narrative text. If possible, the structured form should be provided. In case structured dosage instructions are not provided or for complex dosages, the dosage can be represented using narrative text.</p>
+<p>This implementation guide currently describes the <strong>normal dosing</strong> and the <strong>split dosing</strong>. The normal dosing can be given in a structured form and/or as narrative text. If possible, the structured form SHOULD be provided. In case structured dosage instructions are not provided or for complex dosages, the dosage can be represented using narrative text.</p>
 
 <p>In the structured form, the format 1-1-1-1, meaning the administration time in the morning, at noon, in the evening, at night, is supported. For <a href="#normal-dosing">normal dosing</a>, the dose quantity is the same at the defined administration times (e.g. 1-0-0-0, 1-0-1-0). For <a href="#split-dosing">split dosing</a>, the dose quantity varies depending on the administration time (e.g. 1-0-2-0, 2-1-2-0).</p>
 
@@ -249,16 +249,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h5 id="start-and-stop">Start and Stop</h5>
 <p>The (outer) bounds of the treatment period are mapped as start and/or end dates (with or without time).</p>
 <h5 id="timing-event">Timing Event</h5>
-<p>For the representation of the time of administration according to the 1-1-1-1 scheme, the values MORN-NOON-EVE-NIGHT from the <a href="https://www.hl7.org/fhir/valueset-event-timing.html">ValueSet EventTiming</a> are highly recommended for the Swiss use.</p>
+<p>For the representation of the time of administration according to the 1-1-1-1 scheme, the values MORN-NOON-EVE-NIGHT from the <a href="https://www.hl7.org/fhir/valueset-event-timing.html">ValueSet EventTiming</a> SHOULD be used for the Swiss use.</p>
 
 <h4 id="dose-and-rate">Dose and Rate</h4>
-<p>The amount of medication administered according to the 1-1-1-1 scheme is represented with SNOMED CT or UCUM codes, which are defined in the <a href="http://fhir.ch/ig/ch-term/ValueSet-UnitCode.html">ValueSet UnitCode</a>.</p>
+<p>The amount of medication administered according to the 1-1-1-1 scheme SHALL be represented with SNOMED CT or UCUM codes, which are defined in the <a href="http://fhir.ch/ig/ch-term/ValueSet-UnitCode.html">ValueSet UnitCode</a>.</p>
 
 <h4 id="in-reserve">In Reserve</h4>
-<p>There is an option to indicate whether the medication is taken only as needed (e.g., when pain occurs) as part of the specified dosing schedule. If it is a reserve medication, the dosage indicated is the maximum dosage the patient may take.</p>
+<p>Implementations MAY indicate whether the medication is taken only as needed (e.g., when pain occurs) as part of the specified dosing schedule. If it is a reserve medication, the dosage indicated is the maximum dosage the patient may take.</p>
 
 <h4 id="route-of-administration">Route of Administration</h4>
-<p>A code for specifying the route of administration into or onto a patient's body comes from the <a href="http://fhir.ch/ig/ch-term/ValueSet-edqm-routeofadministration.html">ValueSet EDQM - RouteOfAdministration</a>.</p>
+<p>A code for specifying the route of administration into or onto a patient's body SHALL be taken from the <a href="http://fhir.ch/ig/ch-term/ValueSet-edqm-routeofadministration.html">ValueSet EDQM - RouteOfAdministration</a>.</p>
 
 <h4 id="patient-instruction">Patient Instruction</h4>
 <p>Instructions to the patient regarding the administration of the medication, e.g. taking with food. The instructions are in a patient understandable language. <br />
@@ -452,8 +452,8 @@ Additionally, if no structured dosage instructions are provided or the dosage is
 </span></code></pre></div></div>
 
 <h3 id="split-dosing">Split Dosing</h3>
-<p>The split dosing differs from the normal dosing in that the dosage element is repeated. In contrast to normal dosing, where the dosage element can occur once, the <strong>dosage element</strong> can be repeated <strong>n times</strong> in split dosing. The order of the dosage instructions is defined by the required element <code class="language-plaintext highlighter-rouge">Dosage.sequence</code>. <br />
-The information, which is the same for all dosage elements (<code class="language-plaintext highlighter-rouge">patientInstruction</code>, <code class="language-plaintext highlighter-rouge">timing.repeat.boundsPeriod</code>, <code class="language-plaintext highlighter-rouge">asNeeded</code>, <code class="language-plaintext highlighter-rouge">route</code>) is mapped in the first dosage element.</p>
+<p>The split dosing differs from the normal dosing in that the dosage element is repeated. In contrast to normal dosing, where the dosage element occurs once, the <strong>dosage element</strong> can be repeated <strong>n times</strong> in split dosing. The order of the dosage instructions SHALL be defined by the required element <code class="language-plaintext highlighter-rouge">Dosage.sequence</code>. <br />
+The information, which is the same for all dosage elements (<code class="language-plaintext highlighter-rouge">patientInstruction</code>, <code class="language-plaintext highlighter-rouge">timing.repeat.boundsPeriod</code>, <code class="language-plaintext highlighter-rouge">asNeeded</code>, <code class="language-plaintext highlighter-rouge">route</code>) MUST be mapped in the first dosage element.</p>
 
 <p>Dosing example based on the use case step 2-3:</p>
 
@@ -574,7 +574,7 @@ The information, which is the same for all dosage elements (<code class="languag
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#6.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 07:37+0000">2025-05-22</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-emed#6.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 16, 2025 11:14+0000">2025-12-16</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -582,7 +582,7 @@ The information, which is the same for all dosage elements (<code class="languag
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%236.0.0-ballot%20/dosage.html&amp;entry%2E247644557=Dosage">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScrP5Pbw6-l4FoM5WCNqAusTMdntO0TJQyX3y0fdLcuyqsNrQ/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed%236.0.0%20/dosage.html&amp;entry%2E247644557=Dosage">Propose a change</a>
 
 
 
