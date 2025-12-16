@@ -1,0 +1,833 @@
+# UC 3: Pregnancy Passport - CH EPREG (R4) v1.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **UC 3: Pregnancy Passport**
+
+## Example Bundle: UC 3: Pregnancy Passport
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "UC3-Document",
+  "language" : "de-CH",
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:7afc1e97-67f8-49a8-91f5-46af596d0609"
+  },
+  "type" : "document",
+  "timestamp" : "2025-02-10T15:45:00+01:00",
+  "entry" : [
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Composition/UC3-Composition",
+      "resource" : {
+        "resourceType" : "Composition",
+        "id" : "UC3-Composition",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Composition_UC3-Composition\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Composition UC3-Composition</b></p><a name=\"UC3-Composition\"> </a><a name=\"hcUC3-Composition\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>identifier</b>: <a href=\"http://terminology.hl7.org/5.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:064d9096-5f85-4aa1-8bd9-d3b6397eff29</p><p><b>status</b>: Final</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 736377005}\">Maternity care plan (record artifact)</span></p><p><b>date</b>: 2025-02-10 15:45:00+0100</p><p><b>author</b>: <a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></p><p><b>title</b>: Schwangerschaftspass</p><p><b>confidentiality</b>: normal</p></div>"
+        },
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:064d9096-5f85-4aa1-8bd9-d3b6397eff29"
+        },
+        "status" : "final",
+        "type" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "736377005",
+              "display" : "Maternity care plan (record artifact)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/UC3-SophieDoppelherz"
+        },
+        "date" : "2025-02-10T15:45:00+01:00",
+        "author" : [
+          {
+            "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+          }
+        ],
+        "title" : "Schwangerschaftspass",
+        "confidentiality" : "N",
+        "_confidentiality" : {
+          "extension" : [
+            {
+              "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode",
+              "valueCodeableConcept" : {
+                "coding" : [
+                  {
+                    "system" : "http://snomed.info/sct",
+                    "code" : "17621005",
+                    "display" : "Normal (qualifier value)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "section" : [
+          {
+            "title" : "Stammdaten",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "86638-4",
+                  "display" : "Patient demographic and administrative information panel [FPAR]"
+                }
+              ]
+            },
+            "section" : [
+              {
+                "title" : "Behandelnde Leistungserbringende",
+                "code" : {
+                  "coding" : [
+                    {
+                      "system" : "http://loinc.org",
+                      "code" : "85847-2",
+                      "display" : "Patient Care team information"
+                    }
+                  ]
+                },
+                "text" : {
+                  "status" : "additional",
+                  "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Gynäkologin:</b> Claudia Frühblick, Frauenzimmer</p></div>"
+                },
+                "entry" : [
+                  {
+                    "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title" : "Schwangerschaftsverlauf",
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "57059-8",
+                  "display" : "Pregnancy visit summary note Narrative"
+                }
+              ]
+            },
+            "text" : {
+              "status" : "generated",
+              "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><b>Untersuchung vom 10.02.2025</b><ul><li>SSW: 7</li><li>Gewicht: 64 kg</li><li>Blutdruck: 120/75 mmHg</li><li>Urin: bland</li><li>Herztöne Kind A: 155 /min</li><li>Herztöne Kind B: 155 /min</li><li>Nächste Kontrolle: 10.03.2025</li></ul></div>"
+            },
+            "entry" : [
+              {
+                "reference" : "Encounter/UC3-EncounterMother20250210"
+              },
+              {
+                "reference" : "Encounter/UC3-EncounterChildA20250210"
+              },
+              {
+                "reference" : "Encounter/UC3-EncounterChildB20250210"
+              },
+              {
+                "reference" : "Observation/UC3-GestationalAgeInDays-20250210"
+              },
+              {
+                "reference" : "Observation/UC3-BodyWeight-20250210"
+              },
+              {
+                "reference" : "Observation/UC3-BloodPressure-20250210"
+              },
+              {
+                "reference" : "Observation/UC3-UrineFinding-20250210"
+              },
+              {
+                "reference" : "Observation/UC3-FetalHeartFeatureChildA-20250210"
+              },
+              {
+                "reference" : "Observation/UC3-FetalHeartFeatureChildB-20250210"
+              },
+              {
+                "reference" : "Appointment/UC3-Appointment20250310"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Patient/UC3-SophieDoppelherz",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "UC3-SophieDoppelherz",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Patient_UC3-SophieDoppelherz\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient UC3-SophieDoppelherz</b></p><a name=\"UC3-SophieDoppelherz\"> </a><a name=\"hcUC3-SophieDoppelherz\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Sophie Doppelherz  Female, DoB: 1992-07-22 ( Medical record number)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Patient Links\">Links:</td><td colspan=\"3\"><ul><li>Also see: <a href=\"RelatedPerson-UC3-RelatedPerson-ChildA-Mother.html\">RelatedPerson: relationship = Natural mother (person)</a></li><li>Also see: <a href=\"RelatedPerson-UC3-RelatedPerson-ChildB-Mother.html\">RelatedPerson: relationship = Natural mother (person)</a></li></ul></td></tr></table></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "MR"
+                }
+              ]
+            },
+            "system" : "http://example.com/identifiers/patient",
+            "value" : "123456"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Doppelherz",
+            "given" : ["Sophie"]
+          }
+        ],
+        "gender" : "female",
+        "birthDate" : "1992-07-22",
+        "link" : [
+          {
+            "other" : {
+              "reference" : "RelatedPerson/UC3-RelatedPerson-ChildA-Mother"
+            },
+            "type" : "seealso"
+          },
+          {
+            "other" : {
+              "reference" : "RelatedPerson/UC3-RelatedPerson-ChildB-Mother"
+            },
+            "type" : "seealso"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/RelatedPerson/UC3-RelatedPerson-ChildA-Mother",
+      "resource" : {
+        "resourceType" : "RelatedPerson",
+        "id" : "UC3-RelatedPerson-ChildA-Mother",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"RelatedPerson_UC3-RelatedPerson-ChildA-Mother\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RelatedPerson UC3-RelatedPerson-ChildA-Mother</b></p><a name=\"UC3-RelatedPerson-ChildA-Mother\"> </a><a name=\"hcUC3-RelatedPerson-ChildA-Mother\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>patient</b>: <a href=\"Patient-UC3-ChildA.html\">Anonymous Patient (no stated gender), DoB Unknown ( Patient internal identifier: A)</a></p><p><b>relationship</b>: <span title=\"Codes:{http://snomed.info/sct 65656005}\">Natural mother (person)</span></p></div>"
+        },
+        "patient" : {
+          "reference" : "Patient/UC3-ChildA"
+        },
+        "relationship" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "65656005",
+                "display" : "Natural mother (person)"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Patient/UC3-ChildA",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "UC3-ChildA",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Patient_UC3-ChildA\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient UC3-ChildA</b></p><a name=\"UC3-ChildA\"> </a><a name=\"hcUC3-ChildA\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Anonymous Patient (no stated gender), DoB Unknown ( Patient internal identifier: A)</p><hr/></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PI",
+                  "display" : "Patient internal identifier"
+                }
+              ]
+            },
+            "system" : "http://example.com/identifiers/child",
+            "value" : "A"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/RelatedPerson/UC3-RelatedPerson-ChildB-Mother",
+      "resource" : {
+        "resourceType" : "RelatedPerson",
+        "id" : "UC3-RelatedPerson-ChildB-Mother",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"RelatedPerson_UC3-RelatedPerson-ChildB-Mother\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RelatedPerson UC3-RelatedPerson-ChildB-Mother</b></p><a name=\"UC3-RelatedPerson-ChildB-Mother\"> </a><a name=\"hcUC3-RelatedPerson-ChildB-Mother\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>patient</b>: <a href=\"Patient-UC3-ChildB.html\">Anonymous Patient (no stated gender), DoB Unknown ( Patient internal identifier: B)</a></p><p><b>relationship</b>: <span title=\"Codes:{http://snomed.info/sct 65656005}\">Natural mother (person)</span></p></div>"
+        },
+        "patient" : {
+          "reference" : "Patient/UC3-ChildB"
+        },
+        "relationship" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "65656005",
+                "display" : "Natural mother (person)"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Patient/UC3-ChildB",
+      "resource" : {
+        "resourceType" : "Patient",
+        "id" : "UC3-ChildB",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Patient_UC3-ChildB\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient UC3-ChildB</b></p><a name=\"UC3-ChildB\"> </a><a name=\"hcUC3-ChildB\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Anonymous Patient (no stated gender), DoB Unknown ( Patient internal identifier: B)</p><hr/></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code" : "PI",
+                  "display" : "Patient internal identifier"
+                }
+              ]
+            },
+            "system" : "http://example.com/identifiers/child",
+            "value" : "B"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "UC3-ClaudiaFruehblickAtFrauenzimmer",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"PractitionerRole_UC3-ClaudiaFruehblickAtFrauenzimmer\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole UC3-ClaudiaFruehblickAtFrauenzimmer</b></p><a name=\"UC3-ClaudiaFruehblickAtFrauenzimmer\"> </a><a name=\"hcUC3-ClaudiaFruehblickAtFrauenzimmer\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>practitioner</b>: <a href=\"Practitioner-UC3-ClaudiaFruehblick.html\">Practitioner Claudia Frühblick </a></p><p><b>organization</b>: <a href=\"Organization-UC3-Frauenzimmer.html\">Organization Frauenzimmer</a></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 309343006}\">Arzt/Ärztin</span></p><p><b>specialty</b>: <span title=\"Codes:{urn:oid:2.16.756.5.30.1.127.3.5 1003}\">Gynäkologie und Geburtshilfe</span></p></div>"
+        },
+        "practitioner" : {
+          "reference" : "Practitioner/UC3-ClaudiaFruehblick"
+        },
+        "organization" : {
+          "reference" : "Organization/UC3-Frauenzimmer"
+        },
+        "code" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "309343006",
+                "display" : "Arzt/Ärztin"
+              }
+            ]
+          }
+        ],
+        "specialty" : [
+          {
+            "coding" : [
+              {
+                "system" : "urn:oid:2.16.756.5.30.1.127.3.5",
+                "code" : "1003",
+                "display" : "Gynäkologie und Geburtshilfe"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Practitioner/UC3-ClaudiaFruehblick",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "UC3-ClaudiaFruehblick",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Practitioner_UC3-ClaudiaFruehblick\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner UC3-ClaudiaFruehblick</b></p><a name=\"UC3-ClaudiaFruehblick\"> </a><a name=\"hcUC3-ClaudiaFruehblick\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000239891</p><p><b>name</b>: Claudia Frühblick </p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000239891"
+          }
+        ],
+        "name" : [
+          {
+            "family" : "Frühblick",
+            "given" : ["Claudia"],
+            "prefix" : ["Dr. med."]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Organization/UC3-Frauenzimmer",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "UC3-Frauenzimmer",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Organization_UC3-Frauenzimmer\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization UC3-Frauenzimmer</b></p><a name=\"UC3-Frauenzimmer\"> </a><a name=\"hcUC3-Frauenzimmer\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>name</b>: Frauenzimmer</p><p><b>telecom</b>: <a href=\"mailto:frauenzimmer@example.com\">frauenzimmer@example.com</a>, <a href=\"tel:+41444444444\">+41 44 444 44 44</a></p><p><b>address</b>: Zimmergasse 1 Musterhausen 8888 Schweiz </p></div>"
+        },
+        "name" : "Frauenzimmer",
+        "telecom" : [
+          {
+            "system" : "email",
+            "value" : "frauenzimmer@example.com"
+          },
+          {
+            "system" : "phone",
+            "value" : "+41 44 444 44 44",
+            "use" : "work"
+          }
+        ],
+        "address" : [
+          {
+            "line" : ["Zimmergasse 1"],
+            "city" : "Musterhausen",
+            "postalCode" : "8888",
+            "country" : "Schweiz"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Encounter/UC3-EncounterMother20250210",
+      "resource" : {
+        "resourceType" : "Encounter",
+        "id" : "UC3-EncounterMother20250210",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "extensions",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Encounter_UC3-EncounterMother20250210\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Encounter UC3-EncounterMother20250210</b></p><a name=\"UC3-EncounterMother20250210\"> </a><a name=\"hcUC3-EncounterMother20250210\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>CH EPREG Extension: Examination Sequence</b>: 1</p><p><b>status</b>: Finished</p><p><b>class</b>: <a href=\"http://terminology.hl7.org/7.0.1/CodeSystem-v3-ActCode.html#v3-ActCode-AMB\">ActCode: AMB</a> (ambulatory)</p><p><b>subject</b>: <a href=\"Patient-UC3-SophieDoppelherz.html\">Sophie Doppelherz  Female, DoB: 1992-07-22 ( Medical record number)</a></p><h3>Participants</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Individual</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></td></tr></table><p><b>period</b>: 2025-02-10 --&gt; 2025-02-10</p></div>"
+        },
+        "extension" : [
+          {
+            "url" : "http://fhir.ch/ig/ch-epreg/StructureDefinition/ch-epreg-ext-examination-sequence",
+            "valuePositiveInt" : 1
+          }
+        ],
+        "status" : "finished",
+        "class" : {
+          "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code" : "AMB",
+          "display" : "ambulatory"
+        },
+        "subject" : {
+          "reference" : "Patient/UC3-SophieDoppelherz"
+        },
+        "participant" : [
+          {
+            "individual" : {
+              "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+            }
+          }
+        ],
+        "period" : {
+          "start" : "2025-02-10",
+          "end" : "2025-02-10"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Observation/UC3-GestationalAgeInDays-20250210",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "UC3-GestationalAgeInDays-20250210",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Observation_UC3-GestationalAgeInDays-20250210\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation UC3-GestationalAgeInDays-20250210</b></p><a name=\"UC3-GestationalAgeInDays-20250210\"> </a><a name=\"hcUC3-GestationalAgeInDays-20250210\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 49052-4}\">Gestational age in days</span></p><p><b>subject</b>: <a href=\"Patient-UC3-SophieDoppelherz.html\">Sophie Doppelherz  Female, DoB: 1992-07-22 ( Medical record number)</a></p><p><b>encounter</b>: <a href=\"Encounter-UC3-EncounterMother20250210.html\">Encounter: extension = 1; status = finished; class = ambulatory (ActCode#AMB); period = 2025-02-10 --&gt; 2025-02-10</a></p><p><b>effective</b>: 2025-02-10</p><p><b>performer</b>: <a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></p><p><b>value</b>: 49 day<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  coded = 'd')</span></p></div>"
+        },
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "49052-4",
+              "display" : "Gestational age in days"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/UC3-SophieDoppelherz"
+        },
+        "encounter" : {
+          "reference" : "Encounter/UC3-EncounterMother20250210"
+        },
+        "effectiveDateTime" : "2025-02-10",
+        "performer" : [
+          {
+            "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 49,
+          "unit" : "day",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "d"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Observation/UC3-BodyWeight-20250210",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "UC3-BodyWeight-20250210",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Observation_UC3-BodyWeight-20250210\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation UC3-BodyWeight-20250210</b></p><a name=\"UC3-BodyWeight-20250210\"> </a><a name=\"hcUC3-BodyWeight-20250210\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category vital-signs}\">Vital Signs</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 29463-7}\">Body weight</span></p><p><b>subject</b>: <a href=\"Patient-UC3-SophieDoppelherz.html\">Sophie Doppelherz  Female, DoB: 1992-07-22 ( Medical record number)</a></p><p><b>encounter</b>: <a href=\"Encounter-UC3-EncounterMother20250210.html\">Encounter: extension = 1; status = finished; class = ambulatory (ActCode#AMB); period = 2025-02-10 --&gt; 2025-02-10</a></p><p><b>effective</b>: 2025-02-10</p><p><b>performer</b>: <a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></p><p><b>value</b>: 64 kilogram<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codekg = 'kg')</span></p></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "vital-signs",
+                "display" : "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "29463-7",
+              "display" : "Body weight"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/UC3-SophieDoppelherz"
+        },
+        "encounter" : {
+          "reference" : "Encounter/UC3-EncounterMother20250210"
+        },
+        "effectiveDateTime" : "2025-02-10",
+        "performer" : [
+          {
+            "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+          }
+        ],
+        "valueQuantity" : {
+          "value" : 64,
+          "unit" : "kilogram",
+          "system" : "http://unitsofmeasure.org",
+          "code" : "kg"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Observation/UC3-BloodPressure-20250210",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "UC3-BloodPressure-20250210",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Observation_UC3-BloodPressure-20250210\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation UC3-BloodPressure-20250210</b></p><a name=\"UC3-BloodPressure-20250210\"> </a><a name=\"hcUC3-BloodPressure-20250210\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category vital-signs}\">Vital Signs</span></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 85354-9}\">Blood pressure panel with all children optional</span></p><p><b>subject</b>: <a href=\"Patient-UC3-SophieDoppelherz.html\">Sophie Doppelherz  Female, DoB: 1992-07-22 ( Medical record number)</a></p><p><b>encounter</b>: <a href=\"Encounter-UC3-EncounterMother20250210.html\">Encounter: extension = 1; status = finished; class = ambulatory (ActCode#AMB); period = 2025-02-10 --&gt; 2025-02-10</a></p><p><b>effective</b>: 2025-02-10</p><p><b>performer</b>: <a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></p><blockquote><p><b>component</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 8480-6}\">Systolic blood pressure</span></p><p><b>value</b>: 120 millimeter of mercury<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemm[Hg] = 'mm[Hg]')</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 8462-4}\">Diastolic blood pressure</span></p><p><b>value</b>: 75 millimeter of mercury<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM  codemm[Hg] = 'mm[Hg]')</span></p></blockquote></div>"
+        },
+        "status" : "final",
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code" : "vital-signs",
+                "display" : "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://loinc.org",
+              "code" : "85354-9",
+              "display" : "Blood pressure panel with all children optional"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/UC3-SophieDoppelherz"
+        },
+        "encounter" : {
+          "reference" : "Encounter/UC3-EncounterMother20250210"
+        },
+        "effectiveDateTime" : "2025-02-10",
+        "performer" : [
+          {
+            "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+          }
+        ],
+        "component" : [
+          {
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "8480-6",
+                  "display" : "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity" : {
+              "value" : 120,
+              "unit" : "millimeter of mercury",
+              "system" : "http://unitsofmeasure.org",
+              "code" : "mm[Hg]"
+            }
+          },
+          {
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://loinc.org",
+                  "code" : "8462-4",
+                  "display" : "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity" : {
+              "value" : 75,
+              "unit" : "millimeter of mercury",
+              "system" : "http://unitsofmeasure.org",
+              "code" : "mm[Hg]"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Observation/UC3-UrineFinding-20250210",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "UC3-UrineFinding-20250210",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Observation_UC3-UrineFinding-20250210\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation UC3-UrineFinding-20250210</b></p><a name=\"UC3-UrineFinding-20250210\"> </a><a name=\"hcUC3-UrineFinding-20250210\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 417597005}\">Urine dipstick test finding (finding)</span></p><p><b>subject</b>: <a href=\"Patient-UC3-SophieDoppelherz.html\">Sophie Doppelherz  Female, DoB: 1992-07-22 ( Medical record number)</a></p><p><b>encounter</b>: <a href=\"Encounter-UC3-EncounterMother20250210.html\">Encounter: extension = 1; status = finished; class = ambulatory (ActCode#AMB); period = 2025-02-10 --&gt; 2025-02-10</a></p><p><b>effective</b>: 2025-02-10</p><p><b>performer</b>: <a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></p><p><b>value</b>: bland</p></div>"
+        },
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "417597005",
+              "display" : "Urine dipstick test finding (finding)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/UC3-SophieDoppelherz"
+        },
+        "encounter" : {
+          "reference" : "Encounter/UC3-EncounterMother20250210"
+        },
+        "effectiveDateTime" : "2025-02-10",
+        "performer" : [
+          {
+            "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+          }
+        ],
+        "valueString" : "bland"
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Appointment/UC3-Appointment20250310",
+      "resource" : {
+        "resourceType" : "Appointment",
+        "id" : "UC3-Appointment20250310",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Appointment_UC3-Appointment20250310\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Appointment UC3-Appointment20250310</b></p><a name=\"UC3-Appointment20250310\"> </a><a name=\"hcUC3-Appointment20250310\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>status</b>: Booked</p><p><b>start</b>: 2025-03-10 14:30:00+0100</p><p><b>end</b>: 2025-03-10 15:00:00+0100</p><blockquote><p><b>participant</b></p><p><b>actor</b>: <a href=\"Patient-UC3-SophieDoppelherz.html\">Sophie Doppelherz  Female, DoB: 1992-07-22 ( Medical record number)</a></p><p><b>required</b>: Required</p><p><b>status</b>: Accepted</p></blockquote><blockquote><p><b>participant</b></p><p><b>actor</b>: <a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></p><p><b>required</b>: Required</p><p><b>status</b>: Accepted</p></blockquote></div>"
+        },
+        "status" : "booked",
+        "start" : "2025-03-10T14:30:00+01:00",
+        "end" : "2025-03-10T15:00:00+01:00",
+        "participant" : [
+          {
+            "actor" : {
+              "reference" : "Patient/UC3-SophieDoppelherz"
+            },
+            "required" : "required",
+            "status" : "accepted"
+          },
+          {
+            "actor" : {
+              "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+            },
+            "required" : "required",
+            "status" : "accepted"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Encounter/UC3-EncounterChildA20250210",
+      "resource" : {
+        "resourceType" : "Encounter",
+        "id" : "UC3-EncounterChildA20250210",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Encounter_UC3-EncounterChildA20250210\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Encounter UC3-EncounterChildA20250210</b></p><a name=\"UC3-EncounterChildA20250210\"> </a><a name=\"hcUC3-EncounterChildA20250210\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>status</b>: Finished</p><p><b>class</b>: <a href=\"http://terminology.hl7.org/7.0.1/CodeSystem-v3-ActCode.html#v3-ActCode-AMB\">ActCode: AMB</a> (ambulatory)</p><p><b>subject</b>: <a href=\"Patient-UC3-ChildA.html\">Anonymous Patient (no stated gender), DoB Unknown ( Patient internal identifier: A)</a></p><h3>Participants</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Individual</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></td></tr></table><p><b>period</b>: 2025-02-10 --&gt; 2025-02-10</p><p><b>partOf</b>: <a href=\"Encounter-UC3-EncounterMother20250210.html\">Encounter: extension = 1; status = finished; class = ambulatory (ActCode#AMB); period = 2025-02-10 --&gt; 2025-02-10</a></p></div>"
+        },
+        "status" : "finished",
+        "class" : {
+          "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code" : "AMB",
+          "display" : "ambulatory"
+        },
+        "subject" : {
+          "reference" : "Patient/UC3-ChildA"
+        },
+        "participant" : [
+          {
+            "individual" : {
+              "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+            }
+          }
+        ],
+        "period" : {
+          "start" : "2025-02-10",
+          "end" : "2025-02-10"
+        },
+        "partOf" : {
+          "reference" : "Encounter/UC3-EncounterMother20250210"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Observation/UC3-FetalHeartFeatureChildA-20250210",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "UC3-FetalHeartFeatureChildA-20250210",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Observation_UC3-FetalHeartFeatureChildA-20250210\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation UC3-FetalHeartFeatureChildA-20250210</b></p><a name=\"UC3-FetalHeartFeatureChildA-20250210\"> </a><a name=\"hcUC3-FetalHeartFeatureChildA-20250210\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 364620002}\">Fetal heart feature (observable entity)</span></p><p><b>subject</b>: <a href=\"Patient-UC3-ChildA.html\">Anonymous Patient (no stated gender), DoB Unknown ( Patient internal identifier: A)</a></p><p><b>encounter</b>: <a href=\"Encounter-UC3-EncounterChildA20250210.html\">Encounter: status = finished; class = ambulatory (ActCode#AMB); period = 2025-02-10 --&gt; 2025-02-10</a></p><p><b>effective</b>: 2025-02-10</p><p><b>performer</b>: <a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></p><p><b>value</b>: 155 /min</p></div>"
+        },
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "364620002",
+              "display" : "Fetal heart feature (observable entity)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/UC3-ChildA"
+        },
+        "encounter" : {
+          "reference" : "Encounter/UC3-EncounterChildA20250210"
+        },
+        "effectiveDateTime" : "2025-02-10",
+        "performer" : [
+          {
+            "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+          }
+        ],
+        "valueString" : "155 /min"
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Encounter/UC3-EncounterChildB20250210",
+      "resource" : {
+        "resourceType" : "Encounter",
+        "id" : "UC3-EncounterChildB20250210",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Encounter_UC3-EncounterChildB20250210\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Encounter UC3-EncounterChildB20250210</b></p><a name=\"UC3-EncounterChildB20250210\"> </a><a name=\"hcUC3-EncounterChildB20250210\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>status</b>: Finished</p><p><b>class</b>: <a href=\"http://terminology.hl7.org/7.0.1/CodeSystem-v3-ActCode.html#v3-ActCode-AMB\">ActCode: AMB</a> (ambulatory)</p><p><b>subject</b>: <a href=\"Patient-UC3-ChildB.html\">Anonymous Patient (no stated gender), DoB Unknown ( Patient internal identifier: B)</a></p><h3>Participants</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Individual</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></td></tr></table><p><b>period</b>: 2025-02-10 --&gt; 2025-02-10</p><p><b>partOf</b>: <a href=\"Encounter-UC3-EncounterMother20250210.html\">Encounter: extension = 1; status = finished; class = ambulatory (ActCode#AMB); period = 2025-02-10 --&gt; 2025-02-10</a></p></div>"
+        },
+        "status" : "finished",
+        "class" : {
+          "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code" : "AMB",
+          "display" : "ambulatory"
+        },
+        "subject" : {
+          "reference" : "Patient/UC3-ChildB"
+        },
+        "participant" : [
+          {
+            "individual" : {
+              "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+            }
+          }
+        ],
+        "period" : {
+          "start" : "2025-02-10",
+          "end" : "2025-02-10"
+        },
+        "partOf" : {
+          "reference" : "Encounter/UC3-EncounterMother20250210"
+        }
+      }
+    },
+    {
+      "fullUrl" : "http://test.fhir.ch/r4/Observation/UC3-FetalHeartFeatureChildB-20250210",
+      "resource" : {
+        "resourceType" : "Observation",
+        "id" : "UC3-FetalHeartFeatureChildB-20250210",
+        "language" : "de-CH",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Observation_UC3-FetalHeartFeatureChildB-20250210\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation UC3-FetalHeartFeatureChildB-20250210</b></p><a name=\"UC3-FetalHeartFeatureChildB-20250210\"> </a><a name=\"hcUC3-FetalHeartFeatureChildB-20250210\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p></div><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 364620002}\">Fetal heart feature (observable entity)</span></p><p><b>subject</b>: <a href=\"Patient-UC3-ChildB.html\">Anonymous Patient (no stated gender), DoB Unknown ( Patient internal identifier: B)</a></p><p><b>encounter</b>: <a href=\"Encounter-UC3-EncounterChildA20250210.html\">Encounter: status = finished; class = ambulatory (ActCode#AMB); period = 2025-02-10 --&gt; 2025-02-10</a></p><p><b>effective</b>: 2025-02-10</p><p><b>performer</b>: <a href=\"PractitionerRole-UC3-ClaudiaFruehblickAtFrauenzimmer.html\">PractitionerRole Arzt/Ärztin</a></p><p><b>value</b>: 155 /min</p></div>"
+        },
+        "status" : "final",
+        "code" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "364620002",
+              "display" : "Fetal heart feature (observable entity)"
+            }
+          ]
+        },
+        "subject" : {
+          "reference" : "Patient/UC3-ChildB"
+        },
+        "encounter" : {
+          "reference" : "Encounter/UC3-EncounterChildA20250210"
+        },
+        "effectiveDateTime" : "2025-02-10",
+        "performer" : [
+          {
+            "reference" : "PractitionerRole/UC3-ClaudiaFruehblickAtFrauenzimmer"
+          }
+        ],
+        "valueString" : "155 /min"
+      }
+    }
+  ]
+}
+
+```

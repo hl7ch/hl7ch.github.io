@@ -1,0 +1,225 @@
+# CH EPREG Observation (Child): Fetal Position - CH EPREG (R4) v1.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH EPREG Observation (Child): Fetal Position**
+
+## Resource Profile: CH EPREG Observation (Child): Fetal Position 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-epreg/StructureDefinition/ch-epreg-observation-fetal-position | *Version*:1.0.0 |
+| Active as of 2025-12-16 | *Computable Name*:ChEpregObservationFetalPosition |
+| **Copyright/Legal**: CC0-1.0 | |
+
+ 
+This profile constrains the Observation resource to represent the position of the fetus. 
+
+**Usages:**
+
+* Refer to this Profile: [CH EPREG Composition](StructureDefinition-ch-epreg-composition.md)
+
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-epreg|current/StructureDefinition/ch-epreg-observation-fetal-position)
+
+### Formal Views of Profile Content
+
+ [Description of Profiles, Differentials, Snapshots and how the different presentations work](http://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#structure-definitions). 
+
+ 
+
+Other representations of profile: [CSV](StructureDefinition-ch-epreg-observation-fetal-position.csv), [Excel](StructureDefinition-ch-epreg-observation-fetal-position.xlsx), [Schematron](StructureDefinition-ch-epreg-observation-fetal-position.sch) 
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "StructureDefinition",
+  "id" : "ch-epreg-observation-fetal-position",
+  "url" : "http://fhir.ch/ig/ch-epreg/StructureDefinition/ch-epreg-observation-fetal-position",
+  "version" : "1.0.0",
+  "name" : "ChEpregObservationFetalPosition",
+  "title" : "CH EPREG Observation (Child): Fetal Position",
+  "status" : "active",
+  "date" : "2025-12-16T12:16:11+00:00",
+  "publisher" : "HL7 Switzerland",
+  "contact" : [
+    {
+      "name" : "HL7 Switzerland",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.hl7.ch/"
+        }
+      ]
+    }
+  ],
+  "description" : "This profile constrains the Observation resource to represent the position of the fetus.",
+  "jurisdiction" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CHE"
+        }
+      ]
+    }
+  ],
+  "copyright" : "CC0-1.0",
+  "fhirVersion" : "4.0.1",
+  "mapping" : [
+    {
+      "identity" : "concept-pregnancy-passport",
+      "uri" : "https://www.e-health-suisse.ch/upload/documents/eSchwangerschaftspass_Konzept_de.pdf",
+      "name" : "Concept Pregnancy Passport",
+      "comment" : "This mapping illustrates the relationship between the CH EPREG profile and the concept of the pregnancy passport."
+    },
+    {
+      "identity" : "workflow",
+      "uri" : "http://hl7.org/fhir/workflow",
+      "name" : "Workflow Pattern"
+    },
+    {
+      "identity" : "sct-concept",
+      "uri" : "http://snomed.info/conceptdomain",
+      "name" : "SNOMED CT Concept Domain Binding"
+    },
+    {
+      "identity" : "v2",
+      "uri" : "http://hl7.org/v2",
+      "name" : "HL7 v2 Mapping"
+    },
+    {
+      "identity" : "rim",
+      "uri" : "http://hl7.org/v3",
+      "name" : "RIM Mapping"
+    },
+    {
+      "identity" : "w5",
+      "uri" : "http://hl7.org/fhir/fivews",
+      "name" : "FiveWs Pattern Mapping"
+    },
+    {
+      "identity" : "sct-attr",
+      "uri" : "http://snomed.org/attributebinding",
+      "name" : "SNOMED CT Attribute Binding"
+    }
+  ],
+  "kind" : "resource",
+  "abstract" : false,
+  "type" : "Observation",
+  "baseDefinition" : "http://fhir.ch/ig/ch-epreg/StructureDefinition/ch-epreg-observation-preg-progress",
+  "derivation" : "constraint",
+  "differential" : {
+    "element" : [
+      {
+        "id" : "Observation",
+        "path" : "Observation",
+        "short" : "CH EPREG Observation: Fetal Position"
+      },
+      {
+        "id" : "Observation.code",
+        "path" : "Observation.code",
+        "patternCodeableConcept" : {
+          "coding" : [
+            {
+              "system" : "http://snomed.info/sct",
+              "code" : "364607000"
+            }
+          ]
+        },
+        "mapping" : [
+          {
+            "identity" : "concept-pregnancy-passport",
+            "map" : "Kindslage | Position fœtale"
+          }
+        ]
+      },
+      {
+        "id" : "Observation.subject",
+        "path" : "Observation.subject",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : [
+              "http://fhir.ch/ig/ch-epreg/StructureDefinition/ch-epreg-patient-child"
+            ]
+          }
+        ],
+        "mapping" : [
+          {
+            "identity" : "concept-pregnancy-passport",
+            "map" : "Kind | Enfant"
+          }
+        ]
+      },
+      {
+        "id" : "Observation.encounter",
+        "path" : "Observation.encounter",
+        "type" : [
+          {
+            "code" : "Reference",
+            "targetProfile" : [
+              "http://fhir.ch/ig/ch-epreg/StructureDefinition/ch-epreg-encounter-child"
+            ]
+          }
+        ],
+        "mapping" : [
+          {
+            "identity" : "concept-pregnancy-passport",
+            "map" : "Untersuchung | Examen"
+          }
+        ]
+      },
+      {
+        "id" : "Observation.effective[x]",
+        "path" : "Observation.effective[x]",
+        "type" : [
+          {
+            "code" : "dateTime"
+          }
+        ],
+        "mapping" : [
+          {
+            "identity" : "concept-pregnancy-passport",
+            "map" : "Zeitpunkt der Untersuchung | Date de l’examen"
+          }
+        ]
+      },
+      {
+        "id" : "Observation.performer",
+        "path" : "Observation.performer",
+        "mapping" : [
+          {
+            "identity" : "concept-pregnancy-passport",
+            "map" : "Kontrolle durchgeführt durch | Contrôle effectué par"
+          }
+        ]
+      },
+      {
+        "id" : "Observation.value[x]",
+        "path" : "Observation.value[x]",
+        "min" : 1,
+        "type" : [
+          {
+            "code" : "CodeableConcept"
+          }
+        ],
+        "binding" : {
+          "strength" : "extensible",
+          "description" : "See also [Mapping Fetal Position](mapping-concept-valuesets.html#fetal-position).",
+          "valueSet" : "http://fhir.ch/ig/ch-epreg/ValueSet/fetal-position"
+        },
+        "mapping" : [
+          {
+            "identity" : "concept-pregnancy-passport",
+            "map" : "Kindslage | Position fœtale"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```
