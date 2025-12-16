@@ -1,0 +1,152 @@
+# 1-1 Medication Statement with Medication Triatec - CH Core (R4) v6.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **1-1 Medication Statement with Medication Triatec**
+
+## Example MedicationStatement: 1-1 Medication Statement with Medication Triatec
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "MedicationStatement",
+  "id" : "1-1-MedStatTriatec",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-medicationstatement"
+    ]
+  },
+  "contained" : [
+    {
+      "resourceType" : "Medication",
+      "id" : "Triatec",
+      "meta" : {
+        "profile" : [
+          "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-medication"
+        ]
+      },
+      "code" : {
+        "coding" : [
+          {
+            "system" : "urn:oid:2.51.1.1",
+            "code" : "7680538751228",
+            "display" : "TRIATEC Tabl 2.5 mg 20 Stk"
+          }
+        ],
+        "text" : "TRIATEC Tabl 2.5 mg"
+      },
+      "form" : {
+        "coding" : [
+          {
+            "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+            "code" : "10219000",
+            "display" : "Tablet"
+          }
+        ],
+        "text" : "Tablette"
+      },
+      "amount" : {
+        "numerator" : {
+          "value" : 20,
+          "unit" : "Tablet (unit of presentation)",
+          "system" : "http://snomed.info/sct",
+          "code" : "732936001"
+        },
+        "denominator" : {
+          "value" : 1,
+          "unit" : "Package - unit of product usage (qualifier value)",
+          "system" : "http://snomed.info/sct",
+          "code" : "1681000175101"
+        }
+      },
+      "ingredient" : [
+        {
+          "itemCodeableConcept" : {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "386872004",
+                "display" : "Ramipril (substance)"
+              }
+            ],
+            "text" : "Ramipril"
+          },
+          "strength" : {
+            "numerator" : {
+              "value" : 2.5,
+              "unit" : "milligram",
+              "system" : "http://unitsofmeasure.org",
+              "code" : "mg"
+            },
+            "denominator" : {
+              "value" : 1,
+              "unit" : "Tablet (unit of presentation)",
+              "system" : "http://snomed.info/sct",
+              "code" : "732936001"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "identifier" : [
+    {
+      "system" : "urn:ietf:rfc:3986",
+      "value" : "urn:uuid:c9f758a1-296c-4710-84d4-e181db8c7478"
+    }
+  ],
+  "status" : "active",
+  "medicationReference" : {
+    "reference" : "#Triatec"
+  },
+  "subject" : {
+    "reference" : "Patient/ElisabethBroennimannByBFH"
+  },
+  "dateAsserted" : "2011-11-29T11:00:00+01:00",
+  "informationSource" : {
+    "reference" : "PractitionerRole/HPWengerRole"
+  },
+  "reasonCode" : [
+    {
+      "text" : "Bluthochdruck"
+    }
+  ],
+  "dosage" : [
+    {
+      "patientInstruction" : "-",
+      "timing" : {
+        "repeat" : {
+          "boundsPeriod" : {
+            "start" : "2011-11-29"
+          },
+          "when" : ["MORN"]
+        }
+      },
+      "route" : {
+        "coding" : [
+          {
+            "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+            "code" : "20053000",
+            "display" : "Oral use"
+          }
+        ],
+        "text" : "zum Einnehmen"
+      },
+      "doseAndRate" : [
+        {
+          "doseQuantity" : {
+            "value" : 0.5,
+            "unit" : "Tablet (unit of presentation)",
+            "system" : "http://snomed.info/sct",
+            "code" : "732936001"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+```

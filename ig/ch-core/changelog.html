@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Changelog - CH Core (R4) v6.0.0-ballot</title>
+    <title>Changelog - CH Core (R4) v6.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -42,10 +42,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
-    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
-    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
-    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -53,8 +53,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"5"}
-    h3,h4,h5,h6{--heading-prefix:"5"}</style>
+    <style type="text/css">h2{--heading-prefix:"7"}
+    h3,h4,h5,h6{--heading-prefix:"7"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -80,7 +80,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH Core (R4)</span>
             <br/>
-            <span style="display:inline-block;">6.0.0-ballot - ballot
+            <span style="display:inline-block;">6.0.0 - trial-use
 
 
 
@@ -120,10 +120,13 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="guidance.html#snomed-ct-swiss-extension">SNOMED CT Swiss Extension</a>
+        <a href="usage-swiss-core-artifacts.html">Usage of Swiss Core Artifacts</a>
       </li>
       <li>
-        <a href="guidance.html#readable-representation-of-epr-documents">Readable Representation of EPR Documents</a>
+        <a href="sct-swiss-ext.html">SNOMED CT Swiss Extension</a>
+      </li>
+      <li>
+        <a href="readable-representation-epr-docs.html">Readable Representation of EPR Documents</a>
       </li>
     </ul>
   </li>
@@ -168,7 +171,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH Core (R4) (v6.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 6 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH Core (R4) (v6.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 6) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Changelog</h2>
   
 
@@ -186,6 +189,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
+  <li><a href="#stu-6-2025-12-16" id="markdown-toc-stu-6-2025-12-16">STU 6 (2025-12-16)</a></li>
   <li><a href="#stu-6-ballot-2025-05-22" id="markdown-toc-stu-6-ballot-2025-05-22">STU 6 Ballot (2025-05-22)</a></li>
   <li><a href="#stu-5-2024-12-17" id="markdown-toc-stu-5-2024-12-17">STU 5 (2024-12-17)</a></li>
   <li><a href="#stu-5-ballot-2024-05-16" id="markdown-toc-stu-5-ballot-2024-05-16">STU 5 Ballot (2024-05-16)</a></li>
@@ -200,25 +204,70 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <p>All significant changes to this FHIR implementation guide will be documented on this page.</p>
 
-<h3 id="stu-6-ballot-2025-05-22">STU 6 Ballot (2025-05-22)</h3>
+<h3 id="stu-6-2025-12-16">STU 6 (2025-12-16)</h3>
 
 <h4 id="added">Added</h4>
 <ul>
-  <li><a href="https://github.com/hl7ch/ch-core/issues/330">#330</a>: Add new VS imunglobulines for vaccinecode to Immunization</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/394">#394</a>: Guidance - Usage of Swiss Core Artifacts</li>
+</ul>
+
+<h4 id="changed--updated">Changed / Updated</h4>
+<ul>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/416">#416</a>: Relax HumanName rule for EPR Patient and Practitioner (require only family name, not given name)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/359">#359</a>: Updated ICD-10-GM CodeSystem URL from dimdi to bfarm (http://fhir.de/CodeSystem/bfarm/icd-10-gm)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/379">#379</a>: Allow multiple legal authenticators</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/382">#382</a>: Allow multiple preferred languages by removing communication slicing constraint</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/380">#380</a>: Add note to originalRepresentation section that approach may change in future version to align with European or universal approaches</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/369">#369</a>: Updated scope note on index page (replaced outdated API specification note with links to CH EPR FHIR and IPA)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/370">#370</a>: Clarified CHCoreEPRConsent description (used in external systems to track EPR status, not for managing consent within EPR)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/377">#377</a>: Deprecate ch-ext-epr-dataenterer and ch-ext-epr-time extensions (CDA origin; will be removed in future version); remove usage from examples</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/400">#400</a>: Deprecate ch-ext-epr-informationrecipient extension (CDA origin; will be removed in future version)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/339">#339</a>: Fix Immunization immunoglobulin valueset url</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/316">#316</a>: Guidance - Narrative data idref invalid</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/358">#358</a>: Entry Resource Cross References: Graphic added</li>
+</ul>
+
+<h4 id="fixed">Fixed</h4>
+<ul>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/398">#398</a>: Remove Coverage.class.type binding override (invalid to rebind extensible ValueSet to different extensible ValueSet)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/373">#373</a>: Require value[x] for simple extensions</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/372">#372</a>: Update identifier validation constraints to align with eCH-0108 standard (BER, UIDB regex patterns made more restrictive; AHVN13, VEKA, EPR-SPID constraints consolidated into single regex patterns)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/381">#381</a>: Name extension binding strength changed from extensible to required (code data type cannot have extensible bindings)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/354">#354</a>/<a href="https://github.com/hl7ch/ch-core/issues/368">#368</a>/<a href="https://github.com/hl7ch/ch-core/issues/388">#388</a>: Replace deprecated extension iso21090-SC-coding with iso21090-codedString</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/356">#356</a>: Invalid xhtml for UPI EPR Test Krcmarevic</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/364">#364</a>: Add missing extension context for ch-ext-author</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/363">#363</a>: Invalid extension context</li>
+</ul>
+
+<h4 id="issues-resolved-without-amendment-in-ig">Issues resolved without amendment (in IG)</h4>
+<ul>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/384">#384</a>: Keep ch-ext-author extension (needed for summary documents in vaccination and exchange formats; Provenance cannot directly solve it; the extension will likely not be needed anymore in R6)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/378">#378</a>: Keep confidentialityCode extension (required by Swiss EPR regulations Annex 4 EPDV-EDI; in R6 confidentialityCode may be moved to Bundle.meta.security)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/371">#371</a>: QA deprecation warnings from base FHIR spec (regex, maxValueSet extensions inherited from dependencies; added to ignoreWarnings.txt)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/360">#360</a>: CH Core Composition EPR: VS binding (Composition.category)</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/308">#308</a>, <a href="https://github.com/hl7ch/ch-core/issues/389">#389</a>: Keep the slicing discriminator $this for Organization.identifier to differentiate GLN's by type for insurance organizations</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/385">#385</a>, <a href="https://github.com/hl7ch/ch-core/issues/386">#386</a>: Decided to maintain existing OID-based system identifiers for GTIN and GLN codes instead of switching to HTTP URIs</li>
+</ul>
+
+<h3 id="stu-6-ballot-2025-05-22">STU 6 Ballot (2025-05-22)</h3>
+
+<h4 id="added-1">Added</h4>
+<ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/333">#333</a>: Refactor binding of vaccineCode VS (Adapt Immunization to IPS (2.0.0))</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/330">#330</a>: Add new VS immunoglobulins for vaccinecode to Immunization</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/292">#292</a>: CH Core Claim profile, example, mapping to 'Forum Datenaustausch'</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/309">#309</a>: Add warning to ZSR</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/344">#344</a>: New base profile CH Core RelatedPerson</li>
 </ul>
 
-<h4 id="changed--updated">Changed / Updated</h4>
+<h4 id="changed--updated-1">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/318">#318</a>: Relax minimum cardinality of Location.name from 1 to 0</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/328">#328</a>: Deprecate CH Core DocumentReference EPR</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/323">#323</a>: Clarification of the correct use of the Patient Citizenship Extension for Staatsangehörigkeit/Nationalité (eCH)</li>
 </ul>
 
-<h4 id="fixed">Fixed</h4>
+<h4 id="fixed-1">Fixed</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/302">#302</a>: Allow all possible references for Encounter.subject and Encounter.participant.individual</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/313">#313</a>: Add <a href="https://build.fhir.org/codesystem-guide-parameter-code.html#:~:text=expansion%2Dparameter,as%20SNOMED%20CT">expansion-parameter</a> for the usage of SNOMED CT Swiss Extension</li>
@@ -250,7 +299,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>See also open issues on <a href="https://github.com/hl7ch/ch-core/issues">GitHub</a>.</p>
 
-<h4 id="changed--updated-1">Changed / Updated</h4>
+<h4 id="changed--updated-2">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/303">#303</a>: Entry Resource Cross References, Usage/Description</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/294">#294</a>: Differentiation of severity of constraint ch-pat-1 for CH Core Patient (warning) and CH Core Patient EPR (error)</li>
@@ -258,19 +307,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/293">#300</a>: Add guidance for readable representation of EPR documents and update example</li>
 </ul>
 
-<h4 id="fixed-1">Fixed</h4>
+<h4 id="fixed-2">Fixed</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/306">#306</a>: Replace deprecated discriminator (<code class="language-plaintext highlighter-rouge">pattern</code> -&gt; <code class="language-plaintext highlighter-rouge">value</code>)</li>
 </ul>
 
-<h4 id="issues-resolved-without-amendment-in-ig">Issues resolved without amendment (in IG)</h4>
+<h4 id="issues-resolved-without-amendment-in-ig-1">Issues resolved without amendment (in IG)</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/289">#289</a>: Validation issue with display values; fixed with new version of IG publisher</li>
 </ul>
 
 <h3 id="stu-5-ballot-2024-05-16">STU 5 Ballot (2024-05-16)</h3>
 
-<h4 id="added-1">Added</h4>
+<h4 id="added-2">Added</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/284">#284</a>: Check BER/UIDB identifiers</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/119">#119</a>: Introduce base profiles (from exchange formats) in CH Core
@@ -290,7 +339,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </li>
 </ul>
 
-<h4 id="changed--updated-2">Changed / Updated</h4>
+<h4 id="changed--updated-3">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/272">#272</a>: Update the CHCoreDocumentReference EPR-XDS mapping</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/269">#269</a>: max cardinality for only one gln for practitioner</li>
@@ -299,7 +348,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/287">#287</a>: Unified identifier slicing (Coverage, Practitioner)</li>
 </ul>
 
-<h4 id="fixed-2">Fixed</h4>
+<h4 id="fixed-3">Fixed</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/277">#277</a>: update the expression of constraints ch-docref-1/2</li>
 </ul>
@@ -309,7 +358,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/270">#270</a>: 4.0.1 Technical correction for invalid package</li>
 </ul>
 
-<h4 id="added-2">Added</h4>
+<h4 id="added-3">Added</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/233">#233</a>: CH Core Address: Include eCH-0007 cantonAbbreviation</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/244">#244</a>: Guidance how to use SNOMED CT codes from the Swiss Extension</li>
@@ -317,7 +366,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/262">#262</a>: New extension to reference entries in i.e. other documents</li>
 </ul>
 
-<h4 id="changed--updated-3">Changed / Updated</h4>
+<h4 id="changed--updated-4">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/242">#242</a>: Update the description for type of <a href="StructureDefinition-ch-core-composition-epr.html">CH Core Composition EPR</a></li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/238">#238</a>: Update context of <a href="StructureDefinition-ch-ext-epr-time.html">Extension EPR Time</a> with MedicationRequest.requester</li>
@@ -326,7 +375,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/252">#252</a>: Technical Correction of FHIRPath constraints with .value</li>
 </ul>
 
-<h4 id="fixed-3">Fixed</h4>
+<h4 id="fixed-4">Fixed</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/235">#235</a>/<a href="https://github.com/hl7ch/ch-core/issues/265">#265</a>: Fix GLN constraint/adapt Practitioner.identifier in example</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/247">#247</a>: Fix constraint text and refactor expression (ch-core-doc-1)</li>
@@ -337,19 +386,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="stu-4-ballot-2023-06-27">STU 4 Ballot (2023-06-27)</h3>
 
-<h4 id="added-3">Added</h4>
+<h4 id="added-4">Added</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/196">#196</a>: Data type profile <a href="StructureDefinition-ch-core-veka-identifier.html">VEKAIdentifier</a> for <a href="StructureDefinition-ch-core-coverage.html">Coverage.identifier</a> and new also for <a href="StructureDefinition-ch-core-patient.html">Patient.identifier</a></li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/204">#204</a>: Introduce data type profiles for ContactPoints (email, phone, internet) according eCH-0046 (including extensions and terminology) and add them to the telecom element of Patient, Practitioner, Organization, Location</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/224">#224</a>: Forum Datenaustausch tariff Naming System</li>
 </ul>
 
-<h4 id="changed--updated-4">Changed / Updated</h4>
+<h4 id="changed--updated-5">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/206">#206</a>: Improve acronyms definition</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/191">#191</a>: <a href="StructureDefinition-ch-core-patient.html">CH Core Patient</a> - Relax max cardinality to * for EPR-SPID and AHVN13</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/195">#195</a>: <a href="StructureDefinition-ch-core-address.html">CH Core Address</a> - Add extension iso21090-ADXP-streetName to CH Core Address line</li>
-  <li><a href="https://github.com/hl7ch/ch-core/issues/198">#198</a>: <a href="StructureDefinition-ch-core-composition-epr-definitions.html#diff_Composition.extension:informationRecipient">CH Core Composition EPR</a> - Relax information recipient cardinality to zero</li>
+  <li><a href="https://github.com/hl7ch/ch-core/issues/198">#198</a>: <a href="StructureDefinition-ch-core-composition-epr-definitions.html">CH Core Composition EPR</a> - Relax information recipient cardinality to zero</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/194">#194</a>: <a href="StructureDefinition-ch-core-composition-epr.html">CH Core Composition EPR</a> - Relax attester:legalAuthenticator.time cardinality to zero</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/200">#200</a>: Remove display values from patternCodeableConcepts or fixedValues, remove minimum cardinality = 1 for display values, using official display values in examples (valid with http://tx.fhir.org/r4).</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/193">#193</a>: Remove CDA elements (mapping, ch-ext-epr-sectionid, ch-ext-epr-versionnumber, adapt descriptions)</li>
@@ -365,13 +414,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="stu-3-2022-12-20">STU 3 (2022-12-20)</h3>
 
-<h4 id="added-4">Added</h4>
+<h4 id="added-5">Added</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/172">#172</a>: Generic CH Core extension <a href="StructureDefinition-ch-ext-author.html">Author of the content</a> (fusion of the extensions from CH EMED and CH VACD)</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/158">#158</a>, <a href="https://github.com/hl7ch/ch-core/issues/189">#189</a>: Include new IG fragments (IP Statements, Cross Version Analysis, Dependency Table, Globals Table); CH Core can be used for both R4 and R4B, packages are available for both versions</li>
 </ul>
 
-<h4 id="changed--updated-5">Changed / Updated</h4>
+<h4 id="changed--updated-6">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/150">#150</a>: Expansion of the context of the extension <a href="StructureDefinition-ch-ext-epr-time.html">EPR Time</a></li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/160">#160</a>: Slicing on repeating element</li>
@@ -384,7 +433,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/153">#153</a>: Rephrasing of the sentence for the exchange formats (current and general validity)</li>
 </ul>
 
-<h4 id="fixed-4">Fixed</h4>
+<h4 id="fixed-5">Fixed</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/163">#163</a>: Typo</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/159">#159</a>: Add element 'experimental' (false) to CS/VS</li>
@@ -393,7 +442,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="https://github.com/hl7ch/ch-core/issues/152">#152</a>: Changes status form 'draft' to 'active'</li>
 </ul>
 
-<h4 id="issues-resolved-without-amendment-in-ig-1">Issues resolved without amendment (in IG)</h4>
+<h4 id="issues-resolved-without-amendment-in-ig-2">Issues resolved without amendment (in IG)</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/39">#39</a>: Consent code for ch-epr has been added in <a href="https://terminology.hl7.org/4.0.0/CodeSystem-consentpolicycodes.html">hl7.terminology</a> published 2022-09-14	(version 4.0.0)</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/174">#174</a>: Verification/confirmation that the eCH-011 values for gender are still up-to-date</li>
@@ -403,14 +452,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="stu-3-ballot-2022-06-29">STU 3 Ballot (2022-06-29)</h3>
 
-<h4 id="added-5">Added</h4>
+<h4 id="added-6">Added</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/123">#123</a> (<a href="https://github.com/hl7ch/ch-core/issues/137">#137</a>, <a href="https://github.com/hl7ch/ch-core/issues/140">#140</a>): GLN and EPR-SPID checks</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/135">#135</a>: Add an Identifier data type for AHVN13 with check for correctness</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/131">#131</a>: Update change log/STU note box according to the latest requirements</li>
 </ul>
 
-<h4 id="changed--updated-6">Changed / Updated</h4>
+<h4 id="changed--updated-7">Changed / Updated</h4>
 <ul>
   <li><a href="https://github.com/hl7ch/ch-core/issues/133">#133</a>: Fix example OIDs</li>
   <li><a href="https://github.com/hl7ch/ch-core/issues/129">#129</a>: Wrong slicing for Composition.author.extension:ch-ext-epr-time profiles/structures</li>
@@ -474,7 +523,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-core#6.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 06:01+0000">2025-05-22</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-core#6.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 16, 2025 08:02+0000">2025-12-16</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -482,7 +531,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeZjRSISsMmPJawlA6EbFNg1kQyu013AilssLb5AohZ2vUCDw/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-core%236.0.0-ballot%20/changelog.html&amp;entry%2E247644557=Changelog">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeZjRSISsMmPJawlA6EbFNg1kQyu013AilssLb5AohZ2vUCDw/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-core%236.0.0%20/changelog.html&amp;entry%2E247644557=Changelog">Propose a change</a>
 
 
 

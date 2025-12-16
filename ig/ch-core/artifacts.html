@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Artifacts Summary - CH Core (R4) v6.0.0-ballot</title>
+    <title>Artifacts Summary - CH Core (R4) v6.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -42,10 +42,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
-    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
-    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
-    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -53,8 +53,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"6"}
-    h3,h4,h5,h6{--heading-prefix:"6.0"}</style>
+    <style type="text/css">h2{--heading-prefix:"8"}
+    h3,h4,h5,h6{--heading-prefix:"8.0"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -80,7 +80,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH Core (R4)</span>
             <br/>
-            <span style="display:inline-block;">6.0.0-ballot - ballot
+            <span style="display:inline-block;">6.0.0 - trial-use
 
 
 
@@ -120,10 +120,13 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="guidance.html#snomed-ct-swiss-extension">SNOMED CT Swiss Extension</a>
+        <a href="usage-swiss-core-artifacts.html">Usage of Swiss Core Artifacts</a>
       </li>
       <li>
-        <a href="guidance.html#readable-representation-of-epr-documents">Readable Representation of EPR Documents</a>
+        <a href="sct-swiss-ext.html">SNOMED CT Swiss Extension</a>
+      </li>
+      <li>
+        <a href="readable-representation-epr-docs.html">Readable Representation of EPR Documents</a>
       </li>
     </ul>
   </li>
@@ -168,7 +171,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH Core (R4) (v6.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 6 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH Core (R4) (v6.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 6) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Artifacts Summary</h2>
   
   
@@ -290,7 +293,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="StructureDefinition/ch-core-epr-consent">CH Core EPR-Consent</a>
             </td>
             <td>
-<p>Definition of the Consent resource to document that a patient has an electronic patient record (EPR) in Switzerland. The actual consent conditions are held within the EPR, this consent is the documentation in an organization that the patient has stated he/she has an EPR and this needs to be verified at the time of document publishing or reading. In addition a patient can request that specific information will not be published from the organization to the EPR. This can be documented with one or more references to encounters to exclude the consent for these.</p>
+<p>Definition of the Consent resource to document in an external system (outside the EPR) that a patient has an electronic patient record (EPR) in Switzerland. 
+This profile is used by healthcare organizations to track which patients have an EPR. Optionally, specific encounters can be excluded from EPR publication by referencing them in the provision element, documenting the patient's request that certain information should not be published to their EPR.</p>
+
+<p>Note: This profile is NOT used to manage actual consent conditions within the EPR itself - those are managed through proper PPQ Consents (see CH EPR FHIR IG).</p>
 </td>
          </tr>
          <tr>
@@ -624,7 +630,7 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
                   title="StructureDefinition/ch-core-veka-identifier">Insurance Card Number (Identifier)</a>
             </td>
             <td>
-<p>Identifier in 20-digit format. The number shall have exactly 20 digits and start with 756.</p>
+<p>Identifier in 20-digit format. The number shall have exactly 20 digits and start with 807560.</p>
 </td>
          </tr>
          <tr>
@@ -725,7 +731,7 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
                   title="StructureDefinition/ch-ext-epr-dataenterer">EPR Data Enterer</a>
             </td>
             <td>
-<p>Extension to define the information about the person and organisation that entered data and the time of the data input</p>
+<p>Extension to define the information about the person and organization that entered data and the time of the data input. <strong>Note:</strong> This extension has its origin from CDA and is deprecated. It will be removed in a future version.</p>
 </td>
          </tr>
          <tr>
@@ -734,7 +740,7 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
                   title="StructureDefinition/ch-ext-epr-informationrecipient">EPR Information Recipient</a>
             </td>
             <td>
-<p>Extension for a recipient of this document (corresponds to the addressee of a letter - person or organization)</p>
+<p>Extension for a recipient of this document (corresponds to the addressee of a letter - person or organization). <strong>DEPRECATED</strong>: This extension has CDA origins and will be removed in a future version.</p>
 </td>
          </tr>
          <tr>
@@ -743,7 +749,7 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
                   title="StructureDefinition/ch-ext-epr-time">EPR Time</a>
             </td>
             <td>
-<p>Additional timestamp for the author or other elements.</p>
+<p>Additional timestamp for the author or other elements. <strong>Note:</strong> This extension has its origin from CDA and is deprecated. It will be removed in a future version.</p>
 </td>
          </tr>
          <tr>
@@ -1329,7 +1335,7 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-core#6.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 06:01+0000">2025-05-22</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-core#6.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 16, 2025 08:02+0000">2025-12-16</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -1337,7 +1343,7 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeZjRSISsMmPJawlA6EbFNg1kQyu013AilssLb5AohZ2vUCDw/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-core%236.0.0-ballot%20/artifacts.html&amp;entry%2E247644557=Artifacts%20Summary">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeZjRSISsMmPJawlA6EbFNg1kQyu013AilssLb5AohZ2vUCDw/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-core%236.0.0%20/artifacts.html&amp;entry%2E247644557=Artifacts%20Summary">Propose a change</a>
 
 
 
