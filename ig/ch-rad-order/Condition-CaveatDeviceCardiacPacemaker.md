@@ -1,0 +1,87 @@
+# Caveat Device Cardiac Pacemaker - CH RAD-Order (R4) v2.0.1
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Caveat Device Cardiac Pacemaker**
+
+## Example Condition: Caveat Device Cardiac Pacemaker
+
+Profile: [CH RAD-Order Caveat Condition](StructureDefinition-ch-rad-order-caveat-condition.md)
+
+**CH RAD-Order Caveat Type**: [SNOMED CT: 397578001](http://snomed.info/id/397578001) (Device in situ (finding))
+
+**CH RAD-Order Qualifier Value**: [SNOMED CT: 52101004](http://snomed.info/id/52101004) (Present (qualifier value))
+
+**clinicalStatus**: Active
+
+**category**: Problem List Item
+
+**code**: Cardiac pacemaker in situ
+
+**subject**: [Susanna Ufferer (official) Female, DoB: 1945-03-14](Patient-PatSUfferer.md)
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Condition",
+  "id" : "CaveatDeviceCardiacPacemaker",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-condition"
+    ]
+  },
+  "extension" : [
+    {
+      "url" : "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-caveat-type",
+      "valueCoding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "397578001",
+        "display" : "Device in situ (finding)"
+      }
+    },
+    {
+      "url" : "http://fhir.ch/ig/ch-rad-order/StructureDefinition/ch-rad-order-qualifier-value",
+      "valueCoding" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "52101004",
+        "display" : "Present (qualifier value)"
+      }
+    }
+  ],
+  "clinicalStatus" : {
+    "coding" : [
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code" : "active"
+      }
+    ]
+  },
+  "category" : [
+    {
+      "coding" : [
+        {
+          "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code" : "problem-list-item",
+          "display" : "Problem List Item"
+        }
+      ]
+    }
+  ],
+  "code" : {
+    "coding" : [
+      {
+        "system" : "http://snomed.info/sct",
+        "code" : "441509002",
+        "display" : "Cardiac pacemaker in situ"
+      }
+    ]
+  },
+  "subject" : {
+    "reference" : "Patient/PatSUfferer"
+  }
+}
+
+```
