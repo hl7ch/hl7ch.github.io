@@ -1,0 +1,4554 @@
+# Home - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* **Home**
+
+## Home
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-epr-fhir/ImplementationGuide/ch.fhir.ig.ch-epr-fhir | *Version*:5.0.0 |
+| Active as of 2025-12-18 | *Computable Name*:CHEprFhir |
+| **Copyright/Legal**: CC0-1.0 | |
+
+### Introduction
+
+The national extensions documented in this implementation guide shall be used in conjunction with the definitions of integration profiles, actors and transactions provided in Volumes 1 through 3 of the IHE IT Infrastructure Technical Framework.
+
+This implementation guide with national extensions of IHE integration profiles was authored in order to fulfil the Swiss regulations of the Ordinance on the Electronic Patient Record (EPRO, SR 816.11). The EPRO and the EPRO-DFI are published in Official Compilation of Federal Legislation (AS) (available in [German](https://www.admin.ch/opc/de/classified-compilation/20111795/index.html), [French](https://www.admin.ch/opc/fr/classified-compilation/20111795/index.html) and [Italian](https://www.admin.ch/opc/it/classified-compilation/20111795/index.html)).
+
+For general information on the EPR and the system level architecture of how services in Switzerland are divided into different communities see the architecture page (available in [German](https://www.e-health-suisse.ch/technik/technische-interoperabilitaet/architektur-epd-schweiz), [French](https://www.e-health-suisse.ch/fr/technique/interoperabilite-technique/architecture-dep-suisse) and [Italian](https://www.e-health-suisse.ch/it/tecnica/collegamento-cip/collegamento-cip)) of [eHealth Suisse](https://www.e-health-suisse.ch/).
+
+[Changelog](changelog.md) with significant changes, open and closed issues.
+
+**Download**: You can download this implementation guide in [NPM format](https://confluence.hl7.org/display/FHIR/NPM+Package+Specification) from [here](package.tgz).
+
+### Overview
+
+#### Introduction
+
+This national extension is motivated by the intention to provide FHIR based profiles for the Swiss EPR by extending the IHE FHIR based mobile profiles. The IHE FHIR based mobile profiles use technologies (REST, OAuth, etc.) which are widely spread in the developer community and may be used for Web Applications, for example in web based primary systems or portals.
+
+This national extension strictly separates the authentication and authorization of the applications use to access the EPR on behalf of the user and the authentication and authorization of the user itself. By using this separation this national extension closely follows the underlying IUA Trial Implementation and OAuth 2.1:
+
+* Client authentication - an application identifies and authenticates to an authorization server.
+* Client authorization - an application is authorized by the user or system policy to access data and documents on behalf of the user.
+* User authentication - a natural person identifies and authenticates using an Identity Provider with the authenticators registered for the natural person.
+* User authorization - provision of an access token which includes the information required to perform authorization decisions and policy enforcement.
+
+The scope of this extension covers the following use cases:
+
+1. Client authentication and authorization;
+1. User authentication and authorization;
+1. Read data and documents from the EPR;
+1. Write data and documents to the EPR;
+1. Write logs to the EPR ATNA Audit Record Repository.
+1. Read audit trails for a patient according the EPR requirements.
+
+#### Profiles, grouped actors, actors and transactions
+
+The following figure shows the profiles, grouped actors, actors and transactions specified or referenced in this national extension:
+
+Two grouped actors are defined:
+
+* EPR App - An application that uses the client actors for connecting to the EPR through the FHIR API. This can be a portal, primary system or SMART on FHIR App.
+* EPR API - The FHIR API a community offers for connecting clients to the EPR through the FHIR API
+
+### Conformance Expectations
+
+The key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** in this document are to be interpreted as described in [[RFC2119](https://www.ietf.org/rfc/rfc2119.txt)].
+
+This implementation guide uses `Must Support` in StructureDefinitions with the definition found in [Appendix Z](https://profiles.ihe.net/ITI/TF/Volume2/ch-Z.html#z.10-profiling-conventions-for-constraints-on-fhir). This is equivalent to the IHE use of **R2** as defined in [Appendix Z](https://profiles.ihe.net/ITI/TF/Volume2/ch-Z.html#z.10-profiling-conventions-for-constraints-on-fhir).
+
+#### Scope of precisions
+
+The extensions, restrictions and translations specified apply to the following IHE IT Infrastructure (ITI) Integration profiles:
+
+* [SMART on FHIR](http://www.hl7.org/fhir/smart-app-launch/)
+* [IUA](https://profiles.ihe.net/ITI/IUA/index.html)
+* [PDQm](https://profiles.ihe.net/ITI/PDQm/index.html)
+* [PIXm](https://profiles.ihe.net/ITI/PIXm/index.html)
+* [MHD](https://profiles.ihe.net/ITI/MHD/index.html)
+* [mCSD](https://profiles.ihe.net/ITI/mCSD/index.html)
+* [RESTful ATNA](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_RESTful-ATNA.pdf)
+
+#### National integration profiles
+
+The following national integration profiles are included in this implementation guide:
+
+* [CH:PPQm](ppqm.md)
+* [CH:ATC](ch-atc.md)
+
+### Design considerations
+
+The Swiss EPR is a federated system with multiple communities publishing documents for a patient. A patient has a reference community but documents can be published for a patient in other communities too. Each patient has one active national identifier (EPR-SPID) which shall be used to correlate the patient between the different communities. This impacts the FHIR API in the following way:
+
+#### logical reference for patients and health care professionals, contained resources
+
+1. No addressable patient resources: All references to patients are made by the identifier EPR-SPID since there is no national master patient which could be referenced. This is the reason that IHE PIXm and PDQm with the $match transaction have been selected and not IHE MHDS/PMIR. Systems are not allowed to store the EPR-SPID, and need to feed their local identifier (localID) and EPR-SPID to the community to resolve the localID to the EPR-SPID later on. Therefore FHIR APIs require the support of the patient logical identifier as a query parameter (e.g. MHD, CH:PPQm) and the resources are profiled that a logical reference with the EPR-SPID identifier have to be provided.
+1. The same principle applies for health care professionals, they are identified by the GLN number and references to them need to include also the logical reference from other resources (e.g. DocumentReference).
+1. Information which has to be provided and has no own identity in the Swiss EPR (e.g. as local patient demographics in document publishing) are represented as contained resources.
+
+#### authentication and authorization
+
+Annex 8 EPRO-FDHA allows two different standards for user authentication with SAML 2.0 and OpenID Connect (JWT). For Authorization IUA and XUA are supported. In addition client identification in IUA identifies the client application by message signature or identifies the client application network node by mTLS. This implementation guide defines how they can be combined with the security considerations on the different transactions.
+
+#### interoperability specification
+
+This Implementation Guide profiles elements, cardinalities and bindings that are required by the use cases, law and annexes of the Swiss EPR, to ensure that the systems are interoperable. The specification defines the requirements on the API and exchange messages required by law. Other elements, cardinalities and bindings are left as-is. E.g., a solution can add additional support with search parameters (which the FHIR specifications allows) or add additional transactions/profiles, as long as the law and annexes of the Swiss EPR are respected.
+
+### IP Statements
+
+This document is licensed under Creative Commons "No Rights Reserved" ([CC0](https://creativecommons.org/publicdomain/zero/1.0/)).
+
+HL7®, HEALTH LEVEL SEVEN®, FHIR® and the FHIR ![](icon-fhir-16.png)® are trademarks owned by Health Level Seven International, registered with the United States Patent and Trademark Office.
+
+This implementation guide contains and references intellectual property owned by third parties ("Third Party IP"). Acceptance of these License Terms does not grant any rights with respect to Third Party IP. The licensee alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize Third Party IP in connection with the specification or otherwise.
+
+This publication includes IP covered under the following statements.
+
+* CC0-1.0
+
+* [eCH-011 Types](http://fhir.ch/ig/ch-term/3.3.0/CodeSystem-ech-11.html): [CHPDQmPatient](StructureDefinition-ch-pdqm-patient.md) and [CHPIXmPatientFeed](StructureDefinition-ch-pixm-patient-feed.md)
+* [CH PPQm Consent Identifier Type](CodeSystem-PpqmConsentIdentifierType.md): [Bundle/PpqmFeedRequestBundleAdd](Bundle-PpqmFeedRequestBundleAdd.md), [Bundle/PpqmFeedRequestBundleUpdate](Bundle-PpqmFeedRequestBundleUpdate.md)...Show 17 more,[Bundle/PpqmRetrieveResponseBundle](Bundle-PpqmRetrieveResponseBundle.md),[Consent/PpqmConsentTemplate201Example](Consent-PpqmConsentTemplate201Example.md),[Consent/PpqmConsentTemplate202Example](Consent-PpqmConsentTemplate202Example.md),[Consent/PpqmConsentTemplate203Example](Consent-PpqmConsentTemplate203Example.md),[Consent/PpqmConsentTemplate301Example](Consent-PpqmConsentTemplate301Example.md),[Consent/PpqmConsentTemplate302Example](Consent-PpqmConsentTemplate302Example.md),[Consent/PpqmConsentTemplate303Example](Consent-PpqmConsentTemplate303Example.md),[Consent/PpqmConsentTemplate304Example](Consent-PpqmConsentTemplate304Example.md),[PpqmConsent](StructureDefinition-PpqmConsent.md),[PpqmConsentIdentifierType](ValueSet-PpqmConsentIdentifierType.md),[PpqmConsentTemplate201](StructureDefinition-PpqmConsentTemplate201.md),[PpqmConsentTemplate202](StructureDefinition-PpqmConsentTemplate202.md),[PpqmConsentTemplate203](StructureDefinition-PpqmConsentTemplate203.md),[PpqmConsentTemplate301](StructureDefinition-PpqmConsentTemplate301.md),[PpqmConsentTemplate302](StructureDefinition-PpqmConsentTemplate302.md),[PpqmConsentTemplate303](StructureDefinition-PpqmConsentTemplate303.md)and[PpqmConsentTemplate304](StructureDefinition-PpqmConsentTemplate304.md)
+* [CH PPQm Policy Set Template ID](CodeSystem-PpqmPolicySetTemplateId.md): [PpqmConsent](StructureDefinition-PpqmConsent.md) and [PpqmPolicySetTemplateId](ValueSet-PpqmPolicySetTemplateId.md)
+* [DICOM Unique Identifiers (UIDs)](http://fhir.ch/ig/ch-term/3.3.0/CodeSystem-dcmuid.html): [CHMhdDocumentReferenceComprehensive](StructureDefinition-ch-mhd-documentreference-comprehensive.md)
+* [IHE XCPD Codesystem more attributes requested](CodeSystem-1.3.6.1.4.1.19376.1.2.27.1.md): [Bundle/PDQm-QueryResponseTooManyResults](Bundle-PDQm-QueryResponseTooManyResults.md), [ChPdqmMoreAttributesRequested](ValueSet-ChPdqmMoreAttributesRequested.md), [ChPdqmResponseMoreAttributesRequested](StructureDefinition-ch-pdqm-moreattributesrequested.md) and [OperationOutcome/PDQmResponseMoreAttributesRequested](OperationOutcome-PDQmResponseMoreAttributesRequested.md)
+* [ch-ehealth-codesystem-language](http://fhir.ch/ig/ch-term/3.3.0/CodeSystem-2.16.756.5.30.1.127.3.10.12.html): [CHMhdDocumentReferenceComprehensive](StructureDefinition-ch-mhd-documentreference-comprehensive.md)
+* [ch-ehealth-codesystem-agentRole](http://fhir.ch/ig/ch-term/3.3.0/CodeSystem-2.16.756.5.30.1.127.3.10.14.html): [AccessAuditTrailEvent](StructureDefinition-AccessAuditTrailEvent.md), [AuditEvent/atc-doc-read-ass-hpc](AuditEvent-atc-doc-read-ass-hpc.md)...Show 5 more,[AuditEvent/atc-doc-search](AuditEvent-atc-doc-search.md),[AuditEvent/atc-hpd-group-entry-notify](AuditEvent-atc-hpd-group-entry-notify.md),[DocumentAuditEvent](StructureDefinition-DocumentAuditEvent.md),[EprParticipant](ValueSet-EprParticipant.md)and[PolicyAuditEvent](StructureDefinition-PolicyAuditEvent.md)
+* [CH Codesystem PDQ More Attributes Requested](CodeSystem-2.16.756.5.30.1.127.3.10.17.md): [Bundle/PDQm-QueryResponseTooManyResults](Bundle-PDQm-QueryResponseTooManyResults.md), [ChPdqmMoreAttributesRequested](ValueSet-ChPdqmMoreAttributesRequested.md), [ChPdqmResponseMoreAttributesRequested](StructureDefinition-ch-pdqm-moreattributesrequested.md) and [OperationOutcome/PDQmResponseMoreAttributesRequested](OperationOutcome-PDQmResponseMoreAttributesRequested.md)
+* [ch-ehealth-codesystem-eprdeletionstatus](http://fhir.ch/ig/ch-term/3.3.0/CodeSystem-2.16.756.5.30.1.127.3.10.18.html): [ChExtDeletionStatus](StructureDefinition-ch-ext-deletionstatus.md)
+* [ch-ehealth-codesystem-purposeOfUse](http://fhir.ch/ig/ch-term/3.3.0/CodeSystem-2.16.756.5.30.1.127.3.10.5.html): [AuditEvent/ChAuditEventChMhd1ResponderExample](AuditEvent-ChAuditEventChMhd1ResponderExample.md), [AuditEvent/ChAuditEventChMhd1SourceExample](AuditEvent-ChAuditEventChMhd1SourceExample.md)...Show 69 more,[AuditEvent/ChAuditEventIti104ManagerCreateExample](AuditEvent-ChAuditEventIti104ManagerCreateExample.md),[AuditEvent/ChAuditEventIti104ManagerUpdateExample](AuditEvent-ChAuditEventIti104ManagerUpdateExample.md),[AuditEvent/ChAuditEventIti104SourceExample](AuditEvent-ChAuditEventIti104SourceExample.md),[AuditEvent/ChAuditEventIti119ConsumerExample](AuditEvent-ChAuditEventIti119ConsumerExample.md),[AuditEvent/ChAuditEventIti119SupplierExample](AuditEvent-ChAuditEventIti119SupplierExample.md),[AuditEvent/ChAuditEventIti130CreateExample](AuditEvent-ChAuditEventIti130CreateExample.md),[AuditEvent/ChAuditEventIti130DeleteExample](AuditEvent-ChAuditEventIti130DeleteExample.md),[AuditEvent/ChAuditEventIti130UpdateExample](AuditEvent-ChAuditEventIti130UpdateExample.md),[AuditEvent/ChAuditEventIti65RecipientExample](AuditEvent-ChAuditEventIti65RecipientExample.md),[AuditEvent/ChAuditEventIti65SourceExample](AuditEvent-ChAuditEventIti65SourceExample.md),[AuditEvent/ChAuditEventIti67ConsumerExample](AuditEvent-ChAuditEventIti67ConsumerExample.md),[AuditEvent/ChAuditEventIti67ResponderExample](AuditEvent-ChAuditEventIti67ResponderExample.md),[AuditEvent/ChAuditEventIti68ConsumerExample](AuditEvent-ChAuditEventIti68ConsumerExample.md),[AuditEvent/ChAuditEventIti68ResponderExample](AuditEvent-ChAuditEventIti68ResponderExample.md),[AuditEvent/ChAuditEventIti83ConsumerExample](AuditEvent-ChAuditEventIti83ConsumerExample.md),[AuditEvent/ChAuditEventIti83ManagerExample](AuditEvent-ChAuditEventIti83ManagerExample.md),[AuditEvent/ChAuditEventIti90QueryExample](AuditEvent-ChAuditEventIti90QueryExample.md),[AuditEvent/ChAuditEventIti90ReadExample](AuditEvent-ChAuditEventIti90ReadExample.md),[AuditEvent/ChAuditEventPpq3CreateExample](AuditEvent-ChAuditEventPpq3CreateExample.md),[AuditEvent/ChAuditEventPpq3DeleteExample](AuditEvent-ChAuditEventPpq3DeleteExample.md),[AuditEvent/ChAuditEventPpq3UpdateExample](AuditEvent-ChAuditEventPpq3UpdateExample.md),[AuditEvent/ChAuditEventPpq5ConsumerExample](AuditEvent-ChAuditEventPpq5ConsumerExample.md),[AuditEvent/ChAuditEventPpq5RepositoryExample](AuditEvent-ChAuditEventPpq5RepositoryExample.md),[AuditEvent/atc-doc-create-rep-pat](AuditEvent-atc-doc-create-rep-pat.md),[AuditEvent/atc-doc-read-ass-hpc](AuditEvent-atc-doc-read-ass-hpc.md),[AuditEvent/atc-doc-search](AuditEvent-atc-doc-search.md),[Bundle/ChAuditEventPpq4Example](Bundle-ChAuditEventPpq4Example.md),[Bundle/PpqmFeedRequestBundleAdd](Bundle-PpqmFeedRequestBundleAdd.md),[Bundle/PpqmFeedRequestBundleUpdate](Bundle-PpqmFeedRequestBundleUpdate.md),[Bundle/PpqmRetrieveResponseBundle](Bundle-PpqmRetrieveResponseBundle.md),[Bundle/ch-atc-iti-81-response-sample](Bundle-ch-atc-iti-81-response-sample.md),[ChAuditEventBasicToken](StructureDefinition-ChAuditEventBasicToken.md),[ChAuditEventChMhd1Responder](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-responder.md),[ChAuditEventChMhd1Source](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-source.md),[ChAuditEventIti104ManagerCreate](StructureDefinition-ChAuditEventIti104ManagerCreate.md),[ChAuditEventIti104ManagerUpdate](StructureDefinition-ChAuditEventIti104ManagerUpdate.md),[ChAuditEventIti104Source](StructureDefinition-ChAuditEventIti104Source.md),[ChAuditEventIti119Consumer](StructureDefinition-ChAuditEventIti119Consumer.md),[ChAuditEventIti119Supplier](StructureDefinition-ChAuditEventIti119Supplier.md),[ChAuditEventIti130Create](StructureDefinition-ChAuditEventIti130Create.md),[ChAuditEventIti130Delete](StructureDefinition-ChAuditEventIti130Delete.md),[ChAuditEventIti130Update](StructureDefinition-ChAuditEventIti130Update.md),[ChAuditEventIti65Recipient](StructureDefinition-ChAuditEventIti65Recipient.md),[ChAuditEventIti65Source](StructureDefinition-ChAuditEventIti65Source.md),[ChAuditEventIti67Consumer](StructureDefinition-ChAuditEventIti67Consumer.md),[ChAuditEventIti67Responder](StructureDefinition-ChAuditEventIti67Responder.md),[ChAuditEventIti68Consumer](StructureDefinition-ChAuditEventIti68Consumer.md),[ChAuditEventIti68Responder](StructureDefinition-ChAuditEventIti68Responder.md),[ChAuditEventIti83Consumer](StructureDefinition-ChAuditEventIti83Consumer.md),[ChAuditEventIti83Manager](StructureDefinition-ChAuditEventIti83Manager.md),[ChAuditEventIti90Query](StructureDefinition-ChAuditEventIti90Query.md),[ChAuditEventIti90Read](StructureDefinition-ChAuditEventIti90Read.md),[ChAuditEventPpq3Create](StructureDefinition-ChAuditEventPpq3Create.md),[ChAuditEventPpq3Delete](StructureDefinition-ChAuditEventPpq3Delete.md),[ChAuditEventPpq3Update](StructureDefinition-ChAuditEventPpq3Update.md),[ChAuditEventPpq5Consumer](StructureDefinition-ChAuditEventPpq5Consumer.md),[ChAuditEventPpq5Repository](StructureDefinition-ChAuditEventPpq5Repository.md),[Consent/PpqmConsentTemplate202Example](Consent-PpqmConsentTemplate202Example.md),[Consent/PpqmConsentTemplate203Example](Consent-PpqmConsentTemplate203Example.md),[Consent/PpqmConsentTemplate301Example](Consent-PpqmConsentTemplate301Example.md),[Consent/PpqmConsentTemplate302Example](Consent-PpqmConsentTemplate302Example.md),[Consent/PpqmConsentTemplate304Example](Consent-PpqmConsentTemplate304Example.md),[DocumentAuditEvent](StructureDefinition-DocumentAuditEvent.md),[PpqmConsent](StructureDefinition-PpqmConsent.md),[PpqmConsentTemplate202](StructureDefinition-PpqmConsentTemplate202.md),[PpqmConsentTemplate203](StructureDefinition-PpqmConsentTemplate203.md),[PpqmConsentTemplate301](StructureDefinition-PpqmConsentTemplate301.md),[PpqmConsentTemplate302](StructureDefinition-PpqmConsentTemplate302.md)and[PpqmConsentTemplate304](StructureDefinition-PpqmConsentTemplate304.md)
+* [ch-ehealth-codesystem-role](http://fhir.ch/ig/ch-term/3.3.0/CodeSystem-2.16.756.5.30.1.127.3.10.6.html): [AccessAuditTrailEvent](StructureDefinition-AccessAuditTrailEvent.md), [AuditEvent/ChAuditEventChMhd1ResponderExample](AuditEvent-ChAuditEventChMhd1ResponderExample.md)...Show 59 more,[AuditEvent/ChAuditEventChMhd1SourceExample](AuditEvent-ChAuditEventChMhd1SourceExample.md),[AuditEvent/ChAuditEventIti104ManagerCreateExample](AuditEvent-ChAuditEventIti104ManagerCreateExample.md),[AuditEvent/ChAuditEventIti104ManagerUpdateExample](AuditEvent-ChAuditEventIti104ManagerUpdateExample.md),[AuditEvent/ChAuditEventIti104SourceExample](AuditEvent-ChAuditEventIti104SourceExample.md),[AuditEvent/ChAuditEventIti119ConsumerExample](AuditEvent-ChAuditEventIti119ConsumerExample.md),[AuditEvent/ChAuditEventIti119SupplierExample](AuditEvent-ChAuditEventIti119SupplierExample.md),[AuditEvent/ChAuditEventIti130CreateExample](AuditEvent-ChAuditEventIti130CreateExample.md),[AuditEvent/ChAuditEventIti130DeleteExample](AuditEvent-ChAuditEventIti130DeleteExample.md),[AuditEvent/ChAuditEventIti130UpdateExample](AuditEvent-ChAuditEventIti130UpdateExample.md),[AuditEvent/ChAuditEventIti65RecipientExample](AuditEvent-ChAuditEventIti65RecipientExample.md),[AuditEvent/ChAuditEventIti65SourceExample](AuditEvent-ChAuditEventIti65SourceExample.md),[AuditEvent/ChAuditEventIti67ConsumerExample](AuditEvent-ChAuditEventIti67ConsumerExample.md),[AuditEvent/ChAuditEventIti67ResponderExample](AuditEvent-ChAuditEventIti67ResponderExample.md),[AuditEvent/ChAuditEventIti68ConsumerExample](AuditEvent-ChAuditEventIti68ConsumerExample.md),[AuditEvent/ChAuditEventIti68ResponderExample](AuditEvent-ChAuditEventIti68ResponderExample.md),[AuditEvent/ChAuditEventIti83ConsumerExample](AuditEvent-ChAuditEventIti83ConsumerExample.md),[AuditEvent/ChAuditEventIti83ManagerExample](AuditEvent-ChAuditEventIti83ManagerExample.md),[AuditEvent/ChAuditEventIti90QueryExample](AuditEvent-ChAuditEventIti90QueryExample.md),[AuditEvent/ChAuditEventIti90ReadExample](AuditEvent-ChAuditEventIti90ReadExample.md),[AuditEvent/ChAuditEventPpq3CreateExample](AuditEvent-ChAuditEventPpq3CreateExample.md),[AuditEvent/ChAuditEventPpq3DeleteExample](AuditEvent-ChAuditEventPpq3DeleteExample.md),[AuditEvent/ChAuditEventPpq3UpdateExample](AuditEvent-ChAuditEventPpq3UpdateExample.md),[AuditEvent/ChAuditEventPpq5ConsumerExample](AuditEvent-ChAuditEventPpq5ConsumerExample.md),[AuditEvent/ChAuditEventPpq5RepositoryExample](AuditEvent-ChAuditEventPpq5RepositoryExample.md),[AuditEvent/atc-doc-create-rep-pat](AuditEvent-atc-doc-create-rep-pat.md),[AuditEvent/atc-doc-read-ass-hpc](AuditEvent-atc-doc-read-ass-hpc.md),[AuditEvent/atc-doc-search](AuditEvent-atc-doc-search.md),[AuditEvent/atc-hpd-group-entry-notify](AuditEvent-atc-hpd-group-entry-notify.md),[AuditEvent/atc-log-read](AuditEvent-atc-log-read.md),[AuditEvent/atc-pol-create-acc-right](AuditEvent-atc-pol-create-acc-right.md),[AuditEvent/atc-pol-create-rep](AuditEvent-atc-pol-create-rep.md),[Bundle/Bundle-FindDocumentReferences](Bundle-Bundle-FindDocumentReferences.md),[Bundle/BundleProvideDocument](Bundle-BundleProvideDocument.md),[Bundle/CHMhd1UpdateDocumentMetadataTransactionRequestExample](Bundle-CHMhd1UpdateDocumentMetadataTransactionRequestExample.md),[Bundle/ChAuditEventPpq4Example](Bundle-ChAuditEventPpq4Example.md),[Bundle/PpqmFeedRequestBundleAdd](Bundle-PpqmFeedRequestBundleAdd.md),[Bundle/PpqmFeedRequestBundleUpdate](Bundle-PpqmFeedRequestBundleUpdate.md),[Bundle/PpqmRetrieveResponseBundle](Bundle-PpqmRetrieveResponseBundle.md),[Bundle/ch-atc-iti-81-response-sample](Bundle-ch-atc-iti-81-response-sample.md),[ChExtAuthorAuthorRole](StructureDefinition-ch-ext-author-authorrole.md),[Consent/PpqmConsentTemplate201Example](Consent-PpqmConsentTemplate201Example.md),[Consent/PpqmConsentTemplate202Example](Consent-PpqmConsentTemplate202Example.md),[Consent/PpqmConsentTemplate203Example](Consent-PpqmConsentTemplate203Example.md),[Consent/PpqmConsentTemplate301Example](Consent-PpqmConsentTemplate301Example.md),[Consent/PpqmConsentTemplate302Example](Consent-PpqmConsentTemplate302Example.md),[Consent/PpqmConsentTemplate303Example](Consent-PpqmConsentTemplate303Example.md),[Consent/PpqmConsentTemplate304Example](Consent-PpqmConsentTemplate304Example.md),[DocumentAuditEvent](StructureDefinition-DocumentAuditEvent.md),[DocumentReference/DocRefPdf](DocumentReference-DocRefPdf.md),[EprParticipant](ValueSet-EprParticipant.md),[PolicyAuditEvent](StructureDefinition-PolicyAuditEvent.md),[PpqmConsent](StructureDefinition-PpqmConsent.md),[PpqmConsentTemplate201](StructureDefinition-PpqmConsentTemplate201.md),[PpqmConsentTemplate202](StructureDefinition-PpqmConsentTemplate202.md),[PpqmConsentTemplate203](StructureDefinition-PpqmConsentTemplate203.md),[PpqmConsentTemplate301](StructureDefinition-PpqmConsentTemplate301.md),[PpqmConsentTemplate302](StructureDefinition-PpqmConsentTemplate302.md),[PpqmConsentTemplate303](StructureDefinition-PpqmConsentTemplate303.md)and[PpqmConsentTemplate304](StructureDefinition-PpqmConsentTemplate304.md)
+* [ch-ehealth-codesystem-atc](http://fhir.ch/ig/ch-term/3.3.0/CodeSystem-2.16.756.5.30.1.127.3.10.7.html): [AccessAuditTrailEvent](StructureDefinition-AccessAuditTrailEvent.md), [AccessAuditTrailEventType](ValueSet-AccessAuditTrailEventType.md)...Show 14 more,[AuditEvent/atc-doc-create-rep-pat](AuditEvent-atc-doc-create-rep-pat.md),[AuditEvent/atc-doc-read-ass-hpc](AuditEvent-atc-doc-read-ass-hpc.md),[AuditEvent/atc-doc-search](AuditEvent-atc-doc-search.md),[AuditEvent/atc-hpd-group-entry-notify](AuditEvent-atc-hpd-group-entry-notify.md),[AuditEvent/atc-log-read](AuditEvent-atc-log-read.md),[AuditEvent/atc-pol-create-acc-right](AuditEvent-atc-pol-create-acc-right.md),[AuditEvent/atc-pol-create-rep](AuditEvent-atc-pol-create-rep.md),[Bundle/ch-atc-iti-81-response-sample](Bundle-ch-atc-iti-81-response-sample.md),[DocumentAuditEvent](StructureDefinition-DocumentAuditEvent.md),[DocumentAuditEventType](ValueSet-DocumentAuditEventType.md),[HpdAuditEvent](StructureDefinition-HpdAuditEvent.md),[HpdAuditEventType](ValueSet-HpdAuditEventType.md),[PolicyAuditEvent](StructureDefinition-PolicyAuditEvent.md)and[PolicyAuditEventType](ValueSet-PolicyAuditEventType.md)
+* [ch-ehealth-codesystem-medreg](http://fhir.ch/ig/ch-term/3.3.0/CodeSystem-2.16.756.5.30.1.127.3.5.html): [Bundle/FindMatchingCareServicesResponse](Bundle-FindMatchingCareServicesResponse.md), [Practitioner/DrPeterPan](Practitioner-DrPeterPan.md)...Show 13 more,[Practitioner/mCSD-No-peer-Practitioner-DrAndrews](Practitioner-mCSD-No-peer-Practitioner-DrAndrews.md),[Practitioner/mCSD-No-peer-Practitioner-DrMeier](Practitioner-mCSD-No-peer-Practitioner-DrMeier.md),[Practitioner/mCSD-No-peer-Practitioner-DrReynolds](Practitioner-mCSD-No-peer-Practitioner-DrReynolds.md),[Practitioner/mCSD-Peer-to-peer-Practitioner-DrBux](Practitioner-mCSD-Peer-to-peer-Practitioner-DrBux.md),[Practitioner/mCSD-Peer-to-peer-Practitioner-DrGmork](Practitioner-mCSD-Peer-to-peer-Practitioner-DrGmork.md),[PractitionerRole/PeterPanPraxisP](PractitionerRole-PeterPanPraxisP.md),[PractitionerRole/PeterPanSpitalXDept3](PractitionerRole-PeterPanSpitalXDept3.md),[PractitionerRole/mCSD-No-peer-PractitionerRole-AnnAndrewsSpitalXOsteopathie](PractitionerRole-mCSD-No-peer-PractitionerRole-AnnAndrewsSpitalXOsteopathie.md),[PractitionerRole/mCSD-No-peer-PractitionerRole-HansMeierSpitalX](PractitionerRole-mCSD-No-peer-PractitionerRole-HansMeierSpitalX.md),[PractitionerRole/mCSD-No-peer-PractitionerRole-RichardReynoldsSpitalX](PractitionerRole-mCSD-No-peer-PractitionerRole-RichardReynoldsSpitalX.md),[PractitionerRole/mCSD-Peer-to-peer-PractitionerRole-BastianBuxAuryn-Spital](PractitionerRole-mCSD-Peer-to-peer-PractitionerRole-BastianBuxAuryn-Spital.md),[PractitionerRole/mCSD-Peer-to-peer-PractitionerRole-GisiGmorkFurchur-Klinik](PractitionerRole-mCSD-Peer-to-peer-PractitionerRole-GisiGmorkFurchur-Klinik.md)and[PractitionerRole/mCSD-Peer-to-peer-PractitionerRole-KarlKoreanderFurchur-Klinik](PractitionerRole-mCSD-Peer-to-peer-PractitionerRole-KarlKoreanderFurchur-Klinik.md)
+
+
+* ISO maintains the copyright on the country codes, and controls its use carefully. For further details see the ISO 3166 web page: [https://www.iso.org/iso-3166-country-codes.html](https://www.iso.org/iso-3166-country-codes.html)
+
+* [ISO 3166-1 Codes for the representation of names of countries and their subdivisions — Part 1: Country code](http://terminology.hl7.org/6.5.0/CodeSystem-ISO3166Part1.html): [AccessAuditTrailEvent](StructureDefinition-AccessAuditTrailEvent.md), [AccessAuditTrailEventType](ValueSet-AccessAuditTrailEventType.md)...Show 117 more,[CHEprFhir](index.md),[CHMhd1UpdateDocumentMetadataTransactionRequest](StructureDefinition-ch-mhd-1-updatedocumentmetadatatransactionrequest.md),[CHMhd1UpdateDocumentMetadataTransactionResponse](StructureDefinition-ch-mhd-1-updatedocumentmetadatatransactionresponse.md),[CHMhdDocumentReferenceComprehensive](StructureDefinition-ch-mhd-documentreference-comprehensive.md),[CHMhdProvideDocumentBundleComprehensive](StructureDefinition-ch-mhd-providedocumentbundle-comprehensive.md),[CHMhdSubmissionSetComprehensive](StructureDefinition-ch-mhd-submissionset-comprehensive.md),[CHPDQmMatchInput](StructureDefinition-CHPDQmMatchInput.md),[CHPDQmMatchParametersIn](StructureDefinition-CHPDQmMatchParametersIn.md),[CHPDQmMatchParametersOut](StructureDefinition-ch-pdqm-matchparametersout.md),[CHPDQmPatient](StructureDefinition-ch-pdqm-patient.md),[CHPIXmFeedOrganization](StructureDefinition-ch-pixm-feed-organization.md),[CHPIXmPatientFeed](StructureDefinition-ch-pixm-patient-feed.md),[CH_ATNA_Audit_Creator](CapabilityStatement-CH.ATNA.AuditCreator.md),[CH_ATNA_Audit_Record_Repository](CapabilityStatement-CH.ATNA.AuditRecordRepository.md),[CH_EPR_API](CapabilityStatement-CH.EPR.API.md),[CH_EPR_App](CapabilityStatement-CH.EPR.App.md),[CH_MHD_DocumentConsumer](CapabilityStatement-CH.MHD.DocumentConsumer.md),[CH_MHD_DocumentRecipient](CapabilityStatement-CH.MHD.DocumentRecipient.md),[CH_MHD_DocumentResponder](CapabilityStatement-CH.MHD.DocumentResponder.md),[CH_MHD_DocumentSource](CapabilityStatement-CH.MHD.DocumentSource.md),[CH_PDQm_Consumer](CapabilityStatement-CH.PDQm.Consumer.md),[CH_PDQm_Supplier](CapabilityStatement-CH.PDQm.Supplier.md),[CH_PIXm](OperationDefinition-CH.PIXm.md),[CH_PIXm_Consumer](CapabilityStatement-CH.PIXm.Consumer.md),[CH_PIXm_Manager](CapabilityStatement-CH.PIXm.Manager.md),[CH_PIXm_Source](CapabilityStatement-CH.PIXm.Source.md),[CH_PPQm_Policy_Repository](CapabilityStatement-CH.PPQm.PolicyRepository.md),[CH_PPQm_Policy_Source_Consumer](CapabilityStatement-CH.PPQm.PolicySourceConsumer.md),[CH_mCSD_Data_Source](CapabilityStatement-CH.mCSD.DataSource.md),[CH_mCSD_Directory](CapabilityStatement-CH.mCSD.Directory.md),[CH_mCSD_Query_Client](CapabilityStatement-CH.mCSD.QueryClient.md),[CHmCSDFeedPractitioner](StructureDefinition-CH.mCSD.Feed.Practitioner.md),[CHmCSDOrganization](StructureDefinition-CH.mCSD.Organization.md),[CHmCSDPractitioner](StructureDefinition-CH.mCSD.Practitioner.md),[CHmCSDPractitionerGenderVS](ValueSet-ch-mcsd-practitioner-gender-vs.md),[CHmCSDPractitionerRole](StructureDefinition-CH.mCSD.PractitionerRole.md),[CapabilityStatement/PatientAuditRecordRepositoryCapabilityStatement](CapabilityStatement-PatientAuditRecordRepositoryCapabilityStatement.md),[ChAtcAuditEvent](StructureDefinition-ch-atc-auditevent.md),[ChAtcIti81Response](StructureDefinition-CH-ATC.ITI-81.Response.md),[ChAuditEventBasicToken](StructureDefinition-ChAuditEventBasicToken.md),[ChAuditEventChMhd1Responder](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-responder.md),[ChAuditEventChMhd1Source](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-source.md),[ChAuditEventExtendedToken](StructureDefinition-ChAuditEventExtendedToken.md),[ChAuditEventIti104ManagerCreate](StructureDefinition-ChAuditEventIti104ManagerCreate.md),[ChAuditEventIti104ManagerUpdate](StructureDefinition-ChAuditEventIti104ManagerUpdate.md),[ChAuditEventIti104Source](StructureDefinition-ChAuditEventIti104Source.md),[ChAuditEventIti119Consumer](StructureDefinition-ChAuditEventIti119Consumer.md),[ChAuditEventIti119Supplier](StructureDefinition-ChAuditEventIti119Supplier.md),[ChAuditEventIti130Create](StructureDefinition-ChAuditEventIti130Create.md),[ChAuditEventIti130Delete](StructureDefinition-ChAuditEventIti130Delete.md),[ChAuditEventIti130Update](StructureDefinition-ChAuditEventIti130Update.md),[ChAuditEventIti65Recipient](StructureDefinition-ChAuditEventIti65Recipient.md),[ChAuditEventIti65Source](StructureDefinition-ChAuditEventIti65Source.md),[ChAuditEventIti67Consumer](StructureDefinition-ChAuditEventIti67Consumer.md),[ChAuditEventIti67Responder](StructureDefinition-ChAuditEventIti67Responder.md),[ChAuditEventIti68Consumer](StructureDefinition-ChAuditEventIti68Consumer.md),[ChAuditEventIti68Responder](StructureDefinition-ChAuditEventIti68Responder.md),[ChAuditEventIti83Consumer](StructureDefinition-ChAuditEventIti83Consumer.md),[ChAuditEventIti83Manager](StructureDefinition-ChAuditEventIti83Manager.md),[ChAuditEventIti90Query](StructureDefinition-ChAuditEventIti90Query.md),[ChAuditEventIti90Read](StructureDefinition-ChAuditEventIti90Read.md),[ChAuditEventPpq3Create](StructureDefinition-ChAuditEventPpq3Create.md),[ChAuditEventPpq3Delete](StructureDefinition-ChAuditEventPpq3Delete.md),[ChAuditEventPpq3Update](StructureDefinition-ChAuditEventPpq3Update.md),[ChAuditEventPpq5Consumer](StructureDefinition-ChAuditEventPpq5Consumer.md),[ChAuditEventPpq5Repository](StructureDefinition-ChAuditEventPpq5Repository.md),[ChEhealthCodesystemPqdMoreAttributesRequested](CodeSystem-2.16.756.5.30.1.127.3.10.17.md),[ChEprFhirBirthName](StructureDefinition-ch-epr-fhir-birthname.md),[ChEprFhirHumanName](StructureDefinition-ch-epr-fhir-humanname.md),[ChExtAuthorAuthorRole](StructureDefinition-ch-ext-author-authorrole.md),[ChExtDeletionStatus](StructureDefinition-ch-ext-deletionstatus.md),[ChFindDocumentReferencesComprehensiveResponse](StructureDefinition-ch-mhd-documentreference-comprehensive-bundle.md),[ChMhdHomeCommunityId](StructureDefinition-ch-mhd-home-community-id.md),[ChPdqmMoreAttributesRequested](ValueSet-ChPdqmMoreAttributesRequested.md),[ChPdqmResponseMoreAttributesRequested](StructureDefinition-ch-pdqm-moreattributesrequested.md),[ChmCSDProcessCareServices](StructureDefinition-CH.mCSD.ProcessCareServices.md),[DicomStudyInstanceUidIdentifier](StructureDefinition-DicomStudyInstanceUidIdentifier.md),[DocumentAuditEvent](StructureDefinition-DocumentAuditEvent.md),[DocumentAuditEventType](ValueSet-DocumentAuditEventType.md),[EhsEventTypeCode](NamingSystem-EhsEventTypeCode.md),[EprParticipant](ValueSet-EprParticipant.md),[Find_Patient_Matches_PDQm](OperationDefinition-CHPDQmMatch.md),[HpdAuditEvent](StructureDefinition-HpdAuditEvent.md),[HpdAuditEventType](ValueSet-HpdAuditEventType.md),[IHE_MHD_ProvideDocumentBundle_Comprehensive_Response_CH](StructureDefinition-ch-mhd-providedocumentbundle-comprehensive-response.md),[IHE_PIXm_OUT_Parameters_CH](StructureDefinition-ch-pixm-out-parameters.md),[IheEventTypeCode](NamingSystem-IheEventTypeCode.md),[IheItiXds2013UniqueId](NamingSystem-IheItiXds2013UniqueId.md),[IheXcpdMoreAttributesRequested](CodeSystem-1.3.6.1.4.1.19376.1.2.27.1.md),[LDAP](NamingSystem-Ldap.md),[LdapIdentifier](StructureDefinition-LdapIdentifier.md),[OidIdentifier](StructureDefinition-OidIdentifier.md),[PIXm_IN_Parameters_CH](StructureDefinition-ch-pixm-in-parameters.md),[PolicyAuditEvent](StructureDefinition-PolicyAuditEvent.md),[PolicyAuditEventType](ValueSet-PolicyAuditEventType.md),[PpqmActorIdentifierType](ValueSet-PpqmActorIdentifierType.md),[PpqmConsent](StructureDefinition-PpqmConsent.md),[PpqmConsentIdentifierType](ValueSet-PpqmConsentIdentifierType.md),[PpqmConsentTemplate201](StructureDefinition-PpqmConsentTemplate201.md),[PpqmConsentTemplate202](StructureDefinition-PpqmConsentTemplate202.md),[PpqmConsentTemplate203](StructureDefinition-PpqmConsentTemplate203.md),[PpqmConsentTemplate301](StructureDefinition-PpqmConsentTemplate301.md),[PpqmConsentTemplate302](StructureDefinition-PpqmConsentTemplate302.md),[PpqmConsentTemplate303](StructureDefinition-PpqmConsentTemplate303.md),[PpqmConsentTemplate304](StructureDefinition-PpqmConsentTemplate304.md),[PpqmFeedRequestBundle](StructureDefinition-PpqmFeedRequestBundle.md),[PpqmFeedRequestHttpMethod](ValueSet-PpqmFeedRequestHttpMethod.md),[PpqmPolicySetTemplateId](ValueSet-PpqmPolicySetTemplateId.md),[PpqmReferencedPolicySetDefaultProvide](ValueSet-PpqmReferencedPolicySetDefaultProvide.md),[PpqmReferencedPolicySetFullAccess](ValueSet-PpqmReferencedPolicySetFullAccess.md),[PpqmReferencedPolicySetGroupEmergency](ValueSet-PpqmReferencedPolicySetGroupEmergency.md),[PpqmReferencedPolicySetHcpWithDelegation](ValueSet-PpqmReferencedPolicySetHcpWithDelegation.md),[PpqmReferencedPolicySetHcpWithoutDelegation](ValueSet-PpqmReferencedPolicySetHcpWithoutDelegation.md),[PpqmRetrieveResponseBundle](StructureDefinition-PpqmRetrieveResponseBundle.md),[RestrictedHTTPVerbVS](ValueSet-restricted-http-verb-vs.md),[SPEntityIdentifier](SearchParameter-AuditEvent-entity-identifier.md)and[UniqueidIdentifier](StructureDefinition-ch-atc-uniqueid-identifier.md)
+
+
+* Some content from IHE® Copyright © 2015 [IHE International, Inc](http://www.ihe.net/Governance/#Intellectual_Property) .
+
+* [IHE Format Code set for use with Document Sharing](https://profiles.ihe.net/fhir/ihe.formatcode.fhir/1.4.0/CodeSystem-formatcode.html): [CHMhdDocumentReferenceComprehensive](StructureDefinition-ch-mhd-documentreference-comprehensive.md)
+
+
+* These codes are excerpted from Digital Imaging and Communications in Medicine (DICOM) Standard, Part 16: Content Mapping Resource, Copyright © 2011 by the National Electrical Manufacturers Association.
+
+* [DICOM Controlled Terminology Definitions](http://hl7.org/fhir/R4/codesystem-dicom-dcim.html): [AccessAuditTrailEvent](StructureDefinition-AccessAuditTrailEvent.md), [AuditEvent/ChAuditEventChMhd1ResponderExample](AuditEvent-ChAuditEventChMhd1ResponderExample.md)...Show 62 more,[AuditEvent/ChAuditEventChMhd1SourceExample](AuditEvent-ChAuditEventChMhd1SourceExample.md),[AuditEvent/ChAuditEventIti104ManagerCreateExample](AuditEvent-ChAuditEventIti104ManagerCreateExample.md),[AuditEvent/ChAuditEventIti104ManagerUpdateExample](AuditEvent-ChAuditEventIti104ManagerUpdateExample.md),[AuditEvent/ChAuditEventIti104SourceExample](AuditEvent-ChAuditEventIti104SourceExample.md),[AuditEvent/ChAuditEventIti119ConsumerExample](AuditEvent-ChAuditEventIti119ConsumerExample.md),[AuditEvent/ChAuditEventIti119SupplierExample](AuditEvent-ChAuditEventIti119SupplierExample.md),[AuditEvent/ChAuditEventIti130CreateExample](AuditEvent-ChAuditEventIti130CreateExample.md),[AuditEvent/ChAuditEventIti130DeleteExample](AuditEvent-ChAuditEventIti130DeleteExample.md),[AuditEvent/ChAuditEventIti130UpdateExample](AuditEvent-ChAuditEventIti130UpdateExample.md),[AuditEvent/ChAuditEventIti65RecipientExample](AuditEvent-ChAuditEventIti65RecipientExample.md),[AuditEvent/ChAuditEventIti65SourceExample](AuditEvent-ChAuditEventIti65SourceExample.md),[AuditEvent/ChAuditEventIti67ConsumerExample](AuditEvent-ChAuditEventIti67ConsumerExample.md),[AuditEvent/ChAuditEventIti67ResponderExample](AuditEvent-ChAuditEventIti67ResponderExample.md),[AuditEvent/ChAuditEventIti68ConsumerExample](AuditEvent-ChAuditEventIti68ConsumerExample.md),[AuditEvent/ChAuditEventIti68ResponderExample](AuditEvent-ChAuditEventIti68ResponderExample.md),[AuditEvent/ChAuditEventIti83ConsumerExample](AuditEvent-ChAuditEventIti83ConsumerExample.md),[AuditEvent/ChAuditEventIti83ManagerExample](AuditEvent-ChAuditEventIti83ManagerExample.md),[AuditEvent/ChAuditEventIti90QueryExample](AuditEvent-ChAuditEventIti90QueryExample.md),[AuditEvent/ChAuditEventIti90ReadExample](AuditEvent-ChAuditEventIti90ReadExample.md),[AuditEvent/ChAuditEventPpq3CreateExample](AuditEvent-ChAuditEventPpq3CreateExample.md),[AuditEvent/ChAuditEventPpq3DeleteExample](AuditEvent-ChAuditEventPpq3DeleteExample.md),[AuditEvent/ChAuditEventPpq3UpdateExample](AuditEvent-ChAuditEventPpq3UpdateExample.md),[AuditEvent/ChAuditEventPpq5ConsumerExample](AuditEvent-ChAuditEventPpq5ConsumerExample.md),[AuditEvent/ChAuditEventPpq5RepositoryExample](AuditEvent-ChAuditEventPpq5RepositoryExample.md),[AuditEvent/atc-doc-create-rep-pat](AuditEvent-atc-doc-create-rep-pat.md),[AuditEvent/atc-doc-read-ass-hpc](AuditEvent-atc-doc-read-ass-hpc.md),[AuditEvent/atc-doc-search](AuditEvent-atc-doc-search.md),[AuditEvent/atc-hpd-group-entry-notify](AuditEvent-atc-hpd-group-entry-notify.md),[AuditEvent/atc-log-read](AuditEvent-atc-log-read.md),[AuditEvent/atc-pol-create-acc-right](AuditEvent-atc-pol-create-acc-right.md),[AuditEvent/atc-pol-create-rep](AuditEvent-atc-pol-create-rep.md),[Bundle/ChAuditEventPpq4Example](Bundle-ChAuditEventPpq4Example.md),[Bundle/ch-atc-iti-81-response-sample](Bundle-ch-atc-iti-81-response-sample.md),[CHMhdDocumentReferenceComprehensive](StructureDefinition-ch-mhd-documentreference-comprehensive.md),[ChAuditEventChMhd1Responder](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-responder.md),[ChAuditEventChMhd1Source](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-source.md),[ChAuditEventIti104ManagerCreate](StructureDefinition-ChAuditEventIti104ManagerCreate.md),[ChAuditEventIti104ManagerUpdate](StructureDefinition-ChAuditEventIti104ManagerUpdate.md),[ChAuditEventIti104Source](StructureDefinition-ChAuditEventIti104Source.md),[ChAuditEventIti119Consumer](StructureDefinition-ChAuditEventIti119Consumer.md),[ChAuditEventIti119Supplier](StructureDefinition-ChAuditEventIti119Supplier.md),[ChAuditEventIti130Create](StructureDefinition-ChAuditEventIti130Create.md),[ChAuditEventIti130Delete](StructureDefinition-ChAuditEventIti130Delete.md),[ChAuditEventIti130Update](StructureDefinition-ChAuditEventIti130Update.md),[ChAuditEventIti65Recipient](StructureDefinition-ChAuditEventIti65Recipient.md),[ChAuditEventIti65Source](StructureDefinition-ChAuditEventIti65Source.md),[ChAuditEventIti67Consumer](StructureDefinition-ChAuditEventIti67Consumer.md),[ChAuditEventIti67Responder](StructureDefinition-ChAuditEventIti67Responder.md),[ChAuditEventIti68Consumer](StructureDefinition-ChAuditEventIti68Consumer.md),[ChAuditEventIti68Responder](StructureDefinition-ChAuditEventIti68Responder.md),[ChAuditEventIti83Consumer](StructureDefinition-ChAuditEventIti83Consumer.md),[ChAuditEventIti83Manager](StructureDefinition-ChAuditEventIti83Manager.md),[ChAuditEventIti90Query](StructureDefinition-ChAuditEventIti90Query.md),[ChAuditEventIti90Read](StructureDefinition-ChAuditEventIti90Read.md),[ChAuditEventPpq3Create](StructureDefinition-ChAuditEventPpq3Create.md),[ChAuditEventPpq3Delete](StructureDefinition-ChAuditEventPpq3Delete.md),[ChAuditEventPpq3Update](StructureDefinition-ChAuditEventPpq3Update.md),[ChAuditEventPpq5Consumer](StructureDefinition-ChAuditEventPpq5Consumer.md),[ChAuditEventPpq5Repository](StructureDefinition-ChAuditEventPpq5Repository.md),[DocumentAuditEvent](StructureDefinition-DocumentAuditEvent.md),[HpdAuditEvent](StructureDefinition-HpdAuditEvent.md)and[PolicyAuditEvent](StructureDefinition-PolicyAuditEvent.md)
+* [Audit Event ID](http://terminology.hl7.org/7.0.1/CodeSystem-audit-event-type.html): [AccessAuditTrailEvent](StructureDefinition-AccessAuditTrailEvent.md), [AuditEvent/ChAuditEventIti104ManagerCreateExample](AuditEvent-ChAuditEventIti104ManagerCreateExample.md)...Show 45 more,[AuditEvent/ChAuditEventIti104ManagerUpdateExample](AuditEvent-ChAuditEventIti104ManagerUpdateExample.md),[AuditEvent/ChAuditEventIti104SourceExample](AuditEvent-ChAuditEventIti104SourceExample.md),[AuditEvent/ChAuditEventIti119ConsumerExample](AuditEvent-ChAuditEventIti119ConsumerExample.md),[AuditEvent/ChAuditEventIti119SupplierExample](AuditEvent-ChAuditEventIti119SupplierExample.md),[AuditEvent/ChAuditEventIti130CreateExample](AuditEvent-ChAuditEventIti130CreateExample.md),[AuditEvent/ChAuditEventIti130DeleteExample](AuditEvent-ChAuditEventIti130DeleteExample.md),[AuditEvent/ChAuditEventIti130UpdateExample](AuditEvent-ChAuditEventIti130UpdateExample.md),[AuditEvent/ChAuditEventIti67ConsumerExample](AuditEvent-ChAuditEventIti67ConsumerExample.md),[AuditEvent/ChAuditEventIti67ResponderExample](AuditEvent-ChAuditEventIti67ResponderExample.md),[AuditEvent/ChAuditEventIti68ConsumerExample](AuditEvent-ChAuditEventIti68ConsumerExample.md),[AuditEvent/ChAuditEventIti68ResponderExample](AuditEvent-ChAuditEventIti68ResponderExample.md),[AuditEvent/ChAuditEventIti83ConsumerExample](AuditEvent-ChAuditEventIti83ConsumerExample.md),[AuditEvent/ChAuditEventIti83ManagerExample](AuditEvent-ChAuditEventIti83ManagerExample.md),[AuditEvent/ChAuditEventIti90QueryExample](AuditEvent-ChAuditEventIti90QueryExample.md),[AuditEvent/ChAuditEventIti90ReadExample](AuditEvent-ChAuditEventIti90ReadExample.md),[AuditEvent/ChAuditEventPpq3CreateExample](AuditEvent-ChAuditEventPpq3CreateExample.md),[AuditEvent/ChAuditEventPpq3DeleteExample](AuditEvent-ChAuditEventPpq3DeleteExample.md),[AuditEvent/ChAuditEventPpq3UpdateExample](AuditEvent-ChAuditEventPpq3UpdateExample.md),[AuditEvent/ChAuditEventPpq5ConsumerExample](AuditEvent-ChAuditEventPpq5ConsumerExample.md),[AuditEvent/ChAuditEventPpq5RepositoryExample](AuditEvent-ChAuditEventPpq5RepositoryExample.md),[Bundle/ChAuditEventPpq4Example](Bundle-ChAuditEventPpq4Example.md),[ChAuditEventIti104ManagerCreate](StructureDefinition-ChAuditEventIti104ManagerCreate.md),[ChAuditEventIti104ManagerUpdate](StructureDefinition-ChAuditEventIti104ManagerUpdate.md),[ChAuditEventIti104Source](StructureDefinition-ChAuditEventIti104Source.md),[ChAuditEventIti119Consumer](StructureDefinition-ChAuditEventIti119Consumer.md),[ChAuditEventIti119Supplier](StructureDefinition-ChAuditEventIti119Supplier.md),[ChAuditEventIti130Create](StructureDefinition-ChAuditEventIti130Create.md),[ChAuditEventIti130Delete](StructureDefinition-ChAuditEventIti130Delete.md),[ChAuditEventIti130Update](StructureDefinition-ChAuditEventIti130Update.md),[ChAuditEventIti67Consumer](StructureDefinition-ChAuditEventIti67Consumer.md),[ChAuditEventIti67Responder](StructureDefinition-ChAuditEventIti67Responder.md),[ChAuditEventIti68Consumer](StructureDefinition-ChAuditEventIti68Consumer.md),[ChAuditEventIti68Responder](StructureDefinition-ChAuditEventIti68Responder.md),[ChAuditEventIti83Consumer](StructureDefinition-ChAuditEventIti83Consumer.md),[ChAuditEventIti83Manager](StructureDefinition-ChAuditEventIti83Manager.md),[ChAuditEventIti90Query](StructureDefinition-ChAuditEventIti90Query.md),[ChAuditEventIti90Read](StructureDefinition-ChAuditEventIti90Read.md),[ChAuditEventPpq3Create](StructureDefinition-ChAuditEventPpq3Create.md),[ChAuditEventPpq3Delete](StructureDefinition-ChAuditEventPpq3Delete.md),[ChAuditEventPpq3Update](StructureDefinition-ChAuditEventPpq3Update.md),[ChAuditEventPpq5Consumer](StructureDefinition-ChAuditEventPpq5Consumer.md),[ChAuditEventPpq5Repository](StructureDefinition-ChAuditEventPpq5Repository.md),[DocumentAuditEvent](StructureDefinition-DocumentAuditEvent.md),[HpdAuditEvent](StructureDefinition-HpdAuditEvent.md)and[PolicyAuditEvent](StructureDefinition-PolicyAuditEvent.md)
+
+
+* These codes are excerpted from ISO Standard, TS 21089-2017 - Health Informatics - Trusted End-to-End Information Flows, Copyright by ISO International. Copies of this standard are available through the ISO Web Site at www.iso.org.
+
+* [ISO 21089 2017 Health Record Lifecycle Events](http://terminology.hl7.org/7.0.1/CodeSystem-iso-21089-lifecycle.html): [AccessAuditTrailEvent](StructureDefinition-AccessAuditTrailEvent.md), [DocumentAuditEvent](StructureDefinition-DocumentAuditEvent.md), [HpdAuditEvent](StructureDefinition-HpdAuditEvent.md) and [PolicyAuditEvent](StructureDefinition-PolicyAuditEvent.md)
+
+
+* This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these artefacts must have the appropriate SNOMED CT Affiliate license - for more information contact [http://www.snomed.org/snomed-ct/getsnomed-ct](http://www.snomed.org/snomed-ct/getsnomed-ct) or info@snomed.org.
+
+* [ch-ehealth-codesystem-format](http://fhir.ch/ig/ch-term/3.3.0/CodeSystem-2.16.756.5.30.1.127.3.10.10.html): [Bundle/Bundle-FindDocumentReferences](Bundle-Bundle-FindDocumentReferences.md), [Bundle/BundleProvideDocument](Bundle-BundleProvideDocument.md), [Bundle/CHMhd1UpdateDocumentMetadataTransactionRequestExample](Bundle-CHMhd1UpdateDocumentMetadataTransactionRequestExample.md), [CHMhdDocumentReferenceComprehensive](StructureDefinition-ch-mhd-documentreference-comprehensive.md) and [DocumentReference/DocRefPdf](DocumentReference-DocRefPdf.md)
+
+
+* This material contains content that is copyright of SNOMED International. Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact [https://www.snomed.org/get-snomed](https://www.snomed.org/get-snomed) or [info@snomed.org](mailto:info@snomed.org).
+
+* [SNOMED Clinical Terms&reg; (SNOMED CT&reg;)](http://hl7.org/fhir/R4/codesystem-snomedct.html): [Auryn-Spital](Organization-mCSD-Peer-to-peer-Organization-Auryn-Spital.md), [Bundle/Bundle-FindDocumentReferences](Bundle-Bundle-FindDocumentReferences.md)...Show 28 more,[Bundle/BundleProvideDocument](Bundle-BundleProvideDocument.md),[Bundle/CHMhd1UpdateDocumentMetadataTransactionRequestExample](Bundle-CHMhd1UpdateDocumentMetadataTransactionRequestExample.md),[Bundle/FindMatchingCareServicesResponse](Bundle-FindMatchingCareServicesResponse.md),[CHMhdDocumentReferenceComprehensive](StructureDefinition-ch-mhd-documentreference-comprehensive.md),[CHMhdSubmissionSetComprehensive](StructureDefinition-ch-mhd-submissionset-comprehensive.md),[ChAuditEventIti68Consumer](StructureDefinition-ChAuditEventIti68Consumer.md),[ChAuditEventIti68Responder](StructureDefinition-ChAuditEventIti68Responder.md),[Dept. 3](Organization-SpitalXDept3.md),[DocumentReference/DocRefPdf](DocumentReference-DocRefPdf.md),[Fuchur-Klinik](Organization-mCSD-Peer-to-peer-Organization-Fuchur-Klinik.md),[Practitioner/DrPeterPan](Practitioner-DrPeterPan.md),[Practitioner/mCSD-No-peer-Practitioner-DrAndrews](Practitioner-mCSD-No-peer-Practitioner-DrAndrews.md),[Practitioner/mCSD-No-peer-Practitioner-DrMeier](Practitioner-mCSD-No-peer-Practitioner-DrMeier.md),[Practitioner/mCSD-No-peer-Practitioner-DrReynolds](Practitioner-mCSD-No-peer-Practitioner-DrReynolds.md),[Practitioner/mCSD-Peer-to-peer-Practitioner-DrBux](Practitioner-mCSD-Peer-to-peer-Practitioner-DrBux.md),[Practitioner/mCSD-Peer-to-peer-Practitioner-DrGmork](Practitioner-mCSD-Peer-to-peer-Practitioner-DrGmork.md),[Practitioner/mCSD-Peer-to-peer-Practitioner-DrKoreander](Practitioner-mCSD-Peer-to-peer-Practitioner-DrKoreander.md),[PractitionerRole/PeterPanPraxisP](PractitionerRole-PeterPanPraxisP.md),[PractitionerRole/PeterPanSpitalXDept3](PractitionerRole-PeterPanSpitalXDept3.md),[PractitionerRole/mCSD-No-peer-PractitionerRole-AnnAndrewsSpitalXOsteopathie](PractitionerRole-mCSD-No-peer-PractitionerRole-AnnAndrewsSpitalXOsteopathie.md),[PractitionerRole/mCSD-No-peer-PractitionerRole-HansMeierSpitalX](PractitionerRole-mCSD-No-peer-PractitionerRole-HansMeierSpitalX.md),[PractitionerRole/mCSD-No-peer-PractitionerRole-RichardReynoldsSpitalX](PractitionerRole-mCSD-No-peer-PractitionerRole-RichardReynoldsSpitalX.md),[PractitionerRole/mCSD-Peer-to-peer-PractitionerRole-BastianBuxAuryn-Spital](PractitionerRole-mCSD-Peer-to-peer-PractitionerRole-BastianBuxAuryn-Spital.md),[PractitionerRole/mCSD-Peer-to-peer-PractitionerRole-GisiGmorkFurchur-Klinik](PractitionerRole-mCSD-Peer-to-peer-PractitionerRole-GisiGmorkFurchur-Klinik.md),[PractitionerRole/mCSD-Peer-to-peer-PractitionerRole-KarlKoreanderFurchur-Klinik](PractitionerRole-mCSD-Peer-to-peer-PractitionerRole-KarlKoreanderFurchur-Klinik.md),[Praxis P](Organization-PraxisP.md),[Spital X](Organization-mCSD-No-peer-Organization-SpitalX.md)and[Spital X - Osteopathie](Organization-mCSD-No-peer-Organization-SpitalX-Osteopathie.md)
+
+
+* This material derives from the HL7 Terminology (THO). THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: [https://terminology.hl7.org/license.html](https://terminology.hl7.org/license.html)
+
+* [Audit event entity type](http://terminology.hl7.org/7.0.1/CodeSystem-audit-entity-type.html): [AuditEvent/ChAuditEventChMhd1ResponderExample](AuditEvent-ChAuditEventChMhd1ResponderExample.md), [AuditEvent/ChAuditEventChMhd1SourceExample](AuditEvent-ChAuditEventChMhd1SourceExample.md)...Show 59 more,[AuditEvent/ChAuditEventIti104ManagerCreateExample](AuditEvent-ChAuditEventIti104ManagerCreateExample.md),[AuditEvent/ChAuditEventIti104ManagerUpdateExample](AuditEvent-ChAuditEventIti104ManagerUpdateExample.md),[AuditEvent/ChAuditEventIti104SourceExample](AuditEvent-ChAuditEventIti104SourceExample.md),[AuditEvent/ChAuditEventIti119ConsumerExample](AuditEvent-ChAuditEventIti119ConsumerExample.md),[AuditEvent/ChAuditEventIti119SupplierExample](AuditEvent-ChAuditEventIti119SupplierExample.md),[AuditEvent/ChAuditEventIti130CreateExample](AuditEvent-ChAuditEventIti130CreateExample.md),[AuditEvent/ChAuditEventIti130DeleteExample](AuditEvent-ChAuditEventIti130DeleteExample.md),[AuditEvent/ChAuditEventIti130UpdateExample](AuditEvent-ChAuditEventIti130UpdateExample.md),[AuditEvent/ChAuditEventIti65RecipientExample](AuditEvent-ChAuditEventIti65RecipientExample.md),[AuditEvent/ChAuditEventIti65SourceExample](AuditEvent-ChAuditEventIti65SourceExample.md),[AuditEvent/ChAuditEventIti67ConsumerExample](AuditEvent-ChAuditEventIti67ConsumerExample.md),[AuditEvent/ChAuditEventIti67ResponderExample](AuditEvent-ChAuditEventIti67ResponderExample.md),[AuditEvent/ChAuditEventIti68ConsumerExample](AuditEvent-ChAuditEventIti68ConsumerExample.md),[AuditEvent/ChAuditEventIti68ResponderExample](AuditEvent-ChAuditEventIti68ResponderExample.md),[AuditEvent/ChAuditEventIti83ConsumerExample](AuditEvent-ChAuditEventIti83ConsumerExample.md),[AuditEvent/ChAuditEventIti83ManagerExample](AuditEvent-ChAuditEventIti83ManagerExample.md),[AuditEvent/ChAuditEventIti90QueryExample](AuditEvent-ChAuditEventIti90QueryExample.md),[AuditEvent/ChAuditEventIti90ReadExample](AuditEvent-ChAuditEventIti90ReadExample.md),[AuditEvent/ChAuditEventPpq3CreateExample](AuditEvent-ChAuditEventPpq3CreateExample.md),[AuditEvent/ChAuditEventPpq3DeleteExample](AuditEvent-ChAuditEventPpq3DeleteExample.md),[AuditEvent/ChAuditEventPpq3UpdateExample](AuditEvent-ChAuditEventPpq3UpdateExample.md),[AuditEvent/ChAuditEventPpq5ConsumerExample](AuditEvent-ChAuditEventPpq5ConsumerExample.md),[AuditEvent/ChAuditEventPpq5RepositoryExample](AuditEvent-ChAuditEventPpq5RepositoryExample.md),[AuditEvent/atc-doc-create-rep-pat](AuditEvent-atc-doc-create-rep-pat.md),[AuditEvent/atc-doc-read-ass-hpc](AuditEvent-atc-doc-read-ass-hpc.md),[AuditEvent/atc-doc-search](AuditEvent-atc-doc-search.md),[AuditEvent/atc-hpd-group-entry-notify](AuditEvent-atc-hpd-group-entry-notify.md),[AuditEvent/atc-log-read](AuditEvent-atc-log-read.md),[AuditEvent/atc-pol-create-acc-right](AuditEvent-atc-pol-create-acc-right.md),[AuditEvent/atc-pol-create-rep](AuditEvent-atc-pol-create-rep.md),[Bundle/ChAuditEventPpq4Example](Bundle-ChAuditEventPpq4Example.md),[Bundle/ch-atc-iti-81-response-sample](Bundle-ch-atc-iti-81-response-sample.md),[ChAuditEventBasicToken](StructureDefinition-ChAuditEventBasicToken.md),[ChAuditEventChMhd1Responder](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-responder.md),[ChAuditEventChMhd1Source](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-source.md),[ChAuditEventExtendedToken](StructureDefinition-ChAuditEventExtendedToken.md),[ChAuditEventIti104ManagerCreate](StructureDefinition-ChAuditEventIti104ManagerCreate.md),[ChAuditEventIti104ManagerUpdate](StructureDefinition-ChAuditEventIti104ManagerUpdate.md),[ChAuditEventIti104Source](StructureDefinition-ChAuditEventIti104Source.md),[ChAuditEventIti119Consumer](StructureDefinition-ChAuditEventIti119Consumer.md),[ChAuditEventIti119Supplier](StructureDefinition-ChAuditEventIti119Supplier.md),[ChAuditEventIti130Create](StructureDefinition-ChAuditEventIti130Create.md),[ChAuditEventIti130Delete](StructureDefinition-ChAuditEventIti130Delete.md),[ChAuditEventIti130Update](StructureDefinition-ChAuditEventIti130Update.md),[ChAuditEventIti65Recipient](StructureDefinition-ChAuditEventIti65Recipient.md),[ChAuditEventIti65Source](StructureDefinition-ChAuditEventIti65Source.md),[ChAuditEventIti67Consumer](StructureDefinition-ChAuditEventIti67Consumer.md),[ChAuditEventIti67Responder](StructureDefinition-ChAuditEventIti67Responder.md),[ChAuditEventIti68Consumer](StructureDefinition-ChAuditEventIti68Consumer.md),[ChAuditEventIti68Responder](StructureDefinition-ChAuditEventIti68Responder.md),[ChAuditEventIti83Consumer](StructureDefinition-ChAuditEventIti83Consumer.md),[ChAuditEventIti83Manager](StructureDefinition-ChAuditEventIti83Manager.md),[ChAuditEventIti90Query](StructureDefinition-ChAuditEventIti90Query.md),[ChAuditEventIti90Read](StructureDefinition-ChAuditEventIti90Read.md),[ChAuditEventPpq3Create](StructureDefinition-ChAuditEventPpq3Create.md),[ChAuditEventPpq3Delete](StructureDefinition-ChAuditEventPpq3Delete.md),[ChAuditEventPpq3Update](StructureDefinition-ChAuditEventPpq3Update.md),[ChAuditEventPpq5Consumer](StructureDefinition-ChAuditEventPpq5Consumer.md)and[ChAuditEventPpq5Repository](StructureDefinition-ChAuditEventPpq5Repository.md)
+* [Consent Scope Codes](http://terminology.hl7.org/7.0.1/CodeSystem-consentscope.html): [Bundle/PpqmFeedRequestBundleAdd](Bundle-PpqmFeedRequestBundleAdd.md), [Bundle/PpqmFeedRequestBundleUpdate](Bundle-PpqmFeedRequestBundleUpdate.md)...Show 16 more,[Bundle/PpqmRetrieveResponseBundle](Bundle-PpqmRetrieveResponseBundle.md),[Consent/PpqmConsentTemplate201Example](Consent-PpqmConsentTemplate201Example.md),[Consent/PpqmConsentTemplate202Example](Consent-PpqmConsentTemplate202Example.md),[Consent/PpqmConsentTemplate203Example](Consent-PpqmConsentTemplate203Example.md),[Consent/PpqmConsentTemplate301Example](Consent-PpqmConsentTemplate301Example.md),[Consent/PpqmConsentTemplate302Example](Consent-PpqmConsentTemplate302Example.md),[Consent/PpqmConsentTemplate303Example](Consent-PpqmConsentTemplate303Example.md),[Consent/PpqmConsentTemplate304Example](Consent-PpqmConsentTemplate304Example.md),[PpqmConsent](StructureDefinition-PpqmConsent.md),[PpqmConsentTemplate201](StructureDefinition-PpqmConsentTemplate201.md),[PpqmConsentTemplate202](StructureDefinition-PpqmConsentTemplate202.md),[PpqmConsentTemplate203](StructureDefinition-PpqmConsentTemplate203.md),[PpqmConsentTemplate301](StructureDefinition-PpqmConsentTemplate301.md),[PpqmConsentTemplate302](StructureDefinition-PpqmConsentTemplate302.md),[PpqmConsentTemplate303](StructureDefinition-PpqmConsentTemplate303.md)and[PpqmConsentTemplate304](StructureDefinition-PpqmConsentTemplate304.md)
+* [AuditEventEntityRole](http://terminology.hl7.org/7.0.1/CodeSystem-object-role.html): [AuditEvent/ChAuditEventChMhd1ResponderExample](AuditEvent-ChAuditEventChMhd1ResponderExample.md), [AuditEvent/ChAuditEventChMhd1SourceExample](AuditEvent-ChAuditEventChMhd1SourceExample.md)...Show 59 more,[AuditEvent/ChAuditEventIti104ManagerCreateExample](AuditEvent-ChAuditEventIti104ManagerCreateExample.md),[AuditEvent/ChAuditEventIti104ManagerUpdateExample](AuditEvent-ChAuditEventIti104ManagerUpdateExample.md),[AuditEvent/ChAuditEventIti104SourceExample](AuditEvent-ChAuditEventIti104SourceExample.md),[AuditEvent/ChAuditEventIti119ConsumerExample](AuditEvent-ChAuditEventIti119ConsumerExample.md),[AuditEvent/ChAuditEventIti119SupplierExample](AuditEvent-ChAuditEventIti119SupplierExample.md),[AuditEvent/ChAuditEventIti130CreateExample](AuditEvent-ChAuditEventIti130CreateExample.md),[AuditEvent/ChAuditEventIti130DeleteExample](AuditEvent-ChAuditEventIti130DeleteExample.md),[AuditEvent/ChAuditEventIti130UpdateExample](AuditEvent-ChAuditEventIti130UpdateExample.md),[AuditEvent/ChAuditEventIti65RecipientExample](AuditEvent-ChAuditEventIti65RecipientExample.md),[AuditEvent/ChAuditEventIti65SourceExample](AuditEvent-ChAuditEventIti65SourceExample.md),[AuditEvent/ChAuditEventIti67ConsumerExample](AuditEvent-ChAuditEventIti67ConsumerExample.md),[AuditEvent/ChAuditEventIti67ResponderExample](AuditEvent-ChAuditEventIti67ResponderExample.md),[AuditEvent/ChAuditEventIti68ConsumerExample](AuditEvent-ChAuditEventIti68ConsumerExample.md),[AuditEvent/ChAuditEventIti68ResponderExample](AuditEvent-ChAuditEventIti68ResponderExample.md),[AuditEvent/ChAuditEventIti83ConsumerExample](AuditEvent-ChAuditEventIti83ConsumerExample.md),[AuditEvent/ChAuditEventIti83ManagerExample](AuditEvent-ChAuditEventIti83ManagerExample.md),[AuditEvent/ChAuditEventIti90QueryExample](AuditEvent-ChAuditEventIti90QueryExample.md),[AuditEvent/ChAuditEventIti90ReadExample](AuditEvent-ChAuditEventIti90ReadExample.md),[AuditEvent/ChAuditEventPpq3CreateExample](AuditEvent-ChAuditEventPpq3CreateExample.md),[AuditEvent/ChAuditEventPpq3DeleteExample](AuditEvent-ChAuditEventPpq3DeleteExample.md),[AuditEvent/ChAuditEventPpq3UpdateExample](AuditEvent-ChAuditEventPpq3UpdateExample.md),[AuditEvent/ChAuditEventPpq5ConsumerExample](AuditEvent-ChAuditEventPpq5ConsumerExample.md),[AuditEvent/ChAuditEventPpq5RepositoryExample](AuditEvent-ChAuditEventPpq5RepositoryExample.md),[AuditEvent/atc-doc-create-rep-pat](AuditEvent-atc-doc-create-rep-pat.md),[AuditEvent/atc-doc-read-ass-hpc](AuditEvent-atc-doc-read-ass-hpc.md),[AuditEvent/atc-doc-search](AuditEvent-atc-doc-search.md),[AuditEvent/atc-hpd-group-entry-notify](AuditEvent-atc-hpd-group-entry-notify.md),[AuditEvent/atc-log-read](AuditEvent-atc-log-read.md),[AuditEvent/atc-pol-create-acc-right](AuditEvent-atc-pol-create-acc-right.md),[AuditEvent/atc-pol-create-rep](AuditEvent-atc-pol-create-rep.md),[Bundle/ChAuditEventPpq4Example](Bundle-ChAuditEventPpq4Example.md),[Bundle/ch-atc-iti-81-response-sample](Bundle-ch-atc-iti-81-response-sample.md),[ChAuditEventBasicToken](StructureDefinition-ChAuditEventBasicToken.md),[ChAuditEventChMhd1Responder](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-responder.md),[ChAuditEventChMhd1Source](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-source.md),[ChAuditEventExtendedToken](StructureDefinition-ChAuditEventExtendedToken.md),[ChAuditEventIti104ManagerCreate](StructureDefinition-ChAuditEventIti104ManagerCreate.md),[ChAuditEventIti104ManagerUpdate](StructureDefinition-ChAuditEventIti104ManagerUpdate.md),[ChAuditEventIti104Source](StructureDefinition-ChAuditEventIti104Source.md),[ChAuditEventIti119Consumer](StructureDefinition-ChAuditEventIti119Consumer.md),[ChAuditEventIti119Supplier](StructureDefinition-ChAuditEventIti119Supplier.md),[ChAuditEventIti130Create](StructureDefinition-ChAuditEventIti130Create.md),[ChAuditEventIti130Delete](StructureDefinition-ChAuditEventIti130Delete.md),[ChAuditEventIti130Update](StructureDefinition-ChAuditEventIti130Update.md),[ChAuditEventIti65Recipient](StructureDefinition-ChAuditEventIti65Recipient.md),[ChAuditEventIti65Source](StructureDefinition-ChAuditEventIti65Source.md),[ChAuditEventIti67Consumer](StructureDefinition-ChAuditEventIti67Consumer.md),[ChAuditEventIti67Responder](StructureDefinition-ChAuditEventIti67Responder.md),[ChAuditEventIti68Consumer](StructureDefinition-ChAuditEventIti68Consumer.md),[ChAuditEventIti68Responder](StructureDefinition-ChAuditEventIti68Responder.md),[ChAuditEventIti83Consumer](StructureDefinition-ChAuditEventIti83Consumer.md),[ChAuditEventIti83Manager](StructureDefinition-ChAuditEventIti83Manager.md),[ChAuditEventIti90Query](StructureDefinition-ChAuditEventIti90Query.md),[ChAuditEventIti90Read](StructureDefinition-ChAuditEventIti90Read.md),[ChAuditEventPpq3Create](StructureDefinition-ChAuditEventPpq3Create.md),[ChAuditEventPpq3Delete](StructureDefinition-ChAuditEventPpq3Delete.md),[ChAuditEventPpq3Update](StructureDefinition-ChAuditEventPpq3Update.md),[ChAuditEventPpq5Consumer](StructureDefinition-ChAuditEventPpq5Consumer.md)and[ChAuditEventPpq5Repository](StructureDefinition-ChAuditEventPpq5Repository.md)
+* [Organization type](http://terminology.hl7.org/7.0.1/CodeSystem-organization-type.html): [Community A](Organization-CommunityA.md)
+* [Provenance participant type](http://terminology.hl7.org/7.0.1/CodeSystem-provenance-participant-type.html): [AuditEvent/ChAuditEventIti130DeleteExample](AuditEvent-ChAuditEventIti130DeleteExample.md), [AuditEvent/ChAuditEventPpq3DeleteExample](AuditEvent-ChAuditEventPpq3DeleteExample.md), [Bundle/ChAuditEventPpq4Example](Bundle-ChAuditEventPpq4Example.md), [ChAuditEventIti130Delete](StructureDefinition-ChAuditEventIti130Delete.md) and [ChAuditEventPpq3Delete](StructureDefinition-ChAuditEventPpq3Delete.md)
+* [identifierType](http://terminology.hl7.org/7.0.1/CodeSystem-v2-0203.html): [Bundle/Bundle-FindDocumentReferences](Bundle-Bundle-FindDocumentReferences.md), [Bundle/BundleProvideDocument](Bundle-BundleProvideDocument.md)...Show 7 more,[Bundle/CHMhd1UpdateDocumentMetadataTransactionRequestExample](Bundle-CHMhd1UpdateDocumentMetadataTransactionRequestExample.md),[Bundle/PDQm-QueryResponse](Bundle-PDQm-QueryResponse.md),[CHPDQmPatient](StructureDefinition-ch-pdqm-patient.md),[CHPIXmPatientFeed](StructureDefinition-ch-pixm-patient-feed.md),[DocumentReference/DocRefPdf](DocumentReference-DocRefPdf.md),[Patient/FranzMusterNeedsAbsoluteUrl](Patient-FranzMusterNeedsAbsoluteUrl.md)and[Patient/PatientPIXmFeed](Patient-PatientPIXmFeed.md)
+* [ActCode](http://terminology.hl7.org/7.0.1/CodeSystem-v3-ActCode.html): [Bundle/PpqmFeedRequestBundleAdd](Bundle-PpqmFeedRequestBundleAdd.md), [Bundle/PpqmFeedRequestBundleUpdate](Bundle-PpqmFeedRequestBundleUpdate.md)...Show 16 more,[Bundle/PpqmRetrieveResponseBundle](Bundle-PpqmRetrieveResponseBundle.md),[Consent/PpqmConsentTemplate201Example](Consent-PpqmConsentTemplate201Example.md),[Consent/PpqmConsentTemplate202Example](Consent-PpqmConsentTemplate202Example.md),[Consent/PpqmConsentTemplate203Example](Consent-PpqmConsentTemplate203Example.md),[Consent/PpqmConsentTemplate301Example](Consent-PpqmConsentTemplate301Example.md),[Consent/PpqmConsentTemplate302Example](Consent-PpqmConsentTemplate302Example.md),[Consent/PpqmConsentTemplate303Example](Consent-PpqmConsentTemplate303Example.md),[Consent/PpqmConsentTemplate304Example](Consent-PpqmConsentTemplate304Example.md),[PpqmConsent](StructureDefinition-PpqmConsent.md),[PpqmConsentTemplate201](StructureDefinition-PpqmConsentTemplate201.md),[PpqmConsentTemplate202](StructureDefinition-PpqmConsentTemplate202.md),[PpqmConsentTemplate203](StructureDefinition-PpqmConsentTemplate203.md),[PpqmConsentTemplate301](StructureDefinition-PpqmConsentTemplate301.md),[PpqmConsentTemplate302](StructureDefinition-PpqmConsentTemplate302.md),[PpqmConsentTemplate303](StructureDefinition-PpqmConsentTemplate303.md)and[PpqmConsentTemplate304](StructureDefinition-PpqmConsentTemplate304.md)
+* [ActReason](http://terminology.hl7.org/7.0.1/CodeSystem-v3-ActReason.html): [Patient/FranzMusterNeedsAbsoluteUrl](Patient-FranzMusterNeedsAbsoluteUrl.md) and [Patient/PatientPIXmFeed](Patient-PatientPIXmFeed.md)
+* [ParticipationType](http://terminology.hl7.org/7.0.1/CodeSystem-v3-ParticipationType.html): [AuditEvent/ChAuditEventChMhd1ResponderExample](AuditEvent-ChAuditEventChMhd1ResponderExample.md), [AuditEvent/ChAuditEventChMhd1SourceExample](AuditEvent-ChAuditEventChMhd1SourceExample.md)...Show 51 more,[AuditEvent/ChAuditEventIti104ManagerCreateExample](AuditEvent-ChAuditEventIti104ManagerCreateExample.md),[AuditEvent/ChAuditEventIti104ManagerUpdateExample](AuditEvent-ChAuditEventIti104ManagerUpdateExample.md),[AuditEvent/ChAuditEventIti104SourceExample](AuditEvent-ChAuditEventIti104SourceExample.md),[AuditEvent/ChAuditEventIti119ConsumerExample](AuditEvent-ChAuditEventIti119ConsumerExample.md),[AuditEvent/ChAuditEventIti119SupplierExample](AuditEvent-ChAuditEventIti119SupplierExample.md),[AuditEvent/ChAuditEventIti130CreateExample](AuditEvent-ChAuditEventIti130CreateExample.md),[AuditEvent/ChAuditEventIti130DeleteExample](AuditEvent-ChAuditEventIti130DeleteExample.md),[AuditEvent/ChAuditEventIti130UpdateExample](AuditEvent-ChAuditEventIti130UpdateExample.md),[AuditEvent/ChAuditEventIti65RecipientExample](AuditEvent-ChAuditEventIti65RecipientExample.md),[AuditEvent/ChAuditEventIti65SourceExample](AuditEvent-ChAuditEventIti65SourceExample.md),[AuditEvent/ChAuditEventIti67ConsumerExample](AuditEvent-ChAuditEventIti67ConsumerExample.md),[AuditEvent/ChAuditEventIti67ResponderExample](AuditEvent-ChAuditEventIti67ResponderExample.md),[AuditEvent/ChAuditEventIti68ConsumerExample](AuditEvent-ChAuditEventIti68ConsumerExample.md),[AuditEvent/ChAuditEventIti68ResponderExample](AuditEvent-ChAuditEventIti68ResponderExample.md),[AuditEvent/ChAuditEventIti83ConsumerExample](AuditEvent-ChAuditEventIti83ConsumerExample.md),[AuditEvent/ChAuditEventIti83ManagerExample](AuditEvent-ChAuditEventIti83ManagerExample.md),[AuditEvent/ChAuditEventIti90QueryExample](AuditEvent-ChAuditEventIti90QueryExample.md),[AuditEvent/ChAuditEventIti90ReadExample](AuditEvent-ChAuditEventIti90ReadExample.md),[AuditEvent/ChAuditEventPpq3CreateExample](AuditEvent-ChAuditEventPpq3CreateExample.md),[AuditEvent/ChAuditEventPpq3DeleteExample](AuditEvent-ChAuditEventPpq3DeleteExample.md),[AuditEvent/ChAuditEventPpq3UpdateExample](AuditEvent-ChAuditEventPpq3UpdateExample.md),[AuditEvent/ChAuditEventPpq5ConsumerExample](AuditEvent-ChAuditEventPpq5ConsumerExample.md),[AuditEvent/ChAuditEventPpq5RepositoryExample](AuditEvent-ChAuditEventPpq5RepositoryExample.md),[Bundle/ChAuditEventPpq4Example](Bundle-ChAuditEventPpq4Example.md),[ChAuditEventBasicToken](StructureDefinition-ChAuditEventBasicToken.md),[ChAuditEventChMhd1Responder](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-responder.md),[ChAuditEventChMhd1Source](StructureDefinition-ch-mhd-updatedocumentmetadata-audit-source.md),[ChAuditEventExtendedToken](StructureDefinition-ChAuditEventExtendedToken.md),[ChAuditEventIti104ManagerCreate](StructureDefinition-ChAuditEventIti104ManagerCreate.md),[ChAuditEventIti104ManagerUpdate](StructureDefinition-ChAuditEventIti104ManagerUpdate.md),[ChAuditEventIti104Source](StructureDefinition-ChAuditEventIti104Source.md),[ChAuditEventIti119Consumer](StructureDefinition-ChAuditEventIti119Consumer.md),[ChAuditEventIti119Supplier](StructureDefinition-ChAuditEventIti119Supplier.md),[ChAuditEventIti130Create](StructureDefinition-ChAuditEventIti130Create.md),[ChAuditEventIti130Delete](StructureDefinition-ChAuditEventIti130Delete.md),[ChAuditEventIti130Update](StructureDefinition-ChAuditEventIti130Update.md),[ChAuditEventIti65Recipient](StructureDefinition-ChAuditEventIti65Recipient.md),[ChAuditEventIti65Source](StructureDefinition-ChAuditEventIti65Source.md),[ChAuditEventIti67Consumer](StructureDefinition-ChAuditEventIti67Consumer.md),[ChAuditEventIti67Responder](StructureDefinition-ChAuditEventIti67Responder.md),[ChAuditEventIti68Consumer](StructureDefinition-ChAuditEventIti68Consumer.md),[ChAuditEventIti68Responder](StructureDefinition-ChAuditEventIti68Responder.md),[ChAuditEventIti83Consumer](StructureDefinition-ChAuditEventIti83Consumer.md),[ChAuditEventIti83Manager](StructureDefinition-ChAuditEventIti83Manager.md),[ChAuditEventIti90Query](StructureDefinition-ChAuditEventIti90Query.md),[ChAuditEventIti90Read](StructureDefinition-ChAuditEventIti90Read.md),[ChAuditEventPpq3Create](StructureDefinition-ChAuditEventPpq3Create.md),[ChAuditEventPpq3Delete](StructureDefinition-ChAuditEventPpq3Delete.md),[ChAuditEventPpq3Update](StructureDefinition-ChAuditEventPpq3Update.md),[ChAuditEventPpq5Consumer](StructureDefinition-ChAuditEventPpq5Consumer.md)and[ChAuditEventPpq5Repository](StructureDefinition-ChAuditEventPpq5Repository.md)
+* [RoleCode](http://terminology.hl7.org/7.0.1/CodeSystem-v3-RoleCode.html): [CHPDQmPatient](StructureDefinition-ch-pdqm-patient.md) and [CHPIXmPatientFeed](StructureDefinition-ch-pixm-patient-feed.md)
+
+
+### Cross Version Analysis
+
+This is an R4 IG. None of the features it uses are changed in R4B, so it can be used as is with R4B systems. Packages for both [R4 (ch.fhir.ig.ch-epr-fhir.r4)](package.r4.tgz) and [R4B (ch.fhir.ig.ch-epr-fhir.r4b)](package.r4b.tgz) are available.
+
+### Dependency Table
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Globals Table
+
+*There are no Global profiles defined*
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "ImplementationGuide",
+  "id" : "ch.fhir.ig.ch-epr-fhir",
+  "url" : "http://fhir.ch/ig/ch-epr-fhir/ImplementationGuide/ch.fhir.ig.ch-epr-fhir",
+  "version" : "5.0.0",
+  "name" : "CHEprFhir",
+  "title" : "CH EPR FHIR (R4)",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2025-12-18",
+  "publisher" : "eHealth Suisse",
+  "contact" : [
+    {
+      "name" : "eHealth Suisse",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.e-health-suisse.ch"
+        }
+      ]
+    },
+    {
+      "name" : "eHealth Suisse",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.e-health-suisse.ch",
+          "use" : "work"
+        }
+      ]
+    }
+  ],
+  "description" : "FHIR implementation guide to the Swiss EPR (Electronic Patient Record)",
+  "jurisdiction" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CH"
+        }
+      ]
+    }
+  ],
+  "copyright" : "CC0-1.0",
+  "packageId" : "ch.fhir.ig.ch-epr-fhir",
+  "license" : "CC0-1.0",
+  "fhirVersion" : ["4.0.1"],
+  "dependsOn" : [
+    {
+      "id" : "hl7ext",
+      "extension" : [
+        {
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
+          "valueMarkdown" : "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"
+        }
+      ],
+      "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+      "packageId" : "hl7.fhir.uv.extensions.r4",
+      "version" : "5.2.0"
+    },
+    {
+      "id" : "ch_fhir_ig_ch_term",
+      "uri" : "http://fhir.ch/ig/ch-term/ImplementationGuide/ch.fhir.ig.ch-term",
+      "packageId" : "ch.fhir.ig.ch-term",
+      "version" : "3.3.x"
+    },
+    {
+      "id" : "ch_fhir_ig_ch_core",
+      "uri" : "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core",
+      "packageId" : "ch.fhir.ig.ch-core",
+      "version" : "6.0.0"
+    },
+    {
+      "id" : "ihepixmfhir",
+      "uri" : "https://profiles.ihe.net/ITI/PIXm/ImplementationGuide/ihe.iti.pixm",
+      "packageId" : "ihe.iti.pixm",
+      "version" : "3.1.0"
+    },
+    {
+      "id" : "ihepdqmfhir",
+      "uri" : "https://profiles.ihe.net/ITI/PDQm/ImplementationGuide/ihe.iti.pdqm",
+      "packageId" : "ihe.iti.pdqm",
+      "version" : "3.2.0"
+    },
+    {
+      "id" : "ihemhdfhir",
+      "uri" : "https://profiles.ihe.net/ITI/MHD/ImplementationGuide/ihe.iti.mhd",
+      "packageId" : "ihe.iti.mhd",
+      "version" : "4.2.3"
+    },
+    {
+      "id" : "ihemcsdfhir",
+      "uri" : "https://profiles.ihe.net/ITI/mCSD/ImplementationGuide/ihe.iti.mcsd",
+      "packageId" : "ihe.iti.mcsd",
+      "version" : "4.0.0"
+    },
+    {
+      "id" : "ihe_iti_balp",
+      "uri" : "https://profiles.ihe.net/ITI/BALP/ImplementationGuide/ihe.iti.balp",
+      "packageId" : "ihe.iti.balp",
+      "version" : "1.1.4"
+    },
+    {
+      "id" : "hl7_terminology_r4",
+      "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
+      "packageId" : "hl7.terminology.r4",
+      "version" : "6.5.0"
+    }
+  ],
+  "definition" : {
+    "extension" : [
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "copyrightyear"
+          },
+          {
+            "url" : "value",
+            "valueString" : "2020+"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "releaselabel"
+          },
+          {
+            "url" : "value",
+            "valueString" : "trial-use"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "excludettl"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "urn:oid:2.16.756.5.30.1.127.3.10.17"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "urn:oid:1.3.6.1.4.1.19376.1.2.27.1"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "allow-extensible-warnings"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "display-warnings"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "path-expansion-params"
+          },
+          {
+            "url" : "value",
+            "valueString" : "../../expansion-params.json"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "pin-canonicals"
+          },
+          {
+            "url" : "value",
+            "valueString" : "pin-multiples"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "autoload-resources"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "path-liquid"
+          },
+          {
+            "url" : "value",
+            "valueString" : "template/liquid"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "path-liquid"
+          },
+          {
+            "url" : "value",
+            "valueString" : "input/liquid"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "path-qa"
+          },
+          {
+            "url" : "value",
+            "valueString" : "temp/qa"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "path-temp"
+          },
+          {
+            "url" : "value",
+            "valueString" : "temp/pages"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "path-output"
+          },
+          {
+            "url" : "value",
+            "valueString" : "output"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "path-suppressed-warnings"
+          },
+          {
+            "url" : "value",
+            "valueString" : "input/ignoreWarnings.txt"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "path-history"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://fhir.ch/ig/ch-epr-fhir/history.html"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "template-html"
+          },
+          {
+            "url" : "value",
+            "valueString" : "template-page.html"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "template-md"
+          },
+          {
+            "url" : "value",
+            "valueString" : "template-page-md.html"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "apply-contact"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "apply-context"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "apply-copyright"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "apply-jurisdiction"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "apply-license"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "apply-publisher"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "apply-version"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "apply-wg"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "active-tables"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "fmm-definition"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://hl7.org/fhir/versions.html#maturity"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "propagate-status"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "excludelogbinaryformat"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "tabbed-snapshots"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/expansion-parameters",
+        "valueReference" : {
+          "reference" : "Parameters/expansion-parameters"
+        }
+      },
+      {
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
+        "valueCode" : "hl7.fhir.uv.tools.r4#0.9.0"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "copyrightyear"
+          },
+          {
+            "url" : "value",
+            "valueString" : "2020+"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "releaselabel"
+          },
+          {
+            "url" : "value",
+            "valueString" : "trial-use"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "excludettl"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "urn:oid:2.16.756.5.30.1.127.3.10.17"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "special-url"
+          },
+          {
+            "url" : "value",
+            "valueString" : "urn:oid:1.3.6.1.4.1.19376.1.2.27.1"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "allow-extensible-warnings"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "display-warnings"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "path-expansion-params"
+          },
+          {
+            "url" : "value",
+            "valueString" : "../../expansion-params.json"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "pin-canonicals"
+          },
+          {
+            "url" : "value",
+            "valueString" : "pin-multiples"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "autoload-resources"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "path-liquid"
+          },
+          {
+            "url" : "value",
+            "valueString" : "template/liquid"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "path-liquid"
+          },
+          {
+            "url" : "value",
+            "valueString" : "input/liquid"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "path-qa"
+          },
+          {
+            "url" : "value",
+            "valueString" : "temp/qa"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "path-temp"
+          },
+          {
+            "url" : "value",
+            "valueString" : "temp/pages"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "path-output"
+          },
+          {
+            "url" : "value",
+            "valueString" : "output"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "path-suppressed-warnings"
+          },
+          {
+            "url" : "value",
+            "valueString" : "input/ignoreWarnings.txt"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "path-history"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://fhir.ch/ig/ch-epr-fhir/history.html"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "template-html"
+          },
+          {
+            "url" : "value",
+            "valueString" : "template-page.html"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "template-md"
+          },
+          {
+            "url" : "value",
+            "valueString" : "template-page-md.html"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "apply-contact"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "apply-context"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "apply-copyright"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "apply-jurisdiction"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "apply-license"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "apply-publisher"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "apply-version"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "apply-wg"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "active-tables"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "fmm-definition"
+          },
+          {
+            "url" : "value",
+            "valueString" : "http://hl7.org/fhir/versions.html#maturity"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "propagate-status"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "excludelogbinaryformat"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "tabbed-snapshots"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      }
+    ],
+    "resource" : [
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/AccessAuditTrailEventType"
+        },
+        "name" : "AccessAuditTrailEventType",
+        "description" : "AccessAuditTrailEventType",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.ATNA.AuditCreator"
+        },
+        "name" : "ATNA Audit Creator (client)",
+        "description" : "CapabilityStatement for Client Actor in the IHE IT Infrastructure Technical Framework Supplement Add RESTful ATNA.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.ATNA.AuditRecordRepository"
+        },
+        "name" : "ATNA Audit Record Repository (server)",
+        "description" : "CapabilityStatement for Server Actor in the IHE IT Infrastructure Technical Framework Supplement Add RESTful ATNA.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/PatientAuditRecordRepositoryCapabilityStatement"
+        },
+        "name" : "CapabilityStatement for the Patient Audit Record Repository",
+        "description" : "Defines the CapabilityStatement for the Patient Audit Record Repository actor of ITI-81.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.EPR.API"
+        },
+        "name" : "EPR API (server)",
+        "description" : "CapabilityStatement for EPR API (server).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.EPR.App"
+        },
+        "name" : "EPR App (client)",
+        "description" : "CapabilityStatement for EPR App (client).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.PIXm.Consumer"
+        },
+        "name" : "PIXm Patient Identifier Cross-Reference Consumer (client)",
+        "description" : "The Patient Identifier Cross-reference Consumer Actor CapabilityStatement expresses the requirements that can be utilized while being compliant. - using FHIR R4 - using json or xml encoding - query the $ihe-pix operation",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.PIXm.Manager"
+        },
+        "name" : "PIXm Patient Identifier Cross-reference Manager (server)",
+        "description" : "The Patient Identifier Cross-reference Manager CapabilityStatement expresses the requirements that shall be provided. - using FHIR R4 - using json and xml encoding - support the $ihe-pix operation - support conditional update for [ITI-104] - support conditional delete for [ITI-104] if Remove Patient Option is supported - used with IHE-IUA",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.PIXm.Source"
+        },
+        "name" : "PIXm Patient Identity Source (client)",
+        "description" : "The Patient Identity Source Actor CapabilityStatement expresses the requirements that can be utilized while being compliant. - using FHIR R4 - using json or xml encoding - using conditional update for [ITI-104] - provide supported Patient profile for cross-referencing for [ITI-104]",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/atc-log-read"
+        },
+        "name" : "CH ATC - Access of Audit Trail Repository",
+        "description" : "CH ATC - Access of Audit Trail Repository",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/AccessAuditTrailEvent"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/atc-doc-search"
+        },
+        "name" : "CH ATC - Audit Event for Document Search",
+        "description" : "CH ATC - Audit Event for Document Search",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/DocumentAuditEvent"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/atc-hpd-group-entry-notify"
+        },
+        "name" : "CH ATC - Audit Event for Group Entry Audit Event Content Profile",
+        "description" : "CH ATC - AuditEvent of Healthcare professional which has been added to a group and patient has been notified",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/HpdAuditEvent"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/atc-pol-create-rep"
+        },
+        "name" : "CH ATC - Create Access Right for a representative",
+        "description" : "CH ATC - Create Access Right a representative",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PolicyAuditEvent"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/atc-pol-create-acc-right"
+        },
+        "name" : "CH ATC - Create Access Right for Healthcare professional",
+        "description" : "CH ATC - Create Access Right for Healthcare professional",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PolicyAuditEvent"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/atc-doc-create-rep-pat"
+        },
+        "name" : "CH ATC - Creation of a Document",
+        "description" : "CH ATC - Creation of a Document for a patient by a representative of this patient",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/DocumentAuditEvent"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/ch-atc-iti-81-response-sample"
+        },
+        "name" : "CH ATC - Reponse Audit Trail",
+        "description" : "CH ATC - Reponse Audit Trail",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH-ATC.ITI-81.Response"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/atc-doc-read-ass-hpc"
+        },
+        "name" : "CH ATC - Retrieveal of a Document",
+        "description" : "CH ATC - Retrieveal of a Document from a patient by an assitant for a healthcare professional",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/DocumentAuditEvent"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-atc-auditevent"
+        },
+        "name" : "CH ATC AuditEvent",
+        "description" : "CH ATC profile on AuditEvent",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-mhd-updatedocumentmetadata-audit-responder"
+        },
+        "name" : "CH Audit Event for [CH:MHD-1] Document Responder",
+        "description" : "This profile is used to define the CH Audit Event for the [CH:MHD-1] transaction and the actor 'Document\nResponder'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-mhd-updatedocumentmetadata-audit-source"
+        },
+        "name" : "CH Audit Event for [CH:MHD-1] Document Source",
+        "description" : "This profile is used to define the CH Audit Event for the [CH:MHD-1] transaction and the actor 'Document\nSource'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti104ManagerCreate"
+        },
+        "name" : "CH Audit Event for [ITI-104] Patient Identifier Cross-reference Manager / Create patient",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-104] transaction and the actor 'Patient\nIdentifier Cross-reference Manager' when creating a patient.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti104ManagerUpdate"
+        },
+        "name" : "CH Audit Event for [ITI-104] Patient Identifier Cross-reference Manager / Update patient",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-104] transaction and the actor 'Patient\nIdentifier Cross-reference Manager' when updating a patient.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti104Source"
+        },
+        "name" : "CH Audit Event for [ITI-104] Patient Identity Source",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-104] transaction and the actor 'Patient\nIdentity Source'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti119Consumer"
+        },
+        "name" : "CH Audit Event for [ITI-119] Patient Demographics Consumer",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-119] transaction and the actor 'Patient\n              Demographics Consumer'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti119Supplier"
+        },
+        "name" : "CH Audit Event for [ITI-119] Patient Demographics Supplier",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-119] transaction and the actor 'Patient\nDemographics Supplier'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti130Create"
+        },
+        "name" : "CH Audit Event for [ITI-130] Data Source & Directory / Create",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-130] transaction and the actors 'Data\nSource' & Directory, when adding care service resources.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti130Delete"
+        },
+        "name" : "CH Audit Event for [ITI-130] Data Source & Directory / Delete",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-130] transaction and the actors 'Data\nSource' & Directory, when deleting care service resources.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti130Update"
+        },
+        "name" : "CH Audit Event for [ITI-130] Data Source & Directory / Update",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-130] transaction and the actors 'Data\nSource' & Directory, when updating care service resources.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti65Recipient"
+        },
+        "name" : "CH Audit Event for [ITI-65] Document Recipient",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-65] transaction and the actor 'Document\nRecipient'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti65Source"
+        },
+        "name" : "CH Audit Event for [ITI-65] Document Source",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-65] transaction and the actor 'Document\nSource'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti67Consumer"
+        },
+        "name" : "CH Audit Event for [ITI-67] Document Consumer",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-67] transaction and the actor 'Document\nConsumer'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti67Responder"
+        },
+        "name" : "CH Audit Event for [ITI-67] Document Responder",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-67] transaction and the actor 'Document\nResponder'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti68Consumer"
+        },
+        "name" : "CH Audit Event for [ITI-68] Document Consumer",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-68] transaction and the actor 'Document\nConsumer'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti68Responder"
+        },
+        "name" : "CH Audit Event for [ITI-68] Document Responder",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-68] transaction and the actor 'Document\nResponder'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti83Consumer"
+        },
+        "name" : "CH Audit Event for [ITI-83] Patient Identifier Cross-reference Consumer",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-83] transaction and the actor 'Patient\nIdentifier Cross-reference Consumer'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti83Manager"
+        },
+        "name" : "CH Audit Event for [ITI-83] Patient Identifier Cross-reference Manager",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-83] transaction and the actor 'Patient\nIdentifier Cross-reference Manager'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti90Query"
+        },
+        "name" : "CH Audit Event for [ITI-90] Query Client & Directory / Query",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-90] transaction and the actors 'Query\nClient' & Directory, when querying care service resources.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventIti90Read"
+        },
+        "name" : "CH Audit Event for [ITI-90] Query Client & Directory / Read",
+        "description" : "This profile is used to define the CH Audit Event for the [ITI-90] transaction and the actors 'Query\nClient' & Directory, when reading care service resources.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventPpq3Create"
+        },
+        "name" : "CH Audit Event for [PPQ-3] Create privacy policy",
+        "description" : "This profile is used to define the CH Audit Event for the [PPQ-3] transaction and the actors 'Policy\nSource' and 'Policy Repository' when creating a privacy policy.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventPpq3Delete"
+        },
+        "name" : "CH Audit Event for [PPQ-3] Delete privacy policy",
+        "description" : "This profile is used to define the CH Audit Event for the [PPQ-3] transaction and the actors 'Policy\nSource' and 'Policy Repository' when deleting a privacy policy.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventPpq3Update"
+        },
+        "name" : "CH Audit Event for [PPQ-3] Update privacy policy",
+        "description" : "This profile is used to define the CH Audit Event for the [PPQ-3] transaction and the actors 'Policy\nSource' and 'Policy Repository' when updating a privacy policy.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventPpq5Consumer"
+        },
+        "name" : "CH Audit Event for [PPQ-5] Policy Consumer",
+        "description" : "This profile is used to define the CH Audit Event for the [PPQ-5] transaction and the actor 'Policy\nConsumer'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventPpq5Repository"
+        },
+        "name" : "CH Audit Event for [PPQ-5] Policy Repository",
+        "description" : "This profile is used to define the CH Audit Event for the [PPQ-5] transaction and the actor 'Policy\nRepository'.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventBasicToken"
+        },
+        "name" : "CH Audit Event with a Basic Auth Token",
+        "description" : "This is the profile for Swiss Audit Events when a transaction is secured with a Basic Authorization Token.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ChAuditEventExtendedToken"
+        },
+        "name" : "CH Audit Event with an Extended Auth Token",
+        "description" : "This is the profile for Swiss Audit Events when a transaction is secured with an Extended Authorization\nToken.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/2.16.756.5.30.1.127.3.10.17"
+        },
+        "name" : "CH Codesystem PDQ More Attributes Requested",
+        "description" : "Codes for indicating which additional attributes are requested to lower the results number.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:complex-type"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-epr-fhir-birthname"
+        },
+        "name" : "CH EPR FHIR BirthName",
+        "description" : "The birthname with the ISO 21090 qualifier https://www.hl7.org/fhir/extension-iso21090-en-qualifier.html BR",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:complex-type"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-epr-fhir-humanname"
+        },
+        "name" : "CH EPR FHIR HumanName",
+        "description" : "The human name WITHOUT the ISO 21090 qualifier https://www.hl7.org/fhir/extension-iso21090-en-qualifier.html BR",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-ext-author-authorrole"
+        },
+        "name" : "CH Extension Author AuthorRole",
+        "description" : "Extension Author AuthorRole for SubmissionSet and DocumentEntry",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-ext-deletionstatus"
+        },
+        "name" : "CH Extension Deletion Status",
+        "description" : "Extension Deletion Status for DocumentReference",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/CH.mCSD.Feed.Practitioner"
+        },
+        "name" : "CH mCSD Feed Practitioner",
+        "description" : "CH mCSD profile on Practitioner Feed",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/CH.mCSD.Organization"
+        },
+        "name" : "CH mCSD Organization",
+        "description" : "CH mCSD profile on Organization",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/CH.mCSD.Practitioner"
+        },
+        "name" : "CH mCSD Practitioner",
+        "description" : "CH mCSD profile on Practitioner",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/ch-mcsd-practitioner-gender-vs"
+        },
+        "name" : "CH mCSD Practitioner Administrative Gender Value Set",
+        "description" : "Value set for the administrative gender of a CH mCSD Practitioner. Only 'male' and 'female' values are\nallowed in the HPD context.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/CH.mCSD.PractitionerRole"
+        },
+        "name" : "CH mCSD PractitionerRole",
+        "description" : "CH mCSD profile on PractitionerRole",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-mhd-documentreference-comprehensive"
+        },
+        "name" : "CH MHD DocumentReference Comprehensive",
+        "description" : "CH MHD Profile on CH Core DocumentReference",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:extension"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-mhd-home-community-id"
+        },
+        "name" : "CH MHD Extension to provide the homeCommunityId",
+        "description" : "This CH MHD extension enables to provide homeCommunityId in an OperationOutcome",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-mhd-documentreference-comprehensive-bundle"
+        },
+        "name" : "CH MHD Find Document References Comprehensive Response message",
+        "description" : "A profile on the Find Document References Comprehensive Response message for ITI-68",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-mhd-providedocumentbundle-comprehensive"
+        },
+        "name" : "CH MHD Provide Document Bundle Comprehensive",
+        "description" : "IHE MHD profile on Provide Document Bundle (ITI-65) transaction with Comprehensive Metadata for the Swiss EPR.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-mhd-providedocumentbundle-comprehensive-response"
+        },
+        "name" : "CH MHD Provide Document Bundle Comprehensive Response",
+        "description" : "IHE MHD profile on Response of Provide Document Bundle (ITI-65) transaction with Comprehensive Metadata.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-mhd-submissionset-comprehensive"
+        },
+        "name" : "CH MHD SubmissionSet Comprehensive",
+        "description" : "CH MHD SubmissionSet Comprehensive",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-mhd-1-updatedocumentmetadatatransactionrequest"
+        },
+        "name" : "CH MHD-1 Update Document Metadata Transaction Request",
+        "description" : "A profile for Update Document Metadata (CH:MHD-1) transaction request",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/CHMhd1UpdateDocumentMetadataTransactionRequestExample"
+        },
+        "name" : "CH MHD-1 Update Document Metadata Transaction Request Example",
+        "description" : "Example of a CH MHD-1 Update Document Metadata Transaction Request",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-1-updatedocumentmetadatatransactionrequest"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-mhd-1-updatedocumentmetadatatransactionresponse"
+        },
+        "name" : "CH MHD-1 Update Document Metadata Transaction Response",
+        "description" : "A profile for Update Document Metadata (CH:MHD-1) transaction response",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/CHMhd1UpdateDocumentMetadataTransactionResponseExample"
+        },
+        "name" : "CH MHD-1 Update Document Metadata Transaction Response Example",
+        "description" : "Example of a CH MHD-1 Update Document Metadata Transaction Response",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-1-updatedocumentmetadatatransactionresponse"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "OperationDefinition"
+          }
+        ],
+        "reference" : {
+          "reference" : "OperationDefinition/CHPDQmMatch"
+        },
+        "name" : "CH PDQm $Match",
+        "description" : "This operation implements the [Patient Demographics Match \\[ITI-119\\]](iti-119.html) transaction.\nIt is fully compatible with the [$match Operation on Patient](http://hl7.org/fhir/R4/patient-operation-match.html).\nThe only changes are to constrain the input parameters to use the [PDQm Patient Profile for $match Input](StructureDefinition-CHPDQmMatchInput.html) profile\nand to constrain the output parameters to use the [PDQm Patient Profile](StructureDefinition-ch-pdqm-patient.html) profile.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.PDQm.Consumer"
+        },
+        "name" : "CH PDQm Consumer requirements CapabilityStatement",
+        "description" : "The PDQm Patient Demographics Consumer Actor requirements CapabilityStatement expresses the requirements that can be utilized while being compliant.\n\n- Query against the FHIR endpoint to the Patient Resource endpoint\n- Using FHIR R4\n- may request json or xml encoding\n- TLS SHALL be used together with IUA basic access token",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/CHPDQmMatchParametersIn"
+        },
+        "name" : "CH PDQm Match Input Parameters Profile",
+        "description" : "The PDQm Match Input Parameters Profile describes the Parameters Resource that is to be posted to the $match endpoint when invoking ITI-119.\nThis profile is consistent with the exceptions of the [Patient-match operation in FHIR core](http://hl7.org/fhir/R4/patient-operation-match.html),\nexcept the input resource SHALL be an instance of the [PDQm Patient Profile for $match Input](StructureDefinition-CHPDQmMatchInput.html).\n\nNote that the only REQUIRED parameter is the Patient Resource. When only the Patient is supplied, it can be POSTed directly to the $match endpoint\nwithout being wrapped in a Parameters Resource, as long as it conforms to the [PDQm Patient Profile for $match Input](StructureDefinition-CHPDQmMatchInput.html).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-pdqm-matchparametersout"
+        },
+        "name" : "CH PDQm Match Output Bundle Profile",
+        "description" : "A profile on the Query Patient Resource Response message for ITI-119",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-pdqm-moreattributesrequested"
+        },
+        "name" : "CH PDQm OperationOutcome More Attributes Requested",
+        "description" : "A profile on the OperationOutcome for indicating which additional attributes are requested to lower the results number.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-pdqm-patient"
+        },
+        "name" : "CH PDQm Patient",
+        "description" : "The patient demographics and identifier information which can be provided in the PDQm response according to the EPR. If the patient is already registered in a community, the MPI-PID SHALL be provided as an identifier. The EPR-SPID as an identifier MAY be added. The birthname can be added with the ISO 21090 qualifier extension.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/CHPDQmMatchInput"
+        },
+        "name" : "CH PDQm Patient Profile for $match Input",
+        "description" : "The PDQm Patient Profile for $match Input SHALL be provided as input to the ITI-119 transaction.\n- While it is not REQUIRED that the input to $match be a valid FHIR instance, it is RECOMMENDED to supply as many elements as possible to facilitate matching.\n- modifierExtension and implicitRules SHALL not be specified.\n- The ChEprFhirBirthName profile is available to hold the mother's maiden name",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/ChPdqmMoreAttributesRequested"
+        },
+        "name" : "CH PDQm ValueSet More Attributes Requested",
+        "description" : "Coded Values for indicating which additional attributes are requested to lower the results number.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-pixm-feed-organization"
+        },
+        "name" : "CH PIXm Feed Organization",
+        "description" : "The organization information which can be provided in the PIXm Feed according to the EPR. The organization identifier SHALL be expressed as an ISO OID. The organization SHALL have at least one of telecom, address, or contact person to be present.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-pixm-in-parameters"
+        },
+        "name" : "CH PIXm IN Parameters",
+        "description" : "The StructureDefinition defines the Input Parameters for the $ihe-pix operation: - Input: sourceIdentifier, targetSystem",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-pixm-out-parameters"
+        },
+        "name" : "CH PIXm OUT Parameters",
+        "description" : "The StructureDefinition defines the Output Parameters for the $ihe-pix operation:",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-pixm-patient-feed"
+        },
+        "name" : "CH PIXm Patient Feed",
+        "description" : "The patient demographics and identifier information which can be provided in the PIXm Feed according to the EPR. The EPR-SPID as an identifier SHALL be added. The birthname can be added with the ISO 21090 qualifier extension.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/PpqmActorIdentifierType"
+        },
+        "name" : "CH PPQm Actor Identifier Type",
+        "description" : "Actor Identifier Types for CH:PPQm",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PpqmConsent"
+        },
+        "name" : "CH PPQm Consent",
+        "description" : "Swiss EPR Policy Set as a Consent",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/PpqmConsentIdentifierType"
+        },
+        "name" : "CH PPQm Consent Identifier Type",
+        "description" : "Value Set for CH:PPQm Consent Identifier Types",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/PpqmConsentIdentifierType"
+        },
+        "name" : "CH PPQm Consent Identifier Type",
+        "description" : "Code system for CH:PPQm Consent Identifier Types",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PpqmFeedRequestBundle"
+        },
+        "name" : "CH PPQm Feed Request Bundle",
+        "description" : "Bundle for Mobile Privacy Policy Bundle Feed requests",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/PpqmFeedRequestHttpMethod"
+        },
+        "name" : "CH PPQm Feed Request HTTP Method",
+        "description" : "HTTP methods allowed in CH:PPQm Feed requests",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/PpqmPolicySetTemplateId"
+        },
+        "name" : "CH PPQm Policy Set Template ID",
+        "description" : "IDs of policy set templates",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/PpqmPolicySetTemplateId"
+        },
+        "name" : "CH PPQm Policy Set Template ID",
+        "description" : "Code system for Policy Set Template IDs",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/PpqmReferencedPolicySetDefaultProvide"
+        },
+        "name" : "CH PPQm Referenced Policy Set for Default Provide (203) template",
+        "description" : "IDs of basis policy sets that may be referenced from template 203",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/PpqmReferencedPolicySetGroupEmergency"
+        },
+        "name" : "CH PPQm Referenced Policy Set for Emergency Access (202) and HCP Group (302) templates",
+        "description" : "IDs of basis policy sets that may be referenced from templates 202 and 302",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/PpqmReferencedPolicySetHcpWithDelegation"
+        },
+        "name" : "CH PPQm Referenced Policy Set for Healthcare Professionals with Delegation (304) template",
+        "description" : "IDs of basis policy sets that may be referenced from template 304",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/PpqmReferencedPolicySetHcpWithoutDelegation"
+        },
+        "name" : "CH PPQm Referenced Policy Set for Healthcare Professionals without Delegation (301) template",
+        "description" : "IDs of basis policy sets that may be referenced from template 301",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/PpqmReferencedPolicySetFullAccess"
+        },
+        "name" : "CH PPQm Referenced Policy Set for Patients (201) and Representative (303) templates",
+        "description" : "IDs of basis policy sets that may be referenced from templates 201 and 303",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PpqmRetrieveResponseBundle"
+        },
+        "name" : "CH PPQm Retrieve Response Bundle",
+        "description" : "Bundle for Mobile Privacy Policy Retrieve responses",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "DocumentReference"
+          }
+        ],
+        "reference" : {
+          "reference" : "DocumentReference/DocRefPdf"
+        },
+        "name" : "Comprehensive DocumentReference for a PDF Document",
+        "description" : "Comprehensive DocumentReference for a PDF Document",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-documentreference-comprehensive"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:complex-type"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/DicomStudyInstanceUidIdentifier"
+        },
+        "name" : "DICOM Study Instance UID",
+        "description" : "Identifier [representation](https://www.hl7.org/fhir/imagingstudy.html#notes) of DICOM Study Instance UID",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/DocumentAuditEventType"
+        },
+        "name" : "DocumentAuditEventType",
+        "description" : "DocumentAuditEventType",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "NamingSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "NamingSystem/EhsEventTypeCode"
+        },
+        "name" : "EhsEventTypeCode",
+        "description" : "NamingSystem for event type code system from eHealth Suisse.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PpqmConsentTemplate201"
+        },
+        "name" : "EPR policy set based on template 201",
+        "description" : "EPR policy set based on template 201 -- grants the patient the full access to the their EPR.  This policy set shall be created during the patient's onboarding.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PpqmConsentTemplate202"
+        },
+        "name" : "EPR policy set based on template 202",
+        "description" : "EPR policy set based on template 202 -- grants healthcare professionals access to the patient's EPR in emergency mode. This policy set shall be created during the patient's onboarding, but can be modified later.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PpqmConsentTemplate203"
+        },
+        "name" : "EPR policy set based on template 203",
+        "description" : "EPR policy set based on template 203 -- defines the minimal confidentiality level of documents. This policy set shall be created during the patient's onboarding, but can be modified later.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PpqmConsentTemplate301"
+        },
+        "name" : "EPR policy set based on template 301",
+        "description" : "EPR policy set based on template 301 -- allowing a user (health professional) to access the patient's EPD according to the scope of the referenced access level (PolicySetIdReference below), without delegation.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PpqmConsentTemplate302"
+        },
+        "name" : "EPR policy set based on template 302",
+        "description" : "EPR policy set based on template 302 -- gives a group of healthcare professionals read access to the patient's EPR, without delegation rights.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PpqmConsentTemplate303"
+        },
+        "name" : "EPR policy set based on template 303",
+        "description" : "EPR policy set based on template 303 -- gives a representative full access to the patient's EPR.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PpqmConsentTemplate304"
+        },
+        "name" : "EPR policy set based on template 304",
+        "description" : "EPR policy set based on template 304 -- gives a particular healthcare professional read access to the patient's EPR, with delegation rights.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/EprParticipant"
+        },
+        "name" : "EprParticipant",
+        "description" : "EprParticipant",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventChMhd1ResponderExample"
+        },
+        "name" : "Example of audit event for a [CH:MHD-1] transaction at Responder",
+        "description" : "This example shows an  made by the Document Responder for a CH:MHD-1 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-updatedocumentmetadata-audit-responder"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventChMhd1SourceExample"
+        },
+        "name" : "Example of audit event for a [CH:MHD-1] transaction at Source",
+        "description" : "This example shows an  made by the Document Source for a CH:MHD-1 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-updatedocumentmetadata-audit-source"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti130CreateExample"
+        },
+        "name" : "Example of audit event for a [ITI-130] create transaction",
+        "description" : "This example shows an AuditEvent made by the Data Source for a ITI-130 transaction that created a new PractitionerRole (relationship).",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti130Create"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti130DeleteExample"
+        },
+        "name" : "Example of audit event for a [ITI-130] delete transaction",
+        "description" : "This example shows an AuditEvent made by the Directory for a ITI-130 transaction that deleted an Organization.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti130Delete"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti130UpdateExample"
+        },
+        "name" : "Example of audit event for a [ITI-130] update transaction",
+        "description" : "This example shows an AuditEvent made by the Directory for a ITI-130 transaction that updated an existing Practitioner.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti130Update"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventPpq3CreateExample"
+        },
+        "name" : "Example of audit event for a [PPQ-3] create transaction",
+        "description" : "This example shows an  made by the Policy Source for a PPQ-3 transaction that added a new Consent.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventPpq3Create"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventPpq3DeleteExample"
+        },
+        "name" : "Example of audit event for a [PPQ-3] delete transaction",
+        "description" : "This example shows an AuditEvent made by the Policy Source for a PPQ-3 transaction that deleted a Consent.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventPpq3Delete"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventPpq3UpdateExample"
+        },
+        "name" : "Example of audit event for a [PPQ-3] update transaction",
+        "description" : "This example shows an  made by the Policy Repository for a PPQ-3 transaction that updated an existing Consent.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventPpq3Update"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventPpq5ConsumerExample"
+        },
+        "name" : "Example of audit event for a [PPQ-5] transaction at Consumer",
+        "description" : "This example shows an  made by the Policy Consumer for a PPQ-5 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventPpq5Consumer"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventPpq5RepositoryExample"
+        },
+        "name" : "Example of audit event for a [PPQ-5] transaction at Repository",
+        "description" : "This example shows an  made by the Policy Repository for a PPQ-5 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventPpq5Repository"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti104ManagerCreateExample"
+        },
+        "name" : "Example of audit event for an [ITI-104] add transaction at Manager",
+        "description" : "This example shows an  made by the Patient Identifier Cross-reference Manager for an ITI-104 transaction that added a new Patient.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti104ManagerCreate"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti104SourceExample"
+        },
+        "name" : "Example of audit event for an [ITI-104] transaction at Source",
+        "description" : "This example shows an  made by the Patient Identity Source for an ITI-104 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti104Source"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti104ManagerUpdateExample"
+        },
+        "name" : "Example of audit event for an [ITI-104] update transaction at Manager",
+        "description" : "This example shows an  made by the Patient Identifier Cross-reference Manager for an ITI-104 transaction that revised an existing Patient.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti104ManagerUpdate"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti119ConsumerExample"
+        },
+        "name" : "Example of audit event for an [ITI-119] transaction at Consumer",
+        "description" : "This example shows an  made by the Patient Demographics Consumer for an ITI-119 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti119Consumer"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti119SupplierExample"
+        },
+        "name" : "Example of audit event for an [ITI-119] transaction at Supplier",
+        "description" : "This example shows an  made by the Patient Demographics Supplier for an ITI-119 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti119Supplier"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti65RecipientExample"
+        },
+        "name" : "Example of audit event for an [ITI-65] transaction at Recipient",
+        "description" : "This example shows an  made by the Document Recipient for an ITI-65 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti65Recipient"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti65SourceExample"
+        },
+        "name" : "Example of audit event for an [ITI-65] transaction at Source",
+        "description" : "This example shows an  made by the Document Source for an ITI-65 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti65Source"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti67ConsumerExample"
+        },
+        "name" : "Example of audit event for an [ITI-67] transaction at Consumer",
+        "description" : "This example shows an  made by the Document Consumer for an ITI-67 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti67Consumer"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti67ResponderExample"
+        },
+        "name" : "Example of audit event for an [ITI-67] transaction at Responder",
+        "description" : "This example shows an  made by the Document Responder for an ITI-67 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti67Responder"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti68ConsumerExample"
+        },
+        "name" : "Example of audit event for an [ITI-68] transaction at Consumer",
+        "description" : "This example shows an  made by the Document Consumer for an ITI-68 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti68Consumer"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti68ResponderExample"
+        },
+        "name" : "Example of audit event for an [ITI-68] transaction at Responder",
+        "description" : "This example shows an  made by the Document Responder for an ITI-68 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti68Responder"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti83ConsumerExample"
+        },
+        "name" : "Example of audit event for an [ITI-83] transaction at Consumer",
+        "description" : "This example shows an  made by the Patient Identifier Cross-reference Consumer for an ITI-83 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti83Consumer"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti83ManagerExample"
+        },
+        "name" : "Example of audit event for an [ITI-83] transaction at Manager",
+        "description" : "This example shows an  made by the Patient Identifier Cross-reference Manager for an ITI-83 transaction.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti83Manager"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti90QueryExample"
+        },
+        "name" : "Example of audit event for an [ITI-90] query transaction",
+        "description" : "This example shows an  made by the Directory for an ITI-90 transaction that searched Practitioners.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti90Query"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "AuditEvent"
+          }
+        ],
+        "reference" : {
+          "reference" : "AuditEvent/ChAuditEventIti90ReadExample"
+        },
+        "name" : "Example of audit event for an [ITI-90] read transaction",
+        "description" : "This example shows an  made by the Query Client for an ITI-90 transaction that read an Organization.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ChAuditEventIti90Read"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/ChAuditEventPpq4Example"
+        },
+        "name" : "Example of bundle of audit events for a [PPQ-4] transaction",
+        "description" : "This example shows a Bundle of AuditEvents made by the Policy Source for a PPQ-4 transaction.",
+        "exampleBoolean" : true
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/HpdAuditEventType"
+        },
+        "name" : "HpdAuditEventType",
+        "description" : "HpdAuditEventType",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:complex-type"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/ch-atc-uniqueid-identifier"
+        },
+        "name" : "Identifier for XDSDocumentEntry.uniqueId",
+        "description" : "Identifier for XDSDocumentEntry.uniqueId",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CodeSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "CodeSystem/1.3.6.1.4.1.19376.1.2.27.1"
+        },
+        "name" : "IHE XCPD Codesystem more attributes requested",
+        "description" : "Codes for indicating which additional attributes are requested to lower the results number.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "NamingSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "NamingSystem/IheEventTypeCode"
+        },
+        "name" : "IheEventTypeCode",
+        "description" : "NamingSystem for event type code from IHE.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "NamingSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "NamingSystem/IheItiXds2013UniqueId"
+        },
+        "name" : "IheItiXds2013UniqueId",
+        "description" : "NamingSystem for uniqueId from IHE.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "NamingSystem"
+          }
+        ],
+        "reference" : {
+          "reference" : "NamingSystem/Ldap"
+        },
+        "name" : "Ldap",
+        "description" : "NamingSystem for Lightweight Directory Access Protocol (LDAP); [https://www.ietf.org/rfc/rfc4514.html](https://www.ietf.org/rfc/rfc4514.html).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:complex-type"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/LdapIdentifier"
+        },
+        "name" : "LDAP Identifier",
+        "description" : "Identifier with an LDAP DN",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.mCSD.DataSource"
+        },
+        "name" : "mCSD Data Source (client)",
+        "description" : "CapabilityStatement for Data Source Actor in the IHE IT Infrastructure Technical Framework Supplement IHE mCSD.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.mCSD.Directory"
+        },
+        "name" : "mCSD Directory (server)",
+        "description" : "CapabilityStatement for Server Actor in the IHE IT Infrastructure Technical Framework Supplement IHE mCSD.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/FindMatchingCareServicesResponse"
+        },
+        "name" : "mCSD Find Matching Care Services Response Bundle",
+        "description" : "An example of ITI-90 response Bundle in the profile CH mCSD",
+        "exampleBoolean" : true
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/CommunityA"
+        },
+        "name" : "mCSD Organization Community A",
+        "description" : "An example of CHmCSDOrganization that contains the same information as Community A in the Swiss examples (uid=CommunityA,OU=CHCommunity,DC=CPI,O=BAG,C=ch)",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/PraxisP"
+        },
+        "name" : "mCSD Organization Praxis P",
+        "description" : "An example of CHmCSDOrganization that contains the same information as Praxis P in the Swiss examples (uid=CommunityA:00000001001,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch)",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/SpitalX"
+        },
+        "name" : "mCSD Organization Spital X",
+        "description" : "An example of CHmCSDOrganization that contains the same information as Spital X in the Swiss examples (uid=CommunityA:00000001000,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch)",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/SpitalXDept3"
+        },
+        "name" : "mCSD Organization Spital X Dept. 3",
+        "description" : "An example of CHmCSDOrganization that contains the same information as Spital X, Dept. 3 in the Swiss examples (uid=CommunityA:00000001004,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch)",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Practitioner"
+          }
+        ],
+        "reference" : {
+          "reference" : "Practitioner/DrPeterPan"
+        },
+        "name" : "mCSD Practitioner Dr. Peter Pan",
+        "description" : "An example of CHmCSDPractitioner that contains the same information as Dr. Peter Pan in the Swiss examples (uid=CommunityA:00000003002,OU=HCProfessional,DC=HPD,O=BAG,C=ch)",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Practitioner"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "PractitionerRole"
+          }
+        ],
+        "reference" : {
+          "reference" : "PractitionerRole/PeterPanPraxisP"
+        },
+        "name" : "mCSD PractitionerRole Dr. Peter Pan at Praxis P",
+        "description" : "An example of CHmCSDPractitionerRole that contains the same information as Dr. Peter Pan - Praxis P Relationship in the Swiss examples (CN=CommunityA:00000001001,OU=Relationship,DC=HPD,O=BAG,C=ch)",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "PractitionerRole"
+          }
+        ],
+        "reference" : {
+          "reference" : "PractitionerRole/PeterPanSpitalXDept3"
+        },
+        "name" : "mCSD PractitionerRole Dr. Peter Pan at Spital X Dept. 3",
+        "description" : "An example of CHmCSDPractitionerRole that contains the same information as Dr. Peter Pan - Spital X, Dept. 3 Relationship in the Swiss examples (CN=CommunityA:00000001004,OU=Relationship,DC=HPD,O=BAG,C=ch)",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.mCSD.QueryClient"
+        },
+        "name" : "mCSD Query Client (client)",
+        "description" : "CapabilityStatement for Client Actor in the IHE IT Infrastructure Technical Framework Supplement IHE mCSD.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/mCSD-No-peer-Organization-SpitalX-Osteopathie"
+        },
+        "name" : "mCSD-No-peer-mcsd-Organization-SpitalX-Osteopathie",
+        "description" : "Resource Organization SpitalX-Osteopathie",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/mCSD-No-peer-Organization-SpitalX"
+        },
+        "name" : "mCSD-No-peer-Organization-SpitalX",
+        "description" : "Resource Organization SpitalX",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Practitioner"
+          }
+        ],
+        "reference" : {
+          "reference" : "Practitioner/mCSD-No-peer-Practitioner-DrAndrews"
+        },
+        "name" : "mCSD-No-peer-Practitioner-DrAndrews",
+        "description" : "Resource Practitioner DrAndrews",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Practitioner"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Practitioner"
+          }
+        ],
+        "reference" : {
+          "reference" : "Practitioner/mCSD-No-peer-Practitioner-DrMeier"
+        },
+        "name" : "mCSD-No-peer-Practitioner-DrMeier",
+        "description" : "Resource Practitioner DrMeier",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Practitioner"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Practitioner"
+          }
+        ],
+        "reference" : {
+          "reference" : "Practitioner/mCSD-No-peer-Practitioner-DrReynolds"
+        },
+        "name" : "mCSD-No-peer-Practitioner-DrReynolds",
+        "description" : "Resource Practitioner DrReynolds",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Practitioner"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "PractitionerRole"
+          }
+        ],
+        "reference" : {
+          "reference" : "PractitionerRole/mCSD-No-peer-PractitionerRole-AnnAndrewsSpitalXOsteopathie"
+        },
+        "name" : "mCSD-No-peer-PractitionerRole-AnnAndrewsSpitalXOsteopathie",
+        "description" : "Resource PractitionerRole AnnAndrewsSpitalXOsteopathie",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "PractitionerRole"
+          }
+        ],
+        "reference" : {
+          "reference" : "PractitionerRole/mCSD-No-peer-PractitionerRole-HansMeierSpitalX"
+        },
+        "name" : "mCSD-No-peer-PractitionerRole-HansMeierSpitalX",
+        "description" : "Resource PractitionerRole HansMeierSpitalX",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "PractitionerRole"
+          }
+        ],
+        "reference" : {
+          "reference" : "PractitionerRole/mCSD-No-peer-PractitionerRole-RichardReynoldsSpitalX"
+        },
+        "name" : "mCSD-No-peer-PractitionerRole-RichardReynoldsSpitalX",
+        "description" : "Resource PractitionerRole RichardReynoldsSpitalX",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/mCSD-Peer-to-peer-Organization-Auryn-Spital"
+        },
+        "name" : "mCSD-Peer-to-peer-Organization-Auryn-Spital",
+        "description" : "Resource Organization Auryn-Spital",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/mCSD-Peer-to-peer-Organization-Fuchur-Klinik"
+        },
+        "name" : "mCSD-Peer-to-peer-Organization-Fuchur-Klinik",
+        "description" : "Resource Organization Fuchur-Klinik",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Practitioner"
+          }
+        ],
+        "reference" : {
+          "reference" : "Practitioner/mCSD-Peer-to-peer-Practitioner-DrBux"
+        },
+        "name" : "mCSD-Peer-to-peer-Practitioner-DrBux",
+        "description" : "Resource Practitioner DrBux",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Practitioner"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Practitioner"
+          }
+        ],
+        "reference" : {
+          "reference" : "Practitioner/mCSD-Peer-to-peer-Practitioner-DrGmork"
+        },
+        "name" : "mCSD-Peer-to-peer-Practitioner-DrGmork",
+        "description" : "Resource Practitioner DrGmork",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Practitioner"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Practitioner"
+          }
+        ],
+        "reference" : {
+          "reference" : "Practitioner/mCSD-Peer-to-peer-Practitioner-DrKoreander"
+        },
+        "name" : "mCSD-Peer-to-peer-Practitioner-DrKoreander",
+        "description" : "Resource Practitioner DrKoreander",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Practitioner"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "PractitionerRole"
+          }
+        ],
+        "reference" : {
+          "reference" : "PractitionerRole/mCSD-Peer-to-peer-PractitionerRole-BastianBuxAuryn-Spital"
+        },
+        "name" : "mCSD-Peer-to-peer-PractitionerRole-BastianBuxAuryn-Spital",
+        "description" : "Resource PractitionerRole BastianBuxAuryn-Spital",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "PractitionerRole"
+          }
+        ],
+        "reference" : {
+          "reference" : "PractitionerRole/mCSD-Peer-to-peer-PractitionerRole-GisiGmorkFurchur-Klinik"
+        },
+        "name" : "mCSD-Peer-to-peer-PractitionerRole-GisiGmorkFurchur-Klinik",
+        "description" : "Resource PractitionerRole GisiGmorkFurchur-Klinik",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "PractitionerRole"
+          }
+        ],
+        "reference" : {
+          "reference" : "PractitionerRole/mCSD-Peer-to-peer-PractitionerRole-KarlKoreanderFurchur-Klinik"
+        },
+        "name" : "mCSD-Peer-to-peer-PractitionerRole-KarlKoreanderFurchur-Klinik",
+        "description" : "Resource PractitionerRole KarlKoreanderFuchur-Klinik",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.MHD.DocumentConsumer"
+        },
+        "name" : "MHD Document Consumer (client)",
+        "description" : "CapabilityStatement for Actor MHD Document Consumer (client).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.MHD.DocumentRecipient"
+        },
+        "name" : "MHD Document Recipient (server)",
+        "description" : "CapabilityStatement for Actor MHD Document Recipient (server).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.MHD.DocumentResponder"
+        },
+        "name" : "MHD Document Responder (server)",
+        "description" : "CapabilityStatement for Actor MHD Document Responder (server).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.MHD.DocumentSource"
+        },
+        "name" : "MHD Document Source (client)",
+        "description" : "CapabilityStatement for Actor MHD Document Source (client).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/Bundle-FindDocumentReferences"
+        },
+        "name" : "MHD Find DocumentReferences",
+        "description" : "MHD Find DocumentReferences - Bundle as Response",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-documentreference-comprehensive-bundle"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "OperationOutcome"
+          }
+        ],
+        "reference" : {
+          "reference" : "OperationOutcome/MhdOperationOutcomeErrorXdsMetadataIdentifier"
+        },
+        "name" : "MHD OperationOutcome DocumentReference update error identifiers",
+        "description" : "Error OperationOutcome that the updated DocumentReference has not same values for the identifiers",
+        "exampleBoolean" : true
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "OperationOutcome"
+          }
+        ],
+        "reference" : {
+          "reference" : "OperationOutcome/MhdOperationOutcomeErrorXDSPatientIDReconciliationError"
+        },
+        "name" : "MHD OperationOutcome DocumentReference update error patient id reconciliation",
+        "description" : "Error OperationOutcome that the updated DocumentReference references not the same patient",
+        "exampleBoolean" : true
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "OperationOutcome"
+          }
+        ],
+        "reference" : {
+          "reference" : "OperationOutcome/MhdOperationOutcomeErrorUnmodifiableMetadataError"
+        },
+        "name" : "MHD OperationOutcome DocumentReference update error unmodifiable metadata",
+        "description" : "Error OperationOutcome that the updated DocumentReference changed unmodifiable metadata",
+        "exampleBoolean" : true
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/BundleProvideDocument"
+        },
+        "name" : "MHD Provide Document Bundle for a PDF Document",
+        "description" : "MHD Provide Document Bundle for a PDF Document",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-providedocumentbundle-comprehensive"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/BundleProvideDocument-Response"
+        },
+        "name" : "MHD Provide Document Bundle Response for PDF publication",
+        "description" : "MHD Provide Document Bundle Response for PDF publication",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-providedocumentbundle-comprehensive-response"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:complex-type"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/OidIdentifier"
+        },
+        "name" : "Oid Identifier",
+        "description" : "Identifier with an oid",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/PDQm-QueryResponse"
+        },
+        "name" : "PDQm Match response message",
+        "description" : "CH PDQm Match response message example result for Franz Muster, 27.1.1955",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-matchparametersout"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/PDQm-QueryResponseTooManyResults"
+        },
+        "name" : "PDQm Match response message too many results",
+        "description" : "CH PDQm Match response message with too many results indication",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-matchparametersout"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "OperationOutcome"
+          }
+        ],
+        "reference" : {
+          "reference" : "OperationOutcome/PDQmResponseMoreAttributesRequested"
+        },
+        "name" : "PDQm OperationOutcome More Attributes Requested Example",
+        "description" : "An example on the OperationOutcome for indicating which additional attributes are requested to lower the results number.",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-moreattributesrequested"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Patient"
+          }
+        ],
+        "reference" : {
+          "reference" : "Patient/FranzMusterNeedsAbsoluteUrl"
+        },
+        "name" : "PDQm Patient Franz Muster (Full URL)",
+        "description" : "Example Patient",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-patient"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.PDQm.Supplier"
+        },
+        "name" : "PDQm Supplier (server)",
+        "description" : "The PDQm Patient Demographics Supplier Actor requirements CapabilityStatement expresses the requirements that shall be provided.\n\n- Query against the FHIR endpoint to the Patient Resource endpoint\n- Using FHIR R4\n- shall support both json or xml encoding\n- TLS SHALL be used together with IUA basic access token\n- SHALL support the PDQm $match operation\n- SHALL return Patient Resources conforming to the PDQm Patient Profile",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Organization"
+          }
+        ],
+        "reference" : {
+          "reference" : "Organization/GruppenpraxisCH"
+        },
+        "name" : "PIXm Feed Provider Organization Gruppenpraxis",
+        "description" : "Example Organization",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pixm-feed-organization"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "OperationDefinition"
+          }
+        ],
+        "reference" : {
+          "reference" : "OperationDefinition/CH.PIXm"
+        },
+        "name" : "PIXm Find patient matches",
+        "description" : "Find patient matches using IHE-PIXm Profile",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Parameters"
+          }
+        ],
+        "reference" : {
+          "reference" : "Parameters/ParametersPIXmInput"
+        },
+        "name" : "PIXm Parameters Query Input",
+        "description" : "Example Input Parameters Mobile Patient Identifier Cross-reference Query",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pixm-in-parameters"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Parameters"
+          }
+        ],
+        "reference" : {
+          "reference" : "Parameters/ParametersPIXmOutput"
+        },
+        "name" : "PIXm Parameters Query Output",
+        "description" : "Example Output Parameters Mobile Patient Identifier Cross-reference Query",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pixm-out-parameters"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Patient"
+          }
+        ],
+        "reference" : {
+          "reference" : "Patient/PatientPIXmFeed"
+        },
+        "name" : "PIXm Patient Feed",
+        "description" : "Example PIXm Patient for Feed",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pixm-patient-feed"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/PolicyAuditEventType"
+        },
+        "name" : "PolicyAuditEventType",
+        "description" : "PolicyAuditEventType",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Consent"
+          }
+        ],
+        "reference" : {
+          "reference" : "Consent/PpqmConsentTemplate201Example"
+        },
+        "name" : "PPQm Consent for template 201",
+        "description" : "CH:PPQm Consent for template 201 -- Full access for the patient",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate201"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Consent"
+          }
+        ],
+        "reference" : {
+          "reference" : "Consent/PpqmConsentTemplate202Example"
+        },
+        "name" : "PPQm Consent for template 202",
+        "description" : "CH:PPQm Consent for template 202 -- Read access in emergency mode",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate202"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Consent"
+          }
+        ],
+        "reference" : {
+          "reference" : "Consent/PpqmConsentTemplate203Example"
+        },
+        "name" : "PPQm Consent for template 203",
+        "description" : "CH:PPQm Consent for template 203 -- Default provide level",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate203"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Consent"
+          }
+        ],
+        "reference" : {
+          "reference" : "Consent/PpqmConsentTemplate301Example"
+        },
+        "name" : "PPQm Consent for template 301",
+        "description" : "CH:PPQm Consent for template 301 -- Read access for a healthcare professional, without delegation",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate301"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Consent"
+          }
+        ],
+        "reference" : {
+          "reference" : "Consent/PpqmConsentTemplate302Example"
+        },
+        "name" : "PPQm Consent for template 302",
+        "description" : "CH:PPQm Consent for template 302 -- Read access for a group of healthcare professionals",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate302"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Consent"
+          }
+        ],
+        "reference" : {
+          "reference" : "Consent/PpqmConsentTemplate303Example"
+        },
+        "name" : "PPQm Consent for template 303",
+        "description" : "CH:PPQm Consent for template 303 -- Full access for a representative",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate303"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Consent"
+          }
+        ],
+        "reference" : {
+          "reference" : "Consent/PpqmConsentTemplate304Example"
+        },
+        "name" : "PPQm Consent for template 304",
+        "description" : "CH:PPQm Consent for template 304 -- Read access for a healthcare professional, with delegation",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate304"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/PpqmFeedRequestBundleDelete"
+        },
+        "name" : "PPQm Feed Request Bundle (DELETE)",
+        "description" : "CH:PPQm Feed Request Bundle for HTTP method DELETE -- delete policy sets",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmFeedRequestBundle"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/PpqmFeedRequestBundleAdd"
+        },
+        "name" : "PPQm Feed Request Bundle (POST)",
+        "description" : "CH:PPQm Feed Request Bundle for HTTP method POST -- add new policy sets",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmFeedRequestBundle"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/PpqmFeedRequestBundleUpdate"
+        },
+        "name" : "PPQm Feed Request Bundle (PUT)",
+        "description" : "CH:PPQm Feed Request Bundle for HTTP method PUT -- conditionally update policy sets",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmFeedRequestBundle"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/6de90529-3baa-4157-9bef-e945363b2c39"
+        },
+        "name" : "PPQm Feed Response Bundle",
+        "description" : "CH:PPQm Feed Response Bundle",
+        "exampleBoolean" : true
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.PPQm.PolicyRepository"
+        },
+        "name" : "PPQm Policy Repository (server)",
+        "description" : "CapabilityStatement for the Policy Repository actor in the CH:PPQm profile (server).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/CH.PPQm.PolicySourceConsumer"
+        },
+        "name" : "PPQm Policy Source and Consumer (client)",
+        "description" : "CapabilityStatement for the Policy Source and Policy Consumer actors in the CH:PPQm profile (client).",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "Bundle"
+          }
+        ],
+        "reference" : {
+          "reference" : "Bundle/PpqmRetrieveResponseBundle"
+        },
+        "name" : "PPQm Retrieve Response Bundle",
+        "description" : "CH:PPQm Retrieve Response Bundle",
+        "exampleCanonical" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmRetrieveResponseBundle"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/AccessAuditTrailEvent"
+        },
+        "name" : "Profile on AccessAuditTrailEvent for CH ATC",
+        "description" : "This profile defines the content of the access audit trail event which a community has to provide for a patients audit trail.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/DocumentAuditEvent"
+        },
+        "name" : "Profile on DocumentAuditEvent for CH ATC",
+        "description" : "This profile defines the content of the document audit events which a community has to provide for a patients audit trail.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/HpdAuditEvent"
+        },
+        "name" : "Profile on HpdAuditEvent for CH ATC",
+        "description" : "This profile defines the content of the HPD audit events which a community has to provide for a patients audit trail.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/PolicyAuditEvent"
+        },
+        "name" : "Profile on PolicyAuditEvent for CH ATC",
+        "description" : "This profile defines the content of the policy audit events which a community has to provide for a patients audit trail.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "ValueSet"
+          }
+        ],
+        "reference" : {
+          "reference" : "ValueSet/restricted-http-verb-vs"
+        },
+        "name" : "Restricted HTTP Verb Value Set",
+        "description" : "Value set for allowed HTTP verbs, excluding GET operations.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/CH-ATC.ITI-81.Response"
+        },
+        "name" : "Retrieve CH ATC ATNA Audit Event [ITI-81] Response",
+        "description" : "This profile defines the response to the [ITI-81] query. The response is a search set including all audit events which a community has to provide for a patients audit trail.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "SearchParameter"
+          }
+        ],
+        "reference" : {
+          "reference" : "SearchParameter/AuditEvent-entity-identifier"
+        },
+        "name" : "Search Parameter AuditEvent entity.identifier",
+        "description" : "Defines the IHE RESTFul ATNA Query Parameter entity.identifier for an AuditEvent.",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "StructureDefinition:resource"
+          }
+        ],
+        "reference" : {
+          "reference" : "StructureDefinition/CH.mCSD.ProcessCareServices"
+        },
+        "name" : "Transaction Bundle Profile for ITI-130 Process Care Services Resources Request Message",
+        "description" : "A profile on the Bundle transaction for ITI-130 Process Care Services Resources Request Message",
+        "exampleBoolean" : false
+      }
+    ],
+    "page" : {
+      "extension" : [
+        {
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "toc.html"
+        }
+      ],
+      "nameUrl" : "toc.html",
+      "title" : "Table of Contents",
+      "generation" : "html",
+      "page" : [
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "index.html"
+            }
+          ],
+          "nameUrl" : "index.html",
+          "title" : "Home",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "volume1.html"
+            }
+          ],
+          "nameUrl" : "volume1.html",
+          "title" : "Volume 1",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-iua.html"
+            }
+          ],
+          "nameUrl" : "iti-iua.html",
+          "title" : "Internet User Authorization (IUA)",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-pdqm.html"
+            }
+          ],
+          "nameUrl" : "iti-pdqm.html",
+          "title" : "Patient Demographics Query for Mobile (PDQm)",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-pixm.html"
+            }
+          ],
+          "nameUrl" : "iti-pixm.html",
+          "title" : "Patient Identifier Cross-reference for Mobile (PIXm)",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-mhd.html"
+            }
+          ],
+          "nameUrl" : "iti-mhd.html",
+          "title" : "Mobile Access to Health Documents (MHD)",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-restful-atna.html"
+            }
+          ],
+          "nameUrl" : "iti-restful-atna.html",
+          "title" : "RESTful ATNA",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-mcsd.html"
+            }
+          ],
+          "nameUrl" : "iti-mcsd.html",
+          "title" : "Mobile Care Services Discovery (mCSD)",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "ppqm.html"
+            }
+          ],
+          "nameUrl" : "ppqm.html",
+          "title" : "Privacy Policy Query for Mobile (CH:PPQm)",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "ch-atc.html"
+            }
+          ],
+          "nameUrl" : "ch-atc.html",
+          "title" : "Audit Trail Consumption (CH:ATC)",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "volume2.html"
+            }
+          ],
+          "nameUrl" : "volume2.html",
+          "title" : "Volume 2",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-71.html"
+            }
+          ],
+          "nameUrl" : "iti-71.html",
+          "title" : "Get Access Token [ITI-71]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-72.html"
+            }
+          ],
+          "nameUrl" : "iti-72.html",
+          "title" : "Incorporate Access Token [ITI-72]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-103.html"
+            }
+          ],
+          "nameUrl" : "iti-103.html",
+          "title" : "Get Authorization Server Metadata [ITI-103]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-119.html"
+            }
+          ],
+          "nameUrl" : "iti-119.html",
+          "title" : "Patient Demographics Match [ITI-119]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-83.html"
+            }
+          ],
+          "nameUrl" : "iti-83.html",
+          "title" : "Mobile Patient Identifier Cross-reference Query [ITI-83]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-104.html"
+            }
+          ],
+          "nameUrl" : "iti-104.html",
+          "title" : "Patient Identity Feed FHIR [ITI-104]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-65.html"
+            }
+          ],
+          "nameUrl" : "iti-65.html",
+          "title" : "Provide Document Bundle [ITI-65]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-67.html"
+            }
+          ],
+          "nameUrl" : "iti-67.html",
+          "title" : "Find Document References [ITI-67]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-68.html"
+            }
+          ],
+          "nameUrl" : "iti-68.html",
+          "title" : "Retrieve Document [ITI-68]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-81.html"
+            }
+          ],
+          "nameUrl" : "iti-81.html",
+          "title" : "Retrieve ATNA Audit Event [ITI-81]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "ch-mhd-1.html"
+            }
+          ],
+          "nameUrl" : "ch-mhd-1.html",
+          "title" : "Update Document Metadata [CH:MHD-1]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-20.html"
+            }
+          ],
+          "nameUrl" : "iti-20.html",
+          "title" : "Record Audit Event [ITI-20]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-90.html"
+            }
+          ],
+          "nameUrl" : "iti-90.html",
+          "title" : "Find Matching Care Services [ITI-90]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "iti-130.html"
+            }
+          ],
+          "nameUrl" : "iti-130.html",
+          "title" : "Care Services Feed [ITI-130]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "ppq-3.html"
+            }
+          ],
+          "nameUrl" : "ppq-3.html",
+          "title" : "Mobile Privacy Policy Feed [PPQ-3]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "ppq-4.html"
+            }
+          ],
+          "nameUrl" : "ppq-4.html",
+          "title" : "Mobile Privacy Policy Bundle Feed [PPQ-4]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "ppq-5.html"
+            }
+          ],
+          "nameUrl" : "ppq-5.html",
+          "title" : "Mobile Privacy Policy Retrieve [PPQ-5]",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "volume3.html"
+            }
+          ],
+          "nameUrl" : "volume3.html",
+          "title" : "Volume 3 - CH:ATC Audit Event Content Profiles",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "appendix.html"
+            }
+          ],
+          "nameUrl" : "appendix.html",
+          "title" : "Appendix",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "profiles.html"
+            }
+          ],
+          "nameUrl" : "profiles.html",
+          "title" : "Profiles",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "extensions.html"
+            }
+          ],
+          "nameUrl" : "extensions.html",
+          "title" : "Extensions",
+          "generation" : "html"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "terminology.html"
+            }
+          ],
+          "nameUrl" : "terminology.html",
+          "title" : "Terminology",
+          "generation" : "html"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "capstatements.html"
+            }
+          ],
+          "nameUrl" : "capstatements.html",
+          "title" : "Capability Statements",
+          "generation" : "html"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "operations.html"
+            }
+          ],
+          "nameUrl" : "operations.html",
+          "title" : "Operations",
+          "generation" : "html"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "sequencediagrams.html"
+            }
+          ],
+          "nameUrl" : "sequencediagrams.html",
+          "title" : "Sequence Diagrams",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "tracecontext.html"
+            }
+          ],
+          "nameUrl" : "tracecontext.html",
+          "title" : "Trace Context",
+          "generation" : "markdown"
+        },
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "changelog.html"
+            }
+          ],
+          "nameUrl" : "changelog.html",
+          "title" : "Open Issues / Change Log",
+          "generation" : "markdown"
+        }
+      ]
+    },
+    "parameter" : [
+      {
+        "code" : "path-pages",
+        "value" : "input/pages"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/capabilities"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/examples"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/extensions"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/models"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/operations"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/profiles"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/resources"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/vocabulary"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/maps"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/testing"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "input/history"
+      },
+      {
+        "code" : "path-resource",
+        "value" : "fsh-generated/resources"
+      },
+      {
+        "code" : "path-pages",
+        "value" : "template/config"
+      },
+      {
+        "code" : "path-pages",
+        "value" : "input/images"
+      },
+      {
+        "code" : "path-tx-cache",
+        "value" : "input-cache/txcache"
+      }
+    ]
+  }
+}
+
+```

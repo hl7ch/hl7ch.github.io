@@ -1,0 +1,132 @@
+# CH ATC - Create Access Right for Healthcare professional - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH ATC - Create Access Right for Healthcare professional**
+
+## Example AuditEvent: CH ATC - Create Access Right for Healthcare professional
+
+22.09.2020 09:47: Jakob Wieder-Gesund assigned Access Level delegation-and-restricted till 31.12.2020 08:00 to Dr. med. Hans Allzeitbereit
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "AuditEvent",
+  "id" : "atc-pol-create-acc-right",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PolicyAuditEvent"
+    ]
+  },
+  "type" : {
+    "system" : "http://dicom.nema.org/resources/ontology/DCM",
+    "code" : "110106",
+    "display" : "Export"
+  },
+  "subtype" : [
+    {
+      "system" : "urn:oid:2.16.756.5.30.1.127.3.10.7",
+      "code" : "ATC_POL_CREATE_AUT_PART_AL",
+      "display" : "Authorize participants to access level/date"
+    }
+  ],
+  "action" : "C",
+  "recorded" : "2020-10-09T07:47:00Z",
+  "outcome" : "0",
+  "agent" : [
+    {
+      "role" : [
+        {
+          "coding" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+              "code" : "PAT",
+              "display" : "Patient"
+            }
+          ]
+        }
+      ],
+      "name" : "Jakob Wieder-Gesund",
+      "requestor" : true
+    }
+  ],
+  "source" : {
+    "observer" : {
+      "identifier" : {
+        "system" : "urn:ietf:rfc:3986",
+        "value" : "urn:oid:7.8.9.10.12"
+      }
+    }
+  },
+  "entity" : [
+    {
+      "what" : {
+        "identifier" : {
+          "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+          "value" : "761337610469261945"
+        }
+      },
+      "type" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+        "code" : "1",
+        "display" : "Person"
+      },
+      "role" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+        "code" : "1",
+        "display" : "Patient"
+      }
+    },
+    {
+      "what" : {
+        "identifier" : {
+          "system" : "urn:oid:2.51.1.3",
+          "value" : "7601000234438"
+        }
+      },
+      "type" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+        "code" : "2",
+        "display" : "System Object"
+      },
+      "role" : {
+        "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+        "code" : "HCP",
+        "display" : "Healthcare professional"
+      },
+      "name" : "Dr. med. Hans Allzeitbereit",
+      "detail" : [
+        {
+          "type" : "AccessLevel",
+          "valueBase64Binary" : "dXJuOmUtaGVhbHRoLXN1aXNzZToyMDE1OnBvbGljaWVzOmFjY2Vzcy1sZXZlbDpkZWxlZ2F0aW9uLWFuZC1yZXN0cmljdGVk"
+        },
+        {
+          "type" : "AccessLimitedToDate",
+          "valueBase64Binary" : "MjAyMC0xMi0zMQ=="
+        }
+      ]
+    },
+    {
+      "what" : {
+        "identifier" : {
+          "value" : "00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-00"
+        }
+      },
+      "type" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+        "code" : "4",
+        "display" : "Other"
+      },
+      "role" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+        "code" : "26",
+        "display" : "Processing Element"
+      }
+    }
+  ]
+}
+
+```

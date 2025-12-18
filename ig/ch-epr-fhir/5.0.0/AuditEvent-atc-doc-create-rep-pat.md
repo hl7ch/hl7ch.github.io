@@ -1,0 +1,171 @@
+# CH ATC - Creation of a Document - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH ATC - Creation of a Document**
+
+## Example AuditEvent: CH ATC - Creation of a Document
+
+Upload of Record Artifact 10.10.2020 18:29 from Julia Helfe-Gern on behalf of Jakob Wieder-Gesund
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "AuditEvent",
+  "id" : "atc-doc-create-rep-pat",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/DocumentAuditEvent"
+    ]
+  },
+  "type" : {
+    "system" : "http://dicom.nema.org/resources/ontology/DCM",
+    "code" : "110106",
+    "display" : "Export"
+  },
+  "subtype" : [
+    {
+      "system" : "urn:oid:2.16.756.5.30.1.127.3.10.7",
+      "code" : "ATC_DOC_CREATE",
+      "display" : "Document upload"
+    }
+  ],
+  "action" : "C",
+  "recorded" : "2020-10-10T16:29:00Z",
+  "outcome" : "0",
+  "purposeOfEvent" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:oid:2.16.756.5.30.1.127.3.10.5",
+          "code" : "NORM",
+          "display" : "Normal Access"
+        }
+      ]
+    }
+  ],
+  "agent" : [
+    {
+      "role" : [
+        {
+          "coding" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+              "code" : "PAT",
+              "display" : "Patient"
+            }
+          ]
+        }
+      ],
+      "name" : "Jakob Wieder-Gesund",
+      "requestor" : false
+    },
+    {
+      "role" : [
+        {
+          "coding" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+              "code" : "REP",
+              "display" : "Representative"
+            }
+          ]
+        }
+      ],
+      "who" : {
+        "identifier" : {
+          "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+          "value" : "761322222222222222"
+        }
+      },
+      "name" : "Julia Helfe-Gern",
+      "requestor" : true
+    }
+  ],
+  "source" : {
+    "observer" : {
+      "identifier" : {
+        "system" : "urn:ietf:rfc:3986",
+        "value" : "urn:oid:7.8.9.10.11"
+      }
+    }
+  },
+  "entity" : [
+    {
+      "what" : {
+        "identifier" : {
+          "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+          "value" : "761337610469261945"
+        }
+      },
+      "type" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+        "code" : "1",
+        "display" : "Person"
+      },
+      "role" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+        "code" : "1",
+        "display" : "Patient"
+      }
+    },
+    {
+      "what" : {
+        "identifier" : {
+          "system" : "urn:ihe:iti:xds:2013:uniqueId",
+          "value" : "1.2.3.4.5"
+        }
+      },
+      "type" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+        "code" : "2",
+        "display" : "System Object"
+      },
+      "role" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+        "code" : "3",
+        "display" : "Report"
+      },
+      "detail" : [
+        {
+          "type" : "Repository Unique Id",
+          "valueBase64Binary" : "MS4yLjM="
+        },
+        {
+          "type" : "homeCommunityID",
+          "valueBase64Binary" : "NS42LjcuOA=="
+        },
+        {
+          "type" : "EprDocumentTypeCode",
+          "valueBase64Binary" : "NDE5ODkxMDA4"
+        },
+        {
+          "type" : "title",
+          "valueBase64Binary" : "QXVzdHJpdHRzYmVyaWNodCB2b24gSnVsaWEgSGVsZmUtR2Vybg=="
+        }
+      ]
+    },
+    {
+      "what" : {
+        "identifier" : {
+          "value" : "00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-00"
+        }
+      },
+      "type" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+        "code" : "4",
+        "display" : "Other"
+      },
+      "role" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+        "code" : "26",
+        "display" : "Processing Element"
+      }
+    }
+  ]
+}
+
+```

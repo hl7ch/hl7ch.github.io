@@ -1,0 +1,337 @@
+# PPQm Feed Request Bundle (POST) - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **PPQm Feed Request Bundle (POST)**
+
+## Example Bundle: PPQm Feed Request Bundle (POST)
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "PpqmFeedRequestBundleAdd",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmFeedRequestBundle"
+    ]
+  },
+  "type" : "transaction",
+  "entry" : [
+    {
+      "resource" : {
+        "resourceType" : "Consent",
+        "id" : "PpqmConsentTemplate201Example",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate201"
+          ]
+        },
+        "text" : {
+          "status" : "empty",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Consent_PpqmConsentTemplate201Example\"> </a><p>Template 201 - Full access for the patient</p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://fhir.ch/ig/ch-epr-fhir/CodeSystem/PpqmConsentIdentifierType",
+                  "code" : "policySetId"
+                }
+              ]
+            },
+            "value" : "urn:uuid:57ab9b0d-7d97-4d85-9e4b-02bc7c939ad9"
+          },
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://fhir.ch/ig/ch-epr-fhir/CodeSystem/PpqmConsentIdentifierType",
+                  "code" : "templateId"
+                }
+              ]
+            },
+            "value" : "201"
+          }
+        ],
+        "status" : "active",
+        "scope" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/consentscope",
+              "code" : "patient-privacy"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                "code" : "INFA"
+              }
+            ]
+          }
+        ],
+        "patient" : {
+          "identifier" : {
+            "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+            "value" : "761337610000000002"
+          }
+        },
+        "policyRule" : {
+          "coding" : [
+            {
+              "system" : "urn:ietf:rfc:3986",
+              "code" : "urn:e-health-suisse:2015:policies:access-level:full"
+            }
+          ]
+        },
+        "provision" : {
+          "actor" : [
+            {
+              "role" : {
+                "coding" : [
+                  {
+                    "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+                    "code" : "PAT"
+                  }
+                ]
+              },
+              "reference" : {
+                "identifier" : {
+                  "type" : {
+                    "coding" : [
+                      {
+                        "system" : "urn:ietf:rfc:3986",
+                        "code" : "urn:e-health-suisse:2015:epr-spid"
+                      }
+                    ]
+                  },
+                  "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+                  "value" : "761337610000000002"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "request" : {
+        "method" : "POST",
+        "url" : "Consent"
+      }
+    },
+    {
+      "resource" : {
+        "resourceType" : "Consent",
+        "id" : "PpqmConsentTemplate202Example",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate202"
+          ]
+        },
+        "text" : {
+          "status" : "empty",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Consent_PpqmConsentTemplate202Example\"> </a><p>Template 202 - Read access in emergency mode</p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://fhir.ch/ig/ch-epr-fhir/CodeSystem/PpqmConsentIdentifierType",
+                  "code" : "policySetId"
+                }
+              ]
+            },
+            "value" : "urn:uuid:bf6c1fb6-2eb9-49ad-b96b-1a4ac55fc7bd"
+          },
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://fhir.ch/ig/ch-epr-fhir/CodeSystem/PpqmConsentIdentifierType",
+                  "code" : "templateId"
+                }
+              ]
+            },
+            "value" : "202"
+          }
+        ],
+        "status" : "active",
+        "scope" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/consentscope",
+              "code" : "patient-privacy"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                "code" : "INFA"
+              }
+            ]
+          }
+        ],
+        "patient" : {
+          "identifier" : {
+            "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+            "value" : "761337610000000002"
+          }
+        },
+        "policyRule" : {
+          "coding" : [
+            {
+              "system" : "urn:ietf:rfc:3986",
+              "code" : "urn:e-health-suisse:2015:policies:access-level:normal"
+            }
+          ]
+        },
+        "provision" : {
+          "actor" : [
+            {
+              "role" : {
+                "coding" : [
+                  {
+                    "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+                    "code" : "HCP"
+                  }
+                ]
+              },
+              "reference" : {
+                "display" : "all"
+              }
+            }
+          ],
+          "purpose" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.5",
+              "code" : "EMER"
+            }
+          ]
+        }
+      },
+      "request" : {
+        "method" : "POST",
+        "url" : "Consent"
+      }
+    },
+    {
+      "resource" : {
+        "resourceType" : "Consent",
+        "id" : "PpqmConsentTemplate203Example",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate203"
+          ]
+        },
+        "text" : {
+          "status" : "empty",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Consent_PpqmConsentTemplate203Example\"> </a><p>Template 203 - Default provide level</p></div>"
+        },
+        "identifier" : [
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://fhir.ch/ig/ch-epr-fhir/CodeSystem/PpqmConsentIdentifierType",
+                  "code" : "policySetId"
+                }
+              ]
+            },
+            "value" : "urn:uuid:710e4211-d431-430b-a849-1d689e74e4c2"
+          },
+          {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "http://fhir.ch/ig/ch-epr-fhir/CodeSystem/PpqmConsentIdentifierType",
+                  "code" : "templateId"
+                }
+              ]
+            },
+            "value" : "203"
+          }
+        ],
+        "status" : "active",
+        "scope" : {
+          "coding" : [
+            {
+              "system" : "http://terminology.hl7.org/CodeSystem/consentscope",
+              "code" : "patient-privacy"
+            }
+          ]
+        },
+        "category" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                "code" : "INFA"
+              }
+            ]
+          }
+        ],
+        "patient" : {
+          "identifier" : {
+            "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+            "value" : "761337610000000002"
+          }
+        },
+        "policyRule" : {
+          "coding" : [
+            {
+              "system" : "urn:ietf:rfc:3986",
+              "code" : "urn:e-health-suisse:2015:policies:provide-level:restricted"
+            }
+          ]
+        },
+        "provision" : {
+          "actor" : [
+            {
+              "role" : {
+                "coding" : [
+                  {
+                    "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+                    "code" : "HCP"
+                  }
+                ]
+              },
+              "reference" : {
+                "display" : "all"
+              }
+            }
+          ],
+          "purpose" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.5",
+              "code" : "NORM"
+            },
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.5",
+              "code" : "AUTO"
+            },
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.5",
+              "code" : "DICOM_AUTO"
+            }
+          ]
+        }
+      },
+      "request" : {
+        "method" : "POST",
+        "url" : "Consent"
+      }
+    }
+  ]
+}
+
+```

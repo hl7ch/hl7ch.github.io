@@ -1,0 +1,54 @@
+# MHD Provide Document Bundle Response for PDF publication - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **MHD Provide Document Bundle Response for PDF publication**
+
+## Example Bundle: MHD Provide Document Bundle Response for PDF publication
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "BundleProvideDocument-Response",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-providedocumentbundle-comprehensive-response"
+    ]
+  },
+  "type" : "transaction-response",
+  "link" : [
+    {
+      "relation" : "self",
+      "url" : "http://example.org"
+    }
+  ],
+  "entry" : [
+    {
+      "response" : {
+        "status" : "201 Created",
+        "location" : "http://example.org/xdsretrieve?uniqueId=1.3.6.1.4.1.12559.11.13.2.1.2964&repositoryUniqueId=1.1.4567332.1.2",
+        "lastModified" : "2020-10-02T11:56:15.094+00:00"
+      }
+    },
+    {
+      "response" : {
+        "status" : "201 Created",
+        "location" : "List/68a928c0-df48-4743-a291-bfb0609bbddc",
+        "lastModified" : "2020-10-02T11:56:15.094+00:00"
+      }
+    },
+    {
+      "response" : {
+        "status" : "201 Created",
+        "location" : "DocumentReference/50383ae5-49e5-4dea-b0e6-660cb9e7b91f",
+        "lastModified" : "2020-10-02T11:56:15.101+00:00"
+      }
+    }
+  ]
+}
+
+```

@@ -1,0 +1,197 @@
+# CH ATC - Retrieveal of a Document - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH ATC - Retrieveal of a Document**
+
+## Example AuditEvent: CH ATC - Retrieveal of a Document
+
+Document retrieval of record artifact from Regula Fischer 20.10.2020 14:29 on behalf of Dr. med. Hans Allzeitbereit, Member of group Labor 1 Bertaspital, Emergency Access
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "AuditEvent",
+  "id" : "atc-doc-read-ass-hpc",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/DocumentAuditEvent"
+    ]
+  },
+  "type" : {
+    "system" : "http://dicom.nema.org/resources/ontology/DCM",
+    "code" : "110106",
+    "display" : "Export"
+  },
+  "subtype" : [
+    {
+      "system" : "urn:oid:2.16.756.5.30.1.127.3.10.7",
+      "code" : "ATC_DOC_READ",
+      "display" : "Document retrieval"
+    }
+  ],
+  "action" : "R",
+  "recorded" : "2020-10-20T12:29:00Z",
+  "outcome" : "0",
+  "purposeOfEvent" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:oid:2.16.756.5.30.1.127.3.10.5",
+          "code" : "EMER",
+          "display" : "Emergency Access"
+        }
+      ]
+    }
+  ],
+  "agent" : [
+    {
+      "role" : [
+        {
+          "coding" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+              "code" : "HCP",
+              "display" : "Healthcare professional"
+            }
+          ]
+        }
+      ],
+      "who" : {
+        "identifier" : {
+          "system" : "urn:oid:2.51.1.3",
+          "value" : "7601000234438"
+        }
+      },
+      "name" : "Dr. med. Hans Allzeitbereit",
+      "requestor" : false
+    },
+    {
+      "role" : [
+        {
+          "coding" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+              "code" : "ASS",
+              "display" : "Assistant"
+            }
+          ]
+        }
+      ],
+      "who" : {
+        "identifier" : {
+          "system" : "urn:oid:2.51.1.3",
+          "value" : "7601003336382"
+        }
+      },
+      "name" : "Regula Fischer",
+      "requestor" : true
+    },
+    {
+      "role" : [
+        {
+          "coding" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.14",
+              "code" : "GRP",
+              "display" : "Group"
+            }
+          ]
+        }
+      ],
+      "who" : {
+        "identifier" : {
+          "value" : "urn:oid:1.1.1.1.1"
+        }
+      },
+      "name" : "Labor 1 Bertaspital",
+      "requestor" : false
+    }
+  ],
+  "source" : {
+    "observer" : {
+      "identifier" : {
+        "system" : "urn:ietf:rfc:3986",
+        "value" : "urn:oid:7.8.9.10.11"
+      }
+    }
+  },
+  "entity" : [
+    {
+      "what" : {
+        "identifier" : {
+          "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+          "value" : "761337610469261945"
+        }
+      },
+      "type" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+        "code" : "1",
+        "display" : "Person"
+      },
+      "role" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+        "code" : "1",
+        "display" : "Patient"
+      }
+    },
+    {
+      "what" : {
+        "identifier" : {
+          "system" : "urn:ihe:iti:xds:2013:uniqueId",
+          "value" : "1.2.3.4.5"
+        }
+      },
+      "type" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+        "code" : "2",
+        "display" : "System Object"
+      },
+      "role" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+        "code" : "3",
+        "display" : "Report"
+      },
+      "detail" : [
+        {
+          "type" : "Repository Unique Id",
+          "valueBase64Binary" : "MS4yLjM="
+        },
+        {
+          "type" : "homeCommunityID",
+          "valueBase64Binary" : "NS42LjcuOA=="
+        },
+        {
+          "type" : "EprDocumentTypeCode",
+          "valueBase64Binary" : "NDE5ODkxMDA4"
+        },
+        {
+          "type" : "title",
+          "valueBase64Binary" : "QXVzdHJpdHRzYmVyaWNodA=="
+        }
+      ]
+    },
+    {
+      "what" : {
+        "identifier" : {
+          "value" : "00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-00"
+        }
+      },
+      "type" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+        "code" : "4",
+        "display" : "Other"
+      },
+      "role" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+        "code" : "26",
+        "display" : "Processing Element"
+      }
+    }
+  ]
+}
+
+```

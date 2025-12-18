@@ -1,0 +1,94 @@
+# PDQm Match response message too many results - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **PDQm Match response message too many results**
+
+## Example Bundle: PDQm Match response message too many results
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "PDQm-QueryResponseTooManyResults",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-matchparametersout"
+    ]
+  },
+  "type" : "searchset",
+  "total" : 0,
+  "link" : [
+    {
+      "relation" : "self",
+      "url" : "http://example.com/Patient/$match"
+    }
+  ],
+  "entry" : [
+    {
+      "fullUrl" : "urn:uuid:13c56fd3-f2f1-4174-ae56-c91f027ffddf",
+      "resource" : {
+        "resourceType" : "OperationOutcome",
+        "id" : "PDQmResponseMoreAttributesRequested",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-pdqm-moreattributesrequested"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"OperationOutcome_PDQmResponseMoreAttributesRequested\"> </a><p class=\"res-header-id\"><b>Generated Narrative: OperationOutcome PDQmResponseMoreAttributesRequested</b></p><a name=\"PDQmResponseMoreAttributesRequested\"> </a><a name=\"hcPDQmResponseMoreAttributesRequested\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-pdqm-moreattributesrequested.html\">CH PDQm OperationOutcome More Attributes Requested</a></p></div><blockquote><p><b>issue</b></p><p><b>severity</b>: Warning</p><p><b>code</b>: Incomplete Results</p><p><b>details</b>: <span title=\"Codes:{urn:oid:1.3.6.1.4.1.19376.1.2.27.1 LivingSubjectAdministrativeGenderRequested}\">LivingSubjectAdministrativeGenderRequested</span></p></blockquote><blockquote><p><b>issue</b></p><p><b>severity</b>: Warning</p><p><b>code</b>: Incomplete Results</p><p><b>details</b>: <span title=\"Codes:{urn:oid:1.3.6.1.4.1.19376.1.2.27.1 LivingSubjectBirthPlaceNameRequested}\">LivingSubjectBirthPlaceNameRequested</span></p></blockquote><blockquote><p><b>issue</b></p><p><b>severity</b>: Warning</p><p><b>code</b>: Incomplete Results</p><p><b>details</b>: <span title=\"Codes:{urn:oid:2.16.756.5.30.1.127.3.10.17 BirthNameRequested}\">BirthNameRequested</span></p></blockquote></div>"
+        },
+        "issue" : [
+          {
+            "severity" : "warning",
+            "code" : "incomplete",
+            "details" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:1.3.6.1.4.1.19376.1.2.27.1",
+                  "code" : "LivingSubjectAdministrativeGenderRequested",
+                  "display" : "LivingSubjectAdministrativeGenderRequested"
+                }
+              ]
+            }
+          },
+          {
+            "severity" : "warning",
+            "code" : "incomplete",
+            "details" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:1.3.6.1.4.1.19376.1.2.27.1",
+                  "code" : "LivingSubjectBirthPlaceNameRequested",
+                  "display" : "LivingSubjectBirthPlaceNameRequested"
+                }
+              ]
+            }
+          },
+          {
+            "severity" : "warning",
+            "code" : "incomplete",
+            "details" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:2.16.756.5.30.1.127.3.10.17",
+                  "code" : "BirthNameRequested",
+                  "display" : "BirthNameRequested"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "search" : {
+        "mode" : "outcome"
+      }
+    }
+  ]
+}
+
+```

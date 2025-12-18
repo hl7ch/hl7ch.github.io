@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Get Access Token [ITI-71] - CH EPR FHIR (R4) v5.0.0-ballot</title>
+    <title>Get Access Token [ITI-71] - CH EPR FHIR (R4) v5.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -54,10 +54,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
-    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
-    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
-    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -95,7 +95,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPR FHIR (R4)</span>
             <br/>
-            <span style="display:inline-block;">5.0.0-ballot - ballot
+            <span style="display:inline-block;">5.0.0 - trial-use
 
 
 
@@ -297,7 +297,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v5.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 5 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPR FHIR (R4) (v5.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 5 Ballot 1) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epr-fhir/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Get Access Token [ITI-71]</h2>
   
 
@@ -323,30 +323,28 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </ul>
 
 </div>
-<p>This section describes the national extension for the Swiss EPR to
-the <a href="https://profiles.ihe.net/ITI/IUA/index.html#371-get-access-token-iti-71">Get Access Token [ITI-71]</a> transaction
+<p>This section describes the national extension for the Swiss EPR to the <a href="https://profiles.ihe.net/ITI/IUA/index.html#371-get-access-token-iti-71">Get Access Token [ITI-71]</a> transaction
 defined in the IUA profile published in the IHE IT Infrastructure Technical Framework Trial Implementation “Internet
 User Authorization”.</p>
 
 <h3 id="scope">Scope</h3>
 
-<p>The transaction is used by an IUA Authorization Client (e.g., portals and primary systems) to pass claims to the
-IUA Authorization Server and to retrieve an access token to be used for authorization of the access to protected
-resources of the Swiss EPR.</p>
+<p>The transaction is used by an IUA Authorization Client (e.g., portal and primary system) to pass claims to the
+IUA Authorization Server and to retrieve an access token authorizing access to protected resources of the Swiss EPR.</p>
 
 <p>Depending on the claims made by the IUA Authorization Client, two different flavors of access tokens SHALL be provided
 by the IUA Authorization Server:</p>
 
 <ul>
   <li>Basic Access Token – IUA compliant access token authorizing access to the EPR end-points which are NOT protected by
-the EPR role and attribute based authorization (i.e. for the PIXm endpoints).</li>
+the EPR role and attribute based authorization (i.e., for the PIXm endpoints).</li>
   <li>Extended Access Token – IUA compliant access token for the EPR endpoints which are protected by the EPR role and
-attribute based authorization (i.e. for the MHD endpoints).</li>
+attribute based authorization (i.e., for the MHD endpoints).</li>
 </ul>
 
 <p>When an IUA Authorization Client is authorized, it may launch SMART on FHIR Apps using the EHR launch by claiming a
 launch indicator. When launched the SMART on FHIR Apps inherit the basic access authorization from the launching app and
-may retrieve Extended Access Token for EPR endpoints protected by the EPR role and attribute based authorization (e.g.
+may retrieve Extended Access Token for EPR endpoints protected by the EPR role and attribute based authorization (e.g.,
 to retrieve documents).</p>
 
 <h3 id="actor-roles">Actor Roles</h3>
@@ -356,8 +354,8 @@ to retrieve documents).</p>
 optionally authenticates the user and presents the IDP token to the IUA Authorization Server together with the claims
 and launch information.    <br />
 <strong>Actor:</strong> IUA Authorization Server<br />
-<strong>Role:</strong> Identifies the Authorization Client, authorizes the access on behalf of the user, verifies claims, optionally
-enforces user authentication by redirecting the Authorization Client to a certified IdP and responds a JWT Access Token
+<strong>Role:</strong> Identifies the IUA Authorization Client, authorizes the access on behalf of the user, verifies claims, optionally
+enforces user authentication by redirecting the IUA Authorization Client to a certified IdP and responds a JWT Access Token
 to the IUA Authorization Client to be incorporated into the transactions to access protected resources.</p>
 
 <h3 id="referenced-standards">Referenced Standards</h3>
@@ -371,333 +369,79 @@ to the IUA Authorization Client to be incorporated into the transactions to acce
 
 <h4 id="client-credential-grant-type">Client Credential Grant Type</h4>
 
-<p>This section specifies the OAuth 2.1 client credential grant flow of the IUA Get Access Token transaction, which shall
+<p>This section specifies the client credential grant flow of the IUA Get Access Token transaction, which shall
 be used by clinical archive systems to retrieve an Access Token.</p>
 
 <div><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SEQUENCE" height="187px" preserveAspectRatio="none" style="width:511px;height:187px;background:#FFFFFF;" version="1.1" viewBox="0 0 511 187" width="511px" zoomAndPan="magnify"><title>Interaction Diagram for [ITI-71]</title><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="249.2109" x="130.1045" y="27.9951">Interaction Diagram for [ITI-71]</text><g><title>Authorization Client</title><rect fill="#FFFFFF" height="9" style="stroke:#181818;stroke-width:1;" width="10" x="76.3745" y="133.8594" /></g><g><title>Authorization Server</title><rect fill="#FFFFFF" height="38.1328" style="stroke:#181818;stroke-width:1;" width="10" x="421.3555" y="104.7266" /></g><g><title>Authorization Client</title><rect fill="#000000" fill-opacity="0.00000" height="78.2656" width="8" x="77.3745" y="73.5938" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="81" x2="81" y1="73.5938" y2="151.8594" /></g><g><title>Authorization Server</title><rect fill="#000000" fill-opacity="0.00000" height="78.2656" width="8" x="422.3555" y="73.5938" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="426.291" x2="426.291" y1="73.5938" y2="151.8594" /></g><g class="participant participant-head" data-participant="Client"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152.749" x="5" y="42.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138.749" x="12" y="62.292">Authorization Client</text></g><g class="participant participant-tail" data-participant="Client"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152.749" x="5" y="150.8594" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138.749" x="12" y="170.8545">Authorization Client</text></g><g class="participant participant-head" data-participant="AuthzServer"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="158.1289" x="347.291" y="42.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144.1289" x="354.291" y="62.292">Authorization Server</text></g><g class="participant participant-tail" data-participant="AuthzServer"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="158.1289" x="347.291" y="150.8594" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144.1289" x="354.291" y="170.8545">Authorization Server</text></g><g><title>Authorization Client</title><rect fill="#FFFFFF" height="9" style="stroke:#181818;stroke-width:1;" width="10" x="76.3745" y="133.8594" /></g><g><title>Authorization Server</title><rect fill="#FFFFFF" height="38.1328" style="stroke:#181818;stroke-width:1;" width="10" x="421.3555" y="104.7266" /></g><g class="message" data-participant-1="Client" data-participant-2="AuthzServer"><polygon fill="#181818" points="409.3555,100.7266,419.3555,104.7266,409.3555,108.7266,413.3555,104.7266" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="81.3745" x2="415.3555" y1="104.7266" y2="104.7266" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="29.9736" x="88.3745" y="99.6606">[00]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="173.3481" x="122.3481" y="99.6606">Get Access Token Request</text></g><g class="message" data-participant-1="AuthzServer" data-participant-2="Client"><polygon fill="#181818" points="97.3745,129.8594,87.3745,133.8594,97.3745,137.8594,93.3745,133.8594" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="91.3745" x2="420.3555" y1="133.8594" y2="133.8594" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="29.9736" x="103.3745" y="128.7935">[01]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="282.0073" x="137.3481" y="128.7935">Get Access Token Response (access token)</text></g></g></svg></div>
 <figcaption id="10">Figure: Sequence diagram of the transaction.</figcaption>
+<p><br /></p>
 
 <table class="table table-bordered">
-
-  <colgroup>
-   <col span="1" style="width: 5%;" />
-   <col span="1" style="width: 25%;" />
-   <col span="1" style="width: 15%;" />
-   <col span="1" style="width: 15%;" />
-   <col span="1" style="width: 15%;" />
-   <col span="1" style="width: 25%;" />
-</colgroup>
-
   <thead>
-   <tr>
-    <th>Step</th>
-    <th>Action</th>
-    <th>Parameter</th>
-    <th>Opt (Basic/ Extended).</th>
-    <th>Reference</th>
-    <th>Remark</th>
-   </tr>
+    <tr>
+      <th>Step</th>
+      <th>Action</th>
+      <th>Remark</th>
+    </tr>
   </thead>
   <tbody>
-   <tr>
-    <td>00</td>
-    <td>The Authorization Client sends an HTTP POST request to the IUA Authorization Server endpoint.</td>
-    <td>grant_type</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The value SHALL be client_credentials.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>client_id</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The ID, the Authorization Client is registered at the IUA Authorization Server.
-    </td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>client_secret</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>An unguessable value registered for the Authorization Client during onboarding.
-    </td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>scope</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>Attributes the Authorization Client claims (see detailed description below).</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>aud</td>
-    <td>R</td>
-    <td>SMART on FHIR</td>
-    <td>The URL or array of URL of the Resource Servers the token is intended to be used for.</td>
-   </tr>
-   <tr>
-    <td>01</td>
-    <td>The Authorization Server responds with the access token in the HTML body element.</td>
-    <td>access_token</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>A string containing the access token which SHALL be a JWT token.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>token_type</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The value of the parameter shall be Bearer.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>scope</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The scope granted by the Authorization Server.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>expires_in</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>Maximum duration of 5 minutes.</td>
-   </tr>
+    <tr>
+      <td>00</td>
+      <td>The IUA Authorization Client sends an Get Access Token Request to the IUA Authorization Server endpoint.</td>
+      <td>See <a href="#client-credential-grant-type-1">MessageSemantics</a></td>
+    </tr>
+    <tr>
+      <td>01</td>
+      <td>The IUA Authorization Server responds with the access token in the HTML body element.</td>
+      <td>See <a href="#message-semantics-2">Message Semantics</a></td>
+    </tr>
   </tbody>
- </table>
+</table>
 
-<figcaption id="11">Table: Description of the HTTP conversation of the transaction.</figcaption>
+<figcaption id="11">Table: Actions in the HTTP sequence of the transaction.</figcaption>
 
 <h4 id="authorization-code-grant-type">Authorization Code Grant Type</h4>
 
-<p>This section specifies the OAuth 2.1 authorization code grant flow of the IUA Get Access Token transaction, which shall
+<p>This section specifies the authorization code grant flow of the IUA Get Access Token transaction, which shall
 be used by portals and primary systems.</p>
 
 <div><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SEQUENCE" height="513px" preserveAspectRatio="none" style="width:1027px;height:513px;background:#FFFFFF;" version="1.1" viewBox="0 0 1027 513" width="1027px" zoomAndPan="magnify"><title>Interaction Diagram for [ITI-71]</title><defs /><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="249.2109" x="395.6499" y="27.9951">Interaction Diagram for [ITI-71]</text><g><title>User Agent</title><rect fill="#FFFFFF" height="235.1953" style="stroke:#181818;stroke-width:1;" width="10" x="135.8101" y="188.9922" /></g><g><title>User Agent</title><rect fill="#FFFFFF" height="111.5313" style="stroke:#181818;stroke-width:1;" width="10" x="140.8101" y="312.6563" /></g><g><title>Authorization Client</title><rect fill="#FFFFFF" height="82.3984" style="stroke:#181818;stroke-width:1;" width="10" x="587.4653" y="341.7891" /></g><g><title>Authorization Client</title><rect fill="#FFFFFF" height="9" style="stroke:#181818;stroke-width:1;" width="10" x="592.4653" y="415.1875" /></g><g><title>Authorization Server</title><rect fill="#FFFFFF" height="206.0625" style="stroke:#181818;stroke-width:1;" width="10" x="937.4463" y="218.125" /></g><g><title>Authorization Server</title><rect fill="#FFFFFF" height="38.1328" style="stroke:#181818;stroke-width:1;" width="10" x="942.4463" y="386.0547" /></g><g><title>User</title><rect fill="#000000" fill-opacity="0.00000" height="314.5938" width="8" x="61.9551" y="118.5938" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="65" x2="65" y1="118.5938" y2="433.1875" /></g><g><title>User Agent</title><rect fill="#000000" fill-opacity="0.00000" height="314.5938" width="8" x="136.8101" y="118.5938" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="139.9102" x2="139.9102" y1="118.5938" y2="433.1875" /></g><g><title>Authorization Client</title><rect fill="#000000" fill-opacity="0.00000" height="314.5938" width="8" x="588.4653" y="118.5938" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="592.0908" x2="592.0908" y1="118.5938" y2="433.1875" /></g><g><title>Authorization Server</title><rect fill="#000000" fill-opacity="0.00000" height="314.5938" width="8" x="938.4463" y="118.5938" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="942.3818" x2="942.3818" y1="118.5938" y2="433.1875" /></g><g class="participant participant-head" data-participant="User"><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="47" y="115.292">User</text><ellipse cx="65.9551" cy="50.7969" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;" /><path d="M65.9551,58.7969 L65.9551,85.7969 M52.9551,66.7969 L78.9551,66.7969 M65.9551,85.7969 L52.9551,100.7969 M65.9551,85.7969 L78.9551,100.7969" fill="none" style="stroke:#181818;stroke-width:0.5;" /></g><g class="participant participant-tail" data-participant="User"><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="47" y="445.1826">User</text><ellipse cx="65.9551" cy="456.9844" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;" /><path d="M65.9551,464.9844 L65.9551,491.9844 M52.9551,472.9844 L78.9551,472.9844 M65.9551,491.9844 L52.9551,506.9844 M65.9551,491.9844 L78.9551,506.9844" fill="none" style="stroke:#181818;stroke-width:0.5;" /></g><g class="participant participant-head" data-participant="UserAgent"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="91.7998" x="94.9102" y="87.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77.7998" x="101.9102" y="107.292">User Agent</text></g><g class="participant participant-tail" data-participant="UserAgent"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="91.7998" x="94.9102" y="432.1875" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77.7998" x="101.9102" y="452.1826">User Agent</text></g><g class="participant participant-head" data-participant="Client"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152.749" x="516.0908" y="87.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138.749" x="523.0908" y="107.292">Authorization Client</text></g><g class="participant participant-tail" data-participant="Client"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152.749" x="516.0908" y="432.1875" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138.749" x="523.0908" y="452.1826">Authorization Client</text></g><g class="participant participant-head" data-participant="AuthzServer"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="158.1289" x="863.3818" y="87.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144.1289" x="870.3818" y="107.292">Authorization Server</text></g><g class="participant participant-tail" data-participant="AuthzServer"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="158.1289" x="863.3818" y="432.1875" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144.1289" x="870.3818" y="452.1826">Authorization Server</text></g><g><title>User Agent</title><rect fill="#FFFFFF" height="235.1953" style="stroke:#181818;stroke-width:1;" width="10" x="135.8101" y="188.9922" /></g><g><title>User Agent</title><rect fill="#FFFFFF" height="111.5313" style="stroke:#181818;stroke-width:1;" width="10" x="140.8101" y="312.6563" /></g><g><title>Authorization Client</title><rect fill="#FFFFFF" height="82.3984" style="stroke:#181818;stroke-width:1;" width="10" x="587.4653" y="341.7891" /></g><g><title>Authorization Client</title><rect fill="#FFFFFF" height="9" style="stroke:#181818;stroke-width:1;" width="10" x="592.4653" y="415.1875" /></g><g><title>Authorization Server</title><rect fill="#FFFFFF" height="206.0625" style="stroke:#181818;stroke-width:1;" width="10" x="937.4463" y="218.125" /></g><g><title>Authorization Server</title><rect fill="#FFFFFF" height="38.1328" style="stroke:#181818;stroke-width:1;" width="10" x="942.4463" y="386.0547" /></g><g class="message" data-participant-1="Client" data-participant-2="UserAgent"><polygon fill="#181818" points="156.8101,184.9922,146.8101,188.9922,156.8101,192.9922,152.8101,188.9922" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="150.8101" x2="591.4653" y1="188.9922" y2="188.9922" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="29.9736" x="162.8101" y="176.3599">[00]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="209.6313" x="196.7837" y="168.7935">Redirect to Authorization Server</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="393.6816" x="196.7837" y="183.9263">(authorization request incl requested scopes, resource, etc.)</text></g><g class="message" data-participant-1="UserAgent" data-participant-2="AuthzServer"><polygon fill="#181818" points="925.4463,214.125,935.4463,218.125,925.4463,222.125,929.4463,218.125" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="145.8101" x2="931.4463" y1="218.125" y2="218.125" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="29.9736" x="152.8101" y="213.0591">[01]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139.9785" x="186.7837" y="213.0591">authorization request</text></g><path d="M19,231.125 L19,271.125 L988,271.125 L988,241.125 L978,231.125 L19,231.125" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M978,231.125 L978,241.125 L988,241.125 L978,231.125" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="323.5781" x="334.7749" y="248.1919">Authorization Server determines access based on</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="328.9609" x="334.7749" y="263.3247">user authentication, consent and/or other policies.</text><g class="message" data-participant-1="AuthzServer" data-participant-2="UserAgent"><polygon fill="#181818" points="161.8101,308.6563,151.8101,312.6563,161.8101,316.6563,157.8101,312.6563" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="155.8101" x2="936.4463" y1="312.6563" y2="312.6563" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="29.9736" x="167.8101" y="300.0239">[02]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="113.4326" x="201.7837" y="292.4575">Redirect to Client</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="320.0806" x="201.7837" y="307.5903">(authorization response with Authorization Code)</text></g><g class="message" data-participant-1="UserAgent" data-participant-2="Client"><polygon fill="#181818" points="575.4653,337.7891,585.4653,341.7891,575.4653,345.7891,579.4653,341.7891" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="150.8101" x2="581.4653" y1="341.7891" y2="341.7891" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="29.9736" x="157.8101" y="336.7231">[03]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="149.6079" x="191.7837" y="336.7231">authorization response</text></g><g class="message" data-participant-1="Client" data-participant-2="AuthzServer"><polygon fill="#181818" points="930.4463,382.0547,940.4463,386.0547,930.4463,390.0547,934.4463,386.0547" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="597.4653" x2="936.4463" y1="386.0547" y2="386.0547" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="29.9736" x="604.4653" y="373.4224">[04]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="173.3481" x="638.439" y="365.856">Get Access Token Request</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="265.6621" x="638.439" y="380.9888">(client credentials + Authorization Code)</text></g><g class="message" data-participant-1="AuthzServer" data-participant-2="Client"><polygon fill="#181818" points="613.4653,411.1875,603.4653,415.1875,613.4653,419.1875,609.4653,415.1875" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="607.4653" x2="941.4463" y1="415.1875" y2="415.1875" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="29.9736" x="619.4653" y="410.1216">[05]</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="282.0073" x="653.439" y="410.1216">Get Access Token Response (access token)</text></g></g></svg></div>
 <figcaption id="1">Figure: Sequence diagram of the transaction.</figcaption>
+<p><br /></p>
 
 <table class="table table-bordered">
-
-  <colgroup>
-   <col span="1" style="width: 5%;" />
-   <col span="1" style="width: 25%;" />
-   <col span="1" style="width: 15%;" />
-   <col span="1" style="width: 15%;" />
-   <col span="1" style="width: 15%;" />
-   <col span="1" style="width: 25%;" />
-</colgroup>
-
   <thead>
-   <tr>
-    <th>Step</th>
-    <th>Action</th>
-    <th>Parameter</th>
-    <th>Opt (Basic/ Extended).</th>
-    <th>Reference</th>
-    <th>Remark</th>
-   </tr>
+    <tr>
+      <th>Step</th>
+      <th>Action</th>
+      <th>Remark</th>
+    </tr>
   </thead>
   <tbody>
-   <tr>
-    <td>00, 01</td>
-    <td>The Authorization Client sends an HTTP GET request to the IUA Authorization Server endpoint.</td>
-    <td>response_type</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The value SHALL be code.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>client_id</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The ID, the Authorization Client is registered at the IUA Authorization Server<sup><a href="#1">1</a></sup>.
-    </td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>redirect_uri</td>
-    <td>R</td>
-    <td>IUA / SMART on FHIR</td>
-    <td>Used as the callback URL the IUA Authorization Server will send the authorization code to. The URL SHALL match
-     one of the client’s pre-registered redirect URIs.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>state</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>An unguessable value used by the Authorization Client to track the state between the authorization request and
-     the callback to the redirect_uri.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>scope</td>
-    <td>R</td>
-    <td>IUA / SMART on FHIR</td>
-    <td>Attributes the Authorization Client claims (see detailed description below).</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>aud</td>
-    <td>R</td>
-    <td>SMART on FHIR</td>
-    <td>The URL or array of URL of the Resource Servers the token is intended to be used for.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>launch</td>
-    <td>R</td>
-    <td>SMART on FHIR</td>
-    <td>An opaque identifier which indicates that a SMART on FHIR App was launched from a portal or primary system which
-     is authorized to access the Swiss EPR as EHR launch.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>code_challenge</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>Transformed version of code_verifier with code_challenge_method.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>code_challenge_method</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>SHALL be “S256”.</td>
-   </tr>
-   <tr>
-    <td>02, 03</td>
-    <td>The Authorization Server performs an HTTP GET on the Authorization Client redirect_uri conveying
-     the authorization code.</td>
-    <td>code</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The authorization code generated by the Authorization Server.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>state</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The unguessable value used by the Authorization Client to track the state between the authorization request and
-     the callback (redirect_uri).</td>
-   </tr>
-   <tr>
-    <td>04</td>
-    <td>The Authorization Client performs an HTTP POST with parameter as a form-encoded HTTP entity body, passing its
-     client_id and client_secret as an HTTP authorization header field.</td>
-    <td>client_id</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The ID the Authorization Client is registered at the IUA Authorization Server<sup><a href="#1">1</a></sup>.
-    </td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>grant_type</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>Value shall be “authorization_code”.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>code</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The authorization</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>code_verifier</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The original code verifier string.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>client_assertion_type</td>
-    <td>O</td>
-    <td>Swiss extension</td>
-    <td>An identifier of the client assertion type, either "urn:ietf:params:oauth:client-assertion-type:jwt-bearer" if a signed 
-        JWT is presented, or "urn:ietf:params:oauth:client-assertion-type:saml2-bearer" for base64url encoded SAML 2 assertions <sup><a href="#2">2</a></sup>.
-    </td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>assertion</td>
-    <td>O</td>
-    <td>Swiss extension</td>
-    <td>The identity token the Authorization client retrieved from the certified Identity Provider after successful authentication 
-        of the user, either a signed JWT, or a base64url encoded SAML 2 assertion <sup><a href="#2">2</a></sup>.
-    </td>
-   </tr>
-   <tr>
-    <td>05</td>
-    <td>The Authorization Server responds with the access token in the HTML body element.</td>
-    <td>access_token</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The access token which SHALL be a signed JWT token.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>token_type</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The value of the parameter shall be Bearer.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>scope</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>The scope granted by the Authorization Server.</td>
-   </tr>
-   <tr>
-    <td>&nbsp;</td> 
-    <td>&nbsp;</td>
-    <td>expires_in</td>
-    <td>R</td>
-    <td>IUA</td>
-    <td>Maximum duration of 5 minutes.</td>
-   </tr>
+    <tr>
+      <td>00,01</td>
+      <td>The IUA Authorization Client sends an HTTP GET request to the IUA Authorization Server endpoint.</td>
+      <td>See <a href="#message-semantics-1">Message Semantics</a></td>
+    </tr>
+    <tr>
+      <td>02,03</td>
+      <td>The IUA Authorization Server performs an HTTP GET on the IUA Authorization Client redirect_uri conveying the authorization code.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td>The IUA Authorization Client performs an HTTP POST with parameter as a form-encoded HTTP entity body, passing its client_id and client_secret as an HTTP authorization header field.</td>
+      <td>See <a href="#message-semantics-1">Message Semantics</a></td>
+    </tr>
+    <tr>
+      <td>05</td>
+      <td>The IUA Authorization Server responds with the access token in the HTML body element.</td>
+      <td>See <a href="#message-semantics-2">Message Semantics</a></td>
+    </tr>
   </tbody>
- </table>
+</table>
 
-<figcaption id="5">Table: Description of the HTTP conversation of the transaction.</figcaption>
-
-<p><sup id="1">1</sup>For SMART on FHIR Apps launched in EPR mode the client_id SHALL be the ID of the portal or primary
-system which launched the App.</p>
-
-<p><sup id="2">2</sup>The presentation of the IdP token is recommended for IUA Authorization Clients which do not use SMART
-on FHIR EHR launch.</p>
+<figcaption id="5">Table: Actions in the HTTP sequence of the transaction.</figcaption>
 
 <h4 id="get-access-token-request">Get Access Token Request</h4>
 
@@ -709,26 +453,28 @@ on FHIR EHR launch.</p>
 
 <h6 id="message-semantics">Message Semantics</h6>
 
-<p>The Authorization Client SHALL send an IUA compliant OAuth 2.1 Authorization Request for the client credential grant
+<p>The IUA Authorization Client SHALL send an IUA compliant OAuth Token Request for the client credential grant
 type with Swiss extensions:</p>
 
 <ul>
   <li>grant_type (required): The value of the parameter shall be <code class="language-plaintext highlighter-rouge">client_credentials</code>.</li>
-  <li>scope (required): The scope claimed by the Authorization Client, as defined in the table below.</li>
-  <li>resource (optional): Single valued identifier of the Resource Server API endpoint to be accessed.</li>
-  <li>requested_token_type (optional): The requested token format shall be <code class="language-plaintext highlighter-rouge">urn:ietf:params:oauth:token-type:jwt</code>.</li>
+  <li>client_id (required): The ID the IUA Authorization Client is registered at the IUA Authorization Server.</li>
+  <li>client_secret (required): The secret the IUA Authorization Client is registered at the IUA Authorization Server.</li>
+  <li>scope (required): The scope claimed by the IUA Authorization Client, as defined in the table below.</li>
+  <li>resource (optional): Single valued identifier of the IUA Resource Server API endpoint to be accessed.</li>
+  <li>requested_token_type (optional): If present, the value shall be <code class="language-plaintext highlighter-rouge">urn:ietf:params:oauth:token-type:jwt</code>.</li>
 </ul>
 
 <p>The Authorization Request SHALL use the following Swiss extension:</p>
 
 <ul>
-  <li>principal (optional): The name of the healthcare professional an assistant may act on behalf of.</li>
-  <li>principal_id (required): The GLN of the healthcare professional an assistant may act on behalf of.</li>
+  <li>principal (optional): The name of the healthcare professional the technical user acts on behalf of.</li>
+  <li>principal_id (required): The GLN of the healthcare professional the technical user acts act on behalf of.</li>
   <li>person_id (optional/required): EPR-SPID identifier of the patient’s record and the patient assigning authority
 formatted in CX syntax, required for requesting extended access token.</li>
 </ul>
 
-<p>Authorization Clients SHALL sent the scope values in the Authorization Request:</p>
+<p>IUA Authorization Clients SHALL sent the following scope values in the Token Request:</p>
 
 <table class="table table-bordered">
   <thead>
@@ -760,31 +506,29 @@ formatted in CX syntax, required for requesting extended access token.</li>
 
 <p><sup id="3">3</sup>Token format according FHIR <a href="https://www.hl7.org/fhir/search.html#token">token type</a>.</p>
 
-<figcaption id="16">Table: Request’s scope parameter for the client credential flow.</figcaption>
+<figcaption id="16">Table: Authorization Request’s scope parameter for the client credential flow.</figcaption>
 
 <h6 id="expected-actions">Expected Actions</h6>
 
-<p>When receiving a Get Access Token Request with purpose of use set to AUTO and subject role set to TCU, the Authorization
+<p>When receiving a Token Request with purpose_of_use set to AUTO and subject_role set to TCU, the Authorization
 Server SHALL:</p>
 
 <ul>
-  <li>identify and authenticate the Authorization Client with the client_id, client_secret and the client's certificate of
-the TLS connection.</li>
-  <li>verify, that the Authorization Client was registered during onboarding with the same client_id, client_secret and the
-client's certificate of the TLS connection and is authorized to access the EPR.</li>
-  <li>verify that the principal_id matches the GLN of the legal responsible healthcare professional the Authorization Client
+  <li>identify the IUA Authorization Client with the client_id and client_secret.</li>
+  <li>verify, that the IUA Authorization Client was registered during onboarding with the same client_id and client_secret.</li>
+  <li>verify that the principal_id matches the GLN of the legal responsible healthcare professional the IUA Authorization Client
 was registered during onboarding.</li>
 </ul>
 
-<p>The Authorization Server SHALL respond with the Get Access Token response as defined
-in <a href="#get-access-token-response">Get Access Token Response</a> only if all checks are successful. If one of the above checks
-fails, the Authorization Server SHALL respond with HTTP 401 (Unauthorized) error.</p>
+<p>The IUA Authorization Server SHALL respond with the Token Response only if all checks are successful. If one 
+of the above checks fails, the IUA Authorization Server SHALL respond with HTTP 401 (Unauthorized) error.</p>
 
-<p>The Authorization Server SHALL respond with an Extended Access Token, only if the person_id is set in the request. The
-Authorization Server SHALL respond with a Basic Access Token, if the person_id is not set.</p>
+<p>If the person_id is set in the request, the IUA Authorization Server SHALL respond with an Extended Access Token. 
+The IUA Authorization Server SHALL respond with a Basic Access Token, if the person_id is not set.</p>
 
-<p>The Authorization Client SHALL use the access token as defined in IUA Incorporate Access Token transaction, when
-performing requests to resources of the Swiss EPR.</p>
+<p>The IUA Authorization Client SHALL use the IUA Access Token as defined in 
+<a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">IUA Incorporate Access Token</a> 
+transaction, when performing requests to resources of the Swiss EPR.</p>
 
 <h6 id="message-example">Message Example</h6>
 
@@ -794,6 +538,10 @@ Host: localhost:9001
 Accept: application/json
 Content-type: application/x-www-form-urlencoded
 Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
+Content-Digest: sha-512=:Lh6fzO9XALiY46o5xVyN9yZloKZ6pLJV0kz+VirU5b6rQd2ii7vrTt4gxe32HRuLtNYG2Kl7CnGwQjjDxQk4yA===:
+Signature-Input: sig1=("@method" "@target-uri" "authorization" "content-digest");created=1764073861;expires=1764073921;keyid="snIZq-_NvzkKV-IdiM348BCz_RKdwmufnrPubsKKyio";tag="fapi-2-request"
+Signature: sig1=:9FaAZovdKmr9LVmwnzyfRED1ws1dX1mZLIgIPTOyBTNi0HkNoLxVipp8ZyGGx6+XP+7WVRh1wNQk9xjunHhZOw==:
+
 grant_type=client_credentials&amp;
 requested-token-type=urn:ietf:params:oauth:token-type:jwt&amp;
 person_id=761337610411353650%5E%5E%5E%262.16.756.5.30.1.109.6.5.3.1.1%26ISO&amp;
@@ -809,28 +557,36 @@ scope=user%2F*.*+openid+fhirUser+purpose_of_use%3Durn%3Aoid%3A2.16.756.5.30.1.12
 
 <h6 id="message-semantics-1">Message Semantics</h6>
 
-<p>The Authorization Client SHALL send an IUA compliant OAuth 2.1 Authorization Request for the client credential grant
-type with Swiss extensions:</p>
+<p>In the first step of the sequence the IUA Authorization Client SHALL send an OAuth Authorization 
+Request for the authorization code grant type with the following Swiss extension:</p>
 
 <ul>
-  <li>grant_type (required): The value of the parameter shall be client_credentials.</li>
-  <li>scope (required): The scope claimed by the Authorization Client, as defined in the table below.</li>
-  <li>resource (optional): Single valued identifier of the Resource Server api endpoint to be accessed.</li>
-  <li>requested_token_type (optional): The requested token format shall be urn:ietf:params:oauth:token-type:jwt.</li>
+  <li>response_type (required): The value of the parameter shall be code.</li>
+  <li>client_id (required): The ID the IUA Authorization Client is registered at the IUA Authorization Server. For SMART on FHIR 
+Apps launched in EPR mode the client_id SHALL be the ID of the portal or primary system which launched the App.</li>
+  <li>state (required): The state parameter is used to protect against cross-site request forgery attacks. The value of the
+parameter is passed through unmodified from the request to the response.</li>
+  <li>resource (optional): If present, the single valued identifier of the IUA Resource Server api endpoint to be accessed.</li>
+  <li>code_challenge (optional): The code challenge is a cryptographic challenge used to protect against cross-site request
+forgery attacks. The value of the parameter is passed through unmodified from the request to the response.</li>
+  <li>code_challenge_method (optional): The code challenge method is the cryptographic method used to protect against cross-site 
+request forgery attacks. If present, the value of it SHALL be S256.</li>
+  <li>redirect_uri (required): The URL the IUA Authorization Client is registered at the IUA Authorization Server.</li>
+  <li>scope (required): The scope claimed by the IUA Authorization Client, as defined in the table below.</li>
+  <li>requested_token_type (optional): If present, the requested token format shall be urn:ietf:params:oauth:token-type:jwt.</li>
 </ul>
 
 <p>The Authorization Request SHALL use the following Swiss extension:</p>
-
 <ul>
   <li>person_id (optional/required): EPR-SPID identifier of the patient’s record and the patient assigning authority
 formatted in CX syntax, required for requesting extended access token.</li>
   <li>principal (optional): The name of the healthcare professional an assistant may act on behalf of.</li>
   <li>principal_id (optional): The GLN of the healthcare professional an assistant may act on behalf of.</li>
-  <li>group (optional): The name of the organization or group an assistant may act on behalf of</li>
+  <li>group (optional): The name of the organization or group an assistant may act on behalf of.</li>
   <li>group_id (optional): The OID of the organization or group an assistant is acting on behalf of.</li>
 </ul>
 
-<p>Authorization Clients SHALL sent the scope values in the Authorization Request:</p>
+<p>IUA Authorization Clients SHALL send the following values in the scope attribute of the Authorization Request:</p>
 
 <table class="table table-bordered">
   <thead>
@@ -846,7 +602,7 @@ formatted in CX syntax, required for requesting extended access token.</li>
     <tr>
       <td>launch</td>
       <td>O/R</td>
-      <td>&nbsp;</td>
+      <td> </td>
       <td>SMART on FHIR</td>
       <td>An opaque identifier of a SMART on FHIR App launched in an EHR launch. The claim is required for SMART on FHIR Apps launched from a portal or primary system.</td>
     </tr>
@@ -855,120 +611,107 @@ formatted in CX syntax, required for requesting extended access token.</li>
       <td>O/R</td>
       <td>token</td>
       <td>See sections below.</td>
-      <td>Value taken from code system 2.16.756.5.30.1.127.3.10.5 of the CH: EPR value set in [FHIR token type](https://www.hl7.org/fhir/search.html#token) format.</td>
+      <td>Value taken from code system 2.16.756.5.30.1.127.3.10.5 of the CH: EPR value set in <a href="https://www.hl7.org/fhir/search.html#token">FHIR token type</a> format.</td>
     </tr>
     <tr>
       <td>subject_role</td>
       <td>O/R</td>
       <td>token</td>
       <td>See sections below.</td>
-      <td>Value taken from code system 2.16.756.5.30.1.127.3.10.1.1.3 of the CH: EPR value set in [FHIR token type](https://www.hl7.org/fhir/search.html#token) format.</td>
+      <td>Value taken from code system 2.16.756.5.30.1.127.3.10.1.1.3 of the CH: EPR value set in <a href="https://www.hl7.org/fhir/search.html#token">FHIR token type</a> format.</td>
     </tr>
   </tbody>
 </table>
 
-<figcaption id="6">Table: Request’s scope parameter for the authorization code flow.</figcaption>
+<figcaption id="6">Table: Authorization Request’s scope parameter for the authorization code flow.</figcaption>
+
+<p><br /></p>
 
 <p>The scope parameter of the request MAY claim the following attributes:</p>
 
 <ul>
-  <li>There MAY be a scope with name “launch”. If present, it indicates the permission of SMART on FHIR Apps to obtain
+  <li>There MAY be a scope with name <strong>launch</strong>. If present, it indicates the permission of SMART on FHIR Apps to get
 launch context from a portal or primary system authorized to access the EPR.</li>
-  <li>There MAY be a scope with name "purpose_of_use=token". If present, the token SHALL convey the coded value of the
-current transaction’s purpose of use. Allowed values are NORM (normal access) and EMER (emergency access) from code
-system 2.16.756.5.30.1.127.3.10.5 of the CH:EPR value set. e.g. purpose_of_use=urn:oid:
-2.16.756.5.30.1.127.3.10.5|NORM.</li>
-  <li>There MAY be a scope with name "subject_role=token". If present, the token SHALL convey the coded value of the
-subject’s role. The value SHALL be either HCP (healthcare professional), ASS (assistant), REP (representative) or
-PAT (patient) from code system 2.16.756.5.30.1.127.3.10.6 of the CH:EPR value set. e.g.: subject_role=urn:oid:
-2.16.756.5.30.1.127.3.10.6|HCP.</li>
-  <li>Authorization Clients may claim other scopes as defined in the SMART on FHIR specification.</li>
+  <li>There MAY be a scope with name <strong>purpose_of_use</strong> in token format. If present, the token SHALL convey the coded value of the
+current transaction’s purpose of use. Allowed values are <code class="language-plaintext highlighter-rouge">NORM</code> (normal access) and <code class="language-plaintext highlighter-rouge">EMER</code> (emergency access) from code
+system <code class="language-plaintext highlighter-rouge">2.16.756.5.30.1.127.3.10.5</code> of the CH:EPR value set (e.g.: <code class="language-plaintext highlighter-rouge">purpose_of_use=urn:oid:2.16.756.5.30.1.127.3.10.5\|NORM</code>).</li>
+  <li>There MAY be a scope with name <strong>subject_role</strong> in token format. If present, the token SHALL convey the coded value of the
+subject’s role. The value SHALL be either <code class="language-plaintext highlighter-rouge">HCP</code> (healthcare professional), <code class="language-plaintext highlighter-rouge">ASS</code> (assistant), <code class="language-plaintext highlighter-rouge">REP</code> (representative) or
+<code class="language-plaintext highlighter-rouge">PAT</code> (patient) from code system <code class="language-plaintext highlighter-rouge">2.16.756.5.30.1.127.3.10.6</code> of the CH:EPR value set (e.g.: <code class="language-plaintext highlighter-rouge">subject_role=urn:oid:
+2.16.756.5.30.1.127.3.10.6\|HCP</code>).</li>
+  <li>IUA Authorization Clients may claim other scopes as defined in the SMART on FHIR specification.</li>
 </ul>
 
 <p>Note: The parameters need to be url encoded, see above message example.</p>
 
-<p>Depending on the value of the <em>subject-role</em> scope additional scopes are required, as described in the following
-sections.</p>
+<p>Additional scopes are required depending on the user's role: For assistants, there SHALL be a scope with name <strong>principal_id</strong>, 
+the value of which SHALL be the GLN of the healthcare professional an assistant is acting on behalf of. There SHALL be 
+a scope with name <strong>principal</strong>, the value of which SHALL be the name of the healthcare professional an assistant is 
+acting on behalf of. There MAY be a scope with name <strong>group_id</strong> and <strong>group</strong>, the value of which SHALL be the ID and name of 
+the organization or group the user is acting on behalf of. The value of <strong>group_id</strong> SHALL be an OID in the format of a URN 
+and the organization or group shall be registered in the EPR HPD.</p>
 
-<p><strong>Healthcare Professional Extension</strong></p>
+<p>In the second step of the sequence the IUA Authorization Client SHALL perform an OAuth Token Request for the 
+authorization code grant type with the following Swiss extension:</p>
 
-<p>In the healthcare professional extension, the scope subject_role SHALL be the code HCP from code system
-2.16.756.5.30.1.127.3.10.6 of the CH:EPR value set.</p>
-
-<p><strong>Assistant Extension</strong></p>
-
-<p>In the assistant extension, the scope subject_role SHALL be the code ASS from code system 2.16.756.5.30.1.127.3.10.6 of
-the CH:EPR value set. There SHALL be a scope with name principal_id=value. The value SHALL convey the GLN of the
-healthcare professional an assistant is acting on behalf of. There SHALL be a scope with name principal=value. The value
-SHALL convey the name of the healthcare professional an assistant is acting on behalf of.</p>
-
-<p>There MAY be one or more scopes with name group_id=value and corresponding group=value. If present each value SHALL
-convey the ID and name of the subject’s organization or group as registered in the EPR HPD. The ID SHALL be an OID in
-the format of a URN.</p>
-
-<p><strong>Patient Extension</strong></p>
-
-<p>In the patient extension, the scope subject_role SHALL be the code PAT from code system 2.16.756.5.30.1.127.3.10.6 of
-the CH:EPR value set. The value of the purpose of use scope SHALL be the code NORM from code system
-2.16.756.5.30.1.127.3.10.5 of the CH:EPR value set.</p>
-
-<p><strong>Representative Extension</strong></p>
-
-<p>In the representative extension, the scope subject_role SHALL be the code REP from code system
-2.16.756.5.30.1.127.3.10.6 of the CH:EPR value set. The token of the purpose_of_use scope SHALL be the code NORM from
-code system 2.16.756.5.30.1.127.3.10.5 of the CH:EPR value set.</p>
+<p>The Token Request SHALL contain the following attributes:</p>
+<ul>
+  <li>grant_type (required): The value of the parameter shall be <code class="language-plaintext highlighter-rouge">client_credentials</code>.</li>
+  <li>code (required): The authorization code received from the IUA Authorization Server in the authorization response.</li>
+  <li>code_verifier (required): The original code verifier string.</li>
+  <li>client_id (required): The client identifier the IUA Authorization Client is registered with at the IUA Authorization Server.</li>
+  <li>requested_token_type (optional): If present, the value shall be <code class="language-plaintext highlighter-rouge">urn:ietf:params:oauth:token-type:jwt</code>.</li>
+  <li>client_assertion_type (required/optional): If present, the value shall be <code class="language-plaintext highlighter-rouge">urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code> 
+if the client assertion is JWT, or <code class="language-plaintext highlighter-rouge">urn:ietf:params:oauth:client-assertion-type:saml2-bearer</code> for base64url encoded SAML 2 assertions.
+Required for IUA Authorization Clients which do not use SMART on FHIR EHR launch.</li>
+  <li>client_assertion (required/optional): The identity token the IUA Authorization Client retrieved from the certified Identity Provider 
+after successful authentication of the user. Required for IUA Authorization Clients which do not use SMART on FHIR EHR launch.</li>
+</ul>
 
 <h6 id="expected-actions-1">Expected Actions</h6>
 
-<p>The IUA Authorization Client and Authorization Server SHALL support the HTTP conversation of the OAuth 2.1 Authorization
-Code grant type.</p>
-
-<p>When launched, the IUA Authorization Client SHALL send an HTTP GET request to the Authorization Servers authorization
-endpoint with query parameter as defined in <a href="#5">Table</a> and with the scope claims described in <a href="#6">Table</a>.</p>
-
-<p>When receiving the request the Authorization Server</p>
+<p>When receiving the Authorization Request, the IUA Authorization Server</p>
 
 <ul>
-  <li>SHALL verify that the Authorization Client was registered during onboarding with the client_id and client secret
+  <li>SHALL verify that the IUA Authorization Client was registered during onboarding with the <strong>client_id</strong> and <strong>client secret</strong>
 presented in the request.</li>
-  <li>SHALL validate the requests parameter (i.e.: person_id). Depending on the parameter, the IUA Authorization Server
-SHALL either build a Basic Access Token authorizing basic access to the EPR (i.e. PIXm), or an Extended Access Token
-to authorize access to resources protected by the role and attribute based EPR authorization (i.e. read and write
+  <li>SHALL validate the requests parameter (i.e.: <strong>person_id</strong>). Depending on the parameter, the IUA Authorization Server
+SHALL either build a Basic Access Token authorizing basic access to the EPR (i.e., PIXm), or an Extended Access Token
+to authorize access to resources protected by the role and attribute based EPR authorization (i.e., read and write
 documents).</li>
-  <li>SHALL validate the launch scope parameter. For SMART on FHIR Apps launched in an EPR Launch, the IUA Authorization
-Server SHALL verify that the portal or primary system which launched the SMART on FHIR App has been registered with
-this launch parameter value by the community during the onboarding process.</li>
-  <li>SHALL verify that the Authorization Client is authorized to access the EPR on behalf of the user by community policy
+  <li>SHALL validate the <strong>launch</strong> scope parameter. For SMART on FHIR Apps launched in an EPR Launch, the IUA Authorization
+Server SHALL verify that the portal or primary system which launched the SMART on FHIR App is registered with
+this launch parameter value by the community.</li>
+  <li>SHALL verify that the IUA Authorization Client is authorized to access the EPR on behalf of the user by community policy
 or by the user's consent.</li>
   <li>MAY retrieve the user's consent by redirecting the user agent to an EPR compliant Identity Provider to authenticate 
 the user and present a form to the user to authorize the IUA Authorization Client to act on behalf of the user with 
-a given scope. The Authorization Server MAY persist the users consent for future access by the Authorization Client.</li>
+a given scope. The IUA Authorization Server MAY persist the user's consent for future access by the IUA Authorization Client.</li>
 </ul>
 
-<p>In case of failure, the IUA Authorization Server SHALL respond with HTTP error code 401 ‘Not authorized’.</p>
+<p>In case of failure, the IUA Authorization Server SHALL respond with HTTP error code <code class="language-plaintext highlighter-rouge">401 Not authorized</code>.</p>
 
-<p>In case of success, the IUA Authorization Server SHALL send the authorization code to the Authorization Client
-redirect-uri via the user agent.</p>
+<p>In case of success, the IUA Authorization Server SHALL send the authorization code to the IUA Authorization Client
+<strong>redirect_uri</strong> via the user agent.</p>
 
-<p>The Authorization Client SHALL perform the HTTP POST request to the Authorization token endpoint to resolve the
-authorization code to the access token, sending the client_id and client_secret in the HTTP authorization header field.</p>
+<p>The IUA Authorization Client SHALL perform the OAuth Token Request to the token endpoint to resolve the
+authorization code to the access token, sending the <strong>client_id</strong> and <strong>client_secret</strong> in the HTTP authorization header field.</p>
 
-<p>When retrieving the token request, the Authorization Server SHALL verify that the user is authenticated compliant to the
-regulations of the Swiss EPR, either by validating the identity token send with the token request or by redirecting the
-Authorization Client's user agent to an certified Identity Provider.</p>
+<p>When retrieving the Token Request, the IUA Authorization Server SHALL verify that the user is authenticated compliant to the
+regulations of the Swiss EPR, either by validating the identity token sent with the token request or by redirecting the
+IUA Authorization Client's user agent to a certified Identity Provider.</p>
 
-<p>The Authorization Server SHALL respond with the Get Access Token response as defined
-in <a href="#get-access-token-response">Get Access Token Response</a>
-only if all checks are successful.</p>
+<p>The IUA Authorization Server SHALL respond with the IUA Get Access Token Response only if all checks are successful.</p>
 
-<p>In case of failure, the IUA Authorization Server SHALL respond with HTTP error code 401 ‘Not authorized’.</p>
+<p>In case of failure, the IUA Authorization Server SHALL respond with HTTP error code <code class="language-plaintext highlighter-rouge">401 Not authorized</code>.</p>
 
-<p>The IUA Authorization Client SHALL use the access token as defined in IUA Incorporate Access Token transaction, when
-performing requests to resources of the Swiss EPR.</p>
+<p>The IUA Authorization Client SHALL use the access token as defined in the 
+<a href="https://profiles.ihe.net/ITI/IUA/index.html#372-incorporate-access-token-iti-72">IUA Incorporate Access Token</a> 
+transaction, when performing requests to resources of the Swiss EPR.</p>
 
 <h6 id="message-example-1">Message Example</h6>
 
-<p>The first step of the conversation is an HTTP GET which may look like for a Basic Access Token:</p>
+<p>The first step of the sequence is an HTTP GET request that may look like for a Basic Access Token:</p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET authorize?
     response_type=code&amp;
@@ -982,8 +725,8 @@ performing requests to resources of the Swiss EPR.</p>
     code_challenge_method=S256
 </span></code></pre></div></div>
 
-<p>An extended access token where at least purpose_of_use (NORM), subject_role (HCP) and person_id are specified may look
-like:</p>
+<p>An extended access token where at least <strong>purpose_of_use</strong> (e.g., <code class="language-plaintext highlighter-rouge">NORM</code>), <strong>subject_role</strong> (e.g., <code class="language-plaintext highlighter-rouge">HCP</code>) and
+<strong>person_id</strong> are specified may look like:</p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET authorize?
     response_type=code&amp;
@@ -996,13 +739,13 @@ like:</p>
     code_challenge_method=S256
 </span></code></pre></div></div>
 
-<p>In the second step of the conversation, the IUA Authorization Server send a HTTP GET to the Authorization Client's user 
+<p>In the second step of the sequence, the IUA Authorization Server SHALL send a HTTP GET to the IUA Authorization Client's user 
 agent conveying the authorization code, e.g.:</p>
 
 <div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET /callback?code=8V1pr0rJ&amp;state=98wrghuwuogerg97
 </span></code></pre></div></div>
 
-<p>In the third step of the conversation, the IUA Authorization Client sends a HTTP POST request to the token endpoint of 
+<p>In the third step of the sequence, the IUA Authorization Client sends an HTTP POST request to the token endpoint of 
 IUA Authorization Server to exchange the authorization code and optional identity token (signed JWT or SAML 2 Assertion) 
 to the access token, e.g.:</p>
 
@@ -1012,9 +755,14 @@ Host: localhost:9001
 Accept: application/json
 Content-type: application/x-www-form-urlencoded
 Authorization: Basic bXktYXBwOm15LWFwcC1zZWNyZXQtMTIz
+Content-Digest: sha-512=:Lh6fzO9XALiY46o5xVyN9yZloKZ6pLJV0kz+VirU5b6rQd2ii7vrTt4gxe32HRuLtNYG2Kl7CnGwQjjDxQk4yA===:
+Signature-Input: sig1=("@method" "@target-uri" "authorization" "content-digest");created=1764073861;expires=1764073921;keyid="snIZq-_NvzkKV-IdiM348BCz_RKdwmufnrPubsKKyio";tag="fapi-2-request"
+Signature: sig1=:9FaAZovdKmr9LVmwnzyfRED1ws1dX1mZLIgIPTOyBTNi0HkNoLxVipp8ZyGGx6+XP+7WVRh1wNQk9xjunHhZOw==:
+
 grant_type=authorization_code&amp;
 code=98wrghuwuogerg97&amp;
 code_verifier=qskt4342of74bkncmicdpv2qd143iqd822j41q2gupc5n3o6f1clxhpd2x11&amp;
+client_id=app-client-id&amp;
 requested_token_type=urn:ietf:params:oauth:token-type:jwt
 client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
 client_assertion=eyJraWQiOiIxZTlnZGs3IiwiYWxnIjoiUlMyNTYifQ[...omitted for brevity...]
@@ -1024,24 +772,24 @@ client_assertion=eyJraWQiOiIxZTlnZGs3IiwiYWxnIjoiUlMyNTYifQ[...omitted for brevi
 
 <h5 id="message-semantics-2">Message Semantics</h5>
 
-<p>The response SHALL either convey a Basic Access Token in JWT format, granting basic access to the EPR (i.e. to access
+<p>The response SHALL either convey a Basic Access Token in JWT format which grants basic access to the EPR (i.e., to access
 patient data), or an Extended Access Token to access resources protected by the role and attribute based EPR
-authorization (i.e. read and write documents).</p>
+authorization (i.e., read and write documents).</p>
 
 <h6 id="json-web-token-option">JSON Web Token Option</h6>
 
-<p>The Authorization Server and Resource Server SHALL support the IUA JWT extension with the following claims as defined in
-Table <a href="#jwttiua">below</a>.</p>
+<p>The IUA Authorization Server and IUA Resource Server SHALL support the IUA JWT extension with claims as defined in
+the following Table.</p>
 
-<p>The claim content for the JWT IUA extensions SHALL correspond to the content defined in the XUA specification (see
-1.6.4.2 Get X-User Assertion, A5E1).</p>
+<p>Note: The claim content of the JWT IUA extensions SHALL correspond to the content defined in the XUA specification (see
+Annex 5 Addendum 1, section 1.6.4.2 Get X-User Assertion).</p>
 
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>JWT Claim (Extension)</th>
       <th>Optionality (Basic/ Extended)</th>
-      <th>XUA Attribute EPR</th>
+      <th>XUA Attribute</th>
       <th>Remark</th>
     </tr>
   </thead>
@@ -1050,7 +798,7 @@ Table <a href="#jwttiua">below</a>.</p>
       <td>subject_name</td>
       <td>R/R</td>
       <td>urn:oasis:names:tc:xspa:1.0:subject:subject-id</td>
-      <td>Plain text's username.</td>
+      <td>The username as text.</td>
     </tr>
     <tr>
       <td>subject_organization</td>
@@ -1068,19 +816,19 @@ Table <a href="#jwttiua">below</a>.</p>
       <td>subject_role</td>
       <td>O/R</td>
       <td>urn:oasis:names:tc:xacml:2.0:subject:role</td>
-      <td>Code indicating the user role. In the Swiss EPR the value SHALL be taken from the EPR Role Code Value Set.</td>
+      <td>Code indicating the user role from the EPR Role Code Value Set.</td>
     </tr>
     <tr>
       <td>purpose_of_use</td>
       <td>O/R</td>
       <td>urn:oasis:names:tc:xspa:1.0:subject:purposeofuse</td>
-      <td>Code indicating the purpose of use. In the Swiss EPR the value SHALL be taken from the EPR Purpose Of Use Value Set.</td>
+      <td>Code indicating the purpose of use from the EPR Purpose Of Use Value Set.</td>
     </tr>
     <tr>
       <td>home_community_id</td>
       <td>O/R</td>
       <td>urn:ihe:iti:xca:2010:homeCommunityId</td>
-      <td>The user’s home community identifier where the request originated. Its value should be an OID in URN notation.</td>
+      <td>OID of the user’s home community in URN notation.</td>
     </tr>
     <tr>
       <td>person_id</td>
@@ -1095,124 +843,122 @@ Table <a href="#jwttiua">below</a>.</p>
 
 <h6 id="the-jwt-ch_epr-extension">The JWT ch_epr extension</h6>
 
-<p>The Authorization Server and Resource Server SHALL support the following extensions to the JWT access token for an EPR
-user:</p>
+<p>The IUA Authorization Server and IUA Resource Server SHALL support this extension to convey the user's EPR identifier 
+in the JWT access token of the Get Access Token Response. Its attributes are:</p>
 
 <ul>
-  <li>user_id: subject identifier according to Annex 5 E1, section 1.6.4.3.4.2 Message Semantics.</li>
+  <li>user_id (required): The EPR subject identifier as defined in the table below.</li>
+  <li>user_id_qualifier (required): The subject identifier qualifier as defined in the table below.</li>
 </ul>
 
 <table>
-  <thead>
-    <tr>
-      <th>JWT Claim (Extension)</th>
-      <th>Optionality (Basic/ Extended)</th>
-      <th>XUA Attribute EPR</th>
-      <th>Remark</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
-      <td>user_id</td>
-      <td>O/R</td>
-      <td>&lt;NameID&gt; child element of the &lt;Subject&gt;</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>user_id_qualifier</td>
-      <td>O/R</td>
-      <td>Name qualifier attribute of &lt;NameID&gt;</td>
       <td> </td>
     </tr>
   </tbody>
 </table>
 
-<figcaption class="table table-bordered">Table: Attributes of the IUA Get Access Token response in the JWT extension ch_delegation.</figcaption>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>user role</th>
+      <th>user_id</th>
+      <th>user_id_qualifier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Patient</td>
+      <td>EPR-SPID</td>
+      <td>urn:e-health-suisse:2015:epr-spid</td>
+    </tr>
+    <tr>
+      <td>Healthcare Professional</td>
+      <td>GLN</td>
+      <td>urn:gs1:gln</td>
+    </tr>
+    <tr>
+      <td>Assistent</td>
+      <td>GLN</td>
+      <td>urn:gs1:gln</td>
+    </tr>
+    <tr>
+      <td>Representative</td>
+      <td>IdP-ID</td>
+      <td>urn:e-health-suisse:representative-id</td>
+    </tr>
+    <tr>
+      <td>Document Administrator</td>
+      <td>IdP-ID</td>
+      <td>urn:e-health-suisse:policy-administrator-id</td>
+    </tr>
+    <tr>
+      <td>Policy Administrator</td>
+      <td>IdP-ID</td>
+      <td>urn:e-health-suisse:document-administrator-id</td>
+    </tr>
+  </tbody>
+</table>
+
+<figcaption>Table: user_id and user_id_qualifier of EPR user.</figcaption>
+
+<table>
+  <tbody>
+    <tr>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Note: This extension corresponds to the <strong>NameID</strong> element of SAML 2.0 formatted X-User Assertions described in
+Annex 5 E1, section 1.6.4.2.4.2.</p>
 
 <h6 id="the-jwt-ch_group-extension">The JWT ch_group extension</h6>
 
-<p>The Authorization Server and Resource Server SHALL support the following extensions to the JWT access token for a list
-of groups a subject is member of:</p>
+<p>Groups are the objects used in the access management of the Swiss EPR. Patients and representatives may assign access
+rights to groups which typically are sub-organizations of the institutions, but may also cross institution boundaries, 
+e.g., a tumorboard with healthcare professionals from more than one institution.</p>
+
+<p>The IUA Authorization Server and IUA Resource Server SHALL support this extension in the JWT access token for a list of groups 
+a subject of role healthcare professional is a member of. For users of role assistant, the groups SHALL be the groups of 
+the healthcare professional the assistant is acting on behalf of.</p>
+
+<p>Groups SHALL be wrapped in an <strong>extensions</strong> object with key <code class="language-plaintext highlighter-rouge">ch_group</code> with a JSON array containing one JSON object 
+per group with the following attributes:</p>
 
 <ul>
-  <li>name: Name of the organization/group. The name SHALL be a string.</li>
-  <li>id: The id of the organization/group.The id SHALL be an OID in the format of a URN</li>
+  <li>id (required): The id of the group. Required for users of role healthcare professional and assistant. 
+The id SHALL be an OID in the format of a URN.</li>
+  <li>name (required): Name of the group. Required for users of role healthcare professional and assistant.
+The name SHALL be a string.</li>
 </ul>
 
-<p>The ch_group extension claims shall be wrapped in an "extensions" object with key "ch_group" and a JSON array containing
-the JSON objects with properties name and id. The id SHALL be an OID in the format of a URN.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>ch_group array element</th>
-      <th>Optionality (Basic/ Extended)</th>
-      <th>XUA Attribute EPR</th>
-      <th>Remark</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>name</td>
-      <td>O/R</td>
-      <td>urn:oasis:names:tc:xspa:1.0:subject:organization</td>
-      <td>An array of groups with properties name and id.</td>
-    </tr>
-    <tr>
-      <td>id</td>
-      <td>O/R</td>
-      <td>urn:oasis:names:tc:xspa:1.0:subject:organization-id</td>
-      <td>An array of group names and group ids.</td>
-    </tr>
-  </tbody>
-</table>
-
-<figcaption class="table table-bordered">Table: Attributes of the IUA Get Access Token response in the JWT extension ch_group.</figcaption>
+<p>Note: This extension corresponds to the list of <strong>urn:oasis:names:tc:xspa:1.0:subject:organization</strong> and 
+<strong>urn:oasis:names:tc:xspa:1.0:subject:organization-id</strong> elements of SAML 2.0 formatted X-User Assertions described in
+Annex 5 Addendum 1, section 1.6.4.2.4.2.</p>
 
 <h6 id="the-jwt-ch_delegation-extension">The JWT ch_delegation extension</h6>
 
-<p>The Authorization Server and Resource Server shall support the following extensions to the JWT access token:</p>
+<p>Delegation is used in the access management of the Swiss EPR to indicate that a user of role Assistant is acting on 
+behalf of a healthcare professional. The IUA Authorization Server and IUA Resource Server SHALL support this extension in the 
+JWT access token to identify the healthcare professional (principal) the assistant is acting on behalf of.</p>
+
+<p>Principals SHALL be wrapped in an <strong>extensions</strong> object with key <code class="language-plaintext highlighter-rouge">ch_delegation</code> and a JSON value
+object with attributes:</p>
 
 <ul>
   <li>principal (optional) Name of the healthcare professional an assistant is acting on behalf of.</li>
   <li>principal_id (optional) GLN of the healthcare professional an assistant is acting on behalf of.</li>
 </ul>
 
-<p>The ch_delegation extension claims shall be wrapped in an "extensions" object with key 'ch_delegation' and a JSON value
-object containing the claims. The claim content for the JWT CH:EPR extensions shall correspond to the content defined 
-in the XUA specification (see 1.6.4.2 Get X-User Assertion, A5E1).</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>JWT Claim (Extension)</th>
-      <th>Optionality (Basic/ Extended)</th>
-      <th>XUA Attribute EPR</th>
-      <th>Remark</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>principal</td>
-      <td>O/R</td>
-      <td>urn:e-health-suisse:principal-name</td>
-      <td>Name of the healthcare professional an assistant is acting on behalf of.</td>
-    </tr>
-    <tr>
-      <td>principal_id</td>
-      <td>O/R</td>
-      <td>urn:e-health-suisse:principal-id</td>
-      <td>GLN of the healthcare professional an assistant is acting on behalf of.</td>
-    </tr>
-  </tbody>
-</table>
-
-<figcaption class="table table-bordered">Table: Attributes of the IUA Get Access Token response in the JWT extension ch_delegation.</figcaption>
+<p>Note: This extension corresponds to the attributes <strong>urn:e-health-suisse:principal-name</strong> and <strong>urn:e-health-suisse:principal-id</strong>
+in the XUA specification in Annex 5 Addendum 1, section 1.6.4.2.4.2.2.</p>
 
 <h5 id="expected-actions-2">Expected Actions</h5>
 
-<p>The business rules for the IUA Authorization Server for the Healthcare Professional, Assistant, Patient and
-Representative Extension SHALL be the same as for Annex 5E1 1.6.4.2.4.4 Expected Actions X-Assertion Provider 
+<p>The business rules for the IUA Authorization Server for healthcare professionals, assistants, patient and
+representative extension SHALL be the same as for Annex 5 Addendum 1, section 1.6.4.2.4.4 Expected Actions X-Assertion Provider 
 Extensions.</p>
 
 <h5 id="message-example-2">Message Example</h5>
@@ -1223,9 +969,9 @@ Extensions.</p>
   </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuerAdress.ch"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UserId-bfe8a208-b9d0-4012-b2f5-168b949fc3cb"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://pixmResourceServerURL.ch"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294580000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"nbf"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294580</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nbf"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460</span><span class="p">,</span><span class="w">
   </span><span class="nl">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5436729-3f26-4dbf-abd3-2790dc7771a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"ihe_iua"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1240,16 +986,16 @@ Extensions.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>An extended JWT access token to be used to access patient documents SHALL have the additional attributes of the purpose
-of use, subject role, the EPR-SPID of the patient and may look like:</p>
+<p>An extended JWT access token to be used to access patient documents SHALL have the additional attributes of 
+the <strong>purpose_of_use</strong>, <strong>subject_role</strong> and the EPR-SPID of the patient. It may look like:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuerAdress.ch"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UserId-bfe8a208-b9d0-4012-b2f5-168b949fc3cb"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://mhdResourceServerURL.ch"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294580000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"nbf"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294580</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nbf"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460</span><span class="p">,</span><span class="w">
   </span><span class="nl">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5436729-3f26-4dbf-abd3-2790dc7771a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"ihe_iua"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1287,16 +1033,16 @@ of use, subject role, the EPR-SPID of the patient and may look like:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>An extended JWT access token to be used to access by an assistant acting behalf on a healthcare professional for a
-patient SHALL have the additional extension ch_delegation:</p>
+<p>An extended JWT access token to be used to access by an assistant acting behalf of a healthcare professional for a
+patient SHALL have the additional extension <strong>ch_delegation</strong>:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://issuerAdress.ch"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UserId-bfe8a208-b9d0-4012-b2f5-168b949fc3cb"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://mhdResourceServerURL.ch"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294580000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"nbf"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294580</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nbf"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1587294460</span><span class="p">,</span><span class="w">
   </span><span class="nl">"jti"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5436729-3f26-4dbf-abd3-2790dc7771a"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"extensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"ihe_iua"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1344,13 +1090,55 @@ patient SHALL have the additional extension ch_delegation:</p>
 
 <h3 id="security-consideration">Security Consideration</h3>
 
-<p>IUA Authorization Clients, Authorization Servers and Resource Server actors SHALL use the JWS (signed) alternative
-of the JWT token as specified in the IUA Trial Implementation. The JWE alternative SHALL not be used.</p>
+<p>IUA Authorization Clients, IUA Authorization Servers and IUA Resource Server actors SHALL support the JWS (signed) 
+alternative of the JWT token as specified in the IUA Trial Implementation. To ensure the authenticity and integrity, 
+the IUA Authorization Server SHALL sign the JWT token with its private key and IUA Resource Servers SHALL verify 
+the signature of the JWT token with the Authorization Server's public key. The JWE alternative SHALL not be used.</p>
+
+<p>To ensure the authenticity and integrity of the token requests, IUA Authorization Clients SHALL sign requests to the 
+token endpoint of the IUA Authorization Server with the clients' private key as defined in <code class="language-plaintext highlighter-rouge">RFC 9421 HTTP Message Signatures</code>. 
+The signature SHALL cover the entire request content. The IUA Authorization Server SHALL verify the requests' 
+signature with the clients' public key exchanged during the client registration process.</p>
+
+<p>The requests signature SHALL cover the following components of the http message as defined in <code class="language-plaintext highlighter-rouge">RFC 9421 HTTP Message Signatures</code>:</p>
+<ul>
+  <li>method (required): The http protocol name the value of it SHALL be <code class="language-plaintext highlighter-rouge">POST</code>.</li>
+  <li>target-uri (required): The URI of the IUA Authorization server.</li>
+  <li>authorization (required): The value of the Authorization http header.</li>
+  <li>content-digest (required): The digest of the http message as defined in <code class="language-plaintext highlighter-rouge">RFC 9530 Digest Fields</code>.</li>
+  <li>created (required): Creation time as a UNIX timestamp value of type Integer.</li>
+  <li>expires (required): Expiration time as a UNIX timestamp value of type Integer which SHALL be at max 60 seconds after the creation time.</li>
+  <li>keyid (optional): The identifier for the key material as a String value.</li>
+  <li>tag (optional): An application-specific tag for the signature as a String value which MAY be used to transfer additional information.</li>
+</ul>
+
+<p>Token requests SHALL use a http header with name <code class="language-plaintext highlighter-rouge">Signature-Input</code> the value of it SHALL be one or more metadata 
+sets with a key uniquely identifying the message signatures within the HTTP message as defined in <code class="language-plaintext highlighter-rouge">RFC 9421 HTTP Message Signatures</code>. 
+There SHALL be at least one signature metadata set created by the IUA Authorization Client, e.g.:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Signature-Input: sig1=("@method" "@target-uri" "authorization" "content-digest");created=1764073861;expires=1764073921;keyid="snIZq-_NvzkKV-IdiM348BCz_RKdwmufnrPubsKKyio";tag="fapi-2-request"
+</code></pre></div></div>
+
+<p>Token requests SHALL use a http header with name <code class="language-plaintext highlighter-rouge">Signature</code> the value of it SHALL be one or more message signatures 
+generated from the signature context of the target message with a key which uniquely identify the message signature
+as defined in RFC 9421 <code class="language-plaintext highlighter-rouge">HTTP Message Signatures</code>. There SHALL be at least one signature created by the 
+IUA Authorization Client, e.g.:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Signature: sig1=:9FaAZovdKmr9LVmwnzyfRED1ws1dX1mZLIgIPTOyBTNi0HkNoLxVipp8ZyGGx6+XP+7WVRh1wNQk9xjunHhZOw==:
+</code></pre></div></div>
+
+<p>Token requests SHALL use a http header with name <code class="language-plaintext highlighter-rouge">Content-Digest</code> the value of it SHALL be the content digest of the 
+request message with a key indicating the algorithm used as defined in <code class="language-plaintext highlighter-rouge">RFC 9530 Digest Fields</code>, e.g.:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Content-Digest: sha-512=:Lh6fzO9XALiY46o5xVyN9yZloKZ6pLJV0kz+VirU5b6rQd2ii7vrTt4gxe32HRuLtNYG2Kl7CnGwQjjDxQk4yA===:
+</code></pre></div></div>
+
+<p>IUA Authorization Server SHALL verify the signature of the token requests as specified in <code class="language-plaintext highlighter-rouge">RFC 9421 HTTP Message Signatures</code>.</p>
+
+<p>IUA Authorization Servers SHALL NOT implement any algorithm using a shared key (for example <em>HMAC</em>), and they SHALL 
+implement at least the algorithm 'RSASSA-PKCS1-v1_5 Using SHA-256'.</p>
 
 <p>When receiving requests of transactions where the EPR-SPID is provided in the IUA token and in the transaction body,
-the Resource Servers SHALL verify that both are the same.</p>
+the IUA Resource Servers SHALL verify that both are the same.</p>
 
-<p>The actors SHALL support the <em>traceparent</em> header handling, as defined in <a href="tracecontext.html">Appendix: Trace Context</a>.</p>
+<p>The actors SHALL support the <strong>traceparent</strong> header handling, as defined in <a href="tracecontext.html">Appendix: Trace Context</a>.</p>
 
 <h4 id="security-audit-considerations">Security Audit Considerations</h4>
 
@@ -1375,7 +1163,7 @@ the Resource Servers SHALL verify that both are the same.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#5.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, May 22, 2025 13:40+0000">2025-05-22</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.e-health-suisse.ch">eHealth Suisse</a>.  Package ch.fhir.ig.ch-epr-fhir#5.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Dec 18, 2025 15:54+0000">2025-12-18</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -1383,7 +1171,7 @@ the Resource Servers SHALL verify that both are the same.</p>
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%235.0.0-ballot%20/iti-71.html&amp;entry%2E247644557=Get%20Access%20Token%20[ITI-71]">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSffM9HysTOg3VdMOeaFmWiWGH0OQT-FZLmwZaeXgZqUr66Y0A/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-epr-fhir%235.0.0%20/iti-71.html&amp;entry%2E247644557=Get%20Access%20Token%20[ITI-71]">Propose a change</a>
 
 
 

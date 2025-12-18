@@ -1,0 +1,120 @@
+# PPQm Consent for template 302 - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **PPQm Consent for template 302**
+
+## Example Consent: PPQm Consent for template 302
+
+Template 302 -- Read access level for a group of healthcare professionals
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Consent",
+  "id" : "PpqmConsentTemplate302Example",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmConsentTemplate302"
+    ]
+  },
+  "identifier" : [
+    {
+      "type" : {
+        "coding" : [
+          {
+            "system" : "http://fhir.ch/ig/ch-epr-fhir/CodeSystem/PpqmConsentIdentifierType",
+            "code" : "policySetId"
+          }
+        ]
+      },
+      "value" : "urn:uuid:c23c862a-b297-43c7-875b-d933982c9756"
+    },
+    {
+      "type" : {
+        "coding" : [
+          {
+            "system" : "http://fhir.ch/ig/ch-epr-fhir/CodeSystem/PpqmConsentIdentifierType",
+            "code" : "templateId"
+          }
+        ]
+      },
+      "value" : "302"
+    }
+  ],
+  "status" : "active",
+  "scope" : {
+    "coding" : [
+      {
+        "system" : "http://terminology.hl7.org/CodeSystem/consentscope",
+        "code" : "patient-privacy"
+      }
+    ]
+  },
+  "category" : [
+    {
+      "coding" : [
+        {
+          "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code" : "INFA"
+        }
+      ]
+    }
+  ],
+  "patient" : {
+    "identifier" : {
+      "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+      "value" : "761337610000000002"
+    }
+  },
+  "policyRule" : {
+    "coding" : [
+      {
+        "system" : "urn:ietf:rfc:3986",
+        "code" : "urn:e-health-suisse:2015:policies:access-level:restricted"
+      }
+    ]
+  },
+  "provision" : {
+    "period" : {
+      "start" : "2025-02-01",
+      "end" : "2025-02-15"
+    },
+    "actor" : [
+      {
+        "role" : {
+          "coding" : [
+            {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+              "code" : "HCP"
+            }
+          ]
+        },
+        "reference" : {
+          "identifier" : {
+            "type" : {
+              "coding" : [
+                {
+                  "system" : "urn:ietf:rfc:3986",
+                  "code" : "urn:oasis:names:tc:xspa:1.0:subject:organization-id"
+                }
+              ]
+            },
+            "value" : "urn:oid:1.2.3.4.5"
+          }
+        }
+      }
+    ],
+    "purpose" : [
+      {
+        "system" : "urn:oid:2.16.756.5.30.1.127.3.10.5",
+        "code" : "NORM"
+      }
+    ]
+  }
+}
+
+```

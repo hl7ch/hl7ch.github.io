@@ -1,0 +1,475 @@
+# mCSD Find Matching Care Services Response Bundle - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **mCSD Find Matching Care Services Response Bundle**
+
+## Example Bundle: mCSD Find Matching Care Services Response Bundle
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "FindMatchingCareServicesResponse",
+  "type" : "searchset",
+  "link" : [
+    {
+      "relation" : "self",
+      "url" : "http://example.com/Practitioner?family=Pan"
+    }
+  ],
+  "entry" : [
+    {
+      "fullUrl" : "http://example.com/Practitioner/DrPeterPan",
+      "resource" : {
+        "resourceType" : "Practitioner",
+        "id" : "DrPeterPan",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Practitioner"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_DrPeterPan\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner DrPeterPan</b></p><a name=\"DrPeterPan\"> </a><a name=\"hcDrPeterPan\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-CH.mCSD.Practitioner.html\">CH mCSD Practitioner</a></p></div><p><b>identifier</b>: <a href=\"https://www.gs1.org/standards/id-keys/gln\" title=\"Global Location Number\">GLN</a>/7601000102737, <a href=\"NamingSystem-Ldap.html\" title=\"NamingSystem for Lightweight Directory Access Protocol (LDAP); [https://www.ietf.org/rfc/rfc4514.html](https://www.ietf.org/rfc/rfc4514.html).\">LDAP</a>/uid=CommunityA:00000003002,OU=HCProfessional,DC=HPD,O=BAG,C=ch</p><p><b>active</b>: true</p><p><b>name</b>: Peter Pan</p><p><b>telecom</b>: <a href=\"mailto:peter.pan@email.com\">peter.pan@email.com</a>, fax: +41 32 001 00 05, <a href=\"tel:+41790010006\">+41 79 001 00 06</a>, <a href=\"tel:+41320010004\">+41 32 001 00 04</a>, +41 79 001 00 07</p><p><b>gender</b>: Male</p><blockquote><p><b>qualification</b></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 309343006}\">Physician</span></p></blockquote><blockquote><p><b>qualification</b></p><p><b>code</b>: <span title=\"Codes:{urn:oid:2.16.756.5.30.1.127.3.5 1051}\">General internal medicine</span></p></blockquote><p><b>communication</b>: <span title=\"Codes:{urn:ietf:bcp:47 de}\">German</span>, <span title=\"Codes:{urn:ietf:bcp:47 fr}\">French</span>, <span title=\"Codes:{urn:ietf:bcp:47 en}\">English</span>, <span title=\"Codes:{urn:ietf:bcp:47 it}\">Italian</span></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:oid:2.51.1.3",
+            "value" : "7601000102737"
+          },
+          {
+            "system" : "urn:ietf:rfc:4514",
+            "value" : "uid=CommunityA:00000003002,OU=HCProfessional,DC=HPD,O=BAG,C=ch"
+          }
+        ],
+        "active" : true,
+        "name" : [
+          {
+            "text" : "Peter Pan",
+            "family" : "Pan",
+            "given" : ["Peter"],
+            "prefix" : ["Dr."]
+          }
+        ],
+        "telecom" : [
+          {
+            "system" : "email",
+            "value" : "peter.pan@email.com"
+          },
+          {
+            "system" : "fax",
+            "value" : "+41 32 001 00 05"
+          },
+          {
+            "system" : "phone",
+            "value" : "+41 79 001 00 06",
+            "use" : "mobile"
+          },
+          {
+            "system" : "phone",
+            "value" : "+41 32 001 00 04"
+          },
+          {
+            "system" : "pager",
+            "value" : "+41 79 001 00 07"
+          }
+        ],
+        "gender" : "male",
+        "qualification" : [
+          {
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "http://snomed.info/sct",
+                  "code" : "309343006",
+                  "display" : "Physician"
+                }
+              ]
+            }
+          },
+          {
+            "code" : {
+              "coding" : [
+                {
+                  "system" : "urn:oid:2.16.756.5.30.1.127.3.5",
+                  "code" : "1051",
+                  "display" : "General internal medicine"
+                }
+              ]
+            }
+          }
+        ],
+        "communication" : [
+          {
+            "coding" : [
+              {
+                "system" : "urn:ietf:bcp:47",
+                "code" : "de"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "urn:ietf:bcp:47",
+                "code" : "fr"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "urn:ietf:bcp:47",
+                "code" : "en"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "urn:ietf:bcp:47",
+                "code" : "it"
+              }
+            ]
+          }
+        ]
+      },
+      "search" : {
+        "mode" : "match"
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/Organization/SpitalX",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "SpitalX",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_SpitalX\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization SpitalX</b></p><a name=\"SpitalX\"> </a><a name=\"hcSpitalX\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-CH.mCSD.Organization.html\">CH mCSD Organization</a></p></div><p><b>identifier</b>: <a href=\"NamingSystem-Ldap.html\" title=\"NamingSystem for Lightweight Directory Access Protocol (LDAP); [https://www.ietf.org/rfc/rfc4514.html](https://www.ietf.org/rfc/rfc4514.html).\">LDAP</a>/uid=CommunityA:00000001000,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch, <a href=\"http://terminology.hl7.org/5.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:oid:2.16.10.89.201</p><p><b>active</b>: true</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 394802001}\">General medicine</span>, <span title=\"Codes:{http://snomed.info/sct 22232009}\">Hospital</span></p><p><b>name</b>: Spital X</p><p><b>telecom</b>: fax: +41 71 111 22 99, <a href=\"tel:+41711112233\">+41 71 111 22 33</a></p><p><b>address</b>: Spital X 95 Rorschacher Strasse St. Gallen SG 9007 CH (work)</p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:4514",
+            "value" : "uid=CommunityA:00000001000,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch"
+          },
+          {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:oid:2.16.10.89.201"
+          }
+        ],
+        "active" : true,
+        "type" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394802001",
+                "display" : "General medicine"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "22232009",
+                "display" : "Hospital"
+              }
+            ]
+          }
+        ],
+        "name" : "Spital X",
+        "telecom" : [
+          {
+            "system" : "fax",
+            "value" : "+41 71 111 22 99"
+          },
+          {
+            "system" : "phone",
+            "value" : "+41 71 111 22 33"
+          }
+        ],
+        "address" : [
+          {
+            "use" : "work",
+            "line" : ["Spital X", "95 Rorschacher Strasse"],
+            "city" : "St. Gallen",
+            "state" : "SG",
+            "postalCode" : "9007",
+            "country" : "CH"
+          }
+        ]
+      },
+      "search" : {
+        "mode" : "include"
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/Organization/SpitalXDept3",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "SpitalXDept3",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_SpitalXDept3\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization SpitalXDept3</b></p><a name=\"SpitalXDept3\"> </a><a name=\"hcSpitalXDept3\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-CH.mCSD.Organization.html\">CH mCSD Organization</a></p></div><p><b>identifier</b>: <a href=\"NamingSystem-Ldap.html\" title=\"NamingSystem for Lightweight Directory Access Protocol (LDAP); [https://www.ietf.org/rfc/rfc4514.html](https://www.ietf.org/rfc/rfc4514.html).\">LDAP</a>/uid=CommunityA:00000001004,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch, <a href=\"http://terminology.hl7.org/5.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:oid:2.16.10.89.203</p><p><b>active</b>: true</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 225728007}\">Accident and Emergency department</span>, <span title=\"Codes:{http://snomed.info/sct 22232009}\">Hospital</span></p><p><b>name</b>: Dept. 3</p><p><b>telecom</b>: fax: +41 71 111 22 27, <a href=\"tel:+41711112219\">+41 71 111 22 19</a></p><p><b>address</b>: Spital X - Medicina d'urgenza e di salvataggio 95 Rorschacher Strasse St. Gallen SG 9007 CH (work)</p><p><b>partOf</b>: <a href=\"Organization-SpitalX.html\">Organization Spital X</a></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:4514",
+            "value" : "uid=CommunityA:00000001004,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch"
+          },
+          {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:oid:2.16.10.89.203"
+          }
+        ],
+        "active" : true,
+        "type" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "225728007",
+                "display" : "Accident and Emergency department"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "22232009",
+                "display" : "Hospital"
+              }
+            ]
+          }
+        ],
+        "name" : "Dept. 3",
+        "telecom" : [
+          {
+            "system" : "fax",
+            "value" : "+41 71 111 22 27"
+          },
+          {
+            "system" : "phone",
+            "value" : "+41 71 111 22 19"
+          }
+        ],
+        "address" : [
+          {
+            "use" : "work",
+            "line" : [
+              "Spital X - Medicina d'urgenza e di salvataggio",
+              "95 Rorschacher Strasse"
+            ],
+            "city" : "St. Gallen",
+            "state" : "SG",
+            "postalCode" : "9007",
+            "country" : "CH"
+          }
+        ],
+        "partOf" : {
+          "reference" : "Organization/SpitalX"
+        }
+      },
+      "search" : {
+        "mode" : "include"
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/Organization/PraxisP",
+      "resource" : {
+        "resourceType" : "Organization",
+        "id" : "PraxisP",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.Organization"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_PraxisP\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization PraxisP</b></p><a name=\"PraxisP\"> </a><a name=\"hcPraxisP\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-CH.mCSD.Organization.html\">CH mCSD Organization</a></p></div><p><b>identifier</b>: <a href=\"NamingSystem-Ldap.html\" title=\"NamingSystem for Lightweight Directory Access Protocol (LDAP); [https://www.ietf.org/rfc/rfc4514.html](https://www.ietf.org/rfc/rfc4514.html).\">LDAP</a>/uid=CommunityA:00000001001,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch, <a href=\"http://terminology.hl7.org/5.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:oid:2.16.10.89.210</p><p><b>active</b>: true</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 35971002}\">Ambulatory care site</span>, <span title=\"Codes:{http://snomed.info/sct 394802001}\">General medicine</span></p><p><b>name</b>: Praxis P</p><p><b>telecom</b>: fax: +41 71 271 22 99, <a href=\"tel:+41712712233\">+41 71 271 22 33</a></p><p><b>address</b>: Praxis P 47 Langgasse St. Gallen SG 9000 CH (work)</p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:4514",
+            "value" : "uid=CommunityA:00000001001,OU=HCRegulatedOrganization,DC=HPD,O=BAG,C=ch"
+          },
+          {
+            "system" : "urn:ietf:rfc:3986",
+            "value" : "urn:oid:2.16.10.89.210"
+          }
+        ],
+        "active" : true,
+        "type" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "35971002",
+                "display" : "Ambulatory care site"
+              }
+            ]
+          },
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "394802001",
+                "display" : "General medicine"
+              }
+            ]
+          }
+        ],
+        "name" : "Praxis P",
+        "telecom" : [
+          {
+            "system" : "fax",
+            "value" : "+41 71 271 22 99"
+          },
+          {
+            "system" : "phone",
+            "value" : "+41 71 271 22 33"
+          }
+        ],
+        "address" : [
+          {
+            "use" : "work",
+            "line" : ["Praxis P", "47 Langgasse"],
+            "city" : "St. Gallen",
+            "state" : "SG",
+            "postalCode" : "9000",
+            "country" : "CH"
+          }
+        ]
+      },
+      "search" : {
+        "mode" : "include"
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/PractitionerRole/PeterPanSpitalXDept3",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "PeterPanSpitalXDept3",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_PeterPanSpitalXDept3\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole PeterPanSpitalXDept3</b></p><a name=\"PeterPanSpitalXDept3\"> </a><a name=\"hcPeterPanSpitalXDept3\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-CH.mCSD.PractitionerRole.html\">CH mCSD PractitionerRole</a></p></div><p><b>identifier</b>: <a href=\"NamingSystem-Ldap.html\" title=\"NamingSystem for Lightweight Directory Access Protocol (LDAP); [https://www.ietf.org/rfc/rfc4514.html](https://www.ietf.org/rfc/rfc4514.html).\">LDAP</a>/CN=CommunityA:00000001004,OU=Relationship,DC=HPD,O=BAG,C=ch</p><p><b>active</b>: true</p><p><b>practitioner</b>: <a href=\"Practitioner-DrPeterPan.html\">Practitioner Peter Pan</a></p><p><b>organization</b>: <a href=\"Organization-SpitalXDept3.html\">Organization Dept. 3</a></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 309343006}\">Physician</span></p><p><b>specialty</b>: <span title=\"Codes:{urn:oid:2.16.756.5.30.1.127.3.5 1051}\">General internal medicine</span></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:4514",
+            "value" : "CN=CommunityA:00000001004,OU=Relationship,DC=HPD,O=BAG,C=ch"
+          }
+        ],
+        "active" : true,
+        "practitioner" : {
+          "reference" : "Practitioner/DrPeterPan"
+        },
+        "organization" : {
+          "reference" : "Organization/SpitalXDept3"
+        },
+        "code" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "309343006",
+                "display" : "Physician"
+              }
+            ]
+          }
+        ],
+        "specialty" : [
+          {
+            "coding" : [
+              {
+                "system" : "urn:oid:2.16.756.5.30.1.127.3.5",
+                "code" : "1051",
+                "display" : "General internal medicine"
+              }
+            ]
+          }
+        ]
+      },
+      "search" : {
+        "mode" : "include"
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/PractitionerRole/PeterPanPraxisP",
+      "resource" : {
+        "resourceType" : "PractitionerRole",
+        "id" : "PeterPanPraxisP",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH.mCSD.PractitionerRole"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_PeterPanPraxisP\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole PeterPanPraxisP</b></p><a name=\"PeterPanPraxisP\"> </a><a name=\"hcPeterPanPraxisP\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-CH.mCSD.PractitionerRole.html\">CH mCSD PractitionerRole</a></p></div><p><b>identifier</b>: <a href=\"NamingSystem-Ldap.html\" title=\"NamingSystem for Lightweight Directory Access Protocol (LDAP); [https://www.ietf.org/rfc/rfc4514.html](https://www.ietf.org/rfc/rfc4514.html).\">LDAP</a>/CN=CommunityA:00000001001,OU=Relationship,DC=HPD,O=BAG,C=ch</p><p><b>active</b>: true</p><p><b>practitioner</b>: <a href=\"Practitioner-DrPeterPan.html\">Practitioner Peter Pan</a></p><p><b>organization</b>: <a href=\"Organization-PraxisP.html\">Organization Praxis P</a></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 309343006}\">Physician</span></p><p><b>specialty</b>: <span title=\"Codes:{urn:oid:2.16.756.5.30.1.127.3.5 1051}\">General internal medicine</span></p></div>"
+        },
+        "identifier" : [
+          {
+            "system" : "urn:ietf:rfc:4514",
+            "value" : "CN=CommunityA:00000001001,OU=Relationship,DC=HPD,O=BAG,C=ch"
+          }
+        ],
+        "active" : true,
+        "practitioner" : {
+          "reference" : "Practitioner/DrPeterPan"
+        },
+        "organization" : {
+          "reference" : "Organization/PraxisP"
+        },
+        "code" : [
+          {
+            "coding" : [
+              {
+                "system" : "http://snomed.info/sct",
+                "code" : "309343006",
+                "display" : "Physician"
+              }
+            ]
+          }
+        ],
+        "specialty" : [
+          {
+            "coding" : [
+              {
+                "system" : "urn:oid:2.16.756.5.30.1.127.3.5",
+                "code" : "1051",
+                "display" : "General internal medicine"
+              }
+            ]
+          }
+        ]
+      },
+      "search" : {
+        "mode" : "include"
+      }
+    }
+  ]
+}
+
+```

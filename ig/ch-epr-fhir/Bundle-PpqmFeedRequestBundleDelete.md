@@ -1,0 +1,45 @@
+# PPQm Feed Request Bundle (DELETE) - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **PPQm Feed Request Bundle (DELETE)**
+
+## Example Bundle: PPQm Feed Request Bundle (DELETE)
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "PpqmFeedRequestBundleDelete",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PpqmFeedRequestBundle"
+    ]
+  },
+  "type" : "transaction",
+  "entry" : [
+    {
+      "request" : {
+        "method" : "DELETE",
+        "url" : "Consent?identifier=urn:uuid:f1e1ed8e-0582-4e47-a76e-5e8f6cc0908f"
+      }
+    },
+    {
+      "request" : {
+        "method" : "DELETE",
+        "url" : "Consent?identifier=urn:uuid:c23c862a-b297-43c7-875b-d933982c9756"
+      }
+    },
+    {
+      "request" : {
+        "method" : "DELETE",
+        "url" : "Consent?identifier=urn:uuid:f663289d-4cc4-41d7-a01d-213e18e1f722"
+      }
+    }
+  ]
+}
+
+```

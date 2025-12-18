@@ -1,0 +1,406 @@
+# CH ATC - Reponse Audit Trail - CH EPR FHIR (R4) v5.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH ATC - Reponse Audit Trail**
+
+## Example Bundle: CH ATC - Reponse Audit Trail
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "ch-atc-iti-81-response-sample",
+  "meta" : {
+    "profile" : [
+      "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/CH-ATC.ITI-81.Response"
+    ]
+  },
+  "type" : "searchset",
+  "total" : 3,
+  "link" : [
+    {
+      "relation" : "self",
+      "url" : "http://example.com/AuditEvent"
+    }
+  ],
+  "entry" : [
+    {
+      "fullUrl" : "http://example.com/AuditEvent/1",
+      "resource" : {
+        "resourceType" : "AuditEvent",
+        "id" : "1",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/DocumentAuditEvent"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"AuditEvent_1\"> </a>Upload of Record artifact 10.10.2020 18:29 from Julia Helfe-Gern on behalf of Jakob Wieder-Gesund\n          </div>"
+        },
+        "type" : {
+          "system" : "http://dicom.nema.org/resources/ontology/DCM",
+          "code" : "110106",
+          "display" : "Export"
+        },
+        "subtype" : [
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.127.3.10.7",
+            "code" : "ATC_DOC_CREATE",
+            "display" : "Document upload"
+          }
+        ],
+        "action" : "C",
+        "recorded" : "2020-10-10T16:29:00Z",
+        "outcome" : "0",
+        "purposeOfEvent" : [
+          {
+            "coding" : [
+              {
+                "system" : "urn:oid:2.16.756.5.30.1.127.3.10.5",
+                "code" : "NORM",
+                "display" : "Normal Access"
+              }
+            ]
+          }
+        ],
+        "agent" : [
+          {
+            "role" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+                    "code" : "PAT",
+                    "display" : "Patient"
+                  }
+                ]
+              }
+            ],
+            "name" : "Jakob Wieder-Gesund",
+            "requestor" : false
+          },
+          {
+            "role" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+                    "code" : "REP",
+                    "display" : "Representative"
+                  }
+                ]
+              }
+            ],
+            "who" : {
+              "identifier" : {
+                "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+                "value" : "761322222222222222"
+              }
+            },
+            "name" : "Julia Helfe-Gern",
+            "requestor" : true
+          }
+        ],
+        "source" : {
+          "observer" : {
+            "identifier" : {
+              "system" : "urn:ietf:rfc:3986",
+              "value" : "urn:oid:7.8.9.10.11"
+            }
+          }
+        },
+        "entity" : [
+          {
+            "what" : {
+              "identifier" : {
+                "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+                "value" : "761337610469261945"
+              }
+            },
+            "type" : {
+              "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+              "code" : "1",
+              "display" : "Person"
+            },
+            "role" : {
+              "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+              "code" : "1",
+              "display" : "Patient"
+            }
+          },
+          {
+            "what" : {
+              "identifier" : {
+                "system" : "urn:ihe:iti:xds:2013:uniqueId",
+                "value" : "1.2.3.4.5"
+              }
+            },
+            "type" : {
+              "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+              "code" : "2",
+              "display" : "System Object"
+            },
+            "role" : {
+              "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+              "code" : "3",
+              "display" : "Report"
+            },
+            "detail" : [
+              {
+                "type" : "Repository Unique Id",
+                "valueBase64Binary" : "MS4yLjM="
+              },
+              {
+                "type" : "homeCommunityID",
+                "valueBase64Binary" : "NS42LjcuOA=="
+              },
+              {
+                "type" : "EprDocumentTypeCode",
+                "valueBase64Binary" : "NDE5ODkxMDA4"
+              },
+              {
+                "type" : "title",
+                "valueBase64Binary" : "QXVzdHJpdHRzYmVyaWNodCB2b24gSnVsaWEgSGVsZmUtR2Vybg=="
+              }
+            ]
+          }
+        ]
+      },
+      "search" : {
+        "mode" : "match"
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/AuditEvent/2",
+      "resource" : {
+        "resourceType" : "AuditEvent",
+        "id" : "2",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/AccessAuditTrailEvent"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"AuditEvent_2\"> </a>Jakob Wieder-Gesund accessed the audit trail 22.09.2020 10:47\n          </div>"
+        },
+        "type" : {
+          "system" : "http://dicom.nema.org/resources/ontology/DCM",
+          "code" : "110106",
+          "display" : "Export"
+        },
+        "subtype" : [
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.127.3.10.7",
+            "code" : "ATC_LOG_READ",
+            "display" : "Accessing the Patient Audit Record Repository"
+          }
+        ],
+        "action" : "C",
+        "recorded" : "2020-09-22T08:47:00Z",
+        "outcome" : "0",
+        "agent" : [
+          {
+            "role" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+                    "code" : "PAT",
+                    "display" : "Patient"
+                  }
+                ]
+              }
+            ],
+            "name" : "Jakob Wieder-Gesund",
+            "requestor" : true
+          }
+        ],
+        "source" : {
+          "observer" : {
+            "identifier" : {
+              "system" : "urn:ietf:rfc:3986",
+              "value" : "urn:oid:7.8.9.10.11"
+            }
+          }
+        },
+        "entity" : [
+          {
+            "what" : {
+              "identifier" : {
+                "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+                "value" : "761337610469261945"
+              }
+            },
+            "type" : {
+              "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+              "code" : "1",
+              "display" : "Person"
+            },
+            "role" : {
+              "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+              "code" : "1",
+              "display" : "Patient"
+            }
+          }
+        ]
+      },
+      "search" : {
+        "mode" : "match"
+      }
+    },
+    {
+      "fullUrl" : "http://example.com/AuditEvent/3",
+      "resource" : {
+        "resourceType" : "AuditEvent",
+        "id" : "3",
+        "meta" : {
+          "profile" : [
+            "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/PolicyAuditEvent"
+          ]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"AuditEvent_3\"> </a>22.09.2020 09:47: Jakob Wieder-Gesund assigned Access Level delegation-and-restricted till 31.12.2020 08:00 to Dr. med. Hans Allzeitbereit\n          </div>"
+        },
+        "type" : {
+          "system" : "http://dicom.nema.org/resources/ontology/DCM",
+          "code" : "110106",
+          "display" : "Export"
+        },
+        "subtype" : [
+          {
+            "system" : "urn:oid:2.16.756.5.30.1.127.3.10.7",
+            "code" : "ATC_POL_CREATE_AUT_PART_AL",
+            "display" : "Authorize participants to access level/date"
+          }
+        ],
+        "action" : "C",
+        "recorded" : "2020-10-09T07:47:00Z",
+        "outcome" : "0",
+        "agent" : [
+          {
+            "role" : [
+              {
+                "coding" : [
+                  {
+                    "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+                    "code" : "PAT",
+                    "display" : "Patient"
+                  }
+                ]
+              }
+            ],
+            "name" : "Jakob Wieder-Gesund",
+            "requestor" : true
+          }
+        ],
+        "source" : {
+          "observer" : {
+            "identifier" : {
+              "system" : "urn:ietf:rfc:3986",
+              "value" : "urn:oid:7.8.9.10.12"
+            }
+          }
+        },
+        "entity" : [
+          {
+            "what" : {
+              "identifier" : {
+                "system" : "urn:oid:2.16.756.5.30.1.127.3.10.3",
+                "value" : "761337610469261945"
+              }
+            },
+            "type" : {
+              "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+              "code" : "1",
+              "display" : "Person"
+            },
+            "role" : {
+              "system" : "http://terminology.hl7.org/CodeSystem/object-role",
+              "code" : "1",
+              "display" : "Patient"
+            }
+          },
+          {
+            "what" : {
+              "identifier" : {
+                "system" : "urn:oid:2.51.1.3",
+                "value" : "7601000234438"
+              }
+            },
+            "type" : {
+              "system" : "http://terminology.hl7.org/CodeSystem/audit-entity-type",
+              "code" : "2",
+              "display" : "System Object"
+            },
+            "role" : {
+              "system" : "urn:oid:2.16.756.5.30.1.127.3.10.6",
+              "code" : "HCP",
+              "display" : "Healthcare professional"
+            },
+            "name" : "Dr. med. Hans Allzeitbereit",
+            "detail" : [
+              {
+                "type" : "AccessLevel",
+                "valueBase64Binary" : "dXJuOmUtaGVhbHRoLXN1aXNzZToyMDE1OnBvbGljaWVzOmFjY2Vzcy1sZXZlbDpkZWxlZ2F0aW9uLWFuZC1yZXN0cmljdGVk"
+              },
+              {
+                "type" : "AccessLimitedToDate",
+                "valueBase64Binary" : "MjAyMC0xMi0zMQ=="
+              }
+            ]
+          }
+        ]
+      },
+      "search" : {
+        "mode" : "match"
+      }
+    },
+    {
+      "fullUrl" : "urn:uuid:6b3ecd02-e4bc-460c-b2ef-5bfe96f0fe7c",
+      "resource" : {
+        "resourceType" : "OperationOutcome",
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"OperationOutcome_null\"> </a><p class=\"res-header-id\"><b>Generated Narrative: OperationOutcome </b></p><h3>Issues</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Severity</b></td><td><b>Code</b></td><td><b>Details</b></td></tr><tr><td style=\"display: none\">*</td><td>Warning</td><td>Incomplete Results</td><td><span title=\"Codes:\">The community ABC did not respond</span></td></tr></table></div>"
+        },
+        "issue" : [
+          {
+            "severity" : "warning",
+            "code" : "incomplete",
+            "details" : {
+              "extension" : [
+                {
+                  "url" : "http://fhir.ch/ig/ch-epr-fhir/StructureDefinition/ch-mhd-home-community-id",
+                  "valueIdentifier" : {
+                    "type" : {
+                      "coding" : [
+                        {
+                          "system" : "urn:ihe:iti:xca:2010",
+                          "code" : "homeCommunityId"
+                        }
+                      ]
+                    },
+                    "value" : "urn:oid:1.2.334483.3.337395864.7"
+                  }
+                }
+              ],
+              "text" : "The community ABC did not respond"
+            }
+          }
+        ]
+      },
+      "search" : {
+        "mode" : "outcome"
+      }
+    }
+  ]
+}
+
+```
