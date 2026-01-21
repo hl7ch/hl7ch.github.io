@@ -13,6 +13,11 @@ on:
         required: true
         default: 'ch-ig'
         type: string
+      branch:
+        description: 'branch name'
+        required: true
+        default: 'master'
+        type: string
       version:
         description: 'Version of the IG'
         required: true
@@ -37,6 +42,7 @@ jobs:
       igname: "${{ github.event.inputs.igname }}"
       version: "${{ github.event.inputs.version }}"
       publish: "${{ github.event.inputs.publish }}"
+      branch: "${{ github.event.inputs.branch }}"
       fhirchappid: 974513
     steps:
       - name: 📦 Build and test with Rake        
@@ -62,6 +68,11 @@ jobs:
       - name: 📝 Get the ig name
         id: ig_name
         run: echo "::set-output name=ig::$(echo ${{ env.igname }} | cut -d '/' -f 2)"
+        shell: bash
+
+      - name: 📝 Get the branch name
+        id: branch
+        run: echo "::set-output name=branch::$(echo ${{ env.branch }} | cut -d '/' -f 2)"
         shell: bash
 
       - name: 📝 Get the organization name
@@ -117,7 +128,7 @@ jobs:
           repository: ${{ env.orgrepo }}
           path: ${{ steps.repo_name.outputs.repo }}
           token: ${{ steps.app-token.outputs.token }}
-          ref: ${{ github.head_ref }}
+          ref: ${{ steps.branch.outputs.branch }}
 
       # Builds the HTML page for the IG.
       - name: 🏃‍♂️ Run IG Publisher local
