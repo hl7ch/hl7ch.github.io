@@ -1,0 +1,173 @@
+# CH ELM FOPH Business Rules - CH ELM (R4) v1.13.1
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH ELM FOPH Business Rules**
+
+## CodeSystem: CH ELM FOPH Business Rules 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-business-rules | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmFophBusinessRules |
+| **Copyright/Legal**: CC0-1.0 | |
+
+ 
+This CH ELM code system describes specific business rules of the FOPH, which are applied during processing. Please note that the set of rules detailed herein only covers processes explicitly declared by the FOPH. Additional rules, not included in this code system, are applied by the FHIR validation logic, resulting in further codes. For more information about these additional codes, consult the official FHIR documentation and the implementation guideline. 
+
+ This Code system is referenced in the content logical definition of the following value sets: 
+
+* This CodeSystem is not used here; it may be used elsewhere (e.g. specifications and/or implementations that use this content)
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "CodeSystem",
+  "id" : "ch-elm-foph-business-rules",
+  "url" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-business-rules",
+  "version" : "1.13.1",
+  "name" : "ChElmFophBusinessRules",
+  "title" : "CH ELM FOPH Business Rules",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-01-21T11:05:32+00:00",
+  "publisher" : "Federal Office of Public Health FOPH",
+  "contact" : [
+    {
+      "name" : "Federal Office of Public Health FOPH",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+        }
+      ]
+    }
+  ],
+  "description" : "This CH ELM code system describes specific business rules of the FOPH, which are applied during processing. Please note that the set of rules detailed herein only covers processes explicitly declared by the FOPH. Additional rules, not included in this code system, are applied by the FHIR validation logic, resulting in further codes. For more information about these additional codes, consult the official FHIR documentation and the implementation guideline.",
+  "jurisdiction" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CH"
+        }
+      ]
+    }
+  ],
+  "copyright" : "CC0-1.0",
+  "caseSensitive" : false,
+  "hierarchyMeaning" : "is-a",
+  "content" : "complete",
+  "concept" : [
+    {
+      "code" : "information",
+      "display" : "Information",
+      "definition" : "A purely informational message.",
+      "concept" : [
+        {
+          "code" : "FOPH-000",
+          "display" : "Generic Information"
+        }
+      ]
+    },
+    {
+      "code" : "warning",
+      "display" : "Warning",
+      "definition" : "If the rule is violated, the resource is conformant, but it is not necessarily following best practice.",
+      "concept" : [
+        {
+          "code" : "FOPH-014",
+          "display" : "The patient address state element should contain a two letter canton code."
+        },
+        {
+          "code" : "FOPH-017",
+          "display" : "The combination of postal code & city in the patient address element could not be found in the FOPH location database."
+        },
+        {
+          "code" : "FOPH-005",
+          "display" : "The required anonymization for the reported organism was violated. The following field(s) are affected: %fields%"
+        },
+        {
+          "code" : "FOPH-020",
+          "display" : "The effectiveDateTime-element indicates that the test was executed more than %testExecutionDateRejectionThresholdInDays% days ago. Assuming that this test has already been reported, the document is considered a duplicate. Duplicates are accepted on ABN/Test but not on the productive environment."
+        },
+        {
+          "code" : "FOPH-022",
+          "display" : "Received multiple service requests without a basedOn attribute. Only the data contained in the service request referenced by the basedOn attribute in the DiagnosticReport are imported. If you want to specify an original orderer use the basedOn attribute on the primary service request to reference the secondary service request."
+        },
+        {
+          "code" : "FOPH-011",
+          "display" : "The material is already specified by the leading code. The additional material specified in specimen.type will be ignored."
+        },
+        {
+          "code" : "FOPH-010",
+          "display" : "Attention, the code %code% (%codeSystem%) expires on %validTo%. Please adjust your systems by this date."
+        },
+        {
+          "code" : "FOPH-019",
+          "display" : "The combination of postal code & city in the practitioner orderer address element could not be found in the FOPH location database."
+        },
+        {
+          "code" : "FOPH-018",
+          "display" : "The combination of postal code & city in the organization orderer address element could not be found in the FOPH location database."
+        },
+        {
+          "code" : "FOPH-021",
+          "display" : "Identical laboratory-test data are already stored in the FOPH database. The document is therefore considered a duplicate. Duplicates are accepted on ABN/Test but not on the productive environment."
+        },
+        {
+          "code" : "FOPH-001",
+          "display" : "Generic Warning"
+        },
+        {
+          "code" : "FOPH-006",
+          "display" : "The following elements for the patient's address are expected: %missingElements%."
+        }
+      ]
+    },
+    {
+      "code" : "error",
+      "display" : "Error",
+      "definition" : "If the rule is violated, the resource is not conformant.",
+      "concept" : [
+        {
+          "code" : "FOPH-009",
+          "display" : "The transmitted code %code% (%codeSystem%) is outside the defined validity period %validFrom% - %validTo%."
+        },
+        {
+          "code" : "FOPH-016",
+          "display" : "The country code specified under patient address could not resolved. An ISO 3166 2 or 3 letter code is expected."
+        },
+        {
+          "code" : "FOPH-002",
+          "display" : "Generic Error"
+        },
+        {
+          "code" : "FOPH-007",
+          "display" : "The specified material is not supported by the provided leading code."
+        },
+        {
+          "code" : "FOPH-012",
+          "display" : "The transmitted leading code %code% (%codeSystem%) could not be found in the current value set."
+        },
+        {
+          "code" : "FOPH-008",
+          "display" : "The specified organism is not supported by the provided leading code."
+        },
+        {
+          "code" : "FOPH-004",
+          "display" : "The provided laboratory identification \"%identifier%\" is either unknown or corresponds to a laboratory for which your account does not have reporting permissions. Please verify your laboratory identification. If it's correct, complete the necessary onboarding process before submitting data on behalf of this lab."
+        },
+        {
+          "code" : "FOPH-013",
+          "display" : "The transmitted code %code% (%codeSystem%) is outside the defined validity period."
+        }
+      ]
+    }
+  ]
+}
+
+```

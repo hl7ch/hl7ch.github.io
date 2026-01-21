@@ -1,4 +1,4 @@
-# CH ELM Document: Laboratory Report - CH ELM (R4) v1.13.0
+# CH ELM Document: Laboratory Report - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmDocument |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmDocument |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -45,11 +45,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-document.csv)
     }
   ],
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmDocument",
   "title" : "CH ELM Document: Laboratory Report",
   "status" : "active",
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

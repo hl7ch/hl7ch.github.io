@@ -1,4 +1,4 @@
-# CH ELM Observation Profile Vs - CH ELM (R4) v1.13.0
+# CH ELM Observation Profile Vs - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-observation-profile-vs | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmObservationProfileVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-observation-profile-vs | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmObservationProfileVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,12 +28,12 @@ The codes contained in this code system represent URLs of Profile Observations t
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-observation-profile-vs",
   "url" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-observation-profile-vs",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmObservationProfileVs",
   "title" : "CH ELM Observation Profile Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

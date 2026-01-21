@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="61Doc-Tb-Susceptibility"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:uuid:2821b775-16f8-4910-bba8-1b7d99627f3e"/>
+  </identifier>
+  <type value="document"/>
+  <timestamp value="2024-09-10T12:00:00+02:00"/>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Composition/61Comp-Susceptibility"/>
+    <resource>
+      <Composition>
+        <id value="61Comp-Susceptibility"/>
+        <language value="de-CH"/>
+        <identifier>
+          <system value="urn:ietf:rfc:3986"/>
+          <value value="urn:uuid:2821b775-16f8-4910-bba8-1b7d99627f3e"/>
+        </identifier>
+        <status value="final"/>
+        <type>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <version value="http://snomed.info/sct/2011000195101"/>
+            <code value="4241000179101"/>
+            <display value="Laborbericht"/>
+          </coding>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="11502-2"/>
+            <display value="Laboratory report"/>
+          </coding>
+        </type>
+        <subject>
+          <reference value="Patient/Pat-003"/>
+        </subject>
+        <date value="2024-09-10T12:00:00+02:00"/>
+        <author>
+          <reference value="Organization/1Org-Labor"/>
+        </author>
+        <title value="Laborbericht vom 10.09.2024"/>
+        <section>
+          <title value="Resistenztestung"/>
+          <code>
+            <coding>
+              <system value="http://loinc.org"/>
+              <code value="18769-0"/>
+              <display value="Microbial susceptibility tests Set"/>
+            </coding>
+          </code>
+          <entry>
+            <reference value="Observation/61Obs-Susceptibility"/>
+          </entry>
+        </section>
+      </Composition>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/DiagnosticReport/61DR-Susceptibility"/>
+    <resource>
+      <DiagnosticReport>
+        <id value="61DR-Susceptibility"/>
+        <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition">
+          <valueReference>
+            <reference value="Composition/61Comp-Susceptibility"/>
+          </valueReference>
+        </extension>
+        <identifier>
+          <system value="urn:ietf:rfc:3986"/>
+          <value value="urn:uuid:2821b775-16f8-4910-bba8-1b7d99627f3e"/>
+        </identifier>
+        <basedOn>
+          <reference value="ServiceRequest/61SR-Susceptibility"/>
+        </basedOn>
+        <status value="final"/>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="11502-2"/>
+            <display value="Laboratory report"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/Pat-003"/>
+        </subject>
+        <performer>
+          <reference value="Organization/1Org-Labor"/>
+        </performer>
+        <specimen>
+          <reference value="Specimen/61Spec-Susceptibility"/>
+        </specimen>
+        <result>
+          <reference value="Observation/61Obs-Susceptibility"/>
+        </result>
+      </DiagnosticReport>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Patient/Pat-003"/>
+    <resource>
+      <Patient>
+        <id value="Pat-003"/>
+        <identifier>
+          <system value="urn:oid:2.16.756.5.32"/>
+          <value value="7561234567866"/>
+        </identifier>
+        <name>
+          <family value="Dupont"/>
+          <given value="Antoine"/>
+        </name>
+        <telecom>
+          <system value="phone"/>
+          <value value="+41 76 222 55 22"/>
+        </telecom>
+        <gender value="female"/>
+        <birthDate value="1981-02-07"/>
+        <address>
+          <use value="home"/>
+          <line value="Rue de la république 10">
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName">
+              <valueString value="Rue de la république"/>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber">
+              <valueString value="10"/>
+            </extension>
+          </line>
+          <city value="Carouge"/>
+          <state value="GE"/>
+          <postalCode value="1227"/>
+          <country value="CH">
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding">
+              <valueCoding>
+                <system value="urn:iso:std:iso:3166"/>
+                <code value="CH"/>
+              </valueCoding>
+            </extension>
+          </country>
+        </address>
+      </Patient>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Observation/61Obs-Susceptibility"/>
+    <resource>
+      <Observation>
+        <id value="61Obs-Susceptibility"/>
+        <status value="final"/>
+        <category>
+          <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+            <code value="laboratory"/>
+            <display value="Laboratory"/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="29579-0"/>
+            <display value="Mycobacterial susceptibility panel by Method for Slow-growing mycobacteria"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/Pat-003"/>
+        </subject>
+        <effectiveDateTime value="2024-09-10T14:20:00+02:00"/>
+        <performer>
+          <reference value="Organization/1Org-Labor"/>
+        </performer>
+        <specimen>
+          <reference value="Specimen/61Spec-Susceptibility"/>
+        </specimen>
+        <component>
+          <code>
+            <coding>
+              <system value="http://loinc.org"/>
+              <code value="18934-0"/>
+              <display value="Isoniazid [Susceptibility]"/>
+            </coding>
+          </code>
+          <valueQuantity>
+            <value value="0.4"/>
+            <unit value="mg/L"/>
+            <system value="http://unitsofmeasure.org"/>
+            <code value="mg/L"/>
+          </valueQuantity>
+          <interpretation>
+            <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+              <code value="S"/>
+              <display value="Susceptible"/>
+            </coding>
+          </interpretation>
+        </component>
+        <component>
+          <code>
+            <coding>
+              <system value="http://loinc.org"/>
+              <code value="18974-6"/>
+              <display value="rifAMPin [Susceptibility]"/>
+            </coding>
+          </code>
+          <valueQuantity>
+            <value value="0.1"/>
+            <unit value="mg/L"/>
+            <system value="http://unitsofmeasure.org"/>
+            <code value="mg/L"/>
+          </valueQuantity>
+          <interpretation>
+            <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
+              <code value="R"/>
+              <display value="Resistant"/>
+            </coding>
+          </interpretation>
+        </component>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Specimen/61Spec-Susceptibility"/>
+    <resource>
+      <Specimen>
+        <id value="61Spec-Susceptibility"/>
+        <subject>
+          <reference value="Patient/Pat-003"/>
+        </subject>
+        <collection>
+          <collectedDateTime value="2024-09-08"/>
+        </collection>
+      </Specimen>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/ServiceRequest/61SR-Susceptibility"/>
+    <resource>
+      <ServiceRequest>
+        <id value="61SR-Susceptibility"/>
+        <identifier>
+          <value value="26500923622"/>
+        </identifier>
+        <status value="completed"/>
+        <intent value="order"/>
+        <code>
+          <coding>
+            <system value="http://loinc.org"/>
+            <code value="29579-0"/>
+            <display value="Mycobacterial susceptibility panel by Method for Slow-growing mycobacteria"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/Pat-003"/>
+        </subject>
+        <requester>
+          <reference value="PractitionerRole/PR-PeterHauser"/>
+        </requester>
+        <specimen>
+          <reference value="Specimen/61Spec-Susceptibility"/>
+        </specimen>
+      </ServiceRequest>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Organization/1Org-Labor"/>
+    <resource>
+      <Organization>
+        <id value="1Org-Labor"/>
+        <identifier>
+          <system value="urn:oid:2.51.1.3"/>
+          <value value="7601002331470"/>
+        </identifier>
+        <name value="SanLab"/>
+      </Organization>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/PractitionerRole/PR-PeterHauser"/>
+    <resource>
+      <PractitionerRole>
+        <id value="PR-PeterHauser"/>
+        <practitioner>
+          <reference value="Practitioner/Pract-PeterHauser"/>
+        </practitioner>
+        <organization>
+          <reference value="Organization/Org-PeterHauser"/>
+        </organization>
+      </PractitionerRole>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Practitioner/Pract-PeterHauser"/>
+    <resource>
+      <Practitioner>
+        <id value="Pract-PeterHauser"/>
+        <identifier>
+          <system value="urn:oid:2.51.1.3"/>
+          <value value="7601000000514"/>
+        </identifier>
+        <name>
+          <family value="Hauser"/>
+          <given value="Peter"/>
+        </name>
+        <telecom>
+          <system value="email"/>
+          <value value="peter.hauser@hauserpraxis.ch"/>
+        </telecom>
+        <telecom>
+          <system value="phone"/>
+          <value value="+41 79 222 33 44"/>
+        </telecom>
+      </Practitioner>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://test.fhir.ch/r4/Organization/Org-PeterHauser"/>
+    <resource>
+      <Organization>
+        <id value="Org-PeterHauser"/>
+        <identifier>
+          <system value="urn:oid:2.16.756.5.45"/>
+          <value value="A74966168"/>
+        </identifier>
+        <name value="Praxis Dr. Hauser"/>
+        <address>
+          <line value="Hauptstrasse 10">
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName">
+              <valueString value="Hauptstrasse"/>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber">
+              <valueString value="10"/>
+            </extension>
+          </line>
+          <city value="Solothurn"/>
+          <postalCode value="4500"/>
+        </address>
+      </Organization>
+    </resource>
+  </entry>
+</Bundle>

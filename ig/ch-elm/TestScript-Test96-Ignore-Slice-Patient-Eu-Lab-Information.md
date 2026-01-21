@@ -1,4 +1,4 @@
-# Test96-Ignore-Slice-Patient-Eu-Lab-Information - CH ELM (R4) v1.13.0
+# Test96-Ignore-Slice-Patient-Eu-Lab-Information - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,19 +8,19 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test96-Ignore-Slice-Patient-Eu-Lab-Information | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:Test96IgnoreObservationInterpretationCodesInformation |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test96-Ignore-Slice-Patient-Eu-Lab-Information | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:Test96IgnoreObservationInterpretationCodesInformation |
 | **Copyright/Legal**: CC0-1.0 | |
 
 **url**: [TestScript Test96IgnoreObservationInterpretationCodesInformation](TestScript-Test96-Ignore-Slice-Patient-Eu-Lab-Information.md)
 
-**version**: 1.13.0
+**version**: 1.13.1
 
 **name**: Test96IgnoreObservationInterpretationCodesInformation
 
 **status**: Active
 
-**date**: 2025-11-25 09:58:53+0000
+**date**: 2026-01-21 11:21:00+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -34,7 +34,7 @@ CC0-1.0
 
 > **fixture**
 > **id**inputdata
-**autocreate**: false**autodelete**: false**resource**:[DocumentReference: identifier = UUID:1cf9f2c3-7d6f-4b82-86ea-77b048bb4fdc; status = current](DocumentReference-Publish-2Doc-ChlamydiaTrachomatis-Vct.md)
+**autocreate**: false**autodelete**: false**resource**: [DocumentReference: identifier = UUID:1cf9f2c3-7d6f-4b82-86ea-77b048bb4fdc; status = current](DocumentReference-Publish-2Doc-ChlamydiaTrachomatis-Vct.md)
 
 > **test****name**: Test96**description**: Test script to verify that Information This element does not match any known slice defined in the profile http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab is ignored
 > **action**
@@ -97,10 +97,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test96-Ignore-Slice-Patient-Eu-Lab-Information",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test96-Ignore-Slice-Patient-Eu-Lab-Information",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "Test96IgnoreObservationInterpretationCodesInformation",
   "status" : "active",
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

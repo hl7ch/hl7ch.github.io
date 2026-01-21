@@ -1,4 +1,4 @@
-# CH ELM FOPH Code Reserve - CH ELM (R4) v1.13.0
+# CH ELM FOPH Code Reserve - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:urn:oid:2.16.756.5.30.1.129.1.5.1 | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmFophCodeReserve |
+| *Official URL*:urn:oid:2.16.756.5.30.1.129.1.5.1 | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmFophCodeReserve |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -20,8 +20,6 @@ This code system contains proprietary placeholder codes for use in situations of
 * [ChElmResultsLaboratoryObservation](ValueSet-ch-elm-results-laboratory-observation.md)
 * [ChElmResultsLaboratoryObservationComplete](ValueSet-ch-elm-results-laboratory-observation-complete.md)
 
-This case-insensitive code system `urn:oid:2.16.756.5.30.1.129.1.5.1` provides **a fragment** that includes following codes:
-
 
 
 ## Resource Content
@@ -31,12 +29,12 @@ This case-insensitive code system `urn:oid:2.16.756.5.30.1.129.1.5.1` provides *
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-foph-code-reserve",
   "url" : "urn:oid:2.16.756.5.30.1.129.1.5.1",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmFophCodeReserve",
   "title" : "CH ELM FOPH Code Reserve",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -66,43 +64,43 @@ This case-insensitive code system `urn:oid:2.16.756.5.30.1.129.1.5.1` provides *
   "concept" : [
     {
       "code" : "EP-100700-4",
-      "display" : "FOPH emerging pathogen placeholder"
+      "display" : "FOPH emerging pathogen placeholder 7"
     },
     {
       "code" : "EP-100100-7",
-      "display" : "FOPH emerging pathogen placeholder"
+      "display" : "FOPH emerging pathogen placeholder 1"
     },
     {
       "code" : "EP-101000-8",
-      "display" : "FOPH emerging pathogen placeholder"
+      "display" : "FOPH emerging pathogen placeholder 10"
     },
     {
       "code" : "EP-100500-8",
-      "display" : "FOPH emerging pathogen placeholder"
+      "display" : "FOPH emerging pathogen placeholder 5"
     },
     {
       "code" : "EP-100200-5",
-      "display" : "FOPH emerging pathogen placeholder"
+      "display" : "FOPH emerging pathogen placeholder 2"
     },
     {
       "code" : "EP-100900-0",
-      "display" : "FOPH emerging pathogen placeholder"
+      "display" : "FOPH emerging pathogen placeholder 9"
     },
     {
       "code" : "EP-100300-3",
-      "display" : "FOPH emerging pathogen placeholder"
+      "display" : "FOPH emerging pathogen placeholder 3"
     },
     {
       "code" : "EP-100800-2",
-      "display" : "FOPH emerging pathogen placeholder"
+      "display" : "FOPH emerging pathogen placeholder 8"
     },
     {
       "code" : "EP-100600-6",
-      "display" : "FOPH emerging pathogen placeholder"
+      "display" : "FOPH emerging pathogen placeholder 6"
     },
     {
       "code" : "EP-100400-1",
-      "display" : "FOPH emerging pathogen placeholder"
+      "display" : "FOPH emerging pathogen placeholder 4"
     }
   ]
 }

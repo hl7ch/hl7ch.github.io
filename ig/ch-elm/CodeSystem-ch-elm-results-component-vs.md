@@ -1,4 +1,4 @@
-# CH ELM Results Component Vs - CH ELM (R4) v1.13.0
+# CH ELM Results Component Vs - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-component-vs | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmResultsComponentVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-component-vs | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmResultsComponentVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,12 +28,12 @@ This CH ELM value set includes the value set URLs as codes to map in the concept
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-results-component-vs",
   "url" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-component-vs",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmResultsComponentVs",
   "title" : "CH ELM Results Component Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

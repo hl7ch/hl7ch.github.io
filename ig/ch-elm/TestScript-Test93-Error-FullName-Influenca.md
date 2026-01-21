@@ -1,4 +1,4 @@
-# Test93 Error if full name is provided by Influenca (should be initials) - CH ELM (R4) v1.13.0
+# Test93 Error if full name is provided by Influenca (should be initials) - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,19 +8,19 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test93-Error-FullName-Influenca | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:Test93ErrorFullNameInfluenca |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test93-Error-FullName-Influenca | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:Test93ErrorFullNameInfluenca |
 | **Copyright/Legal**: CC0-1.0 | |
 
 **url**: [TestScript Test93ErrorFullNameInfluenca](TestScript-Test93-Error-FullName-Influenca.md)
 
-**version**: 1.13.0
+**version**: 1.13.1
 
 **name**: Test93ErrorFullNameInfluenca
 
 **status**: Active
 
-**date**: 2025-11-25 09:58:53+0000
+**date**: 2026-01-21 11:21:00+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -34,7 +34,7 @@ CC0-1.0
 
 > **fixture**
 > **id**inputdata
-**autocreate**: false**autodelete**: false**resource**:[Binary: application/fhir+xml (19116 bytes base64)](Binary-Test93-DocumentReference-Error-FullName-Influenca.md)
+**autocreate**: false**autodelete**: false**resource**: [Binary: application/fhir+xml (19116 bytes base64)](Binary-Test93-DocumentReference-Error-FullName-Influenca.md)
 
 > **test****name**: Test93**description**: Test script to verify error if full name is provided by Influenca (must be initials)
 > **action**
@@ -97,10 +97,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test93-Error-FullName-Influenca",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test93-Error-FullName-Influenca",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "Test93ErrorFullNameInfluenca",
   "status" : "active",
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

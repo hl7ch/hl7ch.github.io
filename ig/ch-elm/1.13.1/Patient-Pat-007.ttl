@@ -1,0 +1,48 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-elm/Patient/Pat-007> a fhir:Patient ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "Pat-007"] ; # 
+  fhir:identifier ( [
+     fhir:system [
+       fhir:v "urn:oid:2.16.438.10.20.10.10.1.2.1"^^xsd:anyURI ;
+       fhir:l <urn:oid:2.16.438.10.20.10.10.1.2.1>
+     ] ;
+     fhir:value [ fhir:v "1234567890123" ]
+  ] ) ; # 
+  fhir:name ( [
+     fhir:family [ fhir:v "Liechtenstein" ] ;
+     fhir:given ( [ fhir:v "Lilly" ] )
+  ] ) ; # 
+  fhir:gender [ fhir:v "female"] ; # 
+  fhir:birthDate [ fhir:v "2000-09-14"^^xsd:date] ; # 
+  fhir:address ( [
+     fhir:use [ fhir:v "home" ] ;
+     fhir:state [ fhir:v "FL" ] ;
+     fhir:country [
+       fhir:v "LI" ;
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding>
+         ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [
+             fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+             fhir:l <urn:iso:std:iso:3166>
+           ] ;
+           fhir:code [ fhir:v "LI" ]
+         ]
+       ] )
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

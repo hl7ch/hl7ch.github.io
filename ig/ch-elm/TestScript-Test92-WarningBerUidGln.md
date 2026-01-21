@@ -1,4 +1,4 @@
-# Test92 - Warning for Ber Uid and Gln - CH ELM (R4) v1.13.0
+# Test92 - Warning for Ber Uid and Gln - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,19 +8,19 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test92-WarningBerUidGln | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:Test92WarningBerUidGln |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test92-WarningBerUidGln | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:Test92WarningBerUidGln |
 | **Copyright/Legal**: CC0-1.0 | |
 
 **url**: [TestScript Test92WarningBerUidGln](TestScript-Test92-WarningBerUidGln.md)
 
-**version**: 1.13.0
+**version**: 1.13.1
 
 **name**: Test92WarningBerUidGln
 
 **status**: Active
 
-**date**: 2025-11-25 09:58:53+0000
+**date**: 2026-01-21 11:21:00+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -34,7 +34,7 @@ CC0-1.0
 
 > **fixture**
 > **id**inputdata
-**autocreate**: false**autodelete**: false**resource**:[Binary: application/fhir+json (12212 bytes base64)](Binary-Test92-Bundle-WarningBerUidGln.md)
+**autocreate**: false**autodelete**: false**resource**: [Binary: application/fhir+json (12212 bytes base64)](Binary-Test92-Bundle-WarningBerUidGln.md)
 
 > **test****name**: Test92**description**: Test92: Verify that warnings for incorrect BER, UID and GLN are raised
 > **action**
@@ -147,10 +147,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test92-WarningBerUidGln",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test92-WarningBerUidGln",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "Test92WarningBerUidGln",
   "status" : "active",
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

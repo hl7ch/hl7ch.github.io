@@ -1,4 +1,4 @@
-# CH ELM FOPH Business Rules - CH ELM (R4) v1.13.0
+# CH ELM FOPH Business Rules - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-business-rules | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmFophBusinessRules |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-business-rules | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmFophBusinessRules |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,12 +28,12 @@ This CH ELM code system describes specific business rules of the FOPH, which are
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-foph-business-rules",
   "url" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-business-rules",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmFophBusinessRules",
   "title" : "CH ELM FOPH Business Rules",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -91,6 +91,10 @@ This CH ELM code system describes specific business rules of the FOPH, which are
           "display" : "The required anonymization for the reported organism was violated. The following field(s) are affected: %fields%"
         },
         {
+          "code" : "FOPH-020",
+          "display" : "The effectiveDateTime-element indicates that the test was executed more than %testExecutionDateRejectionThresholdInDays% days ago. Assuming that this test has already been reported, the document is considered a duplicate. Duplicates are accepted on ABN/Test but not on the productive environment."
+        },
+        {
           "code" : "FOPH-022",
           "display" : "Received multiple service requests without a basedOn attribute. Only the data contained in the service request referenced by the basedOn attribute in the DiagnosticReport are imported. If you want to specify an original orderer use the basedOn attribute on the primary service request to reference the secondary service request."
         },
@@ -109,6 +113,10 @@ This CH ELM code system describes specific business rules of the FOPH, which are
         {
           "code" : "FOPH-018",
           "display" : "The combination of postal code & city in the organization orderer address element could not be found in the FOPH location database."
+        },
+        {
+          "code" : "FOPH-021",
+          "display" : "Identical laboratory-test data are already stored in the FOPH database. The document is therefore considered a duplicate. Duplicates are accepted on ABN/Test but not on the productive environment."
         },
         {
           "code" : "FOPH-001",

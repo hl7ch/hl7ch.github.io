@@ -1,4 +1,4 @@
-# CH ELM Patient - CH ELM (R4) v1.13.0
+# CH ELM Patient - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-patient | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmPatient |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-patient | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmPatient |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -19,7 +19,7 @@ This CH ELM base profile constrains the Patient resource for the purpose of labo
 
 * Derived from this Profile: [CH ELM Patient HIV](StructureDefinition-ChElmPatientHIV.md), [CH ELM Patient Initials](StructureDefinition-ChElmPatientInitials.md) and [CH ELM Patient VCT](StructureDefinition-ChElmPatientVCT.md)
 * Use this Profile: [CH ELM Document: Laboratory Report](StructureDefinition-ch-elm-document.md)
-* Refer to this Profile: [CH ELM Composition: Laboratory Report](StructureDefinition-ch-elm-composition.md), [CH ELM DiagnosticReport: Laboratory Report](StructureDefinition-ch-elm-diagnosticreport.md), [CH ELM Observation Results: Laboratory](StructureDefinition-ch-elm-observation-results-laboratory.md), [CH ELM ServiceRequest: Laboratory Order](StructureDefinition-ch-elm-servicerequest-laboratory-order.md)...Show 2 more,[CH ELM ServiceRequest: Laboratory Order](StructureDefinition-ch-elm-servicerequest-previous-laboratory-order.md)and[CH ELM Specimen: Laboratory](StructureDefinition-ch-elm-specimen.md)
+* Refer to this Profile: [CH ELM Composition: Laboratory Report](StructureDefinition-ch-elm-composition.md), [CH ELM DiagnosticReport: Laboratory Report](StructureDefinition-ch-elm-diagnosticreport.md), [CH ELM Observation Results: Laboratory](StructureDefinition-ch-elm-observation-results-laboratory.md), [CH ELM ServiceRequest: Laboratory Order](StructureDefinition-ch-elm-servicerequest-laboratory-order.md)... Show 2 more, [CH ELM ServiceRequest: Laboratory Order](StructureDefinition-ch-elm-servicerequest-previous-laboratory-order.md) and [CH ELM Specimen: Laboratory](StructureDefinition-ch-elm-specimen.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-elm|current/StructureDefinition/ch-elm-patient)
 
@@ -46,11 +46,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-patient.csv),
     }
   ],
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-patient",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmPatient",
   "title" : "CH ELM Patient",
   "status" : "active",
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

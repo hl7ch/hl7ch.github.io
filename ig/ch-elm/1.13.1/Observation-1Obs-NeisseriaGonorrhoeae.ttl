@@ -1,0 +1,76 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-elm/Observation/1Obs-NeisseriaGonorrhoeae> a fhir:Observation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "1Obs-NeisseriaGonorrhoeae"] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/observation-category"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/observation-category>
+       ] ;
+       fhir:code [ fhir:v "laboratory" ] ;
+       fhir:display [ fhir:v "Laboratory" ]
+     ] )
+  ] ) ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:697-3 ;
+       fhir:system [
+         fhir:v "http://loinc.org"^^xsd:anyURI ;
+         fhir:l <http://loinc.org>
+       ] ;
+       fhir:code [ fhir:v "697-3" ] ;
+       fhir:display [ fhir:v "Neisseria gonorrhoeae [Presence] in Urethra by Organism specific culture" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:l <http://fhir.ch/ig/ch-elm/Patient/Pat-001> ;
+     fhir:reference [ fhir:v "Patient/Pat-001" ]
+  ] ; # 
+  fhir:effective [
+     a fhir:DateTime ;
+     fhir:v "2023-07-14T11:10:00+02:00"^^xsd:dateTime
+  ] ; # 
+  fhir:performer ( [
+     fhir:l <http://fhir.ch/ig/ch-elm/Organization/1Org-Labor> ;
+     fhir:reference [ fhir:v "Organization/1Org-Labor" ]
+  ] ) ; # 
+  fhir:value [
+     a fhir:CodeableConcept ;
+     fhir:coding ( [
+       a sct:10828004 ;
+       fhir:system [
+         fhir:v "http://snomed.info/sct"^^xsd:anyURI ;
+         fhir:l <http://snomed.info/sct>
+       ] ;
+       fhir:code [ fhir:v "10828004" ] ;
+       fhir:display [ fhir:v "Positive" ]
+     ] )
+  ] ; # 
+  fhir:interpretation ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"^^xsd:anyURI ;
+         fhir:l <http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation>
+       ] ;
+       fhir:code [ fhir:v "POS" ] ;
+       fhir:display [ fhir:v "Positive" ]
+     ] )
+  ] ) ; # 
+  fhir:specimen [
+     fhir:l <http://fhir.ch/ig/ch-elm/Specimen/1Spec-Specimen> ;
+     fhir:reference [ fhir:v "Specimen/1Spec-Specimen" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

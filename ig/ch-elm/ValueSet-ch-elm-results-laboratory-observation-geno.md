@@ -1,4 +1,4 @@
-# CH ELM Results Laboratory Observation Genotyping - CH ELM (R4) v1.13.0
+# CH ELM Results Laboratory Observation Genotyping - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-geno | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmResultsLaboratoryObservationGeno |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-geno | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmResultsLaboratoryObservationGeno |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -25,10 +25,6 @@ This CH ELM value set includes the codes for the laboratory genotyping test resu
  
 
 ### Expansion
-
-Expansion from tx.fhir.org based on Loinc v2.81
-
-This value set contains 1 concepts
 
 -------
 
@@ -52,12 +48,12 @@ This value set contains 1 concepts
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-laboratory-observation-geno",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-geno",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmResultsLaboratoryObservationGeno",
   "title" : "CH ELM Results Laboratory Observation Genotyping",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

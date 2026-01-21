@@ -1,4 +1,4 @@
-# CH ELM Extension: Department - CH ELM (R4) v1.13.0
+# CH ELM Extension: Department - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-department | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmExtDepartment |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-department | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmExtDepartment |
 | **Copyright/Legal**: CC0-1.0 | |
 
 This CH ELM extension enables the representation of a department (name) of an organization directly in the resource Organization itself.
@@ -21,7 +21,7 @@ This CH ELM extension enables the representation of a department (name) of an or
 **Usages:**
 
 * Use this Extension: [CH ELM Organization: Orderer](StructureDefinition-ch-elm-organization-orderer.md)
-* Examples for this Extension: [Bundle/1Doc-NeisseriaGonorrhoeae](Bundle-1Doc-NeisseriaGonorrhoeae.md), [Bundle/1bDoc-NeisseriaGonorrhoeae](Bundle-1bDoc-NeisseriaGonorrhoeae.md), [Bundle/4Doc-Campylobacter](Bundle-4Doc-Campylobacter.md), [Bundle/5Doc-TreponemaPallidum](Bundle-5Doc-TreponemaPallidum.md)...Show 8 more,[Bundle/7Doc-SARSCoV2](Bundle-7Doc-SARSCoV2.md),[DocumentReference/1-DocumentReferenceStrict](DocumentReference-1-DocumentReferenceStrict.md),[DocumentReference/Publish-1Doc-NeisseriaGonorrhoeae](DocumentReference-Publish-1Doc-NeisseriaGonorrhoeae.md),[DocumentReference/Publish-4Doc-Campylobacter](DocumentReference-Publish-4Doc-Campylobacter.md),[DocumentReference/Publish-5Doc-TreponemaPallidum](DocumentReference-Publish-5Doc-TreponemaPallidum.md),[DocumentReference/Publish-7Doc-SARSCoV2](DocumentReference-Publish-7Doc-SARSCoV2.md),[Kantonsspital ABC](Organization-1Org-KsAbc.md)and[Hôpital régional soleil](Organization-Org-JeanneMoreau.md)
+* Examples for this Extension: [Bundle/1Doc-NeisseriaGonorrhoeae](Bundle-1Doc-NeisseriaGonorrhoeae.md), [Bundle/1bDoc-NeisseriaGonorrhoeae](Bundle-1bDoc-NeisseriaGonorrhoeae.md), [Bundle/4Doc-Campylobacter](Bundle-4Doc-Campylobacter.md), [Bundle/5Doc-TreponemaPallidum](Bundle-5Doc-TreponemaPallidum.md)... Show 8 more, [Bundle/7Doc-SARSCoV2](Bundle-7Doc-SARSCoV2.md), [DocumentReference/1-DocumentReferenceStrict](DocumentReference-1-DocumentReferenceStrict.md), [DocumentReference/Publish-1Doc-NeisseriaGonorrhoeae](DocumentReference-Publish-1Doc-NeisseriaGonorrhoeae.md), [DocumentReference/Publish-4Doc-Campylobacter](DocumentReference-Publish-4Doc-Campylobacter.md), [DocumentReference/Publish-5Doc-TreponemaPallidum](DocumentReference-Publish-5Doc-TreponemaPallidum.md), [DocumentReference/Publish-7Doc-SARSCoV2](DocumentReference-Publish-7Doc-SARSCoV2.md), [Kantonsspital ABC](Organization-1Org-KsAbc.md) and [Hôpital régional soleil](Organization-Org-JeanneMoreau.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-elm|current/StructureDefinition/ch-elm-ext-department)
 
@@ -44,11 +44,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-ext-departmen
   "resourceType" : "StructureDefinition",
   "id" : "ch-elm-ext-department",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-department",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmExtDepartment",
   "title" : "CH ELM Extension: Department",
   "status" : "active",
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

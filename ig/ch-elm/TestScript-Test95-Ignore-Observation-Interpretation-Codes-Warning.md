@@ -1,4 +1,4 @@
-# Test95-Ignore-Observation-Interpretation-Codes-Warning - CH ELM (R4) v1.13.0
+# Test95-Ignore-Observation-Interpretation-Codes-Warning - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,19 +8,19 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test95-Ignore-Observation-Interpretation-Codes-Warning | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:Test95IgnoreObservationInterpretationCodesWarning |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test95-Ignore-Observation-Interpretation-Codes-Warning | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:Test95IgnoreObservationInterpretationCodesWarning |
 | **Copyright/Legal**: CC0-1.0 | |
 
 **url**: [TestScript Test95IgnoreObservationInterpretationCodesWarning](TestScript-Test95-Ignore-Observation-Interpretation-Codes-Warning.md)
 
-**version**: 1.13.0
+**version**: 1.13.1
 
 **name**: Test95IgnoreObservationInterpretationCodesWarning
 
 **status**: Active
 
-**date**: 2025-11-25 09:58:53+0000
+**date**: 2026-01-21 11:21:00+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -34,7 +34,7 @@ CC0-1.0
 
 > **fixture**
 > **id**inputdata
-**autocreate**: false**autodelete**: false**resource**:[Bundle: identifier = UUID:3401332d-6012-443f-9690-9291adb23aa3; type = document; timestamp = 2024-08-05 12:00:00+0200](Bundle-15Doc-Measles-Seroconversion.md)
+**autocreate**: false**autodelete**: false**resource**: [Bundle: identifier = UUID:3401332d-6012-443f-9690-9291adb23aa3; type = document; timestamp = 2024-08-05 12:00:00+0200](Bundle-15Doc-Measles-Seroconversion.md)
 
 > **test****name**: Test95**description**: Test script to verify that warning None of the codings provided are in the value set 'Observation Interpretation Codes' is ignored
 > **action**
@@ -97,10 +97,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test95-Ignore-Observation-Interpretation-Codes-Warning",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test95-Ignore-Observation-Interpretation-Codes-Warning",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "Test95IgnoreObservationInterpretationCodesWarning",
   "status" : "active",
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

@@ -1,0 +1,76 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-elm/Patient/Pat-003> a fhir:Patient ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "Pat-003"] ; # 
+  fhir:identifier ( [
+     fhir:system [
+       fhir:v "urn:oid:2.16.756.5.32"^^xsd:anyURI ;
+       fhir:l <urn:oid:2.16.756.5.32>
+     ] ;
+     fhir:value [ fhir:v "7561234567866" ]
+  ] ) ; # 
+  fhir:name ( [
+     fhir:family [ fhir:v "Dupont" ] ;
+     fhir:given ( [ fhir:v "Antoine" ] )
+  ] ) ; # 
+  fhir:telecom ( [
+     fhir:system [ fhir:v "phone" ] ;
+     fhir:value [ fhir:v "+41 76 222 55 22" ]
+  ] ) ; # 
+  fhir:gender [ fhir:v "female"] ; # 
+  fhir:birthDate [ fhir:v "1981-02-07"^^xsd:date] ; # 
+  fhir:address ( [
+     fhir:use [ fhir:v "home" ] ;
+     fhir:line ( [
+       fhir:v "Rue de la république 10" ;
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "Rue de la république"
+         ]
+       ] [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber>
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "10"
+         ]
+       ] )
+     ] ) ;
+     fhir:city [ fhir:v "Carouge" ] ;
+     fhir:state [ fhir:v "GE" ] ;
+     fhir:postalCode [ fhir:v "1227" ] ;
+     fhir:country [
+       fhir:v "CH" ;
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding>
+         ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [
+             fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+             fhir:l <urn:iso:std:iso:3166>
+           ] ;
+           fhir:code [ fhir:v "CH" ]
+         ]
+       ] )
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

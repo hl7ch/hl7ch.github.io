@@ -1,4 +1,4 @@
-# CH ELM Results Laboratory Observation Complete - CH ELM (R4) v1.13.0
+# CH ELM Results Laboratory Observation Complete - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-complete | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmResultsLaboratoryObservationComplete |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-complete | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmResultsLaboratoryObservationComplete |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -24,14 +24,6 @@ This CH ELM value set includes the codes for every type of laboratory test resul
  
 
 ### Expansion
-
-Expansion from tx.fhir.org based on:
-
-* Loinc v2.81
-* SNOMED CT International edition 01-Feb 2025
-* [codesystem CH ELM FOPH Code Reserve v1.13.0 (CodeSystem)](CodeSystem-ch-elm-foph-code-reserve.md)
-
-This value set contains 397 concepts
 
 -------
 
@@ -55,12 +47,12 @@ This value set contains 397 concepts
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-laboratory-observation-complete",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-complete",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmResultsLaboratoryObservationComplete",
   "title" : "CH ELM Results Laboratory Observation Complete",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
@@ -1650,43 +1642,43 @@ This value set contains 397 concepts
         "concept" : [
           {
             "code" : "EP-100100-7",
-            "display" : "FOPH emerging pathogen placeholder"
+            "display" : "FOPH emerging pathogen placeholder 1"
           },
           {
             "code" : "EP-100200-5",
-            "display" : "FOPH emerging pathogen placeholder"
+            "display" : "FOPH emerging pathogen placeholder 2"
           },
           {
             "code" : "EP-100300-3",
-            "display" : "FOPH emerging pathogen placeholder"
+            "display" : "FOPH emerging pathogen placeholder 3"
           },
           {
             "code" : "EP-100400-1",
-            "display" : "FOPH emerging pathogen placeholder"
+            "display" : "FOPH emerging pathogen placeholder 4"
           },
           {
             "code" : "EP-100500-8",
-            "display" : "FOPH emerging pathogen placeholder"
+            "display" : "FOPH emerging pathogen placeholder 5"
           },
           {
             "code" : "EP-100600-6",
-            "display" : "FOPH emerging pathogen placeholder"
+            "display" : "FOPH emerging pathogen placeholder 6"
           },
           {
             "code" : "EP-100700-4",
-            "display" : "FOPH emerging pathogen placeholder"
+            "display" : "FOPH emerging pathogen placeholder 7"
           },
           {
             "code" : "EP-100800-2",
-            "display" : "FOPH emerging pathogen placeholder"
+            "display" : "FOPH emerging pathogen placeholder 8"
           },
           {
             "code" : "EP-100900-0",
-            "display" : "FOPH emerging pathogen placeholder"
+            "display" : "FOPH emerging pathogen placeholder 9"
           },
           {
             "code" : "EP-101000-8",
-            "display" : "FOPH emerging pathogen placeholder"
+            "display" : "FOPH emerging pathogen placeholder 10"
           }
         ]
       }

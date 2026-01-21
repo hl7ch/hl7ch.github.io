@@ -1,4 +1,4 @@
-# Test98 - Verify that error for invalid hiv code is raised - CH ELM (R4) v1.13.0
+# Test98 - Verify that error for invalid hiv code is raised - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,19 +8,19 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test98-HivInvalidCode | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:Test98HivInvalidCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test98-HivInvalidCode | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:Test98HivInvalidCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
 **url**: [TestScript Test98HivInvalidCode](TestScript-Test98-HivInvalidCode.md)
 
-**version**: 1.13.0
+**version**: 1.13.1
 
 **name**: Test98HivInvalidCode
 
 **status**: Active
 
-**date**: 2025-11-25 09:58:53+0000
+**date**: 2026-01-21 11:21:00+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -34,7 +34,7 @@ CC0-1.0
 
 > **fixture**
 > **id**inputdata
-**autocreate**: false**autodelete**: false**resource**:[Binary: application/fhir+xml (13796 bytes base64)](Binary-Test98-Bundle-HivInvalidCode.md)
+**autocreate**: false**autodelete**: false**resource**: [Binary: application/fhir+xml (13796 bytes base64)](Binary-Test98-Bundle-HivInvalidCode.md)
 
 > **test****name**: Test98**description**: Test98: Verify that error for invalid hiv code is raised
 > **action**
@@ -97,10 +97,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test98-HivInvalidCode",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test98-HivInvalidCode",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "Test98HivInvalidCode",
   "status" : "active",
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

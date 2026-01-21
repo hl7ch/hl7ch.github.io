@@ -1,4 +1,4 @@
-# Test99-CoaxiellaZeroDenominator - CH ELM (R4) v1.13.0
+# Test99-CoaxiellaZeroDenominator - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,19 +8,19 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test99-CoaxiellaZeroDenominator | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:Test99CoaxiellaZeroDenominator |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test99-CoaxiellaZeroDenominator | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:Test99CoaxiellaZeroDenominator |
 | **Copyright/Legal**: CC0-1.0 | |
 
 **url**: [TestScript Test99CoaxiellaZeroDenominator](TestScript-Test99-CoaxiellaZeroDenominator.md)
 
-**version**: 1.13.0
+**version**: 1.13.1
 
 **name**: Test99CoaxiellaZeroDenominator
 
 **status**: Active
 
-**date**: 2025-11-25 09:58:53+0000
+**date**: 2026-01-21 11:21:00+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -34,7 +34,7 @@ CC0-1.0
 
 > **fixture**
 > **id**inputdata
-**autocreate**: false**autodelete**: false**resource**:[Binary: application/fhir+json (11932 bytes base64)](Binary-Test99-Bundle-CoaxiellaZeroDenominator.md)
+**autocreate**: false**autodelete**: false**resource**: [Binary: application/fhir+json (11932 bytes base64)](Binary-Test99-Bundle-CoaxiellaZeroDenominator.md)
 
 > **test****name**: Test99**description**: Test99: Verify that error for denominator not positive is raised
 > **action**
@@ -97,10 +97,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test99-CoaxiellaZeroDenominator",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test99-CoaxiellaZeroDenominator",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "Test99CoaxiellaZeroDenominator",
   "status" : "active",
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

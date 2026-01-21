@@ -1,4 +1,4 @@
-# CH ELM Results Genotyping To Component Interpretation Code - CH ELM (R4) v1.13.0
+# CH ELM Results Genotyping To Component Interpretation Code - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,20 +8,12 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmResultsGenoToComponentInterpretationCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmResultsGenoToComponentInterpretationCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
 This CH ELM concept map specifies the ValuesSet for component.code for each leading code. 
-
-Mapping from [CH ELM Results Laboratory Observation Genotyping](ValueSet-ch-elm-results-laboratory-observation-geno.md) to [CH ELM Interpretation Codes Vs](ValueSet-ch-elm-interpretation-codes-vs.md)
-
-**Group 1**Mapping from [Logical Observation Identifiers, Names and Codes (LOINC)](http://terminology.hl7.org/6.5.0/CodeSystem-v3-loinc.html) to [CH ELM Interpretation Codes Vs](CodeSystem-ch-elm-interpretation-codes-vs.md)
-
-* **Source Code**: 94053-6 (Mycobacterium tuberculosis complex resistance panel by Molecular genetics method)
-  * **Relationship**: [is related to](http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#relatedto)
-  * **Target Code**: http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg
 
 
 
@@ -32,12 +24,12 @@ Mapping from [CH ELM Results Laboratory Observation Genotyping](ValueSet-ch-elm-
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-results-geno-to-component-interpretation-code",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmResultsGenoToComponentInterpretationCode",
   "title" : "CH ELM Results Genotyping To Component Interpretation Code",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {

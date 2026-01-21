@@ -1,4 +1,4 @@
-# CH ELM Results Complete Spec - CH ELM (R4) v1.13.0
+# CH ELM Results Complete Spec - CH ELM (R4) v1.13.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-complete-spec | *Version*:1.13.0 |
-| Active as of 2025-11-25 | *Computable Name*:ChElmResultsCompleteSpec |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-complete-spec | *Version*:1.13.1 |
+| Active as of 2026-01-21 | *Computable Name*:ChElmResultsCompleteSpec |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -24,10 +24,6 @@ The "CH ELM Results Complete Spec" material group provides a curated set of code
  
 
 ### Expansion
-
-Expansion from tx.fhir.org based on SNOMED CT International edition 01-Feb 2025
-
-This value set contains 73 concepts
 
 -------
 
@@ -51,12 +47,12 @@ This value set contains 73 concepts
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-complete-spec",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-complete-spec",
-  "version" : "1.13.0",
+  "version" : "1.13.1",
   "name" : "ChElmResultsCompleteSpec",
   "title" : "CH ELM Results Complete Spec",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-11-25T09:58:53+00:00",
+  "date" : "2026-01-21T11:21:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [
     {
