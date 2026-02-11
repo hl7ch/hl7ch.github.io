@@ -5,7 +5,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>MedicationStatement: Paracetamol Dafalgan Effervescent (MTP) with max dose per period - TTL Representation - CH EMED EPR v2.0.0</title>
+    <title>MedicationStatement: Paracetamol Dafalgan Effervescent (MTP) with max dose per period - TTL Representation - CH EMED EPR v3.0.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -56,10 +56,10 @@
     <![endif]-->
 
     <!-- Favicons -->
-    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
-    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
-    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
-    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
@@ -67,8 +67,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"18.93"}
-    h3,h4,h5,h6{--heading-prefix:"18.93"}</style>
+    <style type="text/css">h2{--heading-prefix:"19.123"}
+    h3,h4,h5,h6{--heading-prefix:"19.123"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -97,7 +97,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EMED EPR</span>
             <br/>
-            <span style="display:inline-block;">2.0.0 - trial-use
+            <span style="display:inline-block;">3.0.0 - trial-use
 
 
 
@@ -153,7 +153,13 @@
             <li><a href="http://build.fhir.org/ig/hl7ch/ch-emed/repeated-dispense.html" target="_blank">CH EMED: Repeated Dispense</a></li>
         </ul>
     </li>
-    <li><a href="use_case.html">Use Case</a></li>
+    <li class="dropdown">
+        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Cases<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="use_case.html">Use Case #1</a></li>
+            <li><a href="use_case_self_medication.html">Self Medication</a></li>
+        </ul>
+    </li>
     <li><a href="artifacts.html">Artifacts</a></li>
     <li><a href="workflow.html">Workflows</a></li>
     <li><a href="changelog.html">Changelog</a></li>
@@ -183,7 +189,7 @@
           <div class="inner-wrapper">
 
 <div style="counter-reset: section 9" class="col-12">
-<!--ReleaseHeader--><p id="publish-box">This page is part of the FHIR eMedication exchange formats for the implementation effort of CARA within its EPR community (v2.0.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://fhir.ch/ig/ch-emed-epr/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+<!--ReleaseHeader--><p id="publish-box">This page is part of the FHIR eMedication exchange formats for the implementation effort of CARA within its EPR community (v3.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>3) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-emed-epr/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
 
 
 
@@ -233,9 +239,10 @@
 
 
 
-  <pre class="rdf" style="white-space: pre; overflow: hidden"><code class="language-turtle">
+  <pre class="rdf" data-fhir="generated" style="white-space: pre; overflow: hidden"><code class="language-turtle">
 @prefix fhir: &lt;http://hl7.org/fhir/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix sct: &lt;http://snomed.info/id/&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
@@ -244,37 +251,43 @@
 
  a fhir:MedicationStatement ;
   <a href="http://hl7.org/fhir/R4/rdf.html#tree-root">fhir:nodeRole</a> fhir:treeRoot ;
-  <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MedicationStatementDafalganEffMaxDosePerPeriod&quot;] ; # 
-  <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.meta">fhir:meta</a> [
+  <a href="http://hl7.org/fhir/R4/resource.html#MedicationStatement.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MedicationStatementDafalganEffMaxDosePerPeriod&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/resource.html#MedicationStatement.meta">fhir:meta</a> [
     ( <a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">fhir:profile</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationstatement-treatmentplan&quot;^^xsd:anyURI ;
-<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:link</a> &lt;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationstatement-treatmentplan&gt;     ] )
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationstatement-treatmentplan&gt;     ] )
   ] ; # 
-  <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;fr-CH&quot;] ; # 
-  <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.text">fhir:text</a> [
+  <a href="http://hl7.org/fhir/R4/resource.html#MedicationStatement.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;fr-CH&quot;] ; # 
+  <a href="http://hl7.org/fhir/R4/domainresource.html#MedicationStatement.text">fhir:text</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;generated&quot; ] ;
-fhir:div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot; xml:lang=\&quot;fr-CH\&quot; lang=\&quot;fr-CH\&quot;&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: MedicationStatement MedicationStatementDafalganEffMaxDosePerPeriod&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMedicationStatementDafalganEffMaxDosePerPeriod\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod-en-US\&quot;&gt; &lt;/a&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Language: fr-CH&lt;/p&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Profile: &lt;a href=\&quot;StructureDefinition-ch-emed-epr-medicationstatement-treatmentplan.html\&quot;&gt;MTP MedicationStatement&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/6.1.0/NamingSystem-uri.html\&quot; title=\&quot;As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\&quot;&gt;Uniform Resource Identifier (URI)&lt;/a&gt;/urn:uuid:63ccda67-4b0c-4a4b-96b9-3f4a03baa245&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: Active&lt;/p&gt;&lt;p&gt;&lt;b&gt;medication&lt;/b&gt;: &lt;a href=\&quot;#hcMedicationStatementDafalganEffMaxDosePerPeriod/MedicationParacetamolDafalganEff\&quot;&gt;Medication DAFALGAN cpr eff 500mg&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: &lt;a href=\&quot;Bundle-BundleUtc1Pml.html#urn-uuid-9b00e81e-1165-4039-9d60-698ef838ae1a\&quot;&gt;Bundle: identifier = UUID:87f151e3-9e67-48aa-8cfe-f816ae5fc084; type = document; timestamp = 2023-10-01 00:00:00+0200&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;dateAsserted&lt;/b&gt;: 2023-11-05 12:00:00+0200&lt;/p&gt;&lt;p&gt;&lt;b&gt;informationSource&lt;/b&gt;: &lt;a href=\&quot;#hcMedicationStatementDafalganEffMaxDosePerPeriod/PractitionerRoleCoxAtHug\&quot;&gt;PractitionerRole&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;reasonCode&lt;/b&gt;: &lt;span title=\&quot;Codes:\&quot;&gt;Dafalgan pour des douleurs regulières.&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;Dosages&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Text&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Timing&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Route&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;MaxDosePerPeriod&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;Max. 2 comprimés à avaler par jour.&lt;/td&gt;&lt;td&gt;Once&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\&quot;&gt;À avaler&lt;/span&gt;&lt;/td&gt;&lt;td&gt;2 comprimé&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')&lt;/span&gt;/1 jour&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: UCUM  coded = 'd')&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: Medication #MedicationParacetamolDafalganEff&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/MedicationParacetamolDafalganEff\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMedicationStatementDafalganEffMaxDosePerPeriod/MedicationParacetamolDafalganEff\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/MedicationParacetamolDafalganEff-en-US\&quot;&gt; &lt;/a&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Language: fr-CH&lt;/p&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Profile: &lt;a href=\&quot;StructureDefinition-ch-emed-epr-medication.html\&quot;&gt;CH EMED EPR Medication&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;code&lt;/b&gt;: &lt;span title=\&quot;Codes:{urn:oid:2.51.1.1 7680475030011}, {http://www.whocc.no/atc N02BE01}\&quot;&gt;DAFALGAN cpr eff 500mg&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;form&lt;/b&gt;: &lt;span title=\&quot;Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10222000}\&quot;&gt;Comprimé effervescent&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;amount&lt;/b&gt;: 40 comprimé&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')&lt;/span&gt;/1 plaquette&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: SNOMED CT  code732984005 = 'Blister (unit of presentation)')&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;Ingredients&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Item[x]&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;IsActive&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Strength&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Codes:{http://snomed.info/sct 387517004}\&quot;&gt;Paracétamol&lt;/span&gt;&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;500 mg&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: UCUM  codemg = 'mg')&lt;/span&gt;/1 comprimé&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: Organization #OrganizationHug&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/OrganizationHug\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMedicationStatementDafalganEffMaxDosePerPeriod/OrganizationHug\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/OrganizationHug-en-US\&quot;&gt; &lt;/a&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=\&quot;https://www.gs1.org/standards/id-keys/gln\&quot; title=\&quot;Global Location Number\&quot;&gt;GLN&lt;/a&gt;/7601000234438&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Hôpitaux universitaires de Genève&lt;/p&gt;&lt;p&gt;&lt;b&gt;address&lt;/b&gt;: Rue Gabrielle-Perret-Gentil 4 Genève 1205 CH &lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: Practitioner #PractitionerCox&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/PractitionerCox\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMedicationStatementDafalganEffMaxDosePerPeriod/PractitionerCox\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/PractitionerCox-en-US\&quot;&gt; &lt;/a&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=\&quot;https://www.gs1.org/standards/id-keys/gln\&quot; title=\&quot;Global Location Number\&quot;&gt;GLN&lt;/a&gt;/7601000234438&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Perry Cox &lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: PractitionerRole #PractitionerRoleCoxAtHug&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/PractitionerRoleCoxAtHug\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMedicationStatementDafalganEffMaxDosePerPeriod/PractitionerRoleCoxAtHug\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/PractitionerRoleCoxAtHug-en-US\&quot;&gt; &lt;/a&gt;&lt;p&gt;&lt;b&gt;practitioner&lt;/b&gt;: &lt;a href=\&quot;#hcMedicationStatementDafalganEffMaxDosePerPeriod/PractitionerCox\&quot;&gt;Practitioner Perry Cox &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;organization&lt;/b&gt;: &lt;a href=\&quot;#hcMedicationStatementDafalganEffMaxDosePerPeriod/OrganizationHug\&quot;&gt;Organization Hôpitaux universitaires de Genève&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;&quot;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">fhir:div</a> [ <a href="http://hl7.org/fhir/R4/narrative.html#xhtml">fhir:v</a> &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot; xml:lang=\&quot;fr-CH\&quot; lang=\&quot;fr-CH\&quot;&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: MedicationStatement MedicationStatementDafalganEffMaxDosePerPeriod&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMedicationStatementDafalganEffMaxDosePerPeriod\&quot;&gt; &lt;/a&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Language: fr-CH&lt;/p&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Profile: &lt;a href=\&quot;StructureDefinition-ch-emed-epr-medicationstatement-treatmentplan.html\&quot;&gt;MTP MedicationStatement&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=\&quot;http://terminology.hl7.org/6.5.0/NamingSystem-uri.html\&quot; title=\&quot;As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt #xD;#xA;#xD;#xA;This oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: #xD;#xA;#xD;#xA;Note that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.#xD;#xA;#xD;#xA;This OID may also be used in CD.codeSystem.\&quot;&gt;Uniform Resource Identifier (URI)&lt;/a&gt;/urn:uuid:63ccda67-4b0c-4a4b-96b9-3f4a03baa245&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: Active&lt;/p&gt;&lt;p&gt;&lt;b&gt;medication&lt;/b&gt;: &lt;a href=\&quot;#hcMedicationStatementDafalganEffMaxDosePerPeriod/MedicationParacetamolDafalganEff\&quot;&gt;Medication DAFALGAN cpr eff 500mg&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: &lt;a href=\&quot;Bundle-BundleUtc1Pml.html#urn-uuid-9b00e81e-1165-4039-9d60-698ef838ae1a\&quot;&gt;Michaël Christopher Karce  Male, DoB: 1973-12-25 ( Medical record number (use: official, ))&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;dateAsserted&lt;/b&gt;: 2023-11-05 12:00:00+0200&lt;/p&gt;&lt;p&gt;&lt;b&gt;informationSource&lt;/b&gt;: &lt;a href=\&quot;#hcMedicationStatementDafalganEffMaxDosePerPeriod/PractitionerRoleCoxAtHug\&quot;&gt;PractitionerRole&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;reasonCode&lt;/b&gt;: &lt;span title=\&quot;Codes:\&quot;&gt;Dafalgan pour des douleurs regulières.&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;Dosages&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Text&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Timing&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Route&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;MaxDosePerPeriod&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;Max. 2 comprimés à avaler par jour.&lt;/td&gt;&lt;td&gt;Once&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\&quot;&gt;À avaler&lt;/span&gt;&lt;/td&gt;&lt;td&gt;2 comprimé&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')&lt;/span&gt;/1 jour&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: UCUM  coded = 'd')&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: Medication #MedicationParacetamolDafalganEff&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/MedicationParacetamolDafalganEff\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMedicationStatementDafalganEffMaxDosePerPeriod/MedicationParacetamolDafalganEff\&quot;&gt; &lt;/a&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Language: fr-CH&lt;/p&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Profile: &lt;a href=\&quot;StructureDefinition-ch-emed-epr-medication.html\&quot;&gt;CH EMED EPR Medication&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;code&lt;/b&gt;: &lt;span title=\&quot;Codes:{urn:oid:2.51.1.1 7680475030011}, {http://www.whocc.no/atc N02BE01}\&quot;&gt;DAFALGAN cpr eff 500mg&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;form&lt;/b&gt;: &lt;span title=\&quot;Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10222000}\&quot;&gt;Comprimé effervescent&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;amount&lt;/b&gt;: 40 comprimé&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')&lt;/span&gt;/1 plaquette&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: SNOMED CT  code732984005 = 'Blister (unit of presentation)')&lt;/span&gt;&lt;/p&gt;&lt;h3&gt;Ingredients&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Item[x]&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;IsActive&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Strength&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;&lt;span title=\&quot;Codes:{http://snomed.info/sct 387517004}\&quot;&gt;Paracétamol&lt;/span&gt;&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;500 mg&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: UCUM  codemg = 'mg')&lt;/span&gt;/1 comprimé&lt;span style=\&quot;background: LightGoldenRodYellow\&quot;&gt; (Details: SNOMED CT  code732936001 = 'Tablet (unit of presentation)')&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: Organization #OrganizationHug&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/OrganizationHug\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMedicationStatementDafalganEffMaxDosePerPeriod/OrganizationHug\&quot;&gt; &lt;/a&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;/&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Profile: &lt;a href=\&quot;StructureDefinition-ch-emed-epr-organization.html\&quot;&gt;CH EMED EPR Organization&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=\&quot;https://www.gs1.org/standards/id-keys/gln\&quot; title=\&quot;Global Location Number\&quot;&gt;GLN&lt;/a&gt;/7601000234438&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Hôpitaux universitaires de Genève&lt;/p&gt;&lt;p&gt;&lt;b&gt;address&lt;/b&gt;: Rue Gabrielle-Perret-Gentil 4 Genève 1205 CH &lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: Practitioner #PractitionerCox&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/PractitionerCox\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMedicationStatementDafalganEffMaxDosePerPeriod/PractitionerCox\&quot;&gt; &lt;/a&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;/&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Profile: &lt;a href=\&quot;StructureDefinition-ch-emed-epr-practitioner.html\&quot;&gt;CH EMED EPR Practitioner&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;identifier&lt;/b&gt;: &lt;a href=\&quot;https://www.gs1.org/standards/id-keys/gln\&quot; title=\&quot;Global Location Number\&quot;&gt;GLN&lt;/a&gt;/7601000234438&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Perry Cox &lt;/p&gt;&lt;/blockquote&gt;&lt;hr/&gt;&lt;blockquote&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: PractitionerRole #PractitionerRoleCoxAtHug&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;MedicationStatementDafalganEffMaxDosePerPeriod/PractitionerRoleCoxAtHug\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcMedicationStatementDafalganEffMaxDosePerPeriod/PractitionerRoleCoxAtHug\&quot;&gt; &lt;/a&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;/&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Profile: &lt;a href=\&quot;StructureDefinition-ch-emed-epr-practitionerrole.html\&quot;&gt;CH EMED EPR PractitionerRole&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;practitioner&lt;/b&gt;: &lt;a href=\&quot;#hcMedicationStatementDafalganEffMaxDosePerPeriod/PractitionerCox\&quot;&gt;Practitioner Perry Cox &lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;organization&lt;/b&gt;: &lt;a href=\&quot;#hcMedicationStatementDafalganEffMaxDosePerPeriod/OrganizationHug\&quot;&gt;Organization Hôpitaux universitaires de Genève&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;&quot;^^rdf:XMLLiteral ]
   ] ; # 
   <a href="http://hl7.org/fhir/R4/medication.html#Medication">fhir:contained</a> ( [
 <a href="http://hl7.org/fhir/R4/medication.html">a</a> fhir:Medication ;
-<a href="http://hl7.org/fhir/R4/medication.html#Medication.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MedicationParacetamolDafalganEff&quot; ] ;
-<a href="http://hl7.org/fhir/R4/medication.html#Medication.meta">fhir:meta</a> [
+<a href="http://hl7.org/fhir/R4/resource.html#Medication.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;MedicationParacetamolDafalganEff&quot; ] ;
+<a href="http://hl7.org/fhir/R4/resource.html#Medication.meta">fhir:meta</a> [
       ( <a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">fhir:profile</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medication&quot;^^xsd:anyURI ;
-<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:link</a> &lt;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medication&gt;       ] )     ] ;
-<a href="http://hl7.org/fhir/R4/medication.html#Medication.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;fr-CH&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medication&gt;       ] )     ] ;
+<a href="http://hl7.org/fhir/R4/resource.html#Medication.language">fhir:language</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;fr-CH&quot; ] ;
 <a href="http://hl7.org/fhir/R4/medication.html#Medication.code">fhir:code</a> [
       ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:2.51.1.1&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:2.51.1.1&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;urn:oid:2.51.1.1&gt;         ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;7680475030011&quot; ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;DAFALGAN cpr eff 500mg&quot; ]       ] [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://www.whocc.no/atc&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://www.whocc.no/atc&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://www.whocc.no/atc&gt;         ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;N02BE01&quot; ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;paracetamol&quot; ]       ] ) ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;DAFALGAN cpr eff 500mg&quot; ]     ] ;
 <a href="http://hl7.org/fhir/R4/medication.html#Medication.form">fhir:form</a> [
       ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:0.4.0.127.0.16.1.1.2.1&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:0.4.0.127.0.16.1.1.2.1&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;urn:oid:0.4.0.127.0.16.1.1.2.1&gt;         ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;10222000&quot; ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Comprimé effervescent&quot; ]       ] ) ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Comprimé effervescent&quot; ]     ] ;
@@ -282,43 +295,55 @@ fhir:div &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot; xml:lang
 <a href="http://hl7.org/fhir/R4/datatypes.html#Ratio#Ratio.numerator">fhir:numerator</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#decimal">fhir:v</a> &quot;40&quot;^^xsd:decimal ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.unit">fhir:unit</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;comprimé&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://snomed.info/sct&gt;         ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;732936001&quot; ]       ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Ratio#Ratio.denominator">fhir:denominator</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#decimal">fhir:v</a> &quot;1&quot;^^xsd:decimal ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.unit">fhir:unit</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;plaquette&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://snomed.info/sct&gt;         ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;732984005&quot; ]       ]     ] ;
     ( <a href="http://hl7.org/fhir/R4/medication.html#Medication.ingredient">fhir:ingredient</a> [
-<a href="http://hl7.org/fhir/R4/medication.html#Medication.ingredient.item[x]">fhir:item</a> [
+<a href="http://hl7.org/fhir/R4/medication.html#Medication.ingredient.item_x_">fhir:item</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">a</a> fhir:CodeableConcept ;
         ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
 a sct:387517004 ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://snomed.info/sct&gt;           ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;387517004&quot; ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Paracetamol (substance)&quot; ]         ] ) ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Paracétamol&quot; ]       ] ;
-<a href="http://hl7.org/fhir/R4/medication.html#Medication.ingredient.isActive">fhir:isActive</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> &quot;true&quot;^^xsd:boolean ] ;
+<a href="http://hl7.org/fhir/R4/medication.html#Medication.ingredient.isActive">fhir:isActive</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> true ] ;
 <a href="http://hl7.org/fhir/R4/medication.html#Medication.ingredient.strength">fhir:strength</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Ratio#Ratio.numerator">fhir:numerator</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#decimal">fhir:v</a> &quot;500&quot;^^xsd:decimal ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.unit">fhir:unit</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;mg&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://unitsofmeasure.org&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://unitsofmeasure.org&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://unitsofmeasure.org&gt;           ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;mg&quot; ]         ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Ratio#Ratio.denominator">fhir:denominator</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#decimal">fhir:v</a> &quot;1&quot;^^xsd:decimal ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.unit">fhir:unit</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;comprimé&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://snomed.info/sct&gt;           ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;732936001&quot; ]         ]       ]     ] )
   ] [
 <a href="http://hl7.org/fhir/R4/organization.html">a</a> fhir:Organization ;
-<a href="http://hl7.org/fhir/R4/organization.html#Organization.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;OrganizationHug&quot; ] ;
-<a href="http://hl7.org/fhir/R4/organization.html#Organization.meta">fhir:meta</a> [
+<a href="http://hl7.org/fhir/R4/resource.html#Organization.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;OrganizationHug&quot; ] ;
+<a href="http://hl7.org/fhir/R4/resource.html#Organization.meta">fhir:meta</a> [
       ( <a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">fhir:profile</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-organization&quot;^^xsd:anyURI ;
-<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:link</a> &lt;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-organization&gt;       ] )     ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-organization&gt;       ] )     ] ;
     ( <a href="http://hl7.org/fhir/R4/organization.html#Organization.identifier">fhir:identifier</a> [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:2.51.1.3&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:2.51.1.3&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;urn:oid:2.51.1.3&gt;       ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;7601000234438&quot; ]     ] ) ;
 <a href="http://hl7.org/fhir/R4/organization.html#Organization.name">fhir:name</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Hôpitaux universitaires de Genève&quot; ] ;
     ( <a href="http://hl7.org/fhir/R4/organization.html#Organization.address">fhir:address</a> [
@@ -328,43 +353,52 @@ a sct:387517004 ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Address#Address.country">fhir:country</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;CH&quot; ]     ] )
   ] [
 <a href="http://hl7.org/fhir/R4/practitioner.html">a</a> fhir:Practitioner ;
-<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;PractitionerCox&quot; ] ;
-<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.meta">fhir:meta</a> [
+<a href="http://hl7.org/fhir/R4/resource.html#Practitioner.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;PractitionerCox&quot; ] ;
+<a href="http://hl7.org/fhir/R4/resource.html#Practitioner.meta">fhir:meta</a> [
       ( <a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">fhir:profile</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-practitioner&quot;^^xsd:anyURI ;
-<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:link</a> &lt;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-practitioner&gt;       ] )     ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-practitioner&gt;       ] )     ] ;
     ( <a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.identifier">fhir:identifier</a> [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:2.51.1.3&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:2.51.1.3&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;urn:oid:2.51.1.3&gt;       ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;7601000234438&quot; ]     ] ) ;
     ( <a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.name">fhir:name</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#HumanName#HumanName.family">fhir:family</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Cox&quot; ] ;
       ( <a href="http://hl7.org/fhir/R4/datatypes.html#HumanName#HumanName.given">fhir:given</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Perry&quot; ] )     ] )
   ] [
 <a href="http://hl7.org/fhir/R4/practitionerrole.html">a</a> fhir:PractitionerRole ;
-<a href="http://hl7.org/fhir/R4/practitionerrole.html#PractitionerRole.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;PractitionerRoleCoxAtHug&quot; ] ;
-<a href="http://hl7.org/fhir/R4/practitionerrole.html#PractitionerRole.meta">fhir:meta</a> [
+<a href="http://hl7.org/fhir/R4/resource.html#PractitionerRole.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;PractitionerRoleCoxAtHug&quot; ] ;
+<a href="http://hl7.org/fhir/R4/resource.html#PractitionerRole.meta">fhir:meta</a> [
       ( <a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">fhir:profile</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:v</a> &quot;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-practitionerrole&quot;^^xsd:anyURI ;
-<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:link</a> &lt;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-practitionerrole&gt;       ] )     ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#canonical">fhir:l</a> &lt;http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-practitionerrole&gt;       ] )     ] ;
 <a href="http://hl7.org/fhir/R4/practitionerrole.html#PractitionerRole.practitioner">fhir:practitioner</a> [
+<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:l</a> &lt;#PractitionerCox&gt; ;
 <a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;#PractitionerCox&quot; ]     ] ;
 <a href="http://hl7.org/fhir/R4/practitionerrole.html#PractitionerRole.organization">fhir:organization</a> [
+<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:l</a> &lt;#OrganizationHug&gt; ;
 <a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;#OrganizationHug&quot; ]     ]
   ] ) ; # 
   <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.identifier">fhir:identifier</a> ( [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:ietf:rfc:3986&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:ietf:rfc:3986&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;urn:ietf:rfc:3986&gt;     ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;urn:uuid:63ccda67-4b0c-4a4b-96b9-3f4a03baa245&quot; ]
   ] ) ; # 
   <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;active&quot;] ; # 
-  <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.medication[x]">fhir:medication</a> [
+  <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.medication_x_">fhir:medication</a> [
 <a href="http://hl7.org/fhir/R4/references.html#Reference">a</a> fhir:Reference ;
+<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:l</a> &lt;#MedicationParacetamolDafalganEff&gt; ;
 <a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;#MedicationParacetamolDafalganEff&quot; ]
   ] ; # 
   <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.subject">fhir:subject</a> [
+<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:l</a> &lt;urn:uuid:9b00e81e-1165-4039-9d60-698ef838ae1a&gt; ;
 <a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;urn:uuid:9b00e81e-1165-4039-9d60-698ef838ae1a&quot; ]
   ] ; # 
   <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.dateAsserted">fhir:dateAsserted</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">fhir:v</a> &quot;2023-11-05T12:00:00+02:00&quot;^^xsd:dateTime] ; # 
   <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.informationSource">fhir:informationSource</a> [
+<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:l</a> &lt;#PractitionerRoleCoxAtHug&gt; ;
 <a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;#PractitionerRoleCoxAtHug&quot; ]
   ] ; # 
   <a href="http://hl7.org/fhir/R4/medicationstatement.html#MedicationStatement.reasonCode">fhir:reasonCode</a> ( [
@@ -374,12 +408,14 @@ a sct:387517004 ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Dosage#Dosage.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Max. 2 comprimés à avaler par jour.&quot; ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Dosage#Dosage.timing">fhir:timing</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Timing#Timing.repeat">fhir:repeat</a> [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Timing#Timing.repeat.bounds[x]">fhir:bounds</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Timing#Timing.repeat.bounds_x_">fhir:bounds</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Period">a</a> fhir:Period ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Period#Period.start">fhir:start</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">fhir:v</a> &quot;2023-11-05&quot;^^xsd:date ]         ]       ]     ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Dosage#Dosage.route">fhir:route</a> [
       ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:0.4.0.127.0.16.1.1.2.1&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:oid:0.4.0.127.0.16.1.1.2.1&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;urn:oid:0.4.0.127.0.16.1.1.2.1&gt;         ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;20053000&quot; ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Oral use&quot; ]       ] ) ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;À avaler&quot; ]     ] ;
@@ -387,12 +423,16 @@ a sct:387517004 ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Ratio#Ratio.numerator">fhir:numerator</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#decimal">fhir:v</a> &quot;2&quot;^^xsd:decimal ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.unit">fhir:unit</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;comprimé&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://snomed.info/sct&gt;         ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;732936001&quot; ]       ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Ratio#Ratio.denominator">fhir:denominator</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#decimal">fhir:v</a> &quot;1&quot;^^xsd:decimal ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.unit">fhir:unit</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;jour&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://unitsofmeasure.org&quot;^^xsd:anyURI ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://unitsofmeasure.org&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://unitsofmeasure.org&gt;         ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;d&quot; ]       ]     ]
   ] ) . # 
 
@@ -421,7 +461,7 @@ a sct:387517004 ;
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.cara.ch">CARA</a>.  Package ch.fhir.ig.ch-emed-epr#2.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jan 21, 2025 11:06+0000">2025-01-21</span>
+          IG &#169; 2022+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.cara.ch">CARA</a>.  Package ch.fhir.ig.ch-emed-epr#3.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Feb 11, 2026 07:11+0000">2026-02-11</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -429,7 +469,7 @@ a sct:387517004 ;
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSf2h69aPkVsCC7rQ3rEGPofycO4ylPd0urxp0tmjQkzlZRbHg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed-epr%232.0.0%20/MedicationStatement-MedicationStatementDafalganEffMaxDosePerPeriod.ttl.html&amp;entry%2E247644557=MedicationStatement:%20Paracetamol%20Dafalgan%20Effervescent%20(MTP)%20with%20max%20dose%20per%20period%20-%20TTL%20Representation">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSf2h69aPkVsCC7rQ3rEGPofycO4ylPd0urxp0tmjQkzlZRbHg/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-emed-epr%233.0.0%20/MedicationStatement-MedicationStatementDafalganEffMaxDosePerPeriod.ttl.html&amp;entry%2E247644557=MedicationStatement:%20Paracetamol%20Dafalgan%20Effervescent%20(MTP)%20with%20max%20dose%20per%20period%20-%20TTL%20Representation">Propose a change</a>
 
 
 

@@ -1,0 +1,27 @@
+# Use Case - CH EMED EPR v3.0.0
+
+* [**Table of Contents**](toc.md)
+* **Use Case**
+
+## Use Case
+
+### Introduction
+
+This use case presents a simple example of a patient to showcase all the different documents defined by this implementation guide and how they are used by different systems. Please take into account that different systems might resolve different problems in a different way when it comes to both the content and the transactions they implement to achieve their goals: this example does not intend to portrait an actual real exchange between systems and should not be taken as a fixed template for this either.
+
+Please note that a use case as described by the [IPAG report](https://www.e-health-suisse.ch/fileadmin/user_upload/Dokumente/2017/F/170607_Bericht_eMedikation_IPAG_f.pdf) is also provided and described by [CH EMED](https://fhir.ch/ig/ch-emed) in [French](https://fhir.ch/ig/ch-emed/usecase-french.html) and in [German](https://fhir.ch/ig/ch-emed/usecase-german.html)
+
+### First Appointment with the General Practitioner
+
+The patient goes to his general practitioner to address his ailment. The doctor's system performs the necessary requests to fetch a PML document from the eMedication service to support the anamnesis process. The service returns the [PML document](Bundle-BundleUtc1Pml.md) for the patient, which at this time is empty since his PMP record is empty.
+
+The doctor recommends to start a treatment with paracetamol and prescribes Axapharm tablets containing each 1g of paracetamol to be taken with meals for three months: one in the morning, one at noon and one in the evening. The doctor's system sends to the eMedication service an [MTP document](Bundle-DocumentMtpParacetamolCARAPMP004.md) and a [PRE document](Bundle-DocumentPreParacetamolAxapharmCARAPMP004.md) for Axapharm's paracetamol, then fetches a [PMLC document](Bundle-DocumentPmlcCARAPMP004AxapharmParacetamol.md) to verify it contains the right treatment. He then gives to the patient a printed copy of the medication card provided by the eMedication service with the PMLC document.
+
+### Second Appointment with the General Practitioner
+
+One month later, the patient returns to the same practitioner and explains that he is having a hard time swallowing the tablets. The doctor then decides to cancel the current treatment and start a new treatment with Dafalgan effervescent tablets, containing each 500mg of paracetamol, to be taken: two in the morning and two in the evening. The practitioner's system sends a [PADV document](Bundle-DocumentPadvCancelParacetamolCARAPMP004.md) to the eMedication service to cancel the Axapharm paracetamol treatment and a new [MTP document](Bundle-DocumentMtpParacetamolDafalganCARAPMP004.md) and [PRE document](Bundle-DocumentPreParacetamolDafalganCARAPMP004.md) for the new Dafalgan treatment. It then fetches a [PMLC document](Bundle-DocumentPmlcCARAPMP004DafalganEffParacetamol.md) from the eMedication service to verify that the current medication card is correct and the practitioner handles a printed copy to the patient.
+
+#### Alternative Flow
+
+When the doctor decides to replace the current treatment with Dafalgan, instead of stopping the current treatment and starting a new one, changes the medication of the current system by issuing a [PADV CHANGE document](Bundle-DocumentPadvChangeParacetamolCARAPMP004.md) targeting the previous prescription. The doctor wants to check the treatment history again to verify that everything is alright, and its system fetches a [new PML document](Bundle-BundleUtc6bPml.md) with the last changes.
+

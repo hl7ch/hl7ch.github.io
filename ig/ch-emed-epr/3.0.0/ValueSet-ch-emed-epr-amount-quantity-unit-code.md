@@ -1,0 +1,449 @@
+# Amount Quantity Unit Codes - CH EMED EPR v3.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Amount Quantity Unit Codes**
+
+## ValueSet: Amount Quantity Unit Codes (Experimental) 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-emed-epr/ValueSet/ch-emed-epr-amount-quantity-unit-code | *Version*:3.0.0 |
+| Draft as of 2026-02-11 | *Computable Name*:CHEMEDEPRAmountQuantityUnitCode |
+| **Copyright/Legal**: CC0-1.0 | |
+
+ 
+Unit Codes for amount quantity units. 
+These are all unit codes about amount quantities, excluding time units. 
+
+ **References** 
+
+* [Amount Quantity](StructureDefinition-ch-emed-epr-amount-quantity.md)
+
+### Logical Definition (CLD)
+
+ 
+
+### Expansion
+
+-------
+
+ Explanation of the columns that may appear on this page: 
+
+| | |
+| :--- | :--- |
+| Level | A few code lists that FHIR defines are hierarchical - each code is assigned a level. In this scheme, some codes are under other codes, and imply that the code they are under also applies |
+| System | The source of the definition of the code (when the value set draws in codes defined elsewhere) |
+| Code | The code (used as the code in the resource instance) |
+| Display | The display (used in the*display*element of a[Coding](http://hl7.org/fhir/R4/datatypes.html#Coding)). If there is no display, implementers should not simply display the code, but map the concept into their application |
+| Definition | An explanation of the meaning of the concept |
+| Comments | Additional notes about how to use the code |
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "ValueSet",
+  "id" : "ch-emed-epr-amount-quantity-unit-code",
+  "meta" : {
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablevalueset"]
+  },
+  "url" : "http://fhir.ch/ig/ch-emed-epr/ValueSet/ch-emed-epr-amount-quantity-unit-code",
+  "version" : "3.0.0",
+  "name" : "CHEMEDEPRAmountQuantityUnitCode",
+  "title" : "Amount Quantity Unit Codes",
+  "status" : "draft",
+  "experimental" : true,
+  "date" : "2026-02-11T07:01:54+00:00",
+  "publisher" : "CARA",
+  "contact" : [
+    {
+      "name" : "CARA",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.cara.ch"
+        }
+      ]
+    }
+  ],
+  "description" : "Unit Codes for amount quantity units.\n\nThese are all unit codes about amount quantities, excluding time units.",
+  "jurisdiction" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CH",
+          "display" : "Switzerland"
+        }
+      ]
+    }
+  ],
+  "copyright" : "CC0-1.0",
+  "compose" : {
+    "include" : [
+      {
+        "system" : "http://snomed.info/sct",
+        "concept" : [
+          {
+            "code" : "732981002",
+            "display" : "Actuation (unit of presentation)"
+          },
+          {
+            "code" : "732978007",
+            "display" : "Ampule (unit of presentation)"
+          },
+          {
+            "code" : "413568008",
+            "display" : "Application - unit of product usage (qualifier value)"
+          },
+          {
+            "code" : "732980001",
+            "display" : "Applicator (unit of presentation)"
+          },
+          {
+            "code" : "732982009",
+            "display" : "Bag (unit of presentation)"
+          },
+          {
+            "code" : "732983004",
+            "display" : "Barrel (unit of presentation)"
+          },
+          {
+            "code" : "732984005",
+            "display" : "Blister (unit of presentation)"
+          },
+          {
+            "code" : "732985006",
+            "display" : "Block (unit of presentation)"
+          },
+          {
+            "code" : "732986007",
+            "display" : "Bottle (unit of presentation)"
+          },
+          {
+            "code" : "732987003",
+            "display" : "Cachet (unit of presentation)"
+          },
+          {
+            "code" : "732937005",
+            "display" : "Capsule (unit of presentation)"
+          },
+          {
+            "code" : "732988008",
+            "display" : "Cartridge (unit of presentation)"
+          },
+          {
+            "code" : "732989000",
+            "display" : "Chewing gum (unit of presentation)"
+          },
+          {
+            "code" : "732990009",
+            "display" : "Container (unit of presentation)"
+          },
+          {
+            "code" : "732991008",
+            "display" : "Cup (unit of presentation)"
+          },
+          {
+            "code" : "732992001",
+            "display" : "Cylinder (unit of presentation)"
+          },
+          {
+            "code" : "732993006",
+            "display" : "Dressing (unit of presentation)"
+          },
+          {
+            "code" : "732994000",
+            "display" : "Drop (unit of presentation)"
+          },
+          {
+            "code" : "732995004",
+            "display" : "Film (unit of presentation)"
+          },
+          {
+            "code" : "732996003",
+            "display" : "Implant (unit of presentation)"
+          },
+          {
+            "code" : "732997007",
+            "display" : "Inhaler (unit of presentation)"
+          },
+          {
+            "code" : "732998002",
+            "display" : "Insert (unit of presentation)"
+          },
+          {
+            "code" : "732999005",
+            "display" : "Jar (unit of presentation)"
+          },
+          {
+            "code" : "733001005",
+            "display" : "Lyophilisate (unit of presentation)"
+          },
+          {
+            "code" : "733002003",
+            "display" : "Matrix (unit of presentation)"
+          },
+          {
+            "code" : "733003008",
+            "display" : "Pad (unit of presentation)"
+          },
+          {
+            "code" : "733004002",
+            "display" : "Pastille (unit of presentation)"
+          },
+          {
+            "code" : "733005001",
+            "display" : "Patch (unit of presentation)"
+          },
+          {
+            "code" : "733006000",
+            "display" : "Pen (unit of presentation)"
+          },
+          {
+            "code" : "733007009",
+            "display" : "Pessary (unit of presentation)"
+          },
+          {
+            "code" : "733008004",
+            "display" : "Pillule (unit of presentation)"
+          },
+          {
+            "code" : "733009007",
+            "display" : "Pipette (unit of presentation)"
+          },
+          {
+            "code" : "733010002",
+            "display" : "Plaster (unit of presentation)"
+          },
+          {
+            "code" : "733011003",
+            "display" : "Plug (unit of presentation)"
+          },
+          {
+            "code" : "733012005",
+            "display" : "Pouch (unit of presentation)"
+          },
+          {
+            "code" : "733013000",
+            "display" : "Sachet (unit of presentation)"
+          },
+          {
+            "code" : "733014006",
+            "display" : "Sponge (unit of presentation)"
+          },
+          {
+            "code" : "733015007",
+            "display" : "Spoonful (unit of presentation)"
+          },
+          {
+            "code" : "733016008",
+            "display" : "Stick (unit of presentation)"
+          },
+          {
+            "code" : "733017004",
+            "display" : "Straw (unit of presentation)"
+          },
+          {
+            "code" : "733018009",
+            "display" : "Strip (unit of presentation)"
+          },
+          {
+            "code" : "733019001",
+            "display" : "Suppository (unit of presentation)"
+          },
+          {
+            "code" : "733020007",
+            "display" : "Syringe (unit of presentation)"
+          },
+          {
+            "code" : "733021006",
+            "display" : "System (unit of presentation)"
+          },
+          {
+            "code" : "732936001",
+            "display" : "Tablet (unit of presentation)"
+          },
+          {
+            "code" : "733022004",
+            "display" : "Tampon (unit of presentation)"
+          },
+          {
+            "code" : "733023009",
+            "display" : "Thread (unit of presentation)"
+          },
+          {
+            "code" : "733024003",
+            "display" : "Tube (unit of presentation)"
+          },
+          {
+            "code" : "733025002",
+            "display" : "Vessel (unit of presentation)"
+          },
+          {
+            "code" : "733026001",
+            "display" : "Vial (unit of presentation)"
+          },
+          {
+            "code" : "408102007",
+            "display" : "Dose"
+          },
+          {
+            "code" : "396186001",
+            "display" : "(the number ten for arbitrary powers ^ 6) * Unit"
+          },
+          {
+            "code" : "1681000175101",
+            "display" : "Package"
+          },
+          {
+            "code" : "2011000175108",
+            "display" : "Thousand Per * Unit"
+          },
+          {
+            "code" : "767525000",
+            "display" : "Unit"
+          },
+          {
+            "code" : "246205007",
+            "display" : "Quantity"
+          }
+        ]
+      },
+      {
+        "system" : "http://unitsofmeasure.org",
+        "concept" : [
+          {
+            "code" : "Bq",
+            "display" : "Becquerel"
+          },
+          {
+            "code" : "kBq",
+            "display" : "kiloBecquerel"
+          },
+          {
+            "code" : "MBq",
+            "display" : "megaBecquerel"
+          },
+          {
+            "code" : "GBq",
+            "display" : "gigaBecquerel"
+          },
+          {
+            "code" : "%",
+            "display" : "percent"
+          },
+          {
+            "code" : "ng",
+            "display" : "nanogram"
+          },
+          {
+            "code" : "ug",
+            "display" : "microgram"
+          },
+          {
+            "code" : "mg",
+            "display" : "milligram"
+          },
+          {
+            "code" : "g",
+            "display" : "gram"
+          },
+          {
+            "code" : "kg",
+            "display" : "kilogram"
+          },
+          {
+            "code" : "kcal",
+            "display" : "kilocalorie"
+          },
+          {
+            "code" : "kJ",
+            "display" : "kilojoule"
+          },
+          {
+            "code" : "meq",
+            "display" : "milliequivalent"
+          },
+          {
+            "code" : "nmol",
+            "display" : "nanomole"
+          },
+          {
+            "code" : "umol",
+            "display" : "micromole"
+          },
+          {
+            "code" : "mmol",
+            "display" : "millimole"
+          },
+          {
+            "code" : "mol",
+            "display" : "mole"
+          },
+          {
+            "code" : "nL",
+            "display" : "nanoliter"
+          },
+          {
+            "code" : "uL",
+            "display" : "microliter"
+          },
+          {
+            "code" : "mL",
+            "display" : "milliliter"
+          },
+          {
+            "code" : "L",
+            "display" : "liter"
+          },
+          {
+            "code" : "mm2",
+            "display" : "square millimeter"
+          },
+          {
+            "code" : "cm",
+            "display" : "centimeter"
+          },
+          {
+            "code" : "cm2",
+            "display" : "square centimeter"
+          },
+          {
+            "code" : "cm3",
+            "display" : "cubic centimeter"
+          },
+          {
+            "code" : "[tbs_m]",
+            "display" : "tablespoon - metric"
+          },
+          {
+            "code" : "10*6.[iU]",
+            "display" : "MillionInternationalUnit"
+          },
+          {
+            "code" : "[ppm]",
+            "display" : "Parts Per Million"
+          },
+          {
+            "code" : "[tsp_m]",
+            "display" : "teaspoon - metric"
+          },
+          {
+            "code" : "[iU]",
+            "display" : "international unit"
+          },
+          {
+            "code" : "[CFU]",
+            "display" : "Colony Forming Units"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+```

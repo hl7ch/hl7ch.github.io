@@ -1,0 +1,72 @@
+# CH EMED EPR HUG Patient Id Assigning Authority (dev) Naming System - CH EMED EPR v3.0.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH EMED EPR HUG Patient Id Assigning Authority (dev) Naming System**
+
+## NamingSystem: CH EMED EPR HUG Patient Id Assigning Authority (dev) Naming System 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-emed-epr/NamingSystem/ch-emed-epr-hug-pid-dev-naming-system | *Version*:3.0.0 |
+| Draft as of 2026-01-21 | *Computable Name*:CHEMEDEPRHUGPIDDevNamingSystem |
+| **Copyright/Legal**: CC0-1.0 | |
+
+ 
+Naming System of HUG's local patient ids in their development environment, used in the context of CARA's eMedication service's dev and int environments. 
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "NamingSystem",
+  "id" : "ch-emed-epr-hug-pid-dev-naming-system",
+  "extension" : [
+    {
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-NamingSystem.url",
+      "valueUri" : "http://fhir.ch/ig/ch-emed-epr/NamingSystem/ch-emed-epr-hug-pid-dev-naming-system"
+    },
+    {
+      "url" : "http://hl7.org/fhir/5.0/StructureDefinition/extension-NamingSystem.version",
+      "valueString" : "3.0.0"
+    }
+  ],
+  "name" : "CHEMEDEPRHUGPIDDevNamingSystem",
+  "status" : "draft",
+  "kind" : "root",
+  "date" : "2026-01-21",
+  "publisher" : "CARA",
+  "contact" : [
+    {
+      "name" : "CARA",
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://www.cara.ch"
+        }
+      ]
+    }
+  ],
+  "description" : "Naming System of HUG's local patient ids in their development environment, used in the context of CARA's eMedication service's dev and int environments.",
+  "jurisdiction" : [
+    {
+      "coding" : [
+        {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CH",
+          "display" : "Switzerland"
+        }
+      ]
+    }
+  ],
+  "uniqueId" : [
+    {
+      "type" : "oid",
+      "value" : "2.16.756.5.30.1.128.4.1.4.2.3.2.1.1.1"
+    }
+  ]
+}
+
+```

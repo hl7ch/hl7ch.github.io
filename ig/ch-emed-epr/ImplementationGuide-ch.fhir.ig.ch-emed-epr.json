@@ -3,14 +3,14 @@
   "id" : "ch.fhir.ig.ch-emed-epr",
   "text" : {
     "status" : "generated",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide ch.fhir.ig.ch-emed-epr</b></p><a name=\"ch.fhir.ig.ch-emed-epr\"> </a><a name=\"hcch.fhir.ig.ch-emed-epr\"> </a><a name=\"ch.fhir.ig.ch-emed-epr-en-US\"> </a><h2>ChEmedEpr</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-emed-epr/ImplementationGuide/ch.fhir.ig.ch-emed-epr</pre><div><p>FHIR Implementation Guide which defines the documents for the exchange of medication information in the context of the Swiss eMedication service</p>\n</div></div>"
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide ch.fhir.ig.ch-emed-epr</b></p><a name=\"ch.fhir.ig.ch-emed-epr\"> </a><a name=\"hcch.fhir.ig.ch-emed-epr\"> </a><h2>ChEmedEpr</h2><p>The official URL for this implementation guide is: </p><pre>http://fhir.ch/ig/ch-emed-epr/ImplementationGuide/ch.fhir.ig.ch-emed-epr</pre><div><p>FHIR Implementation Guide which defines the documents for the exchange of medication information in the context of the Swiss eMedication service</p>\n</div></div>"
   },
   "url" : "http://fhir.ch/ig/ch-emed-epr/ImplementationGuide/ch.fhir.ig.ch-emed-epr",
-  "version" : "2.0.0",
+  "version" : "3.0.0",
   "name" : "ChEmedEpr",
   "title" : "CH EMED EPR",
   "status" : "draft",
-  "date" : "2025-01-21T11:06:41+00:00",
+  "date" : "2026-02-11T07:11:04+00:00",
   "publisher" : "CARA",
   "contact" : [{
     "name" : "CARA",
@@ -39,7 +39,7 @@
     }],
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology.r4",
-    "version" : "6.1.0"
+    "version" : "7.0.1"
   },
   {
     "id" : "hl7ext",
@@ -49,19 +49,19 @@
     }],
     "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
     "packageId" : "hl7.fhir.uv.extensions.r4",
-    "version" : "5.1.0"
+    "version" : "5.2.0"
   },
   {
     "id" : "ch_fhir_ig_ch_core",
     "uri" : "http://fhir.ch/ig/ch-core/ImplementationGuide/ch.fhir.ig.ch-core",
     "packageId" : "ch.fhir.ig.ch-core",
-    "version" : "5.0.0"
+    "version" : "6.0.0"
   },
   {
     "id" : "ch_fhir_ig_ch_emed",
     "uri" : "http://fhir.ch/ig/ch-emed/ImplementationGuide/ch.fhir.ig.ch-emed",
     "packageId" : "ch.fhir.ig.ch-emed",
-    "version" : "5.0.0"
+    "version" : "6.0.0"
   }],
   "definition" : {
     "extension" : [{
@@ -204,6 +204,17 @@
       {
         "url" : "value",
         "valueString" : "genExamples"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-expansion-params"
+      },
+      {
+        "url" : "value",
+        "valueString" : "../../expansion-params.json"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -461,8 +472,14 @@
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
     {
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/expansion-parameters",
+      "valueReference" : {
+        "reference" : "Parameters/expansion-parameters"
+      }
+    },
+    {
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
-      "valueCode" : "hl7.fhir.uv.tools.r4#0.3.0"
+      "valueCode" : "hl7.fhir.uv.tools.r4#0.9.0"
     },
     {
       "extension" : [{
@@ -604,6 +621,17 @@
       {
         "url" : "value",
         "valueString" : "genExamples"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-expansion-params"
+      },
+      {
+        "url" : "value",
+        "valueString" : "../../expansion-params.json"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -926,6 +954,18 @@
         "valueString" : "Bundle"
       }],
       "reference" : {
+        "reference" : "Bundle/DocumentUCSF4CARAPMP004DISDafalganWithoutPrescription"
+      },
+      "name" : "Bundle: DIS for a self-medicating dafalgan treatment.",
+      "description" : "Example of a document bundle of type DIS, documenting the dispensation of a box of effervescent dafalgan for a self-medicating treatment to patient CARAPMP004.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
         "reference" : "Bundle/DocumentMtp1"
       },
       "name" : "Bundle: MTP 1",
@@ -942,6 +982,42 @@
       },
       "name" : "Bundle: MTP Dafalgan Effervescent CARAPMP004",
       "description" : "MTP for Dafalgan effervescent paracetamol treatment for patient CARAPMP004",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationtreatmentplan"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DocumentMtpCARAPMP004MarcoumarFreeTextDosage"
+      },
+      "name" : "Bundle: MTP for Marcoumar tabs 3mg with free text dosage",
+      "description" : "Example of an MTP bundle for Marcoumar treatment with free text dosage instructions.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationtreatmentplan"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DocumentUCSF6CARAPMP004MTPIbuprofen"
+      },
+      "name" : "Bundle: MTP for no branded ibuprofen.",
+      "description" : "Example of a document bundle for an ibuprofen treatment (in reserve) without commercial product details.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationtreatmentplan"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DocumentUCSF2CARAPMP004MTPParacetamol"
+      },
+      "name" : "Bundle: MTP for self-medicating paracetamol.",
+      "description" : "Example of a document bundle for a patient adding a medication treatment plan for self-medication with paracetamol.",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationtreatmentplan"
     },
     {
@@ -1046,10 +1122,46 @@
         "valueString" : "Bundle"
       }],
       "reference" : {
+        "reference" : "Bundle/DocumentUCSF1CARAPMP004PMLCEmpty"
+      },
+      "name" : "Bundle: PMLC  document with no treatments",
+      "description" : "Example of PMLC  document for a patient without any active treatments.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationcard"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
         "reference" : "Bundle/BundlePmlc1"
       },
       "name" : "Bundle: PMLC #1",
       "description" : "PMLC bundle example",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationcard"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DocumentUCSF3CARAPMP004PMLCDafalganSelfMedication"
+      },
+      "name" : "Bundle: PMLC document with Dafalgan self-medication",
+      "description" : "Example of a PMLC bundle with a single treatment of self-medication with Dafalgan (paracetamol).",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationcard"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DocumentUCSF5CARAPMP004PMLCDafalganSelfMedication"
+      },
+      "name" : "Bundle: PMLC document with Dafalgan self-medication",
+      "description" : "Example of a PMLC bundle with a single treatment of self-medication with Dafalgan (paracetamol) after dispensation.",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationcard"
     },
     {
@@ -1070,10 +1182,34 @@
         "valueString" : "Bundle"
       }],
       "reference" : {
+        "reference" : "Bundle/DocumentUCSF7CARAPMP004PREDafalgan"
+      },
+      "name" : "Bundle: PRE Dafalgan eff 500mg",
+      "description" : "New PRE for paracetamol self-medication of patient CARAPMP004 with Dafalgan effervescent tablets 500mg.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationprescription"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
         "reference" : "Bundle/DocumentPreParacetamolDafalganCARAPMP004"
       },
       "name" : "Bundle: PRE Dafalgan eff 500mg",
       "description" : "New PRE for paracetamol treatment for patient CARAPMP004 with Dafalgan effervescent tablets 500mg.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationprescription"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DocumentPreCARAPMP004MarcoumarFreeTextDosage"
+      },
+      "name" : "Bundle: PRE Marcoumar tabs 3mg with alternating dosage",
+      "description" : "New PRE for Marcoumar tabs 3mg",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-document-medicationprescription"
     },
     {
@@ -1118,6 +1254,18 @@
         "valueString" : "ConceptMap"
       }],
       "reference" : {
+        "reference" : "ConceptMap/CdTyp26ToRouteOfAdministrationEDQM"
+      },
+      "name" : "CdTyp26 -> RouteOfAdministrationEDQM",
+      "description" : "Mapping from HCI CdTyp26 route of administration codes to RouteOfAdministrationEDQM codes.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ConceptMap"
+      }],
+      "reference" : {
         "reference" : "ConceptMap/CdTyp9ToCHEMEDEPRAmountQuantityUnitCode"
       },
       "name" : "CdTyp9 -> CHEMEDEPRAmountQuantityUnitCode",
@@ -1139,6 +1287,78 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-hci-index-cdtyp26-naming-system"
+      },
+      "name" : "CH EMED EPR - HCI Index CdTyp26 Naming System",
+      "description" : "Naming System of HCI's CdTyp26 (routes of administration) table.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-hci-index-cdtyp9-naming-system"
+      },
+      "name" : "CH EMED EPR - HCI Index CdTyp9 Naming System",
+      "description" : "Naming System of HCI's CdTyp9 (unit codes) table.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-hug-dtnia-naming-system"
+      },
+      "name" : "CH EMED EPR - HUG DTN-IA Naming System",
+      "description" : "Naming System of HUG'S DTN-IA department OID.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-pmp-pid-oid-dev-naming-system"
+      },
+      "name" : "CH EMED EPR - PMP-PID Assigning Authority OID dev",
+      "description" : "Naming System of the PMP-PID's Assigning Authority OID on development environment.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-emedo-mpi-int-naming-system"
+      },
+      "name" : "CH EMED EPR CARA MPI Int Naming System",
+      "description" : "Naming System for CARA's MPI assigning authority.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-chuv-naming-system"
+      },
+      "name" : "CH EMED EPR CHUV Root Naming System",
+      "description" : "Naming System for CHUV root OID.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
@@ -1146,6 +1366,78 @@
       },
       "name" : "CH EMED EPR Device",
       "description" : "Definition of the device for the eMedication context",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-hug-ehealth-naming-system"
+      },
+      "name" : "CH EMED EPR HUG eHealth domain Naming System",
+      "description" : "Naming System of HUG's eHealth domain OID.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-hug-pid-cert-naming-system"
+      },
+      "name" : "CH EMED EPR HUG Patient Id Assigning Authority (cert) Naming System",
+      "description" : "Naming System of HUG's local patient ids in their certification environment, used in the context of CARA's eMedication service's dev and int environments.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-hug-pid-dev-naming-system"
+      },
+      "name" : "CH EMED EPR HUG Patient Id Assigning Authority (dev) Naming System",
+      "description" : "Naming System of HUG's local patient ids in their development environment, used in the context of CARA's eMedication service's dev and int environments.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/cch-emed-epr-hug-pid-form-naming-system"
+      },
+      "name" : "CH EMED EPR HUG Patient Id Assigning Authority (form) Naming System",
+      "description" : "Naming System of HUG's local patient ids in their training environment (formation), used in the context of CARA's eMedication service's dev and int environments.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-hug-pid-prod-naming-system"
+      },
+      "name" : "CH EMED EPR HUG Patient Id Assigning Authority (prod) Naming System",
+      "description" : "Naming System of HUG's local patient ids in their production environment, used in the context of CARA's eMedication service's prod environment.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/ch-emed-epr-hug-root-naming-system"
+      },
+      "name" : "CH EMED EPR HUG Root Naming System",
+      "description" : "Naming System for HUG root OID.",
       "exampleBoolean" : false
     },
     {
@@ -1193,7 +1485,7 @@
         "reference" : "CodeSystem/ch-emed-epr-paper-format-code-system"
       },
       "name" : "CH EMED EPR Paper Format Code System",
-      "description" : "Possible paper formats that can be delivered by a CH EMED EPR service rendering PMLC original representations.",
+      "description" : "Possible paper formats that can be delivered by a CH EMED EPR service rendering original representations.",
       "exampleBoolean" : false
     },
     {
@@ -1279,30 +1571,6 @@
       "name" : "CHEMEDEPRTimeQuantityUnitCode -> CdTyp9",
       "description" : "Mapping from CHEMEDEPRTimeQuantityUnitCode codes to HCI CdTyp9 unit codes.",
       "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/CompositionPmlcParacetamolDafalganEffCARAPMP004"
-      },
-      "name" : "Composition for PMLC  document with a prescribed dafalgan effervescent paracetamol treatment",
-      "description" : "Example of PMLC  document composition with a prescribed dafalgan effervescent paracetamol treatment",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-composition-medicationcard"
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Composition"
-      }],
-      "reference" : {
-        "reference" : "Composition/CompositionPmlcParacetamolAxapharmCARAPMP004"
-      },
-      "name" : "Composition: PMLC  document with a prescribed axapharm paracetamol treatment",
-      "description" : "Example of PMLC  document composition with a prescribed axapharm paracetamol treatment",
-      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-composition-medicationcard"
     },
     {
       "extension" : [{
@@ -1442,6 +1710,18 @@
         "valueString" : "MedicationDispense"
       }],
       "reference" : {
+        "reference" : "MedicationDispense/MedicationDispenseUSCF4DafalganDis"
+      },
+      "name" : "MedicationDispense: Dafalgan self-medication",
+      "description" : "Example of a medication dispense in a DIS document for a dafalgan self-medication MTP.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationDispense"
+      }],
+      "reference" : {
         "reference" : "MedicationDispense/MedicationDispenseTriatecDis"
       },
       "name" : "MedicationDispense: Triatec (DIS)",
@@ -1459,6 +1739,42 @@
       "name" : "MedicationDispense: Triatec (PML)",
       "description" : "Example of a medication dispense in a PML document.",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationdispense-list"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Medication"
+      }],
+      "reference" : {
+        "reference" : "Medication/MedicationIbuprofen"
+      },
+      "name" : "MedicationIbuprofen",
+      "description" : "Medication example for ibuprofen medication without any specific commercial product details.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medication"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Medication"
+      }],
+      "reference" : {
+        "reference" : "Medication/MedicationMarcoumar"
+      },
+      "name" : "MedicationMarcoumar",
+      "description" : "Medication example for Marcoumar tablets 3mg - no article details",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medication"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Medication"
+      }],
+      "reference" : {
+        "reference" : "Medication/MedicationMarcoumar25TabsPackage"
+      },
+      "name" : "MedicationMarcoumar25TabsPackage",
+      "description" : "Medication example for Marcoumar tablets 3mg, package of 25 tablets",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medication"
     },
     {
       "extension" : [{
@@ -1526,6 +1842,42 @@
         "valueString" : "MedicationRequest"
       }],
       "reference" : {
+        "reference" : "MedicationRequest/MedicationRequestDafalganEffSelfMedicationPre"
+      },
+      "name" : "MedicationRequest: Dafalgan effervescent 500mg (PRE)",
+      "description" : "Example of a medication request in a PRE document for paracetamol Dafalgan effervescent tablets 500mg for a treatment added by a patient.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationrequest"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationRequest"
+      }],
+      "reference" : {
+        "reference" : "MedicationRequest/MedicationRequestIbuprofenPre"
+      },
+      "name" : "MedicationRequest: Ibuprofen no branded details (PRE)",
+      "description" : "Example of a medication request in a PRE document for ibuprofen without any specific commercial product details.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationrequest"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationRequest"
+      }],
+      "reference" : {
+        "reference" : "MedicationRequest/MedicationRequestMarcoumarPre"
+      },
+      "name" : "MedicationRequest: Marcoumar 3mg tabs free text dosage",
+      "description" : "Example of a medication request for Marcoumar 3mg tabs with free text dosage.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationrequest"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationRequest"
+      }],
+      "reference" : {
         "reference" : "MedicationRequest/MedicationRequestParacetamolAxapharmPml"
       },
       "name" : "MedicationRequest: Paracetamol Axapharm 1g (PML)",
@@ -1567,6 +1919,30 @@
       "name" : "MedicationRequest: Triatec (PRE)",
       "description" : "Example of a medication request in a PRE document.",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationrequest"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      }],
+      "reference" : {
+        "reference" : "MedicationStatement/MedicationStatementIbuprofenNoBrand"
+      },
+      "name" : "MedicationStatement: ibuprofen, no brand",
+      "description" : "The example of a medication statement for an ibuprofen treatment plan, without specifying commercial brand details.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationstatement-treatmentplan"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      }],
+      "reference" : {
+        "reference" : "MedicationStatement/MedicationStatementMarcoumarFreeTextDosage"
+      },
+      "name" : "MedicationStatement: Marcoumar cpr 3mg",
+      "description" : "Example of a medication statement for a branded product (no packaging specified) Marcoumar tabs 3mg with free text dosage",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationstatement-treatmentplan"
     },
     {
       "extension" : [{
@@ -1658,11 +2034,47 @@
         "valueString" : "MedicationStatement"
       }],
       "reference" : {
+        "reference" : "MedicationStatement/MedicationStatementParacetamolSelfMedication"
+      },
+      "name" : "MedicationStatement: self-medication paracetamol treatment",
+      "description" : "The example for a self-medication treatment plan for paracetamol.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationstatement-treatmentplan"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      }],
+      "reference" : {
         "reference" : "MedicationStatement/MedicationStatementTriatecMtp"
       },
       "name" : "MedicationStatement: Triatec (MTP)",
       "description" : "The example of a medication statement in a MTP document",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationstatement-treatmentplan"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      }],
+      "reference" : {
+        "reference" : "MedicationStatement/MedicationStatementCardParacetamolSelfMedication"
+      },
+      "name" : "MedicationStatementCard: self-medication paracetamol treatment",
+      "description" : "The example for a self-medication treatment plan for paracetamol, conveyed within a PMLC document.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationstatement-card"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      }],
+      "reference" : {
+        "reference" : "MedicationStatement/MedicationStatementCardParacetamolSelfMedicationAfterDispense"
+      },
+      "name" : "MedicationStatementCard: self-medication paracetamol treatment after dispense.",
+      "description" : "The example for a self-medication treatment plan for paracetamol after a dispense, conveyed within a PMLC document.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-medicationstatement-card"
     },
     {
       "extension" : [{
@@ -1823,6 +2235,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/OrganizationPharmaSI"
+      },
+      "name" : "Organization: Pharma SI",
+      "description" : "The example of pharmacy organization.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-organization"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
@@ -1915,6 +2339,18 @@
       "name" : "Patient: Michaël Christopher KARCE",
       "description" : "Patient CARAPMP004",
       "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-patient"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Practitioner"
+      }],
+      "reference" : {
+        "reference" : "Practitioner/PharmacistDoe"
+      },
+      "name" : "Pharmacist: John Doe",
+      "description" : "The example of a pharmacist",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-practitioner"
     },
     {
       "extension" : [{
@@ -2066,6 +2502,18 @@
         "valueString" : "PractitionerRole"
       }],
       "reference" : {
+        "reference" : "PractitionerRole/PractitionerRoleDoeAtPharmaSI"
+      },
+      "name" : "PractitionerRole: John Doe @ PharmaSI",
+      "description" : "The example of a pharmacist practitioner role, linking a pharmacist (practitioner) to a pharmacy example organization.",
+      "exampleCanonical" : "http://fhir.ch/ig/ch-emed-epr/StructureDefinition/ch-emed-epr-practitionerrole"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PractitionerRole"
+      }],
+      "reference" : {
         "reference" : "PractitionerRole/PractitionerRoleCoxAtHug"
       },
       "name" : "PractitionerRole: Perry Cox @ HUG",
@@ -2142,6 +2590,18 @@
       },
       "name" : "Route of Administration",
       "description" : "Valueset RouteOfAdministration filtered for ambulatory care use.\n\nThis value set is a subset of the mandatory value set ([EDQM - RouteOfAdministration](http://fhir.ch/ig/ch-term/ValueSet/edqm-routeofadministration)) that contains only values compatible with ambulatory care.\nWe recommend implementers to focus on supporting this value set instead of the complete one.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ConceptMap"
+      }],
+      "reference" : {
+        "reference" : "ConceptMap/RouteOfAdministrationEDQMToCdTyp26"
+      },
+      "name" : "RouteOfAdministrationEDQM -> CdTyp26",
+      "description" : "Mapping from RouteOfAdministrationEDQM route of administration codes to HCI CdTyp26 codes.",
       "exampleBoolean" : false
     },
     {
@@ -2330,6 +2790,15 @@
         }],
         "nameUrl" : "use_case.html",
         "title" : "Use Case",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "use_case_self_medication.html"
+        }],
+        "nameUrl" : "use_case_self_medication.html",
+        "title" : "Use Case Self Medication",
         "generation" : "markdown"
       },
       {
