@@ -1,4 +1,4 @@
-# EMA - Shelf Life Type - CH EPL (R5) v1.0.0
+# EMA - Shelf Life Type - CH EPL (R5) v1.0.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/ema-shelf-life-type | *Version*:1.0.0 |
-| Active as of 2025-12-11 | *Computable Name*:EMAShelfLifeTypeVS |
+| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/ema-shelf-life-type | *Version*:1.0.1 |
+| Active as of 2026-04-07 | *Computable Name*:EMAShelfLifeTypeVS |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,42 +47,32 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ema-shelf-life-type",
   "url" : "http://fhir.ch/ig/ch-epl/ValueSet/ema-shelf-life-type",
-  "version" : "1.0.0",
+  "version" : "1.0.1",
   "name" : "EMAShelfLifeTypeVS",
   "title" : "EMA - Shelf Life Type",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-11T12:35:50+00:00",
+  "date" : "2026-04-07T14:09:25+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "Value Set for the Shelf Life Type from EMA used by SMC",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://spor.ema.europa.eu/v1/lists/100000073343"
-      }
-    ]
+    "include" : [{
+      "system" : "http://spor.ema.europa.eu/v1/lists/100000073343"
+    }]
   }
 }
 

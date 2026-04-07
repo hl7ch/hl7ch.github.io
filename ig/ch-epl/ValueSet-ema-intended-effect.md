@@ -1,4 +1,4 @@
-# EMA - Intended Effect - CH EPL (R5) v1.0.0
+# EMA - Intended Effect - CH EPL (R5) v1.0.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/ema-intended-effect | *Version*:1.0.0 |
-| Active as of 2025-12-11 | *Computable Name*:EMAIntendedEffectVS |
+| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/ema-intended-effect | *Version*:1.0.1 |
+| Active as of 2026-04-07 | *Computable Name*:EMAIntendedEffectVS |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ Value Set for the Intended Effect from EMA used by SMC
 
  **References** 
 
-* [CH IDMP ClinicalUseDefinition Indication](StructureDefinition-ch-idmp-clinicalusedefinition-indication.md)
+* [ClinicalUseDefinition Indication](StructureDefinition-ch-idmp-clinicalusedefinition-indication.md)
 
 ### Logical Definition (CLD)
 
@@ -47,42 +47,32 @@ Value Set for the Intended Effect from EMA used by SMC
   "resourceType" : "ValueSet",
   "id" : "ema-intended-effect",
   "url" : "http://fhir.ch/ig/ch-epl/ValueSet/ema-intended-effect",
-  "version" : "1.0.0",
+  "version" : "1.0.1",
   "name" : "EMAIntendedEffectVS",
   "title" : "EMA - Intended Effect",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-11T12:35:50+00:00",
+  "date" : "2026-04-07T14:09:25+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "Value Set for the Intended Effect from EMA used by SMC",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://spor.ema.europa.eu/v1/lists/200000003186"
-      }
-    ]
+    "include" : [{
+      "system" : "http://spor.ema.europa.eu/v1/lists/200000003186"
+    }]
   }
 }
 

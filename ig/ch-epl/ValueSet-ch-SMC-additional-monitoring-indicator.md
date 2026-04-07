@@ -1,4 +1,4 @@
-# CH SMC - Additional Monitoring Indicator - CH EPL (R5) v1.0.0
+# CH SMC - Additional Monitoring Indicator - CH EPL (R5) v1.0.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/ch-SMC-additional-monitoring-indicator | *Version*:1.0.0 |
-| Active as of 2025-12-11 | *Computable Name*:ChSMCAdditionalMonitoringIndicatorVS |
+| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/ch-SMC-additional-monitoring-indicator | *Version*:1.0.1 |
+| Active as of 2026-04-07 | *Computable Name*:ChSMCAdditionalMonitoringIndicatorVS |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ Value Set for the Additional Monitoring Indicator from SMC
 
  **References** 
 
-* [IDMP MedicinalProductDefinition](StructureDefinition-ch-idmp-medicinalproductdefinition.md)
+* [MedicinalProductDefinition](StructureDefinition-ch-idmp-medicinalproductdefinition.md)
 
 ### Logical Definition (CLD)
 
@@ -47,42 +47,32 @@ Value Set for the Additional Monitoring Indicator from SMC
   "resourceType" : "ValueSet",
   "id" : "ch-SMC-additional-monitoring-indicator",
   "url" : "http://fhir.ch/ig/ch-epl/ValueSet/ch-SMC-additional-monitoring-indicator",
-  "version" : "1.0.0",
+  "version" : "1.0.1",
   "name" : "ChSMCAdditionalMonitoringIndicatorVS",
   "title" : "CH SMC - Additional Monitoring Indicator",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-11T12:35:50+00:00",
+  "date" : "2026-04-07T14:09:25+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "Value Set for the Additional Monitoring Indicator from SMC",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://fhir.ch/ig/ch-epl/CodeSystem/ch-SMC-additional-monitoring-indicator"
-      }
-    ]
+    "include" : [{
+      "system" : "http://fhir.ch/ig/ch-epl/CodeSystem/ch-SMC-additional-monitoring-indicator"
+    }]
   }
 }
 

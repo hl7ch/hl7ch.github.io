@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Profiles - CH EPL (R5) v1.0.0</title>
+    <title>Profiles - CH EPL (R5) v1.0.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -53,8 +53,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"11"}
-    h3,h4,h5,h6{--heading-prefix:"11"}</style>
+    <style type="text/css">h2{--heading-prefix:"17"}
+    h3,h4,h5,h6{--heading-prefix:"17"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -83,7 +83,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPL (R5)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - trial-use
+            <span style="display:inline-block;">1.0.1 - trial-use
 
 
 
@@ -123,10 +123,35 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="idmp.html">ISO IDMP</a>
+        <a href="ch-idmp.html">Swiss IDMP Implementation</a>
       </li>
       <li>
-        <a href="spezialitaetenliste.html">Spezialitätenliste</a>
+        <a href="foph-epl.html">FOPH ePL Project</a>
+      </li>
+      <li>
+        <a href="specialitieslist.html">FOPH Specialities List</a>
+      </li>
+      <li>
+        <a href="smc-idmp.html">Swissmedic IDMP Implementation</a>
+      </li>
+      <li>
+        <a href="ema-idmp.html">EMA IDMP Implementation</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Related Standards
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="fhir.html">HL7 FHIR Standard</a>
+      </li>
+      <li>
+        <a href="idmp.html">ISO IDMP Standard (ISO 11615)</a>
+      </li>
+      <li>
+        <a href="fhir-idmp.html">IDMP and FHIR</a>
       </li>
     </ul>
   </li>
@@ -202,7 +227,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPL (R5) (v1.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 1) based on <a data-no-external="true" href="http://hl7.org/fhir/R5">FHIR (HL7® FHIR® Standard) v5.0.0</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epl/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPL (R5) (v1.0.1: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 1) based on <a data-no-external="true" href="http://hl7.org/fhir/R5">FHIR (HL7® FHIR® Standard) v5.0.0</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epl/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Profiles</h2>
   
 
@@ -220,32 +245,36 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
+  <li><a href="#summary" id="markdown-toc-summary">Summary</a></li>
   <li><a href="#resource-profiles" id="markdown-toc-resource-profiles">Resource Profiles</a></li>
   <li><a href="#data-type-profiles" id="markdown-toc-data-type-profiles">Data Type Profiles</a></li>
 </ul>
 
 </div>
+<h3 id="summary">Summary</h3>
+<p>This chapter provides detailed descriptions of the FHIR resources and profiles that have been adapted for the Swiss implementation of IDMP. It defines the Swiss profiles of FHIR resources used to support IDMP-based data exchange and specifies how base HL7 FHIR resources are constrained and extended to ensure semantic consistency and regulatory alignment within Switzerland. The documented profiles include detailed element-level constraints, value set bindings, and usage expectations, enabling interoperable and standardized implementation across systems. These definitions constitute the normative basis for representing IDMP concepts using FHIR in Swiss implementations.</p>
+
 <h3 id="resource-profiles">Resource Profiles</h3>
 
-<li><a href="StructureDefinition-ch-epl-organization.html">CH EPL Organization</a> <p>Defines basic constraints and extensions on the Organization resource for use with other CH EPL resources</p>
+<li><a href="StructureDefinition-ch-idmp-administrableproductdefinition.html">AdministrableProductDefinition</a> <p>Profile of the AdministrableProductDefinition resource for representing a medicinal product in the final form which is suitable for administering to a patient.</p>
 </li>
-<li><a href="StructureDefinition-ch-idmp-administrableproductdefinition.html">CH IDMP AdministrableProductDefinition</a> <p>Profile of the AdministrableProductDefinition resource for representing a medicinal product in the final form which is suitable for administering to a patient.</p>
+<li><a href="StructureDefinition-ch-idmp-bundle.html">Bundle</a> <p>Profile of the Bundle resource for representing the set of resources collected into a single package.</p>
 </li>
-<li><a href="StructureDefinition-ch-idmp-clinicalusedefinition-indication.html">CH IDMP ClinicalUseDefinition Indication</a> <p>Profile of the ClinicalUseDefinition resource for representing an indication.</p>
+<li><a href="StructureDefinition-ch-idmp-clinicalusedefinition-indication.html">ClinicalUseDefinition Indication</a> <p>Profile of the ClinicalUseDefinition resource for representing an indication.</p>
 </li>
-<li><a href="StructureDefinition-ch-idmp-documentreference.html">CH IDMP DocumentReference</a> <p>Profile of the DocumentReference resource for representing professional information and patient information as attachments.</p>
+<li><a href="StructureDefinition-ch-idmp-documentreference.html">DocumentReference</a> <p>Profile of the DocumentReference resource for representing professional information and patient information as attachments.</p>
 </li>
-<li><a href="StructureDefinition-ch-idmp-manufactureditemdefinition.html">CH IDMP ManufacturedItemDefinition</a> <p>Profile of the ManufacturedItemDefinition resource for representing the characteristics of a medicinal manufactured item as contained in a packaged medicinal product.</p>
+<li><a href="StructureDefinition-ch-idmp-ingredient.html">Ingredient</a> <p>Profile of the Ingredient resource for representing the material used in the preparation of a medicinal/pharmaceutical product.</p>
 </li>
-<li><a href="StructureDefinition-ch-idmp-bundle.html">IDMP Bundle</a> <p>Profile of the Bundle resource for representing the set of resources collected into a single package.</p>
+<li><a href="StructureDefinition-ch-idmp-manufactureditemdefinition.html">ManufacturedItemDefinition</a> <p>Profile of the ManufacturedItemDefinition resource for representing the characteristics of a medicinal manufactured item as contained in a packaged medicinal product.</p>
 </li>
-<li><a href="StructureDefinition-ch-idmp-ingredient.html">IDMP Ingredient</a> <p>Profile of the Ingredient resource for representing the material used in the preparation of a medicinal/pharmaceutical product.</p>
+<li><a href="StructureDefinition-ch-idmp-medicinalproductdefinition.html">MedicinalProductDefinition</a> <p>Profile of the MedicinalProductDefinition resource for representing the detailed data of medicinal products.</p>
 </li>
-<li><a href="StructureDefinition-ch-idmp-medicinalproductdefinition.html">IDMP MedicinalProductDefinition</a> <p>Profile of the MedicinalProductDefinition resource for representing the detailed data of medicinal products.</p>
+<li><a href="StructureDefinition-ch-idmp-organization.html">Organization</a> <p>Defines basic constraints and extensions on the Organization resource for use with other CH EPL resources</p>
 </li>
-<li><a href="StructureDefinition-ch-idmp-packagedproductdefinition.html">IDMP PackagedProductDefinition</a> <p>Profile of the PackagedProductDefinition resource for representing a medically related item or items, in a container or package.</p>
+<li><a href="StructureDefinition-ch-idmp-packagedproductdefinition.html">PackagedProductDefinition</a> <p>Profile of the PackagedProductDefinition resource for representing a medically related item or items, in a container or package.</p>
 </li>
-<li><a href="StructureDefinition-ch-idmp-regulatedauthorization.html">IDMP RegulatedAuthorization</a> <p>Profile of the RegulatedAuthorization resource for representing the market authorization of a (packaged) medicinal product.</p>
+<li><a href="StructureDefinition-ch-idmp-regulatedauthorization.html">RegulatedAuthorization</a> <p>Profile of the RegulatedAuthorization resource for representing the market authorization of a (packaged) medicinal product.</p>
 </li>
 
 <h3 id="data-type-profiles">Data Type Profiles</h3>
@@ -254,10 +283,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <a href="StructureDefinition-ch-core-gln-identifier.html">GLN Identifier</a>
 </li>
 <li>
+    <a href="StructureDefinition-ch-ema-loc-identifier.html">EMA LOC Identifier</a>
+</li>
+<li>
     <a href="StructureDefinition-ch-foph-dossier-number.html">FOPH Dossier Number</a>
 </li>
 <li>
-    <a href="StructureDefinition-ch-smc-loc-identifier.html">LOC Identifier</a>
+    <a href="StructureDefinition-ch-smc-loc-identifier.html">SMC Identifier</a>
 </li>
 
 
@@ -278,7 +310,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-epl#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Thu, Dec 11, 2025 12:35+0000">2025-12-11</span>
+          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-epl#1.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Tue, Apr 7, 2026 14:09+0000">2026-04-07</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -286,7 +318,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSd1mLI82dQJ5LFoMXSXywgaCqtHnaADtuHQkMJoLwONsPg9cw/viewform?usp=dialog&amp;entry%2E1353807103=ch.fhir.ig.ch-epl%231.0.0%20/profiles.html&amp;entry%2E247644557=Profiles">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSd1mLI82dQJ5LFoMXSXywgaCqtHnaADtuHQkMJoLwONsPg9cw/viewform?usp=dialog&amp;entry%2E1353807103=ch.fhir.ig.ch-epl%231.0.1%20/profiles.html&amp;entry%2E247644557=Profiles">Propose a change</a>
 
 
 

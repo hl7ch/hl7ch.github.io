@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>IDMP Standard ISO 11615 - CH EPL (R5) v1.0.0</title>
+    <title>ISO IDMP Standard (ISO 11615) - CH EPL (R5) v1.0.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -53,8 +53,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"2"}
-    h3,h4,h5,h6{--heading-prefix:"2"}</style>
+    <style type="text/css">h2{--heading-prefix:"4"}
+    h3,h4,h5,h6{--heading-prefix:"4"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -83,7 +83,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH EPL (R5)</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - trial-use
+            <span style="display:inline-block;">1.0.1 - trial-use
 
 
 
@@ -123,10 +123,35 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="idmp.html">ISO IDMP</a>
+        <a href="ch-idmp.html">Swiss IDMP Implementation</a>
       </li>
       <li>
-        <a href="spezialitaetenliste.html">Spezialitätenliste</a>
+        <a href="foph-epl.html">FOPH ePL Project</a>
+      </li>
+      <li>
+        <a href="specialitieslist.html">FOPH Specialities List</a>
+      </li>
+      <li>
+        <a href="smc-idmp.html">Swissmedic IDMP Implementation</a>
+      </li>
+      <li>
+        <a href="ema-idmp.html">EMA IDMP Implementation</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Related Standards
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="fhir.html">HL7 FHIR Standard</a>
+      </li>
+      <li>
+        <a href="idmp.html">ISO IDMP Standard (ISO 11615)</a>
+      </li>
+      <li>
+        <a href="fhir-idmp.html">IDMP and FHIR</a>
       </li>
     </ul>
   </li>
@@ -182,7 +207,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>IDMP Standard ISO 11615</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>ISO IDMP Standard (ISO 11615)</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -202,8 +227,8 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPL (R5) (v1.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 1) based on <a data-no-external="true" href="http://hl7.org/fhir/R5">FHIR (HL7® FHIR® Standard) v5.0.0</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epl/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
-  <h2>IDMP Standard ISO 11615</h2>
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EPL (R5) (v1.0.1: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 1) based on <a data-no-external="true" href="http://hl7.org/fhir/R5">FHIR (HL7® FHIR® Standard) v5.0.0</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-epl/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>ISO IDMP Standard (ISO 11615)</h2>
   
 
 
@@ -224,82 +249,246 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#key-components" id="markdown-toc-key-components">Key Components</a></li>
   <li><a href="#iso-11615-document" id="markdown-toc-iso-11615-document">ISO 11615 Document</a></li>
   <li><a href="#idmp-datamodel" id="markdown-toc-idmp-datamodel">IDMP Datamodel</a></li>
+  <li><a href="#usefull-links" id="markdown-toc-usefull-links">Usefull Links</a></li>
 </ul>
 
 </div>
 <h3 id="introduction">Introduction</h3>
 
-<p>ISO 11615 is a standard within the IDMP framework that provides guidelines for uniquely identifying medicinal products. The standard defines a set of data elements and structures that should be used for the identification of medicinal products throughout their lifecycle.</p>
+<p>ISO 11615 is a standard within the <strong>IDMP</strong> framework that provides guidelines for uniquely identifying medicinal products. The standard defines a set of <strong>data elements and structures</strong> to be used for the identification of medicinal products throughout their lifecycle.</p>
+
+<p>The IDMP standard consists of 5 standards:</p>
+<ul>
+  <li>ISO 11615: Medicinal Products</li>
+  <li>ISO 11616: Pharmaceutical Products</li>
+  <li>ISO 11238: Substances</li>
+  <li>ISO 11239: Pharmaceutical dose forms, units of presentation, routes of administration and packaging</li>
+  <li>ISO 11240: Units of Measurements</li>
+</ul>
+
+<p>For these five ISO standards, there are approximately two dozen associated standards, technical specifications, and technical reports, detailing futher specifications and usecases.</p>
+
+<p>For general use, the main standard ISO 11615 is of relevance only.</p>
+
+<p>The following IDMP wedding cake illustrates how the 5 standards are nested i.e. related to each other.</p>
+
+<p><img src="idmp-wedding-cake.png" class="figure-img img-responsive img-rounded center-block" alt="Fig. 1: IDMP Overview of Standards" style="width:50%" /></p>
+<div style="clear:both;"></div>
+<p><i>Fig. 1: IDMP Overview of Standards</i></p>
+
+<hr />
 
 <h3 id="key-components">Key Components</h3>
+
 <p>Key components of ISO 11615 include:</p>
 
-<ol>
-  <li><strong>Data Classes:</strong>
-The IDMP standard groups the data element into approx. 50 classes. Each class cnsists of one to many attributes. The classes are grouped and marked with colors:
-    <ul>
-      <li>Yellow: Medicinal Product</li>
-      <li>Green: Marketing Authorisation</li>
-      <li>Gray: Organisations</li>
-      <li>Blue: Packaging</li>
-      <li>Light Red: Pharmaceutical Product</li>
-      <li>Orange: Ingredients</li>
-      <li>Purple: Clinical Particulars</li>
-    </ul>
+<hr />
 
-    <p>For the ePL project, two additional class types have been added for the FOPH:</p>
-    <ul>
-      <li>Light Green: Reimbursement</li>
-      <li>Light Purple: Limitation
-For details see chapter: Spezialitätenliste.</li>
-    </ul>
-  </li>
-  <li><strong>Identifier:</strong>
-The IDMP standard consists of different identifier. The following list indicates the 5 main identifier.
-    <ul>
-      <li>Medicinal Product Identifier (MPID) - Identifies the medicinal product as authorised by a medicines regulatory agency. (provided by the Medicines Regulatory Agency)</li>
-      <li>Packaged Medicinal Product Identifier (PCID) - Identifies the pack size within an authorised medicinal product. (provided by the Medicines Regulatory Agency)</li>
-      <li>Pharmaceutical Product Identifier (PhPID) - Identifies the product administered to a patient. The PhPID identifies a product based on its active substances, strength, administered dose form. (provided by the UMC of WHO)</li>
-      <li>Substance Identifier - Identifies the different substances included into a medicinal product. (in a first step the UNII code provided by FDA and the SUB-ID provided by EMA will be used, in the future the (Global Substance Identifier) GSID provided by the UMS of WHO)</li>
-      <li>Organisation Identifier - Identifies the Organisations such as: Medicines Regulatory Agency, Marketing Authorisation Holder, Manufacturer and other Establishments such as distributors. (In the European Union and Switzerland the ORG-ID and LOC-ID of the European Medicines Agency (EMA) will be used.</li>
-    </ul>
-  </li>
-  <li><strong>Data Structures:</strong>
-    <ul>
-      <li>Defines how the identified data elements should be organized and structured to ensure consistency and interoperability across different systems and organizations. (see datamodel below)</li>
-    </ul>
-  </li>
-  <li><strong>Lifecycle Management:</strong>
-    <ul>
-      <li>Addresses the need for consistent identification throughout the entire lifecycle of a medicinal product, from development and regulatory approval to post-marketing phases.</li>
-    </ul>
-  </li>
-  <li><strong>Interoperability:</strong>
-    <ul>
-      <li>Aims to facilitate the exchange of medicinal product information between different stakeholders, such as medicines regulatory agencies, marketing authorisation holders, and healthcare providers.</li>
-    </ul>
-  </li>
-</ol>
+<h4 id="data-classes">Data Classes</h4>
 
-<p>Adopting ISO 11615 helps streamline regulatory processes, improve patient safety, and enhance the efficiency of information exchange within the pharmaceutical and healthcare sectors globally.</p>
+<p>The IDMP standard groups the data elements into approximately <strong>50 classes</strong>, each consisting of one or more attributes. The classes are grouped and color-coded:</p>
+
+<hr />
+
+<h5 id="medicinal-product--yellow"><strong>Medicinal Product – Yellow</strong></h5>
+<p>Captures high-level information on the product, i.e., <strong>the product available at the pharmacy</strong>. This section contains the following 9 classes:</p>
+
+<ul>
+  <li><strong>Medicinal Product:</strong> Core information of a medicinal product.</li>
+  <li><strong>Product Cross-References:</strong> References to other products related to this product.</li>
+  <li><strong>Product Classification:</strong> Classifications and additional identifiers, e.g., ATC code, Index Therapeuticus, Therapeutic Product Code.</li>
+  <li><strong>Medicinal Product Name:</strong> Details of the product name, including parts of the name.
+    <ul>
+      <li><strong>Country/Language:</strong> Additional information, e.g., the language of the name.</li>
+    </ul>
+  </li>
+  <li><strong>Orphan Designation:</strong> Authorisation status as an orphan product, if applicable.</li>
+  <li><strong>Attached Document:</strong> Metadata for attached documents, such as the package leaflet.</li>
+  <li><strong>Master File:</strong> Information on related master files (e.g., pharmacovigilance master files).</li>
+  <li><strong>Header:</strong> Metadata of the dataset.</li>
+</ul>
+
+<hr />
+
+<h5 id="marketing-authorisation--green"><strong>Marketing Authorisation – Green</strong></h5>
+<p>Represents the regulatory approval information, containing 6 classes:</p>
+
+<ul>
+  <li><strong>Marketing Authorisation:</strong> Core information provided by the regulatory agency, including authorisation number, legal status of supply, and authorisation status.</li>
+  <li><strong>Marketing Authorisation Procedure:</strong> Details on the procedure that led to authorisation.</li>
+  <li><strong>Marketing Authorisation Application:</strong> Type of application (new, renewal, or other).</li>
+  <li><strong>Jurisdictional Marketing Authorisation:</strong> Used if subdivisions within a country have different authorisation specifications (not used in Switzerland).</li>
+  <li><strong>Marketing Status:</strong> Information on when a product is marketed or withdrawn.</li>
+  <li><strong>Status Reason:</strong> Reason for legal actions affecting marketing or authorisation.</li>
+</ul>
+
+<hr />
+
+<h5 id="packaged-medicinal-product--blue"><strong>Packaged Medicinal Product – Blue</strong></h5>
+<p>Captures packaging information, including container types, pack sizes, materials, and identifiers (e.g., GTIN). This section contains 13 classes:</p>
+
+<ul>
+  <li><strong>Packaged Medicinal Product:</strong> Describes the medicinal product as packaged for sale, with package identifier (PCID) and description.</li>
+  <li><strong>Package Item (Container):</strong> Physical object of the package (carton, blister, tube), including recursive components.</li>
+  <li><strong>Package Component:</strong> Additional parts of a container, e.g., closures.</li>
+  <li><strong>Data Carrier Identifier:</strong> Identifier of the container (e.g., GTIN, NTIN).</li>
+  <li><strong>Physical Characteristics:</strong> Height, width, depth, weight, shape, etc., of manufactured items, containers, or devices.</li>
+  <li><strong>Manufactured Item:</strong> The actual item (tablet, liquid, cream) as delivered from the manufacturer.</li>
+  <li><strong>Device:</strong> Medical device included in the package (e.g., syringe, cup, measuring spoon).
+    <ul>
+      <li><strong>Device Material:</strong> Material(s) of the device, especially if in contact with the product.</li>
+      <li><strong>Device Nomenclature:</strong> Standardized terminology to uniquely identify the device type.</li>
+      <li><strong>Device Batch Identifier:</strong> Batch number and/or expiry date of the device.</li>
+    </ul>
+  </li>
+  <li><strong>Other Characteristics:</strong> Additional characteristics of the manufactured item, medical device, or package (e.g., hospital-specific packs).</li>
+  <li><strong>Shelf Life / Storage:</strong> Shelf life and storage conditions of the container or device.</li>
+  <li><strong>Batch Identifier:</strong> Batch/lot number and expiry date of the packaged medicinal product.</li>
+</ul>
+
+<hr />
+
+<h5 id="pharmaceutical-product--light-red"><strong>Pharmaceutical Product – Light Red</strong></h5>
+<p>Represents the product administered to the patient. For reconstituted products, this is the product <strong>after transformation, ready for administration</strong>. Contains 4 classes:</p>
+
+<ul>
+  <li><strong>Pharmaceutical Product:</strong> Core information such as dose form and unit of presentation.</li>
+  <li><strong>PhPID Set:</strong> Identifiers based on substance(s), dose form, and strength.</li>
+  <li><strong>Route of Administration</strong></li>
+  <li><strong>Pharmaceutical Product Characteristics:</strong> Additional properties, e.g., abuse potential.</li>
+</ul>
+
+<hr />
+
+<h5 id="ingredient--orange"><strong>Ingredient – Orange</strong></h5>
+<p>Defines individual ingredients, specifying role (active vs. excipient), strength, and relationship to the overall product. Contains 5 classes:</p>
+
+<ul>
+  <li><strong>Ingredient:</strong> Role and allergenic potential.</li>
+  <li><strong>Substance:</strong> The substance of the ingredient.</li>
+  <li><strong>Specified Substance:</strong> Substance with additional info, e.g., manufacturing process.</li>
+  <li><strong>Strength:</strong> Strength of the substance.</li>
+  <li><strong>Reference Strength:</strong> Strength of the active moiety (e.g., active part of a salt).</li>
+</ul>
+
+<hr />
+
+<h5 id="clinical-particulars--purple"><strong>Clinical Particulars – Purple</strong></h5>
+<p>Information on the effect of administered substances. Contains 6 classes:</p>
+
+<ul>
+  <li><strong>Therapeutic Indication:</strong> Intended effect.</li>
+  <li><strong>Contraindication:</strong> Authorised contraindications.</li>
+  <li><strong>Population Specifics:</strong> Target population (age, gender, physiological condition).</li>
+  <li><strong>Other Therapy Specifics:</strong> Usage in relation to other therapies.</li>
+  <li><strong>Undesirable Effects:</strong> Undesirable effects or adverse events.</li>
+  <li><strong>Interactions:</strong> Interactions with other medicinal products or factors (e.g., alcohol).</li>
+</ul>
+
+<hr />
+
+<h5 id="organisations--gray"><strong>Organisations – Gray</strong></h5>
+<p>Information on organisations related to manufacturing or authorisation. Contains 5 classes:</p>
+
+<ul>
+  <li><strong>Marketing Authorisation Holder:</strong> Organisation bringing the product to market.
+    <ul>
+      <li><strong>SME:</strong> Indicator of size of the authorisation holder.</li>
+    </ul>
+  </li>
+  <li><strong>Medicines Regulatory Agency:</strong> National competent authority.</li>
+  <li><strong>Master File Holder:</strong> Organisation holding master files.</li>
+  <li><strong>Manufacturer / Establishment:</strong> Organisations involved in manufacturing from ingredients to finished product.</li>
+</ul>
+
+<hr />
+
+<h4 id="identifiers">Identifiers</h4>
+
+<p>Main identifiers in IDMP:</p>
+
+<ul>
+  <li><strong>Medicinal Product Identifier (MPID):</strong> Assigned by regulatory agency. Identifies the medicinal product.</li>
+  <li><strong>Packaged Medicinal Product Identifier (PCID):</strong> Assigned by regulatory agency. Identifies specific pack sizes.</li>
+  <li><strong>Pharmaceutical Product Identifier (PhPID):</strong> Assigned by the Upsala Monitoring Center on request by the regulatory agency. Identifies administered products by substance, strength, and dose form.</li>
+  <li><strong>Substance Identifier:</strong> Initially UNII (assigned by the FDA, Food and Drug Administraion of the USA) and Substance-ID (assigned by EMA, European Medicines Agency); eventually GSID (assigned by the UMC, Upsala Monitoring Center).</li>
+  <li><strong>Organisation Identifier:</strong> Identifies agencies, marketing authorisation holders, manufacturers, and distributors. In Switzerland, currently the partner number and the EU ORG-ID/LOC-ID are accepted.</li>
+</ul>
+
+<hr />
+
+<h4 id="data-structures">Data Structures</h4>
+<p>Defines how data elements are structured to ensure <strong>consistency and interoperability</strong> across systems.</p>
+
+<hr />
+
+<h4 id="lifecycle-management">Lifecycle Management</h4>
+<p>Supports <strong>consistent identification throughout the product lifecycle</strong>, from development to post-marketing.</p>
+
+<hr />
+
+<h4 id="interoperability">Interoperability</h4>
+<p>Facilitates <strong>exchange of medicinal product information</strong> among regulators, marketing authorisation holders, and healthcare providers.</p>
+
+<hr />
+
+<p>Adopting ISO 11615 <strong>streamlines regulatory processes</strong>, improves <strong>patient safety</strong>, and enhances <strong>information exchange efficiency</strong> globally.</p>
+
+<hr />
 
 <h3 id="iso-11615-document">ISO 11615 Document</h3>
-<p>The base data model used for this EPL FHIR IG is based on the ISO 11615 IDMP standard. The standard can be purchased at the ISO website: <a href="https://www.iso.org/standard/70150.html">ISO 11615:2017</a></p>
+<p>The base data model for this ePL FHIR IG is based on ISO 11615. The standard can be purchased here: <a href="https://www.iso.org/standard/70150.html" target="_blank">ISO 11615:2017</a></p>
+
+<hr />
 
 <h3 id="idmp-datamodel">IDMP Datamodel</h3>
 
 <h4 id="idmp-datamodel-for-authorised-medicinal-products-english">IDMP Datamodel for Authorised Medicinal Products (English)</h4>
-<p>The following datamodel illustrates the full IDMP datamodel according to ISO 11615:2017
-<img src="ISO_11615_2017-Datamodel-Medicinal_Product_en.png" class="figure-img img-responsive img-rounded center-block" alt="Fig. 1: IDMP Datamodel - Authorised Medicinal Products (English)" style="width:100%" /></p>
+<p><img src="ISO_11615_2017-Datamodel-Medicinal_Product_en.png" class="figure-img img-responsive img-rounded center-block" alt="Fig. 2: IDMP Datamodel - Authorised Medicinal Products (English)" style="width:100%" /></p>
 <div style="clear:both;"></div>
-<p><i>Fig. 1: IDMP Datamodel - Authorised Medicinal Products (English)</i></p>
+<p><i>Fig. 2: IDMP Datamodel - Authorised Medicinal Products (English)</i></p>
 
-<h4 id="idmp-datamodel-for-authorised-medicinal-products-german---switzerland">IDMP Datamodel for Authorised Medicinal Products (German - Switzerland)</h4>
-<p>The following datamodel illustrates the full IDMP datamodel according to ISO 11615:2017 translated into German representing the official Swiss locale terminology.
-<img src="ISO_11615_2017-Datamodel-Medicinal_Product_de-CH.png" class="figure-img img-responsive img-rounded center-block" alt="Fig. 2: IDMP Datamodel - Authorised Medicinal Products (German - Switzerland)" style="width:" /></p>
+<h4 id="idmp-datamodel-for-authorised-medicinal-products-german--switzerland">IDMP Datamodel for Authorised Medicinal Products (German – Switzerland)</h4>
+<p><img src="ISO_11615_2017-Datamodel-Medicinal_Product_de-CH.png" class="figure-img img-responsive img-rounded center-block" alt="Fig. 3: IDMP Datamodel - Authorised Medicinal Products (German – Switzerland)" style="width:" /></p>
 <div style="clear:both;"></div>
-<p><i>Fig. 2: IDMP Datamodel - Authorised Medicinal Products (German - Switzerland)</i></p>
+<p><i>Fig. 3: IDMP Datamodel - Authorised Medicinal Products (German – Switzerland)</i></p>
 
+<h3 id="usefull-links">Usefull Links</h3>
+
+<h4 id="iso">ISO</h4>
+<ul>
+  <li><a href="https://www.iso.org/standard/70150.html" target="_blank">ISO 11615:2017</a></li>
+  <li><a href="https://www.iso.org/standard/70044.html" target="_blank">ISO 11616:2017</a></li>
+  <li><a href="https://www.iso.org/standard/69697.html" target="_blank">ISO 11238:2018</a></li>
+  <li><a href="https://www.iso.org/standard/81133.html" target="_blank">ISO 11239:2023</a></li>
+  <li><a href="https://www.iso.org/standard/55033.html" target="_blank">ISO 11240:2012</a></li>
+</ul>
+
+<h4 id="hl7">HL7</h4>
+<ul>
+  <li>FHIR specifications by HL7: <a href="https://hl7.org/fhir" target="_blank">https://hl7.org/fhir</a></li>
+  <li>FHIR implementations in Switzerland: <a href="https://fhir.ch/" target="_blank">https://fhir.ch/</a></li>
+  <li>Published FHIR IG of FOPH/ePL: <a href="https://fhir.ch/ig/ch-epl/index.html" target="_blank">https://fhir.ch/ig/ch-epl/index.html</a></li>
+</ul>
+
+<h4 id="foph">FOPH</h4>
+<ul>
+  <li>FOPH ePL official project page: <a href="https://www.bag.admin.ch/de/elektronische-plattform-leistungen-epl" target="_blank">https://www.bag.admin.ch/de/elektronische-plattform-leistungen-epl</a></li>
+  <li>FOPH Specialities List page: <a href="https://spezialitätenliste.ch/" target="_blank">https://spezialitätenliste.ch/</a></li>
+</ul>
+
+<h4 id="swissmedic">Swissmedic</h4>
+<ul>
+  <li>Swissmedic IDMP: <a href="https://www.swissmedic.ch/swissmedic/en/home/services/submissions/idmp.html" target="_blank">https://www.swissmedic.ch/swissmedic/en/home/services/submissions/idmp.html</a></li>
+  <li>Swissmedic Handbook PDF (IDMP Implementation Guide) V2.0, 30.9.2025: <a href="https://www.swissmedic.ch/dam/swissmedic/en/dokumente/e-gov/handbook-smc-idmp-implementation-guide.pdf.download.pdf/SMC-IDMP-IG-V2.0.pdf" target="_blank">https://www.swissmedic.ch/dam/swissmedic/en/dokumente/e-gov/handbook-smc-idmp-implementation-guide.pdf.download.pdf/SMC-IDMP-IG-V2.0.pdf</a></li>
+</ul>
+
+<h4 id="ema">EMA</h4>
+<ul>
+  <li><a href="https://spor.ema.europa.eu/sporwi/#/" target="_blank">EMA SPOR Portal</a></li>
+  <li><a href="https://pms.ema.europa.eu/fhir/ig/" target="_blank">EMA PMS FHIR IG</a></li>
+  <li><a href="https://eur-lex.europa.eu/eli/reg_impl/2012/520/oj" target="_blank">Commission Implementing Regulation (EU) No 520/2012</a></li>
+</ul>
 
 
 
@@ -319,7 +508,7 @@ The IDMP standard consists of different identifier. The following list indicates
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-epl#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Thu, Dec 11, 2025 12:35+0000">2025-12-11</span>
+          IG &#169; 2023+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html">Federal Office of Public Health FOPH</a>.  Package ch.fhir.ig.ch-epl#1.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Tue, Apr 7, 2026 14:09+0000">2026-04-07</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -327,7 +516,7 @@ The IDMP standard consists of different identifier. The following list indicates
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSd1mLI82dQJ5LFoMXSXywgaCqtHnaADtuHQkMJoLwONsPg9cw/viewform?usp=dialog&amp;entry%2E1353807103=ch.fhir.ig.ch-epl%231.0.0%20/idmp.html&amp;entry%2E247644557=IDMP%20Standard%20ISO%2011615">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSd1mLI82dQJ5LFoMXSXywgaCqtHnaADtuHQkMJoLwONsPg9cw/viewform?usp=dialog&amp;entry%2E1353807103=ch.fhir.ig.ch-epl%231.0.1%20/idmp.html&amp;entry%2E247644557=ISO%20IDMP%20Standard%20(ISO%2011615)">Propose a change</a>
 
 
 

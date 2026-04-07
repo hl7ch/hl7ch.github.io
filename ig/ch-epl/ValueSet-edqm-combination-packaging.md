@@ -1,4 +1,4 @@
-# EDQM - Combination Packaging - CH EPL (R5) v1.0.0
+# EDQM - Combination Packaging - CH EPL (R5) v1.0.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/edqm-combination-packaging | *Version*:1.0.0 |
-| Active as of 2025-12-11 | *Computable Name*:EdqmCombinationPackagingVS |
+| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/edqm-combination-packaging | *Version*:1.0.1 |
+| Active as of 2026-04-07 | *Computable Name*:EdqmCombinationPackagingVS |
 | *Other Identifiers:*OID:0.4.0.127.0.16.1.1.2.5 (use: official, ) | |
 | **Copyright/Legal**: CC0-1.0 | |
 
@@ -48,119 +48,105 @@ Value Set for the Combination Packaging from EDQM used by SMC
   "resourceType" : "ValueSet",
   "id" : "edqm-combination-packaging",
   "url" : "http://fhir.ch/ig/ch-epl/ValueSet/edqm-combination-packaging",
-  "identifier" : [
-    {
-      "use" : "official",
-      "system" : "urn:ietf:rfc:3986",
-      "value" : "urn:oid:0.4.0.127.0.16.1.1.2.5"
-    }
-  ],
-  "version" : "1.0.0",
+  "identifier" : [{
+    "use" : "official",
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:oid:0.4.0.127.0.16.1.1.2.5"
+  }],
+  "version" : "1.0.1",
   "name" : "EdqmCombinationPackagingVS",
   "title" : "EDQM - Combination Packaging",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-11T12:35:50+00:00",
+  "date" : "2026-04-07T14:09:25+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "Value Set for the Combination Packaging from EDQM used by SMC",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://standardterms.edqm.eu",
+      "concept" : [{
+        "code" : "14001000",
+        "display" : "Cream + pessary"
+      },
       {
-        "system" : "http://standardterms.edqm.eu",
-        "concept" : [
-          {
-            "code" : "14001000",
-            "display" : "Cream + pessary"
-          },
-          {
-            "code" : "14002000",
-            "display" : "Cutaneous solution + medicated sponge"
-          },
-          {
-            "code" : "14003000",
-            "display" : "Gastro-resistant tablet + rectal suspension"
-          },
-          {
-            "code" : "14004000",
-            "display" : "Vaginal capsule, soft + vaginal cream"
-          },
-          {
-            "code" : "14005000",
-            "display" : "Vaginal cream + vaginal tablet"
-          },
-          {
-            "code" : "14006000",
-            "display" : "Effervescent granules + film-coated tablet"
-          },
-          {
-            "code" : "14007000",
-            "display" : "Effervescent tablet + film-coated tablet"
-          },
-          {
-            "code" : "14008000",
-            "display" : "Tablet + vaginal tablet"
-          },
-          {
-            "code" : "14009000",
-            "display" : "Cream + vaginal capsule, soft"
-          },
-          {
-            "code" : "14010000",
-            "display" : "Cream + vaginal tablet"
-          },
-          {
-            "code" : "14011000",
-            "display" : "Film-coated tablet + pessary"
-          },
-          {
-            "code" : "14012000",
-            "display" : "Capsule, soft + tablet"
-          },
-          {
-            "code" : "14013000",
-            "display" : "Capsule, hard + tablet"
-          },
-          {
-            "code" : "14014000",
-            "display" : "Film-coated tablet + tablet"
-          },
-          {
-            "code" : "14015000",
-            "display" : "Ointment + vaginal tablet"
-          },
-          {
-            "code" : "14016000",
-            "display" : "Effervescent granules + gastro-resistant tablet"
-          },
-          {
-            "code" : "14017000",
-            "display" : "Eye drops, solution + eye ointment"
-          }
-        ]
-      }
-    ]
+        "code" : "14002000",
+        "display" : "Cutaneous solution + medicated sponge"
+      },
+      {
+        "code" : "14003000",
+        "display" : "Gastro-resistant tablet + rectal suspension"
+      },
+      {
+        "code" : "14004000",
+        "display" : "Vaginal capsule, soft + vaginal cream"
+      },
+      {
+        "code" : "14005000",
+        "display" : "Vaginal cream + vaginal tablet"
+      },
+      {
+        "code" : "14006000",
+        "display" : "Effervescent granules + film-coated tablet"
+      },
+      {
+        "code" : "14007000",
+        "display" : "Effervescent tablet + film-coated tablet"
+      },
+      {
+        "code" : "14008000",
+        "display" : "Tablet + vaginal tablet"
+      },
+      {
+        "code" : "14009000",
+        "display" : "Cream + vaginal capsule, soft"
+      },
+      {
+        "code" : "14010000",
+        "display" : "Cream + vaginal tablet"
+      },
+      {
+        "code" : "14011000",
+        "display" : "Film-coated tablet + pessary"
+      },
+      {
+        "code" : "14012000",
+        "display" : "Capsule, soft + tablet"
+      },
+      {
+        "code" : "14013000",
+        "display" : "Capsule, hard + tablet"
+      },
+      {
+        "code" : "14014000",
+        "display" : "Film-coated tablet + tablet"
+      },
+      {
+        "code" : "14015000",
+        "display" : "Ointment + vaginal tablet"
+      },
+      {
+        "code" : "14016000",
+        "display" : "Effervescent granules + gastro-resistant tablet"
+      },
+      {
+        "code" : "14017000",
+        "display" : "Eye drops, solution + eye ointment"
+      }]
+    }]
   }
 }
 

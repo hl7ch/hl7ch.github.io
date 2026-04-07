@@ -1,4 +1,4 @@
-# CH EPL - Listing Status - CH EPL (R5) v1.0.0
+# CH EPL - Listing Status - CH EPL (R5) v1.0.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/ch-epl-foph-listing-status | *Version*:1.0.0 |
-| Active as of 2025-12-11 | *Computable Name*:ChEplListingStatusVS |
+| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/ch-epl-foph-listing-status | *Version*:1.0.1 |
+| Active as of 2026-04-07 | *Computable Name*:ChEplListingStatusVS |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,42 +47,32 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-epl-foph-listing-status",
   "url" : "http://fhir.ch/ig/ch-epl/ValueSet/ch-epl-foph-listing-status",
-  "version" : "1.0.0",
+  "version" : "1.0.1",
   "name" : "ChEplListingStatusVS",
   "title" : "CH EPL - Listing Status",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-11T12:35:50+00:00",
+  "date" : "2026-04-07T14:09:25+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "Value Set for Listing Status from ePL used by FOPH",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://fhir.ch/ig/ch-epl/CodeSystem/ch-epl-foph-listing-status"
-      }
-    ]
+    "include" : [{
+      "system" : "http://fhir.ch/ig/ch-epl/CodeSystem/ch-epl-foph-listing-status"
+    }]
   }
 }
 

@@ -1,4 +1,4 @@
-# CH SMC - Pediatric Use Indicator - CH EPL (R5) v1.0.0
+# CH SMC - Pediatric Use Indicator - CH EPL (R5) v1.0.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-epl/CodeSystem/ch-SMC-pediatric-use-indicator | *Version*:1.0.0 |
-| Active as of 2025-12-11 | *Computable Name*:ChSMCPediatricUseIndicatorCS |
+| *Official URL*:http://fhir.ch/ig/ch-epl/CodeSystem/ch-SMC-pediatric-use-indicator | *Version*:1.0.1 |
+| Active as of 2026-04-07 | *Computable Name*:ChSMCPediatricUseIndicatorCS |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,89 +28,75 @@ CH - Standard Terms used in Switzerland (aggregations of codes of ValueSets Pedi
   "resourceType" : "CodeSystem",
   "id" : "ch-SMC-pediatric-use-indicator",
   "url" : "http://fhir.ch/ig/ch-epl/CodeSystem/ch-SMC-pediatric-use-indicator",
-  "version" : "1.0.0",
+  "version" : "1.0.1",
   "name" : "ChSMCPediatricUseIndicatorCS",
   "title" : "CH SMC - Pediatric Use Indicator",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-11T12:35:50+00:00",
+  "date" : "2026-04-07T14:09:25+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "CH - Standard Terms used in Switzerland (aggregations of codes of ValueSets Pediatric Use Indicator)",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "caseSensitive" : true,
   "content" : "complete",
   "count" : 2,
-  "concept" : [
-    {
-      "code" : "756005003001",
-      "display" : "Authorised for the treatment in children",
-      "designation" : [
-        {
-          "language" : "de",
-          "use" : {
-            "system" : "http://snomed.info/sct",
-            "code" : "900000000000003001",
-            "display" : "Fully specified name"
-          },
-          "value" : "Zugelassen für die Anwendung bei Kindern"
-        },
-        {
-          "language" : "de",
-          "use" : {
-            "system" : "http://snomed.info/sct",
-            "code" : "900000000000013009",
-            "display" : "Synonym"
-          },
-          "value" : "TRUE"
-        }
-      ]
+  "concept" : [{
+    "code" : "756005003001",
+    "display" : "Authorised for the treatment in children",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Zugelassen für die Anwendung bei Kindern"
     },
     {
-      "code" : "756005003002",
-      "display" : "Not authorised for the treatment in children",
-      "designation" : [
-        {
-          "language" : "de",
-          "use" : {
-            "system" : "http://snomed.info/sct",
-            "code" : "900000000000003001",
-            "display" : "Fully specified name"
-          },
-          "value" : "Nicht zugelassen für die Anwendung bei Kindern"
-        },
-        {
-          "language" : "de",
-          "use" : {
-            "system" : "http://snomed.info/sct",
-            "code" : "900000000000013009",
-            "display" : "Synonym"
-          },
-          "value" : "FALSE"
-        }
-      ]
-    }
-  ]
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000013009",
+        "display" : "Synonym"
+      },
+      "value" : "TRUE"
+    }]
+  },
+  {
+    "code" : "756005003002",
+    "display" : "Not authorised for the treatment in children",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Nicht zugelassen für die Anwendung bei Kindern"
+    },
+    {
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000013009",
+        "display" : "Synonym"
+      },
+      "value" : "FALSE"
+    }]
+  }]
 }
 
 ```

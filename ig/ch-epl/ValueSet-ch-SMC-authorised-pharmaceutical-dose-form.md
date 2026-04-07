@@ -1,4 +1,4 @@
-# CH SMC - Authorised Pharmaceutical Dose Form - CH EPL (R5) v1.0.0
+# CH SMC - Authorised Pharmaceutical Dose Form - CH EPL (R5) v1.0.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/ch-SMC-authorised-pharmaceutical-dose-form | *Version*:1.0.0 |
-| Active as of 2025-12-11 | *Computable Name*:ChSMCAuthorisedPharmaceuticalDoseFormVS |
+| *Official URL*:http://fhir.ch/ig/ch-epl/ValueSet/ch-SMC-authorised-pharmaceutical-dose-form | *Version*:1.0.1 |
+| Active as of 2026-04-07 | *Computable Name*:ChSMCAuthorisedPharmaceuticalDoseFormVS |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ Value Set for the Authorised Pharmaceutical Dose Form from SMC used by FOPH
 
  **References** 
 
-* [CH - SMC Authorized Dose Form](StructureDefinition-authorizedDoseForm.md)
+* [CH SMC - Authorized Dose Form](StructureDefinition-authorizedDoseForm.md)
 
 ### Logical Definition (CLD)
 
@@ -47,57 +47,41 @@ Value Set for the Authorised Pharmaceutical Dose Form from SMC used by FOPH
   "resourceType" : "ValueSet",
   "id" : "ch-SMC-authorised-pharmaceutical-dose-form",
   "url" : "http://fhir.ch/ig/ch-epl/ValueSet/ch-SMC-authorised-pharmaceutical-dose-form",
-  "version" : "1.0.0",
+  "version" : "1.0.1",
   "name" : "ChSMCAuthorisedPharmaceuticalDoseFormVS",
   "title" : "CH SMC - Authorised Pharmaceutical Dose Form",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-11T12:35:50+00:00",
+  "date" : "2026-04-07T14:09:25+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "Value Set for the Authorised Pharmaceutical Dose Form from SMC used by FOPH",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "valueSet" : [
-          "http://fhir.ch/ig/ch-epl/ValueSet/edqm-pharmaceutical-dose-form"
-        ]
-      },
-      {
-        "valueSet" : [
-          "http://fhir.ch/ig/ch-epl/ValueSet/edqm-combined-pharmaceutical-dose-form"
-        ]
-      },
-      {
-        "valueSet" : ["http://fhir.ch/ig/ch-epl/ValueSet/edqm-combined-term"]
-      },
-      {
-        "valueSet" : [
-          "http://fhir.ch/ig/ch-epl/ValueSet/edqm-combination-packaging"
-        ]
-      }
-    ]
+    "include" : [{
+      "valueSet" : ["http://fhir.ch/ig/ch-epl/ValueSet/edqm-pharmaceutical-dose-form"]
+    },
+    {
+      "valueSet" : ["http://fhir.ch/ig/ch-epl/ValueSet/edqm-combined-pharmaceutical-dose-form"]
+    },
+    {
+      "valueSet" : ["http://fhir.ch/ig/ch-epl/ValueSet/edqm-combined-term"]
+    },
+    {
+      "valueSet" : ["http://fhir.ch/ig/ch-epl/ValueSet/edqm-combination-packaging"]
+    }]
   }
 }
 
