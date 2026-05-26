@@ -1,4 +1,4 @@
-# CH ELM Results Laboratory Observation Genotyping - CH ELM (R4) v1.13.1
+# CH ELM Results Laboratory Observation Genotyping - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-geno | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmResultsLaboratoryObservationGeno |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-geno | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmResultsLaboratoryObservationGeno |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -48,48 +48,36 @@ This CH ELM value set includes the codes for the laboratory genotyping test resu
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-laboratory-observation-geno",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-geno",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmResultsLaboratoryObservationGeno",
   "title" : "CH ELM Results Laboratory Observation Genotyping",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "This CH ELM value set includes the codes for the laboratory genotyping test results.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://loinc.org",
-        "concept" : [
-          {
-            "code" : "94053-6",
-            "display" : "Mycobacterium tuberculosis complex resistance panel by Molecular genetics method"
-          }
-        ]
-      }
-    ]
+    "include" : [{
+      "system" : "http://loinc.org",
+      "concept" : [{
+        "code" : "94053-6",
+        "display" : "Mycobacterium tuberculosis complex resistance panel by Molecular genetics method"
+      }]
+    }]
   }
 }
 

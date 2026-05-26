@@ -1,4 +1,4 @@
-# CH ELM Results Component Vs - CH ELM (R4) v1.13.1
+# CH ELM Results Component Vs - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-vs | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmResultsComponentVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-vs | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmResultsComponentVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,56 +47,44 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-component-vs",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-vs",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmResultsComponentVs",
   "title" : "CH ELM Results Component Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "This CH ELM value set includes the value set URLs as codes to map in the concept maps the leading codes.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-component-vs",
+      "concept" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-antibiotic-cpe"
+      },
       {
-        "system" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-component-vs",
-        "concept" : [
-          {
-            "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-antibiotic-cpe"
-          },
-          {
-            "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-antibiotic-tb"
-          },
-          {
-            "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-gene-cpe"
-          },
-          {
-            "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-gene-tb"
-          }
-        ]
-      }
-    ]
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-antibiotic-tb"
+      },
+      {
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-gene-cpe"
+      },
+      {
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-gene-tb"
+      }]
+    }]
   }
 }
 

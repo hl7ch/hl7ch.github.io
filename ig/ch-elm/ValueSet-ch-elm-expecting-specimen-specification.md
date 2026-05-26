@@ -1,4 +1,4 @@
-# CH ELM Expecting Specimen Specification - CH ELM (R4) v1.13.1
+# CH ELM Expecting Specimen Specification - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-expecting-specimen-specification | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmExpectingSpecimenSpecification |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-expecting-specimen-specification | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmExpectingSpecimenSpecification |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,112 +47,100 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-expecting-specimen-specification",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-expecting-specimen-specification",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmExpectingSpecimenSpecification",
   "title" : "CH ELM Expecting Specimen Specification",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "This CH ELM value set includes the leading codes for the laboratory test results, which have to be completed by another code for the expecting specimen.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://loinc.org",
+      "concept" : [{
+        "code" : "16134-9",
+        "display" : "Neisseria meningitidis [Presence] in Specimen by Organism specific culture"
+      },
       {
-        "system" : "http://loinc.org",
-        "concept" : [
-          {
-            "code" : "16134-9",
-            "display" : "Neisseria meningitidis [Presence] in Specimen by Organism specific culture"
-          },
-          {
-            "code" : "21613-5",
-            "display" : "Chlamydia trachomatis DNA [Presence] in Specimen by NAA with probe detection"
-          },
-          {
-            "code" : "29907-3",
-            "display" : "Haemophilus influenzae B DNA [Presence] in Specimen by NAA with probe detection"
-          },
-          {
-            "code" : "31777-6",
-            "display" : "Chlamydia trachomatis Ag [Presence] in Specimen"
-          },
-          {
-            "code" : "31912-9",
-            "display" : "Neisseria meningitidis Ag [Presence] in Specimen"
-          },
-          {
-            "code" : "31969-9",
-            "display" : "Streptococcus pneumoniae Ag [Presence] in Specimen"
-          },
-          {
-            "code" : "38353-9",
-            "display" : "Streptococcus sp identified in Specimen by Organism specific culture"
-          },
-          {
-            "code" : "43304-5",
-            "display" : "Chlamydia trachomatis rRNA [Presence] in Specimen by NAA with probe detection"
-          },
-          {
-            "code" : "49671-1",
-            "display" : "Neisseria meningitidis DNA [Presence] in Specimen by NAA with probe detection"
-          },
-          {
-            "code" : "49672-9",
-            "display" : "Streptococcus pneumoniae DNA [Presence] in Specimen by NAA with probe detection"
-          },
-          {
-            "code" : "58473-0",
-            "display" : "Haemophilus influenzae serotype DNA [Identifier] in Specimen by NAA with probe detection"
-          },
-          {
-            "code" : "61366-1",
-            "display" : "Haemophilus influenzae DNA [Presence] in Specimen by NAA with probe detection"
-          },
-          {
-            "code" : "61369-5",
-            "display" : "Listeria monocytogenes DNA [Presence] in Specimen by NAA with probe detection"
-          },
-          {
-            "code" : "6349-5",
-            "display" : "Chlamydia trachomatis [Presence] in Specimen by Organism specific culture"
-          },
-          {
-            "code" : "6600-1",
-            "display" : "Haemophilus sp identified in Specimen by Organism specific culture"
-          },
-          {
-            "code" : "6609-2",
-            "display" : "Listeria sp identified in Specimen by Organism specific culture"
-          },
-          {
-            "code" : "69410-9",
-            "display" : "Haemophilus influenzae [Identifier] in Specimen by Organism specific culture"
-          }
-        ]
-      }
-    ]
+        "code" : "21613-5",
+        "display" : "Chlamydia trachomatis DNA [Presence] in Specimen by NAA with probe detection"
+      },
+      {
+        "code" : "29907-3",
+        "display" : "Haemophilus influenzae B DNA [Presence] in Specimen by NAA with probe detection"
+      },
+      {
+        "code" : "31777-6",
+        "display" : "Chlamydia trachomatis Ag [Presence] in Specimen"
+      },
+      {
+        "code" : "31912-9",
+        "display" : "Neisseria meningitidis Ag [Presence] in Specimen"
+      },
+      {
+        "code" : "31969-9",
+        "display" : "Streptococcus pneumoniae Ag [Presence] in Specimen"
+      },
+      {
+        "code" : "38353-9",
+        "display" : "Streptococcus sp identified in Specimen by Organism specific culture"
+      },
+      {
+        "code" : "43304-5",
+        "display" : "Chlamydia trachomatis rRNA [Presence] in Specimen by NAA with probe detection"
+      },
+      {
+        "code" : "49671-1",
+        "display" : "Neisseria meningitidis DNA [Presence] in Specimen by NAA with probe detection"
+      },
+      {
+        "code" : "49672-9",
+        "display" : "Streptococcus pneumoniae DNA [Presence] in Specimen by NAA with probe detection"
+      },
+      {
+        "code" : "58473-0",
+        "display" : "Haemophilus influenzae serotype DNA [Identifier] in Specimen by NAA with probe detection"
+      },
+      {
+        "code" : "61366-1",
+        "display" : "Haemophilus influenzae DNA [Presence] in Specimen by NAA with probe detection"
+      },
+      {
+        "code" : "61369-5",
+        "display" : "Listeria monocytogenes DNA [Presence] in Specimen by NAA with probe detection"
+      },
+      {
+        "code" : "6349-5",
+        "display" : "Chlamydia trachomatis [Presence] in Specimen by Organism specific culture"
+      },
+      {
+        "code" : "6600-1",
+        "display" : "Haemophilus sp identified in Specimen by Organism specific culture"
+      },
+      {
+        "code" : "6609-2",
+        "display" : "Listeria sp identified in Specimen by Organism specific culture"
+      },
+      {
+        "code" : "69410-9",
+        "display" : "Haemophilus influenzae [Identifier] in Specimen by Organism specific culture"
+      }]
+    }]
   }
 }
 

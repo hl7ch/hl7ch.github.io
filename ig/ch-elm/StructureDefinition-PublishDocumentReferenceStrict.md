@@ -1,4 +1,4 @@
-# DocumentReference for sending the report with strict validation - CH ELM (R4) v1.13.1
+# DocumentReference for sending the report with strict validation - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:PublishDocumentReferenceStrict |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:PublishDocumentReferenceStrict |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -22,9 +22,9 @@ A profile on the DocumentReference resource with publication constraints:
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Implementation Guide
+* This Profile is not used by any profiles in this Specification
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-elm|current/StructureDefinition/PublishDocumentReferenceStrict)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-elm|current/StructureDefinition/StructureDefinition-PublishDocumentReferenceStrict.json)
 
 ### Formal Views of Profile Content
 
@@ -43,98 +43,82 @@ Other representations of profile: [CSV](StructureDefinition-PublishDocumentRefer
   "resourceType" : "StructureDefinition",
   "id" : "PublishDocumentReferenceStrict",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "PublishDocumentReferenceStrict",
   "title" : "DocumentReference for sending the report with strict validation",
   "status" : "active",
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "A profile on the DocumentReference resource with publication constraints: \n- must be status current\n- must have an identifier\n- uses attachment.url to carry the document as a contained resource\n- strict validation according to http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "workflow",
-      "uri" : "http://hl7.org/fhir/workflow",
-      "name" : "Workflow Pattern"
-    },
-    {
-      "identity" : "fhircomposition",
-      "uri" : "http://hl7.org/fhir/composition",
-      "name" : "FHIR Composition"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "cda",
-      "uri" : "http://hl7.org/v3/cda",
-      "name" : "CDA (R2)"
-    },
-    {
-      "identity" : "w5",
-      "uri" : "http://hl7.org/fhir/fivews",
-      "name" : "FiveWs Pattern Mapping"
-    },
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    },
-    {
-      "identity" : "xds",
-      "uri" : "http://ihe.net/xds",
-      "name" : "XDS metadata equivalent"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "workflow",
+    "uri" : "http://hl7.org/fhir/workflow",
+    "name" : "Workflow Pattern"
+  },
+  {
+    "identity" : "fhircomposition",
+    "uri" : "http://hl7.org/fhir/composition",
+    "name" : "FHIR Composition"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "cda",
+    "uri" : "http://hl7.org/v3/cda",
+    "name" : "CDA (R2)"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  },
+  {
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "xds",
+    "uri" : "http://ihe.net/xds",
+    "name" : "XDS metadata equivalent"
+  }],
   "kind" : "resource",
   "abstract" : false,
   "type" : "DocumentReference",
   "baseDefinition" : "http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "DocumentReference",
-        "path" : "DocumentReference"
-      },
-      {
-        "id" : "DocumentReference.contained:document",
-        "path" : "DocumentReference.contained",
-        "sliceName" : "document",
-        "type" : [
-          {
-            "code" : "Resource",
-            "profile" : [
-              "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"
-            ]
-          }
-        ]
-      }
-    ]
+    "element" : [{
+      "id" : "DocumentReference",
+      "path" : "DocumentReference"
+    },
+    {
+      "id" : "DocumentReference.contained:document",
+      "path" : "DocumentReference.contained",
+      "sliceName" : "document",
+      "type" : [{
+        "code" : "Resource",
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"]
+      }]
+    }]
   }
 }
 

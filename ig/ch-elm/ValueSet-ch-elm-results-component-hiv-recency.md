@@ -1,4 +1,4 @@
-# CH ELM Results HIV Recency - CH ELM (R4) v1.13.1
+# CH ELM Results HIV Recency - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-hiv-recency | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmResultsComponentHivRecency |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-hiv-recency | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmResultsComponentHivRecency |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,72 +47,60 @@ The "CH ELM Results HIV Recency" group provides a curated set codes needed to ca
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-component-hiv-recency",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-hiv-recency",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmResultsComponentHivRecency",
   "title" : "CH ELM Results HIV Recency",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "The \"CH ELM Results HIV Recency\" group provides a curated set codes needed to capture and report HIV recency test results.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "118040000",
+        "display" : "Measurement of Human immunodeficiency virus 1 glycoprotein 120 antibody (procedure)"
+      },
       {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "118040000",
-            "display" : "Measurement of Human immunodeficiency virus 1 glycoprotein 120 antibody (procedure)"
-          },
-          {
-            "code" : "118044009",
-            "display" : "Measurement of Human immunodeficiency virus 1 glycoprotein 41 antibody (procedure)"
-          },
-          {
-            "code" : "118052007",
-            "display" : "Measurement of Human immunodeficiency virus 1 protein 31 antibody (procedure)"
-          },
-          {
-            "code" : "117749009",
-            "display" : "Measurement of Human immunodeficiency virus 1 protein 24 antibody (procedure)"
-          },
-          {
-            "code" : "118047002",
-            "display" : "Measurement of Human immunodeficiency virus 1 protein 17 antibody (procedure)"
-          },
-          {
-            "code" : "118062000",
-            "display" : "Measurement of Human immunodeficiency virus 2 glycoprotein 105 antibody (procedure)"
-          },
-          {
-            "code" : "118067006",
-            "display" : "Measurement of Human immunodeficiency virus 2 glycoprotein 36 antibody (procedure)"
-          }
-        ]
-      }
-    ]
+        "code" : "118044009",
+        "display" : "Measurement of Human immunodeficiency virus 1 glycoprotein 41 antibody (procedure)"
+      },
+      {
+        "code" : "118052007",
+        "display" : "Measurement of Human immunodeficiency virus 1 protein 31 antibody (procedure)"
+      },
+      {
+        "code" : "117749009",
+        "display" : "Measurement of Human immunodeficiency virus 1 protein 24 antibody (procedure)"
+      },
+      {
+        "code" : "118047002",
+        "display" : "Measurement of Human immunodeficiency virus 1 protein 17 antibody (procedure)"
+      },
+      {
+        "code" : "118062000",
+        "display" : "Measurement of Human immunodeficiency virus 2 glycoprotein 105 antibody (procedure)"
+      },
+      {
+        "code" : "118067006",
+        "display" : "Measurement of Human immunodeficiency virus 2 glycoprotein 36 antibody (procedure)"
+      }]
+    }]
   }
 }
 

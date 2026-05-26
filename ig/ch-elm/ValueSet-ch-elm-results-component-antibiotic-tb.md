@@ -1,4 +1,4 @@
-# CH ELM Results Antibiotic Tb - CH ELM (R4) v1.13.1
+# CH ELM Results Antibiotic Tb - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-antibiotic-tb | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmResultsComponentAntibioticTb |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-antibiotic-tb | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmResultsComponentAntibioticTb |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,60 +47,48 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-component-antibiotic-tb",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-antibiotic-tb",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmResultsComponentAntibioticTb",
   "title" : "CH ELM Results Antibiotic Tb",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "The \"ch elm results antibiotic tb\" group provides a curated set of codes representing specific antibiotics. Each code within this group is selected to ensure consistency and accuracy for medical coding related to the primary LOINC codes. Clients using the \"ch elm results antibiotic tb\" group should refer to the provided codes to ensure they capture and report antibiotic information correctly and consistently",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://loinc.org",
+      "concept" : [{
+        "code" : "18934-0",
+        "display" : "Isoniazid [Susceptibility]"
+      },
       {
-        "system" : "http://loinc.org",
-        "concept" : [
-          {
-            "code" : "18934-0",
-            "display" : "Isoniazid [Susceptibility]"
-          },
-          {
-            "code" : "18921-7",
-            "display" : "Ethambutol [Susceptibility]"
-          },
-          {
-            "code" : "18974-6",
-            "display" : "rifAMPin [Susceptibility]"
-          },
-          {
-            "code" : "18973-8",
-            "display" : "Pyrazinamide [Susceptibility]"
-          }
-        ]
-      }
-    ]
+        "code" : "18921-7",
+        "display" : "Ethambutol [Susceptibility]"
+      },
+      {
+        "code" : "18974-6",
+        "display" : "rifAMPin [Susceptibility]"
+      },
+      {
+        "code" : "18973-8",
+        "display" : "Pyrazinamide [Susceptibility]"
+      }]
+    }]
   }
 }
 

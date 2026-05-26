@@ -1,4 +1,4 @@
-# CH ELM Observation Profile Vs - CH ELM (R4) v1.13.1
+# CH ELM Observation Profile Vs - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-observation-profile-vs | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmObservationProfileVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-observation-profile-vs | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmObservationProfileVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,61 +28,51 @@ The codes contained in this code system represent URLs of Profile Observations t
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-observation-profile-vs",
   "url" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-observation-profile-vs",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmObservationProfileVs",
   "title" : "CH ELM Observation Profile Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "The codes contained in this code system represent URLs of Profile Observations that can be used as target codes in ConceptMaps. These profiles defines the Observation in relation to the leading code.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "caseSensitive" : false,
   "content" : "complete",
-  "concept" : [
-    {
-      "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-txt"
-    },
-    {
-      "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-rto"
-    },
-    {
-      "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-geno"
-    },
-    {
-      "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-hiv-rec"
-    },
-    {
-      "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-pq-virl"
-    },
-    {
-      "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-component-conc"
-    },
-    {
-      "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-pq-ab"
-    }
-  ]
+  "concept" : [{
+    "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-txt"
+  },
+  {
+    "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-rto"
+  },
+  {
+    "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-geno"
+  },
+  {
+    "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-hiv-rec"
+  },
+  {
+    "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-pq-virl"
+  },
+  {
+    "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-component-conc"
+  },
+  {
+    "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-pq-ab"
+  }]
 }
 
 ```

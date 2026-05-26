@@ -1,4 +1,4 @@
-# CH ELM Results Cjd Org - CH ELM (R4) v1.13.1
+# CH ELM Results Cjd Org - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-cjd-org | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmResultsCjdOrg |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-cjd-org | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmResultsCjdOrg |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,68 +47,56 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-cjd-org",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-cjd-org",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmResultsCjdOrg",
   "title" : "CH ELM Results Cjd Org",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "The \"CH ELM Results Cjd Org\" organism group provides a curated set of codes representing specific organisms. Each code within this group has been selected to ensure precise representation and consistency in relation to the primary LOINC codes. Clients utilizing the \"CH ELM Results Cjd Org\" group should refer to the provided codes to accurately and uniformly capture and report organism-related information.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "715807002",
+        "display" : "Familial Creutzfeldt-Jakob (disorder)"
+      },
       {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "715807002",
-            "display" : "Familial Creutzfeldt-Jakob (disorder)"
-          },
-          {
-            "code" : "715662009",
-            "display" : "Iatrogenic Jakob-Creutzfeldt disease (disorder)"
-          },
-          {
-            "code" : "304603007",
-            "display" : "Variant Creutzfeldt-Jakob disease (disorder)"
-          },
-          {
-            "code" : "713060000",
-            "display" : "Sporadic Creutzfeldt-Jakob disease (disorder)"
-          },
-          {
-            "code" : "84676004",
-            "display" : "Prion (organism)"
-          },
-          {
-            "code" : "721165001",
-            "display" : "Variably protease sensitive prionopathy (disorder)"
-          }
-        ]
-      }
-    ]
+        "code" : "715662009",
+        "display" : "Iatrogenic Jakob-Creutzfeldt disease (disorder)"
+      },
+      {
+        "code" : "304603007",
+        "display" : "Variant Creutzfeldt-Jakob disease (disorder)"
+      },
+      {
+        "code" : "713060000",
+        "display" : "Sporadic Creutzfeldt-Jakob disease (disorder)"
+      },
+      {
+        "code" : "84676004",
+        "display" : "Prion (organism)"
+      },
+      {
+        "code" : "721165001",
+        "display" : "Variably protease sensitive prionopathy (disorder)"
+      }]
+    }]
   }
 }
 

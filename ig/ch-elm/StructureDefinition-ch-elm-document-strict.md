@@ -1,4 +1,4 @@
-# CH ELM Document: Laboratory Report (strict) - CH ELM (R4) v1.13.1
+# CH ELM Document: Laboratory Report (strict) - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmDocumentStrict |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmDocumentStrict |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -19,7 +19,7 @@ CH ELM profile for the Bundle resource with a stricter validation mechanism than
 
 * Use this Profile: [DocumentReference for sending the report with strict validation](StructureDefinition-PublishDocumentReferenceStrict.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-elm|current/StructureDefinition/ch-elm-document-strict)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-elm|current/StructureDefinition/StructureDefinition-ch-elm-document-strict.json)
 
 ### Formal Views of Profile Content
 
@@ -37,90 +37,72 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-document-stri
 {
   "resourceType" : "StructureDefinition",
   "id" : "ch-elm-document-strict",
-  "extension" : [
-    {
-      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-imposeProfile",
-      "valueCanonical" : "http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"
-    }
-  ],
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-imposeProfile",
+    "valueCanonical" : "http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"
+  }],
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmDocumentStrict",
   "title" : "CH ELM Document: Laboratory Report (strict)",
   "status" : "active",
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "CH ELM profile for the Bundle resource with a stricter validation mechanism than the base profile via binding strength reinforcement for the leading code element and checking patient name requirements if possible.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "cda",
-      "uri" : "http://hl7.org/v3/cda",
-      "name" : "CDA (R2)"
-    },
-    {
-      "identity" : "w5",
-      "uri" : "http://hl7.org/fhir/fivews",
-      "name" : "FiveWs Pattern Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "cda",
+    "uri" : "http://hl7.org/v3/cda",
+    "name" : "CDA (R2)"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  }],
   "kind" : "resource",
   "abstract" : false,
   "type" : "Bundle",
   "baseDefinition" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Bundle.entry:Composition",
-        "path" : "Bundle.entry",
-        "sliceName" : "Composition"
-      },
-      {
-        "id" : "Bundle.entry:Composition.resource",
-        "path" : "Bundle.entry.resource",
-        "type" : [
-          {
-            "code" : "Composition",
-            "profile" : [
-              "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-composition-strict"
-            ]
-          }
-        ]
-      }
-    ]
+    "element" : [{
+      "id" : "Bundle.entry:Composition",
+      "path" : "Bundle.entry",
+      "sliceName" : "Composition"
+    },
+    {
+      "id" : "Bundle.entry:Composition.resource",
+      "path" : "Bundle.entry.resource",
+      "type" : [{
+        "code" : "Composition",
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-composition-strict"]
+      }]
+    }]
   }
 }
 

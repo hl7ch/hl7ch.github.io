@@ -1,0 +1,70 @@
+# Pat - Antoine Dupont (unknown name) - CH ELM (R4) v1.14.0
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Pat - Antoine Dupont (unknown name)**
+
+## Example Patient: Pat - Antoine Dupont (unknown name)
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Patient",
+  "id" : "Pat-UnknownName",
+  "identifier" : [{
+    "system" : "urn:oid:2.16.756.5.32",
+    "value" : "7561234567866"
+  }],
+  "name" : [{
+    "_family" : {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode" : "unknown"
+      }]
+    },
+    "_given" : [{
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode" : "unknown"
+      }]
+    }]
+  }],
+  "telecom" : [{
+    "system" : "phone",
+    "value" : "+41 76 222 55 22"
+  }],
+  "gender" : "female",
+  "birthDate" : "1981-02-07",
+  "address" : [{
+    "use" : "home",
+    "line" : ["Rue de la république 10"],
+    "_line" : [{
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName",
+        "valueString" : "Rue de la république"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+        "valueString" : "10"
+      }]
+    }],
+    "city" : "Carouge",
+    "state" : "GE",
+    "postalCode" : "1227",
+    "country" : "CH",
+    "_country" : {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-codedString",
+        "valueCoding" : {
+          "system" : "urn:iso:std:iso:3166",
+          "code" : "CH"
+        }
+      }]
+    }
+  }]
+}
+
+```

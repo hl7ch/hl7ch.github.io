@@ -1,4 +1,4 @@
-# CH ELM Results Mea Org - CH ELM (R4) v1.13.1
+# CH ELM Results Mea Org - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-mea-org | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmResultsMeaOrg |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-mea-org | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmResultsMeaOrg |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,60 +47,48 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-mea-org",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-mea-org",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmResultsMeaOrg",
   "title" : "CH ELM Results Mea Org",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "The \"CH ELM Results Mea Org\" organism group provides a curated set of codes representing specific organisms. Each code within this group has been selected to ensure precise representation and consistency in relation to the primary LOINC codes. Clients utilizing the \"CH ELM Results Mea Org\" group should refer to the provided codes to accurately and uniformly capture and report organism-related information.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "426558008",
+        "display" : "Measles virus genotype A (organism)"
+      },
       {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "426558008",
-            "display" : "Measles virus genotype A (organism)"
-          },
-          {
-            "code" : "427290009",
-            "display" : "Measles virus genotype D8 (organism)"
-          },
-          {
-            "code" : "52584002",
-            "display" : "Measles virus (organism)"
-          },
-          {
-            "code" : "427073007",
-            "display" : "Measles virus genotype B3 (organism)"
-          }
-        ]
-      }
-    ]
+        "code" : "427290009",
+        "display" : "Measles virus genotype D8 (organism)"
+      },
+      {
+        "code" : "52584002",
+        "display" : "Measles virus"
+      },
+      {
+        "code" : "427073007",
+        "display" : "Measles virus genotype B3 (organism)"
+      }]
+    }]
   }
 }
 

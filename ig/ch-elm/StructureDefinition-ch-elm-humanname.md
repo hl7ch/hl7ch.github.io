@@ -1,4 +1,4 @@
-# Human Name - CH ELM (R4) v1.13.1
+# Human Name - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-humanname | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:CHElmHumanName |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-humanname | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:CHElmHumanName |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -19,7 +19,7 @@ Name with extensions for data-absent-reason
 
 * Use this DataType Profile: [CH ELM Patient](StructureDefinition-ch-elm-patient.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-elm|current/StructureDefinition/ch-elm-humanname)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-elm|current/StructureDefinition/StructureDefinition-ch-elm-humanname.json)
 
 ### Formal Views of Profile Content
 
@@ -38,122 +38,98 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-humanname.csv
   "resourceType" : "StructureDefinition",
   "id" : "ch-elm-humanname",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-humanname",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "CHElmHumanName",
   "title" : "Human Name",
   "status" : "active",
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "Name with extensions for data-absent-reason",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "eCH",
-      "uri" : "http://www.ech.ch/",
-      "name" : "eCH-Standards"
-    },
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "servd",
-      "uri" : "http://www.omg.org/spec/ServD/1.0/",
-      "name" : "ServD"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "eCH",
+    "uri" : "http://www.ech.ch/",
+    "name" : "eCH-Standards"
+  },
+  {
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "servd",
+    "uri" : "http://www.omg.org/spec/ServD/1.0/",
+    "name" : "ServD"
+  }],
   "kind" : "complex-type",
   "abstract" : false,
   "type" : "HumanName",
   "baseDefinition" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-humanname",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "HumanName.extension:vctcode",
-        "path" : "HumanName.extension",
-        "sliceName" : "vctcode",
-        "min" : 0,
-        "max" : "1",
-        "type" : [
-          {
-            "code" : "Extension",
-            "profile" : [
-              "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-vct-code"
-            ]
-          }
-        ]
-      },
-      {
-        "id" : "HumanName.extension:hivcode",
-        "path" : "HumanName.extension",
-        "sliceName" : "hivcode",
-        "min" : 0,
-        "max" : "1",
-        "type" : [
-          {
-            "code" : "Extension",
-            "profile" : [
-              "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-hiv-code"
-            ]
-          }
-        ]
-      },
-      {
-        "id" : "HumanName.family.extension:dataabsentreason",
-        "path" : "HumanName.family.extension",
-        "sliceName" : "dataabsentreason",
-        "min" : 0,
-        "max" : "1",
-        "type" : [
-          {
-            "code" : "Extension",
-            "profile" : ["http://hl7.org/fhir/StructureDefinition/data-absent-reason"]
-          }
-        ]
-      },
-      {
-        "id" : "HumanName.given.extension:dataabsentreason",
-        "path" : "HumanName.given.extension",
-        "sliceName" : "dataabsentreason",
-        "min" : 0,
-        "max" : "1",
-        "type" : [
-          {
-            "code" : "Extension",
-            "profile" : ["http://hl7.org/fhir/StructureDefinition/data-absent-reason"]
-          }
-        ]
-      }
-    ]
+    "element" : [{
+      "id" : "HumanName.extension:vctcode",
+      "path" : "HumanName.extension",
+      "sliceName" : "vctcode",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-vct-code"]
+      }]
+    },
+    {
+      "id" : "HumanName.extension:hivcode",
+      "path" : "HumanName.extension",
+      "sliceName" : "hivcode",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-hiv-code"]
+      }]
+    },
+    {
+      "id" : "HumanName.family.extension:dataabsentreason",
+      "path" : "HumanName.family.extension",
+      "sliceName" : "dataabsentreason",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/data-absent-reason|5.3.0"]
+      }]
+    },
+    {
+      "id" : "HumanName.given.extension:dataabsentreason",
+      "path" : "HumanName.given.extension",
+      "sliceName" : "dataabsentreason",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/data-absent-reason|5.3.0"]
+      }]
+    }]
   }
 }
 

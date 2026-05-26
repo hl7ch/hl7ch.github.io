@@ -1,4 +1,4 @@
-# CH ELM Coding - CH ELM (R4) v1.13.1
+# CH ELM Coding - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-coding | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmCoding |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-coding | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmCoding |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -19,7 +19,7 @@ This profile represents the constraints applied to the Coding data type by this 
 
 * Use this DataType Profile: [CH ELM CodeableConcept](StructureDefinition-ch-elm-codeableconcept.md) and [CH ELM Specimen: Laboratory](StructureDefinition-ch-elm-specimen.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-elm|current/StructureDefinition/ch-elm-coding)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-elm|current/StructureDefinition/StructureDefinition-ch-elm-coding.json)
 
 ### Formal Views of Profile Content
 
@@ -38,71 +38,59 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-coding.csv), 
   "resourceType" : "StructureDefinition",
   "id" : "ch-elm-coding",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-coding",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmCoding",
   "title" : "CH ELM Coding",
   "status" : "active",
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "This profile represents the constraints applied to the Coding data type by this IG used in the 'CH ELM Coding' data type profile.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "orim",
-      "uri" : "http://hl7.org/orim",
-      "name" : "Ontological RIM Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "orim",
+    "uri" : "http://hl7.org/orim",
+    "name" : "Ontological RIM Mapping"
+  }],
   "kind" : "complex-type",
   "abstract" : false,
   "type" : "Coding",
-  "baseDefinition" : "http://hl7.org/fhir/uv/ips/StructureDefinition/Coding-uv-ips",
+  "baseDefinition" : "http://hl7.org/fhir/uv/ips/StructureDefinition/Coding-uv-ips|2.0.0",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Coding.system",
-        "path" : "Coding.system",
-        "min" : 1
-      },
-      {
-        "id" : "Coding.code",
-        "path" : "Coding.code",
-        "min" : 1
-      }
-    ]
+    "element" : [{
+      "id" : "Coding.system",
+      "path" : "Coding.system",
+      "min" : 1
+    },
+    {
+      "id" : "Coding.code",
+      "path" : "Coding.code",
+      "min" : 1
+    }]
   }
 }
 

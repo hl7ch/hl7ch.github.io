@@ -1,4 +1,4 @@
-# Test96-Ignore-Slice-Patient-Eu-Lab-Information - CH ELM (R4) v1.13.1
+# Test96-Ignore-Slice-Patient-Eu-Lab-Information - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,23 +8,30 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test96-Ignore-Slice-Patient-Eu-Lab-Information | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:Test96IgnoreObservationInterpretationCodesInformation |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test96-Ignore-Slice-Patient-Eu-Lab-Information | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:Test96IgnoreObservationInterpretationCodesInformation |
 | **Copyright/Legal**: CC0-1.0 | |
+
+ 
+Test script to verify that Information This element does not match any known slice defined in the profile http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab is ignored 
 
 **url**: [TestScript Test96IgnoreObservationInterpretationCodesInformation](TestScript-Test96-Ignore-Slice-Patient-Eu-Lab-Information.md)
 
-**version**: 1.13.1
+**version**: 1.14.0
 
 **name**: Test96IgnoreObservationInterpretationCodesInformation
 
 **status**: Active
 
-**date**: 2026-01-21 11:21:00+0000
+**date**: 2026-05-26 14:58:40+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
 **contact**: Federal Office of Public Health FOPH: [https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html](https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html)
+
+**description**: 
+
+Test script to verify that Information This element does not match any known slice defined in the profile http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab is ignored
 
 **jurisdiction**: Switzerland
 
@@ -44,7 +51,7 @@ CC0-1.0
 | | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | - | **Type** | **Description** | **ContentType** | **EncodeRequestUrl** | **Params** | **SourceId** |
-| * | [Test script operation code: validate](http://terminology.hl7.org/6.5.0/CodeSystem-testscript-operation-codes.html#testscript-operation-codes-validate)($validate) | validate | application/fhir+json | true | profile=http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference | inputdata |
+| * | [Test script operation code: validate](http://hl7.org/fhir/R4/codesystem-testscript-operation-codes.html#testscript-operation-codes-validate)($validate) | validate | application/fhir+json | true | profile=http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference | inputdata |
 
 
 > **action**
@@ -97,96 +104,83 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test96-Ignore-Slice-Patient-Eu-Lab-Information",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test96-Ignore-Slice-Patient-Eu-Lab-Information",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "Test96IgnoreObservationInterpretationCodesInformation",
   "status" : "active",
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
+  "description" : "Test script to verify that Information This element does not match any known slice defined in the profile http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab is ignored",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
-  "fixture" : [
-    {
-      "id" : "inputdata",
-      "autocreate" : false,
-      "autodelete" : false,
-      "resource" : {
-        "reference" : "DocumentReference/Publish-2Doc-ChlamydiaTrachomatis-Vct"
+  "fixture" : [{
+    "id" : "inputdata",
+    "autocreate" : false,
+    "autodelete" : false,
+    "resource" : {
+      "reference" : "DocumentReference/Publish-2Doc-ChlamydiaTrachomatis-Vct"
+    }
+  }],
+  "test" : [{
+    "name" : "Test96",
+    "description" : "Test script to verify that Information This element does not match any known slice defined in the profile http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab is ignored",
+    "action" : [{
+      "operation" : {
+        "type" : {
+          "system" : "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+          "code" : "validate"
+        },
+        "description" : "validate",
+        "contentType" : "application/fhir+json",
+        "encodeRequestUrl" : true,
+        "params" : "profile=http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference",
+        "sourceId" : "inputdata"
       }
-    }
-  ],
-  "test" : [
+    },
     {
-      "name" : "Test96",
-      "description" : "Test script to verify that Information This element does not match any known slice defined in the profile http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab is ignored",
-      "action" : [
-        {
-          "operation" : {
-            "type" : {
-              "system" : "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
-              "code" : "validate"
-            },
-            "description" : "validate",
-            "contentType" : "application/fhir+json",
-            "encodeRequestUrl" : true,
-            "params" : "profile=http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference",
-            "sourceId" : "inputdata"
-          }
-        },
-        {
-          "assert" : {
-            "description" : "Confirm that the returned HTTP status is 200(OK).",
-            "direction" : "response",
-            "responseCode" : "200",
-            "warningOnly" : false
-          }
-        },
-        {
-          "assert" : {
-            "description" : "Confirm that the returned resource is an OperationOutcome.",
-            "expression" : "is(FHIR.OperationOutcome)",
-            "value" : "true",
-            "warningOnly" : false
-          }
-        },
-        {
-          "assert" : {
-            "description" : "Confirm that we have no errors.",
-            "expression" : "issue.where(severity='error' or severity='fatal').count()=0",
-            "value" : "true",
-            "warningOnly" : false
-          }
-        },
-        {
-          "assert" : {
-            "description" : "Check information ignored",
-            "expression" : "issue.where(severity='information' and diagnostics.matches('This element does not match any known slice defined in the profile http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab(.+)')).count() = 0",
-            "value" : "true",
-            "warningOnly" : false
-          }
-        }
-      ]
-    }
-  ]
+      "assert" : {
+        "description" : "Confirm that the returned HTTP status is 200(OK).",
+        "direction" : "response",
+        "responseCode" : "200",
+        "warningOnly" : false
+      }
+    },
+    {
+      "assert" : {
+        "description" : "Confirm that the returned resource is an OperationOutcome.",
+        "expression" : "is(FHIR.OperationOutcome)",
+        "value" : "true",
+        "warningOnly" : false
+      }
+    },
+    {
+      "assert" : {
+        "description" : "Confirm that we have no errors.",
+        "expression" : "issue.where(severity='error' or severity='fatal').count()=0",
+        "value" : "true",
+        "warningOnly" : false
+      }
+    },
+    {
+      "assert" : {
+        "description" : "Check information ignored",
+        "expression" : "issue.where(severity='information' and diagnostics.matches('This element does not match any known slice defined in the profile http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab(.+)')).count() = 0",
+        "value" : "true",
+        "warningOnly" : false
+      }
+    }]
+  }]
 }
 
 ```

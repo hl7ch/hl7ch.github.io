@@ -1,4 +1,4 @@
-# CH ELM Interpretation Codes Resistant and Susceptible - CH ELM (R4) v1.13.1
+# CH ELM Interpretation Codes Resistant and Susceptible - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-res-sus | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmInterpretationCodesResSus |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-res-sus | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmInterpretationCodesResSus |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,52 +47,41 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-interpretation-codes-res-sus",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-res-sus",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmInterpretationCodesResSus",
   "title" : "CH ELM Interpretation Codes Resistant and Susceptible",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "This CH ELM value set includes the code for resistant and susceptible interpretation code(s).",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+      "version" : "2018-08-12",
+      "concept" : [{
+        "code" : "S",
+        "display" : "Susceptible"
+      },
       {
-        "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
-        "concept" : [
-          {
-            "code" : "S",
-            "display" : "Susceptible"
-          },
-          {
-            "code" : "R",
-            "display" : "Resistant"
-          }
-        ]
-      }
-    ]
+        "code" : "R",
+        "display" : "Resistant"
+      }]
+    }]
   }
 }
 

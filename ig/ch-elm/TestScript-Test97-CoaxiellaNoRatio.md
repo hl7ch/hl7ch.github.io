@@ -1,4 +1,4 @@
-# Test97-CoaxiellaNoRatio - CH ELM (R4) v1.13.1
+# Test97-CoaxiellaNoRatio - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,23 +8,30 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test97-CoaxiellaNoRatio | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:Test97CoaxiellaNoRatio |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test97-CoaxiellaNoRatio | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:Test97CoaxiellaNoRatio |
 | **Copyright/Legal**: CC0-1.0 | |
+
+ 
+Test97: Verify that error for missing ratio is raised 
 
 **url**: [TestScript Test97CoaxiellaNoRatio](TestScript-Test97-CoaxiellaNoRatio.md)
 
-**version**: 1.13.1
+**version**: 1.14.0
 
 **name**: Test97CoaxiellaNoRatio
 
 **status**: Active
 
-**date**: 2026-01-21 11:21:00+0000
+**date**: 2026-05-26 14:58:40+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
 **contact**: Federal Office of Public Health FOPH: [https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html](https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html)
+
+**description**: 
+
+Test97: Verify that error for missing ratio is raised
 
 **jurisdiction**: Switzerland
 
@@ -44,7 +51,7 @@ CC0-1.0
 | | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | - | **Type** | **Description** | **ContentType** | **EncodeRequestUrl** | **Params** | **SourceId** |
-| * | [Test script operation code: validate](http://terminology.hl7.org/6.5.0/CodeSystem-testscript-operation-codes.html#testscript-operation-codes-validate)($validate) | validate | application/fhir+json | true | profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict | inputdata |
+| * | [Test script operation code: validate](http://hl7.org/fhir/R4/codesystem-testscript-operation-codes.html#testscript-operation-codes-validate)($validate) | validate | application/fhir+json | true | profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict | inputdata |
 
 
 > **action**
@@ -97,96 +104,83 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test97-CoaxiellaNoRatio",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test97-CoaxiellaNoRatio",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "Test97CoaxiellaNoRatio",
   "status" : "active",
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
+  "description" : "Test97: Verify that error for missing ratio is raised",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
-  "fixture" : [
-    {
-      "id" : "inputdata",
-      "autocreate" : false,
-      "autodelete" : false,
-      "resource" : {
-        "reference" : "Binary/Test97-Bundle-CoaxiellaNoRatio"
+  "fixture" : [{
+    "id" : "inputdata",
+    "autocreate" : false,
+    "autodelete" : false,
+    "resource" : {
+      "reference" : "Binary/Test97-Bundle-CoaxiellaNoRatio"
+    }
+  }],
+  "test" : [{
+    "name" : "Test97",
+    "description" : "Test97: Verify that error for missing ratio is raised",
+    "action" : [{
+      "operation" : {
+        "type" : {
+          "system" : "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+          "code" : "validate"
+        },
+        "description" : "validate",
+        "contentType" : "application/fhir+json",
+        "encodeRequestUrl" : true,
+        "params" : "profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict",
+        "sourceId" : "inputdata"
       }
-    }
-  ],
-  "test" : [
+    },
     {
-      "name" : "Test97",
-      "description" : "Test97: Verify that error for missing ratio is raised",
-      "action" : [
-        {
-          "operation" : {
-            "type" : {
-              "system" : "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
-              "code" : "validate"
-            },
-            "description" : "validate",
-            "contentType" : "application/fhir+json",
-            "encodeRequestUrl" : true,
-            "params" : "profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict",
-            "sourceId" : "inputdata"
-          }
-        },
-        {
-          "assert" : {
-            "description" : "Confirm that the returned HTTP status is 200(OK).",
-            "direction" : "response",
-            "responseCode" : "200",
-            "warningOnly" : false
-          }
-        },
-        {
-          "assert" : {
-            "description" : "Confirm that the returned resource is an OperationOutcome.",
-            "expression" : "is(FHIR.OperationOutcome)",
-            "value" : "true",
-            "warningOnly" : false
-          }
-        },
-        {
-          "assert" : {
-            "description" : "Confirm that we have errors.",
-            "expression" : "issue.where(severity='error' or severity='fatal').count()>0",
-            "value" : "true",
-            "warningOnly" : false
-          }
-        },
-        {
-          "assert" : {
-            "description" : "Check Constraint failed: ch-elm-observation-profile-loinc",
-            "expression" : "issue.where(diagnostics.matches('Constraint failed: ch-elm-observation-profile-loinc')).count() > 0",
-            "value" : "true",
-            "warningOnly" : false
-          }
-        }
-      ]
-    }
-  ]
+      "assert" : {
+        "description" : "Confirm that the returned HTTP status is 200(OK).",
+        "direction" : "response",
+        "responseCode" : "200",
+        "warningOnly" : false
+      }
+    },
+    {
+      "assert" : {
+        "description" : "Confirm that the returned resource is an OperationOutcome.",
+        "expression" : "is(FHIR.OperationOutcome)",
+        "value" : "true",
+        "warningOnly" : false
+      }
+    },
+    {
+      "assert" : {
+        "description" : "Confirm that we have errors.",
+        "expression" : "issue.where(severity='error' or severity='fatal').count()>0",
+        "value" : "true",
+        "warningOnly" : false
+      }
+    },
+    {
+      "assert" : {
+        "description" : "Check Constraint failed: ch-elm-observation-profile-loinc",
+        "expression" : "issue.where(diagnostics.matches('Constraint failed: ch-elm-observation-profile-loinc')).count() > 0",
+        "value" : "true",
+        "warningOnly" : false
+      }
+    }]
+  }]
 }
 
 ```

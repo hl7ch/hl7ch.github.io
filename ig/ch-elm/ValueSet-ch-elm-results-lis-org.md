@@ -1,4 +1,4 @@
-# CH ELM Results Lis Org - CH ELM (R4) v1.13.1
+# CH ELM Results Lis Org - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-lis-org | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmResultsLisOrg |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-lis-org | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmResultsLisOrg |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,104 +47,92 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-lis-org",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-lis-org",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmResultsLisOrg",
   "title" : "CH ELM Results Lis Org",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "The \"CH ELM Results Lis Org\" organism group provides a curated set of codes representing specific organisms. Each code within this group has been selected to ensure precise representation and consistency in relation to the primary LOINC codes. Clients utilizing the \"CH ELM Results Lis Org\" group should refer to the provided codes to accurately and uniformly capture and report organism-related information.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "450542001",
+        "display" : "Listeria monocytogenes serotype 3c (organism)"
+      },
       {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "450542001",
-            "display" : "Listeria monocytogenes serotype 3c (organism)"
-          },
-          {
-            "code" : "258381003",
-            "display" : "Group 4 (qualifier value)"
-          },
-          {
-            "code" : "450536000",
-            "display" : "Listeria monocytogenes serotype 1/2a (organism)"
-          },
-          {
-            "code" : "450547007",
-            "display" : "Listeria monocytogenes serotype 4e (organism)"
-          },
-          {
-            "code" : "36094007",
-            "display" : "Listeria monocytogenes (organism)"
-          },
-          {
-            "code" : "450541008",
-            "display" : "Listeria monocytogenes serotype 3b (organism)"
-          },
-          {
-            "code" : "450539007",
-            "display" : "Listeria monocytogenes serotype 4b (organism)"
-          },
-          {
-            "code" : "450548002",
-            "display" : "Listeria monocytogenes serotype 7 (organism)"
-          },
-          {
-            "code" : "450540009",
-            "display" : "Listeria monocytogenes serotype 3a (organism)"
-          },
-          {
-            "code" : "258366009",
-            "display" : "Group 1 (qualifier value)"
-          },
-          {
-            "code" : "450538004",
-            "display" : "Listeria monocytogenes serotype 1/2c (organism)"
-          },
-          {
-            "code" : "450537009",
-            "display" : "Listeria monocytogenes serotype 1/2b (organism)"
-          },
-          {
-            "code" : "450546003",
-            "display" : "Listeria monocytogenes serotype 4d (organism)"
-          },
-          {
-            "code" : "258370001",
-            "display" : "Group 2 (qualifier value)"
-          },
-          {
-            "code" : "258374005",
-            "display" : "Group 3 (qualifier value)"
-          }
-        ]
-      }
-    ]
+        "code" : "258381003",
+        "display" : "Group 4 (qualifier value)"
+      },
+      {
+        "code" : "450536000",
+        "display" : "Listeria monocytogenes serotype 1/2a (organism)"
+      },
+      {
+        "code" : "450547007",
+        "display" : "Listeria monocytogenes serotype 4e (organism)"
+      },
+      {
+        "code" : "36094007",
+        "display" : "Listeria monocytogenes (organism)"
+      },
+      {
+        "code" : "450541008",
+        "display" : "Listeria monocytogenes serotype 3b (organism)"
+      },
+      {
+        "code" : "450539007",
+        "display" : "Listeria monocytogenes serotype 4b (organism)"
+      },
+      {
+        "code" : "450548002",
+        "display" : "Listeria monocytogenes serotype 7 (organism)"
+      },
+      {
+        "code" : "450540009",
+        "display" : "Listeria monocytogenes serotype 3a (organism)"
+      },
+      {
+        "code" : "258366009",
+        "display" : "Group 1 (qualifier value)"
+      },
+      {
+        "code" : "450538004",
+        "display" : "Listeria monocytogenes serotype 1/2c (organism)"
+      },
+      {
+        "code" : "450537009",
+        "display" : "Listeria monocytogenes serotype 1/2b (organism)"
+      },
+      {
+        "code" : "450546003",
+        "display" : "Listeria monocytogenes serotype 4d (organism)"
+      },
+      {
+        "code" : "258370001",
+        "display" : "Group 2 (qualifier value)"
+      },
+      {
+        "code" : "258374005",
+        "display" : "Group 3 (qualifier value)"
+      }]
+    }]
   }
 }
 

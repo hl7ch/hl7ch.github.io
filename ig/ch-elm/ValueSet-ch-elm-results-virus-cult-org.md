@@ -1,4 +1,4 @@
-# CH ELM Results Virus Cult Org - CH ELM (R4) v1.13.1
+# CH ELM Results Virus Cult Org - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-virus-cult-org | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmResultsVirusCultOrg |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-virus-cult-org | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmResultsVirusCultOrg |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,64 +47,52 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-virus-cult-org",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-virus-cult-org",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmResultsVirusCultOrg",
   "title" : "CH ELM Results Virus Cult Org",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "The \"CH ELM Results Virus Cult Org\" organism group provides a curated set of codes representing specific organisms. Each code within this group has been selected to ensure precise representation and consistency in relation to the primary LOINC codes. Clients utilizing the \"CH ELM Results Virus Cult Org\" group should refer to the provided codes to accurately and uniformly capture and report organism-related information.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "32323003",
+        "display" : "Tick-borne encephalitis virus (organism)"
+      },
       {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "32323003",
-            "display" : "Tick-borne encephalitis virus (organism)"
-          },
-          {
-            "code" : "34348001",
-            "display" : "Dengue virus (organism)"
-          },
-          {
-            "code" : "49445003",
-            "display" : "Genus Hantavirus (organism)"
-          },
-          {
-            "code" : "2423009",
-            "display" : "Chikungunya virus (organism)"
-          },
-          {
-            "code" : "57311007",
-            "display" : "West Nile virus (organism)"
-          }
-        ]
-      }
-    ]
+        "code" : "34348001",
+        "display" : "Dengue virus (organism)"
+      },
+      {
+        "code" : "49445003",
+        "display" : "Genus Hantavirus (organism)"
+      },
+      {
+        "code" : "2423009",
+        "display" : "Chikungunya virus (organism)"
+      },
+      {
+        "code" : "57311007",
+        "display" : "West Nile virus (organism)"
+      }]
+    }]
   }
 }
 

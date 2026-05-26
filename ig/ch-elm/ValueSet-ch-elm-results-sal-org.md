@@ -1,4 +1,4 @@
-# CH ELM Results Sal Org - CH ELM (R4) v1.13.1
+# CH ELM Results Sal Org - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sal-org | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmResultsSalOrg |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sal-org | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmResultsSalOrg |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,84 +47,72 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-sal-org",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sal-org",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmResultsSalOrg",
   "title" : "CH ELM Results Sal Org",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
   "description" : "The \"CH ELM Results Sal Org\" organism group provides a curated set of codes representing specific organisms. Each code within this group has been selected to ensure precise representation and consistency in relation to the primary LOINC codes. Clients utilizing the \"CH ELM Results Sal Org\" group should refer to the provided codes to accurately and uniformly capture and report organism-related information.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "85908006",
+        "display" : "Salmonella Paratyphi B (organism)"
+      },
       {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "85908006",
-            "display" : "Salmonella Paratyphi B (organism)"
-          },
-          {
-            "code" : "79128009",
-            "display" : "Salmonella Paratyphi A (organism)"
-          },
-          {
-            "code" : "5595000",
-            "display" : "Salmonella Typhi (organism)"
-          },
-          {
-            "code" : "1179072002",
-            "display" : "Salmonella group C (organism)"
-          },
-          {
-            "code" : "73525009",
-            "display" : "Salmonella Enteritidis (organism)"
-          },
-          {
-            "code" : "398467008",
-            "display" : "Salmonella group O:4 (organism)"
-          },
-          {
-            "code" : "32488009",
-            "display" : "Salmonella Paratyphi C (organism)"
-          },
-          {
-            "code" : "27268008",
-            "display" : "Genus Salmonella (organism)"
-          },
-          {
-            "code" : "1179032006",
-            "display" : "Salmonella group D (organism)"
-          },
-          {
-            "code" : "50136005",
-            "display" : "Salmonella Typhimurium (organism)"
-          }
-        ]
-      }
-    ]
+        "code" : "79128009",
+        "display" : "Salmonella Paratyphi A (organism)"
+      },
+      {
+        "code" : "5595000",
+        "display" : "Salmonella Typhi"
+      },
+      {
+        "code" : "1179072002",
+        "display" : "Salmonella group C (organism)"
+      },
+      {
+        "code" : "73525009",
+        "display" : "Salmonella Enteritidis (organism)"
+      },
+      {
+        "code" : "398467008",
+        "display" : "Salmonella group O:4 (organism)"
+      },
+      {
+        "code" : "32488009",
+        "display" : "Salmonella Paratyphi C (organism)"
+      },
+      {
+        "code" : "27268008",
+        "display" : "Genus Salmonella (organism)"
+      },
+      {
+        "code" : "1179032006",
+        "display" : "Salmonella group D (organism)"
+      },
+      {
+        "code" : "50136005",
+        "display" : "Salmonella Typhimurium (organism)"
+      }]
+    }]
   }
 }
 

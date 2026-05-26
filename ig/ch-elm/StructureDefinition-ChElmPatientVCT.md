@@ -1,4 +1,4 @@
-# CH ELM Patient VCT - CH ELM (R4) v1.13.1
+# CH ELM Patient VCT - CH ELM (R4) v1.14.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,18 +8,18 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientVCT | *Version*:1.13.1 |
-| Active as of 2026-01-21 | *Computable Name*:ChElmPatientVCT |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientVCT | *Version*:1.14.0 |
+| Active as of 2026-05-26 | *Computable Name*:ChElmPatientVCT |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
-Patient representation via a VCT Code 
+Patient representation via a VCT Code extension or local pid 
 
 **Usages:**
 
-* This Profile is not used by any profiles in this Implementation Guide
+* This Profile is not used by any profiles in this Specification
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-elm|current/StructureDefinition/ChElmPatientVCT)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-elm|current/StructureDefinition/StructureDefinition-ChElmPatientVCT.json)
 
 ### Formal Views of Profile Content
 
@@ -37,182 +37,152 @@ Other representations of profile: [CSV](StructureDefinition-ChElmPatientVCT.csv)
 {
   "resourceType" : "StructureDefinition",
   "id" : "ChElmPatientVCT",
-  "extension" : [
-    {
-      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-imposeProfile",
-      "valueCanonical" : "http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab"
-    }
-  ],
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-imposeProfile",
+    "valueCanonical" : "http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab"
+  }],
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientVCT",
-  "version" : "1.13.1",
+  "version" : "1.14.0",
   "name" : "ChElmPatientVCT",
   "title" : "CH ELM Patient VCT",
   "status" : "active",
-  "date" : "2026-01-21T11:21:00+00:00",
+  "date" : "2026-05-26T14:58:40+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
-  "contact" : [
-    {
-      "name" : "Federal Office of Public Health FOPH",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
-        }
-      ]
-    }
-  ],
-  "description" : "Patient representation via a VCT Code",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Federal Office of Public Health FOPH",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html"
+    }]
+  }],
+  "description" : "Patient representation via a VCT Code extension or local pid",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "eCH",
-      "uri" : "http://www.ech.ch/",
-      "name" : "eCH-Standards"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "cda",
-      "uri" : "http://hl7.org/v3/cda",
-      "name" : "CDA (R2)"
-    },
-    {
-      "identity" : "w5",
-      "uri" : "http://hl7.org/fhir/fivews",
-      "name" : "FiveWs Pattern Mapping"
-    },
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    },
-    {
-      "identity" : "loinc",
-      "uri" : "http://loinc.org",
-      "name" : "LOINC code for the element"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "eCH",
+    "uri" : "http://www.ech.ch/",
+    "name" : "eCH-Standards"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "cda",
+    "uri" : "http://hl7.org/v3/cda",
+    "name" : "CDA (R2)"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  },
+  {
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "loinc",
+    "uri" : "http://loinc.org",
+    "name" : "LOINC code for the element"
+  }],
   "kind" : "resource",
   "abstract" : false,
   "type" : "Patient",
   "baseDefinition" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-patient",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Patient",
-        "path" : "Patient",
-        "short" : "CH ELM Patient VCT"
-      },
-      {
-        "id" : "Patient.identifier:AHVN13",
-        "path" : "Patient.identifier",
-        "sliceName" : "AHVN13",
-        "max" : "0"
-      },
-      {
-        "id" : "Patient.identifier:IDN",
-        "path" : "Patient.identifier",
-        "sliceName" : "IDN",
-        "max" : "0"
-      },
-      {
-        "id" : "Patient.name.extension",
-        "path" : "Patient.name.extension",
-        "min" : 1
-      },
-      {
-        "id" : "Patient.name.extension:vctcode",
-        "path" : "Patient.name.extension",
-        "sliceName" : "vctcode",
-        "min" : 1
-      },
-      {
-        "id" : "Patient.name.extension:hivcode",
-        "path" : "Patient.name.extension",
-        "sliceName" : "hivcode",
-        "max" : "0"
-      },
-      {
-        "id" : "Patient.name.family.extension",
-        "path" : "Patient.name.family.extension",
-        "min" : 1
-      },
-      {
-        "id" : "Patient.name.family.extension:dataabsentreason",
-        "path" : "Patient.name.family.extension",
-        "sliceName" : "dataabsentreason",
-        "min" : 1
-      },
-      {
-        "id" : "Patient.name.family.extension:dataabsentreason.value[x]",
-        "path" : "Patient.name.family.extension.value[x]",
-        "patternCode" : "masked"
-      },
-      {
-        "id" : "Patient.name.given.extension",
-        "path" : "Patient.name.given.extension",
-        "min" : 1
-      },
-      {
-        "id" : "Patient.name.given.extension:dataabsentreason",
-        "path" : "Patient.name.given.extension",
-        "sliceName" : "dataabsentreason",
-        "min" : 1
-      },
-      {
-        "id" : "Patient.name.given.extension:dataabsentreason.value[x]",
-        "path" : "Patient.name.given.extension.value[x]",
-        "patternCode" : "masked"
-      },
-      {
-        "id" : "Patient.telecom",
-        "path" : "Patient.telecom",
-        "max" : "0"
-      },
-      {
-        "id" : "Patient.telecom:email",
-        "path" : "Patient.telecom",
-        "sliceName" : "email",
-        "max" : "0"
-      },
-      {
-        "id" : "Patient.telecom:phone",
-        "path" : "Patient.telecom",
-        "sliceName" : "phone",
-        "max" : "0"
-      },
-      {
-        "id" : "Patient.telecom:internet",
-        "path" : "Patient.telecom",
-        "sliceName" : "internet",
-        "max" : "0"
-      },
-      {
-        "id" : "Patient.address:home",
-        "path" : "Patient.address",
-        "sliceName" : "home"
-      },
-      {
-        "id" : "Patient.address:home.line",
-        "path" : "Patient.address.line",
-        "max" : "0"
-      }
-    ]
+    "element" : [{
+      "id" : "Patient",
+      "path" : "Patient",
+      "short" : "CH ELM Patient VCT"
+    },
+    {
+      "id" : "Patient.identifier",
+      "path" : "Patient.identifier",
+      "max" : "1"
+    },
+    {
+      "id" : "Patient.identifier:AHVN13",
+      "path" : "Patient.identifier",
+      "sliceName" : "AHVN13",
+      "max" : "0"
+    },
+    {
+      "id" : "Patient.identifier:IDN",
+      "path" : "Patient.identifier",
+      "sliceName" : "IDN",
+      "max" : "0"
+    },
+    {
+      "id" : "Patient.name.extension:hivcode",
+      "path" : "Patient.name.extension",
+      "sliceName" : "hivcode",
+      "max" : "0"
+    },
+    {
+      "id" : "Patient.name.family.extension",
+      "path" : "Patient.name.family.extension",
+      "min" : 1
+    },
+    {
+      "id" : "Patient.name.family.extension:dataabsentreason",
+      "path" : "Patient.name.family.extension",
+      "sliceName" : "dataabsentreason",
+      "min" : 1
+    },
+    {
+      "id" : "Patient.name.given.extension",
+      "path" : "Patient.name.given.extension",
+      "min" : 1
+    },
+    {
+      "id" : "Patient.name.given.extension:dataabsentreason",
+      "path" : "Patient.name.given.extension",
+      "sliceName" : "dataabsentreason",
+      "min" : 1
+    },
+    {
+      "id" : "Patient.telecom",
+      "path" : "Patient.telecom",
+      "max" : "0"
+    },
+    {
+      "id" : "Patient.telecom:email",
+      "path" : "Patient.telecom",
+      "sliceName" : "email",
+      "max" : "0"
+    },
+    {
+      "id" : "Patient.telecom:phone",
+      "path" : "Patient.telecom",
+      "sliceName" : "phone",
+      "max" : "0"
+    },
+    {
+      "id" : "Patient.telecom:internet",
+      "path" : "Patient.telecom",
+      "sliceName" : "internet",
+      "max" : "0"
+    },
+    {
+      "id" : "Patient.address:home",
+      "path" : "Patient.address",
+      "sliceName" : "home"
+    },
+    {
+      "id" : "Patient.address:home.line",
+      "path" : "Patient.address.line",
+      "max" : "0"
+    }]
   }
 }
 
