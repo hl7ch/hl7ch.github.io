@@ -1,4 +1,4 @@
-# Immunization example for Immunization Administration - CH Core (R4) v6.0.0
+# Immunization example for Immunization Administration - CH Core (R4) v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -7,11 +7,11 @@
 ## Example Immunization: Immunization example for Immunization Administration
 
 > **Entry Resource Cross References**
-* entry: Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.5.0/NamingSystem-uri.html)/urn:uuid:19aaeae7-05cc-4b97-9d03-a65ae4aac2ac
-* container: Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.5.0/NamingSystem-uri.html)/urn:uuid:1d118906-ede6-4109-bca1-0fc25f58bc69
+* entry: Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.3.0/NamingSystem-uri.html)/urn:uuid:19aaeae7-05cc-4b97-9d03-a65ae4aac2ac
+* container: Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.3.0/NamingSystem-uri.html)/urn:uuid:1d118906-ede6-4109-bca1-0fc25f58bc69
 * relationcode: replaces
 
-**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.5.0/NamingSystem-uri.html)/urn:uuid:9f326dee-1265-4b59-88b3-fd63bb2da934
+**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.3.0/NamingSystem-uri.html)/urn:uuid:9f326dee-1265-4b59-88b3-fd63bb2da934
 
 **status**: Completed
 
@@ -56,52 +56,44 @@ Der Patient hat diese Impfung ohne jegliche Nebenwirkungen gut vertragen.
 {
   "resourceType" : "Immunization",
   "id" : "ImmunizationEntry",
-  "extension" : [
-    {
-      "extension" : [
-        {
-          "url" : "entry",
-          "valueReference" : {
-            "type" : "Immunization",
-            "identifier" : {
-              "system" : "urn:ietf:rfc:3986",
-              "value" : "urn:uuid:19aaeae7-05cc-4b97-9d03-a65ae4aac2ac"
-            }
-          }
-        },
-        {
-          "url" : "container",
-          "valueReference" : {
-            "type" : "Composition",
-            "identifier" : {
-              "system" : "urn:ietf:rfc:3986",
-              "value" : "urn:uuid:1d118906-ede6-4109-bca1-0fc25f58bc69"
-            }
-          }
-        },
-        {
-          "url" : "relationcode",
-          "valueCode" : "replaces"
+  "extension" : [{
+    "extension" : [{
+      "url" : "entry",
+      "valueReference" : {
+        "type" : "Immunization",
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:19aaeae7-05cc-4b97-9d03-a65ae4aac2ac"
         }
-      ],
-      "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ext-entry-resource-cross-references"
-    }
-  ],
-  "identifier" : [
+      }
+    },
     {
-      "system" : "urn:ietf:rfc:3986",
-      "value" : "urn:uuid:9f326dee-1265-4b59-88b3-fd63bb2da934"
-    }
-  ],
+      "url" : "container",
+      "valueReference" : {
+        "type" : "Composition",
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:1d118906-ede6-4109-bca1-0fc25f58bc69"
+        }
+      }
+    },
+    {
+      "url" : "relationcode",
+      "valueCode" : "replaces"
+    }],
+    "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ext-entry-resource-cross-references"
+  }],
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:9f326dee-1265-4b59-88b3-fd63bb2da934"
+  }],
   "status" : "completed",
   "vaccineCode" : {
-    "coding" : [
-      {
-        "system" : "http://snomed.info/sct",
-        "code" : "871751006",
-        "display" : "Vaccine product containing only Hepatitis A virus antigen (medicinal product)"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "871751006",
+      "display" : "Vaccine product containing only Hepatitis A virus antigen (medicinal product)"
+    }]
   },
   "patient" : {
     "reference" : "http://test.fhir.ch/r4/Patient/MaxMuster"
@@ -110,46 +102,34 @@ Der Patient hat diese Impfung ohne jegliche Nebenwirkungen gut vertragen.
   "recorded" : "2021-06-02T00:00:00.390+02:00",
   "lotNumber" : "AHAVB946A",
   "route" : {
-    "coding" : [
-      {
-        "system" : "http://standardterms.edqm.eu",
-        "code" : "20035000",
-        "display" : "Intramuscular use"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://standardterms.edqm.eu",
+      "code" : "20035000",
+      "display" : "Intramuscular use"
+    }]
   },
-  "performer" : [
-    {
-      "actor" : {
-        "reference" : "http://test.fhir.ch/r4/Practitioner/AllzeitBereit"
-      }
+  "performer" : [{
+    "actor" : {
+      "reference" : "http://test.fhir.ch/r4/Practitioner/AllzeitBereit"
     }
-  ],
-  "note" : [
-    {
-      "authorReference" : {
-        "reference" : "http://test.fhir.ch/r4/Practitioner/AllzeitBereit"
-      },
-      "time" : "2021-06-01",
-      "text" : "Der Patient hat diese Impfung ohne jegliche Nebenwirkungen gut vertragen."
-    }
-  ],
-  "protocolApplied" : [
-    {
-      "targetDisease" : [
-        {
-          "coding" : [
-            {
-              "system" : "http://snomed.info/sct",
-              "code" : "40468003",
-              "display" : "Viral hepatitis, type A (disorder)"
-            }
-          ]
-        }
-      ],
-      "doseNumberPositiveInt" : 1
-    }
-  ]
+  }],
+  "note" : [{
+    "authorReference" : {
+      "reference" : "http://test.fhir.ch/r4/Practitioner/AllzeitBereit"
+    },
+    "time" : "2021-06-01",
+    "text" : "Der Patient hat diese Impfung ohne jegliche Nebenwirkungen gut vertragen."
+  }],
+  "protocolApplied" : [{
+    "targetDisease" : [{
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "40468003",
+        "display" : "Viral hepatitis, type A (disorder)"
+      }]
+    }],
+    "doseNumberPositiveInt" : 1
+  }]
 }
 
 ```

@@ -1,4 +1,4 @@
-# CH Core Range with EMED Units - CH Core (R4) v6.0.0
+# CH Core Range with EMED Units - CH Core (R4) v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-range-with-emed-units | *Version*:6.0.0 |
-| Active as of 2025-12-16 | *Computable Name*:CHCoreRangeWithEmedUnits |
+| *Official URL*:http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-range-with-emed-units | *Version*:7.0.0-ballot |
+| Active as of 2026-06-10 | *Computable Name*:CHCoreRangeWithEmedUnits |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -19,7 +19,7 @@ A range with defined quantity/units
 
 * Use this DataType Profile: [CH Core Dosage](StructureDefinition-ch-core-dosage.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-core|current/StructureDefinition/ch-core-range-with-emed-units)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-core|current/StructureDefinition/StructureDefinition-ch-core-range-with-emed-units.json)
 
 ### Formal Views of Profile Content
 
@@ -38,90 +38,68 @@ Other representations of profile: [CSV](StructureDefinition-ch-core-range-with-e
   "resourceType" : "StructureDefinition",
   "id" : "ch-core-range-with-emed-units",
   "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-range-with-emed-units",
-  "version" : "6.0.0",
+  "version" : "7.0.0-ballot",
   "name" : "CHCoreRangeWithEmedUnits",
   "title" : "CH Core Range with EMED Units",
   "status" : "active",
-  "date" : "2025-12-16T08:02:49+00:00",
+  "date" : "2026-06-10T15:05:01+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "A range with defined quantity/units",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  }],
   "kind" : "complex-type",
   "abstract" : false,
   "type" : "Range",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Range",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Range.low",
-        "path" : "Range.low",
-        "type" : [
-          {
-            "code" : "Quantity",
-            "profile" : [
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-quantity-with-emed-units"
-            ]
-          }
-        ]
-      },
-      {
-        "id" : "Range.high",
-        "path" : "Range.high",
-        "type" : [
-          {
-            "code" : "Quantity",
-            "profile" : [
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-quantity-with-emed-units"
-            ]
-          }
-        ]
-      }
-    ]
+    "element" : [{
+      "id" : "Range.low",
+      "path" : "Range.low",
+      "type" : [{
+        "code" : "Quantity",
+        "profile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-quantity-with-emed-units"]
+      }]
+    },
+    {
+      "id" : "Range.high",
+      "path" : "Range.high",
+      "type" : [{
+        "code" : "Quantity",
+        "profile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-quantity-with-emed-units"]
+      }]
+    }]
   }
 }
 

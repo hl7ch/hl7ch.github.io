@@ -1,4 +1,4 @@
-# Place of Birth according to eCH-0011 - CH Core (R4) v6.0.0
+# Place of Birth according to eCH-0011 - CH Core (R4) v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-ech-11-placeofbirth | *Version*:6.0.0 |
-| Active as of 2025-12-16 | *Computable Name*:ChCorePatientEch11PlaceOfBirth |
+| *Official URL*:http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-ech-11-placeofbirth | *Version*:7.0.0-ballot |
+| Active as of 2026-06-10 | *Computable Name*:ChCorePatientEch11PlaceOfBirth |
 | **Copyright/Legal**: CC0-1.0 | |
 
 The registered place of birth of the patient.
@@ -22,7 +22,7 @@ The registered place of birth of the patient.
 
 * Use this Extension: [CH Core Patient](StructureDefinition-ch-core-patient.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-core|current/StructureDefinition/ch-core-patient-ech-11-placeofbirth)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-core|current/StructureDefinition/StructureDefinition-ch-core-patient-ech-11-placeofbirth.json)
 
 ### Formal Views of Extension Content
 
@@ -42,92 +42,70 @@ Other representations of profile: [CSV](StructureDefinition-ch-core-patient-ech-
 {
   "resourceType" : "StructureDefinition",
   "id" : "ch-core-patient-ech-11-placeofbirth",
-  "extension" : [
-    {
-      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
-      "valueCode" : "can-bind"
-    }
-  ],
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+    "valueCode" : "can-bind"
+  }],
   "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-ech-11-placeofbirth",
-  "version" : "6.0.0",
+  "version" : "7.0.0-ballot",
   "name" : "ChCorePatientEch11PlaceOfBirth",
   "title" : "Place of Birth according to eCH-0011",
   "status" : "active",
-  "date" : "2025-12-16T08:02:49+00:00",
+  "date" : "2026-06-10T15:05:01+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "The registered place of birth of the patient.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  }],
   "kind" : "complex-type",
   "abstract" : false,
-  "context" : [
-    {
-      "type" : "element",
-      "expression" : "Patient"
-    }
-  ],
+  "context" : [{
+    "type" : "element",
+    "expression" : "Patient"
+  }],
   "type" : "Extension",
-  "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/patient-birthPlace|5.3.0-ballot-tc1",
+  "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/patient-birthPlace|5.3.0",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Extension",
-        "path" : "Extension",
-        "short" : "Place of birth for patient according to eCH-0011",
-        "definition" : "The registered place of birth of the patient."
-      },
-      {
-        "id" : "Extension.value[x]",
-        "path" : "Extension.value[x]",
-        "type" : [
-          {
-            "code" : "Address",
-            "profile" : [
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-address-ech-11-placeofbirth"
-            ]
-          }
-        ]
-      }
-    ]
+    "element" : [{
+      "id" : "Extension",
+      "path" : "Extension",
+      "short" : "Place of birth for patient according to eCH-0011",
+      "definition" : "The registered place of birth of the patient."
+    },
+    {
+      "id" : "Extension.value[x]",
+      "path" : "Extension.value[x]",
+      "type" : [{
+        "code" : "Address",
+        "profile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-address-ech-11-placeofbirth"]
+      }]
+    }]
   }
 }
 

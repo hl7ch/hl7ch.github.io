@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Artifacts Summary - CH Core (R4) v6.0.0</title>
+    <title>Artifacts Summary - CH Core (R4) v7.0.0-ballot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -80,7 +80,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">CH Core (R4)</span>
             <br/>
-            <span style="display:inline-block;">6.0.0 - trial-use
+            <span style="display:inline-block;">7.0.0-ballot - ballot
 
 
 
@@ -171,7 +171,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH Core (R4) (v6.0.0: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 6) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH Core (R4) (v7.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 7 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-core/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Artifacts Summary</h2>
   
   
@@ -183,16 +183,25 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
    <p>Contents:</p>
    <ul>
       <li>
-         <a href="#1">Structures: Resource Profiles</a>
+         <a href="#1">Behavior: Search Parameters</a>
       </li>
       <li>
-         <a href="#2">Structures: Data Type Profiles</a>
+         <a href="#2">Structures: Resource Profiles</a>
       </li>
       <li>
-         <a href="#3">Structures: Extension Definitions</a>
+         <a href="#3">Structures: Data Type Profiles</a>
       </li>
       <li>
-         <a href="#4">Example: Example Instances</a>
+         <a href="#4">Structures: Extension Definitions</a>
+      </li>
+      <li>
+         <a href="#5">Terminology: Value Sets</a>
+      </li>
+      <li>
+         <a href="#6">Terminology: Code Systems</a>
+      </li>
+      <li>
+         <a href="#7">Example: Example Instances</a>
       </li>
    </ul>
 </div>
@@ -201,6 +210,23 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
      xmlns:html="http://www.w3.org/1999/xhtml">
    <p>This page provides a list of the FHIR artifacts defined as part of this implementation guide.</p>
    <a name="1"> </a>
+   <h3>Behavior: Search Parameters </h3>
+    <p>These define the properties by which a RESTful server can be searched.  They can also be used for sorting and including related resources.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="SearchParameter-ConsentProvisionCodeSearch.html"
+                  title="SearchParameter/ConsentProvisionCodeSearch">ConsentProvisionCodeSearch</a>
+            </td>
+            <td>
+<p>Enables the search for Consent.provision.code.coding</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="2"> </a>
    <h3>Structures: Resource Profiles </h3>
     <p>These define constraints on FHIR resources for systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -249,6 +275,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
             </td>
             <td>
 <p>Base definition of the Condition resource for use in Swiss specific use cases.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-CHCoreConsent.html"
+                  title="StructureDefinition/CHCoreConsent">CH Core Consent</a>
+            </td>
+            <td>
+<p>Base definition of the Consent resource for use in Swiss specific use cases. Uses the cross-version profile from hl7.fhir.uv.xver-r5.r4 to expose R5 Consent fields (grantor, manager, controller, decision, …) as extensions on R4 Consent.</p>
 </td>
          </tr>
          <tr>
@@ -306,6 +341,15 @@ This profile is used by healthcare organizations to track which patients have an
             </td>
             <td>
 <p>Base definition of the Encounter resource for use in Swiss specific use cases.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-CHCoreGeneralConsent.html"
+                  title="StructureDefinition/CHCoreGeneralConsent">CH Core General Consent</a>
+            </td>
+            <td>
+<p>Specialization of CHCoreConsent for the Unimedsuisse Generalkonsent (GC).</p>
 </td>
          </tr>
          <tr>
@@ -474,7 +518,7 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
          </tr>
       </tbody>
    </table>
-   <a name="2"> </a>
+   <a name="3"> </a>
    <h3>Structures: Data Type Profiles </h3>
     <p>These define constraints on FHIR data types for systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -653,7 +697,7 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
          </tr>
       </tbody>
    </table>
-   <a name="3"> </a>
+   <a name="4"> </a>
    <h3>Structures: Extension Definitions </h3>
     <p>These define constraints on FHIR data types for systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -705,6 +749,15 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
             </td>
             <td>
 <p>BFS Extension Discharge Décision for Encounter</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-ch-ext-bfs-ms-encountertype.html"
+                  title="StructureDefinition/ch-ext-bfs-ms-encountertype">BFS Extension Medical Statistic: Encounter Type (Class) for Encounter</a>
+            </td>
+            <td>
+<p>BFS Extension Encounter Type (Class) for Encounter</p>
 </td>
          </tr>
          <tr>
@@ -786,6 +839,15 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
             </td>
             <td>
 <p>Extension to define an encounter that is caused by an accident and at which time the accident happened</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-ch-ext-epl-regulated-authorization-limitation-indication-code.html"
+                  title="StructureDefinition/ch-ext-epl-regulated-authorization-limitation-indication-code">Indication Code</a>
+            </td>
+            <td>
+<p>Indication Code, as defined by the <a href="https://fhir.ch/ig/ch-epl/index.html">FOPH list of healthcare benefits</a> to be conveyed when referring to prescription/dispense/billing of medicinal products subject to a price model as defined by the FOPH.</p>
 </td>
          </tr>
          <tr>
@@ -891,7 +953,59 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
          </tr>
       </tbody>
    </table>
-   <a name="4"> </a>
+   <a name="5"> </a>
+   <h3>Terminology: Value Sets </h3>
+    <p>These define sets of codes used by systems conforming to this implementation guide.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-CHCoreGeneralConsentStateVS.html"
+                  title="ValueSet/CHCoreGeneralConsentStateVS">CH Core General Consent State</a>
+            </td>
+            <td>
+<p>Allowed status values for CH Core General Consent: only active and inactive.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-ConsentCategoriesVS.html"
+                  title="ValueSet/ConsentCategoriesVS">ConsentCategoriesVS</a>
+            </td>
+            <td>
+<p>ValueSet of all used codes for the Consent.category</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-ConsentProvisionCodesVS.html"
+                  title="ValueSet/ConsentProvisionCodesVS">ConsentProvisionCodesVS</a>
+            </td>
+            <td>
+<p>ValueSet of all used codes for Consent.provision.code</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="6"> </a>
+   <h3>Terminology: Code Systems </h3>
+    <p>These define new code systems used by systems conforming to this implementation guide.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CodeSystem-ConsentProvisionCodesCS.html"
+                  title="CodeSystem/ConsentProvisionCodesCS">ConsentProvisionCodesCS</a>
+            </td>
+            <td>
+<p>Code System for Consents that are specificaly used in Switzerland</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="7"> </a>
    <h3>Example: Example Instances </h3>
     <p>These are example instances that show what data produced and consumed by systems conforming with this implementation guide might look like.</p>
 <table class="grid">
@@ -979,6 +1093,15 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="Immunization-CHCoreImmunizationExampleNUVA.html"
+                  title="Immunization/CHCoreImmunizationExampleNUVA">CH Core Immunization Example NUVA</a>
+            </td>
+            <td>
+<p>Example of Immunization resource with NUVA vaccineCode.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="ImmunizationRecommendation-CHCoreImmunizationRecommendationExample.html"
                   title="ImmunizationRecommendation/CHCoreImmunizationRecommendationExample">CH Core ImmunizationRecommendation Example</a>
             </td>
@@ -997,6 +1120,15 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="HealthcareService-healthcareService-DemoCIS.html"
+                  title="HealthcareService/healthcareService-DemoCIS">Clinical Information System</a>
+            </td>
+            <td>
+<p>Example of a Clinical Information System used in CH Core Consent profile</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="Consent-PatientHasEpr.html" title="Consent/PatientHasEpr">Consent for Swiss EPR</a>
             </td>
             <td>
@@ -1010,6 +1142,15 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
             </td>
             <td>
 <p>Consent that Patient has a Swiss EPR but exclude it for a specific Encounter</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Consent-PatPortalParticipation-accepted.html"
+                  title="Consent/PatPortalParticipation-accepted">Consent for participation in a Patient Portal</a>
+            </td>
+            <td>
+<p>Example of a Consent for participation in a Patient Portal accepted by the patient</p>
 </td>
          </tr>
          <tr>
@@ -1071,6 +1212,22 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
             </td>
             <td>
 <p>Patient with place of birth, place of origin (Heimatort), religion, local PID and language of correspondence</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Consent-GC-accepted.html" title="Consent/GC-accepted">General Consent accepted</a>
+            </td>
+            <td>
+<p>Example of a General Consent accepted by the patient</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Consent-GC-denied.html" title="Consent/GC-denied">General Consent denied</a>
+            </td>
+            <td>
+<p>Example of a General Consent denied by a legal representative</p>
 </td>
          </tr>
          <tr>
@@ -1177,6 +1334,33 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="MedicationDispense-MedDisAbirateron.html"
+                  title="MedicationDispense/MedDisAbirateron">Medication dispense of Abirateron</a>
+            </td>
+            <td>
+<p>Instance of a medication dispense of Abirateron, which is a drug subject to the FOPH price model and exemplifies the usage of the indication code extension.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="MedicationRequest-MedReqAbirateron.html"
+                  title="MedicationRequest/MedReqAbirateron">MedicationRequest with Abirateron</a>
+            </td>
+            <td>
+<p>Instance of a medication request with Abirateron, which is a drug subject to the FOPH price model and exemplifies the usage of the indication code extension.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="MedicationStatement-MedicationStatementAbirateron.html"
+                  title="MedicationStatement/MedicationStatementAbirateron">MedicationStatement with Abirateron</a>
+            </td>
+            <td>
+<p>Instance of a medication statement with Abirateron, which is a drug subject to the FOPH price model and exemplifies the usage of the indication code extension.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="Organization-ImmunizationOrganizationExample.html"
                   title="Organization/ImmunizationOrganizationExample">Organization example for immunization</a>
             </td>
@@ -1191,6 +1375,15 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
             </td>
             <td>
 <p>Example for Composition Immunization Administration</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="HealthcareService-healthcareService-DemoPatientPortal.html"
+                  title="HealthcareService/healthcareService-DemoPatientPortal">Patient Portal</a>
+            </td>
+            <td>
+<p>Example of a Patient Portal used in CH Core Consent profile</p>
 </td>
          </tr>
          <tr>
@@ -1335,7 +1528,7 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-core#6.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Dec 16, 2025 08:02+0000">2025-12-16</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-core#7.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jun 10, 2026 15:05+0000">2026-06-10</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -1343,7 +1536,7 @@ See also <a href="https://www.bfs.admin.ch/bfs/de/home/register/personenregister
                  
                 
 
-| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeZjRSISsMmPJawlA6EbFNg1kQyu013AilssLb5AohZ2vUCDw/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-core%236.0.0%20/artifacts.html&amp;entry%2E247644557=Artifacts%20Summary">Propose a change</a>
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeZjRSISsMmPJawlA6EbFNg1kQyu013AilssLb5AohZ2vUCDw/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-core%237.0.0-ballot%20/artifacts.html&amp;entry%2E247644557=Artifacts%20Summary">Propose a change</a>
 
 
 

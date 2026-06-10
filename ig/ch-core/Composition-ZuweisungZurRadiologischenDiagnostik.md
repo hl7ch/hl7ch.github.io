@@ -1,4 +1,4 @@
-# Zuweisung zur radiologischen Diagnostik - CH Core (R4) v6.0.0
+# Zuweisung zur radiologischen Diagnostik - CH Core (R4) v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -10,7 +10,7 @@ Language: de-CH
 
 Profiles: [CH Core Composition](StructureDefinition-ch-core-composition.md), [CH Core Composition EPR](StructureDefinition-ch-core-composition-epr.md)
 
-**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.5.0/NamingSystem-uri.html)/urn:uuid:31397b31-be60-47e1-bec6-f37816d42b0c
+**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.3.0/NamingSystem-uri.html)/urn:uuid:31397b31-be60-47e1-bec6-f37816d42b0c
 
 **status**: Final
 
@@ -42,10 +42,8 @@ Profiles: [CH Core Composition](StructureDefinition-ch-core-composition.md), [CH
   "resourceType" : "Composition",
   "id" : "ZuweisungZurRadiologischenDiagnostik",
   "meta" : {
-    "profile" : [
-      "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-composition",
-      "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-composition-epr"
-    ]
+    "profile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-composition",
+    "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-composition-epr"]
   },
   "language" : "de-CH",
   "identifier" : {
@@ -54,95 +52,83 @@ Profiles: [CH Core Composition](StructureDefinition-ch-core-composition.md), [CH
   },
   "status" : "final",
   "type" : {
-    "coding" : [
-      {
-        "system" : "http://loinc.org",
-        "code" : "28616-1",
-        "display" : "Physician Transfer note"
-      },
-      {
-        "system" : "http://snomed.info/sct",
-        "code" : "371535009",
-        "display" : "Transfer summary report"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://loinc.org",
+      "code" : "28616-1",
+      "display" : "Physician Transfer note"
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "code" : "371535009",
+      "display" : "Transfer summary report"
+    }]
   },
   "subject" : {
     "reference" : "Patient/MaxMuster"
   },
   "date" : "2017-10-03T17:33:00+01:00",
-  "author" : [
-    {
-      "reference" : "Practitioner/AllzeitBereit"
-    }
-  ],
+  "author" : [{
+    "reference" : "Practitioner/AllzeitBereit"
+  }],
   "title" : "Zuweisung zur Radiologischen Diagnostik",
   "confidentiality" : "N",
   "_confidentiality" : {
-    "extension" : [
-      {
-        "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode",
-        "valueCodeableConcept" : {
-          "coding" : [
-            {
-              "system" : "http://snomed.info/sct",
-              "code" : "17621005",
-              "display" : "Normal"
-            }
-          ]
-        }
+    "extension" : [{
+      "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "17621005",
+          "display" : "Normal"
+        }]
       }
-    ]
+    }]
   },
-  "attester" : [
-    {
-      "mode" : "legal",
-      "time" : "2017-10-03",
-      "party" : {
-        "reference" : "Practitioner/AllzeitBereit"
-      }
+  "attester" : [{
+    "mode" : "legal",
+    "time" : "2017-10-03",
+    "party" : {
+      "reference" : "Practitioner/AllzeitBereit"
     }
-  ],
+  }],
   "custodian" : {
     "reference" : "Organization/GruppenpraxisCH"
   },
-  "section" : [
-    {
-      "title" : "Gewünschte Untersuchung",
-      "text" : {
-        "status" : "additional",
-        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">Der Patient erwartet Ihr Aufgebot zur Untersuchung.<br/><i>Spezifizierung der gewünschten Untersuchung</i><br/></div>"
-      }
-    },
-    {
-      "title" : "Dringlichkeit / Wunschtermin",
-      "text" : {
-        "status" : "additional",
-        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><i>Angaben zum gewünschten Termin</i></div>"
-      }
-    },
-    {
-      "title" : "Fragestellung",
-      "text" : {
-        "status" : "additional",
-        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><i>Grund für die Durchführung der Untersuchung und Angaben zum aktuellen Leiden resp. zum Grund der Untersuchung</i></div>"
-      }
-    },
-    {
-      "title" : "Angaben zum Patienten",
-      "text" : {
-        "status" : "additional",
-        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><i>Erfolgte Voruntersuchungen<br/>Befundkopie – Empfänger</i><br/></div>"
-      }
-    },
-    {
-      "title" : "Klinische Angaben",
-      "text" : {
-        "status" : "additional",
-        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><i>Beschreibung des aktuellen Leidens<br/>Schwangerschaft ja / nein<br/>Laborwerte (Quick / Tc, Kreatinin)<br/>Bekannte Allergien</i><br/></div>"
-      }
+  "section" : [{
+    "title" : "Gewünschte Untersuchung",
+    "text" : {
+      "status" : "additional",
+      "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">Der Patient erwartet Ihr Aufgebot zur Untersuchung.<br/><i>Spezifizierung der gewünschten Untersuchung</i><br/></div>"
     }
-  ]
+  },
+  {
+    "title" : "Dringlichkeit / Wunschtermin",
+    "text" : {
+      "status" : "additional",
+      "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><i>Angaben zum gewünschten Termin</i></div>"
+    }
+  },
+  {
+    "title" : "Fragestellung",
+    "text" : {
+      "status" : "additional",
+      "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><i>Grund für die Durchführung der Untersuchung und Angaben zum aktuellen Leiden resp. zum Grund der Untersuchung</i></div>"
+    }
+  },
+  {
+    "title" : "Angaben zum Patienten",
+    "text" : {
+      "status" : "additional",
+      "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><i>Erfolgte Voruntersuchungen<br/>Befundkopie – Empfänger</i><br/></div>"
+    }
+  },
+  {
+    "title" : "Klinische Angaben",
+    "text" : {
+      "status" : "additional",
+      "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><i>Beschreibung des aktuellen Leidens<br/>Schwangerschaft ja / nein<br/>Laborwerte (Quick / Tc, Kreatinin)<br/>Bekannte Allergien</i><br/></div>"
+    }
+  }]
 }
 
 ```

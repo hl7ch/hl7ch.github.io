@@ -1,4 +1,4 @@
-# Treatment Reason - CH Core (R4) v6.0.0
+# Treatment Reason - CH Core (R4) v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-treatmentreason | *Version*:6.0.0 |
-| Active as of 2025-12-16 | *Computable Name*:CHEMEDExtTreatmentReason |
+| *Official URL*:http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-treatmentreason | *Version*:7.0.0-ballot |
+| Active as of 2026-06-10 | *Computable Name*:CHEMEDExtTreatmentReason |
 | **Copyright/Legal**: CC0-1.0 | |
 
 Extension to represent the treatment reason
@@ -22,7 +22,7 @@ Extension to represent the treatment reason
 
 * Use this Extension: [CH Core MedicationDispense](StructureDefinition-ch-core-medicationdispense.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-core|current/StructureDefinition/ch-emed-ext-treatmentreason)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-core|current/StructureDefinition/StructureDefinition-ch-emed-ext-treatmentreason.json)
 
 ### Formal Views of Extension Content
 
@@ -43,88 +43,70 @@ Other representations of profile: [CSV](StructureDefinition-ch-emed-ext-treatmen
   "resourceType" : "StructureDefinition",
   "id" : "ch-emed-ext-treatmentreason",
   "url" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-treatmentreason",
-  "version" : "6.0.0",
+  "version" : "7.0.0-ballot",
   "name" : "CHEMEDExtTreatmentReason",
   "title" : "Treatment Reason",
   "status" : "active",
-  "date" : "2025-12-16T08:02:49+00:00",
+  "date" : "2026-06-10T15:05:01+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Extension to represent the treatment reason",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  }],
   "kind" : "complex-type",
   "abstract" : false,
-  "context" : [
-    {
-      "type" : "element",
-      "expression" : "MedicationDispense"
-    }
-  ],
+  "context" : [{
+    "type" : "element",
+    "expression" : "MedicationDispense"
+  }],
   "type" : "Extension",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Extension",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Extension.extension",
-        "path" : "Extension.extension",
-        "max" : "0"
-      },
-      {
-        "id" : "Extension.url",
-        "path" : "Extension.url",
-        "fixedUri" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-treatmentreason"
-      },
-      {
-        "id" : "Extension.value[x]",
-        "path" : "Extension.value[x]",
-        "short" : "Treatment reason",
-        "min" : 1,
-        "type" : [
-          {
-            "code" : "string"
-          }
-        ]
-      }
-    ]
+    "element" : [{
+      "id" : "Extension.extension",
+      "path" : "Extension.extension",
+      "max" : "0"
+    },
+    {
+      "id" : "Extension.url",
+      "path" : "Extension.url",
+      "fixedUri" : "http://fhir.ch/ig/ch-emed/StructureDefinition/ch-emed-ext-treatmentreason"
+    },
+    {
+      "id" : "Extension.value[x]",
+      "path" : "Extension.value[x]",
+      "short" : "Treatment reason",
+      "min" : 1,
+      "type" : [{
+        "code" : "string"
+      }]
+    }]
   }
 }
 
