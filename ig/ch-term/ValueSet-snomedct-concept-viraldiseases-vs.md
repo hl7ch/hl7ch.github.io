@@ -1,4 +1,4 @@
-# Snomed CT Concept Viral Diseases - CH Term (R4) v3.3.0
+# Snomed CT Concept Viral Diseases - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-term/ValueSet/snomedct-concept-viraldiseases-vs | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:SnomedCTConceptViralDiseases |
+| *Official URL*:http://fhir.ch/ig/ch-term/ValueSet/snomedct-concept-viraldiseases-vs | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:SnomedCTConceptViralDiseases |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,69 +47,53 @@ The list of viral diseases by Snomed CT codes.
   "resourceType" : "ValueSet",
   "id" : "snomedct-concept-viraldiseases-vs",
   "url" : "http://fhir.ch/ig/ch-term/ValueSet/snomedct-concept-viraldiseases-vs",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "SnomedCTConceptViralDiseases",
   "title" : "Snomed CT Concept Viral Diseases",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "The list of viral diseases by Snomed CT codes.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "is-a",
-            "value" : "34014006"
-          }
-        ]
-      },
-      {
-        "system" : "http://snomed.info/sct",
-        "filter" : [
-          {
-            "property" : "concept",
-            "op" : "descendent-of",
-            "value" : "34014006"
-          }
-        ]
-      }
-    ]
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "34014006"
+      }]
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "descendent-of",
+        "value" : "34014006"
+      }]
+    }]
   }
 }
 

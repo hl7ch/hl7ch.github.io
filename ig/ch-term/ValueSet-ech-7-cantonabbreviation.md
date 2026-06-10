@@ -1,4 +1,4 @@
-# eCH-0007 Canton Abbreviation - CH Term (R4) v3.3.0
+# eCH-0007 Canton Abbreviation - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-core/ValueSet/ech-7-cantonabbreviation | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:ECH007CantonAbbreviation |
+| *Official URL*:http://fhir.ch/ig/ch-core/ValueSet/ech-7-cantonabbreviation | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:ECH007CantonAbbreviation |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,62 +47,46 @@ eCH-0007: Each municipality has a unique cantonal affiliation, which can be defi
   "resourceType" : "ValueSet",
   "id" : "ech-7-cantonabbreviation",
   "url" : "http://fhir.ch/ig/ch-core/ValueSet/ech-7-cantonabbreviation",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "ECH007CantonAbbreviation",
   "title" : "eCH-0007 Canton Abbreviation",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "eCH-0007: Each municipality has a unique cantonal affiliation, which can be defined by the cantonal abbreviation commonly used in Switzerland.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://fhir.ch/ig/ch-core/CodeSystem/ech-7-cantonflabbreviation"
-      }
-    ],
-    "exclude" : [
-      {
-        "system" : "http://fhir.ch/ig/ch-core/CodeSystem/ech-7-cantonflabbreviation",
-        "concept" : [
-          {
-            "code" : "FL"
-          }
-        ]
-      }
-    ]
+    "include" : [{
+      "system" : "http://fhir.ch/ig/ch-core/CodeSystem/ech-7-cantonflabbreviation"
+    }],
+    "exclude" : [{
+      "system" : "http://fhir.ch/ig/ch-core/CodeSystem/ech-7-cantonflabbreviation",
+      "concept" : [{
+        "code" : "FL"
+      }]
+    }]
   }
 }
 

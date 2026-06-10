@@ -1,4 +1,4 @@
-# CH AllergyIntolerance Severity Status - CH Term (R4) v3.3.0
+# CH AllergyIntolerance Severity Status - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-severity-supplement | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:AllergyIntoleranceSeverityStatus |
+| *Official URL*:http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-severity-supplement | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:AllergyIntoleranceSeverityStatus |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,104 +28,86 @@ Code supplement with translations of CHAllergyIntolerance severity status
   "resourceType" : "CodeSystem",
   "id" : "allergyintolerance-severity-supplement",
   "url" : "http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-severity-supplement",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "AllergyIntoleranceSeverityStatus",
   "title" : "CH AllergyIntolerance Severity Status",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Code supplement with translations of CHAllergyIntolerance severity status",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "content" : "supplement",
   "supplements" : "http://hl7.org/fhir/reaction-event-severity",
-  "concept" : [
-    {
-      "code" : "mild",
-      "display" : "Mild",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Mild"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Faible"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Lieve"
-        }
-      ]
+  "concept" : [{
+    "code" : "mild",
+    "display" : "Mild",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Mild"
     },
     {
-      "code" : "moderate",
-      "display" : "Moderate",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Moderat"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Moyen"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Moderata"
-        }
-      ]
+      "language" : "fr-CH",
+      "value" : "Faible"
     },
     {
-      "code" : "severe",
-      "display" : "Severe",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Schwer"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Grave"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Grave"
-        }
-      ]
-    }
-  ]
+      "language" : "it-CH",
+      "value" : "Lieve"
+    }]
+  },
+  {
+    "code" : "moderate",
+    "display" : "Moderate",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Moderat"
+    },
+    {
+      "language" : "fr-CH",
+      "value" : "Moyen"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "Moderata"
+    }]
+  },
+  {
+    "code" : "severe",
+    "display" : "Severe",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Schwer"
+    },
+    {
+      "language" : "fr-CH",
+      "value" : "Grave"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "Grave"
+    }]
+  }]
 }
 
 ```

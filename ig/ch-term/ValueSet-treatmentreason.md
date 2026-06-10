@@ -1,4 +1,4 @@
-# Treatment Reason - CH Term (R4) v3.3.0
+# Treatment Reason - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-term/ValueSet/treatmentreason | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:TreatmentReason |
+| *Official URL*:http://fhir.ch/ig/ch-term/ValueSet/treatmentreason | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:TreatmentReason |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,78 +47,64 @@ Value set including the values for the treatment reason.
   "resourceType" : "ValueSet",
   "id" : "treatmentreason",
   "url" : "http://fhir.ch/ig/ch-term/ValueSet/treatmentreason",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "TreatmentReason",
   "title" : "Treatment Reason",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Value set including the values for the treatment reason.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "64572001",
+        "display" : "Disease"
+      },
       {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "64572001",
-            "display" : "Disease"
-          },
-          {
-            "code" : "55566008",
-            "display" : "Accident"
-          },
-          {
-            "code" : "77386006",
-            "display" : "Pregnancy"
-          },
-          {
-            "code" : "169443000",
-            "display" : "Prevention"
-          },
-          {
-            "code" : "276720006",
-            "display" : "Birth defect"
-          },
-          {
-            "code" : "261665006",
-            "display" : "Unknown"
-          }
-        ]
-      }
-    ]
+        "code" : "55566008",
+        "display" : "Accident"
+      },
+      {
+        "code" : "77386006",
+        "display" : "Pregnancy"
+      },
+      {
+        "code" : "169443000",
+        "display" : "Prevention"
+      },
+      {
+        "code" : "276720006",
+        "display" : "Birth defect"
+      },
+      {
+        "code" : "261665006",
+        "display" : "Unknown"
+      }]
+    }]
   }
 }
 

@@ -1,4 +1,4 @@
-# CH AllergyIntolerance Clinical Status - CH Term (R4) v3.3.0
+# CH AllergyIntolerance Clinical Status - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-clinical-supplement | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:AllergyIntoleranceClinicalStatus |
+| *Official URL*:http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-clinical-supplement | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:AllergyIntoleranceClinicalStatus |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,104 +28,86 @@ Code supplement with translations of CHAllergyIntolerance clinical status
   "resourceType" : "CodeSystem",
   "id" : "allergyintolerance-clinical-supplement",
   "url" : "http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-clinical-supplement",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "AllergyIntoleranceClinicalStatus",
   "title" : "CH AllergyIntolerance Clinical Status",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Code supplement with translations of CHAllergyIntolerance clinical status",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "content" : "supplement",
   "supplements" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-  "concept" : [
-    {
-      "code" : "active",
-      "display" : "Active",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Aktiv"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Actif"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Attiva"
-        }
-      ]
+  "concept" : [{
+    "code" : "active",
+    "display" : "Active",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Aktiv"
     },
     {
-      "code" : "inactive",
-      "display" : "Inactive",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Inaktiv"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Inactif"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Inattiva"
-        }
-      ]
+      "language" : "fr-CH",
+      "value" : "Actif"
     },
     {
-      "code" : "resolved",
-      "display" : "Resolved",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Behoben"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Résolu"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Risolta"
-        }
-      ]
-    }
-  ]
+      "language" : "it-CH",
+      "value" : "Attiva"
+    }]
+  },
+  {
+    "code" : "inactive",
+    "display" : "Inactive",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Inaktiv"
+    },
+    {
+      "language" : "fr-CH",
+      "value" : "Inactif"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "Inattiva"
+    }]
+  },
+  {
+    "code" : "resolved",
+    "display" : "Resolved",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Behoben"
+    },
+    {
+      "language" : "fr-CH",
+      "value" : "Résolu"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "Risolta"
+    }]
+  }]
 }
 
 ```

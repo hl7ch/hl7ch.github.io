@@ -1,4 +1,4 @@
-# CH AllergyIntolerance Verification Status - CH Term (R4) v3.3.0
+# CH AllergyIntolerance Verification Status - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-verification-supplement | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:AllergyIntoleranceVerificationStatus |
+| *Official URL*:http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-verification-supplement | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:AllergyIntoleranceVerificationStatus |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,122 +28,102 @@ Code supplement with translations of CHAllergyIntolerance verification status
   "resourceType" : "CodeSystem",
   "id" : "allergyintolerance-verification-supplement",
   "url" : "http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-verification-supplement",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "AllergyIntoleranceVerificationStatus",
   "title" : "CH AllergyIntolerance Verification Status",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Code supplement with translations of CHAllergyIntolerance verification status",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "content" : "supplement",
   "supplements" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-  "concept" : [
-    {
-      "code" : "unconfirmed",
-      "display" : "Unconfirmed",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Unbestätigt"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Pas confirmé"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Non confermata"
-        }
-      ]
+  "concept" : [{
+    "code" : "unconfirmed",
+    "display" : "Unconfirmed",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Unbestätigt"
     },
     {
-      "code" : "confirmed",
-      "display" : "Confirmed",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Bestätigt"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Confirmé"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Confermata"
-        }
-      ]
+      "language" : "fr-CH",
+      "value" : "Pas confirmé"
     },
     {
-      "code" : "refuted",
-      "display" : "Refuted",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Widerlegt"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Réfuté"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Contestata"
-        }
-      ]
+      "language" : "it-CH",
+      "value" : "Non confermata"
+    }]
+  },
+  {
+    "code" : "confirmed",
+    "display" : "Confirmed",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Bestätigt"
     },
     {
-      "code" : "entered-in-error",
-      "display" : "Entered in Error",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Irrtümlich eingegeben"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Saisie erronée"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Immessa per errore"
-        }
-      ]
-    }
-  ]
+      "language" : "fr-CH",
+      "value" : "Confirmé"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "Confermata"
+    }]
+  },
+  {
+    "code" : "refuted",
+    "display" : "Refuted",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Widerlegt"
+    },
+    {
+      "language" : "fr-CH",
+      "value" : "Réfuté"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "Contestata"
+    }]
+  },
+  {
+    "code" : "entered-in-error",
+    "display" : "Entered in Error",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Irrtümlich eingegeben"
+    },
+    {
+      "language" : "fr-CH",
+      "value" : "Saisie erronée"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "Immessa per errore"
+    }]
+  }]
 }
 
 ```

@@ -1,4 +1,4 @@
-# CH AllergyIntolerance Category - CH Term (R4) v3.3.0
+# CH AllergyIntolerance Category - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-category-supplement | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:AllergyIntoleranceCategory |
+| *Official URL*:http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-category-supplement | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:AllergyIntoleranceCategory |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,122 +28,102 @@ Code supplement with translations of CHAllergyIntolerance category
   "resourceType" : "CodeSystem",
   "id" : "allergyintolerance-category-supplement",
   "url" : "http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-category-supplement",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "AllergyIntoleranceCategory",
   "title" : "CH AllergyIntolerance Category",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Code supplement with translations of CHAllergyIntolerance category",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "content" : "supplement",
   "supplements" : "http://hl7.org/fhir/allergy-intolerance-category",
-  "concept" : [
-    {
-      "code" : "food",
-      "display" : "Food",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Lebensmittel"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "aliment"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "alimento"
-        }
-      ]
+  "concept" : [{
+    "code" : "food",
+    "display" : "Food",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Lebensmittel"
     },
     {
-      "code" : "medication",
-      "display" : "Medication",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Arzneimittel"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "médicament"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "medicamento"
-        }
-      ]
+      "language" : "fr-CH",
+      "value" : "aliment"
     },
     {
-      "code" : "environment",
-      "display" : "Environment",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Umweltstoffe"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "environnement"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "ambiente"
-        }
-      ]
+      "language" : "it-CH",
+      "value" : "alimento"
+    }]
+  },
+  {
+    "code" : "medication",
+    "display" : "Medication",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Arzneimittel"
     },
     {
-      "code" : "biologic",
-      "display" : "Biologic",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Biologische Präparate"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "biologique"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "biologico"
-        }
-      ]
-    }
-  ]
+      "language" : "fr-CH",
+      "value" : "médicament"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "medicamento"
+    }]
+  },
+  {
+    "code" : "environment",
+    "display" : "Environment",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Umweltstoffe"
+    },
+    {
+      "language" : "fr-CH",
+      "value" : "environnement"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "ambiente"
+    }]
+  },
+  {
+    "code" : "biologic",
+    "display" : "Biologic",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Biologische Präparate"
+    },
+    {
+      "language" : "fr-CH",
+      "value" : "biologique"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "biologico"
+    }]
+  }]
 }
 
 ```

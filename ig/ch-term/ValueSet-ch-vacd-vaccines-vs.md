@@ -1,4 +1,4 @@
-# CH VACD All Swiss Vaccine Codes - CH Term (R4) v3.3.0
+# CH VACD All Swiss Vaccine Codes - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-vaccines-vs | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:SwissVaccines |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-vaccines-vs | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:SwissVaccines |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,90 +47,50 @@ The list of vaccines available (Swissmedic authorized) or earlier available in S
   "resourceType" : "ValueSet",
   "id" : "ch-vacd-vaccines-vs",
   "url" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-vaccines-vs",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "SwissVaccines",
   "title" : "CH VACD All Swiss Vaccine Codes",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "The list of vaccines available (Swissmedic authorized) or earlier available in Switzerland.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "787859002",
-            "display" : "Vaccine product (medicinal product)",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Unbekannter Impfstoff"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "vaccin inconnu"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "vaccino sconosciuto"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "vaccin nunenconuschent"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Vaccine unknown"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "valueSet" : [
-          "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-swissmedic-vaccines-vs"
-        ]
-      },
-      {
-        "valueSet" : [
-          "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-oldswiss-vaccines-vs"
-        ]
-      }
-    ]
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "787859002",
+        "display" : "Vaccine product (medicinal product)"
+      }]
+    },
+    {
+      "valueSet" : ["http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-swissmedic-vaccines-vs"]
+    },
+    {
+      "valueSet" : ["http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-oldswiss-vaccines-vs"]
+    }]
   }
 }
 

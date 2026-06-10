@@ -1,4 +1,4 @@
-# DocumentEntry.confidentialityCode - CH Term (R4) v3.3.0
+# DocumentEntry.confidentialityCode - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-term/ValueSet/DocumentEntry.confidentialityCode | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:DocumentEntryConfidentialityCode |
+| *Official URL*:http://fhir.ch/ig/ch-term/ValueSet/DocumentEntry.confidentialityCode | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:DocumentEntryConfidentialityCode |
 | *Other Identifiers:*OID:2.16.756.5.30.1.127.3.10.1.5 (use: official, ) | |
 | **Copyright/Legal**: This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these artefacts must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/getsnomed-ct or info@snomed.org. | |
 
@@ -51,155 +51,129 @@ Document confidentiality as per Annex; EPRO-FDHA.
     "source" : "https://art-decor.org/fhir/ValueSet/2.16.756.5.30.1.127.3.10.1.5--20220626133515",
     "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablevalueset"]
   },
-  "extension" : [
-    {
-      "url" : "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
-      "valuePeriod" : {
-        "start" : "2022-06-26T13:35:15+02:00"
-      }
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+    "valuePeriod" : {
+      "start" : "2022-06-26T13:35:15+02:00"
     }
-  ],
+  }],
   "url" : "http://fhir.ch/ig/ch-term/ValueSet/DocumentEntry.confidentialityCode",
-  "identifier" : [
-    {
-      "use" : "official",
-      "system" : "urn:ietf:rfc:3986",
-      "value" : "urn:oid:2.16.756.5.30.1.127.3.10.1.5"
-    }
-  ],
-  "version" : "3.3.0",
+  "identifier" : [{
+    "use" : "official",
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:oid:2.16.756.5.30.1.127.3.10.1.5"
+  }],
+  "version" : "3.4.0",
   "name" : "DocumentEntryConfidentialityCode",
   "title" : "DocumentEntry.confidentialityCode",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Document confidentiality as per Annex; EPRO-FDHA.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "immutable" : false,
   "copyright" : "This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these artefacts must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/getsnomed-ct or info@snomed.org.",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://snomed.info/sct",
-        "version" : "http://snomed.info/sct/2011000195101",
-        "concept" : [
-          {
-            "code" : "1141000195107",
-            "display" : "Secret (qualifier value)",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Geheim"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "secret"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "segreto"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Secret"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "secret"
-              }
-            ]
-          }
-        ]
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "version" : "http://snomed.info/sct/2011000195101",
+      "concept" : [{
+        "code" : "1141000195107",
+        "display" : "Secret (qualifier value)",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Geheim"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "secret"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "segreto"
+        },
+        {
+          "language" : "en-US",
+          "value" : "Secret"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "secret"
+        }]
+      }]
+    },
+    {
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "17621005",
+        "display" : "Normal (qualifier value)",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Normal"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "normal"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "normale"
+        },
+        {
+          "language" : "en-US",
+          "value" : "Normal"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "normal"
+        }]
       },
       {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "17621005",
-            "display" : "Normal (qualifier value)",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Normal"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "normal"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "normale"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Normal"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "normal"
-              }
-            ]
-          },
-          {
-            "code" : "263856008",
-            "display" : "Restricted (qualifier value)",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Eingeschränkt"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "restreint"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "limitato"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Restricted"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "restrenschida"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+        "code" : "263856008",
+        "display" : "Restricted (qualifier value)",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Eingeschränkt"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "restreint"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "limitato"
+        },
+        {
+          "language" : "en-US",
+          "value" : "Restricted"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "restrenschida"
+        }]
+      }]
+    }]
   }
 }
 

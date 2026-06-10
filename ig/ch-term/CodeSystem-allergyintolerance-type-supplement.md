@@ -1,4 +1,4 @@
-# CH AllergyIntolerance Type - CH Term (R4) v3.3.0
+# CH AllergyIntolerance Type - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-type-supplement | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:AllergyIntoleranceType |
+| *Official URL*:http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-type-supplement | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:AllergyIntoleranceType |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,86 +28,70 @@ Code supplement with translations of CHAllergyIntolerance type
   "resourceType" : "CodeSystem",
   "id" : "allergyintolerance-type-supplement",
   "url" : "http://fhir.ch/ig/ch-allergyintolerance/CodeSystem/allergyintolerance-type-supplement",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "AllergyIntoleranceType",
   "title" : "CH AllergyIntolerance Type",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Code supplement with translations of CHAllergyIntolerance type",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "content" : "supplement",
   "supplements" : "http://hl7.org/fhir/allergy-intolerance-type",
-  "concept" : [
-    {
-      "code" : "allergy",
-      "display" : "Allergy",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Allergie"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Allergie"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Allergia"
-        }
-      ]
+  "concept" : [{
+    "code" : "allergy",
+    "display" : "Allergy",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Allergie"
     },
     {
-      "code" : "intolerance",
-      "display" : "Intolerance",
-      "designation" : [
-        {
-          "language" : "de-CH",
-          "value" : "Intoleranz"
-        },
-        {
-          "language" : "fr-CH",
-          "value" : "Intolérance"
-        },
-        {
-          "language" : "it-CH",
-          "value" : "Intolleranza"
-        }
-      ]
-    }
-  ]
+      "language" : "fr-CH",
+      "value" : "Allergie"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "Allergia"
+    }]
+  },
+  {
+    "code" : "intolerance",
+    "display" : "Intolerance",
+    "designation" : [{
+      "language" : "de-CH",
+      "value" : "Intoleranz"
+    },
+    {
+      "language" : "fr-CH",
+      "value" : "Intolérance"
+    },
+    {
+      "language" : "it-CH",
+      "value" : "Intolleranza"
+    }]
+  }]
 }
 
 ```

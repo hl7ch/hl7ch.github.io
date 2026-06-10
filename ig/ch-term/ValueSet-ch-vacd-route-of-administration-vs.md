@@ -1,4 +1,4 @@
-# CH VACD Route of Administration for Immunization - CH Term (R4) v3.3.0
+# CH VACD Route of Administration for Immunization - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-route-of-administration-vs | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:RouteOfAdministrationImmunization |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-route-of-administration-vs | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:RouteOfAdministrationImmunization |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,184 +47,160 @@ The route of immunization administration codes. This list is only a sublist of t
   "resourceType" : "ValueSet",
   "id" : "ch-vacd-route-of-administration-vs",
   "url" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-route-of-administration-vs",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "RouteOfAdministrationImmunization",
   "title" : "CH VACD Route of Administration for Immunization",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "The route of immunization administration codes. This list is only a sublist of the List used for eMedication.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://standardterms.edqm.eu",
+      "concept" : [{
+        "code" : "20030000",
+        "display" : "Intradermal use",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "intradermale Anwendung"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Voie intradermique"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "Uso intradermico"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "applicaziun intradermala"
+        },
+        {
+          "language" : "en",
+          "value" : "Intradermal use"
+        }]
+      },
       {
-        "system" : "http://standardterms.edqm.eu",
-        "concept" : [
-          {
-            "code" : "20030000",
-            "display" : "Intradermal use",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "intradermale Anwendung"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Voie intradermique"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Uso intradermico"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "applicaziun intradermala"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Intradermal use"
-              }
-            ]
-          },
-          {
-            "code" : "20035000",
-            "display" : "Intramuscular use",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "intramuskuläre Anwendung"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Voie intramusculaire"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Uso intramuscolare"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "applicaziun intramusculara"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Intramuscular use"
-              }
-            ]
-          },
-          {
-            "code" : "20049000",
-            "display" : "Nasal use",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "nasale Anwendung"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Voie nasale"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Uso nasale"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "applicaziun nasala"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Nasal use"
-              }
-            ]
-          },
-          {
-            "code" : "20053000",
-            "display" : "Oral use",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "zum Einnehmen"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Voie orale"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Uso orale"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "applicaziun orala"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Oral use"
-              }
-            ]
-          },
-          {
-            "code" : "20066000",
-            "display" : "Subcutaneous use",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "subkutane Anwendung"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Voie sous-cutanée"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Uso sottocutaneo"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "applicaziun subcutana"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Subcutaneous use"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+        "code" : "20035000",
+        "display" : "Intramuscular use",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "intramuskuläre Anwendung"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Voie intramusculaire"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "Uso intramuscolare"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "applicaziun intramusculara"
+        },
+        {
+          "language" : "en",
+          "value" : "Intramuscular use"
+        }]
+      },
+      {
+        "code" : "20049000",
+        "display" : "Nasal use",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "nasale Anwendung"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Voie nasale"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "Uso nasale"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "applicaziun nasala"
+        },
+        {
+          "language" : "en",
+          "value" : "Nasal use"
+        }]
+      },
+      {
+        "code" : "20053000",
+        "display" : "Oral use",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "zum Einnehmen"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Voie orale"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "Uso orale"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "applicaziun orala"
+        },
+        {
+          "language" : "en",
+          "value" : "Oral use"
+        }]
+      },
+      {
+        "code" : "20066000",
+        "display" : "Subcutaneous use",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "subkutane Anwendung"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Voie sous-cutanée"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "Uso sottocutaneo"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "applicaziun subcutana"
+        },
+        {
+          "language" : "en",
+          "value" : "Subcutaneous use"
+        }]
+      }]
+    }]
   }
 }
 

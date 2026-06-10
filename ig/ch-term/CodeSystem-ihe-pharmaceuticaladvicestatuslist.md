@@ -1,4 +1,4 @@
-# IHE Pharmaceutical Advice Status List - CH Term (R4) v3.3.0
+# IHE Pharmaceutical Advice Status List - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:urn:oid:1.3.6.1.4.1.19376.1.9.2.1 | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:IHEPharmaceuticalAdviceStatusList |
+| *Official URL*:urn:oid:1.3.6.1.4.1.19376.1.9.2.1 | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:IHEPharmaceuticalAdviceStatusList |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -31,74 +31,62 @@ IHE Pharmaceutical Advice Status List
     "source" : "https://art-decor.org/fhir/ValueSet/2.16.756.5.30.1.1.11.4--20230126105504"
   },
   "url" : "urn:oid:1.3.6.1.4.1.19376.1.9.2.1",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "IHEPharmaceuticalAdviceStatusList",
   "title" : "IHE Pharmaceutical Advice Status List",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "IHE Pharmaceutical Advice Status List",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "caseSensitive" : true,
   "content" : "complete",
-  "concept" : [
-    {
-      "code" : "OK",
-      "display" : "OK"
-    },
-    {
-      "code" : "CHANGE",
-      "display" : "CHANGE"
-    },
-    {
-      "code" : "REFUSE",
-      "display" : "REFUSE"
-    },
-    {
-      "code" : "CANCEL",
-      "display" : "CANCEL"
-    },
-    {
-      "code" : "SUSPEND",
-      "display" : "SUSPEND"
-    },
-    {
-      "code" : "COMMENT",
-      "display" : "COMMENT"
-    }
-  ]
+  "concept" : [{
+    "code" : "OK",
+    "display" : "OK"
+  },
+  {
+    "code" : "CHANGE",
+    "display" : "CHANGE"
+  },
+  {
+    "code" : "REFUSE",
+    "display" : "REFUSE"
+  },
+  {
+    "code" : "CANCEL",
+    "display" : "CANCEL"
+  },
+  {
+    "code" : "SUSPEND",
+    "display" : "SUSPEND"
+  },
+  {
+    "code" : "COMMENT",
+    "display" : "COMMENT"
+  }]
 }
 
 ```

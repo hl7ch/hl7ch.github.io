@@ -1,4 +1,4 @@
-# CH VACD Recommendation Categories for Immunizations - CH Term (R4) v3.3.0
+# CH VACD Recommendation Categories for Immunizations - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-recommendation-categories-vs | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:SwissImmunizationRecommendationCategories |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-recommendation-categories-vs | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:SwissImmunizationRecommendationCategories |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,173 +47,63 @@ Immunization recommendation categories.
   "resourceType" : "ValueSet",
   "id" : "ch-vacd-recommendation-categories-vs",
   "url" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-recommendation-categories-vs",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "SwissImmunizationRecommendationCategories",
   "title" : "CH VACD Recommendation Categories for Immunizations",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Immunization recommendation categories.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "42284007",
-            "display" : "Administration of vaccine product containing only live attenuated Mycobacterium bovis antigen (procedure)",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "BCG-Impfung"
-              }
-            ]
-          }
-        ]
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "42284007",
+        "display" : "Administration of vaccine product containing only live attenuated Mycobacterium bovis antigen (procedure)"
+      }]
+    },
+    {
+      "system" : "http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-recommendation-categories-cs",
+      "concept" : [{
+        "code" : "41501",
+        "display" : "Empfohlene Basisimpfungen"
       },
       {
-        "system" : "http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-recommendation-categories-cs",
-        "concept" : [
-          {
-            "code" : "41501",
-            "display" : "Empfohlene Basisimpfungen",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Empfohlene Basisimpfungen"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Vaccinations recommandées de base"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Vaccinazioni raccomandate di base"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "vaccinaziuns da basa recumandadas"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Recommended primary vaccinations"
-              }
-            ]
-          },
-          {
-            "code" : "41502",
-            "display" : "Empfohlene ergänzende Impfungen",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Empfohlene ergänzende Impfungen"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Vaccinations recommandées complémentaires"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Vaccinazioni raccomandate complementari"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "vaccinaziuns cumplementaras recumandadas"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Recommended booster vaccinations"
-              }
-            ]
-          },
-          {
-            "code" : "41503",
-            "display" : "Empfohlene Impfungen für Risikogruppen",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Empfohlene Impfungen für Risikogruppen"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Vaccinations recommandées à des groupes à risque"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Vaccinazioni raccomandate a gruppi a rischio"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "vaccinaziuns recumandadas per gruppas da ristga"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Recommended vaccinations for risk groups"
-              }
-            ]
-          },
-          {
-            "code" : "41504",
-            "display" : "Impfungen ohne Empfehlungen",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Impfungen ohne Empfehlungen"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Vaccinations sans recommandation d’utilisatio"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Vaccinazioni senza raccomandazione d’utilizzo"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "vaccinaziuns senza recumandaziuns"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Vaccinations without recommendations"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+        "code" : "41502",
+        "display" : "Empfohlene ergänzende Impfungen"
+      },
+      {
+        "code" : "41503",
+        "display" : "Empfohlene Impfungen für Risikogruppen"
+      },
+      {
+        "code" : "41504",
+        "display" : "Impfungen ohne Empfehlungen"
+      }]
+    }]
   }
 }
 

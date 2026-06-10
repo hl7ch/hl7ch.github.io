@@ -1,4 +1,4 @@
-# ServiceRequest Category - CH Term (R4) v3.3.0
+# ServiceRequest Category - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-term/ValueSet/servicerequest-category | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:VSServiceRequestCategory |
+| *Official URL*:http://fhir.ch/ig/ch-term/ValueSet/servicerequest-category | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:VSServiceRequestCategory |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,52 +47,40 @@ Codes for the category of service request used to define the requested service.
   "resourceType" : "ValueSet",
   "id" : "servicerequest-category",
   "url" : "http://fhir.ch/ig/ch-term/ValueSet/servicerequest-category",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "VSServiceRequestCategory",
   "title" : "ServiceRequest Category",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Codes for the category of service request used to define the requested service.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://fhir.ch/ig/ch-term/CodeSystem/servicerequest-category"
-      }
-    ]
+    "include" : [{
+      "system" : "http://fhir.ch/ig/ch-term/CodeSystem/servicerequest-category"
+    }]
   }
 }
 

@@ -1,4 +1,4 @@
-# Main Guarantor - CH Term (R4) v3.3.0
+# Main Guarantor - CH Term (R4) v3.4.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-term/ValueSet/mainguarantor | *Version*:3.3.0 |
-| Active as of 2025-12-15 | *Computable Name*:MainGuarantor |
+| *Official URL*:http://fhir.ch/ig/ch-term/ValueSet/mainguarantor | *Version*:3.4.0 |
+| Active as of 2026-06-10 | *Computable Name*:MainGuarantor |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,203 +47,171 @@ Codes for the different types of a main guarantor.
   "resourceType" : "ValueSet",
   "id" : "mainguarantor",
   "url" : "http://fhir.ch/ig/ch-term/ValueSet/mainguarantor",
-  "version" : "3.3.0",
+  "version" : "3.4.0",
   "name" : "MainGuarantor",
   "title" : "Main Guarantor",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-15T10:47:47+00:00",
+  "date" : "2026-06-10T10:00:23+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    },
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/",
-          "use" : "work"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  },
+  {
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/",
+      "use" : "work"
+    }]
+  }],
   "description" : "Codes for the different types of a main guarantor.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CH"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-25-mainguarantor",
-        "concept" : [
-          {
-            "code" : "1",
-            "display" : "Krankenversicherung (obligat.)",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Krankenversicherung (obligat.)"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Assurance-maladie (obligatoire)"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "assicurazione malattie (obbligatoria)"
-              }
-            ]
-          },
-          {
-            "code" : "2",
-            "display" : "Invalidenversicherung",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Invalidenversicherung"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Assurance-invalidité"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "assicurazione invalidità"
-              }
-            ]
-          },
-          {
-            "code" : "3",
-            "display" : "Militärversicherung",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Militärversicherung"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Assurance-militaire"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "assicurazione militare"
-              }
-            ]
-          },
-          {
-            "code" : "4",
-            "display" : "Unfallversicherung",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Unfallversicherung"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Assurance-accident"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "assicurazione infortuni"
-              }
-            ]
-          },
-          {
-            "code" : "5",
-            "display" : "Selbstzahler (z.B. Ausländer ohne Grundversicherung)",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Selbstzahler (z.B. Ausländer ohne Grundversicherung)"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Autopayeur (par ex. étrangers sans assurance)"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "paziente stesso (p.es. straniero senza assicurazione di base)"
-              }
-            ]
-          },
-          {
-            "code" : "8",
-            "display" : "andere",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "andere"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Autre"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "altro"
-              }
-            ]
-          },
-          {
-            "code" : "9",
-            "display" : "unbekannt",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "unbekannt"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Inconnue"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "sconosciuto"
-              }
-            ]
-          }
-        ]
+    "include" : [{
+      "system" : "http://fhir.ch/ig/ch-core/CodeSystem/bfs-medstats-25-mainguarantor",
+      "concept" : [{
+        "code" : "1",
+        "display" : "Krankenversicherung (obligat.)",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Krankenversicherung (obligat.)"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Assurance-maladie (obligatoire)"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "assicurazione malattie (obbligatoria)"
+        }]
       },
       {
-        "system" : "http://fhir.ch/ig/ch-core/CodeSystem/mainguarantor",
-        "concept" : [
-          {
-            "code" : "ZV",
-            "display" : "Zusatzversicherung",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Zusatzversicherung"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "Assurance complémentaire"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Assicurazione integrativa"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+        "code" : "2",
+        "display" : "Invalidenversicherung",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Invalidenversicherung"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Assurance-invalidité"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "assicurazione invalidità"
+        }]
+      },
+      {
+        "code" : "3",
+        "display" : "Militärversicherung",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Militärversicherung"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Assurance-militaire"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "assicurazione militare"
+        }]
+      },
+      {
+        "code" : "4",
+        "display" : "Unfallversicherung",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Unfallversicherung"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Assurance-accident"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "assicurazione infortuni"
+        }]
+      },
+      {
+        "code" : "5",
+        "display" : "Selbstzahler (z.B. Ausländer ohne Grundversicherung)",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Selbstzahler (z.B. Ausländer ohne Grundversicherung)"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Autopayeur (par ex. étrangers sans assurance)"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "paziente stesso (p.es. straniero senza assicurazione di base)"
+        }]
+      },
+      {
+        "code" : "8",
+        "display" : "andere",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "andere"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Autre"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "altro"
+        }]
+      },
+      {
+        "code" : "9",
+        "display" : "unbekannt",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "unbekannt"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Inconnue"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "sconosciuto"
+        }]
+      }]
+    },
+    {
+      "system" : "http://fhir.ch/ig/ch-core/CodeSystem/mainguarantor",
+      "concept" : [{
+        "code" : "ZV",
+        "display" : "Zusatzversicherung",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Zusatzversicherung"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "Assurance complémentaire"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "Assicurazione integrativa"
+        }]
+      }]
+    }]
   }
 }
 
