@@ -1,4 +1,4 @@
-# 13.1 Binary Original Representation (Immunization Certificate) - Implementation Guide CH VACD v6.0.0
+# 13.1 Binary Original Representation (Immunization Certificate) - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)

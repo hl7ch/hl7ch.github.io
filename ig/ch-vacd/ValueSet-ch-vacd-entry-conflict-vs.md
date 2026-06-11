@@ -1,4 +1,4 @@
-# Entry Conflict Codes - Implementation Guide CH VACD v6.0.0
+# Entry Conflict Codes - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-entry-conflict-vs | *Version*:6.0.0 |
-| Active as of 2025-12-16 | *Computable Name*:CHVACDEntryConflictCode |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-entry-conflict-vs | *Version*:7.0.0-ballot |
+| Active as of 2026-06-11 | *Computable Name*:CHVACDEntryConflictCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,70 +47,56 @@ The codes for declaring document entry conflicts
   "resourceType" : "ValueSet",
   "id" : "ch-vacd-entry-conflict-vs",
   "url" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-entry-conflict-vs",
-  "version" : "6.0.0",
+  "version" : "7.0.0-ballot",
   "name" : "CHVACDEntryConflictCode",
   "title" : "Entry Conflict Codes",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-16T10:03:10+00:00",
+  "date" : "2026-06-11T13:35:24+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  }],
   "description" : "The codes for declaring document entry conflicts",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CHE"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CHE"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "system" : "http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-entry-conflict-cs",
-        "concept" : [
-          {
-            "code" : "duplicate",
-            "display" : "duplicate",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Duplikat"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "doublon"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "duplicato"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "duplicat"
-              },
-              {
-                "language" : "en-US",
-                "value" : "duplicate"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    "include" : [{
+      "system" : "http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-entry-conflict-cs",
+      "concept" : [{
+        "code" : "duplicate",
+        "display" : "duplicate",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Duplikat"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "doublon"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "duplicato"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "duplicat"
+        },
+        {
+          "language" : "en-US",
+          "value" : "duplicate"
+        }]
+      }]
+    }]
   }
 }
 

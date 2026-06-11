@@ -1,4 +1,4 @@
-# Undergone Illness Chickenpox (Past Illnesses) - Implementation Guide CH VACD v6.0.0
+# Undergone Illness Chickenpox (Past Illnesses) - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -10,7 +10,7 @@ Profile: [CH VACD Past Illness](StructureDefinition-ch-vacd-pastillnesses.md)
 
 > **Entry Resource Cross References**
 * entry: Identifier: `urn:oid:2.999.1.2.3.4`/b594b7fb-4fb1-466d-b7bc-66216338a727
-* container: Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.5.0/NamingSystem-uri.html)/urn:uuid:73d0abee-843e-437f-9f52-aeeff8ba758d
+* container: Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.3.0/NamingSystem-uri.html)/urn:uuid:73d0abee-843e-437f-9f52-aeeff8ba758d
 * relationcode: replaces
 
 **identifier**: `urn:oid:2.999.1.2.3.4`/f9b92bd3-e9d7-4604-9a8a-723b1f7a5292
@@ -40,73 +40,59 @@ Profile: [CH VACD Past Illness](StructureDefinition-ch-vacd-pastillnesses.md)
   "resourceType" : "Condition",
   "id" : "TCC05-UNDILL2",
   "meta" : {
-    "profile" : [
-      "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-pastillnesses"
-    ]
+    "profile" : ["http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-pastillnesses"]
   },
-  "extension" : [
-    {
-      "extension" : [
-        {
-          "url" : "entry",
-          "valueReference" : {
-            "type" : "Condition",
-            "identifier" : {
-              "system" : "urn:oid:2.999.1.2.3.4",
-              "value" : "b594b7fb-4fb1-466d-b7bc-66216338a727"
-            }
-          }
-        },
-        {
-          "url" : "container",
-          "valueReference" : {
-            "type" : "Composition",
-            "identifier" : {
-              "system" : "urn:ietf:rfc:3986",
-              "value" : "urn:uuid:73d0abee-843e-437f-9f52-aeeff8ba758d"
-            }
-          }
-        },
-        {
-          "url" : "relationcode",
-          "valueCode" : "replaces"
+  "extension" : [{
+    "extension" : [{
+      "url" : "entry",
+      "valueReference" : {
+        "type" : "Condition",
+        "identifier" : {
+          "system" : "urn:oid:2.999.1.2.3.4",
+          "value" : "b594b7fb-4fb1-466d-b7bc-66216338a727"
         }
-      ],
-      "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ext-entry-resource-cross-references"
-    }
-  ],
-  "identifier" : [
-    {
-      "system" : "urn:oid:2.999.1.2.3.4",
-      "value" : "f9b92bd3-e9d7-4604-9a8a-723b1f7a5292"
-    }
-  ],
-  "clinicalStatus" : {
-    "coding" : [
-      {
-        "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
-        "code" : "resolved",
-        "display" : "Resolved"
       }
-    ]
+    },
+    {
+      "url" : "container",
+      "valueReference" : {
+        "type" : "Composition",
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:73d0abee-843e-437f-9f52-aeeff8ba758d"
+        }
+      }
+    },
+    {
+      "url" : "relationcode",
+      "valueCode" : "replaces"
+    }],
+    "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ext-entry-resource-cross-references"
+  }],
+  "identifier" : [{
+    "system" : "urn:oid:2.999.1.2.3.4",
+    "value" : "f9b92bd3-e9d7-4604-9a8a-723b1f7a5292"
+  }],
+  "clinicalStatus" : {
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "code" : "resolved",
+      "display" : "Resolved"
+    }]
   },
   "verificationStatus" : {
-    "coding" : [
-      {
-        "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-        "code" : "refuted",
-        "display" : "Refuted"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+      "code" : "refuted",
+      "display" : "Refuted"
+    }]
   },
   "code" : {
-    "coding" : [
-      {
-        "system" : "http://snomed.info/sct",
-        "code" : "14189004",
-        "display" : "Measles (disorder)"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "14189004",
+      "display" : "Measles (disorder)"
+    }]
   },
   "subject" : {
     "reference" : "Patient/TC-patient"

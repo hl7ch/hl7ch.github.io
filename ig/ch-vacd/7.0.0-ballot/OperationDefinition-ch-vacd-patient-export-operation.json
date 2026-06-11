@@ -1,0 +1,56 @@
+{
+  "resourceType" : "OperationDefinition",
+  "id" : "ch-vacd-patient-export-operation",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: OperationDefinition ch-vacd-patient-export-operation</b></p><a name=\"ch-vacd-patient-export-operation\"> </a><a name=\"hcch-vacd-patient-export-operation\"> </a><p>URL: [base]/Patient/$export-document</p><h3>Parameters</h3><table class=\"grid\"><tr><td><b>Use</b></td><td><b>Name</b></td><td><b>Scope</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Documentation</b></td></tr><tr><td>IN</td><td>type</td><td/><td>1..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#Coding\">Coding</a></td><td><a href=\"ValueSet-ch-vacd-patient-export-operation-vs.html\">Export document type</a> (Extensible)</td><td/></tr><tr><td>OUT</td><td>document</td><td/><td>1..1</td><td><a href=\"http://hl7.org/fhir/R4/bundle.html\">Bundle</a> (<a href=\"StructureDefinition-ch-vacd-document-vaccination-record.html\" title=\"http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-document-vaccination-record\">CH VACD Vaccination Record Document</a>, <a href=\"StructureDefinition-ch-vacd-recommendation-request-message.html\" title=\"http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-recommendation-request-message\">CH VACD Message Immunization Recommendation Request</a>)</td><td/><td/></tr></table></div>"
+  },
+  "url" : "http://fhir.ch/ig/ch-vacd/OperationDefinition/ch-vacd-patient-export-operation",
+  "version" : "7.0.0-ballot",
+  "name" : "GeneratePatientExportDocument",
+  "title" : "Generate export document",
+  "status" : "active",
+  "kind" : "operation",
+  "date" : "2026-06-11T13:29:29+00:00",
+  "publisher" : "HL7 Switzerland",
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  }],
+  "description" : "Generate export document according to the selected export type",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CHE"
+    }]
+  }],
+  "affectsState" : false,
+  "code" : "export-document",
+  "resource" : ["Patient"],
+  "system" : false,
+  "type" : true,
+  "instance" : false,
+  "parameter" : [{
+    "name" : "type",
+    "use" : "in",
+    "min" : 1,
+    "max" : "1",
+    "type" : "Coding",
+    "binding" : {
+      "strength" : "extensible",
+      "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-patient-export-operation-vs"
+    }
+  },
+  {
+    "name" : "document",
+    "use" : "out",
+    "min" : 1,
+    "max" : "1",
+    "type" : "Bundle",
+    "targetProfile" : ["http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-document-vaccination-record",
+    "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-recommendation-request-message"]
+  }]
+}

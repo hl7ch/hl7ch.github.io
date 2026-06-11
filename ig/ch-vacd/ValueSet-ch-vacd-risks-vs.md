@@ -1,4 +1,4 @@
-# Swiss Risks For Immunizations - Implementation Guide CH VACD v6.0.0
+# Swiss Risks For Immunizations - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-vs | *Version*:6.0.0 |
-| Active as of 2025-12-16 | *Computable Name*:SwissRisksForImmunizations |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-vs | *Version*:7.0.0-ballot |
+| Active as of 2026-06-11 | *Computable Name*:SwissRisksForImmunizations |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,57 +47,41 @@ The medical and exposition risks used in Switzerland.
   "resourceType" : "ValueSet",
   "id" : "ch-vacd-risks-vs",
   "url" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-vs",
-  "version" : "6.0.0",
+  "version" : "7.0.0-ballot",
   "name" : "SwissRisksForImmunizations",
   "title" : "Swiss Risks For Immunizations",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-16T10:03:10+00:00",
+  "date" : "2026-06-11T13:35:24+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  }],
   "description" : "The medical and exposition risks used in Switzerland.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CHE"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CHE"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
-      {
-        "valueSet" : [
-          "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-medical-vs"
-        ]
-      },
-      {
-        "valueSet" : ["http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-social-vs"]
-      },
-      {
-        "valueSet" : [
-          "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-occupation-vs"
-        ]
-      },
-      {
-        "valueSet" : [
-          "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-preillness-vs"
-        ]
-      }
-    ]
+    "include" : [{
+      "valueSet" : ["http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-medical-vs"]
+    },
+    {
+      "valueSet" : ["http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-social-vs"]
+    },
+    {
+      "valueSet" : ["http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-occupation-vs"]
+    },
+    {
+      "valueSet" : ["http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-preillness-vs"]
+    }]
   }
 }
 

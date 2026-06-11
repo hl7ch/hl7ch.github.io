@@ -1,4 +1,4 @@
-# 9.2 Observation (Labor and Serology for Recommendation Request/Response) - Implementation Guide CH VACD v6.0.0
+# 9.2 Observation (Labor and Serology for Recommendation Request/Response) - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -12,7 +12,7 @@ Profile: [CH VACD Laboratory And Serology](StructureDefinition-ch-vacd-laborator
 
 **CH VACD Extension verificationStatus**: [SNOMED CT: 59156000](http://snomed.info/id/59156000) (Confirmed)
 
-**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.5.0/NamingSystem-uri.html)/urn:uuid:2c4d07e4-d978-4a1f-88de-440920f4913f
+**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.3.0/NamingSystem-uri.html)/urn:uuid:2c4d07e4-d978-4a1f-88de-440920f4913f
 
 **status**: Final
 
@@ -24,7 +24,7 @@ Profile: [CH VACD Laboratory And Serology](StructureDefinition-ch-vacd-laborator
 
 **performer**: [PractitionerRole](PractitionerRole-6-4-PractitionerRole.md)
 
-**value**: 99 [iU]/L(Details: UCUM code[iU]/L = '[iU]/L')
+**value**: 99 [iU]/L (Details: UCUM code[iU]/L = '[iU]/L')
 
 **interpretation**: Positive
 
@@ -37,68 +37,54 @@ Profile: [CH VACD Laboratory And Serology](StructureDefinition-ch-vacd-laborator
   "resourceType" : "Observation",
   "id" : "9-2-Observation",
   "meta" : {
-    "profile" : [
-      "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-laboratory-serology"
-    ]
+    "profile" : ["http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-laboratory-serology"]
   },
-  "extension" : [
-    {
-      "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-author",
-      "valueReference" : {
-        "reference" : "PractitionerRole/6-4-PractitionerRole"
-      }
-    },
-    {
-      "url" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-ext-verification-status",
-      "valueCoding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "59156000",
-        "display" : "Confirmed"
-      }
+  "extension" : [{
+    "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-author",
+    "valueReference" : {
+      "reference" : "PractitionerRole/6-4-PractitionerRole"
     }
-  ],
-  "identifier" : [
-    {
-      "system" : "urn:ietf:rfc:3986",
-      "value" : "urn:uuid:2c4d07e4-d978-4a1f-88de-440920f4913f"
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-ext-verification-status",
+    "valueCoding" : {
+      "system" : "http://snomed.info/sct",
+      "code" : "59156000",
+      "display" : "Confirmed"
     }
-  ],
+  }],
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:2c4d07e4-d978-4a1f-88de-440920f4913f"
+  }],
   "status" : "final",
   "code" : {
-    "coding" : [
-      {
-        "system" : "http://loinc.org",
-        "code" : "16935-9",
-        "display" : "Hepatitis B virus surface Ab [Units/volume] in Serum"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://loinc.org",
+      "code" : "16935-9",
+      "display" : "Hepatitis B virus surface Ab [Units/volume] in Serum"
+    }]
   },
   "subject" : {
     "reference" : "Patient/3-2-Patient"
   },
   "effectiveDateTime" : "1971-10",
-  "performer" : [
-    {
-      "reference" : "PractitionerRole/6-4-PractitionerRole"
-    }
-  ],
+  "performer" : [{
+    "reference" : "PractitionerRole/6-4-PractitionerRole"
+  }],
   "valueQuantity" : {
     "value" : 99,
     "unit" : "[iU]/L",
     "system" : "http://unitsofmeasure.org",
     "code" : "[iU]/L"
   },
-  "interpretation" : [
-    {
-      "coding" : [
-        {
-          "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
-          "code" : "POS",
-          "display" : "Positive"
-        }
-      ]
-    }
-  ]
+  "interpretation" : [{
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+      "code" : "POS",
+      "display" : "Positive"
+    }]
+  }]
 }
 
 ```

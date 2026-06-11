@@ -1,4 +1,4 @@
-# CH VACD Medical Problems - Implementation Guide CH VACD v6.0.0
+# CH VACD Medical Problems - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-medical-problems | *Version*:6.0.0 |
-| Draft as of 2025-12-16 | *Computable Name*:CHVACDMedicalProblems |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-medical-problems | *Version*:7.0.0-ballot |
+| Draft as of 2026-06-11 | *Computable Name*:CHVACDMedicalProblems |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -35,9 +35,10 @@ By aggregation of different [Immunization Administration](immunization-administr
 
 * Use this Profile: [CH VACD Immunization Administration Document](StructureDefinition-ch-vacd-document-immunization-administration.md), [CH VACD Vaccination Record Document](StructureDefinition-ch-vacd-document-vaccination-record.md) and [CH VACD Message Immunization Recommendation Request](StructureDefinition-ch-vacd-recommendation-request-message.md)
 * Refer to this Profile: [CH VACD Immunization Administration Composition](StructureDefinition-ch-vacd-composition-immunization-administration.md), [CH VACD VaccinationRecord Composition](StructureDefinition-ch-vacd-composition-vaccination-record.md) and [CH VACD Immunization Recommendation Request MessageHeader](StructureDefinition-ch-vacd-recommendation-request-messageheader.md)
-* Examples for this Profile: [Condition/8-2-Condition](Condition-8-2-Condition.md), [Condition/8-3-Condition](Condition-8-3-Condition.md), [Condition/8-6-Condition](Condition-8-6-Condition.md), [Condition/8-7-Condition](Condition-8-7-Condition.md)...Show 15 more,[Condition/TCB03-EXPRISK1-2](Condition-TCB03-EXPRISK1-2.md),[Condition/TCB03-EXPRISK1](Condition-TCB03-EXPRISK1.md),[Condition/TCB05-EXPRISK2](Condition-TCB05-EXPRISK2.md),[Condition/TCC03-EXPRISK1](Condition-TCC03-EXPRISK1.md),[Condition/TCC04-EXPRISK1](Condition-TCC04-EXPRISK1.md),[Condition/TCC04-EXPRISK2](Condition-TCC04-EXPRISK2.md),[Condition/TCC04-EXPRISK3](Condition-TCC04-EXPRISK3.md),[Condition/TCD02-EXPRISK1-2](Condition-TCD02-EXPRISK1-2.md),[Condition/TCD02-EXPRISK1](Condition-TCD02-EXPRISK1.md),[Condition/TCD03-EXPRISK1-2](Condition-TCD03-EXPRISK1-2.md),[Condition/TCD03-EXPRISK1](Condition-TCD03-EXPRISK1.md),[Condition/TCD03-EXPRISK2-2](Condition-TCD03-EXPRISK2-2.md),[Condition/TCD03-EXPRISK2](Condition-TCD03-EXPRISK2.md),[Condition/TCD03-EXPRISK3-2](Condition-TCD03-EXPRISK3-2.md)and[Condition/TCD03-EXPRISK3](Condition-TCD03-EXPRISK3.md)
+* Examples for this Profile: [Condition/8-2-Condition](Condition-8-2-Condition.md), [Condition/8-3-Condition](Condition-8-3-Condition.md), [Condition/8-6-Condition](Condition-8-6-Condition.md), [Condition/8-7-Condition](Condition-8-7-Condition.md)... Show 15 more, [Condition/TCB03-EXPRISK1-2](Condition-TCB03-EXPRISK1-2.md), [Condition/TCB03-EXPRISK1](Condition-TCB03-EXPRISK1.md), [Condition/TCB05-EXPRISK2](Condition-TCB05-EXPRISK2.md), [Condition/TCC03-EXPRISK1](Condition-TCC03-EXPRISK1.md), [Condition/TCC04-EXPRISK1](Condition-TCC04-EXPRISK1.md), [Condition/TCC04-EXPRISK2](Condition-TCC04-EXPRISK2.md), [Condition/TCC04-EXPRISK3](Condition-TCC04-EXPRISK3.md), [Condition/TCD02-EXPRISK1-2](Condition-TCD02-EXPRISK1-2.md), [Condition/TCD02-EXPRISK1](Condition-TCD02-EXPRISK1.md), [Condition/TCD03-EXPRISK1-2](Condition-TCD03-EXPRISK1-2.md), [Condition/TCD03-EXPRISK1](Condition-TCD03-EXPRISK1.md), [Condition/TCD03-EXPRISK2-2](Condition-TCD03-EXPRISK2-2.md), [Condition/TCD03-EXPRISK2](Condition-TCD03-EXPRISK2.md), [Condition/TCD03-EXPRISK3-2](Condition-TCD03-EXPRISK3-2.md) and [Condition/TCD03-EXPRISK3](Condition-TCD03-EXPRISK3.md)
+* CapabilityStatements using this Profile: [CH VACD FHIR API CapabilityStatement for server](CapabilityStatement-ch-vacd-api-capstmt-srv.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-vacd|current/StructureDefinition/ch-vacd-medical-problems)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-vacd|current/StructureDefinition/StructureDefinition-ch-vacd-medical-problems.json)
 
 ### Formal Views of Profile Content
 
@@ -56,158 +57,142 @@ Other representations of profile: [CSV](StructureDefinition-ch-vacd-medical-prob
   "resourceType" : "StructureDefinition",
   "id" : "ch-vacd-medical-problems",
   "url" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-medical-problems",
-  "version" : "6.0.0",
+  "version" : "7.0.0-ballot",
   "name" : "CHVACDMedicalProblems",
   "title" : "CH VACD Medical Problems",
   "status" : "draft",
   "experimental" : false,
-  "date" : "2025-12-16T10:03:10+00:00",
+  "date" : "2026-06-11T13:35:24+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  }],
   "description" : "Definition of the medical problems part for all documents.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CHE"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CHE"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "workflow",
-      "uri" : "http://hl7.org/fhir/workflow",
-      "name" : "Workflow Pattern"
-    },
-    {
-      "identity" : "sct-concept",
-      "uri" : "http://snomed.info/conceptdomain",
-      "name" : "SNOMED CT Concept Domain Binding"
-    },
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "w5",
-      "uri" : "http://hl7.org/fhir/fivews",
-      "name" : "FiveWs Pattern Mapping"
-    },
-    {
-      "identity" : "sct-attr",
-      "uri" : "http://snomed.org/attributebinding",
-      "name" : "SNOMED CT Attribute Binding"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "workflow",
+    "uri" : "http://hl7.org/fhir/workflow",
+    "name" : "Workflow Pattern"
+  },
+  {
+    "identity" : "sct-concept",
+    "uri" : "http://snomed.info/conceptdomain",
+    "name" : "SNOMED CT Concept Domain Binding"
+  },
+  {
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  },
+  {
+    "identity" : "sct-attr",
+    "uri" : "http://snomed.org/attributebinding",
+    "name" : "SNOMED CT Attribute Binding"
+  }],
   "kind" : "resource",
   "abstract" : false,
   "type" : "Condition",
   "baseDefinition" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-condition",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Condition",
-        "path" : "Condition",
-        "short" : "CH VACD Medical Problems Conditions"
+    "element" : [{
+      "id" : "Condition",
+      "path" : "Condition",
+      "short" : "CH VACD Medical Problems Conditions"
+    },
+    {
+      "id" : "Condition.clinicalStatus",
+      "path" : "Condition.clinicalStatus",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.verificationStatus",
+      "path" : "Condition.verificationStatus",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.category",
+      "path" : "Condition.category",
+      "short" : "Problem List Item",
+      "min" : 1,
+      "max" : "1",
+      "patternCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code" : "problem-list-item"
+        }]
       },
-      {
-        "id" : "Condition.clinicalStatus",
-        "path" : "Condition.clinicalStatus",
-        "mustSupport" : true
-      },
-      {
-        "id" : "Condition.verificationStatus",
-        "path" : "Condition.verificationStatus",
-        "mustSupport" : true
-      },
-      {
-        "id" : "Condition.category",
-        "path" : "Condition.category",
-        "short" : "Problem List Item",
-        "min" : 1,
-        "max" : "1",
-        "patternCodeableConcept" : {
-          "coding" : [
-            {
-              "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
-              "code" : "problem-list-item"
-            }
-          ]
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.severity",
+      "path" : "Condition.severity",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.code",
+      "path" : "Condition.code",
+      "short" : "Medical problem code",
+      "binding" : {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+          "valueString" : "MedicalProblemCode"
         },
-        "mustSupport" : true
-      },
-      {
-        "id" : "Condition.severity",
-        "path" : "Condition.severity",
-        "mustSupport" : true
-      },
-      {
-        "id" : "Condition.code",
-        "path" : "Condition.code",
-        "short" : "Medical problem code",
-        "binding" : {
-          "extension" : [
-            {
-              "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-              "valueString" : "MedicalProblemCode"
-            },
-            {
-              "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
-              "valueBoolean" : true
-            }
-          ],
-          "strength" : "extensible",
-          "description" : "The code for medical problems (exposition and medical risks) for immunization.",
-          "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-vs"
-        }
-      },
-      {
-        "id" : "Condition.bodySite",
-        "path" : "Condition.bodySite",
-        "mustSupport" : true
-      },
-      {
-        "id" : "Condition.onset[x]",
-        "path" : "Condition.onset[x]",
-        "mustSupport" : true
-      },
-      {
-        "id" : "Condition.abatement[x]",
-        "path" : "Condition.abatement[x]",
-        "mustSupport" : true
-      },
-      {
-        "id" : "Condition.note",
-        "path" : "Condition.note",
-        "mustSupport" : true
-      },
-      {
-        "id" : "Condition.note.author[x]",
-        "path" : "Condition.note.author[x]",
-        "mustSupport" : true
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
+          "valueBoolean" : true
+        }],
+        "strength" : "extensible",
+        "description" : "The code for medical problems (exposition and medical risks) for immunization.",
+        "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-risks-vs"
       }
-    ]
+    },
+    {
+      "id" : "Condition.bodySite",
+      "path" : "Condition.bodySite",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.onset[x]",
+      "path" : "Condition.onset[x]",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.abatement[x]",
+      "path" : "Condition.abatement[x]",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.note",
+      "path" : "Condition.note",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.note.author[x]",
+      "path" : "Condition.note.author[x]",
+      "mustSupport" : true
+    }]
   }
 }
 

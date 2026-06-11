@@ -1,4 +1,4 @@
-# 11.3 AllergyIntolerance (Recommendation Request/Response) - Implementation Guide CH VACD v6.0.0
+# 11.3 AllergyIntolerance (Recommendation Request/Response) - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 Profile: [CH VACD AllergyIntolerance](StructureDefinition-ch-vacd-allergyintolerances.md)
 
-**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.5.0/NamingSystem-uri.html)/urn:uuid:c6ebe781-e4b3-451e-82cf-ee68aa61904d
+**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.3.0/NamingSystem-uri.html)/urn:uuid:c6ebe781-e4b3-451e-82cf-ee68aa61904d
 
 **clinicalStatus**: Active
 
@@ -31,41 +31,31 @@ Profile: [CH VACD AllergyIntolerance](StructureDefinition-ch-vacd-allergyintoler
   "resourceType" : "AllergyIntolerance",
   "id" : "11-3-AllergyIntolerance",
   "meta" : {
-    "profile" : [
-      "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-allergyintolerances"
-    ]
+    "profile" : ["http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-allergyintolerances"]
   },
-  "identifier" : [
-    {
-      "system" : "urn:ietf:rfc:3986",
-      "value" : "urn:uuid:c6ebe781-e4b3-451e-82cf-ee68aa61904d"
-    }
-  ],
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:c6ebe781-e4b3-451e-82cf-ee68aa61904d"
+  }],
   "clinicalStatus" : {
-    "coding" : [
-      {
-        "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-        "code" : "active"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+      "code" : "active"
+    }]
   },
   "verificationStatus" : {
-    "coding" : [
-      {
-        "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-        "code" : "confirmed",
-        "display" : "Confirmed"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+      "code" : "confirmed",
+      "display" : "Confirmed"
+    }]
   },
   "code" : {
-    "coding" : [
-      {
-        "system" : "http://snomed.info/sct",
-        "code" : "213020009",
-        "display" : "Allergy to egg protein (finding)"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "213020009",
+      "display" : "Allergy to egg protein (finding)"
+    }]
   },
   "patient" : {
     "reference" : "Patient/3-2-Patient"

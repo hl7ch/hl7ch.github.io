@@ -1,4 +1,4 @@
-# CH VACD Immunization Recommendations - Implementation Guide CH VACD v6.0.0
+# CH VACD Immunization Recommendations - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-immunization-recommendation | *Version*:6.0.0 |
-| Active as of 2025-12-16 | *Computable Name*:CHVACDImmunizationRecommendation |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-immunization-recommendation | *Version*:7.0.0-ballot |
+| Active as of 2026-06-11 | *Computable Name*:CHVACDImmunizationRecommendation |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -53,7 +53,7 @@ Note that the ImmunizationRecommendation resource allows the inclusion of multip
 * Refer to this Profile: [CH VACD Immunization Recommendation Response MessageHeader](StructureDefinition-ch-vacd-recommendation-response-messageheader.md)
 * Examples for this Profile: [ImmunizationRecommendation/10-1-ImmunizationRecommendation](ImmunizationRecommendation-10-1-ImmunizationRecommendation.md), [ImmunizationRecommendation/10-2-ImmunizationRecommendation](ImmunizationRecommendation-10-2-ImmunizationRecommendation.md), [ImmunizationRecommendation/10-3-ImmunizationRecommendation](ImmunizationRecommendation-10-3-ImmunizationRecommendation.md) and [ImmunizationRecommendation/10-4-ImmunizationRecommendation](ImmunizationRecommendation-10-4-ImmunizationRecommendation.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-vacd|current/StructureDefinition/ch-vacd-immunization-recommendation)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-vacd|current/StructureDefinition/StructureDefinition-ch-vacd-immunization-recommendation.json)
 
 ### Formal Views of Profile Content
 
@@ -72,112 +72,100 @@ Other representations of profile: [CSV](StructureDefinition-ch-vacd-immunization
   "resourceType" : "StructureDefinition",
   "id" : "ch-vacd-immunization-recommendation",
   "url" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-immunization-recommendation",
-  "version" : "6.0.0",
+  "version" : "7.0.0-ballot",
   "name" : "CHVACDImmunizationRecommendation",
   "title" : "CH VACD Immunization Recommendations",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-16T10:03:10+00:00",
+  "date" : "2026-06-11T13:35:24+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  }],
   "description" : "Definition of the immunization recommendation part for all documents.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CHE"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CHE"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "workflow",
-      "uri" : "http://hl7.org/fhir/workflow",
-      "name" : "Workflow Pattern"
-    },
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "w5",
-      "uri" : "http://hl7.org/fhir/fivews",
-      "name" : "FiveWs Pattern Mapping"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "workflow",
+    "uri" : "http://hl7.org/fhir/workflow",
+    "name" : "Workflow Pattern"
+  },
+  {
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  }],
   "kind" : "resource",
   "abstract" : false,
   "type" : "ImmunizationRecommendation",
   "baseDefinition" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-immunization-recommendation",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "ImmunizationRecommendation",
-        "path" : "ImmunizationRecommendation",
-        "short" : "CH VACD Immunization Recommendation"
-      },
-      {
-        "id" : "ImmunizationRecommendation.contained",
-        "path" : "ImmunizationRecommendation.contained",
-        "short" : "ImmunizationRecommendation inline resource",
-        "max" : "1"
-      },
-      {
-        "id" : "ImmunizationRecommendation.recommendation.vaccineCode",
-        "path" : "ImmunizationRecommendation.recommendation.vaccineCode",
-        "binding" : {
-          "strength" : "extensible",
-          "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-ch-vaccination-plan-immunizations-vs"
-        }
-      },
-      {
-        "id" : "ImmunizationRecommendation.recommendation.targetDisease",
-        "path" : "ImmunizationRecommendation.recommendation.targetDisease",
-        "min" : 1,
-        "mustSupport" : true,
-        "binding" : {
-          "strength" : "extensible",
-          "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-targetdiseasesandillnessesundergoneforimmunization-vs"
-        }
-      },
-      {
-        "id" : "ImmunizationRecommendation.recommendation.forecastReason",
-        "path" : "ImmunizationRecommendation.recommendation.forecastReason",
-        "min" : 1,
-        "mustSupport" : true,
-        "binding" : {
-          "strength" : "extensible",
-          "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-recommendation-categories-vs"
-        }
-      },
-      {
-        "id" : "ImmunizationRecommendation.recommendation.dateCriterion",
-        "path" : "ImmunizationRecommendation.recommendation.dateCriterion",
-        "min" : 1,
-        "mustSupport" : true
+    "element" : [{
+      "id" : "ImmunizationRecommendation",
+      "path" : "ImmunizationRecommendation",
+      "short" : "CH VACD Immunization Recommendation"
+    },
+    {
+      "id" : "ImmunizationRecommendation.contained",
+      "path" : "ImmunizationRecommendation.contained",
+      "short" : "ImmunizationRecommendation inline resource",
+      "max" : "1"
+    },
+    {
+      "id" : "ImmunizationRecommendation.recommendation.vaccineCode",
+      "path" : "ImmunizationRecommendation.recommendation.vaccineCode",
+      "binding" : {
+        "strength" : "extensible",
+        "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-ch-vaccination-plan-immunizations-vs"
       }
-    ]
+    },
+    {
+      "id" : "ImmunizationRecommendation.recommendation.targetDisease",
+      "path" : "ImmunizationRecommendation.recommendation.targetDisease",
+      "min" : 1,
+      "mustSupport" : true,
+      "binding" : {
+        "strength" : "extensible",
+        "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-targetdiseasesandillnessesundergoneforimmunization-vs"
+      }
+    },
+    {
+      "id" : "ImmunizationRecommendation.recommendation.forecastReason",
+      "path" : "ImmunizationRecommendation.recommendation.forecastReason",
+      "min" : 1,
+      "mustSupport" : true,
+      "binding" : {
+        "strength" : "extensible",
+        "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-recommendation-categories-vs"
+      }
+    },
+    {
+      "id" : "ImmunizationRecommendation.recommendation.dateCriterion",
+      "path" : "ImmunizationRecommendation.recommendation.dateCriterion",
+      "min" : 1,
+      "mustSupport" : true
+    }]
   }
 }
 

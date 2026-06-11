@@ -1,4 +1,4 @@
-# CH VACD Basic Immunization - Implementation Guide CH VACD v6.0.0
+# CH VACD Basic Immunization - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,13 +8,13 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-basic-immunization | *Version*:6.0.0 |
-| Draft as of 2025-12-16 | *Computable Name*:CHVACDBasicImmunization |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-basic-immunization | *Version*:7.0.0-ballot |
+| Draft as of 2026-06-11 | *Computable Name*:CHVACDBasicImmunization |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
-Condition to declare Basic Immunization done by one single condition for the declared vaccinations according to the ValueSet[Basic Immunization Codes](ValueSet-ch-vacd-basic-immunization-vs.md).
-This is for cases the patient does not have a vaccination certificate to declare, but knows that it is done. 
+Condition to declare Basic Immunization done by one single condition for the declared vaccinations according to the ValueSet [Basic Immunization Codes](ValueSet-ch-vacd-basic-immunization-vs.md).
+ This is for cases the patient does not have a vaccination certificate to declare, but knows that it is done. 
 
 ### Boundaries and Restrictions
 
@@ -44,8 +44,9 @@ By aggregation of different [Immunization Administration](immunization-administr
 
 * Use this Profile: [CH VACD Immunization Administration Document](StructureDefinition-ch-vacd-document-immunization-administration.md), [CH VACD Vaccination Record Document](StructureDefinition-ch-vacd-document-vaccination-record.md) and [CH VACD Message Immunization Recommendation Request](StructureDefinition-ch-vacd-recommendation-request-message.md)
 * Refer to this Profile: [CH VACD Immunization Administration Composition](StructureDefinition-ch-vacd-composition-immunization-administration.md), [CH VACD VaccinationRecord Composition](StructureDefinition-ch-vacd-composition-vaccination-record.md) and [CH VACD Immunization Recommendation Request MessageHeader](StructureDefinition-ch-vacd-recommendation-request-messageheader.md)
+* CapabilityStatements using this Profile: [CH VACD FHIR API CapabilityStatement for server](CapabilityStatement-ch-vacd-api-capstmt-srv.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-vacd|current/StructureDefinition/ch-vacd-basic-immunization)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-vacd|current/StructureDefinition/StructureDefinition-ch-vacd-basic-immunization.json)
 
 ### Formal Views of Profile Content
 
@@ -64,146 +65,126 @@ Other representations of profile: [CSV](StructureDefinition-ch-vacd-basic-immuni
   "resourceType" : "StructureDefinition",
   "id" : "ch-vacd-basic-immunization",
   "url" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-basic-immunization",
-  "version" : "6.0.0",
+  "version" : "7.0.0-ballot",
   "name" : "CHVACDBasicImmunization",
   "title" : "CH VACD Basic Immunization",
   "status" : "draft",
   "experimental" : false,
-  "date" : "2025-12-16T10:03:10+00:00",
+  "date" : "2026-06-11T13:35:24+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    }
-  ],
-  "description" : "Condition to declare Basic Immunization done by one single condition for the declared vaccinations according to the ValueSet [Basic Immunization Codes](ValueSet-ch-vacd-basic-immunization-vs.html).  \nThis is for cases the patient does not have a vaccination certificate to declare, but knows that it is done.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CHE"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  }],
+  "description" : "Condition to declare Basic Immunization done by one single condition for the declared vaccinations according to the ValueSet <a href=\"ValueSet-ch-vacd-basic-immunization-vs.html\">Basic Immunization Codes</a>.  \nThis is for cases the patient does not have a vaccination certificate to declare, but knows that it is done.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CHE"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "workflow",
-      "uri" : "http://hl7.org/fhir/workflow",
-      "name" : "Workflow Pattern"
-    },
-    {
-      "identity" : "sct-concept",
-      "uri" : "http://snomed.info/conceptdomain",
-      "name" : "SNOMED CT Concept Domain Binding"
-    },
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "w5",
-      "uri" : "http://hl7.org/fhir/fivews",
-      "name" : "FiveWs Pattern Mapping"
-    },
-    {
-      "identity" : "sct-attr",
-      "uri" : "http://snomed.org/attributebinding",
-      "name" : "SNOMED CT Attribute Binding"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "workflow",
+    "uri" : "http://hl7.org/fhir/workflow",
+    "name" : "Workflow Pattern"
+  },
+  {
+    "identity" : "sct-concept",
+    "uri" : "http://snomed.info/conceptdomain",
+    "name" : "SNOMED CT Concept Domain Binding"
+  },
+  {
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  },
+  {
+    "identity" : "sct-attr",
+    "uri" : "http://snomed.org/attributebinding",
+    "name" : "SNOMED CT Attribute Binding"
+  }],
   "kind" : "resource",
   "abstract" : false,
   "type" : "Condition",
   "baseDefinition" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-condition",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Condition",
-        "path" : "Condition",
-        "short" : "CH VACD Basic Immunization Conditions"
-      },
-      {
-        "id" : "Condition.category",
-        "path" : "Condition.category",
-        "short" : "Encounter Diagnosis",
-        "min" : 1,
-        "max" : "1",
-        "patternCodeableConcept" : {
-          "coding" : [
-            {
-              "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
-              "code" : "encounter-diagnosis"
-            }
-          ]
-        }
-      },
-      {
-        "id" : "Condition.code",
-        "path" : "Condition.code",
-        "short" : "Basic immunization code",
-        "binding" : {
-          "extension" : [
-            {
-              "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-              "valueString" : "BasicImmunizationCode"
-            },
-            {
-              "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
-              "valueBoolean" : true
-            }
-          ],
-          "strength" : "extensible",
-          "description" : "The code declaring the status of basic immunization for DTPa and/or Polio.",
-          "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-basic-immunization-vs"
-        }
-      },
-      {
-        "id" : "Condition.onset[x]",
-        "path" : "Condition.onset[x]",
-        "slicing" : {
-          "discriminator" : [
-            {
-              "type" : "type",
-              "path" : "$this"
-            }
-          ],
-          "ordered" : false,
-          "rules" : "open"
-        },
-        "min" : 1
-      },
-      {
-        "id" : "Condition.onset[x]:onsetDateTime",
-        "path" : "Condition.onset[x]",
-        "sliceName" : "onsetDateTime",
-        "short" : "Condition onset DateTime to declare the date where the basic immunization is declared as done.",
-        "comment" : "Condition onset DateTime to declare the date where the basic immunization is declared as done.",
-        "min" : 1,
-        "max" : "1",
-        "type" : [
-          {
-            "code" : "dateTime"
-          }
-        ]
+    "element" : [{
+      "id" : "Condition",
+      "path" : "Condition",
+      "short" : "CH VACD Basic Immunization Conditions"
+    },
+    {
+      "id" : "Condition.category",
+      "path" : "Condition.category",
+      "short" : "Encounter Diagnosis",
+      "min" : 1,
+      "max" : "1",
+      "patternCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code" : "encounter-diagnosis"
+        }]
       }
-    ]
+    },
+    {
+      "id" : "Condition.code",
+      "path" : "Condition.code",
+      "short" : "Basic immunization code",
+      "binding" : {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+          "valueString" : "BasicImmunizationCode"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
+          "valueBoolean" : true
+        }],
+        "strength" : "extensible",
+        "description" : "The code declaring the status of basic immunization for DTPa and/or Polio.",
+        "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-basic-immunization-vs"
+      }
+    },
+    {
+      "id" : "Condition.onset[x]",
+      "path" : "Condition.onset[x]",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "type",
+          "path" : "$this"
+        }],
+        "ordered" : false,
+        "rules" : "open"
+      },
+      "min" : 1
+    },
+    {
+      "id" : "Condition.onset[x]:onsetDateTime",
+      "path" : "Condition.onset[x]",
+      "sliceName" : "onsetDateTime",
+      "short" : "Condition onset DateTime to declare the date where the basic immunization is declared as done.",
+      "comment" : "Condition onset DateTime to declare the date where the basic immunization is declared as done.",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "dateTime"
+      }]
+    }]
   }
 }
 

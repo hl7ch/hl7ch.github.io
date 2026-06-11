@@ -1,4 +1,4 @@
-# CH VACD Laboratory And Serology - Implementation Guide CH VACD v6.0.0
+# CH VACD Laboratory And Serology - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-laboratory-serology | *Version*:6.0.0 |
-| Active as of 2025-12-16 | *Computable Name*:CHVACDLaboratorySerology |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-laboratory-serology | *Version*:7.0.0-ballot |
+| Active as of 2026-06-11 | *Computable Name*:CHVACDLaboratorySerology |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -36,8 +36,9 @@ By aggregation of different [Immunization Administration](immunization-administr
 * Use this Profile: [CH VACD Immunization Administration Document](StructureDefinition-ch-vacd-document-immunization-administration.md), [CH VACD Vaccination Record Document](StructureDefinition-ch-vacd-document-vaccination-record.md) and [CH VACD Message Immunization Recommendation Request](StructureDefinition-ch-vacd-recommendation-request-message.md)
 * Refer to this Profile: [CH VACD Immunization Administration Composition](StructureDefinition-ch-vacd-composition-immunization-administration.md), [CH VACD VaccinationRecord Composition](StructureDefinition-ch-vacd-composition-vaccination-record.md), [CH VACD Extension Merging Conflict Entry Reference](StructureDefinition-ch-vacd-ext-merging-conflict-entry-reference.md) and [CH VACD Immunization Recommendation Request MessageHeader](StructureDefinition-ch-vacd-recommendation-request-messageheader.md)
 * Examples for this Profile: [Observation/9-1-Observation](Observation-9-1-Observation.md), [Observation/9-2-Observation](Observation-9-2-Observation.md) and [Observation/TCB04-LABRES1](Observation-TCB04-LABRES1.md)
+* CapabilityStatements using this Profile: [CH VACD FHIR API CapabilityStatement for server](CapabilityStatement-ch-vacd-api-capstmt-srv.md)
 
-You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/ch.fhir.ig.ch-vacd|current/StructureDefinition/ch-vacd-laboratory-serology)
+You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/resource/ch.fhir.ig.ch-vacd|current/StructureDefinition/StructureDefinition-ch-vacd-laboratory-serology.json)
 
 ### Formal Views of Profile Content
 
@@ -56,257 +57,208 @@ Other representations of profile: [CSV](StructureDefinition-ch-vacd-laboratory-s
   "resourceType" : "StructureDefinition",
   "id" : "ch-vacd-laboratory-serology",
   "url" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-laboratory-serology",
-  "version" : "6.0.0",
+  "version" : "7.0.0-ballot",
   "name" : "CHVACDLaboratorySerology",
   "title" : "CH VACD Laboratory And Serology",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-16T10:03:10+00:00",
+  "date" : "2026-06-11T13:35:24+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  }],
   "description" : "Definition of the labor and serology part for all documents.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CHE"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CHE"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "fhirVersion" : "4.0.1",
-  "mapping" : [
-    {
-      "identity" : "workflow",
-      "uri" : "http://hl7.org/fhir/workflow",
-      "name" : "Workflow Pattern"
-    },
-    {
-      "identity" : "sct-concept",
-      "uri" : "http://snomed.info/conceptdomain",
-      "name" : "SNOMED CT Concept Domain Binding"
-    },
-    {
-      "identity" : "v2",
-      "uri" : "http://hl7.org/v2",
-      "name" : "HL7 v2 Mapping"
-    },
-    {
-      "identity" : "rim",
-      "uri" : "http://hl7.org/v3",
-      "name" : "RIM Mapping"
-    },
-    {
-      "identity" : "w5",
-      "uri" : "http://hl7.org/fhir/fivews",
-      "name" : "FiveWs Pattern Mapping"
-    },
-    {
-      "identity" : "sct-attr",
-      "uri" : "http://snomed.org/attributebinding",
-      "name" : "SNOMED CT Attribute Binding"
-    }
-  ],
+  "mapping" : [{
+    "identity" : "workflow",
+    "uri" : "http://hl7.org/fhir/workflow",
+    "name" : "Workflow Pattern"
+  },
+  {
+    "identity" : "sct-concept",
+    "uri" : "http://snomed.info/conceptdomain",
+    "name" : "SNOMED CT Concept Domain Binding"
+  },
+  {
+    "identity" : "v2",
+    "uri" : "http://hl7.org/v2",
+    "name" : "HL7 v2 Mapping"
+  },
+  {
+    "identity" : "rim",
+    "uri" : "http://hl7.org/v3",
+    "name" : "RIM Mapping"
+  },
+  {
+    "identity" : "w5",
+    "uri" : "http://hl7.org/fhir/fivews",
+    "name" : "FiveWs Pattern Mapping"
+  },
+  {
+    "identity" : "sct-attr",
+    "uri" : "http://snomed.org/attributebinding",
+    "name" : "SNOMED CT Attribute Binding"
+  }],
   "kind" : "resource",
   "abstract" : false,
   "type" : "Observation",
   "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Observation",
   "derivation" : "constraint",
   "differential" : {
-    "element" : [
-      {
-        "id" : "Observation",
-        "path" : "Observation",
-        "short" : "CH VACD Allergie Observations"
+    "element" : [{
+      "id" : "Observation",
+      "path" : "Observation",
+      "short" : "CH VACD Allergie Observations"
+    },
+    {
+      "id" : "Observation.extension",
+      "path" : "Observation.extension",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "value",
+          "path" : "url"
+        }],
+        "rules" : "open"
       },
-      {
-        "id" : "Observation.extension",
-        "path" : "Observation.extension",
-        "slicing" : {
-          "discriminator" : [
-            {
-              "type" : "value",
-              "path" : "url"
-            }
-          ],
-          "rules" : "open"
+      "min" : 1
+    },
+    {
+      "id" : "Observation.extension:recorder",
+      "path" : "Observation.extension",
+      "sliceName" : "recorder",
+      "definition" : "The recorder Reference of the immunization. May be a Practitioner or a Patient",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-author"]
+      }]
+    },
+    {
+      "id" : "Observation.extension:relatesTo",
+      "path" : "Observation.extension",
+      "sliceName" : "relatesTo",
+      "definition" : "The definition of a relation of this laboratory entry in this document to an laboratory entry in an other document.",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ext-entry-resource-cross-references"]
+      }]
+    },
+    {
+      "id" : "Observation.extension:conflict",
+      "path" : "Observation.extension",
+      "sliceName" : "conflict",
+      "definition" : "The definition of a conflict on merging different documents.",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-ext-merging-conflict-entry-reference"]
+      }]
+    },
+    {
+      "id" : "Observation.extension:verificationStatus",
+      "path" : "Observation.extension",
+      "sliceName" : "verificationStatus",
+      "definition" : "Status of verification by a practitioner. Attention: changes the interpretation of the content of the resource!",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-ext-verification-status"]
+      }]
+    },
+    {
+      "id" : "Observation.identifier",
+      "path" : "Observation.identifier",
+      "short" : "Observation item ID",
+      "min" : 1
+    },
+    {
+      "id" : "Observation.code",
+      "path" : "Observation.code",
+      "short" : "Observation code",
+      "binding" : {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+          "valueString" : "LaboratorySerologyCode"
         },
-        "min" : 1
-      },
-      {
-        "id" : "Observation.extension:recorder",
-        "path" : "Observation.extension",
-        "sliceName" : "recorder",
-        "definition" : "The recorder Reference of the immunization. May be a Practitioner or a Patient",
-        "min" : 0,
-        "max" : "1",
-        "type" : [
-          {
-            "code" : "Extension",
-            "profile" : [
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-author"
-            ]
-          }
-        ]
-      },
-      {
-        "id" : "Observation.extension:relatesTo",
-        "path" : "Observation.extension",
-        "sliceName" : "relatesTo",
-        "definition" : "The definition of a relation of this laboratory entry in this document to an laboratory entry in an other document.",
-        "min" : 0,
-        "max" : "1",
-        "type" : [
-          {
-            "code" : "Extension",
-            "profile" : [
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ext-entry-resource-cross-references"
-            ]
-          }
-        ]
-      },
-      {
-        "id" : "Observation.extension:conflict",
-        "path" : "Observation.extension",
-        "sliceName" : "conflict",
-        "definition" : "The definition of a conflict on merging different documents.",
-        "min" : 0,
-        "max" : "*",
-        "type" : [
-          {
-            "code" : "Extension",
-            "profile" : [
-              "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-ext-merging-conflict-entry-reference"
-            ]
-          }
-        ]
-      },
-      {
-        "id" : "Observation.extension:verificationStatus",
-        "path" : "Observation.extension",
-        "sliceName" : "verificationStatus",
-        "definition" : "Status of verification by a practitioner",
-        "min" : 1,
-        "max" : "1",
-        "type" : [
-          {
-            "code" : "Extension",
-            "profile" : [
-              "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-ext-verification-status"
-            ]
-          }
-        ]
-      },
-      {
-        "id" : "Observation.identifier",
-        "path" : "Observation.identifier",
-        "short" : "Observation item ID",
-        "min" : 1
-      },
-      {
-        "id" : "Observation.code",
-        "path" : "Observation.code",
-        "short" : "Observation code",
-        "binding" : {
-          "extension" : [
-            {
-              "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-              "valueString" : "LaboratorySerologyCode"
-            },
-            {
-              "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
-              "valueBoolean" : true
-            }
-          ],
-          "strength" : "extensible",
-          "description" : "The code for Laboratory and Serology.",
-          "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-laboratory-serology-vs"
-        }
-      },
-      {
-        "id" : "Observation.subject",
-        "path" : "Observation.subject",
-        "short" : "Patient",
-        "type" : [
-          {
-            "code" : "Reference",
-            "targetProfile" : [
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"
-            ]
-          }
-        ],
-        "mustSupport" : true
-      },
-      {
-        "id" : "Observation.encounter",
-        "path" : "Observation.encounter",
-        "short" : "Encounter",
-        "type" : [
-          {
-            "code" : "Reference",
-            "targetProfile" : [
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter"
-            ]
-          }
-        ]
-      },
-      {
-        "id" : "Observation.performer",
-        "path" : "Observation.performer",
-        "short" : "The performer executing the laboratory analysis.",
-        "type" : [
-          {
-            "code" : "Reference",
-            "targetProfile" : [
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole",
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
-            ]
-          }
-        ],
-        "mustSupport" : true
-      },
-      {
-        "id" : "Observation.value[x]",
-        "path" : "Observation.value[x]",
-        "min" : 1,
-        "type" : [
-          {
-            "code" : "Quantity"
-          },
-          {
-            "code" : "CodeableConcept"
-          }
-        ],
-        "mustSupport" : true
-      },
-      {
-        "id" : "Observation.note.author[x]",
-        "path" : "Observation.note.author[x]",
-        "type" : [
-          {
-            "code" : "Reference",
-            "targetProfile" : [
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner",
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient",
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-relatedperson",
-              "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"
-            ]
-          }
-        ]
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
+          "valueBoolean" : true
+        }],
+        "strength" : "extensible",
+        "description" : "The code for Laboratory and Serology.",
+        "valueSet" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-laboratory-serology-vs"
       }
-    ]
+    },
+    {
+      "id" : "Observation.subject",
+      "path" : "Observation.subject",
+      "short" : "Patient",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Observation.encounter",
+      "path" : "Observation.encounter",
+      "short" : "Encounter",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-encounter"]
+      }]
+    },
+    {
+      "id" : "Observation.performer",
+      "path" : "Observation.performer",
+      "short" : "The performer executing the laboratory analysis.",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitionerrole",
+        "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Observation.value[x]",
+      "path" : "Observation.value[x]",
+      "min" : 1,
+      "type" : [{
+        "code" : "Quantity",
+        "profile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-quantity-with-emed-units"]
+      },
+      {
+        "code" : "CodeableConcept"
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Observation.note.author[x]",
+      "path" : "Observation.note.author[x]",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-practitioner",
+        "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient",
+        "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-relatedperson",
+        "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-organization"]
+      }]
+    }]
   }
 }
 

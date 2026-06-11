@@ -1,0 +1,79 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-vacd/OperationDefinition/ch-vacd-patient-export-operation> a fhir:OperationDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ch-vacd-patient-export-operation"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: OperationDefinition ch-vacd-patient-export-operation</b></p><a name=\"ch-vacd-patient-export-operation\"> </a><a name=\"hcch-vacd-patient-export-operation\"> </a><p>URL: [base]/Patient/$export-document</p><h3>Parameters</h3><table class=\"grid\"><tr><td><b>Use</b></td><td><b>Name</b></td><td><b>Scope</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Documentation</b></td></tr><tr><td>IN</td><td>type</td><td/><td>1..1</td><td><a href=\"http://hl7.org/fhir/R4/datatypes.html#Coding\">Coding</a></td><td><a href=\"ValueSet-ch-vacd-patient-export-operation-vs.html\">Export document type</a> (Extensible)</td><td/></tr><tr><td>OUT</td><td>document</td><td/><td>1..1</td><td><a href=\"http://hl7.org/fhir/R4/bundle.html\">Bundle</a> (<a href=\"StructureDefinition-ch-vacd-document-vaccination-record.html\" title=\"http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-document-vaccination-record\">CH VACD Vaccination Record Document</a>, <a href=\"StructureDefinition-ch-vacd-recommendation-request-message.html\" title=\"http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-recommendation-request-message\">CH VACD Message Immunization Recommendation Request</a>)</td><td/><td/></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [
+     fhir:v "http://fhir.ch/ig/ch-vacd/OperationDefinition/ch-vacd-patient-export-operation"^^xsd:anyURI ;
+     fhir:l <http://fhir.ch/ig/ch-vacd/OperationDefinition/ch-vacd-patient-export-operation>
+  ] ; # 
+  fhir:version [ fhir:v "7.0.0-ballot"] ; # 
+  fhir:name [ fhir:v "GeneratePatientExportDocument"] ; # 
+  fhir:title [ fhir:v "Generate export document"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:kind [ fhir:v "operation"] ; # 
+  fhir:date [ fhir:v "2026-06-11T13:35:24+00:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "HL7 Switzerland"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "HL7 Switzerland" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.hl7.ch/" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Generate export document according to the selected export type"] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
+       fhir:code [ fhir:v "CHE" ]
+     ] )
+  ] ) ; # 
+  fhir:affectsState [ fhir:v false] ; # 
+  fhir:code [ fhir:v "export-document"] ; # 
+  fhir:resource ( [ fhir:v "Patient"] ) ; # 
+  fhir:system [ fhir:v false] ; # 
+  fhir:type [ fhir:v true] ; # 
+  fhir:instance [ fhir:v false] ; # 
+  fhir:parameter ( [
+     fhir:name [ fhir:v "type" ] ;
+     fhir:use [ fhir:v "in" ] ;
+     fhir:min [ fhir:v 1 ] ;
+     fhir:max [ fhir:v "1" ] ;
+     fhir:type [ fhir:v "Coding" ] ;
+     fhir:binding [
+       fhir:strength [ fhir:v "extensible" ] ;
+       fhir:valueSet [
+         fhir:v "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-patient-export-operation-vs"^^xsd:anyURI ;
+         fhir:l <http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-patient-export-operation-vs>
+       ]
+     ]
+  ] [
+     fhir:name [ fhir:v "document" ] ;
+     fhir:use [ fhir:v "out" ] ;
+     fhir:min [ fhir:v 1 ] ;
+     fhir:max [ fhir:v "1" ] ;
+     fhir:type [ fhir:v "Bundle" ] ;
+     fhir:targetProfile ( [
+       fhir:v "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-document-vaccination-record"^^xsd:anyURI ;
+       fhir:l <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-document-vaccination-record>
+     ] [
+       fhir:v "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-recommendation-request-message"^^xsd:anyURI ;
+       fhir:l <http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-recommendation-request-message>
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

@@ -1,4 +1,4 @@
-# TCF1 Immunization 2 - Implementation Guide CH VACD v6.0.0
+# TCF1 Immunization 2 - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -12,12 +12,12 @@ Profile: [CH VACD Immunization](StructureDefinition-ch-vacd-immunization.md)
 
 **CH VACD Extension Immunization Medication Reference**: [Medication HAVRIX 1440 Inj Susp](Medication-TC-IMMUN-MEDIC-HAVRIX1440.md)
 
-**CH VACD Extension verificationStatus**: [SNOMED CT: 76104008](http://snomed.info/id/76104008) (Not confirmed)
-
 > **Entry Resource Cross References**
 * entry: Identifier: `urn:oid:2.999.1.2.3.4`/855bdd69-0a39-4241-b208-9b248a62fb76
-* container: Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.5.0/NamingSystem-uri.html)/urn:uuid:e2233a2f-d1c2-459d-b4fe-4920c35339e7
+* container: Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.3.0/NamingSystem-uri.html)/urn:uuid:e2233a2f-d1c2-459d-b4fe-4920c35339e7
 * relationcode: replaces
+
+**CH VACD Extension verificationStatus**: [SNOMED CT: 59156000](http://snomed.info/id/59156000) (Confirmed)
 
 **identifier**: `urn:oid:2.999.1.2.3.4`/e2233a2f-d1c2-459d-b4fe-4920c35339e7
 
@@ -65,76 +65,66 @@ Der Patient hat diese Impfung ohne jegliche Nebenwirkungen gut vertragen.
   "resourceType" : "Immunization",
   "id" : "TCF01-IMMUN2",
   "meta" : {
-    "profile" : [
-      "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-immunization"
-    ]
+    "profile" : ["http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-immunization"]
   },
-  "extension" : [
-    {
-      "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-author",
+  "extension" : [{
+    "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-author",
+    "valueReference" : {
+      "reference" : "Patient/TC-patient"
+    }
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-ext-immunization-medication-reference",
+    "valueReference" : {
+      "reference" : "Medication/TC-IMMUN-MEDIC-HAVRIX1440"
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "entry",
       "valueReference" : {
-        "reference" : "Patient/TC-patient"
-      }
-    },
-    {
-      "url" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-ext-immunization-medication-reference",
-      "valueReference" : {
-        "reference" : "Medication/TC-IMMUN-MEDIC-HAVRIX1440"
-      }
-    },
-    {
-      "url" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-ext-verification-status",
-      "valueCoding" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "76104008",
-        "display" : "Not confirmed"
-      }
-    },
-    {
-      "extension" : [
-        {
-          "url" : "entry",
-          "valueReference" : {
-            "type" : "Immunization",
-            "identifier" : {
-              "system" : "urn:oid:2.999.1.2.3.4",
-              "value" : "855bdd69-0a39-4241-b208-9b248a62fb76"
-            }
-          }
-        },
-        {
-          "url" : "container",
-          "valueReference" : {
-            "type" : "Composition",
-            "identifier" : {
-              "system" : "urn:ietf:rfc:3986",
-              "value" : "urn:uuid:e2233a2f-d1c2-459d-b4fe-4920c35339e7"
-            }
-          }
-        },
-        {
-          "url" : "relationcode",
-          "valueCode" : "replaces"
+        "type" : "Immunization",
+        "identifier" : {
+          "system" : "urn:oid:2.999.1.2.3.4",
+          "value" : "855bdd69-0a39-4241-b208-9b248a62fb76"
         }
-      ],
-      "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ext-entry-resource-cross-references"
-    }
-  ],
-  "identifier" : [
+      }
+    },
     {
-      "system" : "urn:oid:2.999.1.2.3.4",
-      "value" : "e2233a2f-d1c2-459d-b4fe-4920c35339e7"
+      "url" : "container",
+      "valueReference" : {
+        "type" : "Composition",
+        "identifier" : {
+          "system" : "urn:ietf:rfc:3986",
+          "value" : "urn:uuid:e2233a2f-d1c2-459d-b4fe-4920c35339e7"
+        }
+      }
+    },
+    {
+      "url" : "relationcode",
+      "valueCode" : "replaces"
+    }],
+    "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-ext-entry-resource-cross-references"
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-ext-verification-status",
+    "valueCoding" : {
+      "system" : "http://snomed.info/sct",
+      "code" : "59156000",
+      "display" : "Confirmed"
     }
-  ],
+  }],
+  "identifier" : [{
+    "system" : "urn:oid:2.999.1.2.3.4",
+    "value" : "e2233a2f-d1c2-459d-b4fe-4920c35339e7"
+  }],
   "status" : "completed",
   "vaccineCode" : {
-    "coding" : [
-      {
-        "system" : "http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-swissmedic-cs",
-        "code" : "558",
-        "display" : "Havrix 1440"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://fhir.ch/ig/ch-vacd/CodeSystem/ch-vacd-swissmedic-cs",
+      "code" : "558",
+      "display" : "Havrix 1440"
+    }]
   },
   "patient" : {
     "reference" : "Patient/TC-patient"
@@ -143,46 +133,34 @@ Der Patient hat diese Impfung ohne jegliche Nebenwirkungen gut vertragen.
   "recorded" : "2021-05-27T00:00:00.390+02:00",
   "lotNumber" : "AHAVB946A",
   "route" : {
-    "coding" : [
-      {
-        "system" : "http://standardterms.edqm.eu",
-        "code" : "20035000",
-        "display" : "Intramuscular use"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://standardterms.edqm.eu",
+      "code" : "20035000",
+      "display" : "Intramuscular use"
+    }]
   },
-  "performer" : [
-    {
-      "actor" : {
-        "reference" : "PractitionerRole/TC-HCP1-ORG1-ROLE-performer"
-      }
+  "performer" : [{
+    "actor" : {
+      "reference" : "PractitionerRole/TC-HCP1-ORG1-ROLE-performer"
     }
-  ],
-  "note" : [
-    {
-      "authorReference" : {
-        "reference" : "Practitioner/TC-HCP1-C1"
-      },
-      "time" : "2021-06-02",
-      "text" : "Der Patient hat diese Impfung ohne jegliche Nebenwirkungen gut vertragen."
-    }
-  ],
-  "protocolApplied" : [
-    {
-      "targetDisease" : [
-        {
-          "coding" : [
-            {
-              "system" : "http://snomed.info/sct",
-              "code" : "40468003",
-              "display" : "Viral hepatitis, type A (disorder)"
-            }
-          ]
-        }
-      ],
-      "doseNumberPositiveInt" : 1
-    }
-  ]
+  }],
+  "note" : [{
+    "authorReference" : {
+      "reference" : "Practitioner/TC-HCP1-C1"
+    },
+    "time" : "2021-06-02",
+    "text" : "Der Patient hat diese Impfung ohne jegliche Nebenwirkungen gut vertragen."
+  }],
+  "protocolApplied" : [{
+    "targetDisease" : [{
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "40468003",
+        "display" : "Viral hepatitis, type A (disorder)"
+      }]
+    }],
+    "doseNumberPositiveInt" : 1
+  }]
 }
 
 ```

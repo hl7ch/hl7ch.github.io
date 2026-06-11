@@ -1,4 +1,4 @@
-# Verification Status Codes - Implementation Guide CH VACD v6.0.0
+# Verification Status Codes - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-verification-status-vs | *Version*:6.0.0 |
-| Active as of 2025-12-16 | *Computable Name*:CHVACDVerificationStatusVS |
+| *Official URL*:http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-verification-status-vs | *Version*:7.0.0-ballot |
+| Active as of 2026-06-11 | *Computable Name*:CHVACDVerificationStatusVS |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,96 +47,80 @@ Definition the verification status codes for the extension ch-vacd-ext-verificat
   "resourceType" : "ValueSet",
   "id" : "ch-vacd-verification-status-vs",
   "url" : "http://fhir.ch/ig/ch-vacd/ValueSet/ch-vacd-verification-status-vs",
-  "version" : "6.0.0",
+  "version" : "7.0.0-ballot",
   "name" : "CHVACDVerificationStatusVS",
   "title" : "Verification Status Codes",
   "status" : "active",
   "experimental" : false,
-  "date" : "2025-12-16T10:03:10+00:00",
+  "date" : "2026-06-11T13:35:24+00:00",
   "publisher" : "HL7 Switzerland",
-  "contact" : [
-    {
-      "name" : "HL7 Switzerland",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.hl7.ch/"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "HL7 Switzerland",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.hl7.ch/"
+    }]
+  }],
   "description" : "Definition the verification status codes for the extension ch-vacd-ext-verification-status.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "CHE"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CHE"
+    }]
+  }],
   "copyright" : "CC0-1.0",
   "compose" : {
-    "include" : [
+    "include" : [{
+      "system" : "http://snomed.info/sct",
+      "concept" : [{
+        "code" : "59156000",
+        "display" : "Confirmed by (contextual qualifier) (qualifier value)",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Bestätigt"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "confirmé"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "confermato"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "Bestätigt"
+        },
+        {
+          "language" : "en-US",
+          "value" : "Confirmed"
+        }]
+      },
       {
-        "system" : "http://snomed.info/sct",
-        "concept" : [
-          {
-            "code" : "59156000",
-            "display" : "Confirmed by (contextual qualifier) (qualifier value)",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Bestätigt"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "confirmé"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "confermato"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "Bestätigt"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Confirmed"
-              }
-            ]
-          },
-          {
-            "code" : "76104008",
-            "display" : "Not confirmed by (contextual qualifier) (qualifier value)",
-            "designation" : [
-              {
-                "language" : "de-CH",
-                "value" : "Nicht Bestätigt"
-              },
-              {
-                "language" : "fr-CH",
-                "value" : "non confirmé"
-              },
-              {
-                "language" : "it-CH",
-                "value" : "Non confermato"
-              },
-              {
-                "language" : "rm-CH",
-                "value" : "Nicht Bestätigt"
-              },
-              {
-                "language" : "en-US",
-                "value" : "Not confirmed"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+        "code" : "76104008",
+        "display" : "Not confirmed by (contextual qualifier) (qualifier value)",
+        "designation" : [{
+          "language" : "de-CH",
+          "value" : "Nicht Bestätigt"
+        },
+        {
+          "language" : "fr-CH",
+          "value" : "non confirmé"
+        },
+        {
+          "language" : "it-CH",
+          "value" : "Non confermato"
+        },
+        {
+          "language" : "rm-CH",
+          "value" : "Nicht Bestätigt"
+        },
+        {
+          "language" : "en-US",
+          "value" : "Not confirmed"
+        }]
+      }]
+    }]
   }
 }
 

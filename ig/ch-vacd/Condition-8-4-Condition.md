@@ -1,4 +1,4 @@
-# 8.4 Condition (Past Illnesses) - Implementation Guide CH VACD v6.0.0
+# 8.4 Condition (Past Illnesses) - Implementation Guide CH VACD v7.0.0-ballot
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 Profile: [CH VACD Past Illness](StructureDefinition-ch-vacd-pastillnesses.md)
 
-**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.5.0/NamingSystem-uri.html)/urn:uuid:86c0e015-c13a-43d6-9dc0-a23ca957aa41
+**identifier**: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.3.0/NamingSystem-uri.html)/urn:uuid:86c0e015-c13a-43d6-9dc0-a23ca957aa41
 
 **clinicalStatus**: Resolved
 
@@ -33,42 +33,32 @@ Profile: [CH VACD Past Illness](StructureDefinition-ch-vacd-pastillnesses.md)
   "resourceType" : "Condition",
   "id" : "8-4-Condition",
   "meta" : {
-    "profile" : [
-      "http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-pastillnesses"
-    ]
+    "profile" : ["http://fhir.ch/ig/ch-vacd/StructureDefinition/ch-vacd-pastillnesses"]
   },
-  "identifier" : [
-    {
-      "system" : "urn:ietf:rfc:3986",
-      "value" : "urn:uuid:86c0e015-c13a-43d6-9dc0-a23ca957aa41"
-    }
-  ],
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:86c0e015-c13a-43d6-9dc0-a23ca957aa41"
+  }],
   "clinicalStatus" : {
-    "coding" : [
-      {
-        "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
-        "code" : "resolved",
-        "display" : "Resolved"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "code" : "resolved",
+      "display" : "Resolved"
+    }]
   },
   "verificationStatus" : {
-    "coding" : [
-      {
-        "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-        "code" : "confirmed",
-        "display" : "Confirmed"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+      "code" : "confirmed",
+      "display" : "Confirmed"
+    }]
   },
   "code" : {
-    "coding" : [
-      {
-        "system" : "http://snomed.info/sct",
-        "code" : "14189004",
-        "display" : "Measles (disorder)"
-      }
-    ]
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "14189004",
+      "display" : "Measles (disorder)"
+    }]
   },
   "subject" : {
     "reference" : "Patient/3-1-Patient"
