@@ -1,0 +1,526 @@
+# CH SMC - MedicinalProductCategory - CH IDMP (R5) v1.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH SMC - MedicinalProductCategory**
+
+## CodeSystem: CH SMC - MedicinalProductCategory 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-idmp/CodeSystem/ch-SMC-MedicinalProductCategory | *Version*:1.0.0-ballot |
+| Active as of 2026-06-12 | *Computable Name*:ChSMCMedicinalProductCategoryCS |
+| **Copyright/Legal**: CC0-1.0 | |
+
+ 
+CH - Standard Terms used in Switzerland (aggregations of codes of ValueSets MedicinalProductCategory) 
+
+ This Code system is referenced in the content logical definition of the following value sets: 
+
+* [ChSMCMedicinalProductCategoryVS](ValueSet-ch-SMC-MedicinalProductCategory.md)
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "CodeSystem",
+  "id" : "ch-SMC-MedicinalProductCategory",
+  "url" : "http://fhir.ch/ig/ch-idmp/CodeSystem/ch-SMC-MedicinalProductCategory",
+  "version" : "1.0.0-ballot",
+  "name" : "ChSMCMedicinalProductCategoryCS",
+  "title" : "CH SMC - MedicinalProductCategory",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-06-12T16:17:59+00:00",
+  "publisher" : "Refdata Foundation",
+  "contact" : [{
+    "name" : "Refdata Foundation",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.refdata.ch/de/"
+    }]
+  }],
+  "description" : "CH - Standard Terms used in Switzerland (aggregations of codes of ValueSets MedicinalProductCategory)",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
+  "copyright" : "CC0-1.0",
+  "caseSensitive" : false,
+  "content" : "complete",
+  "count" : 36,
+  "concept" : [{
+    "code" : "756005039000001",
+    "display" : "Synthetic",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Synthetika"
+    }]
+  },
+  {
+    "code" : "756005039000002",
+    "display" : "Antidotes",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Antidota"
+    }]
+  },
+  {
+    "code" : "756005039000003",
+    "display" : "Biologics",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Biologika"
+    }]
+  },
+  {
+    "code" : "756005039000004",
+    "display" : "Biotechnologics",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Biotechnologika"
+    }]
+  },
+  {
+    "code" : "756005039000005",
+    "display" : "Blood products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Blutprodukte"
+    }]
+  },
+  {
+    "code" : "756005039000006",
+    "display" : "Vaccines",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Impfstoffe"
+    }]
+  },
+  {
+    "code" : "756005039000007",
+    "display" : "Other immunological medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Andere immunologische Arzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000008",
+    "display" : "Allergen diagnostics",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Allergen-Diagnostika"
+    }]
+  },
+  {
+    "code" : "756005039000009",
+    "display" : "Allergen therapeutics",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Allergen-Therapeutika"
+    }]
+  },
+  {
+    "code" : "756005039000010",
+    "display" : "Antivenoms",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Antivenine"
+    }]
+  },
+  {
+    "code" : "756005039000011",
+    "display" : "Radiopharmaceuticals",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Radiopharmazeutika"
+    }]
+  },
+  {
+    "code" : "756005039000012",
+    "display" : "Phytopharmaceuticals",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Phytoarzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000013",
+    "display" : "Medicinal bonbons",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Arzneibonbons"
+    }]
+  },
+  {
+    "code" : "756005039000014",
+    "display" : "Homeopathic medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Homöopathische Arzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000015",
+    "display" : "Homeopathic spagyric medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Homöopathisch-spagyrische Arzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000016",
+    "display" : "Spagyric medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Spagyrische Arzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000017",
+    "display" : "Schüssler therapy medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Arzneimittel der Schüsslertherapie"
+    }]
+  },
+  {
+    "code" : "756005039000018",
+    "display" : "Anthroposophic medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Anthroposophische Arzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000019",
+    "display" : "Chinese medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Chinesische Arzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000020",
+    "display" : "Tibetan medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Tibetische Arzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000021",
+    "display" : "Ayurvedic medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Ayurvedische Arzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000022",
+    "display" : "Gemmotherapy medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Arzneimittel der Gemmotherapie"
+    }]
+  },
+  {
+    "code" : "756005039000023",
+    "display" : "Other complementary medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Andere Komplementärarzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000024",
+    "display" : "Tissue engineered products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Gewebeprodukte"
+    }]
+  },
+  {
+    "code" : "756005039000025",
+    "display" : "Cell therapy products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Zelltherapieprodukte"
+    }]
+  },
+  {
+    "code" : "756005039000026",
+    "display" : "Gene therapy products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Gentherapieprodukte"
+    }]
+  },
+  {
+    "code" : "756005039000027",
+    "display" : "Nucleic acid products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Nukleinsäureprodukte"
+    }]
+  },
+  {
+    "code" : "756005039000028",
+    "display" : "Pathogenic organisms",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Pathogene Organismen"
+    }]
+  },
+  {
+    "code" : "756005039000029",
+    "display" : "Products containing genetically modified organisms",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Produkte mit genetisch veränderten Organismen"
+    }]
+  },
+  {
+    "code" : "756005039000030",
+    "display" : "Exosomes",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Exosomen"
+    }]
+  },
+  {
+    "code" : "756005039000031",
+    "display" : "Wild-type viruses/bacteriophages",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Wild type Viren/Bakteriophagen"
+    }]
+  },
+  {
+    "code" : "756005039000032",
+    "display" : "Devit",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Devit"
+    }]
+  },
+  {
+    "code" : "756005039000033",
+    "display" : "Blood and labile blood products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Blut und labile Blutprodukte"
+    }]
+  },
+  {
+    "code" : "756005039000034",
+    "display" : "Non-standardisable TpP/ATMP",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Nicht standardisierbare TpP/ATMP"
+    }]
+  },
+  {
+    "code" : "756005039000035",
+    "display" : "Non-standardisable medicinal products",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Nicht standardisierbare Arzneimittel"
+    }]
+  },
+  {
+    "code" : "756005039000036",
+    "display" : "Preparations-Monographs",
+    "designation" : [{
+      "language" : "de",
+      "use" : {
+        "system" : "http://snomed.info/sct",
+        "code" : "900000000000003001",
+        "display" : "Fully specified name"
+      },
+      "value" : "Präparate-Monografien"
+    }]
+  }]
+}
+
+```

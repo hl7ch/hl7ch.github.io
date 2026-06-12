@@ -1,0 +1,62 @@
+# CH - Other Characteristics Type - CH IDMP (R5) v1.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **CH - Other Characteristics Type**
+
+## CodeSystem: CH - Other Characteristics Type 
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://fhir.ch/ig/ch-idmp/CodeSystem/ch-other-characteristics-type | *Version*:1.0.0-ballot |
+| Active as of 2026-06-12 | *Computable Name*:ChOtherCharacteristicsTypeCS |
+| **Copyright/Legal**: CC0-1.0 | |
+
+ 
+CH - Standard Terms to define the different other characteristics 
+
+ This Code system is referenced in the content logical definition of the following value sets: 
+
+* [ChOtherCharacteristicsTypeVS](ValueSet-ch-other-characteristics-type.md)
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "CodeSystem",
+  "id" : "ch-other-characteristics-type",
+  "url" : "http://fhir.ch/ig/ch-idmp/CodeSystem/ch-other-characteristics-type",
+  "version" : "1.0.0-ballot",
+  "name" : "ChOtherCharacteristicsTypeCS",
+  "title" : "CH - Other Characteristics Type",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-06-12T16:17:59+00:00",
+  "publisher" : "Refdata Foundation",
+  "contact" : [{
+    "name" : "Refdata Foundation",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.refdata.ch/de/"
+    }]
+  }],
+  "description" : "CH - Standard Terms to define the different other characteristics",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "CH"
+    }]
+  }],
+  "copyright" : "CC0-1.0",
+  "caseSensitive" : false,
+  "content" : "complete",
+  "count" : 1,
+  "concept" : [{
+    "code" : "756000003001",
+    "display" : "Package Size Type"
+  }]
+}
+
+```
