@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ConceptMap xmlns="http://hl7.org/fhir">
+  <id value="Alis2FhirParameterV40"/>
+  <text>
+    <status value="additional"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="Alis2FhirParameterV40"/><a name="hcAlis2FhirParameterV40"/><p>Mapping from (not specified) to (not specified)</p><br/><p><b>Group 1 </b>Mapping from <a href="StructureDefinition-ParameterV40.html">CH ALIS Leistungsschnittstelle - ParameterV40</a> to <a href="StructureDefinition-ch-alis-connect-ext-parameterv40.html">CH ALIS Extension ParameterV40</a></p><table class="grid"><tr><td><b>Source Code</b></td><td><b>Card.</b></td><td><b>Type</b></td><td><b>Relationship</b></td><td><b>Target Code</b></td><td><b>Card.</b></td><td><b>Type</b></td></tr><tr><td><a href="StructureDefinition-ParameterV40.html#ParameterV40.ParamTyp">ParameterV40.ParamTyp</a></td><td>1..1</td><td>todo</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td><a href="StructureDefinition-ch-alis-connect-ext-parameterv40-definitions.html#Extension.extension:ParamTyp.value[x]:valueCodeableConcept">Extension.extension:ParamTyp.value[x]:valueCodeableConcept</a></td><td>1..1</td><td>todo</td></tr><tr><td><a href="StructureDefinition-ParameterV40.html#ParameterV40.ParamValue">ParameterV40.ParamValue</a></td><td>1..1</td><td>todo</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td><a href="StructureDefinition-ch-alis-connect-ext-parameterv40-definitions.html#Extension.extension:ParamValue.value[x]:valueString">Extension.extension:ParamValue.value[x]:valueString</a></td><td>1..1</td><td>todo</td></tr></table><hr/><p><b>Group 2 </b>Mapping from <a href="CodeSystem-ch-alis-connect-paramtyp.html">CH ALIS ParamTyp</a> to <a href="StructureDefinition-ch-alis-connect-chargeitem.html">CH ALIS ChargeItem Profile</a></p><table class="grid"><tr><td><b>Source Code</b></td><td><b>Relationship</b></td><td><b>Target Code</b></td></tr><tr><td>BMI</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>ChargeItem.supportingInformation (ParameterV40: BMI)</td></tr><tr><td>Billable (Billable (j/n))</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>ChargeItem.status (billable | not-billable)</td></tr><tr><td>Amount</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>ChargeItem.priceOverride.value (ParameterV40: Amount)</td></tr><tr><td>SLIndicationCode (Indikationscode aus der SL (Spezialitätenliste))</td><td><a href="http://hl7.org/fhir/R5/codesystem-concept-map-relationship.html#equivalent" title="equivalent">is equivalent to</a></td><td>ChargeItem.extension:SLIndicationCode (ParameterV40: SLIndicationCode)</td></tr></table></div>
+  </text>
+  <url value="http://fhir.ch/ig/ch-alis-connect/ConceptMap/Alis2FhirParameterV40"/>
+  <version value="1.0.0-ballot"/>
+  <name value="Alis2FhirParameterV40"/>
+  <title value="ALIS ParameterV40 to FHIR Mapping"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-06-12T18:37:15+00:00"/>
+  <publisher value="ALIS-Connect"/>
+  <contact>
+    <name value="ALIS-Connect"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.alis-connect.ch/"/>
+    </telecom>
+  </contact>
+  <description value="Mapping of the ALIS ParameterV40 logical model to the FHIR ParameterV40 extension (on ChargeItem). Specific ParamTyp values (BMI, Billable, Amount, SLIndicationCode) are mapped to dedicated ChargeItem elements instead of the generic ParameterV40 extension."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="CH"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="CC0-1.0"/>
+  <group>
+    <source value="http://fhir.ch/ig/ch-alis-connect/StructureDefinition/ParameterV40"/>
+    <target value="http://fhir.ch/ig/ch-alis-connect/StructureDefinition/ch-alis-connect-ext-parameterv40"/>
+    <element>
+      <code value="ParameterV40.ParamTyp"/>
+      <target>
+        <code value="Extension.extension:ParamTyp.value[x]:valueCodeableConcept"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="ParameterV40.ParamValue"/>
+      <target>
+        <code value="Extension.extension:ParamValue.value[x]:valueString"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+  </group>
+  <group>
+    <source value="http://fhir.ch/ig/ch-alis-connect/CodeSystem/ch-alis-connect-paramtyp"/>
+    <target value="http://fhir.ch/ig/ch-alis-connect/StructureDefinition/ch-alis-connect-chargeitem"/>
+    <element>
+      <code value="BMI"/>
+      <target>
+        <code value="ChargeItem.supportingInformation"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Billable"/>
+      <target>
+        <code value="ChargeItem.status"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="Amount"/>
+      <target>
+        <code value="ChargeItem.priceOverride.value"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+    <element>
+      <code value="SLIndicationCode"/>
+      <target>
+        <code value="ChargeItem.extension:SLIndicationCode"/>
+        <equivalence value="equivalent"/>
+      </target>
+    </element>
+  </group>
+</ConceptMap>

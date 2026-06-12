@@ -1,0 +1,98 @@
+# ALIS 5.1 XML VisitLKAATIcd - CH ALIS Connect (R4) v1.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **ALIS 5.1 XML VisitLKAATIcd**
+
+## Example Binary: ALIS 5.1 XML VisitLKAATIcd
+
+This content is an example of the [CH ALIS Leistungsschnittstelle - Visit](StructureDefinition-Visit.md) Logical Model and is not a FHIR Resource
+
+```
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Visit>
+	<VisitNumber>987654</VisitNumber>
+	<PatientID>102</PatientID>
+	<PatientName>Tester</PatientName>
+	<PatientGivenName>Paul</PatientGivenName>
+	<PatientBirthDate>1982-03-22</PatientBirthDate>
+	<PatientGender>M</PatientGender>
+	<Service Transaction="insert">
+		<ServiceDate>2025-03-05T09:00:00Z</ServiceDate>
+		<SessionID>1</SessionID>
+		<OrderID>20250305-1</OrderID>
+		<ReferrerID>007</ReferrerID>
+		<ServiceType>LKAAT</ServiceType>
+		<ServiceItem>GM.00.0160</ServiceItem>
+		<EnteredDateTime>2025-03-05T10:05:36Z</EnteredDateTime>
+		<ProviderID>2400</ProviderID>
+		<SectionCode>M850.04</SectionCode>
+		<EnteredBy>7653253256988</EnteredBy>
+		<ItemNumber>45678</ItemNumber>
+		<Quantity>1</Quantity>
+		<Diagnosis>
+			<DiagnosisCode>B01.2</DiagnosisCode>
+			<DiagnosisSystem>ICD</DiagnosisSystem>
+			<DiagnosisVersion>ICD-10-GM 2024</DiagnosisVersion>
+		</Diagnosis>
+		<PersonV40 PersonTyp="ResponsiblePhysician">
+			<PersonID>7653253256988</PersonID>
+		</PersonV40>
+		<PersonV40 PersonTyp="ProvidingPhysician">
+			<PersonID>7653253256988</PersonID>
+		</PersonV40>
+	</Service>
+	<Service>
+		<ServiceDate>2024-04-05T09:00:00Z</ServiceDate>
+		<SessionID>1</SessionID>
+		<OrderID>20250305-1</OrderID>
+		<ReferrerID>007</ReferrerID>
+		<ServiceType>LKAAT</ServiceType>
+		<ServiceItem>GM.05.0010</ServiceItem>
+		<EnteredDateTime>2025-03-05T10:05:36Z</EnteredDateTime>
+		<ProviderID>2400</ProviderID>
+		<SectionCode>M850.04</SectionCode>
+		<EnteredBy>7653253256988</EnteredBy>
+		<ItemNumber>45679</ItemNumber>
+		<Quantity>1</Quantity>
+		<PersonV40 PersonTyp="ResponsiblePhysician">
+			<PersonID>7653253256988</PersonID>
+		</PersonV40>
+		<PersonV40 PersonTyp="ProvidingPhysician">
+			<PersonID>7653253256988</PersonID>
+		</PersonV40>
+	</Service>
+	<Service>
+		<ServiceDate>2024-04-05T09:00:00Z</ServiceDate>
+		<SessionID>1</SessionID>
+		<OrderID>20250305-1</OrderID>
+		<ReferrerID>007</ReferrerID>
+		<ServiceType>LKAAT</ServiceType>
+		<ServiceItem>GM.05.0020</ServiceItem>
+		<EnteredDateTime>2025-03-05T10:05:36Z</EnteredDateTime>
+		<ProviderID>2400</ProviderID>
+		<SectionCode>M850.04</SectionCode>
+		<EnteredBy>7653253256988</EnteredBy>
+		<ItemNumber>45680</ItemNumber>
+		<RefItemNumber>45679</RefItemNumber>
+		<Quantity>20</Quantity>
+		<PersonV40 PersonTyp="ResponsiblePhysician">
+			<PersonID>7653253256988</PersonID>
+		</PersonV40>
+		<PersonV40 PersonTyp="ProvidingPhysician">
+			<PersonID>7653253256988</PersonID>
+		</PersonV40>
+	</Service>
+</Visit>
+```
+
+
+
+## Resource Binary Content
+
+application/fhir+xml:
+
+```
+{snip}
+```
