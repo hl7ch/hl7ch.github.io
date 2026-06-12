@@ -1,0 +1,72 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-emr/MedicationStatement/UC5-MedicationStatement-AspirinCardio> a fhir:MedicationStatement ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "UC5-MedicationStatement-AspirinCardio"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-medicationstatement"^^xsd:anyURI ;
+       fhir:l <http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-medicationstatement>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement UC5-MedicationStatement-AspirinCardio</b></p><a name=\"UC5-MedicationStatement-AspirinCardio\"> </a><a name=\"hcUC5-MedicationStatement-AspirinCardio\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emr-medicationstatement.html\">CH Emergency Record Medication Statement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"Medication-UC5-Medication-AspirinCardio.html\">Medication ASPIRIN CARDIO Filmtabl 100 mg 28 Stk</a></p><p><b>subject</b>: <a href=\"Patient-UC5-Patient-AnnaMeier.html\">Anna Meier (official) Female, DoB: 1972-03-15 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756015555555555555)</a></p><p><b>effective</b>: 2018-06-01 --&gt; (ongoing)</p><p><b>reasonReference</b>: <a href=\"Condition-UC5-Condition-KoronareHerzkrankheit.html\">Condition Chronic ischemic heart disease (disorder)</a></p><blockquote><p><b>dosage</b></p><p><b>sequence</b>: 1</p><p><b>timing</b>: Morning, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>1 Tablette<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = '732936001')</span></td></tr></table></blockquote></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:medication [
+     a fhir:Reference ;
+     fhir:l <http://fhir.ch/ig/ch-emr/Medication/UC5-Medication-AspirinCardio> ;
+     fhir:reference [ fhir:v "Medication/UC5-Medication-AspirinCardio" ]
+  ] ; # 
+  fhir:subject [
+     fhir:l <http://fhir.ch/ig/ch-emr/Patient/UC5-Patient-AnnaMeier> ;
+     fhir:reference [ fhir:v "Patient/UC5-Patient-AnnaMeier" ]
+  ] ; # 
+  fhir:effective [
+     a fhir:Period ;
+     fhir:start [ fhir:v "2018-06-01"^^xsd:date ]
+  ] ; # 
+  fhir:reasonReference ( [
+     fhir:l <http://fhir.ch/ig/ch-emr/Condition/UC5-Condition-KoronareHerzkrankheit> ;
+     fhir:reference [ fhir:v "Condition/UC5-Condition-KoronareHerzkrankheit" ]
+  ] ) ; # 
+  fhir:dosage ( [
+     fhir:sequence [ fhir:v 1 ] ;
+     fhir:timing [
+       fhir:repeat [
+         fhir:when ( [ fhir:v "MORN" ] )
+       ]
+     ] ;
+     fhir:route [
+       fhir:coding ( [
+         fhir:system [
+           fhir:v "urn:oid:0.4.0.127.0.16.1.1.2.1"^^xsd:anyURI ;
+           fhir:l <urn:oid:0.4.0.127.0.16.1.1.2.1>
+         ] ;
+         fhir:code [ fhir:v "20053000" ]
+       ] ) ;
+       fhir:text [ fhir:v "zum Einnehmen" ]
+     ] ;
+     fhir:doseAndRate ( [
+       fhir:dose [
+         a fhir:Quantity ;
+         fhir:value [ fhir:v "1"^^xsd:decimal ] ;
+         fhir:unit [ fhir:v "Tablette" ] ;
+         fhir:system [
+           fhir:v "http://snomed.info/sct|http://snomed.info/sct/2011000195101"^^xsd:anyURI ;
+           fhir:l <http://snomed.info/sct?version=http://snomed.info/sct/2011000195101>
+         ] ;
+         fhir:code [ fhir:v "732936001" ]
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

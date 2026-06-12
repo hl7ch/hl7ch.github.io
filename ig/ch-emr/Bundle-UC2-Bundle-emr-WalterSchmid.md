@@ -1,0 +1,1131 @@
+# UC2-Bundle-emr-WalterSchmid - CH EMR (R4) v1.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **UC2-Bundle-emr-WalterSchmid**
+
+## Example Bundle: UC2-Bundle-emr-WalterSchmid
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Bundle",
+  "id" : "UC2-Bundle-emr-WalterSchmid",
+  "meta" : {
+    "lastUpdated" : "2026-06-02T08:00:00+02:00",
+    "profile" : ["http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-bundle"]
+  },
+  "language" : "de-CH",
+  "identifier" : {
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:uuid:22222222-aaaa-4222-8222-222222222222"
+  },
+  "type" : "document",
+  "timestamp" : "2026-06-02T08:00:00+02:00",
+  "entry" : [{
+    "fullUrl" : "http://fhir.ch/ig/emr/Composition/UC2-Composition-emr-WalterSchmid",
+    "resource" : {
+      "resourceType" : "Composition",
+      "id" : "UC2-Composition-emr-WalterSchmid",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-composition"]
+      },
+      "language" : "de-CH",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Composition_UC2-Composition-emr-WalterSchmid\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Composition UC2-Composition-emr-WalterSchmid</b></p><a name=\"UC2-Composition-emr-WalterSchmid\"> </a><a name=\"hcUC2-Composition-emr-WalterSchmid\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emr-composition.html\">CH Emergency Record Composition</a></p></div><p><b>identifier</b>: <a href=\"http://terminology.hl7.org/7.1.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:22222222-aaaa-4222-8222-222222222222</p><p><b>status</b>: Final</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 60591-5}\">Patient summary Document</span></p><p><b>date</b>: 2026-06-02 08:00:00+0200</p><p><b>author</b>: <a href=\"PractitionerRole-UC2-PractitionerRole-Hausarzt.html\">PractitionerRole Physician</a></p><p><b>title</b>: Elektronischer Notfallpass — Walter Schmid</p><p><b>confidentiality</b>: normal</p></div>"
+      },
+      "identifier" : {
+        "system" : "urn:ietf:rfc:3986",
+        "value" : "urn:uuid:22222222-aaaa-4222-8222-222222222222"
+      },
+      "status" : "final",
+      "type" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "60591-5"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "date" : "2026-06-02T08:00:00+02:00",
+      "author" : [{
+        "reference" : "PractitionerRole/UC2-PractitionerRole-Hausarzt"
+      }],
+      "title" : "Elektronischer Notfallpass — Walter Schmid",
+      "confidentiality" : "N",
+      "_confidentiality" : {
+        "extension" : [{
+          "url" : "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode",
+          "valueCodeableConcept" : {
+            "coding" : [{
+              "system" : "http://snomed.info/sct",
+              "version" : "http://snomed.info/sct/2011000195101",
+              "code" : "17621005"
+            }]
+          }
+        }]
+      },
+      "section" : [{
+        "title" : "Notfallkontakte",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "56864-2"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Spitex Luzern (Pflegedienst): +41 41 555 00 00</li></ul></div>"
+        },
+        "entry" : [{
+          "reference" : "RelatedPerson/UC2-RelatedPerson-Spitex"
+        }]
+      },
+      {
+        "title" : "Behandelnde Gesundheitsfachperson",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "85847-2"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Dr. med. UC2 Hausarzt</li></ul></div>"
+        },
+        "entry" : [{
+          "reference" : "Practitioner/UC2-Practitioner-Hausarzt"
+        },
+        {
+          "reference" : "PractitionerRole/UC2-PractitionerRole-Hausarzt"
+        }]
+      },
+      {
+        "title" : "Reanimationsstatus",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "100822-6"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Keinen Reanimationsstatus erfasst; siehe Patientenverfügung 2022.</p></div>"
+        },
+        "emptyReason" : {
+          "coding" : [{
+            "system" : "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+            "code" : "unavailable",
+            "display" : "Information not available"
+          }]
+        }
+      },
+      {
+        "title" : "Medikation",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "10160-0"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Aspirin cardio 100 mg, 1-0-0-0 — Status nach Schlaganfall</li><li>Atorvastatin 40 mg, 0-0-1-0 — Status nach Schlaganfall (vaskulär bedingt)</li><li>Xigduo XR 1000/5 mg (Metformin/Dapagliflozin), 0-0-2-0 — Diabetes</li><li>Epril 20 mg (Enalapril), 1-0-0-0 — Bluthochdruck</li></ul></div>"
+        },
+        "entry" : [{
+          "reference" : "MedicationStatement/UC2-MedicationStatement-AspirinCardio"
+        },
+        {
+          "reference" : "MedicationStatement/UC2-MedicationStatement-Atorvastatin"
+        },
+        {
+          "reference" : "MedicationStatement/UC2-MedicationStatement-XigduoXR"
+        },
+        {
+          "reference" : "MedicationStatement/UC2-MedicationStatement-Epril"
+        }]
+      },
+      {
+        "title" : "Impfungen",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "11369-6"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Keine Impfungen dokumentiert.</p></div>"
+        },
+        "emptyReason" : {
+          "coding" : [{
+            "system" : "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+            "code" : "unavailable",
+            "display" : "Information not available"
+          }]
+        }
+      },
+      {
+        "title" : "Allergien oder Unverträglichkeiten",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "48765-2"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Penicillin — Reaktion: Atemnot</li></ul></div>"
+        },
+        "entry" : [{
+          "reference" : "AllergyIntolerance/UC2-AllergyIntolerance-Penicillin"
+        }]
+      },
+      {
+        "title" : "Risiken für Behandelnde",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "46467-7"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Keine Risikofaktoren bekannt.</p></div>"
+        },
+        "emptyReason" : {
+          "coding" : [{
+            "system" : "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+            "code" : "unavailable",
+            "display" : "Information not available"
+          }]
+        }
+      },
+      {
+        "title" : "Probleme und Diagnosen",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "11450-4"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>2023 Schlaganfall</li><li>1969 Status nach Splenektomie</li></ul></div>"
+        },
+        "entry" : [{
+          "reference" : "Condition/UC2-Condition-Schlaganfall"
+        },
+        {
+          "reference" : "Condition/UC2-Condition-Splenektomie"
+        }]
+      },
+      {
+        "title" : "Patientenverfügungen und Ärztliche Notfallanordnung",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "42348-3"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Patientenverfügung 2022 (Hausarzt)</li></ul></div>"
+        },
+        "entry" : [{
+          "reference" : "DocumentReference/UC2-DocumentReference-Patientenverfuegung"
+        }]
+      },
+      {
+        "title" : "Andere Dokumente",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "55108-5"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Keine zusätzlichen Dokumente hinterlegt.</p></div>"
+        },
+        "emptyReason" : {
+          "coding" : [{
+            "system" : "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+            "code" : "unavailable",
+            "display" : "Information not available"
+          }]
+        }
+      },
+      {
+        "title" : "Implantate",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "46264-8"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Keine medizinischen Geräte dokumentiert.</p></div>"
+        },
+        "emptyReason" : {
+          "coding" : [{
+            "system" : "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+            "code" : "nilknown",
+            "display" : "Nil Known"
+          }]
+        }
+      },
+      {
+        "title" : "Schwangerschaft",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "10162-6"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Nicht zutreffend.</p></div>"
+        },
+        "emptyReason" : {
+          "coding" : [{
+            "system" : "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+            "code" : "notasked",
+            "display" : "Not Asked"
+          }]
+        }
+      },
+      {
+        "title" : "Kognitive Beeinträchtigungen",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "66610-7"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Wachheitszustand wechselhaft (akut, fieberbedingt).</p></div>"
+        },
+        "emptyReason" : {
+          "coding" : [{
+            "system" : "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+            "code" : "unavailable",
+            "display" : "Information not available"
+          }]
+        }
+      },
+      {
+        "title" : "Physische Beeinträchtigungen",
+        "code" : {
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "96386-8"
+          }]
+        },
+        "text" : {
+          "status" : "generated",
+          "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Aphasie nach Schlaganfall</li></ul></div>"
+        },
+        "entry" : [{
+          "reference" : "Observation/UC2-PhysicalDisability-Aphasie"
+        }]
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/Patient/UC2-Patient-WalterSchmid",
+    "resource" : {
+      "resourceType" : "Patient",
+      "id" : "UC2-Patient-WalterSchmid",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-patient"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_UC2-Patient-WalterSchmid\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient UC2-Patient-WalterSchmid</b></p><a name=\"UC2-Patient-WalterSchmid\"> </a><a name=\"hcUC2-Patient-WalterSchmid\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-patient.html\">CH IPS Patient</a></p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Detail</td><td colspan=\"3\">Seestrasse 22 Luzern 6003 CH </td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Language spoken\">Language:</td><td colspan=\"3\"><span title=\"Codes:{urn:ietf:bcp:47 de}\">German</span> (preferred)</td></tr></table></div>"
+      },
+      "identifier" : [{
+        "system" : "urn:oid:2.16.756.5.30.1.123.100.1.1.1",
+        "value" : "80756012222222222222"
+      }],
+      "name" : [{
+        "use" : "official",
+        "family" : "Schmid",
+        "given" : ["Walter"]
+      }],
+      "gender" : "male",
+      "birthDate" : "1947-04-12",
+      "address" : [{
+        "line" : ["Seestrasse 22"],
+        "city" : "Luzern",
+        "postalCode" : "6003",
+        "country" : "CH"
+      }],
+      "communication" : [{
+        "language" : {
+          "coding" : [{
+            "system" : "urn:ietf:bcp:47",
+            "code" : "de"
+          }]
+        },
+        "preferred" : true
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/RelatedPerson/UC2-RelatedPerson-Spitex",
+    "resource" : {
+      "resourceType" : "RelatedPerson",
+      "id" : "UC2-RelatedPerson-Spitex",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-relatedperson"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RelatedPerson_UC2-RelatedPerson-Spitex\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RelatedPerson UC2-RelatedPerson-Spitex</b></p><a name=\"UC2-RelatedPerson-Spitex\"> </a><a name=\"hcUC2-RelatedPerson-Spitex\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emr-relatedperson.html\">CH Emergency Record RelatedPerson</a></p></div><p><b>active</b>: true</p><p><b>patient</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><p><b>relationship</b>: <span title=\"Codes:\">Spitex (Pflegedienst)</span></p><p><b>name</b>: Spitex Luzern (Pflegedienst)(Anonymous)</p><p><b>telecom</b>: <a href=\"tel:+41415550000\">+41 41 555 00 00</a></p><h3>Communications</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Language</b></td><td><b>Preferred</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{urn:ietf:bcp:47 de}\">German</span></td><td>true</td></tr></table></div>"
+      },
+      "active" : true,
+      "patient" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "relationship" : [{
+        "text" : "Spitex (Pflegedienst)"
+      }],
+      "name" : [{
+        "use" : "anonymous",
+        "text" : "Spitex Luzern (Pflegedienst)"
+      }],
+      "telecom" : [{
+        "system" : "phone",
+        "value" : "+41 41 555 00 00",
+        "use" : "work",
+        "rank" : 1
+      }],
+      "communication" : [{
+        "language" : {
+          "coding" : [{
+            "system" : "urn:ietf:bcp:47",
+            "code" : "de"
+          }]
+        },
+        "preferred" : true
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/Practitioner/UC2-Practitioner-Hausarzt",
+    "resource" : {
+      "resourceType" : "Practitioner",
+      "id" : "UC2-Practitioner-Hausarzt",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-practitioner"]
+      },
+      "language" : "de-CH",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-CH\" lang=\"de-CH\"><a name=\"Practitioner_UC2-Practitioner-Hausarzt\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner UC2-Practitioner-Hausarzt</b></p><a name=\"UC2-Practitioner-Hausarzt\"> </a><a name=\"hcUC2-Practitioner-Hausarzt\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: de-CH</p><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-practitioner.html\">CH IPS Practitioner</a></p></div><p><b>identifier</b>: <a href=\"http://fhir.ch/ig/ch-term/3.4.0/NamingSystem-gln.html\" title=\"Each healthcare partner (natural or legal person) is referenced with a unique code of type GLN (former name: EAN code) of the [GS1](https://www.gs1.ch/de/home) system, see [refdata](https://www.refdata.ch/).\">GLN</a>/7601000000033</p><p><b>name</b>: UC2 Hausarzt (Official)</p><h3>Qualifications</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 309343006}\">Arzt</span></td></tr></table></div>"
+      },
+      "identifier" : [{
+        "system" : "urn:oid:2.51.1.3",
+        "value" : "7601000000033"
+      }],
+      "name" : [{
+        "use" : "official",
+        "family" : "Hausarzt",
+        "given" : ["UC2"],
+        "prefix" : ["Dr. med."]
+      }],
+      "qualification" : [{
+        "code" : {
+          "coding" : [{
+            "system" : "http://snomed.info/sct",
+            "version" : "http://snomed.info/sct/2011000195101",
+            "code" : "309343006"
+          }],
+          "text" : "Arzt"
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/PractitionerRole/UC2-PractitionerRole-Hausarzt",
+    "resource" : {
+      "resourceType" : "PractitionerRole",
+      "id" : "UC2-PractitionerRole-Hausarzt",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-practitionerrole"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"PractitionerRole_UC2-PractitionerRole-Hausarzt\"> </a><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole UC2-PractitionerRole-Hausarzt</b></p><a name=\"UC2-PractitionerRole-Hausarzt\"> </a><a name=\"hcUC2-PractitionerRole-Hausarzt\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-practitionerrole.html\">CH IPS PractitionerRole</a></p></div><p><b>active</b>: true</p><p><b>practitioner</b>: <a href=\"Practitioner-UC2-Practitioner-Hausarzt.html\">Practitioner UC2 Hausarzt (official)</a></p><p><b>organization</b>: <a href=\"Organization-UC2-Organization-Hausarztpraxis.html\">Organization Hausarztpraxis UC2</a></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 309343006}\">Arzt</span></p><p><b>specialty</b>: <span title=\"Codes:{http://snomed.info/sct 419772000}\">Allgemeine Innere Medizin</span></p></div>"
+      },
+      "active" : true,
+      "practitioner" : {
+        "reference" : "Practitioner/UC2-Practitioner-Hausarzt"
+      },
+      "organization" : {
+        "reference" : "Organization/UC2-Organization-Hausarztpraxis"
+      },
+      "code" : [{
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/2011000195101",
+          "code" : "309343006"
+        }],
+        "text" : "Arzt"
+      }],
+      "specialty" : [{
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/2011000195101",
+          "code" : "419772000"
+        }],
+        "text" : "Allgemeine Innere Medizin"
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/Organization/UC2-Organization-Hausarztpraxis",
+    "resource" : {
+      "resourceType" : "Organization",
+      "id" : "UC2-Organization-Hausarztpraxis",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-organization"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_UC2-Organization-Hausarztpraxis\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization UC2-Organization-Hausarztpraxis</b></p><a name=\"UC2-Organization-Hausarztpraxis\"> </a><a name=\"hcUC2-Organization-Hausarztpraxis\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-organization.html\">CH IPS Organization</a></p></div><p><b>identifier</b>: <a href=\"http://fhir.ch/ig/ch-term/3.4.0/NamingSystem-gln.html\" title=\"Each healthcare partner (natural or legal person) is referenced with a unique code of type GLN (former name: EAN code) of the [GS1](https://www.gs1.ch/de/home) system, see [refdata](https://www.refdata.ch/).\">GLN</a>/7601000000040</p><p><b>active</b>: true</p><p><b>type</b>: <span title=\"Codes:{http://snomed.info/sct 394802001}\">Allgemeine Innere Medizin</span></p><p><b>name</b>: Hausarztpraxis UC2</p></div>"
+      },
+      "identifier" : [{
+        "system" : "urn:oid:2.51.1.3",
+        "value" : "7601000000040"
+      }],
+      "active" : true,
+      "type" : [{
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/2011000195101",
+          "code" : "394802001"
+        }],
+        "text" : "Allgemeine Innere Medizin"
+      }],
+      "name" : "Hausarztpraxis UC2"
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/Condition/UC2-Condition-Schlaganfall",
+    "resource" : {
+      "resourceType" : "Condition",
+      "id" : "UC2-Condition-Schlaganfall",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-condition"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_UC2-Condition-Schlaganfall\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition UC2-Condition-Schlaganfall</b></p><a name=\"UC2-Condition-Schlaganfall\"> </a><a name=\"hcUC2-Condition-Schlaganfall\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-condition.html\">CH IPS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 230690007}\">CVA - Cerebrovascular accident</span></p><p><b>subject</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><p><b>onset</b>: 2023</p><p><b>recordedDate</b>: 2023-01-01</p><p><b>recorder</b>: <a href=\"Practitioner-UC2-Practitioner-Hausarzt.html\">Practitioner UC2 Hausarzt (official)</a></p></div>"
+      },
+      "clinicalStatus" : {
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code" : "active"
+        }]
+      },
+      "verificationStatus" : {
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code" : "confirmed"
+        }]
+      },
+      "category" : [{
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code" : "problem-list-item"
+        }]
+      }],
+      "code" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/2011000195101",
+          "code" : "230690007"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "onsetDateTime" : "2023",
+      "recordedDate" : "2023-01-01",
+      "recorder" : {
+        "reference" : "Practitioner/UC2-Practitioner-Hausarzt"
+      }
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/Condition/UC2-Condition-Splenektomie",
+    "resource" : {
+      "resourceType" : "Condition",
+      "id" : "UC2-Condition-Splenektomie",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-condition"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_UC2-Condition-Splenektomie\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition UC2-Condition-Splenektomie</b></p><a name=\"UC2-Condition-Splenektomie\"> </a><a name=\"hcUC2-Condition-Splenektomie\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-condition.html\">CH IPS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>code</b>: <span title=\"Codes:\">Status nach Splenektomie (1969)</span></p><p><b>subject</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><p><b>onset</b>: 1969</p><p><b>recordedDate</b>: 1969-01-01</p></div>"
+      },
+      "clinicalStatus" : {
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code" : "active"
+        }]
+      },
+      "verificationStatus" : {
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code" : "confirmed"
+        }]
+      },
+      "category" : [{
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code" : "problem-list-item"
+        }]
+      }],
+      "code" : {
+        "text" : "Status nach Splenektomie (1969)"
+      },
+      "subject" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "onsetDateTime" : "1969",
+      "recordedDate" : "1969-01-01"
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/Medication/UC2-Medication-AspirinCardio",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "UC2-Medication-AspirinCardio",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medication"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Medication_UC2-Medication-AspirinCardio\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Medication UC2-Medication-AspirinCardio</b></p><a name=\"UC2-Medication-AspirinCardio\"> </a><a name=\"hcUC2-Medication-AspirinCardio\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-medication.html\">CH IPS Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680517950680}, {http://www.whocc.no/atc B01AC06}\">Aspirin Cardio 100 mg (Acetylsalicylsäure)</span></p><p><b>form</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10219000}\">Tablette</span></p><p><b>amount</b>: 28 Tablette<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = '732936001')</span>/1 Packung<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code1681000175101 = '1681000175101')</span></p></div>"
+      },
+      "code" : {
+        "coding" : [{
+          "system" : "urn:oid:2.51.1.1",
+          "code" : "7680517950680",
+          "display" : "ASPIRIN CARDIO Filmtabl 100 mg 28 Stk"
+        },
+        {
+          "system" : "http://www.whocc.no/atc",
+          "code" : "B01AC06",
+          "display" : "acetylsalicylic acid"
+        }],
+        "text" : "Aspirin Cardio 100 mg (Acetylsalicylsäure)"
+      },
+      "form" : {
+        "coding" : [{
+          "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+          "code" : "10219000"
+        }],
+        "text" : "Tablette"
+      },
+      "amount" : {
+        "numerator" : {
+          "value" : 28,
+          "unit" : "Tablette",
+          "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+          "code" : "732936001"
+        },
+        "denominator" : {
+          "value" : 1,
+          "unit" : "Packung",
+          "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+          "code" : "1681000175101"
+        }
+      }
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/MedicationStatement/UC2-MedicationStatement-AspirinCardio",
+    "resource" : {
+      "resourceType" : "MedicationStatement",
+      "id" : "UC2-MedicationStatement-AspirinCardio",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-medicationstatement"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MedicationStatement_UC2-MedicationStatement-AspirinCardio\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement UC2-MedicationStatement-AspirinCardio</b></p><a name=\"UC2-MedicationStatement-AspirinCardio\"> </a><a name=\"hcUC2-MedicationStatement-AspirinCardio\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emr-medicationstatement.html\">CH Emergency Record Medication Statement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"Medication-UC2-Medication-AspirinCardio.html\">Medication ASPIRIN CARDIO Filmtabl 100 mg 28 Stk</a></p><p><b>subject</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><p><b>effective</b>: 2023-02-01 --&gt; (ongoing)</p><p><b>reasonReference</b>: <a href=\"Condition-UC2-Condition-Schlaganfall.html\">Condition CVA - Cerebrovascular accident</a></p><blockquote><p><b>dosage</b></p><p><b>sequence</b>: 1</p><p><b>timing</b>: Morning, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>1 Tablette<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = '732936001')</span></td></tr></table></blockquote></div>"
+      },
+      "status" : "active",
+      "medicationReference" : {
+        "reference" : "Medication/UC2-Medication-AspirinCardio"
+      },
+      "subject" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "effectivePeriod" : {
+        "start" : "2023-02-01"
+      },
+      "reasonReference" : [{
+        "reference" : "Condition/UC2-Condition-Schlaganfall"
+      }],
+      "dosage" : [{
+        "sequence" : 1,
+        "timing" : {
+          "repeat" : {
+            "when" : ["MORN"]
+          }
+        },
+        "route" : {
+          "coding" : [{
+            "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+            "code" : "20053000"
+          }],
+          "text" : "zum Einnehmen"
+        },
+        "doseAndRate" : [{
+          "doseQuantity" : {
+            "value" : 1,
+            "unit" : "Tablette",
+            "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+            "code" : "732936001"
+          }
+        }]
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/Medication/UC2-Medication-Atorvastatin",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "UC2-Medication-Atorvastatin",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medication"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Medication_UC2-Medication-Atorvastatin\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Medication UC2-Medication-Atorvastatin</b></p><a name=\"UC2-Medication-Atorvastatin\"> </a><a name=\"hcUC2-Medication-Atorvastatin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-medication.html\">CH IPS Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680540850605}, {http://www.whocc.no/atc C10AA05}\">Sortis 40 mg (Atorvastatin)</span></p><p><b>form</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10219000}\">Tablette</span></p><p><b>amount</b>: 30 Tablette<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = '732936001')</span>/1 Packung<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code1681000175101 = '1681000175101')</span></p></div>"
+      },
+      "code" : {
+        "coding" : [{
+          "system" : "urn:oid:2.51.1.1",
+          "code" : "7680540850605",
+          "display" : "SORTIS Filmtabl 40 mg 30 Stk"
+        },
+        {
+          "system" : "http://www.whocc.no/atc",
+          "code" : "C10AA05",
+          "display" : "atorvastatin"
+        }],
+        "text" : "Sortis 40 mg (Atorvastatin)"
+      },
+      "form" : {
+        "coding" : [{
+          "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+          "code" : "10219000"
+        }],
+        "text" : "Tablette"
+      },
+      "amount" : {
+        "numerator" : {
+          "value" : 30,
+          "unit" : "Tablette",
+          "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+          "code" : "732936001"
+        },
+        "denominator" : {
+          "value" : 1,
+          "unit" : "Packung",
+          "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+          "code" : "1681000175101"
+        }
+      }
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/MedicationStatement/UC2-MedicationStatement-Atorvastatin",
+    "resource" : {
+      "resourceType" : "MedicationStatement",
+      "id" : "UC2-MedicationStatement-Atorvastatin",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-medicationstatement"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MedicationStatement_UC2-MedicationStatement-Atorvastatin\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement UC2-MedicationStatement-Atorvastatin</b></p><a name=\"UC2-MedicationStatement-Atorvastatin\"> </a><a name=\"hcUC2-MedicationStatement-Atorvastatin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emr-medicationstatement.html\">CH Emergency Record Medication Statement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"Medication-UC2-Medication-Atorvastatin.html\">Medication SORTIS Filmtabl 40 mg 30 Stk</a></p><p><b>subject</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><p><b>effective</b>: 2023-02-01 --&gt; (ongoing)</p><p><b>reasonReference</b>: <a href=\"Condition-UC2-Condition-Schlaganfall.html\">Condition CVA - Cerebrovascular accident</a></p><blockquote><p><b>dosage</b></p><p><b>sequence</b>: 1</p><p><b>timing</b>: Evening, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>1 Tablette<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = '732936001')</span></td></tr></table></blockquote></div>"
+      },
+      "status" : "active",
+      "medicationReference" : {
+        "reference" : "Medication/UC2-Medication-Atorvastatin"
+      },
+      "subject" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "effectivePeriod" : {
+        "start" : "2023-02-01"
+      },
+      "reasonReference" : [{
+        "reference" : "Condition/UC2-Condition-Schlaganfall"
+      }],
+      "dosage" : [{
+        "sequence" : 1,
+        "timing" : {
+          "repeat" : {
+            "when" : ["EVE"]
+          }
+        },
+        "route" : {
+          "coding" : [{
+            "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+            "code" : "20053000"
+          }],
+          "text" : "zum Einnehmen"
+        },
+        "doseAndRate" : [{
+          "doseQuantity" : {
+            "value" : 1,
+            "unit" : "Tablette",
+            "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+            "code" : "732936001"
+          }
+        }]
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/Medication/UC2-Medication-XigduoXR",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "UC2-Medication-XigduoXR",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medication"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Medication_UC2-Medication-XigduoXR\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Medication UC2-Medication-XigduoXR</b></p><a name=\"UC2-Medication-XigduoXR\"> </a><a name=\"hcUC2-Medication-XigduoXR\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-medication.html\">CH IPS Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680653770050}, {http://www.whocc.no/atc A10BD15}\">Xigduo XR 5/1000 mg (Dapagliflozin + Metformin)</span></p><p><b>form</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10221005}\">Retardtablette</span></p><p><b>amount</b>: 28 Tablette<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = '732936001')</span>/1 Packung<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code1681000175101 = '1681000175101')</span></p></div>"
+      },
+      "code" : {
+        "coding" : [{
+          "system" : "urn:oid:2.51.1.1",
+          "code" : "7680653770050",
+          "display" : "XIGDUO XR Filmtabl 5 mg/1000 mg 28 Stk"
+        },
+        {
+          "system" : "http://www.whocc.no/atc",
+          "code" : "A10BD15",
+          "display" : "metformin and dapagliflozin"
+        }],
+        "text" : "Xigduo XR 5/1000 mg (Dapagliflozin + Metformin)"
+      },
+      "form" : {
+        "coding" : [{
+          "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+          "code" : "10221005"
+        }],
+        "text" : "Retardtablette"
+      },
+      "amount" : {
+        "numerator" : {
+          "value" : 28,
+          "unit" : "Tablette",
+          "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+          "code" : "732936001"
+        },
+        "denominator" : {
+          "value" : 1,
+          "unit" : "Packung",
+          "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+          "code" : "1681000175101"
+        }
+      }
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/MedicationStatement/UC2-MedicationStatement-XigduoXR",
+    "resource" : {
+      "resourceType" : "MedicationStatement",
+      "id" : "UC2-MedicationStatement-XigduoXR",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-medicationstatement"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MedicationStatement_UC2-MedicationStatement-XigduoXR\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement UC2-MedicationStatement-XigduoXR</b></p><a name=\"UC2-MedicationStatement-XigduoXR\"> </a><a name=\"hcUC2-MedicationStatement-XigduoXR\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emr-medicationstatement.html\">CH Emergency Record Medication Statement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"Medication-UC2-Medication-XigduoXR.html\">Medication XIGDUO XR Filmtabl 5 mg/1000 mg 28 Stk</a></p><p><b>subject</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><p><b>effective</b>: 2020-01-01 --&gt; (ongoing)</p><p><b>reasonCode</b>: <span title=\"Codes:\">Diabetes</span></p><blockquote><p><b>dosage</b></p><p><b>sequence</b>: 1</p><p><b>timing</b>: Evening, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>2 Tabletten<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = '732936001')</span></td></tr></table></blockquote></div>"
+      },
+      "status" : "active",
+      "medicationReference" : {
+        "reference" : "Medication/UC2-Medication-XigduoXR"
+      },
+      "subject" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "effectivePeriod" : {
+        "start" : "2020-01-01"
+      },
+      "reasonCode" : [{
+        "text" : "Diabetes"
+      }],
+      "dosage" : [{
+        "sequence" : 1,
+        "timing" : {
+          "repeat" : {
+            "when" : ["EVE"]
+          }
+        },
+        "route" : {
+          "coding" : [{
+            "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+            "code" : "20053000"
+          }],
+          "text" : "zum Einnehmen"
+        },
+        "doseAndRate" : [{
+          "doseQuantity" : {
+            "value" : 2,
+            "unit" : "Tabletten",
+            "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+            "code" : "732936001"
+          }
+        }]
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/Medication/UC2-Medication-Epril",
+    "resource" : {
+      "resourceType" : "Medication",
+      "id" : "UC2-Medication-Epril",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-medication"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Medication_UC2-Medication-Epril\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Medication UC2-Medication-Epril</b></p><a name=\"UC2-Medication-Epril\"> </a><a name=\"hcUC2-Medication-Epril\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-medication.html\">CH IPS Medication</a></p></div><p><b>code</b>: <span title=\"Codes:{urn:oid:2.51.1.1 7680552290024}, {http://www.whocc.no/atc C09AA02}\">Epril 20 mg (Enalapril)</span></p><p><b>form</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 10219000}\">Tablette</span></p><p><b>amount</b>: 30 Tablette<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = '732936001')</span>/1 Packung<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code1681000175101 = '1681000175101')</span></p></div>"
+      },
+      "code" : {
+        "coding" : [{
+          "system" : "urn:oid:2.51.1.1",
+          "code" : "7680552290024",
+          "display" : "EPRIL Tabl 20 mg 30 Stk"
+        },
+        {
+          "system" : "http://www.whocc.no/atc",
+          "code" : "C09AA02",
+          "display" : "enalapril"
+        }],
+        "text" : "Epril 20 mg (Enalapril)"
+      },
+      "form" : {
+        "coding" : [{
+          "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+          "code" : "10219000"
+        }],
+        "text" : "Tablette"
+      },
+      "amount" : {
+        "numerator" : {
+          "value" : 30,
+          "unit" : "Tablette",
+          "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+          "code" : "732936001"
+        },
+        "denominator" : {
+          "value" : 1,
+          "unit" : "Packung",
+          "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+          "code" : "1681000175101"
+        }
+      }
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/MedicationStatement/UC2-MedicationStatement-Epril",
+    "resource" : {
+      "resourceType" : "MedicationStatement",
+      "id" : "UC2-MedicationStatement-Epril",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-medicationstatement"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"MedicationStatement_UC2-MedicationStatement-Epril\"> </a><p class=\"res-header-id\"><b>Generated Narrative: MedicationStatement UC2-MedicationStatement-Epril</b></p><a name=\"UC2-MedicationStatement-Epril\"> </a><a name=\"hcUC2-MedicationStatement-Epril\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emr-medicationstatement.html\">CH Emergency Record Medication Statement</a></p></div><p><b>status</b>: Active</p><p><b>medication</b>: <a href=\"Medication-UC2-Medication-Epril.html\">Medication EPRIL Tabl 20 mg 30 Stk</a></p><p><b>subject</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><p><b>effective</b>: 2018-01-01 --&gt; (ongoing)</p><p><b>reasonCode</b>: <span title=\"Codes:\">Bluthochdruck</span></p><blockquote><p><b>dosage</b></p><p><b>sequence</b>: 1</p><p><b>timing</b>: Morning, Once</p><p><b>route</b>: <span title=\"Codes:{urn:oid:0.4.0.127.0.16.1.1.2.1 20053000}\">zum Einnehmen</span></p><h3>DoseAndRates</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Dose[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>1 Tablette<span style=\"background: LightGoldenRodYellow\"> (Details: SNOMED CT  code732936001 = '732936001')</span></td></tr></table></blockquote></div>"
+      },
+      "status" : "active",
+      "medicationReference" : {
+        "reference" : "Medication/UC2-Medication-Epril"
+      },
+      "subject" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "effectivePeriod" : {
+        "start" : "2018-01-01"
+      },
+      "reasonCode" : [{
+        "text" : "Bluthochdruck"
+      }],
+      "dosage" : [{
+        "sequence" : 1,
+        "timing" : {
+          "repeat" : {
+            "when" : ["MORN"]
+          }
+        },
+        "route" : {
+          "coding" : [{
+            "system" : "urn:oid:0.4.0.127.0.16.1.1.2.1",
+            "code" : "20053000"
+          }],
+          "text" : "zum Einnehmen"
+        },
+        "doseAndRate" : [{
+          "doseQuantity" : {
+            "value" : 1,
+            "unit" : "Tablette",
+            "system" : "http://snomed.info/sct|http://snomed.info/sct/2011000195101",
+            "code" : "732936001"
+          }
+        }]
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/AllergyIntolerance/UC2-AllergyIntolerance-Penicillin",
+    "resource" : {
+      "resourceType" : "AllergyIntolerance",
+      "id" : "UC2-AllergyIntolerance-Penicillin",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-ips/StructureDefinition/ch-ips-allergyintolerance"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"AllergyIntolerance_UC2-AllergyIntolerance-Penicillin\"> </a><p class=\"res-header-id\"><b>Generated Narrative: AllergyIntolerance UC2-AllergyIntolerance-Penicillin</b></p><a name=\"UC2-AllergyIntolerance-Penicillin\"> </a><a name=\"hcUC2-AllergyIntolerance-Penicillin\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://fhir.ch/ig/ch-ips/2.0.0/StructureDefinition-ch-ips-allergyintolerance.html\">CH IPS AllergyIntolerance</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/allergyintolerance-verification confirmed}\">Confirmed</span></p><p><b>type</b>: Allergy</p><p><b>category</b>: Medication</p><p><b>criticality</b>: High Risk</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 764146007}\">Penicillin</span></p><p><b>patient</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><h3>Reactions</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Manifestation</b></td><td><b>Severity</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://snomed.info/sct 267036007}\">Atemnot</span></td><td>Severe</td></tr></table></div>"
+      },
+      "clinicalStatus" : {
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+          "code" : "active"
+        }]
+      },
+      "verificationStatus" : {
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+          "code" : "confirmed"
+        }]
+      },
+      "type" : "allergy",
+      "category" : ["medication"],
+      "criticality" : "high",
+      "code" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/2011000195101",
+          "code" : "764146007"
+        }]
+      },
+      "patient" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "reaction" : [{
+        "manifestation" : [{
+          "coding" : [{
+            "system" : "http://snomed.info/sct",
+            "version" : "http://snomed.info/sct/2011000195101",
+            "code" : "267036007"
+          }],
+          "text" : "Atemnot"
+        }],
+        "severity" : "severe"
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/Observation/UC2-PhysicalDisability-Aphasie",
+    "resource" : {
+      "resourceType" : "Observation",
+      "id" : "UC2-PhysicalDisability-Aphasie",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-observation-physical-disability"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_UC2-PhysicalDisability-Aphasie\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation UC2-PhysicalDisability-Aphasie</b></p><a name=\"UC2-PhysicalDisability-Aphasie\"> </a><a name=\"hcUC2-PhysicalDisability-Aphasie\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emr-observation-physical-disability.html\">CH Emergency Record Physical Disability Observation</a></p></div><p><b>status</b>: Final</p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/observation-category exam}\">Exam</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 87486003}\">Aphasie</span></p><p><b>subject</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><p><b>effective</b>: 2023-03-01</p></div>"
+      },
+      "status" : "final",
+      "category" : [{
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code" : "exam"
+        }]
+      }],
+      "code" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/2011000195101",
+          "code" : "87486003"
+        }],
+        "text" : "Aphasie"
+      },
+      "subject" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "effectiveDateTime" : "2023-03-01"
+    }
+  },
+  {
+    "fullUrl" : "http://fhir.ch/ig/emr/DocumentReference/UC2-DocumentReference-Patientenverfuegung",
+    "resource" : {
+      "resourceType" : "DocumentReference",
+      "id" : "UC2-DocumentReference-Patientenverfuegung",
+      "meta" : {
+        "profile" : ["http://fhir.ch/ig/ch-emr/StructureDefinition/ch-emr-documentreference-advance-directive"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DocumentReference_UC2-DocumentReference-Patientenverfuegung\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DocumentReference UC2-DocumentReference-Patientenverfuegung</b></p><a name=\"UC2-DocumentReference-Patientenverfuegung\"> </a><a name=\"hcUC2-DocumentReference-Patientenverfuegung\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-ch-emr-documentreference-advance-directive.html\">CH Emergency Record Advance Directive DocumentReference</a></p></div><p><b>status</b>: Current</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 75320-2}\">Advance directive</span></p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 1264561001}\">Living will (record artifact)</span></p><p><b>subject</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><p><b>date</b>: 2022-04-20 11:00:00+0200</p><p><b>author</b>: <a href=\"Patient-UC2-Patient-WalterSchmid.html\">Walter Schmid (official) Male, DoB: 1947-04-12 ( urn:oid:2.16.756.5.30.1.123.100.1.1.1#InsuranceCardNumber#80756012222222222222)</a></p><p><b>custodian</b>: <a href=\"Organization-UC2-Organization-Hausarztpraxis.html\">Organization Hausarztpraxis UC2</a></p><p><b>description</b>: Original der Patientenverfügung liegt bei der Hausarztpraxis und kann dort angefordert werden.</p><blockquote><p><b>content</b></p><h3>Attachments</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Language</b></td><td><b>Title</b></td></tr><tr><td style=\"display: none\">*</td><td>German (Switzerland)</td><td>Patientenverfügung — bei Hausarztpraxis hinterlegt</td></tr></table></blockquote></div>"
+      },
+      "status" : "current",
+      "type" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "75320-2"
+        }]
+      },
+      "category" : [{
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "version" : "http://snomed.info/sct/2011000195101",
+          "code" : "1264561001"
+        }]
+      }],
+      "subject" : {
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      },
+      "date" : "2022-04-20T11:00:00+02:00",
+      "author" : [{
+        "reference" : "Patient/UC2-Patient-WalterSchmid"
+      }],
+      "custodian" : {
+        "reference" : "Organization/UC2-Organization-Hausarztpraxis"
+      },
+      "description" : "Original der Patientenverfügung liegt bei der Hausarztpraxis und kann dort angefordert werden.",
+      "content" : [{
+        "attachment" : {
+          "language" : "de-CH",
+          "title" : "Patientenverfügung — bei Hausarztpraxis hinterlegt"
+        }
+      }]
+    }
+  }]
+}
+
+```
