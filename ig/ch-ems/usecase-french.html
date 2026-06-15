@@ -3,24 +3,35 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-EMS\Cas d’application - FHIR v4.0.1</title>
-  
+    <title>Cas d’application - CH EMS (R4) v2.0.0-ballot</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
 
     <link href="fhir.css" rel="stylesheet"/>
-     
+
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
     <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
-  
+
     <!-- Project extras -->
     <link href="assets/css/project.css" rel="stylesheet"/>
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -29,47 +40,74 @@
     <script src="assets/js/html5shiv.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
-  
+
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
-  <body>
+  <body onload="document.body.style.opacity='1'">
 
-    <style type="text/css">h2{--heading-prefix:"6"}
-    h3,h4,h5,h6{--heading-prefix:"6"}</style>
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"5"}
+    h3,h4,h5,h6{--heading-prefix:"5"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
-        
-            <!--
-<div id="family-nav">
+
+        <!-- Placeholder for child template header declarations -->
+
+            <div id="family-nav">
 	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
-		alt="logo fhir" src="assets/images/fhir-logo-www.png" />
+		alt="logo fhir" src="fhir-logo-www.png" />
 	</a>
 </div>
--->
 
-
-            <div id="hl7-nav">
-    <a id="ivr-logo" no-external="true" href="http://www.ivr-ias.ch/">
-        <img alt="visit the ivr website" height="60" src="logo-ivr.jpg" />
-    </a>            
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
+            <style type="text/css">
+#segment-header .container { position: relative; }
+#hl7-nav {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    margin-top: 0;
+    transform: translateY(-50%);
+}
+</style>
+<div id="hl7-nav">
+    <a id="hl7-logo" no-external="true" href="http://www.hl7.ch">
+        <img alt="visit the hl7 website" height="50" src="hl7-logo.png" />
+    </a>
 </div>
 
         <div id="ig-status">
-          <p><span style="font-size:12pt;font-weight:bold">CH EMS (R4)</span><br/>1.9.0 - Standard for Trial Use</p>
+          <p><span style="font-size:12pt;font-weight:bold">CH EMS (R4)</span>
+            <br/>
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
         </div>
       </div> <!-- /container -->
     </div>  <!-- /segment-header -->
-    
+
     <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
       <div id="stripe"> </div>
       <div class="container">  <!-- container -->
         <!-- HEADER CONTENT -->
-    
+
         <nav class="navbar navbar-inverse">
           <!--status-bar-->
           <div class="container">
@@ -80,10 +118,12 @@
             </button>
             <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Home<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Home
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -98,8 +138,8 @@
     </ul>
   </li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -110,11 +150,74 @@
       </li>
     </ul>
   </li>
-  <li><a href="document.html">Document</a></li>
-  <li><a href="profiles.html">Profiles</a></li>
-  <li><a href="extensions.html">Extensions</a></li>
-  <li><a href="terminology.html">Terminology</a></li>
-  <li><a href="artifacts.html">Artifacts</a></li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">EMS Protocol
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="logicalmodel.html">Logical Model</a>
+      </li>
+      <li>
+        <a href="document.html">FHIR Document</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Model Maps
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="ConceptMap-EmsMission2Fhir.html">Mission</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsPatient2Fhir.html">Patient</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAdministrative2Fhir.html">Administrative</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsPretreatment2Fhir.html">Pretreatment</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAnamnesis2Fhir.html">Anamnesis</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsFindings2Fhir.html">Findings</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsDiagnosis2Fhir.html">Diagnosis</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsProcedures2Fhir.html">Procedures</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsEventOfDeath2Fhir.html">Event of Death</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsTransport2Fhir.html">Transport</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsHandover2Fhir.html">Handover</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAnnotation2Fhir.html">Annotation</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="profiles.html">Profiles</a>
+  </li>
+  <li>
+    <a href="extensions.html">Extensions</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminology</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
 </ul>
             </div>  <!-- /.nav-collapse -->
           </div>  <!-- /.container -->
@@ -123,18 +226,22 @@
       </div>  <!-- /container -->
     </div>  <!-- /segment-navbar -->
     <!--status-bar-->
+
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
-      <div class="container">  <!-- container -->  
+      <div class="container">  <!-- container -->
         <ul class="breadcrumb">
           <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Cas d’application</b></li>
-        </ul>  
+
+        </ul>
       </div>  <!-- /container -->
     </div>  <!-- /segment-breadcrumb -->
-    
+
+    <a name="top"> </a>
     <div id="segment-content" class="segment">  <!-- segment-content -->
       <div class="container">  <!-- container -->
         <div class="row">
           <div class="inner-wrapper">
+
 <style type="text/css">
 h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
 h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
@@ -143,20 +250,31 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMS (R4) (v1.9.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-ems/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMS (R4) (v2.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-ems/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Cas d’application</h2>
   
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#storyboard" id="markdown-toc-storyboard">Storyboard</a></li>
-  <li><a href="#cas-dapplication----remarques-préalables" id="markdown-toc-cas-dapplication----remarques-préalables">Cas d’application -  Remarques préalables</a></li>
+  <li><a href="#cas-dapplication" id="markdown-toc-cas-dapplication">Cas d’application</a></li>
 </ul>
 
 </div>
-<p>Les cas d’application représentés ici (UC = Use Case) se rapportent à des exemples tels qu’ils se présentent aujourd’hui aux différents acteurs du système de santé suisse concernés par la présente thématique. Certains de ces cas d’application ne sont possibles que si toutes les informations pertinentes sont interopérables et peuvent circuler grâce à des mécanismes d’importation et d’exportation.</p>
+<p>Les cas d’application représentés ici se rapportent à des exemples tels qu’ils se présentent aujourd’hui aux différents acteurs du système de santé suisse concernés par la présente thématique. Certains de ces cas d’application ne sont possibles que si toutes les informations pertinentes sont interopérables et peuvent circuler grâce à des mécanismes d’importation et d’exportation.</p>
 
 <p>L’objectif est, d’une part, de mettre à disposition des informations relatives à l’état de santé du patient sous une forme lisible pour les personnes participant au processus de traitement. D’autre part, le traitement électronique des informations doit permettre d’optimiser des processus dans les systèmes TIC. <br />
 Les cas d’application décrits ci-après expliquent ces rapports dans le présent contexte.</p>
@@ -164,112 +282,116 @@ Les cas d’application décrits ci-après expliquent ces rapports dans le prés
 <h3 id="introduction">Introduction</h3>
 <p>Le processus dans ses détails peut se dérouler différemment en fonction de l’événement déclencheur de l’intervention de sauvetage. Dans ce guide, nous partons cependant du principe que chaque intervention débute par un événement déclencheur dans le centre de répartition d’une centrale d’appels urgents et se termine par un contrôle de qualité et une facturation. Les données récoltées dans ce cadre sont toujours les mêmes et s’inscrivent dans un ensemble global unifié de toutes les possibilités. Les différences de déroulement des processus ont pour conséquence que, selon les cas, des groupes de données ou des éléments uniques peuvent être récoltés et traités soit de manière complète et détaillée, soit sous une forme simple, voire ne pas l’être du tout. Contrairement à un formulaire papier, un document électronique peut supporter de telles différences, simplifiant ainsi sensiblement la saisie des données. La spécification relative à ce dernier aspect ne fait toutefois par partie de ce guide.</p>
 
-<p>Le graphique décrit par conséquent le déroulement le plus générique possible; ce déroulement est utile, mais n’entre pas dans des discussions de détail.</p>
+<p>Le graphique suivant décrit par conséquent le déroulement le plus générique possible; ce déroulement est utile, mais n’entre pas dans des discussions de détail.</p>
 
 <h3 id="storyboard">Storyboard</h3>
-<p>La Centrale d’appels sanitaires urgents reçoit un appel. Celui-ci concerne soit (a) un accident ou un problème de santé aigu et doit être traité le plus rapidement possible et en priorité absolue, soit (b) un transport prévu de personne avec contraintes médicales.</p>
 
-<p>Les premières données relatives au domaine d’intervention (lieu d’intervention et destination) sont récoltées et documentées lors de cet appel. En cas d’événement majeur, des réserves sont possibles sur le lieu de destination, mais celles-ci doivent faire l’objet d’une clarification entre le départ de l’équipe de la base et l’arrivée sur le lieu de l’intervention.</p>
+<div style="width: 100%;">
+    <div style="float: right; margin: 0 0 1rem 2rem; max-width: 600px; width: 40%; text-align: center;">
+        <img src="prozess-fr.jpg" alt="Fig.: Flux de travail" style="width: 100%;" />
+        <p style="margin-top: 0.5rem;"><em>Fig.: Flux de travail</em></p>
+    </div>
+    <p>
+      La centrale d'appels sanitaires urgents reçoit un appel ou un message électronique. Celui-ci part soit d'un accident ou d'une attaque sanitaire aiguë et doit être exécuté avec une priorité adaptée à la situation (<em>intervention primaire</em>), soit concerne un transport planifié d'une personne avec des restrictions médicales (<em>intervention secondaire</em>).
+    </p>
+    <p>
+      Lors de la <strong>réception de l'intervention</strong>, les premières données relatives au domaine « intervention » (lieu d'intervention et lieu de destination) sont collectées et documentées. En cas d'événement majeur, des réserves peuvent être émises concernant le lieu de destination, mais celles-ci doivent être clarifiées entre le départ de l'équipe depuis la base et son départ du lieu d'intervention.
+    </p>
+    <p>
+      Le <strong>disposition</strong> à la centrale se fait donner le plus d'informations possible sur les personnes concernées. Dans le cas d'une intervention primaire, il se peut que peu ou pas d'informations sur le patient soient disponibles, alors que dans le cas d'une intervention secondaire, toutes les données pertinentes sur le patient peuvent être saisies de manière définitive avec la mission.<br />
+      Sur la base des informations disponibles, le personnel de répartition détermine la composition et l’équipement nécessaire de l’équipe d’intervention et sélectionne une équipe disponible ou se charge de sa création en procédant à des réorganisations dans les interventions en cours ou auprès des organisations partenaires.
+    </p>
+    <p>
+      Toutes les informations relatives au scénario « intervention » sont ainsi déterminées. Seuls les temps de statut doivent encore être déduits ou saisis.
+    </p>
+    <p>
+      L’équipe d’intervention reçoit le mandat d’intervention et débute sa mise en œuvre. Sur le <strong>trajet</strong> vers le lieu d'intervention, il est possible d’évaluer les informations disponibles et, le cas échéant, de demander des informations supplémentaires.
+    </p>
+    <p>
+      Sur le lieu d'intervention, l'équipe commence par le <strong>traitement</strong> du patient. Il s'agit de :
+    </p>
+    <ul>
+      <li>Une anamnèse est établie</li>
+      <li>Des premiers résultats sont recueillis</li>
+      <li>Des diagnostics sont posés</li>
+      <li>Des mesures sont prises</li>
+      <li>La médication doit être adaptée aux constatations et aussi aux médicaments que le patient prend régulièrement</li>
+    </ul>
+    <p>
+      Toutes ces étapes sont consignées et documentées dans le protocole d'intervention.
+    </p>
+    <p>
+      Alors que les données relatives à la personne et à l'administration sont connues dès le départ lors d'une <em>intervention secondaire</em>, elles doivent souvent être complétées sur place lors d'une <em>intervention primaire</em>. Cela peut se faire parallèlement au relevé de l'anamnèse et des résultats. Dans le cas le plus simple, le patient dispose d'une carte d'identité et/ou d'une carte d'assurance.
+    </p>
+    <p>
+      Dès que le patient est transportable et que le lieu de destination est connu (généralement un service d'urgence adapté à l'évitement et disposant d'une capacité d'accueil), le <strong>transport du patient</strong> est effectué.
+    </p>
+    <p>
+      Le patient et le protocole d'intervention sont <strong>transférés à destination</strong>.
+    </p>
+    <p>
+      Dans le cas d'une <em>intervention primaire</em>, il n'est pas encore garanti, même à ce stade, que le patient ait pu être identifié de manière définitive. La tâche de le faire et de clore le cas sur le plan administratif incombe alors à l'hôpital traitant.
+    </p>
+    <p>
+      L'équipe retourne à la base avec le véhicule, procède au <strong>rétablissement</strong> et à la <strong>clôture du protocole</strong>.<br />
+      Le <strong>contrôle qualité</strong> et la <strong>facturation</strong> (au patient ou à l'organisation qui a payé l'intervention) relèvent désormais du back-office du service de sauvetage.
+    </p>
+</div>
 
-<p>Le personnel de répartition de la centrale demande le plus d’informations possible au sujet des personnes concernées. Alors que dans le cas (a), ces informations seront vraisemblablement limitées au nombre de personnes, à leur âge approximatif et à leur genre, elles pourront être saisies de manière définitive avec le mandat dans le cas (b).</p>
+<h3 id="cas-dapplication">Cas d’application</h3>
+<p>Deux cas d’application sont décrits pour le protocole d'intervention:</p>
 
-<p>Sur la base des informations disponibles, le personnel de répartition détermine la composition et l’équipement nécessaire de l’équipe d’intervention et sélectionne une équipe disponible ou se charge de sa création en procédant à des réorganisations dans les interventions en cours ou auprès des organisations partenaires.</p>
-
-<p>Toutes les informations relatives au scénario “Intervention” sont ainsi définies. Seules les heures des statuts doivent encore être déduites ou saisies.</p>
-
-<p>L’équipe d’intervention reçoit le mandat d’intervention et débute sa mise en œuvre. En route vers le lieu d’intervention, il est possible d’évaluer les informations disponibles et, le cas échéant, de demander des informations supplémentaires.</p>
-
-<p>Un bilan de la situation est réalisé sur place avec les points suivants:</p>
-
-<ul>
-  <li>Établissement d’une anamnèse</li>
-  <li>Collecte des premiers rapports</li>
-  <li>Établissement des diagnostics</li>
-  <li>Application de mesures</li>
-  <li>La médication doit être adaptée à l’anamnèse et, surtout, à une médication actuelle en cours</li>
-</ul>
-
-<p>Toutes ces étapes sont consignées et documentées dans le protocole de sauvetage.</p>
-
-<p>Alors que les données personnelles et administratives sont connues dès le début en cas d’intervention planifiée, elles doivent souvent être complétées une nouvelle fois sur le lieu d’intervention en cas d’intervention d’urgence. Cette opération peut être effectuée en parallèle à la saisie de l’anamnèse et des rapports; dans le cas le plus simple, le patient a sur lui une pièce d’identité et/ou une carte d’assuré.</p>
-
-<p>Le transport commence dès que le patient peut être transporté et que le lieu de destination est connu (généralement, service des urgences pouvant accueillir des patients).</p>
-
-<p>Le patient et le protocole de sauvetage sont remis au lieu de destination.</p>
-
-<p>En cas d’intervention d’urgence, il n’est pas encore garanti, à ce moment-là, que le patient puisse être identifié de manière définitive. C’est alors à l’hôpital responsable du traitement de se charger de cette tâche et de clore définitivement le cas également sur le plan administratif.</p>
-
-<p>L’équipe revient à la base avec son véhicule, exécute les opérations de rangement du véhicule et clôt le protocole. L’assurance qualité et le décompte (vis-à-vis du patient ou vis-à-vis du lieu de destination) sont maintenant de la responsabilité du back office du service de sauvetage.</p>
-
-<p><strong>Flux de travail</strong></p>
-<p><img src="prozess-fr.jpg" class="figure-img img-responsive img-rounded center-block" alt="Flux de travail" style="width:40%" /></p>
-<div style="clear:both;"></div>
-
-<h3 id="cas-dapplication----remarques-préalables">Cas d’application -  Remarques préalables</h3>
-<p>Deux cas d’application sont décrits pour le protocole de sauvetage:</p>
-
-<p><strong>1. Intervention primaire avec patient identifiable:</strong> <br />
+<p><a href="usecase-french.html#cas-dapplication-1---intervention-primaire-avec-patient-identifiable"><strong>1. Intervention primaire avec patient identifiable</strong></a>      <br />
 Intervention au cours de laquelle le service de sauvetage est le premier à entrer en contact avec le patient et <strong>peut identifier</strong> ce dernier <strong>de manière univoque</strong> sur la base d’une pièce d’identité, d’une affirmation du patient ou autre. Il s’agit ici souvent d’interventions d’urgence. La majorité des interventions primaires ne peuvent pas être planifiées par le service de sauvetage.</p>
 
-<p><strong>2. Intervention primaire avec patient inconnu:</strong> <br />
+<p><a href="usecase-french.html#cas-dapplication-2---intervention-primaire-avec-patient-inconnu"><strong>2. Intervention primaire avec patient inconnu</strong></a>       <br />
 Intervention lors de laquelle, jusqu’à la fin de l’intervention, l’équipe du service de sauvetage <strong>ne peut pas identifier</strong> le patient. Entre autres raisons, il est possible que la personne ne puisse pas s’exprimer et n’ait pas de pièce d’identité sur elle ou que lors d’un événement majeur, il ne soit pas possible de procéder à l’identification des blessés sur le lieu du sinistre faute de temps.</p>
 
-<p>Ces deux cas d’application sont inventés librement. Ils servent uniquement à illustrer comment les indications recueillies au cours d’une intervention sont reproduites dans l’ensemble de données CH EMS. Ces cas d’application peuvent par conséquent contenir des indications qui ne sont pas judicieuses sur le plan médical ou tactique de l’intervention. La description de ces deux cas d’application contient des données qui peuvent être reprises, si possible, dans les exemples de données de l’ensemble de données. Si plus d’un exemple est donné pour un attribut de l’ensemble de données, ces exemples concernent un cas d’application ou les deux. La description des cas d’application est moins détaillée que les exemples de données. Cela signifie qu’il existe des exemples de données qui sont mentionnés dans les deux cas d’application ou uniquement dans l’un des deux, mais aussi des données qui ne sont pas du tout mentionnées dans les cas d’application.</p>
+<p>Ces deux cas d’application sont inventés librement. Ils servent uniquement à illustrer comment les indications recueillies au cours d’une intervention sont reproduites dans l’ensemble de données CH EMS. Ces cas d’application peuvent par conséquent contenir des indications qui ne sont pas judicieuses sur le plan médical ou tactique de l’intervention. La description de ces deux cas d’application contient des données qui peuvent être reprises, si possible, dans les exemples de données de l’ensemble de données. <br />
+Le protocole d’intervention pour le cas d’application 1 contient les données <strong>largement sous forme structurée</strong>. En revanche, le protocole d’intervention pour le cas d’application 2 présente une <strong>combinaison de données structurées et de texte libre</strong>. Cela vise à illustrer les différentes possibilités d’utilisation du format d’échange en fonction du niveau de mise en œuvre.</p>
 
 <h4 id="cas-dapplication-1---intervention-primaire-avec-patient-identifiable">Cas d’application 1 - Intervention primaire avec patient identifiable</h4>
-<p>Le 10 décembre 2016 à 12 h 09 (heure de statut ALARM), M. Pierre Model compose le numéro d’urgence 144. Il se trouve quelque part au-dessus de Zurich en bordure de forêt et indique qu’il ressent de fortes douleurs à la poitrine et dans la partie supérieure de son bras gauche. Il arrive à peine à respirer. Sur la base des questions posées au patient, la Centrale d’appels sanitaires urgents de Zurich (GLN 7601002156370) soupçonne qu’il souffre d’un syndrome coronarien aigu (ACS) et définit ce terme comme mot-clé de l’intervention. La localisation du patient permet de savoir qu’il se trouve aux coordonnées 47.392115, 8.553192.</p>
+<p>Le 10 décembre 2016 à 12 h 09 (heure de statut <a href="Observation-1-Alarm.html">ALARM</a>), M. <a href="Patient-1-ThomasMueller.html">Thomas Müller</a> compose le numéro d’urgence 144. Il se trouve quelque part au-dessus de Zurich en bordure de forêt et indique qu’il ressent de fortes douleurs à la poitrine et dans la partie supérieure de son bras gauche. Il arrive à peine à respirer. Sur la base des questions posées au patient, la <a href="ServiceRequest-1-AufbietendeOrganisation.html">Centrale d’appels sanitaires urgents de Zurich (CASU)</a> (GLN 7601002156370) soupçonne qu’il souffre d’un syndrome coronarien aigu (ACS) et définit ce terme comme mot-clé de l’intervention. La localisation du patient permet de savoir qu’il se trouve aux <a href="Location-1-Einsatzort.html">coordonnées 47.392115, 8.553192</a>.</p>
 
-<p>La Centrale d’appels sanitaires urgents (CASU) crée, le 10 décembre 2016 à 12 h 11 (heure de statut DISPOSITION, désignation statut: DP), une intervention avec numéro d’intervention S12345678 et déploie sous le numéro D12345678 l’équipe 111 du Service de la protection et des secours (GLN 7601002156363) sur le lieu d’intervention avec un véhicule de sauvetage (Z-220) et du personnel: Petra Untel, ambulancière diplômée ES (école supérieure), GLN 7601003330434, et Jean Exemple, technicien ambulancier BF (brevet fédéral), GLN 7601000211804. Ce trajet doit être effectué en urgence et l’équipe active par conséquent les signaux prioritaires du véhicule. Ils quittent le poste de garde du Service de la protection et des secours de Zurich (SRZ) à 12 h 13 (heure de statut ROLLOUT, désignation statut: 1). Un médecin urgentiste est également déployé en parallèle (Dr Jean Alarescousse, médecin urgentiste SSMUS, GLN 7601000028105, poste fixe auprès du SRZ) et se rend sur le lieu d’intervention avec son véhicule. Sur la base des descriptions du patient et du lieu d’intervention, la CASU détermine à titre provisoire que le patient doit être transporté au service des urgences interdisciplinaire de l’Hôpital universitaire de Zurich (USZ, Rämistrasse 100, 8091 Zurich, GLN 7601002155939).</p>
+<p>La Centrale d’appels sanitaires urgents crée, le 10 décembre 2016 à 12 h 11 (heure de statut <a href="Observation-1-Disposition.html">DISPOSITION</a>, désignation statut: DP), une <a href="Encounter-1-Einsatz.html">intervention</a> avec numéro d’intervention S12345678 et déploie sous le numéro D12345678 l’<a href="Organization-1-TeamRettungsdienst.html">équipe 111</a> du <a href="Organization-1-Rettungsdienst.html">service de protection et de sauvetage</a> (GLN 7601002156363) sur le lieu d’intervention avec un <a href="Location-1-Rettungswagen.html">véhicule de sauvetage (Z-220)</a> et du personnel: <a href="Practitioner-1-TeamMemberPetraMuster.html">Petra Muster</a>, ambulancière diplômée ES (école supérieure), GLN 7601003330434, et <a href="Practitioner-1-TeamMemberHansTransportsanitaeter.html">Hans Transportsanitäter</a>, technicien ambulancier BF (brevet fédéral), GLN 7601000211804. Ce trajet doit être effectué en urgence et l’équipe active par conséquent les signaux prioritaires du véhicule. Ils quittent le poste de garde du service de protection et de sauvetage de Zurich (SRZ) à 12 h 13 (heure de statut <a href="Observation-1-Rollout.html">ROLLOUT</a>, désignation statut: 1). Un médecin urgentiste est également déployé en parallèle (Dr <a href="Practitioner-1-TeamMemberPierreUrgentiste.html">Pierre Urgentiste</a>, médecin urgentiste SSMUS, GLN 7601000028105) et se rend sur le lieu d’intervention avec son véhicule. Sur la base des descriptions du patient et du lieu d’intervention, la CASU détermine à titre provisoire que le patient doit être transporté au service des urgences interdisciplinaire de l’<a href="Location-1-Zielort.html">Hôpital universitaire de Zurich</a> (USZ, Rämistrasse 100, 8091 Zurich, GLN 7601002155939).</p>
 
-<p>Le trajet du véhicule de sauvetage dure quatre minutes, l’heure d’arrivée sur le lieu de l’événement est donc 12 h 17 (heure de statut ARRIVAL ON SCENE, désignation statut: 2). Le véhicule de sauvetage ne peut cependant pas accéder directement au patient. L’équipe a en effet besoin de cinq minutes supplémentaires pour atteindre ce dernier à pieds avec tout son équipement. L’heure de statut ARRIVAL PATIENT (désignation statut: contact patient) est par conséquent 12 h 22. (Remarque: l’heure d’arrivée utilisée à des fins statistiques est toujours l’heure de statut ARRIVAL ON SCENE.) L’ambulancière diplômée en charge du suivi Petra Untel et le médecin urgentiste arrivé peu après évaluent l’état du patient au moyen de l’algorithme d’interrogation normalisé ABCDE. Les observations suivantes sont alors effectuées à 12 h 25: score de Glasgow (GCS): ouverture spontanée des yeux (4), réponse verbale normale (5), réponse motrice aux ordres (6), total 15; douleur 5; pression artérielle 120/80, mesurée au bras droit; température 37,2 °C. Le médecin urgentiste arrive à la conclusion que l’estimation de la CASU (ACS) est exacte et pose un diagnostic préliminaire d’infarctus transmural aigu de la paroi antérieure du myocarde, abrégé ACS/STEMI PA avec le code ICD-10 I21.0. Ils posent immédiatement une perfusion au patient et lui administrent une première dose de deux nébulisations de Nitrolingual Spray à 12 h 30. En parallèle à cette première prise en charge du patient, le collègue de Petra constate, grâce à la carte d’assuré du patient, qu’il s’agit de Pierre Model, sexe masculin, né le 10.1.1961, n° AVS 7560123123499 avec numéro de carte 80756003760012390001 de la caisse maladie CPT. Selon les affirmations de sa femme Erica Model (également présente), le patient habite à la Bahnhofstr. 1, 8001 Zurich et est originaire de Model-village ZH. Sa femme a précisé qu’il dispose d’un dossier électronique du patient. Monsieur Model a déjà été transporté une fois par le SRZ et dispose donc déjà d’un ID du patient auprès du SRZ: 762354. L’équipe a reçu les informations suivantes de la femme de Monsieur Model:</p>
+<p>Le trajet du véhicule de sauvetage dure quatre minutes, l’heure d’arrivée sur le lieu de l’événement est donc 12 h 17 (heure de statut <a href="Observation-1-ArrivalOnScene.html">ARRIVAL ON SCENE</a>, désignation statut: 2). Le véhicule de sauvetage ne peut cependant pas accéder directement au patient. L'équipe a besoin de cinq minutes supplémentaires pour se rendre à pied chez le patient, avec tout le matériel nécessaire, et y arrive donc à 12 h 22 (heure de statut <a href="Observation-1-ArrivalPatient.html">ARRIVAL PATIENT</a>, désignation statut: contact patient). (<em>Remarque: l’heure d’arrivée utilisée à des fins statistiques est toujours l’heure de statut ARRIVAL ON SCENE.</em>) L’ambulancière diplômée en charge du suivi Petra Muster et le médecin urgentiste arrivé peu après évaluent l’état du patient en l'interrogeant (<a href="Observation-1-Anamnese.html">anamnèse</a>, <a href="Observation-1-Symptome.html">symptômes</a>) et au moyen de l’algorithme d’interrogation normalisé ABCDE. Les observations suivantes sont alors effectuées à 12 h 25: <a href="Observation-1-GCSBefund.html">score de Glasgow (GCS): ouverture spontanée des yeux (4), réponse verbale normale (5), réponse motrice aux ordres (6), total 15</a>; douleur 5; <a href="Observation-1-Blutdruck.html">pression artérielle 120/80</a>, mesurée au bras droit; température 37,2 °C. Le médecin urgentiste arrive à la conclusion que l’estimation de la CASU (ACS) est exacte et pose un <a href="Observation-1-Diagnose.html">diagnostic préliminaire</a> d’infarctus transmural aigu de la paroi antérieure du myocarde, abrégé ACS/STEMI PA avec le code ICD-10 I21.0. Ils posent immédiatement une <a href="MedicationAdministration-1-Infusion.html">perfusion</a> au patient et lui administrent une première dose de <a href="MedicationAdministration-1-Spray.html">deux nébulisations de Nitrolingual Spray</a> à 12 h 30. En parallèle à cette première prise en charge du patient, le collègue de Petra constate, grâce à la carte d’assuré du patient, qu’il s’agit de Thomas Müller, sexe masculin, né le 10.1.1961, n° AVS 7560123123499 avec numéro de carte 80756003760012390001 de la <a href="Coverage-1-CoverageThomasMueller.html">caisse maladie CPT</a>. Selon les affirmations de sa femme Erika Müller (également présente), le patient habite à la Bahnhofstr. 1, 8001 Zurich et est originaire de Model-village ZH. Sa femme a précisé qu’il dispose d’un <strong>dossier électronique du patient</strong>. Monsieur Müller a déjà été transporté une fois par le SRZ et dispose donc déjà d’un ID du patient auprès du SRZ: 762354. L’équipe a reçu les informations suivantes de la femme de Monsieur Müller:</p>
 
 <ul>
-  <li>Pierre Model n’a pas défini de directives anticipées du patient</li>
-  <li>Il est allergique aux pollens d’arbres et a des réactions connues d’intolérance à certains médicaments</li>
-  <li>Pierre Model prend de l’Aspirine Cardio 100 (1 compr./jour) depuis qu’il a eu un accident cardiaque il y a quatre ans et qu’il a été traité à l’hôpital Triemli de Zurich</li>
+  <li>Thomas Müller n’a pas défini de directives anticipées du patient</li>
+  <li>Il est <a href="AllergyIntolerance-1-Baumpollen.html">allergique aux pollens d’arbres</a> et a des <a href="AllergyIntolerance-1-Medikamente.html">réactions connues d’intolérance à certains médicaments</a></li>
+  <li>Thomas Müller prend de l’<a href="MedicationStatement-1-AspirinCardio.html">Aspirine Cardio 100 (1 compr./jour)</a> depuis qu’il a eu un accident cardiaque il y a quatre ans et qu’il a été traité à l’hôpital Triemli de Zurich</li>
   <li>Aucun autre problème médical n’est connu</li>
 </ul>
 
-<p>Il n’a rien mangé depuis le petit-déjeuner à 8 h environ. Après les premiers soins, le patient est transporté dans le véhicule de sauvetage sur une civière, puis préparé pour le transport. Le véhicule de sauvetage quitte le lieu d’intervention à 12 h 48 (statut: DEPARTURE FROM SCENE, désignation statut: 3). Alors que le médecin urgentiste se charge du patient durant le trajet, Jean Exemple annonce déjà le patient avec toutes les informations pertinentes au service des urgences de l’USZ. Étant donné le diagnostic préliminaire, il roule avec les signaux prioritaires activés jusqu’à l’USZ. Petra range les affaires de Pierre Model dans un étui destiné aux objets de valeur et établit une liste des objets de valeur qui sera remise plus tard à l’USZ avec l’étui. Le véhicule de sauvetage arrive à l’USZ à 12 h 54 (statut: ARRIVAL AT TARGET, désignation statut: 4). Le médecin urgentiste et Petra remettent le patient au médecin compétent, Dr Dochosto, GLN 7601000404268, au service des urgences de l’USZ. En parallèle, Jean Exemple ajoute les informations suivantes au protocole: le GCS affiche toujours 15; le score NACA est III lors du transfert du patient (séjour stationnaire du patient indiqué); la douleur a quelque peu diminué et atteint le niveau 4; l’état du patient s’est amélioré au fil de l’intervention. Petra signe le document à 13 h 05 et envoie ce protocole médical de clôture sous forme cryptée à l’adresse e-mail de l’USZ. Elle aurait aussi pu imprimer le protocole dans le véhicule de sauvetage pour ensuite le donner au format papier au service des urgences. Ce protocole médical de clôture est archivé de manière juridiquement contraignante auprès du SRZ, en cas de nécessité de clarifications juridiques dans un contexte médical.</p>
+<p>Il n’a rien mangé depuis le petit-déjeuner à 8 h environ. Après les premiers soins, le patient est transporté dans le véhicule de sauvetage sur une <a href="Procedure-1-Transport.html">civière</a>, puis préparé pour le transport. Le véhicule de sauvetage quitte le lieu d’intervention à 12 h 48 (statut: <a href="Observation-1-DepartureFromScene.html">DEPARTURE FROM SCENE</a>, désignation statut: 3). Alors que le médecin urgentiste se charge du patient durant le trajet, Hans Transportsanitäter annonce déjà le patient avec toutes les informations pertinentes au service des urgences de l’USZ. Étant donné le diagnostic préliminaire, il roule avec les signaux prioritaires activés jusqu’à l’USZ. Petra range les affaires de Thomas Müller dans un étui destiné aux objets de valeur et établit une liste des objets de valeur qui sera remise plus tard à l’USZ avec l’étui. Le véhicule de sauvetage arrive à l’USZ à 12 h 54 (statut: <a href="Observation-1-ArrivalAtTarget.html">ARRIVAL AT TARGET</a>, désignation statut: 4). Le médecin urgentiste et Petra remettent le patient au médecin compétent, Dr <a href="Practitioner-1-InformationRecipientSpitalarzt.html">Spitalarzt</a>, GLN 7601000404268, au service des urgences de l’<a href="Organization-1-InformationRecipientUSZ.html">USZ</a>. En parallèle, Hans Transportsanitäter ajoute les informations suivantes au protocole: le <a href="Observation-1-GCSUebergabe.html">GCS affiche toujours 15</a>; le <a href="Observation-1-NACAUebergabe.html">score NACA est III lors du transfert du patient</a> (séjour stationnaire du patient indiqué); la douleur a quelque peu diminué et atteint le niveau 4; l’<a href="Observation-1-ZustandUebergabe.html">état du patient s’est amélioré au fil de l’intervention</a>. Petra signe le document à 13 h 05 et envoie ce protocole médical de clôture sous forme cryptée à l’adresse e-mail de l’USZ. Elle aurait aussi pu imprimer le protocole dans le véhicule de sauvetage pour ensuite le donner au format papier au service des urgences. Ce <a href="Bundle-1-Einsatzprotokoll.html"><strong>protocole d’intervention</strong></a> médical est archivé de manière juridiquement contraignante auprès du SRZ, en cas de nécessité de clarifications juridiques dans un contexte médical.</p>
 
-<p>Pendant que le médecin urgentiste retourne à la centrale après le transfert du patient, Petra et Jean préparent le véhicule de sauvetage, de sorte que l’équipe soit prête pour une éventuelle autre intervention d’urgence. Ils utilisent pour cela les réserves de matériel disponibles dans le véhicule de sauvetage. Comme aucune intervention n’est prévue directement, l’équipe rentre à la centrale avec le véhicule de sauvetage. Départ du lieu de destination (statut: DEPARTURE FROM TARGET, désignation statut: 5). À la centrale, le véhicule est à nouveau entièrement rangé et préparé pour la prochaine intervention. Cela signifie que tout le matériel utilisé est remplacé, le véhicule est nettoyé, etc. L’équipe est alors prête pour une nouvelle intervention (statut: OPERATIONAL READINESS, désignation statut: 6). L’équipe 111 saisit maintenant toutes les données supplémentaires pertinentes pour l’intervention (autre adresse de facturation, matériel utilisé, kilomètres parcourus, données pour les statistiques sur la violence…) dans le protocole électronique du patient. Une fois que toutes les données nécessaires ont été enregistrées, Petra et son collègue clôturent également l’intervention sur le plan administratif. Le protocole d’intervention est une nouvelle fois archivé, mais cette fois-ci avec toutes les données administratives et comptables pertinentes. Ceci permettra de documenter également sans ambiguïté des questions juridiques dans un contexte non-médical.</p>
+<p>Pendant que le médecin urgentiste retourne à la centrale après le transfert du patient, Petra et Hans préparent le véhicule de sauvetage, de sorte que l’équipe soit prête pour une éventuelle autre intervention d’urgence. Ils utilisent pour cela les réserves de matériel disponibles dans le véhicule de sauvetage. Comme aucune intervention n’est prévue directement, l’équipe rentre à la centrale avec le véhicule de sauvetage. Départ du lieu de destination (statut: <a href="Observation-1b-DepartureFromTarget.html">DEPARTURE FROM TARGET</a>, désignation statut: 5). À la centrale, le véhicule est à nouveau entièrement rangé et préparé pour la prochaine intervention. Cela signifie que tout le matériel utilisé est remplacé, le véhicule est nettoyé, etc. L’équipe est alors prête pour une nouvelle intervention (statut: <a href="Observation-1b-OperationalReadiness.html">OPERATIONAL READINESS</a>, désignation statut: 6). L’équipe 111 saisit maintenant toutes les données supplémentaires pertinentes pour l’intervention (autre adresse de facturation, matériel utilisé, kilomètres parcourus, données pour les statistiques sur la violence…) dans le protocole d’intervention. Une fois que toutes les données nécessaires ont été enregistrées, Petra et son collègue clôturent également l’intervention sur le plan administratif. Le <a href="Bundle-1b-Einsatzprotokoll.html"><strong>protocole d’intervention</strong></a> est une nouvelle fois archivé, mais cette fois-ci avec toutes les données administratives et comptables pertinentes. Ceci permettra de documenter également sans ambiguïté des questions juridiques dans un contexte non-médical.</p>
 
 <p>Cette étape clôture intégralement l’intervention pour l’équipe.</p>
 
-<p><strong>Exemples de mise en œuvre:</strong></p>
+<h4 id="cas-dapplication-2---intervention-primaire-avec-patient-inconnu">Cas d’application 2 - Intervention primaire avec patient inconnu</h4>
+<p>Le 10 décembre 2016 à 12 h 09, la <a href="ServiceRequest-2-AufbietendeOrganisation.html">Centrale d’appels sanitaires urgents de Zurich</a> (CASU; GLN 7601002156370) reçoit un appel urgent (statut <a href="Observation-2-Alarm.html">ALARM</a>). Selon la personne qui téléphone, une <a href="Patient-2-PatientUnbekannt.html">personne inconnue</a> s’est effondrée dans la rue. Elle ne communique plus, mais respire, et une assistance d’urgence est demandée. Le lieu d’intervention se trouve à <a href="Location-2-Einsatzort.html">8050 Zürich, Sternen Oerlikon, Schaffhauserstr. 350</a>. Au moment de l’appel, aucune information plus précise n’est disponible.</p>
 
-<ul>
-  <li>1-Einsatzprotokoll (en allemand): <a href="Bundle-1-Einsatzprotokoll.xml.html">XML</a>, <a href="Bundle-1-Einsatzprotokoll.json.html">JSON</a></li>
-  <li>1b-Einsatzprotokoll (en allemand): <a href="Bundle-1b-Einsatzprotokoll.xml.html">XML</a>, <a href="Bundle-1b-Einsatzprotokoll.json.html">JSON</a></li>
-</ul>
+<p>La Centrale d’appels sanitaires urgents de Zurich déploie, à 12 h 11 (statut: <a href="Observation-2-Disposition.html">DISPOSITION</a>, DP), l’<a href="Organization-1-TeamRettungsdienst.html">équipe 111</a> du <a href="Organization-1-Rettungsdienst.html">service de protection et de sauvetage</a> (GLN 7601002156363) avec le véhicule de sauvetage (Z-211) équipé de signaux prioritaires sur le lieu d’intervention. L’équipe 111 est composée de <a href="Practitioner-1-TeamMemberPetraMuster.html">Petra Muster</a>, ambulancière diplômée ES, GLN 7601003330434, et <a href="Practitioner-1-TeamMemberHansTransportsanitaeter.html">Hans Transportsanitäter</a>, technicien ambulancier BF, GLN 7601000211804. Tous deux fournissent des prestations de personnel soignant. La CASU attribue à l’<a href="Encounter-2-Einsatz.html">intervention</a> le numéro d’intervention S12345678 et le numéro de répartition D12345678. Au vu du manque d’informations relatives à l’incident, les mots-clés « situation imprécise, clarifications sur place » sont attribués à l’intervention. Étant donné le peu d’informations disponibles et le lieu d’intervention, la CASU détermine à titre provisoire que le patient devrait, si besoin, être transporté au service des urgences interdisciplinaire de l’<a href="Location-1-Zielort.html">Hôpital universitaire de Zurich</a> (USZ, Rämistrasse 100, 8091 Zurich, GLN 7601002155939).</p>
 
-<h4 id="532-cas-dapplication-2---intervention-primaire-avec-patient-inconnu">5.3.2	Cas d’application 2 - Intervention primaire avec patient inconnu</h4>
-<p>Le 10 décembre 2016 à 12 h 09, la Centrale d’appels sanitaires urgents de Zurich (SNZ; GLN 7601002156370) reçoit un appel urgent (statut ALARM). Selon la personne qui téléphone, une personne inconnue s’est effondrée dans la rue. Elle ne communique plus, mais respire, et une assistance d’urgence est demandée. Le lieu d’intervention se trouve à 8050 Zürich, Sternen Oerlikon, Schaffhauserstr. 350. Au moment de l’appel, aucune information plus précise n’est disponible.</p>
+<p>L’équipe 111 quitte le poste de garde du SRZ à 12 h 13 (statut: <a href="Observation-2-Rollout.html">ROLLOUT</a>, désignation statut: 1) et arrive à 12 h 17 sur le lieu d’intervention (heure de statut <a href="Observation-2-ArrivalOnScene.html">ARRIVAL ON SCENE</a>, désignation statut: 2; heure de statut <a href="Observation-2-ArrivalPatient.html">ARRIVAL PATIENT</a>, désignation statut: 2b). Une fois sur place, l’équipe de sauvetage constate que le patient a été pris en charge par un sauveteur non professionnel qui lui a déjà fourni les premiers secours. L’équipe prend alors en charge le patient. Ce dernier n’est pas capable de fournir des informations sur lui-même, ne porte aucune pièce d’identité et aucune des personnes présentes ne le connaît. Petra Muster lui attribue par conséquent un étui du système d’acheminement des patients (SAP) avec le numéro MU43221 à des fins d’identification.</p>
 
-<p>La Centrale d’appels sanitaires urgents de Zurich déploie, à 12 h 11 (statut: DISPOSITION, DP), l’équipe 111 avec le véhicule de sauvetage (Z-211) équipé de signaux prioritaires sur le lieu d’intervention. L’équipe 111 est composée de Petra Model, ambulancière diplômée ES, GLN 7601003330434, et Jean Exemple, technicien ambulancier BF, GLN 7601000211804. Tous deux fournissent des prestations de personnel soignant. La SNZ attribue à l’intervention le numéro d’intervention S12345678 et le numéro de répartition D12345678. Au vu du manque d’informations relatives à l’incident, les mots-clés « situation imprécise, clarifications sur place » sont attribués à l’intervention. Étant donné le peu d’informations disponibles et le lieu d’intervention, la CASU détermine à titre provisoire que le patient devrait, si besoin, être transporté au service des urgences interdisciplinaire de l’Hôpital universitaire de Zurich (USZ, Rämistrasse 100, 8091 Zurich, GLN 7601002155939).</p>
+<p>L’ambulancière réalise une première évaluation de ce patient de sexe masculin, environ 50 ans, au moyen de l’algorithme d’interrogation normalisé ABCDE. Les observations suivantes sont effectuées à 12 h 25: <a href="Observation-2-AirwaysBefund.html">Airway: les voies aériennes ne sont pas encombrées</a>; Breathing: le patient présente une respiration spontanée normale; Cardiology: son pouls est palpable, il n’est pas victime d’un arrêt cardiovasculaire; rythme cardiaque 84/minute, pression artérielle 170/90, mesurée au bras droit; <a href="Observation-2-AVPUBefund.html">score AVPU: V (répond aux commandes verbales)</a>; <a href="Observation-2-GCSBefund.html">score de Glasgow  ouverture des yeux à la demande (3), dit de lui-même des mots isolés (3), rigidité de décortication (3), total 9</a>; température 37,2 °C; ses yeux présentent une anisocorie évidente.</p>
 
-<p>L’équipe 111 quitte le poste de garde du SRZ à 12 h 13 (statut: ROLLOUT, désignation statut: 1) et arrive à 12 h 17 sur le lieu d’intervention (heure de statut ARRIVAL ON SCENE, désignation statut: 2). Une fois sur place, l’équipe de sauvetage constate que le patient a été pris en charge par un sauveteur non professionnel qui lui a déjà fourni les premiers secours. L’équipe prend alors en charge le patient. Ce dernier n’est pas capable de fournir des informations sur lui-même, ne porte aucune pièce d’identité et aucune des personnes présentes ne le connaît. Petra Model lui attribue par conséquent un étui du système d’acheminement des patients (SAP) avec le numéro MU43221 à des fins d’identification.</p>
-
-<p>L’ambulancière réalise une première évaluation de ce patient de sexe masculin, environ 50 ans, au moyen de l’algorithme d’interrogation normalisé ABCDE. Les observations suivantes sont effectuées à 12 h 25: Airway: les voies aériennes ne sont pas encombrées; Breathing: le patient présente une respiration spontanée normale; Cardiology: son pouls est palpable, il n’est pas victime d’un arrêt cardiovasculaire; rythme cardiaque 84/minute, pression artérielle 170/90, mesurée au bras droit; score AVPU: V (répond aux commandes verbales); score de Glasgow  ouverture des yeux à la demande (3), dit de lui-même des mots isolés (3), rigidité de décortication (3), total 9; température 37,2 °C; ses yeux présentent une anisocorie évidente.</p>
-
-<p>Petra pose par conséquent le diagnostic préliminaire « Stroke » avec le code ICD-10 I63.-.</p>
+<p>Petra pose par conséquent le <a href="Observation-2-Diagnose.html">diagnostic préliminaire</a> « Stroke » avec le code ICD-10 I63.-.</p>
 
 <p>Elle pose immédiatement au patient une perfusion de 500 ml de Ringer. Le patient est installé en position couchée dans le véhicule de sauvetage.</p>
 
-<p>Le véhicule de sauvetage quitte le lieu d’intervention à 12 h 48 (statut: DEPARTURE FROM SCENE, désignation statut: 3). Alors que Petra se charge du patient durant le trajet, Jean Exemple annonce déjà le patient avec toutes les informations pertinentes au service des urgences de l’USZ. Étant donné le diagnostic préliminaire, il roule avec les signaux prioritaires allumés jusqu’à l’USZ et annonce que le patient a besoin d’une équipe prenant en charge les attaques au service des urgences et que la prise en charge est urgente (« rouge »). Petra range les affaires du patient dans un étui destiné aux objets de valeur et établit une liste des objets de valeur qui sera remise plus tard à l’USZ avec l’étui. Le véhicule de sauvetage arrive à l’USZ à 12 h 54 (statut: ARRIVAL AT TARGET, désignation statut: 4).</p>
+<p>Le véhicule de sauvetage quitte le lieu d’intervention à 12 h 48 (statut: <a href="Observation-2-DepartureFromScene.html">DEPARTURE FROM SCENE</a>, désignation statut: 3). Alors que Petra se charge du patient durant le trajet, Hans Transportsanitäter annonce déjà le patient avec toutes les informations pertinentes au service des urgences de l’USZ. Étant donné le diagnostic préliminaire, il roule avec les signaux prioritaires allumés jusqu’à l’USZ et annonce que le patient a besoin d’une équipe prenant en charge les attaques au service des urgences et que la prise en charge est urgente (« rouge »). Petra range les affaires du patient dans un étui destiné aux objets de valeur et établit une liste des objets de valeur qui sera remise plus tard à l’USZ avec l’étui. Le véhicule de sauvetage arrive à l’USZ à 12 h 54 (statut: <a href="Observation-2-ArrivalAtTarget.html">ARRIVAL AT TARGET</a>, désignation statut: 4).</p>
 
-<p>Petra remet le patient au médecin compétent, Dr Dochosto, GLN 7601000404268, au service des urgences de l’USZ. En parallèle, Jean Exemple ajoute les informations suivantes au protocole: le GCS affiche maintenant 10; le score NACA est III lors du transfert du patient (séjour stationnaire du patient indiqué); l’état du patient s’est amélioré au fil de l’intervention. Petra signe le document à 13 h 05 et envoie ce protocole médical de clôture sous forme cryptée à l’adresse e mail de l’USZ. Ce protocole médical de clôture est archivé de manière juridiquement contraignante auprès du SRZ, en cas de nécessité de clarifications juridiques dans un contexte médical.</p>
+<p>Petra remet le patient au médecin compétent, Dr <a href="Practitioner-1-InformationRecipientSpitalarzt.html">Spitalarzt</a>, GLN 7601000404268, au service des urgences de l’<a href="Organization-1-InformationRecipientUSZ.html">USZ</a>. En parallèle, Hans Transportsanitäter ajoute les informations suivantes au protocole: le <a href="Observation-2-GCSUebergabe.html">GCS affiche maintenant 10</a>; le <a href="Observation-2-NACAUebergabe.html">score NACA est III lors du transfert du patient</a> (séjour stationnaire du patient indiqué); l’<a href="Observation-2-ZustandUebergabe.html">état du patient s’est amélioré au fil de l’intervention</a>. Petra signe le document à 13 h 05 et envoie ce <a href="Bundle-2-Einsatzprotokoll.html"><strong>protocole d’intervention</strong></a> médical sous forme cryptée à l’adresse e mail de l’USZ. Ce protocole médical de clôture est archivé de manière juridiquement contraignante auprès du SRZ, en cas de nécessité de clarifications juridiques dans un contexte médical.</p>
 
-<p>Petra et Jean remettent le véhicule de sauvetage en ordre, de sorte que l’équipe soit prête pour une éventuelle autre intervention d’urgence. Ils utilisent pour cela les réserves de matériel disponibles dans le véhicule de sauvetage. Comme aucune intervention n’est prévue directement, l’équipe rentre à la centrale avec le véhicule de sauvetage. Départ du lieu de destination (statut: DEPARTURE FROM TARGET, désignation statut: 5). À la centrale, le véhicule est à nouveau entièrement rangé et préparé pour la prochaine intervention. Cela signifie que tout le matériel utilisé est remplacé, le véhicule est nettoyé, etc. L’équipe est alors prête pour une nouvelle intervention (statut: OPERATIONAL READINESS, désignation statut: 6). L’équipe 111 saisit maintenant toutes les données supplémentaires pertinentes pour l’intervention (autre adresse de facturation, matériel utilisé, kilomètres parcourus, données pour les statistiques sur la violence…) dans le protocole électronique du patient. Une fois que toutes les données nécessaires ont été enregistrées, Petra et son collègue clôturent également l’intervention sur le plan administratif.</p>
+<p>Petra et Hans remettent le véhicule de sauvetage en ordre, de sorte que l’équipe soit prête pour une éventuelle autre intervention d’urgence. Ils utilisent pour cela les réserves de matériel disponibles dans le véhicule de sauvetage. Comme aucune intervention n’est prévue directement, l’équipe rentre à la centrale avec le véhicule de sauvetage. Départ du lieu de destination (statut: <a href="Observation-2b-DepartureFromTarget.html">DEPARTURE FROM TARGET</a>, désignation statut: 5). À la centrale, le véhicule est à nouveau entièrement rangé et préparé pour la prochaine intervention. Cela signifie que tout le matériel utilisé est remplacé, le véhicule est nettoyé, etc. L’équipe est alors prête pour une nouvelle intervention (statut: <a href="Observation-2b-OperationalReadiness.html">OPERATIONAL READINESS</a>, désignation statut: 6). L’équipe 111 saisit maintenant toutes les données supplémentaires pertinentes pour l’intervention (autre adresse de facturation, matériel utilisé, kilomètres parcourus, données pour les statistiques sur la violence…) dans le <a href="Bundle-2b-Einsatzprotokoll.html"><strong>protocole d’intervention</strong></a>. Une fois que toutes les données nécessaires ont été enregistrées, Petra et son collègue clôturent également l’intervention sur le plan administratif.</p>
 
 <p>Cette étape clôture intégralement l’intervention pour l’équipe.</p>
 
-<p><strong>Exemples de mise en œuvre:</strong></p>
 
-<ul>
-  <li>2-Einsatzprotokoll (en allemand): <a href="Bundle-2-Einsatzprotokoll.xml.html">XML</a>, <a href="Bundle-2-Einsatzprotokoll.json.html">JSON</a></li>
-  <li>2b-Einsatzprotokoll (en allemand): <a href="Bundle-2b-Einsatzprotokoll.xml.html">XML</a>, <a href="Bundle-2b-Einsatzprotokoll.json.html">JSON</a></li>
-</ul>
 
 
 </div>
@@ -278,16 +400,29 @@ Intervention lors de laquelle, jusqu’à la fin de l’intervention, l’équip
     </div>  <!-- /container -->
   </div>  <!-- /segment-content -->
 
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
+
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color: #81BEF7" href="https://www.ivr-ias.ch/">IVR Interverband für Rettungswesen</a>.  Package ch.fhir.ig.ch-ems#1.9.0 based on <a style="color: #81BEF7" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 25, 2020 14:08+0200">2020-08-25</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-ems#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jun 15, 2026 08:07+0000">2026-06-15</span>
           <br/>
-          <span style="color: #FFFF77">
-                      Links: <a style="color: #81BEF7" href="toc.html">Table of Contents</a> |
-                 <a style="color: #81BEF7" href="qa.html">QA Report</a>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSesbnrt5J1xC9eO5_0Rur5NCRt7i39b7Fck7c369nI6WPsV6Q/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-ems%232.0.0-ballot%20/usecase-french.html&amp;entry%2E247644557=Cas%20d%E2%80%99application">Propose a change</a>
+
+
+
+
           </span>
         </p>
       </div>  <!-- /inner-wrapper -->
@@ -298,19 +433,19 @@ Intervention lors de laquelle, jusqu’à la fin de l’intervention, l’équip
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
   <script type="text/javascript" src="assets/js/respond.min.js"> </script>
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
-  
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   <!-- Analytics Below
   ================================================== -->
   </body>
 </html>
+

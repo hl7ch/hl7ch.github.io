@@ -1,0 +1,39 @@
+# 2 Aufbietende Organisation - CH EMS (R4) v2.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **2 Aufbietende Organisation**
+
+## Example ServiceRequest: 2 Aufbietende Organisation
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "ServiceRequest",
+  "id" : "2-AufbietendeOrganisation",
+  "contained" : [{
+    "resourceType" : "Organization",
+    "id" : "2-requesting",
+    "identifier" : [{
+      "system" : "urn:oid:2.51.1.3",
+      "value" : "7601002156370"
+    }],
+    "name" : "SNZ"
+  }],
+  "status" : "completed",
+  "intent" : "order",
+  "subject" : {
+    "reference" : "Patient/2-PatientUnbekannt"
+  },
+  "encounter" : {
+    "reference" : "Encounter/2-Einsatz"
+  },
+  "requester" : {
+    "reference" : "#2-requesting"
+  }
+}
+
+```

@@ -1,26 +1,39 @@
+
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML>
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-EMS\IVR valueset mission type (.143.11.11) - XML Representation - FHIR v4.0.1</title>
-  
+    <title>IVR Mission Type - XML Representation - CH EMS (R4) v2.0.0-ballot</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
 
     <link href="fhir.css" rel="stylesheet"/>
-     
+
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
     <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
-  
+
     <!-- Project extras -->
     <link href="assets/css/project.css" rel="stylesheet"/>
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -29,47 +42,74 @@
     <script src="assets/js/html5shiv.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
-  
+
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
-  <body>
+  <body onload="document.body.style.opacity='1'">
 
-    <style type="text/css">h2{--heading-prefix:"10.54"}
-    h3,h4,h5,h6{--heading-prefix:"10.54"}</style>
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"12.82"}
+    h3,h4,h5,h6{--heading-prefix:"12.82"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
-        
-            <!--
-<div id="family-nav">
+
+        <!-- Placeholder for child template header declarations -->
+
+            <div id="family-nav">
 	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
-		alt="logo fhir" src="assets/images/fhir-logo-www.png" />
+		alt="logo fhir" src="fhir-logo-www.png" />
 	</a>
 </div>
--->
 
-
-            <div id="hl7-nav">
-    <a id="ivr-logo" no-external="true" href="http://www.ivr-ias.ch/">
-        <img alt="visit the ivr website" height="60" src="logo-ivr.jpg" />
-    </a>            
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
+            <style type="text/css">
+#segment-header .container { position: relative; }
+#hl7-nav {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    margin-top: 0;
+    transform: translateY(-50%);
+}
+</style>
+<div id="hl7-nav">
+    <a id="hl7-logo" no-external="true" href="http://www.hl7.ch">
+        <img alt="visit the hl7 website" height="50" src="hl7-logo.png" />
+    </a>
 </div>
 
         <div id="ig-status">
-          <p><span style="font-size:12pt;font-weight:bold">CH EMS (R4)</span><br/>1.9.0 - Standard for Trial Use</p>
+          <p><span style="font-size:12pt;font-weight:bold">CH EMS (R4)</span>
+            <br/>
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
         </div>
       </div> <!-- /container -->
     </div>  <!-- /segment-header -->
-    
+
     <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
       <div id="stripe"> </div>
       <div class="container">  <!-- container -->
         <!-- HEADER CONTENT -->
-    
+
         <nav class="navbar navbar-inverse">
           <!--status-bar-->
           <div class="container">
@@ -80,10 +120,12 @@
             </button>
             <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Home<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Home
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -98,8 +140,8 @@
     </ul>
   </li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -110,11 +152,74 @@
       </li>
     </ul>
   </li>
-  <li><a href="document.html">Document</a></li>
-  <li><a href="profiles.html">Profiles</a></li>
-  <li><a href="extensions.html">Extensions</a></li>
-  <li><a href="terminology.html">Terminology</a></li>
-  <li><a href="artifacts.html">Artifacts</a></li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">EMS Protocol
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="logicalmodel.html">Logical Model</a>
+      </li>
+      <li>
+        <a href="document.html">FHIR Document</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Model Maps
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="ConceptMap-EmsMission2Fhir.html">Mission</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsPatient2Fhir.html">Patient</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAdministrative2Fhir.html">Administrative</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsPretreatment2Fhir.html">Pretreatment</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAnamnesis2Fhir.html">Anamnesis</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsFindings2Fhir.html">Findings</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsDiagnosis2Fhir.html">Diagnosis</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsProcedures2Fhir.html">Procedures</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsEventOfDeath2Fhir.html">Event of Death</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsTransport2Fhir.html">Transport</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsHandover2Fhir.html">Handover</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAnnotation2Fhir.html">Annotation</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="profiles.html">Profiles</a>
+  </li>
+  <li>
+    <a href="extensions.html">Extensions</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminology</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
 </ul>
             </div>  <!-- /.nav-collapse -->
           </div>  <!-- /.container -->
@@ -123,156 +228,217 @@
       </div>  <!-- /container -->
     </div>  <!-- /segment-navbar -->
     <!--status-bar-->
+
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
-      <div class="container">  <!-- container -->  
+      <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>IVR valueset mission type (.143.11.11)</b></li>
-        </ul>  
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>IVR Mission Type</b></li>
+
+        </ul>
       </div>  <!-- /container -->
     </div>  <!-- /segment-breadcrumb -->
-    
+
+    <a name="top"> </a>
     <div id="segment-content" class="segment">  <!-- segment-content -->
       <div class="container">  <!-- container -->
         <div class="row">
           <div class="inner-wrapper">
-<div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMS (R4) (v1.9.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-ems/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
-  <a name="root"> </a>
-  <h2 id="root">IVR valueset mission type (.143.11.11) - XML Representation</h2>
-  <p>
-    <a href="ValueSet-IVR-VS-missionType.html">(back to description)</a>
-  </p>
-  <p>
-    <a href="ValueSet-IVR-VS-missionType.xml">Raw xml</a>
-  </p>
-  
-  
-  
-  <p>
-    <b>Source view</b>
-  </p>
-  
-  <pre class="xml">
 
+<div style="counter-reset: section 7" class="col-12">
+<!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMS (R4) (v2.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-ems/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li>
+    <a href="ValueSet-IVR-VS-missionType.html">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li class="active">
+      <a href="#">XML</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="ValueSet-IVR-VS-missionType.json.html">JSON</a>
+    </li>
+  
+
+
+
+
+</ul>
+
+
+<a name="root"> </a>
+
+
+<h2 id="root">: IVR Mission Type - XML Representation</h2>
+
+  <table class="colsd">
+    <tr>
+
+      <td colspan="2">
+        
+          Draft
+          
+            as of 2026-06-15
+          
+        
+      </td>
+
+    </tr>
+  </table>
+
+
+<p><a href="ValueSet-IVR-VS-missionType.xml" no-download="true">Raw xml</a> | <a href="ValueSet-IVR-VS-missionType.xml" download>Download</a></p>
+
+  <!-- insert intro if present -->
+  
+
+
+
+  <pre class="xml" data-fhir="generated" style="white-space: pre; text-wrap: nowrap; width: auto;"><code class="language-xml" style="white-space: pre; text-wrap: nowrap;">
 &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet">ValueSet</a> xmlns=&quot;http://hl7.org/fhir&quot;&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.id">id</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;IVR-VS-missionType&quot;/&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.meta">meta</a>&gt;
-    &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.source">source</a>
-            <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://art-decor.org/fhir/ValueSet/2.16.756.5.30.1.1.11.48--20160724151745&quot;/&gt;
-    &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">profile</a> <a href="http://hl7.org/fhir/R4/datatypes.html#canonical">value</a>=&quot;http://hl7.org/fhir/StructureDefinition/shareablevalueset&quot;/&gt;
-  &lt;/meta&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.text">text</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/resource.html#ValueSet.id">id</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;IVR-VS-missionType&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/domainresource.html#ValueSet.text">text</a>&gt;
     &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;generated&quot;/&gt;
-    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;ul&gt;&lt;li&gt;Include these codes as defined in &lt;a href=&quot;CodeSystem-2.16.756.5.30.1.143.5.1.html&quot;&gt;&lt;code&gt;urn:oid:2.16.756.5.30.1.143.5.1&lt;/code&gt;&lt;/a&gt;&lt;table class=&quot;none&quot;&gt;&lt;tr&gt;&lt;td style=&quot;white-space:nowrap&quot;&gt;&lt;b&gt;Code&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Display&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;CodeSystem-2.16.756.5.30.1.143.5.1.html#2.16.756.5.30.1.143.5.1-1000001&quot;&gt;1000001&lt;/a&gt;&lt;/td&gt;&lt;td&gt;primary mission&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;CodeSystem-2.16.756.5.30.1.143.5.1.html#2.16.756.5.30.1.143.5.1-1000002&quot;&gt;1000002&lt;/a&gt;&lt;/td&gt;&lt;td&gt;secondary mission&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;CodeSystem-2.16.756.5.30.1.143.5.1.html#2.16.756.5.30.1.143.5.1-1000003&quot;&gt;1000003&lt;/a&gt;&lt;/td&gt;&lt;td&gt;stand-by mission&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Additional Language Displays&lt;/b&gt;&lt;/p&gt;&lt;table class=&quot;codes&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Code&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Deutsch (Schweiz) (German (Switzerland), de)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;French (Switzerland) (fr)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Italian (Switzerland) (it)&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1000001&lt;/td&gt;&lt;td&gt;Primäreinsatz&lt;/td&gt;&lt;td&gt;Mission primaire&lt;/td&gt;&lt;td&gt;Intervento primario&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1000002&lt;/td&gt;&lt;td&gt;Sekundäreinsatz&lt;/td&gt;&lt;td&gt;Mission secondaire&lt;/td&gt;&lt;td&gt;Intervento secondario&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1000003&lt;/td&gt;&lt;td&gt;Bereitschaftsdienst&lt;/td&gt;&lt;td&gt;Service de garde&lt;/td&gt;&lt;td&gt;Guardia medica&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;<a name="end-xhtml"></a>
-  &lt;/text&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.extension">extension</a>
-             <a href="http://hl7.org/fhir/R4/datatypes.html#uri">url</a>=&quot;http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod&quot;&gt;
-    &lt;<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value[x]">valuePeriod</a>&gt;
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Period#Period.start">start</a> <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">value</a>=&quot;2016-07-24T15:17:45+02:00&quot;/&gt;
-    &lt;/valuePeriod&gt;
-  &lt;/extension&gt;
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Generated Narrative: ValueSet IVR-VS-missionType&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;IVR-VS-missionType&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hcIVR-VS-missionType&quot;&gt; &lt;/a&gt;&lt;ul&gt;&lt;li&gt;Include these codes as defined in &lt;a href=&quot;CodeSystem-IVR.html&quot;&gt;&lt;code&gt;http://fhir.ch/ig/ch-ems/CodeSystem/IVR&lt;/code&gt;&lt;/a&gt;&lt;span title=&quot;Version is not explicitly stated, which means it is fixed to the version provided in this specification&quot;&gt; version &amp;#x1F4E6;2.0.0-ballot&lt;/span&gt;&lt;table class=&quot;none&quot;&gt;&lt;tr&gt;&lt;td style=&quot;white-space:nowrap&quot;&gt;&lt;b&gt;Code&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Display&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Deutsch (Schweiz) (German (Switzerland), de)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;French (Switzerland) (fr)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Italian (Switzerland) (it)&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;CodeSystem-IVR.html#IVR-1000001&quot;&gt;1000001&lt;/a&gt;&lt;/td&gt;&lt;td&gt;primary mission&lt;/td&gt;&lt;td&gt;Primäreinsatz&lt;/td&gt;&lt;td&gt;Mission primaire&lt;/td&gt;&lt;td&gt;Intervento primario&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;CodeSystem-IVR.html#IVR-1000002&quot;&gt;1000002&lt;/a&gt;&lt;/td&gt;&lt;td&gt;secondary mission&lt;/td&gt;&lt;td&gt;Sekundäreinsatz&lt;/td&gt;&lt;td&gt;Mission secondaire&lt;/td&gt;&lt;td&gt;Intervento secondario&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;CodeSystem-IVR.html#IVR-1000003&quot;&gt;1000003&lt;/a&gt;&lt;/td&gt;&lt;td&gt;stand-by mission&lt;/td&gt;&lt;td&gt;Bereitschaftsdienst&lt;/td&gt;&lt;td&gt;Service de garde&lt;/td&gt;&lt;td&gt;Guardia medica&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;<a name="end-xhtml"></a>
+  &lt;/<a href="http://hl7.org/fhir/R4/domainresource.html#ValueSet.text">text</a>&gt;
   &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.url">url</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-missionType&quot;/&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.identifier">identifier</a>&gt;
-    &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.use">use</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;official&quot;/&gt;
-    &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://art-decor.org/ns/oids/vs&quot;/&gt;
-    &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;2.16.756.5.30.1.1.11.48&quot;/&gt;
-  &lt;/identifier&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.version">version</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;1.9.0&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.version">version</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;2.0.0-ballot&quot;/&gt;
   &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.name">name</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;MissionType&quot;/&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.title">title</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;IVR valueset mission type (.143.11.11)&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.title">title</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;IVR Mission Type&quot;/&gt;
   &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;draft&quot;/&gt;
   &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.experimental">experimental</a> <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">value</a>=&quot;false&quot;/&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.date">date</a> <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">value</a>=&quot;2020-08-25T14:08:15+02:00&quot;/&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.publisher">publisher</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;IVR Interverband für Rettungswesen&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.date">date</a> <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">value</a>=&quot;2026-06-15T08:07:03+00:00&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.publisher">publisher</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;HL7 Switzerland&quot;/&gt;
   &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.contact">contact</a>&gt;
-    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;IVR Interverband für Rettungswesen&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;HL7 Switzerland&quot;/&gt;
     &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>&gt;
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;url&quot;/&gt;
-      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;https://www.ivr-ias.ch/&quot;/&gt;
-    &lt;/telecom&gt;
-  &lt;/contact&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.description">description</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;IVR valueset mission type (.143.11.11)&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;https://www.hl7.ch/&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.contact">contact</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.contact">contact</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;HL7 Switzerland&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;url&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;https://www.hl7.ch/&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.use">use</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;work&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.contact">contact</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.description">description</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;List of types of the missions.&quot;/&gt;
   &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.jurisdiction">jurisdiction</a>&gt;
     &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;urn:iso:std:iso:3166&quot;/&gt;
       &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;CH&quot;/&gt;
-    &lt;/coding&gt;
-  &lt;/jurisdiction&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.jurisdiction">jurisdiction</a>&gt;
   &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.immutable">immutable</a> <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">value</a>=&quot;false&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.copyright">copyright</a> <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">value</a>=&quot;CC0-1.0&quot;/&gt;
   &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose">compose</a>&gt;
     &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include">include</a>&gt;
-      &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;urn:oid:2.16.756.5.30.1.143.5.1&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.system">system</a> <a href="http://hl7.org/fhir/R4/datatypes.html#uri">value</a>=&quot;http://fhir.ch/ig/ch-ems/CodeSystem/IVR&quot;/&gt;
       &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept">concept</a>&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;1000001&quot;/&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.display">display</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;primary mission&quot;/&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;de-CH&quot;/&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Primäreinsatz&quot;/&gt;
-        &lt;/designation&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;fr-CH&quot;/&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Mission primaire&quot;/&gt;
-        &lt;/designation&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;it-CH&quot;/&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Intervento primario&quot;/&gt;
-        &lt;/designation&gt;
-      &lt;/concept&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept">concept</a>&gt;
       &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept">concept</a>&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;1000002&quot;/&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.display">display</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;secondary mission&quot;/&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;de-CH&quot;/&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Sekundäreinsatz&quot;/&gt;
-        &lt;/designation&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;fr-CH&quot;/&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Mission secondaire&quot;/&gt;
-        &lt;/designation&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;it-CH&quot;/&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Intervento secondario&quot;/&gt;
-        &lt;/designation&gt;
-      &lt;/concept&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept">concept</a>&gt;
       &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept">concept</a>&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.code">code</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;1000003&quot;/&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.display">display</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;stand-by mission&quot;/&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;de-CH&quot;/&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Bereitschaftsdienst&quot;/&gt;
-        &lt;/designation&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;fr-CH&quot;/&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Service de garde&quot;/&gt;
-        &lt;/designation&gt;
+        &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
         &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.language">language</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;it-CH&quot;/&gt;
           &lt;<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation.value">value</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;Guardia medica&quot;/&gt;
-        &lt;/designation&gt;
-      &lt;/concept&gt;
-    &lt;/include&gt;
-  &lt;/compose&gt;
-&lt;/ValueSet&gt;</pre>
+        &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.designation">designation</a>&gt;
+      &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept">concept</a>&gt;
+    &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include">include</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose">compose</a>&gt;
+&lt;/<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet">ValueSet</a>&gt;</code></pre>
 
 
+  <!-- insert notes if present -->
   
-  
+
+
+
 </div>
         </div>  <!-- /inner-wrapper -->
       </div>  <!-- /row -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-content -->
 
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
+
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color: #81BEF7" href="https://www.ivr-ias.ch/">IVR Interverband für Rettungswesen</a>.  Package ch.fhir.ig.ch-ems#1.9.0 based on <a style="color: #81BEF7" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 25, 2020 14:08+0200">2020-08-25</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-ems#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jun 15, 2026 08:07+0000">2026-06-15</span>
           <br/>
-          <span style="color: #FFFF77">
-                      Links: <a style="color: #81BEF7" href="toc.html">Table of Contents</a> |
-                 <a style="color: #81BEF7" href="qa.html">QA Report</a>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSesbnrt5J1xC9eO5_0Rur5NCRt7i39b7Fck7c369nI6WPsV6Q/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-ems%232.0.0-ballot%20/ValueSet-IVR-VS-missionType.xml.html&amp;entry%2E247644557=IVR%20Mission%20Type%20-%20XML%20Representation">Propose a change</a>
+
+
+
+
           </span>
         </p>
       </div>  <!-- /inner-wrapper -->
@@ -283,19 +449,19 @@
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
   <script type="text/javascript" src="assets/js/respond.min.js"> </script>
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
-  
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   <!-- Analytics Below
   ================================================== -->
   </body>
 </html>
+

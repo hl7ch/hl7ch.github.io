@@ -1,0 +1,38 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Practitioner/1-TeamMemberPierreUrgentiste> a fhir:Practitioner ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "1-TeamMemberPierreUrgentiste"] ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "urn:oid:2.51.1.3"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "7601000028105" ] ;
+     fhir:assigner [
+       fhir:link <http://fhir.ch/ig/ch-ems/Organization/1-TeamRettungsdienst> ;
+       fhir:reference [ fhir:v "Organization/1-TeamRettungsdienst" ]
+     ]
+  ] ) ; # 
+  fhir:name ( [
+     fhir:family [ fhir:v "Urgentiste" ] ;
+     fhir:given ( [ fhir:v "Pierre" ] )
+  ] ) ; # 
+  fhir:qualification ( [
+     fhir:code [
+       fhir:coding ( [
+         a sct:309294001 ;
+         fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "309294001" ] ;
+         fhir:display [ fhir:v "Emergency department physician (occupation)" ]
+       ] ) ;
+       fhir:text [ fhir:v "Notarzt/Notärztin SGNOR" ]
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

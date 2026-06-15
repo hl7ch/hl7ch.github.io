@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Encounter xmlns="http://hl7.org/fhir">
+  <id value="EncounterExample"/>
+  <extension url="http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-valuablespatient">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://fhir.ch/ig/ch-ems/CodeSystem/IVR"/>
+        <code value="1000126"/>
+        <display value="wedding ring"/>
+      </coding>
+      <text value="Ehering"/>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-valuablespatient">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://fhir.ch/ig/ch-ems/CodeSystem/IVR"/>
+        <code value="1000131"/>
+        <display value="billfold"/>
+      </coding>
+      <text value="Brieftasche"/>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-emergencydoctorsystem">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://fhir.ch/ig/ch-ems/CodeSystem/IVR"/>
+        <code value="1000005"/>
+        <display value="pickup by EMS"/>
+      </coding>
+      <text value="Abholung durch Rettungsdienst"/>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-violence">
+    <extension url="offender">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://fhir.ch/ig/ch-ems/CodeSystem/IVR"/>
+          <code value="1000080"/>
+          <display value="person, unknown"/>
+        </coding>
+        <text value="Drittperson unbekannt"/>
+      </valueCodeableConcept>
+    </extension>
+    <extension url="form">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://fhir.ch/ig/ch-ems/CodeSystem/IVR"/>
+          <code value="1000043"/>
+          <display value="contumeliousness"/>
+        </coding>
+        <text value="Beschimpfung"/>
+      </valueCodeableConcept>
+    </extension>
+    <extension url="result">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://snomed.info/sct"/>
+          <code value="260413007"/>
+          <display value="None (qualifier value)"/>
+        </coding>
+        <text value="keine"/>
+      </valueCodeableConcept>
+    </extension>
+  </extension>
+  <identifier>
+    <type>
+      <coding>
+        <system value="http://fhir.ch/ig/ch-ems/CodeSystem/IVR"/>
+        <code value="MN"/>
+        <display value="Mission number"/>
+      </coding>
+      <text value="Einsatznummer"/>
+    </type>
+    <system value="http://example.com"/>
+    <value value="S89898989"/>
+  </identifier>
+  <status value="finished"/>
+  <class>
+    <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+    <code value="EMER"/>
+    <display value="emergency"/>
+  </class>
+  <serviceType>
+    <coding>
+      <system value="http://fhir.ch/ig/ch-ems/CodeSystem/IVR"/>
+      <code value="1000001"/>
+      <display value="primary mission"/>
+    </coding>
+    <text value="Primäreinsatz"/>
+  </serviceType>
+  <priority>
+    <extension url="http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-urgencyadequate">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://fhir.ch/ig/ch-ems/CodeSystem/IVR"/>
+          <code value="1000135"/>
+          <display value="no, siren not necessary"/>
+        </coding>
+        <text value="nein, Sondersignal nicht notwendig"/>
+      </valueCodeableConcept>
+    </extension>
+    <coding>
+      <system value="http://fhir.ch/ig/ch-ems/CodeSystem/IVR"/>
+      <code value="1000007"/>
+      <display value="with siren"/>
+    </coding>
+    <text value="mit Sondersignal"/>
+  </priority>
+  <subject>
+    <reference value="Patient/PatientExample"/>
+  </subject>
+  <basedOn>
+    <reference value="ServiceRequest/1-AufbietendeOrganisation"/>
+  </basedOn>
+  <participant>
+    <extension url="http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://snomed.info/sct"/>
+          <code value="133932002"/>
+          <display value="Caregiver (person)"/>
+        </coding>
+        <text value="Betreuer"/>
+      </valueCodeableConcept>
+    </extension>
+    <individual>
+      <reference value="Practitioner/1-TeamMemberPetraMuster"/>
+    </individual>
+  </participant>
+  <participant>
+    <extension url="http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://snomed.info/sct"/>
+          <code value="133932002"/>
+          <display value="Caregiver (person)"/>
+        </coding>
+        <text value="Betreuer"/>
+      </valueCodeableConcept>
+    </extension>
+    <individual>
+      <reference value="Practitioner/1-TeamMemberHansTransportsanitaeter"/>
+    </individual>
+  </participant>
+  <participant>
+    <extension url="http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole">
+      <valueCodeableConcept>
+        <coding>
+          <system value="http://snomed.info/sct"/>
+          <code value="309343006"/>
+          <display value="Physician (occupation)"/>
+        </coding>
+        <text value="Ärztin / Arzt"/>
+      </valueCodeableConcept>
+    </extension>
+    <individual>
+      <reference value="Practitioner/1-TeamMemberPierreUrgentiste"/>
+    </individual>
+  </participant>
+  <period>
+    <start value="2016-12-10"/>
+  </period>
+  <reasonCode>
+    <coding>
+      <system value="http://fhir.ch/ig/ch-ems/CodeSystem/IVR"/>
+      <code value="1000110"/>
+      <display value="emergency mission"/>
+    </coding>
+    <text value="Notfall-Einsatz"/>
+  </reasonCode>
+  <hospitalization>
+    <destination>
+      <reference value="Location/1-Zielort"/>
+    </destination>
+  </hospitalization>
+  <location>
+    <location>
+      <reference value="Location/1-Einsatzort"/>
+    </location>
+  </location>
+</Encounter>

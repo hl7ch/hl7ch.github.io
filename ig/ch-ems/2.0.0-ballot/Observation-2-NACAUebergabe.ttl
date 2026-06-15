@@ -1,0 +1,41 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/2-NACAUebergabe> a fhir:Observation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "2-NACAUebergabe"] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:88076-5 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "88076-5" ] ;
+       fhir:display [ fhir:v "Injury severity score NACA" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/2-PatientUnbekannt> ;
+     fhir:reference [ fhir:v "Patient/2-PatientUnbekannt" ]
+  ] ; # 
+  fhir:encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/2-Einsatz> ;
+     fhir:reference [ fhir:v "Encounter/2-Einsatz" ]
+  ] ; # 
+  fhir:value [
+     a fhir:CodeableConcept ;
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "III" ] ;
+       fhir:display [ fhir:v "mässige bis schwere Störung" ]
+     ] ) ;
+     fhir:text [ fhir:v "mässige bis schwere Störung" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

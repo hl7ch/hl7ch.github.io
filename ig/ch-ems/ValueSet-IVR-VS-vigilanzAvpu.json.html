@@ -1,26 +1,39 @@
+
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML>
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-EMS\IVR vigilanz (AVPU) - JSON Representation - FHIR v4.0.1</title>
-  
+    <title>IVR Vigilanz (AVPU) - JSON Representation - CH EMS (R4) v2.0.0-ballot</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
 
     <link href="fhir.css" rel="stylesheet"/>
-     
+
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
     <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
-  
+
     <!-- Project extras -->
     <link href="assets/css/project.css" rel="stylesheet"/>
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -29,47 +42,74 @@
     <script src="assets/js/html5shiv.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
-  
+
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
-  <body>
+  <body onload="document.body.style.opacity='1'">
 
-    <style type="text/css">h2{--heading-prefix:"10.78"}
-    h3,h4,h5,h6{--heading-prefix:"10.78"}</style>
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"12.105"}
+    h3,h4,h5,h6{--heading-prefix:"12.105"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
-        
-            <!--
-<div id="family-nav">
+
+        <!-- Placeholder for child template header declarations -->
+
+            <div id="family-nav">
 	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
-		alt="logo fhir" src="assets/images/fhir-logo-www.png" />
+		alt="logo fhir" src="fhir-logo-www.png" />
 	</a>
 </div>
--->
 
-
-            <div id="hl7-nav">
-    <a id="ivr-logo" no-external="true" href="http://www.ivr-ias.ch/">
-        <img alt="visit the ivr website" height="60" src="logo-ivr.jpg" />
-    </a>            
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
+            <style type="text/css">
+#segment-header .container { position: relative; }
+#hl7-nav {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    margin-top: 0;
+    transform: translateY(-50%);
+}
+</style>
+<div id="hl7-nav">
+    <a id="hl7-logo" no-external="true" href="http://www.hl7.ch">
+        <img alt="visit the hl7 website" height="50" src="hl7-logo.png" />
+    </a>
 </div>
 
         <div id="ig-status">
-          <p><span style="font-size:12pt;font-weight:bold">CH EMS (R4)</span><br/>1.9.0 - Standard for Trial Use</p>
+          <p><span style="font-size:12pt;font-weight:bold">CH EMS (R4)</span>
+            <br/>
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
         </div>
       </div> <!-- /container -->
     </div>  <!-- /segment-header -->
-    
+
     <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
       <div id="stripe"> </div>
       <div class="container">  <!-- container -->
         <!-- HEADER CONTENT -->
-    
+
         <nav class="navbar navbar-inverse">
           <!--status-bar-->
           <div class="container">
@@ -80,10 +120,12 @@
             </button>
             <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Home<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Home
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -98,8 +140,8 @@
     </ul>
   </li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -110,11 +152,74 @@
       </li>
     </ul>
   </li>
-  <li><a href="document.html">Document</a></li>
-  <li><a href="profiles.html">Profiles</a></li>
-  <li><a href="extensions.html">Extensions</a></li>
-  <li><a href="terminology.html">Terminology</a></li>
-  <li><a href="artifacts.html">Artifacts</a></li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">EMS Protocol
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="logicalmodel.html">Logical Model</a>
+      </li>
+      <li>
+        <a href="document.html">FHIR Document</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Model Maps
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="ConceptMap-EmsMission2Fhir.html">Mission</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsPatient2Fhir.html">Patient</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAdministrative2Fhir.html">Administrative</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsPretreatment2Fhir.html">Pretreatment</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAnamnesis2Fhir.html">Anamnesis</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsFindings2Fhir.html">Findings</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsDiagnosis2Fhir.html">Diagnosis</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsProcedures2Fhir.html">Procedures</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsEventOfDeath2Fhir.html">Event of Death</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsTransport2Fhir.html">Transport</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsHandover2Fhir.html">Handover</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAnnotation2Fhir.html">Annotation</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="profiles.html">Profiles</a>
+  </li>
+  <li>
+    <a href="extensions.html">Extensions</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminology</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
 </ul>
             </div>  <!-- /.nav-collapse -->
           </div>  <!-- /.container -->
@@ -123,84 +228,125 @@
       </div>  <!-- /container -->
     </div>  <!-- /segment-navbar -->
     <!--status-bar-->
+
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
-      <div class="container">  <!-- container -->  
+      <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>IVR vigilanz (AVPU)</b></li>
-        </ul>  
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>IVR Vigilanz (AVPU)</b></li>
+
+        </ul>
       </div>  <!-- /container -->
     </div>  <!-- /segment-breadcrumb -->
-    
+
+    <a name="top"> </a>
     <div id="segment-content" class="segment">  <!-- segment-content -->
       <div class="container">  <!-- container -->
         <div class="row">
           <div class="inner-wrapper">
-<div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMS (R4) (v1.9.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-ems/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
-  <a name="root"> </a>
-  <h2 id="root">IVR vigilanz (AVPU) - JSON Representation</h2>
-  <p>
-    <a href="ValueSet-IVR-VS-vigilanzAvpu.html">(back to description)</a>
-  </p>
-  <p>
-    <a href="ValueSet-IVR-VS-vigilanzAvpu.json">Raw json</a>
-  </p>
+
+<div style="counter-reset: section 8" class="col-12">
+<!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMS (R4) (v2.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-ems/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li>
+    <a href="ValueSet-IVR-VS-vigilanzAvpu.html">Narrative Content</a>
+  </li>
+
+
+
   
+    <li>
+      <a href="ValueSet-IVR-VS-vigilanzAvpu.xml.html">XML</a>
+    </li>
   
+
+
   
-  <p>
-    <b>Source view</b>
-  </p>
+    <li class="active">
+      <a href="#">JSON</a>
+    </li>
   
-  <pre class="json">
-{
+
+
+
+
+</ul>
+
+
+<a name="root"> </a>
+
+
+<h2 id="root">: IVR Vigilanz (AVPU) - JSON Representation</h2>
+
+  <table class="colsd">
+    <tr>
+
+      <td colspan="2">
+        
+          Draft
+          
+            as of 2026-06-15
+          
+        
+      </td>
+
+    </tr>
+  </table>
+
+
+<p><a href="ValueSet-IVR-VS-vigilanzAvpu.json" no-download="true">Raw json</a> | <a href="ValueSet-IVR-VS-vigilanzAvpu.json" download>Download</a></p>
+
+  <!-- insert intro if present -->
+  
+
+
+
+  <pre class="json" data-fhir="generated" style="white-space: pre; text-wrap: nowrap; width: auto;"><code class="language-json" style="white-space: pre; text-wrap: nowrap;">{
   "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet">resourceType</a>" : "ValueSet",
-  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.id">id</a>" : "IVR-VS-vigilanzAvpu",
-  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.meta">meta</a>" : {
-    "<a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.source">source</a>" : "http://art-decor.org/fhir/ValueSet/2.16.756.5.30.1.143.11.1--20160801215709",
-    "<a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">profile</a>" : [
-      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
-    ]
-  },
-  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.text">text</a>" : {
+  "<a href="http://hl7.org/fhir/R4/resource.html#ValueSet.id">id</a>" : "IVR-VS-vigilanzAvpu",
+  "<a href="http://hl7.org/fhir/R4/domainresource.html#ValueSet.text">text</a>" : {
     "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a>" : "generated",
-    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">div</a>" : "&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;ul&gt;&lt;li&gt;Include these codes as defined in &lt;a href=\&quot;CodeSystem-2.16.756.5.30.1.143.5.1.html\&quot;&gt;&lt;code&gt;urn:oid:2.16.756.5.30.1.143.5.1&lt;/code&gt;&lt;/a&gt;&lt;table class=\&quot;none\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;white-space:nowrap\&quot;&gt;&lt;b&gt;Code&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Display&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=\&quot;CodeSystem-2.16.756.5.30.1.143.5.1.html#2.16.756.5.30.1.143.5.1-A\&quot;&gt;A&lt;/a&gt;&lt;/td&gt;&lt;td&gt;wach, ansprechbar und orientiert&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=\&quot;CodeSystem-2.16.756.5.30.1.143.5.1.html#2.16.756.5.30.1.143.5.1-V\&quot;&gt;V&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Reaktion nur bei lauter Ansprache&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=\&quot;CodeSystem-2.16.756.5.30.1.143.5.1.html#2.16.756.5.30.1.143.5.1-P\&quot;&gt;P&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Reaktion nur auf Schmerzreiz&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=\&quot;CodeSystem-2.16.756.5.30.1.143.5.1.html#2.16.756.5.30.1.143.5.1-U\&quot;&gt;U&lt;/a&gt;&lt;/td&gt;&lt;td&gt;nicht ansprechbar, bewusstlos&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Additional Language Displays&lt;/b&gt;&lt;/p&gt;&lt;table class=\&quot;codes\&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Code&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Deutsch (Schweiz) (German (Switzerland), de)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;French (Switzerland) (fr)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Italian (Switzerland) (it)&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;wach, ansprechbar und orientiert&lt;/td&gt;&lt;td&gt;Alerte, réactif et orienté&lt;/td&gt;&lt;td&gt;Vigile, reattivo e orientato&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;V&lt;/td&gt;&lt;td&gt;Reaktion nur bei lauter Ansprache&lt;/td&gt;&lt;td&gt;Réaction uniquement lorsque l'on parle fort&lt;/td&gt;&lt;td&gt;Reazione solo su stimolo verbale forte&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;P&lt;/td&gt;&lt;td&gt;Reazione solo allo stimolo del dolore&lt;/td&gt;&lt;td&gt;Réaction uniquement au stimulus de la douleur&lt;/td&gt;&lt;td&gt;Reazione solo allo stimolo del dolore&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;U&lt;/td&gt;&lt;td&gt;nicht ansprechbar, bewusstlos&lt;/td&gt;&lt;td&gt;Inconscient, sans réaction&lt;/td&gt;&lt;td&gt;Incosciente, senza reazione&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;"<a name="end-xhtml"></a>
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">div</a>" : "&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p class=\&quot;res-header-id\&quot;&gt;&lt;b&gt;Generated Narrative: ValueSet IVR-VS-vigilanzAvpu&lt;/b&gt;&lt;/p&gt;&lt;a name=\&quot;IVR-VS-vigilanzAvpu\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcIVR-VS-vigilanzAvpu\&quot;&gt; &lt;/a&gt;&lt;ul&gt;&lt;li&gt;Include these codes as defined in &lt;a href=\&quot;CodeSystem-IVR.html\&quot;&gt;&lt;code&gt;http://fhir.ch/ig/ch-ems/CodeSystem/IVR&lt;/code&gt;&lt;/a&gt;&lt;span title=\&quot;Version is not explicitly stated, which means it is fixed to the version provided in this specification\&quot;&gt; version &amp;#x1F4E6;2.0.0-ballot&lt;/span&gt;&lt;table class=\&quot;none\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;white-space:nowrap\&quot;&gt;&lt;b&gt;Code&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Display&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Deutsch (Schweiz) (German (Switzerland), de)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;French (Switzerland) (fr)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Italian (Switzerland) (it)&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=\&quot;CodeSystem-IVR.html#IVR-A\&quot;&gt;A&lt;/a&gt;&lt;/td&gt;&lt;td&gt;wach, ansprechbar und orientiert&lt;/td&gt;&lt;td&gt;wach, ansprechbar und orientiert&lt;/td&gt;&lt;td&gt;Alerte, réactif et orienté&lt;/td&gt;&lt;td&gt;Vigile, reattivo e orientato&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=\&quot;CodeSystem-IVR.html#IVR-V\&quot;&gt;V&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Reaktion nur bei lauter Ansprache&lt;/td&gt;&lt;td&gt;Reaktion nur bei lauter Ansprache&lt;/td&gt;&lt;td&gt;Réaction uniquement lorsque l'on parle fort&lt;/td&gt;&lt;td&gt;Reazione solo su stimolo verbale forte&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=\&quot;CodeSystem-IVR.html#IVR-P\&quot;&gt;P&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Reaktion nur auf Schmerzreiz&lt;/td&gt;&lt;td&gt;Reazione solo allo stimolo del dolore&lt;/td&gt;&lt;td&gt;Réaction uniquement au stimulus de la douleur&lt;/td&gt;&lt;td&gt;Reazione solo allo stimolo del dolore&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=\&quot;CodeSystem-IVR.html#IVR-U\&quot;&gt;U&lt;/a&gt;&lt;/td&gt;&lt;td&gt;nicht ansprechbar, bewusstlos&lt;/td&gt;&lt;td&gt;nicht ansprechbar, bewusstlos&lt;/td&gt;&lt;td&gt;Inconscient, sans réaction&lt;/td&gt;&lt;td&gt;Incosciente, senza reazione&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;"
   },
-  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.extension">extension</a>" : [
-    {
-      "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
-      "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value[x]">valuePeriod</a>" : {
-        "<a href="http://hl7.org/fhir/R4/datatypes.html#Period#Period.start">start</a>" : "2016-08-01T21:57:09+02:00"
-      }
-    }
-  ],
   "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.url">url</a>" : "http://fhir.ch/ig/ch-ems/ValueSet/IVR-VS-vigilanzAvpu",
-  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.identifier">identifier</a>" : [
-    {
-      "<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.use">use</a>" : "official",
-      "<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">system</a>" : "http://art-decor.org/ns/oids/vs",
-      "<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.value">value</a>" : "2.16.756.5.30.1.143.11.1"
-    }
-  ],
-  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.version">version</a>" : "1.9.0",
+  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.version">version</a>" : "2.0.0-ballot",
   "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.name">name</a>" : "Vigilanzavpu",
-  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.title">title</a>" : "IVR vigilanz (AVPU)",
+  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.title">title</a>" : "IVR Vigilanz (AVPU)",
   "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.status">status</a>" : "draft",
   "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.experimental">experimental</a>" : false,
-  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.date">date</a>" : "2020-08-25T14:08:15+02:00",
-  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.publisher">publisher</a>" : "IVR Interverband für Rettungswesen",
+  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.date">date</a>" : "2026-06-15T08:07:03+00:00",
+  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.publisher">publisher</a>" : "HL7 Switzerland",
   "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.contact">contact</a>" : [
     {
-      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a>" : "IVR Interverband für Rettungswesen",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a>" : "HL7 Switzerland",
       "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>" : [
         {
           "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a>" : "url",
-          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a>" : "https://www.ivr-ias.ch/"
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a>" : "https://www.hl7.ch/"
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a>" : "HL7 Switzerland",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a>" : "url",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a>" : "https://www.hl7.ch/",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.use">use</a>" : "work"
         }
       ]
     }
   ],
-  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.description">description</a>" : "eCH-0207: Vigilanz (AVPU)",
+  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.description">description</a>" : "List of the states of vigilance of a patient (AVPU).",
   "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.jurisdiction">jurisdiction</a>" : [
     {
       "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
@@ -212,10 +358,11 @@
     }
   ],
   "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.immutable">immutable</a>" : false,
+  "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.copyright">copyright</a>" : "CC0-1.0",
   "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose">compose</a>" : {
     "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include">include</a>" : [
       {
-        "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.system">system</a>" : "urn:oid:2.16.756.5.30.1.143.5.1",
+        "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.system">system</a>" : "http://fhir.ch/ig/ch-ems/CodeSystem/IVR",
         "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept">concept</a>" : [
           {
             "<a href="http://hl7.org/fhir/R4/valueset.html#ValueSet.compose.include.concept.code">code</a>" : "A",
@@ -293,27 +440,43 @@
       }
     ]
   }
-}</pre>
+}</code></pre>
 
 
+  <!-- insert notes if present -->
   
-  
+
+
+
 </div>
         </div>  <!-- /inner-wrapper -->
       </div>  <!-- /row -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-content -->
 
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
+
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color: #81BEF7" href="https://www.ivr-ias.ch/">IVR Interverband für Rettungswesen</a>.  Package ch.fhir.ig.ch-ems#1.9.0 based on <a style="color: #81BEF7" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 25, 2020 14:08+0200">2020-08-25</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-ems#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jun 15, 2026 08:07+0000">2026-06-15</span>
           <br/>
-          <span style="color: #FFFF77">
-                      Links: <a style="color: #81BEF7" href="toc.html">Table of Contents</a> |
-                 <a style="color: #81BEF7" href="qa.html">QA Report</a>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSesbnrt5J1xC9eO5_0Rur5NCRt7i39b7Fck7c369nI6WPsV6Q/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-ems%232.0.0-ballot%20/ValueSet-IVR-VS-vigilanzAvpu.json.html&amp;entry%2E247644557=IVR%20Vigilanz%20(AVPU)%20-%20JSON%20Representation">Propose a change</a>
+
+
+
+
           </span>
         </p>
       </div>  <!-- /inner-wrapper -->
@@ -324,19 +487,19 @@
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
   <script type="text/javascript" src="assets/js/respond.min.js"> </script>
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
-  
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   <!-- Analytics Below
   ================================================== -->
   </body>
 </html>
+

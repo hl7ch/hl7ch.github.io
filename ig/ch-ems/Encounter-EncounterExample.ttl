@@ -1,0 +1,218 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Encounter/EncounterExample> a fhir:Encounter ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "EncounterExample"] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-valuablespatient"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1000126" ] ;
+         fhir:display [ fhir:v "wedding ring" ]
+       ] ) ;
+       fhir:text [ fhir:v "Ehering" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-valuablespatient"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1000131" ] ;
+         fhir:display [ fhir:v "billfold" ]
+       ] ) ;
+       fhir:text [ fhir:v "Brieftasche" ]
+     ]
+  ] [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-emergencydoctorsystem"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1000005" ] ;
+         fhir:display [ fhir:v "pickup by EMS" ]
+       ] ) ;
+       fhir:text [ fhir:v "Abholung durch Rettungsdienst" ]
+     ]
+  ] [
+     fhir:extension ( [
+       fhir:url [ fhir:v "offender"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "1000080" ] ;
+           fhir:display [ fhir:v "person, unknown" ]
+         ] ) ;
+         fhir:text [ fhir:v "Drittperson unbekannt" ]
+       ]
+     ] [
+       fhir:url [ fhir:v "form"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "1000043" ] ;
+           fhir:display [ fhir:v "contumeliousness" ]
+         ] ) ;
+         fhir:text [ fhir:v "Beschimpfung" ]
+       ]
+     ] [
+       fhir:url [ fhir:v "result"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a sct:260413007 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "260413007" ] ;
+           fhir:display [ fhir:v "None (qualifier value)" ]
+         ] ) ;
+         fhir:text [ fhir:v "keine" ]
+       ]
+     ] ) ;
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-violence"^^xsd:anyURI ]
+  ] ) ; # 
+  fhir:identifier ( [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "MN" ] ;
+         fhir:display [ fhir:v "Mission number" ]
+       ] ) ;
+       fhir:text [ fhir:v "Einsatznummer" ]
+     ] ;
+     fhir:system [ fhir:v "http://example.com"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "S89898989" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "finished"] ; # 
+  fhir:class [
+     fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-ActCode"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "EMER" ] ;
+     fhir:display [ fhir:v "emergency" ]
+  ] ; # 
+  fhir:serviceType [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1000001" ] ;
+       fhir:display [ fhir:v "primary mission" ]
+     ] ) ;
+     fhir:text [ fhir:v "Primäreinsatz" ]
+  ] ; # 
+  fhir:priority [
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-urgencyadequate"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "1000135" ] ;
+           fhir:display [ fhir:v "no, siren not necessary" ]
+         ] ) ;
+         fhir:text [ fhir:v "nein, Sondersignal nicht notwendig" ]
+       ]
+     ] ) ;
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1000007" ] ;
+       fhir:display [ fhir:v "with siren" ]
+     ] ) ;
+     fhir:text [ fhir:v "mit Sondersignal" ]
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/PatientExample> ;
+     fhir:reference [ fhir:v "Patient/PatientExample" ]
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://fhir.ch/ig/ch-ems/ServiceRequest/1-AufbietendeOrganisation> ;
+     fhir:reference [ fhir:v "ServiceRequest/1-AufbietendeOrganisation" ]
+  ] ) ; # 
+  fhir:participant ( [
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a sct:133932002 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "133932002" ] ;
+           fhir:display [ fhir:v "Caregiver (person)" ]
+         ] ) ;
+         fhir:text [ fhir:v "Betreuer" ]
+       ]
+     ] ) ;
+     fhir:individual [
+       fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-TeamMemberPetraMuster> ;
+       fhir:reference [ fhir:v "Practitioner/1-TeamMemberPetraMuster" ]
+     ]
+  ] [
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a sct:133932002 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "133932002" ] ;
+           fhir:display [ fhir:v "Caregiver (person)" ]
+         ] ) ;
+         fhir:text [ fhir:v "Betreuer" ]
+       ]
+     ] ) ;
+     fhir:individual [
+       fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-TeamMemberHansTransportsanitaeter> ;
+       fhir:reference [ fhir:v "Practitioner/1-TeamMemberHansTransportsanitaeter" ]
+     ]
+  ] [
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a sct:309343006 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "309343006" ] ;
+           fhir:display [ fhir:v "Physician (occupation)" ]
+         ] ) ;
+         fhir:text [ fhir:v "Ärztin / Arzt" ]
+       ]
+     ] ) ;
+     fhir:individual [
+       fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-TeamMemberPierreUrgentiste> ;
+       fhir:reference [ fhir:v "Practitioner/1-TeamMemberPierreUrgentiste" ]
+     ]
+  ] ) ; # 
+  fhir:period [
+     fhir:start [ fhir:v "2016-12-10"^^xsd:date ]
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1000110" ] ;
+       fhir:display [ fhir:v "emergency mission" ]
+     ] ) ;
+     fhir:text [ fhir:v "Notfall-Einsatz" ]
+  ] ) ; # 
+  fhir:hospitalization [
+     fhir:destination [
+       fhir:link <http://fhir.ch/ig/ch-ems/Location/1-Zielort> ;
+       fhir:reference [ fhir:v "Location/1-Zielort" ]
+     ]
+  ] ; # 
+  fhir:location ( [
+     fhir:location [
+       fhir:link <http://fhir.ch/ig/ch-ems/Location/1-Einsatzort> ;
+       fhir:reference [ fhir:v "Location/1-Einsatzort" ]
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

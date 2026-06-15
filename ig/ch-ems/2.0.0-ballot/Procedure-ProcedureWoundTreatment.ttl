@@ -1,0 +1,41 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Procedure/ProcedureWoundTreatment> a fhir:Procedure ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ProcedureWoundTreatment"] ; # 
+  fhir:status [ fhir:v "completed"] ; # 
+  fhir:category [
+     fhir:coding ( [
+       a sct:442460002 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "442460002" ] ;
+       fhir:display [ fhir:v "Procedure on wound (procedure)" ]
+     ] )
+  ] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a sct:386028003 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "386028003" ] ;
+       fhir:display [ fhir:v "Surgical patch (physical object)" ]
+     ] ) ;
+     fhir:text [ fhir:v "Wundschnellverband" ]
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/PatientExample> ;
+     fhir:reference [ fhir:v "Patient/PatientExample" ]
+  ] ; # 
+  fhir:encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/EncounterExample> ;
+     fhir:reference [ fhir:v "Encounter/EncounterExample" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,52 @@
+# Vorbehandlung - CH EMS (R4) v2.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Vorbehandlung**
+
+## Example Procedure: Vorbehandlung
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Procedure",
+  "id" : "Vorbehandlung",
+  "extension" : [{
+    "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-performer",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://fhir.ch/ig/ch-ems/CodeSystem/IVR",
+        "code" : "1000142",
+        "display" : "first responder"
+      }],
+      "text" : "First responder"
+    }
+  }],
+  "status" : "completed",
+  "category" : {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "373110003",
+      "display" : "Emergency procedure (procedure)"
+    }]
+  },
+  "code" : {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "386308007",
+      "display" : "First aid (procedure)"
+    }],
+    "text" : "Erste Hilfe"
+  },
+  "subject" : {
+    "reference" : "Patient/PatientExample"
+  },
+  "encounter" : {
+    "reference" : "Encounter/EncounterExample"
+  }
+}
+
+```

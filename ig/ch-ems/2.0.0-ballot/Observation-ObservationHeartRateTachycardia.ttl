@@ -1,0 +1,76 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/ObservationHeartRateTachycardia> a fhir:Observation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ObservationHeartRateTachycardia"] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/observation-category"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "vital-signs" ] ;
+       fhir:display [ fhir:v "Vital Signs" ]
+     ] )
+  ] ) ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:8867-4 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "8867-4" ] ;
+       fhir:display [ fhir:v "Heart rate" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/PatientExample> ;
+     fhir:reference [ fhir:v "Patient/PatientExample" ]
+  ] ; # 
+  fhir:encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/EncounterExample> ;
+     fhir:reference [ fhir:v "Encounter/EncounterExample" ]
+  ] ; # 
+  fhir:effective [
+     a fhir:dateTime ;
+     fhir:v "2016-12-10T12:25:00.000+01:00"^^xsd:dateTime
+  ] ; # 
+  fhir:value [
+     a fhir:Quantity ;
+     fhir:value [ fhir:v "110"^^xsd:decimal ] ;
+     fhir:unit [ fhir:v "per minute" ] ;
+     fhir:system [ fhir:v "http://unitsofmeasure.org"^^xsd:anyURI ] ;
+     fhir:code [ fhir:v "/min" ]
+  ] ; # 
+  fhir:interpretation ( [
+     fhir:coding ( [
+       a sct:3424008 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "3424008" ] ;
+       fhir:display [ fhir:v "Tachycardia (finding)" ]
+     ] ) ;
+     fhir:text [ fhir:v "Tachykardie" ]
+  ] [
+     fhir:coding ( [
+       a sct:260404005 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "260404005" ] ;
+       fhir:display [ fhir:v "Strong (qualifier value)" ]
+     ] ) ;
+     fhir:text [ fhir:v "stark" ]
+  ] ) ; # 
+  fhir:method [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1000141" ] ;
+       fhir:display [ fhir:v "12pol EKG" ]
+     ] ) ;
+     fhir:text [ fhir:v "12pol EKG" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

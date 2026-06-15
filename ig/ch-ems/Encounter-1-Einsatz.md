@@ -1,0 +1,157 @@
+# 1 Einsatz - CH EMS (R4) v2.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **1 Einsatz**
+
+## Example Encounter: 1 Einsatz
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Encounter",
+  "id" : "1-Einsatz",
+  "extension" : [{
+    "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-valuablespatient",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://fhir.ch/ig/ch-ems/CodeSystem/IVR",
+        "code" : "1000127",
+        "display" : "wallet"
+      }]
+    }
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-valuablespatient",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "74964007",
+        "display" : "Other"
+      }],
+      "text" : "Handy"
+    }
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-valuablespatient",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://fhir.ch/ig/ch-ems/CodeSystem/IVR",
+        "code" : "1000128",
+        "display" : "wrist watch"
+      }]
+    }
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-valuablespatient",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "74964007",
+        "display" : "Other"
+      }],
+      "text" : "Schlüssel"
+    }
+  },
+  {
+    "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-valuablespatient",
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "74964007",
+        "display" : "Other"
+      }],
+      "text" : "Bargeld"
+    }
+  }],
+  "identifier" : [{
+    "type" : {
+      "coding" : [{
+        "system" : "http://fhir.ch/ig/ch-ems/CodeSystem/IVR",
+        "code" : "MN",
+        "display" : "Mission number"
+      }],
+      "text" : "Einsatznummer"
+    },
+    "system" : "http://example.com",
+    "value" : "S12345678"
+  }],
+  "status" : "finished",
+  "class" : {
+    "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code" : "EMER",
+    "display" : "emergency"
+  },
+  "subject" : {
+    "reference" : "Patient/1-ThomasMueller"
+  },
+  "basedOn" : [{
+    "reference" : "ServiceRequest/1-AufbietendeOrganisation"
+  }],
+  "participant" : [{
+    "extension" : [{
+      "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "133932002",
+          "display" : "Caregiver (person)"
+        }],
+        "text" : "Betreuer"
+      }
+    }],
+    "individual" : {
+      "reference" : "Practitioner/1-TeamMemberPetraMuster"
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "133932002",
+          "display" : "Caregiver (person)"
+        }],
+        "text" : "Betreuer"
+      }
+    }],
+    "individual" : {
+      "reference" : "Practitioner/1-TeamMemberHansTransportsanitaeter"
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "309343006",
+          "display" : "Physician (occupation)"
+        }],
+        "text" : "Ärztin / Arzt"
+      }
+    }],
+    "individual" : {
+      "reference" : "Practitioner/1-TeamMemberPierreUrgentiste"
+    }
+  }],
+  "period" : {
+    "start" : "2016-12-10"
+  },
+  "hospitalization" : {
+    "destination" : {
+      "reference" : "Location/1-Zielort"
+    }
+  },
+  "location" : [{
+    "location" : {
+      "reference" : "Location/1-Einsatzort"
+    }
+  }]
+}
+
+```

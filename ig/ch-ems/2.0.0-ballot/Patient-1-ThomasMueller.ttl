@@ -1,0 +1,112 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Patient/1-ThomasMueller> a fhir:Patient ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "1-ThomasMueller"] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-core-patient-ech-11-placeoforigin"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Address ;
+       fhir:city [ fhir:v "Musterdorf" ] ;
+       fhir:state [ fhir:v "ZH" ]
+     ]
+  ] ) ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "urn:oid:2.16.756.5.32"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "7562295883070" ]
+  ] [
+     fhir:type [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v2-0203"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "MR" ]
+       ] )
+     ] ;
+     fhir:system [ fhir:v "http://example.com"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "762354" ]
+  ] ) ; # 
+  fhir:name ( [
+     fhir:use [ fhir:v "official" ] ;
+     fhir:family [
+       fhir:v "Müller" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-name"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:code ;
+           fhir:v "officialName"
+         ]
+       ] )
+     ] ;
+     fhir:given ( [
+       fhir:v "Thomas" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-ech-11-firstname"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:code ;
+           fhir:v "officialFirstName"
+         ]
+       ] )
+     ] )
+  ] ) ; # 
+  fhir:gender [ fhir:v "male"] ; # 
+  fhir:birthDate [ fhir:v "1961-10-01"^^xsd:date] ; # 
+  fhir:address ( [
+     fhir:use [ fhir:v "home" ] ;
+     fhir:line ( [
+       fhir:v "Bahnhofstrasse" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:string ;
+           fhir:v "1"
+         ]
+       ] )
+     ] ) ;
+     fhir:city [ fhir:v "Zürich" ] ;
+     fhir:postalCode [ fhir:v "8003" ] ;
+     fhir:country [
+       fhir:v "Schweiz" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "CH" ]
+         ]
+       ] )
+     ]
+  ] ) ; # 
+  fhir:contact ( [
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-personrole"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a sct:74964007 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "74964007" ] ;
+           fhir:display [ fhir:v "Other (qualifier value)" ]
+         ] ) ;
+         fhir:text [ fhir:v "Ehefrau" ]
+       ]
+     ] ) ;
+     fhir:relationship ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-RoleCode"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "thirdParty" ]
+       ] )
+     ] ) ;
+     fhir:name [
+       fhir:family [ fhir:v "Müller" ] ;
+       fhir:given ( [ fhir:v "Erika" ] )
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

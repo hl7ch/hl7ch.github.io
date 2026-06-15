@@ -1,0 +1,36 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Location/LocationAmbulance> a fhir:Location ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "LocationAmbulance"] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-disinfection"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:CodeableConcept ;
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1000124" ] ;
+         fhir:display [ fhir:v "nebulize with H2O2" ]
+       ] ) ;
+       fhir:text [ fhir:v "Vernebelung H2O2" ]
+     ]
+  ] ) ; # 
+  fhir:physicalType [
+     fhir:coding ( [
+       a sct:469233002 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "469233002" ] ;
+       fhir:display [ fhir:v "Helicopter ambulance (physical object)" ]
+     ] ) ;
+     fhir:text [ fhir:v "Rettungshelikopter" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,330 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Composition/1b-Einsatzprotokoll-Composition> a fhir:Composition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "1b-Einsatzprotokoll-Composition"] ; # 
+  fhir:language [ fhir:v "de-CH"] ; # 
+  fhir:identifier [
+     fhir:system [ fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "urn:uuid:b5e2bd3b-f670-4b0c-a62d-38303baac826" ]
+  ] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       a loinc:67796-3 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "67796-3" ] ;
+       fhir:display [ fhir:v "EMS patient care report - version 3 Document NEMSIS" ]
+     ] [
+       a sct:371535009 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "371535009" ] ;
+       fhir:display [ fhir:v "Transfer summary report (record artifact)" ]
+     ] ) ;
+     fhir:text [ fhir:v "Einsatzprotokoll Rettungsdienst" ]
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/1-ThomasMueller> ;
+     fhir:reference [ fhir:v "Patient/1-ThomasMueller" ]
+  ] ; # 
+  fhir:encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/1-Einsatz> ;
+     fhir:reference [ fhir:v "Encounter/1-Einsatz" ]
+  ] ; # 
+  fhir:date [ fhir:v "2016-12-10T13:40:00.000+01:00"^^xsd:dateTime] ; # 
+  fhir:author ( [
+     fhir:link <http://fhir.ch/ig/ch-ems/PractitionerRole/1-SaniPetraMuster-PR> ;
+     fhir:reference [ fhir:v "PractitionerRole/1-SaniPetraMuster-PR" ]
+  ] [
+     fhir:link <http://fhir.ch/ig/ch-ems/PractitionerRole/1-NotarztPierreUrgentiste-PR> ;
+     fhir:reference [ fhir:v "PractitionerRole/1-NotarztPierreUrgentiste-PR" ]
+  ] ) ; # 
+  fhir:title [ fhir:v "Einsatzprotokoll Rettungsdienst"] ; # 
+  fhir:confidentiality [
+     fhir:v "N" ;
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://fhir.ch/ig/ch-core/StructureDefinition/ch-ext-epr-confidentialitycode"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           a sct:17621005 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "17621005" ] ;
+           fhir:display [ fhir:v "Normal" ]
+         ] ) ;
+         fhir:text [ fhir:v "Normal" ]
+       ]
+     ] )
+  ] ; # 
+  fhir:attester ( [
+     fhir:mode [ fhir:v "legal" ] ;
+     fhir:time [ fhir:v "2016-12-10T13:40:00.000+01:00"^^xsd:dateTime ] ;
+     fhir:party [
+       fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-SaniPetraMuster> ;
+       fhir:reference [ fhir:v "Practitioner/1-SaniPetraMuster" ]
+     ]
+  ] ) ; # 
+  fhir:custodian [
+     fhir:link <http://fhir.ch/ig/ch-ems/Organization/1-Rettungsdienst> ;
+     fhir:reference [ fhir:v "Organization/1-Rettungsdienst" ]
+  ] ; # 
+  fhir:section ( [
+     fhir:title [ fhir:v "Einsatz" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1100001" ] ;
+         fhir:display [ fhir:v "intervention" ]
+       ] ) ;
+       fhir:text [ fhir:v "Einsatz" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><tbody><tr><th>Einsatz</th></tr><tr><td>Einsatzdatum:</td><td>10.12.2016</td></tr><tr><td>Einsatznummer:</td><td>S12345678</td></tr><tr><td>Aufbietende Organisation:</td><td>SNZ (GLN 7601002156370)</td></tr><tr><td>Aufgebotene Organisation:</td><td>Rettungsdienst Schutz und Rettung Zürich (GLN 7601002156363)</td></tr><tr><td>Teammitglieder:</td><td>Petra Muster (Rettungssanitäterin), Hans Transportsanitäter (Transportsanitäter), Pierre Urgentiste (Notarzt)</td></tr><tr><td>Einsatzort:</td><td>Zürich, Waldrand (47.392115, 8.553192)</td></tr><tr><td>Zielort:</td><td>Universitätsspital Zürich, Notfall</td></tr></tbody></table><table><tbody><tr><th>Alarmierungszeit:</th><th>Dispositionszeit:</th><th>Ausrückzeit:</th><th>Ankunftszeit am Einsatzort:</th><th>Ankunftszeit beim Patienten:</th><th>Abfahrtszeit vom Einsatzort:</th><th>Ankunftszeit am Zielort:</th><th>Abfahrtszeit vom Zielort:</th><th>Zeit Einsatzbereit:</th></tr><tr><th>12:09</th><th>12:11</th><th>12:13</th><th>12:17</th><th>12:22</th><th>12:48</th><th>12:54</th><th>13:25</th><th>13:40</th></tr></tbody></table></div>"^^rdf:XMLLiteral ]
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-ems/Encounter/1-Einsatz> ;
+       fhir:reference [ fhir:v "Encounter/1-Einsatz" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Alarm> ;
+       fhir:reference [ fhir:v "Observation/1-Alarm" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Disposition> ;
+       fhir:reference [ fhir:v "Observation/1-Disposition" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Rollout> ;
+       fhir:reference [ fhir:v "Observation/1-Rollout" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-ArrivalOnScene> ;
+       fhir:reference [ fhir:v "Observation/1-ArrivalOnScene" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-ArrivalPatient> ;
+       fhir:reference [ fhir:v "Observation/1-ArrivalPatient" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-DepartureFromScene> ;
+       fhir:reference [ fhir:v "Observation/1-DepartureFromScene" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-ArrivalAtTarget> ;
+       fhir:reference [ fhir:v "Observation/1-ArrivalAtTarget" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1b-DepartureFromTarget> ;
+       fhir:reference [ fhir:v "Observation/1b-DepartureFromTarget" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1b-OperationalReadiness> ;
+       fhir:reference [ fhir:v "Observation/1b-OperationalReadiness" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Procedure/1-Transport> ;
+       fhir:reference [ fhir:v "Procedure/1-Transport" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Location/1-Rettungswagen> ;
+       fhir:reference [ fhir:v "Location/1-Rettungswagen" ]
+     ] )
+  ] [
+     fhir:title [ fhir:v "Administrativ" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1100003" ] ;
+         fhir:display [ fhir:v "administrative" ]
+       ] ) ;
+       fhir:text [ fhir:v "Administrativ" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><tbody><tr><th>Beteiligte Person</th></tr><tr><td>Ehefrau:</td><td>Erika Müller</td></tr></tbody></table></div>"^^rdf:XMLLiteral ]
+     ]
+  ] [
+     fhir:title [ fhir:v "Vorbehandlung" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1100004" ] ;
+         fhir:display [ fhir:v "pretreatment" ]
+       ] ) ;
+       fhir:text [ fhir:v "Vorbehandlung" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><span>-</span></div>"^^rdf:XMLLiteral ]
+     ]
+  ] [
+     fhir:title [ fhir:v "Anamnese" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1100005" ] ;
+         fhir:display [ fhir:v "anamnesis" ]
+       ] ) ;
+       fhir:text [ fhir:v "Anamnese" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><tbody><tr><th>Ereignis:</th></tr><tr><td>Hat sich beim Spazieren im Wald schlecht gefühlt und ist abgesessen.</td></tr></tbody></table><table><tbody><tr><th>Symptome:</th></tr><tr><td>Starke Schmerzen in der Brust und im linken Oberarm verspürt.</td></tr></tbody></table><h4>Allergien / Unverträglichkeiten:</h4><ul><li>Allergisch auf Baumpollen</li><li>bekannte Unverträglichkeitsreaktion auf einzelne Medikamente</li></ul><h4>Bestehende Medikation</h4><ul><li>Aspirin Cardio 100 (1 Tbl./Tag)</li></ul><h4>Medizinische Vorgeschichte:</h4><ul><li>Herzvorfall vor vier Jahren, der im Triemlispital in Zürich behandelt wurde</li></ul><h4>Weiteres:</h4><ul><li>Seit dem Frühstück um ca. 8 Uhr hat er nichts mehr gegessen</li><li>Thomas Müller hat keine Patientenverfügung erstellt</li><li>Es sind keine anderen medizinischen Probleme bekannt</li></ul></div>"^^rdf:XMLLiteral ]
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Anamnese> ;
+       fhir:reference [ fhir:v "Observation/1-Anamnese" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Symptome> ;
+       fhir:reference [ fhir:v "Observation/1-Symptome" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/AllergyIntolerance/1-Baumpollen> ;
+       fhir:reference [ fhir:v "AllergyIntolerance/1-Baumpollen" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/AllergyIntolerance/1-Medikamente> ;
+       fhir:reference [ fhir:v "AllergyIntolerance/1-Medikamente" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/MedicationStatement/1-AspirinCardio> ;
+       fhir:reference [ fhir:v "MedicationStatement/1-AspirinCardio" ]
+     ] )
+  ] [
+     fhir:title [ fhir:v "Befund" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1100006" ] ;
+         fhir:display [ fhir:v "findings" ]
+       ] ) ;
+       fhir:text [ fhir:v "Befund" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Zeitpunkt des Befundes: 12:25</p><table><tbody><tr><th>Blutdruck:</th><th>GCS:</th><th>Weiteres:</th></tr><tr><td>120/80 mmHg, gemessen am rechten Arm</td><td>Total 15: Augenöffnung spontan (4), verbale Antwort orientiert (5), motorische Reaktion befolgt Antweisungen (6)</td><td>Schmerz: 5</td></tr></tbody></table></div>"^^rdf:XMLLiteral ]
+     ] ;
+     fhir:section ( [
+       fhir:title [ fhir:v "Circulation" ] ;
+       fhir:entry ( [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Blutdruck> ;
+         fhir:reference [ fhir:v "Observation/1-Blutdruck" ]
+       ] )
+     ] [
+       fhir:title [ fhir:v "Disability" ] ;
+       fhir:entry ( [
+         fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-GCSBefund> ;
+         fhir:reference [ fhir:v "Observation/1-GCSBefund" ]
+       ] )
+     ] )
+  ] [
+     fhir:title [ fhir:v "Diagnosen" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1100007" ] ;
+         fhir:display [ fhir:v "diagnosis" ]
+       ] ) ;
+       fhir:text [ fhir:v "Diagnosen" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><tbody><tr><th>Verdachtsdiagnose:</th></tr><tr><td>Akuter transmuraler Myokardinfarkt der Vorderwand (ACS/STEMI VW)</td></tr></tbody></table></div>"^^rdf:XMLLiteral ]
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-Diagnose> ;
+       fhir:reference [ fhir:v "Observation/1-Diagnose" ]
+     ] )
+  ] [
+     fhir:title [ fhir:v "Massnahmen" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1100008" ] ;
+         fhir:display [ fhir:v "measures" ]
+       ] ) ;
+       fhir:text [ fhir:v "Massnahmen" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><span>Sofortige Infusion gelegt und Verabreichung einer ersten Dosis von 2 Hüben Nitrolingual-Spray um 12:30.</span></div>"^^rdf:XMLLiteral ]
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-ems/MedicationAdministration/1-Infusion> ;
+       fhir:reference [ fhir:v "MedicationAdministration/1-Infusion" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/MedicationAdministration/1-Spray> ;
+       fhir:reference [ fhir:v "MedicationAdministration/1-Spray" ]
+     ] )
+  ] [
+     fhir:title [ fhir:v "Todesfall" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1100009" ] ;
+         fhir:display [ fhir:v "death" ]
+       ] ) ;
+       fhir:text [ fhir:v "Todesfall" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><span>-</span></div>"^^rdf:XMLLiteral ]
+     ]
+  ] [
+     fhir:title [ fhir:v "Transport" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1100010" ] ;
+         fhir:display [ fhir:v "transport" ]
+       ] ) ;
+       fhir:text [ fhir:v "Transport" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><span>Fahrt mit Sondersignal ins USZ.</span></div>"^^rdf:XMLLiteral ]
+     ]
+  ] [
+     fhir:title [ fhir:v "Übergabe" ] ;
+     fhir:code [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "1100011" ] ;
+         fhir:display [ fhir:v "handover" ]
+       ] ) ;
+       fhir:text [ fhir:v "Übergabe" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><tbody><tr><th>GCS:</th><th>NACA:</th><th>Zustand:</th><th>Weiteres:</th></tr><tr><td>Total 15: Augenöffnung spontan (4), verbale Antwort orientiert (5), motorische Reaktion befolgt Antweisungen (6)</td><td>III</td><td>Zustand des Patienten hat sich im Verlaufe des Einsatzes verbessert</td><td>Schmerz: 4</td></tr></tbody></table><p>Übergabe an USZ mit Wertsachenbeutel mit Portemonnaie, Handy, Uhr, Schlüssel, Bargeld sowie Wertsachenverzeichnis.</p></div>"^^rdf:XMLLiteral ]
+     ] ;
+     fhir:entry ( [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-ZustandUebergabe> ;
+       fhir:reference [ fhir:v "Observation/1-ZustandUebergabe" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-NACAUebergabe> ;
+       fhir:reference [ fhir:v "Observation/1-NACAUebergabe" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Observation/1-GCSUebergabe> ;
+       fhir:reference [ fhir:v "Observation/1-GCSUebergabe" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Practitioner/1-InformationRecipientSpitalarzt> ;
+       fhir:reference [ fhir:v "Practitioner/1-InformationRecipientSpitalarzt" ]
+     ] [
+       fhir:link <http://fhir.ch/ig/ch-ems/Organization/1-InformationRecipientUSZ> ;
+       fhir:reference [ fhir:v "Organization/1-InformationRecipientUSZ" ]
+     ] )
+  ] [
+     fhir:title [ fhir:v "Kommentar" ] ;
+     fhir:code [
+       fhir:coding ( [
+         a loinc:48767-8 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "48767-8" ] ;
+         fhir:display [ fhir:v "Annotation comment [Interpretation] Narrative" ]
+       ] ) ;
+       fhir:text [ fhir:v "Kommentar" ]
+     ] ;
+     fhir:text [
+       fhir:status [ fhir:v "generated" ] ;
+       fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><span>-</span></div>"^^rdf:XMLLiteral ]
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

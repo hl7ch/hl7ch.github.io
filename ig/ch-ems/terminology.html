@@ -3,24 +3,35 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>CH.FHIR.IG.CH-EMS\Terminology - FHIR v4.0.1</title>
-  
+    <title>Terminology - CH EMS (R4) v2.0.0-ballot</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
 
     <link href="fhir.css" rel="stylesheet"/>
-     
+
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
     <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
-  
+
     <!-- Project extras -->
     <link href="assets/css/project.css" rel="stylesheet"/>
     <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
     <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
     <!-- Placeholder for child template CSS declarations -->
     <link href="assets/css/hl7.css" rel="stylesheet"/>
     <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    
+
+    </style>
+ 
 
     <script type="text/javascript" src="fhir-table-scripts.js"> </script>
 
@@ -29,47 +40,74 @@
     <script src="assets/js/html5shiv.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
-  
+
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png"/>
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
-  <body>
+  <body onload="document.body.style.opacity='1'">
 
-    <style type="text/css">h2{--heading-prefix:"9"}
-    h3,h4,h5,h6{--heading-prefix:"9"}</style>
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"10"}
+    h3,h4,h5,h6{--heading-prefix:"10"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
-        
-            <!--
-<div id="family-nav">
+
+        <!-- Placeholder for child template header declarations -->
+
+            <div id="family-nav">
 	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
-		alt="logo fhir" src="assets/images/fhir-logo-www.png" />
+		alt="logo fhir" src="fhir-logo-www.png" />
 	</a>
 </div>
--->
 
-
-            <div id="hl7-nav">
-    <a id="ivr-logo" no-external="true" href="http://www.ivr-ias.ch/">
-        <img alt="visit the ivr website" height="60" src="logo-ivr.jpg" />
-    </a>            
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
+            <style type="text/css">
+#segment-header .container { position: relative; }
+#hl7-nav {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    margin-top: 0;
+    transform: translateY(-50%);
+}
+</style>
+<div id="hl7-nav">
+    <a id="hl7-logo" no-external="true" href="http://www.hl7.ch">
+        <img alt="visit the hl7 website" height="50" src="hl7-logo.png" />
+    </a>
 </div>
 
         <div id="ig-status">
-          <p><span style="font-size:12pt;font-weight:bold">CH EMS (R4)</span><br/>1.9.0 - Standard for Trial Use</p>
+          <p><span style="font-size:12pt;font-weight:bold">CH EMS (R4)</span>
+            <br/>
+            <span style="display:inline-block;">2.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
         </div>
       </div> <!-- /container -->
     </div>  <!-- /segment-header -->
-    
+
     <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
       <div id="stripe"> </div>
       <div class="container">  <!-- container -->
         <!-- HEADER CONTENT -->
-    
+
         <nav class="navbar navbar-inverse">
           <!--status-bar-->
           <div class="container">
@@ -80,10 +118,12 @@
             </button>
             <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Home<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Home
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -98,8 +138,8 @@
     </ul>
   </li>
   <li class="dropdown">
-    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case<b class="caret">
-      </b>
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Case
+      <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
       <li>
@@ -110,11 +150,74 @@
       </li>
     </ul>
   </li>
-  <li><a href="document.html">Document</a></li>
-  <li><a href="profiles.html">Profiles</a></li>
-  <li><a href="extensions.html">Extensions</a></li>
-  <li><a href="terminology.html">Terminology</a></li>
-  <li><a href="artifacts.html">Artifacts</a></li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">EMS Protocol
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="logicalmodel.html">Logical Model</a>
+      </li>
+      <li>
+        <a href="document.html">FHIR Document</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Model Maps
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="ConceptMap-EmsMission2Fhir.html">Mission</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsPatient2Fhir.html">Patient</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAdministrative2Fhir.html">Administrative</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsPretreatment2Fhir.html">Pretreatment</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAnamnesis2Fhir.html">Anamnesis</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsFindings2Fhir.html">Findings</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsDiagnosis2Fhir.html">Diagnosis</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsProcedures2Fhir.html">Procedures</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsEventOfDeath2Fhir.html">Event of Death</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsTransport2Fhir.html">Transport</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsHandover2Fhir.html">Handover</a>
+      </li>
+      <li>
+        <a href="ConceptMap-EmsAnnotation2Fhir.html">Annotation</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="profiles.html">Profiles</a>
+  </li>
+  <li>
+    <a href="extensions.html">Extensions</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminology</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
 </ul>
             </div>  <!-- /.nav-collapse -->
           </div>  <!-- /.container -->
@@ -123,18 +226,22 @@
       </div>  <!-- /container -->
     </div>  <!-- /segment-navbar -->
     <!--status-bar-->
+
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
-      <div class="container">  <!-- container -->  
+      <div class="container">  <!-- container -->
         <ul class="breadcrumb">
           <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Terminology</b></li>
-        </ul>  
+
+        </ul>
       </div>  <!-- /container -->
     </div>  <!-- /segment-breadcrumb -->
-    
+
+    <a name="top"> </a>
     <div id="segment-content" class="segment">  <!-- segment-content -->
       <div class="container">  <!-- container -->
         <div class="row">
           <div class="inner-wrapper">
+
 <style type="text/css">
 h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
 h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
@@ -143,101 +250,88 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMS (R4) (v1.9.0: <a href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a>) based on <a href="http://hl7.org/fhir/R4">FHIR R4</a>. .  For a full list of available versions, see the <a href="http://fhir.ch/ig/ch-ems/history.html">Directory of published versions <img src="external.png" style="text-align: baseline"></a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH EMS (R4) (v2.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2 Ballot) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-ems/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Terminology</h2>
   
-  <div xmlns="http://www.w3.org/1999/xhtml">
-   <div class="markdown-toc">
-      <p>Contents:</p>
-      <ul>
-         <li>
-            <a href="#1">ValueSets</a>
-         </li>
-         <li>
-            <a href="#2">CodeSystems</a>
-         </li>
-      </ul>
-   </div>
 
-  <a name="1"/>
-   <h3>ValueSets</h3>
-  <div>
-     <li><a href="ValueSet-IVR-VS-actRecovAid.html">IVR valueset Recovery Aid (.143.11.3)</a></li>
- <li><a href="ValueSet-IVR-VS-actRespiOwner.html">IVR valueset owner (.143.11.6)</a></li>
- <li><a href="ValueSet-IVR-VS-airway.html">IVR valueset airway (143.11.2)</a></li>
- <li><a href="ValueSet-IVR-VS-allergy.html">IVR valueset allergy (.143.11.7)</a></li>
- <li><a href="ValueSet-IVR-VS-ambulanceType.html">IVR Valueset ambulance type (143.11.28)</a></li>
- <li><a href="ValueSet-IVR-VS-bedding.html">IVR valueset transport bedding (.143.11.17)</a></li>
- <li><a href="ValueSet-IVR-VS-coldExposure.html">IVR valueset cold exposure (.143.11.50)</a></li>
- <li><a href="ValueSet-IVR-VS-deathManner.html">IVR valueset manner of death (.143.11.41)</a></li>
- <li><a href="ValueSet-IVR-VS-diagType.html">IVR valueset diagnosis type (.143.11.16)</a></li>
- <li><a href="ValueSet-IVR-VS-emergDoctSystem.html">IVR valueset mission Emergency doctor system (.143.11.12)</a></li>
- <li><a href="ValueSet-IVR-VS-event.html">IVR valueset event (.143.11.15)</a></li>
- <li><a href="ValueSet-IVR-VS-eyeForm.html">IVR valueset eye Form (.143.11.43)</a></li>
- <li><a href="ValueSet-IVR-VS-findingsAirway.html">IVR valueset findings airway (.143.11.39)</a></li>
- <li><a href="ValueSet-IVR-VS-formation.html">IVR valueset formation (.143.11.9)</a></li>
- <li><a href="ValueSet-IVR-VS-gcs-augenoeffnung.html">IVR valueset GCS Augenoeffnung (143.11.34)</a></li>
- <li><a href="ValueSet-IVR-VS-gcsMotoric.html">IVR valueset GCS motorische Reaktion (.143.11.35)</a></li>
- <li><a href="ValueSet-IVR-VS-gcsVerbal.html">IVR valueset GCS Verbale Kommunikation(.143.11.36)</a></li>
- <li><a href="ValueSet-IVR-VS-heatExposure.html">IVR valueset heat exposure (.143.11.51)</a></li>
- <li><a href="ValueSet-IVR-VS-hospitalPriority.html">IVR valueset priority hospital</a></li>
- <li><a href="ValueSet-IVR-VS-idMedium.html">IVR valueset identification medium (.143.11.30)</a></li>
- <li><a href="ValueSet-IVR-VS-idSource.html">IVR valueset identification source (143.11.29)</a></li>
- <li><a href="ValueSet-IVR-VS-InfectPersPrecaution.html">IVR valueset infectiontransport precaution personnel</a></li>
- <li><a href="ValueSet-IVR-VS-intensity.html">IVR valueset intensity (.143.11.27)</a></li>
- <li><a href="ValueSet-IVR-VS-location.html">IVR valueset location (.143.11.23)</a></li>
- <li><a href="ValueSet-IVR-VS-locationType.html">IVR valueset location Type (.143.11.42)</a></li>
- <li><a href="ValueSet-IVR-VS-missionTimeRole.html">IVR valueset role mission time (.143.11.10)</a></li>
- <li><a href="ValueSet-IVR-VS-missionType.html">IVR valueset mission type (.143.11.11)</a></li>
- <li><a href="ValueSet-IVR-VS-NACA.html">IVR valueset NACA</a></li>
- <li><a href="ValueSet-IVR-VS-offender.html">IVR valueset offender (143.11.24)</a></li>
- <li><a href="ValueSet-IVR-VS-patient.html">IVR valueset patient</a></li>
- <li><a href="ValueSet-IVR-VS-personRole.html">IVR valueset role (.143.11.21)</a></li>
- <li><a href="ValueSet-IVR-VS-pressureMethod.html">IVR valueset blood pressure method (.143.11.47)</a></li>
- <li><a href="ValueSet-IVR-VS-preTreatment.html">IVR valueset pre-treatment (.143.11.14)</a></li>
- <li><a href="ValueSet-IVR-VS-preTreatType.html">IVR valueset pre-treatment type (.143.11.13)</a></li>
- <li><a href="ValueSet-IVR-VS-procAirType.html">IVR valueset procedure airway type (.143.11.40)</a></li>
- <li><a href="ValueSet-IVR-VS-pulesResult.html">IVR valueset pulse result (.143.11.49)</a></li>
- <li><a href="ValueSet-IVR-VS-pulseMethod.html">IVR valueset pulse method (.143.11.48)</a></li>
- <li><a href="ValueSet-IVR-VS-respirationObservation.html">IVR valueset Observation Respiration (.143.11.22)</a></li>
- <li><a href="ValueSet-IVR-VS-result.html">IVR valueset result (.143.11.44)</a></li>
- <li><a href="ValueSet-IVR-VS-sections.html">IVR valueset sections</a></li>
- <li><a href="ValueSet-IVR-VS-sex.html">IVR Valueset sex (.143.11.31)</a></li>
- <li><a href="ValueSet-IVR-VS-size.html">IVR Valueset size</a></li>
- <li><a href="ValueSet-IVR-VS-symptom.html">IVR valueset symptom (.143.11.38)</a></li>
- <li><a href="ValueSet-IVR-VS-teamRole.html">IVR valueset role team (.143.11.8)</a></li>
- <li><a href="ValueSet-IVR-VS-transDesinfection.html">IVR valueset unit desinfection</a></li>
- <li><a href="ValueSet-IVR-VS-transReason.html">IVR valueset transport reason (.143.11.32)</a></li>
- <li><a href="ValueSet-IVR-VS-urgency-adequate.html">IVR valueset urgency adequate (143.11.37)</a></li>
- <li><a href="ValueSet-IVR-VS-urgency.html">IVR valueset urgency</a></li>
- <li><a href="ValueSet-IVR-VS-valTxpe.html">IVR valueset valuables type (.143.11.33)</a></li>
- <li><a href="ValueSet-IVR-VS-ventilation.html">IVR valueset ventilation (.143.11.46)</a></li>
- <li><a href="ValueSet-IVR-VS-vigilanzAvpu.html">IVR vigilanz (AVPU)</a></li>
- <li><a href="ValueSet-IVR-VS-violenceForm.html">IVR valueset form of violence (143.11.25)</a></li>
- <li><a href="ValueSet-IVR-VS-violenceResult.html">IVR valueset result of violence (.143.11.26)</a></li>
- <li><a href="ValueSet-IVR-VS-woundTreat.html">IVR valueset wound treatment (.143.11.45)</a></li>
- <li><a href="ValueSet-IVR-VS-ZUB.html">IVR valueset status change</a></li>
- <li><a href="ValueSet-yes-no-unknown.html">Yes/No/Unknown</a></li>
 
-  </div>
 
-  <a name="2"/>
-   <h3>CodeSystems</h3>
-  <div>
-     <li><a href="CodeSystem-2.16.756.5.30.1.143.5.1.html">IVR Code System</a></li>
 
-  </div>
 
-  <!--<h3>ConceptMaps</h3>
-  <div>
-    
-  </div>-->
 
-  <!--<h3>NamingSystems</h3>
-  <div>
-    
-  </div>-->
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#code-systems" id="markdown-toc-code-systems">Code Systems</a></li>
+  <li><a href="#value-sets" id="markdown-toc-value-sets">Value Sets</a></li>
+</ul>
+
 </div>
+<h3 id="code-systems">Code Systems</h3>
+
+<li><a href="CodeSystem-IVR.html">IVR Codes</a></li>
+
+<h3 id="value-sets">Value Sets</h3>
+
+<li><a href="ValueSet-IVR-VS-InfectPersPrecaution.html">IVR Infection Transport Precaution Personnel</a></li>
+<li><a href="ValueSet-IVR-VS-NACA.html">IVR NACA</a></li>
+<li><a href="ValueSet-IVR-VS-actRecovAid.html">IVR Recovery Aid</a></li>
+<li><a href="ValueSet-IVR-VS-actRespiOwner.html">IVR Owner</a></li>
+<li><a href="ValueSet-IVR-VS-ambulanceType.html">IVR Ambulance Type</a></li>
+<li><a href="ValueSet-IVR-VS-bedding.html">IVR Transport Bedding</a></li>
+<li><a href="ValueSet-IVR-VS-coldExposure.html">IVR Cold Exposure</a></li>
+<li><a href="ValueSet-IVR-VS-deathManner.html">IVR Death Manner</a></li>
+<li><a href="ValueSet-IVR-VS-diagType.html">IVR Diagnosis Type</a></li>
+<li><a href="ValueSet-IVR-VS-emergDoctSystem.html">IVR Emergency Doctor System</a></li>
+<li><a href="ValueSet-IVR-VS-event.html">IVR Event</a></li>
+<li><a href="ValueSet-IVR-VS-eyeForm.html">IVR Eye Form</a></li>
+<li><a href="ValueSet-IVR-VS-findingsAirway.html">IVR Findings Airway</a></li>
+<li><a href="ValueSet-IVR-VS-formation.html">IVR Formation</a></li>
+<li><a href="ValueSet-IVR-VS-gcs-augenoeffnung.html">IVR GCS Eye Opening</a></li>
+<li><a href="ValueSet-IVR-VS-gcsMotoric.html">IVR GCS Motoric Response</a></li>
+<li><a href="ValueSet-IVR-VS-gcsVerbal.html">IVR GCS Verbal Response</a></li>
+<li><a href="ValueSet-IVR-VS-heatExposure.html">IVR Heat Exposure</a></li>
+<li><a href="ValueSet-IVR-VS-hospitalPriority.html">IVR Hospital Priority</a></li>
+<li><a href="ValueSet-IVR-VS-idMedium.html">IVR Identification Medium</a></li>
+<li><a href="ValueSet-IVR-VS-idSource.html">IVR Identification Source</a></li>
+<li><a href="ValueSet-IVR-VS-intensity.html">IVR Intensity</a></li>
+<li><a href="ValueSet-IVR-VS-laterality.html">IVR Laterality</a></li>
+<li><a href="ValueSet-IVR-VS-locationType.html">IVR Location Type</a></li>
+<li><a href="ValueSet-IVR-VS-missionTimeRole.html">IVR Mission Time Role</a></li>
+<li><a href="ValueSet-IVR-VS-missionType.html">IVR Mission Type</a></li>
+<li><a href="ValueSet-IVR-VS-offender.html">IVR Offender</a></li>
+<li><a href="ValueSet-IVR-VS-personRole.html">IVR Person Role</a></li>
+<li><a href="ValueSet-IVR-VS-preTreatType.html">IVR Pretreatment Type</a></li>
+<li><a href="ValueSet-IVR-VS-preTreatment.html">IVR Pretreatment</a></li>
+<li><a href="ValueSet-IVR-VS-pressureMethod.html">IVR Blood Pressure Method</a></li>
+<li><a href="ValueSet-IVR-VS-procAirType.html">IVR Procedure Airway Type</a></li>
+<li><a href="ValueSet-IVR-VS-pulesResult.html">IVR Pulse Result</a></li>
+<li><a href="ValueSet-IVR-VS-pulseMethod.html">IVR Pulse Method</a></li>
+<li><a href="ValueSet-IVR-VS-respirationObservation.html">IVR Respiration Observation</a></li>
+<li><a href="ValueSet-IVR-VS-result.html">IVR Result</a></li>
+<li><a href="ValueSet-IVR-VS-size.html">IVR Size</a></li>
+<li><a href="ValueSet-IVR-VS-symptom.html">IVR Symptom</a></li>
+<li><a href="ValueSet-IVR-VS-teamRole.html">IVR Team Role</a></li>
+<li><a href="ValueSet-IVR-VS-transDisinfection.html">IVR Transport Unit Disinfection</a></li>
+<li><a href="ValueSet-IVR-VS-transReason.html">IVR Transport Reason</a></li>
+<li><a href="ValueSet-IVR-VS-urgency-adequate.html">IVR Urgency Adequate</a></li>
+<li><a href="ValueSet-IVR-VS-urgency.html">IVR Urgency</a></li>
+<li><a href="ValueSet-IVR-VS-valType.html">IVR Valuables Type</a></li>
+<li><a href="ValueSet-IVR-VS-ventilation.html">IVR Ventilation</a></li>
+<li><a href="ValueSet-IVR-VS-vigilanzAvpu.html">IVR Vigilanz (AVPU)</a></li>
+<li><a href="ValueSet-IVR-VS-violenceForm.html">IVR Violence Form</a></li>
+<li><a href="ValueSet-IVR-VS-violenceResult.html">IVR Violence Result</a></li>
+<li><a href="ValueSet-IVR-VS-woundTreat.html">IVR Wound Treatment</a></li>
+<li><a href="ValueSet-IVR-VS-yesNoUnknown.html">IVR Yes/No/Unknown</a></li>
+
+
+
 
 </div>
         </div>  <!-- /inner-wrapper -->
@@ -245,16 +339,29 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </div>  <!-- /container -->
   </div>  <!-- /segment-content -->
 
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
+
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2020+ <a style="color: #81BEF7" href="https://www.ivr-ias.ch/">IVR Interverband für Rettungswesen</a>.  Package ch.fhir.ig.ch-ems#1.9.0 based on <a style="color: #81BEF7" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Aug 25, 2020 14:08+0200">2020-08-25</span>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.hl7.ch/">HL7 Switzerland</a>.  Package ch.fhir.ig.ch-ems#2.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jun 15, 2026 08:07+0000">2026-06-15</span>
           <br/>
-          <span style="color: #FFFF77">
-                      Links: <a style="color: #81BEF7" href="toc.html">Table of Contents</a> |
-                 <a style="color: #81BEF7" href="qa.html">QA Report</a>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSesbnrt5J1xC9eO5_0Rur5NCRt7i39b7Fck7c369nI6WPsV6Q/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-ems%232.0.0-ballot%20/terminology.html&amp;entry%2E247644557=Terminology">Propose a change</a>
+
+
+
+
           </span>
         </p>
       </div>  <!-- /inner-wrapper -->
@@ -265,19 +372,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <div class="container">  <!-- container -->
     </div>  <!-- /container -->
   </div>  <!-- /segment-post-footer -->
-  
+
   <!-- JS and analytics only. -->
   <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
   <script type="text/javascript" src="assets/js/respond.min.js"> </script>
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
-  
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   <!-- Analytics Below
   ================================================== -->
   </body>
 </html>
+

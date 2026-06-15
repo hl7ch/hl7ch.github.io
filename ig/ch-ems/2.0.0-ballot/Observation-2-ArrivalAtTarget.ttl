@@ -1,0 +1,35 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/Observation/2-ArrivalAtTarget> a fhir:Observation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "2-ArrivalAtTarget"] ; # 
+  fhir:status [ fhir:v "final"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://fhir.ch/ig/ch-ems/CodeSystem/IVR"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1000039" ] ;
+       fhir:display [ fhir:v "arrival at target" ]
+     ] ) ;
+     fhir:text [ fhir:v "Ankunftszeit am Zielort" ]
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/2-PatientUnbekannt> ;
+     fhir:reference [ fhir:v "Patient/2-PatientUnbekannt" ]
+  ] ; # 
+  fhir:encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/2-Einsatz> ;
+     fhir:reference [ fhir:v "Encounter/2-Einsatz" ]
+  ] ; # 
+  fhir:value [
+     a fhir:dateTime ;
+     fhir:v "2016-12-10T12:54:00.000+01:00"^^xsd:dateTime
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

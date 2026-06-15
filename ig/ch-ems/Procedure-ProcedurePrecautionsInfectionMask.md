@@ -1,0 +1,41 @@
+# Surgial Face Mask - CH EMS (R4) v2.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Surgial Face Mask**
+
+## Example Procedure: Surgial Face Mask
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Procedure",
+  "id" : "ProcedurePrecautionsInfectionMask",
+  "status" : "completed",
+  "category" : {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "77248004",
+      "display" : "Infection control procedure (procedure)"
+    }]
+  },
+  "code" : {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "409528009",
+      "display" : "Surgical face mask (physical object)"
+    }],
+    "text" : "Operationsmaske"
+  },
+  "subject" : {
+    "reference" : "Patient/PatientExample"
+  },
+  "encounter" : {
+    "reference" : "Encounter/EncounterExample"
+  }
+}
+
+```

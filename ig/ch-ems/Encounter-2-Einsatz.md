@@ -1,0 +1,88 @@
+# 2 Einsatz - CH EMS (R4) v2.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **2 Einsatz**
+
+## Example Encounter: 2 Einsatz
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Encounter",
+  "id" : "2-Einsatz",
+  "identifier" : [{
+    "type" : {
+      "coding" : [{
+        "system" : "http://fhir.ch/ig/ch-ems/CodeSystem/IVR",
+        "code" : "MN",
+        "display" : "Mission number"
+      }],
+      "text" : "Einsatznummer"
+    },
+    "system" : "http://example.com",
+    "value" : "S12345678"
+  }],
+  "status" : "finished",
+  "class" : {
+    "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code" : "EMER",
+    "display" : "emergency"
+  },
+  "subject" : {
+    "reference" : "Patient/2-PatientUnbekannt"
+  },
+  "basedOn" : [{
+    "reference" : "ServiceRequest/2-AufbietendeOrganisation"
+  }],
+  "participant" : [{
+    "extension" : [{
+      "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "133932002",
+          "display" : "Caregiver (person)"
+        }],
+        "text" : "Betreuer"
+      }
+    }],
+    "individual" : {
+      "reference" : "Practitioner/1-TeamMemberPetraMuster"
+    }
+  },
+  {
+    "extension" : [{
+      "url" : "http://fhir.ch/ig/ch-ems/StructureDefinition/ch-ems-ext-teamrole",
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "133932002",
+          "display" : "Caregiver (person)"
+        }],
+        "text" : "Betreuer"
+      }
+    }],
+    "individual" : {
+      "reference" : "Practitioner/1-TeamMemberHansTransportsanitaeter"
+    }
+  }],
+  "period" : {
+    "start" : "2016-12-10"
+  },
+  "hospitalization" : {
+    "destination" : {
+      "reference" : "Location/1-Zielort"
+    }
+  },
+  "location" : [{
+    "location" : {
+      "reference" : "Location/2-Einsatzort"
+    }
+  }]
+}
+
+```

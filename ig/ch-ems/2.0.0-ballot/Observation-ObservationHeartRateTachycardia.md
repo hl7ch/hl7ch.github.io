@@ -1,0 +1,71 @@
+# Tachycardia - CH EMS (R4) v2.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* [**Artifacts Summary**](artifacts.md)
+* **Tachycardia**
+
+## Example Observation: Tachycardia
+
+
+
+## Resource Content
+
+```json
+{
+  "resourceType" : "Observation",
+  "id" : "ObservationHeartRateTachycardia",
+  "status" : "final",
+  "category" : [{
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/observation-category",
+      "code" : "vital-signs",
+      "display" : "Vital Signs"
+    }]
+  }],
+  "code" : {
+    "coding" : [{
+      "system" : "http://loinc.org",
+      "code" : "8867-4",
+      "display" : "Heart rate"
+    }]
+  },
+  "subject" : {
+    "reference" : "Patient/PatientExample"
+  },
+  "encounter" : {
+    "reference" : "Encounter/EncounterExample"
+  },
+  "effectiveDateTime" : "2016-12-10T12:25:00.000+01:00",
+  "valueQuantity" : {
+    "value" : 110,
+    "unit" : "per minute",
+    "system" : "http://unitsofmeasure.org",
+    "code" : "/min"
+  },
+  "interpretation" : [{
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "3424008",
+      "display" : "Tachycardia (finding)"
+    }],
+    "text" : "Tachykardie"
+  },
+  {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "260404005",
+      "display" : "Strong (qualifier value)"
+    }],
+    "text" : "stark"
+  }],
+  "method" : {
+    "coding" : [{
+      "system" : "http://fhir.ch/ig/ch-ems/CodeSystem/IVR",
+      "code" : "1000141",
+      "display" : "12pol EKG"
+    }],
+    "text" : "12pol EKG"
+  }
+}
+
+```

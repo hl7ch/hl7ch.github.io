@@ -1,0 +1,44 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-ems/AllergyIntolerance/1-Baumpollen> a fhir:AllergyIntolerance ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "1-Baumpollen"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: AllergyIntolerance 1-Baumpollen</b></p><a name=\"1-Baumpollen\"> </a><a name=\"hc1-Baumpollen\"> </a><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical active}\">Active</span></p><p><b>type</b>: Allergy</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 419263009}\">Allergie gegen Baumpollen</span></p><p><b>patient</b>: <a href=\"Patient-1-ThomasMueller.html\">Thomas Müller (official) Male, DoB: 1961-10-01 ( urn:oid:2.16.756.5.32#AHVN13#7562295883070)</a></p><p><b>encounter</b>: <a href=\"Encounter-1-Einsatz.html\">Encounter: extension = wallet,Other,wrist watch,Other,Other; identifier = Einsatznummer: S12345678; status = finished; class = emergency (ActCode#EMER); period = 2016-12-10 --&gt; (ongoing)</a></p></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:clinicalStatus [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "active" ] ;
+       fhir:display [ fhir:v "Active" ]
+     ] )
+  ] ; # 
+  fhir:type [ fhir:v "allergy"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a sct:419263009 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "419263009" ] ;
+       fhir:display [ fhir:v "Allergy to tree pollen (finding)" ]
+     ] ) ;
+     fhir:text [ fhir:v "Allergie gegen Baumpollen" ]
+  ] ; # 
+  fhir:patient [
+     fhir:link <http://fhir.ch/ig/ch-ems/Patient/1-ThomasMueller> ;
+     fhir:reference [ fhir:v "Patient/1-ThomasMueller" ]
+  ] ; # 
+  fhir:encounter [
+     fhir:link <http://fhir.ch/ig/ch-ems/Encounter/1-Einsatz> ;
+     fhir:reference [ fhir:v "Encounter/1-Einsatz" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+
