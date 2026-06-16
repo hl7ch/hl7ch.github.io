@@ -1,0 +1,119 @@
+# Referral - Orthopedic Surgery - CH UMZH Connect IG (R4) v1.0.0-ballot
+
+* [**Table of Contents**](toc.md)
+* **Referral - Orthopedic Surgery**
+
+## Referral - Orthopedic Surgery
+
+### Referral - Orthopedic Surgery
+
+The patient [PetraMeier](Patient-PetraMeier.md) visits the emergency department of Placer with knee pain after falling on icy street. The [treating practitioner](PractitionerRole-HansMusterRole.md) suspects a rupture of the left ACL and suggests treatment at Fulfiller. Comorbidities: The patient is already being treated for heart problems in cardiology at Placer.
+
+[Example ServiceRequest](ServiceRequest-ReferralOrthopedicSurgery.md)
+
+[Example Task (Initial - Referral Orthopedic Surgery)](Task-TaskReferralOrthopedicSurgery.md)
+
+[Example Task (Updated - with Questionnaire)](Task-TaskReferralOrthopedicSurgeryUpdated.md)
+
+[Example Task (Completed - with Results)](Task-TaskReferralOrthopedicSurgeryCompleted.md)
+
+[Example Questionnaire (Smoking Status)](Questionnaire-QuestionnaireSmokingStatus.md)
+
+[Example QuestionnaireResponse (Smoking Status)](QuestionnaireResponse-QuestionnaireResponseSmokingStatus.md)
+
+#### Overview
+
+```
+sequenceDiagram
+    title Referral - Orthopedic Surgery
+
+    participant Placer as Placer
+    participant Fulfiller as Fulfiller
+    activate Placer
+    Placer->>Placer: POST ServiceRequest-ReferralOrthopedicSurgery
+    Placer->>Fulfiller: POST Task (basedOn/focus: ServiceRequest-ReferralOrthopedicSurgery)
+    activate Fulfiller
+    Fulfiller-->>Placer: created
+    deactivate Placer
+    deactivate Fulfiller
+
+    Fulfiller->>Placer: GET Resources (Diagnoses, Medications, Reports)
+    activate Fulfiller
+    activate Placer
+    Placer-->>Fulfiller: return search results (Bundle)
+    deactivate Fulfiller
+    deactivate Placer
+
+    Note over Fulfiller: Request additional information<br/>(smoking status) via Questionnaire
+    Fulfiller->>Fulfiller: Update Task<br/>(owner: Placer, businessStatus: awaiting-information<br/>output: QuestionnaireSmokingStatus)
+    activate Fulfiller
+    Fulfiller-->>Placer: Notify Task updated
+    activate Placer
+    Placer->>Fulfiller: GET Task
+    Fulfiller-->>Placer: Return Task
+    Placer->>Fulfiller: GET Questionnaire by canonical
+    Fulfiller-->>Placer: Return QuestionnaireSmokingStatus
+    Placer-->>Placer: Practitioner fills out Questionnaire
+    Placer->>Fulfiller: POST QuestionnaireResponse
+    Fulfiller-->>Placer: created
+    Placer->>Fulfiller: PATCH Task (owner: Fulfiller, input: QuestionnaireResponseSmokingStatus)
+    Fulfiller-->>Placer: updated
+    deactivate Placer
+    deactivate Fulfiller
+
+    Fulfiller->>Fulfiller: Update Task<br/>(status: completed, output: Report)
+    activate Fulfiller
+    Fulfiller-->>Placer: Notify Task updated
+    activate Placer
+    Placer->> Fulfiller: GET Task?_id=...&_include=Task:ch-umzhconnectig-task-outputreference
+    Fulfiller-->>Placer: return result (Bundle)
+    deactivate Placer
+    deactivate Fulfiller
+
+
+
+```
+
+#### Field Sources
+
+The following table indicates the source of each field in the ServiceRequest:
+
+| | | |
+| :--- | :--- | :--- |
+| `identifier[placerOrderIdentifier].system` | Generated or Hard-coded | TODO? |
+| `identifier[placerOrderIdentifier].value` | Generated | Unique referral order number (e.g., REF-2025-001) |
+| `status` | Hard-coded | Fixed value`active` |
+| `intent` | Hard-coded | Fixed value`order` |
+| `category` | [VS CH UMZH Connect ServiceRequest Category](ValueSet-ch-umzh-connect-servicerequest-category.md) | SNOMED CT code 183545006 "Referral to orthopedic service (procedure)". This code matches[`HealthcareService.type`](HealthcareService-HealthcareServiceOrthopedicsFulfiller.md)in the registry. |
+| `subject` | Referenced | the patient being referred |
+| `requester` | Referenced | the referring physician with their organizational context |
+| `authoredOn` | Current date | Date when the referral was created |
+| `reasonReference` | Referenced | Primary diagnosis:[Suspected ACL Rupture](Condition-SuspectedACLRupture.md). If the primary diagnosis is unknown, all diagnoses go to supportingInfo as Condition. The title of the diagnosis is captured in`Condition.code.text`whereas any additional description in`Condition.note.text`. |
+| `supportingInfo` | Referenced | Secondary diagnosis:[Heart Failure HFrEF](Condition-HeartFailureHFrEF.md); Medications:[Entresto](MedicationStatement-MedicationEntresto.md),[Concor](MedicationStatement-MedicationConcor.md); Documents:[Report Cardiology](DocumentReference-DocCardiologyAttachment.md). Note: these MedicationStatements carry a**contained**Medication (the drug detail is embedded inline in the resource). |
+| `note.text` | Manual entry | Free-text clinical note entered ad-hoc for the referral |
+
+#### Task Field Sources
+
+The following table indicates the source of each field in the Task:
+
+| | | |
+| :--- | :--- | :--- |
+| `status` | Dynamic | Initial Task:`requested`(created by Placer). Updated Task:`in-progress`(after Fulfiller accepts and starts work). Completed Task:`completed`(after Fulfiller delivers the results) |
+| `intent` | Hard-coded | Fixed value`order` |
+| `priority` | Hard-coded | Fixed value`routine` |
+| `basedOn` | Referenced | The[ServiceRequest](ServiceRequest-ReferralOrthopedicSurgery.md)this Task is based on |
+| `for` | Referenced | The patient being referred:[PetraMeier](Patient-PetraMeier.md) |
+| `requester` | Referenced | The requesting organization (Placer) as an absolute URL to the registry[Organization](Organization-Placer.md), e.g.`http://registry.example.org/fhir/Organization/Placer` |
+| `owner` | Dynamic | Initial Task: Fulfiller (absolute URL to the registry[Organization](Organization-Fulfiller.md), e.g.`http://registry.example.org/fhir/Organization/Fulfiller`). When Fulfiller creates Questionnaire: changed to Placer. When QuestionnaireResponse is created: changed back to Fulfiller. |
+| `businessStatus` | Dynamic | Initial Task: absent. When Fulfiller creates Questionnaire: set to`awaiting-information`. When QuestionnaireResponse is created: cleared (absent) |
+| `authoredOn` | Current date | Date when the Task was created by the Placer |
+| `lastModified` | Current date | Date when the Task was last updated (only in updated Task) |
+| `focus` | Referenced | The[ServiceRequest](ServiceRequest-ReferralOrthopedicSurgery.md)this Task focuses on |
+| `output[0].type` | Hard-coded | `273510007`(only when Fulfiller creates Questionnaire) |
+| `output[0].valueCanonical` | Referenced | Reference to the canonical[Questionnaire](Questionnaire-QuestionnaireSmokingStatus.md)to be completed (only when Fulfiller creates Questionnaire) |
+| `input[0].type` | Hard-coded | `273510007`(only when QuestionnaireResponse is created) |
+| `input[0].valueReference` | Referenced | Relative reference to the[QuestionnaireResponse](QuestionnaireResponse-QuestionnaireResponseSmokingStatus.md)(only when QuestionnaireResponse is created) |
+| `output[1]` | Referenced | Completed Task: intermediary result — the pre-surgery[Appointment](Appointment-AppointmentOrthopedicConsultation.md)(orthopedic consultation timed before the surgery) |
+| `output[2]` | Referenced | Completed Task: final result — the[discharge report](DocumentReference-DocDischargeReportOrthopedics.md)(DocumentReference) |
+| `output[3]` | Referenced | Completed Task: final result — the[discharge medication](MedicationStatement-MedicationAspirin.md)(blood thinner after surgery). Note: in contrast to the contained medications above, this MedicationStatement references a**standalone (non-contained)**[Medication](Medication-MedAspirin.md)resource. |
+

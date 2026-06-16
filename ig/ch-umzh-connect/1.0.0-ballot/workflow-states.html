@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Workflow States - CH UMZH Connect IG (R4) v1.0.0-ballot</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    
+
+    /* UMZH corporate style */
+
+    /* Header: light gray background (#f5f5f5) with near-black text — matches umzh.uzh.ch */
+    #segment-header {
+        background-color: #f5f5f5;
+    }
+    #segment-header > .container {
+        background-color: #f5f5f5;
+    }
+    #ig-status {
+        color: #111111;
+    }
+
+    /* Hide top stripe */
+    #stripe {
+	background: #111111;
+    }
+
+    /* Navbar: UMZH blue */
+    .navbar-inverse {
+        background-color: #0000ff;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus {
+        background-color: #111111;
+    }
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:hover,
+    .navbar-inverse .navbar-nav > .open > a:focus {
+        background-color: #111111;
+    }
+    #segment-footer > .container {
+        background-color: #0000ff;
+    }
+
+    /* Informative Implementation Note callout — calm, non-warning */
+    .impl-note {
+        margin: 1em 0;
+        padding: 12px 16px;
+        background-color: #f5f7fa;          /* light neutral */
+        border-left: 4px solid #0000ff;     /* UMZH blue accent */
+        border-radius: 3px;
+    }
+    .impl-note::before {
+        content: "Implementation Note";
+        display: block;
+        font-weight: bold;
+        color: #0000ff;
+        margin-bottom: 4px;
+    }
+
+    </style>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"4"}
+    h3,h4,h5,h6{--heading-prefix:"4"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+            <!--
+<div id="family-nav">
+	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
+		alt="logo fhir" src="assets/images/fhir-logo-www.png" />
+	</a>
+</div>
+-->
+
+
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
+            <div id="hl7-nav">
+    <a id="logo" no-external="true" href="https://umzh.uzh.ch/">
+        <img alt="visit the website" height="60" src="https://umzh.uzh.ch/favicon.ico" />
+    </a>            
+</div>
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">CH UMZH Connect IG (R4)</span>
+            <br/>
+            <span style="display:inline-block;">1.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Core Concept
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="core-concept-workflow-api.html">Workflow oriented API design</a>
+      </li>
+      <li>
+        <a href="core-concept-registry.html">Registry</a>
+      </li>
+      <li>
+        <a href="workflow-states.html">Workflow States</a>
+      </li>
+      <li>
+        <a href="guidance-interactions.html">Interactions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Cases
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="usecase-referral-orthopedic.html">Referral - Orthopedic Surgery</a>
+      </li>
+      <li>
+        <a href="usecase-referral-sarcoma-tumorboard.html">Referral - Sarcoma Tumor Board</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="security.html">Security</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Implementation Notes
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="guidance-reference-architecture.html">Reference Architecture</a>
+      </li>
+      <li>
+        <a href="security-implementation.html">Security Implementation</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Workflow States</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH UMZH Connect (v1.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 1 Ballot 1) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version in its permanent home (it will always be available at this URL).  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-umzh-connect/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Workflow States</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#task-workflow-states" id="markdown-toc-task-workflow-states">Task Workflow States</a></li>
+  <li><a href="#state-diagram" id="markdown-toc-state-diagram">State Diagram</a></li>
+  <li><a href="#state-transition-table" id="markdown-toc-state-transition-table">State Transition Table</a></li>
+</ul>
+
+</div>
+<style>
+div.mermaid iframe {
+  width: 100% !important;
+  height: 250px !important;
+  border: 0 !important;
+}
+</style>
+
+<h3 id="task-workflow-states">Task Workflow States</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">CoordinationTask</code> lifecycle is governed by two complementary fields:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Task.status</code></strong> — the FHIR base state machine (<a href="https://hl7.org/fhir/task.html#statemachine">Task state machine</a>); reflects the overall lifecycle of the task</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Task.businessStatus</code></strong> — a domain-specific qualifier that sits <em>alongside</em> <code class="language-plaintext highlighter-rouge">Task.status</code> to convey sub-states meaningful to the workflow; codes are drawn from <a href="https://hl7.org/fhir/uv/cow/2025May/ValueSet-business-status.html">COW business status codes</a></li>
+</ul>
+
+<p>This IG follows the <a href="https://hl7.org/fhir/uv/cow/2025May/workflow-state-overview.html">COW Workflow State Overview</a> with the constraints documented below. Note that COW's <code class="language-plaintext highlighter-rouge">received</code> state is intentionally omitted in this version of the IG: a Task transitions directly from <code class="language-plaintext highlighter-rouge">requested</code> to <code class="language-plaintext highlighter-rouge">accepted</code> or <code class="language-plaintext highlighter-rouge">in-progress</code>.</p>
+
+<p><strong>Rules:</strong></p>
+
+<ul>
+  <li>Only the Fulfiller may change <code class="language-plaintext highlighter-rouge">Task.status</code> — it is not patchable by the Placer (see <a href="core-concept-workflow-api.html">Workflow oriented API design</a>)</li>
+  <li>The Placer may only PATCH the Task when <code class="language-plaintext highlighter-rouge">Task.owner</code> references the Placer organization</li>
+  <li>The Placer may only PATCH the fields: <code class="language-plaintext highlighter-rouge">owner</code>, <code class="language-plaintext highlighter-rouge">businessStatus</code>, <code class="language-plaintext highlighter-rouge">input</code>, and <code class="language-plaintext highlighter-rouge">focus</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Task.businessStatus</code> must only contain domain-specific workflow codes; <code class="language-plaintext highlighter-rouge">Task.status</code> codes must never be used as <code class="language-plaintext highlighter-rouge">businessStatus</code> values</li>
+  <li>Cancellation by the Placer is not foreseen in this version of the IG</li>
+  <li>Negative terminal states use base-FHIR <code class="language-plaintext highlighter-rouge">rejected</code> (Fulfiller declines before starting) and <code class="language-plaintext highlighter-rouge">failed</code> (accepted but not completed) rather than COW's <code class="language-plaintext highlighter-rouge">cancelled + statusReason</code>; COW's <code class="language-plaintext highlighter-rouge">cancelled</code> ("not selected") pattern assumes a multi-Fulfiller selection flow that is out of scope here</li>
+</ul>
+
+<h3 id="state-diagram">State Diagram</h3>
+
+<pre><code class="language-mermaid">stateDiagram-v2
+    direction LR
+
+    [*] --&gt; requested : Placer POSTs Task to Fulfiller
+
+    requested --&gt; in_progress   : Fulfiller accepts &amp; starts
+    requested --&gt; accepted      : Fulfiller explicitly accepts\n(request-with-acceptance pattern)
+    requested --&gt; rejected      : Fulfiller declines
+
+    accepted  --&gt; in_progress   : Fulfiller starts work
+
+    state "in-progress\n[awaiting-information]" as awaiting
+    in_progress --&gt; awaiting    : Fulfiller needs more info\n(owner → Placer)
+    awaiting    --&gt; in_progress : Placer provides info\n(owner → Fulfiller)
+
+    in_progress --&gt; completed   : Fulfiller completes
+    in_progress --&gt; failed      : Fulfiller unable to complete
+
+    completed --&gt; [*]
+    rejected  --&gt; [*]
+    failed    --&gt; [*]
+</code></pre>
+
+<h3 id="state-transition-table">State Transition Table</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>State label</th>
+      <th><code class="language-plaintext highlighter-rouge">Task.status</code></th>
+      <th><code class="language-plaintext highlighter-rouge">Task.businessStatus</code></th>
+      <th><code class="language-plaintext highlighter-rouge">Task.owner</code></th>
+      <th>Who sets this</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Requested</td>
+      <td><code class="language-plaintext highlighter-rouge">requested</code></td>
+      <td>—</td>
+      <td>Fulfiller org</td>
+      <td>Placer</td>
+      <td>Initial state when Task is POSTed to Fulfiller</td>
+    </tr>
+    <tr>
+      <td>Accepted</td>
+      <td><code class="language-plaintext highlighter-rouge">accepted</code></td>
+      <td>—</td>
+      <td>Fulfiller org</td>
+      <td>Fulfiller</td>
+      <td>Explicit acceptance; may be skipped in pre-agreed flows</td>
+    </tr>
+    <tr>
+      <td>In progress</td>
+      <td><code class="language-plaintext highlighter-rouge">in-progress</code></td>
+      <td>—</td>
+      <td>Fulfiller org</td>
+      <td>Fulfiller</td>
+      <td>Fulfiller has started work</td>
+    </tr>
+    <tr>
+      <td>Awaiting information</td>
+      <td><code class="language-plaintext highlighter-rouge">in-progress</code></td>
+      <td><code class="language-plaintext highlighter-rouge">awaiting-information</code></td>
+      <td>Placer org</td>
+      <td>Fulfiller</td>
+      <td>Fulfiller has added Questionnaire to <code class="language-plaintext highlighter-rouge">Task.output</code>; owner shifted to Placer</td>
+    </tr>
+    <tr>
+      <td>Information received</td>
+      <td><code class="language-plaintext highlighter-rouge">in-progress</code></td>
+      <td>—</td>
+      <td>Fulfiller org</td>
+      <td>Placer</td>
+      <td>Placer has PATCHed Task with QuestionnaireResponse in <code class="language-plaintext highlighter-rouge">Task.input</code>, cleared <code class="language-plaintext highlighter-rouge">businessStatus</code>, and shifted owner back to Fulfiller</td>
+    </tr>
+    <tr>
+      <td>Completed</td>
+      <td><code class="language-plaintext highlighter-rouge">completed</code></td>
+      <td>—</td>
+      <td>Fulfiller org</td>
+      <td>Fulfiller</td>
+      <td>Results referenced in <code class="language-plaintext highlighter-rouge">Task.output</code></td>
+    </tr>
+    <tr>
+      <td>Rejected</td>
+      <td><code class="language-plaintext highlighter-rouge">rejected</code></td>
+      <td>—</td>
+      <td>—</td>
+      <td>Fulfiller</td>
+      <td>Fulfiller declines; Placer may approach another Fulfiller</td>
+    </tr>
+    <tr>
+      <td>Failed</td>
+      <td><code class="language-plaintext highlighter-rouge">failed</code></td>
+      <td>—</td>
+      <td>—</td>
+      <td>Fulfiller</td>
+      <td>Fulfiller accepted but could not complete</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://umzhconnect.ch/">UMZH Connect Team</a>.  Package ch.fhir.ig.ch-umzh-connect#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 16, 2026 06:40+0000">2026-06-16</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScZ6awbXKp90fWh3hbHKSOmsA8nMvkmehMP27l2SbH_ct-A3Q/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-umzh-connect%231.0.0-ballot%20/workflow-states.html&amp;entry%2E247644557=Workflow%20States">Propose a change</a>
+
+
+
+
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

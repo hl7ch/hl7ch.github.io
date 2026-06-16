@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Security Implementation - CH UMZH Connect IG (R4) v1.0.0-ballot</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    
+
+    /* UMZH corporate style */
+
+    /* Header: light gray background (#f5f5f5) with near-black text — matches umzh.uzh.ch */
+    #segment-header {
+        background-color: #f5f5f5;
+    }
+    #segment-header > .container {
+        background-color: #f5f5f5;
+    }
+    #ig-status {
+        color: #111111;
+    }
+
+    /* Hide top stripe */
+    #stripe {
+	background: #111111;
+    }
+
+    /* Navbar: UMZH blue */
+    .navbar-inverse {
+        background-color: #0000ff;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus {
+        background-color: #111111;
+    }
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:hover,
+    .navbar-inverse .navbar-nav > .open > a:focus {
+        background-color: #111111;
+    }
+    #segment-footer > .container {
+        background-color: #0000ff;
+    }
+
+    /* Informative Implementation Note callout — calm, non-warning */
+    .impl-note {
+        margin: 1em 0;
+        padding: 12px 16px;
+        background-color: #f5f7fa;          /* light neutral */
+        border-left: 4px solid #0000ff;     /* UMZH blue accent */
+        border-radius: 3px;
+    }
+    .impl-note::before {
+        content: "Implementation Note";
+        display: block;
+        font-weight: bold;
+        color: #0000ff;
+        margin-bottom: 4px;
+    }
+
+    </style>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"9"}
+    h3,h4,h5,h6{--heading-prefix:"9"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+            <!--
+<div id="family-nav">
+	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
+		alt="logo fhir" src="assets/images/fhir-logo-www.png" />
+	</a>
+</div>
+-->
+
+
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
+            <div id="hl7-nav">
+    <a id="logo" no-external="true" href="https://umzh.uzh.ch/">
+        <img alt="visit the website" height="60" src="https://umzh.uzh.ch/favicon.ico" />
+    </a>            
+</div>
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">CH UMZH Connect IG (R4)</span>
+            <br/>
+            <span style="display:inline-block;">1.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Core Concept
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="core-concept-workflow-api.html">Workflow oriented API design</a>
+      </li>
+      <li>
+        <a href="core-concept-registry.html">Registry</a>
+      </li>
+      <li>
+        <a href="workflow-states.html">Workflow States</a>
+      </li>
+      <li>
+        <a href="guidance-interactions.html">Interactions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Cases
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="usecase-referral-orthopedic.html">Referral - Orthopedic Surgery</a>
+      </li>
+      <li>
+        <a href="usecase-referral-sarcoma-tumorboard.html">Referral - Sarcoma Tumor Board</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="security.html">Security</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Implementation Notes
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="guidance-reference-architecture.html">Reference Architecture</a>
+      </li>
+      <li>
+        <a href="security-implementation.html">Security Implementation</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Security Implementation</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH UMZH Connect (v1.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 1 Ballot 1) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version in its permanent home (it will always be available at this URL).  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-umzh-connect/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Security Implementation</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#consent-based-context-enforcement" id="markdown-toc-consent-based-context-enforcement">Consent-based context enforcement</a></li>
+  <li><a href="#staged-client-authentication-model" id="markdown-toc-staged-client-authentication-model">Staged client-authentication model</a></li>
+  <li><a href="#relationship-to-other-security-profiles" id="markdown-toc-relationship-to-other-security-profiles">Relationship to other security profiles</a></li>
+</ul>
+
+</div>
+<div class="impl-note">
+
+  <p>This page is <strong>informative</strong> — optional guidance that adds no conformance requirements. It illustrates possible ways to satisfy the authorization and client-authentication models defined normatively on the <a href="security.html">Security</a> page; conforming systems may adopt other mechanisms that meet the same requirements.</p>
+
+</div>
+
+<h3 id="consent-based-context-enforcement">Consent-based context enforcement</h3>
+
+<p>The <a href="security.html">Security</a> page defines the UMZH-Connect authorization model: workflow context is communicated via <code class="language-plaintext highlighter-rouge">authorization_details</code> at the token endpoint and reflected as a <code class="language-plaintext highlighter-rouge">fhirContext</code> claim in the issued JWT. The actual enforcement of that context — verifying that requested resources fall within the authorized graph — is left to each party's implementation.</p>
+
+<p>In general it should be mentioned that fine-grained authorization may be a very complex task to perform on the standard FHIR API due to a variety of factors, such as a broad range of search parameters covered by standard FHIR APIs. This is quite well covered in the <a href="https://developers.google.com/open-health-stack/fhir-info-gateway">Google FHIR Info Gateway</a> project. Our general approach is to whitelist only the necessary endpoints and parameters required to enable our use case. The complexity of the authorization enforcement is therefore essentially reduced.</p>
+
+<p>This section describes one recommended implementation pattern using a FHIR <strong>Consent</strong> resource as a local access-control record.</p>
+
+<h4 id="consent-based-enforcement">Consent-based enforcement</h4>
+
+<p>When a workflow object is created — a ServiceRequest on the Placer's side, or a Task on the Fulfiller's side — the hosting party creates a corresponding FHIR Consent resource on their own FHIR server. The Consent:</p>
+
+<ul>
+  <li>References the workflow root object via <code class="language-plaintext highlighter-rouge">Consent.provision.data</code> with <code class="language-plaintext highlighter-rouge">meaning = "related"</code>, capturing the full resource graph in scope</li>
+  <li>Identifies the authorized counter-organization via <code class="language-plaintext highlighter-rouge">Consent.provision.actor</code></li>
+  <li>Carries an optional expiration date via <code class="language-plaintext highlighter-rouge">Consent.provision.period.end</code></li>
+  <li>Can be revoked at any time by setting <code class="language-plaintext highlighter-rouge">Consent.status = inactive</code></li>
+</ul>
+
+<p><strong>Example — Placer creates a Consent authorizing the Fulfiller to access the ServiceRequest graph:</strong><sup id="fnref:consent-fields"><a href="#fn:consent-fields" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consent"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provision"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-12-31"</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"actor"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://registry.example.org/fhir/Organization/fulfiller-org"</span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meaning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"related"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ServiceRequest/sr-123"</span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">meaning = "related"</code> value means the Consent covers the referenced ServiceRequest and all resources it transitively references — exactly the graph the policy engine must enforce. It is recommended to define a FHIR profile for these kinds of consents.</p>
+
+<h4 id="policy-engine-query">Policy engine query</h4>
+
+<p>When the Resource Server receives an API request carrying a JWT with a <code class="language-plaintext highlighter-rouge">fhirContext</code> claim, the policy engine resolves the context reference to the corresponding Consent:</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">GET /Consent?data=ServiceRequest/sr-123&amp;status=active
+</span></code></pre></div></div>
+
+<p>If an active Consent is found and <code class="language-plaintext highlighter-rouge">extensions.umzhconnect.organization_reference</code> matches <code class="language-plaintext highlighter-rouge">Consent.provision.actor.reference</code>, and the Consent hasn't expired, the request is permitted for any resource within the ServiceRequest graph. If no active Consent exists — because it was never created, has expired, or has been revoked — the request is denied.</p>
+
+<p><code class="language-plaintext highlighter-rouge">FHIRpath</code> equivalent:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Consent.where(
+  status = 'active'
+  and provision.data.reference.reference.where(matches('(^|/)' + %context + '$')).exists()
+  and provision.actor.reference.reference.where(matches('(^|/)' + %organization_reference + '$')).exists()
+  and (provision.period.end.empty() or provision.period.end &gt;= now())
+).exists()
+</code></pre></div></div>
+
+<p>where <code class="language-plaintext highlighter-rouge">%context</code> is the <code class="language-plaintext highlighter-rouge">fhirContext</code> reference from the access token and <code class="language-plaintext highlighter-rouge">%organization_reference</code> is the <code class="language-plaintext highlighter-rouge">extensions.umzhconnect.organization_reference</code> claim. The <code class="language-plaintext highlighter-rouge">matches('(^|/)…$')</code> form tolerates references stored as either relative (<code class="language-plaintext highlighter-rouge">ServiceRequest/sr-123</code>) or absolute (<code class="language-plaintext highlighter-rouge">https://placer.example/fhir/ServiceRequest/sr-123</code>) URLs. It assumes literal, non-versioned references; versioned (<code class="language-plaintext highlighter-rouge">/_history/…</code>), <code class="language-plaintext highlighter-rouge">urn:uuid:</code>, logical (<code class="language-plaintext highlighter-rouge">identifier</code>-based), or contained (<code class="language-plaintext highlighter-rouge">#…</code>) references require normalizing the stored reference on write, after which a plain <code class="language-plaintext highlighter-rouge">=</code> comparison suffices.</p>
+
+<h4 id="expiration">Expiration</h4>
+
+<p>Set <code class="language-plaintext highlighter-rouge">Consent.provision.period.end</code> to the date after which access should no longer be granted. The policy engine checks the period as part of its evaluation. No token invalidation is required — expired Consents simply return no results on the query.</p>
+
+<h4 id="revocation">Revocation</h4>
+
+<p>To revoke access immediately, set <code class="language-plaintext highlighter-rouge">Consent.status = inactive</code>. The next policy engine query for that context will find no active Consent and deny the request.</p>
+
+<p>Parties using short-lived token caches should ensure cache TTLs are short enough to propagate revocation in a timely manner.</p>
+
+<h4 id="scope-notes">Scope notes</h4>
+
+<p>FHIR Consent is designed primarily for patient consent to data use. Its application here as a local inter-system access-control record is pragmatic: the semantics of <code class="language-plaintext highlighter-rouge">provision.data.meaning = "related"</code> align naturally with the graph-based enforcement model, and the lifecycle fields (expiration, status) map cleanly onto standard Consent elements. Parties are free to adopt alternative enforcement mechanisms as long as they honour the <code class="language-plaintext highlighter-rouge">fhirContext</code> claim from the access token as the authoritative context identifier.</p>
+
+<h3 id="staged-client-authentication-model">Staged client-authentication model</h3>
+
+<p>The <a href="security.html#client-authentication">Security</a> page defines <code class="language-plaintext highlighter-rouge">private_key_jwt</code> as the production baseline for client authentication. UMZH-Connect additionally supports a staged model: a lighter rung below the baseline to lower the barrier for early pilots, and a higher-assurance rung above it for high-risk scenarios. The <strong>authorization model and APIs are identical across all rungs</strong> — only the client-authentication method changes. This section describes the full ladder and the governance rules for choosing a rung; it is deployment guidance, not a change to the wire protocol.</p>
+
+<h4 id="why-a-staged-model">Why a staged model</h4>
+
+<p>As the basic client credentials flow is subject to a number of security weaknesses, we define a stepwise security up-leveling approach for client authentication. Initial integrations may start with basic client credentials to enable rapid onboarding and piloting. As participants move to production and access higher-risk scopes, authentication is upgraded to <code class="language-plaintext highlighter-rouge">private_key_jwt</code>, replacing shared secrets with asymmetric keys registered during onboarding — without requiring a central PKI. For the highest-assurance scenarios, the ecosystem supports sender-constrained tokens via mTLS or DPoP, strengthening client identity binding and reducing token replay risks. This staged model preserves a consistent authorization flow while providing a clear, operationally manageable path to stronger security: partners can join quickly with minimal operational overhead, and then adopt stronger mechanisms when justified by risk, regulatory requirements, or production needs.</p>
+
+<h4 id="level-1--basic-client-credentials-shared-secret">Level 1 — Basic client credentials (shared secret)</h4>
+
+<ul>
+  <li><strong>Goal:</strong> fastest onboarding; simplest implementation for pilots.</li>
+  <li><strong>Mechanism:</strong> <code class="language-plaintext highlighter-rouge">client_id</code> + shared secret used for token endpoint authentication.</li>
+  <li><strong>Main trade-offs:</strong> shared secret distribution and rotation burden; higher impact if secrets leak; weaker non-repudiation.</li>
+  <li><strong>Best fit:</strong> sandbox environments, limited scopes, early partner testing.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> Level 1 is intentionally <strong>not SMART Backend Services conformant</strong> — Backend Services mandates <code class="language-plaintext highlighter-rouge">private_key_jwt</code>. Shared-secret authentication is offered only as a pilot rung to lower the barrier to first integration; SMART Backend Services conformance is reached at Level 2.</p>
+</blockquote>
+
+<h4 id="level-2--private_key_jwt-baseline">Level 2 — <code class="language-plaintext highlighter-rouge">private_key_jwt</code> (baseline)</h4>
+
+<p>The production baseline, defined normatively on the <a href="security.html#client-authentication">Security</a> page: the client registers its public key / JWKS with the Authorization Server at onboarding and authenticates to the token endpoint by signing a JWT assertion with the private key. No shared secrets; cleaner key rotation; improved proof-of-possession; SMART Backend Services conformant. Operationally it requires JWKS registration, a rotation procedure, and key rollover support.</p>
+
+<h4 id="level-3--sender-constrained-tokens-mtls-or-dpop">Level 3 — Sender-constrained tokens (mTLS or DPoP)</h4>
+
+<ul>
+  <li><strong>Goal:</strong> highest assurance for client identity binding and stronger replay resistance.</li>
+  <li><strong>Mechanism:</strong> the access token is cryptographically bound to the client, so a stolen token cannot be replayed by a party that does not possess the matching key. Two interchangeable mechanisms qualify:
+    <ul>
+      <li><strong>mTLS</strong> (<a href="https://www.rfc-editor.org/rfc/rfc8705">RFC 8705</a>) — the client presents an X.509 certificate at the TLS layer; the authorization server (and optionally the resource server) validates it and injects the client context from the transport into the application layer. Tokens are sender-constrained to the client certificate.</li>
+      <li><strong>DPoP</strong> (<a href="https://www.rfc-editor.org/rfc/rfc9449">RFC 9449</a>) — the client proves possession of a key on each request via a signed <code class="language-plaintext highlighter-rouge">DPoP</code> HTTP header, binding the token to that key without requiring TLS client certificates.</li>
+    </ul>
+  </li>
+  <li><strong>Key benefits:</strong> strong client authentication; reduced token replay risk; high confidence in client identity.</li>
+  <li><strong>Operational needs:</strong> for mTLS, certificate lifecycle management (issuance, rotation, revocation), trust anchors (internal CA or managed PKI), and monitoring; for DPoP, client-side key management and server-side proof validation (nonce handling, replay caching).</li>
+</ul>
+
+<h4 id="level-comparison">Level comparison</h4>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th style="text-align: left">Level</th>
+      <th style="text-align: left">Client authentication</th>
+      <th style="text-align: left">When to use</th>
+      <th style="text-align: left">Security benefits</th>
+      <th style="text-align: left">Operational footprint</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>1</strong></td>
+      <td style="text-align: left">Basic client credentials (shared secret)</td>
+      <td style="text-align: left">Sandbox, PoC, low-risk scopes, early pilots</td>
+      <td style="text-align: left">Quick start; baseline access control</td>
+      <td style="text-align: left">Secret distribution + rotation; higher blast radius if leaked</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>2</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">private_key_jwt</code> (JWKS registered at onboarding)</td>
+      <td style="text-align: left">Production default; medium/high-risk scopes; external partners</td>
+      <td style="text-align: left">No shared secrets; easier key rotation</td>
+      <td style="text-align: left">Manage JWKS + key rollover; validate signed assertions</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>3</strong></td>
+      <td style="text-align: left">Sender-constrained tokens (mTLS or DPoP)</td>
+      <td style="text-align: left">Highest-risk scopes; regulated workflows; large-scale ecosystem</td>
+      <td style="text-align: left">Strong client identity binding; replay resistance</td>
+      <td style="text-align: left">mTLS: certificate lifecycle + trust model; DPoP: key + proof validation</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="governance-triggers-for-up-leveling">Governance triggers for up-leveling</h4>
+
+<p>Use policy triggers to make the ladder actionable and predictable. The goal is to avoid "security by negotiation" and keep onboarding consistent.</p>
+
+<p><strong>Mandate Level 2 (<code class="language-plaintext highlighter-rouge">private_key_jwt</code>)</strong> when <strong>any</strong> of the following applies:</p>
+
+<ul>
+  <li><strong>Production access</strong> (non-sandbox environment).</li>
+  <li>Client requests <strong>write access</strong> (create/update) or privileged scopes.</li>
+  <li>Partner is <strong>cross-organization</strong> (external vendor/provider) and not under the same administrative domain.</li>
+  <li>Integration handles <strong>sensitive clinical content</strong> beyond minimal administrative data.</li>
+  <li><strong>Audit requirements</strong> demand stronger attribution than shared secrets can provide.</li>
+</ul>
+
+<p><strong>Mandate Level 3 (sender-constrained tokens — mTLS or DPoP)</strong> when <strong>any</strong> of the following applies:</p>
+
+<ul>
+  <li>Access to <strong>high-impact scopes</strong> (e.g., broad patient search, bulk data export, or highly sensitive categories).</li>
+  <li><strong>High-volume / high-automation</strong> clients (service-to-service) where replay risk and credential theft impact is elevated.</li>
+  <li>Regulatory, contractual, or security policy requires <strong>certificate-based authentication</strong>.</li>
+  <li>The ecosystem reaches a scale where centralized governance needs <strong>stronger identity binding</strong> and standardized system trust.</li>
+  <li>A partner shows elevated risk indicators (e.g., repeated security incidents, weak security posture, or inability to manage key material safely).</li>
+</ul>
+
+<p><strong>Scope-based mapping</strong> — a possible mapping:</p>
+
+<ul>
+  <li><strong>Read-only, low-risk scopes</strong> → Level 1 in sandbox; Level 2 in production.</li>
+  <li><strong>Write / workflow-triggering scopes</strong> → Level 2 minimum.</li>
+  <li><strong>Bulk/export/high-risk scopes</strong> → Level 3.</li>
+</ul>
+
+<h4 id="high-assurance-sender-constrained-tokens-and-fapi-20">High assurance: sender-constrained tokens and FAPI 2.0</h4>
+
+<p>The generic client credentials flow has potential security weaknesses. The main risks are:</p>
+
+<ul>
+  <li><strong>Static client secrets</strong> → reusable if compromised</li>
+  <li><strong>Static trust model</strong> → hard to scale or federate (one auth server, trust anchor and issuer)</li>
+  <li><strong>Replay and automation abuse</strong> → compromised access tokens lead to automated attacks</li>
+</ul>
+
+<p>At Level 3 (high-risk), employing mTLS cryptographically binds the token (or at least the session) to the client's TLS certificate, so the token is only usable when presented over a TLS connection that proves possession of the matching private key.</p>
+
+<p>Alternatively, DPoP (<a href="https://www.rfc-editor.org/rfc/rfc9449">RFC 9449</a>) achieves an equivalent sender-constraint at the application layer: the client signs a proof carried in the <code class="language-plaintext highlighter-rouge">DPoP</code> HTTP header on each request, binding the token to a client-held key without TLS client certificates — a lighter-weight path to client-bound tokens where managing an X.509 trust store is impractical.</p>
+
+<p>Sender-constrained tokens (via mTLS or DPoP) and other security enhancements are included in the definition of <a href="https://openid.net/specs/fapi-security-profile-2_0-final.html">OpenID FAPI 2.0</a> in order to mitigate these risks by adding standardized measures defined by RFCs (RFC 5280, RFC 8705, RFC 9449, RFC 6749, RFC 7519). In essence it defines how to</p>
+
+<ul>
+  <li>require TLS on all connections and sender-constrain tokens to the client via mTLS or DPoP</li>
+  <li>populate tokens with cryptographic key-binding information</li>
+  <li>pass that cryptographic information between transport and application layer</li>
+</ul>
+
+<p>When mTLS is used, FAPI 2.0 enforcement adds requirements to classical certificate management with PKI infrastructure. Reference implementations (like Denmark) make use of a central PKI infrastructure and certificate issuance and signing, which reduces client-side complexity (trust store etc.) but requires central trust and carries single-point-of-failure risk. DPoP avoids this PKI burden by binding tokens to a client-held key at the application layer instead.</p>
+
+<h3 id="relationship-to-other-security-profiles">Relationship to other security profiles</h3>
+
+<p>This section positions the UMZH-Connect security concept against three reference profiles that target overlapping problem spaces. The single architectural choice that distinguishes UMZH-Connect from all three is <strong>context-bound tokens</strong>: every access token is issued for one specific workflow object (a <code class="language-plaintext highlighter-rouge">ServiceRequest</code> or <code class="language-plaintext highlighter-rouge">Task</code>) carried in the JWT as a <code class="language-plaintext highlighter-rouge">fhirContext</code> claim, derived from an <a href="https://www.rfc-editor.org/rfc/rfc9396">RFC 9396</a> <code class="language-plaintext highlighter-rouge">authorization_details</code> request. None of the reference profiles standardize this per-request binding.</p>
+
+<p><strong>References:</strong></p>
+
+<ul>
+  <li><a href="https://hl7.org/fhir/smart-app-launch/backend-services.html">SMART App Launch v2 — Backend Services</a></li>
+  <li><a href="https://hl7.org/fhir/us/udap-security/">HL7 FAST UDAP Security for Scalable Registration, Authentication, and Authorization</a></li>
+  <li><a href="https://www.fhir.ch/ig/ch-epr-fhir/iti-71.html">CH EPR FHIR — Get Access Token [ITI-71]</a>, the Swiss national profile of the <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> Get Access Token transaction.</li>
+</ul>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>UMZH-Connect</th>
+      <th><a href="https://hl7.org/fhir/smart-app-launch/backend-services.html">SMART Backend Services v2</a></th>
+      <th><a href="https://hl7.org/fhir/us/udap-security/">HL7 FAST UDAP</a></th>
+      <th><a href="https://www.fhir.ch/ig/ch-epr-fhir/iti-71.html">CH EPR ITI-71 (IUA)</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Primary scope</td>
+      <td>M2M, per-workflow context</td>
+      <td>M2M, pre-authorized scopes</td>
+      <td>M2M + user via Tiered OAuth</td>
+      <td>M2M + healthcare professional / assistant</td>
+    </tr>
+    <tr>
+      <td>Trust onboarding</td>
+      <td>Bilateral JWKS at onboarding; mTLS w/ open CA for high assurance</td>
+      <td>Out-of-band pre-registration</td>
+      <td>UDAP Dynamic Client Reg + community X.509 CA</td>
+      <td>Per-CH-EPR policy; registered actors</td>
+    </tr>
+    <tr>
+      <td>Client auth</td>
+      <td><code class="language-plaintext highlighter-rouge">private_key_jwt</code> (JWKS at onboarding); sender-constrained tokens (mTLS or DPoP) for high assurance</td>
+      <td><code class="language-plaintext highlighter-rouge">private_key_jwt</code> mandatory</td>
+      <td><code class="language-plaintext highlighter-rouge">private_key_jwt</code> w/ UDAP cert; mTLS option</td>
+      <td><code class="language-plaintext highlighter-rouge">private_key_jwt</code> + HTTP Message Signatures (<a href="https://datatracker.ietf.org/doc/html/rfc9421">RFC 9421</a>)</td>
+    </tr>
+    <tr>
+      <td>Scope vocabulary</td>
+      <td>SMART <code class="language-plaintext highlighter-rouge">system/*</code> in <code class="language-plaintext highlighter-rouge">scope</code></td>
+      <td>SMART <code class="language-plaintext highlighter-rouge">system/*</code> in <code class="language-plaintext highlighter-rouge">scope</code></td>
+      <td>SMART-compatible + UDAP extensions</td>
+      <td>Profile-specific (<code class="language-plaintext highlighter-rouge">launch</code>, EPR scopes)</td>
+    </tr>
+    <tr>
+      <td>Per-request workflow context</td>
+      <td><strong><a href="https://www.rfc-editor.org/rfc/rfc9396">RFC 9396</a> + <code class="language-plaintext highlighter-rouge">fhirContext</code> JWT claim</strong></td>
+      <td>Not addressed</td>
+      <td>Not addressed</td>
+      <td>Not addressed</td>
+    </tr>
+    <tr>
+      <td>Caller-organization identity</td>
+      <td><code class="language-plaintext highlighter-rouge">extensions.umzhconnect.organization_reference</code> (registry URL) — follows <a href="https://profiles.ihe.net/ITI/IUA/index.html">IHE IUA</a> <code class="language-plaintext highlighter-rouge">extensions</code> container pattern</td>
+      <td>Not standardized</td>
+      <td>UDAP B2B <code class="language-plaintext highlighter-rouge">hl7-b2b</code> extension (<code class="language-plaintext highlighter-rouge">organization_id</code>, <code class="language-plaintext highlighter-rouge">organization_name</code>, <code class="language-plaintext highlighter-rouge">purpose_of_use</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">extensions.ihe_iua</code> + <code class="language-plaintext highlighter-rouge">extensions.ch_epr</code></td>
+    </tr>
+    <tr>
+      <td>User identity in M2M</td>
+      <td>Not in scope</td>
+      <td>Out-of-band for <code class="language-plaintext highlighter-rouge">user/</code>/<code class="language-plaintext highlighter-rouge">patient/</code></td>
+      <td>Tiered OAuth → user's OIDC IdP</td>
+      <td>Mandatory <code class="language-plaintext highlighter-rouge">subject_name</code>, <code class="language-plaintext highlighter-rouge">subject_role</code>, <code class="language-plaintext highlighter-rouge">purpose_of_use</code></td>
+    </tr>
+    <tr>
+      <td>Token format</td>
+      <td>JWT</td>
+      <td>JWT</td>
+      <td>JWT</td>
+      <td>JWT only (JWE forbidden)</td>
+    </tr>
+    <tr>
+      <td>Hardening reference</td>
+      <td><a href="https://openid.net/specs/fapi-security-profile-2_0-final.html">FAPI 2.0</a> (high-assurance option)</td>
+      <td>OAuth 2.0 BCP</td>
+      <td>UDAP profiles + cert policies</td>
+      <td>OAuth 2.1 + <a href="https://datatracker.ietf.org/doc/html/rfc9421">RFC 9421</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr style="margin-top:2em" />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:consent-fields">
+      <p>The example shows only the fields relevant to context enforcement. FHIR mandates additional elements — <code class="language-plaintext highlighter-rouge">Consent.scope</code> and <code class="language-plaintext highlighter-rouge">Consent.category</code> in R4, and a <code class="language-plaintext highlighter-rouge">role</code> on each <code class="language-plaintext highlighter-rouge">provision.actor</code> — which must be populated for a valid resource; how they are coded is a local concern left to each implementor. <a href="#fnref:consent-fields" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://umzhconnect.ch/">UMZH Connect Team</a>.  Package ch.fhir.ig.ch-umzh-connect#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 16, 2026 06:40+0000">2026-06-16</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScZ6awbXKp90fWh3hbHKSOmsA8nMvkmehMP27l2SbH_ct-A3Q/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-umzh-connect%231.0.0-ballot%20/security-implementation.html&amp;entry%2E247644557=Security%20Implementation">Propose a change</a>
+
+
+
+
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

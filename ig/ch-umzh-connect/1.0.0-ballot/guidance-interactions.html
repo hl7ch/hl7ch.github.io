@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Interactions - CH UMZH Connect IG (R4) v1.0.0-ballot</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir.css" rel="stylesheet"/>
+
+    <style>
+    
+
+    
+
+    
+
+    /* UMZH corporate style */
+
+    /* Header: light gray background (#f5f5f5) with near-black text — matches umzh.uzh.ch */
+    #segment-header {
+        background-color: #f5f5f5;
+    }
+    #segment-header > .container {
+        background-color: #f5f5f5;
+    }
+    #ig-status {
+        color: #111111;
+    }
+
+    /* Hide top stripe */
+    #stripe {
+	background: #111111;
+    }
+
+    /* Navbar: UMZH blue */
+    .navbar-inverse {
+        background-color: #0000ff;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus {
+        background-color: #111111;
+    }
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:hover,
+    .navbar-inverse .navbar-nav > .open > a:focus {
+        background-color: #111111;
+    }
+    #segment-footer > .container {
+        background-color: #0000ff;
+    }
+
+    /* Informative Implementation Note callout — calm, non-warning */
+    .impl-note {
+        margin: 1em 0;
+        padding: 12px 16px;
+        background-color: #f5f7fa;          /* light neutral */
+        border-left: 4px solid #0000ff;     /* UMZH blue accent */
+        border-radius: 3px;
+    }
+    .impl-note::before {
+        content: "Implementation Note";
+        display: block;
+        font-weight: bold;
+        color: #0000ff;
+        margin-bottom: 4px;
+    }
+
+    </style>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"11"}
+    h3,h4,h5,h6{--heading-prefix:"11"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+            <!--
+<div id="family-nav">
+	<a id="logo" no-external="true" href="http://hl7.org/fhir"> <img
+		alt="logo fhir" src="assets/images/fhir-logo-www.png" />
+	</a>
+</div>
+-->
+
+
+            <div id="family-nav">
+                <a id="logo" no-external="true" href="searchform.html">
+                    <img src="assets/images/search.png" alt="Search FHIR" />
+                </a>
+            </div>
+            <div id="hl7-nav">
+    <a id="logo" no-external="true" href="https://umzh.uzh.ch/">
+        <img alt="visit the website" height="60" src="https://umzh.uzh.ch/favicon.ico" />
+    </a>            
+</div>
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">CH UMZH Connect IG (R4)</span>
+            <br/>
+            <span style="display:inline-block;">1.0.0-ballot - ballot
+
+
+
+  <img alt="Switzerland flag" src="assets/images/che.svg" height="16" title="Switzerland"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Core Concept
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="core-concept-workflow-api.html">Workflow oriented API design</a>
+      </li>
+      <li>
+        <a href="core-concept-registry.html">Registry</a>
+      </li>
+      <li>
+        <a href="workflow-states.html">Workflow States</a>
+      </li>
+      <li>
+        <a href="guidance-interactions.html">Interactions</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use Cases
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="usecase-referral-orthopedic.html">Referral - Orthopedic Surgery</a>
+      </li>
+      <li>
+        <a href="usecase-referral-sarcoma-tumorboard.html">Referral - Sarcoma Tumor Board</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="security.html">Security</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Implementation Notes
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="guidance-reference-architecture.html">Reference Architecture</a>
+      </li>
+      <li>
+        <a href="security-implementation.html">Security Implementation</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Interactions</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the CH UMZH Connect (v1.0.0-ballot: <a data-no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Draft Standard for Trial-Use">DSTU</a> 1 Ballot 1) based on <a data-no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version in its permanent home (it will always be available at this URL).  For a full list of available versions, see the <a data-no-external="true" href="http://fhir.ch/ig/ch-umzh-connect/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Interactions</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+  <li><a href="#authorization-at-a-glance" id="markdown-toc-authorization-at-a-glance">Authorization at a glance</a></li>
+  <li><a href="#task-search-scoping" id="markdown-toc-task-search-scoping">Task search scoping</a></li>
+  <li><a href="#read-only-resources" id="markdown-toc-read-only-resources">Read-only resources</a></li>
+  <li><a href="#servicerequest" id="markdown-toc-servicerequest">ServiceRequest</a></li>
+  <li><a href="#task" id="markdown-toc-task">Task</a></li>
+  <li><a href="#questionnaire" id="markdown-toc-questionnaire">Questionnaire</a></li>
+  <li><a href="#questionnaireresponse" id="markdown-toc-questionnaireresponse">QuestionnaireResponse</a></li>
+  <li><a href="#versioning-and-conditional-operations" id="markdown-toc-versioning-and-conditional-operations">Versioning and conditional operations</a></li>
+</ul>
+
+</div>
+<p>In this article:</p>
+
+<ul>
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#authorization-at-a-glance">Authorization at a glance</a></li>
+  <li><a href="#task-search-scoping">Task search scoping</a></li>
+  <li><a href="#read-only-resources">Read-only resources</a></li>
+  <li><a href="#servicerequest">ServiceRequest</a></li>
+  <li><a href="#task">Task</a></li>
+  <li><a href="#questionnaire">Questionnaire</a></li>
+  <li><a href="#questionnaireresponse">QuestionnaireResponse</a></li>
+  <li><a href="#versioning-and-conditional-operations">Versioning and conditional operations</a></li>
+</ul>
+
+<h3 id="overview">Overview</h3>
+
+<p>The <a href="CapabilityStatement-ChUmzhConnectCapabilityStatement.html">CapabilityStatement</a> is the normative source for the interactions exposed by a UMZH-Connect REST server. This page complements it with usage guidance: which search parameters are mandatory vs. optional, how SMART scopes map to each interaction, and how the per-request <code class="language-plaintext highlighter-rouge">fhirContext</code> claim restricts the resources a caller may reach.</p>
+
+<p>Both server roles — <a href="ActorDefinition-ch-umzh-connect-placer.html">Placer</a> and <a href="ActorDefinition-ch-umzh-connect-fulfiller.html">Fulfiller</a> — implement the same <code class="language-plaintext highlighter-rouge">CapabilityStatement</code>; the applicable subset depends on the role. The Placer hosts the <code class="language-plaintext highlighter-rouge">ServiceRequest</code> graph; the Fulfiller hosts the <code class="language-plaintext highlighter-rouge">Task</code> graph.</p>
+
+<h3 id="authorization-at-a-glance">Authorization at a glance</h3>
+
+<p>Every request SHALL carry a bearer JWT access token. Two orthogonal checks apply on every interaction:</p>
+
+<ol>
+  <li>
+    <p><strong>SMART scope check</strong> — the token's <code class="language-plaintext highlighter-rouge">scope</code> claim SHALL contain a SMART system scope sufficient for the requested operation (e.g. <code class="language-plaintext highlighter-rouge">system/ServiceRequest.rs</code> for ServiceRequest <code class="language-plaintext highlighter-rouge">read</code> + <code class="language-plaintext highlighter-rouge">search-type</code>, <code class="language-plaintext highlighter-rouge">system/Task.crus</code> for the full Task interaction set, <code class="language-plaintext highlighter-rouge">system/QuestionnaireResponse.crus</code> for QuestionnaireResponse interactions). See <a href="security.html#health-specifics---smartonfhir">Security — Health specifics</a>.</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">fhirContext</code> graph check</strong> — for every resource type **other than <code class="language-plaintext highlighter-rouge">Task</code>, and <code class="language-plaintext highlighter-rouge">Questionnaire</code>, the requested resource SHALL be reachable from the workflow root named in the token's <code class="language-plaintext highlighter-rouge">fhirContext</code> claim (a <code class="language-plaintext highlighter-rouge">ServiceRequest/{id}</code> on the Placer, a <code class="language-plaintext highlighter-rouge">Task/{id}</code> on the Fulfiller). Requests for resources outside the context graph SHALL be rejected with <code class="language-plaintext highlighter-rouge">403 Forbidden</code>. See <a href="security.html#context-centric-authorization">Security — Context-centric authorization</a>.</p>
+  </li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">Task</code>   and <code class="language-plaintext highlighter-rouge">Questionnaire</code> are <strong>not</strong> <code class="language-plaintext highlighter-rouge">fhirContext</code>-gated:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Task</code></strong> is the entry-point resource on the Fulfiller — it is searched and read by the requesting identity directly. Access is constrained by <a href="#task-search-scoping">Task search scoping</a> (below), not by <code class="language-plaintext highlighter-rouge">fhirContext</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Questionnaire</code></strong> is a definitional artefact shared across workflows; it carries no patient data and is reachable independent of any specific workflow context.</li>
+</ul>
+
+<h3 id="task-search-scoping">Task search scoping</h3>
+
+<p><code class="language-plaintext highlighter-rouge">GET /Task</code> and <code class="language-plaintext highlighter-rouge">GET /Task?...</code> SHALL return only those Tasks for which the authenticated identity is either the <strong>requester</strong> (<code class="language-plaintext highlighter-rouge">Task.requester</code>) or the <strong>owner</strong> (<code class="language-plaintext highlighter-rouge">Task.owner</code>). The server enforces this implicit filter on every Task search regardless of the parameters supplied by the client; a client cannot widen the result set by omitting <code class="language-plaintext highlighter-rouge">owner</code>/<code class="language-plaintext highlighter-rouge">requester</code> parameters. This makes <code class="language-plaintext highlighter-rouge">Task</code> the safe entry point on the Fulfiller: the Placer organisation polls for Tasks it raised, the Fulfiller organisation polls for Tasks assigned to it, and neither sees the other's unrelated workflows.</p>
+
+<h3 id="read-only-resources">Read-only resources</h3>
+
+<p>Applies to: <code class="language-plaintext highlighter-rouge">AllergyIntolerance</code>, <code class="language-plaintext highlighter-rouge">Appointment</code>, <code class="language-plaintext highlighter-rouge">Condition</code>, <code class="language-plaintext highlighter-rouge">Coverage</code>, <code class="language-plaintext highlighter-rouge">DiagnosticReport</code>, <code class="language-plaintext highlighter-rouge">DocumentReference</code>, <code class="language-plaintext highlighter-rouge">ImagingStudy</code>, <code class="language-plaintext highlighter-rouge">Immunization</code>, <code class="language-plaintext highlighter-rouge">Medication</code>, <code class="language-plaintext highlighter-rouge">MedicationStatement</code>, <code class="language-plaintext highlighter-rouge">Observation</code>, <code class="language-plaintext highlighter-rouge">Organization</code>, <code class="language-plaintext highlighter-rouge">Patient</code>, <code class="language-plaintext highlighter-rouge">Practitioner</code>, <code class="language-plaintext highlighter-rouge">PractitionerRole</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>.</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Interaction</th>
+      <th>Path</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">read</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET /{Type}/{id}</code></td>
+      <td>Returns the resource only if <code class="language-plaintext highlighter-rouge">{Type}/{id}</code> is reachable from the token's <code class="language-plaintext highlighter-rouge">fhirContext</code> graph.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Search parameters:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Cardinality</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_id</code></td>
+      <td>token</td>
+      <td><strong>mandatory</strong></td>
+      <td>Logical id of the resource. Searches without <code class="language-plaintext highlighter-rouge">_id</code> are not supported.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These resources are reached transitively from the workflow root (e.g. <code class="language-plaintext highlighter-rouge">ServiceRequest.subject → Patient</code>, <code class="language-plaintext highlighter-rouge">ServiceRequest.reasonReference → Condition</code>). They are typically retrieved either via direct <code class="language-plaintext highlighter-rouge">read</code> on a known id or implicitly through <code class="language-plaintext highlighter-rouge">_include</code> on the workflow root.</p>
+
+<h3 id="servicerequest">ServiceRequest</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Interaction</th>
+      <th>Path</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">search-type</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET /ServiceRequest?_id={id}&amp;...</code></td>
+      <td>Returns only ServiceRequests reachable from <code class="language-plaintext highlighter-rouge">fhirContext</code> (in practice, the single ServiceRequest named by the token).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">read</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET /ServiceRequest/{id}</code></td>
+      <td>Returns the ServiceRequest only if <code class="language-plaintext highlighter-rouge">{id}</code> matches <code class="language-plaintext highlighter-rouge">fhirContext</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Search parameters:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Cardinality</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_id</code></td>
+      <td>token</td>
+      <td><strong>mandatory</strong></td>
+      <td>Logical id. Searches without <code class="language-plaintext highlighter-rouge">_id</code> are not supported.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_include</code></td>
+      <td>—</td>
+      <td>optional</td>
+      <td>Supported targets: <code class="language-plaintext highlighter-rouge">ServiceRequest:patient</code>, <code class="language-plaintext highlighter-rouge">ServiceRequest:subject</code>, <code class="language-plaintext highlighter-rouge">ServiceRequest:ch-umzhconnectig-servicerequest-reasonreference</code>, <code class="language-plaintext highlighter-rouge">ServiceRequest:ch-umzhconnectig-servicerequest-supportinginfo</code>, <code class="language-plaintext highlighter-rouge">ServiceRequest:ch-umzhconnectig-servicerequest-insurance</code>. Each included resource is itself subject to the <code class="language-plaintext highlighter-rouge">fhirContext</code> graph check.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The Fulfiller typically issues a single <code class="language-plaintext highlighter-rouge">GET /ServiceRequest?_id={id}&amp;_include=...</code> (or the equivalent <code class="language-plaintext highlighter-rouge">read</code> with <code class="language-plaintext highlighter-rouge">_include</code>) to materialise the workflow graph in one round-trip.</p>
+
+<h3 id="task">Task</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Interaction</th>
+      <th>Path</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">search-type</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET /Task?...</code></td>
+      <td>Implicitly scoped to Tasks where the calling identity is <code class="language-plaintext highlighter-rouge">Task.owner</code> or <code class="language-plaintext highlighter-rouge">Task.requester</code> (see <a href="#task-search-scoping">Task search scoping</a>). Not <code class="language-plaintext highlighter-rouge">fhirContext</code>-gated.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">read</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET /Task/{id}</code></td>
+      <td>Allowed if the calling identity is <code class="language-plaintext highlighter-rouge">owner</code> or <code class="language-plaintext highlighter-rouge">requester</code> of the Task.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">create</code></td>
+      <td><code class="language-plaintext highlighter-rouge">POST /Task</code></td>
+      <td>Used by the Placer to raise a coordination Task on the Fulfiller.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">patch</code></td>
+      <td><code class="language-plaintext highlighter-rouge">PATCH /Task/{id}</code></td>
+      <td>JSON Patch (<code class="language-plaintext highlighter-rouge">application/json-patch+json</code>). <strong>Only <code class="language-plaintext highlighter-rouge">Task.input</code>, <code class="language-plaintext highlighter-rouge">Task.owner</code>, <code class="language-plaintext highlighter-rouge">Task.focus</code>, and <code class="language-plaintext highlighter-rouge">Task.businessStatus</code> may be patched</strong> — other paths SHALL be rejected.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Search parameters:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Cardinality</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_id</code></td>
+      <td>token</td>
+      <td>optional</td>
+      <td>Logical id.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">owner</code></td>
+      <td>reference</td>
+      <td>optional</td>
+      <td>Filter by <code class="language-plaintext highlighter-rouge">Task.owner</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requester</code></td>
+      <td>reference</td>
+      <td>optional</td>
+      <td>Filter by <code class="language-plaintext highlighter-rouge">Task.requester</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">status</code></td>
+      <td>token</td>
+      <td>optional</td>
+      <td>Filter by <code class="language-plaintext highlighter-rouge">Task.status</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_include</code></td>
+      <td>—</td>
+      <td>optional</td>
+      <td>Supported targets: <code class="language-plaintext highlighter-rouge">Task:ch-umzhconnectig-task-inputreference</code>, <code class="language-plaintext highlighter-rouge">Task:ch-umzhconnectig-task-outputreference</code>, <code class="language-plaintext highlighter-rouge">Task:ch-umzhconnectig-task-outputcanonical</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A search with no parameters returns all Tasks visible to the calling identity (i.e. owned or requested by it).</p>
+
+<h3 id="questionnaire">Questionnaire</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Interaction</th>
+      <th>Path</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">search-type</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET /Questionnaire?...</code></td>
+      <td>Definitional content — not <code class="language-plaintext highlighter-rouge">fhirContext</code>-gated.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">read</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET /Questionnaire/{id}</code></td>
+      <td>Definitional content — not <code class="language-plaintext highlighter-rouge">fhirContext</code>-gated.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Search parameters:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Cardinality</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_id</code></td>
+      <td>token</td>
+      <td>optional</td>
+      <td>Logical id.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="questionnaireresponse">QuestionnaireResponse</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Interaction</th>
+      <th>Path</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">search-type</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET /QuestionnaireResponse</code></td>
+      <td>Implicitly scoped to QuestionnaireResponses accessible to the calling identity.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">read</code></td>
+      <td><code class="language-plaintext highlighter-rouge">GET /QuestionnaireResponse/{id}</code></td>
+      <td>Allowed if the linked Task is accessible to the calling identity.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">create</code></td>
+      <td><code class="language-plaintext highlighter-rouge">POST /QuestionnaireResponse</code></td>
+      <td>The created resource SHALL reference an accessible ServiceRequest via <code class="language-plaintext highlighter-rouge">basedOn</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Search parameters:</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Cardinality</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">based-on</code></td>
+      <td>reference</td>
+      <td><strong>mandatory</strong></td>
+      <td>The Task this response fulfils. Required so that access remains anchored to a Task visible to the calling identity.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="versioning-and-conditional-operations">Versioning and conditional operations</h3>
+
+<p>For every resource in the CapabilityStatement: <code class="language-plaintext highlighter-rouge">versioning = versioned-update</code>, <code class="language-plaintext highlighter-rouge">conditionalCreate = false</code>, <code class="language-plaintext highlighter-rouge">conditionalUpdate = false</code>. Clients performing <code class="language-plaintext highlighter-rouge">update</code> or <code class="language-plaintext highlighter-rouge">patch</code> SHALL supply the current version via <code class="language-plaintext highlighter-rouge">If-Match</code> and SHALL NOT rely on conditional create/update semantics.</p>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://umzhconnect.ch/">UMZH Connect Team</a>.  Package ch.fhir.ig.ch-umzh-connect#1.0.0-ballot based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 16, 2026 06:40+0000">2026-06-16</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+
+| <a style="color: #81BEF7" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScZ6awbXKp90fWh3hbHKSOmsA8nMvkmehMP27l2SbH_ct-A3Q/viewform?usp=sf_link&amp;entry%2E1353807103=ch.fhir.ig.ch-umzh-connect%231.0.0-ballot%20/guidance-interactions.html&amp;entry%2E247644557=Interactions">Propose a change</a>
+
+
+
+
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+
