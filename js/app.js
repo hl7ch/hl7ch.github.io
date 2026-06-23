@@ -36,6 +36,13 @@
     return `${String(d.getDate()).padStart(2,'0')} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
   }
 
+  // Swiss / German calendar style: 'YYYY-MM-DD' → 'DD.MM.YYYY'. Used for
+  // ballot-cycle tooltips so dates match the HL7.ch ballot calendar.
+  function fmtDateDe(iso) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    return m ? `${m[3]}.${m[2]}.${m[1]}` : iso;
+  }
+
   function escapeHtml(s) {
     return String(s == null ? '' : s)
       .replace(/&/g, '&amp;')
@@ -229,16 +236,21 @@
       + `<span class="icon">${chip.icon}</span><span>${escapeHtml(chip.label)}</span></a>`;
   }
 
+  function renderDisabledChip(chip, tooltip) {
+    return `<span class="${chip.cls} disabled" title="${escapeHtml(tooltip)}" aria-disabled="true">`
+      + `<span class="icon">${chip.icon}</span><span>${escapeHtml(chip.label)}</span></span>`;
+  }
+
   function renderVersionRow(v) {
     const badge = badgeForVersion(v);
     const chips = [renderChip(versionChip(v))];
     if (v.voteForm) {
-      chips.push(renderChip({
-        cls:   'chip primary',
-        icon:  '✓',
-        label: 'VOTE',
-        url:   v.voteForm
-      }));
+      const cycle = window.FHIR_CH_BALLOT_CYCLE || {};
+      const voteChip = { cls: 'chip primary', icon: '✓', label: 'VOTE', url: v.voteForm };
+      let tooltip = null;
+      if (cycle.votingDisabledUntil) tooltip = `Voting opens ${fmtDateDe(cycle.votingDisabledUntil)}`;
+      else if (cycle.votingDisabledSince) tooltip = `Voting closed ${fmtDateDe(cycle.votingDisabledSince)}`;
+      chips.push(tooltip ? renderDisabledChip(voteChip, tooltip) : renderChip(voteChip));
     }
     const fhirStr = (v.fhirVersion || []).join(', ') || '—';
     const cls = (v.publicationStatus || '').replace(/[^a-z-]/g, '');
@@ -432,17 +444,32 @@
 
   // ─── Hero ballot toggle ─────────────────────────────────────────
   // Reads window.FHIR_CH_BALLOT_CYCLE (set synchronously by load-data.js).
-  // Active cycle → Register button visible + primary; Join demoted to outline.
-  // No cycle → Register hidden; Join restored to primary with trailing arrow.
+  // Cycle present + window open  → Register button active + primary; Join outline.
+  // Cycle present + pre-open     → Register button DISABLED, "opens DD.MM.YYYY".
+  // Cycle present + post-close   → Register button DISABLED, "closed DD.MM.YYYY".
+  // No cycle (BALLOT_CYCLE=null) → Register button hidden; Join restored to primary.
   function applyBallotCycle() {
     const cycle = window.FHIR_CH_BALLOT_CYCLE;
     const vote  = document.getElementById('hero-vote-btn');
     const join  = document.getElementById('hero-join-btn');
     if (!vote || !join) return;
     if (cycle && cycle.registrationFormId) {
-      vote.href        = `https://docs.google.com/forms/d/${cycle.registrationFormId}/viewform`;
+      let tooltip = null;
+      if (cycle.registrationDisabledUntil) tooltip = `Registration opens ${fmtDateDe(cycle.registrationDisabledUntil)}`;
+      else if (cycle.registrationDisabledSince) tooltip = `Registration closed ${fmtDateDe(cycle.registrationDisabledSince)}`;
       vote.textContent = `Register to vote · Ballot ${cycle.year} →`;
       vote.hidden      = false;
+      if (tooltip) {
+        vote.removeAttribute('href');
+        vote.classList.add('disabled');
+        vote.setAttribute('aria-disabled', 'true');
+        vote.title = tooltip;
+      } else {
+        vote.href = `https://docs.google.com/forms/d/${cycle.registrationFormId}/viewform`;
+        vote.classList.remove('disabled');
+        vote.removeAttribute('aria-disabled');
+        vote.removeAttribute('title');
+      }
       join.classList.remove('primary');
       join.classList.add('outline');
       join.textContent = 'Join FHIR.ch work group calls';

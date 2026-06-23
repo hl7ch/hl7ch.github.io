@@ -35,10 +35,13 @@
   // both vanish, no other edits required. See QUICKSTART.md.
   var BALLOT_CYCLE = {
     year:                '2026',
-    // Auto-shutoff dates (browser-local date, ISO YYYY-MM-DD, INCLUSIVE — UI
-    // hides starting the day AFTER). Source: HL7.ch 2026 ballot calendar.
-    registrationCloses:  '2026-08-03',   // End of registration → hero Register button hides 2026-08-04
-    votingCloses:        '2026-09-30',   // End of voting → every per-IG VOTE chip hides 2026-10-01
+    // Auto-window dates (browser-local date, ISO YYYY-MM-DD, both endpoints
+    // INCLUSIVE). Source: HL7.ch 2026 ballot calendar. Outside the window
+    // the matching UI renders DISABLED with a tooltip; it never disappears.
+    registrationOpens:   '2026-06-22',   // Mo, 22.06.2026: Publikation der FHIR IGs → hero Register button active
+    registrationCloses:  '2026-08-03',   // End of registration → hero Register button greyed 2026-08-04
+    votingOpens:         '2026-08-04',   // Di, 04.08.2026: Start Abstimmungsperiode → per-IG VOTE chips active
+    votingCloses:        '2026-09-30',   // End of voting → every per-IG VOTE chip greyed 2026-10-01
     registrationFormId:  '13zN8gpFz_XjTDf3MZHo8E0SL9xjj8TJQ8AxcZQONOwY',
     forms: {
       'ch.fhir.ig.ch-alis-connect': '1Ge_9fwM_yd3ZaLBwumlQuMzlz1AaZi1RAAeMw6RlDds',
@@ -52,19 +55,28 @@
   };
   // var BALLOT_CYCLE = null;   // ← uncomment when the cycle closes
 
-  // Auto-disable past-deadline pieces. Each *Closes day is INCLUSIVE — the UI
-  // hides starting the day AFTER. Browser-local date (Swiss time for most
-  // visitors). Leave a *Closes field unset to keep that piece enabled manually.
+  // Auto-window the ballot UI. Browser-local date (Swiss time for most
+  // visitors). Each endpoint is INCLUSIVE. Leave any *Opens / *Closes field
+  // unset to disable that bound. UI renders DISABLED (greyed, tooltip-only,
+  // non-clickable) both before *Opens and after *Closes — never hidden, so
+  // visitors always see the cycle's context. Set BALLOT_CYCLE = null to
+  // wipe the cycle entirely (e.g. months after it closes).
   if (BALLOT_CYCLE) {
     var _today = (function () {
       var d = new Date(), m = d.getMonth() + 1, day = d.getDate();
       return d.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (day < 10 ? '0' : '') + day;
     })();
+    if (BALLOT_CYCLE.registrationOpens && _today < BALLOT_CYCLE.registrationOpens) {
+      BALLOT_CYCLE.registrationDisabledUntil = BALLOT_CYCLE.registrationOpens;
+    }
+    if (BALLOT_CYCLE.votingOpens && _today < BALLOT_CYCLE.votingOpens) {
+      BALLOT_CYCLE.votingDisabledUntil = BALLOT_CYCLE.votingOpens;
+    }
     if (BALLOT_CYCLE.registrationCloses && _today > BALLOT_CYCLE.registrationCloses) {
-      BALLOT_CYCLE.registrationFormId = null;
+      BALLOT_CYCLE.registrationDisabledSince = BALLOT_CYCLE.registrationCloses;
     }
     if (BALLOT_CYCLE.votingCloses && _today > BALLOT_CYCLE.votingCloses) {
-      BALLOT_CYCLE.forms = {};
+      BALLOT_CYCLE.votingDisabledSince = BALLOT_CYCLE.votingCloses;
     }
   }
 
