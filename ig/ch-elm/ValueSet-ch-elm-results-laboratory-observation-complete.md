@@ -1,4 +1,4 @@
-# CH ELM Results Laboratory Observation Complete - CH ELM (R4) v1.14.0
+# CH ELM Results Laboratory Observation Complete - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-complete | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:ChElmResultsLaboratoryObservationComplete |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-complete | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:ChElmResultsLaboratoryObservationComplete |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,12 +47,12 @@ This CH ELM value set includes the codes for every type of laboratory test resul
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-laboratory-observation-complete",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-complete",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "ChElmResultsLaboratoryObservationComplete",
   "title" : "CH ELM Results Laboratory Observation Complete",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -825,6 +825,10 @@ This CH ELM value set includes the codes for every type of laboratory test resul
         "display" : "Neisseria gonorrhoeae rRNA [Presence] in Vaginal fluid by NAA with probe detection"
       },
       {
+        "code" : "539-7",
+        "display" : "Mycobacterium sp identified in Sputum by Organism specific culture"
+      },
+      {
         "code" : "53917-1",
         "display" : "Streptococcus pneumoniae DNA [Presence] in Blood by NAA with probe detection"
       },
@@ -851,10 +855,6 @@ This CH ELM value set includes the codes for every type of laboratory test resul
       {
         "code" : "53946-0",
         "display" : "Escherichia coli shiga-like toxin identified in Specimen"
-      },
-      {
-        "code" : "539-7",
-        "display" : "Mycobacterium sp identified in Sputum by Organism specific culture"
       },
       {
         "code" : "540-5",

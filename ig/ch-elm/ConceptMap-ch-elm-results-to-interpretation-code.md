@@ -1,4 +1,4 @@
-# CH ELM Results To Interpretation Code - CH ELM (R4) v1.14.0
+# CH ELM Results To Interpretation Code - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-interpretation-code | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:ChElmResultsToInterpretationCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-interpretation-code | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:ChElmResultsToInterpretationCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -24,12 +24,12 @@ This CH ELM concept map specifies the interpretation codes for each leading code
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-results-to-interpretation-code",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-interpretation-code",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "ChElmResultsToInterpretationCode",
   "title" : "CH ELM Results To Interpretation Code",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -1556,6 +1556,14 @@ This CH ELM concept map specifies the interpretation codes for each leading code
       }]
     },
     {
+      "code" : "539-7",
+      "display" : "Mycobacterium sp identified in Sputum by Organism specific culture",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
       "code" : "53917-1",
       "display" : "Streptococcus pneumoniae DNA [Presence] in Blood by NAA with probe detection",
       "target" : [{
@@ -1608,14 +1616,6 @@ This CH ELM concept map specifies the interpretation codes for each leading code
       "display" : "Escherichia coli shiga-like toxin identified in Specimen",
       "target" : [{
         "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
-        "equivalence" : "relatedto"
-      }]
-    },
-    {
-      "code" : "539-7",
-      "display" : "Mycobacterium sp identified in Sputum by Organism specific culture",
-      "target" : [{
-        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
         "equivalence" : "relatedto"
       }]
     },

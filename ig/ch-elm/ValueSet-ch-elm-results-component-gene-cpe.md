@@ -1,4 +1,4 @@
-# CH ELM Results Component Gene CPE - CH ELM (R4) v1.14.0
+# CH ELM Results Component Gene CPE - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-gene-cpe | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:ChElmResultsComponentGeneCpe |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-gene-cpe | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:ChElmResultsComponentGeneCpe |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -49,12 +49,12 @@ No formal definition provided for this value set
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-component-gene-cpe",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-gene-cpe",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "ChElmResultsComponentGeneCpe",
   "title" : "CH ELM Results Component Gene CPE",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

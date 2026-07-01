@@ -1,4 +1,4 @@
-# CH ELM Interpretation Codes Resistant - CH ELM (R4) v1.14.0
+# CH ELM Interpretation Codes Resistant - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-res | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:ChElmInterpretationCodesResSus |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-res | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:ChElmInterpretationCodesResSus |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,12 +47,12 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-interpretation-codes-res",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-res",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "ChElmInterpretationCodesResSus",
   "title" : "CH ELM Interpretation Codes Resistant",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -72,7 +72,7 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "compose" : {
     "include" : [{
       "system" : "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
-      "version" : "2018-08-12",
+      "version" : "4.0.0",
       "concept" : [{
         "code" : "R",
         "display" : "Resistant"

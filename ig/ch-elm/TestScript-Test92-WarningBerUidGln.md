@@ -1,4 +1,4 @@
-# Test92 - Warning for Ber Uid and Gln - CH ELM (R4) v1.14.0
+# Test92 - Warning for Ber Uid and Gln - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test92-WarningBerUidGln | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:Test92WarningBerUidGln |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test92-WarningBerUidGln | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:Test92WarningBerUidGln |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,13 +17,13 @@ Test92: Verify that warnings for incorrect BER, UID and GLN are raised
 
 **url**: [TestScript Test92WarningBerUidGln](TestScript-Test92-WarningBerUidGln.md)
 
-**version**: 1.14.0
+**version**: 1.14.1
 
 **name**: Test92WarningBerUidGln
 
 **status**: Active
 
-**date**: 2026-05-26 14:58:40+0000
+**date**: 2026-07-01 19:23:08+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -51,7 +51,7 @@ CC0-1.0
 | | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | - | **Type** | **Description** | **ContentType** | **EncodeRequestUrl** | **Params** | **SourceId** |
-| * | [Test script operation code: validate](http://hl7.org/fhir/R4/codesystem-testscript-operation-codes.html#testscript-operation-codes-validate)($validate) | validate | application/fhir+json | true | profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict | inputdata |
+| * | [Test script operation code: validate](http://terminology.hl7.org/7.2.0/CodeSystem-testscript-operation-codes.html#testscript-operation-codes-validate)($validate) | validate | application/fhir+json | true | profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict | inputdata |
 
 
 > **action**
@@ -154,10 +154,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test92-WarningBerUidGln",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test92-WarningBerUidGln",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "Test92WarningBerUidGln",
   "status" : "active",
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

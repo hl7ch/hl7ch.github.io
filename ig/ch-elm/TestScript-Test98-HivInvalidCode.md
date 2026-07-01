@@ -1,4 +1,4 @@
-# Test98 - Verify that error for invalid hiv code is raised - CH ELM (R4) v1.14.0
+# Test98 - Verify that error for invalid hiv code is raised - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test98-HivInvalidCode | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:Test98HivInvalidCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test98-HivInvalidCode | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:Test98HivInvalidCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,13 +17,13 @@ Test98: Verify that error for invalid hiv code is raised
 
 **url**: [TestScript Test98HivInvalidCode](TestScript-Test98-HivInvalidCode.md)
 
-**version**: 1.14.0
+**version**: 1.14.1
 
 **name**: Test98HivInvalidCode
 
 **status**: Active
 
-**date**: 2026-05-26 14:58:40+0000
+**date**: 2026-07-01 19:23:08+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -51,7 +51,7 @@ CC0-1.0
 | | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | - | **Type** | **Description** | **ContentType** | **EncodeRequestUrl** | **Params** | **SourceId** |
-| * | [Test script operation code: validate](http://hl7.org/fhir/R4/codesystem-testscript-operation-codes.html#testscript-operation-codes-validate)($validate) | validate | application/fhir+json | true | profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict | inputdata |
+| * | [Test script operation code: validate](http://terminology.hl7.org/7.2.0/CodeSystem-testscript-operation-codes.html#testscript-operation-codes-validate)($validate) | validate | application/fhir+json | true | profile=http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict | inputdata |
 
 
 > **action**
@@ -104,10 +104,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test98-HivInvalidCode",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test98-HivInvalidCode",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "Test98HivInvalidCode",
   "status" : "active",
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

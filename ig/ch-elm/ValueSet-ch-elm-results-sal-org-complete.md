@@ -1,4 +1,4 @@
-# CH ELM Results Sal Org Complete - CH ELM (R4) v1.14.0
+# CH ELM Results Sal Org Complete - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sal-org-complete | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:ChElmResultsSalOrgComplete |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sal-org-complete | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:ChElmResultsSalOrgComplete |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,12 +47,12 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-sal-org-complete",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-sal-org-complete",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "ChElmResultsSalOrgComplete",
   "title" : "CH ELM Results Sal Org Complete",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -1885,6 +1885,10 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
         "display" : "Salmonella Athinai (organism)"
       },
       {
+        "code" : "23131001",
+        "display" : "Salmonella Ajiobo (organism)"
+      },
+      {
         "code" : "114382003",
         "display" : "Salmonella IIIb 6,14:l,v:z53 (organism)"
       },
@@ -2607,6 +2611,10 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
       {
         "code" : "81030003",
         "display" : "Salmonella Masembe (organism)"
+      },
+      {
+        "code" : "62136003",
+        "display" : "Salmonella Dublin (organism)"
       },
       {
         "code" : "11903004",
@@ -5981,6 +5989,10 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
         "display" : "Salmonella Osnabrueck (organism)"
       },
       {
+        "code" : "31564006",
+        "display" : "Salmonella Claibornei (organism)"
+      },
+      {
         "code" : "398481005",
         "display" : "Salmonella IIIb 60:k:z (organism)"
       },
@@ -7311,6 +7323,10 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
       {
         "code" : "114426004",
         "display" : "Salmonella II 17:b:e,n,x,z15 (organism)"
+      },
+      {
+        "code" : "398559003",
+        "display" : "Salmonella group O:9 (organism)"
       },
       {
         "code" : "114465001",

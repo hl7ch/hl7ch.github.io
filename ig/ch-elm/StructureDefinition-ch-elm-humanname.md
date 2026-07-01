@@ -1,4 +1,4 @@
-# Human Name - CH ELM (R4) v1.14.0
+# Human Name - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-humanname | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:CHElmHumanName |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-humanname | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:CHElmHumanName |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-humanname.csv
   "resourceType" : "StructureDefinition",
   "id" : "ch-elm-humanname",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-humanname",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "CHElmHumanName",
   "title" : "Human Name",
   "status" : "active",
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

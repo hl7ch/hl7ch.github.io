@@ -1,4 +1,4 @@
-# DocumentReference for sending the report with strict validation - CH ELM (R4) v1.14.0
+# DocumentReference for sending the report with strict validation - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:PublishDocumentReferenceStrict |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:PublishDocumentReferenceStrict |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -43,11 +43,11 @@ Other representations of profile: [CSV](StructureDefinition-PublishDocumentRefer
   "resourceType" : "StructureDefinition",
   "id" : "PublishDocumentReferenceStrict",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReferenceStrict",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "PublishDocumentReferenceStrict",
   "title" : "DocumentReference for sending the report with strict validation",
   "status" : "active",
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

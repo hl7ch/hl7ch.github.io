@@ -1,4 +1,4 @@
-# CH ELM FOPH Code Reserve - CH ELM (R4) v1.14.0
+# CH ELM FOPH Code Reserve - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:urn:oid:2.16.756.5.30.1.129.1.5.1 | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:ChElmFophCodeReserve |
+| *Official URL*:urn:oid:2.16.756.5.30.1.129.1.5.1 | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:ChElmFophCodeReserve |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -29,12 +29,12 @@ This code system contains proprietary placeholder codes for use in situations of
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-foph-code-reserve",
   "url" : "urn:oid:2.16.756.5.30.1.129.1.5.1",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "ChElmFophCodeReserve",
   "title" : "CH ELM FOPH Code Reserve",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

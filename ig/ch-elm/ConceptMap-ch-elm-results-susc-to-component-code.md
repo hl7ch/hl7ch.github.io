@@ -1,4 +1,4 @@
-# CH ELM Results Susceptibility To Component Code - CH ELM (R4) v1.14.0
+# CH ELM Results Susceptibility To Component Code - CH ELM (R4) v1.14.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-code | *Version*:1.14.0 |
-| Active as of 2026-05-26 | *Computable Name*:ChElmResultsSuscToComponentCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-code | *Version*:1.14.1 |
+| Active as of 2026-07-01 | *Computable Name*:ChElmResultsSuscToComponentCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -24,12 +24,12 @@ This CH ELM concept map shows for each leading code defining susceptibility test
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-results-susc-to-component-code",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-code",
-  "version" : "1.14.0",
+  "version" : "1.14.1",
   "name" : "ChElmResultsSuscToComponentCode",
   "title" : "CH ELM Results Susceptibility To Component Code",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-05-26T14:58:40+00:00",
+  "date" : "2026-07-01T19:23:08+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
