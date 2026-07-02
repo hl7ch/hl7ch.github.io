@@ -180,15 +180,27 @@
     'ch.fhir.ig.ch-elm': {
       name: 'CH ELM',
       organization: 'foph',
-      description: 'CH ELM is a project of the Swiss Federal Office of Public Health (FOPH), Communicable Diseases Division, to enable laboratories to send their observations of notifiable communicable infectious diseases to the FOPH electronically.'
+      description: 'CH ELM is a project of the Swiss Federal Office of Public Health (FOPH), Communicable Diseases Division, to enable laboratories to send their observations of notifiable communicable infectious diseases to the FOPH electronically.',
+      links: {
+        source: 'https://github.com/ahdis/ch-elm',
+        wiki: 'https://github.com/ahdis/ch-elm/wiki'
+      }
     },
     'ch.fhir.ig.ch-epl': {
       organization: 'foph',
-      description: 'The specialties list (SL) is the official list of reimbursable medicines in Switzerland, maintained by the Federal Office of Public Health (FOPH). This FHIR Implementation Guide defines the standardized representation and exchange of SL data using HL7® FHIR®, supporting interoperability in the Swiss healthcare system. It provides FHIR profiles for medicines, prices, packaging, and reimbursement conditions, enabling consistent integration across healthcare applications and services.'
+      description: 'The specialties list (SL) is the official list of reimbursable medicines in Switzerland, maintained by the Federal Office of Public Health (FOPH). This FHIR Implementation Guide defines the standardized representation and exchange of SL data using HL7® FHIR®, supporting interoperability in the Swiss healthcare system. It provides FHIR profiles for medicines, prices, packaging, and reimbursement conditions, enabling consistent integration across healthcare applications and services.',
+      links: {
+        source: 'https://github.com/bag-epl/bag-epl-fhir',
+        wiki: 'https://github.com/bag-epl/bag-epl-fhir/wiki'
+      }
     },
     'ch.fhir.ig.ch-crl': {
       organization: 'foph',
-      description: 'Implementation Guide that specifies the exchange format for cancer registration. In order to achieve data completeness on a national level, institutions involved in diagnosing or treating cancer are required to report cases of cancer to a cancer registry.'
+      description: 'Implementation Guide that specifies the exchange format for cancer registration. In order to achieve data completeness on a national level, institutions involved in diagnosing or treating cancer are required to report cases of cancer to a cancer registry.',
+      links: {
+        source: 'https://github.com/ahdis/ch-crl',
+        wiki: 'https://github.com/ahdis/ch-crl/wiki'
+      }
     },
 
     // ─── HL7 Switzerland — STU Ballot ────────────────────────────────
@@ -214,7 +226,11 @@
     },
     'ch.fhir.ig.ch-idmp': {
       organization: 'hl7ch-refdata',
-      description: 'IDMP base Implementation Guide published by Refdata Foundation for Swissmedic.'
+      description: 'IDMP base Implementation Guide published by Refdata Foundation for Swissmedic.',
+      links: {
+        source: 'https://github.com/seicodyne/ch-idmp',
+        wiki: 'https://github.com/seicodyne/ch-idmp/wiki'
+      }
     },
     'ch.fhir.ig.ch-epr-fhir': {
       organization: 'hl7ch-ehealth-suisse',
@@ -222,13 +238,22 @@
       workgroup: { name: 'eHealth Suisse', url: 'mailto:martin.smock@e-health-suisse.ch' },
       // Upstream package-list.json marks 5.0.0 as status="ballot" but this is
       // the released national extension. Treat as published.
-      publicationStatus: 'published'
+      publicationStatus: 'published',
+      links: {
+        source: 'https://github.com/ehealthsuisse/ch-epr-fhir',
+        wiki: 'https://github.com/ehealthsuisse/ch-epr-fhir/wiki'
+      }
     },
 
     // ─── CARA ────────────────────────────────────────────────────────
     'ch.fhir.ig.ch-emed-epr': {
+      name: 'CH EMED EPR',
       organization: 'cara',
-      description: 'FHIR eMedication exchange formats for the implementation effort of CARA within its EPR community.'
+      description: 'FHIR eMedication exchange formats for the implementation effort of CARA within its EPR community.',
+      links: {
+        source: 'https://github.com/CARA-ch/ch-emed-epr',
+        wiki: 'https://github.com/CARA-ch/ch-emed-epr/wiki'
+      }
     }
     // Example with ballot info:
     // 'ch.fhir.ig.ch-core': { ballotCloses: '2026-07-15', ballotType: 'stu' }
