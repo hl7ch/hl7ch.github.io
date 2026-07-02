@@ -95,6 +95,8 @@
 
   // ─────────────────────────── IG overrides ──────────────────────────
   // Hand-curated per-IG metadata that upstream doesn't provide:
+  //   name             (overrides upstream pkg.title — use for the
+  //                    community shortform, e.g. "CH ELM")
   //   organization     (id matching ORG_NAMES below)
   //   workgroup        ({name, url}) — HL7 CH working group responsible
   //   ballotType       ("stu" | "dstu")
@@ -176,6 +178,7 @@
 
     // ─── FOPH ────────────────────────────────────────────────────────
     'ch.fhir.ig.ch-elm': {
+      name: 'CH ELM',
       organization: 'foph',
       description: 'CH ELM is a project of the Swiss Federal Office of Public Health (FOPH), Communicable Diseases Division, to enable laboratories to send their observations of notifiable communicable infectious diseases to the FOPH electronically.'
     },
@@ -388,7 +391,7 @@
     links.wiki = overLinks.wiki || ('https://github.com/hl7ch/' + slug + '/wiki');
     if (overLinks.jira) links.jira = overLinks.jira;
 
-    var rawName = pkg.title || slug;
+    var rawName = over.name || pkg.title || slug;
     var ig = {
       id: 'https://fhir.ch/igs/' + slug,
       identifier: pkgId,
