@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 - Page not found | fhir.ch</title>
+  <meta name="description" content="The page you requested could not be found. Return to the fhir.ch registry.">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #ffffff; color: #0f172a; }
+    body {
+      min-height: 100vh;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .utility-bar {
+      background: #0c2a4d;
+      color: #d8e3f1;
+      font-size: 12px;
+    }
+    .utility-bar .container {
+      padding-top: 9px;
+      padding-bottom: 9px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .utility-bar .links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .utility-bar a { color: #d8e3f1; }
+    .main-header {
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .main-header .container {
+      padding-top: 22px;
+      padding-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .brand-text {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      color: #0c2a4d;
+    }
+    .brand-text .dot { color: #d62828; }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 500;
+      flex-wrap: wrap;
+    }
+    .main-nav a {
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .main-nav a.active {
+      color: #0f172a;
+      border-bottom: 2px solid #1f5aa6;
+      padding-bottom: 4px;
+    }
+    .main-nav .gh-dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: #0f172a;
+      border-radius: 50%;
+    }
+    .hero {
+      background: #f4f6f8;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .hero .container {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      color: #1f5aa6;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: 56px;
+      line-height: 1.02;
+      font-weight: 700;
+      margin: 0 0 22px;
+      letter-spacing: -0.025em;
+      color: #0c2a4d;
+    }
+    .hero-intro {
+      font-size: 17px;
+      line-height: 1.55;
+      max-width: 640px;
+      color: #334155;
+      margin: 0 0 28px;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .btn.primary { background: #1f5aa6; color: #fff; border-color: #1f5aa6; }
+    .btn.outline { background: #fff; color: #0f172a; border-color: #cbd5e1; }
+    .btn.ghost { background: transparent; color: #1f5aa6; border-color: transparent; }
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+    }
+    .stats .card {
+      padding: 28px 24px;
+    }
+    .stats .card.not-found {
+      background: #0c2a4d;
+      color: #fff;
+    }
+    .stats .label {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      color: #64748b;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .stats .card.not-found .label { color: #ff8b8b; }
+    .stats .number {
+      font-size: 72px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: #0c2a4d;
+    }
+    .stats .card.not-found .number { color: #fff; }
+    .stats .footnote {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 8px;
+    }
+    .stats .card.not-found .footnote { color: #a8bcd6; }
+    .site-footer {
+      background: #0c2a4d;
+      color: #d8e3f1;
+      border-top: 1px solid #1a3a5e;
+    }
+    .site-footer .container {
+      padding-top: 22px;
+      padding-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #a8bcd6;
+    }
+    .site-footer a {
+      color: #fff;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+    }
+    .site-footer .left,
+    .site-footer .right {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .site-footer .legal { opacity: 0.7; font-size: 12px; }
+    @media (max-width: 980px) {
+      .hero .container { grid-template-columns: 1fr; }
+      .hero-title { font-size: 44px; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .brand-text { font-size: 36px; }
+      .hero .container { padding-top: 56px; padding-bottom: 56px; }
+      .hero-title { font-size: 38px; }
+      .stats .number { font-size: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="utility-bar">
+    <div class="container">
+      <div class="links">
+        <a href="https://www.hl7.ch/">hl7.ch</a>
+        <a href="https://www.hl7.org/">hl7.org</a>
+        <a href="https://www.hl7.org/fhir/">hl7.org/fhir</a>
+        <a href="https://tx.fhir.ch/r4/">tx.fhir.ch/r4</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="main-header">
+    <div class="container">
+      <span class="brand-text">fhir<span class="dot">.</span>ch</span>
+      <nav class="main-nav" aria-label="Primary">
+        <a class="active" href="./index.html">Implementation Guides</a>
+        <a href="https://www.hl7.ch/de/news">News</a>
+        <a href="https://www.hl7.ch/de/veranstaltungen">Events</a>
+        <a href="https://github.com/hl7ch">
+          <span class="gh-dot" aria-hidden="true"></span> GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div>
+        <div class="hero-eyebrow">Error 404</div>
+        <h1 class="hero-title">Page not found.</h1>
+        <p class="hero-intro">
+          The page you asked for does not exist or has moved. Return to the Swiss FHIR Implementation Guide registry, or use the links below.
+        </p>
+        <div class="hero-cta">
+          <a class="btn primary" href="./index.html">Go to homepage</a>
+          <a class="btn outline" href="https://github.com/hl7ch">Open GitHub</a>
+          <a class="btn ghost" href="mailto:tc@hl7.ch">Contact tc@hl7.ch</a>
+        </div>
+      </div>
+
+      <div class="stats" aria-label="404 status">
+        <div class="card not-found">
+          <div class="label">Not found</div>
+          <div class="number">404</div>
+          <div class="footnote">The requested resource could not be located.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="left">
+        <span>&copy; 2026 HL7 Benutzergruppe Schweiz</span>
+        <a href="mailto:tc@hl7.ch">tc@hl7.ch</a>
+        <a href="https://www.hl7.ch/de/datenschutzerklärung">Datenschutzerklärung</a>
+      </div>
+      <div class="right">
+        <span class="legal">FHIR and the Flame design mark are registered trademarks of HL7.</span>
+        <a href="https://github.com/hl7ch">GitHub</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
