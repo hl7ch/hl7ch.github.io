@@ -1,4 +1,4 @@
-# CH ELM Observation Profile Vs - CH ELM (R4) v1.14.1
+# CH ELM Observation Profile Vs - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-observation-profile-vs | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:ChElmObservationProfileVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-observation-profile-vs | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:ChElmObservationProfileVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,12 +47,12 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-observation-profile-vs",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-observation-profile-vs",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "ChElmObservationProfileVs",
   "title" : "CH ELM Observation Profile Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -83,6 +83,9 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
       },
       {
         "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-hiv-rec"
+      },
+      {
+        "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-component-cpe-txt"
       },
       {
         "code" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-pq-virl"

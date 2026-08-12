@@ -1,4 +1,4 @@
-# CH ELM Patient Initials - CH ELM (R4) v1.14.1
+# CH ELM Patient Initials - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientInitials | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:ChElmPatientInitials |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientInitials | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:ChElmPatientInitials |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-ChElmPatientInitials
     "valueCanonical" : "http://hl7.eu/fhir/laboratory/StructureDefinition/Patient-eu-lab"
   }],
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ChElmPatientInitials",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "ChElmPatientInitials",
   "title" : "CH ELM Patient Initials",
   "status" : "active",
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

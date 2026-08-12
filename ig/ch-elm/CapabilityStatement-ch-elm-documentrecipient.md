@@ -1,4 +1,4 @@
-# FOPH CapabilityStatement for receiving laboratory reports - CH ELM (R4) v1.14.1
+# FOPH CapabilityStatement for receiving laboratory reports - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CapabilityStatement/ch-elm-documentrecipient | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:CH_ELM_CapabilityStatement_DocumentRecipient |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CapabilityStatement/ch-elm-documentrecipient | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:CH_ELM_CapabilityStatement_DocumentRecipient |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,12 +28,12 @@ This is the **Requirements** CapabilityStatement for the Document Recipient.
   "resourceType" : "CapabilityStatement",
   "id" : "ch-elm-documentrecipient",
   "url" : "http://fhir.ch/ig/ch-elm/CapabilityStatement/ch-elm-documentrecipient",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "CH_ELM_CapabilityStatement_DocumentRecipient",
   "title" : "FOPH CapabilityStatement for receiving laboratory reports",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

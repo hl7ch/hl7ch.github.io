@@ -1,4 +1,4 @@
-# CH ELM Document: Laboratory Report - CH ELM (R4) v1.14.1
+# CH ELM Document: Laboratory Report - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:ChElmDocument |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:ChElmDocument |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -43,11 +43,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-document.csv)
     "valueCanonical" : "http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"
   }],
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "ChElmDocument",
   "title" : "CH ELM Document: Laboratory Report",
   "status" : "active",
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -100,6 +100,13 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-document.csv)
         "severity" : "warning",
         "human" : "The ServiceRequest.code and the Observation.code are in general equal.",
         "expression" : "entry.resource.ofType(ServiceRequest).code = entry.resource.ofType(Observation).code",
+        "source" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"
+      },
+      {
+        "key" : "ch-elm-patient-birthdate",
+        "severity" : "error",
+        "human" : "If a Patient entry has a birthDate set, it must be >= 1900-01-01 and before the Bundle's creation date (timestamp).",
+        "expression" : "entry.resource.ofType(Patient).where(birthDate.exists() and birthDate.hasValue()).all(birthDate >= @1900-01-01 and ((birthDate.toString().length()=4 and birthDate <= %resource.timestamp.toString().substring(0,4).toDateTime()) or (birthDate.toString().length()=7 and birthDate <= %resource.timestamp.toString().substring(0,7).toDateTime()) or (birthDate.toString().length()=10 and birthDate <= %resource.timestamp.toString().substring(0,10).toDateTime())))",
         "source" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"
       }]
     },

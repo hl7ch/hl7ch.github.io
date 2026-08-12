@@ -1,4 +1,4 @@
-# CH ELM Observation Results for Genotyping - CH ELM (R4) v1.14.1
+# CH ELM Observation Results for Genotyping - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:ChElmObservationResultsLaboratoryGenotyping |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:ChElmObservationResultsLaboratoryGenotyping |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-observation-r
     "valueCanonical" : "http://hl7.eu/fhir/laboratory/StructureDefinition/Observation-resultslab-eu-lab"
   }],
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "ChElmObservationResultsLaboratoryGenotyping",
   "title" : "CH ELM Observation Results for Genotyping",
   "status" : "active",
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -129,6 +129,20 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-observation-r
         "severity" : "error",
         "human" : "If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code, then the component.interpretation code must be a member of the mapped ValueSet for genotyping testing",
         "expression" : "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).exists() implies component.interpretation.all(memberOf('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code))",
+        "source" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping"
+      },
+      {
+        "key" : "ch-elm-component-observation-profile-geno-loinc",
+        "severity" : "error",
+        "human" : "If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile, then the observation must be conform to the mapped profile for genotyping testing",
+        "expression" : "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-observation-profile'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).exists() implies conformsTo('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).target.first().code)",
+        "source" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping"
+      },
+      {
+        "key" : "ch-elm-component-observation-profile-geno-snomedct",
+        "severity" : "error",
+        "human" : "If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile, then the component.code code must be a member of the mapped ValueSet for genotyping testing",
+        "expression" : "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).exists() implies conformsTo('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code)",
         "source" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping"
       }]
     },

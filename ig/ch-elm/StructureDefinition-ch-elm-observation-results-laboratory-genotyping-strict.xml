@@ -11,11 +11,11 @@
     <valueCanonical value="http://hl7.eu/fhir/laboratory/StructureDefinition/Observation-resultslab-eu-lab"/>
   </extension>
   <url value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping-strict"/>
-  <version value="1.14.1"/>
+  <version value="1.15.0"/>
   <name value="ChElmObservationResultsLaboratoryGenotypingStrict"/>
   <title value="CH ELM Observation Results for Genotyping (strict)"/>
   <status value="active"/>
-  <date value="2026-07-01T19:23:08+00:00"/>
+  <date value="2026-08-12T07:20:00+00:00"/>
   <publisher value="Federal Office of Public Health FOPH"/>
   <contact>
     <name value="Federal Office of Public Health FOPH"/>
@@ -70,7 +70,7 @@
   <derivation value="constraint"/>
   <snapshot>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version">
-      <valueString value="1.14.1"/>
+      <valueString value="1.15.0"/>
     </extension>
     <element id="Observation">
       <path value="Observation"/>
@@ -239,6 +239,20 @@
         <severity value="error"/>
         <human value="If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code, then the component.interpretation code must be a member of the mapped ValueSet for genotyping testing"/>
         <expression value="'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).exists() implies component.interpretation.all(memberOf('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code))"/>
+        <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping"/>
+      </constraint>
+      <constraint>
+        <key value="ch-elm-component-observation-profile-geno-loinc"/>
+        <severity value="error"/>
+        <human value="If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile, then the observation must be conform to the mapped profile for genotyping testing"/>
+        <expression value="'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-observation-profile'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).exists() implies conformsTo('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).target.first().code)"/>
+        <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping"/>
+      </constraint>
+      <constraint>
+        <key value="ch-elm-component-observation-profile-geno-snomedct"/>
+        <severity value="error"/>
+        <human value="If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile, then the component.code code must be a member of the mapped ValueSet for genotyping testing"/>
+        <expression value="'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).exists() implies conformsTo('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code)"/>
         <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping"/>
       </constraint>
       <isModifier value="false"/>

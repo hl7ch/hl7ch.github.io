@@ -1,0 +1,334 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-elm/Bundle/1cDoc-NeisseriaGonorrhoeae> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "1cDoc-NeisseriaGonorrhoeae"] ;
+  fhir:Bundle.identifier [
+     fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ] ;
+     fhir:Identifier.value [ fhir:value "urn:uuid:1901332d-6012-443f-9690-9291adb2e19d" ]
+  ] ;
+  fhir:Bundle.type [ fhir:value "document"] ;
+  fhir:Bundle.timestamp [ fhir:value "2023-07-14T16:00:00+02:00"^^xsd:dateTime] ;
+  fhir:Bundle.entry [
+     fhir:index 0 ;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Composition/1Comp-NeisseriaGonorrhoeae" ] ;
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Composition/1Comp-NeisseriaGonorrhoeae>
+  ], [
+     fhir:index 1 ;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/DiagnosticReport/1cDR-NeisseriaGonorrhoeae" ] ;
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/DiagnosticReport/1cDR-NeisseriaGonorrhoeae>
+  ], [
+     fhir:index 2 ;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Patient/Pat-001" ] ;
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Patient/Pat-001>
+  ], [
+     fhir:index 3 ;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Observation/1Obs-NeisseriaGonorrhoeae" ] ;
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Observation/1Obs-NeisseriaGonorrhoeae>
+  ], [
+     fhir:index 4 ;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Specimen/1Spec-Specimen" ] ;
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Specimen/1Spec-Specimen>
+  ], [
+     fhir:index 5 ;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/ServiceRequest/1cSR-Order" ] ;
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/ServiceRequest/1cSR-Order>
+  ], [
+     fhir:index 6 ;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/PractitionerRole/1cPR-KsAbc" ] ;
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/PractitionerRole/1cPR-KsAbc>
+  ], [
+     fhir:index 7 ;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Practitioner/1cPract-KsAbc" ] ;
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Practitioner/1cPract-KsAbc>
+  ], [
+     fhir:index 8 ;
+     fhir:Bundle.entry.fullUrl [ fhir:value "http://test.fhir.ch/r4/Organization/1Org-Labor" ] ;
+     fhir:Bundle.entry.resource <http://test.fhir.ch/r4/Organization/1Org-Labor>
+  ] .
+
+<http://test.fhir.ch/r4/Composition/1Comp-NeisseriaGonorrhoeae> a fhir:Composition ;
+  fhir:Resource.id [ fhir:value "1Comp-NeisseriaGonorrhoeae"] ;
+  fhir:Resource.language [ fhir:value "de-CH"] ;
+  fhir:Composition.identifier [
+     fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ] ;
+     fhir:Identifier.value [ fhir:value "urn:uuid:1901332d-6012-443f-9690-9291adb2e19d" ]
+  ] ;
+  fhir:Composition.status [ fhir:value "final"] ;
+  fhir:Composition.type [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a sct:4241000179101 ;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ] ;
+       fhir:Coding.version [ fhir:value "http://snomed.info/sct/2011000195101" ] ;
+       fhir:Coding.code [ fhir:value "4241000179101" ] ;
+       fhir:Coding.display [ fhir:value "Laborbericht" ]
+     ], [
+       fhir:index 1 ;
+       a loinc:11502-2 ;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+       fhir:Coding.code [ fhir:value "11502-2" ] ;
+       fhir:Coding.display [ fhir:value "Laboratory report" ]
+     ]
+  ] ;
+  fhir:Composition.subject [
+     fhir:link <http://fhir.ch/ig/ch-elm/Patient/Pat-001> ;
+     fhir:Reference.reference [ fhir:value "Patient/Pat-001" ]
+  ] ;
+  fhir:Composition.date [ fhir:value "2023-07-14T16:00:00+02:00"^^xsd:dateTime] ;
+  fhir:Composition.author [
+     fhir:index 0 ;
+     fhir:link <http://fhir.ch/ig/ch-elm/Organization/1Org-Labor> ;
+     fhir:Reference.reference [ fhir:value "Organization/1Org-Labor" ]
+  ] ;
+  fhir:Composition.title [ fhir:value "Laborbericht vom 14.07.2023"] ;
+  fhir:Composition.section [
+     fhir:index 0 ;
+     fhir:Composition.section.title [ fhir:value "Analyseergebnisse der mikrobiologischen Untersuchung" ] ;
+     fhir:Composition.section.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0 ;
+         a loinc:18725-2 ;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+         fhir:Coding.code [ fhir:value "18725-2" ] ;
+         fhir:Coding.display [ fhir:value "Microbiology studies (set)" ]
+       ]
+     ] ;
+     fhir:Composition.section.entry [
+       fhir:index 0 ;
+       fhir:link <http://fhir.ch/ig/ch-elm/Observation/1Obs-NeisseriaGonorrhoeae> ;
+       fhir:Reference.reference [ fhir:value "Observation/1Obs-NeisseriaGonorrhoeae" ]
+     ]
+  ] .
+
+<http://test.fhir.ch/r4/DiagnosticReport/1cDR-NeisseriaGonorrhoeae> a fhir:DiagnosticReport ;
+  fhir:Resource.id [ fhir:value "1cDR-NeisseriaGonorrhoeae"] ;
+  fhir:DomainResource.extension [
+     fhir:index 0 ;
+     fhir:Extension.url [ fhir:value "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition" ] ;
+     fhir:Extension.valueReference [
+       fhir:link <http://fhir.ch/ig/ch-elm/Composition/1Comp-NeisseriaGonorrhoeae> ;
+       fhir:Reference.reference [ fhir:value "Composition/1Comp-NeisseriaGonorrhoeae" ]
+     ]
+  ] ;
+  fhir:DiagnosticReport.identifier [
+     fhir:index 0 ;
+     fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ] ;
+     fhir:Identifier.value [ fhir:value "urn:uuid:1901332d-6012-443f-9690-9291adb2e19d" ]
+  ] ;
+  fhir:DiagnosticReport.basedOn [
+     fhir:index 0 ;
+     fhir:link <http://fhir.ch/ig/ch-elm/ServiceRequest/1cSR-Order> ;
+     fhir:Reference.reference [ fhir:value "ServiceRequest/1cSR-Order" ]
+  ] ;
+  fhir:DiagnosticReport.status [ fhir:value "final"] ;
+  fhir:DiagnosticReport.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a loinc:11502-2 ;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+       fhir:Coding.code [ fhir:value "11502-2" ] ;
+       fhir:Coding.display [ fhir:value "Laboratory report" ]
+     ]
+  ] ;
+  fhir:DiagnosticReport.subject [
+     fhir:link <http://fhir.ch/ig/ch-elm/Patient/Pat-001> ;
+     fhir:Reference.reference [ fhir:value "Patient/Pat-001" ]
+  ] ;
+  fhir:DiagnosticReport.performer [
+     fhir:index 0 ;
+     fhir:link <http://fhir.ch/ig/ch-elm/Organization/1Org-Labor> ;
+     fhir:Reference.reference [ fhir:value "Organization/1Org-Labor" ]
+  ] ;
+  fhir:DiagnosticReport.specimen [
+     fhir:index 0 ;
+     fhir:link <http://fhir.ch/ig/ch-elm/Specimen/1Spec-Specimen> ;
+     fhir:Reference.reference [ fhir:value "Specimen/1Spec-Specimen" ]
+  ] ;
+  fhir:DiagnosticReport.result [
+     fhir:index 0 ;
+     fhir:link <http://fhir.ch/ig/ch-elm/Observation/1Obs-NeisseriaGonorrhoeae> ;
+     fhir:Reference.reference [ fhir:value "Observation/1Obs-NeisseriaGonorrhoeae" ]
+  ] .
+
+<http://test.fhir.ch/r4/Patient/Pat-001> a fhir:Patient ;
+  fhir:Resource.id [ fhir:value "Pat-001"] ;
+  fhir:Patient.identifier [
+     fhir:index 0 ;
+     fhir:Identifier.system [ fhir:value "urn:oid:2.16.756.5.32" ] ;
+     fhir:Identifier.value [ fhir:value "7562295883070" ]
+  ] ;
+  fhir:Patient.name [
+     fhir:index 0 ;
+     fhir:HumanName.family [ fhir:value "M" ] ;
+     fhir:HumanName.given [
+       fhir:value "D" ;
+       fhir:index 0
+     ]
+  ] ;
+  fhir:Patient.gender [ fhir:value "male"] ;
+  fhir:Patient.birthDate [ fhir:value "1960-08-22"^^xsd:date] ;
+  fhir:Patient.address [
+     fhir:index 0 ;
+     fhir:Address.use [ fhir:value "home" ] ;
+     fhir:Address.city [ fhir:value "Bern" ] ;
+     fhir:Address.state [ fhir:value "BE" ] ;
+     fhir:Address.postalCode [ fhir:value "3000" ] ;
+     fhir:Address.country [
+       fhir:value "CH" ;
+       fhir:Element.extension [
+         fhir:index 0 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/iso21090-codedString" ] ;
+         fhir:Extension.valueCoding [
+           fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ] ;
+           fhir:Coding.code [ fhir:value "CH" ]
+         ]
+       ]
+     ]
+  ] .
+
+<http://test.fhir.ch/r4/Observation/1Obs-NeisseriaGonorrhoeae> a fhir:Observation ;
+  fhir:Resource.id [ fhir:value "1Obs-NeisseriaGonorrhoeae"] ;
+  fhir:Observation.status [ fhir:value "final"] ;
+  fhir:Observation.category [
+     fhir:index 0 ;
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/observation-category" ] ;
+       fhir:Coding.code [ fhir:value "laboratory" ] ;
+       fhir:Coding.display [ fhir:value "Laboratory" ]
+     ]
+  ] ;
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a loinc:697-3 ;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+       fhir:Coding.code [ fhir:value "697-3" ] ;
+       fhir:Coding.display [ fhir:value "Neisseria gonorrhoeae [Presence] in Urethra by Organism specific culture" ]
+     ]
+  ] ;
+  fhir:Observation.subject [
+     fhir:link <http://fhir.ch/ig/ch-elm/Patient/Pat-001> ;
+     fhir:Reference.reference [ fhir:value "Patient/Pat-001" ]
+  ] ;
+  fhir:Observation.effectiveDateTime [ fhir:value "2023-07-14T11:10:00+02:00"^^xsd:dateTime] ;
+  fhir:Observation.performer [
+     fhir:index 0 ;
+     fhir:link <http://fhir.ch/ig/ch-elm/Organization/1Org-Labor> ;
+     fhir:Reference.reference [ fhir:value "Organization/1Org-Labor" ]
+  ] ;
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a sct:10828004 ;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ] ;
+       fhir:Coding.code [ fhir:value "10828004" ] ;
+       fhir:Coding.display [ fhir:value "Positive" ]
+     ]
+  ] ;
+  fhir:Observation.interpretation [
+     fhir:index 0 ;
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation" ] ;
+       fhir:Coding.code [ fhir:value "POS" ] ;
+       fhir:Coding.display [ fhir:value "Positive" ]
+     ]
+  ] ;
+  fhir:Observation.specimen [
+     fhir:link <http://fhir.ch/ig/ch-elm/Specimen/1Spec-Specimen> ;
+     fhir:Reference.reference [ fhir:value "Specimen/1Spec-Specimen" ]
+  ] .
+
+<http://test.fhir.ch/r4/Specimen/1Spec-Specimen> a fhir:Specimen ;
+  fhir:Resource.id [ fhir:value "1Spec-Specimen"] ;
+  fhir:Specimen.subject [
+     fhir:link <http://fhir.ch/ig/ch-elm/Patient/Pat-001> ;
+     fhir:Reference.reference [ fhir:value "Patient/Pat-001" ]
+  ] ;
+  fhir:Specimen.collection [
+     fhir:Specimen.collection.collectedDateTime [ fhir:value "2023-07-01"^^xsd:date ]
+  ] .
+
+<http://test.fhir.ch/r4/ServiceRequest/1cSR-Order> a fhir:ServiceRequest ;
+  fhir:Resource.id [ fhir:value "1cSR-Order"] ;
+  fhir:ServiceRequest.identifier [
+     fhir:index 0 ;
+     fhir:Identifier.value [ fhir:value "22000938108" ]
+  ] ;
+  fhir:ServiceRequest.status [ fhir:value "completed"] ;
+  fhir:ServiceRequest.intent [ fhir:value "order"] ;
+  fhir:ServiceRequest.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a loinc:697-3 ;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+       fhir:Coding.code [ fhir:value "697-3" ] ;
+       fhir:Coding.display [ fhir:value "Neisseria gonorrhoeae [Presence] in Urethra by Organism specific culture" ]
+     ]
+  ] ;
+  fhir:ServiceRequest.subject [
+     fhir:link <http://fhir.ch/ig/ch-elm/Patient/Pat-001> ;
+     fhir:Reference.reference [ fhir:value "Patient/Pat-001" ]
+  ] ;
+  fhir:ServiceRequest.requester [
+     fhir:link <http://fhir.ch/ig/ch-elm/PractitionerRole/1cPR-KsAbc> ;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/1cPR-KsAbc" ]
+  ] ;
+  fhir:ServiceRequest.specimen [
+     fhir:index 0 ;
+     fhir:link <http://fhir.ch/ig/ch-elm/Specimen/1Spec-Specimen> ;
+     fhir:Reference.reference [ fhir:value "Specimen/1Spec-Specimen" ]
+  ] .
+
+<http://test.fhir.ch/r4/PractitionerRole/1cPR-KsAbc> a fhir:PractitionerRole ;
+  fhir:Resource.id [ fhir:value "1cPR-KsAbc"] ;
+  fhir:PractitionerRole.practitioner [
+     fhir:link <http://fhir.ch/ig/ch-elm/Practitioner/1cPract-KsAbc> ;
+     fhir:Reference.reference [ fhir:value "Practitioner/1cPract-KsAbc" ]
+  ] .
+
+<http://test.fhir.ch/r4/Practitioner/1cPract-KsAbc> a fhir:Practitioner ;
+  fhir:Resource.id [ fhir:value "1cPract-KsAbc"] ;
+  fhir:Practitioner.name [
+     fhir:index 0 ;
+     fhir:HumanName.family [ fhir:value "Giacometti" ] ;
+     fhir:HumanName.given [
+       fhir:index 0 ;
+       fhir:Element.extension [
+         fhir:index 0 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/data-absent-reason" ] ;
+         fhir:Extension.valueCode [ fhir:value "unknown" ]
+       ]
+     ]
+  ] ;
+  fhir:Practitioner.address [
+     fhir:index 0 ;
+     fhir:Address.city [ fhir:value "Bern" ] ;
+     fhir:Address.postalCode [ fhir:value "3000" ]
+  ] .
+
+<http://test.fhir.ch/r4/Organization/1Org-Labor> a fhir:Organization ;
+  fhir:Resource.id [ fhir:value "1Org-Labor"] ;
+  fhir:Organization.identifier [
+     fhir:index 0 ;
+     fhir:Identifier.system [ fhir:value "urn:oid:2.51.1.3" ] ;
+     fhir:Identifier.value [ fhir:value "7601002331470" ]
+  ] ;
+  fhir:Organization.name [ fhir:value "SanLab"] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-elm/Bundle/1cDoc-NeisseriaGonorrhoeae.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

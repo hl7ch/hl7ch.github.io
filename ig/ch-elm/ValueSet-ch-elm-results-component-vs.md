@@ -1,4 +1,4 @@
-# CH ELM Results Component Vs - CH ELM (R4) v1.14.1
+# CH ELM Results Component Vs - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-vs | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:ChElmResultsComponentVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-vs | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:ChElmResultsComponentVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,12 +47,12 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-component-vs",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-vs",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "ChElmResultsComponentVs",
   "title" : "CH ELM Results Component Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -73,9 +73,6 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
     "include" : [{
       "system" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-component-vs",
       "concept" : [{
-        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-antibiotic-cpe"
-      },
-      {
         "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-antibiotic-tb"
       },
       {

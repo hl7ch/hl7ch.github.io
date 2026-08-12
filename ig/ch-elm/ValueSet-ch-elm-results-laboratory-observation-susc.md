@@ -1,4 +1,4 @@
-# CH ELM Results Laboratory Observation Susceptibility - CH ELM (R4) v1.14.1
+# CH ELM Results Laboratory Observation Susceptibility - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-susc | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:ChElmResultsLaboratoryObservationSusc |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-susc | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:ChElmResultsLaboratoryObservationSusc |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -48,12 +48,12 @@ This CH ELM value set includes the codes for the laboratory Susceptibility test 
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-laboratory-observation-susc",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation-susc",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "ChElmResultsLaboratoryObservationSusc",
   "title" : "CH ELM Results Laboratory Observation Susceptibility",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

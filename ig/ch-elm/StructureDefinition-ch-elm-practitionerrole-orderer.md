@@ -1,4 +1,4 @@
-# CH ELM PractitionerRole: Orderer - CH ELM (R4) v1.14.1
+# CH ELM PractitionerRole: Orderer - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-practitionerrole-orderer | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:ChElmPractitionerRoleOrderer |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-practitionerrole-orderer | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:ChElmPractitionerRoleOrderer |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -46,11 +46,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-practitionerr
     "valueCanonical" : "http://hl7.eu/fhir/laboratory/StructureDefinition/PractitionerRole-eu-lab"
   }],
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-practitionerrole-orderer",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "ChElmPractitionerRoleOrderer",
   "title" : "CH ELM PractitionerRole: Orderer",
   "status" : "active",
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

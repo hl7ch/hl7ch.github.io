@@ -1,4 +1,4 @@
-# CH ELM Expecting Organism Specification To Results Completion Vs - CH ELM (R4) v1.14.1
+# CH ELM Expecting Organism Specification To Results Completion Vs - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-organism-specification-to-results-completion-vs | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:ChElmExpectingOrganismSpecificationToResultsCompletionVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-organism-specification-to-results-completion-vs | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:ChElmExpectingOrganismSpecificationToResultsCompletionVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -24,12 +24,12 @@ This CH ELM concept map shows which leading codes have to be completed by an add
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-expecting-organism-specification-to-results-completion-vs",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-expecting-organism-specification-to-results-completion-vs",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "ChElmExpectingOrganismSpecificationToResultsCompletionVs",
   "title" : "CH ELM Expecting Organism Specification To Results Completion Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -80,6 +80,14 @@ This CH ELM concept map shows which leading codes have to be completed by an add
       "display" : "Diphtheria toxin DNA [Presence] in Specimen by NAA with probe detection",
       "target" : [{
         "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-diph-org",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
+      "code" : "108111-6",
+      "display" : "Hantavirus RNA [Presence] in Specimen by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-hanta-org",
         "equivalence" : "relatedto"
       }]
     },

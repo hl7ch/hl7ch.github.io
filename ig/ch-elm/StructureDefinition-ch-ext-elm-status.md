@@ -1,4 +1,4 @@
-# Status of the processing of the document - CH ELM (R4) v1.14.1
+# Status of the processing of the document - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-ext-elm-status | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:ChExtElmStatus |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-ext-elm-status | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:ChExtElmStatus |
 | **Copyright/Legal**: CC0-1.0 | |
 
 Extension to define the status of the processing of the document
@@ -46,11 +46,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-ext-elm-status.cs
   "resourceType" : "StructureDefinition",
   "id" : "ch-ext-elm-status",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-ext-elm-status",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "ChExtElmStatus",
   "title" : "Status of the processing of the document",
   "status" : "active",
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

@@ -13,11 +13,11 @@
     <valueCanonical value="http://hl7.eu/fhir/laboratory/StructureDefinition/Bundle-eu-lab"/>
   </extension>
   <url value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document-strict"/>
-  <version value="1.14.1"/>
+  <version value="1.15.0"/>
   <name value="ChElmDocumentStrict"/>
   <title value="CH ELM Document: Laboratory Report (strict)"/>
   <status value="active"/>
-  <date value="2026-07-01T19:23:08+00:00"/>
+  <date value="2026-08-12T07:20:00+00:00"/>
   <publisher value="Federal Office of Public Health FOPH"/>
   <contact>
     <name value="Federal Office of Public Health FOPH"/>
@@ -62,7 +62,7 @@
   <derivation value="constraint"/>
   <snapshot>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version">
-      <valueString value="1.14.1"/>
+      <valueString value="1.15.0"/>
     </extension>
     <element id="Bundle">
       <path value="Bundle"/>
@@ -152,6 +152,13 @@
         <severity value="warning"/>
         <human value="The ServiceRequest.code and the Observation.code are in general equal."/>
         <expression value="entry.resource.ofType(ServiceRequest).code = entry.resource.ofType(Observation).code"/>
+        <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"/>
+      </constraint>
+      <constraint>
+        <key value="ch-elm-patient-birthdate"/>
+        <severity value="error"/>
+        <human value="If a Patient entry has a birthDate set, it must be &gt;= 1900-01-01 and before the Bundle's creation date (timestamp)."/>
+        <expression value="entry.resource.ofType(Patient).where(birthDate.exists() and birthDate.hasValue()).all(birthDate &gt;= @1900-01-01 and ((birthDate.toString().length()=4 and birthDate &lt;= %resource.timestamp.toString().substring(0,4).toDateTime()) or (birthDate.toString().length()=7 and birthDate &lt;= %resource.timestamp.toString().substring(0,7).toDateTime()) or (birthDate.toString().length()=10 and birthDate &lt;= %resource.timestamp.toString().substring(0,10).toDateTime())))"/>
         <source value="http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-document"/>
       </constraint>
       <isModifier value="false"/>

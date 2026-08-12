@@ -1,4 +1,4 @@
-# CH ELM Results To Interpretation Code - CH ELM (R4) v1.14.1
+# CH ELM Results To Interpretation Code - CH ELM (R4) v1.15.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-interpretation-code | *Version*:1.14.1 |
-| Active as of 2026-07-01 | *Computable Name*:ChElmResultsToInterpretationCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-interpretation-code | *Version*:1.15.0 |
+| Active as of 2026-08-12 | *Computable Name*:ChElmResultsToInterpretationCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -24,12 +24,12 @@ This CH ELM concept map specifies the interpretation codes for each leading code
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-results-to-interpretation-code",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-interpretation-code",
-  "version" : "1.14.1",
+  "version" : "1.15.0",
   "name" : "ChElmResultsToInterpretationCode",
   "title" : "CH ELM Results To Interpretation Code",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-07-01T19:23:08+00:00",
+  "date" : "2026-08-12T07:20:00+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -110,6 +110,14 @@ This CH ELM concept map specifies the interpretation codes for each leading code
     {
       "code" : "101219-4",
       "display" : "Legionella sp DNA [Presence] in Specimen by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
+      "code" : "101298-8",
+      "display" : "Respiratory syncytial virus RNA [Presence] in Throat by NAA with non-probe detection",
       "target" : [{
         "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
         "equivalence" : "relatedto"
@@ -284,6 +292,22 @@ This CH ELM concept map specifies the interpretation codes for each leading code
       }]
     },
     {
+      "code" : "105211-7",
+      "display" : "Respiratory syncytial virus RNA [Presence] in Bronchial specimen by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
+      "code" : "105231-5",
+      "display" : "Respiratory syncytial virus RNA [Presence] in Sputum by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
       "code" : "105640-7",
       "display" : "Campylobacter sp DNA [Presence] in Specimen by NAA with probe detection",
       "target" : [{
@@ -304,6 +328,22 @@ This CH ELM concept map specifies the interpretation codes for each leading code
       "display" : "Tick-borne encephalitis virus Ab [Interpretation] in Serum or Plasma",
       "target" : [{
         "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-sero",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
+      "code" : "108111-6",
+      "display" : "Hantavirus RNA [Presence] in Specimen by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
+      "code" : "111556-7",
+      "display" : "Respiratory syncytial virus RNA [Presence] in Bronchoalveolar aspirate by NAA with non-probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
         "equivalence" : "relatedto"
       }]
     },
@@ -1094,6 +1134,14 @@ This CH ELM concept map specifies the interpretation codes for each leading code
     {
       "code" : "40982-1",
       "display" : "Influenza virus B RNA [Presence] in Specimen by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
+      "code" : "40988-8",
+      "display" : "Respiratory syncytial virus RNA [Presence] in Specimen by NAA with probe detection",
       "target" : [{
         "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
         "equivalence" : "relatedto"
@@ -2172,6 +2220,22 @@ This CH ELM concept map specifies the interpretation codes for each leading code
       }]
     },
     {
+      "code" : "76088-4",
+      "display" : "Respiratory syncytial virus RNA [Presence] in Bronchoalveolar lavage by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
+      "code" : "76089-2",
+      "display" : "Respiratory syncytial virus RNA [Presence] in Nasopharynx by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
       "code" : "76626-1",
       "display" : "Measles virus [Presence] in Specimen by Organism specific culture",
       "target" : [{
@@ -2422,6 +2486,14 @@ This CH ELM concept map specifies the interpretation codes for each leading code
     {
       "code" : "85478-6",
       "display" : "Influenza virus B RNA [Presence] in Upper respiratory specimen by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
+      "code" : "85479-4",
+      "display" : "Respiratory syncytial virus RNA [Presence] in Upper respiratory specimen by NAA with probe detection",
       "target" : [{
         "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
         "equivalence" : "relatedto"
@@ -2684,6 +2756,14 @@ This CH ELM concept map specifies the interpretation codes for each leading code
       }]
     },
     {
+      "code" : "91133-9",
+      "display" : "Respiratory syncytial virus RNA [Presence] in Lower respiratory specimen by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
       "code" : "91780-7",
       "display" : "Measles virus [Presence] in Lower respiratory specimen by Organism specific culture",
       "target" : [{
@@ -2728,6 +2808,14 @@ This CH ELM concept map specifies the interpretation codes for each leading code
       "display" : "Middle East respiratory syndrome coronavirus (MERS-CoV) RNA [Presence] in Lower respiratory specimen by NAA with probe detection",
       "target" : [{
         "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos-neg",
+        "equivalence" : "relatedto"
+      }]
+    },
+    {
+      "code" : "92131-2",
+      "display" : "Respiratory syncytial virus RNA [Presence] in Respiratory system specimen by NAA with probe detection",
+      "target" : [{
+        "code" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-interpretation-codes-pos",
         "equivalence" : "relatedto"
       }]
     },

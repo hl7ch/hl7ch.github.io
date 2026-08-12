@@ -21,11 +21,11 @@
      ]
   ] ;
   fhir:StructureDefinition.url [ fhir:value "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping-strict"] ;
-  fhir:StructureDefinition.version [ fhir:value "1.14.1"] ;
+  fhir:StructureDefinition.version [ fhir:value "1.15.0"] ;
   fhir:StructureDefinition.name [ fhir:value "ChElmObservationResultsLaboratoryGenotypingStrict"] ;
   fhir:StructureDefinition.title [ fhir:value "CH ELM Observation Results for Genotyping (strict)"] ;
   fhir:StructureDefinition.status [ fhir:value "active"] ;
-  fhir:StructureDefinition.date [ fhir:value "2026-07-01T19:23:08+00:00"^^xsd:dateTime] ;
+  fhir:StructureDefinition.date [ fhir:value "2026-08-12T07:20:00+00:00"^^xsd:dateTime] ;
   fhir:StructureDefinition.publisher [ fhir:value "Federal Office of Public Health FOPH"] ;
   fhir:StructureDefinition.contact [
      fhir:index 0 ;
@@ -90,7 +90,7 @@
      fhir:Element.extension [
        fhir:index 0 ;
        fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version" ] ;
-       fhir:Extension.valueString [ fhir:value "1.14.1" ]
+       fhir:Extension.valueString [ fhir:value "1.15.0" ]
      ] ;
      fhir:StructureDefinition.snapshot.element [
        fhir:index 0 ;
@@ -331,6 +331,26 @@
          fhir:ElementDefinition.constraint.severity [ fhir:value "error" ] ;
          fhir:ElementDefinition.constraint.human [ fhir:value "If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code, then the component.interpretation code must be a member of the mapped ValueSet for genotyping testing" ] ;
          fhir:ElementDefinition.constraint.expression [ fhir:value "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).exists() implies component.interpretation.all(memberOf('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-interpretation-code'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code))" ] ;
+         fhir:ElementDefinition.constraint.source [
+           fhir:value "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping" ;
+           fhir:link <http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping>
+         ]
+       ], [
+         fhir:index 20 ;
+         fhir:ElementDefinition.constraint.key [ fhir:value "ch-elm-component-observation-profile-geno-loinc" ] ;
+         fhir:ElementDefinition.constraint.severity [ fhir:value "error" ] ;
+         fhir:ElementDefinition.constraint.human [ fhir:value "If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile, then the observation must be conform to the mapped profile for genotyping testing" ] ;
+         fhir:ElementDefinition.constraint.expression [ fhir:value "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-susc-to-component-observation-profile'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).exists() implies conformsTo('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile'.resolve().group.where(source='http://loinc.org').element.where(code=%context.code.coding.where(system='http://loinc.org').first().code).target.first().code)" ] ;
+         fhir:ElementDefinition.constraint.source [
+           fhir:value "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping" ;
+           fhir:link <http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping>
+         ]
+       ], [
+         fhir:index 21 ;
+         fhir:ElementDefinition.constraint.key [ fhir:value "ch-elm-component-observation-profile-geno-snomedct" ] ;
+         fhir:ElementDefinition.constraint.severity [ fhir:value "error" ] ;
+         fhir:ElementDefinition.constraint.human [ fhir:value "If Observation.code is mapped in http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile, then the component.code code must be a member of the mapped ValueSet for genotyping testing" ] ;
+         fhir:ElementDefinition.constraint.expression [ fhir:value "'http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).exists() implies conformsTo('http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile'.resolve().group.where(source='http://snomed.info/sct').element.where(code=%context.code.coding.where(system='http://snomed.info/sct').first().code).target.first().code)" ] ;
          fhir:ElementDefinition.constraint.source [
            fhir:value "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping" ;
            fhir:link <http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-results-laboratory-genotyping>
