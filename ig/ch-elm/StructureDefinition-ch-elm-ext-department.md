@@ -1,4 +1,4 @@
-# CH ELM Extension: Department - CH ELM (R4) v1.15.0
+# CH ELM Extension: Department - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-department | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:ChElmExtDepartment |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-department | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:ChElmExtDepartment |
 | **Copyright/Legal**: CC0-1.0 | |
 
 This CH ELM extension enables the representation of a department (name) of an organization directly in the resource Organization itself.
@@ -44,11 +44,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-ext-departmen
   "resourceType" : "StructureDefinition",
   "id" : "ch-elm-ext-department",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-department",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmExtDepartment",
   "title" : "CH ELM Extension: Department",
   "status" : "active",
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

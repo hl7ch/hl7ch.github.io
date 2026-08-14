@@ -1,4 +1,4 @@
-# CH ELM Results Gene Tb - CH ELM (R4) v1.15.0
+# CH ELM Results Gene Tb - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-gene-tb | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:ChElmResultsComponentGeneTb |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-gene-tb | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:ChElmResultsComponentGeneTb |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -47,12 +47,12 @@ This value set is not used here; it may be used elsewhere (e.g. specifications a
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-component-gene-tb",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-component-gene-tb",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmResultsComponentGeneTb",
   "title" : "CH ELM Results Gene Tb",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

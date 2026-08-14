@@ -1,4 +1,4 @@
-# Test97-CoaxiellaNoRatio - CH ELM (R4) v1.15.0
+# Test97-CoaxiellaNoRatio - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test97-CoaxiellaNoRatio | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:Test97CoaxiellaNoRatio |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test97-CoaxiellaNoRatio | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:Test97CoaxiellaNoRatio |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,13 +17,13 @@ Test97: Verify that error for missing ratio is raised
 
 **url**: [TestScript Test97CoaxiellaNoRatio](TestScript-Test97-CoaxiellaNoRatio.md)
 
-**version**: 1.15.0
+**version**: 1.15.1
 
 **name**: Test97CoaxiellaNoRatio
 
 **status**: Active
 
-**date**: 2026-08-12 07:20:00+0000
+**date**: 2026-08-14 07:34:39+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -104,10 +104,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test97-CoaxiellaNoRatio",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test97-CoaxiellaNoRatio",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "Test97CoaxiellaNoRatio",
   "status" : "active",
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

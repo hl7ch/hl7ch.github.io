@@ -1,4 +1,4 @@
-# CH ELM Interpretation Codes Vs - CH ELM (R4) v1.15.0
+# CH ELM Interpretation Codes Vs - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-interpretation-codes-vs | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:ChElmInterpretationCodesVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-interpretation-codes-vs | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:ChElmInterpretationCodesVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ The codes contained in this code system represent URLs of value sets that can be
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [ChElmInterpretationCodesVs](ValueSet-ch-elm-interpretation-codes-vs.md)
+* [CH ELM Interpretation Codes Vs](ValueSet-ch-elm-interpretation-codes-vs.md)
 
 
 
@@ -28,12 +28,12 @@ The codes contained in this code system represent URLs of value sets that can be
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-interpretation-codes-vs",
   "url" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-interpretation-codes-vs",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmInterpretationCodesVs",
   "title" : "CH ELM Interpretation Codes Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

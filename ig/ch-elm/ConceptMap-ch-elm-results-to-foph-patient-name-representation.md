@@ -1,4 +1,4 @@
-# CH ELM Results To FOPH Patient Name Representation - CH ELM (R4) v1.15.0
+# CH ELM Results To FOPH Patient Name Representation - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:ChElmResultsToFophPatientNameRepresentation |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:ChElmResultsToFophPatientNameRepresentation |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -24,12 +24,12 @@ This CH ELM concept map specifies the required mode of patient representation fo
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-results-to-foph-patient-name-representation",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-to-foph-patient-name-representation",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmResultsToFophPatientNameRepresentation",
   "title" : "CH ELM Results To FOPH Patient Name Representation",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

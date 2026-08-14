@@ -1,4 +1,4 @@
-# CH ELM Observation Component Results: Text - CH ELM (R4) v1.15.0
+# CH ELM Observation Component Results: Text - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-component-cpe-txt | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:ChElmObservationComponentCpeTxt |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-component-cpe-txt | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:ChElmObservationComponentCpeTxt |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-observation-c
   "resourceType" : "StructureDefinition",
   "id" : "ch-elm-observation-component-cpe-txt",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-observation-component-cpe-txt",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmObservationComponentCpeTxt",
   "title" : "CH ELM Observation Component Results: Text",
   "status" : "active",
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

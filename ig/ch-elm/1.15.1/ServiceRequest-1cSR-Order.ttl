@@ -1,0 +1,47 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-elm/ServiceRequest/1cSR-Order> a fhir:ServiceRequest ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "1cSR-Order"] ;
+  fhir:ServiceRequest.identifier [
+     fhir:index 0 ;
+     fhir:Identifier.value [ fhir:value "22000938108" ]
+  ] ;
+  fhir:ServiceRequest.status [ fhir:value "completed"] ;
+  fhir:ServiceRequest.intent [ fhir:value "order"] ;
+  fhir:ServiceRequest.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a loinc:697-3 ;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+       fhir:Coding.code [ fhir:value "697-3" ] ;
+       fhir:Coding.display [ fhir:value "Neisseria gonorrhoeae [Presence] in Urethra by Organism specific culture" ]
+     ]
+  ] ;
+  fhir:ServiceRequest.subject [
+     fhir:link <http://fhir.ch/ig/ch-elm/Patient/Pat-001> ;
+     fhir:Reference.reference [ fhir:value "Patient/Pat-001" ]
+  ] ;
+  fhir:ServiceRequest.requester [
+     fhir:link <http://fhir.ch/ig/ch-elm/PractitionerRole/1cPR-KsAbc> ;
+     fhir:Reference.reference [ fhir:value "PractitionerRole/1cPR-KsAbc" ]
+  ] ;
+  fhir:ServiceRequest.specimen [
+     fhir:index 0 ;
+     fhir:link <http://fhir.ch/ig/ch-elm/Specimen/1Spec-Specimen> ;
+     fhir:Reference.reference [ fhir:value "Specimen/1Spec-Specimen" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-elm/ServiceRequest/1cSR-Order.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

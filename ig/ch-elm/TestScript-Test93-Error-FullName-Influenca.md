@@ -1,4 +1,4 @@
-# Test93 Error if full name is provided by Influenca (should be initials) - CH ELM (R4) v1.15.0
+# Test93 Error if full name is provided by Influenca (should be initials) - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test93-Error-FullName-Influenca | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:Test93ErrorFullNameInfluenca |
+| *Official URL*:http://fhir.ch/ig/ch-elm/TestScript/Test93-Error-FullName-Influenca | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:Test93ErrorFullNameInfluenca |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,13 +17,13 @@ Test script to verify error if full name is provided by Influenca (must be initi
 
 **url**: [TestScript Test93ErrorFullNameInfluenca](TestScript-Test93-Error-FullName-Influenca.md)
 
-**version**: 1.15.0
+**version**: 1.15.1
 
 **name**: Test93ErrorFullNameInfluenca
 
 **status**: Active
 
-**date**: 2026-08-12 07:20:00+0000
+**date**: 2026-08-14 07:34:39+0000
 
 **publisher**: Federal Office of Public Health FOPH
 
@@ -104,10 +104,10 @@ CC0-1.0
   "resourceType" : "TestScript",
   "id" : "Test93-Error-FullName-Influenca",
   "url" : "http://fhir.ch/ig/ch-elm/TestScript/Test93-Error-FullName-Influenca",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "Test93ErrorFullNameInfluenca",
   "status" : "active",
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

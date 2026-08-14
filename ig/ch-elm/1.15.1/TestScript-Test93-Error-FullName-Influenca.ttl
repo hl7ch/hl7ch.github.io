@@ -1,0 +1,108 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-elm/TestScript/Test93-Error-FullName-Influenca> a fhir:TestScript ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "Test93-Error-FullName-Influenca"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: TestScript Test93-Error-FullName-Influenca</b></p><a name=\"Test93-Error-FullName-Influenca\"> </a><a name=\"hcTest93-Error-FullName-Influenca\"> </a><p><b>url</b>: <a href=\"TestScript-Test93-Error-FullName-Influenca.html\">TestScript Test93ErrorFullNameInfluenca</a></p><p><b>version</b>: 1.15.1</p><p><b>name</b>: Test93ErrorFullNameInfluenca</p><p><b>status</b>: Active</p><p><b>date</b>: 2026-08-14 07:28:03+0000</p><p><b>publisher</b>: Federal Office of Public Health FOPH</p><p><b>contact</b>: Federal Office of Public Health FOPH: <a href=\"https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html\">https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html</a></p><p><b>description</b>: </p><div><p>Test script to verify error if full name is provided by Influenca (must be initials)</p>\n</div><p><b>jurisdiction</b>: <span title=\"Codes:{urn:iso:std:iso:3166 CH}\">Switzerland</span></p><p><b>copyright</b>: </p><div><p>CC0-1.0</p>\n</div><blockquote><p><b>fixture</b></p><blockquote><p><b>id</b></p>inputdata</blockquote><p><b>autocreate</b>: false</p><p><b>autodelete</b>: false</p><p><b>resource</b>: <a href=\"Binary-Test93-DocumentReference-Error-FullName-Influenca.html\">Binary: application/fhir+xml (19116 bytes base64)</a></p></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Test93</p><p><b>description</b>: Test script to verify error if full name is provided by Influenca (must be initials)</p><blockquote><p><b>action</b></p><h3>Operations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Description</b></td><td><b>ContentType</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td><td><b>SourceId</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"http://terminology.hl7.org/7.3.0/CodeSystem-testscript-operation-codes.html#testscript-operation-codes-validate\">Test script operation code: validate</a> ($validate)</td><td>validate</td><td>application/fhir+json</td><td>true</td><td>profile=http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference</td><td>inputdata</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td style=\"display: none\">*</td><td>Confirm that the returned HTTP status is 200(OK).</td><td>response</td><td>200</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Description</b></td><td><b>Expression</b></td><td><b>Value</b></td><td><b>WarningOnly</b></td></tr><tr><td style=\"display: none\">*</td><td>Confirm that the returned resource is an OperationOutcome.</td><td>is(FHIR.OperationOutcome)</td><td>true</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Description</b></td><td><b>Expression</b></td><td><b>Value</b></td><td><b>WarningOnly</b></td></tr><tr><td style=\"display: none\">*</td><td>Confirm that we have at least one error</td><td>issue.where(severity='error' or severity='fatal').count()&gt;0</td><td>true</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Description</b></td><td><b>Expression</b></td><td><b>Value</b></td><td><b>WarningOnly</b></td></tr><tr><td style=\"display: none\">*</td><td>Check slicing fails</td><td>issue.where(severity='error' and diagnostics.startsWith('Slice \\'DocumentReference.contained:document\\': a matching slice is required, but not found')).count() &gt; 0</td><td>true</td><td>false</td></tr></table></blockquote></blockquote></div>"
+  ] ;
+  fhir:TestScript.url [ fhir:value "http://fhir.ch/ig/ch-elm/TestScript/Test93-Error-FullName-Influenca"] ;
+  fhir:TestScript.version [ fhir:value "1.15.1"] ;
+  fhir:TestScript.name [ fhir:value "Test93ErrorFullNameInfluenca"] ;
+  fhir:TestScript.status [ fhir:value "active"] ;
+  fhir:TestScript.date [ fhir:value "2026-08-14T07:28:03+00:00"^^xsd:dateTime] ;
+  fhir:TestScript.publisher [ fhir:value "Federal Office of Public Health FOPH"] ;
+  fhir:TestScript.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "Federal Office of Public Health FOPH" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "https://www.bag.admin.ch/bag/en/home/das-bag/kontakt-standort.html" ]
+     ]
+  ] ;
+  fhir:TestScript.description [ fhir:value "Test script to verify error if full name is provided by Influenca (must be initials)"] ;
+  fhir:TestScript.jurisdiction [
+     fhir:index 0 ;
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ] ;
+       fhir:Coding.code [ fhir:value "CH" ]
+     ]
+  ] ;
+  fhir:TestScript.copyright [ fhir:value "CC0-1.0"] ;
+  fhir:TestScript.fixture [
+     fhir:index 0 ;
+     fhir:Element.id [ fhir:value "inputdata" ] ;
+     fhir:TestScript.fixture.autocreate [ fhir:value "false"^^xsd:boolean ] ;
+     fhir:TestScript.fixture.autodelete [ fhir:value "false"^^xsd:boolean ] ;
+     fhir:TestScript.fixture.resource [
+       fhir:link <http://fhir.ch/ig/ch-elm/Binary/Test93-DocumentReference-Error-FullName-Influenca> ;
+       fhir:Reference.reference [ fhir:value "Binary/Test93-DocumentReference-Error-FullName-Influenca" ]
+     ]
+  ] ;
+  fhir:TestScript.test [
+     fhir:index 0 ;
+     fhir:TestScript.test.name [ fhir:value "Test93" ] ;
+     fhir:TestScript.test.description [ fhir:value "Test script to verify error if full name is provided by Influenca (must be initials)" ] ;
+     fhir:TestScript.test.action [
+       fhir:index 0 ;
+       fhir:TestScript.test.action.operation [
+         fhir:TestScript.setup.action.operation.type [
+           fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/testscript-operation-codes" ] ;
+           fhir:Coding.code [ fhir:value "validate" ]
+         ] ;
+         fhir:TestScript.setup.action.operation.description [ fhir:value "validate" ] ;
+         fhir:TestScript.setup.action.operation.contentType [ fhir:value "application/fhir+json" ] ;
+         fhir:TestScript.setup.action.operation.encodeRequestUrl [ fhir:value "true"^^xsd:boolean ] ;
+         fhir:TestScript.setup.action.operation.params [ fhir:value "profile=http://fhir.ch/ig/ch-elm/StructureDefinition/PublishDocumentReference" ] ;
+         fhir:TestScript.setup.action.operation.sourceId [ fhir:value "inputdata" ]
+       ]
+     ], [
+       fhir:index 1 ;
+       fhir:TestScript.test.action.assert [
+         fhir:TestScript.setup.action.assert.description [ fhir:value "Confirm that the returned HTTP status is 200(OK)." ] ;
+         fhir:TestScript.setup.action.assert.direction [ fhir:value "response" ] ;
+         fhir:TestScript.setup.action.assert.responseCode [ fhir:value "200" ] ;
+         fhir:TestScript.setup.action.assert.warningOnly [ fhir:value "false"^^xsd:boolean ]
+       ]
+     ], [
+       fhir:index 2 ;
+       fhir:TestScript.test.action.assert [
+         fhir:TestScript.setup.action.assert.description [ fhir:value "Confirm that the returned resource is an OperationOutcome." ] ;
+         fhir:TestScript.setup.action.assert.expression [ fhir:value "is(FHIR.OperationOutcome)" ] ;
+         fhir:TestScript.setup.action.assert.value [ fhir:value "true" ] ;
+         fhir:TestScript.setup.action.assert.warningOnly [ fhir:value "false"^^xsd:boolean ]
+       ]
+     ], [
+       fhir:index 3 ;
+       fhir:TestScript.test.action.assert [
+         fhir:TestScript.setup.action.assert.description [ fhir:value "Confirm that we have at least one error" ] ;
+         fhir:TestScript.setup.action.assert.expression [ fhir:value "issue.where(severity='error' or severity='fatal').count()>0" ] ;
+         fhir:TestScript.setup.action.assert.value [ fhir:value "true" ] ;
+         fhir:TestScript.setup.action.assert.warningOnly [ fhir:value "false"^^xsd:boolean ]
+       ]
+     ], [
+       fhir:index 4 ;
+       fhir:TestScript.test.action.assert [
+         fhir:TestScript.setup.action.assert.description [ fhir:value "Check slicing fails" ] ;
+         fhir:TestScript.setup.action.assert.expression [ fhir:value "issue.where(severity='error' and diagnostics.startsWith('Slice \\'DocumentReference.contained:document\\': a matching slice is required, but not found')).count() > 0" ] ;
+         fhir:TestScript.setup.action.assert.value [ fhir:value "true" ] ;
+         fhir:TestScript.setup.action.assert.warningOnly [ fhir:value "false"^^xsd:boolean ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://fhir.ch/ig/ch-elm/TestScript/Test93-Error-FullName-Influenca.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

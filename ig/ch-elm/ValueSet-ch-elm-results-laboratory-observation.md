@@ -1,4 +1,4 @@
-# CH ELM Results Laboratory Observation - CH ELM (R4) v1.15.0
+# CH ELM Results Laboratory Observation - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:ChElmResultsLaboratoryObservation |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:ChElmResultsLaboratoryObservation |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -49,12 +49,12 @@ This CH ELM value set includes the codes for the laboratory test results (organi
   "resourceType" : "ValueSet",
   "id" : "ch-elm-results-laboratory-observation",
   "url" : "http://fhir.ch/ig/ch-elm/ValueSet/ch-elm-results-laboratory-observation",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmResultsLaboratoryObservation",
   "title" : "CH ELM Results Laboratory Observation",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

@@ -1,4 +1,4 @@
-# CH ELM FOPH Business Rules - CH ELM (R4) v1.15.0
+# CH ELM FOPH Business Rules - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-business-rules | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:ChElmFophBusinessRules |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-business-rules | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:ChElmFophBusinessRules |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -28,12 +28,12 @@ This CH ELM code system describes specific business rules of the FOPH, which are
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-foph-business-rules",
   "url" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-business-rules",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmFophBusinessRules",
   "title" : "CH ELM FOPH Business Rules",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

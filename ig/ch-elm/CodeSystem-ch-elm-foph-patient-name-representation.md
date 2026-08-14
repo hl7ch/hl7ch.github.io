@@ -1,4 +1,4 @@
-# CH ELM FOPH Patient Name Representation - CH ELM (R4) v1.15.0
+# CH ELM FOPH Patient Name Representation - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-patient-name-representation | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:ChElmFophPatientNameRepresentation |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-patient-name-representation | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:ChElmFophPatientNameRepresentation |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ This CH ELM resource defines the codes which identify possible patient name sche
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [ChElmFophPatientNameRepresentation](ValueSet-ch-elm-foph-patient-name-representation.md)
+* [CH ELM FOPH Patient Name Representation](ValueSet-ch-elm-foph-patient-name-representation.md)
 
 
 
@@ -28,12 +28,12 @@ This CH ELM resource defines the codes which identify possible patient name sche
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-foph-patient-name-representation",
   "url" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-foph-patient-name-representation",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmFophPatientNameRepresentation",
   "title" : "CH ELM FOPH Patient Name Representation",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

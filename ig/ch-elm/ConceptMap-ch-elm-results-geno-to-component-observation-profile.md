@@ -1,4 +1,4 @@
-# CH ELM Results Genotyping To Component Obersvation Profile - CH ELM (R4) v1.15.0
+# CH ELM Results Genotyping To Component Obersvation Profile - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:ChElmResultsGenoToComponentObservationProfile |
+| *Official URL*:http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:ChElmResultsGenoToComponentObservationProfile |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -24,12 +24,12 @@ This CH ELM concept map specifies the ValuesSet for component.code for each lead
   "resourceType" : "ConceptMap",
   "id" : "ch-elm-results-geno-to-component-observation-profile",
   "url" : "http://fhir.ch/ig/ch-elm/ConceptMap/ch-elm-results-geno-to-component-observation-profile",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmResultsGenoToComponentObservationProfile",
   "title" : "CH ELM Results Genotyping To Component Obersvation Profile",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",

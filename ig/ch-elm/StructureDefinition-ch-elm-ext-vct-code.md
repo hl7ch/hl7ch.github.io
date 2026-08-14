@@ -1,4 +1,4 @@
-# CH ELM Extension: VCT code - CH ELM (R4) v1.15.0
+# CH ELM Extension: VCT code - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-vct-code | *Version*:1.15.0 |
-| Retired as of 2026-08-12 | *Computable Name*:ChElmExtVctCode |
+| *Official URL*:http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-vct-code | *Version*:1.15.1 |
+| Retired as of 2026-08-14 | *Computable Name*:ChElmExtVctCode |
 | **Copyright/Legal**: CC0-1.0 | |
 
 This CH ELM extension enables to provide the VCT Code. Retired. Ues identifier instead (see Guidance)
@@ -44,11 +44,11 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-ext-vct-code.
   "resourceType" : "StructureDefinition",
   "id" : "ch-elm-ext-vct-code",
   "url" : "http://fhir.ch/ig/ch-elm/StructureDefinition/ch-elm-ext-vct-code",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmExtVctCode",
   "title" : "CH ELM Extension: VCT code",
   "status" : "retired",
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
@@ -105,7 +105,7 @@ Other representations of profile: [CSV](StructureDefinition-ch-elm-ext-vct-code.
       "type" : [{
         "code" : "string"
       }],
-      "maxLength" : 20
+      "maxLength" : 100
     }]
   }
 }

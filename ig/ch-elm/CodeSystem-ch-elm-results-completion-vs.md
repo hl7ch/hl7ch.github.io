@@ -1,4 +1,4 @@
-# CH ELM Results Completion Vs - CH ELM (R4) v1.15.0
+# CH ELM Results Completion Vs - CH ELM (R4) v1.15.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-completion-vs | *Version*:1.15.0 |
-| Active as of 2026-08-12 | *Computable Name*:ChElmResultsCompletionVs |
+| *Official URL*:http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-completion-vs | *Version*:1.15.1 |
+| Active as of 2026-08-14 | *Computable Name*:ChElmResultsCompletionVs |
 | **Copyright/Legal**: CC0-1.0 | |
 
  
@@ -17,7 +17,7 @@ The codes contained in this code system represent URLs of value sets that can be
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [ChElmResultsCompletionVs](ValueSet-ch-elm-results-completion-vs.md)
+* [CH ELM Results Completion Vs](ValueSet-ch-elm-results-completion-vs.md)
 
 
 
@@ -28,12 +28,12 @@ The codes contained in this code system represent URLs of value sets that can be
   "resourceType" : "CodeSystem",
   "id" : "ch-elm-results-completion-vs",
   "url" : "http://fhir.ch/ig/ch-elm/CodeSystem/ch-elm-results-completion-vs",
-  "version" : "1.15.0",
+  "version" : "1.15.1",
   "name" : "ChElmResultsCompletionVs",
   "title" : "CH ELM Results Completion Vs",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-08-12T07:20:00+00:00",
+  "date" : "2026-08-14T07:34:39+00:00",
   "publisher" : "Federal Office of Public Health FOPH",
   "contact" : [{
     "name" : "Federal Office of Public Health FOPH",
