@@ -176,10 +176,12 @@
       workgroup: { name: 'IVR / HL7 Switzerland', url: 'mailto:felix.fischer@borsconsulting.ch' }
     },
 
-    // ─── FOPH ────────────────────────────────────────────────────────
+    // ─── HL7 Switzerland / FOPH ──────────────────────────────────────
+    // eHealth Suisse is being wound down and its EPR mandate sits with the
+    // FOPH, so everything the FOPH owns renders under one heading.
     'ch.fhir.ig.ch-elm': {
       name: 'CH ELM',
-      organization: 'foph',
+      organization: 'hl7ch-foph',
       description: 'CH ELM is a project of the Swiss Federal Office of Public Health (FOPH), Communicable Diseases Division, to enable laboratories to send their observations of notifiable communicable infectious diseases to the FOPH electronically.',
       links: {
         source: 'https://github.com/ahdis/ch-elm',
@@ -187,7 +189,7 @@
       }
     },
     'ch.fhir.ig.ch-epl': {
-      organization: 'foph',
+      organization: 'hl7ch-foph',
       description: 'The specialties list (SL) is the official list of reimbursable medicines in Switzerland, maintained by the Federal Office of Public Health (FOPH). This FHIR Implementation Guide defines the standardized representation and exchange of SL data using HL7® FHIR®, supporting interoperability in the Swiss healthcare system. It provides FHIR profiles for medicines, prices, packaging, and reimbursement conditions, enabling consistent integration across healthcare applications and services.',
       links: {
         source: 'https://github.com/bag-epl/bag-epl-fhir',
@@ -195,11 +197,25 @@
       }
     },
     'ch.fhir.ig.ch-crl': {
-      organization: 'foph',
+      organization: 'hl7ch-foph',
       description: 'Implementation Guide that specifies the exchange format for cancer registration. In order to achieve data completeness on a national level, institutions involved in diagnosing or treating cancer are required to report cases of cancer to a cancer registry.',
       links: {
         source: 'https://github.com/ahdis/ch-crl',
         wiki: 'https://github.com/ahdis/ch-crl/wiki'
+      }
+    },
+    'ch.fhir.ig.ch-epr-fhir': {
+      organization: 'hl7ch-foph',
+      description: 'This national extension provides a FHIR based API for the Swiss EPR by extending the IHE FHIR based mobile profiles.',
+      // Was { name: 'eHealth Suisse', url: 'mailto:…' } — a personal address
+      // at a body being wound down. Point at the HL7 CH working group instead.
+      workgroup: WG_FHIR,
+      // Upstream package-list.json marks 5.0.0 as status="ballot" but this is
+      // the released national extension. Treat as published.
+      publicationStatus: 'published',
+      links: {
+        source: 'https://github.com/ehealthsuisse/ch-epr-fhir',
+        wiki: 'https://github.com/ehealthsuisse/ch-epr-fhir/wiki'
       }
     },
 
@@ -232,19 +248,6 @@
         wiki: 'https://github.com/seicodyne/ch-idmp/wiki'
       }
     },
-    'ch.fhir.ig.ch-epr-fhir': {
-      organization: 'hl7ch-ehealth-suisse',
-      description: 'This national extension provides a FHIR based API for the Swiss EPR by extending the IHE FHIR based mobile profiles.',
-      workgroup: { name: 'eHealth Suisse', url: 'mailto:martin.smock@e-health-suisse.ch' },
-      // Upstream package-list.json marks 5.0.0 as status="ballot" but this is
-      // the released national extension. Treat as published.
-      publicationStatus: 'published',
-      links: {
-        source: 'https://github.com/ehealthsuisse/ch-epr-fhir',
-        wiki: 'https://github.com/ehealthsuisse/ch-epr-fhir/wiki'
-      }
-    },
-
     // ─── CARA ────────────────────────────────────────────────────────
     'ch.fhir.ig.ch-emed-epr': {
       name: 'CH EMED EPR',
@@ -260,23 +263,26 @@
   };
 
   // ──────────────────────────── Org names ────────────────────────────
-  // Order matches the bundled renderer's expected sort order. Anything not
-  // in this map renders under its bare id.
+  // Section headings for the catalog, keyed by the id used in OVERRIDES /
+  // CI_BUILD_ORG / EXTRA_IGS. Anything not in this map falls back to its
+  // bare id. ORG_ORDER below only pre-sorts the loader output — the renderer
+  // re-groups and re-sorts (HL7 Switzerland pinned first, then by newest
+  // publication), so insertion order here is a tie-breaker, not the layout.
   var ORG_NAMES = {
-    'hl7ch':                'HL7 Switzerland',
-    'hl7ch-alis':           'HL7 Switzerland / ALIS Connect',
-    'hl7ch-umzh':           'HL7 Switzerland / UMZH Connect',
-    'hl7ch-refdata':        'HL7 Switzerland / Refdata Foundation',
-    'hl7ch-ehealth-suisse': 'HL7 Switzerland / eHealth Suisse',
-    'ehealth-suisse':       'eHealth Suisse',
-    'foph':                 'Federal Office of Public Health',
-    'ech-hl7ch':            'eCH / HL7 Switzerland',
-    'sphn':                 'Swiss Personalized Health Network',
-    'cara':                 'CARA',
-    'swissnoso':            'Swissnoso',
-    'openmedical':          'Open Medical',
-    'umzh':                 'Universitätsmedizin Zürich',
-    'refdata':              'Refdata Foundation'
+    'hl7ch':           'HL7 Switzerland',
+    // One FOPH organization. eHealth Suisse is being wound down and its EPR
+    // mandate sits with the FOPH, so there is no separate heading for it.
+    'hl7ch-foph':      'HL7 Switzerland / FOPH',
+    'hl7ch-alis':      'HL7 Switzerland / ALIS Connect',
+    'hl7ch-umzh':      'HL7 Switzerland / UMZH Connect',
+    'hl7ch-refdata':   'HL7 Switzerland / Refdata Foundation',
+    'ech-hl7ch':       'eCH / HL7 Switzerland',
+    'sphn':            'Swiss Personalized Health Network',
+    'cara':            'CARA',
+    'swissnoso':       'Swissnoso',
+    'openmedical':     'Open Medical',
+    'umzh':            'Universitätsmedizin Zürich',
+    'refdata':         'Refdata Foundation'
   };
   var ORG_ORDER = Object.keys(ORG_NAMES);
 
@@ -292,13 +298,15 @@
   // NOTE: `ahdis` is intentionally NOT mapped — it is a multi-tenant
   // publisher that builds IGs owned by various orgs (e.g. CH ELM is
   // FOPH-owned but built under ahdis/ch-elm). ahdis-built IGs MUST
-  // declare their owner via OVERRIDES.organization.
+  // declare their owner via OVERRIDES.organization ('hl7ch-foph' here).
   var CI_BUILD_ORG = {
     'hl7ch':         'hl7ch',
-    'ehealthsuisse': 'ehealth-suisse',
+    // eHealth Suisse's FHIR work is continued by the FOPH — IGs still built
+    // under the ehealthsuisse GitHub org belong in the FOPH group.
+    'ehealthsuisse': 'hl7ch-foph',
+    'bag-epl':       'hl7ch-foph',
     'umzhconnect':   'umzh',
-    'cara-ch':       'cara',
-    'bag-epl':       'foph'
+    'cara-ch':       'cara'
   };
 
   // Per-org fallback workgroup. Applied only when an IG has no
@@ -306,9 +314,8 @@
   // Arbeitsgruppe FHIR, JV EPD, JV Radiologie, JV Labor…) intentionally
   // have no default — per-IG curation is the right tool there.
   var ORG_DEFAULT_WG = {
-    'ehealth-suisse': { name: 'eHealth Suisse', url: 'mailto:martin.smock@e-health-suisse.ch' },
-    'swissnoso':      { name: 'Swissnoso',      url: 'mailto:contact@swissnoso.ch' },
-    'openmedical':    { name: 'Open Medical',   url: 'https://www.openmedical.swiss/#contact' }
+    'swissnoso':   { name: 'Swissnoso',    url: 'mailto:contact@swissnoso.ch' },
+    'openmedical': { name: 'Open Medical', url: 'https://www.openmedical.swiss/#contact' }
   };
 
   function deriveOrgFromCiBuild(ciBuild) {

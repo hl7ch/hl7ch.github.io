@@ -86,15 +86,17 @@ The loader is the single source of curated overlay on top of the upstream JSON:
   - **`votingCloses`** — empties `forms` (every VOTE chip disappears) once past.
 
   See [Updating the ballot vote forms](#updating-the-ballot-vote-forms) for the per-cycle procedure.
-- **`ORG_NAMES`** and **`ORG_ORDER`** — display name per organization `id`. The `id` keys are what `OVERRIDES.organization` references. IGs with no `organization` override and no fallback signal default to `'hl7ch'`.
+- **`ORG_NAMES`** and **`ORG_ORDER`** — display name per organization `id`. The `id` keys are what `OVERRIDES.organization` references; they are internal and never rendered. IGs with no `organization` override and no fallback signal default to `'hl7ch'`. `ORG_ORDER` only pre-sorts the loader output — the renderer re-groups and re-sorts (HL7 Switzerland pinned first, then by newest publication), so it acts as a tie-breaker rather than the layout.
+
+  There is exactly **one** FOPH organization, `hl7ch-foph` — "HL7 Switzerland / FOPH". eHealth Suisse is being wound down and its EPR mandate sits with the FOPH, so CH EPR FHIR, CH ELM and CH EPL all render under that one heading and no organization or workgroup is labelled "eHealth Suisse" any more. The `github.com/ehealthsuisse/…` source links stay — those are real repository addresses, not labels.
 - **`WG_*` shorthands** — reusable workgroup objects. Add new ones rather than inlining `{name, url}` literals.
 
 ### Automatic fallbacks (no curation needed)
 
 When an upstream IG has no `OVERRIDES` entry, two lookup tables in `js/load-data.js` derive sensible defaults from upstream signals:
 
-- **`CI_BUILD_ORG`** — maps the GitHub-org segment of `pkg['ci-build']` (`build.fhir.org/ig/{github-org}/...`) to a catalog org `id`. Covers `hl7ch`, `ehealthsuisse`, `umzhconnect`, `cara-ch`, `bag-epl`. `ahdis` is intentionally unmapped because it is a multi-tenant publisher (CH ELM is FOPH-owned but built under `ahdis/ch-elm`); IGs built under `ahdis` must declare their owner via `OVERRIDES.organization`.
-- **`ORG_DEFAULT_WG`** — per-org default workgroup, applied only when `OVERRIDES.workgroup` is absent. Covers eHealth Suisse, Swissnoso, Open Medical. HL7 CH deliberately has no default since its IGs span multiple workgroups (Arbeitsgruppe FHIR, JV EPD, JV Radiologie, JV Labor).
+- **`CI_BUILD_ORG`** — maps the GitHub-org segment of `pkg['ci-build']` (`build.fhir.org/ig/{github-org}/...`) to a catalog org `id`. Covers `hl7ch`, `ehealthsuisse` → `hl7ch-foph`, `bag-epl` → `hl7ch-foph`, `umzhconnect`, `cara-ch`. `ahdis` is intentionally unmapped because it is a multi-tenant publisher (CH ELM is FOPH-owned but built under `ahdis/ch-elm`); IGs built under `ahdis` must declare their owner via `OVERRIDES.organization`.
+- **`ORG_DEFAULT_WG`** — per-org default workgroup, applied only when `OVERRIDES.workgroup` is absent. Covers Swissnoso and Open Medical. HL7 CH deliberately has no default since its IGs span multiple workgroups (Arbeitsgruppe FHIR, JV EPD, JV Radiologie, JV Labor).
 
 There is also a startup `console.warn` (in `loadIgs`) that lists every upstream IG without an `OVERRIDES` entry — devtools-only diagnostic so curators see at a glance which IGs are running on defaults.
 
