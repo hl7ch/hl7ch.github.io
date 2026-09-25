@@ -104,7 +104,10 @@
       name:    [agg.name, slug.replace(/-/g, ' ')],
       id:      [agg.identifier, slug, repoWords(agg.links && agg.links.source)],
       desc:    [agg.description],
-      org:     [agg.organization && agg.organization.name],
+      // The id carries the short form ("hl7ch-foph"), so "foph" keeps
+      // working even when the heading spells the organization out.
+      org:     [agg.organization && agg.organization.name,
+                agg.organization && String(agg.organization.id || '').replace(/-/g, ' ')],
       wg:      [agg.workgroup && agg.workgroup.name],
       version: [],
       fhir:    [],

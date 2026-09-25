@@ -183,7 +183,7 @@
       workgroup: { name: 'IVR / HL7 Switzerland', url: 'mailto:felix.fischer@borsconsulting.ch' }
     },
 
-    // ─── HL7 Switzerland / FOPH ──────────────────────────────────────
+    // ─── HL7 Switzerland / Federal Office of Public Health ───────────
     // eHealth Suisse is being wound down and its EPR mandate sits with the
     // FOPH, so everything the FOPH owns renders under one heading.
     'ch.fhir.ig.ch-elm': {
@@ -279,7 +279,7 @@
     'hl7ch':           'HL7 Switzerland',
     // One FOPH organization. eHealth Suisse is being wound down and its EPR
     // mandate sits with the FOPH, so there is no separate heading for it.
-    'hl7ch-foph':      'HL7 Switzerland / FOPH',
+    'hl7ch-foph':      'HL7 Switzerland / Federal Office of Public Health',
     'hl7ch-alis':      'HL7 Switzerland / ALIS Connect',
     'hl7ch-umzh':      'HL7 Switzerland / UMZH Connect',
     'hl7ch-refdata':   'HL7 Switzerland / Refdata Foundation',
