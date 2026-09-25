@@ -81,34 +81,71 @@
     return m ? `${m[1]} ${m[2]}` : '';
   }
 
-  // One flat, pre-folded string per card, covering everything the card
-  // actually shows: title, package id, description, the organization and
-  // workgroup headings, every version number and FHIR release, and the
-  // status words. Built once per catalog load, never per keystroke.
-  function buildHaystack(agg) {
+  // Searchable fields, and the prefixes that scope a term to one of them.
+  // "wg:epd" only looks at the workgroup; "epd" looks everywhere.
+  const SEARCH_FIELDS = ['name', 'id', 'desc', 'org', 'wg', 'version', 'fhir', 'status'];
+  const FIELD_ALIASES = {
+    name: 'name', title: 'name', ig: 'name',
+    id: 'id', pkg: 'id', package: 'id',
+    desc: 'desc', description: 'desc',
+    org: 'org', organization: 'org', organisation: 'org',
+    wg: 'wg', workgroup: 'wg', ag: 'wg', arbeitsgruppe: 'wg',
+    version: 'version', v: 'version',
+    fhir: 'fhir',
+    status: 'status', ballot: 'status'
+  };
+
+  // One pre-folded string per field per card, covering everything the card
+  // actually shows. `all` is the union, used by unprefixed terms. Built once
+  // per catalog load, never per keystroke.
+  function buildFields(agg) {
     const slug = String(agg.identifier || '').replace(/^ch\.fhir\.ig\./, '');
-    const parts = [
-      agg.name, agg.identifier, slug, slug.replace(/-/g, ' '), agg.description,
-      agg.organization && agg.organization.name,
-      agg.workgroup && agg.workgroup.name,
-      repoWords(agg.links && agg.links.source)
-    ];
+    const f = {
+      name:    [agg.name, slug.replace(/-/g, ' ')],
+      id:      [agg.identifier, slug, repoWords(agg.links && agg.links.source)],
+      desc:    [agg.description],
+      org:     [agg.organization && agg.organization.name],
+      wg:      [agg.workgroup && agg.workgroup.name],
+      version: [],
+      fhir:    [],
+      status:  []
+    };
     for (const v of agg.versions) {
-      parts.push(v.version);
-      for (const fv of v.fhirVersion || []) parts.push(fv, FHIR_ALIASES[fv] || '');
-      parts.push(v.publicationStatus === 'under-ballot'
+      f.version.push(v.version);
+      for (const fv of v.fhirVersion || []) f.fhir.push(fv, FHIR_ALIASES[fv] || '');
+      f.status.push(v.publicationStatus === 'under-ballot'
         ? `ballot under-ballot ${BALLOT_WORDS[v.ballotType] || v.ballotType || ''}`
         : 'published released');
     }
-    return fold(parts.filter(Boolean).join(' '));
+    const out = {};
+    for (const k of SEARCH_FIELDS) out[k] = fold(f[k].filter(Boolean).join(' '));
+    out.all = SEARCH_FIELDS.map(k => out[k]).join(' ');
+    return out;
   }
 
-  // Whitespace-separated tokens, ANDed and order-independent: "ch core" and
-  // "core ch" both find CH Core.
-  function tokenize(query) { return fold(query).split(/\s+/).filter(Boolean); }
+  // Split a query into terms. Supports a field prefix ("wg:epd") and quoted
+  // phrases ("ch core" / wg:"austauschformate epd"). An unrecognised prefix
+  // is not a field — "https://x" stays one literal term.
+  function parseQuery(query) {
+    const terms = [];
+    const re = /(?:([A-Za-z]+):)?(?:"([^"]*)"|(\S+))/g;
+    let m;
+    while ((m = re.exec(query)) !== null) {
+      const prefix = m[1] ? FIELD_ALIASES[m[1].toLowerCase()] : null;
+      if (m[1] && !prefix) { const v = fold(m[0]); if (v) terms.push({ field: null, value: v }); continue; }
+      const value = fold(m[2] !== undefined ? m[2] : m[3]);
+      if (value) terms.push({ field: prefix, value: value });
+    }
+    return terms;
+  }
 
-  function matchesTokens(agg, tokens) {
-    for (const t of tokens) if (agg._haystack.indexOf(t) === -1) return false;
+  // Every term must match, in any order: "core ch" and "ch core" both find
+  // CH Core; "wg:epd fhir:r4" narrows on two fields at once.
+  function matchesQuery(agg, terms) {
+    for (const t of terms) {
+      const hay = t.field ? agg._fields[t.field] : agg._fields.all;
+      if (!hay || hay.indexOf(t.value) === -1) return false;
+    }
     return true;
   }
 
@@ -163,7 +200,7 @@
   function aggregates(all) {
     if (aggCache.src === all) return aggCache.aggs;
     const aggs = aggregate(all);
-    for (const agg of aggs) agg._haystack = buildHaystack(agg);
+    for (const agg of aggs) agg._fields = buildFields(agg);
     aggCache = { src: all, aggs };
     return aggs;
   }
@@ -207,7 +244,7 @@
     const isAllView    = state.view === 'all';
 
     const query  = state.search.trim();
-    const tokens = tokenize(query);
+    const terms  = parseQuery(query);
 
     // Aggregate per-identifier on the FULL entry list so each card knows
     // about both versions even when only one will render under the tab.
@@ -218,7 +255,7 @@
     // this order also yields "what matches anywhere", which the sub-tab
     // counts and the empty state both need in order to be honest.
     const matched = every.filter(agg =>
-      (!tokens.length || matchesTokens(agg, tokens)) &&
+      (!terms.length || matchesQuery(agg, terms)) &&
       (!state.fhirFilter ||
         agg.versions.some(v => (v.fhirVersion || []).includes(state.fhirFilter))));
 
@@ -440,6 +477,8 @@
 
     if (!v.matchedCount) {
       line = `No guides match ${what}.`;
+      hint = 'Tip: scope a term to one field \u2014 <code>wg:epd</code>, <code>org:foph</code>, '
+           + '<code>name:core</code>, <code>fhir:r5</code>, <code>status:ballot</code>.';
     } else {
       // The query does match — it is the active tab that hides the results.
       const kindBit = (state.view === 'ballot' && state.ballotKind !== 'all')

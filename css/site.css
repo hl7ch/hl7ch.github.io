@@ -334,6 +334,7 @@ button { font-family: inherit; }
 .search-form {
   display: flex;
   align-items: center;
+  position: relative;
 }
 .search-input {
   font-family: 'IBM Plex Mono', monospace;
@@ -341,10 +342,44 @@ button { font-family: inherit; }
   padding: 8px 12px;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
-  min-width: 260px;
+  min-width: 300px;
   background: #fff;
   color: #0f172a;
 }
+
+/* Search syntax cheat sheet. CSS-only: shown while the box has focus, so
+   the scoping prefixes are discoverable without a permanent panel. */
+.search-hint {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 40;
+  width: 380px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(12, 42, 77, 0.12);
+  font-size: 12px;
+  line-height: 1.6;
+  color: #475569;
+  text-align: left;
+}
+.search-form:focus-within .search-hint { display: block; }
+.search-hint p  { margin: 0 0 8px; }
+.search-hint ul { margin: 0 0 8px; padding: 0; list-style: none; }
+.search-hint li { margin: 0; }
+.search-hint code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: #0c2a4d;
+  background: #f4f6f8;
+  border: 1px solid #e2e8f0;
+  padding: 0 4px;
+}
+.search-hint span { color: #cbd5e1; }
+.search-hint .eg  { margin: 0; color: #64748b; }
 
 /* ─── Ballot sub-tabs (dark navy bar) ──────────────────────────── */
 .subtabs {
@@ -508,8 +543,8 @@ button { font-family: inherit; }
    reading the badge text. The bare .under-ballot rule is the fallback for
    a ballot whose type we could not derive. */
 .version-row.published         { border-left-color: #1f6b3a; }
-.version-row.under-ballot      { border-left-color: #d97706; }
-.version-row.under-ballot.stu  { border-left-color: #d97706; }
+.version-row.under-ballot      { border-left-color: #b45309; }
+.version-row.under-ballot.stu  { border-left-color: #b45309; }
 .version-row.under-ballot.dstu { border-left-color: #eab308; }
 
 /* Shared chips (CI / HISTORY / GITHUB / WIKI / JIRA) at the card footer */
@@ -531,17 +566,17 @@ button { font-family: inherit; }
   letter-spacing: 0.1em;
   border: 1px solid transparent;
 }
-/* Status tints — one construction throughout: pale background, dark
-   saturated text, mid-tint border.
-   STU and DSTU used to be two saturated reds four shades apart (#d62828 /
-   #a51a1a): indistinguishable side by side, and loud next to everything
-   else on the row. Orange (STU) and yellow (DSTU) are neighbouring hues,
-   so they carry a deliberate lightness step as well — the backgrounds are
-   1.26:1 apart, which keeps them separable without colour vision.
-   Text contrast on its own background: published 5.75:1, STU 5.37:1,
-   DSTU 6.68:1 — all WCAG AA at 10px/600. */
+/* Status tints. STU and DSTU used to be two saturated reds four shades
+   apart (#d62828 / #a51a1a): indistinguishable side by side, and loud next
+   to everything else on the row.
+   STU is now solid dark orange — same legibility as the red it replaces
+   (white text at 5.02:1 vs 5.01:1) but unmistakably not red. DSTU is a pale
+   yellow with dark text, so the two ballot types differ in weight as well
+   as hue: 4.48:1 between the two backgrounds keeps them separable without
+   colour vision, and the paler DSTU reads as the lighter-weight ballot.
+   Text contrast: published 5.75:1, STU 5.02:1, DSTU 6.68:1 — all AA. */
 .badge.published  { background: #eaf3ec; color: #1f6b3a; border-color: #bedcc6; }
-.badge.stu        { background: #f8d3ab; color: #8a3e05; border-color: #e9b478; }
+.badge.stu        { background: #b45309; color: #fff;    border-color: #b45309; }
 .badge.dstu       { background: #fcf3c0; color: #6b5104; border-color: #e8d375; }
 
 /* Link chips */

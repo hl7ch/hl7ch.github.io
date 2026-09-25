@@ -85,12 +85,20 @@
   window.FHIR_CH_BALLOT_CYCLE = BALLOT_CYCLE;
 
   // ─── HL7 CH workgroup shorthands ────────────────────────────────────
-  // Per-IG attribution restored from the legacy index.legacy.html cards.
+  // Names follow the official project-group list on the HL7 CH Technisches
+  // Komitee page (https://www.hl7.ch/technisches-komitee/) — keep them in
+  // sync with it rather than inventing per-IG wording. Use these constants;
+  // do not inline { name, url } literals.
   var TC_URL = 'https://www.hl7.ch/technisches-komitee/';
   var WG_FHIR   = { name: 'Arbeitsgruppe FHIR', url: 'https://www.hl7.ch/en/working-group-fhir' };
   var WG_AF_EPD = { name: 'Joint Venture Arbeitsgruppe Austauschformate EPD', url: TC_URL };
   var WG_RAD    = { name: 'Joint Venture Arbeitsgruppe Radiologie', url: TC_URL };
-  var WG_LAB    = { name: 'Joint Venture Laborprojekt', url: TC_URL };
+  var WG_LAB    = { name: 'Joint Venture Laborprojekt FAMH', url: TC_URL };
+  var WG_HUSKY  = { name: 'Joint Venture Arbeitsgruppe HUSKY', url: TC_URL };
+  // TODO(hl7.ch): 'Joint Venture Arbeitsgruppe EPD' is not one of the five
+  // project groups the Technisches Komitee lists. CH IPS and CH EPREG are
+  // parked on it until HL7 CH confirms which group owns them — HUSKY and
+  // Austauschformate EPD are both plausible.
   var WG_EPD    = { name: 'Joint Venture Arbeitsgruppe EPD', url: TC_URL };
 
   // ─────────────────────────── IG overrides ──────────────────────────
