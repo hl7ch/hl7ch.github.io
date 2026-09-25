@@ -94,12 +94,9 @@
   var WG_AF_EPD = { name: 'Joint Venture Arbeitsgruppe Austauschformate EPD', url: TC_URL };
   var WG_RAD    = { name: 'Joint Venture Arbeitsgruppe Radiologie', url: TC_URL };
   var WG_LAB    = { name: 'Joint Venture Laborprojekt FAMH', url: TC_URL };
+  // The fifth TC project group. Declared so the vocabulary is complete; no IG
+  // is attributed to it yet.
   var WG_HUSKY  = { name: 'Joint Venture Arbeitsgruppe HUSKY', url: TC_URL };
-  // TODO(hl7.ch): 'Joint Venture Arbeitsgruppe EPD' is not one of the five
-  // project groups the Technisches Komitee lists. CH IPS and CH EPREG are
-  // parked on it until HL7 CH confirms which group owns them — HUSKY and
-  // Austauschformate EPD are both plausible.
-  var WG_EPD    = { name: 'Joint Venture Arbeitsgruppe EPD', url: TC_URL };
 
   // ─────────────────────────── IG overrides ──────────────────────────
   // Hand-curated per-IG metadata that upstream doesn't provide:
@@ -151,6 +148,18 @@
       description: 'Transition of Care Implementation Guide based on the IPAG report.',
       workgroup: WG_AF_EPD
     },
+    // CH IPS and CH EPREG used to carry a separate 'Joint Venture Arbeitsgruppe
+    // EPD' — a name inherited from the legacy landing page that the Technisches
+    // Komitee does not list, and that read as a near-duplicate of this one on
+    // the page. Both are EPD exchange formats, so they join this group.
+    'ch.fhir.ig.ch-ips': {
+      description: 'Swiss IPS based on the International Patient Summary Implementation Guide.',
+      workgroup: WG_AF_EPD
+    },
+    'ch.fhir.ig.ch-epreg': {
+      description: 'This Implementation Guide describes the FHIR representation of the electronic pregnancy passport in Switzerland.',
+      workgroup: WG_AF_EPD
+    },
 
     // ─── HL7 Switzerland — Joint Venture Radiologie ──────────────────
     'ch.fhir.ig.ch-rad-order': {
@@ -166,16 +175,6 @@
     'ch.fhir.ig.ch-lab-report': {
       description: 'Implementation Guide for Laboratory Reports in Switzerland.',
       workgroup: WG_LAB
-    },
-
-    // ─── HL7 Switzerland — Joint Venture Arbeitsgruppe EPD ───────────
-    'ch.fhir.ig.ch-ips': {
-      description: 'Swiss IPS based on the International Patient Summary Implementation Guide.',
-      workgroup: WG_EPD
-    },
-    'ch.fhir.ig.ch-epreg': {
-      description: 'This Implementation Guide describes the FHIR representation of the electronic pregnancy passport in Switzerland.',
-      workgroup: WG_EPD
     },
 
     // ─── HL7 Switzerland — eCH / IVR ─────────────────────────────────
