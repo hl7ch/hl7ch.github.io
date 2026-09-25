@@ -52,6 +52,66 @@
       .replace(/'/g, '&#39;');
   }
 
+  // ─── Search ─────────────────────────────────────────────────────
+  // Case- and diacritic-insensitive fold, applied to both the query and the
+  // data. NFD splits "ü" into "u" + U+0308, so stripping the combining-mark
+  // range makes "Zürich" and "Zurich" the same key. 'ß' has no
+  // decomposition, so map it explicitly.
+  function fold(s) {
+    return String(s == null ? '' : s)
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\u00df/g, 'ss')
+      .toLowerCase();
+  }
+
+  // So "R4" / "R5" find IGs whose data carries only the numeric version.
+  const FHIR_ALIASES = { '4.0.1': 'r4', '4.3.0': 'r4b', '5.0.0': 'r5' };
+
+  // Ballot-type synonyms. The badge says DSTU BALLOT, but upstream's own
+  // package-list.json calls the same thing an "Informative Ballot", so both
+  // words have to find it.
+  const BALLOT_WORDS = { stu: 'stu trial use', dstu: 'dstu informative' };
+
+  // GitHub owner + repo out of a source URL, so "ahdis", "cara-ch",
+  // "umzhconnect" or "seicodyne" find the IGs those orgs publish — without
+  // dragging "https" / "github" / "com" into every haystack.
+  function repoWords(url) {
+    const m = /github\.com\/([^/]+)\/([^/#?]+)/i.exec(url || '');
+    return m ? `${m[1]} ${m[2]}` : '';
+  }
+
+  // One flat, pre-folded string per card, covering everything the card
+  // actually shows: title, package id, description, the organization and
+  // workgroup headings, every version number and FHIR release, and the
+  // status words. Built once per catalog load, never per keystroke.
+  function buildHaystack(agg) {
+    const slug = String(agg.identifier || '').replace(/^ch\.fhir\.ig\./, '');
+    const parts = [
+      agg.name, agg.identifier, slug, slug.replace(/-/g, ' '), agg.description,
+      agg.organization && agg.organization.name,
+      agg.workgroup && agg.workgroup.name,
+      repoWords(agg.links && agg.links.source)
+    ];
+    for (const v of agg.versions) {
+      parts.push(v.version);
+      for (const fv of v.fhirVersion || []) parts.push(fv, FHIR_ALIASES[fv] || '');
+      parts.push(v.publicationStatus === 'under-ballot'
+        ? `ballot under-ballot ${BALLOT_WORDS[v.ballotType] || v.ballotType || ''}`
+        : 'published released');
+    }
+    return fold(parts.filter(Boolean).join(' '));
+  }
+
+  // Whitespace-separated tokens, ANDed and order-independent: "ch core" and
+  // "core ch" both find CH Core.
+  function tokenize(query) { return fold(query).split(/\s+/).filter(Boolean); }
+
+  function matchesTokens(agg, tokens) {
+    for (const t of tokens) if (agg._haystack.indexOf(t) === -1) return false;
+    return true;
+  }
+
   // ─── Aggregation ────────────────────────────────────────────────
   // Each upstream IG now produces up to two per-version entries
   // (one published, one under-ballot). The renderer groups them back
@@ -94,6 +154,20 @@
     return [...byId.values()];
   }
 
+  // compute() runs on every render, i.e. on every keystroke. The aggregation
+  // and the search haystacks only depend on the loader's output, which is
+  // assigned once and never mutated — so cache on the array's identity.
+  const NO_IGS = [];
+  let aggCache = { src: null, aggs: NO_IGS };
+
+  function aggregates(all) {
+    if (aggCache.src === all) return aggCache.aggs;
+    const aggs = aggregate(all);
+    for (const agg of aggs) agg._haystack = buildHaystack(agg);
+    aggCache = { src: all, aggs };
+    return aggs;
+  }
+
   // Which version sub-rows should render under the active tab?
   function visibleVersions(agg, view, ballotKind) {
     if (view === 'all') return agg.versions;
@@ -120,9 +194,10 @@
 
   // ─── Compute pipeline ───────────────────────────────────────────
   function compute() {
-    const all = window.FHIR_CH_IGS || [];
+    const all = window.FHIR_CH_IGS || NO_IGS;
 
-    // Hero stats are per-entry (per version).
+    // Hero stats are per-entry (per version) and deliberately describe the
+    // whole catalog, not the query — see render().
     const published = all.filter(g => g.publicationStatus === 'published');
     const ballot    = all.filter(g => g.publicationStatus === 'under-ballot');
     const stu       = ballot.filter(g => g.ballotType === 'stu');
@@ -131,31 +206,37 @@
     const isBallotView = state.view === 'ballot';
     const isAllView    = state.view === 'all';
 
+    const query  = state.search.trim();
+    const tokens = tokenize(query);
+
     // Aggregate per-identifier on the FULL entry list so each card knows
     // about both versions even when only one will render under the tab.
-    let aggs = aggregate(all);
+    const every = aggregates(all);
 
-    // Drop aggregates with no version visible under the active tab.
-    aggs = aggs.filter(agg =>
+    // Query-level filters (search + FHIR pill) run BEFORE the tab filter.
+    // All three are ANDs, so the visible result is the same either way — but
+    // this order also yields "what matches anywhere", which the sub-tab
+    // counts and the empty state both need in order to be honest.
+    const matched = every.filter(agg =>
+      (!tokens.length || matchesTokens(agg, tokens)) &&
+      (!state.fhirFilter ||
+        agg.versions.some(v => (v.fhirVersion || []).includes(state.fhirFilter))));
+
+    // Ballot sub-tab counts must equal the rows those sub-tabs render, so
+    // they follow the active search + FHIR filter. With nothing filtered
+    // they are identical to ballot/stu/dstu above.
+    let ballotRows = 0, stuRows = 0, dstuRows = 0;
+    for (const agg of matched) {
+      for (const v of agg.versions) {
+        if (v.publicationStatus !== 'under-ballot') continue;
+        ballotRows++;
+        if (v.ballotType === 'dstu') dstuRows++; else stuRows++;
+      }
+    }
+
+    // Finally, drop aggregates with no version visible under the active tab.
+    let aggs = matched.filter(agg =>
       visibleVersions(agg, state.view, state.ballotKind).length > 0);
-
-    // Search filter — match against shared fields (name/id/description).
-    const q = state.search.trim().toLowerCase();
-    if (q) {
-      aggs = aggs.filter(agg =>
-        (agg.name||'').toLowerCase().includes(q) ||
-        (agg.identifier||'').toLowerCase().includes(q) ||
-        (agg.description||'').toLowerCase().includes(q)
-      );
-    }
-
-    // FHIR version filter — keep aggregates with at least one version
-    // matching the picked FHIR release.
-    if (state.fhirFilter) {
-      aggs = aggs.filter(agg =>
-        agg.versions.some(v => (v.fhirVersion||[]).includes(state.fhirFilter))
-      );
-    }
 
     // Group by organization.
     const byOrg = new Map();
@@ -195,6 +276,13 @@
 
     return {
       all, published, ballot, stu, dstu,
+      counts: { ballot: ballotRows, stu: stuRows, dstu: dstuRows },
+      query,
+      totalCount:       every.length,
+      matchedCount:     matched.length,
+      matchedPublished: matched.filter(a => a.versions.some(v => v.publicationStatus !== 'under-ballot')).length,
+      matchedBallot:    matched.filter(a => a.hasBallot).length,
+      visibleCount:     aggs.length,
       groups,
       isBallotView,
       isAllView,
@@ -313,6 +401,74 @@
     return groups.map(g => renderGroup(g, view, ballotKind)).join('');
   }
 
+  // ─── Result summary + empty state ───────────────────────────────
+  const TAB_LABEL  = { all: 'All', published: 'Published', ballot: 'Under Ballot' };
+  const KIND_LABEL = { all: 'All Ballot', stu: 'STU Ballot', dstu: 'DSTU Ballot' };
+
+  function fhirLabel(v) { return 'FHIR ' + (FHIR_ALIASES[v] || v).toUpperCase(); }
+
+  // What the visitor is filtering by, in words. Empty when nothing is
+  // filtered — the hero stats already describe that case.
+  function activeFilters(v) {
+    const bits = [];
+    if (v.query) bits.push('“' + escapeHtml(v.query) + '”');
+    if (state.fhirFilter) bits.push(escapeHtml(fhirLabel(state.fhirFilter)));
+    return bits;
+  }
+
+  // Reconciles the hero stats (whole catalog) with the list below (filtered).
+  function renderSummary(v) {
+    const bits = activeFilters(v);
+    if (!bits.length) return '';
+    const head = `${v.matchedCount} of ${v.totalCount} guides match ${bits.join(' + ')}`;
+    return v.matchedCount === v.visibleCount
+      ? head
+      : `${head} · ${v.visibleCount} shown under ${escapeHtml(TAB_LABEL[state.view])}`;
+  }
+
+  // The old empty state always read — No guides in this category —,
+  // which reads as a broken tab when it is really just a narrow query. Name
+  // what was searched, say where the matches are, offer a way to widen.
+  function renderEmptyState(v) {
+    const bits = activeFilters(v);
+    if (!bits.length) {
+      return `<div class="empty-state">— No guides in this category —</div>`;
+    }
+    const what = bits.join(' + ');
+    const actions = [];
+    let line, hint = '';
+
+    if (!v.matchedCount) {
+      line = `No guides match ${what}.`;
+    } else {
+      // The query does match — it is the active tab that hides the results.
+      const kindBit = (state.view === 'ballot' && state.ballotKind !== 'all')
+        ? ` under ${escapeHtml(KIND_LABEL[state.ballotKind])}` : '';
+      line = `No ${escapeHtml(TAB_LABEL[state.view])} guides match ${what}${kindBit}.`;
+      hint = `Matching guides: ${v.matchedPublished} published · ${v.matchedBallot} under ballot.`;
+      if (kindBit && v.counts.ballot) {
+        actions.push({ action: 'kind-all',
+          label: `Show ${v.counts.ballot} ballot row${v.counts.ballot === 1 ? '' : 's'}` });
+      }
+      if (state.view !== 'all') {
+        actions.push({ action: 'view-all',
+          label: `Show all ${v.matchedCount} match${v.matchedCount === 1 ? '' : 'es'}` });
+      }
+    }
+    if (state.fhirFilter) actions.push({ action: 'fhir-all',     label: 'Clear FHIR filter' });
+    if (v.query)          actions.push({ action: 'clear-search', label: 'Clear search' });
+
+    const btns = actions.map(a =>
+      `<button type="button" class="empty-action" data-action="${a.action}">${escapeHtml(a.label)}</button>`
+    ).join('');
+
+    return `<div class="empty-state filtered">
+      <p class="empty-line">${line}</p>
+      ${hint ? `<p class="empty-hint">${hint}</p>` : ''}
+      ${btns ? `<div class="empty-actions">${btns}</div>` : ''}
+    </div>`;
+  }
+
   // ─── DOM updates ────────────────────────────────────────────────
   function el(id) { return document.getElementById(id); }
 
@@ -345,20 +501,23 @@
     el('hero-stu').textContent       = v.stu.length;
     el('hero-dstu').textContent      = v.dstu.length;
 
-    // Sub-tab labels (Published/Ballot tab counts are intentionally not shown)
-    el('subtab-all-count').textContent    = `(${v.ballot.length})`;
-    el('subtab-stu-count').textContent    = `(${v.stu.length})`;
-    el('subtab-dstu-count').textContent   = `(${v.dstu.length})`;
+    // Sub-tab counts follow the active search + FHIR filter, so each count
+    // equals the number of rows its sub-tab renders. (Published/Ballot tab
+    // counts are intentionally not shown.)
+    el('subtab-all-count').textContent    = `(${v.counts.ballot})`;
+    el('subtab-stu-count').textContent    = `(${v.counts.stu})`;
+    el('subtab-dstu-count').textContent   = `(${v.counts.dstu})`;
 
     applyTabClasses(v);
 
+    // Match count — bridges the unfiltered hero stats and the filtered list.
+    el('result-summary').innerHTML = renderSummary(v);
+
     // Registry list
     const root = el('registry-root');
-    if (v.isEmpty) {
-      root.innerHTML = `<div class="empty-state">— No guides in this category —</div>`;
-    } else {
-      root.innerHTML = renderGroups(v.groups, state.view, state.ballotKind);
-    }
+    root.innerHTML = v.isEmpty
+      ? renderEmptyState(v)
+      : renderGroups(v.groups, state.view, state.ballotKind);
   }
 
   // ─── Event wiring ───────────────────────────────────────────────
@@ -378,11 +537,25 @@
         case 'fhir-all':       setState({ fhirFilter: '' });    break;
         case 'fhir-r4':        setState({ fhirFilter: '4.0.1' });break;
         case 'fhir-r5':        setState({ fhirFilter: '5.0.0' });break;
+        case 'clear-search': {
+          const input = el('search-input');
+          if (input) { input.value = ''; input.focus(); }
+          setState({ search: '' });
+          break;
+        }
       }
     });
 
-    // Search input.
-    el('search-input').addEventListener('input', (e) => setState({ search: e.target.value }));
+    // Search input. 'search' and 'change' are backstops: some browsers revert
+    // an <input type="search"> on Escape without firing 'input', which would
+    // leave state.search stale against the visible box.
+    const input = el('search-input');
+    if (input) {
+      const onInput = (e) => setState({ search: e.target.value });
+      input.addEventListener('input',  onInput);
+      input.addEventListener('search', onInput);
+      input.addEventListener('change', onInput);
+    }
   }
 
   // ─── Dev-only validation ────────────────────────────────────────

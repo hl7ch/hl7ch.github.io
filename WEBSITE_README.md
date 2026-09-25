@@ -107,6 +107,18 @@ Rendering pins (in `js/app.js`):
 - **`PINNED_IDS`** (`js/app.js:25`) — IGs that float to the top of their org group (currently CH Term, CH Core).
 - **HL7 Switzerland pin** (`js/app.js:170`) — the `hl7ch` org always renders first; other orgs sort by their newest IG date.
 
+### Search and filter semantics
+
+The search box (`#search-input`) and the filter row live entirely in `js/app.js`.
+
+- **Tokens, ANDed, order-independent.** The query is split on whitespace and every token must appear somewhere in the card's searchable text. `ch core` and `core ch` return the same thing; `vaccination immunization` finds CH VACD.
+- **Folded on both sides.** `fold()` lowercases, NFD-normalizes and strips combining marks, so `Zürich` and `Zurich` are the same key (`ß` is mapped to `ss`).
+- **What is searchable** (`buildHaystack`) — everything the card actually shows: title, `package-id`, the slug with and without dashes, description, the organization heading, the workgroup name, the GitHub owner/repo from `links.source`, every version string, every FHIR version plus its `R4`/`R5` alias, and the status words. Ballot rows also match `informative` as a synonym for `dstu`, because upstream's `package-list.json` calls the same thing an Informative Ballot.
+- **Built once per catalog load.** `aggregates()` memoizes the aggregation and the haystacks on the identity of `window.FHIR_CH_IGS`, so a keystroke is one `filter` plus one `innerHTML` — no debounce needed.
+- **Counts.** The hero stat cards are *global catalog totals*: they sit above the filter row and describe the catalog, not the query. The ballot sub-tab counts are *filtered* — they are filter controls inside the filter row, so each count equals the number of rows its sub-tab renders. The `#result-summary` line ("N of M guides match …") bridges the two and is hidden when nothing is filtered.
+- **Empty state.** With no filter active it stays the plain "— No guides in this category —". With a query or FHIR pill active it names what was searched, reports how many guides match under the *other* tabs, and offers one-click widen actions (`Show all N matches`, `Show N ballot rows`, `Clear FHIR filter`, `Clear search`). Those are plain `[data-action]` buttons picked up by the existing delegated click handler.
+- **Not done on purpose:** no URL/hash persistence, no match highlighting, no fuzzy matching. The FHIR pill deliberately keeps its aggregate-level semantics (one matching version keeps the whole card).
+
 ## Adding or hiding an IG
 
 **Upstream-published IG.** File a PR against [`hl7ch/hl7ch.github.io`](https://github.com/hl7ch/hl7ch.github.io) that adds the package to `package-registry.json` and ships its `ig/{slug}/package-list.json`. The mock-up will pick it up on the next page load. If it needs workgroup, organization, description, or ballot-type curation, add an `OVERRIDES` entry in `js/load-data.js`.
