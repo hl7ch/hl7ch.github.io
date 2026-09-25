@@ -8,16 +8,27 @@
   'use strict';
 
   // ─── State ──────────────────────────────────────────────────────
-  const state = {
-    view: 'all',           // 'all' | 'published' | 'ballot'
-    ballotKind: 'all',     // 'all' | 'stu' | 'dstu'
-    search: '',
-    fhirFilter: ''         // '' | '4.0.1' | '5.0.0'
-  };
+  // The query IS the state. The tabs and the R4/R5 pills do not filter on
+  // their own — they write a `status:` / `fhir:` term into this string and
+  // read their active state back out of it. One filter language, so the two
+  // can never disagree (a "status:published" query under the Under Ballot
+  // tab used to render ballot rows).
+  const state = { search: '' };
 
   function setState(patch) {
     Object.assign(state, patch);
     render();
+  }
+
+  // Write a query into the box and re-render. The box is the single control
+  // surface, so every button goes through here.
+  function setSearch(query) {
+    const input = document.getElementById('search-input');
+    if (input) input.value = query;
+    setState({ search: query });
+    // The suggestion list is derived from the box, so it has to follow when a
+    // button rewrites it — otherwise it keeps offering the previous field.
+    if (typeof renderSuggest === 'function') renderSuggest();
   }
 
   // ─── Helpers ────────────────────────────────────────────────────
@@ -111,6 +122,24 @@
     }
     return m;
   })();
+
+  // Per-version tokens for the two row-level fields. Tokens, not one string:
+  // a prefix test on tokens keeps "status:stu" from matching a DSTU row,
+  // which a substring test would ("dstu" contains "stu").
+  function buildRowFields(v) {
+    const status = v.publicationStatus === 'under-ballot'
+      ? `ballot under-ballot ${BALLOT_WORDS[v.ballotType] || v.ballotType || ''}`
+      : 'published released';
+    const fhir = (v.fhirVersion || [])
+      .map(f => `${f} ${FHIR_ALIASES[f] || ''}`).join(' ');
+    return { status: fold(status).split(/\s+/).filter(Boolean),
+             fhir:   fold(fhir).split(/\s+/).filter(Boolean) };
+  }
+
+  function tokenMatches(tokens, value) {
+    for (const t of tokens) if (t.indexOf(value) === 0) return true;
+    return false;
+  }
 
   // One pre-folded string per field per card, covering everything the card
   // actually shows. `all` is the union, used by unprefixed terms. Built once
@@ -297,24 +326,66 @@
   function aggregates(all) {
     if (aggCache.src === all) return aggCache.aggs;
     const aggs = aggregate(all);
-    for (const agg of aggs) agg._fields = buildFields(agg);
+    for (const agg of aggs) {
+      agg._fields = buildFields(agg);
+      for (const v of agg.versions) v._row = buildRowFields(v);
+    }
     VOCABULARY = buildVocabulary(aggs);
     aggCache = { src: all, aggs };
     return aggs;
   }
 
-  // Which version sub-rows should render under the active tab?
-  function visibleVersions(agg, view, ballotKind) {
-    if (view === 'all') return agg.versions;
-    if (view === 'published') {
-      return agg.versions.filter(v => v.publicationStatus !== 'under-ballot');
+  // `status:` and `fhir:` describe a single version, so they select ROWS.
+  // Everything else describes the guide, so it selects CARDS.
+  const ROW_FIELDS = ['status', 'fhir'];
+
+  function partitionTerms(terms) {
+    const row = { status: [], fhir: [] }, card = [];
+    for (const t of terms) {
+      if (t.field && ROW_FIELDS.indexOf(t.field) !== -1) row[t.field].push(t.value);
+      else card.push(t);
     }
-    if (view === 'ballot') {
-      return agg.versions.filter(v =>
-        v.publicationStatus === 'under-ballot' &&
-        (ballotKind === 'all' || v.ballotType === ballotKind));
-    }
-    return [];
+    return { row: row, card: card };
+  }
+
+  function rowMatches(v, row) {
+    for (const val of row.status) if (!tokenMatches(v._row.status, val)) return false;
+    for (const val of row.fhir)   if (!tokenMatches(v._row.fhir, val))   return false;
+    return true;
+  }
+
+  function visibleVersions(agg, row) {
+    if (!row.status.length && !row.fhir.length) return agg.versions;
+    return agg.versions.filter(v => rowMatches(v, row));
+  }
+
+  // ─── Tabs and pills, expressed as query terms ───────────────────
+  // Rewrite `query` so that `field` carries exactly `value` (or no term at
+  // all when value is null). Everything the visitor typed is preserved.
+  function setFieldTerm(query, field, value) {
+    const kept = splitTerms(query).filter(raw => {
+      const m = /^([A-Za-z][A-Za-z-]*):/.exec(raw);
+      return !(m && FIELD_ALIASES[m[1].toLowerCase()] === field);
+    });
+    if (value) kept.push(field + ':' + value);
+    return kept.join(' ');
+  }
+
+  // Which tab / pill the current query corresponds to. More than one term on
+  // a field is a hand-typed query no single button represents, so nothing
+  // lights up.
+  function activeView(row) {
+    if (row.status.length !== 1) return { view: 'all', kind: 'all' };
+    const s = row.status[0] === 'informative' ? 'dstu' : row.status[0];
+    if (s === 'published') return { view: 'published', kind: 'all' };
+    if (s === 'ballot')    return { view: 'ballot', kind: 'all' };
+    if (s === 'stu')       return { view: 'ballot', kind: 'stu' };
+    if (s === 'dstu')      return { view: 'ballot', kind: 'dstu' };
+    return { view: 'all', kind: 'all' };
+  }
+
+  function activeFhir(row) {
+    return row.fhir.length === 1 ? row.fhir[0] : '';
   }
 
   // Sort tier inside an org group.
@@ -338,40 +409,40 @@
     const stu       = ballot.filter(g => g.ballotType === 'stu');
     const dstu      = ballot.filter(g => g.ballotType === 'dstu');
 
-    const isBallotView = state.view === 'ballot';
-    const isAllView    = state.view === 'all';
+    const query = state.search.trim();
+    const parts = partitionTerms(parseQuery(query));
+    const row   = parts.row;
+    const tab   = activeView(row);
+    const fhir  = activeFhir(row);
 
-    const query  = state.search.trim();
-    const terms  = parseQuery(query);
+    const isBallotView = tab.view === 'ballot';
+    const isAllView    = tab.view === 'all';
 
     // Aggregate per-identifier on the FULL entry list so each card knows
-    // about both versions even when only one will render under the tab.
+    // about all of its versions even when only one will render.
     const every = aggregates(all);
 
-    // Query-level filters (search + FHIR pill) run BEFORE the tab filter.
-    // All three are ANDs, so the visible result is the same either way — but
-    // this order also yields "what matches anywhere", which the sub-tab
-    // counts and the empty state both need in order to be honest.
-    const matched = every.filter(agg =>
-      (!terms.length || matchesQuery(agg, terms)) &&
-      (!state.fhirFilter ||
-        agg.versions.some(v => (v.fhirVersion || []).includes(state.fhirFilter))));
+    // Card-level terms first — that set is what "matches anywhere",
+    // independent of which rows survive.
+    const matched = parts.card.length
+      ? every.filter(agg => matchesQuery(agg, parts.card))
+      : every;
 
-    // Ballot sub-tab counts must equal the rows those sub-tabs render, so
-    // they follow the active search + FHIR filter. With nothing filtered
-    // they are identical to ballot/stu/dstu above.
+    // Ballot sub-tab counts: rows among the matched cards, after the FHIR
+    // term but ignoring the status term, since these tabs set it.
+    const fhirOnly = { status: [], fhir: row.fhir };
     let ballotRows = 0, stuRows = 0, dstuRows = 0;
     for (const agg of matched) {
-      for (const v of agg.versions) {
+      for (const v of visibleVersions(agg, fhirOnly)) {
         if (v.publicationStatus !== 'under-ballot') continue;
         ballotRows++;
         if (v.ballotType === 'dstu') dstuRows++; else stuRows++;
       }
     }
 
-    // Finally, drop aggregates with no version visible under the active tab.
-    let aggs = matched.filter(agg =>
-      visibleVersions(agg, state.view, state.ballotKind).length > 0);
+    // Then the row-level terms. A card renders only if a row survives them,
+    // and it renders only the rows that did.
+    let aggs = matched.filter(agg => visibleVersions(agg, row).length > 0);
 
     // Group by organization.
     const byOrg = new Map();
@@ -412,12 +483,10 @@
     return {
       all, published, ballot, stu, dstu,
       counts: { ballot: ballotRows, stu: stuRows, dstu: dstuRows },
-      query,
-      totalCount:       every.length,
-      matchedCount:     matched.length,
-      matchedPublished: matched.filter(a => a.versions.some(v => v.publicationStatus !== 'under-ballot')).length,
-      matchedBallot:    matched.filter(a => a.hasBallot).length,
-      visibleCount:     aggs.length,
+      query, row, tab, fhir,
+      totalCount:   every.length,
+      matchedCount: matched.length,
+      visibleCount: aggs.length,
       groups,
       isBallotView,
       isAllView,
@@ -488,8 +557,8 @@
     </div>`;
   }
 
-  function renderIgCard(agg, view, ballotKind) {
-    const versions = visibleVersions(agg, view, ballotKind);
+  function renderIgCard(agg, row) {
+    const versions = visibleVersions(agg, row);
     if (!versions.length) return '';
 
     const workgroupMeta = agg.workgroup
@@ -518,8 +587,8 @@
     </div>`;
   }
 
-  function renderGroup(group, view, ballotKind) {
-    const cards = group.items.map(agg => renderIgCard(agg, view, ballotKind)).join('');
+  function renderGroup(group, row) {
+    const cards = group.items.map(agg => renderIgCard(agg, row)).join('');
     return `<div class="org-group">
       <div class="org-header">
         <div class="left">
@@ -532,68 +601,64 @@
     </div>`;
   }
 
-  function renderGroups(groups, view, ballotKind) {
-    return groups.map(g => renderGroup(g, view, ballotKind)).join('');
+  function renderGroups(groups, row) {
+    return groups.map(g => renderGroup(g, row)).join('');
   }
 
   // ─── Result summary + empty state ───────────────────────────────
-  const TAB_LABEL  = { all: 'All', published: 'Published', ballot: 'Under Ballot' };
-  const KIND_LABEL = { all: 'All Ballot', stu: 'STU Ballot', dstu: 'DSTU Ballot' };
-
-  function fhirLabel(v) { return 'FHIR ' + (FHIR_ALIASES[v] || v).toUpperCase(); }
-
-  // What the visitor is filtering by, in words. Empty when nothing is
-  // filtered — the hero stats already describe that case.
-  function activeFilters(v) {
-    const bits = [];
-    if (v.query) bits.push('“' + escapeHtml(v.query) + '”');
-    if (state.fhirFilter) bits.push(escapeHtml(fhirLabel(state.fhirFilter)));
-    return bits;
+  // Reconciles the hero stats (whole catalog) with the list below (filtered).
+  // Silent when nothing is filtered.
+  function renderSummary(v) {
+    if (!v.query) return '';
+    return `${v.visibleCount} of ${v.totalCount} guides match “${escapeHtml(v.query)}”`;
   }
 
-  // Reconciles the hero stats (whole catalog) with the list below (filtered).
-  function renderSummary(v) {
-    const bits = activeFilters(v);
-    if (!bits.length) return '';
-    const head = `${v.matchedCount} of ${v.totalCount} guides match ${bits.join(' + ')}`;
-    return v.matchedCount === v.visibleCount
-      ? head
-      : `${head} · ${v.visibleCount} shown under ${escapeHtml(TAB_LABEL[state.view])}`;
+  // The row-level part of the query, in words — what the tabs and pills say.
+  function rowLabel(v) {
+    const bits = [];
+    if (v.tab.view === 'published')    bits.push('Published');
+    else if (v.tab.kind === 'stu')     bits.push('STU Ballot');
+    else if (v.tab.kind === 'dstu')    bits.push('DSTU Ballot');
+    else if (v.tab.view === 'ballot')  bits.push('Under Ballot');
+    else if (v.row.status.length)      bits.push(v.row.status.map(x => 'status:' + x).join(' '));
+    if (v.fhir) bits.push('FHIR ' + v.fhir.toUpperCase());
+    else if (v.row.fhir.length) bits.push(v.row.fhir.map(x => 'fhir:' + x).join(' '));
+    return bits.join(' + ');
   }
 
   // The old empty state always read — No guides in this category —,
   // which reads as a broken tab when it is really just a narrow query. Name
   // what was searched, say where the matches are, offer a way to widen.
   function renderEmptyState(v) {
-    const bits = activeFilters(v);
-    if (!bits.length) {
+    if (!v.query) {
       return `<div class="empty-state">— No guides in this category —</div>`;
     }
-    const what = bits.join(' + ');
+    const what = `“${escapeHtml(v.query)}”`;
+    const label = rowLabel(v);
     const actions = [];
     let line, hint = '';
 
     if (!v.matchedCount) {
+      // Nothing matches the guide-level part of the query either.
       line = `No guides match ${what}.`;
       hint = 'Tip: type <code>wg:</code>, <code>org:</code>, <code>status:</code> or '
            + '<code>fhir:</code> in the search box to pick from the values that exist.';
     } else {
-      // The query does match — it is the active tab that hides the results.
-      const kindBit = (state.view === 'ballot' && state.ballotKind !== 'all')
-        ? ` under ${escapeHtml(KIND_LABEL[state.ballotKind])}` : '';
-      line = `No ${escapeHtml(TAB_LABEL[state.view])} guides match ${what}${kindBit}.`;
-      hint = `Matching guides: ${v.matchedPublished} published · ${v.matchedBallot} under ballot.`;
-      if (kindBit && v.counts.ballot) {
+      // Guides do match — it is the status / FHIR part that hides every row.
+      line = label
+        ? `No ${escapeHtml(label)} versions among the ${v.matchedCount} guide${v.matchedCount === 1 ? '' : 's'} matching ${what}.`
+        : `No guides match ${what}.`;
+      if (v.tab.kind !== 'all' && v.counts.ballot) {
         actions.push({ action: 'kind-all',
-          label: `Show ${v.counts.ballot} ballot row${v.counts.ballot === 1 ? '' : 's'}` });
+          label: `Show all ${v.counts.ballot} ballot row${v.counts.ballot === 1 ? '' : 's'}` });
       }
-      if (state.view !== 'all') {
+      if (v.tab.view !== 'all') {
         actions.push({ action: 'view-all',
           label: `Show all ${v.matchedCount} match${v.matchedCount === 1 ? '' : 'es'}` });
       }
     }
-    if (state.fhirFilter) actions.push({ action: 'fhir-all',     label: 'Clear FHIR filter' });
-    if (v.query)          actions.push({ action: 'clear-search', label: 'Clear search' });
+    if (v.fhir || v.row.fhir.length) actions.push({ action: 'fhir-all', label: 'Clear FHIR filter' });
+    actions.push({ action: 'clear-search', label: 'Clear all filters' });
 
     const btns = actions.map(a =>
       `<button type="button" class="empty-action" data-action="${a.action}">${escapeHtml(a.label)}</button>`
@@ -705,24 +770,22 @@
   // ─── DOM updates ────────────────────────────────────────────────
   function el(id) { return document.getElementById(id); }
 
+  // Every control reads its own state back out of the query, so a button can
+  // never claim something the query does not say.
   function applyTabClasses(v) {
-    // Top tabs (All / Published / Under Ballot)
-    el('tab-all').classList.toggle('active', state.view === 'all');
-    el('tab-published').classList.toggle('active', state.view === 'published');
-    el('tab-ballot').classList.toggle('active', state.view === 'ballot');
+    el('tab-all').classList.toggle('active', v.tab.view === 'all');
+    el('tab-published').classList.toggle('active', v.tab.view === 'published');
+    el('tab-ballot').classList.toggle('active', v.tab.view === 'ballot');
 
-    // Ballot sub-tab bar visibility
     el('subtabs').style.display = v.isBallotView ? 'block' : 'none';
 
-    // Sub-tabs (All / STU / DSTU)
-    el('subtab-all').classList.toggle('active', state.ballotKind === 'all');
-    el('subtab-stu').classList.toggle('active', state.ballotKind === 'stu');
-    el('subtab-dstu').classList.toggle('active', state.ballotKind === 'dstu');
+    el('subtab-all').classList.toggle('active', v.tab.kind === 'all');
+    el('subtab-stu').classList.toggle('active', v.tab.kind === 'stu');
+    el('subtab-dstu').classList.toggle('active', v.tab.kind === 'dstu');
 
-    // FHIR pills (ALL / R4 / R5)
-    el('fhir-all').classList.toggle('active', state.fhirFilter === '');
-    el('fhir-r4').classList.toggle('active', state.fhirFilter === '4.0.1');
-    el('fhir-r5').classList.toggle('active', state.fhirFilter === '5.0.0');
+    el('fhir-all').classList.toggle('active', v.fhir === '');
+    el('fhir-r4').classList.toggle('active', v.fhir === 'r4');
+    el('fhir-r5').classList.toggle('active', v.fhir === 'r5');
   }
 
   function render() {
@@ -750,7 +813,7 @@
     const root = el('registry-root');
     root.innerHTML = v.isEmpty
       ? renderEmptyState(v)
-      : renderGroups(v.groups, state.view, state.ballotKind);
+      : renderGroups(v.groups, v.row);
   }
 
   // ─── Event wiring ───────────────────────────────────────────────
@@ -760,23 +823,23 @@
       const btn = e.target.closest('[data-action]');
       if (!btn) return;
       const a = btn.dataset.action;
-      switch (a) {
-        case 'view-all':       setState({ view: 'all' });       break;
-        case 'view-published': setState({ view: 'published' }); break;
-        case 'view-ballot':    setState({ view: 'ballot' });    break;
-        case 'kind-all':       setState({ ballotKind: 'all' }); break;
-        case 'kind-stu':       setState({ ballotKind: 'stu' }); break;
-        case 'kind-dstu':      setState({ ballotKind: 'dstu' });break;
-        case 'fhir-all':       setState({ fhirFilter: '' });    break;
-        case 'fhir-r4':        setState({ fhirFilter: '4.0.1' });break;
-        case 'fhir-r5':        setState({ fhirFilter: '5.0.0' });break;
-        case 'clear-search': {
-          const input = el('search-input');
-          if (input) { input.value = ''; input.focus(); }
-          setState({ search: '' });
-          break;
-        }
+      // Tabs and pills are shorthand for a query term. `null` drops the term.
+      const TERMS = {
+        'view-all':       ['status', null],
+        'view-published': ['status', 'published'],
+        'view-ballot':    ['status', 'ballot'],
+        'kind-all':       ['status', 'ballot'],
+        'kind-stu':       ['status', 'stu'],
+        'kind-dstu':      ['status', 'dstu'],
+        'fhir-all':       ['fhir', null],
+        'fhir-r4':        ['fhir', 'r4'],
+        'fhir-r5':        ['fhir', 'r5']
+      };
+      if (TERMS[a]) {
+        setSearch(setFieldTerm(state.search, TERMS[a][0], TERMS[a][1]));
+        return;
       }
+      if (a === 'clear-search') { setSearch(''); el('search-input') && el('search-input').focus(); }
     });
 
     // Search input. 'search' and 'change' are backstops: some browsers revert
@@ -786,7 +849,8 @@
     if (input) {
       const onInput = (e) => {
         suggestIndex = -1;
-        suggestOpen = true;
+        // Open only when the visitor is actually in the box.
+        suggestOpen = document.activeElement === e.target;
         setState({ search: e.target.value });
         renderSuggest();
       };
