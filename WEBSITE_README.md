@@ -86,15 +86,17 @@ The loader is the single source of curated overlay on top of the upstream JSON:
   - **`votingCloses`** — empties `forms` (every VOTE chip disappears) once past.
 
   See [Updating the ballot vote forms](#updating-the-ballot-vote-forms) for the per-cycle procedure.
-- **`ORG_NAMES`** and **`ORG_ORDER`** — display name per organization `id`. The `id` keys are what `OVERRIDES.organization` references. IGs with no `organization` override and no fallback signal default to `'hl7ch'`.
-- **`WG_*` shorthands** — reusable workgroup objects. Add new ones rather than inlining `{name, url}` literals.
+- **`ORG_NAMES`** and **`ORG_ORDER`** — display name per organization `id`. The `id` keys are what `OVERRIDES.organization` references; they are internal and never rendered. IGs with no `organization` override and no fallback signal default to `'hl7ch'`. `ORG_ORDER` only pre-sorts the loader output — the renderer re-groups and re-sorts (HL7 Switzerland pinned first, then by newest publication), so it acts as a tie-breaker rather than the layout.
+
+  There is exactly **one** FOPH organization, `hl7ch-foph` — "HL7 Switzerland / Federal Office of Public Health". eHealth Suisse is being wound down and its EPR mandate sits with the FOPH, so CH EPR FHIR, CH ELM and CH EPL all render under that one heading and no organization or workgroup is labelled "eHealth Suisse" any more. The `github.com/ehealthsuisse/…` source links stay — those are real repository addresses, not labels.
+- **`WG_*` shorthands** — reusable workgroup objects. Add new ones rather than inlining `{name, url}` literals. The names follow the official project-group list on the [HL7 CH Technisches Komitee page](https://www.hl7.ch/technisches-komitee/): *Arbeitsgruppe FHIR*, *Joint Venture Arbeitsgruppe Radiologie*, *Joint Venture Laborprojekt FAMH*, *Joint Venture Arbeitsgruppe «Austauschformate EPD»*, *Joint Venture Arbeitsgruppe HUSKY*. Keep them in sync with that page rather than inventing per-IG wording. `WG_HUSKY` is declared for completeness but no IG uses it yet; if an IG turns out to be HUSKY work, move it there.
 
 ### Automatic fallbacks (no curation needed)
 
 When an upstream IG has no `OVERRIDES` entry, two lookup tables in `js/load-data.js` derive sensible defaults from upstream signals:
 
-- **`CI_BUILD_ORG`** — maps the GitHub-org segment of `pkg['ci-build']` (`build.fhir.org/ig/{github-org}/...`) to a catalog org `id`. Covers `hl7ch`, `ehealthsuisse`, `umzhconnect`, `cara-ch`, `bag-epl`. `ahdis` is intentionally unmapped because it is a multi-tenant publisher (CH ELM is FOPH-owned but built under `ahdis/ch-elm`); IGs built under `ahdis` must declare their owner via `OVERRIDES.organization`.
-- **`ORG_DEFAULT_WG`** — per-org default workgroup, applied only when `OVERRIDES.workgroup` is absent. Covers eHealth Suisse, Swissnoso, Open Medical. HL7 CH deliberately has no default since its IGs span multiple workgroups (Arbeitsgruppe FHIR, JV EPD, JV Radiologie, JV Labor).
+- **`CI_BUILD_ORG`** — maps the GitHub-org segment of `pkg['ci-build']` (`build.fhir.org/ig/{github-org}/...`) to a catalog org `id`. Covers `hl7ch`, `ehealthsuisse` → `hl7ch-foph`, `bag-epl` → `hl7ch-foph`, `umzhconnect`, `cara-ch`. `ahdis` is intentionally unmapped because it is a multi-tenant publisher (CH ELM is FOPH-owned but built under `ahdis/ch-elm`); IGs built under `ahdis` must declare their owner via `OVERRIDES.organization`.
+- **`ORG_DEFAULT_WG`** — per-org default workgroup, applied only when `OVERRIDES.workgroup` is absent. Covers Swissnoso and Open Medical. HL7 CH deliberately has no default since its IGs span multiple workgroups (Arbeitsgruppe FHIR, JV EPD, JV Radiologie, JV Labor).
 
 There is also a startup `console.warn` (in `loadIgs`) that lists every upstream IG without an `OVERRIDES` entry — devtools-only diagnostic so curators see at a glance which IGs are running on defaults.
 
@@ -104,6 +106,21 @@ Rendering pins (in `js/app.js`):
 
 - **`PINNED_IDS`** (`js/app.js:25`) — IGs that float to the top of their org group (currently CH Term, CH Core).
 - **HL7 Switzerland pin** (`js/app.js:170`) — the `hl7ch` org always renders first; other orgs sort by their newest IG date.
+
+### Search and filter semantics
+
+The search box (`#search-input`) and the filter row live entirely in `js/app.js`.
+
+- **Tokens, ANDed, order-independent.** The query is split on whitespace and every token must appear somewhere in the card's searchable text. `ch core` and `core ch` return the same thing; `vaccination immunization` finds CH VACD.
+- **Field scoping.** A term may be scoped to one field with a `prefix:` — `wg:epd` only looks at the workgroup, `name:core` only at the title. Prefixes: `name:` (`title:`, `ig:`), `id:` (`pkg:`, `package:`), `desc:`, `org:`, `wg:` (`ag:`, `workgroup:`, `arbeitsgruppe:`), `version:` (`v:`), `fhir:`, `status:` (`ballot:`). Quote a phrase to keep it together — `wg:"austauschformate epd"` — and mix freely: `wg:epd fhir:r4`. An unrecognised prefix is not a field, so `https://x` stays one literal term. The prefixes are listed in a CSS-only cheat sheet that appears while the search box has focus.
+- **Folded on both sides.** `fold()` lowercases, NFD-normalizes and strips combining marks, so `Zürich` and `Zurich` are the same key (`ß` is mapped to `ss`).
+- **What is searchable** (`buildHaystack`) — everything the card actually shows: title, `package-id`, the slug with and without dashes, description, the organization heading, the workgroup name, the GitHub owner/repo from `links.source`, every version string, every FHIR version plus its `R4`/`R5` alias, and the status words. Ballot rows also match `informative` as a synonym for `dstu`, because upstream's `package-list.json` calls the same thing an Informative Ballot.
+- **Built once per catalog load.** `aggregates()` memoizes the aggregation and the haystacks on the identity of `window.FHIR_CH_IGS`, so a keystroke is one `filter` plus one `innerHTML` — no debounce needed.
+- **The tabs and the R4/R5 pills are the search.** They do not filter on their own: clicking one writes a `status:` or `fhir:` term into the query (`status:ballot`, `fhir:r5`) and reads its own active state back out of it. `state` holds nothing but the query string. That is why the two can no longer disagree — a `status:published` query with the *Under Ballot* tab lit, rendering ballot rows, used to be reachable.
+- **Row-level vs card-level.** `status:` and `fhir:` describe one version, so they select **rows**; a card renders only if a row survives, and only the rows that did. Every other field describes the guide, so it selects **cards**. Row fields are matched token-prefix, not substring, so `status:stu` does not match a DSTU row.
+- **Counts.** The hero stat cards are *global catalog totals*: they sit above the filter row and describe the catalog, not the query. The ballot sub-tab counts follow the query except for its own `status:` term (that is what those tabs set), so each count equals the rows its sub-tab would render. The `#result-summary` line ("N of M guides match …") is hidden when the query is empty.
+- **Empty state.** With no filter active it stays the plain "— No guides in this category —". With a query or FHIR pill active it names what was searched, reports how many guides match under the *other* tabs, and offers one-click widen actions (`Show all N matches`, `Show N ballot rows`, `Clear FHIR filter`, `Clear search`). Those are plain `[data-action]` buttons picked up by the existing delegated click handler.
+- **Not done on purpose:** no URL/hash persistence, no match highlighting, no fuzzy matching. The FHIR pill deliberately keeps its aggregate-level semantics (one matching version keeps the whole card).
 
 ## Adding or hiding an IG
 

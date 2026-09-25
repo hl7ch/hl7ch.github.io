@@ -8,16 +8,27 @@
   'use strict';
 
   // ─── State ──────────────────────────────────────────────────────
-  const state = {
-    view: 'all',           // 'all' | 'published' | 'ballot'
-    ballotKind: 'all',     // 'all' | 'stu' | 'dstu'
-    search: '',
-    fhirFilter: ''         // '' | '4.0.1' | '5.0.0'
-  };
+  // The query IS the state. The tabs and the R4/R5 pills do not filter on
+  // their own — they write a `status:` / `fhir:` term into this string and
+  // read their active state back out of it. One filter language, so the two
+  // can never disagree (a "status:published" query under the Under Ballot
+  // tab used to render ballot rows).
+  const state = { search: '' };
 
   function setState(patch) {
     Object.assign(state, patch);
     render();
+  }
+
+  // Write a query into the box and re-render. The box is the single control
+  // surface, so every button goes through here.
+  function setSearch(query) {
+    const input = document.getElementById('search-input');
+    if (input) input.value = query;
+    setState({ search: query });
+    // The suggestion list is derived from the box, so it has to follow when a
+    // button rewrites it — otherwise it keeps offering the previous field.
+    if (typeof renderSuggest === 'function') renderSuggest();
   }
 
   // ─── Helpers ────────────────────────────────────────────────────
@@ -50,6 +61,218 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
+  }
+
+  // ─── Search ─────────────────────────────────────────────────────
+  // Case- and diacritic-insensitive fold, applied to both the query and the
+  // data. NFD splits "ü" into "u" + U+0308, so stripping the combining-mark
+  // range makes "Zürich" and "Zurich" the same key. 'ß' has no
+  // decomposition, so map it explicitly.
+  function fold(s) {
+    return String(s == null ? '' : s)
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\u00df/g, 'ss')
+      .toLowerCase();
+  }
+
+  // So "R4" / "R5" find IGs whose data carries only the numeric version.
+  const FHIR_ALIASES = { '4.0.1': 'r4', '4.3.0': 'r4b', '5.0.0': 'r5' };
+
+  // Ballot-type synonyms. The badge says DSTU BALLOT, but upstream's own
+  // package-list.json calls the same thing an "Informative Ballot", so both
+  // words have to find it.
+  const BALLOT_WORDS = { stu: 'stu trial use', dstu: 'dstu informative' };
+
+  // GitHub owner + repo out of a source URL, so "ahdis", "cara-ch",
+  // "umzhconnect" or "seicodyne" find the IGs those orgs publish — without
+  // dragging "https" / "github" / "com" into every haystack.
+  function repoWords(url) {
+    const m = /github\.com\/([^/]+)\/([^/#?]+)/i.exec(url || '');
+    return m ? `${m[1]} ${m[2]}` : '';
+  }
+
+  // Searchable fields, and the prefixes that scope a term to one of them.
+  // "wg:epd" only looks at the workgroup; "epd" looks everywhere.
+  const SEARCH_FIELDS = ['name', 'id', 'desc', 'org', 'wg', 'version', 'fhir', 'status'];
+  // Every spelling anyone might reasonably type, mapped to its canonical
+  // field. Hyphenated forms are allowed, so the prefix pattern below accepts
+  // '-' as well as letters.
+  const FIELD_ALIASES = {
+    name: 'name', title: 'name', ig: 'name', igname: 'name', 'ig-name': 'name',
+    id: 'id', pkg: 'id', package: 'id', packageid: 'id', 'package-id': 'id', repo: 'id',
+    desc: 'desc', description: 'desc', text: 'desc',
+    org: 'org', organization: 'org', organisation: 'org', publisher: 'org',
+    wg: 'wg', workgroup: 'wg', 'work-group': 'wg', group: 'wg',
+    ag: 'wg', arbeitsgruppe: 'wg',
+    version: 'version', v: 'version', ver: 'version',
+    fhir: 'fhir', fhirversion: 'fhir', 'fhir-version': 'fhir', release: 'fhir',
+    status: 'status', state: 'status', ballot: 'status',
+    publicationstatus: 'status', 'publication-status': 'status'
+  };
+
+  // Canonical field -> the aliases that resolve to it, so typing "workgroup"
+  // or "fhir-ver" still finds the field in the picker.
+  const FIELD_SPELLINGS = (() => {
+    const m = {};
+    for (const f of SEARCH_FIELDS) m[f] = [];
+    for (const alias of Object.keys(FIELD_ALIASES)) {
+      const f = FIELD_ALIASES[alias];
+      if (m[f]) m[f].push(alias);
+    }
+    return m;
+  })();
+
+  // Per-version tokens for the two row-level fields. Tokens, not one string:
+  // a prefix test on tokens keeps "status:stu" from matching a DSTU row,
+  // which a substring test would ("dstu" contains "stu").
+  function buildRowFields(v) {
+    const status = v.publicationStatus === 'under-ballot'
+      ? `ballot under-ballot ${BALLOT_WORDS[v.ballotType] || v.ballotType || ''}`
+      : 'published released';
+    const fhir = (v.fhirVersion || [])
+      .map(f => `${f} ${FHIR_ALIASES[f] || ''}`).join(' ');
+    return { status: fold(status).split(/\s+/).filter(Boolean),
+             fhir:   fold(fhir).split(/\s+/).filter(Boolean) };
+  }
+
+  function tokenMatches(tokens, value) {
+    for (const t of tokens) if (t.indexOf(value) === 0) return true;
+    return false;
+  }
+
+  // One pre-folded string per field per card, covering everything the card
+  // actually shows. `all` is the union, used by unprefixed terms. Built once
+  // per catalog load, never per keystroke.
+  function buildFields(agg) {
+    const slug = String(agg.identifier || '').replace(/^ch\.fhir\.ig\./, '');
+    const f = {
+      name:    [agg.name, slug.replace(/-/g, ' ')],
+      id:      [agg.identifier, slug, repoWords(agg.links && agg.links.source)],
+      desc:    [agg.description],
+      // The id carries the short form ("hl7ch-foph"), so "foph" keeps
+      // working even when the heading spells the organization out.
+      org:     [agg.organization && agg.organization.name,
+                agg.organization && String(agg.organization.id || '').replace(/-/g, ' ')],
+      wg:      [agg.workgroup && agg.workgroup.name],
+      version: [],
+      fhir:    [],
+      status:  []
+    };
+    for (const v of agg.versions) {
+      f.version.push(v.version);
+      for (const fv of v.fhirVersion || []) f.fhir.push(fv, FHIR_ALIASES[fv] || '');
+      f.status.push(v.publicationStatus === 'under-ballot'
+        ? `ballot under-ballot ${BALLOT_WORDS[v.ballotType] || v.ballotType || ''}`
+        : 'published released');
+    }
+    const out = {};
+    for (const k of SEARCH_FIELDS) out[k] = fold(f[k].filter(Boolean).join(' '));
+    out.all = SEARCH_FIELDS.map(k => out[k]).join(' ');
+    return out;
+  }
+
+  // What each field means, for the suggestion list.
+  const FIELD_HELP = {
+    name:    'IG title',
+    id:      'package id / repository',
+    desc:    'description text',
+    org:     'organization',
+    wg:      'workgroup',
+    version: 'version string',
+    fhir:    'FHIR release',
+    status:  'publication status'
+  };
+
+  // The set of values each field can actually take, harvested from the
+  // catalog so the picker offers real choices instead of free text — `desc`
+  // is prose and has none. Counts drive the ordering.
+  let VOCABULARY = {};
+
+  function buildVocabulary(aggs) {
+    const bag = {};
+    for (const f of SEARCH_FIELDS) bag[f] = new Map();
+    const add = (field, value, label) => {
+      if (!value) return;
+      const key = String(value);
+      const m = bag[field];
+      if (!m.has(key)) m.set(key, { value: key, label: label || key, count: 0 });
+      m.get(key).count++;
+    };
+    for (const agg of aggs) {
+      add('name', agg.name);
+      add('id', String(agg.identifier || '').replace(/^ch\.fhir\.ig\./, ''));
+      add('org', agg.organization && agg.organization.name);
+      add('wg', agg.workgroup && agg.workgroup.name);
+      for (const v of agg.versions) {
+        add('version', v.version);
+        for (const fv of v.fhirVersion || []) {
+          const alias = FHIR_ALIASES[fv];
+          add('fhir', alias || fv, alias ? `${alias.toUpperCase()} \u2014 ${fv}` : fv);
+        }
+        if (v.publicationStatus === 'under-ballot') {
+          add('status', 'ballot');
+          if (v.ballotType) {
+            add('status', v.ballotType,
+                v.ballotType === 'dstu' ? 'dstu \u2014 also matches \u201cinformative\u201d' : v.ballotType);
+          }
+        } else {
+          add('status', 'published');
+        }
+      }
+    }
+    const out = {};
+    for (const f of SEARCH_FIELDS) {
+      out[f] = [...bag[f].values()]
+        .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
+    }
+    return out;
+  }
+
+  // Whitespace-separated chunks, except inside double quotes, so
+  // wg:"austauschformate epd" survives as one chunk.
+  function splitTerms(query) {
+    const out = [];
+    let cur = '', inQuote = false;
+    for (const c of String(query || '')) {
+      if (c === '"') { inQuote = !inQuote; cur += c; }
+      else if (!inQuote && /\s/.test(c)) { if (cur) out.push(cur); cur = ''; }
+      else cur += c;
+    }
+    if (cur) out.push(cur);
+    return out;
+  }
+
+  const unquote = (v) => String(v).replace(/^"/, '').replace(/"$/, '');
+
+  // Parse the query into terms. "wg:epd" scopes to a field; a bare "wg:" is a
+  // field the visitor has picked but not filled in yet, so it constrains
+  // nothing. An unrecognised prefix is not a field — "https://x" stays one
+  // literal term.
+  function parseQuery(query) {
+    const terms = [];
+    for (const raw of splitTerms(query)) {
+      const m = /^([A-Za-z][A-Za-z-]*):([\s\S]*)$/.exec(raw);
+      const field = m && FIELD_ALIASES[m[1].toLowerCase()];
+      if (field) {
+        const value = fold(unquote(m[2]));
+        if (value) terms.push({ field: field, value: value });
+        continue;
+      }
+      const value = fold(unquote(raw));
+      if (value) terms.push({ field: null, value: value });
+    }
+    return terms;
+  }
+
+  // Every term must match, in any order: "core ch" and "ch core" both find
+  // CH Core; "wg:epd fhir:r4" narrows on two fields at once.
+  function matchesQuery(agg, terms) {
+    for (const t of terms) {
+      const hay = t.field ? agg._fields[t.field] : agg._fields.all;
+      if (!hay || hay.indexOf(t.value) === -1) return false;
+    }
+    return true;
   }
 
   // ─── Aggregation ────────────────────────────────────────────────
@@ -94,18 +317,75 @@
     return [...byId.values()];
   }
 
-  // Which version sub-rows should render under the active tab?
-  function visibleVersions(agg, view, ballotKind) {
-    if (view === 'all') return agg.versions;
-    if (view === 'published') {
-      return agg.versions.filter(v => v.publicationStatus !== 'under-ballot');
+  // compute() runs on every render, i.e. on every keystroke. The aggregation
+  // and the search haystacks only depend on the loader's output, which is
+  // assigned once and never mutated — so cache on the array's identity.
+  const NO_IGS = [];
+  let aggCache = { src: null, aggs: NO_IGS };
+
+  function aggregates(all) {
+    if (aggCache.src === all) return aggCache.aggs;
+    const aggs = aggregate(all);
+    for (const agg of aggs) {
+      agg._fields = buildFields(agg);
+      for (const v of agg.versions) v._row = buildRowFields(v);
     }
-    if (view === 'ballot') {
-      return agg.versions.filter(v =>
-        v.publicationStatus === 'under-ballot' &&
-        (ballotKind === 'all' || v.ballotType === ballotKind));
+    VOCABULARY = buildVocabulary(aggs);
+    aggCache = { src: all, aggs };
+    return aggs;
+  }
+
+  // `status:` and `fhir:` describe a single version, so they select ROWS.
+  // Everything else describes the guide, so it selects CARDS.
+  const ROW_FIELDS = ['status', 'fhir'];
+
+  function partitionTerms(terms) {
+    const row = { status: [], fhir: [] }, card = [];
+    for (const t of terms) {
+      if (t.field && ROW_FIELDS.indexOf(t.field) !== -1) row[t.field].push(t.value);
+      else card.push(t);
     }
-    return [];
+    return { row: row, card: card };
+  }
+
+  function rowMatches(v, row) {
+    for (const val of row.status) if (!tokenMatches(v._row.status, val)) return false;
+    for (const val of row.fhir)   if (!tokenMatches(v._row.fhir, val))   return false;
+    return true;
+  }
+
+  function visibleVersions(agg, row) {
+    if (!row.status.length && !row.fhir.length) return agg.versions;
+    return agg.versions.filter(v => rowMatches(v, row));
+  }
+
+  // ─── Tabs and pills, expressed as query terms ───────────────────
+  // Rewrite `query` so that `field` carries exactly `value` (or no term at
+  // all when value is null). Everything the visitor typed is preserved.
+  function setFieldTerm(query, field, value) {
+    const kept = splitTerms(query).filter(raw => {
+      const m = /^([A-Za-z][A-Za-z-]*):/.exec(raw);
+      return !(m && FIELD_ALIASES[m[1].toLowerCase()] === field);
+    });
+    if (value) kept.push(field + ':' + value);
+    return kept.join(' ');
+  }
+
+  // Which tab / pill the current query corresponds to. More than one term on
+  // a field is a hand-typed query no single button represents, so nothing
+  // lights up.
+  function activeView(row) {
+    if (row.status.length !== 1) return { view: 'all', kind: 'all' };
+    const s = row.status[0] === 'informative' ? 'dstu' : row.status[0];
+    if (s === 'published') return { view: 'published', kind: 'all' };
+    if (s === 'ballot')    return { view: 'ballot', kind: 'all' };
+    if (s === 'stu')       return { view: 'ballot', kind: 'stu' };
+    if (s === 'dstu')      return { view: 'ballot', kind: 'dstu' };
+    return { view: 'all', kind: 'all' };
+  }
+
+  function activeFhir(row) {
+    return row.fhir.length === 1 ? row.fhir[0] : '';
   }
 
   // Sort tier inside an org group.
@@ -120,42 +400,49 @@
 
   // ─── Compute pipeline ───────────────────────────────────────────
   function compute() {
-    const all = window.FHIR_CH_IGS || [];
+    const all = window.FHIR_CH_IGS || NO_IGS;
 
-    // Hero stats are per-entry (per version).
+    // Hero stats are per-entry (per version) and deliberately describe the
+    // whole catalog, not the query — see render().
     const published = all.filter(g => g.publicationStatus === 'published');
     const ballot    = all.filter(g => g.publicationStatus === 'under-ballot');
     const stu       = ballot.filter(g => g.ballotType === 'stu');
     const dstu      = ballot.filter(g => g.ballotType === 'dstu');
 
-    const isBallotView = state.view === 'ballot';
-    const isAllView    = state.view === 'all';
+    const query = state.search.trim();
+    const parts = partitionTerms(parseQuery(query));
+    const row   = parts.row;
+    const tab   = activeView(row);
+    const fhir  = activeFhir(row);
+
+    const isBallotView = tab.view === 'ballot';
+    const isAllView    = tab.view === 'all';
 
     // Aggregate per-identifier on the FULL entry list so each card knows
-    // about both versions even when only one will render under the tab.
-    let aggs = aggregate(all);
+    // about all of its versions even when only one will render.
+    const every = aggregates(all);
 
-    // Drop aggregates with no version visible under the active tab.
-    aggs = aggs.filter(agg =>
-      visibleVersions(agg, state.view, state.ballotKind).length > 0);
+    // Card-level terms first — that set is what "matches anywhere",
+    // independent of which rows survive.
+    const matched = parts.card.length
+      ? every.filter(agg => matchesQuery(agg, parts.card))
+      : every;
 
-    // Search filter — match against shared fields (name/id/description).
-    const q = state.search.trim().toLowerCase();
-    if (q) {
-      aggs = aggs.filter(agg =>
-        (agg.name||'').toLowerCase().includes(q) ||
-        (agg.identifier||'').toLowerCase().includes(q) ||
-        (agg.description||'').toLowerCase().includes(q)
-      );
+    // Ballot sub-tab counts: rows among the matched cards, after the FHIR
+    // term but ignoring the status term, since these tabs set it.
+    const fhirOnly = { status: [], fhir: row.fhir };
+    let ballotRows = 0, stuRows = 0, dstuRows = 0;
+    for (const agg of matched) {
+      for (const v of visibleVersions(agg, fhirOnly)) {
+        if (v.publicationStatus !== 'under-ballot') continue;
+        ballotRows++;
+        if (v.ballotType === 'dstu') dstuRows++; else stuRows++;
+      }
     }
 
-    // FHIR version filter — keep aggregates with at least one version
-    // matching the picked FHIR release.
-    if (state.fhirFilter) {
-      aggs = aggs.filter(agg =>
-        agg.versions.some(v => (v.fhirVersion||[]).includes(state.fhirFilter))
-      );
-    }
+    // Then the row-level terms. A card renders only if a row survives them,
+    // and it renders only the rows that did.
+    let aggs = matched.filter(agg => visibleVersions(agg, row).length > 0);
 
     // Group by organization.
     const byOrg = new Map();
@@ -195,6 +482,11 @@
 
     return {
       all, published, ballot, stu, dstu,
+      counts: { ballot: ballotRows, stu: stuRows, dstu: dstuRows },
+      query, row, tab, fhir,
+      totalCount:   every.length,
+      matchedCount: matched.length,
+      visibleCount: aggs.length,
       groups,
       isBallotView,
       isAllView,
@@ -212,7 +504,7 @@
   function versionChip(v) {
     const isBallot = v.publicationStatus === 'under-ballot';
     return {
-      cls:   isBallot ? 'chip danger' : 'chip primary',
+      cls:   isBallot ? 'chip ballot' : 'chip primary',
       icon:  '▤',
       label: isBallot ? 'BALLOT IG' : 'IG',
       url:   v.igUrl
@@ -253,7 +545,9 @@
       chips.push(tooltip ? renderDisabledChip(voteChip, tooltip) : renderChip(voteChip));
     }
     const fhirStr = (v.fhirVersion || []).join(', ') || '—';
-    const cls = (v.publicationStatus || '').replace(/[^a-z-]/g, '');
+    const cls = v.publicationStatus === 'under-ballot'
+      ? 'under-ballot ' + (v.ballotType === 'dstu' ? 'dstu' : 'stu')
+      : 'published';
     return `<div class="version-row ${cls}">
       <span class="${badge.cls}">${badge.text}</span>
       <span class="vno">v${escapeHtml(v.version || '—')}</span>
@@ -263,8 +557,8 @@
     </div>`;
   }
 
-  function renderIgCard(agg, view, ballotKind) {
-    const versions = visibleVersions(agg, view, ballotKind);
+  function renderIgCard(agg, row) {
+    const versions = visibleVersions(agg, row);
     if (!versions.length) return '';
 
     const workgroupMeta = agg.workgroup
@@ -293,14 +587,13 @@
     </div>`;
   }
 
-  function renderGroup(group, view, ballotKind) {
-    const cards = group.items.map(agg => renderIgCard(agg, view, ballotKind)).join('');
+  function renderGroup(group, row) {
+    const cards = group.items.map(agg => renderIgCard(agg, row)).join('');
     return `<div class="org-group">
       <div class="org-header">
         <div class="left">
           <span class="by">By</span>
           <h2>${escapeHtml(group.name)}</h2>
-          <span class="id">/${escapeHtml(group.id)}</span>
         </div>
         <div class="count">${group.count} guide${group.plural}</div>
       </div>
@@ -308,31 +601,191 @@
     </div>`;
   }
 
-  function renderGroups(groups, view, ballotKind) {
-    return groups.map(g => renderGroup(g, view, ballotKind)).join('');
+  function renderGroups(groups, row) {
+    return groups.map(g => renderGroup(g, row)).join('');
+  }
+
+  // ─── Result summary + empty state ───────────────────────────────
+  // Reconciles the hero stats (whole catalog) with the list below (filtered).
+  // Silent when nothing is filtered.
+  function renderSummary(v) {
+    if (!v.query) return '';
+    return `${v.visibleCount} of ${v.totalCount} guides match “${escapeHtml(v.query)}”`;
+  }
+
+  // The row-level part of the query, in words — what the tabs and pills say.
+  function rowLabel(v) {
+    const bits = [];
+    if (v.tab.view === 'published')    bits.push('Published');
+    else if (v.tab.kind === 'stu')     bits.push('STU Ballot');
+    else if (v.tab.kind === 'dstu')    bits.push('DSTU Ballot');
+    else if (v.tab.view === 'ballot')  bits.push('Under Ballot');
+    else if (v.row.status.length)      bits.push(v.row.status.map(x => 'status:' + x).join(' '));
+    if (v.fhir) bits.push('FHIR ' + v.fhir.toUpperCase());
+    else if (v.row.fhir.length) bits.push(v.row.fhir.map(x => 'fhir:' + x).join(' '));
+    return bits.join(' + ');
+  }
+
+  // The old empty state always read — No guides in this category —,
+  // which reads as a broken tab when it is really just a narrow query. Name
+  // what was searched, say where the matches are, offer a way to widen.
+  function renderEmptyState(v) {
+    if (!v.query) {
+      return `<div class="empty-state">— No guides in this category —</div>`;
+    }
+    const what = `“${escapeHtml(v.query)}”`;
+    const label = rowLabel(v);
+    const actions = [];
+    let line, hint = '';
+
+    if (!v.matchedCount) {
+      // Nothing matches the guide-level part of the query either.
+      line = `No guides match ${what}.`;
+      hint = 'Tip: type <code>wg:</code>, <code>org:</code>, <code>status:</code> or '
+           + '<code>fhir:</code> in the search box to pick from the values that exist.';
+    } else {
+      // Guides do match — it is the status / FHIR part that hides every row.
+      line = label
+        ? `No ${escapeHtml(label)} versions among the ${v.matchedCount} guide${v.matchedCount === 1 ? '' : 's'} matching ${what}.`
+        : `No guides match ${what}.`;
+      if (v.tab.kind !== 'all' && v.counts.ballot) {
+        actions.push({ action: 'kind-all',
+          label: `Show all ${v.counts.ballot} ballot row${v.counts.ballot === 1 ? '' : 's'}` });
+      }
+      if (v.tab.view !== 'all') {
+        actions.push({ action: 'view-all',
+          label: `Show all ${v.matchedCount} match${v.matchedCount === 1 ? '' : 'es'}` });
+      }
+    }
+    if (v.fhir || v.row.fhir.length) actions.push({ action: 'fhir-all', label: 'Clear FHIR filter' });
+    actions.push({ action: 'clear-search', label: 'Clear all filters' });
+
+    const btns = actions.map(a =>
+      `<button type="button" class="empty-action" data-action="${a.action}">${escapeHtml(a.label)}</button>`
+    ).join('');
+
+    return `<div class="empty-state filtered">
+      <p class="empty-line">${line}</p>
+      ${hint ? `<p class="empty-hint">${hint}</p>` : ''}
+      ${btns ? `<div class="empty-actions">${btns}</div>` : ''}
+    </div>`;
+  }
+
+  // ─── Search suggestions ─────────────────────────────────────────
+  // A field/value picker in the spirit of a JIRA query bar: type nothing and
+  // you get the list of fields; type "wg:" and you get the workgroups that
+  // actually exist in the catalog. Keyboard: up/down, Enter to take, Esc to
+  // dismiss. Purely additive — free text still works exactly as before.
+  const MAX_SUGGESTIONS = 10;
+  let suggestOpen = false;
+  let suggestIndex = -1;
+  let suggestState = { kind: 'field', items: [] };
+
+  // The term the caret currently sits in, and where it starts. Quotes count
+  // as one unit, so `wg:"austausch` is a single term mid-typing.
+  function currentTerm(value, caret) {
+    const head = value.slice(0, caret);
+    let start = 0, inQuote = false;
+    for (let i = 0; i < head.length; i++) {
+      const c = head[i];
+      if (c === '"') inQuote = !inQuote;
+      else if (!inQuote && /\s/.test(c)) start = i + 1;
+    }
+    return { start: start, text: head.slice(start) };
+  }
+
+  function suggestionsFor(term) {
+    const m = /^([A-Za-z][A-Za-z-]*):(.*)$/.exec(term);
+    const field = m && FIELD_ALIASES[m[1].toLowerCase()];
+    if (field) {
+      const typed = fold(m[2].replace(/^"/, ''));
+      const items = (VOCABULARY[field] || [])
+        .filter(o => !typed || fold(o.value).indexOf(typed) !== -1)
+        .slice(0, MAX_SUGGESTIONS);
+      return { kind: 'value', field: field, prefix: m[1], items: items };
+    }
+    const typed = fold(term);
+    const items = SEARCH_FIELDS
+      .filter(f => !typed || FIELD_SPELLINGS[f].some(a => a.indexOf(typed) === 0))
+      .map(f => ({
+        value: f + ':',
+        label: f + ':',
+        help: FIELD_HELP[f],
+        alt: FIELD_SPELLINGS[f].filter(a => a !== f).slice(0, 2).join(', ')
+      }));
+    return { kind: 'field', items: items };
+  }
+
+  function renderSuggest() {
+    const input = el('search-input');
+    const box   = el('search-suggest');
+    const list  = el('search-suggest-list');
+    if (!input || !box || !list) return;
+
+    suggestState = suggestionsFor(currentTerm(input.value, input.selectionStart || 0).text);
+    if (suggestIndex >= suggestState.items.length) suggestIndex = -1;
+
+    if (!suggestOpen || !suggestState.items.length) {
+      box.hidden = true;
+      input.setAttribute('aria-expanded', 'false');
+      list.innerHTML = '';
+      return;
+    }
+    const head = suggestState.kind === 'value'
+      ? `<li class="suggest-head">${escapeHtml(suggestState.prefix)}: \u2014 ${escapeHtml(FIELD_HELP[suggestState.field] || '')}</li>`
+      : `<li class="suggest-head">Fields</li>`;
+    const mode = suggestState.kind === 'value' ? 'value' : 'field';
+    list.innerHTML = head + suggestState.items.map((o, i) => `
+      <li class="suggest-item suggest-item--${mode}${i === suggestIndex ? ' active' : ''}"
+          role="option" aria-selected="${i === suggestIndex}" data-suggest="${i}">
+        <span class="suggest-value">${escapeHtml(o.label)}</span>
+        ${o.help ? `<span class="suggest-help">${escapeHtml(o.help)}${
+          o.alt ? ` <span class="suggest-alt">also ${escapeHtml(o.alt)}\u2026</span>` : ''}</span>` : ''}
+        ${o.count ? `<span class="suggest-count">${o.count}</span>` : ''}
+      </li>`).join('');
+    box.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+  }
+
+  function quoteValue(v) { return /[\s"]/.test(v) ? '"' + v.replace(/"/g, '') + '"' : v; }
+
+  function applySuggestion(i) {
+    const item = suggestState.items[i];
+    const input = el('search-input');
+    if (!item || !input) return;
+    const caret = input.selectionStart || 0;
+    const term  = currentTerm(input.value, caret);
+    const insert = suggestState.kind === 'field'
+      ? item.value                                                // "wg:" \u2014 keep typing
+      : suggestState.prefix + ':' + quoteValue(item.value) + ' ';
+    input.value = input.value.slice(0, term.start) + insert + input.value.slice(caret);
+    const pos = term.start + insert.length;
+    input.setSelectionRange(pos, pos);
+    input.focus();
+    suggestIndex = -1;
+    setState({ search: input.value });   // re-renders the list, then:
+    renderSuggest();
   }
 
   // ─── DOM updates ────────────────────────────────────────────────
   function el(id) { return document.getElementById(id); }
 
+  // Every control reads its own state back out of the query, so a button can
+  // never claim something the query does not say.
   function applyTabClasses(v) {
-    // Top tabs (All / Published / Under Ballot)
-    el('tab-all').classList.toggle('active', state.view === 'all');
-    el('tab-published').classList.toggle('active', state.view === 'published');
-    el('tab-ballot').classList.toggle('active', state.view === 'ballot');
+    el('tab-all').classList.toggle('active', v.tab.view === 'all');
+    el('tab-published').classList.toggle('active', v.tab.view === 'published');
+    el('tab-ballot').classList.toggle('active', v.tab.view === 'ballot');
 
-    // Ballot sub-tab bar visibility
     el('subtabs').style.display = v.isBallotView ? 'block' : 'none';
 
-    // Sub-tabs (All / STU / DSTU)
-    el('subtab-all').classList.toggle('active', state.ballotKind === 'all');
-    el('subtab-stu').classList.toggle('active', state.ballotKind === 'stu');
-    el('subtab-dstu').classList.toggle('active', state.ballotKind === 'dstu');
+    el('subtab-all').classList.toggle('active', v.tab.kind === 'all');
+    el('subtab-stu').classList.toggle('active', v.tab.kind === 'stu');
+    el('subtab-dstu').classList.toggle('active', v.tab.kind === 'dstu');
 
-    // FHIR pills (ALL / R4 / R5)
-    el('fhir-all').classList.toggle('active', state.fhirFilter === '');
-    el('fhir-r4').classList.toggle('active', state.fhirFilter === '4.0.1');
-    el('fhir-r5').classList.toggle('active', state.fhirFilter === '5.0.0');
+    el('fhir-all').classList.toggle('active', v.fhir === '');
+    el('fhir-r4').classList.toggle('active', v.fhir === 'r4');
+    el('fhir-r5').classList.toggle('active', v.fhir === 'r5');
   }
 
   function render() {
@@ -344,20 +797,23 @@
     el('hero-stu').textContent       = v.stu.length;
     el('hero-dstu').textContent      = v.dstu.length;
 
-    // Sub-tab labels (Published/Ballot tab counts are intentionally not shown)
-    el('subtab-all-count').textContent    = `(${v.ballot.length})`;
-    el('subtab-stu-count').textContent    = `(${v.stu.length})`;
-    el('subtab-dstu-count').textContent   = `(${v.dstu.length})`;
+    // Sub-tab counts follow the active search + FHIR filter, so each count
+    // equals the number of rows its sub-tab renders. (Published/Ballot tab
+    // counts are intentionally not shown.)
+    el('subtab-all-count').textContent    = `(${v.counts.ballot})`;
+    el('subtab-stu-count').textContent    = `(${v.counts.stu})`;
+    el('subtab-dstu-count').textContent   = `(${v.counts.dstu})`;
 
     applyTabClasses(v);
 
+    // Match count — bridges the unfiltered hero stats and the filtered list.
+    el('result-summary').innerHTML = renderSummary(v);
+
     // Registry list
     const root = el('registry-root');
-    if (v.isEmpty) {
-      root.innerHTML = `<div class="empty-state">— No guides in this category —</div>`;
-    } else {
-      root.innerHTML = renderGroups(v.groups, state.view, state.ballotKind);
-    }
+    root.innerHTML = v.isEmpty
+      ? renderEmptyState(v)
+      : renderGroups(v.groups, v.row);
   }
 
   // ─── Event wiring ───────────────────────────────────────────────
@@ -367,21 +823,75 @@
       const btn = e.target.closest('[data-action]');
       if (!btn) return;
       const a = btn.dataset.action;
-      switch (a) {
-        case 'view-all':       setState({ view: 'all' });       break;
-        case 'view-published': setState({ view: 'published' }); break;
-        case 'view-ballot':    setState({ view: 'ballot' });    break;
-        case 'kind-all':       setState({ ballotKind: 'all' }); break;
-        case 'kind-stu':       setState({ ballotKind: 'stu' }); break;
-        case 'kind-dstu':      setState({ ballotKind: 'dstu' });break;
-        case 'fhir-all':       setState({ fhirFilter: '' });    break;
-        case 'fhir-r4':        setState({ fhirFilter: '4.0.1' });break;
-        case 'fhir-r5':        setState({ fhirFilter: '5.0.0' });break;
+      // Tabs and pills are shorthand for a query term. `null` drops the term.
+      const TERMS = {
+        'view-all':       ['status', null],
+        'view-published': ['status', 'published'],
+        'view-ballot':    ['status', 'ballot'],
+        'kind-all':       ['status', 'ballot'],
+        'kind-stu':       ['status', 'stu'],
+        'kind-dstu':      ['status', 'dstu'],
+        'fhir-all':       ['fhir', null],
+        'fhir-r4':        ['fhir', 'r4'],
+        'fhir-r5':        ['fhir', 'r5']
+      };
+      if (TERMS[a]) {
+        setSearch(setFieldTerm(state.search, TERMS[a][0], TERMS[a][1]));
+        return;
       }
+      if (a === 'clear-search') { setSearch(''); el('search-input') && el('search-input').focus(); }
     });
 
-    // Search input.
-    el('search-input').addEventListener('input', (e) => setState({ search: e.target.value }));
+    // Search input. 'search' and 'change' are backstops: some browsers revert
+    // an <input type="search"> on Escape without firing 'input', which would
+    // leave state.search stale against the visible box.
+    const input = el('search-input');
+    if (input) {
+      const onInput = (e) => {
+        suggestIndex = -1;
+        // Open only when the visitor is actually in the box.
+        suggestOpen = document.activeElement === e.target;
+        setState({ search: e.target.value });
+        renderSuggest();
+      };
+      input.addEventListener('input',  onInput);
+      input.addEventListener('search', onInput);
+      input.addEventListener('change', onInput);
+
+      input.addEventListener('focus', () => { suggestOpen = true; renderSuggest(); });
+      input.addEventListener('blur',  () => { suggestOpen = false; renderSuggest(); });
+      input.addEventListener('click', renderSuggest);
+
+      input.addEventListener('keydown', (e) => {
+        const n = suggestState.items.length;
+        if (e.key === 'Escape') { suggestOpen = false; suggestIndex = -1; renderSuggest(); return; }
+        if (!suggestOpen || !n) {
+          if (e.key === 'ArrowDown') { suggestOpen = true; renderSuggest(); e.preventDefault(); }
+          return;
+        }
+        if (e.key === 'ArrowDown')      { suggestIndex = (suggestIndex + 1) % n; renderSuggest(); e.preventDefault(); }
+        else if (e.key === 'ArrowUp')   { suggestIndex = (suggestIndex - 1 + n) % n; renderSuggest(); e.preventDefault(); }
+        else if (e.key === 'Enter' && suggestIndex >= 0) { applySuggestion(suggestIndex); e.preventDefault(); }
+        // Tab completes: the highlighted row, or the first one if none is.
+        // Only while the list is open — otherwise Tab must move focus.
+        else if (e.key === 'Tab' && !e.shiftKey) {
+          applySuggestion(suggestIndex >= 0 ? suggestIndex : 0);
+          e.preventDefault();
+        }
+      });
+    }
+
+    // mousedown, not click: click fires after blur, which would have closed
+    // the list before the selection could be read.
+    const box = el('search-suggest');
+    if (box) {
+      box.addEventListener('mousedown', (e) => {
+        const li = e.target.closest('[data-suggest]');
+        if (!li) return;
+        e.preventDefault();          // keep focus in the input
+        applySuggestion(Number(li.dataset.suggest));
+      });
+    }
   }
 
   // ─── Dev-only validation ────────────────────────────────────────

@@ -125,8 +125,20 @@
           <button id="fhir-r4"  class="fhir-pill"        data-action="fhir-r4">R4</button>
           <button id="fhir-r5"  class="fhir-pill"        data-action="fhir-r5">R5</button>
         </div>
-        <form class="search-form" onsubmit="event.preventDefault()">
-          <input id="search-input" class="search-input" type="search" placeholder="Search by IG name, id, description…">
+        <form class="search-form" role="search" onsubmit="event.preventDefault()">
+          <input id="search-input" class="search-input" type="search"
+                 placeholder="Search — or pick a field: wg:, org:, status:, fhir:"
+                 aria-label="Search implementation guides. Type words to search everything, or pick a field and a value from the suggestions."
+                 role="combobox" aria-expanded="false" aria-autocomplete="list"
+                 aria-controls="search-suggest-list"
+                 autocomplete="off" spellcheck="false">
+          <div id="search-suggest" class="search-suggest" hidden>
+            <ul id="search-suggest-list" class="suggest-list" role="listbox"
+                aria-label="Search suggestions"></ul>
+            <p class="suggest-foot">Pick a field, then one of its values.
+              <kbd>&darr;</kbd><kbd>&uarr;</kbd> to move, <kbd>Tab</kbd> or <kbd>&crarr;</kbd> to take it,
+              <kbd>Esc</kbd> to dismiss. Words are ANDed; order does not matter.</p>
+          </div>
         </form>
       </div>
     </div>
@@ -160,6 +172,7 @@
   <!-- ─── Registry list (rendered by app.js) ────────────────────── -->
   <section class="registry">
     <div class="container">
+      <p id="result-summary" class="result-summary" role="status" aria-live="polite"></p>
       <div id="registry-root"></div>
     </div>
   </section>

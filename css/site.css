@@ -334,6 +334,7 @@ button { font-family: inherit; }
 .search-form {
   display: flex;
   align-items: center;
+  position: relative;
 }
 .search-input {
   font-family: 'IBM Plex Mono', monospace;
@@ -341,9 +342,93 @@ button { font-family: inherit; }
   padding: 8px 12px;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
-  min-width: 260px;
+  min-width: 300px;
   background: #fff;
   color: #0f172a;
+}
+
+/* Search suggestions \u2014 a field/value picker in the spirit of a JIRA query
+   bar. Anchored to .search-form, which is position: relative. */
+.search-suggest {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 40;
+  width: 400px;
+  max-height: 420px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(12, 42, 77, 0.14);
+  text-align: left;
+}
+.search-suggest[hidden] { display: none; }
+.suggest-list { margin: 0; padding: 0; list-style: none; }
+.suggest-head {
+  padding: 8px 12px 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  border-bottom: 1px solid #f1f5f9;
+}
+.suggest-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #0f172a;
+}
+.suggest-item:hover,
+.suggest-item.active { background: #eef4fb; }
+.suggest-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: #0c2a4d;
+  white-space: nowrap;
+}
+/* Field rows read as a definition list: a fixed label column that never
+   truncates, then the explanation. */
+.suggest-item--field .suggest-value { flex: 0 0 96px; }
+.suggest-item--field .suggest-help  { flex: 1 1 auto; text-align: left; }
+/* Value rows give the whole width to the value; workgroup names are long. */
+.suggest-item--value .suggest-value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.suggest-help { font-size: 11px; color: #64748b; }
+.suggest-alt  { color: #94a3b8; }
+.suggest-count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: #94a3b8;
+  flex: 0 0 auto;
+}
+.suggest-foot {
+  margin: 0;
+  padding: 8px 12px;
+  border-top: 1px solid #f1f5f9;
+  background: #f8fafc;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #64748b;
+}
+.suggest-foot kbd {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: #0c2a4d;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin: 0 1px;
 }
 
 /* ─── Ballot sub-tabs (dark navy bar) ──────────────────────────── */
@@ -429,11 +514,6 @@ button { font-family: inherit; }
   margin: 0;
   color: #0c2a4d;
 }
-.org-header .id {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  color: #64748b;
-}
 .org-header .count {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 12px;
@@ -509,8 +589,13 @@ button { font-family: inherit; }
 .version-row .fhir  { color: #475569; min-width: 64px; }
 .version-row .date  { color: #64748b; min-width: 110px; }
 .version-row .version-chip { margin-left: auto; }
-.version-row.published    { border-left-color: #1f6b3a; }
-.version-row.under-ballot { border-left-color: #d62828; }
+/* Accent stripe repeats the badge hue so a row is scannable without
+   reading the badge text. The bare .under-ballot rule is the fallback for
+   a ballot whose type we could not derive. */
+.version-row.published         { border-left-color: #1f6b3a; }
+.version-row.under-ballot      { border-left-color: #b45309; }
+.version-row.under-ballot.stu  { border-left-color: #b45309; }
+.version-row.under-ballot.dstu { border-left-color: #eab308; }
 
 /* Shared chips (CI / HISTORY / GITHUB / WIKI / JIRA) at the card footer */
 .shared-chips {
@@ -531,9 +616,18 @@ button { font-family: inherit; }
   letter-spacing: 0.1em;
   border: 1px solid transparent;
 }
+/* Status tints. STU and DSTU used to be two saturated reds four shades
+   apart (#d62828 / #a51a1a): indistinguishable side by side, and loud next
+   to everything else on the row.
+   STU is now solid dark orange — same legibility as the red it replaces
+   (white text at 5.02:1 vs 5.01:1) but unmistakably not red. DSTU is a pale
+   yellow with dark text, so the two ballot types differ in weight as well
+   as hue: 4.48:1 between the two backgrounds keeps them separable without
+   colour vision, and the paler DSTU reads as the lighter-weight ballot.
+   Text contrast: published 5.75:1, STU 5.02:1, DSTU 6.68:1 — all AA. */
 .badge.published  { background: #eaf3ec; color: #1f6b3a; border-color: #bedcc6; }
-.badge.stu        { background: #d62828; color: #fff;    border-color: #d62828; }
-.badge.dstu       { background: #a51a1a; color: #fff;    border-color: #a51a1a; }
+.badge.stu        { background: #b45309; color: #fff;    border-color: #b45309; }
+.badge.dstu       { background: #fcf3c0; color: #6b5104; border-color: #e8d375; }
 
 /* Link chips */
 .chip {
@@ -552,8 +646,25 @@ button { font-family: inherit; }
 .chip.secondary { background: #fff;    color: #0c2a4d; border-color: #cbd5e1; }
 .chip.ghost     { background: #f4f6f8; color: #475569; border-color: #e2e8f0; }
 .chip.danger    { background: #d62828; color: #fff;    border-color: #d62828; }
+/* The BALLOT IG chip. Was solid #d62828, which put a third loud red on
+   every ballot row. It now picks up its row's ballot-type tint, one shade
+   paler than the badge so the badge stays the dominant element. */
+.chip.ballot    { background: #fdf0e0; color: #8a3e05; border-color: #e9b478; }
+.version-row.under-ballot.dstu .chip.ballot
+                { background: #fdf8e2; color: #6b5104; border-color: #e8d375; }
 .chip.disabled  { background: #cbd5e1; color: #64748b; border-color: #cbd5e1;
                   cursor: not-allowed; opacity: 0.75; }
+
+/* Match count — sits above the first org group, hidden when nothing is
+   filtered. Bridges the hero stats (whole catalog) and the list (filtered). */
+.result-summary {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  padding-bottom: 16px;
+}
+.result-summary:empty { display: none; }
 
 /* Empty state */
 .empty-state {
@@ -565,6 +676,43 @@ button { font-family: inherit; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
+/* The filtered variant quotes the visitor's own query, which the uppercase
+   + wide tracking above would mangle — so it opts out of both. */
+.empty-state.filtered {
+  padding: 56px 0;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-size: 14px;
+  color: #475569;
+}
+.empty-state .empty-line { font-size: 15px; font-weight: 600; color: #0f172a; margin: 0; }
+.empty-state .empty-hint { margin: 6px auto 0; color: #64748b; max-width: 640px; }
+.empty-state .empty-hint code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: #0c2a4d;
+  background: #f4f6f8;
+  border: 1px solid #e2e8f0;
+  padding: 0 4px;
+}
+.empty-state .empty-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.empty-action {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 8px 12px;
+  background: #fff;
+  color: #0c2a4d;
+  border: 1px solid #cbd5e1;
+  cursor: pointer;
+}
+.empty-action:hover { border-color: #1f5aa6; color: #1f5aa6; }
 
 /* ─── Footer (minimal) ──────────────────────────────────────────── */
 .site-footer {
