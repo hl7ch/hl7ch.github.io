@@ -347,39 +347,89 @@ button { font-family: inherit; }
   color: #0f172a;
 }
 
-/* Search syntax cheat sheet. CSS-only: shown while the box has focus, so
-   the scoping prefixes are discoverable without a permanent panel. */
-.search-hint {
-  display: none;
+/* Search suggestions \u2014 a field/value picker in the spirit of a JIRA query
+   bar. Anchored to .search-form, which is position: relative. */
+.search-suggest {
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
   z-index: 40;
-  width: 380px;
-  padding: 12px 14px;
+  width: 400px;
+  max-height: 420px;
+  overflow-y: auto;
   background: #fff;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
-  box-shadow: 0 8px 24px rgba(12, 42, 77, 0.12);
-  font-size: 12px;
-  line-height: 1.6;
-  color: #475569;
+  box-shadow: 0 8px 24px rgba(12, 42, 77, 0.14);
   text-align: left;
 }
-.search-form:focus-within .search-hint { display: block; }
-.search-hint p  { margin: 0 0 8px; }
-.search-hint ul { margin: 0 0 8px; padding: 0; list-style: none; }
-.search-hint li { margin: 0; }
-.search-hint code {
+.search-suggest[hidden] { display: none; }
+.suggest-list { margin: 0; padding: 0; list-style: none; }
+.suggest-head {
+  padding: 8px 12px 6px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: #0c2a4d;
-  background: #f4f6f8;
-  border: 1px solid #e2e8f0;
-  padding: 0 4px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  border-bottom: 1px solid #f1f5f9;
 }
-.search-hint span { color: #cbd5e1; }
-.search-hint .eg  { margin: 0; color: #64748b; }
+.suggest-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #0f172a;
+}
+.suggest-item:hover,
+.suggest-item.active { background: #eef4fb; }
+.suggest-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: #0c2a4d;
+  white-space: nowrap;
+}
+/* Field rows read as a definition list: a fixed label column that never
+   truncates, then the explanation. */
+.suggest-item--field .suggest-value { flex: 0 0 96px; }
+.suggest-item--field .suggest-help  { flex: 1 1 auto; text-align: left; }
+/* Value rows give the whole width to the value; workgroup names are long. */
+.suggest-item--value .suggest-value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.suggest-help { font-size: 11px; color: #64748b; }
+.suggest-alt  { color: #94a3b8; }
+.suggest-count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: #94a3b8;
+  flex: 0 0 auto;
+}
+.suggest-foot {
+  margin: 0;
+  padding: 8px 12px;
+  border-top: 1px solid #f1f5f9;
+  background: #f8fafc;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #64748b;
+}
+.suggest-foot kbd {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: #0c2a4d;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin: 0 1px;
+}
 
 /* ─── Ballot sub-tabs (dark navy bar) ──────────────────────────── */
 .subtabs {
@@ -636,7 +686,15 @@ button { font-family: inherit; }
   color: #475569;
 }
 .empty-state .empty-line { font-size: 15px; font-weight: 600; color: #0f172a; margin: 0; }
-.empty-state .empty-hint { margin: 6px 0 0; color: #64748b; }
+.empty-state .empty-hint { margin: 6px auto 0; color: #64748b; max-width: 640px; }
+.empty-state .empty-hint code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: #0c2a4d;
+  background: #f4f6f8;
+  border: 1px solid #e2e8f0;
+  padding: 0 4px;
+}
 .empty-state .empty-actions {
   display: flex;
   gap: 8px;

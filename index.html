@@ -127,19 +127,17 @@
         </div>
         <form class="search-form" role="search" onsubmit="event.preventDefault()">
           <input id="search-input" class="search-input" type="search"
-                 placeholder="Search — or scope it: wg:epd, org:foph, fhir:r5"
-                 aria-label="Search implementation guides. Type words to search everything, or scope a term to one field with name:, id:, desc:, org:, wg:, version:, fhir: or status:"
-                 aria-describedby="search-hint"
+                 placeholder="Search — or pick a field: wg:, org:, status:, fhir:"
+                 aria-label="Search implementation guides. Type words to search everything, or pick a field and a value from the suggestions."
+                 role="combobox" aria-expanded="false" aria-autocomplete="list"
+                 aria-controls="search-suggest-list"
                  autocomplete="off" spellcheck="false">
-          <div id="search-hint" class="search-hint">
-            <p>Words are ANDed and order does not matter. Scope a term to one field:</p>
-            <ul>
-              <li><code>name:</code> title <span>·</span> <code>id:</code> package id / repo</li>
-              <li><code>desc:</code> description <span>·</span> <code>org:</code> organization</li>
-              <li><code>wg:</code> workgroup <span>&middot;</span> <code>ag:</code> same thing</li>
-              <li><code>version:</code> <span>·</span> <code>fhir:</code> r4 / r5 <span>·</span> <code>status:</code> published / ballot / stu / dstu</li>
-            </ul>
-            <p class="eg">e.g. <code>wg:epd fhir:r4</code> <span>·</span> <code>wg:"austauschformate epd"</code> <span>·</span> <code>status:ballot</code></p>
+          <div id="search-suggest" class="search-suggest" hidden>
+            <ul id="search-suggest-list" class="suggest-list" role="listbox"
+                aria-label="Search suggestions"></ul>
+            <p class="suggest-foot">Pick a field, then one of its values.
+              <kbd>&darr;</kbd><kbd>&uarr;</kbd> to move, <kbd>Tab</kbd> or <kbd>&crarr;</kbd> to take it,
+              <kbd>Esc</kbd> to dismiss. Words are ANDed; order does not matter.</p>
           </div>
         </form>
       </div>

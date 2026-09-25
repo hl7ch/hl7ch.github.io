@@ -84,16 +84,33 @@
   // Searchable fields, and the prefixes that scope a term to one of them.
   // "wg:epd" only looks at the workgroup; "epd" looks everywhere.
   const SEARCH_FIELDS = ['name', 'id', 'desc', 'org', 'wg', 'version', 'fhir', 'status'];
+  // Every spelling anyone might reasonably type, mapped to its canonical
+  // field. Hyphenated forms are allowed, so the prefix pattern below accepts
+  // '-' as well as letters.
   const FIELD_ALIASES = {
-    name: 'name', title: 'name', ig: 'name',
-    id: 'id', pkg: 'id', package: 'id',
-    desc: 'desc', description: 'desc',
-    org: 'org', organization: 'org', organisation: 'org',
-    wg: 'wg', workgroup: 'wg', ag: 'wg', arbeitsgruppe: 'wg',
-    version: 'version', v: 'version',
-    fhir: 'fhir',
-    status: 'status', ballot: 'status'
+    name: 'name', title: 'name', ig: 'name', igname: 'name', 'ig-name': 'name',
+    id: 'id', pkg: 'id', package: 'id', packageid: 'id', 'package-id': 'id', repo: 'id',
+    desc: 'desc', description: 'desc', text: 'desc',
+    org: 'org', organization: 'org', organisation: 'org', publisher: 'org',
+    wg: 'wg', workgroup: 'wg', 'work-group': 'wg', group: 'wg',
+    ag: 'wg', arbeitsgruppe: 'wg',
+    version: 'version', v: 'version', ver: 'version',
+    fhir: 'fhir', fhirversion: 'fhir', 'fhir-version': 'fhir', release: 'fhir',
+    status: 'status', state: 'status', ballot: 'status',
+    publicationstatus: 'status', 'publication-status': 'status'
   };
+
+  // Canonical field -> the aliases that resolve to it, so typing "workgroup"
+  // or "fhir-ver" still finds the field in the picker.
+  const FIELD_SPELLINGS = (() => {
+    const m = {};
+    for (const f of SEARCH_FIELDS) m[f] = [];
+    for (const alias of Object.keys(FIELD_ALIASES)) {
+      const f = FIELD_ALIASES[alias];
+      if (m[f]) m[f].push(alias);
+    }
+    return m;
+  })();
 
   // One pre-folded string per field per card, covering everything the card
   // actually shows. `all` is the union, used by unprefixed terms. Built once
@@ -126,18 +143,95 @@
     return out;
   }
 
-  // Split a query into terms. Supports a field prefix ("wg:epd") and quoted
-  // phrases ("ch core" / wg:"austauschformate epd"). An unrecognised prefix
-  // is not a field — "https://x" stays one literal term.
+  // What each field means, for the suggestion list.
+  const FIELD_HELP = {
+    name:    'IG title',
+    id:      'package id / repository',
+    desc:    'description text',
+    org:     'organization',
+    wg:      'workgroup',
+    version: 'version string',
+    fhir:    'FHIR release',
+    status:  'publication status'
+  };
+
+  // The set of values each field can actually take, harvested from the
+  // catalog so the picker offers real choices instead of free text — `desc`
+  // is prose and has none. Counts drive the ordering.
+  let VOCABULARY = {};
+
+  function buildVocabulary(aggs) {
+    const bag = {};
+    for (const f of SEARCH_FIELDS) bag[f] = new Map();
+    const add = (field, value, label) => {
+      if (!value) return;
+      const key = String(value);
+      const m = bag[field];
+      if (!m.has(key)) m.set(key, { value: key, label: label || key, count: 0 });
+      m.get(key).count++;
+    };
+    for (const agg of aggs) {
+      add('name', agg.name);
+      add('id', String(agg.identifier || '').replace(/^ch\.fhir\.ig\./, ''));
+      add('org', agg.organization && agg.organization.name);
+      add('wg', agg.workgroup && agg.workgroup.name);
+      for (const v of agg.versions) {
+        add('version', v.version);
+        for (const fv of v.fhirVersion || []) {
+          const alias = FHIR_ALIASES[fv];
+          add('fhir', alias || fv, alias ? `${alias.toUpperCase()} \u2014 ${fv}` : fv);
+        }
+        if (v.publicationStatus === 'under-ballot') {
+          add('status', 'ballot');
+          if (v.ballotType) {
+            add('status', v.ballotType,
+                v.ballotType === 'dstu' ? 'dstu \u2014 also matches \u201cinformative\u201d' : v.ballotType);
+          }
+        } else {
+          add('status', 'published');
+        }
+      }
+    }
+    const out = {};
+    for (const f of SEARCH_FIELDS) {
+      out[f] = [...bag[f].values()]
+        .sort((a, b) => b.count - a.count || a.value.localeCompare(b.value));
+    }
+    return out;
+  }
+
+  // Whitespace-separated chunks, except inside double quotes, so
+  // wg:"austauschformate epd" survives as one chunk.
+  function splitTerms(query) {
+    const out = [];
+    let cur = '', inQuote = false;
+    for (const c of String(query || '')) {
+      if (c === '"') { inQuote = !inQuote; cur += c; }
+      else if (!inQuote && /\s/.test(c)) { if (cur) out.push(cur); cur = ''; }
+      else cur += c;
+    }
+    if (cur) out.push(cur);
+    return out;
+  }
+
+  const unquote = (v) => String(v).replace(/^"/, '').replace(/"$/, '');
+
+  // Parse the query into terms. "wg:epd" scopes to a field; a bare "wg:" is a
+  // field the visitor has picked but not filled in yet, so it constrains
+  // nothing. An unrecognised prefix is not a field — "https://x" stays one
+  // literal term.
   function parseQuery(query) {
     const terms = [];
-    const re = /(?:([A-Za-z]+):)?(?:"([^"]*)"|(\S+))/g;
-    let m;
-    while ((m = re.exec(query)) !== null) {
-      const prefix = m[1] ? FIELD_ALIASES[m[1].toLowerCase()] : null;
-      if (m[1] && !prefix) { const v = fold(m[0]); if (v) terms.push({ field: null, value: v }); continue; }
-      const value = fold(m[2] !== undefined ? m[2] : m[3]);
-      if (value) terms.push({ field: prefix, value: value });
+    for (const raw of splitTerms(query)) {
+      const m = /^([A-Za-z][A-Za-z-]*):([\s\S]*)$/.exec(raw);
+      const field = m && FIELD_ALIASES[m[1].toLowerCase()];
+      if (field) {
+        const value = fold(unquote(m[2]));
+        if (value) terms.push({ field: field, value: value });
+        continue;
+      }
+      const value = fold(unquote(raw));
+      if (value) terms.push({ field: null, value: value });
     }
     return terms;
   }
@@ -204,6 +298,7 @@
     if (aggCache.src === all) return aggCache.aggs;
     const aggs = aggregate(all);
     for (const agg of aggs) agg._fields = buildFields(agg);
+    VOCABULARY = buildVocabulary(aggs);
     aggCache = { src: all, aggs };
     return aggs;
   }
@@ -480,8 +575,8 @@
 
     if (!v.matchedCount) {
       line = `No guides match ${what}.`;
-      hint = 'Tip: scope a term to one field \u2014 <code>wg:epd</code>, <code>org:foph</code>, '
-           + '<code>name:core</code>, <code>fhir:r5</code>, <code>status:ballot</code>.';
+      hint = 'Tip: type <code>wg:</code>, <code>org:</code>, <code>status:</code> or '
+           + '<code>fhir:</code> in the search box to pick from the values that exist.';
     } else {
       // The query does match — it is the active tab that hides the results.
       const kindBit = (state.view === 'ballot' && state.ballotKind !== 'all')
@@ -509,6 +604,102 @@
       ${hint ? `<p class="empty-hint">${hint}</p>` : ''}
       ${btns ? `<div class="empty-actions">${btns}</div>` : ''}
     </div>`;
+  }
+
+  // ─── Search suggestions ─────────────────────────────────────────
+  // A field/value picker in the spirit of a JIRA query bar: type nothing and
+  // you get the list of fields; type "wg:" and you get the workgroups that
+  // actually exist in the catalog. Keyboard: up/down, Enter to take, Esc to
+  // dismiss. Purely additive — free text still works exactly as before.
+  const MAX_SUGGESTIONS = 10;
+  let suggestOpen = false;
+  let suggestIndex = -1;
+  let suggestState = { kind: 'field', items: [] };
+
+  // The term the caret currently sits in, and where it starts. Quotes count
+  // as one unit, so `wg:"austausch` is a single term mid-typing.
+  function currentTerm(value, caret) {
+    const head = value.slice(0, caret);
+    let start = 0, inQuote = false;
+    for (let i = 0; i < head.length; i++) {
+      const c = head[i];
+      if (c === '"') inQuote = !inQuote;
+      else if (!inQuote && /\s/.test(c)) start = i + 1;
+    }
+    return { start: start, text: head.slice(start) };
+  }
+
+  function suggestionsFor(term) {
+    const m = /^([A-Za-z][A-Za-z-]*):(.*)$/.exec(term);
+    const field = m && FIELD_ALIASES[m[1].toLowerCase()];
+    if (field) {
+      const typed = fold(m[2].replace(/^"/, ''));
+      const items = (VOCABULARY[field] || [])
+        .filter(o => !typed || fold(o.value).indexOf(typed) !== -1)
+        .slice(0, MAX_SUGGESTIONS);
+      return { kind: 'value', field: field, prefix: m[1], items: items };
+    }
+    const typed = fold(term);
+    const items = SEARCH_FIELDS
+      .filter(f => !typed || FIELD_SPELLINGS[f].some(a => a.indexOf(typed) === 0))
+      .map(f => ({
+        value: f + ':',
+        label: f + ':',
+        help: FIELD_HELP[f],
+        alt: FIELD_SPELLINGS[f].filter(a => a !== f).slice(0, 2).join(', ')
+      }));
+    return { kind: 'field', items: items };
+  }
+
+  function renderSuggest() {
+    const input = el('search-input');
+    const box   = el('search-suggest');
+    const list  = el('search-suggest-list');
+    if (!input || !box || !list) return;
+
+    suggestState = suggestionsFor(currentTerm(input.value, input.selectionStart || 0).text);
+    if (suggestIndex >= suggestState.items.length) suggestIndex = -1;
+
+    if (!suggestOpen || !suggestState.items.length) {
+      box.hidden = true;
+      input.setAttribute('aria-expanded', 'false');
+      list.innerHTML = '';
+      return;
+    }
+    const head = suggestState.kind === 'value'
+      ? `<li class="suggest-head">${escapeHtml(suggestState.prefix)}: \u2014 ${escapeHtml(FIELD_HELP[suggestState.field] || '')}</li>`
+      : `<li class="suggest-head">Fields</li>`;
+    const mode = suggestState.kind === 'value' ? 'value' : 'field';
+    list.innerHTML = head + suggestState.items.map((o, i) => `
+      <li class="suggest-item suggest-item--${mode}${i === suggestIndex ? ' active' : ''}"
+          role="option" aria-selected="${i === suggestIndex}" data-suggest="${i}">
+        <span class="suggest-value">${escapeHtml(o.label)}</span>
+        ${o.help ? `<span class="suggest-help">${escapeHtml(o.help)}${
+          o.alt ? ` <span class="suggest-alt">also ${escapeHtml(o.alt)}\u2026</span>` : ''}</span>` : ''}
+        ${o.count ? `<span class="suggest-count">${o.count}</span>` : ''}
+      </li>`).join('');
+    box.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+  }
+
+  function quoteValue(v) { return /[\s"]/.test(v) ? '"' + v.replace(/"/g, '') + '"' : v; }
+
+  function applySuggestion(i) {
+    const item = suggestState.items[i];
+    const input = el('search-input');
+    if (!item || !input) return;
+    const caret = input.selectionStart || 0;
+    const term  = currentTerm(input.value, caret);
+    const insert = suggestState.kind === 'field'
+      ? item.value                                                // "wg:" \u2014 keep typing
+      : suggestState.prefix + ':' + quoteValue(item.value) + ' ';
+    input.value = input.value.slice(0, term.start) + insert + input.value.slice(caret);
+    const pos = term.start + insert.length;
+    input.setSelectionRange(pos, pos);
+    input.focus();
+    suggestIndex = -1;
+    setState({ search: input.value });   // re-renders the list, then:
+    renderSuggest();
   }
 
   // ─── DOM updates ────────────────────────────────────────────────
@@ -593,10 +784,49 @@
     // leave state.search stale against the visible box.
     const input = el('search-input');
     if (input) {
-      const onInput = (e) => setState({ search: e.target.value });
+      const onInput = (e) => {
+        suggestIndex = -1;
+        suggestOpen = true;
+        setState({ search: e.target.value });
+        renderSuggest();
+      };
       input.addEventListener('input',  onInput);
       input.addEventListener('search', onInput);
       input.addEventListener('change', onInput);
+
+      input.addEventListener('focus', () => { suggestOpen = true; renderSuggest(); });
+      input.addEventListener('blur',  () => { suggestOpen = false; renderSuggest(); });
+      input.addEventListener('click', renderSuggest);
+
+      input.addEventListener('keydown', (e) => {
+        const n = suggestState.items.length;
+        if (e.key === 'Escape') { suggestOpen = false; suggestIndex = -1; renderSuggest(); return; }
+        if (!suggestOpen || !n) {
+          if (e.key === 'ArrowDown') { suggestOpen = true; renderSuggest(); e.preventDefault(); }
+          return;
+        }
+        if (e.key === 'ArrowDown')      { suggestIndex = (suggestIndex + 1) % n; renderSuggest(); e.preventDefault(); }
+        else if (e.key === 'ArrowUp')   { suggestIndex = (suggestIndex - 1 + n) % n; renderSuggest(); e.preventDefault(); }
+        else if (e.key === 'Enter' && suggestIndex >= 0) { applySuggestion(suggestIndex); e.preventDefault(); }
+        // Tab completes: the highlighted row, or the first one if none is.
+        // Only while the list is open — otherwise Tab must move focus.
+        else if (e.key === 'Tab' && !e.shiftKey) {
+          applySuggestion(suggestIndex >= 0 ? suggestIndex : 0);
+          e.preventDefault();
+        }
+      });
+    }
+
+    // mousedown, not click: click fires after blur, which would have closed
+    // the list before the selection could be read.
+    const box = el('search-suggest');
+    if (box) {
+      box.addEventListener('mousedown', (e) => {
+        const li = e.target.closest('[data-suggest]');
+        if (!li) return;
+        e.preventDefault();          // keep focus in the input
+        applySuggestion(Number(li.dataset.suggest));
+      });
     }
   }
 
