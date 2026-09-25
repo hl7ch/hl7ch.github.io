@@ -183,18 +183,22 @@
       workgroup: { name: 'IVR / HL7 Switzerland', url: 'mailto:felix.fischer@borsconsulting.ch' }
     },
 
-    // ─── HL7 Switzerland / Federal Office of Public Health ───────────
-    // eHealth Suisse is being wound down and its EPR mandate sits with the
-    // FOPH, so everything the FOPH owns renders under one heading.
+    // ─── Federal Office of Public Health (no HL7 CH ballot) ─────────
+    // CH ELM never went through an HL7 CH ballot — it is FOPH work alone,
+    // so it renders under a plain FOPH heading, without the "HL7
+    // Switzerland /" prefix the balloted FOPH IGs below carry.
     'ch.fhir.ig.ch-elm': {
       name: 'CH ELM',
-      organization: 'hl7ch-foph',
+      organization: 'foph',
       description: 'CH ELM is a project of the Swiss Federal Office of Public Health (FOPH), Communicable Diseases Division, to enable laboratories to send their observations of notifiable communicable infectious diseases to the FOPH electronically.',
       links: {
         source: 'https://github.com/ahdis/ch-elm',
         wiki: 'https://github.com/ahdis/ch-elm/wiki'
       }
     },
+    // ─── HL7 Switzerland / Federal Office of Public Health ───────────
+    // eHealth Suisse is being wound down and its EPR mandate sits with the
+    // FOPH, so everything else the FOPH owns renders under one heading.
     'ch.fhir.ig.ch-epl': {
       organization: 'hl7ch-foph',
       description: 'The specialties list (SL) is the official list of reimbursable medicines in Switzerland, maintained by the Federal Office of Public Health (FOPH). This FHIR Implementation Guide defines the standardized representation and exchange of SL data using HL7® FHIR®, supporting interoperability in the Swiss healthcare system. It provides FHIR profiles for medicines, prices, packaging, and reimbursement conditions, enabling consistent integration across healthcare applications and services.',
@@ -283,6 +287,9 @@
     'hl7ch-alis':      'HL7 Switzerland / ALIS Connect',
     'hl7ch-umzh':      'HL7 Switzerland / UMZH Connect',
     'hl7ch-refdata':   'HL7 Switzerland / Refdata Foundation',
+    // FOPH work that never ran through an HL7 CH ballot (CH ELM) — kept
+    // apart from the 'hl7ch-foph' heading above, which implies one.
+    'foph':            'Federal Office of Public Health',
     'ech-hl7ch':       'eCH / HL7 Switzerland',
     'sphn':            'Swiss Personalized Health Network',
     'cara':            'CARA',
@@ -305,7 +312,7 @@
   // NOTE: `ahdis` is intentionally NOT mapped — it is a multi-tenant
   // publisher that builds IGs owned by various orgs (e.g. CH ELM is
   // FOPH-owned but built under ahdis/ch-elm). ahdis-built IGs MUST
-  // declare their owner via OVERRIDES.organization ('hl7ch-foph' here).
+  // declare their owner via OVERRIDES.organization ('foph' here).
   var CI_BUILD_ORG = {
     'hl7ch':         'hl7ch',
     // eHealth Suisse's FHIR work is continued by the FOPH — IGs still built
