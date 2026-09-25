@@ -212,7 +212,7 @@
   function versionChip(v) {
     const isBallot = v.publicationStatus === 'under-ballot';
     return {
-      cls:   isBallot ? 'chip danger' : 'chip primary',
+      cls:   isBallot ? 'chip ballot' : 'chip primary',
       icon:  '▤',
       label: isBallot ? 'BALLOT IG' : 'IG',
       url:   v.igUrl
@@ -253,7 +253,9 @@
       chips.push(tooltip ? renderDisabledChip(voteChip, tooltip) : renderChip(voteChip));
     }
     const fhirStr = (v.fhirVersion || []).join(', ') || '—';
-    const cls = (v.publicationStatus || '').replace(/[^a-z-]/g, '');
+    const cls = v.publicationStatus === 'under-ballot'
+      ? 'under-ballot ' + (v.ballotType === 'dstu' ? 'dstu' : 'stu')
+      : 'published';
     return `<div class="version-row ${cls}">
       <span class="${badge.cls}">${badge.text}</span>
       <span class="vno">v${escapeHtml(v.version || '—')}</span>

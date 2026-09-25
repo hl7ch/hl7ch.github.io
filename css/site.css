@@ -509,8 +509,13 @@ button { font-family: inherit; }
 .version-row .fhir  { color: #475569; min-width: 64px; }
 .version-row .date  { color: #64748b; min-width: 110px; }
 .version-row .version-chip { margin-left: auto; }
-.version-row.published    { border-left-color: #1f6b3a; }
-.version-row.under-ballot { border-left-color: #d62828; }
+/* Accent stripe repeats the badge hue so a row is scannable without
+   reading the badge text. The bare .under-ballot rule is the fallback for
+   a ballot whose type we could not derive. */
+.version-row.published         { border-left-color: #1f6b3a; }
+.version-row.under-ballot      { border-left-color: #d97706; }
+.version-row.under-ballot.stu  { border-left-color: #d97706; }
+.version-row.under-ballot.dstu { border-left-color: #eab308; }
 
 /* Shared chips (CI / HISTORY / GITHUB / WIKI / JIRA) at the card footer */
 .shared-chips {
@@ -531,9 +536,18 @@ button { font-family: inherit; }
   letter-spacing: 0.1em;
   border: 1px solid transparent;
 }
+/* Status tints — one construction throughout: pale background, dark
+   saturated text, mid-tint border.
+   STU and DSTU used to be two saturated reds four shades apart (#d62828 /
+   #a51a1a): indistinguishable side by side, and loud next to everything
+   else on the row. Orange (STU) and yellow (DSTU) are neighbouring hues,
+   so they carry a deliberate lightness step as well — the backgrounds are
+   1.26:1 apart, which keeps them separable without colour vision.
+   Text contrast on its own background: published 5.75:1, STU 5.37:1,
+   DSTU 6.68:1 — all WCAG AA at 10px/600. */
 .badge.published  { background: #eaf3ec; color: #1f6b3a; border-color: #bedcc6; }
-.badge.stu        { background: #d62828; color: #fff;    border-color: #d62828; }
-.badge.dstu       { background: #a51a1a; color: #fff;    border-color: #a51a1a; }
+.badge.stu        { background: #f8d3ab; color: #8a3e05; border-color: #e9b478; }
+.badge.dstu       { background: #fcf3c0; color: #6b5104; border-color: #e8d375; }
 
 /* Link chips */
 .chip {
@@ -552,6 +566,12 @@ button { font-family: inherit; }
 .chip.secondary { background: #fff;    color: #0c2a4d; border-color: #cbd5e1; }
 .chip.ghost     { background: #f4f6f8; color: #475569; border-color: #e2e8f0; }
 .chip.danger    { background: #d62828; color: #fff;    border-color: #d62828; }
+/* The BALLOT IG chip. Was solid #d62828, which put a third loud red on
+   every ballot row. It now picks up its row's ballot-type tint, one shade
+   paler than the badge so the badge stays the dominant element. */
+.chip.ballot    { background: #fdf0e0; color: #8a3e05; border-color: #e9b478; }
+.version-row.under-ballot.dstu .chip.ballot
+                { background: #fdf8e2; color: #6b5104; border-color: #e8d375; }
 .chip.disabled  { background: #cbd5e1; color: #64748b; border-color: #cbd5e1;
                   cursor: not-allowed; opacity: 0.75; }
 
