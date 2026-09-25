@@ -302,7 +302,6 @@
         <div class="left">
           <span class="by">By</span>
           <h2>${escapeHtml(group.name)}</h2>
-          <span class="id">/${escapeHtml(group.id)}</span>
         </div>
         <div class="count">${group.count} guide${group.plural}</div>
       </div>
